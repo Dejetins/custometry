@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "profile": "benchmark",
+  "status": "implemented_unverified",
+  "seed": 20260716,
+  "opt_in": true,
+  "requires_explicit_large_data_confirmation": true,
+  "acceptance_note": "The generator path exists, but Foundation does not claim benchmark performance or successful laptop generation until a dedicated benchmark stage records evidence.",
+  "counts": {
+    "stores": 1000,
+    "customers": 500000,
+    "products": 100000,
+    "promotions": 120,
+    "receipts": 10000000,
+    "items_per_receipt": 5,
+    "receipt_items": 50000000,
+    "audience_members_per_targeted_promotion": 1000
+  }
+}

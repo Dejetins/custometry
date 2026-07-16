@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "openapi": "packages/contracts/openapi/foundation.openapi.json",
+  "json_schemas": [
+    "packages/contracts/schemas/foundation-health.schema.json",
+    "packages/contracts/schemas/route-registry.schema.json"
+  ],
+  "openapi_schema_bindings": {
+    "packages/contracts/schemas/foundation-health.schema.json": "HealthResponse"
+  },
+  "typescript_client": {
+    "path": "packages/contracts/src/foundation-client.ts",
+    "generator": "custometry-foundation-openapi-ts",
+    "generator_version": 1
+  }
+}

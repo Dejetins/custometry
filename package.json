@@ -1,0 +1,22 @@
+{
+  "name": "custometry",
+  "version": "0.1.0-dev.0",
+  "private": true,
+  "description": "Custometry frontend workspace",
+  "packageManager": "pnpm@11.13.0",
+  "engines": {
+    "node": ">=24.18.0 <25"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.32",
+    "typescript": "5.8.3",
+    "vitest": "3.2.4"
+  }
+}

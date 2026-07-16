@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "owned_paths": [
+    ".coverage",
+    ".hypothesis",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".playwright-cli",
+    ".pnpm-store",
+    ".pyright",
+    ".runtime",
+    ".ruff_cache",
+    ".venv",
+    "apps/web/dist",
+    "apps/web/node_modules",
+    "build",
+    "coverage",
+    "deploy/compose/.runtime.env",
+    "deploy/compose/.runtime-secrets",
+    "htmlcov",
+    "node_modules",
+    "packages/chart_compiler_ts/node_modules",
+    "packages/contracts/node_modules",
+    "packages/localization/node_modules",
+    "playwright-report",
+    "site",
+    "test-results",
+    "tests/e2e/playwright-report",
+    "tests/e2e/test-results"
+  ]
+}

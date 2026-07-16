@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.hypothesis/
+.coverage
+htmlcov/
+.venv/
+
+# Node / frontend
+node_modules/
+.pnpm-store/
+dist/
+coverage/
+playwright-report/
+test-results/
+.playwright-cli/
+
+# Local configuration and secrets
+.env
+.env.*
+*.env
+!.env.example
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Runtime data and generated analytical artifacts
+/artifacts/
+/data/
+/tmp/
+/build/
+/site/
+/.runtime/
+/deploy/compose/.runtime.env
+/deploy/compose/.release.env
+/deploy/compose/.runtime-secrets/
+*.log
+
+# Codex machine-local state; durable prompt packs remain tracked
+.codex/agents/.context/
+.codex/tmp/
+.codex/sessions/
+.codex/**/*.local.*
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

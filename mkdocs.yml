@@ -1,0 +1,51 @@
+site_name: Custometry Documentation
+site_description: Local public installation and user documentation for Custometry
+site_url: ""
+docs_dir: docs-site/docs
+site_dir: site
+use_directory_urls: true
+strict: true
+
+theme:
+  name: material
+  language: en
+  font: false
+  palette:
+    scheme: default
+    primary: light blue
+    accent: cyan
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ru
+
+extra_css:
+  - assets/frost.css
+
+nav:
+  - Home: index.md
+  - Installation:
+      - Local installation: install/local.md
+      - Network boundary: install/network-boundary.md
+  - User guide:
+      - Foundation workspace: user-guide/foundation.md
+  - Русский:
+      - Главная: ru/index.md
+      - Локальная установка: ru/install/local.md
+      - Сетевая граница: ru/install/network-boundary.md
+      - Foundation workspace: ru/user-guide/foundation.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences

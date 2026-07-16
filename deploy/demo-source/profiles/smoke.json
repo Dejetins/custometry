@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "profile": "smoke",
+  "status": "implemented",
+  "seed": 20260716,
+  "opt_in": false,
+  "counts": {
+    "stores": 4,
+    "customers": 100,
+    "products": 40,
+    "promotions": 6,
+    "receipts": 500,
+    "items_per_receipt": 2,
+    "receipt_items": 1000,
+    "audience_members_per_targeted_promotion": 20
+  }
+}

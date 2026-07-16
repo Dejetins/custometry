@@ -1,0 +1,15 @@
+schema_version: 1
+enabled: false
+default: deny
+note: >-
+  This file is a future configuration contract, not an active network adapter.
+  Standard Docker bridge egress is not an allowlist implementation.
+destinations:
+  connectors: []
+  email: []
+  updates: []
+requirements:
+  - exact hostname or CIDR plus port and protocol
+  - installation-admin approval and versioned policy identity
+  - DNS rebinding and private-address checks where applicable
+  - audit event without credentials or destination secrets

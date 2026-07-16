@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+
+blocked=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "${remote_ref}" in
+    refs/heads/main)
+      echo "Direct pushes to protected main are forbidden; open a pull request." >&2
+      blocked=1
+      ;;
+  esac
+done
+
+if [ "${blocked}" -ne 0 ]; then
+  exit 1
+fi
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "${repo_root}"
+
+exec uv run --locked python -m tools.check --scope pre-push

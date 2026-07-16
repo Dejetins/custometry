@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "public_services": {
+    "edge": 8080
+  },
+  "public_health_paths": {
+    "edge": "/health/live"
+  },
+  "internal_networks": [
+    "edge_to_web",
+    "web_to_api",
+    "control",
+    "demo_source"
+  ],
+  "edge_networks": ["ingress_edge"],
+  "edge_allowlist": ["edge"],
+  "ingress_path": {
+    "edge_service": "edge",
+    "web_service": "web",
+    "api_service": "api",
+    "edge_to_web_network": "edge_to_web",
+    "web_to_api_network": "web_to_api",
+    "web_target": "web:8080",
+    "api_target": "api:8000"
+  },
+  "edge_proxy_contract": {
+    "source": "deploy/edge/nginx.conf",
+    "upstream_name": "custometry_web"
+  },
+  "ingress_isolation_probes": {
+    "allowed": ["wget", "--quiet", "--timeout=2", "--spider", "http://web:8080/health/live"],
+    "denied": ["wget", "--quiet", "--timeout=2", "--spider", "http://api:8000/health/live"]
+  },
+  "egress_networks": [],
+  "egress_allowlist": [],
+  "negative_egress_probes": {
+    "api": {
+      "preflight": ["python", "-c", "import socket; socket.getaddrinfo('control-db', 5432)"],
+      "external": ["python", "-c", "import socket; socket.create_connection(('1.1.1.1', 443), timeout=1)"]
+    },
+    "web": {
+      "preflight": ["wget", "--quiet", "--spider", "--timeout=2", "http://api:8000/health/live"],
+      "external": ["wget", "--quiet", "--spider", "--timeout=2", "http://1.1.1.1"]
+    }
+  },
+  "max_runtime_memory_gib": 6,
+  "lifecycle": {
+    "database_services": ["control-db"],
+    "migration_service": "migrate",
+    "application_services": ["api", "web", "edge"],
+    "profiles": ["migration"]
+  }
+}

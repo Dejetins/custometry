@@ -1,0 +1,79 @@
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+import "../src/i18n";
+import i18n from "../src/i18n";
+import { App } from "../src/App";
+
+beforeEach(() => {
+  void i18n.changeLanguage("en");
+  vi.stubGlobal("fetch", vi.fn().mockImplementation(async (input: RequestInfo | URL) => {
+    if (String(input).includes("help-index")) {
+      return {
+        ok: true,
+        json: async () => ({
+          documents: [
+            { path: "docs/index.md", title: "Custometry documentation", visibility: "public", locale: "en" },
+            { path: "docs/internal.md", title: "Internal", visibility: "authenticated", locale: "en" },
+          ],
+        }),
+      };
+    }
+    return { ok: true, json: async () => ({ status: "ready", version: "test" }) };
+  }));
+});
+
+afterEach(() => {
+  cleanup();
+  vi.unstubAllGlobals();
+});
+
+describe("Foundation shell", () => {
+  it("renders the runnable Foundation home", async () => {
+    render(<MemoryRouter initialEntries={["/"]}><App /></MemoryRouter>);
+    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
+    expect(await screen.findByText(/API readiness: ready/i)).toBeInTheDocument();
+  });
+
+  it("labels product routes as planned", () => {
+    render(<MemoryRouter initialEntries={["/w/northwind-retail/analytics/sales"]}><App /></MemoryRouter>);
+    expect(screen.getByText("UI-AN-003 · MVP")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Sales Overview");
+    expect(screen.getByText("Planned surface")).toBeInTheDocument();
+  });
+
+  it("renders only public articles from the shipped Help index", async () => {
+    render(<MemoryRouter initialEntries={["/help"]}><App /></MemoryRouter>);
+    expect(await screen.findByText("Custometry documentation")).toBeInTheDocument();
+    expect(screen.queryByText("Internal")).not.toBeInTheDocument();
+  });
+
+  it("localizes the visible Foundation shell into Russian", async () => {
+    await i18n.changeLanguage("ru");
+    render(<MemoryRouter initialEntries={["/"]}><App /></MemoryRouter>);
+    expect(screen.getByText("Локальная работа")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Аналитика" })).toBeInTheDocument();
+    expect(await screen.findByText(/Готовность API: готов/i)).toBeInTheDocument();
+  });
+
+  it("does not expose an English route title on a Russian planned surface", async () => {
+    await i18n.changeLanguage("ru");
+    render(<MemoryRouter initialEntries={["/w/northwind-retail/analytics/sales"]}><App /></MemoryRouter>);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Обзор продаж",
+    );
+    expect(screen.queryByText("Sales Overview")).not.toBeInTheDocument();
+  });
+
+  it("exposes every route through the mobile More menu", () => {
+    render(<MemoryRouter initialEntries={["/"]}><App /></MemoryRouter>);
+    const moreButton = screen.getByRole("button", { name: "More sections" });
+    fireEvent.click(moreButton);
+    const menu = screen.getByRole("dialog", { name: "All sections" });
+    expect(within(menu).getByRole("link", { name: "Administration" })).toBeInTheDocument();
+    expect(moreButton).toHaveAttribute("aria-expanded", "true");
+    fireEvent.click(within(menu).getByRole("button", { name: "Close menu" }));
+    expect(moreButton).toHaveAttribute("aria-expanded", "false");
+  });
+});

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://custometry.local/schemas/foundation-health.schema.json",
+  "title": "Custometry Foundation health response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "service", "version"],
+  "properties": {
+    "status": { "enum": ["ok", "ready", "not_ready"] },
+    "service": { "const": "api" },
+    "version": { "type": "string", "minLength": 1 },
+    "code": { "type": ["string", "null"] }
+  }
+}

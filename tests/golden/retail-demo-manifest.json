@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "demo",
+  "seed": 20260716,
+  "timezone": "UTC",
+  "default_currency": "EUR",
+  "grain": {
+    "receipts": "one row per source receipt",
+    "receipt_items": "one row per source receipt line"
+  },
+  "primary_keys": {
+    "customers": ["customer_id"],
+    "products": ["product_id"],
+    "receipts": ["receipt_id"],
+    "receipt_items": ["receipt_item_id"]
+  },
+  "pii_class": {
+    "customers.email": "direct_identifier",
+    "customers.loyalty_card": "pseudonymous_identifier"
+  },
+  "expected_counts": {
+    "channels": 4,
+    "stores": 20,
+    "customers": 1000,
+    "external_customer_records": 50,
+    "customer_history": 40,
+    "calendar": 1830,
+    "products": 120,
+    "promotions": 12,
+    "promotion_channels": 15,
+    "promotion_customers": 400,
+    "receipts": 5000,
+    "receipt_items": 15000,
+    "returns": 172,
+    "return_items": 172
+  },
+  "expected_kpis": {
+    "cancelled_receipts": 43,
+    "completed_receipts": 4785,
+    "item_net_amount": "3533743.92",
+    "receipt_date_max": "2025-12-31",
+    "receipt_date_min": "2024-01-01",
+    "receipt_net_amount": "897419.82",
+    "returned_receipts": 172
+  },
+  "expected_evidence_sha256": "c8fb789e32c681af5306e8d8ffe9a9681d05ba6bb974d3a02c2588185471ffc8",
+  "scenarios": [
+    "anonymous_receipts",
+    "returns",
+    "cancellations",
+    "multi_currency",
+    "late_updates",
+    "missing_product_reference",
+    "scd_end_dates",
+    "leap_day",
+    "overlapping_promotion_windows",
+    "multi_channel_promotions",
+    "segment_and_customer_list_audiences",
+    "duplicate_source_ids_across_namespaces",
+    "overlapping_and_gapped_scd_intervals",
+    "iso_week_53",
+    "incomplete_current_month"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "lifecycle": "self-contained-disposable",
+    "command": ["bash", "deploy/compose/ci-smoke.sh"],
+    "environment": {"CUSTOMETRY_RUN_BROWSER": "1"}
+  },
+  "journeys": [
+    {
+      "name": "foundation-home",
+      "path": "/",
+      "assert_text": "Foundation"
+    },
+    {
+      "name": "local-documentation",
+      "path": "/docs/",
+      "assert_text": "Custometry documentation"
+    },
+    {
+      "name": "planned-analytics-route",
+      "path": "/w/northwind-retail/analytics/sales",
+      "assert_text": "Planned surface"
+    },
+    {
+      "name": "generated-help-index",
+      "path": "/help",
+      "assert_text": "Help Center"
+    },
+    {
+      "name": "registered-404",
+      "path": "/not-a-registered-surface",
+      "assert_text": "Page not found"
+    }
+  ]
+}

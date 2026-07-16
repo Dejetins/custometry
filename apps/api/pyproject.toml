@@ -1,0 +1,26 @@
+[project]
+name = "custometry-api"
+version = "0.1.0.dev0"
+description = "Custometry Foundation API composition root"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "alembic==1.16.2",
+  "fastapi==0.115.14",
+  "psycopg[binary]==3.2.9",
+  "pydantic-settings==2.10.1",
+  "sqlalchemy==2.0.41",
+  "uvicorn[standard]==0.34.3",
+]
+
+[dependency-groups]
+test = [
+  "httpx==0.28.1",
+  "pytest==8.4.1",
+]
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/custometry_api"]

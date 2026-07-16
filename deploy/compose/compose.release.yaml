@@ -1,0 +1,16 @@
+services:
+  migrate:
+    image: ${CUSTOMETRY_API_IMAGE:?release manifest must provide CUSTOMETRY_API_IMAGE}
+    build: !reset null
+    pull_policy: always
+  api:
+    image: ${CUSTOMETRY_API_IMAGE:?release manifest must provide CUSTOMETRY_API_IMAGE}
+    build: !reset null
+    pull_policy: always
+  web:
+    image: ${CUSTOMETRY_WEB_IMAGE:?release manifest must provide CUSTOMETRY_WEB_IMAGE}
+    build: !reset null
+    pull_policy: always
+  edge:
+    image: ${CUSTOMETRY_WEB_IMAGE:?release manifest must provide CUSTOMETRY_WEB_IMAGE}
+    pull_policy: always

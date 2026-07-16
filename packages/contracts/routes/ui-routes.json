@@ -1,0 +1,680 @@
+{
+  "schema_version": "2.0.0",
+  "workspace_key_parameter": ":workspaceKey",
+  "routes": [
+    {
+      "id": "UI-AUTH-001",
+      "path": "/auth/sign-in",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AUTH-001"
+    },
+    {
+      "id": "UI-AUTH-002",
+      "path": "/bootstrap",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AUTH-002"
+    },
+    {
+      "id": "UI-AUTH-003",
+      "path": "/invites/:token",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AUTH-003"
+    },
+    {
+      "id": "UI-AUTH-004",
+      "path": "/auth/recovery",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AUTH-004"
+    },
+    {
+      "id": "UI-AUTH-005",
+      "path": "/onboarding",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AUTH-005"
+    },
+    {
+      "id": "UI-AUTH-006",
+      "path": "/profile/security",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AUTH-006"
+    },
+    {
+      "id": "UI-CORE-001",
+      "path": "/w/:workspaceKey/overview",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-CORE-001"
+    },
+    {
+      "id": "UI-DATA-001",
+      "path": "/w/:workspaceKey/connections",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-001"
+    },
+    {
+      "id": "UI-DATA-002",
+      "path": "/w/:workspaceKey/connections/new",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-002"
+    },
+    {
+      "id": "UI-DATA-003",
+      "path": "/w/:workspaceKey/connections/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-003"
+    },
+    {
+      "id": "UI-DATA-004",
+      "path": "/w/:workspaceKey/catalog",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-004"
+    },
+    {
+      "id": "UI-DATA-005",
+      "path": "/w/:workspaceKey/catalog/objects/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-005"
+    },
+    {
+      "id": "UI-DATA-006",
+      "path": "/w/:workspaceKey/catalog/objects/:id/preview",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-006"
+    },
+    {
+      "id": "UI-DATA-007",
+      "path": "/w/:workspaceKey/datasets",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-007"
+    },
+    {
+      "id": "UI-DATA-008",
+      "path": "/w/:workspaceKey/datasets/:id/mapping",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-008"
+    },
+    {
+      "id": "UI-DATA-009",
+      "path": "/w/:workspaceKey/datasets/:id/relationships",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-009"
+    },
+    {
+      "id": "UI-DATA-010",
+      "path": "/w/:workspaceKey/datasets/:id/policies",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-010"
+    },
+    {
+      "id": "UI-DATA-011",
+      "path": "/w/:workspaceKey/datasets/:id/capabilities",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-011"
+    },
+    {
+      "id": "UI-DATA-012",
+      "path": "/w/:workspaceKey/datasets/:id/versions",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-012"
+    },
+    {
+      "id": "UI-DATA-013",
+      "path": "/w/:workspaceKey/metrics",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-013"
+    },
+    {
+      "id": "UI-DATA-014",
+      "path": "/w/:workspaceKey/metrics/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-014"
+    },
+    {
+      "id": "UI-DATA-015",
+      "path": "/w/:workspaceKey/filter-fields",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-DATA-015"
+    },
+    {
+      "id": "UI-DATA-016",
+      "path": "/w/:workspaceKey/data-guides",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-DATA-016"
+    },
+    {
+      "id": "UI-DATA-017",
+      "path": "/w/:workspaceKey/data-guides/:id/edit",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-DATA-017"
+    },
+    {
+      "id": "UI-DATA-018",
+      "path": "/w/:workspaceKey/data-guides/:id",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-DATA-018"
+    },
+    {
+      "id": "UI-DATA-019",
+      "path": "/w/:workspaceKey/artifacts",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-019"
+    },
+    {
+      "id": "UI-DATA-020",
+      "path": "/w/:workspaceKey/datasets/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-020"
+    },
+    {
+      "id": "UI-DQ-001",
+      "path": "/w/:workspaceKey/data-quality",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DQ-001"
+    },
+    {
+      "id": "UI-DQ-002",
+      "path": "/w/:workspaceKey/quality-rules",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DQ-002"
+    },
+    {
+      "id": "UI-DQ-003",
+      "path": "/w/:workspaceKey/quality-rules/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DQ-003"
+    },
+    {
+      "id": "UI-DQ-004",
+      "path": "/w/:workspaceKey/quality-reports/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DQ-004"
+    },
+    {
+      "id": "UI-DQ-005",
+      "path": "/w/:workspaceKey/quality-issues/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DQ-005"
+    },
+    {
+      "id": "UI-AN-001",
+      "path": "/w/:workspaceKey/analyses",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-001"
+    },
+    {
+      "id": "UI-AN-002",
+      "path": "/w/:workspaceKey/analyses/new",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-002"
+    },
+    {
+      "id": "UI-AN-003",
+      "path": "/w/:workspaceKey/analytics/sales",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-003"
+    },
+    {
+      "id": "UI-AN-004",
+      "path": "/w/:workspaceKey/analytics/customers",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-004"
+    },
+    {
+      "id": "UI-AN-005",
+      "path": "/w/:workspaceKey/analytics/rfm",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-005"
+    },
+    {
+      "id": "UI-AN-006",
+      "path": "/w/:workspaceKey/analytics/cohorts",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-006"
+    },
+    {
+      "id": "UI-AN-007",
+      "path": "/w/:workspaceKey/analytics/lifecycle",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-007"
+    },
+    {
+      "id": "UI-AN-008",
+      "path": "/w/:workspaceKey/analytics/basket",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-AN-008"
+    },
+    {
+      "id": "UI-AN-009",
+      "path": "/w/:workspaceKey/analytics/stores-channels",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-AN-009"
+    },
+    {
+      "id": "UI-AN-010",
+      "path": "/w/:workspaceKey/analytics/margin-discounts",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-AN-010"
+    },
+    {
+      "id": "UI-AN-011",
+      "path": "/w/:workspaceKey/analyses/custom",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-AN-011"
+    },
+    {
+      "id": "UI-AN-012",
+      "path": "/w/:workspaceKey/analyses/:id/results/:runId",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-012"
+    },
+    {
+      "id": "UI-SEG-001",
+      "path": "/w/:workspaceKey/segments",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-SEG-001"
+    },
+    {
+      "id": "UI-SEG-002",
+      "path": "/w/:workspaceKey/segments/new",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-SEG-002"
+    },
+    {
+      "id": "UI-SEG-003",
+      "path": "/w/:workspaceKey/segments/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-SEG-003"
+    },
+    {
+      "id": "UI-FCST-001",
+      "path": "/w/:workspaceKey/forecasts",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-FCST-001"
+    },
+    {
+      "id": "UI-FCST-002",
+      "path": "/w/:workspaceKey/forecasts/new",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-FCST-002"
+    },
+    {
+      "id": "UI-FCST-003",
+      "path": "/w/:workspaceKey/forecasts/:id/backtests",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-FCST-003"
+    },
+    {
+      "id": "UI-FCST-004",
+      "path": "/w/:workspaceKey/forecasts/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-FCST-004"
+    },
+    {
+      "id": "UI-FCST-005",
+      "path": "/w/:workspaceKey/models/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-FCST-005"
+    },
+    {
+      "id": "UI-FCST-006",
+      "path": "/w/:workspaceKey/forecasts/:id/monitoring",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-FCST-006"
+    },
+    {
+      "id": "UI-FCST-007",
+      "path": "/w/:workspaceKey/models",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-FCST-007"
+    },
+    {
+      "id": "UI-PROMO-001",
+      "path": "/w/:workspaceKey/promotions",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-PROMO-001"
+    },
+    {
+      "id": "UI-PROMO-002",
+      "path": "/w/:workspaceKey/promotions/new",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-PROMO-002"
+    },
+    {
+      "id": "UI-PROMO-003",
+      "path": "/w/:workspaceKey/promotions/:id",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-PROMO-003"
+    },
+    {
+      "id": "UI-DASH-001",
+      "path": "/w/:workspaceKey/dashboards",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DASH-001"
+    },
+    {
+      "id": "UI-DASH-002",
+      "path": "/w/:workspaceKey/dashboards/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DASH-002"
+    },
+    {
+      "id": "UI-DASH-003",
+      "path": "/w/:workspaceKey/dashboards/:id/edit",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DASH-003"
+    },
+    {
+      "id": "UI-RPT-001",
+      "path": "/w/:workspaceKey/reports",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-RPT-001"
+    },
+    {
+      "id": "UI-RPT-002",
+      "path": "/w/:workspaceKey/reports/:id/edit",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-RPT-002"
+    },
+    {
+      "id": "UI-RPT-003",
+      "path": "/w/:workspaceKey/reports/:id/snapshots/:sid",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-RPT-003"
+    },
+    {
+      "id": "UI-RPT-004",
+      "path": "/w/:workspaceKey/reports/:id/send",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-RPT-004"
+    },
+    {
+      "id": "UI-RPT-005",
+      "path": "/w/:workspaceKey/report-deliveries",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-RPT-005"
+    },
+    {
+      "id": "UI-RPT-006",
+      "path": "/w/:workspaceKey/exports",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-RPT-006"
+    },
+    {
+      "id": "UI-RPT-007",
+      "path": "/w/:workspaceKey/settings/report-email",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-RPT-007"
+    },
+    {
+      "id": "UI-PIPE-001",
+      "path": "/w/:workspaceKey/pipelines",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-PIPE-001"
+    },
+    {
+      "id": "UI-PIPE-002",
+      "path": "/w/:workspaceKey/pipelines/:id/edit",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-PIPE-002"
+    },
+    {
+      "id": "UI-PIPE-003",
+      "path": "/w/:workspaceKey/pipelines/:id/versions",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-PIPE-003"
+    },
+    {
+      "id": "UI-PIPE-004",
+      "path": "/w/:workspaceKey/schedules",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-PIPE-004"
+    },
+    {
+      "id": "UI-OPS-001",
+      "path": "/w/:workspaceKey/runs",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-OPS-001"
+    },
+    {
+      "id": "UI-OPS-002",
+      "path": "/w/:workspaceKey/runs/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-OPS-002"
+    },
+    {
+      "id": "UI-OPS-003",
+      "path": "/w/:workspaceKey/runs/:id/nodes/:nodeId/attempts/:attemptId",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-OPS-003"
+    },
+    {
+      "id": "UI-OPS-004",
+      "path": "/admin/runtime",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-OPS-004"
+    },
+    {
+      "id": "UI-NOTIFY-001",
+      "path": "/notifications",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-NOTIFY-001"
+    },
+    {
+      "id": "UI-NOTIFY-002",
+      "path": "/notifications/preferences",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-NOTIFY-002"
+    },
+    {
+      "id": "UI-NOTIFY-003",
+      "path": "/w/:workspaceKey/settings/notification-channels",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-NOTIFY-003"
+    },
+    {
+      "id": "UI-ADMIN-001",
+      "path": "/admin",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-ADMIN-001"
+    },
+    {
+      "id": "UI-ADMIN-002",
+      "path": "/admin/workspaces",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-ADMIN-002"
+    },
+    {
+      "id": "UI-ADMIN-003",
+      "path": "/w/:workspaceKey/settings/access",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-ADMIN-003"
+    },
+    {
+      "id": "UI-ADMIN-004",
+      "path": "/w/:workspaceKey/settings/policies",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-004"
+    },
+    {
+      "id": "UI-ADMIN-005",
+      "path": "/admin/capacity",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-005"
+    },
+    {
+      "id": "UI-ADMIN-006",
+      "path": "/admin/services",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-ADMIN-006"
+    },
+    {
+      "id": "UI-ADMIN-007",
+      "path": "/admin/workers",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-ADMIN-007"
+    },
+    {
+      "id": "UI-ADMIN-008",
+      "path": "/admin/plugins",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-008"
+    },
+    {
+      "id": "UI-ADMIN-009",
+      "path": "/admin/storage-backup",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-ADMIN-009"
+    },
+    {
+      "id": "UI-ADMIN-010",
+      "path": "/audit",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-ADMIN-010"
+    },
+    {
+      "id": "UI-ADMIN-011",
+      "path": "/admin/localization-themes",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-011"
+    },
+    {
+      "id": "UI-ADMIN-012",
+      "path": "/admin/system",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-012"
+    },
+    {
+      "id": "UI-HELP-001",
+      "path": "/help",
+      "release": "MVP/V1",
+      "status": "foundation",
+      "title_key": "UI-HELP-001"
+    }
+  ],
+  "foundation_utility_routes": [
+    {
+      "id": "FOUNDATION-HOME",
+      "path": "/",
+      "release": "FOUNDATION",
+      "status": "foundation",
+      "title_key": "FOUNDATION-HOME"
+    },
+    {
+      "id": "FOUNDATION-DOCS",
+      "path": "/docs/",
+      "release": "FOUNDATION",
+      "status": "foundation",
+      "title_key": "FOUNDATION-DOCS"
+    },
+    {
+      "id": "FOUNDATION-API-LIVE",
+      "path": "/api/health/live",
+      "release": "FOUNDATION",
+      "status": "foundation",
+      "title_key": "FOUNDATION-API-LIVE"
+    },
+    {
+      "id": "FOUNDATION-API-READY",
+      "path": "/api/health/ready",
+      "release": "FOUNDATION",
+      "status": "foundation",
+      "title_key": "FOUNDATION-API-READY"
+    },
+    {
+      "id": "FOUNDATION-API-VERSION",
+      "path": "/api/version",
+      "release": "FOUNDATION",
+      "status": "foundation",
+      "title_key": "FOUNDATION-API-VERSION"
+    }
+  ]
+}

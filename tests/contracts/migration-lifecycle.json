@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "commands": {
+    "upgrade_empty": ["./deploy/compose/migration-lifecycle.sh", "upgrade_empty"],
+    "upgrade_repeat": ["./deploy/compose/migration-lifecycle.sh", "upgrade_repeat"],
+    "downgrade": ["./deploy/compose/migration-lifecycle.sh", "downgrade"],
+    "reupgrade": ["./deploy/compose/migration-lifecycle.sh", "reupgrade"]
+  }
+}

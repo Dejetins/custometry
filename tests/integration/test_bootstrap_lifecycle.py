@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import stat
 import subprocess
 from pathlib import Path
 
@@ -36,6 +37,41 @@ def test_down_without_installation_is_truthful_and_creates_no_state(tmp_path: Pa
     assert "nothing to stop" in completed.stdout
     assert not (tmp_path / "runtime.env").exists()
     assert not (tmp_path / "secrets").exists()
+
+
+def test_bootstrap_protects_host_secret_directory_and_allows_non_root_mount_reads(
+    tmp_path: Path,
+) -> None:
+    fake_bin = tmp_path / "bin"
+    fake_bin.mkdir()
+    fake_docker = fake_bin / "docker"
+    fake_docker.write_text(
+        "#!/usr/bin/env bash\n"
+        "if [[ \"$1 $2\" == \"compose version\" ]]; then exit 0; fi\n"
+        "if [[ \"$1\" == \"info\" ]]; then exit 0; fi\n"
+        "exit 1\n",
+        encoding="utf-8",
+    )
+    fake_docker.chmod(0o755)
+
+    completed = run_bootstrap(
+        tmp_path,
+        "--build",
+        path=f"{fake_bin}:{os.environ['PATH']}",
+    )
+
+    assert completed.returncode != 0
+    secrets_dir = tmp_path / "secrets"
+    assert stat.S_IMODE(secrets_dir.stat().st_mode) == 0o700
+    assert {
+        path.name: stat.S_IMODE(path.stat().st_mode)
+        for path in secrets_dir.iterdir()
+    } == {
+        "control_db_password": 0o444,
+        "demo_source_admin_password": 0o444,
+        "demo_source_reader_password": 0o444,
+    }
+    assert stat.S_IMODE((tmp_path / "runtime.env").stat().st_mode) == 0o600
 
 
 @pytest.mark.parametrize(

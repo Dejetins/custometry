@@ -28,6 +28,10 @@ if [[ "${step}" == "upgrade_empty" ]]; then
   # Compose validates every declared secret even when the demo profile is inactive.
   openssl rand -hex 32 >"${secrets_dir}/demo_source_admin_password"
   openssl rand -hex 32 >"${secrets_dir}/demo_source_reader_password"
+  chmod 444 \
+    "${secrets_dir}/control_db_password" \
+    "${secrets_dir}/demo_source_admin_password" \
+    "${secrets_dir}/demo_source_reader_password"
   cat >"${runtime_env}" <<EOF
 COMPOSE_PROJECT_NAME=${project}
 CUSTOMETRY_BIND_HOST=127.0.0.1

@@ -385,6 +385,16 @@ def _write_atomic_private(path: Path, content: str) -> None:
         temporary.unlink(missing_ok=True)
 
 
+def write_compose_secret(path: Path, content: str) -> None:
+    """Write a file-backed Compose secret under an already private directory."""
+
+    if path.parent.stat().st_mode & 0o777 != 0o700:
+        raise ValueError("Compose secret parent directory must have mode 0700")
+    _write_atomic_private(path, content)
+    path.chmod(0o444)
+    _fsync_directory(path.parent)
+
+
 def _is_bind_visibility_failure(completed: subprocess.CompletedProcess[str]) -> bool:
     output = f"{completed.stdout}\n{completed.stderr}".lower()
     return "invalid mount config" in output and "bind source path does not exist" in output
@@ -1076,7 +1086,7 @@ def check(
         "demo_source_reader_password",
     ):
         secret = secrets_dir / name
-        _write_atomic_private(secret, secrets.token_hex(32))
+        write_compose_secret(secret, secrets.token_hex(32))
     env_file = runtime_dir / "runtime.env"
     _write_atomic_private(
         env_file,

@@ -65,7 +65,12 @@ Target user flow:
 1. Download a small signed and checksummed launcher or release configuration.
 2. Run preflight for engine/context, architecture, RAM, disk, ports, filesystem, and secret-directory permissions.
 3. Select and persist the ingress port and deployment identity.
-4. Create secrets locally; do not obtain them from Git or print them to the terminal or logs.
+4. Create secrets locally; do not obtain them from Git or print them to the terminal
+   or logs. File-backed Compose secrets are plaintext host files and live only under an
+   installation-owned directory with mode `0700`. Their leaf files use read-only mode
+   `0444` because Compose implements file sources as bind mounts and cannot remap
+   ownership for the non-root service UID; the private parent directory remains the
+   host confidentiality boundary.
 5. Download images by immutable digest and verify the expected platform and digest.
 6. Run a separate migration job.
 7. Start Compose and wait for dependency and application readiness.

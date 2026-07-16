@@ -247,6 +247,28 @@ def test_doctor_project_name_is_stable_per_checkout() -> None:
     assert first.startswith("custometry-") and len(first) == len("custometry-") + 10
 
 
+def test_compose_secret_writer_requires_private_parent_and_uses_read_only_leaf(
+    tmp_path: Path,
+) -> None:
+    secrets_dir = tmp_path / "secrets"
+    secrets_dir.mkdir(mode=0o700)
+    secret = secrets_dir / "control_db_password"
+
+    compose_lifecycle.write_compose_secret(secret, "redacted-test-value")
+
+    assert secrets_dir.stat().st_mode & 0o777 == 0o700
+    assert secret.stat().st_mode & 0o777 == 0o444
+    assert secret.read_text(encoding="utf-8") == "redacted-test-value"
+
+    unsafe_dir = tmp_path / "unsafe"
+    unsafe_dir.mkdir(mode=0o755)
+    with pytest.raises(ValueError, match="0700"):
+        compose_lifecycle.write_compose_secret(
+            unsafe_dir / "control_db_password",
+            "redacted-test-value",
+        )
+
+
 def test_doctor_rejects_tool_version_mismatch(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

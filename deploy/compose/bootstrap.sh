@@ -237,7 +237,10 @@ for secret in control_db_password demo_source_admin_password demo_source_reader_
     umask 077
     openssl rand -hex 32 >"${secret_path}"
   fi
-  chmod 600 "${secret_path}"
+  # File-backed Compose secrets are bind mounts, so uid/gid/mode remapping is
+  # unavailable. The 0700 parent protects the host path; a read-only leaf lets
+  # explicitly authorized non-root container users read the mounted secret.
+  chmod 444 "${secret_path}"
 done
 
 if [[ -n "${requested_port}" ]]; then

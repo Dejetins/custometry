@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -46,7 +46,12 @@ Every command:
 | `ci` | Every pull request and merge SHA | Exact `pre-push` parity independent of developer hooks |
 | `release` | Release candidate in the target environment | `ci` + runtime-required doctor, migration, Compose, browser, SBOM/license, recovery, and performance; missing evidence = failure |
 
-The commit hook invokes `--scope pre-commit`, and the push hook invokes `--scope pre-push`; neither contains its own rules. Author handoff uses `--scope local`, GitHub Actions uses `--scope ci`, and the protected release environment uses `--scope release`.
+The commit hook invokes `--scope pre-commit`, and the push hook invokes
+`--scope pre-push`; neither contains its own validator rules. Both delegate to
+`scripts/run-hook-profile.sh`, which activates the exact repository Node, pnpm,
+and uv pins before entering the locked Python environment. Author handoff uses
+`--scope local`, GitHub Actions uses `--scope ci`, and the protected release
+environment uses `--scope release`.
 
 ## 3. Tool matrix
 

@@ -35,3 +35,4 @@ corepack pnpm install --frozen-lockfile
 
 printf 'Toolchain bootstrap complete. Activate each shell with:\n'
 printf '  source scripts/activate-toolchain.sh\n'
+printf 'Repository Git hooks activate the same pins automatically.\n'

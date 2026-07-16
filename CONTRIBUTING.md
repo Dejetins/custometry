@@ -24,6 +24,10 @@ Custometry is developed in a public repository. Never commit credentials, custom
    git config core.hooksPath .githooks
    ```
 
+   Hooks activate the exact repository Node, pnpm, and uv pins before running
+   their quality profile. They do not inherit an incompatible ambient
+   Node/pnpm selection from the shell that launched Git.
+
 6. Run the local gate before opening a pull request:
 
    ```bash

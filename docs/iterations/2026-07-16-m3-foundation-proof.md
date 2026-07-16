@@ -55,6 +55,14 @@ Fresh Bash and Zsh shells both reported Node `24.18.0`, pnpm `11.13.0`, and uv
 `0.9.26`. The activation fails closed when a pin is missing, mismatched, or not
 installed.
 
+The first publication attempt exposed a separate hook boundary: Git inherited
+ambient Node `22.22.2` and pnpm `11.9.0` because the thin hook wrappers entered
+the Python profile before activating repository pins. Publication stopped as
+designed. The hooks now delegate to `scripts/run-hook-profile.sh`, which
+activates the exact pins before either quality profile. A regression test starts
+the runner with deliberately incompatible ambient Node/pnpm shims and proves
+that the pinned `24.18.0`/`11.13.0` tools execute the requested profile.
+
 ## Source and CI-equivalent evidence
 
 | Command/boundary | Result |
@@ -64,9 +72,10 @@ installed.
 | Staged-work validator | passed: B01–B13 plus W14, exact module/plan/prompt/ledger links, dormant-state rules, dependencies, milestone gates, and requirement ownership |
 | `uv run --locked ruff check apps/api/src migrations tests tools` | passed |
 | `uv run --locked pyright` | passed with 0 errors |
-| `uv run --locked pytest -q` | passed: 117 tests |
+| `uv run --locked pytest -q` | passed: 119 tests |
 | `uv run --locked mkdocs build --strict --config-file mkdocs.yml` | passed |
 | `corepack pnpm check` | passed: lint, typecheck, 12 tests, and production Web build |
+| Real `.githooks/pre-commit` and `.githooks/pre-push` entrypoints | passed after self-activating Node `24.18.0`, pnpm `11.13.0`, and uv `0.9.26` |
 | Contributor/shipped documentation indexes | passed: 66 contributor documents and 8 shipped public documents |
 | Documentation links | passed: 82 documents and 132 local links |
 
@@ -187,7 +196,7 @@ The follow-up terminal review returned `Release after fixes`. Its only remaining
 items were a stale full-suite count and a missing negative regression for a
 syntactically valid but stale active source hash. The test was added and now
 fails closed with `source-hash-mismatch`; the focused suite passed 52 tests, the
-full suite passed 117 tests, Ruff and Pyright passed, and `check:ci` passed
+full suite passed 119 tests, Ruff and Pyright passed, and `check:ci` passed
 again. Under the reviewer verdict, B01 may now perform the documented narrow
 activation transition.
 
@@ -219,7 +228,7 @@ After W00 acceptance, B01 was activated by the documented narrow transition:
 
 The final source-state digest is:
 
-`sha256:11f46fc4d43d391d3f1dec4c621fed65cbc64984614bc5e4fa30fd3f74f51a8f`
+`sha256:67f91f4b26970b8d93ffe38f0897d5f66fbbff2a666f0636d4abc59e6869d680`
 
 It is the SHA-256 of the sorted stream of `shasum -a 256` records for every
 tracked or unignored repository file, excluding this proof report itself to
@@ -228,7 +237,7 @@ avoid a circular digest.
 On that activated state:
 
 - locked toolchain bootstrap completed;
-- Ruff passed, Pyright reported 0 errors, and 117 Python tests passed;
+- Ruff passed, Pyright reported 0 errors, and 119 Python tests passed;
 - strict MkDocs build passed;
 - pinned pnpm lint/typecheck, 12 tests, and production Web build passed;
 - `check:ci` passed with 649/649 requirements and only B01 active;

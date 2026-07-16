@@ -16,6 +16,5 @@ if [ "${blocked}" -ne 0 ]; then
 fi
 
 repo_root="$(git rev-parse --show-toplevel)"
-cd "${repo_root}"
 
-exec uv run --locked python -m tools.check --scope pre-push
+exec "${repo_root}/scripts/run-hook-profile.sh" pre-push

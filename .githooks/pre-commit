@@ -2,6 +2,5 @@
 set -eu
 
 repo_root="$(git rev-parse --show-toplevel)"
-cd "${repo_root}"
 
-exec uv run --locked python -m tools.check --scope pre-commit
+exec "${repo_root}/scripts/run-hook-profile.sh" pre-commit

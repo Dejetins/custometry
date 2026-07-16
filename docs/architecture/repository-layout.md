@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-REPOSITORY-LAYOUT-001
 title: Custometry repository and agent infrastructure layout
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -182,6 +182,8 @@ The routing source and generated matrix are required repository files. The gener
 - Local development activates the exact `.node-version`/`.nvmrc`, Corepack
   `packageManager`, and `.uv-version` pins through
   `scripts/activate-toolchain.sh`; the activation fails instead of silently
-  accepting a different globally active tool.
+  accepting a different globally active tool. Git hooks invoke the same
+  activation through `scripts/run-hook-profile.sh`, so GUI-launched Git does
+  not inherit an incompatible ambient Node or pnpm selection.
 - Foundation Compose is a local development skeleton, not a production topology or a proven release artifact.
 - `OPEN-007` and `OPEN-008` remain decisions for a future plan, not scaffold defaults.

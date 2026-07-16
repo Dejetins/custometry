@@ -1,6 +1,8 @@
 {
   "schema_version": 1,
   "required_files": [
+    ".githooks/pre-commit",
+    ".githooks/pre-push",
     ".codex/AGENTS.md",
     "AGENTS.md",
     "LICENSE",
@@ -16,6 +18,9 @@
     "pnpm-lock.yaml",
     "pnpm-workspace.yaml",
     "pyproject.toml",
+    "scripts/activate-toolchain.sh",
+    "scripts/bootstrap-toolchain.sh",
+    "scripts/run-hook-profile.sh",
     "tools/custometry_quality/generate_program_requirement_matrix.py",
     "uv.lock"
   ],

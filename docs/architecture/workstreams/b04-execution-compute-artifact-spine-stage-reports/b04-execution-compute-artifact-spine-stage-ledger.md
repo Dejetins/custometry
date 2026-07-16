@@ -6,7 +6,7 @@ workstream_id: B04
 plan_doc: docs/architecture/workstreams/b04-execution-compute-artifact-spine-plan.md
 prompt_pack_dir: .codex/agents/generated/b04-execution-compute-artifact-spine
 stage_ledger: docs/architecture/workstreams/b04-execution-compute-artifact-spine-stage-reports/b04-execution-compute-artifact-spine-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses:

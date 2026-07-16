@@ -96,7 +96,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B07
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b07-operations-plan.md
   prompt_pack_dir: .codex/agents/generated/b07-operations
   stage_ledger: docs/architecture/workstreams/b07-operations-stage-reports/b07-operations-stage-ledger.md

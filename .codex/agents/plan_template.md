@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b01-<slug>-module.md
 plan_doc: docs/architecture/workstreams/b01-<slug>-plan.md
 prompt_pack_dir: .codex/agents/generated/b01-<slug>
 stage_ledger: docs/architecture/workstreams/b01-<slug>-stage-reports/b01-<slug>-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [W00]
 soft_dependencies: []
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]
@@ -26,6 +26,9 @@ requirement_ids: [<normative-requirement-id>]
 - owner and executor roles: `<roles>`;
 - current proof boundary: `<observed boundary>`;
 - activation rule: the ledger is executable only after `ledger_status: active` and exact `.codex/PLANS.md` registration.
+- execution rule: start one Codex Goal for this workstream iteration; after each
+  accepted stage, re-read the ledger and continue only when the successor is
+  explicitly current and `next_allowed: true`.
 
 ## Objective and non-goals
 

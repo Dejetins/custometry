@@ -17,6 +17,8 @@ context_sources:
       why: adapter, validation, and proof rules
     - path: docs/architecture/workstreams/b01-experience-platform-plan.md
       why: scope and adapter proof boundary
+    - path: docs/architecture/development-runtime-contract.md
+      why: Fast Loop versus Hybrid adapter boundary and release isolation
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
       why: sole execution-state authority
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/S02-domain-application.md
@@ -61,7 +63,7 @@ prompt_pack_execution:
   readiness: executable
   enabled: true
   workstream_id: B01
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
   prompt_pack_dir: .codex/agents/generated/b01-experience-platform
   stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
@@ -100,6 +102,8 @@ Web experience.
 - Do not build full page layouts or accept browser journeys.
 - Do not create real B03–B13 service behavior.
 - Do not use a mock server as authorization, business truth, or release proof.
+- Do not start or invent Hybrid infrastructure when no accepted real adapter
+  requires it; record the deferral instead.
 - Do not add remote runtime dependencies, fonts, icons, analytics scripts, or
   CDN assets.
 - Do not mutate Penpot.
@@ -114,6 +118,8 @@ Web experience.
   secrets, PII, execution truth, or durable analytical results.
 - Fact: raw backend errors and denied metadata must not reach system surfaces,
   command search, route lists, Help, logs, or telemetry.
+- Fact: generated mocks remain Fast Loop evidence; Hybrid is used only when a
+  real stateful/API adapter is available and part of the accepted claim.
 
 ## Context acquisition
 
@@ -134,6 +140,8 @@ adapter requires an unaccepted downstream schema, secret, or Internet access.
 - Implement generated API client and development mock adapters from accepted
   schemas and examples, including stable errors, latency/failure fixtures, and
   explicit mock-mode disclosure.
+- Implement explicit mock/real mode selection that fails closed on invalid
+  configuration and cannot be enabled in a production or release build.
 - Prove generated client, server-example, and mock payload parity and fail on
   manual drift.
 - Implement safe preference persistence/API seams with schema version,
@@ -184,7 +192,10 @@ adapter requires an unaccepted downstream schema, secret, or Internet access.
 7. Run generation drift, contract, route, docs, localization, DDD, type, lint,
    and focused test gates.
 8. Build local docs/help artifacts and inspect for internal/sensitive leakage.
-9. Write S03 evidence, then update the ledger and unlock only S04 if accepted.
+9. If an accepted real adapter exists, run its Hybrid boundary and record
+   actual infrastructure identity; otherwise record why S03 remains Fast
+   Loop/integration-harness evidence.
+10. Write S03 evidence, then update the ledger and unlock only S04 if accepted.
 
 Stop on manual generated drift, unaccepted downstream contract, remote runtime
 dependency, secret or metadata leak, unsafe browser storage, reverse dependency
@@ -213,7 +224,8 @@ classification and regenerated artifacts.
   and file manifest in
   `docs/architecture/workstreams/b01-experience-platform-stage-reports/S03-adapters.md`.
 - S03 does not claim composed UI, real-browser accessibility, or downstream
-  service correctness.
+  service correctness. Fast Loop mock evidence is not Hybrid, Full Stack, or
+  Release evidence.
 
 ## Acceptance criteria
 

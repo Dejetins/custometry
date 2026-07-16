@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b02-local-data-lab-module.md
 plan_doc: docs/architecture/workstreams/b02-local-data-lab-plan.md
 prompt_pack_dir: .codex/agents/generated/b02-local-data-lab
 stage_ledger: docs/architecture/workstreams/b02-local-data-lab-stage-reports/b02-local-data-lab-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [W00]
 soft_dependencies: [B01]
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]

@@ -111,7 +111,7 @@ docs/architecture/<area>/
 docs/iterations/               # standalone bounded reports only
 ```
 
-Staged work has exactly three durable execution sources: `plan_doc + prompt_pack_dir + stage_ledger`. A separate `GOAL.md` is not created without a direct user request. Raw `.codex/agents/.context/`, `.codex/tmp/`, `.codex/sessions/`, logs, and secrets are not committed.
+Staged work has exactly three durable execution sources: `plan_doc + prompt_pack_dir + stage_ledger`. `GOAL.md` is forbidden because Codex Goal mode is runtime orchestration, not a fourth file-backed state source. Raw `.codex/agents/.context/`, `.codex/tmp/`, `.codex/sessions/`, logs, and secrets are not committed.
 
 ### Separation of agent layers
 

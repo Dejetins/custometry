@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b09-forecasting-expansion-modul
 plan_doc: docs/architecture/workstreams/b09-forecasting-expansion-plan.md
 prompt_pack_dir: .codex/agents/generated/b09-forecasting-expansion
 stage_ledger: docs/architecture/workstreams/b09-forecasting-expansion-stage-reports/b09-forecasting-expansion-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [B04, B05, B06, B08]
 soft_dependencies: [B07]
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]

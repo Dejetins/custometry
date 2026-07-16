@@ -6,7 +6,7 @@ workstream_id: B13
 plan_doc: docs/architecture/workstreams/b13-universal-xlsx-plan.md
 prompt_pack_dir: .codex/agents/generated/b13-universal-xlsx
 stage_ledger: docs/architecture/workstreams/b13-universal-xlsx-stage-reports/b13-universal-xlsx-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]

@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b13-universal-xlsx-module.md
 plan_doc: docs/architecture/workstreams/b13-universal-xlsx-plan.md
 prompt_pack_dir: .codex/agents/generated/b13-universal-xlsx
 stage_ledger: docs/architecture/workstreams/b13-universal-xlsx-stage-reports/b13-universal-xlsx-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [B10, B11, B12]
 soft_dependencies: [B06, B08, B09]
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]

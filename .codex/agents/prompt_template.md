@@ -56,7 +56,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: null
-  execution_mode: manual_sequential | goal_driven | null
+  execution_mode: goal_driven
   plan_doc: null
   prompt_pack_dir: null
   stage_ledger: null

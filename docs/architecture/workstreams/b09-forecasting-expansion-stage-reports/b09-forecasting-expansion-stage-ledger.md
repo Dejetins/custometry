@@ -6,7 +6,7 @@ workstream_id: B09
 plan_doc: docs/architecture/workstreams/b09-forecasting-expansion-plan.md
 prompt_pack_dir: .codex/agents/generated/b09-forecasting-expansion
 stage_ledger: docs/architecture/workstreams/b09-forecasting-expansion-stage-reports/b09-forecasting-expansion-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]

@@ -6,7 +6,7 @@ workstream_id: B01
 plan_doc: docs/architecture/<area>/<plan-slug>.md
 prompt_pack_dir: .codex/agents/generated/<plan-slug>/
 stage_ledger: docs/architecture/<area>/<plan-slug>-stage-reports/<plan-slug>-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]
@@ -92,14 +92,21 @@ This ledger is the source of truth for current stage, evidence, blocker, and han
 ## Execution rules
 
 - The durable execution trio is exactly `plan_doc + prompt_pack_dir + stage_ledger`.
-- `manual_sequential` runs one requested or next allowed stage and stops.
-- `goal_driven` may continue only while this ledger explicitly allows the next stage.
+- One Codex Goal owns this workstream's currently authorized S00–S06
+  iteration; do not create a separate Goal per stage.
+- After each accepted stage, the Goal re-reads this ledger and may continue
+  only when the successor is current and `next_allowed: true`.
+- The Goal stops on a blocked/completed/dormant/superseded ledger, failed
+  validation, missing or stale evidence, required approval, or no explicitly
+  unlocked successor.
 - A dependent stage starts only after its predecessor is `accepted` or explicitly `superseded` by a named replacement.
 - The union of S00–S06 `requirement_ids` equals the linked plan requirement set.
 - The active executable current stage pins at least one reviewed repository source hash.
 - Validation happens before the ledger update; the ledger update happens before the stage/final report.
 - `blocked` records the blocker, evidence, owner/authority needed, and whether safe work remains.
-- Do not create `GOAL.md`, a second ledger, branch, worktree, stash, or coordination folder without explicit user authority.
+- Goal runtime state is not durable project truth. Never create `GOAL.md`.
+  A second ledger, branch, worktree, stash, or coordination folder still
+  requires explicit user authority.
 
 ## Linked artifacts
 

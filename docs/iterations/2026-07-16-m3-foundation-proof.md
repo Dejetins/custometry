@@ -255,3 +255,12 @@ On that activated state:
 This closes repository preparation and authorizes only B01 S00 Discovery. It
 does not claim B01 implementation, another workstream, public MVP, v1, or
 release readiness.
+
+## Post-acceptance governance amendment
+
+On `2026-07-16`, after the W00 observations above were accepted, the project
+owner accepted the four-mode development runtime contract. The active B01 S00
+prompt now pins that contract in addition to the original seven sources. This
+is a documentation and staged-governance amendment only: the W00 runtime
+observations and the source-state digest above remain the historical accepted
+snapshot and were not relabelled as freshly rerun evidence.

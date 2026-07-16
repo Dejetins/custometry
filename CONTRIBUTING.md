@@ -16,9 +16,26 @@ Custometry is developed in a public repository. Never commit credentials, custom
    `package.json#packageManager`, and uv from `.uv-version`. It fails instead of
    silently using another globally active version.
 
-3. Start a short-lived branch named `codex/<workstream>-<iteration>` or an equivalent contributor branch.
-4. Keep the change bounded to one coherent outcome. Do not create a long-lived `develop` or per-context integration branch.
-5. Enable the repository hooks once per checkout:
+3. Select the smallest sufficient development runtime:
+
+   - `fast-loop` is partially implemented for host Web,
+     framework-independent Python, and focused tests; generated contract mocks
+     and the unified CLI remain target capabilities;
+   - `hybrid` is the target host Web/API plus containerized stateful
+     infrastructure mode and is not implemented yet;
+   - `full-stack` is implemented for clean disposable Foundation Compose and
+     real browser/network proof;
+   - `release` is the protected immutable-artifact acceptance contract, not an
+     available accepted end-user bundle or an ordinary developer loop.
+
+   The current implementation and target commands are tracked in the
+   [development runtime contract](docs/architecture/development-runtime-contract.md).
+   Do not rebuild the complete stack for every source edit, and do not use a
+   lower mode to claim a higher proof boundary.
+
+4. Start a short-lived branch named `codex/<workstream>-<iteration>` or an equivalent contributor branch.
+5. Keep the change bounded to one coherent outcome. Do not create a long-lived `develop` or per-context integration branch.
+6. Enable the repository hooks once per checkout:
 
    ```bash
    git config core.hooksPath .githooks
@@ -28,13 +45,13 @@ Custometry is developed in a public repository. Never commit credentials, custom
    their quality profile. They do not inherit an incompatible ambient
    Node/pnpm selection from the shell that launched Git.
 
-6. Run the local gate before opening a pull request:
+7. Run the local gate before opening a pull request:
 
    ```bash
    uv run --locked python -m tools.check --scope local
    ```
 
-7. Open a pull request to protected `main`. Required checks must pass; the default merge strategy is squash with linear history.
+8. Open a pull request to protected `main`. Required checks must pass; the default merge strategy is squash with linear history.
 
 ## Repository language
 

@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b05-data-foundation-module.md
 plan_doc: docs/architecture/workstreams/b05-data-foundation-plan.md
 prompt_pack_dir: .codex/agents/generated/b05-data-foundation
 stage_ledger: docs/architecture/workstreams/b05-data-foundation-stage-reports/b05-data-foundation-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies:
 - B02
 - B03

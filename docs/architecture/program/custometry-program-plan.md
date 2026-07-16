@@ -2,6 +2,7 @@
 artifact_kind: program_plan
 staged_schema_version: 1
 program_id: custometry-v1
+execution_mode: goal_driven
 spec_version: 0.8.2-draft
 requirement_routing: docs/architecture/program/requirement-routing.json
 requirement_matrix: docs/architecture/program/requirement-matrix.json
@@ -406,6 +407,16 @@ their declared hard dependencies and activation conditions are observed.
 B03–B13 prompt packs remain dormant scaffolds until detailed immediately before
 activation against the implemented repository state.
 
+Every B01–B13 and W14 activation uses Codex Goal mode with
+`execution_mode: goal_driven`. One Goal owns one workstream's currently
+authorized S00–S06 iteration, not an individual stage and not several
+workstreams. After every accepted stage, the Goal must re-read the ledger and
+may continue only when the ledger makes the successor current and sets
+`next_allowed: true`. It stops on a blocked, completed, dormant, or superseded
+ledger; missing or stale evidence; failed validation; required approval; or no
+explicitly unlocked successor. Goal runtime state is ephemeral and never
+replaces or overrides the staged trio.
+
 ## 10. Activation sequence
 
 1. Freeze the canonical W00/B01–B13/W14 catalog.
@@ -414,7 +425,9 @@ activation against the implemented repository state.
 4. Create and validate all initial workstream definitions, plans, ledgers, and prompt-pack scaffolds.
 5. Complete an independent cold review, fix blockers, and repeat applicable checks.
 6. Activate only B01 in `.codex/PLANS.md`.
-7. Execute B01 from its ledger; detail each later prompt pack immediately before that workstream starts.
+7. Start one Codex Goal for the active B01 iteration and execute from its
+   ledger; detail each later prompt pack immediately before that workstream
+   starts in its own Goal.
 
 Penpot access and the canonical Penpot file are a separate decision. B01 may perform repository-local product mapping and contract work, but any Penpot mutation must stop until live write authority and the canonical file are explicitly confirmed.
 

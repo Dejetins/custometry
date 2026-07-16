@@ -6,7 +6,7 @@ workstream_id: B07
 plan_doc: docs/architecture/workstreams/b07-operations-plan.md
 prompt_pack_dir: .codex/agents/generated/b07-operations
 stage_ledger: docs/architecture/workstreams/b07-operations-stage-reports/b07-operations-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses:

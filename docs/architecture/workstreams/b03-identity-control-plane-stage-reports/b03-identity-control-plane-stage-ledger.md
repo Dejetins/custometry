@@ -6,7 +6,7 @@ workstream_id: B03
 plan_doc: docs/architecture/workstreams/b03-identity-control-plane-plan.md
 prompt_pack_dir: .codex/agents/generated/b03-identity-control-plane
 stage_ledger: docs/architecture/workstreams/b03-identity-control-plane-stage-reports/b03-identity-control-plane-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses:

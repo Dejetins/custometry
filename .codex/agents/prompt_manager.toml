@@ -33,5 +33,5 @@ Result and evidence:
 
 Stop and handoff:
 - Stop on missing accepted intent/design, destination, traceability, owned scope, staged triad/ledger gate, required reviewer, material source, or authority for requested side effects.
-- Hand architecture to architect, product decisions to product_agent, execution to staged-plan-runner, and implementation to the named owning role. Never create GOAL.md or another coordination source by default and never embed secrets or chat-only context.
+- Hand architecture to architect, product decisions to product_agent, execution to staged-plan-runner, and implementation to the named owning role. Never create GOAL.md. Do not create another coordination source without explicit user authority, and never embed secrets or chat-only context.
 """

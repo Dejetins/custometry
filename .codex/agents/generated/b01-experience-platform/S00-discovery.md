@@ -19,6 +19,8 @@ context_sources:
       why: B01 dependencies, milestones, and activation authority
     - path: docs/architecture/workstreams/b01-experience-platform-plan.md
       why: B01 scope and stage contract
+    - path: docs/architecture/development-runtime-contract.md
+      why: canonical development modes, escalation, release isolation, and implementation status
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
       why: sole stage-state authority
   task_entrypoints:
@@ -63,7 +65,7 @@ prompt_pack_execution:
   readiness: executable
   enabled: true
   workstream_id: B01
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
   prompt_pack_dir: .codex/agents/generated/b01-experience-platform
   stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
@@ -79,11 +81,12 @@ prompt_pack_execution:
   required_source_hashes:
     custometry-technical-blueprint-ru.md: sha256:07db448e334b7c7605b6b86269b1e9d4d2c12ee277685932da2fd174e6f669f8
     custometry-technical-blueprint-human-ru.md: sha256:c5294770a968e4b5fa02709f1ecdadc5f70784fb422c1deb2e6ca26931ea2dc9
-    .codex/AGENTS.md: sha256:20f418851e479dec1460d3c12274cad8d8beefc71464d02a7ba575d99cd00e9c
-    docs/architecture/program/custometry-program-plan.md: sha256:4c0cfb0b364943f6092d6fe335aba96dca2ac8dead36e9015b913b73ee16c3e2
+    .codex/AGENTS.md: sha256:a3f1424ebcc2e1535a3f06df0a751e7f3dcae796cb117f6826a209f582cd8110
+    docs/architecture/program/custometry-program-plan.md: sha256:1e4da7893304ab961e256441fe299aa638091b54f00c1ecc64fee1aa6ee2f094
     docs/architecture/program/requirement-matrix.json: sha256:7cc3dc669f252dcfede0ffa5556f2103ee30b44e3e1b1d6f8cdfa0a73895a854
     docs/architecture/workstreams/b01-experience-platform-module.md: sha256:3e3dd41d6658b2d423bfc47ca7d3cb934de7616e35065a3bbdfc51e8fd75672d
-    docs/architecture/workstreams/b01-experience-platform-plan.md: sha256:e6b7121ecceb7c343e1aded208d7b46d5dfc4841971619f0825afcc523df4325
+    docs/architecture/workstreams/b01-experience-platform-plan.md: sha256:628e63b9a46cd5c31786b689b7c98fc3a56206ac2215e9a8ab82689d0df4686b
+    docs/architecture/development-runtime-contract.md: sha256:a754de6859f2a1c3d685e6963f7a90db6eb22fc6e4018f42f0a0bea7959aa8c0
   branch_policy:
     default_branch: main
     separate_branch_requested: true
@@ -120,6 +123,10 @@ manifest. Do not implement the Experience Platform in this stage.
 - Fact: the canonical program assigns 86 primary requirements to B01.
 - Fact: W00 is the only hard dependency; later service contracts are
   provisional consumers rather than activation dependencies.
+- Fact: development uses the accepted `fast-loop`, `hybrid`, `full-stack`, and
+  `release` proof modes. Fast Loop is partially implemented, Hybrid remains
+  target-only, Full Stack exists for the Foundation surface, and there is no
+  accepted release bundle.
 - Fact: Penpot authority is explicitly deferred and cannot be inferred from
   prior access or screenshots.
 - Assumption to verify: the current Web scaffold is still Foundation-only and
@@ -131,9 +138,11 @@ manifest. Do not implement the Experience Platform in this stage.
 Read the ledger first and fail closed unless S00 is authorized. Inspect the
 current branch, dirty files, package manifests, Web entrypoints, UI packages,
 docs-site configuration, route/help/localization validators, tests, and current
-runtime commands. Search by requirement families and exact symbols rather than
-loading the full repository. Read blueprint passages only when generated
-requirement metadata and English architecture sources do not resolve meaning.
+runtime commands. Use the B01 plan and its linked development runtime contract
+to distinguish implemented commands from target CLI/Compose behavior. Search
+by requirement families and exact symbols rather than loading the full
+repository. Read blueprint passages only when generated requirement metadata
+and English architecture sources do not resolve meaning.
 
 Build a fact ledger separating implemented, declared, proposed, unknown, and
 blocked items. For every claimed existing behavior, record its source path and
@@ -151,6 +160,9 @@ file scope cannot be established.
   accessibility, generated-mock, Focus, and responsive requirements.
 - Identify exact B01-owned paths, shared coordination paths, foreign paths, and
   mixed-file risks.
+- Record the mode used by each planned implementation/evidence slice, the
+  escalation trigger, and the current gaps for API reload, generated
+  mock/real switching, Hybrid infrastructure, and release isolation.
 - Identify provisional consumer seams for B03–B13 without assigning their
   domain behavior to B01.
 - Define representative browser journeys for sign-in shell, onboarding shell,
@@ -187,7 +199,7 @@ file scope cannot be established.
 
 1. Verify ledger authorization, W00 proof, branch, worktree, and owned scope.
 2. Inventory current repository surfaces and distinguish declaration from
-   implementation and runtime proof.
+   implementation and runtime proof, including the four development modes.
 3. Reconcile the 86 B01-primary requirements into stage/evidence groups.
 4. Map route/UI states, consumer seams, contracts, side effects, and security
    boundaries.
@@ -199,8 +211,9 @@ file scope cannot be established.
 
 Stop with `blocked` when W00 is stale, a required authority is missing, a
 Penpot mutation is necessary, requirement ownership is contradictory, the
-working tree cannot be safely separated, or the next-stage manifest depends on
-unknown external state.
+working tree cannot be safely separated, development and release topology
+cannot be separated fail-closed, or the next-stage manifest depends on unknown
+external state.
 
 ## Contracts and side effects
 
@@ -228,6 +241,8 @@ surface. Unknown downstream schemas remain explicit provisional seams.
 - [ ] Every B01-primary requirement has a stage and evidence disposition.
 - [ ] Ownership and provisional consumer seams are explicit and DDD-aligned.
 - [ ] Exact implementation, test, documentation, and evidence manifests exist.
+- [ ] Every planned slice names its runtime mode and escalation trigger, and
+      current target-only developer capabilities are not reported as existing.
 - [ ] Contract impact, risks, open decisions, and stop gates are recorded.
 - [ ] Penpot remains explicitly outside the accepted authority.
 - [ ] Focused validators and applicable local gates pass or have honest

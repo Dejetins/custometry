@@ -632,7 +632,7 @@ def staged_program_fixture(tmp_path: Path, *, active_b01: bool = True) -> dict[s
             "plan_doc": plan_rel,
             "prompt_pack_dir": pack_rel,
             "stage_ledger": ledger_rel,
-            "execution_mode": "manual_sequential",
+            "execution_mode": "goal_driven",
             "hard_dependencies": hard_dependencies,
             "soft_dependencies": soft_dependencies,
             "stage_ids": [f"S{number:02d}" for number in range(7)],
@@ -679,7 +679,7 @@ def staged_program_fixture(tmp_path: Path, *, active_b01: bool = True) -> dict[s
                     "readiness": "executable" if executable else "outline",
                     "enabled": executable,
                     "workstream_id": workstream_id,
-                    "execution_mode": "manual_sequential",
+                    "execution_mode": "goal_driven",
                     "plan_doc": plan_rel,
                     "prompt_pack_dir": pack_rel,
                     "stage_ledger": ledger_rel,
@@ -728,7 +728,7 @@ def staged_program_fixture(tmp_path: Path, *, active_b01: bool = True) -> dict[s
             "plan_doc": plan_rel,
             "prompt_pack_dir": pack_rel,
             "stage_ledger": ledger_rel,
-            "execution_mode": "manual_sequential",
+            "execution_mode": "goal_driven",
             "ledger_status": "active"
             if active_b01 and workstream_id == "B01"
             else "dormant",
@@ -757,6 +757,7 @@ def staged_program_fixture(tmp_path: Path, *, active_b01: bool = True) -> dict[s
         "artifact_kind": "program_plan",
         "staged_schema_version": 1,
         "program_id": "custometry-v1",
+        "execution_mode": "goal_driven",
         "spec_version": "1.0",
         "requirement_matrix": "docs/architecture/program/requirement-traceability.json",
         "requirement_routing": "docs/architecture/program/requirement-routing.json",
@@ -865,6 +866,7 @@ def staged_program_fixture(tmp_path: Path, *, active_b01: bool = True) -> dict[s
     registry_metadata: dict[str, object] = {
         "registry_schema_version": 1,
         "program_plan": "docs/architecture/program/custometry-program-plan.md",
+        "execution_mode": "goal_driven",
         "active_workstreams": active_entries,
     }
     frontmatter_document(
@@ -905,6 +907,11 @@ def test_staged_workstream_schema_v1_accepts_active_and_dormant_packs(
         ("active-outline", "active-ledger-outline-forbidden"),
         ("cross-link", "staged-trio-link-mismatch"),
         ("cycle", "program-dependency-cycle"),
+        ("program-execution-mode", "program-execution-mode-invalid"),
+        ("plan-execution-mode", "plan-execution-mode-invalid"),
+        ("ledger-execution-mode", "ledger-execution-mode-invalid"),
+        ("prompt-execution-mode", "prompt-execution-mode-invalid"),
+        ("registry-execution-mode", "plans-registry-execution-mode-invalid"),
         ("public-mvp-hard-gated-by-b11", "public-mvp-dependency-gate-invalid"),
         ("public-mvp-stage-drift", "requirement-routing-gate-drift"),
         ("matrix-incomplete", "requirement-matrix-incomplete"),
@@ -950,6 +957,32 @@ def test_staged_workstream_schema_v1_rejects_contract_drift(
             workstreams[0]["hard_dependencies"] = ["B01"]
 
         mutate_frontmatter(paths["program"], cycle)
+    elif mutation == "program-execution-mode":
+        mutate_frontmatter(
+            paths["program"],
+            lambda meta: meta.__setitem__("execution_mode", "unsupported"),
+        )
+    elif mutation == "plan-execution-mode":
+        mutate_frontmatter(
+            paths["B01_plan"],
+            lambda meta: meta.__setitem__("execution_mode", "unsupported"),
+        )
+    elif mutation == "ledger-execution-mode":
+        mutate_frontmatter(
+            paths["B01_ledger"],
+            lambda meta: meta.__setitem__("execution_mode", "unsupported"),
+        )
+    elif mutation == "prompt-execution-mode":
+        def unsupported_prompt_mode(meta: dict[str, object]) -> None:
+            execution = cast(dict[str, object], meta["prompt_pack_execution"])
+            execution["execution_mode"] = "unsupported"
+
+        mutate_frontmatter(paths["B01_S00"], unsupported_prompt_mode)
+    elif mutation == "registry-execution-mode":
+        mutate_frontmatter(
+            tmp_path / ".codex/PLANS.md",
+            lambda meta: meta.__setitem__("execution_mode", "unsupported"),
+        )
     elif mutation == "public-mvp-hard-gated-by-b11":
         routing = json.loads(paths["routing"].read_text(encoding="utf-8"))
         routing["workstream_dependencies"]["B12"]["hard"].append("B11")

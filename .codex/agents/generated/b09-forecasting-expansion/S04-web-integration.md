@@ -10,7 +10,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B09
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b09-forecasting-expansion-plan.md
   prompt_pack_dir: .codex/agents/generated/b09-forecasting-expansion
   stage_ledger: docs/architecture/workstreams/b09-forecasting-expansion-stage-reports/b09-forecasting-expansion-stage-ledger.md

@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b03-identity-control-plane-modu
 plan_doc: docs/architecture/workstreams/b03-identity-control-plane-plan.md
 prompt_pack_dir: .codex/agents/generated/b03-identity-control-plane
 stage_ledger: docs/architecture/workstreams/b03-identity-control-plane-stage-reports/b03-identity-control-plane-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies:
 - B01
 - B02

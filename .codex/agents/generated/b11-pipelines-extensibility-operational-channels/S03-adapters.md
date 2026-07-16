@@ -10,7 +10,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B11
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b11-pipelines-extensibility-operational-channels-plan.md
   prompt_pack_dir: .codex/agents/generated/b11-pipelines-extensibility-operational-channels
   stage_ledger: docs/architecture/workstreams/b11-pipelines-extensibility-operational-channels-stage-reports/b11-pipelines-extensibility-operational-channels-stage-ledger.md

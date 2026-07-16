@@ -286,7 +286,9 @@ A runnable staged workstream has exactly three linked durable execution sources:
 2. `prompt_pack_dir` — one self-contained executor prompt per stage under `.codex/agents/generated/<pack-slug>/`;
 3. `stage_ledger` — current stage, status, evidence, blocker, contract impact, file manifest, and handoff under the plan's `*-stage-reports/` directory.
 
-Do not create `GOAL.md`, a second ledger, a chat-derived state file, or another coordination source unless the user explicitly requests it.
+Never create `GOAL.md`: Codex Goal mode is runtime orchestration, not a file.
+Do not create a second ledger, chat-derived state file, or another durable
+coordination source unless the user explicitly requests it.
 
 Initial ledgers are `dormant`: no stage has `next_allowed: true`. A fully
 specified `executable/true` prompt is prepared content, not authority while its
@@ -295,10 +297,20 @@ detailed immediately before activation against the actually implemented state.
 `.codex/PLANS.md` lists only ledgers whose status is `active` or `blocked` and
 must repeat the exact trio links without duplicating `current_stage`.
 
-Execution modes:
+Execution mode:
 
-- `manual_sequential`: execute one requested or next allowed stage and stop;
-- `goal_driven`: continue only while the ledger explicitly permits the next stage; stop on `blocked`, `completed`, missing evidence/artifact, or required approval.
+- every B01–B13 and W14 prompt-pack activation runs in Codex Goal mode with
+  `execution_mode: goal_driven`; any other value is invalid;
+- one Goal owns the currently authorized S00–S06 iteration of one workstream,
+  not an individual stage and not multiple workstreams;
+- after each accepted stage, the Goal must re-read the stage ledger and may
+  continue only when that ledger explicitly makes the successor current and
+  sets `next_allowed: true`;
+- the Goal stops on `blocked`, `completed`, dormant/superseded ledger state,
+  missing or stale evidence/artifacts, failed validation, required approval,
+  or no explicitly unlocked successor;
+- Goal runtime state is not durable project truth and never replaces the
+  `plan_doc + prompt_pack_dir + stage_ledger` trio. Do not create `GOAL.md`.
 
 Stage statuses are `pending`, `in_progress`, `accepted`, `blocked`, `skipped`, or `superseded`. Only `accepted` (or an explicit supersession relation) may unlock its dependent stage.
 

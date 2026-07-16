@@ -10,7 +10,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B13
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b13-universal-xlsx-plan.md
   prompt_pack_dir: .codex/agents/generated/b13-universal-xlsx
   stage_ledger: docs/architecture/workstreams/b13-universal-xlsx-stage-reports/b13-universal-xlsx-stage-ledger.md

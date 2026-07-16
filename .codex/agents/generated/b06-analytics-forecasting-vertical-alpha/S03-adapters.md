@@ -100,7 +100,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B06
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b06-analytics-forecasting-vertical-alpha-plan.md
   prompt_pack_dir: .codex/agents/generated/b06-analytics-forecasting-vertical-alpha
   stage_ledger: docs/architecture/workstreams/b06-analytics-forecasting-vertical-alpha-stage-reports/b06-analytics-forecasting-vertical-alpha-stage-ledger.md

@@ -20,6 +20,8 @@ context_sources:
       why: milestone, dependency, and acceptance authority
     - path: docs/architecture/workstreams/b01-experience-platform-plan.md
       why: B01 completion criteria and proof boundary
+    - path: docs/architecture/development-runtime-contract.md
+      why: final mode/evidence reconciliation and release isolation
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
       why: sole execution-state authority
   task_entrypoints:
@@ -67,7 +69,7 @@ prompt_pack_execution:
   readiness: executable
   enabled: true
   workstream_id: B01
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
   prompt_pack_dir: .codex/agents/generated/b01-experience-platform
   stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
@@ -118,6 +120,8 @@ when no required blocker remains.
 - Fact: an independent cold review is required for architecture, plans, prompt
   packs, and final acceptance artifacts.
 - Fact: B01 completion contributes to several milestones but terminates none.
+- Fact: accepted B01 S05 evidence is Full Stack evidence, not Release
+  acceptance; release remains outside B01.
 - Assumption to verify: any S06-only documentation edit does not invalidate
   browser evidence; implementation or visible-copy changes do.
 
@@ -158,6 +162,9 @@ proof boundary without coaching toward a positive verdict.
   deprecations, and rollback paths.
 - Confirm S05 source/runtime identity still matches final browser-affecting
   state; rerun affected journeys if not.
+- Confirm S00–S05 record the correct runtime mode, S05 includes clean Full
+  Stack migration/readiness/network/restart/cleanup evidence, and no stage
+  relabels Fast Loop or Hybrid evidence as Full Stack or Release.
 - Run focused checks, canonical pyright targets, and the smallest applicable
   grouped local gate.
 - Obtain independent cold review with verdict, blockers, fixed items,
@@ -192,7 +199,7 @@ proof boundary without coaching toward a positive verdict.
 2. Reconcile stage status and every B01-primary requirement.
 3. Review routes/identity, contracts, tokens/components, motion, locale,
    accessibility, docs/help, privacy, generated mocks, rollback, and milestone
-   contribution.
+   contribution, including mode and escalation evidence.
 4. Run focused checks, canonical pyright targets, and grouped local gates.
 5. Assign one terminal independent cold reviewer with complete bounded inputs.
 6. Fix only in-scope blockers; rerun affected checks and browser journeys.
@@ -202,8 +209,9 @@ proof boundary without coaching toward a positive verdict.
 
 Stop with `blocked` if any requirement lacks evidence, S05 is stale, route or
 metadata privacy is uncertain, accessibility or locale parity has a required
-defect, generated artifacts drift, public docs leak internal content, cold
-review has an unresolved blocker, or foreign changes cannot be separated.
+defect, generated artifacts drift, Full Stack lifecycle/restart/cleanup is
+missing, a development override entered S05, public docs leak internal content,
+cold review has an unresolved blocker, or foreign changes cannot be separated.
 
 ## Contracts and side effects
 
@@ -242,6 +250,8 @@ is the final ledger transition.
       have no unresolved required defect.
 - [ ] Contract impact, migration, deprecation, rollback, and milestone
       contribution are explicit.
+- [ ] Runtime-mode evidence is correctly classified, S05 proves Full Stack,
+      and B01 makes no Release-readiness claim.
 - [ ] Final file manifest contains no unexplained or foreign changes.
 - [ ] Focused checks, canonical pyright targets, and grouped local gates pass.
 - [ ] Independent cold review has no unresolved blocker.

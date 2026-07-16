@@ -1,7 +1,7 @@
 ---
 doc_id: ADR-0001
 title: Foundation operating model
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -20,7 +20,7 @@ proof_boundary:
 - decision owners: project owner and architecture owner;
 - scope: repository preparation and development operating model;
 - supersedes: none;
-- related: [System Design](../architecture/system-design.md), [development model](../architecture/development-operating-model.md), [runtime contract](../architecture/runtime-network-installation.md), [ADR-0002](./0002-edge-ingress-network-segmentation.md).
+- related: [System Design](../architecture/system-design.md), [development model](../architecture/development-operating-model.md), [development runtime](../architecture/development-runtime-contract.md), [runtime contract](../architecture/runtime-network-installation.md), [ADR-0002](./0002-edge-ingress-network-segmentation.md).
 
 ## Context
 
@@ -40,6 +40,12 @@ The repository is at the Foundation stage. We need to establish a tangible Web e
 10. Development data is a deterministic retail/e-commerce corpus with separate control and demo-source PostgreSQL boundaries.
 11. Quality tools are composed into the `local`, `ci`, and `release` profiles; a required release observation cannot become successful by being skipped.
 12. Every future block uses the common S00–S06 acceptance framework, but a detailed plan, ledger, and prompt pack are created only after separate approval.
+13. Development uses four explicit proof modes: host-first `fast-loop`,
+    host-application/container-infrastructure `hybrid`, disposable Compose
+    `full-stack`, and immutable-artifact `release`. The cheapest sufficient
+    mode is used for feedback, while S05 and release-triggering changes must
+    escalate to their real boundary. Development overrides never enter release
+    composition.
 
 ## Alternatives
 
@@ -47,6 +53,8 @@ The repository is at the Foundation stage. We need to establish a tangible Web e
 |---|---|
 | Backend-first before UI | Reveals incorrect workflows and contracts too late and provides no early browser proof |
 | All route mocks first | Creates a parallel, inconsistent product model and expensive rework |
+| Rebuild and run the complete container stack for every source edit | Makes the inner loop slow, hides focused failures behind orchestration, and encourages persistent mutable development state |
+| Run every dependency directly on the host | Weakens reproducibility, mixes stateful service versions, and fails to exercise container/network behavior before integration |
 | Long-lived `develop` and context branches | Increase drift and lockstep integration for a single modular monolith |
 | Multi-gigabyte autonomous bundle by default | Duplicates layers, caches, and platforms; complicates updates; and consumes unacceptable disk space |
 | Public documentation only on GitHub or an external site | Breaks self-hosted and offline usability |
@@ -61,12 +69,16 @@ Benefits:
 - the local installation is smaller and can be updated by digest;
 - documentation/help and security visibility are designed up front;
 - CI and agents use the same deterministic tooling logic.
+- ordinary edits receive fast host feedback without weakening the required
+  Full Stack or Release gates.
 
 Costs:
 
 - contract and schema discipline is required before implementation;
 - generated mocks and clients must be maintained by tooling;
 - clean Compose, browser, and recovery proofs cost more than unit tests;
+- host/Hybrid behavior can drift from images, so S05 Full Stack proof remains
+  mandatory for an accepted integrated slice;
 - authenticated documentation requires a separate build and serving boundary;
 - multi-platform release is deferred until the M3 Pro path is proven.
 

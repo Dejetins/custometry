@@ -111,7 +111,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B05
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b05-data-foundation-plan.md
   prompt_pack_dir: .codex/agents/generated/b05-data-foundation
   stage_ledger: docs/architecture/workstreams/b05-data-foundation-stage-reports/b05-data-foundation-stage-ledger.md

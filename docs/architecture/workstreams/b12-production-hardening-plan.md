@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b12-production-hardening-module
 plan_doc: docs/architecture/workstreams/b12-production-hardening-plan.md
 prompt_pack_dir: .codex/agents/generated/b12-production-hardening
 stage_ledger: docs/architecture/workstreams/b12-production-hardening-stage-reports/b12-production-hardening-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [B01, B02, B03, B04, B05, B06, B07, B08, B09, B10]
 soft_dependencies: [B11]
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]

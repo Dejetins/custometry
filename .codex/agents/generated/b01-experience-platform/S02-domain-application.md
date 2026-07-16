@@ -17,6 +17,8 @@ context_sources:
       why: DDD, validation, and reporting rules
     - path: docs/architecture/workstreams/b01-experience-platform-plan.md
       why: implementation and proof boundary
+    - path: docs/architecture/development-runtime-contract.md
+      why: Fast Loop boundary and later-stage escalation rules
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
       why: sole execution-state authority
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/S01-ux-contract.md
@@ -59,7 +61,7 @@ prompt_pack_execution:
   readiness: executable
   enabled: true
   workstream_id: B01
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
   prompt_pack_dir: .codex/agents/generated/b01-experience-platform
   stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
@@ -113,6 +115,8 @@ browser history, storage, or network adapters.
   computes presentation visibility.
 - Fact: Focus inherited/result filters and presentation controls have distinct
   identity semantics.
+- Fact: S02 is a Fast Loop stage; framework-independent policy evidence cannot
+  be relabelled as adapter, Full Stack, or Release proof.
 
 ## Context acquisition
 
@@ -183,9 +187,11 @@ stop and classify the contract issue rather than weakening the boundary.
 4. Implement application ports and orchestration without adapter imports.
 5. Validate schemas/examples against core parsing and serialization.
 6. Run DDD boundary, type, lint, unit/property, and contract checks.
-7. Review contract impact for any correction and update S01 evidence only when
+7. Record the exact Fast Loop commands and retain explicit exclusions for
+   database, browser, container, network, and release behavior.
+8. Review contract impact for any correction and update S01 evidence only when
    truth changed.
-8. Write S02 evidence, then update the ledger and unlock only S03 if accepted.
+9. Write S02 evidence, then update the ledger and unlock only S03 if accepted.
 
 Stop on an S01 contradiction, framework leakage, ambient state, locale or
 permission identity drift, nondeterministic behavior, unowned schema change, or
@@ -209,7 +215,7 @@ package-manager, external service, or design-tool side effect is authorized.
   exclusions, and file manifest in
   `docs/architecture/workstreams/b01-experience-platform-stage-reports/S02-domain-application.md`.
 - Passing core tests do not prove browser history, rendering, storage,
-  accessibility-runtime, network, or docs/help behavior.
+  accessibility-runtime, network, container, release, or docs/help behavior.
 
 ## Acceptance criteria
 

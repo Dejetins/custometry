@@ -1,6 +1,7 @@
 ---
 registry_schema_version: 1
 program_plan: docs/architecture/program/custometry-program-plan.md
+execution_mode: goal_driven
 active_workstreams:
   - workstream_id: B01
     plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
@@ -30,6 +31,9 @@ For ordinary bounded tasks, do not load or update this file.
   `docs/architecture/program/custometry-program-plan.md`;
 - every staged workstream uses exactly one linked
   `plan_doc + prompt_pack_dir + stage_ledger`.
+- every B01–B13 and W14 iteration is executed by one Codex Goal; the Goal
+  re-reads the ledger after each accepted stage and never supplies stage
+  authority itself.
 
 ## Active staged workstreams
 
@@ -37,9 +41,9 @@ For ordinary bounded tasks, do not load or update this file.
 |---|---|---|---|
 | `B01` Experience Platform | `docs/architecture/workstreams/b01-experience-platform-plan.md` | `.codex/agents/generated/b01-experience-platform` | `docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md` |
 
-The stage ledger remains the sole current-stage authority. Every other initial
-ledger remains dormant. Executable prompt content alone is not execution
-authority.
+The stage ledger remains the sole current-stage authority. Goal runtime state
+is ephemeral and does not replace the staged trio. Every other initial ledger
+remains dormant. Executable prompt content alone is not execution authority.
 
 ## Accepted development sequence
 

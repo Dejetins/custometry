@@ -6,7 +6,7 @@ workstream_id: B11
 plan_doc: docs/architecture/workstreams/b11-pipelines-extensibility-operational-channels-plan.md
 prompt_pack_dir: .codex/agents/generated/b11-pipelines-extensibility-operational-channels
 stage_ledger: docs/architecture/workstreams/b11-pipelines-extensibility-operational-channels-stage-reports/b11-pipelines-extensibility-operational-channels-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]

@@ -113,7 +113,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B03
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b03-identity-control-plane-plan.md
   prompt_pack_dir: .codex/agents/generated/b03-identity-control-plane
   stage_ledger: docs/architecture/workstreams/b03-identity-control-plane-stage-reports/b03-identity-control-plane-stage-ledger.md

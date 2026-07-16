@@ -10,7 +10,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B12
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b12-production-hardening-plan.md
   prompt_pack_dir: .codex/agents/generated/b12-production-hardening
   stage_ledger: docs/architecture/workstreams/b12-production-hardening-stage-reports/b12-production-hardening-stage-ledger.md

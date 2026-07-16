@@ -6,7 +6,7 @@ workstream_id: B08
 plan_doc: docs/architecture/workstreams/b08-customer-intelligence-promotion-journal-plan.md
 prompt_pack_dir: .codex/agents/generated/b08-customer-intelligence-promotion-journal
 stage_ledger: docs/architecture/workstreams/b08-customer-intelligence-promotion-journal-stage-reports/b08-customer-intelligence-promotion-journal-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]

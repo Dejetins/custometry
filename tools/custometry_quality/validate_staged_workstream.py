@@ -44,6 +44,7 @@ ALLOWED_STAGE_STATUSES = {
 TERMINAL_STAGE_STATUSES = {"accepted", "skipped", "superseded"}
 LEDGER_STATUSES = {"dormant", "active", "blocked", "completed", "superseded"}
 PROMPT_READINESS = {"outline", "executable"}
+CANONICAL_EXECUTION_MODE = "goal_driven"
 CYRILLIC = re.compile(r"[\u0400-\u04FF]")
 STAGE_FILE = re.compile(r"^(S[0-9]{2}[A-Z]?)-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 SHA256 = re.compile(r"^sha256:[0-9a-f]{64}$")
@@ -705,6 +706,12 @@ def _validate_program(
         )
     if not isinstance(meta.get("program_id"), str) or not meta.get("program_id"):
         result.add("program-id-invalid", "program_id is required", path)
+    if meta.get("execution_mode") != CANONICAL_EXECUTION_MODE:
+        result.add(
+            "program-execution-mode-invalid",
+            f"program execution_mode must be {CANONICAL_EXECUTION_MODE}",
+            path,
+        )
     routing = _validate_requirement_routing(
         root,
         path,
@@ -1120,10 +1127,10 @@ def _validate_ledger(
         )
         ledger_status = ""
     execution_mode = meta.get("execution_mode")
-    if execution_mode not in {"manual_sequential", "goal_driven"}:
+    if execution_mode != CANONICAL_EXECUTION_MODE:
         result.add(
             "ledger-execution-mode-invalid",
-            "execution_mode must be manual_sequential or goal_driven",
+            f"execution_mode must be {CANONICAL_EXECUTION_MODE}",
             path,
         )
         execution_mode = ""
@@ -1514,7 +1521,14 @@ def _validate_prompt(
             f"prompt stage_id must be {stage.stage_id}",
             prompt,
         )
-    if execution.get("execution_mode") != ledger.execution_mode:
+    prompt_execution_mode = execution.get("execution_mode")
+    if prompt_execution_mode != CANONICAL_EXECUTION_MODE:
+        result.add(
+            "prompt-execution-mode-invalid",
+            f"prompt execution_mode must be {CANONICAL_EXECUTION_MODE}",
+            prompt,
+        )
+    if prompt_execution_mode != ledger.execution_mode:
         result.add(
             "prompt-execution-mode-drift",
             "prompt execution_mode must equal ledger execution_mode",
@@ -1772,10 +1786,10 @@ def _validate_plan(
                 path,
             )
     execution_mode = meta.get("execution_mode")
-    if execution_mode not in {"manual_sequential", "goal_driven"}:
+    if execution_mode != CANONICAL_EXECUTION_MODE:
         result.add(
             "plan-execution-mode-invalid",
-            "execution_mode must be manual_sequential or goal_driven",
+            f"execution_mode must be {CANONICAL_EXECUTION_MODE}",
             path,
         )
 
@@ -1888,6 +1902,12 @@ def _validate_registry(
             "PLANS registry requires registry_schema_version=1",
             registry,
         )
+    if meta.get("execution_mode") != CANONICAL_EXECUTION_MODE:
+        result.add(
+            "plans-registry-execution-mode-invalid",
+            f"PLANS execution_mode must be {CANONICAL_EXECUTION_MODE}",
+            registry,
+        )
     if not _same_path(_path(root, meta.get("program_plan")), program.path):
         result.add(
             "plans-registry-program-link-invalid",
@@ -1980,7 +2000,7 @@ def _validate_forbidden_coordination_files(root: Path, result: CheckResult) -> N
         if candidate.is_file():
             result.add(
                 "forbidden-coordination-source",
-                "unapproved GOAL.md coordination file exists; use the staged trio only",
+                "GOAL.md is forbidden; Codex Goal mode uses the staged trio only",
                 candidate,
             )
 

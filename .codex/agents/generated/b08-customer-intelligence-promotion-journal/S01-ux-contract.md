@@ -10,7 +10,7 @@ prompt_pack_execution:
   readiness: outline
   enabled: false
   workstream_id: B08
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b08-customer-intelligence-promotion-journal-plan.md
   prompt_pack_dir: .codex/agents/generated/b08-customer-intelligence-promotion-journal
   stage_ledger: docs/architecture/workstreams/b08-customer-intelligence-promotion-journal-stage-reports/b08-customer-intelligence-promotion-journal-stage-ledger.md

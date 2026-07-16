@@ -17,6 +17,8 @@ context_sources:
       why: browser, validation, and evidence rules
     - path: docs/architecture/workstreams/b01-experience-platform-plan.md
       why: UI scope and proof boundary
+    - path: docs/architecture/development-runtime-contract.md
+      why: Fast Loop Web integration, optional Hybrid escalation, and production rejection rules
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
       why: sole execution-state authority
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/S03-adapters.md
@@ -59,7 +61,7 @@ prompt_pack_execution:
   readiness: executable
   enabled: true
   workstream_id: B01
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
   prompt_pack_dir: .codex/agents/generated/b01-experience-platform
   stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
@@ -116,6 +118,9 @@ local browser without overclaiming downstream product behavior.
 - Fact: shell/sidebar/topbar remain stable across route changes; main content
   uses a short fade and keeps previous data during refresh.
 - Fact: Focus is a route-backed application surface, not a nested modal.
+- Fact: S04 normally runs in Fast Loop with explicit generated-mock
+  disclosure; a real-API claim requires Hybrid evidence and cannot be inferred
+  from Vite or mocked browser behavior.
 
 ## Context acquisition
 
@@ -189,8 +194,8 @@ design-file reconciliation.
 
 ## Work plan and stop gates
 
-1. Verify S03 acceptance, local runtime, package boundaries, and exact owned
-   component/surface manifest.
+1. Verify S03 acceptance, selected runtime mode, local commands, package
+   boundaries, and exact owned component/surface manifest.
 2. Implement Frost tokens and representative shared components with tests.
 3. Assemble shell, navigation, page context, and responsive density.
 4. Implement routes, history, guards, system surfaces, docs/help, locale, and
@@ -201,7 +206,10 @@ design-file reconciliation.
    focused integration tests.
 8. Start the local Web/docs runtime and run representative browser smoke with
    console/network inspection.
-9. Write S04 evidence, then update the ledger and unlock only S05 if accepted.
+9. When a real API boundary is claimed, run the corresponding Hybrid browser
+   flow; otherwise label the entire flow as generated-mock Fast Loop evidence.
+10. Verify development/mock disclosure is rejected by a production build.
+11. Write S04 evidence, then update the ledger and unlock only S05 if accepted.
 
 Stop on inaccessible keyboard flow, unstable layout, route/history failure,
 metadata leak, remote asset, console/network error, mock/real ambiguity,
@@ -228,7 +236,8 @@ classified and reconciled with S01–S03 before acceptance.
 - Capture responsive evidence for supported desktop and tablet widths and 200%
   zoom smoke, but reserve complete matrix acceptance for S05.
 - Record exact commands, artifacts, screenshots, console/network observations,
-  mock proof boundary, and file manifest in
+  selected mode, escalation decision, mock/real proof boundary, and file
+  manifest in
   `docs/architecture/workstreams/b01-experience-platform-stage-reports/S04-web-integration.md`.
 
 ## Acceptance criteria

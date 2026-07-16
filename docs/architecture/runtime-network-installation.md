@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -45,12 +45,24 @@ Foundation exposes three Compose profiles/contracts:
 - `demo`: separate demo-source PostgreSQL in addition to core;
 - `migration`: one-shot Alembic job that completes before application startup.
 
-Developer bootstrap on the M3 target:
+Full Stack developer bootstrap on the M3 target:
 
 ```bash
 deploy/compose/bootstrap.sh --build
 deploy/compose/bootstrap.sh --build --with-demo
 ```
+
+This is the clean, complete `full-stack` boundary. It is required for S05 and
+CI/runtime proof, but it is not the default per-save development loop. The
+accepted [development runtime contract](./development-runtime-contract.md)
+defines `fast-loop`, `hybrid`, `full-stack`, and `release`, including their
+proof limits.
+
+The target Hybrid path keeps Web/API on the host and starts only required
+stateful infrastructure in containers. It is not implemented yet:
+`compose.dev.yaml`, the unified `scripts/dev` interface, infra-only port
+publication, API hot reload, and mock/real switching remain planned
+capabilities.
 
 Release mode uses immutable GHCR references, `pull` and `--no-build`; a user installation must not silently compile the product from source. Public static `/docs` ships with the public Web surface. Authenticated operator/admin docs are excluded from that public docs image until the protected serving boundary is implemented.
 
@@ -118,6 +130,15 @@ Edge is an infrastructure ingress adapter, not a new bounded context or an indep
 Compose does not provide a portable ingress-only network primitive. In particular, on Docker Desktop an `internal: true` network cannot portably provide reliable host-port publication at the same time, while the non-internal `ingress_edge` network may give Edge an ambient outbound route. Foundation therefore does not describe Edge as having no egress. A fixed upstream restricts proxy routing only; the absence of secrets and business logic limits impact; the separate `edge_to_web` and `web_to_api` networks prevent direct Edge-to-API adjacency. The versioned runtime policy fixes the source Nginx configuration, the `web:8080` upstream, and allowed and denied ingress probes; the static gate rejects a dynamic resolver, an API or external upstream, and arbitrary `proxy_pass` targets. Web and API pass negative Internet probes, while the runtime gate separately checks successful `Edge → Web` access and failed `Edge → API` access.
 
 Docker network names alone are insufficient for a production security claim. The connector allowlist includes DNS/IP validation, redirect policy, and protection of loopback, link-local, and private ranges according to deployment policy; the database-source allowlist specifies exact hosts and ports. The future connector, mail, and update egress zones in the table are target contracts, not active Foundation services.
+
+Development topology is intentionally separate. A future
+`compose.dev.yaml` may publish required infrastructure ports only to
+`127.0.0.1`, use development-owned project names and volumes, and omit Edge
+when ingress is not under test. Release validation must reject that override,
+source bind mounts, reload/debug commands, mock flags, development credentials,
+mutable image tags, and host-published core ports. Full Stack and Release
+continue to use the canonical topology and never inherit Hybrid convenience
+settings.
 
 ## 6. Separate production-hardening stage
 

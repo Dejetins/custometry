@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b10-reporting-knowledge-module.
 plan_doc: docs/architecture/workstreams/b10-reporting-knowledge-plan.md
 prompt_pack_dir: .codex/agents/generated/b10-reporting-knowledge
 stage_ledger: docs/architecture/workstreams/b10-reporting-knowledge-stage-reports/b10-reporting-knowledge-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [B01, B03, B04, B05, B06, B07, B08, B09]
 soft_dependencies: []
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]

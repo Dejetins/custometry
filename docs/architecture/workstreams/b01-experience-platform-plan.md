@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b01-experience-platform-module.
 plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
 prompt_pack_dir: .codex/agents/generated/b01-experience-platform
 stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [W00]
 soft_dependencies: []
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]
@@ -110,7 +110,8 @@ requirement_ids:
 - program/workstream: `custometry-v1 / B01`;
 - bounded owner: Experience Platform;
 - accepted authority: the normative product blueprints, canonical program
-  plan, B01 module definition, requirement matrix, and accepted W00 proof;
+  plan, B01 module definition, requirement matrix, accepted development
+  runtime contract, and accepted W00 proof;
 - current proof boundary: this is an initial plan with executable prompts, not
   evidence that any browser journey, route, accessibility behavior, or Penpot
   surface exists;
@@ -119,8 +120,10 @@ requirement_ids:
   `.codex/PLANS.md` registers this exact trio;
 - branch rule: use one short-lived `codex/b01-experience-platform` branch for
   the whole workstream unless the user explicitly changes the workflow;
-- execution rule: one ledger-authorized stage at a time; validation and ledger
-  update precede handoff.
+- execution rule: one Codex Goal owns the active B01 S00–S06 iteration; each
+  stage remains separately ledger-authorized, validation and the ledger update
+  precede handoff, and the Goal continues only after re-reading an explicit
+  successor unlock.
 
 ## Objective and non-goals
 
@@ -151,6 +154,7 @@ Non-goals:
 | Fact | ECharts is the only v1 Web chart engine, behind product-owned `ChartSpec`. | normative blueprint | B01 may provide presentation slots and adapter seams but does not add another chart dependency. |
 | Fact | Focus/Explore is route-backed and returns to route, block, scroll, and focus origin. | `ROUTE-006`, `V1-AC-017` | It cannot be implemented as a nested full-screen modal. |
 | Fact | Repository artifacts are English by default; public product help is bilingual. | repository instructions | Source identifiers remain locale-neutral and catalogs must have parity. |
+| Fact | Development has four explicit proof modes: `fast-loop`, `hybrid`, `full-stack`, and `release`. Fast Loop is partially implemented, Hybrid is target-only, Full Stack exists for the Foundation surface, and no accepted release bundle exists. | [development runtime contract](../development-runtime-contract.md) | B01 must own the Fast Loop Web/mock experience, disclose mock versus real mode, and escalate real integration and acceptance evidence instead of overclaiming host behavior. |
 | Assumption | W00 provides reproducible Node, pnpm, uv, Docker, and M3 Pro Foundation evidence before activation. | hard dependency | Missing or stale W00 proof blocks S00. |
 | Unknown | The exact canonical Penpot file and write authority are intentionally deferred. | user decision | Repository-local contracts and implementation can proceed; Penpot mutation must stop. |
 | Unknown | Stable API schemas from B03–B10 do not yet exist. | program order | Use generated mocks from explicit provisional schemas and reconcile each consumer later. |
@@ -196,6 +200,8 @@ policy core:
   persistence directly;
 - API clients and development mocks are generated from the same versioned
   OpenAPI/JSON Schema examples;
+- generated-mock and real-API modes are explicit, observable development
+  states rather than hidden environment behavior;
 - browser state is not authorization, execution truth, or durable result state;
 - later contexts integrate through public contracts and slots, not imports of
   B01 internals;
@@ -211,12 +217,12 @@ codes, or Focus semantics are consumed, removal or meaning change becomes
 
 | Stage | Outcome | Entry gate | Exit evidence | Stop gate |
 |---|---|---|---|---|
-| `S00` | Freeze repository/UI inventory, requirement routing, ownership, provisional consumers, risks, and exact file manifest. | W00 accepted; B01 activated | discovery report, contract-impact map, implementation slices, browser matrix, and unresolved decisions | missing W00 proof, unknown ownership, unsafe mixed-file scope, or Penpot-dependent decision blocks |
-| `S01` | Freeze route, token, component, motion, system-surface, Help, i18n, accessibility, generated-mock, and Focus contracts. | `S00 accepted` | schemas/examples, compatibility rules, design-token/component catalog, route and state matrices, API/mock plan | ambiguous route identity, auth leakage, inaccessible interaction, unversioned mock, or hidden Penpot authority blocks |
+| `S00` | Freeze repository/UI inventory, requirement routing, ownership, provisional consumers, runtime-mode facts, risks, and exact file manifest. | W00 accepted; B01 activated | discovery report, contract-impact map, implementation slices, mode/escalation map, browser matrix, and unresolved decisions | missing W00 proof, unknown ownership, unsafe mixed-file scope, release/dev topology ambiguity, or Penpot-dependent decision blocks |
+| `S01` | Freeze route, token, component, motion, system-surface, Help, i18n, accessibility, generated-mock, mock/real runtime configuration, and Focus contracts. | `S00 accepted` | schemas/examples, compatibility rules, design-token/component catalog, route and state matrices, API/mock plan, and development-mode disclosure contract | ambiguous route identity, auth leakage, inaccessible interaction, unversioned mock, hidden runtime mode, or hidden Penpot authority blocks |
 | `S02` | Implement and test framework-independent policy/application core. | `S01 accepted` | unit/property tests for route resolution, navigation restoration, filters/presentation identity boundaries, localization, motion, system surfaces, and preference state | browser/framework coupling in core, locale-dependent IDs, authorization in UI state, or unstable identity blocks |
-| `S03` | Implement adapters and composition seams. | `S02 accepted` | generated client/mock parity, route/help/docs/localization adapters, SSR-safe token/component infrastructure, failure mapping, and integration tests | hand-authored contract drift, remote runtime dependency, unsafe storage/logging, or adapter ownership leakage blocks |
-| `S04` | Assemble the Frost shell and representative route-backed flows. | `S03 accepted` | real app shell, expanded/icon-only sidebar, topbar, page header, docs/help, system surfaces, navigation guards, Focus shell, responsive and accessibility tests | domain fake presented as real, unstable layout, missing keyboard path, or inaccessible local docs blocks |
-| `S05` | Produce fresh real-browser evidence on supported local runtime. | `S04 accepted` | en/ru journeys, deep links/history, sidebar persistence, system states, guards, docs/help, Focus return, responsive/reflow, a11y, reduced motion, console/network evidence | stale bundle, metadata leak, remote asset, console/network failure, keyboard trap, or unproved required journey blocks |
+| `S03` | Implement adapters and composition seams. | `S02 accepted` | generated client/mock parity, route/help/docs/localization adapters, SSR-safe token/component infrastructure, failure mapping, and integration tests; Hybrid integration is used only for real stateful seams owned by downstream contexts | hand-authored contract drift, hidden mock/real selection, remote runtime dependency, unsafe storage/logging, or adapter ownership leakage blocks |
+| `S04` | Assemble the Frost shell and representative route-backed flows. | `S03 accepted` | real app shell, expanded/icon-only sidebar, topbar, page header, docs/help, system surfaces, navigation guards, Focus shell, responsive and accessibility tests in Fast Loop, plus Hybrid browser flows when a real API boundary is claimed | domain fake presented as real, hidden mode, unstable layout, missing keyboard path, or inaccessible local docs blocks |
+| `S05` | Produce fresh real-browser evidence on the supported Full Stack local runtime. | `S04 accepted` | clean disposable Compose plus en/ru journeys, deep links/history, sidebar persistence, system states, guards, docs/help, Focus return, responsive/reflow, a11y, reduced motion, console/network, restart, and cleanup evidence | stale bundle, development override in the acceptance topology, metadata leak, remote asset, console/network failure, keyboard trap, or unproved required journey blocks |
 | `S06` | Reconcile requirements, contracts, docs, rollback, and independent acceptance. | `S05 accepted` | traceability, cold-review verdict, fixed blockers, grouped gates, ledger completion, and milestone contribution statement | any missing/stale browser evidence, unresolved requirement, docs drift, or review blocker prevents completion |
 
 ## UI, route, and motion contract
@@ -245,16 +251,21 @@ The first implementation iteration must preserve these cross-release rules:
 
 ## Validation and proof boundaries
 
-Validation progresses from contracts to real browser:
+Validation progresses from contracts to real browser and uses the runtime modes
+without confusing their proof boundaries:
 
-1. metadata, route, localization, docs visibility, and staged-work validators;
-2. token/component and framework-independent policy tests;
-3. generated client/mock parity and adapter integration tests;
-4. component/a11y tests for states and keyboard behavior;
-5. built local Web runtime with real route navigation;
-6. browser journeys with console/network, responsive, zoom, locale, and
-   reduced-motion evidence;
-7. independent cold review and grouped repository gates.
+1. S00 records current Fast Loop commands, missing Hybrid capabilities, and the
+   escalation expected for each B01 slice;
+2. metadata, route, localization, docs visibility, and staged-work validators;
+3. Fast Loop token/component and framework-independent policy tests;
+4. generated client/mock parity and adapter integration tests, using Hybrid
+   only when a real API or stateful boundary is claimed;
+5. component/a11y tests for states and keyboard behavior;
+6. built local Web runtime with real route navigation and explicit mock/real
+   disclosure;
+7. Full Stack browser journeys with console/network, responsive, zoom, locale,
+   reduced-motion, restart, and cleanup evidence;
+8. independent cold review and grouped repository gates.
 
 Expected durable stage reports live under
 `docs/architecture/workstreams/b01-experience-platform-stage-reports/`.
@@ -278,12 +289,18 @@ updates the smallest authoritative English source and generated indexes.
 Localized `docs-site/docs/ru/**` changes are allowed only for product-facing
 copy and must remain semantically aligned with English.
 
+The B01 implementation and stage evidence must remain synchronized with the
+[development runtime contract](../development-runtime-contract.md). B01 does
+not own `compose.dev.yaml`, stateful infrastructure lifecycle, release
+composition, or production firewall/CNI policy.
+
 ## Risks and open decisions
 
 | Risk/decision | Owner | Due stage | Mitigation or stop condition |
 |---|---|---|---|
 | Penpot authority is unresolved. | User/product design | separate discussion | no Penpot mutation or canonical-file claim; source-backed work may continue |
 | Provisional mocks may drift from later services. | Contract owner | `S01`–consumer activation | generate from versioned schemas, mark provisional, and require parity reconciliation |
+| Fast Loop behavior may be mistaken for real integration or release behavior. | B01 + QA | `S00`–`S06` | visible mock/real disclosure, explicit mode in evidence, Hybrid for real adapters, and Full Stack for S05 |
 | Route and Help indexes may leak denied metadata. | B01 + B03 | `S01`, `S03`, `S05` | permission-filter server results and negative browser/API evidence |
 | Frost tokens may become screen-specific constants. | B01 | `S01`–`S04` | semantic tokens, linting, component variants, and no raw-value bypass |
 | Accessibility could be tested too late. | B01 | every stage | semantic/keyboard requirements in contracts, components, and real-browser gates |

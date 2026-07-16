@@ -6,7 +6,7 @@ workstream_id: B10
 plan_doc: docs/architecture/workstreams/b10-reporting-knowledge-plan.md
 prompt_pack_dir: .codex/agents/generated/b10-reporting-knowledge
 stage_ledger: docs/architecture/workstreams/b10-reporting-knowledge-stage-reports/b10-reporting-knowledge-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]

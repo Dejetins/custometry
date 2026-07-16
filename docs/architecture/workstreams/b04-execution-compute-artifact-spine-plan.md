@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b04-execution-compute-artifact-
 plan_doc: docs/architecture/workstreams/b04-execution-compute-artifact-spine-plan.md
 prompt_pack_dir: .codex/agents/generated/b04-execution-compute-artifact-spine
 stage_ledger: docs/architecture/workstreams/b04-execution-compute-artifact-spine-stage-reports/b04-execution-compute-artifact-spine-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies:
 - B02
 - B03

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -63,7 +63,25 @@ The terminal milestone sequence is:
 | `v1_feature_freeze` | `B13` |
 | `v1_target` | `W14` |
 
-## 3. Common S00–S06 framework
+## 3. Development runtime modes
+
+Development uses four canonical modes defined in the
+[development runtime contract](./development-runtime-contract.md):
+
+| Mode | Default use | Status at Foundation |
+|---|---|---|
+| `fast-loop` | Host Web, framework-independent Python, focused tests, and generated contract mocks | Partially implemented: host Vite and pinned host tools exist; unified dev CLI, API reload, and mock/real switching do not |
+| `hybrid` | Host Web/API plus only required containerized stateful infrastructure | Target only; `compose.dev.yaml` and infra-only orchestration are not implemented |
+| `full-stack` | Complete disposable Compose lifecycle and real browser/network proof | Implemented for the Foundation surface; product-slice acceptance remains future work |
+| `release` | Immutable digest-pinned install/update/recovery and release evidence | Candidate publication and a fail-closed target contract exist; no accepted end-user release bundle exists |
+
+The lowest sufficient mode is used for the inner loop. Escalation is mandatory
+when the changed claim crosses a real database, browser, container, network,
+recovery, performance, or delivery boundary. A cheaper mode cannot replace a
+failed higher-boundary check, and development overrides are forbidden in
+release composition.
+
+## 4. Common S00–S06 framework
 
 | Stage | Entry | Required questions | Exit/evidence |
 |---|---|---|---|
@@ -75,6 +93,16 @@ The terminal milestone sequence is:
 | S05 Real-boundary Proof | Integrated slice | clean install/DB, Compose, restart, retry, cancellation, recovery, telemetry | reproducible nearest-boundary evidence and residual risks |
 | S06 Acceptance | All previous exits observed | docs/runbook, requirement traceability, rollback, security/performance if triggered, cold review | no blocker; accepted artifact/evidence inventory |
 
+Runtime guidance by stage:
+
+- S00 inventories the current commands and selects the expected modes;
+- S01 freezes mock/real and runtime-configuration contracts;
+- S02 normally uses `fast-loop`;
+- S03 uses `hybrid` for real stateful adapters;
+- S04 uses `fast-loop` for generated-mock UI and `hybrid` for real integration;
+- S05 requires `full-stack` nearest-boundary proof;
+- S06 invokes `release` only when the milestone or changed boundary requires it.
+
 Stage names standardize criteria but do not automatically create staged
 artifacts. When execution becomes staged, exactly
 `plan_doc + prompt_pack_dir + stage_ledger` applies, and reports are stored
@@ -84,7 +112,16 @@ requirement set. A dormant or disabled prompt may leave
 least one reviewed repository source and passes only while every declared hash
 still matches.
 
-## 4. Git workflow
+All B01–B13 and W14 staged iterations run in Codex Goal mode. One Goal owns one
+workstream iteration across its ledger-authorized S00–S06 chain; stages remain
+separate acceptance units. After accepting a stage and updating its evidence,
+the Goal re-reads the ledger and continues only when the successor is current
+and `next_allowed: true`. A blocked/completed/dormant/superseded ledger, failed
+gate, stale or missing evidence, required approval, or absent successor unlock
+ends the Goal run. Goal state is never a fourth durable coordination source,
+and `GOAL.md` remains forbidden.
+
+## 5. Git workflow
 
 - `main` is protected and always potentially releasable.
 - Product changes use a short-lived `codex/<workstream>-<iteration>` branch and a mandatory pull request.
@@ -96,7 +133,7 @@ still matches.
 
 The minimum GitHub configuration for `main` requires pull requests, required status checks, resolved conversations, and linear history, and blocks force pushes and deletion. The required reviewer count and CODEOWNERS are added once stable owners exist.
 
-## 5. CI contract
+## 6. CI contract
 
 ### Pull request
 
@@ -128,7 +165,7 @@ Heavy release matrices are not repeated on every pull request without need. Cont
 - Release verifies image existence and platform, migration, a clean Compose lifecycle, browser behavior, egress, recovery, license/SBOM, and performance thresholds. A production target additionally proves a firewall/CNI-equivalent policy: Edge accepts only approved ingress, reaches only Web, and cannot reach API, control, data, Internet, private, link-local, or metadata ranges.
 - Automatic blind upgrade of a local installation is prohibited; update preflight presents compatibility, backup, and rollback.
 
-## 6. Hook profiles
+## 7. Hook profiles
 
 Canonical orchestrator:
 
@@ -150,7 +187,7 @@ uv run python -m tools.check --scope release
 
 The exact composition and change triggers are defined in [tooling-gates.md](./tooling-gates.md) and `.codex/AGENTS.md`. Git hooks may invoke `local`, but the Python tools remain the canonical logic so local hooks and CI do not diverge.
 
-## 7. Acceptance and proof boundary
+## 8. Acceptance and proof boundary
 
 | Change surface | Insufficient evidence by itself | Nearest mandatory evidence |
 |---|---|---|
@@ -165,7 +202,7 @@ The exact composition and change triggers are defined in [tooling-gates.md](./to
 | Performance | intuition/unit timing | comparable baseline/corpus/environment and threshold |
 | Release | green unit tests | owned diff, CI, artifact provenance, install/update and post-start smoke |
 
-## 8. Definition document for a future workstream
+## 9. Definition document for a future workstream
 
 Before a detailed plan is created, the workstream definition is completed using [module-definition-template.md](../contracts/module-definition-template.md). It must include purpose and non-goals, vocabulary, aggregates, entities, value objects, lifecycle, commands, queries, events, schemas, data ownership, ports and adapters, permissions, idempotency, retry and unknown-state behavior, UI/help, observability, fixtures, acceptance, migration, and rollback.
 

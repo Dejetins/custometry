@@ -6,7 +6,7 @@ workstream_id: B01
 plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
 prompt_pack_dir: .codex/agents/generated/b01-experience-platform
 stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: active
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]
@@ -95,7 +95,9 @@ allowed; no successor is authorized by prompt content or registry text.
 
 - The durable execution trio is exactly the linked `plan_doc`,
   `prompt_pack_dir`, and `stage_ledger`.
-- `manual_sequential` permits one current stage and then stops.
+- One Codex Goal owns the active B01 S00–S06 iteration. After an accepted stage,
+  it re-reads this ledger and continues only when the successor is current and
+  `next_allowed: true`.
 - The ledger may become active only after accepted W00 evidence, successful
   preparation review, explicit user authorization, and synchronized
   `.codex/PLANS.md` registration.

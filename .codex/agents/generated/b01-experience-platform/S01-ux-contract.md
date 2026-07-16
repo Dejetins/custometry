@@ -17,6 +17,8 @@ context_sources:
       why: validation and artifact policy
     - path: docs/architecture/workstreams/b01-experience-platform-plan.md
       why: scope and stage boundaries
+    - path: docs/architecture/development-runtime-contract.md
+      why: mode selection, mock/real configuration, escalation, and release isolation
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
       why: sole stage-state authority
     - path: docs/architecture/workstreams/b01-experience-platform-stage-reports/S00-discovery.md
@@ -62,7 +64,7 @@ prompt_pack_execution:
   readiness: executable
   enabled: true
   workstream_id: B01
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
   prompt_pack_dir: .codex/agents/generated/b01-experience-platform
   stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
@@ -117,6 +119,9 @@ route-backed Focus/Explore semantics.
   analytical result identity.
 - Fact: ECharts is the only v1 Web chart engine, behind product-owned
   `ChartSpec`; B01 defines layout seams, not analytical series semantics.
+- Fact: S01 must freeze Fast Loop mock/real disclosure and the escalation
+  contract for Hybrid, Full Stack, and Release without claiming target-only
+  developer capabilities exist.
 
 ## Context acquisition
 
@@ -159,6 +164,9 @@ requires unconfirmed Penpot authority.
   storing authorization or sensitive data in browser state.
 - Define generated client/mock schemas and examples, explicit mock-mode
   disclosure, error examples, and parity checks.
+- Define versioned development-mode configuration and disclosure: accepted
+  values, default resolution, mock/real selection, production rejection,
+  error behavior, and the evidence mode required by each representative flow.
 - Define accessibility acceptance for semantics, keyboard, focus, screen
   reader, contrast, non-color meaning, 200% zoom/reflow, text scaling, reduced
   motion, and non-hover access.
@@ -182,6 +190,8 @@ requires unconfirmed Penpot authority.
   presentation contracts.
 - Do not create hand-authored mock shapes that cannot be generated from the
   accepted schema.
+- Do not make runtime mode implicit, allow a development mode in production,
+  or use Fast Loop evidence to satisfy a Hybrid, Full Stack, or Release claim.
 - Do not use remote fonts, CDN scripts, runtime-loaded icons, or Internet
   dependencies.
 - Do not change the canonical blueprint meaning to fit an implementation
@@ -195,8 +205,8 @@ requires unconfirmed Penpot authority.
 3. Define route, history, workspace, Focus, and navigation-guard schemas.
 4. Define Frost tokens, component variants, density, responsive, and motion
    contracts.
-5. Define system surfaces, Help/docs, localization, preferences, and generated
-   client/mock contracts.
+5. Define system surfaces, Help/docs, localization, preferences, generated
+   client/mock contracts, and runtime-mode configuration/disclosure.
 6. Define accessibility and browser acceptance scenarios alongside contracts.
 7. Add schemas, examples, compatibility rules, and focused validators/tests.
 8. Review cross-context dependencies and classify contract impact.
@@ -238,6 +248,8 @@ authorization-visible behavior must receive an explicit contract-impact class.
 - [ ] Motion and reduced-motion matrices are explicit.
 - [ ] Help/docs, en/ru, preferences, system surfaces, and generated mocks have
       schemas, examples, errors, and visibility rules.
+- [ ] Fast Loop mock/real configuration, production rejection, and
+      Hybrid/Full Stack/Release escalation rules are versioned and testable.
 - [ ] Accessibility behavior is part of each relevant component and journey
       contract.
 - [ ] Every stable identifier/schema has compatibility, migration, and rollback

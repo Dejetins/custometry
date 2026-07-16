@@ -6,7 +6,7 @@ workstream_id: B02
 plan_doc: docs/architecture/workstreams/b02-local-data-lab-plan.md
 prompt_pack_dir: .codex/agents/generated/b02-local-data-lab
 stage_ledger: docs/architecture/workstreams/b02-local-data-lab-stage-reports/b02-local-data-lab-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]
@@ -96,7 +96,9 @@ exact trio.
 
 - The durable execution trio is exactly the linked `plan_doc`,
   `prompt_pack_dir`, and `stage_ledger`.
-- `manual_sequential` executes one ledger-allowed stage and stops.
+- When B02 is activated, one Codex Goal owns its S00–S06 iteration. After an
+  accepted stage, it re-reads this ledger and continues only when the
+  successor is current and `next_allowed: true`.
 - Dormant means prepared but not authorized; executable prompt content does not
   override `next_allowed: false`.
 - A successor starts only after its predecessor is `accepted` or explicitly

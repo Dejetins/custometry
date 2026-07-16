@@ -6,7 +6,7 @@ workstream_id: W14
 plan_doc: docs/architecture/workstreams/w14-final-acceptance-plan.md
 prompt_pack_dir: .codex/agents/generated/w14-final-acceptance
 stage_ledger: docs/architecture/workstreams/w14-final-acceptance-stage-reports/w14-final-acceptance-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]

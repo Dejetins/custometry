@@ -70,7 +70,7 @@ prompt_pack_execution:
   readiness: executable
   enabled: true
   workstream_id: B02
-  execution_mode: manual_sequential
+  execution_mode: goal_driven
   plan_doc: docs/architecture/workstreams/b02-local-data-lab-plan.md
   prompt_pack_dir: .codex/agents/generated/b02-local-data-lab
   stage_ledger: docs/architecture/workstreams/b02-local-data-lab-stage-reports/b02-local-data-lab-stage-ledger.md

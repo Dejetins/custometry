@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b11-pipelines-extensibility-ope
 plan_doc: docs/architecture/workstreams/b11-pipelines-extensibility-operational-channels-plan.md
 prompt_pack_dir: .codex/agents/generated/b11-pipelines-extensibility-operational-channels
 stage_ledger: docs/architecture/workstreams/b11-pipelines-extensibility-operational-channels-stage-reports/b11-pipelines-extensibility-operational-channels-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [B04, B07, B10]
 soft_dependencies: [B05, B08, B09]
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]

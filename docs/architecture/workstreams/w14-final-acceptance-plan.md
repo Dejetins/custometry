@@ -7,7 +7,7 @@ program_plan: docs/architecture/program/custometry-program-plan.md
 plan_doc: docs/architecture/workstreams/w14-final-acceptance-plan.md
 prompt_pack_dir: .codex/agents/generated/w14-final-acceptance
 stage_ledger: docs/architecture/workstreams/w14-final-acceptance-stage-reports/w14-final-acceptance-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies: [B01, B02, B03, B04, B05, B06, B07, B08, B09, B10, B11, B12, B13]
 soft_dependencies: []
 stage_ids: [S00, S01, S02, S03, S04, S05, S06]

@@ -6,7 +6,7 @@ workstream_id: B06
 plan_doc: docs/architecture/workstreams/b06-analytics-forecasting-vertical-alpha-plan.md
 prompt_pack_dir: .codex/agents/generated/b06-analytics-forecasting-vertical-alpha
 stage_ledger: docs/architecture/workstreams/b06-analytics-forecasting-vertical-alpha-stage-reports/b06-analytics-forecasting-vertical-alpha-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses:

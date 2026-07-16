@@ -8,7 +8,7 @@ module_definition: docs/architecture/workstreams/b06-analytics-forecasting-verti
 plan_doc: docs/architecture/workstreams/b06-analytics-forecasting-vertical-alpha-plan.md
 prompt_pack_dir: .codex/agents/generated/b06-analytics-forecasting-vertical-alpha
 stage_ledger: docs/architecture/workstreams/b06-analytics-forecasting-vertical-alpha-stage-reports/b06-analytics-forecasting-vertical-alpha-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 hard_dependencies:
 - B01
 - B02

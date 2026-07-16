@@ -6,7 +6,7 @@ workstream_id: B12
 plan_doc: docs/architecture/workstreams/b12-production-hardening-plan.md
 prompt_pack_dir: .codex/agents/generated/b12-production-hardening
 stage_ledger: docs/architecture/workstreams/b12-production-hardening-stage-reports/b12-production-hardening-stage-ledger.md
-execution_mode: manual_sequential
+execution_mode: goal_driven
 ledger_status: dormant
 current_stage: S00
 allowed_stage_statuses: [pending, in_progress, accepted, blocked, skipped, superseded]

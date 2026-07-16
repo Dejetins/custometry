@@ -14,6 +14,7 @@
 - [Custometry Architecture](architecture/README.md)
 - [Custometry Bounded Context Map](architecture/bounded-context-map.md)
 - [Custometry Development and Acceptance Model](architecture/development-operating-model.md)
+- [Custometry Development Runtime Contract](architecture/development-runtime-contract.md)
 - [Custometry Documentation Platform](architecture/documentation-platform.md)
 - [Custometry Program Plan](architecture/program/custometry-program-plan.md)
 - [Custometry Repository and Agent Infrastructure Layout](architecture/repository-layout.md)

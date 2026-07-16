@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -34,6 +34,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [System Design](./system-design.md) | Overall architecture, accepted decisions, flows, proof boundaries, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Data ownership, dependencies, shared kernel, and integration rules |
 | [Development operating model](./development-operating-model.md) | UI-first vertical slices, workstream sequence, S00–S06, Git, and CI/CD |
+| [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |
 | [Program plan](./program/custometry-program-plan.md) | W00/B01–B13/W14 dependencies, milestone gates, staged-artifact links, and requirement allocation |
 | [Documentation platform](./documentation-platform.md) | Docs as code, `/docs`, `/help`, visibility, and publication |
 | [Runtime, network, and installation](./runtime-network-installation.md) | Download-first installation, ports, networks, egress, resources, and container lessons |

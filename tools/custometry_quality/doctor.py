@@ -208,11 +208,12 @@ def _validate_version_pins(
 ) -> None:
     pin_files = {
         "node": root / ".node-version",
+        "node_nvm": root / ".nvmrc",
         "uv": root / ".uv-version",
         "pnpm": root / "package.json",
     }
     expected: dict[str, str] = {}
-    for tool in ("node", "uv"):
+    for tool in ("node", "node_nvm", "uv"):
         path = pin_files[tool]
         if not path.is_file():
             result.observed = False
@@ -223,6 +224,16 @@ def _validate_version_pins(
             result.add("tool-version-pin-invalid", f"invalid {tool} version pin: {value!r}", path)
             continue
         expected[tool] = value
+    if (
+        "node" in expected
+        and "node_nvm" in expected
+        and expected["node"] != expected["node_nvm"]
+    ):
+        result.add(
+            "tool-version-pin-drift",
+            ".node-version and .nvmrc must pin the same Node version",
+            pin_files["node_nvm"],
+        )
     package_path = pin_files["pnpm"]
     if not package_path.is_file():
         result.observed = False
@@ -243,6 +254,8 @@ def _validate_version_pins(
             else:
                 expected["pnpm"] = match.group(1)
     for tool, pin in expected.items():
+        if tool == "node_nvm":
+            continue
         actual = _reported_version(details, tool)
         if actual is None:
             continue
@@ -298,14 +311,50 @@ def _runtime_engines(
         except json.JSONDecodeError:
             result.add("container-context-info-invalid", f"context {name} returned invalid JSON")
             continue
+        server_errors = info.get("ServerErrors")
+        engine_name = info.get("Name")
+        engine_root = info.get("DockerRootDir")
+        server_version = info.get("ServerVersion")
+        cpu_count = info.get("NCPU")
+        memory_total = info.get("MemTotal")
+        server_errors_present = isinstance(server_errors, list) and bool(
+            cast(list[object], server_errors)
+        )
+        if (
+            server_errors_present
+            or not isinstance(engine_name, str)
+            or not engine_name.strip()
+            or not isinstance(engine_root, str)
+            or not engine_root.strip()
+            or not isinstance(server_version, str)
+            or not server_version.strip()
+            or not isinstance(cpu_count, int)
+            or cpu_count <= 0
+            or not isinstance(memory_total, int)
+            or memory_total <= 0
+        ):
+            result.add(
+                "container-context-engine-unhealthy",
+                f"context {name} returned an incomplete or unhealthy Docker server response",
+            )
+            continue
         if is_current:
             current_context = name
             current_info = info
-        identity = (str(info.get("Name", name)), str(info.get("DockerRootDir", endpoint)))
+        identity = (engine_name, engine_root)
         if identity in identities:
             continue
         identities.add(identity)
-        responsive.append({"context": name, "endpoint": endpoint, "engine": identity[0]})
+        responsive.append(
+            {
+                "context": name,
+                "endpoint": endpoint,
+                "engine": engine_name,
+                "architecture": str(info.get("Architecture", "unknown")),
+                "cpus": cpu_count,
+                "server_version": server_version,
+            }
+        )
     if current_markers != 1:
         result.add("container-current-context-invalid", f"expected one current context, got {current_markers}")
     elif current_info is None:

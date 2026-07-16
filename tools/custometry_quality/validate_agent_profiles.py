@@ -26,6 +26,7 @@ ENGLISH_AGENT_ARTIFACTS = (
     Path("SECURITY.md"),
     Path(".codex/AGENTS.md"),
     Path(".codex/PLANS.md"),
+    Path(".codex/agents/plan_template.md"),
     Path(".codex/agents/prompt_template.md"),
     Path(".codex/agents/stage_execution_ledger_template.md"),
     Path(".codex/agents/iteration_report_template.md"),

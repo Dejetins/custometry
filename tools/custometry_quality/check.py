@@ -18,6 +18,7 @@ from . import (
     gate_recovery,
     gate_sbom,
     generate_docs_index,
+    generate_program_requirement_matrix,
     generate_requirement_index,
     validate_agent_profiles,
     validate_blueprints,
@@ -58,6 +59,20 @@ def _static_checks() -> list[tuple[str, StaticCheck]]:
     return [
         ("blueprints", lambda root: validate_blueprints.check(root, Path("custometry-technical-blueprint-ru.md"), Path("custometry-technical-blueprint-human-ru.md"))),
         ("requirements", lambda root: generate_requirement_index.check(root, machine=Path("custometry-technical-blueprint-ru.md"), human=Path("custometry-technical-blueprint-human-ru.md"), output=Path("docs/generated/requirement-index.json"), check_mode=True)),
+        (
+            "program-requirements",
+            lambda root: generate_program_requirement_matrix.check(
+                root,
+                index_path=Path("docs/generated/requirement-index.json"),
+                routing_path=Path(
+                    "docs/architecture/program/requirement-routing.json"
+                ),
+                output_path=Path(
+                    "docs/architecture/program/requirement-matrix.json"
+                ),
+                check_mode=True,
+            ),
+        ),
         ("docs-index", _docs_indexes),
         ("docs-links", lambda root: check_docs_links.check(root)),
         ("layout", lambda root: validate_repository_layout.check(root)),

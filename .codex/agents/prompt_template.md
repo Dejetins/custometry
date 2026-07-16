@@ -52,21 +52,31 @@ proof_boundary:
   label: <exact-boundary>
   exclusions: [<what-this-does-not-prove>]
 prompt_pack_execution:
+  staged_schema_version: 1
+  readiness: outline
   enabled: false
+  workstream_id: null
   execution_mode: manual_sequential | goal_driven | null
   plan_doc: null
   prompt_pack_dir: null
   stage_ledger: null
   stage_id: null
-  predecessor_gate: null
+  predecessor_gate:
+    stage_id: null
+    allowed_statuses: []
   state_preconditions: []
+  # Empty only while this prompt is outline/disabled or its ledger is dormant.
+  # The active executable current stage must pin at least one reviewed source.
   required_source_hashes: {}
   branch_policy:
     default_branch: main
     separate_branch_requested: false
     allowed_branch: null
     per_stage_branches: forbidden
-  next_stage_rule: null
+  next_stage_rule:
+    candidate_stage: null
+    unlock_on: accepted
+    authority: stage_ledger
 ---
 
 # Objective
@@ -128,6 +138,7 @@ Classify applicable surfaces as `none`, `compatible-change`, `breaking-change`, 
 
 - [ ] <Observable outcome and requirement ID.>
 - [ ] `spec_version`, `requirement_ids`, state/hash preconditions, and branch policy are resolved for every staged prompt.
+- [ ] `readiness` and `enabled` agree: `outline/false` or `executable/true`.
 - [ ] Contract classification is complete.
 - [ ] File manifest and foreign exclusions are accurate.
 - [ ] Required evidence exists at the named boundary.

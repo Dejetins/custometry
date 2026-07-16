@@ -50,6 +50,7 @@ def simulated_network_failure(command: list[str]) -> bool:
 
 def doctor_pins(root: Path) -> None:
     write(root / ".node-version", "24.18.0\n")
+    write(root / ".nvmrc", "24.18.0\n")
     write(root / ".uv-version", "0.9.26\n")
     dump(root / "package.json", {"packageManager": "pnpm@11.13.0"})
 
@@ -93,6 +94,9 @@ def test_doctor_runtime_observes_engine_and_rejects_unavailable(
                         "Name": "desktop",
                         "DockerRootDir": "/var/lib/docker",
                         "MemTotal": 8_000_000_000,
+                        "NCPU": 11,
+                        "ServerVersion": "29.6.1",
+                        "Architecture": "aarch64",
                     }
                 ),
             )
@@ -113,6 +117,16 @@ def test_doctor_runtime_observes_engine_and_rejects_unavailable(
     )
     assert result.ok
     assert result.details["tools"]["pnpm"]["command"] == "corepack pnpm --version"
+    assert result.details["responsive_local_engines"] == [
+        {
+            "context": "desktop-linux",
+            "endpoint": "unix:///desktop.sock",
+            "engine": "desktop",
+            "architecture": "aarch64",
+            "cpus": 11,
+            "server_version": "29.6.1",
+        }
+    ]
     failed = doctor.check(
         tmp_path,
         mode="runtime",
@@ -154,6 +168,9 @@ def test_doctor_rejects_two_responsive_local_engines(
                         "Name": context,
                         "DockerRootDir": f"/var/lib/{context}",
                         "MemTotal": 8_000_000_000,
+                        "NCPU": 11,
+                        "ServerVersion": "29.6.1",
+                        "Architecture": "aarch64",
                     }
                 ),
             )
@@ -199,6 +216,9 @@ def test_doctor_writes_owned_runtime_env_atomically_and_refuses_overwrite(
                         "Name": "desktop",
                         "DockerRootDir": "/var/lib/docker",
                         "MemTotal": 8_000_000_000,
+                        "NCPU": 11,
+                        "ServerVersion": "29.6.1",
+                        "Architecture": "aarch64",
                     }
                 ),
             )
@@ -292,6 +312,76 @@ def test_doctor_rejects_tool_version_mismatch(
     )
     assert not result.ok
     assert any(item.code == "tool-version-mismatch" for item in result.findings)
+
+
+def test_doctor_rejects_nvm_pin_drift(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(doctor.sys, "version_info", (3, 12, 0))
+    doctor_pins(tmp_path)
+    write(tmp_path / ".nvmrc", "22.22.2\n")
+
+    def runner(command: list[str], **_: Any) -> subprocess.CompletedProcess[str]:
+        return completed(command, stdout=version_output(command))
+
+    result = doctor.check(
+        tmp_path,
+        mode="static",
+        min_free_gib=0,
+        which=lambda _command: "/bin/tool",
+        runner=runner,
+    )
+    assert not result.ok
+    assert any(item.code == "tool-version-pin-drift" for item in result.findings)
+
+
+def test_doctor_rejects_exit_zero_unhealthy_docker_server(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(doctor.sys, "version_info", (3, 12, 0))
+    doctor_pins(tmp_path)
+
+    def runner(command: list[str], **_: Any) -> subprocess.CompletedProcess[str]:
+        if command[:3] == ["docker", "context", "ls"]:
+            return completed(
+                command,
+                stdout=json.dumps(
+                    {
+                        "Current": True,
+                        "Name": "desktop-linux",
+                        "DockerEndpoint": "unix:///desktop.sock",
+                    }
+                )
+                + "\n",
+            )
+        if command[:3] == ["docker", "--context", "desktop-linux"]:
+            return completed(
+                command,
+                stdout=json.dumps(
+                    {
+                        "Name": "",
+                        "DockerRootDir": "",
+                        "MemTotal": 0,
+                        "NCPU": 0,
+                        "ServerVersion": "",
+                        "ServerErrors": ["Docker Desktop is unable to start"],
+                    }
+                ),
+            )
+        return completed(command, stdout=version_output(command))
+
+    result = doctor.check(
+        tmp_path,
+        mode="runtime",
+        min_free_gib=0,
+        which=lambda _command: "/bin/tool",
+        runner=runner,
+    )
+
+    assert not result.ok
+    assert any(item.code == "container-context-engine-unhealthy" for item in result.findings)
+    assert any(item.code == "container-current-engine-unavailable" for item in result.findings)
+    assert result.details["responsive_local_engines"] == []
 
 
 def test_cleanup_is_dry_run_and_requires_manifest_plus_confirmation(tmp_path: Path) -> None:

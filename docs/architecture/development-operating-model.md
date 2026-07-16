@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -30,23 +30,38 @@ The definition of progress is one user journey that reaches from its route and U
 
 | No. | Workstream | Verifiable result |
 |---|---|---|
-| 0 | Repository Foundation | Reproducible toolchain, governance, CI, contracts, doctor, and compact installation scaffolding |
-| 1 | Experience Platform | Frost design system, shell, route registry, generated mocks, system states, i18n/a11y, `/docs`, and `/help` |
-| 2 | Local Data Lab | Control PostgreSQL, demo-source PostgreSQL, migrations, and deterministic retail fixtures |
-| 3 | Identity and Control Plane | Real workspaces, sessions, RBAC, actor context, and audit |
-| 4 | Execution and Artifact Spine | Runs, outbox, leases, fencing, reconciler, and immutable artifact commit |
-| 5 | Data Foundation | Connections, catalog, ingestion, semantic model, and data quality |
-| 6 | Analytics Vertical Alpha | First real reportable slice: typed filters, vs LY, ChartSpec/ECharts, Trust, and Focus |
-| 7 | Operations | Runs/schedules/operator center/in-app notifications |
-| 8 | Customer Intelligence | Customers, cohorts, lifecycle, segments, and Promotion Journal |
-| 9 | Forecasting | Forecast specifications, rolling backtests, registry, predictions, and monitoring |
-| 10 | Reporting and Knowledge | Dashboards, ReportSnapshot composition, Data Guides, and user email |
-| 11 | Pipelines and Extensibility | Common-engine canvas, plugin contracts, and administrator lifecycle |
-| 12 | Hardening | Security, upgrade, recovery, SBOM/license/provenance, performance, and target-specific Edge firewall/CNI enforcement |
-| 13 | Universal XLSX | Final functional slice built on a stable ReportSnapshot |
-| 14 | Final Acceptance | Release evidence without adding feature scope |
+| `W00` | Repository Foundation | Reproducible toolchain, governance, CI, contracts, doctor, and M3 Pro Foundation proof |
+| `B01` | Experience Platform | Frost design system, shell, route registry, generated mocks, system states, i18n/a11y, `/docs`, and `/help` |
+| `B02` | Local Data Lab | Control PostgreSQL, demo-source PostgreSQL, migrations, and deterministic retail fixtures |
+| `B03` | Identity and Control Plane | Real workspaces, sessions, RBAC, actor context, object lifecycle, and audit |
+| `B04` | Execution, Compute and Artifact Spine | Runs, CPU compute, progress/ETA, outbox, leases, fencing, reconciliation, and immutable artifact commit |
+| `B05` | Data Foundation | Connections, catalog, ingestion, semantic model, metrics, filters, marts, and data quality |
+| `B06` | Analytics and Forecasting Vertical Alpha | First reportable analytics slice plus the minimum baseline forecast and rolling-backtest slice |
+| `B07` | Operations | Runs, schedules, Operator Center, and the public-MVP in-app notification subset |
+| `B08` | Customer Intelligence and Promotion Journal | Customers, cohorts, lifecycle, segments, and channel/client-scoped Promotion Journal |
+| `B09` | Forecasting Expansion | Forecast specifications, registry, prediction products, monitoring, and advanced comparison |
+| `B10` | Reporting and Knowledge | Dashboards, ReportSnapshot composition, Data Guides, user email, and cross-render reporting |
+| `B11` | Pipelines, Extensibility and Operational Channels | Common-engine canvas, plugin contracts, administrator lifecycle, and operational email/webhook channels |
+| `B12` | Production Hardening | Security consolidation, upgrade, recovery, SBOM/license/provenance, performance, and target-specific firewall/CNI enforcement |
+| `B13` | Universal XLSX | Final functional slice built on a stable ReportSnapshot |
+| `W14` | Final Acceptance | Release evidence without adding feature scope |
 
-This order is an architectural dependency sequence. A detailed plan, iteration journal, and prompt pack are created only after the specific workstream is approved separately.
+The canonical names, dependency graph, requirement ownership, and release participation are defined in the [program plan](./program/custometry-program-plan.md) and its machine-readable routing source.
+
+`W00 Repository Foundation` and the `product_foundation` release milestone are distinct. W00 proves repository and delivery preparation. Product Foundation is terminated by B04 and proves the first usable product runtime spine.
+
+Product workstreams are long-lived capability owners rather than one-pass modules. They can participate in multiple release milestones through allocation/architecture (`A`), implementation proof (`P`), and milestone verification (`V`) checkpoints. A detailed S00–S06 iteration remains scoped to one accepted slice and one ledger state.
+
+The terminal milestone sequence is:
+
+| Milestone | Terminal workstream |
+|---|---|
+| `repository_foundation` | `W00` |
+| `product_foundation` | `B04` |
+| `vertical_alpha` | `B06` |
+| `public_mvp` | `B12` |
+| `v1_feature_freeze` | `B13` |
+| `v1_target` | `W14` |
 
 ## 3. Common S00–S06 framework
 
@@ -60,7 +75,14 @@ This order is an architectural dependency sequence. A detailed plan, iteration j
 | S05 Real-boundary Proof | Integrated slice | clean install/DB, Compose, restart, retry, cancellation, recovery, telemetry | reproducible nearest-boundary evidence and residual risks |
 | S06 Acceptance | All previous exits observed | docs/runbook, requirement traceability, rollback, security/performance if triggered, cold review | no blocker; accepted artifact/evidence inventory |
 
-Stage names standardize criteria but do not automatically create staged artifacts. When execution becomes staged, exactly `plan_doc + prompt_pack_dir + stage_ledger` applies, and reports are stored alongside the ledger.
+Stage names standardize criteria but do not automatically create staged
+artifacts. When execution becomes staged, exactly
+`plan_doc + prompt_pack_dir + stage_ledger` applies, and reports are stored
+alongside the ledger. The union of S00–S06 requirement IDs equals the plan
+requirement set. A dormant or disabled prompt may leave
+`required_source_hashes` empty; the active executable current stage must pin at
+least one reviewed repository source and passes only while every declared hash
+still matches.
 
 ## 4. Git workflow
 
@@ -118,7 +140,9 @@ uv run python -m tools.check --scope ci
 uv run python -m tools.check --scope release
 ```
 
-- `pre-commit` includes all 12 deterministic source checks: blueprints, generated indexes, links, layout, staged artifacts, profiles, DDD, contracts, routes, i18n, and fixtures.
+- `pre-commit` includes all 13 deterministic source checks: blueprints,
+  requirement index, program matrix, documentation indexes, links, layout,
+  staged artifacts, profiles, DDD, contracts, routes, i18n, and fixtures.
 - `local` is pre-commit plus `doctor --mode static`; it is the normal handoff profile.
 - `pre-push` is local plus migration, Compose, and browser static contracts.
 - `ci` has exact parity with pre-push and does not depend on a local hook.

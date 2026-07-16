@@ -1,0 +1,1342 @@
+{
+  "schema_version": 1,
+  "spec_version": "0.8.2-draft",
+  "milestones": [
+    "repository_foundation",
+    "product_foundation",
+    "vertical_alpha",
+    "public_mvp",
+    "v1_feature_freeze",
+    "v1_target"
+  ],
+  "terminal_milestones": {
+    "repository_foundation": "W00",
+    "product_foundation": "B04",
+    "vertical_alpha": "B06",
+    "public_mvp": "B12",
+    "v1_feature_freeze": "B13",
+    "v1_target": "W14"
+  },
+  "milestone_terminal_stages": {
+    "repository_foundation": "foundation_proof",
+    "product_foundation": "S06",
+    "vertical_alpha": "S06",
+    "public_mvp": "S05",
+    "v1_feature_freeze": "S06",
+    "v1_target": "S06"
+  },
+  "workstream_release_milestones": {
+    "W00": ["repository_foundation"],
+    "B01": ["product_foundation", "vertical_alpha", "public_mvp", "v1_target"],
+    "B02": ["product_foundation", "vertical_alpha", "public_mvp", "v1_target"],
+    "B03": ["product_foundation", "vertical_alpha", "public_mvp", "v1_target"],
+    "B04": ["product_foundation", "vertical_alpha", "public_mvp", "v1_target"],
+    "B05": ["vertical_alpha", "public_mvp", "v1_target"],
+    "B06": ["vertical_alpha", "public_mvp", "v1_target"],
+    "B07": ["public_mvp", "v1_target"],
+    "B08": ["public_mvp", "v1_target"],
+    "B09": ["public_mvp", "v1_target"],
+    "B10": ["public_mvp", "v1_target"],
+    "B11": ["v1_target"],
+    "B12": ["public_mvp", "v1_feature_freeze", "v1_target"],
+    "B13": ["v1_feature_freeze", "v1_target"],
+    "W14": ["v1_target"]
+  },
+  "workstream_dependencies": {
+    "W00": {"hard": [], "soft": []},
+    "B01": {"hard": ["W00"], "soft": []},
+    "B02": {"hard": ["W00"], "soft": ["B01"]},
+    "B03": {"hard": ["B01", "B02"], "soft": []},
+    "B04": {"hard": ["B02", "B03"], "soft": ["B01"]},
+    "B05": {"hard": ["B02", "B03", "B04"], "soft": ["B01"]},
+    "B06": {"hard": ["B01", "B02", "B03", "B04", "B05"], "soft": []},
+    "B07": {"hard": ["B01", "B03", "B04", "B06"], "soft": ["B05"]},
+    "B08": {
+      "hard": ["B01", "B03", "B04", "B05", "B06"],
+      "soft": ["B07"]
+    },
+    "B09": {"hard": ["B04", "B05", "B06", "B08"], "soft": ["B07"]},
+    "B10": {
+      "hard": ["B01", "B03", "B04", "B05", "B06", "B07", "B08", "B09"],
+      "soft": []
+    },
+    "B11": {
+      "hard": ["B04", "B07", "B10"],
+      "soft": ["B05", "B08", "B09"]
+    },
+    "B12": {
+      "hard": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10"
+      ],
+      "soft": ["B11"]
+    },
+    "B13": {"hard": ["B10", "B11", "B12"], "soft": ["B06", "B08", "B09"]},
+    "W14": {
+      "hard": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12",
+        "B13"
+      ],
+      "soft": []
+    }
+  },
+  "release_scopes": [
+    "repository_foundation",
+    "product_foundation",
+    "vertical_alpha",
+    "public_mvp",
+    "v1_feature_freeze",
+    "v1_target",
+    "cross_release"
+  ],
+  "evidence_types": [
+    "governance_check",
+    "domain_unit_or_property",
+    "contract_schema",
+    "postgresql_migration_or_integration",
+    "adapter_real_boundary",
+    "browser_e2e",
+    "compose_or_host_runtime",
+    "recovery_drill",
+    "performance_benchmark",
+    "supply_chain",
+    "release_acceptance"
+  ],
+  "workstreams": {
+    "W00": {"name": "Repository Foundation", "slug": "repository-foundation"},
+    "B01": {"name": "Experience Platform", "slug": "experience-platform"},
+    "B02": {"name": "Local Data Lab", "slug": "local-data-lab"},
+    "B03": {"name": "Identity and Control Plane", "slug": "identity-control-plane"},
+    "B04": {
+      "name": "Execution, Compute and Artifact Spine",
+      "slug": "execution-compute-artifact-spine"
+    },
+    "B05": {"name": "Data Foundation", "slug": "data-foundation"},
+    "B06": {
+      "name": "Analytics and Forecasting Vertical Alpha",
+      "slug": "analytics-forecasting-vertical-alpha"
+    },
+    "B07": {"name": "Operations", "slug": "operations"},
+    "B08": {
+      "name": "Customer Intelligence and Promotion Journal",
+      "slug": "customer-intelligence-promotion-journal"
+    },
+    "B09": {"name": "Forecasting Expansion", "slug": "forecasting-expansion"},
+    "B10": {"name": "Reporting and Knowledge", "slug": "reporting-knowledge"},
+    "B11": {
+      "name": "Pipelines, Extensibility and Operational Channels",
+      "slug": "pipelines-extensibility-operational-channels"
+    },
+    "B12": {"name": "Production Hardening", "slug": "production-hardening"},
+    "B13": {"name": "Universal XLSX", "slug": "universal-xlsx"},
+    "W14": {"name": "Final Acceptance", "slug": "final-acceptance"}
+  },
+  "profiles": {
+    "governance": {
+      "requirement_kind": "governance_policy",
+      "implementation_evidence": ["governance_check"],
+      "acceptance_evidence": ["governance_check"]
+    },
+    "decision": {
+      "requirement_kind": "accepted_decision",
+      "implementation_evidence": ["governance_check", "contract_schema"],
+      "acceptance_evidence": ["governance_check"]
+    },
+    "open_decision": {
+      "requirement_kind": "open_decision",
+      "implementation_evidence": ["governance_check", "contract_schema"],
+      "acceptance_evidence": ["governance_check"]
+    },
+    "browser": {
+      "requirement_kind": "product_requirement",
+      "implementation_evidence": ["contract_schema", "browser_e2e"],
+      "acceptance_evidence": ["browser_e2e"]
+    },
+    "browser_accessibility": {
+      "requirement_kind": "accessibility_requirement",
+      "implementation_evidence": ["browser_e2e"],
+      "acceptance_evidence": ["browser_e2e", "release_acceptance"]
+    },
+    "domain": {
+      "requirement_kind": "domain_requirement",
+      "implementation_evidence": ["domain_unit_or_property", "contract_schema"],
+      "acceptance_evidence": ["adapter_real_boundary"]
+    },
+    "data": {
+      "requirement_kind": "data_requirement",
+      "implementation_evidence": [
+        "domain_unit_or_property",
+        "contract_schema",
+        "postgresql_migration_or_integration"
+      ],
+      "acceptance_evidence": ["adapter_real_boundary"]
+    },
+    "execution": {
+      "requirement_kind": "execution_requirement",
+      "implementation_evidence": [
+        "domain_unit_or_property",
+        "contract_schema",
+        "postgresql_migration_or_integration"
+      ],
+      "acceptance_evidence": ["adapter_real_boundary", "compose_or_host_runtime"]
+    },
+    "delivery": {
+      "requirement_kind": "delivery_requirement",
+      "implementation_evidence": ["contract_schema", "adapter_real_boundary"],
+      "acceptance_evidence": ["compose_or_host_runtime", "release_acceptance"]
+    },
+    "security": {
+      "requirement_kind": "security_requirement",
+      "implementation_evidence": [
+        "domain_unit_or_property",
+        "contract_schema",
+        "adapter_real_boundary"
+      ],
+      "acceptance_evidence": ["compose_or_host_runtime", "release_acceptance"]
+    },
+    "operations": {
+      "requirement_kind": "operations_requirement",
+      "implementation_evidence": ["contract_schema", "compose_or_host_runtime"],
+      "acceptance_evidence": ["recovery_drill", "release_acceptance"]
+    },
+    "release": {
+      "requirement_kind": "release_requirement",
+      "implementation_evidence": [
+        "compose_or_host_runtime",
+        "performance_benchmark",
+        "supply_chain"
+      ],
+      "acceptance_evidence": ["release_acceptance"]
+    },
+    "acceptance_browser": {
+      "requirement_kind": "acceptance_criterion",
+      "implementation_evidence": ["browser_e2e"],
+      "acceptance_evidence": ["browser_e2e", "release_acceptance"]
+    },
+    "acceptance_data": {
+      "requirement_kind": "acceptance_criterion",
+      "implementation_evidence": [
+        "contract_schema",
+        "postgresql_migration_or_integration",
+        "adapter_real_boundary"
+      ],
+      "acceptance_evidence": ["adapter_real_boundary", "release_acceptance"]
+    },
+    "acceptance_execution": {
+      "requirement_kind": "acceptance_criterion",
+      "implementation_evidence": [
+        "domain_unit_or_property",
+        "postgresql_migration_or_integration",
+        "adapter_real_boundary"
+      ],
+      "acceptance_evidence": ["compose_or_host_runtime", "release_acceptance"]
+    },
+    "acceptance_release": {
+      "requirement_kind": "acceptance_criterion",
+      "implementation_evidence": [
+        "compose_or_host_runtime",
+        "recovery_drill",
+        "performance_benchmark",
+        "supply_chain"
+      ],
+      "acceptance_evidence": ["release_acceptance"]
+    },
+    "acceptance_cross_render": {
+      "requirement_kind": "acceptance_criterion",
+      "implementation_evidence": ["contract_schema", "browser_e2e", "adapter_real_boundary"],
+      "acceptance_evidence": ["release_acceptance"]
+    },
+    "test_domain": {
+      "requirement_kind": "test_invariant",
+      "implementation_evidence": ["domain_unit_or_property"],
+      "acceptance_evidence": ["adapter_real_boundary"]
+    },
+    "test_data": {
+      "requirement_kind": "test_invariant",
+      "implementation_evidence": [
+        "domain_unit_or_property",
+        "postgresql_migration_or_integration"
+      ],
+      "acceptance_evidence": ["adapter_real_boundary"]
+    },
+    "test_browser": {
+      "requirement_kind": "test_invariant",
+      "implementation_evidence": ["browser_e2e"],
+      "acceptance_evidence": ["browser_e2e"]
+    },
+    "test_runtime": {
+      "requirement_kind": "test_invariant",
+      "implementation_evidence": ["adapter_real_boundary", "compose_or_host_runtime"],
+      "acceptance_evidence": ["compose_or_host_runtime", "release_acceptance"]
+    },
+    "test_security": {
+      "requirement_kind": "test_invariant",
+      "implementation_evidence": ["domain_unit_or_property", "adapter_real_boundary"],
+      "acceptance_evidence": ["compose_or_host_runtime", "release_acceptance"]
+    },
+    "test_cross_render": {
+      "requirement_kind": "test_invariant",
+      "implementation_evidence": ["contract_schema", "browser_e2e", "adapter_real_boundary"],
+      "acceptance_evidence": ["release_acceptance"]
+    },
+    "gap": {
+      "requirement_kind": "resolved_gap",
+      "implementation_evidence": ["governance_check", "contract_schema"],
+      "acceptance_evidence": ["adapter_real_boundary"]
+    },
+    "risk": {
+      "requirement_kind": "risk_control",
+      "implementation_evidence": ["governance_check", "contract_schema"],
+      "acceptance_evidence": ["release_acceptance"]
+    },
+    "use_case": {
+      "requirement_kind": "use_case",
+      "implementation_evidence": ["contract_schema", "browser_e2e"],
+      "acceptance_evidence": ["browser_e2e", "adapter_real_boundary"]
+    },
+    "journey": {
+      "requirement_kind": "user_journey",
+      "implementation_evidence": ["contract_schema", "browser_e2e"],
+      "acceptance_evidence": ["browser_e2e", "compose_or_host_runtime"]
+    },
+    "screen_reference": {
+      "requirement_kind": "screen_reference",
+      "implementation_evidence": ["governance_check", "browser_e2e"],
+      "acceptance_evidence": ["browser_e2e"]
+    }
+  },
+  "rules": [
+    {
+      "selectors": ["DOC-RULE-*", "GOAL-*", "NON-GOAL-*", "ARCH-PRINCIPLE-*"],
+      "profile": "governance",
+      "primary_workstream": "W00",
+      "contributing_workstreams": ["W14"],
+      "first_required_milestone": "repository_foundation",
+      "release_scope": "cross_release",
+      "notes": "Program governance is established in W00 and rechecked by W14."
+    },
+    {
+      "selectors": ["ADR-*", "RESOLVED-*"],
+      "profile": "decision",
+      "primary_workstream": "W00",
+      "contributing_workstreams": ["W14"],
+      "first_required_milestone": "repository_foundation",
+      "release_scope": "cross_release",
+      "notes": "W00 owns the accepted-decision registry; feature workstreams adopt the applicable decision."
+    },
+    {
+      "selectors": ["UI-SHELL-*"],
+      "profile": "browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": [],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UI-DENSITY-*"],
+      "profile": "browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B05", "B06", "B08", "B09", "B10"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["A11Y-*"],
+      "profile": "browser_accessibility",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B11", "B12"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["THEME-*"],
+      "profile": "browser_accessibility",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B10", "B12", "B13"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["I18N-001", "I18N-002", "I18N-004..I18N-007", "I18N-009", "I18N-010"],
+      "profile": "browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B03", "B05", "B06", "B07", "B09", "B10"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["I18N-003", "I18N-008", "I18N-011"],
+      "profile": "browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B10", "B11"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["ROUTE-*"],
+      "profile": "browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B03"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["MOTION-*", "SYS-UI-*", "HELP-*"],
+      "profile": "browser_accessibility",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B07", "B11", "B12"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["UI-AN-001"],
+      "profile": "screen_reference",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release",
+      "status": "reference_only",
+      "notes": "Screen ID referenced by UI-DENSITY-003; route-registry traceability covers the complete UI-AN set."
+    },
+    {
+      "selectors": ["UI-DQ-001"],
+      "profile": "screen_reference",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B01"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release",
+      "status": "reference_only",
+      "notes": "Screen ID referenced by UI-DENSITY-003; it is not a separately defined product requirement."
+    },
+    {
+      "selectors": ["OBJ-STATE-*", "API-*"],
+      "profile": "domain",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["AUTH-001"],
+      "profile": "security",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B01"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["AUTH-002..AUTH-011"],
+      "profile": "security",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B01", "B12"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["RBAC-*"],
+      "profile": "security",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11", "B12", "B13"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["ARTIFACT-*", "EXEC-STATE-*", "EXEC-DISPATCH-*", "EXEC-CANCEL-*"],
+      "profile": "execution",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B03", "B05", "B06", "B07", "B09", "B10", "B11", "B13"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["COMPUTE-*", "PROGRESS-*"],
+      "profile": "execution",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B01", "B05", "B06", "B07", "B09", "B10", "B12", "B13"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["DATA-RULE-*", "METRIC-*", "CAPABILITY-*", "MART-GRAIN-*"],
+      "profile": "data",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B06", "B08", "B09", "B10", "B13"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["IDENTITY-*", "FILTER-*", "INGEST-*", "DQ-REMEDIATE-*"],
+      "profile": "data",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B06", "B08", "B09", "B10", "B13"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["COMPARE-*", "FOCUS-*"],
+      "profile": "browser",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01", "B04", "B05", "B08", "B09", "B10", "B13"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": [
+        "CHART-001..CHART-006",
+        "CHART-009..CHART-011",
+        "CHART-014..CHART-017"
+      ],
+      "profile": "browser",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01", "B04", "B05", "B10", "B12", "B13"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["CHART-007", "CHART-008"],
+      "profile": "browser",
+      "primary_workstream": "B08",
+      "contributing_workstreams": ["B06", "B10", "B13"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["CHART-012", "CHART-013", "CHART-018"],
+      "profile": "delivery",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B04", "B06", "B12", "B13"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["CHART-019"],
+      "profile": "release",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["B01", "B06", "B08", "B10", "B13", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["SCHEDULE-*"],
+      "profile": "operations",
+      "primary_workstream": "B07",
+      "contributing_workstreams": ["B03", "B04"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["NOTIFY-001..NOTIFY-005", "NOTIFY-007"],
+      "profile": "delivery",
+      "primary_workstream": "B07",
+      "contributing_workstreams": ["B01", "B03", "B04"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["NOTIFY-006", "NOTIFY-008..NOTIFY-015"],
+      "profile": "delivery",
+      "primary_workstream": "B11",
+      "contributing_workstreams": ["B03", "B04", "B07", "B12"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["PROMO-*"],
+      "profile": "domain",
+      "primary_workstream": "B08",
+      "contributing_workstreams": ["B05", "B06", "B09", "B10"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["DASHBOARD-*"],
+      "profile": "browser",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B05", "B06", "B08", "B09"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["DATA-GUIDE-*"],
+      "profile": "delivery",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B05", "B13"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["REPORT-*", "REPORT-MAIL-*"],
+      "profile": "delivery",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B06", "B08", "B09", "B12", "B13"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["XLSX-*"],
+      "profile": "delivery",
+      "primary_workstream": "B13",
+      "contributing_workstreams": ["B04", "B05", "B06", "B08", "B09", "B10", "B12"],
+      "first_required_milestone": "v1_feature_freeze",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["SEC-016", "SEC-017"],
+      "profile": "security",
+      "primary_workstream": "W00",
+      "contributing_workstreams": ["B01", "B03", "B12", "W14"],
+      "first_required_milestone": "repository_foundation",
+      "release_scope": "cross_release",
+      "notes": "W00 establishes and proves the secretless Edge adapter and split-network baseline; B12 later supplies target-specific production hardening."
+    },
+    {
+      "selectors": ["SEC-002"],
+      "profile": "security",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B03", "B12", "W14"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["SEC-007", "SEC-008", "SEC-010", "SEC-012", "SEC-013"],
+      "profile": "security",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B01", "B04", "B07", "B10", "B12", "W14"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["SEC-003", "SEC-004"],
+      "profile": "security",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B02", "B03", "B10", "B12", "B13", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["SEC-014"],
+      "profile": "security",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01", "B03", "B04", "B10", "B12", "B13", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["SEC-005"],
+      "profile": "security",
+      "primary_workstream": "B09",
+      "contributing_workstreams": ["B03", "B04", "B06", "B12", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["SEC-011", "SEC-015"],
+      "profile": "security",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B12", "B13", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["SEC-001", "SEC-018"],
+      "profile": "security",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["W00", "B01", "B03", "B04", "B11", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["SEC-006"],
+      "profile": "security",
+      "primary_workstream": "B11",
+      "contributing_workstreams": ["B03", "B04", "B10", "B12", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["SEC-009"],
+      "profile": "security",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["W00", "B03", "B04", "B11", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["OPS-*"],
+      "profile": "operations",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["B04", "B05", "B07", "B09", "B10", "B11", "B13"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["SCALE-*"],
+      "profile": "release",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["B04", "B05", "B06", "B09", "B10", "B13"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["ADMIN-001", "ADMIN-003", "ADMIN-005"],
+      "profile": "operations",
+      "primary_workstream": "B07",
+      "contributing_workstreams": ["B03", "B04", "B11", "B12"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["ADMIN-008"],
+      "profile": "execution",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B01", "B12"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["ADMIN-009"],
+      "profile": "delivery",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B03", "B12"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["ADMIN-002", "ADMIN-004", "ADMIN-006", "ADMIN-007", "ADMIN-010", "ADMIN-011"],
+      "profile": "operations",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["B01", "B03", "B04", "B07", "B10", "B11"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["OPEN-007"],
+      "profile": "open_decision",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B06", "B08"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "vertical_alpha",
+      "decision_gate": "B05-S01",
+      "status": "open",
+      "notes": "Must be resolved by B05 S01 exit before customer analytics is accepted."
+    },
+    {
+      "selectors": ["OPEN-008"],
+      "profile": "open_decision",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B05", "B09"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "vertical_alpha",
+      "decision_gate": "B06-S01",
+      "status": "open",
+      "notes": "Must be resolved by B06 S01 exit because vertical alpha includes a forecast target."
+    },
+    {
+      "selectors": ["UC-001..UC-003", "UC-009"],
+      "profile": "use_case",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B01", "B02", "B03", "B04"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UC-004", "UC-012", "UC-017", "UC-018"],
+      "profile": "use_case",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B08", "B09", "B10", "B13"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UC-005"],
+      "profile": "use_case",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B09"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release",
+      "notes": "B06 owns the complete baseline comparison and publication journey required by Vertical Alpha; B09 extends the lifecycle after that gate."
+    },
+    {
+      "selectors": ["UC-006"],
+      "profile": "use_case",
+      "primary_workstream": "B11",
+      "contributing_workstreams": ["B01", "B04", "B05", "B06"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["UC-007", "UC-011", "UC-014", "UC-016"],
+      "profile": "use_case",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B06", "B08", "B09"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UC-008"],
+      "profile": "use_case",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B01", "B02"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UC-010"],
+      "profile": "use_case",
+      "primary_workstream": "B07",
+      "contributing_workstreams": ["B01", "B03", "B04"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UC-013"],
+      "profile": "use_case",
+      "primary_workstream": "B08",
+      "contributing_workstreams": ["B01", "B03", "B05", "B06"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["UC-015"],
+      "profile": "use_case",
+      "primary_workstream": "B13",
+      "contributing_workstreams": ["B10", "B12"],
+      "first_required_milestone": "v1_feature_freeze",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["JOURNEY-001"],
+      "profile": "journey",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B01", "B02"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["JOURNEY-002", "JOURNEY-003"],
+      "profile": "journey",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B01", "B02", "B03", "B04"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["JOURNEY-004"],
+      "profile": "journey",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B10"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["JOURNEY-005"],
+      "profile": "journey",
+      "primary_workstream": "B09",
+      "contributing_workstreams": ["B06", "B07"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["JOURNEY-006"],
+      "profile": "journey",
+      "primary_workstream": "B07",
+      "contributing_workstreams": ["B03", "B04", "B12"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UX-JOURNEY-001", "UX-JOURNEY-002", "UX-JOURNEY-006"],
+      "profile": "browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B03", "B05", "B06", "B07", "B08", "B09", "B10", "B11"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UX-JOURNEY-003", "UX-JOURNEY-004"],
+      "profile": "execution",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B01", "B05", "B06", "B09", "B11"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["UX-JOURNEY-005"],
+      "profile": "browser",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B05", "B08", "B09", "B10", "B13"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["AC-028", "AC-029"],
+      "profile": "acceptance_browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B12", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-016"],
+      "profile": "acceptance_data",
+      "primary_workstream": "B02",
+      "contributing_workstreams": ["B05", "B06", "B09", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-013", "AC-017..AC-020", "AC-031"],
+      "profile": "acceptance_execution",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B01", "B12", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-011", "AC-012", "AC-023", "AC-025", "AC-033", "AC-036", "AC-037"],
+      "profile": "acceptance_execution",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B03", "B07", "B11", "B12", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-001..AC-006", "AC-021", "AC-022", "AC-024", "AC-035", "AC-039"],
+      "profile": "acceptance_data",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B02", "B06", "B08", "B12", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-007", "AC-008"],
+      "profile": "acceptance_data",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B02", "B05", "B08", "B10", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-027", "AC-030", "AC-040"],
+      "profile": "acceptance_execution",
+      "primary_workstream": "B07",
+      "contributing_workstreams": ["B01", "B03", "B04", "B11", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-009", "AC-010", "AC-038"],
+      "profile": "acceptance_data",
+      "primary_workstream": "B09",
+      "contributing_workstreams": ["B05", "B06", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-026", "AC-032"],
+      "profile": "acceptance_browser",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B05", "B06", "B08", "B09", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["AC-014", "AC-015", "AC-034"],
+      "profile": "acceptance_release",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["W00", "B02", "B03", "B04", "B05", "B07", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "public_mvp"
+    },
+    {
+      "selectors": ["V1-AC-007", "V1-AC-017", "V1-AC-018"],
+      "profile": "acceptance_browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B03", "B10", "B12", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["V1-AC-005", "V1-AC-006"],
+      "profile": "acceptance_execution",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B01", "B12", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["V1-AC-002"],
+      "profile": "acceptance_data",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B01", "B03", "B06", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["V1-AC-001", "V1-AC-016"],
+      "profile": "acceptance_browser",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B08", "B09", "B10", "B13", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["V1-AC-003", "V1-AC-014"],
+      "profile": "acceptance_cross_render",
+      "primary_workstream": "B08",
+      "contributing_workstreams": ["B01", "B03", "B05", "B06", "B10", "B13", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["V1-AC-004", "V1-AC-008..V1-AC-010", "V1-AC-015"],
+      "profile": "acceptance_cross_render",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B06", "B08", "B09", "B12", "B13", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["V1-AC-013", "V1-AC-019"],
+      "profile": "acceptance_release",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["B01", "B06", "B07", "B10", "B11", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["V1-AC-011", "V1-AC-012"],
+      "profile": "acceptance_cross_render",
+      "primary_workstream": "B13",
+      "contributing_workstreams": ["B01", "B05", "B06", "B08", "B09", "B10", "B12", "W14"],
+      "first_required_milestone": "v1_feature_freeze",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["TEST-INV-022", "TEST-INV-023", "TEST-INV-042", "TEST-INV-050", "TEST-INV-051"],
+      "profile": "test_browser",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B12", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["TEST-INV-007", "TEST-INV-018", "TEST-INV-019"],
+      "profile": "test_security",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B12", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": [
+        "TEST-INV-005",
+        "TEST-INV-006",
+        "TEST-INV-014",
+        "TEST-INV-015",
+        "TEST-INV-020",
+        "TEST-INV-024",
+        "TEST-INV-027",
+        "TEST-INV-040",
+        "TEST-INV-041"
+      ],
+      "profile": "test_runtime",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B02", "B03", "B07", "B12", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": [
+        "TEST-INV-001",
+        "TEST-INV-010..TEST-INV-013",
+        "TEST-INV-016",
+        "TEST-INV-017",
+        "TEST-INV-026",
+        "TEST-INV-028",
+        "TEST-INV-031",
+        "TEST-INV-034"
+      ],
+      "profile": "test_data",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B02", "B06", "B08", "B12", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["TEST-INV-003", "TEST-INV-008", "TEST-INV-033", "TEST-INV-043", "TEST-INV-049"],
+      "profile": "test_cross_render",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01", "B02", "B05", "B10", "B12", "B13", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["TEST-INV-002", "TEST-INV-035", "TEST-INV-045"],
+      "profile": "test_domain",
+      "primary_workstream": "B08",
+      "contributing_workstreams": ["B05", "B06", "B10", "B13", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["TEST-INV-004", "TEST-INV-009", "TEST-INV-030"],
+      "profile": "test_data",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B02", "B05", "B09", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["TEST-INV-021", "TEST-INV-036", "TEST-INV-037", "TEST-INV-039", "TEST-INV-048"],
+      "profile": "test_cross_render",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B06", "B12", "B13", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["TEST-INV-029"],
+      "profile": "test_security",
+      "primary_workstream": "B11",
+      "contributing_workstreams": ["B03", "B04", "B07", "B12", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["TEST-INV-025", "TEST-INV-046", "TEST-INV-052"],
+      "profile": "test_runtime",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["B01", "B03", "B04", "B06", "B07", "B10", "B11", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["TEST-INV-032", "TEST-INV-038", "TEST-INV-044", "TEST-INV-047"],
+      "profile": "test_cross_render",
+      "primary_workstream": "B13",
+      "contributing_workstreams": ["B01", "B02", "B05", "B06", "B08", "B09", "B10", "B12", "W14"],
+      "first_required_milestone": "v1_feature_freeze",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["GAP-021", "GAP-034", "GAP-035", "GAP-046"],
+      "profile": "gap",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B12"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-012", "GAP-022", "GAP-032", "GAP-033"],
+      "profile": "gap",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B01", "B04", "B12"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-008", "GAP-010", "GAP-011", "GAP-026", "GAP-028", "GAP-044", "GAP-045"],
+      "profile": "gap",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B05", "B06", "B07", "B09", "B10", "B12", "B13"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": [
+        "GAP-001..GAP-007",
+        "GAP-009",
+        "GAP-023..GAP-025",
+        "GAP-027",
+        "GAP-029",
+        "GAP-030",
+        "GAP-039"
+      ],
+      "profile": "gap",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B06", "B08", "B09", "B10"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-037", "GAP-047"],
+      "profile": "gap",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B01", "B05", "B10", "B13"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-036"],
+      "profile": "gap",
+      "primary_workstream": "B07",
+      "contributing_workstreams": ["B11"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-038", "GAP-049"],
+      "profile": "gap",
+      "primary_workstream": "B08",
+      "contributing_workstreams": ["B05", "B06", "B10", "B13"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["GAP-013", "GAP-015"],
+      "profile": "gap",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B05", "B09"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-014", "GAP-016"],
+      "profile": "gap",
+      "primary_workstream": "B09",
+      "contributing_workstreams": ["B05", "B06"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-031", "GAP-040", "GAP-041", "GAP-043", "GAP-048"],
+      "profile": "gap",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B01", "B03", "B04", "B05", "B06", "B08", "B09", "B12", "B13"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-020"],
+      "profile": "gap",
+      "primary_workstream": "B11",
+      "contributing_workstreams": ["B01", "B04", "B05", "B06"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["GAP-017..GAP-019"],
+      "profile": "gap",
+      "primary_workstream": "B12",
+      "contributing_workstreams": ["W00", "B02", "B04", "B05", "B07", "B10", "B13"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["GAP-042"],
+      "profile": "gap",
+      "primary_workstream": "B13",
+      "contributing_workstreams": ["B10", "B12"],
+      "first_required_milestone": "v1_feature_freeze",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["RISK-001"],
+      "profile": "risk",
+      "primary_workstream": "W00",
+      "contributing_workstreams": ["W14"],
+      "first_required_milestone": "repository_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["RISK-010"],
+      "profile": "risk",
+      "primary_workstream": "B01",
+      "contributing_workstreams": ["B12", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["RISK-002", "RISK-006", "RISK-011"],
+      "profile": "risk",
+      "primary_workstream": "B05",
+      "contributing_workstreams": ["B10", "B12", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["RISK-003", "RISK-009", "RISK-016"],
+      "profile": "risk",
+      "primary_workstream": "B04",
+      "contributing_workstreams": ["B12", "W14"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["RISK-018", "RISK-020"],
+      "profile": "risk",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B10", "B12", "B13", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["RISK-012"],
+      "profile": "risk",
+      "primary_workstream": "B08",
+      "contributing_workstreams": ["B06", "B10", "W14"],
+      "first_required_milestone": "public_mvp",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["RISK-005"],
+      "profile": "risk",
+      "primary_workstream": "B06",
+      "contributing_workstreams": ["B09", "B12", "W14"],
+      "first_required_milestone": "vertical_alpha",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["RISK-013", "RISK-014", "RISK-017", "RISK-019"],
+      "profile": "risk",
+      "primary_workstream": "B10",
+      "contributing_workstreams": ["B03", "B04", "B12", "B13", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["RISK-004", "RISK-007"],
+      "profile": "risk",
+      "primary_workstream": "B11",
+      "contributing_workstreams": ["B01", "B04", "B12", "W14"],
+      "first_required_milestone": "v1_target",
+      "release_scope": "v1_target"
+    },
+    {
+      "selectors": ["RISK-008"],
+      "profile": "risk",
+      "primary_workstream": "B03",
+      "contributing_workstreams": ["B05", "B10", "B12", "B13", "W14"],
+      "first_required_milestone": "product_foundation",
+      "release_scope": "cross_release"
+    },
+    {
+      "selectors": ["RISK-015"],
+      "profile": "risk",
+      "primary_workstream": "B13",
+      "contributing_workstreams": ["B10", "B12", "W14"],
+      "first_required_milestone": "v1_feature_freeze",
+      "release_scope": "v1_target"
+    }
+  ]
+}

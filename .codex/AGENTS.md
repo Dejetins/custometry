@@ -270,6 +270,16 @@ Use subagents for concrete independent subtasks. Exactly one cold read-only revi
 
 ## 9. Staged plans and prompt packs
 
+A staged program is anchored by the canonical Program Plan, reviewed
+requirement-routing source, and generated requirement matrix. These artifacts
+define ownership, dependencies, release participation, terminal milestone
+gates, and expected evidence. They do not carry current execution state.
+
+Each B01–B13 capability also has one module definition. The module declares
+exact primary requirement ownership and the bounded DDD contract; it is not a
+fourth execution source. W14 owns no feature module and verifies acceptance
+families without taking feature ownership.
+
 A runnable staged workstream has exactly three linked durable execution sources:
 
 1. `plan_doc` — what, why, target state, phases, rollback, proof boundaries;
@@ -278,6 +288,13 @@ A runnable staged workstream has exactly three linked durable execution sources:
 
 Do not create `GOAL.md`, a second ledger, a chat-derived state file, or another coordination source unless the user explicitly requests it.
 
+Initial ledgers are `dormant`: no stage has `next_allowed: true`. A fully
+specified `executable/true` prompt is prepared content, not authority while its
+ledger is dormant. Later packs may remain `outline/false` until they are
+detailed immediately before activation against the actually implemented state.
+`.codex/PLANS.md` lists only ledgers whose status is `active` or `blocked` and
+must repeat the exact trio links without duplicating `current_stage`.
+
 Execution modes:
 
 - `manual_sequential`: execute one requested or next allowed stage and stop;
@@ -285,7 +302,7 @@ Execution modes:
 
 Stage statuses are `pending`, `in_progress`, `accepted`, `blocked`, `skipped`, or `superseded`. Only `accepted` (or an explicit supersession relation) may unlock its dependent stage.
 
-Every stage prompt declares requirement IDs, predecessor/state/hash gates, one shared branch policy for the pack, owned/foreign paths, non-goals, contract classification, validation depth, proof boundary, stop conditions, ledger-before-report update order, and next-stage rule. It must be executable without chat history or another stage prompt.
+Every stage prompt declares requirement IDs, predecessor/state/hash gates, one shared branch policy for the pack, owned/foreign paths, non-goals, contract classification, validation depth, proof boundary, stop conditions, ledger-before-report update order, and next-stage rule. It must be executable without chat history or another stage prompt. The union of S00–S06 requirement IDs must equal the plan requirement set. The active, executable, `next_allowed` current stage must pin at least one reviewed repository source with `required_source_hashes`; an empty map is valid only for dormant/disabled preparation.
 
 ## 10. Durable and ephemeral agent artifacts
 
@@ -345,7 +362,9 @@ uv run python -m tools.check --scope ci
 uv run python -m tools.check --scope release
 ```
 
-- `pre-commit`: all twelve deterministic source checks: blueprints, generated requirement/docs indexes, links, layout, staged templates/triads, profiles, DDD, contract drift, routes, i18n, and fixtures.
+- `pre-commit`: all thirteen deterministic source checks: blueprints,
+  requirement index, program matrix, documentation indexes, links, layout,
+  staged artifacts, profiles, DDD, contract drift, routes, i18n, and fixtures.
 - `local`: `pre-commit` plus `doctor --mode static`; use for normal handoff.
 - `pre-push`: `local` plus migration, Compose and browser static contracts; invoked by the push hook.
 - `ci`: exact `pre-push` parity as the canonical PR/merge profile independent of developer hooks.
@@ -356,6 +375,7 @@ Shell hooks and GitHub Actions invoke these profiles; they must not reimplement 
 | Trigger | Required direct tool (prefix `uv run python -m tools.custometry_quality.`) | Hook profiles |
 |---|---|---|
 | Machine/human/UI blueprint or requirement references | `generate_requirement_index --check`, `validate_blueprints` | pre-commit, local, pre-push, ci, release |
+| Program ownership, dependency, milestone, or evidence routing | `generate_program_requirement_matrix --check` | pre-commit, local, pre-push, ci, release |
 | Contributor docs tree/index | `generate_docs_index --check`, `check_docs_links` | pre-commit, local, pre-push, ci, release |
 | Any Markdown/link/anchor | `check_docs_links` | pre-commit, local, pre-push, ci, release |
 | App/package/tool/docs/test tree changes | `validate_repository_layout` | pre-commit, local, pre-push, ci, release |

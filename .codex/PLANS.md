@@ -1,3 +1,13 @@
+---
+registry_schema_version: 1
+program_plan: docs/architecture/program/custometry-program-plan.md
+active_workstreams:
+  - workstream_id: B01
+    plan_doc: docs/architecture/workstreams/b01-experience-platform-plan.md
+    prompt_pack_dir: .codex/agents/generated/b01-experience-platform
+    stage_ledger: docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md
+---
+
 # Custometry Long-Horizon Plan Registry
 
 This file is a compact registry for active multi-iteration work. It is not a task prompt, historical log, or replacement for the machine blueprint, architecture plan, prompt pack, or stage ledger.
@@ -13,22 +23,39 @@ For ordinary bounded tasks, do not load or update this file.
 - normative specification: `custometry-technical-blueprint-ru.md`, `0.8.2-draft`;
 - explanatory mirror: `custometry-technical-blueprint-human-ru.md`;
 - repository state: Foundation scaffold with minimal local Web/API/control-PostgreSQL health/docs runtime; no product vertical slice;
-- target release sequence: `vertical_alpha` → `public_mvp` → `v1_target`;
-- first broad implementation requires an accepted plan with linked prompt pack and stage ledger.
+- release sequence: `repository_foundation` → `product_foundation` →
+  `vertical_alpha` → `public_mvp` → `v1_feature_freeze` → `v1_target`;
+- the canonical dependency graph, release gates, requirement allocation, and
+  artifact links live in
+  `docs/architecture/program/custometry-program-plan.md`;
+- every staged workstream uses exactly one linked
+  `plan_doc + prompt_pack_dir + stage_ledger`.
 
 ## Active staged workstreams
 
-None. No prompt pack is currently authorized for execution.
+| Workstream | Plan | Prompt pack | Stage ledger |
+|---|---|---|---|
+| `B01` Experience Platform | `docs/architecture/workstreams/b01-experience-platform-plan.md` | `.codex/agents/generated/b01-experience-platform` | `docs/architecture/workstreams/b01-experience-platform-stage-reports/b01-experience-platform-stage-ledger.md` |
+
+The stage ledger remains the sole current-stage authority. Every other initial
+ledger remains dormant. Executable prompt content alone is not execution
+authority.
 
 ## Accepted development sequence
 
-The repository-level order is defined in `docs/architecture/development-operating-model.md`: Foundation → Experience Platform → Local Data Lab → context-by-context vertical slices → hardening → Universal XLSX last. This registry does not expand those blocks into stages.
+The canonical W00/B01–B13/W14 order and milestone gates are defined by the
+Program Plan. `docs/architecture/development-operating-model.md` explains the
+shared S00–S06 model. This registry records only currently active or blocked
+workstreams and deliberately does not duplicate `current_stage`, which belongs
+only to the stage ledger.
 
-## Candidate next workstream
+## Activated workstream
 
-After Foundation repository/tooling/runtime acceptance, the next candidate is the Experience Platform: Frost foundations/components, canonical route registry and shell, versioned contract-generated mocks, i18n/accessibility/system states, and the local `/docs` + in-app `/help` foundation.
-
-Creating its detailed `plan_doc`, `prompt_pack_dir`, `stage_ledger` and iteration reports is a separate user-approved task. No such artifacts are created by the current Foundation preparation.
+The complete preparation set and M3 Pro Foundation proof passed independent
+cold review and bounded follow-up fixes. B01 Experience Platform is the sole
+active workstream, and its ledger permits only S00 Discovery. Penpot access and
+canonical file authority remain a separate decision and are not asserted by
+this registry.
 
 ## Open blueprint decisions
 

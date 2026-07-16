@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -40,7 +40,7 @@ Every command:
 
 | Profile | When | Contract |
 |---|---|---|
-| `pre-commit` | Commit hook | All 12 deterministic source checks: blueprints, requirement/documentation indexes, links, layout, staged artifacts, profiles, DDD, contracts, routes, i18n, and fixtures |
+| `pre-commit` | Commit hook | All deterministic source checks: blueprints, requirement/program/documentation indexes, links, layout, staged artifacts, profiles, DDD, contracts, routes, i18n, and fixtures |
 | `local` | Before handing off a bounded change | `pre-commit` + `doctor --mode static` |
 | `pre-push` | Push hook | `local` + migration/Compose/browser static contracts |
 | `ci` | Every pull request and merge SHA | Exact `pre-push` parity independent of developer hooks |
@@ -55,6 +55,7 @@ The prefix for every direct command is `uv run python -m tools.custometry_qualit
 | Tool / command suffix | Trigger | Grouped scopes | Direct CI/release use | What it proves / does not prove |
 |---|---|---|---|---|
 | `generate_requirement_index --check` | Machine/human blueprint or requirement references changed | PC, L, PP, CI, R | CI checks committed `docs/generated/requirement-index.json` | The index has not drifted; it does not prove that a requirement is correct |
+| `generate_program_requirement_matrix --check` | Blueprint requirement IDs, program routing, dependencies, milestone gates, evidence profiles, or workstream ownership changed | PC, L, PP, CI, R | CI checks committed `docs/architecture/program/requirement-matrix.json` | Every indexed requirement is allocated exactly once and the program routing catalogs are valid; it does not prove feature implementation |
 | `validate_blueprints` | Any blueprint or requirement-consuming documentation changed | PC, L, PP, CI, R | Always | Version, mutual-link, and ID parity plus machine-first invariants |
 | `generate_docs_index --check` | Contributor Markdown tree changed | PC, L, PP, CI, R | CI checks committed `docs/README.md` | Contributor index is deterministic and contributor mode enforces the repository's English-default authoring policy; it does not prove product `/help` authorization or search |
 | `check_docs_links` | Any Markdown, index, or anchor changed | PC, L, PP, CI, R | Always | Real relative links and anchors resolve |
@@ -85,6 +86,8 @@ Generators:
 ```bash
 uv run python -m tools.custometry_quality.generate_requirement_index
 uv run python -m tools.custometry_quality.generate_requirement_index --check
+uv run python -m tools.custometry_quality.generate_program_requirement_matrix
+uv run python -m tools.custometry_quality.generate_program_requirement_matrix --check
 uv run python -m tools.custometry_quality.generate_docs_index
 uv run python -m tools.custometry_quality.generate_docs_index --check
 ```
@@ -159,7 +162,7 @@ probes.
 | Change | Minimum before handoff |
 |---|---|
 | Markdown only | `validate_blueprints` when blueprint references are involved + `generate_docs_index --check` for the contributor index and English-default authoring policy + `check_docs_links` |
-| Agent/governance | Markdown group + `validate_staged_workstream` + `validate_agent_profiles` |
+| Agent/governance | Markdown group + `generate_program_requirement_matrix --check` + `validate_staged_workstream` + `validate_agent_profiles` |
 | Package/import | `check_ddd_boundaries` + applicable backend/frontend gates |
 | Contract/API | `check_contract_drift` + API contract tests |
 | Route/UI/i18n | `validate_route_registry` + `check_i18n_parity` + browser smoke when runnable |

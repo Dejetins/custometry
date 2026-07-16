@@ -1,4 +1,7 @@
 ---
+artifact_kind: module_definition
+staged_schema_version: 1
+workstream_id: B01
 doc_id: TEMPLATE-MODULE-DEFINITION
 title: Module definition template
 doc_version: 1
@@ -7,21 +10,22 @@ visibility: internal
 ship: false
 owner: architecture
 requirement_ids: []
-status: active
+status: initial
 proof_boundary:
   label: contributor-template
   exclusions: [implementation-plan, runtime-readiness]
 ---
 
-# <Bounded block> — module definition
+# <Workstream> — module definition
 
 > This definition artifact precedes a detailed workstream plan. It is not a plan, stage ledger, iteration journal, or prompt pack.
 
 ## Identity
 
-- bounded context/owner: `<context>`;
+- workstream and bounded owner: `<workstream/context>`;
 - package/apps: `<existing or target paths>`;
-- release scope: `vertical_alpha | public_mvp | v1_target`;
+- release scope: one or more of `product_foundation`, `vertical_alpha`,
+  `public_mvp`, `v1_feature_freeze`, and `v1_target`;
 - requirement IDs: `<generated-index references>`;
 - upstream/downstream consumers: `<list>`.
 

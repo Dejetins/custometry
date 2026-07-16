@@ -5,21 +5,32 @@ Custometry is developed in a public repository. Never commit credentials, custom
 ## Workflow
 
 1. Read `AGENTS.md`, `.codex/AGENTS.md`, and the requirement IDs relevant to the change.
-2. Start a short-lived branch named `codex/<workstream>-<iteration>` or an equivalent contributor branch.
-3. Keep the change bounded to one coherent outcome. Do not create a long-lived `develop` or per-context integration branch.
-4. Enable the repository hooks once per checkout:
+2. Bootstrap the exact repository toolchain once, then activate it in every shell:
+
+   ```bash
+   scripts/bootstrap-toolchain.sh
+   source scripts/activate-toolchain.sh
+   ```
+
+   The activation contract requires Node from `.node-version`/`.nvmrc`, pnpm from
+   `package.json#packageManager`, and uv from `.uv-version`. It fails instead of
+   silently using another globally active version.
+
+3. Start a short-lived branch named `codex/<workstream>-<iteration>` or an equivalent contributor branch.
+4. Keep the change bounded to one coherent outcome. Do not create a long-lived `develop` or per-context integration branch.
+5. Enable the repository hooks once per checkout:
 
    ```bash
    git config core.hooksPath .githooks
    ```
 
-5. Run the local gate before opening a pull request:
+6. Run the local gate before opening a pull request:
 
    ```bash
-   uv run python -m tools.check --scope local
+   uv run --locked python -m tools.check --scope local
    ```
 
-6. Open a pull request to protected `main`. Required checks must pass; the default merge strategy is squash with linear history.
+7. Open a pull request to protected `main`. Required checks must pass; the default merge strategy is squash with linear history.
 
 ## Repository language
 

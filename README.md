@@ -44,10 +44,20 @@ Read [AGENTS.md](./AGENTS.md) before making repository changes.
 
 ## Foundation checks
 
+Activate the exact local toolchain before running repository commands:
+
+```bash
+scripts/bootstrap-toolchain.sh       # one time per machine/version change
+source scripts/activate-toolchain.sh # every shell
+```
+
+The activation fails closed unless Node `24.18.0`, pnpm `11.13.0`, and uv
+`0.9.26` are active.
+
 The canonical grouped quality entrypoint is:
 
 ```bash
-uv run python -m tools.check --scope local
+uv run --locked python -m tools.check --scope local
 ```
 
 `pre-commit`, `local`, `pre-push`, `ci` and `release` are explicit evidence profiles. They are not interchangeable: release-only runtime, recovery, supply-chain and performance evidence cannot be inferred from a passing local profile. Exact tool triggers are listed in [docs/architecture/tooling-gates.md](./docs/architecture/tooling-gates.md).

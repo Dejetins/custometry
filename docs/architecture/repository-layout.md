@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-REPOSITORY-LAYOUT-001
 title: Custometry repository and agent infrastructure layout
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -37,6 +37,7 @@ Establish the minimal monorepo for Phase 0 (Foundation), retaining the complete 
 7. Empty modules are reserved ownership boundaries only. A `.gitkeep` file does not imply an implementation or public contract.
 8. Until `v1_target`, only a single-server topology with a local artifact filesystem is permitted. Remote workers, object storage, and Kubernetes are not introduced implicitly.
 9. `.gitignore` and `.editorconfig` are added as portable hygiene and secret-state boundaries explicitly authorized by the repository-creation task.
+10. `docs/architecture/program/` contains the canonical Program Plan, reviewed routing source, and generated exact requirement matrix; `docs/architecture/workstreams/` contains staged product workstream artifacts.
 
 ## Alternatives considered
 
@@ -77,7 +78,10 @@ deploy/
 tools/
   custometry_quality/            # importable validators, generators, and gates
 docs/
-  architecture/ adr/ contracts/ user-guide/ runbooks/ iterations/
+  architecture/
+    program/                    # Program Plan, routing, requirement matrix
+    workstreams/                # B01-B13 and W14 staged artifacts
+  adr/ contracts/ user-guide/ runbooks/ iterations/
 docs-site/docs/                   # current public-only MkDocs source
 tests/
   unit/ contract/ integration/ golden/ e2e/ performance/
@@ -163,10 +167,21 @@ uv run python -m tools.custometry_quality.validate_repository_layout
 
 It validates blueprint-owned literal paths and documented extensions. The manual list in this document remains explanatory and is not an alternative parser source.
 
+Program allocation drift is checked separately and is included in every grouped profile:
+
+```bash
+uv run python -m tools.custometry_quality.generate_program_requirement_matrix --check
+```
+
+The routing source and generated matrix are required repository files. The generator fails on an unallocated or multiply allocated requirement, an unknown workstream/evidence type, incomplete release participation, an invalid terminal milestone stage, or an invalid dependency reference.
+
 ## Residual risks
 
 - The presence of `.github/workflows/` and quality tools does not prove actual protected-`main` configuration or a successful GitHub-hosted run; that requires remote repository evidence.
 - In Codex 0.144.2, a non-empty custom-role TOML loses inherited `ephemeral=true` on role reload: canary children persist only in local `~/.codex` state/session storage. The filesystem remained read-only, network access restricted, and approval policy `never`; the repository and external systems were unchanged. Adding unsupported `ephemeral` to TOML is prohibited.
-- The direct `pnpm` wrapper in the current environment is broken; the lockfile was generated and validated through `corepack pnpm`.
+- Local development activates the exact `.node-version`/`.nvmrc`, Corepack
+  `packageManager`, and `.uv-version` pins through
+  `scripts/activate-toolchain.sh`; the activation fails instead of silently
+  accepting a different globally active tool.
 - Foundation Compose is a local development skeleton, not a production topology or a proven release artifact.
 - `OPEN-007` and `OPEN-008` remain decisions for a future plan, not scaffold defaults.

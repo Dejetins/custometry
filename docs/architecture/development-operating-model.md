@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 4
+doc_version: 7
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -10,200 +10,144 @@ requirement_ids: [DOC-RULE-008]
 status: accepted
 proof_boundary:
   label: repository-development-policy
-  exclusions: [github-protection-proof, ci-run-proof, staged-plan-authorization]
+  exclusions: [github-protection-proof, ci-run-proof, product-runtime-proof]
 ---
 
 # Custometry Development and Acceptance Model
 
-## 1. Development principle
+## 1. Outcome-oriented development
 
-Custometry evolves through contract-backed vertical slices. First, the project establishes a visible and navigationally coherent Web experience. Each bounded context then replaces its generated mock with real application, domain, and adapter implementations without changing the accepted contract, or through an explicit versioned migration.
+Custometry evolves through contract-backed vertical slices. A slice starts from
+an observable user or operator outcome and reaches the nearest real boundary
+needed to prove it. UI-first means that the route, states, accessibility, and
+user feedback are designed early; it does not permit manually invented mock
+contracts or postpone domain invariants indefinitely.
 
-Two extremes are prohibited:
+Progress is not measured by the number of screens, layers, documents, stages,
+or generated prompts. A slice is complete only when its declared behavior,
+failure modes, documentation, compatibility disposition, and evidence agree.
 
-- dozens of disconnected screens backed by manually invented mock shapes;
-- a backend-first layer with no accepted user journey or browser acceptance.
+## 2. Sources and artifact selection
 
-The definition of progress is one user journey that reaches from its route and UI states to a real API, persistence, or artifact boundary, including failure, recovery, and documentation.
+The normative sources are:
 
-## 2. High-level workstreams
+1. `custometry-technical-blueprint-ru.md` for machine-readable product rules;
+2. `custometry-technical-blueprint-human-ru.md` for the synchronized human mirror;
+3. `custometry-ui-blueprint-ru.md` for UI/UX requirements;
+4. accepted architecture documents and ADRs;
+5. implementation, schemas, tests, and observed evidence.
 
-| No. | Workstream | Verifiable result |
-|---|---|---|
-| `W00` | Repository Foundation | Reproducible toolchain, governance, CI, contracts, doctor, and M3 Pro Foundation proof |
-| `B01` | Experience Platform | Frost design system, shell, route registry, generated mocks, system states, i18n/a11y, `/docs`, and `/help` |
-| `B02` | Local Data Lab | Control PostgreSQL, demo-source PostgreSQL, migrations, and deterministic retail fixtures |
-| `B03` | Identity and Control Plane | Real workspaces, sessions, RBAC, actor context, object lifecycle, and audit |
-| `B04` | Execution, Compute and Artifact Spine | Runs, CPU compute, progress/ETA, outbox, leases, fencing, reconciliation, and immutable artifact commit |
-| `B05` | Data Foundation | Connections, catalog, ingestion, semantic model, metrics, filters, marts, and data quality |
-| `B06` | Analytics and Forecasting Vertical Alpha | First reportable analytics slice plus the minimum baseline forecast and rolling-backtest slice |
-| `B07` | Operations | Runs, schedules, Operator Center, and the public-MVP in-app notification subset |
-| `B08` | Customer Intelligence and Promotion Journal | Customers, cohorts, lifecycle, segments, and channel/client-scoped Promotion Journal |
-| `B09` | Forecasting Expansion | Forecast specifications, registry, prediction products, monitoring, and advanced comparison |
-| `B10` | Reporting and Knowledge | Dashboards, ReportSnapshot composition, Data Guides, user email, and cross-render reporting |
-| `B11` | Pipelines, Extensibility and Operational Channels | Common-engine canvas, plugin contracts, administrator lifecycle, and operational email/webhook channels |
-| `B12` | Production Hardening | Security consolidation, upgrade, recovery, SBOM/license/provenance, performance, and target-specific firewall/CNI enforcement |
-| `B13` | Universal XLSX | Final functional slice built on a stable ReportSnapshot |
-| `W14` | Final Acceptance | Release evidence without adding feature scope |
+Global Delivery Contract v1 selects the smallest sufficient delivery artifact:
 
-The canonical names, dependency graph, requirement ownership, and release participation are defined in the [program plan](./program/custometry-program-plan.md) and its machine-readable routing source.
+- direct execution for a trivial, explicit, low-risk repair;
+- one ready vertical ticket for one bounded observable outcome;
+- a specification before tickets when behavior, invariants, failure semantics,
+  or the proof seam remain materially unresolved;
+- an exceptional plan, ledger, or reusable procedure only when real
+  multi-ticket coordination, risky external state, approval checkpoints, or a
+  genuinely repeated method requires it.
 
-`W00 Repository Foundation` and the `product_foundation` release milestone are distinct. W00 proves repository and delivery preparation. Product Foundation is terminated by B04 and proves the first usable product runtime spine.
+Custometry keeps no standing program plan, generated prompt-pack inventory, or
+parallel stage ledger. One ready ticket is one execution unit and is the only
+repository-local source of current scope, blockers, repair authority, and
+acceptance evidence. Goal mode is optional runtime orchestration; it is not a
+file-backed planning layer.
 
-Product workstreams are long-lived capability owners rather than one-pass modules. They can participate in multiple release milestones through allocation/architecture (`A`), implementation proof (`P`), and milestone verification (`V`) checkpoints. A detailed S00–S06 iteration remains scoped to one accepted slice and one ledger state.
+## 3. Ticket lifecycle
 
-The terminal milestone sequence is:
+Tickets live in `.codex/delivery/tickets/` and use these states:
 
-| Milestone | Terminal workstream |
+| State | Meaning |
 |---|---|
-| `repository_foundation` | `W00` |
-| `product_foundation` | `B04` |
-| `vertical_alpha` | `B06` |
-| `public_mvp` | `B12` |
-| `v1_feature_freeze` | `B13` |
-| `v1_target` | `W14` |
+| `draft` | The outcome or boundary is not executable yet. |
+| `ready` | Scope, dependencies, commands, and proof boundary are sufficient. |
+| `active` | The ticket is the current execution unit. |
+| `blocked` | A specific technical condition prevents safe progress and has durable evidence. |
+| `accepted` | The declared outcome is proven at its stated boundary. |
+| `superseded` | Another named decision or ticket replaces the outcome. |
 
-## 3. Development runtime modes
+A blocked ticket records the technical blocker, existing evidence, and the next
+safe action. It does not invent an internal approver. An executor may repair an
+in-scope defect discovered by its own proof boundary and must rerun invalidated
+evidence. Escalation is limited to normative product changes, material scope
+changes, external or irreversible effects, secrets or production authority,
+and writes outside the declared scope.
 
-Development uses four canonical modes defined in the
-[development runtime contract](./development-runtime-contract.md):
+## 4. Architecture and contract rules
 
-| Mode | Default use | Status at Foundation |
+Custometry remains a modular monolith with ports and adapters:
+
+- `apps/*` are composition roots;
+- `packages/*` own domain and application behavior plus required ports;
+- adapters implement ports and are wired at composition roots;
+- domain/application code does not import framework, SQL-driver, queue, or
+  filesystem implementations;
+- a context does not read another context's private tables.
+
+Before implementation, identify the relevant bounded context in
+[bounded-context-map.md](./bounded-context-map.md). Classify changes to APIs,
+ports, DTOs/events, persisted schemas, configuration/defaults, identities,
+caches, idempotency/retry, external effects, browser behavior, migrations,
+rollback, observability, and performance as `none`, `compatible-change`,
+`breaking-change`, or `unknown`.
+
+## 5. Development runtime modes
+
+Use the smallest runtime that can prove the ticket boundary. The exact commands
+and current implementation status live in
+[development-runtime-contract.md](./development-runtime-contract.md).
+
+| Mode | Purpose | Cannot prove by itself |
 |---|---|---|
-| `fast-loop` | Host Web, framework-independent Python, focused tests, and generated contract mocks | Partially implemented: host Vite and pinned host tools exist; unified dev CLI, API reload, and mock/real switching do not |
-| `hybrid` | Host Web/API plus only required containerized stateful infrastructure | Target only; `compose.dev.yaml` and infra-only orchestration are not implemented |
-| `full-stack` | Complete disposable Compose lifecycle and real browser/network proof | Implemented for the Foundation surface; product-slice acceptance remains future work |
-| `release` | Immutable digest-pinned install/update/recovery and release evidence | Candidate publication and a fail-closed target contract exist; no accepted end-user release bundle exists |
+| `fast-loop` | Pure policies, schemas, generated clients, components, focused tests | Real persistence, image, or network behavior |
+| `hybrid` | Host application code with real containerized stateful adapters | Complete shipped topology |
+| `full-stack` | Disposable Compose lifecycle and real Edge/API/browser boundary | Release provenance or production hardening |
+| `release` | Immutable candidate, target install/update, recovery, supply chain, and performance | A broader production rollout without explicit authority |
 
-The lowest sufficient mode is used for the inner loop. Escalation is mandatory
-when the changed claim crosses a real database, browser, container, network,
-recovery, performance, or delivery boundary. A cheaper mode cannot replace a
-failed higher-boundary check, and development overrides are forbidden in
-release composition.
+## 6. Evidence
 
-## 4. Common S00–S06 framework
+Evidence follows the changed boundary:
 
-| Stage | Entry | Required questions | Exit/evidence |
-|---|---|---|---|
-| S00 Discovery | Workstream scope accepted | current facts, users, non-goals, vocabulary, owners, dependencies, risk and failure cost | source-anchored scope and no unresolved ownership blocker |
-| S01 UX + Contract | S00 accepted | routes/states, Penpot, commands/queries/events, OpenAPI/DTO/errors, examples, permissions | versioned schemas/examples, contract impact, browser scenario |
-| S02 Domain/Application | S01 contract frozen | aggregates, invariants, policies, ports, idempotency, cancellation | framework-free core, focused unit/property/contract evidence |
-| S03 Adapters | Core ports exist | PostgreSQL/artifacts/queue/source, migrations, timeout/retry/unknown state | real adapter evidence and clean migration path |
-| S04 Web Integration | Real boundary usable | generated client, mock/real parity, loading/empty/degraded/forbidden/failed, en/ru/a11y | real browser flow without contract divergence |
-| S05 Real-boundary Proof | Integrated slice | clean install/DB, Compose, restart, retry, cancellation, recovery, telemetry | reproducible nearest-boundary evidence and residual risks |
-| S06 Acceptance | All previous exits observed | docs/runbook, requirement traceability, rollback, security/performance if triggered, cold review | no blocker; accepted artifact/evidence inventory |
+| Surface | Minimum meaningful proof |
+|---|---|
+| Domain policy | Focused unit/property/invariant tests |
+| Port or adapter | Contract test plus the real adapter boundary |
+| API | Real request with auth/RBAC/error/DTO behavior when applicable |
+| PostgreSQL | Upgrade, repeat behavior, supported rollback/downgrade, and integrity checks |
+| Web | Real browser flow, console/network inspection, responsive/a11y/en/ru smoke |
+| Compose | Clean start, health, restart/failure behavior, stop, and post-conditions |
+| Recovery | Observed drill and integrity verification |
+| Performance | Reproducible corpus/environment, baseline, threshold, and result |
+| Release | CI, immutable identity/provenance, install/update, and post-start smoke |
 
-Runtime guidance by stage:
+Passing source tests never proves database, browser, Compose, recovery,
+performance, supply-chain, or release behavior. Terminal ticket evidence is a
+compact redacted record under `.codex/delivery/evidence/`; it does not copy raw
+logs, credentials, cookies, environment dumps, or provider payloads.
 
-- S00 inventories the current commands and selects the expected modes;
-- S01 freezes mock/real and runtime-configuration contracts;
-- S02 normally uses `fast-loop`;
-- S03 uses `hybrid` for real stateful adapters;
-- S04 uses `fast-loop` for generated-mock UI and `hybrid` for real integration;
-- S05 requires `full-stack` nearest-boundary proof;
-- S06 invokes `release` only when the milestone or changed boundary requires it.
+## 7. Git and publication
 
-Stage names standardize criteria but do not automatically create staged
-artifacts. When execution becomes staged, exactly
-`plan_doc + prompt_pack_dir + stage_ledger` applies, and reports are stored
-alongside the ledger. The union of S00–S06 requirement IDs equals the plan
-requirement set. A dormant or disabled prompt may leave
-`required_source_hashes` empty; the active executable current stage must pin at
-least one reviewed repository source and passes only while every declared hash
-still matches.
+- `main` is protected and potentially releasable.
+- Product changes normally use one short-lived branch and one pull request.
+- Required checks must pass; squash merge preserves linear history.
+- No long-lived `develop`, per-stage branches, broad force-push, or hidden
+  integration branch is used.
+- Publication, merge, release, deployment, secrets, and production actions
+  require explicit authority and the repository runbook.
 
-All B01–B13 and W14 staged iterations run in Codex Goal mode. One Goal owns one
-workstream iteration across its ledger-authorized S00–S06 chain; stages remain
-separate acceptance units. After accepting a stage and updating its evidence,
-the Goal re-reads the ledger and continues only when the successor is current
-and `next_allowed: true`. A blocked/completed/dormant/superseded ledger, failed
-gate, stale or missing evidence, required approval, or absent successor unlock
-ends the Goal run. Goal state is never a fourth durable coordination source,
-and `GOAL.md` remains forbidden.
+Run the smallest focused checks first, then the applicable grouped profile from
+[tooling-gates.md](./tooling-gates.md). Local green is not GitHub CI evidence;
+GitHub CI is not runtime, recovery, performance, or release evidence unless the
+workflow actually observes those boundaries.
 
-## 5. Git workflow
+## 8. Language and documentation
 
-- `main` is protected and always potentially releasable.
-- Product changes use a short-lived `codex/<workstream>-<iteration>` branch and a mandatory pull request.
-- `develop`, per-stage branches, and long-lived context branches are not used.
-- Merge strategy is squash with linear history; the branch is deleted after merge.
-- Required checks match the affected boundaries; bypass and force-push are prohibited.
-- An agent does not create a branch merely because this policy exists: the current user request or an accepted workstream must explicitly authorize implementation and branch creation. A read-only review creates no branch.
-- The public repository accepts no secret material, PII, raw external payloads, or private environment topology, even on a remote branch.
+Repository-authored engineering artifacts are English. The normative Russian
+blueprints and declared localized product documentation are explicit
+exceptions. Product obligations are added to the machine blueprint first and
+mirrored synchronously; architecture and tickets refer to stable requirement
+IDs instead of duplicating normative prose.
 
-The minimum GitHub configuration for `main` requires pull requests, required status checks, resolved conversations, and linear history, and blocks force pushes and deletion. The required reviewer count and CODEOWNERS are added once stable owners exist.
-
-## 6. CI contract
-
-### Pull request
-
-1. Blueprint/human mirror version, links, and requirement-index synchronization.
-2. Repository layout, agent profiles, and staged-work artifact schema.
-3. Locked `uv`/`pnpm` install; no uncommitted generated drift.
-4. Backend format/lint/types/unit.
-5. Frontend lint/types/unit/component.
-6. PostgreSQL migration from empty + integration tests.
-7. Contract drift: OpenAPI/JSON Schema/generated TypeScript client/mock examples.
-8. Canonical OCI build and manifest/digest/platform validation.
-9. Disposable Compose lifecycle.
-10. Browser smoke for the shell, docs/help, and the changed vertical slice.
-
-Heavy release matrices are not repeated on every pull request without need. Contract tests and the static evidence schema remain mandatory, however; the fail-closed release gate requires the real matrix.
-
-### Main
-
-- Repeat required checks against the merge SHA.
-- Publish an immutable OCI artifact tied to the commit SHA and record its actual digest.
-- Generate SBOM, provenance, and license evidence.
-- Do not report success if publication was skipped or the manifest is missing.
-- Downstream receives the digest from publication output rather than constructing a tag by assumption.
-
-### Release/deploy
-
-- Deployment is manual/protected and uses the digest.
-- The first mandatory target is the local M3 Pro; subsequent platform targets are added through a separate verifiable matrix.
-- Release verifies image existence and platform, migration, a clean Compose lifecycle, browser behavior, egress, recovery, license/SBOM, and performance thresholds. A production target additionally proves a firewall/CNI-equivalent policy: Edge accepts only approved ingress, reaches only Web, and cannot reach API, control, data, Internet, private, link-local, or metadata ranges.
-- Automatic blind upgrade of a local installation is prohibited; update preflight presents compatibility, backup, and rollback.
-
-## 7. Hook profiles
-
-Canonical orchestrator:
-
-```bash
-uv run python -m tools.check --scope pre-commit
-uv run python -m tools.check --scope local
-uv run python -m tools.check --scope pre-push
-uv run python -m tools.check --scope ci
-uv run python -m tools.check --scope release
-```
-
-- `pre-commit` includes all 13 deterministic source checks: blueprints,
-  requirement index, program matrix, documentation indexes, links, layout,
-  staged artifacts, profiles, DDD, contracts, routes, i18n, and fixtures.
-- `local` is pre-commit plus `doctor --mode static`; it is the normal handoff profile.
-- `pre-push` is local plus migration, Compose, and browser static contracts.
-- `ci` has exact parity with pre-push and does not depend on a local hook.
-- `release` is CI plus mandatory runtime, recovery, supply-chain, and performance observations; missing environment or evidence is a failure, not a skipped success.
-
-The exact composition and change triggers are defined in [tooling-gates.md](./tooling-gates.md) and `.codex/AGENTS.md`. Git hooks may invoke `local`, but the Python tools remain the canonical logic so local hooks and CI do not diverge.
-
-## 8. Acceptance and proof boundary
-
-| Change surface | Insufficient evidence by itself | Nearest mandatory evidence |
-|---|---|---|
-| Domain function | docs/typing | focused unit/property/invariant tests |
-| Port/adapter | fake/mock | contract test + real adapter boundary |
-| API | generated OpenAPI | real request, auth/RBAC/error/DTO behavior |
-| PostgreSQL | migration file review | empty upgrade, repeat/idempotence policy, supported downgrade/rollback |
-| Web | screenshot/Penpot | browser flow, console/network, responsive/a11y/en/ru |
-| Compose | `docker compose config` | clean pull/start/health/stop/restart with post-conditions |
-| Image | build exit code | manifest, digest, platforms and runtime import/start |
-| Recovery | runbook | observed drill and integrity checks |
-| Performance | intuition/unit timing | comparable baseline/corpus/environment and threshold |
-| Release | green unit tests | owned diff, CI, artifact provenance, install/update and post-start smoke |
-
-## 9. Definition document for a future workstream
-
-Before a detailed plan is created, the workstream definition is completed using [module-definition-template.md](../contracts/module-definition-template.md). It must include purpose and non-goals, vocabulary, aggregates, entities, value objects, lifecycle, commands, queries, events, schemas, data ownership, ports and adapters, permissions, idempotency, retry and unknown-state behavior, UI/help, observability, fixtures, acceptance, migration, and rollback.
-
-Requirement terminal ranges are not copied manually. The document refers to stable IDs from the generated requirement index so adding a new ID does not silently make a role or template obsolete.
+Local `/docs` and `/help` remain product capabilities governed by
+[documentation-platform.md](./documentation-platform.md). Contributor
+architecture, tickets, and evidence are not automatically shipped to users.

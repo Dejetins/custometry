@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DOCUMENTATION-PLATFORM-001
 title: Custometry documentation platform
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -90,7 +90,7 @@ filtering of public `help-index.json` is not, and is never treated as, a securit
 |---|---|---|
 | `public` | Safe installation, first-run, and user guides, plus release and version support | Available locally without workspace membership; contains no private topology or secret examples |
 | `authenticated` | Operator and administrator procedures, runtime health, backup, access, and workspace operations | Only after authentication and a permission check; a static asset must not bypass the guard |
-| `internal` | Architecture, ADRs, contracts, prompt packs, stage/iteration evidence, and contributor internals | Never included in the ordinary installation artifact |
+| `internal` | Architecture, ADRs, contracts, delivery tickets/evidence, iteration evidence, and contributor internals | Never included in the ordinary installation artifact |
 
 `visibility` is a security boundary; `ship` is explicit permission to include the document in the product build. Classification errors, missing fields, or `ship: false` block publication. Client-side hiding is not authorization: authenticated documentation is either served through a protected route or built as a separate protected artifact.
 
@@ -159,7 +159,7 @@ CI never auto-commits a generated index. The author runs the generator, reviews 
 
 ## 6. Style and templates
 
-- Repository-authored engineering documents, templates, prompts, ledgers, and reports are written in English by default.
+- Repository-authored engineering documents, templates, tickets, and evidence reports are written in English by default.
 - The normative `*-ru` blueprints and localized product content under `docs-site/docs/ru/**` are explicit standing exceptions. Any other Russian artifact requires an explicit request for that artifact.
 - Only the final user-facing completion report defaults to Russian; intermediate repository artifacts and engineering evidence remain in English.
 - Contributor mode in `generate_docs_index` enforces this English-default authoring policy fail-closed while allowing only the explicit exceptions above.
@@ -172,7 +172,7 @@ CI never auto-commits a generated index. The author runs the generator, reviews 
 - Every runtime claim matches observed proof; a future target is labeled as a target.
 - A diagram supplements the text rather than replacing an accessibility-readable explanation.
 
-An architecture document uses [architecture-document-template.md](../contracts/architecture-document-template.md), a cross-module contract uses [contract-document-template.md](../contracts/contract-document-template.md), and a module definition uses [module-definition-template.md](../contracts/module-definition-template.md). The repository also uses the [ADR template](../adr/adr-template.md), [runbook template](../runbooks/runbook-template.md), and [user/install guide template](../user-guide/user-install-guide-template.md).
+An architecture document uses [architecture-document-template.md](../contracts/architecture-document-template.md), and a cross-module contract uses [contract-document-template.md](../contracts/contract-document-template.md). The repository also uses the [ADR template](../adr/adr-template.md), [runbook template](../runbooks/runbook-template.md), and [user/install guide template](../user-guide/user-install-guide-template.md).
 
 ## 7. Versioning and synchronization
 

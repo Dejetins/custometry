@@ -1,7 +1,7 @@
 ---
 doc_id: ADR-0001
 title: Foundation operating model
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -35,16 +35,19 @@ The repository is at the Foundation stage. We need to establish a tangible Web e
 5. The Web/API/data core is offline-capable and deny-by-default for egress. Edge is a separate, secretless infrastructure ingress adapter with limited adjacency, but Compose alone does not prove that Edge has no ambient outbound route. Future connector, mail, and update paths receive separate allowlists, while strict Edge policy is handled by the target-specific hardening defined in ADR-0002.
 6. The normal local budget is 6 GiB of RAM and 25 GiB of owned disk; benchmarks are opt-in.
 7. The default installation is download-first: pinned images and assets are downloaded and verified; a large full-offline bundle is not the default.
-8. Public user and installation documentation is available locally; operator and administrator documentation requires authorization; architecture, ADRs, contracts, prompts, and iteration evidence are not included in the ordinary installation.
+8. Public user and installation documentation is available locally; operator and administrator documentation requires authorization; architecture, ADRs, internal contracts, delivery tickets/evidence, and iteration evidence are not included in the ordinary installation.
 9. The target documentation runtime uses MkDocs Material to build `/docs`, while in-app `/help` uses the same permission-aware generated index. The Foundation contributor index alone does not prove that runtime.
 10. Development data is a deterministic retail/e-commerce corpus with separate control and demo-source PostgreSQL boundaries.
 11. Quality tools are composed into the `local`, `ci`, and `release` profiles; a required release observation cannot become successful by being skipped.
-12. Every future block uses the common S00–S06 acceptance framework, but a detailed plan, ledger, and prompt pack are created only after separate approval.
+12. Delivery uses the smallest sufficient artifact under Global Delivery
+    Contract v1. One ready vertical ticket is one execution unit; no permanent
+    program plan, generated prompt-pack inventory, or parallel stage ledger is
+    maintained.
 13. Development uses four explicit proof modes: host-first `fast-loop`,
     host-application/container-infrastructure `hybrid`, disposable Compose
     `full-stack`, and immutable-artifact `release`. The cheapest sufficient
-    mode is used for feedback, while S05 and release-triggering changes must
-    escalate to their real boundary. Development overrides never enter release
+    mode is used for feedback, while integrated/runtime and release-triggering
+    changes must escalate to their real boundary. Development overrides never enter release
     composition.
 
 ## Alternatives
@@ -77,8 +80,8 @@ Costs:
 - contract and schema discipline is required before implementation;
 - generated mocks and clients must be maintained by tooling;
 - clean Compose, browser, and recovery proofs cost more than unit tests;
-- host/Hybrid behavior can drift from images, so S05 Full Stack proof remains
-  mandatory for an accepted integrated slice;
+- host/Hybrid behavior can drift from images, so Full Stack proof remains
+  mandatory whenever a ticket claims integrated image/runtime behavior;
 - authenticated documentation requires a separate build and serving boundary;
 - multi-platform release is deferred until the M3 Pro path is proven.
 

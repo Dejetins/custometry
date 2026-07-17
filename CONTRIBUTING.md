@@ -55,7 +55,12 @@ Custometry is developed in a public repository. Never commit credentials, custom
 
 ## Repository language
 
-Write repository-authored engineering artifacts in English: architecture, ADRs, contracts, plans, prompts, ledgers, iteration reports, runbooks, templates, code comments, and contributor documentation. The existing normative `*-ru.md` product blueprints and declared localized product content under `docs-site/docs/<locale>/**` are explicit exceptions. Refer to Russian blueprint requirements by stable ID and explain them in English.
+Write repository-authored engineering artifacts in English: architecture,
+ADRs, contracts, specifications, tickets, evidence reports, runbooks,
+templates, code comments, and contributor documentation. The existing
+normative `*-ru.md` product blueprints and declared localized product content
+under `docs-site/docs/<locale>/**` are explicit exceptions. Refer to Russian
+blueprint requirements by stable ID and explain them in English.
 
 Durable evidence and handoffs are English. Unless the user explicitly requests another language for the current task, only the final user-facing completion report is written in Russian.
 
@@ -69,4 +74,8 @@ Normative product requirements are added to `custometry-technical-blueprint-ru.m
 
 Passing unit tests does not prove database, browser, Compose, recovery, supply-chain, or performance readiness. Use the nearest real boundary required by the change. The gate matrix and proof boundaries are documented in `docs/architecture/tooling-gates.md`.
 
-Do not create a detailed workstream plan, prompt pack, or stage ledger unless that workflow has been explicitly approved. When staged execution is approved, the only durable execution sources are `plan_doc + prompt_pack_dir + stage_ledger`.
+Start executable work from one ready vertical ticket. Create a specification
+only when behavior or its proof seam is unresolved; use a plan, execution
+ledger, or procedure prompt only for multi-ticket coordination, risky external
+state, or a genuinely repeated method. The ticket owns current execution state,
+scope, repair authority, and evidence; no unnamed approver supplies authority.

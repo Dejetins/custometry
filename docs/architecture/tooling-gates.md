@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 4
+doc_version: 6
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -20,11 +20,12 @@ proof_boundary:
 All repository validators live in the importable `tools.custometry_quality` package. Business logic is not duplicated in shell scripts or GitHub Actions. The canonical grouped entrypoint is:
 
 ```bash
-uv run python -m tools.check --scope pre-commit
-uv run python -m tools.check --scope local
-uv run python -m tools.check --scope pre-push
-uv run python -m tools.check --scope ci
-uv run python -m tools.check --scope release
+source scripts/activate-toolchain.sh
+uv run --locked python -m tools.check --scope pre-commit
+uv run --locked python -m tools.check --scope local
+uv run --locked python -m tools.check --scope pre-push
+uv run --locked python -m tools.check --scope ci
+uv run --locked python -m tools.check --scope release
 ```
 
 Every command:
@@ -40,18 +41,19 @@ Every command:
 
 | Profile | When | Contract |
 |---|---|---|
-| `pre-commit` | Commit hook | All deterministic source checks: blueprints, requirement/program/documentation indexes, links, layout, staged artifacts, profiles, DDD, contracts, routes, i18n, and fixtures |
+| `pre-commit` | Commit hook | All deterministic source checks: blueprints, requirement/documentation indexes, links, layout, delivery contract/tickets, profiles, DDD, contracts, routes, i18n, fixtures, and migration graph |
 | `local` | Before handing off a bounded change | `pre-commit` + `doctor --mode static` |
-| `pre-push` | Push hook | `local` + migration/Compose/browser static contracts |
+| `pre-push` | Push hook | `local` + Compose/browser static contracts; migration static validation already runs in every profile |
 | `ci` | Every pull request and merge SHA | Exact `pre-push` parity independent of developer hooks |
 | `release` | Release candidate in the target environment | `ci` + runtime-required doctor, migration, Compose, browser, SBOM/license, recovery, and performance; missing evidence = failure |
 
 The commit hook invokes `--scope pre-commit`, and the push hook invokes
 `--scope pre-push`; neither contains its own validator rules. Both delegate to
 `scripts/run-hook-profile.sh`, which activates the exact repository Node, pnpm,
-and uv pins before entering the locked Python environment. Author handoff uses
-`--scope local`, GitHub Actions uses `--scope ci`, and the protected release
-environment uses `--scope release`.
+and uv pins before entering the locked Python environment. Direct grouped
+profiles must source `scripts/activate-toolchain.sh` first for the same reason.
+Author handoff uses `--scope local`, GitHub Actions uses `--scope ci`, and the
+protected release environment uses `--scope release`.
 
 ## 3. Tool matrix
 
@@ -60,12 +62,12 @@ The prefix for every direct command is `uv run python -m tools.custometry_qualit
 | Tool / command suffix | Trigger | Grouped scopes | Direct CI/release use | What it proves / does not prove |
 |---|---|---|---|---|
 | `generate_requirement_index --check` | Machine/human blueprint or requirement references changed | PC, L, PP, CI, R | CI checks committed `docs/generated/requirement-index.json` | The index has not drifted; it does not prove that a requirement is correct |
-| `generate_program_requirement_matrix --check` | Blueprint requirement IDs, program routing, dependencies, milestone gates, evidence profiles, or workstream ownership changed | PC, L, PP, CI, R | CI checks committed `docs/architecture/program/requirement-matrix.json` | Every indexed requirement is allocated exactly once and the program routing catalogs are valid; it does not prove feature implementation |
 | `validate_blueprints` | Any blueprint or requirement-consuming documentation changed | PC, L, PP, CI, R | Always | Version, mutual-link, and ID parity plus machine-first invariants |
 | `generate_docs_index --check` | Contributor Markdown tree changed | PC, L, PP, CI, R | CI checks committed `docs/README.md` | Contributor index is deterministic and contributor mode enforces the repository's English-default authoring policy; it does not prove product `/help` authorization or search |
 | `check_docs_links` | Any Markdown, index, or anchor changed | PC, L, PP, CI, R | Always | Real relative links and anchors resolve |
 | `validate_repository_layout` | App, package, tool, documentation, or test path added or moved | PC, L, PP, CI, R | Always | The tree matches declared ownership and blueprint section 25 extensions |
-| `validate_staged_workstream` | Templates changed or a future staged triad was created | PC, L, PP, CI, R | Always | Exactly one triad plus schema, link, state, and English-authoring rules for prompt packs and ledgers; it does not confirm execution |
+| `validate_delivery_contract` | Global delivery adapter or routing changed | PC, L, PP, CI, R | Always; local audit may add `--contract <installed-path>` | Portable CI validates the adapter identity/routing; an explicit installed path additionally validates the global source, supplying `delivery-orchestrator` skill, and global router |
+| `validate_delivery_tickets` | Delivery ticket changed or a Goal is prepared | PC, L, PP, CI, R | Always | Ticket identity, frontier blockers, exact scope, repair policy, validation boundary/proof-skill route, escalation set, blocked records, and the schema of terminal evidence; it does not prove the behavior |
 | `validate_agent_profiles` | Root governance documents, `AGENTS`, role TOML, templates, or skill routes changed | PC, L, PP, CI, R | Semantic role changes also require a canary | Schema, routing, reference integrity, and English-authoring rules for root contributor/governance documents, repository agent instructions, registries, profiles, and templates |
 | `doctor` | Setup, engine, configuration, ports, network, resources, Compose, or release changed | L static; PP/CI static; R static+runtime | `custometry-doctor --mode runtime` on the target | Preconditions, engine, and resources; not application readiness |
 | `cleanup` | Generated, temporary, or container data deletion, or disk remediation | Not included automatically | Dry-run when triggered; R synthetic apply drill | Ownership-bounded deletion and post-condition; not broad deletion authority |
@@ -74,7 +76,7 @@ The prefix for every direct command is `uv run python -m tools.custometry_qualit
 | `validate_route_registry` | Routes, UI map, navigation, or Help mapping changed | PC, L, PP, CI, R | Always + browser when runnable | Route ID and path mappings; not history/guard runtime |
 | `check_i18n_parity` | UI, copy, error, Help catalogs, or locale-neutral IDs changed | PC, L, PP, CI, R | Always | en/ru key parity; not linguistic quality |
 | `validate_fixture_manifest` | Generator, profile, seed, schema, or golden outcomes changed | PC, L, PP, CI, R | Always + generated fixture tests | Manifest, hash, and expectations are deterministic |
-| `validate_migration_lifecycle` | Schema, migrations, or image compatibility changed | PP/CI/R static; R runtime | `custometry-validate-migration-lifecycle --mode runtime` | Static source and order; release observes empty, repeat, downgrade, and re-upgrade lifecycle |
+| `validate_migration_lifecycle` | Schema, migrations, or image compatibility changed | PC/L/PP/CI/R static; R runtime | `custometry-validate-migration-lifecycle --mode runtime` | Static graph plus accepted-revision SHA/evidence seal; release observes empty, repeat, downgrade, and re-upgrade lifecycle |
 | `compose_lifecycle` | Compose, images, configuration, health, network, or volumes changed | PP/CI/R static; R runtime | `custometry-compose-lifecycle --mode runtime` | Static configuration or observed disposable lifecycle, depending on mode |
 | `browser_smoke` | Web, API, authentication, routes, documentation, Help, or system states changed | PP/CI/R static; R runtime | `custometry-browser-smoke --mode runtime` | A static manifest is not a browser; runtime executes the named journey |
 | `gate_sbom` | Dependency, base image, or build layer added or changed | R actual artifact | Artifact-producing CI runs directly with `--sbom`; R required | SBOM is tied to the final digest; it is not provenance by itself |
@@ -91,8 +93,6 @@ Generators:
 ```bash
 uv run python -m tools.custometry_quality.generate_requirement_index
 uv run python -m tools.custometry_quality.generate_requirement_index --check
-uv run python -m tools.custometry_quality.generate_program_requirement_matrix
-uv run python -m tools.custometry_quality.generate_program_requirement_matrix --check
 uv run python -m tools.custometry_quality.generate_docs_index
 uv run python -m tools.custometry_quality.generate_docs_index --check
 ```
@@ -103,7 +103,8 @@ Validators and gates are run directly for focused feedback:
 uv run python -m tools.custometry_quality.validate_blueprints
 uv run python -m tools.custometry_quality.check_docs_links
 uv run python -m tools.custometry_quality.validate_repository_layout
-uv run python -m tools.custometry_quality.validate_staged_workstream
+uv run python -m tools.custometry_quality.validate_delivery_contract
+uv run python -m tools.custometry_quality.validate_delivery_tickets
 uv run python -m tools.custometry_quality.validate_agent_profiles
 uv run python -m tools.custometry_quality.doctor
 uv run python -m tools.custometry_quality.check_ddd_boundaries
@@ -167,7 +168,7 @@ probes.
 | Change | Minimum before handoff |
 |---|---|
 | Markdown only | `validate_blueprints` when blueprint references are involved + `generate_docs_index --check` for the contributor index and English-default authoring policy + `check_docs_links` |
-| Agent/governance | Markdown group + `generate_program_requirement_matrix --check` + `validate_staged_workstream` + `validate_agent_profiles` |
+| Agent/governance | Markdown group + `validate_delivery_contract` + `validate_delivery_tickets` + `validate_agent_profiles` |
 | Package/import | `check_ddd_boundaries` + applicable backend/frontend gates |
 | Contract/API | `check_contract_drift` + API contract tests |
 | Route/UI/i18n | `validate_route_registry` + `check_i18n_parity` + browser smoke when runnable |

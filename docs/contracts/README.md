@@ -1,4 +1,4 @@
-# Documentation and module contracts
+# Documentation and boundary contracts
 
 This directory contains reusable contributor templates and descriptions of inter-module contracts. It is not published in the standard product documentation artifact.
 
@@ -6,9 +6,9 @@ This directory contains reusable contributor templates and descriptions of inter
 
 - [Architecture document](./architecture-document-template.md) — durable architecture decision or target state.
 - [Contract document](./contract-document-template.md) — versioned API/DTO/event/port/artifact boundary.
-- [Module definition](./module-definition-template.md) — complete description of a future bounded block before a detailed implementation plan is created.
-
-A template is not a completed plan, ledger, or prompt. Remove all placeholders, distinguish facts from proposals, and obtain stable requirement IDs from the generated requirement index.
+A template is not an accepted decision or executable ticket. Remove all
+placeholders, distinguish facts from proposals, and obtain stable requirement
+IDs from the generated requirement index.
 
 ## Foundation contract drift manifest
 

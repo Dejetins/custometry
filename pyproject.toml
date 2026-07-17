@@ -52,7 +52,7 @@ dev = [
 ]
 test = [
   "hypothesis>=6.130,<7",
-  "pytest>=8.4,<9",
+  "pytest>=8.4,<10",
   "pytest-cov>=6,<8",
   "testcontainers[postgres]>=4.12,<5",
 ]

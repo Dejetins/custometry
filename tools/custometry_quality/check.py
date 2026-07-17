@@ -18,15 +18,15 @@ from . import (
     gate_recovery,
     gate_sbom,
     generate_docs_index,
-    generate_program_requirement_matrix,
     generate_requirement_index,
     validate_agent_profiles,
     validate_blueprints,
+    validate_delivery_contract,
     validate_fixture_manifest,
+    validate_delivery_tickets,
     validate_migration_lifecycle,
     validate_repository_layout,
     validate_route_registry,
-    validate_staged_workstream,
 )
 from .core import CheckResult, add_common_arguments, main_guard, render_result
 
@@ -59,30 +59,21 @@ def _static_checks() -> list[tuple[str, StaticCheck]]:
     return [
         ("blueprints", lambda root: validate_blueprints.check(root, Path("custometry-technical-blueprint-ru.md"), Path("custometry-technical-blueprint-human-ru.md"))),
         ("requirements", lambda root: generate_requirement_index.check(root, machine=Path("custometry-technical-blueprint-ru.md"), human=Path("custometry-technical-blueprint-human-ru.md"), output=Path("docs/generated/requirement-index.json"), check_mode=True)),
-        (
-            "program-requirements",
-            lambda root: generate_program_requirement_matrix.check(
-                root,
-                index_path=Path("docs/generated/requirement-index.json"),
-                routing_path=Path(
-                    "docs/architecture/program/requirement-routing.json"
-                ),
-                output_path=Path(
-                    "docs/architecture/program/requirement-matrix.json"
-                ),
-                check_mode=True,
-            ),
-        ),
         ("docs-index", _docs_indexes),
         ("docs-links", lambda root: check_docs_links.check(root)),
         ("layout", lambda root: validate_repository_layout.check(root)),
-        ("staged-work", lambda root: validate_staged_workstream.check(root)),
+        ("delivery-contract", lambda root: validate_delivery_contract.check(root)),
+        ("delivery-tickets", lambda root: validate_delivery_tickets.check(root)),
         ("agent-profiles", lambda root: validate_agent_profiles.check(root)),
         ("ddd", lambda root: check_ddd_boundaries.check(root)),
         ("contract-drift", lambda root: check_contract_drift.check(root)),
         ("routes", lambda root: validate_route_registry.check(root)),
         ("i18n", lambda root: check_i18n_parity.check(root, Path("packages/localization/locales/en"), Path("packages/localization/locales/ru"))),
         ("fixtures", lambda root: validate_fixture_manifest.check(root)),
+        (
+            "migrations-static",
+            lambda root: validate_migration_lifecycle.check(root, mode="static"),
+        ),
     ]
 
 
@@ -96,7 +87,6 @@ def _ci_additional() -> list[tuple[str, StaticCheck]]:
                 ownership_manifest=Path("deploy/compose/ownership-manifest.json"),
             ),
         ),
-        ("migrations-static", lambda root: validate_migration_lifecycle.check(root, mode="static")),
         ("compose-static", lambda root: compose_lifecycle.check(root, mode="static", compose=Path("compose.yaml"), policy=Path("deploy/compose/runtime-policy.json"))),
         ("browser-static", lambda root: browser_smoke.check(root, mode="static", manifest=Path("tests/e2e/browser-smoke.json"))),
     ]

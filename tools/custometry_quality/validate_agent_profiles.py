@@ -18,19 +18,17 @@ from .core import (
 
 RANGE = re.compile(r"([A-Z][A-Z0-9_-]+)-([0-9]{3})(?:\.\.|…)([0-9]{3})")
 CYRILLIC = re.compile(r"[\u0400-\u04FF]")
-REQUIRED_RESULT_TERMS = ("status", "mode", "contract impact", "next owner")
 ENGLISH_AGENT_ARTIFACTS = (
     Path("AGENTS.md"),
     Path("CONTRIBUTING.md"),
     Path("README.md"),
     Path("SECURITY.md"),
     Path(".codex/AGENTS.md"),
-    Path(".codex/PLANS.md"),
-    Path(".codex/agents/plan_template.md"),
-    Path(".codex/agents/prompt_template.md"),
-    Path(".codex/agents/stage_execution_ledger_template.md"),
+    Path(".codex/agents/spec_template.md"),
+    Path(".codex/agents/ticket_template.md"),
     Path(".codex/agents/iteration_report_template.md"),
 )
+PROFILE_TOP_LEVEL_KEYS = frozenset({"name", "description", "developer_instructions"})
 
 
 def _maxima(blueprint: str) -> dict[str, int]:
@@ -82,6 +80,16 @@ def check(root: Path, profiles: Path = Path(".codex/agents")) -> CheckResult:
         except tomllib.TOMLDecodeError as exc:
             result.add("profile-toml-invalid", str(exc), path)
             continue
+        actual_keys = frozenset(data)
+        if actual_keys != PROFILE_TOP_LEVEL_KEYS:
+            missing = sorted(PROFILE_TOP_LEVEL_KEYS - actual_keys)
+            unknown = sorted(actual_keys - PROFILE_TOP_LEVEL_KEYS)
+            result.add(
+                "profile-schema-invalid",
+                "agent profile top-level keys must be exactly "
+                f"{sorted(PROFILE_TOP_LEVEL_KEYS)}; missing={missing}, unknown={unknown}",
+                path,
+            )
         name = data.get("name")
         description = data.get("description")
         instructions = data.get("developer_instructions")
@@ -106,18 +114,6 @@ def check(root: Path, profiles: Path = Path(".codex/agents")) -> CheckResult:
                 "profile-instructions-missing", "developer_instructions must be non-empty", path
             )
             continue
-        lower = instructions.lower().replace("_", " ")
-        for term in REQUIRED_RESULT_TERMS:
-            if term not in lower:
-                result.add(
-                    "profile-result-contract-incomplete", f"missing result term: {term}", path
-                )
-        if "complete" not in lower or "partial" not in lower or "blocked" not in lower:
-            result.add(
-                "profile-status-semantics-incomplete",
-                "complete/partial/blocked semantics required",
-                path,
-            )
         for prefix, _start, end in RANGE.findall(instructions):
             if prefix in maxima and int(end) != maxima[prefix]:
                 result.add(

@@ -1,81 +1,36 @@
 ---
-report_name: YYYY-MM-DD-<bounded-topic>
-report_type: standalone_iteration
+artifact_kind: delivery_evidence
+delivery_contract: global/v1
+delivery_schema_version: 1
 spec_version: 0.8.2-draft
-requirement_ids: []
-base_revision: <git-sha-or-unborn>
-scope: "<bounded non-staged task>"
-status: completed | partial | blocked
-proof_boundary:
-  label: <exact-observed-boundary>
-  exclusions: [<what-this-report-does-not-prove>]
+ticket_id: <WORKSTREAM-VERB-NOUN>
+proof_boundary: <exact-observed-boundary>
+proof_skills: [<skills used at the declared proof boundary>]
+verdict: passed | superseded
+redaction: <what was removed or why no sensitive data was present>
+executed_checks: [<exact command or action>]
+observations: [<redacted observed result>]
 ---
 
-# <Iteration title>
+# <Ticket> Evidence
 
-> This is evidence for one bounded non-staged task. It is not a plan, prompt pack, stage ledger, or replacement for the blueprint.
+> Compact evidence for one terminal ticket. It is not another execution-state
+> source or a replacement for the product specification.
 
-## Outcome
+## Outcome and scope
 
-<What is now observably true.>
+- outcome: <what is now observably true, or why the ticket was superseded>;
+- requirement IDs: [<IDs>];
+- included: <behavior/paths>;
+- exclusions: <what this evidence does not prove>.
 
-## Scope and requirements
+## Commands and observations
 
-- requirement IDs: `<IDs or N/A>`;
-- included: <paths/behavior>;
-- excluded: <paths/behavior>.
+| Command or action | Result | Redacted observation / durable reference |
+|---|---|---|
+| `<exact check>` | pass / fail / superseded | <observed fact or repository path> |
 
-## Verified facts, assumptions, unknowns
+## Verdict
 
-- fact: <source/evidence>;
-- assumption: <bounded assumption>;
-- unknown: <missing evidence or none>.
-
-## Contract impact
-
-| Surface | Old | New | Consumers/evidence | Classification | Migration/rollback | Verification | Unknowns |
-|---|---|---|---|---|---|---|---|
-| Public API / errors | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Ports / interfaces | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| DTO / event / artifact schemas | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Persistence / migrations | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Config / defaults / feature policies | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Request hash / cache / identity / idempotency | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Service auth / timeout / retry / errors | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| External effects / unknown-state reconciliation | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Logs / metrics / traces / audit / ledger / redaction | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Alerts / runbooks | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Browser-visible behavior | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-| Benchmark / rollout gates | TBD | TBD | TBD | `unknown` | TBD | TBD | TBD |
-
-## File manifest
-
-- created: []
-- modified: []
-- deleted: []
-- outside expected paths: []
-- foreign changes excluded: []
-- mixed files/hunks: []
-
-## Verification
-
-| Boundary | Command/action | Result | Evidence | Does not prove |
-|---|---|---|---|---|
-| Local | TBD | TBD | TBD | TBD |
-
-- proof boundary: `<exact label>`;
-- explicit exclusions: `<what remains unverified>`.
-
-## Decisions and deviations
-
-- decision: <none or explicit record>;
-- `SHOULD` deviation/ADR: <none or path>.
-
-## Blockers and residual risks
-
-- blockers: none;
-- residual risks: <none or explicit risk>.
-
-## Next action
-
-<One bounded action; do not infer authorization.>
+<`passed` for an accepted ticket; `superseded` with the replacement/reason for a
+superseded ticket. State residual risk and next safe action if any.>

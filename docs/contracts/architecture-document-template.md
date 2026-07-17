@@ -59,7 +59,9 @@ proof_boundary:
 
 ## Delivery and rollback
 
-<Reversible phases, entry and exit criteria, owned artifacts, stop gates, and rollback. Do not create a prompt pack or ledger without separate approval.>
+<Reversible migration phases, entry and exit criteria, owned artifacts, stop
+conditions, and rollback when the architecture change genuinely requires
+phased coordination.>
 
 ## Validation and proof boundaries
 

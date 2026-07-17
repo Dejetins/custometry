@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-RUNTIME-001
 title: Custometry development runtime contract
-doc_version: 1
+doc_version: 2
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -50,7 +50,7 @@ outcomes and require their own real-boundary evidence.
 |---|---|---|---|---|---|
 | `fast-loop` | Web, framework-independent Python, focused tests; later API reload when implemented | none required | UI/component work, domain/application logic, contracts, generated mocks | lint, types, unit/property/component tests, contract/mock parity, local Web behavior | PostgreSQL adapters, container networking, clean installation, restart/recovery, release |
 | `hybrid` | Web and API with reload | stateful infrastructure such as control PostgreSQL and demo-source PostgreSQL; later Valkey or other owned infrastructure | real adapters and end-to-end development without rebuilding application images | API/database integration, migrations against local disposable state, browser-to-real-API flows | production image behavior, Edge segmentation, clean full-stack lifecycle, release |
-| `full-stack` | only controlling tools and browser | the complete supported disposable application topology | S05 proof, pre-push/CI runtime checks, ingress/network behavior, restart and clean lifecycle | Compose health, Edge/Web/API paths, migrations, browser smoke, restart and cleanup | immutable release publication, supply chain, target firewall/CNI, accepted installer |
+| `full-stack` | only controlling tools and browser | the complete supported disposable application topology | ticketed runtime proof, pre-push/CI runtime checks, ingress/network behavior, restart and clean lifecycle | Compose health, Edge/Web/API paths, migrations, browser smoke, restart and cleanup | immutable release publication, supply chain, target firewall/CNI, accepted installer |
 | `release` | launcher, verification tools, and browser only | immutable digest-pinned release composition | protected release/install/update acceptance | digest/platform, migration, install/update/rollback, recovery, SBOM/provenance/license, target security and performance | development convenience behavior or mutable source/build state |
 
 The mode is a proof boundary, not a quality rank. A focused domain test in
@@ -77,17 +77,16 @@ Failures never fall back silently to a cheaper mode. For example, a failed
 Hybrid database check cannot be replaced by a repository fake, and a failed
 Full Stack network probe cannot be replaced by Vite behavior.
 
-## 5. S00–S06 mapping
+## 5. Ticket proof-mode selection
 
-| Stage | Default runtime use | Required decision |
-|---|---|---|
-| `S00 Discovery` | no application runtime required; read-only inventory and focused static commands | Record the current commands, mode gaps, changed boundary, and expected escalation path. |
-| `S01 UX + Contract` | `fast-loop` for schemas, examples, generated mocks, components, and contract tests | Freeze mock/real configuration, stable error semantics, and the proof mode for each accepted flow. |
-| `S02 Domain/Application` | `fast-loop` | Keep the core framework-independent and prove policies without infrastructure unless the invariant itself requires a real boundary. |
-| `S03 Adapters` | `hybrid` for real stateful adapters; `full-stack` only when topology is the subject | Observe migrations, timeouts, retries, idempotency, and unknown-state handling at the owned adapter. |
-| `S04 Web Integration` | `fast-loop` for mock-backed UI; `hybrid` for real API integration | Prove explicit mock/real disclosure and run real browser evidence for the claimed boundary. |
-| `S05 Real-boundary Proof` | `full-stack` | Use clean disposable state and prove lifecycle, restart/recovery paths, telemetry, and post-conditions required by the slice. |
-| `S06 Acceptance` | reconcile evidence from preceding modes; use `release` only when triggered | Do not infer release readiness from `fast-loop`, `hybrid`, or `full-stack`. |
+Each ready ticket declares the smallest mode that can observe its proof
+boundary. Pure policies, schemas, components, and generated clients normally
+use `fast-loop`; real stateful adapters and browser-to-real-API paths require
+`hybrid`; container image, Edge routing, service discovery, restart, and clean
+lifecycle claims require `full-stack`; immutable candidate, install/update,
+recovery, supply-chain, target-security, and performance claims require
+`release`. A failed higher mode cannot be replaced by evidence from a cheaper
+mode.
 
 ## 6. Target Hybrid topology
 
@@ -174,8 +173,8 @@ Full Stack Compose check does not establish that proof.
 | `B05`–`B13` | real adapters and runtime needs owned by each bounded context |
 | DevOps/runtime ownership | `scripts/dev`, Compose override mechanics, project/resource isolation, lifecycle diagnostics |
 | QA/evidence ownership | independent real-boundary proof and evidence retention |
-| `B12 Production Hardening` | release isolation, target firewall/CNI, recovery, performance, and supply-chain gates |
-| `W14 Final Acceptance` | final immutable release evidence without adding feature scope |
+| Production hardening owner | release isolation, target firewall/CNI, recovery, performance, and supply-chain gates |
+| Release acceptance owner | final immutable release evidence without adding feature scope |
 
 ## 10. Contract impact and migration
 
@@ -185,14 +184,14 @@ Full Stack Compose check does not establish that proof.
 | Contributor runtime selection | `compatible-change` | The modes name existing and target paths; current focused commands remain usable. |
 | Future `scripts/dev` interface | `compatible-change` before stable consumers | Introduce additively; retain direct focused commands during adoption. Removing or changing stable command semantics later requires migration. |
 | Future `compose.dev.yaml` | `compatible-change` | Add as an explicit override; deletion rolls back to current Fast Loop and Full Stack paths. |
-| Active staged-work and acceptance gates | `compatible-change` | Synchronize B01 S00–S06 prompts, pin this contract in the active S00 source set, and keep the ledger state unchanged. Rollback restores the prior plan/prompt wording and source hash without changing product or runtime state. |
+| Ticket proof-mode declarations | `compatible-change` | Existing focused commands remain valid; each new ticket names the required mode and proof boundary. |
 | Release composition/security | `none` now; fail-closed compatibility requirement for implementation | Development topology must remain unreachable from release workflows. |
 | Browser-visible development disclosure | `compatible-change` | Visible only in development builds; production validation rejects it. |
 
 ## 11. Validation and proof boundary
 
-Documentation acceptance requires metadata, links, documentation index, staged
-artifact validation, and an independent cold review. Implementation acceptance
+Documentation acceptance requires metadata, links, documentation index, and a
+cold self-review proportional to the change. Implementation acceptance
 later requires:
 
 - focused tests for mode selection and resource ownership;
@@ -210,8 +209,8 @@ exists.
 
 | Risk | Owner | Mitigation/review trigger |
 |---|---|---|
-| Host and container behavior diverge. | DevOps + owning workstream | Require Full Stack proof at S05 and whenever image/runtime behavior changes. |
-| Generated mocks drift from real contracts. | B01 + contract owner | Generate both from one versioned source and verify parity before real integration. |
-| Development ports or secrets leak into release. | B12 | Add a fail-closed release-topology validator before `compose.dev.yaml` is introduced. |
+| Host and container behavior diverge. | DevOps + owning ticket | Require Full Stack proof whenever image/runtime behavior changes. |
+| Generated mocks drift from real contracts. | Experience + contract owner | Generate both from one versioned source and verify parity before real integration. |
+| Development ports or secrets leak into release. | Production hardening owner | Add a fail-closed release-topology validator before `compose.dev.yaml` is introduced. |
 | A single CLI becomes opaque or destructive. | DevOps | Print owned resources and actual commands; scope cleanup; confirmation-gate data reset. |
 | Developers overuse Full Stack and lose feedback speed. | Engineering productivity | Keep focused host commands first-class and measure startup/reload time when the CLI is implemented. |

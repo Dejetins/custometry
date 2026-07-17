@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 4
+doc_version: 5
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -52,8 +52,9 @@ deploy/compose/bootstrap.sh --build
 deploy/compose/bootstrap.sh --build --with-demo
 ```
 
-This is the clean, complete `full-stack` boundary. It is required for S05 and
-CI/runtime proof, but it is not the default per-save development loop. The
+This is the clean, complete `full-stack` boundary. It is required whenever a
+ticket claims container, ingress, service-discovery, restart, or clean-lifecycle
+behavior, but it is not the default per-save development loop. The
 accepted [development runtime contract](./development-runtime-contract.md)
 defines `fast-loop`, `hybrid`, `full-stack`, and `release`, including their
 proof limits.

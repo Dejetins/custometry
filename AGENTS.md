@@ -9,11 +9,11 @@ For every task in this repository:
 1. read this file and `.codex/AGENTS.md` before task actions;
 2. treat `custometry-technical-blueprint-ru.md` as the normative product specification;
 3. use `custometry-technical-blueprint-human-ru.md` as its required explanatory mirror;
-4. for staged work, read the linked `plan_doc`, `prompt_pack_dir`, and `stage_ledger` and take current-stage truth only from the ledger;
-5. do not load `.codex/PLANS.md` for an ordinary bounded task unless long-horizon state is relevant.
+4. use `custometry-ui-blueprint-ru.md` as the UI/UX requirement source;
+5. for executable work governed by a ready delivery ticket, take scope and execution truth from that ticket.
 
 Repository-authored engineering artifacts are written in English by default:
-architecture, ADRs, contracts, plans, prompts, ledgers, iteration reports,
+architecture, ADRs, contracts, specifications, tickets, evidence reports,
 runbooks, templates, code comments, and contributor documentation. The
 normative `*-ru.md` product blueprints and localized `docs-site/docs/ru/**`
 content are explicit product-language exceptions. Unless the user asks

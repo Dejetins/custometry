@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 3
+doc_version: 6
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -23,7 +23,7 @@ This directory contains accepted architecture decisions and shared engineering c
 2. `custometry-technical-blueprint-human-ru.md` is the synchronized human-readable mirror.
 3. `custometry-ui-blueprint-ru.md` is the derived UI/UX contract.
 4. Documents in this directory contain accepted architecture and process decisions within the blueprint.
-5. Future staged work uses exactly `plan_doc + prompt_pack_dir + stage_ledger`, and only the ledger reports current execution state.
+5. Global Delivery Contract v1 defines artifact choice and ticket authority. A ready Custometry delivery ticket is the current execution source for one execution unit; a platform Goal is optional and requires explicit user or platform authority. Custometry keeps no standing program plan, generated prompt-pack inventory, or execution ledger. `validate_delivery_contract` validates the portable adapter and can optionally inspect an installed global source.
 
 If sources conflict, the higher-precedence source applies. An architecture document does not introduce a new normative `MUST`: a new product obligation is first added to the machine blueprint and mirrored synchronously in the human-readable version.
 
@@ -33,9 +33,9 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 |---|---|
 | [System Design](./system-design.md) | Overall architecture, accepted decisions, flows, proof boundaries, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Data ownership, dependencies, shared kernel, and integration rules |
-| [Development operating model](./development-operating-model.md) | UI-first vertical slices, workstream sequence, S00–S06, Git, and CI/CD |
+| [Development operating model](./development-operating-model.md) | UI-first vertical slices, ticket-first execution, optional coordination artifacts, Git, and CI/CD |
+| [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Ticket-first execution and removal of the obsolete staged planning system |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |
-| [Program plan](./program/custometry-program-plan.md) | W00/B01–B13/W14 dependencies, milestone gates, staged-artifact links, and requirement allocation |
 | [Documentation platform](./documentation-platform.md) | Docs as code, `/docs`, `/help`, visibility, and publication |
 | [Runtime, network, and installation](./runtime-network-installation.md) | Download-first installation, ports, networks, egress, resources, and container lessons |
 | [Quality tooling](./tooling-gates.md) | Canonical commands, hook profiles, and mandatory execution points |

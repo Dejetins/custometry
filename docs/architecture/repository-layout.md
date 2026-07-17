@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-REPOSITORY-LAYOUT-001
 title: Custometry repository and agent infrastructure layout
-doc_version: 4
+doc_version: 6
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -37,7 +37,9 @@ Establish the minimal monorepo for Phase 0 (Foundation), retaining the complete 
 7. Empty modules are reserved ownership boundaries only. A `.gitkeep` file does not imply an implementation or public contract.
 8. Until `v1_target`, only a single-server topology with a local artifact filesystem is permitted. Remote workers, object storage, and Kubernetes are not introduced implicitly.
 9. `.gitignore` and `.editorconfig` are added as portable hygiene and secret-state boundaries explicitly authorized by the repository-creation task.
-10. `docs/architecture/program/` contains the canonical Program Plan, reviewed routing source, and generated exact requirement matrix; `docs/architecture/workstreams/` contains staged product workstream artifacts.
+10. `.codex/delivery/` contains only currently justified specifications,
+    vertical tickets, and compact terminal evidence. It is not a standing
+    program-plan registry.
 
 ## Alternatives considered
 
@@ -73,14 +75,13 @@ packages/
 plugins/
   connector_postgresql/ connector_mssql/ connector_files/ example_node/
 migrations/
+  versions/                     # versioned database revisions
 deploy/
   compose/ examples/
 tools/
   custometry_quality/            # importable validators, generators, and gates
 docs/
-  architecture/
-    program/                    # Program Plan, routing, requirement matrix
-    workstreams/                # B01-B13 and W14 staged artifacts
+  architecture/                # accepted system and engineering decisions
   adr/ contracts/ user-guide/ runbooks/ iterations/
 docs-site/docs/                   # current public-only MkDocs source
 tests/
@@ -95,23 +96,23 @@ The complete domain ownership matrix is in [bounded-context-map.md](./bounded-co
 ```text
 AGENTS.md                       # standard discovery point
 .codex/
-  AGENTS.md                    # normative repository contract
-  PLANS.md                     # compact map of long-running workstreams
+  AGENTS.md                    # compact repository routing map
   agents/
-    *.toml                     # roles; do not duplicate the complete contract
-    prompt_template.md         # portable executor-prompt contract
-    stage_execution_ledger_template.md
+    *.toml                     # roles; do not duplicate product or skill procedure
+    spec_template.md
+    ticket_template.md          # one ready ticket = one execution unit
     iteration_report_template.md
-    generated/<pack>/          # durable prompt packs
-docs/architecture/<area>/
-  <plan>.md                    # plan_doc
-  <plan>-stage-reports/
-    <plan>-stage-ledger.md     # stage_ledger and source of current-stage truth
-    <stage>-<slug>.md          # stage evidence/report
+  delivery/
+    specs/                     # only when behavior or proof seam is unresolved
+    tickets/                   # current delivery frontier and execution state
+    evidence/                  # ticket-local durable evidence
 docs/iterations/               # standalone bounded reports only
 ```
 
-Staged work has exactly three durable execution sources: `plan_doc + prompt_pack_dir + stage_ledger`. `GOAL.md` is forbidden because Codex Goal mode is runtime orchestration, not a fourth file-backed state source. Raw `.codex/agents/.context/`, `.codex/tmp/`, `.codex/sessions/`, logs, and secrets are not committed.
+A ticket is the sole repository-local execution-state source for its execution
+unit. Goal mode is optional runtime orchestration, not a file-backed source of
+truth. Raw `.codex/agents/.context/`,
+`.codex/tmp/`, `.codex/sessions/`, logs, and secrets are not committed.
 
 ### Separation of agent layers
 
@@ -119,12 +120,14 @@ Staged work has exactly three durable execution sources: `plan_doc + prompt_pack
 |---|---|
 | Machine blueprint | Defines what the product must implement, including the exact `MUST` / `SHOULD` / `MAY` modality and stable requirement IDs |
 | Skill | Defines the procedure for a specific type of work and its evidence boundary |
-| `.codex/AGENTS.md` | Defines repository policy, the complete central skill trigger router, and the shared role-to-role ownership matrix |
-| `.codex/agents/*.toml` | Defines when to select or not select a role, its ownership, role-local skill routes, mandatory inputs, output, evidence, stop conditions, and handoff |
+| `.codex/AGENTS.md` | Defines repository policy, the complete central skill trigger router, and shared role responsibility/handoff boundaries |
+| `.codex/agents/*.toml` | Defines when to select or not select a role, its decision and change scope, role-local skill routes, mandatory inputs, output, evidence, stop conditions, and handoff |
 
 A TOML profile is a role overlay, not a mini-blueprint or mini-skill. It refers to exact machine-blueprint sections and IDs but does not restate normative requirements or change their force. `skills.config` only enables or disables an inherited skill and does not mean the skill must be selected or invoked.
 
-All nine profiles use the common result `complete | partial | blocked` and exactly one `next_owner`. Actual routing behavior was checked with positive and negative read-only spawn canaries for every role; evidence is recorded in the [canary journal](../iterations/2026-07-14-agent-role-canaries.md).
+All nine profiles use the common result `complete | partial | blocked` and
+exactly one `handoff_to`/next executor. A role profile selects expertise and
+handoff boundaries; it does not create delivery authority.
 
 ## Contract impact
 
@@ -139,23 +142,25 @@ All nine profiles use the common result `complete | partial | blocked` and exact
 | Service auth / timeout / retry / errors | absent | unauthenticated Foundation health only; dependency timeout/readiness code | API health boundary | `compatible-change` | add authentication before product routes | focused API + browser/Compose smoke | product authentication not implemented |
 | External effects / unknown-state reconciliation | absent | absent | no runtime/external call | `none` | N/A | scope review | none |
 | Logs / metrics / traces / audit / redaction | absent | governance/redaction policy + bounded container logs | `.codex/AGENTS.md`, Compose logging | `compatible-change` | version before operational consumers | static review | metrics, traces, and audit runtime not implemented |
-| Agent prompt / ledger / report semantics | absent | portable templates and staged triad | `.codex/agents/*template.md` | `compatible-change` | migrate future consumers if the schema changes | YAML/frontmatter + cold review | none until the first pack/ledger consumer exists |
+| Agent delivery semantics | static program plans, generated stage packs, and ledgers duplicated execution state | Global Delivery Contract v1 plus repository-local specs, vertical tickets, and compact terminal evidence | `.codex/AGENTS.md`, `.codex/delivery/**` | `breaking-change` for obsolete agent workflow; product behavior `none` | old artifacts and validators are removed; Git history retains provenance | delivery-contract/ticket validators + focused tests + cold review | Goal scheduling remains external |
 | Agent role selection / routing | draft profiles contained unsupported language fields and mixed product, workflow, and role policy | nine schema-valid role overlays with one common contract, a central skill router, and explicit handoffs | `.codex/AGENTS.md`, `.codex/agents/*.toml` | `compatible-change` | revert profiles only before the first dependent agent workflow; after that, role-name compatibility is required | `codex doctor` + 18 read-only spawn canaries + cold review | custom-role child persistence in Codex 0.144.2 |
-| Alerts / runbooks | absent | versioned runbook contract/template | `docs/runbooks/` | `compatible-change` | add a concrete owner and trigger with the runtime feature | link/metadata checks | alert thresholds intentionally absent |
+| Alerts / runbooks | absent | versioned runbook contract/template | `docs/runbooks/` | `compatible-change` | add a responsible role and trigger with the runtime feature | link/metadata checks | alert thresholds intentionally absent |
 | Browser-visible behavior | absent | Foundation shell, version/status, local public documentation link | React/Web image | `compatible-change` | version routes/copy before stable release | unit + browser runtime required | full Experience Platform not implemented |
 | Benchmark / rollout gates | absent | tested quality CLIs, evidence schemas, and grouped profiles | `tools/custometry_quality`, tests | `compatible-change` | version tool contracts and fixtures | tooling tests + grouped profiles | release evidence must be fresh and observed |
 | Git / coordination | remote-only initial commit | local `main` tracks `origin/main`; durable/ephemeral policy added | Git status/remote and `.gitignore` | `compatible-change` | remove uncommitted scaffold | Git inspection | commit/push not authorized |
 
-Rollback for unused reserved modules means removing the additions before the first consumer exists. Foundation runtime state is rolled back only through a documented migration-, image-, and volume-aware procedure; deleting a directory is no longer sufficient rollback. After product code, a prompt pack, or a ledger exists, changing its path requires a separate migration and compatibility assessment.
+Rollback for unused reserved modules means removing the additions before the
+first consumer exists. Foundation runtime state is rolled back only through a
+documented migration-, image-, and volume-aware procedure; deleting a
+directory is no longer sufficient rollback.
 
 ## Scaffold validation
 
 - Git tracks `origin/main`, and the existing remote `LICENSE` is preserved.
 - The section 25 tree and explicitly documented implied paths are present.
 - `pyproject.toml`, `package.json`, `pnpm-workspace.yaml`, `mkdocs.yml`, and `compose.yaml` pass syntax and static-contract validation.
-- The prompt, ledger, and iteration templates use `spec_version: 0.8.2-draft` and pass structural validation.
+- The spec, ticket, and evidence templates use `spec_version: 0.8.2-draft` and pass structural validation.
 - Nine role TOML files use only the supported fields `name`, `description`, and `developer_instructions`; `codex doctor` reports no malformed-role warnings.
-- Positive and negative read-only spawn canaries passed for every role: 18/18 exact `agentRole`, skill route, ownership/stop/handoff, and unchanged content hash; details are in the [journal](../iterations/2026-07-14-agent-role-canaries.md).
 - Foundation health, documentation, API, browser, and Compose boundaries require actual runtime evidence. Compose establishes `edge_to_web` and `web_to_api` without direct Edge-to-API adjacency, but does not prove strict Edge outbound denial; that is a separate target firewall/CNI hardening gate. Product analytics, authentication, execution, deployment, recovery, and performance readiness do not follow from the scaffold.
 - Repository-local `.pnpm-store/` and `.playwright-cli/` are manifest-owned disposable tool state: they count against the owned-disk budget, are excluded from Git and the Docker context, and may be deleted only by the exact confirmed cleanup command.
 
@@ -166,14 +171,6 @@ uv run python -m tools.custometry_quality.validate_repository_layout
 ```
 
 It validates blueprint-owned literal paths and documented extensions. The manual list in this document remains explanatory and is not an alternative parser source.
-
-Program allocation drift is checked separately and is included in every grouped profile:
-
-```bash
-uv run python -m tools.custometry_quality.generate_program_requirement_matrix --check
-```
-
-The routing source and generated matrix are required repository files. The generator fails on an unallocated or multiply allocated requirement, an unknown workstream/evidence type, incomplete release participation, an invalid terminal milestone stage, or an invalid dependency reference.
 
 ## Residual risks
 
@@ -186,4 +183,4 @@ The routing source and generated matrix are required repository files. The gener
   activation through `scripts/run-hook-profile.sh`, so GUI-launched Git does
   not inherit an incompatible ambient Node or pnpm selection.
 - Foundation Compose is a local development skeleton, not a production topology or a proven release artifact.
-- `OPEN-007` and `OPEN-008` remain decisions for a future plan, not scaffold defaults.
+- `OPEN-007` and `OPEN-008` remain unresolved product decisions, not scaffold defaults.

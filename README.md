@@ -38,7 +38,8 @@ Start with the [architecture index](./docs/architecture/README.md). The approved
 - `tests/` — unit through real-boundary verification suites;
 - `docs-site/docs/` — fail-closed public Markdown source shipped by the current Foundation image;
 - `docs/` — contributor architecture, ADRs, contracts, templates, runbooks, future metadata-driven user guidance, and iteration evidence;
-- `.codex/` — durable agent policy, role definitions, prompt templates, prompt packs, and stage-ledger conventions.
+- `.codex/` — durable agent policy, role definitions, delivery templates,
+  vertical tickets, and compact evidence.
 
 Read [AGENTS.md](./AGENTS.md) before making repository changes.
 

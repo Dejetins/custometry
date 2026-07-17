@@ -29,4 +29,4 @@ Custometry is a self-hosted customer analytics and forecasting platform. This do
 - [Understand the network boundary](install/network-boundary.md)
 - [Explore the Foundation workspace](user-guide/foundation.md)
 
-Operator and administrator runbooks require authentication and are intentionally absent from this public static documentation artifact. Architecture documents, ADR internals, prompt packs, and iteration journals are not included in an ordinary installation.
+Operator and administrator runbooks require authentication and are intentionally absent from this public static documentation artifact. Architecture documents, ADR internals, delivery tickets/evidence, and iteration journals are not included in an ordinary installation.

@@ -26,4 +26,4 @@ Custometry — локально разворачиваемая платформ�
 - [Локальная установка](install/local.md)
 - [Рабочее пространство Foundation](user-guide/foundation.md)
 
-Публичная сборка документации не включает закрытые operator/admin runbooks, внутреннюю архитектуру, ADR, prompt packs и журналы итераций.
+Публичная сборка документации не включает закрытые operator/admin runbooks, внутреннюю архитектуру, ADR, delivery tickets/evidence и журналы итераций.

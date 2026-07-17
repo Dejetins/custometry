@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-BOUNDED-CONTEXT-MAP-001
 title: Custometry bounded context map
-doc_version: 1
+doc_version: 2
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -102,4 +102,9 @@ A single PostgreSQL deployment does not imply a shared-table model. Every migrat
 
 ## Acceptance of a new module
 
-Before implementation, the module documents its purpose and non-goals, vocabulary, aggregates and invariants, commands, queries, events, data ownership, public ports, permissions, idempotency and retry behavior, UI routes and states, observability, fixtures, and proof boundary using the [template](../contracts/module-definition-template.md). It then follows the common S00–S06 framework in [development-operating-model.md](./development-operating-model.md).
+Before implementation, the responsible specification or vertical ticket names
+the module purpose and non-goals, vocabulary, aggregates and invariants,
+commands, queries, events, data ownership, public ports, permissions,
+idempotency/retry behavior, UI routes and states, observability, fixtures, and
+proof boundary. The artifact choice and execution rules are defined in
+[development-operating-model.md](./development-operating-model.md).

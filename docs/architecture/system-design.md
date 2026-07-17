@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-SYSTEM-DESIGN-001
 title: Custometry Foundation System Design
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.8.2-draft
 visibility: internal
 ship: false
@@ -21,7 +21,7 @@ proof_boundary:
 - product source: `custometry-technical-blueprint-ru.md`, `0.8.2-draft`;
 - target form: modular monolith, single-server Docker Compose through `v1_target`;
 - first target: local Apple Silicon MacBook Pro M3 Pro;
-- boundary: shared architecture and acceptance rules, without detailed workstream plans, stage ledgers, or prompt packs;
+- boundary: shared architecture and acceptance rules, without a standing delivery plan or ticket backlog;
 - companion DOCX: `custometry-foundation-system-design.docx` is a visually verified snapshot of this decision; Markdown remains the only mutable execution/source artifact.
 
 The DOCX is regenerated from this Markdown through artifact template package
@@ -44,7 +44,10 @@ Foundation establishes:
 - a local control PostgreSQL and a separate synthetic retail source;
 - a minimal shared Web shell, route registry, and contract-generated mocks as the basis for future vertical slices.
 
-Foundation does not claim that product APIs, analytics, forecasting, report delivery, universal XLSX, or production deployment are complete. Detailed plans, journals, and prompt packs are created later and separately for each approved workstream.
+Foundation does not claim that product APIs, analytics, forecasting, report
+delivery, universal XLSX, or production deployment are complete. Future work
+uses the smallest justified delivery artifact under Global Delivery Contract
+v1.
 
 ## 2. Accepted decisions
 
@@ -173,41 +176,21 @@ The dataset covers returns, missing products, duplicates, SCD, late arrival/corr
 
 Schemas are owned by the provider context, versioned before consumers, and accompanied by positive, negative, and limit examples. An API DTO, domain object, and persistence row are not treated as one universal type.
 
-## 5. UI-first sequence
+## 5. UI-first delivery slices
 
-1. Repository Foundation and quality tooling.
-2. Experience Platform: Frost tokens/components, canonical routes, shell, i18n/a11y, system states, `/docs`, `/help`, contract fixtures.
-3. Local Data Lab: two PostgreSQL boundaries, deterministic generator, and golden manifests.
-4. Identity & Workspace with real session/RBAC/audit paths.
-5. Execution & Artifact Spine.
-6. Connections, Catalog, Semantic Model, and Data Quality.
-7. The first real Analytics slice with `ChartSpec`, ECharts, filters, `vs LY`, Result Trust, and Focus/Explore.
-8. Operations and in-app Notifications.
-9. Customer Intelligence and Promotion Journal.
-10. Forecasting.
-11. Dashboards, Report Composition, Data Guides, and user-initiated email.
-12. Pipelines, plugins, and administration.
-13. Hardening/recovery/performance/supply chain.
-14. Universal XLSX as the final functional capability.
-15. Final acceptance without expanding feature scope.
+Delivery starts from the smallest coherent user journey and follows accepted
+bounded-context dependencies. The Web route, complete UI states, accessibility,
+and mock/real disclosure are designed with the versioned contract. Domain,
+application, adapter, and real-boundary work then complete the same vertical
+outcome. The repository does not maintain a fixed block sequence: the next
+slice is selected from current product priority, accepted dependencies, and the
+nearest provable boundary.
 
-Each item after Foundation becomes a separate future bounded workstream. The sequence within a particular workstream is refined only in its accepted plan; this document is not such a plan.
-
-## 6. Shared workstream acceptance model
-
-All future workstreams use the shared S00–S06 framework:
-
-| Gate | Purpose | Minimum output |
-|---|---|---|
-| S00 Discovery | Freeze current state, scope/non-goals, vocabulary, owners, and risks | Source-anchored fact ledger and boundaries |
-| S01 UX + Contract | Penpot/routes/states, API/DTO/events/examples/errors | Versioned contracts and representative examples |
-| S02 Domain/Application | Aggregates, invariants, commands, queries, and policies | Framework-free core and focused tests |
-| S03 Adapters | PostgreSQL/artifact/queue/source adapters and migrations | Real adapter contract evidence |
-| S04 Web Integration | Generated client, real adapter switch, and all mandatory UI states | Browser flow and mock/real parity |
-| S05 Real-boundary Proof | Clean DB, Compose, API, browser, failure/restart/retry | Reproducible evidence at actual boundary |
-| S06 Acceptance | Docs, runbook, traceability, cold review, rollback | Accepted evidence and no unresolved blocker |
-
-S00–S06 is policy vocabulary, not an automatically created prompt pack. For staged execution, exactly `plan_doc + prompt_pack_dir + stage_ledger` are created later.
+One ready ticket is one execution unit. A specification precedes tickets only
+when behavior, invariants, failure semantics, or the proof seam are unresolved.
+Acceptance requires the ticket's declared contract, UI, real-boundary,
+documentation, compatibility, and rollback evidence; it does not depend on a
+fixed stage taxonomy.
 
 ## 7. Reliability, security, and operations
 

@@ -16,4 +16,6 @@ The repository is currently a Foundation scaffold and does not claim a supported
 - Edge is a secretless infrastructure ingress adapter separated from API by `edge_to_web`/`web_to_api`; Docker Compose does not portably prove Edge outbound denial, so production requires target-specific firewall/CNI-equivalent enforcement and runtime probes.
 - PostgreSQL and internal services are not published to host interfaces by default.
 - Secrets enter through local secret files/references and are excluded from Git and generated examples.
-- Architecture internals, prompt packs, iteration evidence, and private operational details are not part of the normal installation documentation bundle.
+- Architecture internals, delivery tickets/evidence, iteration evidence, and
+  private operational details are not part of the normal installation
+  documentation bundle.

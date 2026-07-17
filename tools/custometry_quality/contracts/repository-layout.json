@@ -11,9 +11,6 @@
     "custometry-technical-blueprint-human-ru.md",
     "custometry-technical-blueprint-ru.md",
     "custometry-ui-blueprint-ru.md",
-    "docs/architecture/program/custometry-program-plan.md",
-    "docs/architecture/program/requirement-matrix.json",
-    "docs/architecture/program/requirement-routing.json",
     "package.json",
     "pnpm-lock.yaml",
     "pnpm-workspace.yaml",
@@ -21,7 +18,6 @@
     "scripts/activate-toolchain.sh",
     "scripts/bootstrap-toolchain.sh",
     "scripts/run-hook-profile.sh",
-    "tools/custometry_quality/generate_program_requirement_matrix.py",
     "uv.lock"
   ],
   "required_directories": [
@@ -38,8 +34,6 @@
     "deploy/examples",
     "docs/adr",
     "docs/architecture",
-    "docs/architecture/program",
-    "docs/architecture/workstreams",
     "docs/contracts",
     "docs/runbooks",
     "docs/user-guide",

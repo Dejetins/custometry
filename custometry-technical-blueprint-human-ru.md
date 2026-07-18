@@ -1,24 +1,24 @@
 ---
 document_family_id: CUSTOMETRY-TECH-BLUEPRINT
 document_id: custometry-technical-blueprint-human-ru
-spec_version: 0.8.2-draft
+spec_version: 0.9.1-draft
 representation: human
 normative: false
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-07-16
+updated_at: 2026-07-19
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
-  expected_spec_version: 0.8.2-draft
+  expected_spec_version: 0.9.1-draft
 project_name: Custometry
 license_target: Apache-2.0
 ---
 
 # Custometry — полный технический план платформы
 
-> Это человекочитаемое смысловое зеркало спецификации `0.8.2-draft`. Нормативным источником истины является [машиночитаемый blueprint](./custometry-technical-blueprint-ru.md). Обе версии относятся к семейству `CUSTOMETRY-TECH-BLUEPRINT`, имеют одинаковый `spec_version` и одинаковый набор нормативных requirement ID. При любом расхождении действует machine-версия.
+> Это человекочитаемое смысловое зеркало спецификации `0.9.1-draft`. Нормативным источником истины является [машиночитаемый blueprint](./custometry-technical-blueprint-ru.md). Обе версии относятся к семейству `CUSTOMETRY-TECH-BLUEPRINT`, имеют одинаковый `spec_version` и одинаковый набор нормативных requirement ID. При любом расхождении действует machine-версия.
 
 ## 0. Как читать этот документ
 
@@ -41,7 +41,9 @@ Machine-версия использует нормативные слова `MUS
 
 ## 1. Что представляет собой Custometry
 
-Custometry — open-source self-hosted low-code платформа клиентской аналитики и прогнозирования. Она подключается к транзакционным и клиентским данным, описывает их через предметную семантическую модель, проверяет качество, создаёт воспроизводимые витрины, выполняет исследования и строит прогнозы.
+Custometry — открытая self-hosted low-code операционная система B2C retail-аналитики. Она превращает разрозненные клиентские и транзакционные данные, локальные методики и повторяющиеся ad hoc-запросы в управляемый цикл: бизнес-вопрос, утверждённая методика, воспроизводимое исследование, проверенный вывод, опубликованный аналитический продукт и доступный бизнесу результат.
+
+Модель B2C retail является текущей канонической моделью. Будущее расширение на B2B sales добавляется отдельными сущностями и контрактами: `Customer`, `Receipt`, `Product`, `Store` и `Channel` не переименовываются в `Account`, `Lead` или `Opportunity`.
 
 Главная ценность — не canvas сам по себе, а общее понимание клиента, идентификаторов, чека, позиции, товара, магазина, канала, календаря, продаж, возвратов, скидок, себестоимости, активности, когорт, сегментов и прогнозируемых метрик.
 
@@ -59,10 +61,13 @@ Custometry — open-source self-hosted low-code платформа клиент�
 | GOAL-008 | Не связывать бизнес-логику с одной СУБД или ML-библиотекой |
 | GOAL-009 | Изолированно обслуживать несколько workspaces в одной инсталляции |
 | GOAL-010 | Иметь полный английский и русский интерфейс и добавлять языки каталогами, не меняя доменный код |
+| GOAL-011 | Стандартизировать аналитическую работу через реестры метрик и методик, Analysis Case, evidence-linked findings и повторно используемые аналитические продукты |
+| GOAL-012 | Кастомизировать инсталляцию через versioned BrandProfile и CompanyPack без fork кода или отдельного customer image |
+| GOAL-013 | Дать аналитикам единое research-пространство от общего к частному с таблицами, графиками, группами метрик, выводами и воспроизводимой публикацией |
 
 ### 1.2. Границы продукта
 
-Текущий scope сознательно исключает персонализированные маркетинговые механики (`NON-GOAL-001`), массовые email/SMS/push-рассылки (`NON-GOAL-002`), промокоды и бонусные начисления (`NON-GOAL-003`), TDA и persistent homology (`NON-GOAL-004`), полноценную real-time CDP (`NON-GOAL-005`), замену DWH (`NON-GOAL-006`), полный аналог Airflow, dbt, JupyterLab или BI (`NON-GOAL-007`), произвольный недоверенный Python из браузера (`NON-GOAL-008`) и автоматическое доказательство причинности (`NON-GOAL-009`). Также до и включая v1 исключены Dash как production UI/runtime (`NON-GOAL-010`), Plotly как core chart dependency (`NON-GOAL-011`) и ECharts-GL/WebGL/GPU analytical compute (`NON-GOAL-012`). Post-v1 Plotly возможен только как trusted renderer plugin. Операционные уведомления и ручная персональная отправка одного воспроизводимого отчёта не являются массовой marketing-рассылкой. Promotion Journal регистрирует внешние акции, но не запускает механику, не выбирает аудиторию и не начисляет бонусы.
+Текущий scope сознательно исключает персонализированные маркетинговые механики (`NON-GOAL-001`), массовые email/SMS/push-рассылки (`NON-GOAL-002`), промокоды и бонусные начисления (`NON-GOAL-003`), TDA и persistent homology (`NON-GOAL-004`), полноценную real-time CDP (`NON-GOAL-005`), замену DWH (`NON-GOAL-006`), полный аналог Airflow, dbt, JupyterLab или BI (`NON-GOAL-007`), произвольный недоверенный Python из браузера (`NON-GOAL-008`) и автоматическое доказательство причинности (`NON-GOAL-009`). Также до и включая v1 исключены Dash как production UI/runtime (`NON-GOAL-010`), Plotly как core chart dependency (`NON-GOAL-011`) и ECharts-GL/WebGL/GPU analytical compute (`NON-GOAL-012`). B2B sales ontology остаётся отдельным будущим расширением (`NON-GOAL-013`); public activation runtime, reverse ETL marketplace и campaign orchestration не входят в открытый core (`NON-GOAL-014`); cloud/SaaS, Kubernetes и multi-host distribution не входят в текущую модель распространения (`NON-GOAL-015`). Post-v1 Plotly возможен только как trusted renderer plugin. Операционные уведомления и ручная персональная отправка одного воспроизводимого отчёта не являются массовой marketing-рассылкой. Promotion Journal регистрирует внешние акции, но не запускает механику, не выбирает аудиторию и не начисляет бонусы.
 
 ## 2. Пользователи и сценарии
 
@@ -70,13 +75,13 @@ Custometry — open-source self-hosted low-code платформа клиент�
 
 | Роль | Ответственность | Граница |
 |---|---|---|
-| Installation Administrator | Bootstrap, глобальные политики, плагины, health и backup | Не читает workspace-данные без membership и audit |
-| Workspace Administrator | Участники, роли, подключения, секреты и политики своего workspace | Не управляет другими workspaces |
-| Data Steward | Mapping, сущности, метрики и качество | Не обязан заниматься ML |
-| Analyst | Аналитика, сегменты, dashboards и экспорт | Не управляет глобальными секретами |
-| ML Analyst | Backtesting, модели и прогнозы | Не управляет пользователями |
-| Operator | Runs, расписания, очереди и восстановление | Не редактирует опубликованные версии |
-| Viewer | Просмотр разрешённых результатов | Не запускает и не меняет процессы |
+| Installation Administrator | Bootstrap, глобальные политики, плагины, health, backup и installation lifecycle | Не получает workspace membership, PII или аналитические данные автоматически |
+| Workspace Administrator | Пользователи, роли, object access, подключения, секреты и workspace policies | Не создаёт аналитический контент и не получает PII без отдельного разрешения |
+| Data Steward | Семантическая модель, Data Quality, Data Guide и data contracts | Не управляет пользователями или connections без отдельной административной роли |
+| Analyst | Исследования, методики, метрики, сегменты, dashboards, reports, comments, отправка и export | Не меняет connections/secrets и не назначает доступ другим пользователям |
+| ML Analyst | Возможности Analyst плюс backtesting, модели и прогнозы | Не управляет пользователями или connections |
+| Operator | Runs, расписания, очереди и восстановление | Не редактирует definitions, access policy и raw PII |
+| Viewer | Просмотр выданных reports/dashboards и комментарии | Не видит raw PII и не меняет definitions или filters, зафиксированные автором |
 
 ### 2.2. Основные сценарии
 
@@ -92,7 +97,7 @@ Custometry — open-source self-hosted low-code платформа клиент�
 | UC-008 | Installation Administrator по одноразовому bootstrap token создаёт первого администратора, workspace, locale/timezone и onboarding checklist |
 | UC-009 | Data Steward исправляет failed QualityReport, повторяет проверку либо оформляет временный auditable waiver |
 | UC-010 | Operator диагностирует run и выполняет retry, cancel, rerun либо фиксирует восстановление |
-| UC-011 | Analyst делится versioned dashboard/result внутри workspace; immutable reference и audit сохраняются |
+| UC-011 | Analyst делится versioned dashboard или published report snapshot внутри workspace; immutable reference и audit сохраняются |
 | UC-012 | Analyst сравнивает reportable результат с явно выровненным аналогичным периодом прошлого года и получает delta/coverage diagnostics |
 | UC-013 | Analyst ведёт versioned Promotion Journal с окнами, каналами и immutable audience binding и видит timeline overlay |
 | UC-014 | Analyst вручную отправляет immutable report snapshot от verified user email получателям разрешённых доменов |
@@ -100,6 +105,14 @@ Custometry — open-source self-hosted low-code платформа клиент�
 | UC-016 | Workspace Administrator публикует versioned Markdown Data Guide по утверждённому шаблону |
 | UC-017 | Analyst получает Web ECharts chart, email PNG или native/raster XLSX chart из одного immutable ChartSpec и chart-data artifact |
 | UC-018 | Analyst раскрывает разрешённый chart, table или range timeline в Focus / Explore mode, исследует его локальными filters и controls, экспортирует и возвращается в исходный контекст |
+| UC-019 | Analyst создаёт, рецензирует и публикует versioned аналитическую методику с владельцем, формулами, assumptions, применимостью и evidence |
+| UC-020 | Analyst ведёт Analysis Case от общего обзора к детализации, сохраняет блоки evidence и превращает подтверждённые findings в dashboard/report |
+| UC-021 | Viewer оставляет комментарий к разрешённому report/dashboard без доступа к raw PII или изменения immutable snapshot |
+| UC-022 | Workspace Administrator назначает и отзывает доступ к reports/dashboards, не получая право редактировать их содержание |
+| UC-023 | Installation Administrator публикует BrandProfile/CompanyPack, а Workspace Administrator по отдельному разрешению назначает допустимую published version; Web, email, XLSX и локальная документация получают одну pinned identity |
+| UC-024 | Workspace Administrator импортирует данные через опубликованный CSV/XLSX template, а платформа отклоняет неизвестные sheets/columns, формулы и macros |
+| UC-025 | Analyst задаёт population, grain, metric/feature, окно, peer scope и quantile/IQR/MAD policy, получает immutable bounds и sensitivity preview, после чего явно применяет flag/exclude/winsorize без изменения canonical data/metric |
+| UC-026 | Analyst строит rule/RFM/bucket/KMeans segment либо stratified distribution с требуемым числом групп и получает versioned definition, diagnostics, profiles и immutable membership/distribution artifact |
 
 ### 2.3. Сквозные пользовательские пути
 
@@ -111,6 +124,7 @@ Custometry — open-source self-hosted low-code платформа клиент�
 | JOURNEY-004 | Guided analysis: template, dataset, preflight, parameters/estimate, общий execution engine, Result Trust, сохранение/share/schedule/export | Сохранены AnalysisVersion и immutable manifest |
 | JOURNEY-005 | Forecast lifecycle: series preview, candidates/backtest, baseline comparison, champion approval, monitoring, retrain/promote/rollback | Champion, причины выбора, ограничения и policy доступны для аудита |
 | JOURNEY-006 | Operator recovery: queues/schedules/attempts/workers, cancel/retry/rerun, cleanup и acknowledgement | Run терминален, действие и причина находятся в audit |
+| JOURNEY-007 | Governed research: вопрос, Analysis Case, pinned method/metrics/data, исследование от общего к частному, reviewed findings и публикация аналитического продукта | Опубликованный результат воспроизводим, выводы отделены от комментариев и связаны с evidence |
 
 Для всех путей действуют общие UX-требования:
 
@@ -118,6 +132,10 @@ Custometry — open-source self-hosted low-code платформа клиент�
 - `UX-JOURNEY-002`: empty, loading, degraded, forbidden и failed state объясняют причину и следующее действие;
 - `UX-JOURNEY-003`: guided forms создают те же versioned node/pipeline specifications и используют тот же engine, что canvas;
 - `UX-JOURNEY-004`: до тяжёлого запуска видны capability preflight, оценка объёма и resource limits;
+- `UX-JOURNEY-007`: Research Workspace имеет outline/sections и не превращается в бесконечный dashboard canvas;
+- `UX-JOURNEY-008`: утверждённые FindingVersion визуально и семантически отделены от discussion comments;
+- `UX-JOURNEY-009`: Viewer комментирует только уже разрешённый объект и не получает через thread скрытые values, facets или PII;
+- `UX-JOURNEY-010`: управление access policy находится в административной поверхности и не смешивается с authoring/publish actions аналитика;
 - `UX-JOURNEY-005`: Result Trust Panel показывает дату результата, freshness, quality, ограничения, версии, grain, filters, timezone, currency и lineage;
 - `UX-JOURNEY-006`: из контекста доступны ответы «Почему функция недоступна?», «Почему это число?» и «На что повлияет публикация?».
 
@@ -325,6 +343,38 @@ Promotion Journal хранит stable `promotion_id`, immutable versions, extern
 
 Базовый registry содержит gross/net revenue, receipt/customer/active-customer counts, units, average receipt, revenue per customer, margin, discount и repeat-customer rate.
 
+#### Числовое представление и стабильные группы метрик
+
+Typed raw value остаётся источником истины, а форматирование задаётся versioned `NumberFormatSpec`. Денежные значения, counts, ratios, percentages, durations и averages получают единый locale-aware формат во всех каналах. По умолчанию `75,44%` отображается как `75%`, `4,27%` — как `4,3%`, а `0,234%` — как `0,23%`; ненулевое значение нельзя превращать в ложный `0%`. K/M/B или тыс./млн/млрд применяются только как presentation layer, а tooltip/detail и typed XLSX sheet сохраняют полную точность.
+
+`MetricGroupVersion` задаёт стабильные идентификаторы групп, порядок групп и порядок метрик внутри каждой группы. Поэтому Finance всегда может показывать, например, Margin перед Revenue, а Client — AOV перед customer measures, независимо от Web, email или XLSX.
+
+| ID | Правило представления |
+|---|---|
+| METRIC-009 | NumberFormatSpec versioned, locale-aware и одинаков для Web/email/XLSX |
+| METRIC-010 | Adaptive percentage precision не скрывает ненулевое значение как `0%` |
+| METRIC-011 | Compact suffix не изменяет raw typed value и раскрывает full value |
+| METRIC-012 | Money, counts, ratios, durations и averages имеют типовые semantic defaults с разрешённым metric override |
+| METRIC-013 | XLSX data sheets сохраняют numeric cells и полную точность; formatting не материализуется как text |
+| METRIC-014 | MetricGroupVersion фиксирует group order и metric order внутри группы |
+| METRIC-015 | Один group/order contract используется в Web, email, reports и XLSX |
+| METRIC-016 | Presentation override может менять label/order/visibility, но не expression, grain, unit или permissions метрики |
+
+#### Реестр аналитических методик
+
+`AnalysisMethodVersion` хранит цель, область применимости, входные сущности и метрики, шаги, assumptions, exclusions, thresholds, validation и interpretation guidance. `AnalysisCase` фиксирует бизнес-вопрос, scope, участников, pinned data/method/metric/filter versions и связанное evidence. `FindingVersion` — рецензируемый вывод с evidence и limitations; discussion comment остаётся отдельной сущностью. `AnalyticalProduct` связывает опубликованные dashboard/report/research artifacts с использованной методикой.
+
+| ID | Контракт методологии |
+|---|---|
+| METHOD-001 | Method имеет stable ID и immutable version lifecycle |
+| METHOD-002 | Публикация требует owner, purpose, applicability, steps, inputs, assumptions, limitations и validation evidence |
+| METHOD-003 | AnalysisCase pin-ит method/data/metric/filter versions, а не использует latest неявно |
+| METHOD-004 | Method change создаёт новую version и impact для зависимых продуктов |
+| METHOD-005 | FindingVersion отделён от comment и содержит evidence, author, review status и limitations |
+| METHOD-006 | AnalyticalProduct раскрывает method/metric/data lineage и Result Trust |
+| METHOD-007 | Deprecation не удаляет историческую воспроизводимость и предлагает replacement |
+| METHOD-008 | MethodologyRegistry стандартизирует работу, но не делает causal claim без отдельного доказательства |
+
 ### 6.4. Capability Engine
 
 Capability возвращает `available`, `degraded` или `unavailable` не только по наличию полей, но и по evidence текущей materialization. Evaluation фиксирует `workspace_id`, `principal_id`, `effective_policy_version`, semantic dataset/run, time, schema, mapping, quality, freshness, permissions, history coverage, currency, volume и resource-policy evidence, blocker/limitation codes и suggested actions.
@@ -359,7 +409,18 @@ Capability возвращает `available`, `degraded` или `unavailable` н�
 
 ### 7.1. Источники v1 target
 
-Обязательны PostgreSQL, Microsoft SQL Server, CSV и Parquet. MySQL/MariaDB желателен; небольшие XLSX опциональны. ClickHouse, Snowflake, BigQuery, Oracle и CDC относятся к будущему. S3 не входит в текущий artifact/source contract.
+Пользовательские source modes v1 строго ограничены PostgreSQL, Microsoft SQL Server, MySQL/MariaDB, ClickHouse и governed CSV/XLSX templates. Parquet остаётся внутренним artifact/export format, а не пользовательским source connector. Yandex Metrica заранее получает отдельные future boundaries для агрегированного Reporting API и raw Logs API, но не присутствует в v1 runtime. Snowflake, BigQuery, Oracle, arbitrary spreadsheet ingestion и CDC также не входят в v1.
+
+`FileImportTemplateVersion` фиксирует допустимые sheets/columns, types, required fields, header aliases, row/file limits, locale/date/decimal rules и безопасную preview policy. Формулы, macros, external links, неизвестные sheets/columns и неутверждённые schema guesses отклоняются до materialization.
+
+| ID | Connector boundary |
+|---|---|
+| CONNECTOR-001 | v1 поддерживает ровно четыре SQL connectors и два governed file-template modes |
+| CONNECTOR-002 | Каждый SQL connector имеет read-only posture, supported-version matrix и реальную release integration evidence |
+| CONNECTOR-003 | CSV/XLSX import разрешён только через published FileImportTemplateVersion |
+| CONNECTOR-004 | Template import не исполняет formulas/macros и отклоняет unknown structure без silent inference |
+| CONNECTOR-005 | Yandex Metrica Reporting и Logs проектируются как разные future capabilities и не обещаются в v1 |
+| CONNECTOR-006 | Parquet является внутренним artifact/export contract, а не source picker option v1 |
 
 ### 7.2. Connector contract
 
@@ -573,14 +634,75 @@ Canonical primary keys: customer transaction — `[canonical_customer_id, source
 | ANALYTICS-LIFECYCLE | Customer period activity → customer state, transitions, counts/revenue и flows; state machine валидирует priorities и impossible transitions |
 | ANALYTICS-BASKET | ReceiptItem + optional Receipt/Product/segments → basket KPIs, pairs, optional rules и affinity; сначала sparse pair aggregation |
 | ANALYTICS-STORE-CHANNEL | Sales mart → scorecards, channel membership/migration и optional same-store growth с единым canonical customer и workday normalization |
-| ANALYTICS-SEGMENT-RULES | Customer feature snapshot → membership/profile/overlap; serializable Polars expression tree и explicit overlap policy |
-| ANALYTICS-SEGMENT-CLUSTER | Post-v1 KMeans/HDBSCAN с preprocessing, stability, outliers, cluster sizes и diagnostics; cluster ещё не бизнес-сегмент |
+| ANALYTICS-SEGMENT-RULES | Customer feature snapshot + optional treatment version → membership/profile/overlap; serializable Polars expression tree и explicit overlap policy |
+| ANALYTICS-SEGMENT-CLUSTER | V1 CPU KMeans с explicit K, versioned preprocessing/treatment/seed, fit/assignment policy, profiles, centers, stability, silhouette и immutable membership snapshot |
 | ANALYTICS-ABC-XYZ | Post-v1 классификация customer/product/store по value/variability с concentration/Pareto outputs |
 | ANALYTICS-MARGIN-DISCOUNT | Post-v1 описательная discount/margin analytics; correlation не объявляется causal effect |
 | ANALYTICS-SEGMENT-MIGRATION | Stored snapshots → transitions, inflow/outflow и stability без пересчёта истории новыми правилами |
 | ANALYTICS-CUSTOM-BUILDER | Typed mart + allowed filters/dimensions/metrics/date/comparison/top/sort → reproducible ad hoc table, metrics и chart |
 
 Custom Builder разрешает только MetricRegistry/draft-validated metrics и published semantic joins, блокирует non-additive aggregation и показывает resulting grain/estimated rows до запуска.
+
+### 12.1. Governed population и обработка выбросов
+
+Выбросы не являются обычным display filter и не исправляют source data. Analyst сначала выбирает population, entity grain, metric/feature, observation window и peer scope, затем создаёт immutable `PopulationTreatmentSpecVersion`. V1 поддерживает quantile, IQR и MAD; стандартный z-score не является default для скошенных retail-распределений. Новая policy по умолчанию только помечает наблюдения. `Exclude` и `Winsorize` требуют явного выбора и preview влияния на количество клиентов/заказов, долю выручки, метрики, распределение и resolved bounds.
+
+| ID | Инвариант обработки выбросов |
+|---|---|
+| OUTLIER-001 | Immutable treatment не изменяет source artifacts, canonical entities или MetricDefinitionVersion |
+| OUTLIER-002 | Grain, feature/metric, window/as-of, reference population и peer scope всегда зафиксированы |
+| OUTLIER-003 | V1 методы — quantile, IQR и MAD; mean/std z-score не является default |
+| OUTLIER-004 | Tail, ties, minimum population, bounds и approximate-quantile evidence входят в specification/result |
+| OUTLIER-005 | Действия — flag/exclude/winsorize; default — flag, остальные требуют impact preview |
+| OUTLIER-006 | DQ-invalid rows обрабатываются отдельно; статистический outlier не доказывает ошибку и не удаляет VIP молча |
+| OUTLIER-007 | Preview показывает before/after count, customer/order/value share, metric delta, distribution и bounds |
+| OUTLIER-008 | `vs LY` по умолчанию применяет одни pinned bounds; independent-period bounds только explicit exploratory |
+| OUTLIER-009 | Result Trust, SegmentSnapshot, ReportSnapshot, email и XLSX README раскрывают treatment version, scope, bounds, impact и limitations |
+| OUTLIER-010 | Member preview/drill/export повторно применяет object/row/PII policy и не раскрывает denied facets |
+| OUTLIER-011 | Расчёт CPU vectorized/pushdown через Polars/DuckDB/NumPy; browser и row-wise Python не считаются default compute path |
+| OUTLIER-012 | Fit и assignment populations различаются: extremes можно убрать из fit, затем назначить с outlier flag, distance/confidence и sensitivity evidence |
+
+Forecast residual anomalies остаются отдельной time-series policy и не используют эти cross-sectional bounds автоматически.
+
+### 12.2. Buckets, strata и KMeans
+
+`SegmentationDefinitionVersion` объединяет rule, RFM, bucket и KMeans definitions. Любой published membership snapshot pin-ит population, inputs, treatment, preprocessing/model/code и as-of. Bucket mode поддерживает quantile, equal-width и custom thresholds. Stratified distribution сначала является исследовательским `DistributionArtifact`; выбранную ячейку Analyst может явно сохранить как segment. KMeans является первым кластерным методом v1 и принимает точное K. Платформа может показать K-1/K/K+1 diagnostics, но не меняет K без решения Analyst. HDBSCAN, Gaussian Mixture, automatic K и multivariate anomaly detection остаются post-v1.
+
+| ID | Инвариант сегментации |
+|---|---|
+| SEGMENT-001 | Published definition pin-ит method, population, features, treatment, as-of, group count и seed |
+| SEGMENT-002 | Membership snapshot immutable и содержит definition/input/treatment/preprocessing/model/code/member-grain bindings |
+| SEGMENT-003 | Bucket methods v1: quantile, equal-width и custom thresholds |
+| SEGMENT-004 | Quantile/equal-width требуют group count; custom thresholds задают количество групп и валидируют gaps/overlaps |
+| SEGMENT-005 | Ordered labels, missing bucket, inclusivity и tie policy обязательны |
+| SEGMENT-006 | Dynamic bounds допустимы для exploration; published recurring segment pin-ит resolved bounds либо fixed thresholds |
+| SEGMENT-007 | Stratified distribution по умолчанию является AnalysisVersion artifact, не постоянным segment |
+| SEGMENT-008 | Global boundaries — default для сравнимости; within-stratum quantiles явно означают relative rank |
+| SEGMENT-009 | Strata имеют dimension/cardinality limits, minimum-cell privacy и `Other`/blocked policy |
+| SEGMENT-010 | Selected bucket/stratum cell сохраняется как segment только явным действием с lineage |
+| SEGMENT-011 | V1 clustering начинается с CPU KMeans и exact K; diagnostic candidates не меняют K молча |
+| SEGMENT-012 | Preprocessing version-ит feature order, missing/log1p/scaling и запрещает IDs, raw PII и leakage |
+| SEGMENT-013 | Result содержит membership, profiles, centers, sizes, distance/confidence, preprocessing, stability и silhouette/limitation |
+| SEGMENT-014 | Business label versioned отдельно; numeric cluster ID не является стабильным смыслом |
+| SEGMENT-015 | Retrain создаёт новый snapshot; cross-version mapping требует profile matching и analyst approval |
+| SEGMENT-016 | Frozen-model assignment и full retrain — разные operations и result identities |
+| SEGMENT-017 | GMM/HDBSCAN/automatic K/Isolation Forest/multivariate anomaly detection остаются post-v1 |
+| SEGMENT-018 | Preview сравнивает profiles/sizes/stability/business sensitivity с/без treatment и блокирует invalid publication |
+
+### 12.3. Research Workspace — от общего к частному
+
+Research Workspace — governed block document поверх тех же artifacts, metrics, ChartSpec и report contracts, а не notebook kernel и не второй dashboard engine. Analyst начинает с вопроса и общего обзора, добавляет sections, metric groups, charts и tables, углубляется фильтрами/drill-down, фиксирует evidence-linked findings и собирает из подтверждённых блоков аналитический продукт. Narrative, methodology, limitations и conclusions являются first-class blocks.
+
+| ID | Research invariant |
+|---|---|
+| RESEARCH-001 | ResearchDocumentVersion immutable после публикации; изменение создаёт новую version |
+| RESEARCH-002 | Документ pin-ит AnalysisCase, data, method, metric, filter, comparison и evidence versions |
+| RESEARCH-003 | Blocks используют общий reportable artifact/ChartSpec/table contract и не копируют вычислительную логику |
+| RESEARCH-004 | Outline и sections поддерживают явный путь overview → diagnostic → detail → conclusion |
+| RESEARCH-005 | FindingVersion требует evidence и review status; comment не становится finding автоматически |
+| RESEARCH-006 | Viewer comments наследуют object/row/PII policy и проходят DLP/audit |
+| RESEARCH-007 | Research blocks публикуются в dashboard/report без потери lineage и Result Trust |
+| RESEARCH-008 | Export использует pinned snapshot; browser DOM scraping и hidden notebook state запрещены |
 
 ## 13. Прогнозирование
 
@@ -721,14 +843,34 @@ DashboardVersion хранит отдельные `dashboard_version_id` и stabl
 | DASHBOARD-004 | Dashboard не расширяет доступ к underlying artifact/PII; действует пересечение policies |
 | DASHBOARD-005 | Stale/degraded/failed refresh/missing artifact явно виден без подмены данных |
 | DASHBOARD-006 | Любой drag-and-drop имеет keyboard-accessible альтернативу |
+| DASHBOARD-007 | Dashboard поддерживает ordered sections и heterogeneous metric-group/chart/table/finding/conclusion/methodology blocks |
+| DASHBOARD-008 | Metric groups и порядок берутся из MetricGroupVersion и одинаковы во всех render channels |
+| DASHBOARD-009 | Published finding визуально и семантически отличается от discussion comment |
+| DASHBOARD-010 | Управление access grants требует отдельного administrative permission и не следует из права edit/publish |
+| DASHBOARD-011 | Viewer может комментировать только разрешённую non-PII projection и не меняет snapshot |
+| DASHBOARD-012 | Comment thread сохраняет object/block/version anchor, visibility, moderation state и audit без копирования hidden values |
 
 ### 14.3. Export
 
 CSV использует `UTF-8` и UI row limit, Parquet — основной large-data format, JSON — только для небольших внутренних authenticated results. Public MVP и v1 не записывают в внешнюю DB. Database destination export и публичный read-only result API относятся к post-v1 и требуют отдельных security/transactionality ADR.
 
+#### Распространение продукта и private future activation
+
+Текущий продукт распространяется только как self-hosted single-server installation. Ручная отправка reports и выгрузка CSV/Parquet/XLSX остаются публичным core. Audience activation, reverse ETL destination marketplace, campaign orchestration, licensing/control-plane mechanics и другие будущие коммерческие варианты не описываются детально в открытом репозитории.
+
+Локальный путь `.private/distribution-activation/` игнорируется Git только для защиты от случайного commit. Это не security boundary: нормативные private materials должны храниться в отдельном access-controlled repository/storage.
+
+| ID | Private future boundary |
+|---|---|
+| PRIVATE-FUTURE-001 | v1 distribution — только documented self-host install без mandatory external control plane |
+| PRIVATE-FUTURE-002 | Report email/XLSX/CSV/Parquet не зависит от private activation package, license heartbeat или managed service |
+| PRIVATE-FUTURE-003 | Public contracts резервируют extension boundaries, но не публикуют destination catalogue, commercial policy или activation implementation |
+| PRIVATE-FUTURE-004 | Authoritative private artifacts хранятся отдельно с access control; `.gitignore` лишь предотвращает случайный commit |
+| PRIVATE-FUTURE-005 | Будущий activation runtime требует отдельной product/security/consent/audit specification и не наследует report-delivery permission |
+
 ### 14.4. Universal Report Composition
 
-Web, email и XLSX не собирают отчёт независимо. `ReportDefinitionVersion` описывает versioned blocks `heading|text|metric|table|chart|quality|forecast_status|metadata|data_guide`, а каждый binding pin-ит artifact, projection, filters, comparison, metrics, schema/grain, unit/format и lineage policies и PII class. До render создаётся immutable `ReportSnapshot`; его `resolved_blocks[]` однозначно связывает каждый `block_id` с source artifact/projection/filter/comparison, canonical ChartSpec ID/hash, schema/grain, row/column counts, units/formats, lineage и PII class. Snapshot также фиксирует Data Guide, theme, locale/timezone/currency и renderer contract. UI редактирует эту specification; DOM scraping и raw library options запрещены.
+Web, email и XLSX не собирают отчёт независимо. `ReportDefinitionVersion` описывает ordered sections и versioned blocks `heading|text|metric|metric_group|table|chart|finding|conclusion|methodology|quality|forecast_status|metadata|data_guide`, а каждый binding pin-ит artifact, projection, filters, comparison, metrics, schema/grain, unit/format и lineage policies и PII class. До render создаётся immutable `ReportSnapshot`; его `resolved_blocks[]` однозначно связывает каждый `block_id` с source artifact/projection/filter/comparison, canonical ChartSpec ID/hash, schema/grain, row/column counts, units/formats, lineage и PII class. Snapshot также фиксирует BrandProfile/CompanyPack, Data Guide, theme, locale/timezone/currency и renderer contract. UI редактирует эту specification; DOM scraping и raw library options запрещены.
 
 ```python
 class ReportRendererPort(Protocol):
@@ -752,6 +894,10 @@ class ReportDeliveryPort(Protocol):
 | REPORT-008 | Result Trust показывает as-of/freshness/quality/filters/comparison/limitations/lineage |
 | REPORT-009 | Render asynchronous с preflight/cancel/progress/resource/idempotency/stable errors |
 | REPORT-010 | Retention чистит rendered artifacts, но не definition/snapshot metadata/redacted audit |
+| REPORT-011 | Sections и heterogeneous blocks сохраняют author-defined research narrative и stable order |
+| REPORT-012 | Metric-group, number-format и finding blocks разрешаются по pinned versions и не вычисляются отдельно в renderer |
+| REPORT-013 | Snapshot фиксирует BrandProfileVersion/CompanyPackVersion и одинаковую identity во всех render channels |
+| REPORT-014 | Report access policy управляется отдельно от content authoring; наличие edit/publish не даёт grant/revoke authority |
 
 ### 14.5. Пользовательский email-отчёт
 
@@ -775,7 +921,7 @@ Delivery pin-ит ReportSnapshot, actor/sender, redacted recipient/domain hashes
 
 ### 14.6. Универсальный XLSX
 
-XLSX реализуется последней функциональной частью v1 target поверх уже стабильного ReportSnapshot. Один `XlsxRendererPort` строит workbook `README`, `Contents`, `Summary`, typed block sheets, charts и `Metadata/Lineage`. Native chart используется только при lossless mapping canonical `ChartSpec`; иначе применяется PNG из того же bounded static renderer pipeline с сохранённым typed data sheet.
+XLSX реализуется последней функциональной частью v1 target поверх уже стабильного ReportSnapshot. Один `XlsxRendererPort` строит workbook `README`, `Contents`, `Summary`, typed block sheets, charts и `Metadata/Lineage`. `README` автоматически и аккуратно объясняет назначение отчёта, as-of/freshness, безопасное описание источников, все применённые и locked filters, comparison, definitions/groups/units метрик, grain, методику, quality/limitations, lineage и автора. Native chart используется только при lossless mapping canonical `ChartSpec`; иначе применяется PNG из того же bounded static renderer pipeline с сохранённым typed data sheet.
 
 | ID | XLSX invariant |
 |---|---|
@@ -788,6 +934,11 @@ XLSX реализуется последней функциональной ча
 | XLSX-007 | Formula injection нейтрализуется; business metrics — materialized values, formulas только controlled technical ranges |
 | XLSX-008 | Sheet/table names safe/unique/deterministic, mapping сокращений находится в Contents |
 | XLSX-009 | Release gate проверяет OOXML/openability/tables/charts/formulas и golden parity Web/email/XLSX |
+| XLSX-010 | README собирается автоматически из ReportSnapshot, Data Guide и Methodology, а не пишется вручную для каждого модуля |
+| XLSX-011 | README не раскрывает host/DSN/secrets/raw query, hidden policy filters или недоступную PII |
+| XLSX-012 | Metric groups и порядок одинаковы с Web/email; merged headers не разрушают machine-readable typed tables |
+| XLSX-013 | Display formats используют NumberFormatSpec, но cells остаются numeric с полной точностью |
+| XLSX-014 | BrandProfile применяется к cover/README/summary безопасно и не меняет canonical data schema |
 
 ## 15. Web-интерфейс
 
@@ -852,6 +1003,24 @@ Custometry использует те же шесть палитр, что Roehub
 | THEME-006 | ChartSpec theme-neutral; renderer pin-ит theme в report manifest |
 | THEME-007 | Email/XLSX default paper можно заменить одной из шести themes; theme входит в snapshot/hash |
 | THEME-008 | Switcher/focus/status/charts проходят en/ru, keyboard, reduced-motion, contrast и table-alternative gates |
+
+### White-label: BrandProfile и CompanyPack
+
+`BrandProfileVersion` охватывает display name и short name продукта, logo variants, favicon, optional custom icon pack, bundled fonts, base theme, semantic token overrides, login/onboarding, email, report/XLSX/docs, support/legal и optional custom domain. `CompanyPackVersion` объединяет branding, semantic mappings, metric/method/group packs, role policies, dashboard/report templates, governed file-import templates, Data Guides и connection profiles без secrets.
+
+Это конфигурация, а не customer-specific fork. Assets проходят MIME/signature/size/dimension/sanitization checks, SVG ограничен allowlist subset, remote URLs/raw CSS/HTML/JS запрещены. Опубликованный report snapshot pin-ит brand/company-pack version и content hashes.
+
+| ID | White-label invariant |
+|---|---|
+| BRAND-001 | BrandProfile имеет stable ID, immutable versions и preview/publish lifecycle |
+| BRAND-002 | Logo/favicon/icon/font assets content-addressed, sanitized и хранят provenance/license metadata |
+| BRAND-003 | Цвета меняют только semantic tokens и проходят contrast/status/chart accessibility gates |
+| BRAND-004 | Raw CSS, HTML, JavaScript и remote asset fetch запрещены |
+| BRAND-005 | Web, login, email, report, XLSX и local docs используют один published brand contract |
+| BRAND-006 | ReportSnapshot pin-ит BrandProfileVersion и renderer identity для воспроизводимости |
+| BRAND-007 | CompanyPack не содержит secrets, PII, hostnames или customer data и валидируется до install |
+| BRAND-008 | Обновление CompanyPack показывает diff/impact и не меняет published definitions задним числом |
+| BRAND-009 | Powered-by, support/legal и custom-domain policy versioned и не обходят license/security notices |
 
 ### 15.1. Интернационализация и локализация
 
@@ -929,7 +1098,7 @@ Email/webhook endpoint — immutable version с workspace/owner scope, encrypted
 
 ### 15.4. Admin и Operator Center
 
-Installation admin видит bootstrap/security, release/schema versions, service/worker/queue/outbox/reconciler health, local storage, migrations/upgrades/licenses, backup drills, plugins, localization, detected CPU/global cap и global report-recipient domains. Workspace admin управляет members/roles/invites/tokens, connections/secrets/policies, resource/retention, schedules/notifications/audit, narrowed recipient domains, sender identities, report quotas, Promotion Journal и Data Guide. Operator работает с runs, attempts, workers, retry/cancel/rerun и redacted logs/traces.
+Installation admin видит bootstrap/security, release/schema versions, service/worker/queue/outbox/reconciler health, local storage, migrations/upgrades/licenses, backup drills, plugins, localization, detected CPU/global cap и global report-recipient domains. Workspace admin управляет members/roles/invites/tokens, connections/secrets/policies, report/dashboard access, resource/retention, notification policies, narrowed recipient domains, sender identities, branding/company packs и report quotas; аналитический контент он не создаёт без отдельной роли. Operator работает с runs, attempts, workers, retry/cancel/rerun и redacted logs/traces.
 
 | ID | Admin invariant |
 |---|---|
@@ -1011,12 +1180,14 @@ System surfaces не выглядят как пустая обычная стр�
 | `/auth`, `/auth/sessions`, `/auth/api-tokens` | Bootstrap, login/refresh/logout/reset/profile, sessions, scoped tokens |
 | `/workspaces`, `/workspaces/{id}/invites` | Workspaces, members, policies, invites |
 | `/connections`, `/catalogs` | Metadata, test, discover, snapshots, preview |
-| `/datasets`, `/metrics`, `/filter-fields` | Draft/validate/publish/capabilities, metric versions и searchable typed filters |
+| `/datasets`, `/metrics`, `/metric-groups`, `/number-formats`, `/filter-fields` | Draft/validate/publish/capabilities, metric/group/format versions и searchable typed filters |
 | `/quality-rules`, `/quality-reports` | Rules, execution, reports и samples |
 | `/pipelines`, `/runs`, `/artifacts` | Definitions, run/cancel/retry/events, metadata/preview/download |
-| `/analyses`, `/chart-specs`, `/promotions`, `/segments`, `/forecasts`, `/models` | Analyses, validated ChartSpec/bounded chart data/capabilities, Promotion timeline, segments и forecasting/model registry |
-| `/reports`, `/report-deliveries`, `/exports`, `/dashboards` | Report definitions/snapshots/email, CSV/Parquet/JSON/XLSX jobs и dashboards |
-| `/data-guides` | Template, upload, validate, publish, versions и rendered view |
+| `/methodologies`, `/analysis-cases`, `/research-documents`, `/comments` | Methods, governed research, findings/publication и object-scoped discussion threads |
+| `/analyses`, `/population-treatments`, `/segmentation-previews`, `/chart-specs`, `/promotions`, `/segments`, `/forecasts`, `/models` | Analyses, treatment bounds/sensitivity, bucket/stratified/KMeans preflight, validated ChartSpec, Promotion timeline, segment snapshots/profiles/migrations и forecasting/model registry |
+| `/reports`, `/report-deliveries`, `/exports`, `/dashboards`, `/access-policies` | Report/dashboard definitions, object grants, snapshots/email и CSV/Parquet/JSON/XLSX jobs |
+| `/brand-profiles`, `/company-packs` | Sanitized assets/tokens, preview, validation, version diff/impact и publish |
+| `/data-guides`, `/file-import-templates` | Markdown guides и governed CSV/XLSX template validation/publication/versions |
 | `/notifications` | Inbox, unread, preferences, read/acknowledge/dismiss |
 | `/admin/plugins`, `/admin/operations`, `/audit` | Plugins, health/workers/outbox/reconciler/storage/backups и audit |
 
@@ -1056,15 +1227,15 @@ Workspace scope берётся из authenticated membership/path/resource, а �
 | SVC-PROXY | Secretless/state-free инфраструктурный Edge-адаптер входа: TLS, routing и limits только к фиксированному Web upstream; это не bounded context и не новый продуктовый микросервис |
 | SVC-OTEL | Optional telemetry collector |
 
-Backend разбит на domains: identity/access; connections/catalog; semantic model с filter registry; ingestion; execution с outbox/leases/reconciliation; artifacts; DQ; analytics; Promotion Journal; forecasting; presentation, владеющий canonical ChartSpec/compiler ports, единственным shared TypeScript compiler package, render metadata и report composition; report delivery; data documentation; notifications; audit. Один domain не читает private tables другого напрямую — только contract/repository.
+Backend разбит на domains: identity/access; connections/catalog; semantic model с metrics/groups/formats/filter registry; data documentation и file-import templates; ingestion; execution с outbox/leases/reconciliation; artifacts; DQ; analytics; methodology/research с cases/findings/comments/products; Promotion Journal; forecasting; presentation, владеющий canonical ChartSpec/compiler ports, dashboards/reports/access policies/branding/company packs и render metadata; report delivery; notifications; audit. Один domain не читает private tables другого напрямую — только contract/repository.
 
-PostgreSQL содержит users/roles/workspaces/members/invites/sessions/reset tokens/API tokens; connections/secrets/catalogs; semantic/identity/metric/filter/capability versions и diffs/impacts; extraction batches/watermarks; quality rules/reports/issues/waivers; pipelines/schedules/runs/nodes/outbox/leases/reconciliation/idempotency; artifact manifests/dependencies; analyses/segments/promotions/windows/audience bindings; forecasts/backtests/models/monitoring; ChartSpec/render-artifact metadata; report definitions/snapshots/rendered artifacts/email policies/senders/deliveries; exports/dashboards/Data Guides; notifications; plugins и audit.
+PostgreSQL содержит users/roles/workspaces/members/invites/sessions/reset tokens/API tokens; connections/secrets/catalogs; semantic/identity/metric/group/format/filter/capability versions и diffs/impacts; extraction batches/watermarks; quality rules/reports/issues/waivers; pipelines/schedules/runs/nodes/outbox/leases/reconciliation/idempotency; artifact manifests/dependencies; analyses/methodologies/cases/research documents/findings/decisions/analytical products/comments/segments/promotions/windows/audience bindings; forecasts/backtests/models/monitoring; ChartSpec/render-artifact metadata; dashboard/report definitions/access policies/snapshots/rendered artifacts/email policies/senders/deliveries; brand profiles/assets/company packs; exports/Data Guides/file-import templates; notifications; plugins и audit.
 
 ## 18. Технические зависимости
 
 ### 18.1. Backend и data engine
 
-Python 3.12, FastAPI/Uvicorn, Pydantic/settings, SQLAlchemy Core без ORM/ActiveRecord, Alembic, psycopg, pyodbc, optional MySQL driver, Celery, redis-py, croniter и httpx образуют runtime. Polars — основной dataframe engine, PyArrow — Arrow/Parquet interchange, DuckDB — local OLAP, optional ConnectorX/ADBC — ускорение extraction, sqlglot — SQL AST, openpyxl — bounded XLSX. Pandas допустим только на compatibility boundary.
+Python 3.12, FastAPI/Uvicorn, Pydantic/settings, SQLAlchemy Core без ORM/ActiveRecord, Alembic, psycopg, pyodbc, pinned MySQL driver, `clickhouse-connect`, Celery, redis-py, croniter и httpx образуют runtime. Polars — основной dataframe engine, PyArrow — Arrow/Parquet interchange, DuckDB — local OLAP, optional ConnectorX/ADBC — ускорение extraction, sqlglot — SQL AST, а выбранный bounded XLSX reader/renderer не исполняет formulas/macros. Pandas допустим только на compatibility boundary.
 
 ### 18.2. Analytics, security и observability
 
@@ -1106,7 +1277,7 @@ Threat model включает утечку secrets, SQL injection, IDOR/workspac
 
 ### 20.1. RBAC и multi-workspace isolation
 
-Permissions разделяют installation/workspace management, members/roles, connections/secrets, dataset/quality/waiver, analytics/promotions/segments/forecasts/pipelines/runs, PII, artifacts, report read/manage/send/XLSX/email-policy, Data Guide read/publish, exports/dashboards/notifications, tokens/plugins/audit. Installation Administrator не получает автоматический доступ к workspace data. Effective permission объединяет role grants, но не обходит object/data restrictions.
+Permissions разделяют installation/workspace management, members/roles, connections/secrets, file-import templates/import execution, dataset/quality/waiver, metric definitions/groups/number formats/methodologies, analytics/promotions/segments/forecasts/pipelines/runs, PII, artifacts, report read/manage/send/XLSX/email-policy, Data Guide read/publish, exports/dashboards/notifications, global BrandProfile/CompanyPack management, workspace brand assignment, tokens/plugins/audit. Installation Administrator не получает автоматический доступ к workspace data. Effective permission объединяет role grants, но не обходит object/data restrictions.
 
 | ID | RBAC invariant |
 |---|---|
@@ -1118,6 +1289,16 @@ Permissions разделяют installation/workspace management, members/roles,
 | RBAC-006 | List/count/search фильтруют rows до pagination/aggregation, не раскрывая существование objects |
 | RBAC-007 | RLS желательно как defense-in-depth после transaction-local workspace context; app auth остаётся |
 | RBAC-008 | Cache/idempotency scope включает workspace ID и effective policy version |
+| RBAC-009 | Workspace Administrator default bundle ограничен users/roles/object access/connections/policies и не включает analytical authoring или PII |
+| RBAC-010 | Analyst создаёт metrics/methods/research/segments/dashboards/reports, но не управляет connections, users, role assignments или access grants |
+| RBAC-011 | Viewer читает только granted projections, может comment и никогда не получает raw PII |
+| RBAC-012 | Report/dashboard access policy versioned, auditable, default-deny и управляется отдельным administrative permission |
+| RBAC-013 | PII — explicit scoped expiring grant; role name сам по себе не раскрывает raw fields |
+| RBAC-014 | Comment create/read/resolve отдельно проверяются и не расширяют access к source artifact или hidden filters |
+| RBAC-015 | Effective-access preview и audit объясняют role, object, row, PII и expiry decisions без раскрытия denied data |
+| RBAC-016 | Metric, MetricGroup и NumberFormat используют отдельные read/manage/publish permissions; dataset management не меняет их неявно |
+| RBAC-017 | FileImportTemplate lifecycle и import execution разделены permissions и не наследуются автоматически от connection management |
+| RBAC-018 | Global BrandProfile/CompanyPack management отделён от workspace `brand.assign`, который выбирает только разрешённую published version |
 
 ### 20.2. Local auth и будущий OIDC boundary
 
@@ -1191,7 +1372,7 @@ Backup включает PostgreSQL, local artifacts, master key/KMS config, depl
 
 ## 22. Тестирование
 
-Test pyramid включает pytest unit/property/contract/API, Testcontainers integrations, golden Parquet, forecast regression, Vitest components, Playwright E2E, i18next/gettext localization, axe/manual accessibility, security scans, Compose recovery fault injection и dedicated performance benchmarks. Отдельные chart gates проверяют valid/invalid ChartSpec, executable/network-field rejection, bounded data, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantics, range timeline, SSR SVG→PNG, bundled-font/compiler/renderer-build identity invalidation, XLSX native/raster mapping и six-theme accessibility. Report gates проверяют golden parity Web/email/XLSX, OOXML/openability/charts/split/formula-injection и email transport на test adapter плюс approved real-boundary canary. Реальная MSSQL release matrix на Linux ODBC и Windows Server обязательна; mocks её не заменяют.
+Test pyramid включает pytest unit/property/contract/API, Testcontainers integrations, golden Parquet, forecast regression, Vitest components, Playwright E2E, i18next/gettext localization, axe/manual accessibility, security scans, Compose recovery fault injection и dedicated performance benchmarks. Отдельные chart gates проверяют valid/invalid ChartSpec, executable/network-field rejection, bounded data, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantics, range timeline, SSR SVG→PNG, bundled-font/compiler/renderer-build identity invalidation, XLSX native/raster mapping и six-theme accessibility. Report gates проверяют golden parity Web/email/XLSX, OOXML/openability/charts/split/formula-injection и email transport на test adapter плюс approved real-boundary canary. Реальные PostgreSQL, MSSQL, MySQL/MariaDB и ClickHouse connector matrices обязательны; CSV/XLSX templates проходят security fixtures. Mocks не заменяют release evidence.
 
 ### 22.1. Обязательные инварианты
 
@@ -1249,8 +1430,21 @@ Test pyramid включает pytest unit/property/contract/API, Testcontainers 
 | TEST-INV-050 | Canonical routes, workspace switch, guards, deep links, Back/Forward, safe returnTo, dirty guard и Focus восстанавливают только разрешённый resource без metadata/query leaks |
 | TEST-INV-051 | Motion/reduced-motion соблюдают tokens; shell сохраняется, refresh держит previous data/status, dense/live/domain charts не интерполируются, table rows не летают |
 | TEST-INV-052 | System surfaces, Help/shortcuts, notification channels и admin lifecycle дают безопасные actions/codes, permissions/redaction и не раскрывают secrets/denied/migration internals |
+| TEST-INV-053 | NumberFormatSpec одинаков на границах rounding/compact suffix и не превращает non-zero percentage в 0% |
+| TEST-INV-054 | MetricGroupVersion сохраняет один group/metric order в Web/email/XLSX и не меняет metric semantics |
+| TEST-INV-055 | XLSX README содержит safe sources, filters, metrics, methodology, quality и lineage без secrets/hidden policy/denied PII |
+| TEST-INV-056 | Admin, Analyst и Viewer соблюдают разделение connections/access/content/PII и comment не расширяет права |
+| TEST-INV-057 | Research document воспроизводим по pinned case/method/data/metric/filter/evidence versions, а comment не подменяет reviewed finding |
+| TEST-INV-058 | Brand assets/tokens проходят sanitization/contrast и дают одинаковую pinned identity в Web/email/XLSX/docs |
+| TEST-INV-059 | Четыре SQL connectors проходят real matrix; CSV/XLSX отклоняют unknown structure, formulas, macros и template violations |
+| TEST-INV-060 | Public build/docs/index не содержат private activation artifacts или скрытой runtime dependency |
+| TEST-INV-061 | Treatment не меняет canonical data/metric; pinned inputs/method/bounds/action/code воспроизводят flags/caps/exclusions и impact |
+| TEST-INV-062 | Default `vs LY` использует shared bounds; independent exploratory bounds имеют отдельную identity и disclosure |
+| TEST-INV-063 | Bucket membership детерминирован на ties/missing/boundaries, а published pinned bounds не пересчитываются молча |
+| TEST-INV-064 | KMeans соблюдает exact K, feature order/preprocessing/seed/CPU, исключает ID/PII/leakage и публикует полный diagnostic snapshot |
+| TEST-INV-065 | Excluded-from-fit extremes не исчезают из assignment без policy; post-fit сохраняет outlier/distance/confidence и sensitivity |
 
-Golden datasets включают ideal, anonymous, returns, multi-currency, late corrections, duplicates, missing products, SCD, irregular/intermittent series, new store, incomplete month, duplicate source IDs, overlapping/gapped validity, разные metric kinds, YoY leap/week53/fiscal cases, overlapping promotions, low/high-cardinality sensitive filters, safe/unsafe Markdown, multi-block reports, XLSX limits/injection/names, six themes, полный ChartSpec allowlist, invalid executable/network specs, range timeline, dense aggregate/sample/LOD, identical shared-compiler Web/SSR option hashes и Web/SSR/email/XLSX semantic outputs, а также bundled-font/compiler/renderer build rotation fixtures.
+Golden datasets включают ideal, anonymous, returns, multi-currency, late corrections, duplicates, missing products, SCD, irregular/intermittent series, new store, incomplete month, duplicate source IDs, overlapping/gapped validity, разные metric kinds, percentage/compact-format boundaries, stable metric groups, YoY leap/week53/fiscal cases, overlapping promotions, skewed/zero-inflated/heavy-tail sales с legitimate VIP и DQ-invalid rows, quantile/IQR/MAD bounds/ties/missing, global/within-stratum/privacy-cardinality cases, exact-K/frozen/retrain KMeans fixtures, research findings/comments, low/high-cardinality sensitive filters, safe/unsafe Markdown и brand assets, multi-block reports, generated XLSX README/limits/injection/names, six themes, полный ChartSpec allowlist, invalid executable/network specs, range timeline, dense aggregate/sample/LOD, identical shared-compiler Web/SSR option hashes и Web/SSR/email/XLSX semantic outputs, а также bundled-font/compiler/renderer build rotation fixtures.
 
 ## 23. Производительность и масштабирование
 
@@ -1273,7 +1467,7 @@ Golden datasets включают ideal, anonymous, returns, multi-currency, late
 | COMPUTE-009 | Admin UI показывает evidence/cap/allocations/saturation и отклоняет invalid cap |
 | COMPUTE-010 | CPU policy versioned; thread-sensitive reductions входят в identity либо tolerance policy |
 
-Benchmark до stable release использует минимум 500k customers, 10m receipts, 50m items, 100k products, 1k stores и 36 months. Измеряются extraction, incremental day, feature mart, RFM, cohorts, basket pairs, forecast backtest, ChartSpec validation/compile, bounded chart data, SSR SVG batch, SVG→PNG, range timeline, dense SVG/Canvas smoke, peak RSS/temp/output и artifact size. SLO ставятся после реального baseline.
+Benchmark до stable release использует минимум 500k customers, 10m receipts, 50m items, 100k products, 1k stores и 36 months. Измеряются extraction, incremental day, feature mart, RFM, quantile/IQR/MAD treatment, bucket/stratified aggregation, exact-K KMeans fit/profile/assignment с/без treatment, cohorts, basket pairs, forecast backtest, ChartSpec validation/compile, bounded chart data, SSR SVG batch, SVG→PNG, range timeline, dense SVG/Canvas smoke, peak RSS/temp/output и artifact size. SLO ставятся после реального baseline.
 
 До v1 поддерживается один server: web/API, PostgreSQL, Valkey, local artifact volume, scheduler/orchestrator/outbox/reconciler, несколько local data worker processes, low-concurrency ML worker и bounded report worker. Multi-host/Kubernetes ждут отдельный distributed storage/execution ADR.
 
@@ -1310,28 +1504,28 @@ Public backend methods объявляются через Protocol/ABC; construct
 
 ### 26.1. Vertical alpha
 
-Проверяет production-shaped vertical slice на CSV/Parquet: workspace-scoped contracts и first bootstrap, basic local auth/session revoke, Customer/Receipt/Calendar, full snapshot, базовые schema/key/date/reference checks, Sales Overview/active base/RFM, monthly revenue Seasonal Naive против CatBoost rolling backtest, единый guided/pipeline engine, local manifests, outbox/reconciler, bounded internal JSON/Parquet/minimal UI, locale-neutral contracts и структура en/ru catalogs в development Compose.
+Проверяет production-shaped vertical slice на governed CSV/XLSX template: workspace-scoped contracts и first bootstrap, basic local auth/session revoke, Customer/Receipt/Calendar, full snapshot, базовые schema/key/date/reference checks, Sales Overview/active base/RFM, monthly revenue Seasonal Naive против CatBoost rolling backtest, единый guided/pipeline engine, local manifests, outbox/reconciler, bounded internal JSON/Parquet/minimal UI, locale-neutral contracts и структура en/ru catalogs в development Compose.
 
 ### 26.2. Public MVP
 
-Добавляет несколько изолированных workspaces; полный local auth с invites/reset/sessions/scoped tokens и OIDC boundary без runtime; PostgreSQL/MSSQL/CSV/Parquet; CustomerIdentity и item/product entities; full/incremental/partition refresh; полный основной DQ gate с remediation/waiver; sales/customer/RFM/cohorts/lifecycle/rule segments; основные forecasts с baselines/CatBoost, intervals, registry и monitoring; saved onboarding, guided analysis, Result Trust, template dashboards, schedules, Operator Center и in-app notifications; canonical workspace routing/history, system surfaces и unsaved-change guards; полный en/ru, WCAG 2.2 AA; web/CSV/Parquet/bounded internal JSON; production one-server Compose/local filesystem.
+Добавляет несколько изолированных workspaces; полный local auth с invites/reset/sessions/scoped tokens и OIDC boundary без runtime; PostgreSQL/MSSQL/MySQL/ClickHouse и governed CSV/XLSX templates; CustomerIdentity и item/product entities; full/incremental/partition refresh; полный основной DQ gate с remediation/waiver; sales/customer/RFM/cohorts/lifecycle/rule segments; Metric/Methodology Registry, Analysis Case и Research Workspace; основные forecasts с baselines/CatBoost, intervals, registry и monitoring; saved onboarding, guided analysis, Result Trust, template dashboards, object access/comments, BrandProfile/CompanyPack, schedules, Operator Center и in-app notifications; canonical workspace routing/history, system surfaces и unsaved-change guards; полный en/ru, WCAG 2.2 AA; web/CSV/Parquet/bounded internal JSON; production one-server Compose/local filesystem.
 
 ### 26.3. V1 target
 
-Добавляет MySQL should и bounded XLSX source optional, Store/Channel/Promotion, append/upsert, drift history/issue workflow, store/channel, basic basket, historical migration и Custom Builder, universal previous-year comparison и searchable filters, полный forecast set, Promotion Journal, Data Guide, CPU-only capacity/admin cap, progress/ETA, шесть Roehub themes, canonical ChartSpec, ECharts-only Web SVG/Canvas, range timeline, bounded SSR SVG→PNG, Report Composition, verified-sender/domain-allowlisted user email, production motion/reduced-motion, Help/shortcuts, admin system lifecycle, operational channel management, mature guided/canvas/templates, plugin SDK, full admin, benchmarks/restore/security/license gates, dashboards и notifications. Dash/Plotly core/ECharts-GL/WebGL отсутствуют. Универсальный XLSX report renderer является последней функциональной частью v1.
+Завершает Store/Channel/Promotion, append/upsert, drift history/issue workflow, store/channel, basic basket, historical migration и Custom Builder; governed quantile/IQR/MAD treatment, bucket segments, stratified distributions и CPU KMeans с exact K; universal previous-year comparison, searchable filters, NumberFormatSpec/MetricGroupVersion, полный forecast set, Promotion Journal, Data Guide, Research publication, branding/company packs, CPU-only capacity/admin cap, progress/ETA, шесть base themes, canonical ChartSpec, ECharts-only Web SVG/Canvas, range timeline, bounded SSR SVG→PNG, Report Composition, verified-sender/domain-allowlisted user email, production motion/reduced-motion, Help/shortcuts, admin system lifecycle, operational channel management, mature guided/canvas/templates, plugin SDK, full admin, benchmarks/restore/security/license gates, dashboards и notifications. Dash/Plotly core/ECharts-GL/WebGL отсутствуют. Универсальный XLSX report renderer с generated README является последней функциональной частью v1. Product distribution остаётся self-host-only; Yandex Metrica и B2B остаются future-only.
 
 ### 26.4. Реализационные phases
 
-1. Foundation: monorepo/contracts/locale-neutral core, workspace DB/auth/RBAC, local artifacts/partition commit, run/outbox/fencing/reconciler, CPU/progress/theme и canonical ChartSpec/compiler-port foundations, minimal guided shell, observability и Compose.
-2. Vertical alpha: file discovery/mapping, full extraction/DQ/preflight, marts/analytics/RFM, forecast backtest, первый ChartSpec set и ECharts SVG/Canvas adapter, Result Trust и en/ru catalog structure.
-3. Data onboarding/security public MVP: SQL connectors с integration CI, multi-workspace/local auth, identity/items/products, Filter Registry, Data Guide foundation, lifecycle/impact, incremental/drift/remediation, canonical routes/history/system surfaces/dirty guards, complete en/ru/WCAG/onboarding.
-4. Product analytics public MVP: marts/cohorts/lifecycle/segments, universal YoY, Promotion Journal first-class range timeline/overlays, forecast monitoring, dashboards/schedules/Operator/in-app inbox, exports, backup/restore и production Compose.
-5. Advanced low-code v1: accessible canvas, templates, Custom Builder, basket/store/channel, operational email/webhook и channel management, Report Composition, bounded embedded ECharts SSR→PNG, HTML/user report email, production motion, Help/shortcuts, admin lifecycle, plugin SDK и admin/diff UX.
-6. Pre-XLSX hardening: analytics/chart/report/CPU/email benchmarks, invalid ChartSpec security, cross-render/six-theme parity, restore/upgrades, a11y/i18n, mail canary/runbooks, MSSQL matrix, SBOM/provenance и документация.
+1. Foundation: monorepo/contracts/locale-neutral core, workspace DB/auth/RBAC, object access/comments, local artifacts/partition commit, run/outbox/fencing/reconciler, CPU/progress/theme/BrandProfile и canonical ChartSpec/compiler-port foundations, minimal guided shell, observability и Compose.
+2. Vertical alpha: governed CSV/XLSX template discovery/mapping, full extraction/DQ/preflight, marts/analytics/RFM, forecast backtest, первый ChartSpec set и ECharts SVG/Canvas adapter, Result Trust и en/ru catalog structure.
+3. Data onboarding/security public MVP: PostgreSQL/MSSQL/MySQL/ClickHouse connectors с integration CI, multi-workspace/local auth, identity/items/products, Filter Registry, Data Guide/FileImportTemplate, lifecycle/impact, incremental/drift/remediation, canonical routes/history/system surfaces/dirty guards, complete en/ru/WCAG/onboarding.
+4. Product analytics public MVP: Metric/Methodology Registry, Analysis Case/Research Workspace, marts/cohorts/lifecycle/segments, universal YoY, metric grouping/formatting, Promotion Journal first-class range timeline/overlays, forecast monitoring, dashboards/comments/schedules/Operator/in-app inbox, BrandProfile/CompanyPack, exports, backup/restore и production Compose.
+5. Advanced low-code v1: accessible canvas, templates, Research publication, Custom Builder, governed outlier treatment, buckets/stratification/KMeans, basket/store/channel, operational email/webhook и channel management, Report Composition, bounded embedded ECharts SSR→PNG, HTML/user report email, production motion, Help/shortcuts, admin lifecycle, plugin SDK и admin/diff UX.
+6. Pre-XLSX hardening: analytics/treatment/segmentation/chart/report/CPU/email benchmarks, invalid ChartSpec security, cross-render/six-theme parity, restore/upgrades, a11y/i18n, mail canary/runbooks, MSSQL matrix, SBOM/provenance и документация.
 7. Universal XLSX: последняя feature — canonical ChartSpec→native chart либо same-pipeline PNG, typed data sheet, sheet split, injection/openability/golden parity.
 8. Final v1 acceptance: только full acceptance/security/performance/recovery/rollback evidence, без новых features.
 
-Post-v1 остаются DB destination export, OIDC/Keycloak implementation, clusters, расширенный ABC/XYZ, comparable stores, discount/margin, hierarchical/scenario/decomposed forecasting, Optuna/MLflow, Vault/KMS, новые connectors, remote storage/distributed workers по будущему ADR и public result API.
+Post-v1 остаются Yandex Metrica Reporting/Logs connectors, B2B sales ontology, DB destination export, OIDC/Keycloak implementation, Gaussian Mixture/HDBSCAN/automatic K/Isolation Forest/multivariate anomaly detection, расширенный ABC/XYZ, comparable stores, discount/margin, hierarchical/scenario/decomposed forecasting, Optuna/MLflow, Vault/KMS, новые connectors, remote storage/distributed workers по будущему ADR и public result API. Detailed activation/distribution work ведётся только в отдельном private access-controlled контуре.
 
 ## 27. End-to-end сценарии
 
@@ -1341,7 +1535,7 @@ One-time host token создаёт local installation admin и первый work
 
 ### 27.2. Основной demo flow
 
-MS SQL/CSV → catalog → Customer/Receipt/ReceiptItem mapping → schema/cardinality validation → landing Parquet → quality gate → transaction/features marts → active base/RFM/cohorts/online-offline → previous-year comparison → Promotion range timeline/overlay → 12-month revenue/active-base forecast → canonical ChartSpec → ECharts Web SVG/Canvas → ReportSnapshot → SSR SVG→email PNG → dashboard, Parquet и native/raster universal XLSX.
+PostgreSQL/MSSQL/MySQL/ClickHouse либо governed CSV/XLSX template → catalog → Customer/Receipt/ReceiptItem mapping → schema/cardinality validation → landing Parquet → quality gate → approved metrics/method → Analysis Case/Research Workspace → transaction/features marts → active base/RFM → PopulationTreatment preview → bucket/stratified analysis либо KMeans exact K → immutable membership/diagnostics → cohorts/online-offline → previous-year comparison с shared treatment bounds → reviewed findings → Promotion range timeline/overlay → forecast → canonical ChartSpec → ECharts Web SVG/Canvas → branded ReportSnapshot → comments/ACL → SSR SVG→email PNG → dashboard, Parquet и native/raster universal XLSX с generated README.
 
 ### 27.3. Incremental refresh
 
@@ -1363,7 +1557,7 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 
 | ID | Public MVP считается готовым, когда… |
 |---|---|
-| AC-001 | PostgreSQL и MSSQL read-only source подключаются из Web UI |
+| AC-001 | PostgreSQL, MSSQL, MySQL/MariaDB и ClickHouse read-only sources, а также governed CSV/XLSX templates, доступны из Web UI |
 | AC-002 | Semantic dataset создаётся и публикуется без code changes |
 | AC-003 | Capability Engine объясняет доступность функций |
 | AC-004 | Full/incremental создают extraction batch/partition manifests, watermark двигается после atomic commit |
@@ -1403,6 +1597,11 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | AC-038 | Forecast spec проходит общий version lifecycle; backtest/model FK указывает immutable spec version того же workspace |
 | AC-039 | Customer marts/segments используют canonical customer и явные PK; product revenue использует item-grain metric без размножения header measures |
 | AC-040 | Public MVP активирует только in-app delivery; email/webhook endpoints и adapters выключены до `v1_target` |
+| AC-041 | Workspace Administrator управляет membership/roles/report-dashboard access/connections, но без дополнительной роли не создаёт analytical content и не получает PII; Analyst не управляет connections/access assignments |
+| AC-042 | Viewer читает только granted snapshots, не получает raw PII и создаёт audited sanitized comment без изменения immutable content |
+| AC-043 | Methodology Registry публикует reviewed immutable method, а run/result pin-ит method либо limitation `unregistered_method` |
+| AC-044 | Research Workspace создаёт reproducible outline/metric/chart/table/finding/conclusion document и публикует его через общий ReportSnapshot path |
+| AC-045 | Installation BrandProfile/CompanyPack проходят asset/contrast/compatibility checks и меняют identity без fork, secrets или изменения аналитических значений |
 
 ### 28.1. Критерии приёмки v1 target для отчётной платформы
 
@@ -1427,6 +1626,18 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | V1-AC-017 | Canonical route registry, immutable workspaceKey, guards, safe query, deep links, Back/Forward, workspace switch, dirty guard и route-backed Focus проходят en/ru E2E без metadata leaks |
 | V1-AC-018 | Motion matrix соблюдает durations/easing, сохраняет shell/previous data, не искажает charts/tables и имеет проверенный reduced-motion вариант |
 | V1-AC-019 | 403/404/session/maintenance/upgrade, Help/shortcuts, admin lifecycle и operational channels имеют accessible permission-aware states, safe actions, redaction и audit evidence |
+| V1-AC-020 | NumberFormatSpec одинаков в Web/email/XLSX, locale-aware сокращает числа и не превращает non-zero percent в 0%, сохраняя full typed value |
+| V1-AC-021 | MetricGroupVersion сохраняет одинаковые group headers/order и accessible reading order во всех каналах |
+| V1-AC-022 | XLSX README содержит safe sources, filters, metrics/groups, methodology, grain, quality, limitations, lineage и versions без secrets/PII |
+| V1-AC-023 | Research document поддерживает summary→detail, linked filters, evidence-linked findings и отдельные viewer comments с immutable version |
+| V1-AC-024 | Report/dashboard ACL управляется отдельно от authoring; revoke закрывает object, exports и comments без existence leak |
+| V1-AC-025 | BrandProfile из одной pinned version кастомизирует Web/login/email/report/XLSX/docs/support и проходит visual/accessibility tests |
+| V1-AC-026 | PostgreSQL/MSSQL/MySQL/ClickHouse/CSV-template/XLSX-template имеют release evidence; Yandex Metrica future-only |
+| V1-AC-027 | Public release не содержит private activation artifacts и работает self-host без private package/license heartbeat |
+| V1-AC-028 | Canonical model остаётся B2C retail; B2B entities отсутствуют и не переиспользуют существующие semantics |
+| V1-AC-029 | Quantile/IQR/MAD treatment имеет default flag, sensitivity, explicit exclude/winsorize и раскрывает bounds/scope/impact во всех result/export channels без изменения canonical data |
+| V1-AC-030 | Buckets поддерживают quantile/equal-width/custom с deterministic boundaries; strata используют global default/privacy-safe cells и сохраняются в segment только явно |
+| V1-AC-031 | CPU KMeans принимает exact K и versioned features/preprocessing/treatment/seed, показывает diagnostics/sensitivity и создаёт новый immutable snapshot при retrain |
 
 ## 29. Закрытые пробелы исходного плана
 
@@ -1481,6 +1692,18 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | GAP-047 | Raw ECharts option был canonical | Product-owned validated ChartSpec; library outputs derived only |
 | GAP-048 | Web/static/XLSX renderer boundaries не разделены | ECharts Web, bounded SSR SVG→PNG и native-or-same-PNG XLSX ports |
 | GAP-049 | Promotion timeline не имел chart type | First-class range_timeline и accessible table |
+| GAP-050 | Форматирование метрик было компонентным | NumberFormatSpec, adaptive precision и full typed value |
+| GAP-051 | Группы и порядок метрик дрейфовали | MetricGroupVersion и versioned presentation override |
+| GAP-052 | У аналитиков не было общего реестра методик | MethodologyRegistry, review и immutable methods |
+| GAP-053 | Ad hoc не становился reusable asset | AnalysisCase, ResearchDocument, Finding и AnalyticalProduct |
+| GAP-054 | Dashboard не поддерживал research narrative | Ordered sections, heterogeneous blocks, findings и comments |
+| GAP-055 | White-label ограничивался palette | BrandProfileVersion и CompanyPack без code fork |
+| GAP-056 | XLSX README был неопределён | Автоматический structured README из snapshot/guide/method |
+| GAP-057 | Admin/Analyst/Viewer permissions пересекались | Separate bundles, object ACL и explicit PII grant |
+| GAP-058 | Connector scope был размытым | Четыре SQL + два governed template modes, Yandex future-only |
+| GAP-059 | Distribution смешивалась с activation | Self-host-only public core и отдельная private boundary |
+| GAP-060 | Выбросы были локальными filters | Immutable treatment, robust methods, default flag, shared LY bounds и sensitivity |
+| GAP-061 | Buckets/strata/clusters не имели lifecycle | Versioned definitions/distributions/preprocessing/models/membership и exact K |
 
 ## 30. Риски и решения
 
@@ -1506,6 +1729,13 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | RISK-018 | Library option становится hidden logic/executable attack surface | Allowlisted ChartSpec, no raw options/functions/HTML/URLs/regex |
 | RISK-019 | SSR/raster исчерпывает CPU/RAM/temp или зависает | Bounded spec/data, no network, limits/cancel/cleanup/runbook |
 | RISK-020 | Большой chart блокирует browser или даёт разные reductions | Backend CPU aggregate/sample/LOD, visible window и measured SVG/Canvas policy |
+| RISK-021 | Adaptive formatting скрывает малое значение | Versioned rules, non-zero floor, full-value disclosure и golden boundaries |
+| RISK-022 | Comment принимается за утверждённый вывод или раскрывает PII | Separate FindingVersion/comment, review, DLP, access re-check и audit |
+| RISK-023 | White-label asset создаёт XSS/remote fetch/плохой contrast или fork | Sanitized content-addressed assets, semantic tokens и preview/gates |
+| RISK-024 | Расширенная connector matrix превышает support capacity | Supported-version matrix, protected release jobs и закрытый connector scope |
+| RISK-025 | Admin role обходит analytical/PII policy | Separate bundles, explicit expiring PII grant и access audit |
+| RISK-026 | `.gitignore` принимают за защиту private материалов | Authoritative private storage отдельно; ignored root — только defense-in-depth |
+| RISK-027 | Outlier policy удаляет реальных VIP или делает периоды несопоставимыми | Default flag, DQ separation, impact preview, pinned shared LY bounds и explicit fit/assignment populations |
 
 ### 30.1. Зафиксированные решения
 
@@ -1533,16 +1763,27 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | RESOLVED-020 | Promotion timeline — first-class `range_timeline`, не timeline-frame component |
 | RESOLVED-021 | Web SVG/Canvas; email PNG из SSR SVG; XLSX native lossless либо same-pipeline PNG |
 | RESOLVED-022 | Нет ECharts-GL/WebGL до v1; analytics/aggregation/sample/LOD — backend CPU |
+| RESOLVED-023 | Текущая ontology и v1 ориентированы на B2C retail; B2B sales — future additive extension |
+| RESOLVED-024 | v1 sources: PostgreSQL, MSSQL, MySQL/MariaDB, ClickHouse и governed CSV/XLSX templates; Yandex Metrica — future Reporting/Logs boundary |
+| RESOLVED-025 | Product distribution сейчас только self-host; cloud/SaaS/managed control plane не входят в v1 |
+| RESOLVED-026 | Detailed activation/destination design private и хранится отдельно; `.private/` лишь предотвращает accidental commit |
+| RESOLVED-027 | BrandProfile/CompanyPack охватывает Web/login/logo/icons/colors/fonts/email/report/XLSX/docs/support/legal без code fork |
+| RESOLVED-028 | Admin управляет users/access/connections; Analyst создаёт content; Viewer читает и комментирует без raw PII |
+| RESOLVED-029 | PII доступна только через explicit scoped expiring grant; Viewer/Operator raw PII не получают |
+| RESOLVED-030 | Research Workspace — governed block document поверх общих contracts, не notebook или второй dashboard engine |
+| RESOLVED-031 | NumberFormatSpec и MetricGroupVersion едины для Web/email/XLSX; raw value сохраняется, non-zero percent не становится 0% |
+| RESOLVED-032 | Продукт строится как широкий кастомизируемый minimum product set, не как first-client fork или pilot KPI solution |
+| RESOLVED-033 | V1 использует quantile/IQR/MAD и rule/bucket/stratified/KMeans exact-K workflow; GMM/HDBSCAN/automatic-K/multivariate anomalies остаются post-v1 |
 
 Открыты только `OPEN-007` — customer ID completeness threshold как workspace degraded policy, и `OPEN-008` — minimum history для forecast target как capability rule по frequency/seasonality/horizon.
 
 ## 31. Первый implementation slice
 
-Vertical alpha берёт CSV/Parquet, Customer/Receipt, guided JSON-backed semantic form, базовые key/date/reference quality rules, transaction mart, Sales Overview/active base/RFM, monthly revenue Seasonal Naive и CatBoost rolling backtest, bounded internal JSON/Parquet, первый canonical ChartSpec set и minimal Web UI через ECharts SVG/Canvas, общий guided/pipeline engine, outbox/fencing/reconciler и local artifacts. SQL connectors, incremental, cohorts/lifecycle и полный forecast set добавляются после доказанного slice.
+Vertical alpha берёт governed CSV/XLSX template, Customer/Receipt, guided JSON-backed semantic form, базовые key/date/reference quality rules, transaction mart, Sales Overview/active base/RFM, monthly revenue Seasonal Naive и CatBoost rolling backtest, bounded internal JSON/Parquet, первый canonical ChartSpec set и minimal Web UI через ECharts SVG/Canvas, общий guided/pipeline engine, outbox/fencing/reconciler и local artifacts. После доказанного slice добавляются все четыре SQL connectors, Methodology/Research, incremental, cohorts/lifecycle, governed treatment и bucket/stratified/KMeans segmentation, branding/reporting и полный forecast set. Slice — техническая последовательность, а не ограничение продукта под первого клиента.
 
 ## 32. Definition of Done нового модуля
 
-Готовый модуль имеет versioned I/O contracts, owner, capability rule, lifecycle/actions/permissions; не использует hidden global state, фиксирует seed, structured errors, cancellation, workspace/idempotency, CPU/thread allocation и ProgressEvent/ETA для heavy work; объявляет grain/key/PII, manifest/lineage; имеет unit/contract/golden/negative/cross-workspace tests; logs/metrics/timeout/resource profile; guided/node UI, searchable typed filters, previous-year comparison и ReportSnapshot binding когда reportable, canonical ChartSpec/bounded chart data/ECharts renderer capability/textual summary/accessibility table когда visualized, en/ru keys, все шесть themes, keyboard/screen-reader path, все states и нужные notification events; документацию, examples и limitations.
+Готовый модуль имеет versioned I/O contracts, owner, capability rule, lifecycle/actions/permissions; не использует hidden global state, фиксирует seed, structured errors, cancellation, workspace/idempotency, CPU/thread allocation и ProgressEvent/ETA для heavy work; объявляет grain/key/PII, manifest/lineage и, когда применимо, treatment bounds, preprocessing/model/seed/membership versions и sensitivity; имеет unit/contract/golden/negative/cross-workspace tests; logs/metrics/timeout/resource profile; guided/node UI, searchable typed filters, previous-year comparison и ReportSnapshot binding когда reportable, canonical ChartSpec/bounded chart data/ECharts renderer capability/textual summary/accessibility table когда visualized, en/ru keys, все шесть themes, keyboard/screen-reader path, все states и нужные notification events; документацию, examples и limitations.
 
 ## 33. Основные технологические стандарты
 
@@ -1554,15 +1795,20 @@ Vertical alpha берёт CSV/Parquet, Customer/Receipt, guided JSON-backed sema
 Source data
 → semantic mapping
 → quality gate
+→ approved metrics and methodologies
+→ analysis case and research from overview to detail
 → immutable analytical artifacts
 → reusable marts and metrics
 → customer/sales analytics
+→ governed population treatment
+→ bucket, stratified or exact-K segmentation
 → reproducible forecasting
 → canonical product-owned ChartSpec
 → ECharts Web SVG/Canvas and deterministic SSR-SVG-to-PNG
-→ versioned report composition
+→ reviewed findings, comments and versioned report composition
+→ BrandProfile and CompanyPack
 → verified-sender email
-→ dashboards and native-or-raster universal XLSX/other exports
+→ dashboards and native-or-raster universal XLSX with generated README
 ```
 
-Custometry остаётся аналитической платформой, а не универсальным оркестратором. Её главные differentiators — semantic model, единые metric semantics, Result Trust, воспроизводимость и корректная временная validation прогнозов.
+Custometry остаётся B2C retail analytical operating system, а не универсальным оркестратором или customer-specific проектом. Её главные differentiators — semantic model, единые metrics/methodology, research-to-product workflow, Result Trust, white-label без fork, воспроизводимость и корректная временная validation прогнозов.

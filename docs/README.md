@@ -19,7 +19,7 @@
 - [Custometry Documentation Platform](architecture/documentation-platform.md)
 - [Custometry Repository and Agent Infrastructure Layout](architecture/repository-layout.md)
 - [Custometry Runtime, Network, and Installation](architecture/runtime-network-installation.md)
-- [Custometry — Foundation System Design](architecture/system-design.md)
+- [Custometry - Target System Design](architecture/system-design.md)
 - [Custometry Quality Tooling and Gates](architecture/tooling-gates.md)
 
 ## contracts
@@ -27,6 +27,8 @@
 - [Documentation and boundary contracts](contracts/README.md)
 - [<Architecture document title>](contracts/architecture-document-template.md)
 - [<Contract name>](contracts/contract-document-template.md)
+- [Executable UI Route Contract](contracts/ui-route-contract.md)
+- [UI Surface Coverage Contract](contracts/ui-surface-contract.md)
 
 ## iterations
 

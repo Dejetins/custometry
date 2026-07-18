@@ -17,7 +17,7 @@ describe("Foundation localization", () => {
       ...routeRegistry.foundation_utility_routes.map((route) => route.title_key),
     ].sort();
 
-    expect(normativeTitleKeys).toHaveLength(91);
+    expect(normativeTitleKeys).toHaveLength(110);
     expect(Object.keys(routeTitleCatalogs.en).sort()).toEqual(allTitleKeys);
     expect(Object.keys(routeTitleCatalogs.ru).sort()).toEqual(allTitleKeys);
     expect(Object.values(routeTitleCatalogs.en).every((title) => title.trim().length > 0)).toBe(true);

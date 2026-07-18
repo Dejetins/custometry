@@ -2,7 +2,7 @@
 doc_id: ARCH-DOCUMENTATION-PLATFORM-001
 title: Custometry documentation platform
 doc_version: 3
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
 owner: product-documentation
@@ -50,7 +50,7 @@ Every publishable Markdown document has frontmatter:
 doc_id: install-local
 title: Local installation
 doc_version: 1
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.0-draft
 locale: en
 visibility: public | authenticated | internal
 ship: true | false

@@ -1,8 +1,8 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 6
-product_spec_version: 0.8.2-draft
+doc_version: 7
+product_spec_version: 0.9.1-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -19,7 +19,7 @@ This directory contains accepted architecture decisions and shared engineering c
 
 ## Sources of truth
 
-1. `custometry-technical-blueprint-ru.md` contains the normative product requirements, version `0.8.2-draft`.
+1. `custometry-technical-blueprint-ru.md` contains the normative product requirements, version `0.9.1-draft`.
 2. `custometry-technical-blueprint-human-ru.md` is the synchronized human-readable mirror.
 3. `custometry-ui-blueprint-ru.md` is the derived UI/UX contract.
 4. Documents in this directory contain accepted architecture and process decisions within the blueprint.
@@ -31,8 +31,10 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 
 | Document | Purpose |
 |---|---|
-| [System Design](./system-design.md) | Overall architecture, accepted decisions, flows, proof boundaries, and direction of evolution |
-| [Bounded context map](./bounded-context-map.md) | Data ownership, dependencies, shared kernel, and integration rules |
+| [System Design](./system-design.md) | Complete `0.9.1-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
+| [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
+| [Executable UI route contract](../contracts/ui-route-contract.md) | Identity/execution manifest split, guard/permission/state/history semantics, agent resolution, and validation rules |
+| [UI surface coverage contract](../contracts/ui-surface-contract.md) | Requirement-to-surface coverage, route decision policy, Penpot baseline identity, and complete agent load order |
 | [Development operating model](./development-operating-model.md) | UI-first vertical slices, ticket-first execution, optional coordination artifacts, Git, and CI/CD |
 | [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Ticket-first execution and removal of the obsolete staged planning system |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |

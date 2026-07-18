@@ -2,7 +2,7 @@
 doc_id: RUNBOOK-GITHUB-GOVERNANCE-001
 title: GitHub repository governance
 doc_version: 2
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
 owner: engineering-productivity

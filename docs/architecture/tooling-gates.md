@@ -2,7 +2,7 @@
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
 doc_version: 6
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
 owner: engineering-productivity

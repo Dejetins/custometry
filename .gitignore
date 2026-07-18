@@ -44,6 +44,14 @@ secrets/
 /deploy/compose/.runtime-secrets/
 *.log
 
+# System Design is maintained in Markdown; presentation exports are ephemeral.
+/docs/architecture/*system-design*.docx
+
+# Local drafts for future private distribution/activation work. This prevents
+# accidental commits only; authoritative private material belongs in separate
+# access-controlled storage, never in this public repository.
+/.private/
+
 # Codex machine-local state; durable prompt packs remain tracked
 .codex/agents/.context/
 .codex/tmp/

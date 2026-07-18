@@ -2,7 +2,7 @@
 doc_id: TEMPLATE-CONTRACT
 title: Contract document template
 doc_version: 1
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
 owner: architecture

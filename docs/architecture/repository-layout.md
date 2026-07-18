@@ -2,7 +2,7 @@
 doc_id: ARCH-REPOSITORY-LAYOUT-001
 title: Custometry repository and agent infrastructure layout
 doc_version: 6
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -18,7 +18,7 @@ proof_boundary:
 ## Status
 
 - decision status: `active Foundation scaffold and minimal local runtime`;
-- normative specification: `custometry-technical-blueprint-ru.md`, `0.8.2-draft`;
+- normative specification: `custometry-technical-blueprint-ru.md`, `0.9.0-draft`;
 - human-readable mirror: `custometry-technical-blueprint-human-ru.md`;
 - proof boundary: structure, governance, quality-tool ownership, and the minimal Web/API/PostgreSQL Foundation runtime; no claim of ready product contexts, vertical alpha, or release.
 
@@ -30,7 +30,7 @@ Establish the minimal monorepo for Phase 0 (Foundation), retaining the complete 
 
 1. Both blueprints remain at the repository root. Their mutual relative links do not change.
 2. The literal names `apps/`, `packages/`, `plugins/`, `deploy/`, `docs/`, and `tests/` follow section 25 of the machine blueprint.
-3. The literal tree is synchronized with the current section 25 in `0.8.2-draft`: `apps/worker_report/`, `packages/promotion_journal/`, `packages/chart_compiler_ts/`, `packages/report_delivery/`, and `packages/data_documentation/` are present.
+3. The literal tree is synchronized with the current section 25 in `0.9.0-draft`: `apps/worker_report/`, `packages/promotion_journal/`, `packages/chart_compiler_ts/`, `packages/report_delivery/`, and `packages/data_documentation/` are present.
 4. `packages/audit/` is added as a compatible clarification: `audit` has a separate owner and owns `audit_events` in sections 17.2–17.3, although the package is omitted from the literal tree in section 25.
 5. `.github/workflows/`, `tools/custometry_quality/`, `docs/runbooks/`, `docs-site/docs/`, and additional test surfaces are added as compatible clarifications required by CI, validation, operations, fail-closed public documentation, and test-pyramid requirements.
 6. Frontend workspace manifests are added because the toolchain requires `pnpm` and a pinned `pnpm-lock.yaml`; `packages/chart_compiler_ts/` is included in `pnpm-workspace.yaml` and remains the shared Web/static compiler boundary.
@@ -159,7 +159,7 @@ directory is no longer sufficient rollback.
 - Git tracks `origin/main`, and the existing remote `LICENSE` is preserved.
 - The section 25 tree and explicitly documented implied paths are present.
 - `pyproject.toml`, `package.json`, `pnpm-workspace.yaml`, `mkdocs.yml`, and `compose.yaml` pass syntax and static-contract validation.
-- The spec, ticket, and evidence templates use `spec_version: 0.8.2-draft` and pass structural validation.
+- The spec, ticket, and evidence templates use `spec_version: 0.9.0-draft` and pass structural validation.
 - Nine role TOML files use only the supported fields `name`, `description`, and `developer_instructions`; `codex doctor` reports no malformed-role warnings.
 - Foundation health, documentation, API, browser, and Compose boundaries require actual runtime evidence. Compose establishes `edge_to_web` and `web_to_api` without direct Edge-to-API adjacency, but does not prove strict Edge outbound denial; that is a separate target firewall/CNI hardening gate. Product analytics, authentication, execution, deployment, recovery, and performance readiness do not follow from the scaffold.
 - Repository-local `.pnpm-store/` and `.playwright-cli/` are manifest-owned disposable tool state: they count against the owned-disk budget, are excluded from Git and the Docker context, and may be deleted only by the exact confirmed cleanup command.

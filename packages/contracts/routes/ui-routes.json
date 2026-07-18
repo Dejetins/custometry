@@ -192,6 +192,83 @@
       "title_key": "UI-DATA-020"
     },
     {
+      "id": "UI-DATA-021",
+      "path": "/w/:workspaceKey/methodologies",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-021"
+    },
+    {
+      "id": "UI-DATA-022",
+      "path": "/w/:workspaceKey/methodologies/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-022"
+    },
+    {
+      "id": "UI-DATA-023",
+      "path": "/w/:workspaceKey/file-import-templates",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-023"
+    },
+    {
+      "id": "UI-DATA-024",
+      "path": "/w/:workspaceKey/file-import-templates/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-024"
+    },
+    {
+      "id": "UI-DATA-025",
+      "path": "/w/:workspaceKey/imports",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-025"
+    },
+    {
+      "id": "UI-DATA-026",
+      "path": "/w/:workspaceKey/imports/new",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-026"
+    },
+    {
+      "id": "UI-DATA-027",
+      "path": "/w/:workspaceKey/imports/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-DATA-027"
+    },
+    {
+      "id": "UI-DATA-028",
+      "path": "/w/:workspaceKey/metric-groups",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-DATA-028"
+    },
+    {
+      "id": "UI-DATA-029",
+      "path": "/w/:workspaceKey/metric-groups/:id",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-DATA-029"
+    },
+    {
+      "id": "UI-DATA-030",
+      "path": "/w/:workspaceKey/number-formats",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-DATA-030"
+    },
+    {
+      "id": "UI-DATA-031",
+      "path": "/w/:workspaceKey/number-formats/:id",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-DATA-031"
+    },
+    {
       "id": "UI-DQ-001",
       "path": "/w/:workspaceKey/data-quality",
       "release": "MVP",
@@ -309,6 +386,20 @@
       "release": "MVP",
       "status": "planned",
       "title_key": "UI-AN-012"
+    },
+    {
+      "id": "UI-AN-013",
+      "path": "/w/:workspaceKey/research",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-013"
+    },
+    {
+      "id": "UI-AN-014",
+      "path": "/w/:workspaceKey/research/:id",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-AN-014"
     },
     {
       "id": "UI-SEG-001",
@@ -631,6 +722,48 @@
       "release": "MVP/V1",
       "status": "planned",
       "title_key": "UI-ADMIN-012"
+    },
+    {
+      "id": "UI-ADMIN-013",
+      "path": "/w/:workspaceKey/settings/branding",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-013"
+    },
+    {
+      "id": "UI-ADMIN-014",
+      "path": "/admin/brand-profiles",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-014"
+    },
+    {
+      "id": "UI-ADMIN-015",
+      "path": "/admin/brand-profiles/:id",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-015"
+    },
+    {
+      "id": "UI-ADMIN-016",
+      "path": "/admin/company-packs",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-016"
+    },
+    {
+      "id": "UI-ADMIN-017",
+      "path": "/admin/company-packs/:id",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-017"
+    },
+    {
+      "id": "UI-ADMIN-018",
+      "path": "/w/:workspaceKey/access/:resourceType/:resourceId",
+      "release": "MVP",
+      "status": "planned",
+      "title_key": "UI-ADMIN-018"
     },
     {
       "id": "UI-HELP-001",

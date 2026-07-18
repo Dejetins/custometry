@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "product_spec_version": "0.9.1-draft",
+  "ui_spec_version": "0.6.1-draft",
+  "route_contract_schema_version": "1.0.0",
+  "source_files": [
+    "custometry-technical-blueprint-ru.md",
+    "custometry-technical-blueprint-human-ru.md",
+    "custometry-ui-blueprint-ru.md",
+    "packages/contracts/routes/ui-routes.json",
+    "packages/contracts/routes/ui-route-contracts.json"
+  ],
+  "route_decision_policy": {
+    "route_when": [
+      "durable entity or version lifecycle",
+      "notification audit or bookmark deep link",
+      "independent Back refresh or unsaved-change semantics",
+      "independent permission boundary with complex recoverable state"
+    ],
+    "overlay_when": [
+      "transient confirmation or contextual inspection",
+      "no independent durable lifecycle",
+      "return to an owning route is always required"
+    ],
+    "component_when": [
+      "the same governed behavior is reused across several routes",
+      "the behavior has no independent resource identity",
+      "consistent rendering and accessibility are more important than a new URL"
+    ],
+    "route_count_is_ceiling": false
+  },
+  "penpot_baseline": {
+    "file_id": "7cd71457-8d32-8044-8008-549f83bb4645",
+    "working_name": "custometry",
+    "observed_revision": 124,
+    "page_count": 47,
+    "verified_route_count": 91,
+    "target_route_count": 110
+  },
+  "overlays": [
+    {"id": "UI-OVR-001", "name": "Workspace switcher", "kind": "popover", "route_backed": false, "history_semantics": "none", "requirement_ids": ["ROUTE-010"]},
+    {"id": "UI-OVR-002", "name": "Global command palette", "kind": "popover", "route_backed": false, "history_semantics": "none", "requirement_ids": ["ROUTE-003", "ROUTE-005", "RBAC-006"]},
+    {"id": "UI-OVR-003", "name": "Searchable Filter Explorer", "kind": "drawer", "route_backed": false, "history_semantics": "replace", "requirement_ids": ["FILTER-002", "FILTER-005", "FILTER-007", "FILTER-008"]},
+    {"id": "UI-OVR-004", "name": "Filter expression editor", "kind": "drawer", "route_backed": false, "history_semantics": "replace", "requirement_ids": ["FILTER-001", "FILTER-003", "FILTER-004", "FILTER-009", "FILTER-010"]},
+    {"id": "UI-OVR-005", "name": "Previous-year comparison editor", "kind": "drawer", "route_backed": false, "history_semantics": "replace", "requirement_ids": ["UC-012", "COMPARE-001", "COMPARE-002", "COMPARE-003", "COMPARE-004", "COMPARE-005", "COMPARE-006", "COMPARE-007"]},
+    {"id": "UI-OVR-006", "name": "Result Trust drawer", "kind": "drawer", "route_backed": false, "history_semantics": "none", "requirement_ids": ["REPORT-008", "UX-JOURNEY-005"]},
+    {"id": "UI-OVR-007", "name": "Chart data table", "kind": "drawer", "route_backed": false, "history_semantics": "none", "requirement_ids": ["CHART-015", "A11Y-006", "A11Y-007"]},
+    {"id": "UI-OVR-008", "name": "Publish diff and impact modal", "kind": "modal", "route_backed": false, "history_semantics": "none", "requirement_ids": ["OBJ-STATE-002", "UX-JOURNEY-006"]},
+    {"id": "UI-OVR-009", "name": "Clone/deprecate/archive modal", "kind": "modal", "route_backed": false, "history_semantics": "none", "requirement_ids": ["OBJ-STATE-001", "OBJ-STATE-003"]},
+    {"id": "UI-OVR-010", "name": "Operation progress drawer", "kind": "drawer", "route_backed": false, "history_semantics": "none", "requirement_ids": ["PROGRESS-001", "PROGRESS-002", "PROGRESS-003", "PROGRESS-004", "PROGRESS-005", "PROGRESS-006", "PROGRESS-007", "PROGRESS-008"]},
+    {"id": "UI-OVR-011", "name": "Cancel/retry/rerun confirmation", "kind": "modal", "route_backed": false, "history_semantics": "none", "requirement_ids": ["PROGRESS-006"]},
+    {"id": "UI-OVR-012", "name": "Export preflight modal", "kind": "modal", "route_backed": false, "history_semantics": "none", "requirement_ids": ["UC-015", "REPORT-009", "XLSX-006", "RBAC-005"]},
+    {"id": "UI-OVR-013", "name": "Email send confirmation", "kind": "modal", "route_backed": false, "history_semantics": "none", "requirement_ids": ["UC-014", "REPORT-MAIL-001", "REPORT-MAIL-002", "REPORT-MAIL-003", "REPORT-MAIL-004", "REPORT-MAIL-005", "RBAC-005"]},
+    {"id": "UI-OVR-014", "name": "Promotion item detail drawer", "kind": "drawer", "route_backed": false, "history_semantics": "none", "requirement_ids": ["UC-013", "PROMO-001", "PROMO-002", "PROMO-003", "PROMO-004", "PROMO-005", "PROMO-006", "PROMO-007", "PROMO-008", "PROMO-009"]},
+    {"id": "UI-OVR-015", "name": "Pipeline node inspector", "kind": "drawer", "route_backed": false, "history_semantics": "none", "requirement_ids": ["UC-006", "OBJ-STATE-004"]},
+    {"id": "UI-OVR-016", "name": "Notification detail drawer", "kind": "drawer", "route_backed": false, "history_semantics": "none", "requirement_ids": ["NOTIFY-001", "NOTIFY-002", "NOTIFY-003", "NOTIFY-004", "NOTIFY-005", "NOTIFY-006", "NOTIFY-007", "NOTIFY-008", "NOTIFY-009", "NOTIFY-010", "NOTIFY-011", "NOTIFY-012", "NOTIFY-013", "NOTIFY-014", "NOTIFY-015"]},
+    {"id": "UI-OVR-017", "name": "Theme switcher", "kind": "popover", "route_backed": false, "history_semantics": "replace", "requirement_ids": ["THEME-001", "THEME-002", "THEME-003", "THEME-004", "THEME-005", "THEME-006", "THEME-007", "THEME-008"]},
+    {"id": "UI-OVR-018", "name": "Permission/forbidden explanation", "kind": "popover", "route_backed": false, "history_semantics": "none", "requirement_ids": ["RBAC-002", "RBAC-006", "UX-JOURNEY-006"]},
+    {"id": "UI-OVR-019", "name": "Destructive action confirmation", "kind": "modal", "route_backed": false, "history_semantics": "none", "requirement_ids": ["OBJ-STATE-001", "OBJ-STATE-003"]},
+    {"id": "UI-OVR-020", "name": "Full-screen Focus / Explore Surface", "kind": "route_surface", "route_backed": true, "history_semantics": "push_return_to_origin", "requirement_ids": ["UC-018", "FOCUS-001", "FOCUS-002", "FOCUS-003", "FOCUS-004", "FOCUS-005", "FOCUS-006", "FOCUS-007", "FOCUS-008", "FOCUS-009", "FOCUS-010", "FOCUS-011", "FOCUS-012"]},
+    {"id": "UI-OVR-021", "name": "Help and contextual-help menu", "kind": "popover", "route_backed": false, "history_semantics": "none", "requirement_ids": ["HELP-001", "HELP-003", "HELP-004"]},
+    {"id": "UI-OVR-022", "name": "Keyboard shortcuts reference", "kind": "modal", "route_backed": false, "history_semantics": "none", "requirement_ids": ["HELP-002", "HELP-004"]},
+    {"id": "UI-OVR-023", "name": "Unsaved changes confirmation", "kind": "modal", "route_backed": false, "history_semantics": "none", "requirement_ids": ["ROUTE-008"]},
+    {"id": "UI-OVR-024", "name": "Discussion and comments drawer", "kind": "drawer", "route_backed": false, "history_semantics": "replace", "requirement_ids": ["UC-021", "RESEARCH-005", "RESEARCH-006", "RESEARCH-007", "RBAC-014"]},
+    {"id": "UI-OVR-025", "name": "Data treatment and sensitivity drawer", "kind": "drawer", "route_backed": false, "history_semantics": "replace", "requirement_ids": ["UC-025", "OUTLIER-001", "OUTLIER-002", "OUTLIER-003", "OUTLIER-004", "OUTLIER-005", "OUTLIER-006", "OUTLIER-007", "OUTLIER-008", "OUTLIER-009", "OUTLIER-010", "OUTLIER-011", "OUTLIER-012", "SEGMENT-018"]}
+  ],
+  "system_surfaces": [
+    {"id": "UI-SYS-001", "name": "403 Forbidden", "requirement_ids": ["SYS-UI-001"]},
+    {"id": "UI-SYS-002", "name": "404 Not Found", "requirement_ids": ["SYS-UI-002"]},
+    {"id": "UI-SYS-003", "name": "Session expired", "requirement_ids": ["SYS-UI-003"]},
+    {"id": "UI-SYS-004", "name": "Maintenance", "requirement_ids": ["SYS-UI-004"]},
+    {"id": "UI-SYS-005", "name": "Upgrade required", "requirement_ids": ["SYS-UI-005"]}
+  ],
+  "cross_surface_capabilities": [
+    {"id": "UI-CAP-001", "name": "Workspace routing, guards and return", "delivery_form": "route_state_contract", "requirement_ids": ["ROUTE-001", "ROUTE-002", "ROUTE-003", "ROUTE-004", "ROUTE-005", "ROUTE-006", "ROUTE-007", "ROUTE-008", "ROUTE-009", "ROUTE-010", "ROUTE-011", "ROUTE-012", "RBAC-002"]},
+    {"id": "UI-CAP-002", "name": "Searchable typed filters", "delivery_form": "component_contract", "requirement_ids": ["FILTER-001", "FILTER-002", "FILTER-003", "FILTER-004", "FILTER-005", "FILTER-006", "FILTER-007", "FILTER-008", "FILTER-009", "FILTER-010"]},
+    {"id": "UI-CAP-003", "name": "Previous-year comparison", "delivery_form": "component_contract", "requirement_ids": ["UC-012", "COMPARE-001", "COMPARE-002", "COMPARE-003", "COMPARE-004", "COMPARE-005", "COMPARE-006", "COMPARE-007"]},
+    {"id": "UI-CAP-004", "name": "Metric groups and adaptive formats", "delivery_form": "component_contract", "requirement_ids": ["METRIC-009", "METRIC-010", "METRIC-011", "METRIC-012", "METRIC-013", "METRIC-014", "METRIC-015", "METRIC-016"]},
+    {"id": "UI-CAP-005", "name": "ChartSpec visualization", "delivery_form": "component_contract", "requirement_ids": ["UC-017", "CHART-001", "CHART-002", "CHART-003", "CHART-004", "CHART-005", "CHART-006", "CHART-007", "CHART-008", "CHART-009", "CHART-010", "CHART-011", "CHART-012", "CHART-013", "CHART-014", "CHART-015", "CHART-016", "CHART-017", "CHART-018", "CHART-019"]},
+    {"id": "UI-CAP-006", "name": "Chart ↔ Data table", "delivery_form": "component_contract", "requirement_ids": ["CHART-015", "A11Y-006", "A11Y-007"]},
+    {"id": "UI-CAP-007", "name": "Focus / Explore", "delivery_form": "route_state_contract", "requirement_ids": ["UC-018", "FOCUS-001", "FOCUS-002", "FOCUS-003", "FOCUS-004", "FOCUS-005", "FOCUS-006", "FOCUS-007", "FOCUS-008", "FOCUS-009", "FOCUS-010", "FOCUS-011", "FOCUS-012"]},
+    {"id": "UI-CAP-008", "name": "Result Trust", "delivery_form": "component_contract", "requirement_ids": ["REPORT-008", "UX-JOURNEY-005"]},
+    {"id": "UI-CAP-009", "name": "Research composition and findings", "delivery_form": "component_contract", "requirement_ids": ["UC-020", "RESEARCH-001", "RESEARCH-002", "RESEARCH-003", "RESEARCH-004", "RESEARCH-005", "RESEARCH-006", "RESEARCH-007", "RESEARCH-008"]},
+    {"id": "UI-CAP-010", "name": "Object-scoped comments", "delivery_form": "component_contract", "requirement_ids": ["UC-021", "RESEARCH-005", "RESEARCH-006", "RESEARCH-007", "UX-JOURNEY-009", "RBAC-014"]},
+    {"id": "UI-CAP-011", "name": "Resource access policy", "delivery_form": "policy_contract", "requirement_ids": ["UC-011", "UC-022", "UX-JOURNEY-010", "DASHBOARD-010", "RBAC-013", "RBAC-015"]},
+    {"id": "UI-CAP-012", "name": "ReportSnapshot and export preflight", "delivery_form": "policy_contract", "requirement_ids": ["UC-015", "REPORT-001", "REPORT-002", "REPORT-003", "REPORT-004", "REPORT-005", "REPORT-006", "REPORT-007", "REPORT-008", "REPORT-009", "REPORT-010", "REPORT-011", "REPORT-012", "REPORT-013", "REPORT-014", "XLSX-001", "XLSX-006"]},
+    {"id": "UI-CAP-013", "name": "Verified-user report email", "delivery_form": "policy_contract", "requirement_ids": ["UC-014", "REPORT-MAIL-001", "REPORT-MAIL-002", "REPORT-MAIL-003", "REPORT-MAIL-004", "REPORT-MAIL-005", "REPORT-MAIL-006", "REPORT-MAIL-007", "REPORT-MAIL-008", "REPORT-MAIL-009", "REPORT-MAIL-010", "REPORT-MAIL-011"]},
+    {"id": "UI-CAP-014", "name": "Progress, ETA and cancellation", "delivery_form": "component_contract", "requirement_ids": ["PROGRESS-001", "PROGRESS-002", "PROGRESS-003", "PROGRESS-004", "PROGRESS-005", "PROGRESS-006", "PROGRESS-007", "PROGRESS-008", "COMPUTE-001", "COMPUTE-002", "COMPUTE-003", "COMPUTE-004", "COMPUTE-005", "COMPUTE-006", "COMPUTE-007", "COMPUTE-008", "COMPUTE-009", "COMPUTE-010"]},
+    {"id": "UI-CAP-015", "name": "Effective brand resolution", "delivery_form": "policy_contract", "requirement_ids": ["UC-023", "BRAND-001", "BRAND-002", "BRAND-003", "BRAND-004", "BRAND-005", "BRAND-006", "BRAND-007", "BRAND-008", "BRAND-009"]},
+    {"id": "UI-CAP-016", "name": "Authorized PII-safe rendering", "delivery_form": "policy_contract", "requirement_ids": ["RBAC-005", "RBAC-011", "RBAC-012", "RBAC-013", "RBAC-014", "RBAC-015", "DASHBOARD-011"]},
+    {"id": "UI-CAP-017", "name": "Localization, accessibility and reduced motion", "delivery_form": "component_contract", "requirement_ids": ["I18N-001", "I18N-002", "I18N-003", "I18N-004", "I18N-005", "I18N-006", "I18N-007", "I18N-008", "I18N-009", "I18N-010", "I18N-011", "A11Y-001", "A11Y-002", "A11Y-003", "A11Y-004", "A11Y-005", "A11Y-006", "A11Y-007", "A11Y-008", "A11Y-009", "A11Y-010", "MOTION-001", "MOTION-002", "MOTION-003", "MOTION-004", "MOTION-005", "MOTION-006", "MOTION-007", "MOTION-008", "MOTION-009", "MOTION-010", "MOTION-011", "MOTION-012"]},
+    {"id": "UI-CAP-018", "name": "Governed population and outlier treatment", "delivery_form": "policy_contract", "requirement_ids": ["UC-025", "OUTLIER-001", "OUTLIER-002", "OUTLIER-003", "OUTLIER-004", "OUTLIER-005", "OUTLIER-006", "OUTLIER-007", "OUTLIER-008", "OUTLIER-009", "OUTLIER-010", "OUTLIER-011", "OUTLIER-012"]},
+    {"id": "UI-CAP-019", "name": "Bucket, stratified and KMeans segmentation", "delivery_form": "component_contract", "requirement_ids": ["UC-026", "SEGMENT-001", "SEGMENT-002", "SEGMENT-003", "SEGMENT-004", "SEGMENT-005", "SEGMENT-006", "SEGMENT-007", "SEGMENT-008", "SEGMENT-009", "SEGMENT-010", "SEGMENT-011", "SEGMENT-012", "SEGMENT-013", "SEGMENT-014", "SEGMENT-015", "SEGMENT-016", "SEGMENT-017", "SEGMENT-018"]}
+  ],
+  "use_case_bindings": [
+    {"use_case_id": "UC-001", "surface_ids": ["UI-DATA-001", "UI-DATA-002", "UI-DATA-003", "UI-DATA-004", "UI-DATA-005", "UI-DATA-006"], "coverage_types": ["route"], "rationale": "Connection creation discovery catalog inspection and bounded preview have durable independently authorized routes."},
+    {"use_case_id": "UC-002", "surface_ids": ["UI-DATA-007", "UI-DATA-008", "UI-DATA-009", "UI-DATA-010", "UI-DATA-011", "UI-DATA-012", "UI-DATA-020"], "coverage_types": ["route"], "rationale": "Semantic dataset publication spans a durable dataset lifecycle with mapping policy readiness and version routes."},
+    {"use_case_id": "UC-003", "surface_ids": ["UI-DQ-001", "UI-DQ-002", "UI-DQ-003", "UI-DQ-004"], "coverage_types": ["route"], "rationale": "Quality rules execution overview and immutable reports require independently addressable surfaces."},
+    {"use_case_id": "UC-004", "surface_ids": ["UI-AN-001", "UI-AN-002", "UI-AN-003", "UI-AN-004", "UI-AN-005", "UI-AN-006", "UI-AN-007", "UI-AN-008", "UI-AN-009", "UI-AN-010", "UI-AN-011", "UI-AN-012", "UI-DATA-028", "UI-DATA-029", "UI-DATA-030", "UI-DATA-031", "UI-CAP-002", "UI-CAP-004", "UI-CAP-005"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Customer analytics uses dedicated analytical routes plus governed metric presentation filter and visualization capabilities."},
+    {"use_case_id": "UC-005", "surface_ids": ["UI-FCST-001", "UI-FCST-002", "UI-FCST-003", "UI-FCST-004", "UI-FCST-005", "UI-FCST-006", "UI-FCST-007"], "coverage_types": ["route"], "rationale": "Forecast specifications models backtests prediction and monitoring have durable lifecycle and evidence routes."},
+    {"use_case_id": "UC-006", "surface_ids": ["UI-PIPE-001", "UI-PIPE-002", "UI-PIPE-003", "UI-PIPE-004", "UI-OVR-015", "UI-CAP-014"], "coverage_types": ["route", "overlay", "cross_surface_capability"], "rationale": "Pipeline definitions versions schedules and node inspection combine durable routes with contextual inspection and progress."},
+    {"use_case_id": "UC-007", "surface_ids": ["UI-RPT-006", "UI-OVR-012"], "coverage_types": ["route", "overlay"], "rationale": "Export jobs are durable resources while preflight remains a transient confirmation owned by the source route."},
+    {"use_case_id": "UC-008", "surface_ids": ["UI-AUTH-002", "UI-AUTH-005", "UI-SYS-003"], "coverage_types": ["route", "system"], "rationale": "Bootstrap and onboarding are resumable route-backed flows with an explicit session-expiry boundary."},
+    {"use_case_id": "UC-009", "surface_ids": ["UI-DQ-005", "UI-OVR-008", "UI-OVR-011"], "coverage_types": ["route", "overlay"], "rationale": "Issue remediation has a durable route and transient publish or rerun confirmations."},
+    {"use_case_id": "UC-010", "surface_ids": ["UI-OPS-001", "UI-OPS-002", "UI-OPS-003", "UI-OVR-010", "UI-OVR-011"], "coverage_types": ["route", "overlay"], "rationale": "Operational diagnosis requires durable run and attempt routes plus bounded progress and action confirmation."},
+    {"use_case_id": "UC-011", "surface_ids": ["UI-DASH-001", "UI-DASH-002", "UI-DASH-003", "UI-RPT-001", "UI-RPT-003", "UI-ADMIN-018", "UI-CAP-011"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Dashboard and published report snapshot sharing use their durable viewer routes plus explicit object access policy management."},
+    {"use_case_id": "UC-012", "surface_ids": ["UI-OVR-005", "UI-CAP-003"], "coverage_types": ["overlay", "cross_surface_capability"], "rationale": "Previous-year comparison is a governed reusable behavior on every reportable route rather than a standalone resource page."},
+    {"use_case_id": "UC-013", "surface_ids": ["UI-PROMO-001", "UI-PROMO-002", "UI-PROMO-003", "UI-OVR-014"], "coverage_types": ["route", "overlay"], "rationale": "Promotion definitions and history are durable while compact item inspection remains contextual."},
+    {"use_case_id": "UC-014", "surface_ids": ["UI-RPT-004", "UI-RPT-005", "UI-RPT-007", "UI-OVR-013", "UI-CAP-013"], "coverage_types": ["route", "overlay", "cross_surface_capability"], "rationale": "Email composition policy and delivery history are durable; final confirmation and sender-policy checks are shared contracts."},
+    {"use_case_id": "UC-015", "surface_ids": ["UI-RPT-006", "UI-DATA-028", "UI-DATA-029", "UI-DATA-030", "UI-DATA-031", "UI-OVR-012", "UI-CAP-004", "UI-CAP-012"], "coverage_types": ["route", "overlay", "cross_surface_capability"], "rationale": "Universal XLSX uses the export job route and shared snapshot metric-presentation and preflight contracts."},
+    {"use_case_id": "UC-016", "surface_ids": ["UI-DATA-016", "UI-DATA-017", "UI-DATA-018"], "coverage_types": ["route"], "rationale": "Data Guide registry editing publication and immutable reading require distinct durable routes."},
+    {"use_case_id": "UC-017", "surface_ids": ["UI-OVR-007", "UI-CAP-005", "UI-CAP-006"], "coverage_types": ["overlay", "cross_surface_capability"], "rationale": "ChartSpec rendering and its data-table alternative are reusable reportable-block contracts rather than independent resources."},
+    {"use_case_id": "UC-018", "surface_ids": ["UI-OVR-020", "UI-CAP-007", "UI-CAP-008"], "coverage_types": ["overlay", "cross_surface_capability"], "rationale": "Focus is a route-backed full-screen state on the origin URL with Trust and deterministic return instead of a separate modal page."},
+    {"use_case_id": "UC-019", "surface_ids": ["UI-DATA-021", "UI-DATA-022"], "coverage_types": ["route"], "rationale": "Methodology registry and versioned method detail have a durable reviewed lifecycle."},
+    {"use_case_id": "UC-020", "surface_ids": ["UI-AN-013", "UI-AN-014", "UI-CAP-004", "UI-CAP-009"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Research cases and workspaces are durable while composition and metric presentation are reusable block contracts."},
+    {"use_case_id": "UC-021", "surface_ids": ["UI-OVR-024", "UI-CAP-010", "UI-CAP-016"], "coverage_types": ["overlay", "cross_surface_capability"], "rationale": "Comments remain object-scoped contextual discussion with deep-link state and PII-safe rendering, not an independent content registry."},
+    {"use_case_id": "UC-022", "surface_ids": ["UI-ADMIN-003", "UI-ADMIN-018", "UI-OVR-018", "UI-CAP-011"], "coverage_types": ["route", "overlay", "cross_surface_capability"], "rationale": "Membership administration and resource-specific access policy have separate durable routes with contextual denial explanation."},
+    {"use_case_id": "UC-023", "surface_ids": ["UI-ADMIN-013", "UI-ADMIN-014", "UI-ADMIN-015", "UI-ADMIN-016", "UI-ADMIN-017", "UI-CAP-015"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Global profile and Company Pack lifecycle is separated from workspace assignment and all channels resolve one pinned brand contract."},
+    {"use_case_id": "UC-024", "surface_ids": ["UI-DATA-023", "UI-DATA-024", "UI-DATA-025", "UI-DATA-026", "UI-DATA-027", "UI-OVR-010"], "coverage_types": ["route", "overlay"], "rationale": "Template lifecycle import history resumable upload and result diagnostics are durable independently addressable surfaces with shared progress."},
+    {"use_case_id": "UC-025", "surface_ids": ["UI-AN-002", "UI-AN-011", "UI-AN-012", "UI-AN-014", "UI-SEG-002", "UI-SEG-003", "UI-OVR-025", "UI-CAP-008", "UI-CAP-014", "UI-CAP-018"], "coverage_types": ["route", "overlay", "cross_surface_capability"], "rationale": "Population treatment is a governed reusable policy applied by analytical and segmentation workflows, with contextual diagnostics, progress and Result Trust disclosure rather than a standalone resource route."},
+    {"use_case_id": "UC-026", "surface_ids": ["UI-AN-011", "UI-AN-012", "UI-AN-014", "UI-SEG-001", "UI-SEG-002", "UI-SEG-003", "UI-CAP-014", "UI-CAP-019"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Bucket, stratified and exact-K KMeans segmentation share one versioned builder and execution contract while published definitions and membership snapshots remain on existing segmentation routes."}
+  ]
+}

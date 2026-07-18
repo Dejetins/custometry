@@ -517,7 +517,6 @@ def test_agent_profiles_reject_unknown_top_level_keys(tmp_path: Path) -> None:
     assert "profile-schema-invalid" in {finding.code for finding in result.findings}
 
 
-
 def test_ticket_template_version_is_checked_with_other_agent_templates(tmp_path: Path) -> None:
     write(
         tmp_path / "custometry-technical-blueprint-ru.md",
@@ -669,8 +668,18 @@ def test_contract_drift_uses_source_digest(tmp_path: Path) -> None:
 def test_route_registry_requires_exact_complete_metadata(tmp_path: Path) -> None:
     write(
         tmp_path / "ui.md",
+        "---\nui_spec_version: 0.6.0-draft\n---\n"
         "| ID | Route | Page | Phase | Roles |\n|---|---|---|---|---|\n"
-        "| UI-AN-001 | `/analytics` | Analytics | MVP | AN |\n",
+        "| UI-AN-001 | `/analytics` | Analytics | MVP | AN |\n\n"
+        "| UI-OVR-001 | Filter editor | Analytics | ROUTE-001 |\n"
+        "| UI-SYS-001 | Forbidden | Protected routes | ROUTE-001 |\n"
+        "| UI-CAP-001 | Governed analytics | Analytics | ROUTE-001 |\n",
+    )
+    write(
+        tmp_path / "product.md",
+        "---\nspec_version: 0.9.0-draft\n---\n"
+        "permissions:\n  - analysis.read\n\n"
+        "requirements:\n  - id: UC-001\n  - id: ROUTE-001\n",
     )
     registry = dump(
         tmp_path / "routes.json",
@@ -689,13 +698,198 @@ def test_route_registry_requires_exact_complete_metadata(tmp_path: Path) -> None
     )
     en_titles = dump(tmp_path / "en-titles.json", {"UI-AN-001": "Analytics"})
     ru_titles = dump(tmp_path / "ru-titles.json", {"UI-AN-001": "Аналитика"})
+    contract = dump(
+        tmp_path / "route-contracts.json",
+        {
+            "schema_version": "1.0.0",
+            "product_spec_version": "0.9.0-draft",
+            "ui_spec_version": "0.6.0-draft",
+            "identity_registry_schema_version": "2.0.0",
+            "source_files": [
+                "custometry-technical-blueprint-ru.md",
+                "custometry-ui-blueprint-ru.md",
+                "packages/contracts/routes/ui-routes.json",
+            ],
+            "role_catalog": sorted(validate_route_registry.ROLE_HINTS),
+            "permission_catalog": ["analysis.read"],
+            "profiles": {
+                "guards": {
+                    "workspace_permission": {
+                        "authenticated": True,
+                        "workspace_resolution": True,
+                        "membership": True,
+                        "permission": True,
+                        "object_access": False,
+                        "deny_before_fetch": True,
+                    }
+                },
+                "states": {
+                    "browse": {
+                        "required_states": ["first_loading", "ready", "forbidden", "failed"],
+                        "preserve_previous_data_on_refresh": True,
+                    }
+                },
+                "navigation": {
+                    "browse": {
+                        "history_entry": "push",
+                        "shell_persistent": True,
+                        "restore_focus": True,
+                        "restore_scroll": True,
+                        "dirty_guard": False,
+                    }
+                },
+                "queries": {
+                    "standard": {
+                        "allowed_keys": ["tab"],
+                        "sensitive_values_forbidden": True,
+                        "complex_state": "saved_view_or_opaque_reference",
+                    }
+                },
+            },
+            "routes": [
+                {
+                    "id": "UI-AN-001",
+                    "path": "/w/:workspaceKey/analytics",
+                    "title_key": "UI-AN-001",
+                    "family": "workspace",
+                    "shell_profile": "workspace",
+                    "navigation_group": "analytics",
+                    "surface_kind": "list",
+                    "release": "MVP",
+                    "status": "planned",
+                    "role_hints": ["AN"],
+                    "authorization": {
+                        "mode": "workspace_permission",
+                        "entry_permissions_any": ["analysis.read"],
+                        "action_permissions": [],
+                        "object_scoped": False,
+                    },
+                    "guard_profile": "workspace_permission",
+                    "state_profile": "browse",
+                    "navigation_profile": "browse",
+                    "query_profile": "standard",
+                    "focus_explore": "not_applicable",
+                    "source": {
+                        "ui_blueprint_id": "UI-AN-001",
+                        "requirement_ids": ["ROUTE-001"],
+                    },
+                    "design": {
+                        "penpot_status": "baseline_verified",
+                        "frame_key": "UI-AN-001",
+                        "baseline_version": "0.4.1-draft",
+                    },
+                }
+            ],
+        },
+    )
+    schema = dump(
+        tmp_path / "route-contracts.schema.json",
+        {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "additionalProperties": False,
+            "properties": {"schema_version": {"const": "1.0.0"}},
+            "$defs": {
+                "routeContract": {
+                    "additionalProperties": False,
+                    "required": sorted(validate_route_registry.ROUTE_CONTRACT_KEYS),
+                }
+            },
+        },
+    )
+    surface_contract = dump(
+        tmp_path / "ui-surface-contracts.json",
+        {
+            "schema_version": "1.0.0",
+            "product_spec_version": "0.9.0-draft",
+            "ui_spec_version": "0.6.0-draft",
+            "route_contract_schema_version": "1.0.0",
+            "source_files": [
+                "custometry-technical-blueprint-ru.md",
+                "custometry-technical-blueprint-human-ru.md",
+                "custometry-ui-blueprint-ru.md",
+                "packages/contracts/routes/ui-routes.json",
+                "packages/contracts/routes/ui-route-contracts.json",
+            ],
+            "route_decision_policy": {"route_count_is_ceiling": False},
+            "penpot_baseline": {
+                "file_id": validate_route_registry.CANONICAL_PENPOT_FILE_ID,
+                "verified_route_count": 1,
+                "target_route_count": 1,
+            },
+            "overlays": [
+                {
+                    "id": "UI-OVR-001",
+                    "name": "Filter editor",
+                    "kind": "editor",
+                    "route_backed": False,
+                    "history_semantics": "return_to_owner",
+                    "requirement_ids": ["ROUTE-001"],
+                }
+            ],
+            "system_surfaces": [
+                {
+                    "id": "UI-SYS-001",
+                    "name": "Forbidden",
+                    "requirement_ids": ["ROUTE-001"],
+                }
+            ],
+            "cross_surface_capabilities": [
+                {
+                    "id": "UI-CAP-001",
+                    "name": "Governed analytics",
+                    "delivery_form": "shared_component",
+                    "requirement_ids": ["ROUTE-001"],
+                }
+            ],
+            "use_case_bindings": [
+                {
+                    "use_case_id": "UC-001",
+                    "surface_ids": [
+                        "UI-AN-001",
+                        "UI-OVR-001",
+                        "UI-SYS-001",
+                        "UI-CAP-001",
+                    ],
+                    "coverage_types": [
+                        "route",
+                        "overlay",
+                        "system",
+                        "cross_surface_capability",
+                    ],
+                    "rationale": "The route owns the durable result while shared and transient surfaces govern it.",
+                }
+            ],
+        },
+    )
+    surface_schema = dump(
+        tmp_path / "ui-surface-contracts.schema.json",
+        {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "additionalProperties": False,
+            "properties": {"schema_version": {"const": "1.0.0"}},
+        },
+    )
     paths = (
         Path("ui.md"),
         registry.relative_to(tmp_path),
         en_titles.relative_to(tmp_path),
         ru_titles.relative_to(tmp_path),
+        contract.relative_to(tmp_path),
+        schema.relative_to(tmp_path),
+        Path("product.md"),
+        surface_contract.relative_to(tmp_path),
+        surface_schema.relative_to(tmp_path),
     )
     assert validate_route_registry.check(tmp_path, *paths).ok
+
+    contract_data = json.loads(contract.read_text())
+    contract_data["routes"][0]["role_hints"] = ["VW"]
+    dump(contract, contract_data)
+    failed = validate_route_registry.check(tmp_path, *paths)
+    assert {finding.code for finding in failed.findings} == {"route-contract-role-hints-drift"}
+
+    contract_data["routes"][0]["role_hints"] = ["AN"]
+    dump(contract, contract_data)
     dump(en_titles, {"UI-AN-001": "Wrong"})
     failed = validate_route_registry.check(tmp_path, *paths)
     assert failed.findings[0].code == "route-title-source-drift"
@@ -711,6 +905,42 @@ def test_route_registry_requires_exact_complete_metadata(tmp_path: Path) -> None
     dump(registry, registry_data)
     failed = validate_route_registry.check(tmp_path, *paths)
     assert failed.findings[0].code == "route-title-key-invalid"
+
+    registry_data["routes"][0]["title_key"] = "UI-AN-001"
+    dump(registry, registry_data)
+    surface_data = json.loads(surface_contract.read_text())
+    surface_data["use_case_bindings"] = []
+    dump(surface_contract, surface_data)
+    failed = validate_route_registry.check(tmp_path, *paths)
+    assert {finding.code for finding in failed.findings} == {"ui-surface-use-case-gap"}
+
+    surface_data["use_case_bindings"] = [
+        {
+            "use_case_id": "UC-001",
+            "surface_ids": ["UI-AN-001", "UI-OVR-001", "UI-SYS-001", "UI-CAP-001"],
+            "coverage_types": [
+                "route",
+                "overlay",
+                "system",
+                "cross_surface_capability",
+            ],
+            "rationale": "The route owns the durable result while shared and transient surfaces govern it.",
+        }
+    ]
+    surface_data["cross_surface_capabilities"][0]["requirement_ids"] = ["UC-001"]
+    dump(surface_contract, surface_data)
+    failed = validate_route_registry.check(tmp_path, *paths)
+    assert {finding.code for finding in failed.findings} == {
+        "ui-surface-blueprint-requirements-drift"
+    }
+
+    surface_data["cross_surface_capabilities"][0]["requirement_ids"] = ["ROUTE-001"]
+    surface_data["overlays"][0]["requirement_ids"] = ["UC-001"]
+    dump(surface_contract, surface_data)
+    failed = validate_route_registry.check(tmp_path, *paths)
+    assert {finding.code for finding in failed.findings} == {
+        "ui-surface-blueprint-requirements-drift"
+    }
 
 
 def test_i18n_parity_rejects_missing_or_empty_values(tmp_path: Path) -> None:
@@ -842,9 +1072,7 @@ def test_delivery_contract_rejects_missing_adapter_link(tmp_path: Path) -> None:
 
     result = validate_delivery_contract.check(tmp_path, contract)
 
-    assert "delivery-contract-adapter-link-invalid" in {
-        item.code for item in result.findings
-    }
+    assert "delivery-contract-adapter-link-invalid" in {item.code for item in result.findings}
 
 
 def test_delivery_contract_rejects_wrong_global_skill_identity(tmp_path: Path) -> None:
@@ -856,12 +1084,12 @@ def test_delivery_contract_rejects_wrong_global_skill_identity(tmp_path: Path) -
 
     result = validate_delivery_contract.check(tmp_path, contract)
 
-    assert "delivery-contract-skill-identity-invalid" in {
-        item.code for item in result.findings
-    }
+    assert "delivery-contract-skill-identity-invalid" in {item.code for item in result.findings}
 
 
-def delivery_ticket(path: Path, *, status: str = "ready", blockers: list[str] | None = None) -> Path:
+def delivery_ticket(
+    path: Path, *, status: str = "ready", blockers: list[str] | None = None
+) -> Path:
     blocked_record = ""
     if status == "blocked":
         blocked_record = """blocker_record:
@@ -1033,9 +1261,7 @@ def test_delivery_tickets_require_terminal_evidence_at_the_declared_target(
 
     result = validate_delivery_tickets.check(tmp_path)
 
-    assert "delivery-ticket-evidence-target-missing" in {
-        item.code for item in result.findings
-    }
+    assert "delivery-ticket-evidence-target-missing" in {item.code for item in result.findings}
 
 
 def test_delivery_tickets_accept_structured_terminal_evidence(tmp_path: Path) -> None:
@@ -1088,9 +1314,7 @@ def test_delivery_tickets_reject_unstructured_terminal_evidence(tmp_path: Path) 
 
     result = validate_delivery_tickets.check(tmp_path)
 
-    assert "delivery-ticket-evidence-schema-invalid" in {
-        item.code for item in result.findings
-    }
+    assert "delivery-ticket-evidence-schema-invalid" in {item.code for item in result.findings}
 
 
 def test_delivery_tickets_require_browser_qa_for_browser_depth(tmp_path: Path) -> None:
@@ -1110,9 +1334,7 @@ def test_delivery_tickets_require_browser_qa_for_browser_depth(tmp_path: Path) -
 
     result = validate_delivery_tickets.check(tmp_path)
 
-    assert "delivery-ticket-validation-invalid" in {
-        item.code for item in result.findings
-    }
+    assert "delivery-ticket-validation-invalid" in {item.code for item in result.findings}
 
 
 def test_delivery_tickets_require_terminal_proof_skill_match(tmp_path: Path) -> None:
@@ -1140,9 +1362,7 @@ def test_delivery_tickets_require_terminal_proof_skill_match(tmp_path: Path) -> 
 
     result = validate_delivery_tickets.check(tmp_path)
 
-    assert "delivery-ticket-evidence-schema-invalid" in {
-        item.code for item in result.findings
-    }
+    assert "delivery-ticket-evidence-schema-invalid" in {item.code for item in result.findings}
 
 
 def test_delivery_tickets_require_supersession_reason_and_matching_evidence(
@@ -1210,9 +1430,7 @@ def test_delivery_tickets_require_a_blocked_record(tmp_path: Path) -> None:
 
     result = validate_delivery_tickets.check(tmp_path)
 
-    assert "delivery-ticket-blocked-record-invalid" in {
-        item.code for item in result.findings
-    }
+    assert "delivery-ticket-blocked-record-invalid" in {item.code for item in result.findings}
 
 
 def test_delivery_tickets_reject_duplicate_execution_mode(tmp_path: Path) -> None:
@@ -1232,6 +1450,4 @@ def test_delivery_tickets_reject_duplicate_execution_mode(tmp_path: Path) -> Non
 
     result = validate_delivery_tickets.check(tmp_path)
 
-    assert "delivery-ticket-execution-mode-duplicate" in {
-        item.code for item in result.findings
-    }
+    assert "delivery-ticket-execution-mode-duplicate" in {item.code for item in result.findings}

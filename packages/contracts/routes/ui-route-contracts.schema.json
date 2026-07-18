@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://custometry.local/schemas/ui-route-contracts-1.0.0.json",
+  "title": "Custometry executable UI route contracts",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "product_spec_version",
+    "ui_spec_version",
+    "identity_registry_schema_version",
+    "source_files",
+    "role_catalog",
+    "permission_catalog",
+    "profiles",
+    "routes"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "product_spec_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+-draft$"},
+    "ui_spec_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+-draft$"},
+    "identity_registry_schema_version": {"const": "2.0.0"},
+    "source_files": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "role_catalog": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["IA", "WA", "DS", "AN", "ML", "OP", "VW", "all", "invited", "allowed", "owners"]}
+    },
+    "permission_catalog": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/permission"}
+    },
+    "profiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["guards", "states", "navigation", "queries"],
+      "properties": {
+        "guards": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/guardProfile"}
+        },
+        "states": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/stateProfile"}
+        },
+        "navigation": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/navigationProfile"}
+        },
+        "queries": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/queryProfile"}
+        }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/routeContract"}
+    }
+  },
+  "$defs": {
+    "permission": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$"
+    },
+    "guardProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authenticated", "workspace_resolution", "membership", "permission", "object_access", "deny_before_fetch"],
+      "properties": {
+        "authenticated": {"type": "boolean"},
+        "workspace_resolution": {"type": "boolean"},
+        "membership": {"type": "boolean"},
+        "permission": {"type": "boolean"},
+        "object_access": {"type": "boolean"},
+        "deny_before_fetch": {"type": "boolean"}
+      }
+    },
+    "stateProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_states", "preserve_previous_data_on_refresh"],
+      "properties": {
+        "required_states": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "first_loading", "ready", "refreshing", "empty", "partial", "forbidden",
+              "failed", "stale", "dependency_unavailable", "validation_error", "conflict",
+              "saving", "preflight", "queued", "running", "cancelling", "succeeded",
+              "blocked", "maintenance", "upgrade_required", "session_expired"
+            ]
+          }
+        },
+        "preserve_previous_data_on_refresh": {"type": "boolean"}
+      }
+    },
+    "navigationProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["history_entry", "shell_persistent", "restore_focus", "restore_scroll", "dirty_guard"],
+      "properties": {
+        "history_entry": {"enum": ["push", "replace_for_presentation_only"]},
+        "shell_persistent": {"type": "boolean"},
+        "restore_focus": {"type": "boolean"},
+        "restore_scroll": {"type": "boolean"},
+        "dirty_guard": {"type": "boolean"}
+      }
+    },
+    "queryProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed_keys", "sensitive_values_forbidden", "complex_state"],
+      "properties": {
+        "allowed_keys": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["view", "tab", "focus", "sort", "page", "saved_view", "step"]}
+        },
+        "sensitive_values_forbidden": {"const": true},
+        "complex_state": {"enum": ["forbidden", "saved_view_or_opaque_reference"]}
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "entry_permissions_any", "action_permissions", "object_scoped"],
+      "properties": {
+        "mode": {
+          "enum": [
+            "public", "authenticated", "global_permission", "workspace_membership",
+            "workspace_permission", "workspace_object_access", "workspace_permission_or_object_access"
+          ]
+        },
+        "entry_permissions_any": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/permission"}
+        },
+        "action_permissions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/permission"}
+        },
+        "object_scoped": {"type": "boolean"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ui_blueprint_id", "requirement_ids"],
+      "properties": {
+        "ui_blueprint_id": {"type": "string", "pattern": "^UI-[A-Z]+-[0-9]{3}$"},
+        "requirement_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]+-[0-9]{3}$"}
+        }
+      }
+    },
+    "design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["penpot_status", "frame_key", "baseline_version"],
+      "properties": {
+        "penpot_status": {"enum": ["baseline_verified", "backlog"]},
+        "frame_key": {"type": "string", "pattern": "^UI-[A-Z]+-[0-9]{3}$"},
+        "baseline_version": {"type": "string", "minLength": 1}
+      }
+    },
+    "routeContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "path", "title_key", "family", "shell_profile", "navigation_group",
+        "surface_kind", "release", "status", "role_hints", "authorization",
+        "guard_profile", "state_profile", "navigation_profile", "query_profile",
+        "focus_explore", "source", "design"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^UI-[A-Z]+-[0-9]{3}$"},
+        "path": {"type": "string", "pattern": "^/"},
+        "title_key": {"type": "string", "pattern": "^UI-[A-Z]+-[0-9]{3}$"},
+        "family": {"enum": ["public_auth", "global_user", "installation", "workspace"]},
+        "shell_profile": {"enum": ["auth", "global", "installation", "workspace"]},
+        "navigation_group": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "surface_kind": {"enum": ["overview", "list", "detail", "editor", "wizard", "workspace", "operator", "reader", "settings"]},
+        "release": {"type": "string", "minLength": 1},
+        "status": {"enum": ["planned", "foundation", "implemented"]},
+        "role_hints": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["IA", "WA", "DS", "AN", "ML", "OP", "VW", "all", "invited", "allowed", "owners"]}
+        },
+        "authorization": {"$ref": "#/$defs/authorization"},
+        "guard_profile": {"type": "string", "minLength": 1},
+        "state_profile": {"type": "string", "minLength": 1},
+        "navigation_profile": {"type": "string", "minLength": 1},
+        "query_profile": {"type": "string", "minLength": 1},
+        "focus_explore": {"enum": ["not_applicable", "reportable_blocks", "primary_surface"]},
+        "source": {"$ref": "#/$defs/source"},
+        "design": {"$ref": "#/$defs/design"}
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
 doc_id: ADR-0002
 title: Edge ingress adapter and network segmentation
 doc_version: 1
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
 owner: architecture

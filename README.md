@@ -8,7 +8,7 @@ The repository is permanently public. Never commit credentials, customer data, p
 
 ## Specifications
 
-- [Machine-readable technical blueprint](./custometry-technical-blueprint-ru.md) — normative source of truth, version `0.8.2-draft`.
+- [Machine-readable technical blueprint](./custometry-technical-blueprint-ru.md) — normative source of truth, version `0.9.1-draft`.
 - [Human-readable technical blueprint](./custometry-technical-blueprint-human-ru.md) — synchronized explanatory representation.
 
 If the documents diverge, the machine-readable blueprint wins. New normative requirements must first be added there and mirrored into the human-readable document.

@@ -2,7 +2,7 @@
 doc_id: ADR-0001
 title: Foundation operating model
 doc_version: 4
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
 owner: architecture

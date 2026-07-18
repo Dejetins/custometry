@@ -1,0 +1,5043 @@
+{
+  "schema_version": "1.0.0",
+  "product_spec_version": "0.9.1-draft",
+  "ui_spec_version": "0.6.1-draft",
+  "identity_registry_schema_version": "2.0.0",
+  "source_files": [
+    "custometry-technical-blueprint-ru.md",
+    "custometry-ui-blueprint-ru.md",
+    "packages/contracts/routes/ui-routes.json"
+  ],
+  "role_catalog": [
+    "IA",
+    "WA",
+    "DS",
+    "AN",
+    "ML",
+    "OP",
+    "VW",
+    "all",
+    "invited",
+    "allowed",
+    "owners"
+  ],
+  "permission_catalog": [
+    "installation.manage",
+    "installation.diagnostics.read",
+    "installation.backup_restore",
+    "workspace.manage",
+    "workspace.members.manage",
+    "workspace.roles.assign",
+    "connection.read_metadata",
+    "connection.manage",
+    "connection.secret.rotate",
+    "dataset.read",
+    "dataset.manage",
+    "dataset.publish",
+    "metric.read",
+    "metric.manage",
+    "metric.publish",
+    "methodology.read",
+    "methodology.manage",
+    "methodology.publish",
+    "quality.read",
+    "quality.manage",
+    "quality.waiver.approve",
+    "pii.preview",
+    "analysis.read",
+    "analysis.run",
+    "analysis.manage",
+    "research.read",
+    "research.manage",
+    "finding.manage",
+    "comment.read",
+    "comment.create",
+    "comment.resolve",
+    "promotion.read",
+    "promotion.manage",
+    "segment.read",
+    "segment.manage",
+    "segment.export",
+    "forecast.read",
+    "forecast.train",
+    "forecast.promote",
+    "pipeline.read",
+    "pipeline.manage",
+    "pipeline.publish",
+    "run.read",
+    "run.create",
+    "run.cancel",
+    "run.retry",
+    "artifact.download",
+    "export.create",
+    "report.read",
+    "report.manage",
+    "report.send",
+    "report.export_xlsx",
+    "report_access.manage",
+    "report_email_policy.manage",
+    "data_guide.read",
+    "data_guide.publish",
+    "file_import_template.read",
+    "file_import_template.manage",
+    "file_import_template.publish",
+    "file_import.read",
+    "file_import.create",
+    "dashboard.manage",
+    "dashboard.publish",
+    "dashboard_access.manage",
+    "notification.read",
+    "notification.acknowledge",
+    "api_token.manage_own",
+    "plugin.manage",
+    "brand.read",
+    "brand.manage",
+    "brand.assign",
+    "company_pack.manage",
+    "audit.read"
+  ],
+  "profiles": {
+    "guards": {
+      "public": {
+        "authenticated": false,
+        "workspace_resolution": false,
+        "membership": false,
+        "permission": false,
+        "object_access": false,
+        "deny_before_fetch": false
+      },
+      "authenticated_global": {
+        "authenticated": true,
+        "workspace_resolution": false,
+        "membership": false,
+        "permission": false,
+        "object_access": false,
+        "deny_before_fetch": true
+      },
+      "global_permission": {
+        "authenticated": true,
+        "workspace_resolution": false,
+        "membership": false,
+        "permission": true,
+        "object_access": false,
+        "deny_before_fetch": true
+      },
+      "workspace_member": {
+        "authenticated": true,
+        "workspace_resolution": true,
+        "membership": true,
+        "permission": false,
+        "object_access": false,
+        "deny_before_fetch": true
+      },
+      "workspace_permission": {
+        "authenticated": true,
+        "workspace_resolution": true,
+        "membership": true,
+        "permission": true,
+        "object_access": false,
+        "deny_before_fetch": true
+      },
+      "workspace_object": {
+        "authenticated": true,
+        "workspace_resolution": true,
+        "membership": true,
+        "permission": true,
+        "object_access": true,
+        "deny_before_fetch": true
+      }
+    },
+    "states": {
+      "auth_flow": {
+        "required_states": [
+          "first_loading",
+          "ready",
+          "validation_error",
+          "failed",
+          "session_expired"
+        ],
+        "preserve_previous_data_on_refresh": false
+      },
+      "browse": {
+        "required_states": [
+          "first_loading",
+          "ready",
+          "refreshing",
+          "empty",
+          "partial",
+          "forbidden",
+          "failed",
+          "stale",
+          "dependency_unavailable"
+        ],
+        "preserve_previous_data_on_refresh": true
+      },
+      "editor": {
+        "required_states": [
+          "first_loading",
+          "ready",
+          "validation_error",
+          "conflict",
+          "saving",
+          "forbidden",
+          "failed",
+          "dependency_unavailable"
+        ],
+        "preserve_previous_data_on_refresh": true
+      },
+      "heavy_operation": {
+        "required_states": [
+          "first_loading",
+          "ready",
+          "preflight",
+          "queued",
+          "running",
+          "cancelling",
+          "succeeded",
+          "blocked",
+          "forbidden",
+          "failed",
+          "dependency_unavailable"
+        ],
+        "preserve_previous_data_on_refresh": true
+      },
+      "operator": {
+        "required_states": [
+          "first_loading",
+          "ready",
+          "refreshing",
+          "partial",
+          "forbidden",
+          "failed",
+          "stale",
+          "dependency_unavailable",
+          "maintenance",
+          "upgrade_required"
+        ],
+        "preserve_previous_data_on_refresh": true
+      }
+    },
+    "navigation": {
+      "auth": {
+        "history_entry": "push",
+        "shell_persistent": false,
+        "restore_focus": true,
+        "restore_scroll": false,
+        "dirty_guard": false
+      },
+      "browse": {
+        "history_entry": "push",
+        "shell_persistent": true,
+        "restore_focus": true,
+        "restore_scroll": true,
+        "dirty_guard": false
+      },
+      "editor": {
+        "history_entry": "push",
+        "shell_persistent": true,
+        "restore_focus": true,
+        "restore_scroll": true,
+        "dirty_guard": true
+      },
+      "focus_capable": {
+        "history_entry": "replace_for_presentation_only",
+        "shell_persistent": true,
+        "restore_focus": true,
+        "restore_scroll": true,
+        "dirty_guard": false
+      }
+    },
+    "queries": {
+      "none": {
+        "allowed_keys": [],
+        "sensitive_values_forbidden": true,
+        "complex_state": "forbidden"
+      },
+      "standard": {
+        "allowed_keys": [
+          "view",
+          "tab",
+          "sort",
+          "page",
+          "saved_view"
+        ],
+        "sensitive_values_forbidden": true,
+        "complex_state": "saved_view_or_opaque_reference"
+      },
+      "editor": {
+        "allowed_keys": [
+          "tab"
+        ],
+        "sensitive_values_forbidden": true,
+        "complex_state": "saved_view_or_opaque_reference"
+      },
+      "focus": {
+        "allowed_keys": [
+          "view",
+          "tab",
+          "focus",
+          "sort",
+          "page",
+          "saved_view"
+        ],
+        "sensitive_values_forbidden": true,
+        "complex_state": "saved_view_or_opaque_reference"
+      },
+      "onboarding": {
+        "allowed_keys": [
+          "step"
+        ],
+        "sensitive_values_forbidden": true,
+        "complex_state": "forbidden"
+      }
+    }
+  },
+  "routes": [
+    {
+      "id": "UI-AUTH-001",
+      "path": "/auth/sign-in",
+      "title_key": "UI-AUTH-001",
+      "family": "public_auth",
+      "shell_profile": "auth",
+      "navigation_group": "authentication",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "all"
+      ],
+      "authorization": {
+        "mode": "public",
+        "entry_permissions_any": [],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "public",
+      "state_profile": "auth_flow",
+      "navigation_profile": "auth",
+      "query_profile": "none",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AUTH-001",
+        "requirement_ids": [
+          "AUTH-001",
+          "ROUTE-011"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AUTH-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AUTH-002",
+      "path": "/bootstrap",
+      "title_key": "UI-AUTH-002",
+      "family": "public_auth",
+      "shell_profile": "auth",
+      "navigation_group": "authentication",
+      "surface_kind": "wizard",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA"
+      ],
+      "authorization": {
+        "mode": "public",
+        "entry_permissions_any": [],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "public",
+      "state_profile": "auth_flow",
+      "navigation_profile": "auth",
+      "query_profile": "none",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AUTH-002",
+        "requirement_ids": [
+          "UC-008",
+          "AUTH-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AUTH-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AUTH-003",
+      "path": "/invites/:token",
+      "title_key": "UI-AUTH-003",
+      "family": "public_auth",
+      "shell_profile": "auth",
+      "navigation_group": "authentication",
+      "surface_kind": "wizard",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "invited"
+      ],
+      "authorization": {
+        "mode": "public",
+        "entry_permissions_any": [],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "public",
+      "state_profile": "auth_flow",
+      "navigation_profile": "auth",
+      "query_profile": "none",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AUTH-003",
+        "requirement_ids": [
+          "AUTH-001",
+          "ROUTE-011"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AUTH-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AUTH-004",
+      "path": "/auth/recovery",
+      "title_key": "UI-AUTH-004",
+      "family": "public_auth",
+      "shell_profile": "auth",
+      "navigation_group": "authentication",
+      "surface_kind": "wizard",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "all"
+      ],
+      "authorization": {
+        "mode": "public",
+        "entry_permissions_any": [],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "public",
+      "state_profile": "auth_flow",
+      "navigation_profile": "auth",
+      "query_profile": "none",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AUTH-004",
+        "requirement_ids": [
+          "AUTH-001",
+          "ROUTE-011"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AUTH-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AUTH-005",
+      "path": "/onboarding",
+      "title_key": "UI-AUTH-005",
+      "family": "global_user",
+      "shell_profile": "global",
+      "navigation_group": "authentication",
+      "surface_kind": "wizard",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "WA"
+      ],
+      "authorization": {
+        "mode": "authenticated",
+        "entry_permissions_any": [],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "authenticated_global",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "onboarding",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AUTH-005",
+        "requirement_ids": [
+          "UC-008",
+          "AUTH-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AUTH-005",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AUTH-006",
+      "path": "/profile/security",
+      "title_key": "UI-AUTH-006",
+      "family": "global_user",
+      "shell_profile": "global",
+      "navigation_group": "authentication",
+      "surface_kind": "settings",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "all"
+      ],
+      "authorization": {
+        "mode": "authenticated",
+        "entry_permissions_any": [],
+        "action_permissions": [
+          "api_token.manage_own"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "authenticated_global",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AUTH-006",
+        "requirement_ids": [
+          "AUTH-001",
+          "ROUTE-011"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AUTH-006",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-CORE-001",
+      "path": "/w/:workspaceKey/overview",
+      "title_key": "UI-CORE-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "overview",
+      "surface_kind": "overview",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "all"
+      ],
+      "authorization": {
+        "mode": "workspace_membership",
+        "entry_permissions_any": [],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_member",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-CORE-001",
+        "requirement_ids": [
+          "UI-SHELL-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-CORE-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-001",
+      "path": "/w/:workspaceKey/connections",
+      "title_key": "UI-DATA-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "connection.read_metadata"
+        ],
+        "action_permissions": [
+          "connection.manage",
+          "connection.secret.rotate"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-001",
+        "requirement_ids": [
+          "UC-001",
+          "CONNECTOR-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-002",
+      "path": "/w/:workspaceKey/connections/new",
+      "title_key": "UI-DATA-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "connection.read_metadata"
+        ],
+        "action_permissions": [
+          "connection.manage",
+          "connection.secret.rotate"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-002",
+        "requirement_ids": [
+          "UC-001",
+          "CONNECTOR-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-003",
+      "path": "/w/:workspaceKey/connections/:id",
+      "title_key": "UI-DATA-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "connection.read_metadata"
+        ],
+        "action_permissions": [
+          "connection.manage",
+          "connection.secret.rotate"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-003",
+        "requirement_ids": [
+          "UC-001",
+          "CONNECTOR-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-004",
+      "path": "/w/:workspaceKey/catalog",
+      "title_key": "UI-DATA-004",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA",
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "connection.read_metadata",
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-004",
+        "requirement_ids": [
+          "UC-001",
+          "CONNECTOR-003"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-005",
+      "path": "/w/:workspaceKey/catalog/objects/:id",
+      "title_key": "UI-DATA-005",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "connection.read_metadata",
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-005",
+        "requirement_ids": [
+          "UC-001",
+          "CONNECTOR-003"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-005",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-006",
+      "path": "/w/:workspaceKey/catalog/objects/:id/preview",
+      "title_key": "UI-DATA-006",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "connection.read_metadata",
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "pii.preview"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-006",
+        "requirement_ids": [
+          "UC-001",
+          "CONNECTOR-003"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-006",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-007",
+      "path": "/w/:workspaceKey/datasets",
+      "title_key": "UI-DATA-007",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "dataset.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-007",
+        "requirement_ids": [
+          "UC-002",
+          "CAPABILITY-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-007",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-008",
+      "path": "/w/:workspaceKey/datasets/:id/mapping",
+      "title_key": "UI-DATA-008",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "dataset.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-008",
+        "requirement_ids": [
+          "UC-002",
+          "CAPABILITY-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-008",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-009",
+      "path": "/w/:workspaceKey/datasets/:id/relationships",
+      "title_key": "UI-DATA-009",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "dataset.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-009",
+        "requirement_ids": [
+          "UC-002",
+          "CAPABILITY-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-009",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-010",
+      "path": "/w/:workspaceKey/datasets/:id/policies",
+      "title_key": "UI-DATA-010",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "settings",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "dataset.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-010",
+        "requirement_ids": [
+          "UC-002",
+          "CAPABILITY-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-010",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-011",
+      "path": "/w/:workspaceKey/datasets/:id/capabilities",
+      "title_key": "UI-DATA-011",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "dataset.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-011",
+        "requirement_ids": [
+          "UC-002",
+          "CAPABILITY-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-011",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-012",
+      "path": "/w/:workspaceKey/datasets/:id/versions",
+      "title_key": "UI-DATA-012",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "dataset.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-012",
+        "requirement_ids": [
+          "UC-002",
+          "CAPABILITY-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-012",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-013",
+      "path": "/w/:workspaceKey/metrics",
+      "title_key": "UI-DATA-013",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "metric.read"
+        ],
+        "action_permissions": [
+          "metric.manage",
+          "metric.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-013",
+        "requirement_ids": [
+          "METRIC-001",
+          "METRIC-009"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-013",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-014",
+      "path": "/w/:workspaceKey/metrics/:id",
+      "title_key": "UI-DATA-014",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "metric.read"
+        ],
+        "action_permissions": [
+          "metric.manage",
+          "metric.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-014",
+        "requirement_ids": [
+          "METRIC-001",
+          "METRIC-009"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-014",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-015",
+      "path": "/w/:workspaceKey/filter-fields",
+      "title_key": "UI-DATA-015",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "dataset.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-015",
+        "requirement_ids": [
+          "FILTER-001",
+          "FILTER-006"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-015",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-016",
+      "path": "/w/:workspaceKey/data-guides",
+      "title_key": "UI-DATA-016",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "data_guide.read"
+        ],
+        "action_permissions": [
+          "data_guide.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-016",
+        "requirement_ids": [
+          "UC-016",
+          "DATA-GUIDE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-016",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-017",
+      "path": "/w/:workspaceKey/data-guides/:id/edit",
+      "title_key": "UI-DATA-017",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "data_guide.read"
+        ],
+        "action_permissions": [
+          "data_guide.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-017",
+        "requirement_ids": [
+          "UC-016",
+          "DATA-GUIDE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-017",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-018",
+      "path": "/w/:workspaceKey/data-guides/:id",
+      "title_key": "UI-DATA-018",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "reader",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "allowed"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "data_guide.read"
+        ],
+        "action_permissions": [
+          "data_guide.publish"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-018",
+        "requirement_ids": [
+          "UC-016",
+          "DATA-GUIDE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-018",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-019",
+      "path": "/w/:workspaceKey/artifacts",
+      "title_key": "UI-DATA-019",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "ML",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read",
+          "analysis.read",
+          "forecast.read",
+          "run.read"
+        ],
+        "action_permissions": [
+          "artifact.download"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-019",
+        "requirement_ids": [
+          "ARTIFACT-001",
+          "RBAC-005"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-019",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-020",
+      "path": "/w/:workspaceKey/datasets/:id",
+      "title_key": "UI-DATA-020",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "overview",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "dataset.read"
+        ],
+        "action_permissions": [
+          "dataset.manage",
+          "dataset.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-020",
+        "requirement_ids": [
+          "UC-002",
+          "CAPABILITY-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DATA-020",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DATA-021",
+      "path": "/w/:workspaceKey/methodologies",
+      "title_key": "UI-DATA-021",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "DS",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "methodology.read"
+        ],
+        "action_permissions": [
+          "methodology.manage",
+          "methodology.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-021",
+        "requirement_ids": [
+          "UC-019",
+          "METHOD-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-021",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-022",
+      "path": "/w/:workspaceKey/methodologies/:id",
+      "title_key": "UI-DATA-022",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "DS",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "methodology.read"
+        ],
+        "action_permissions": [
+          "methodology.manage",
+          "methodology.publish"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-022",
+        "requirement_ids": [
+          "UC-019",
+          "METHOD-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-022",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-023",
+      "path": "/w/:workspaceKey/file-import-templates",
+      "title_key": "UI-DATA-023",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA",
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "file_import_template.read"
+        ],
+        "action_permissions": [
+          "file_import_template.manage",
+          "file_import_template.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-023",
+        "requirement_ids": [
+          "UC-024",
+          "CONNECTOR-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-023",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-024",
+      "path": "/w/:workspaceKey/file-import-templates/:id",
+      "title_key": "UI-DATA-024",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA",
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "file_import_template.read"
+        ],
+        "action_permissions": [
+          "file_import_template.manage",
+          "file_import_template.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-024",
+        "requirement_ids": [
+          "UC-024",
+          "CONNECTOR-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-024",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-025",
+      "path": "/w/:workspaceKey/imports",
+      "title_key": "UI-DATA-025",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA",
+        "DS",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "file_import.read"
+        ],
+        "action_permissions": [
+          "file_import.create"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-025",
+        "requirement_ids": [
+          "UC-024",
+          "CONNECTOR-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-025",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-026",
+      "path": "/w/:workspaceKey/imports/new",
+      "title_key": "UI-DATA-026",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "wizard",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "file_import.create"
+        ],
+        "action_permissions": [
+          "file_import.create"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "onboarding",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-026",
+        "requirement_ids": [
+          "UC-024",
+          "CONNECTOR-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-026",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-027",
+      "path": "/w/:workspaceKey/imports/:id",
+      "title_key": "UI-DATA-027",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA",
+        "DS",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "file_import.read"
+        ],
+        "action_permissions": [
+          "file_import.create",
+          "run.retry"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "heavy_operation",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-027",
+        "requirement_ids": [
+          "UC-024",
+          "CONNECTOR-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-027",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-028",
+      "path": "/w/:workspaceKey/metric-groups",
+      "title_key": "UI-DATA-028",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "metric.read"
+        ],
+        "action_permissions": [
+          "metric.manage",
+          "metric.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-028",
+        "requirement_ids": [
+          "METRIC-014",
+          "RBAC-016"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-028",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-029",
+      "path": "/w/:workspaceKey/metric-groups/:id",
+      "title_key": "UI-DATA-029",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "metric.read"
+        ],
+        "action_permissions": [
+          "metric.manage",
+          "metric.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-029",
+        "requirement_ids": [
+          "METRIC-014",
+          "RBAC-016"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-029",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-030",
+      "path": "/w/:workspaceKey/number-formats",
+      "title_key": "UI-DATA-030",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "list",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "metric.read"
+        ],
+        "action_permissions": [
+          "metric.manage",
+          "metric.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-030",
+        "requirement_ids": [
+          "METRIC-009",
+          "RBAC-016"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-030",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DATA-031",
+      "path": "/w/:workspaceKey/number-formats/:id",
+      "title_key": "UI-DATA-031",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_foundation",
+      "surface_kind": "editor",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "metric.read"
+        ],
+        "action_permissions": [
+          "metric.manage",
+          "metric.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DATA-031",
+        "requirement_ids": [
+          "METRIC-009",
+          "RBAC-016"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-DATA-031",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-DQ-001",
+      "path": "/w/:workspaceKey/data-quality",
+      "title_key": "UI-DQ-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_quality",
+      "surface_kind": "overview",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "quality.read"
+        ],
+        "action_permissions": [
+          "quality.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-DQ-001",
+        "requirement_ids": [
+          "UC-003",
+          "DQ-REMEDIATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DQ-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DQ-002",
+      "path": "/w/:workspaceKey/quality-rules",
+      "title_key": "UI-DQ-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_quality",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "quality.read"
+        ],
+        "action_permissions": [
+          "quality.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DQ-002",
+        "requirement_ids": [
+          "UC-003",
+          "DQ-REMEDIATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DQ-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DQ-003",
+      "path": "/w/:workspaceKey/quality-rules/:id",
+      "title_key": "UI-DQ-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_quality",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "quality.read"
+        ],
+        "action_permissions": [
+          "quality.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DQ-003",
+        "requirement_ids": [
+          "UC-003",
+          "DQ-REMEDIATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DQ-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DQ-004",
+      "path": "/w/:workspaceKey/quality-reports/:id",
+      "title_key": "UI-DQ-004",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_quality",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "AN",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "quality.read"
+        ],
+        "action_permissions": [
+          "quality.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-DQ-004",
+        "requirement_ids": [
+          "UC-003",
+          "DQ-REMEDIATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DQ-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DQ-005",
+      "path": "/w/:workspaceKey/quality-issues/:id",
+      "title_key": "UI-DQ-005",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "data_quality",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "DS",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "quality.read"
+        ],
+        "action_permissions": [
+          "quality.manage",
+          "quality.waiver.approve"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DQ-005",
+        "requirement_ids": [
+          "UC-009",
+          "DQ-REMEDIATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DQ-005",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-001",
+      "path": "/w/:workspaceKey/analyses",
+      "title_key": "UI-AN-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "DS",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AN-001",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-002",
+      "path": "/w/:workspaceKey/analyses/new",
+      "title_key": "UI-AN-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AN-002",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012",
+          "UC-025",
+          "UC-026",
+          "OUTLIER-007",
+          "SEGMENT-018"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-003",
+      "path": "/w/:workspaceKey/analytics/sales",
+      "title_key": "UI-AN-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "overview",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-003",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-004",
+      "path": "/w/:workspaceKey/analytics/customers",
+      "title_key": "UI-AN-004",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-004",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-005",
+      "path": "/w/:workspaceKey/analytics/rfm",
+      "title_key": "UI-AN-005",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-005",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-005",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-006",
+      "path": "/w/:workspaceKey/analytics/cohorts",
+      "title_key": "UI-AN-006",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-006",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-006",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-007",
+      "path": "/w/:workspaceKey/analytics/lifecycle",
+      "title_key": "UI-AN-007",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-007",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-007",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-008",
+      "path": "/w/:workspaceKey/analytics/basket",
+      "title_key": "UI-AN-008",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-008",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-008",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-009",
+      "path": "/w/:workspaceKey/analytics/stores-channels",
+      "title_key": "UI-AN-009",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-009",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-009",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-010",
+      "path": "/w/:workspaceKey/analytics/margin-discounts",
+      "title_key": "UI-AN-010",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-010",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-010",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-011",
+      "path": "/w/:workspaceKey/analyses/custom",
+      "title_key": "UI-AN-011",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "editor",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "DS"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AN-011",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012",
+          "UC-025",
+          "UC-026",
+          "OUTLIER-001",
+          "OUTLIER-007",
+          "OUTLIER-008",
+          "SEGMENT-007",
+          "SEGMENT-008",
+          "SEGMENT-009",
+          "SEGMENT-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-011",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-012",
+      "path": "/w/:workspaceKey/analyses/:id/results/:runId",
+      "title_key": "UI-AN-012",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "allowed"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "primary_surface",
+      "source": {
+        "ui_blueprint_id": "UI-AN-012",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012",
+          "UC-025",
+          "UC-026",
+          "OUTLIER-009",
+          "OUTLIER-010",
+          "SEGMENT-002",
+          "SEGMENT-013"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-AN-012",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-AN-013",
+      "path": "/w/:workspaceKey/research",
+      "title_key": "UI-AN-013",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "research.read"
+        ],
+        "action_permissions": [
+          "research.manage",
+          "finding.manage",
+          "comment.read",
+          "comment.create",
+          "comment.resolve"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-AN-013",
+        "requirement_ids": [
+          "UC-020",
+          "RESEARCH-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-AN-013",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-AN-014",
+      "path": "/w/:workspaceKey/research/:id",
+      "title_key": "UI-AN-014",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "workspace",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "research.read"
+        ],
+        "action_permissions": [
+          "research.manage",
+          "finding.manage",
+          "comment.read",
+          "comment.create",
+          "comment.resolve"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-014",
+        "requirement_ids": [
+          "UC-020",
+          "UC-025",
+          "UC-026",
+          "RESEARCH-001",
+          "OUTLIER-009",
+          "SEGMENT-007",
+          "SEGMENT-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-AN-014",
+        "baseline_version": "0.6.1-draft-target"
+      }
+    },
+    {
+      "id": "UI-SEG-001",
+      "path": "/w/:workspaceKey/segments",
+      "title_key": "UI-SEG-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "segments",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "segment.read"
+        ],
+        "action_permissions": [
+          "segment.manage",
+          "segment.export"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-SEG-001",
+        "requirement_ids": [
+          "UC-004",
+          "UC-026",
+          "SEGMENT-001",
+          "SEGMENT-002",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-SEG-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-SEG-002",
+      "path": "/w/:workspaceKey/segments/new",
+      "title_key": "UI-SEG-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "segments",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "segment.read"
+        ],
+        "action_permissions": [
+          "segment.manage",
+          "segment.export"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-SEG-002",
+        "requirement_ids": [
+          "UC-004",
+          "UC-025",
+          "UC-026",
+          "OUTLIER-001",
+          "OUTLIER-002",
+          "OUTLIER-003",
+          "OUTLIER-004",
+          "OUTLIER-005",
+          "OUTLIER-006",
+          "OUTLIER-007",
+          "OUTLIER-008",
+          "SEGMENT-001",
+          "SEGMENT-002",
+          "SEGMENT-003",
+          "SEGMENT-004",
+          "SEGMENT-005",
+          "SEGMENT-006",
+          "SEGMENT-007",
+          "SEGMENT-008",
+          "SEGMENT-009",
+          "SEGMENT-010",
+          "SEGMENT-011",
+          "SEGMENT-012",
+          "SEGMENT-013",
+          "SEGMENT-014",
+          "SEGMENT-015",
+          "SEGMENT-016",
+          "SEGMENT-017",
+          "SEGMENT-018",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-SEG-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-SEG-003",
+      "path": "/w/:workspaceKey/segments/:id",
+      "title_key": "UI-SEG-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "segments",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "segment.read"
+        ],
+        "action_permissions": [
+          "segment.manage",
+          "segment.export"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-SEG-003",
+        "requirement_ids": [
+          "UC-004",
+          "UC-025",
+          "UC-026",
+          "OUTLIER-009",
+          "OUTLIER-010",
+          "OUTLIER-012",
+          "SEGMENT-002",
+          "SEGMENT-013",
+          "SEGMENT-014",
+          "SEGMENT-015",
+          "SEGMENT-016",
+          "SEGMENT-018",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-SEG-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-FCST-001",
+      "path": "/w/:workspaceKey/forecasts",
+      "title_key": "UI-FCST-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "forecasting",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "ML",
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "forecast.read"
+        ],
+        "action_permissions": [
+          "forecast.train",
+          "forecast.promote"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-FCST-001",
+        "requirement_ids": [
+          "UC-005",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-FCST-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-FCST-002",
+      "path": "/w/:workspaceKey/forecasts/new",
+      "title_key": "UI-FCST-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "forecasting",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "forecast.read"
+        ],
+        "action_permissions": [
+          "forecast.train",
+          "forecast.promote"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-FCST-002",
+        "requirement_ids": [
+          "UC-005",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-FCST-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-FCST-003",
+      "path": "/w/:workspaceKey/forecasts/:id/backtests",
+      "title_key": "UI-FCST-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "forecasting",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "ML",
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "forecast.read"
+        ],
+        "action_permissions": [
+          "forecast.train",
+          "forecast.promote"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-FCST-003",
+        "requirement_ids": [
+          "UC-005",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-FCST-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-FCST-004",
+      "path": "/w/:workspaceKey/forecasts/:id",
+      "title_key": "UI-FCST-004",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "forecasting",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "ML",
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "forecast.read"
+        ],
+        "action_permissions": [
+          "forecast.train",
+          "forecast.promote"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-FCST-004",
+        "requirement_ids": [
+          "UC-005",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-FCST-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-FCST-005",
+      "path": "/w/:workspaceKey/models/:id",
+      "title_key": "UI-FCST-005",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "forecasting",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "forecast.read"
+        ],
+        "action_permissions": [
+          "forecast.train",
+          "forecast.promote"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-FCST-005",
+        "requirement_ids": [
+          "UC-005",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-FCST-005",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-FCST-006",
+      "path": "/w/:workspaceKey/forecasts/:id/monitoring",
+      "title_key": "UI-FCST-006",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "forecasting",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "ML",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "forecast.read"
+        ],
+        "action_permissions": [
+          "forecast.train",
+          "forecast.promote"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-FCST-006",
+        "requirement_ids": [
+          "UC-005",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-FCST-006",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-FCST-007",
+      "path": "/w/:workspaceKey/models",
+      "title_key": "UI-FCST-007",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "forecasting",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "ML",
+        "AN",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "forecast.read"
+        ],
+        "action_permissions": [
+          "forecast.train",
+          "forecast.promote"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-FCST-007",
+        "requirement_ids": [
+          "UC-005",
+          "RBAC-010"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-FCST-007",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-PROMO-001",
+      "path": "/w/:workspaceKey/promotions",
+      "title_key": "UI-PROMO-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "promotions",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "WA",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "promotion.read"
+        ],
+        "action_permissions": [
+          "promotion.manage"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-PROMO-001",
+        "requirement_ids": [
+          "UC-013",
+          "PROMO-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-PROMO-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-PROMO-002",
+      "path": "/w/:workspaceKey/promotions/new",
+      "title_key": "UI-PROMO-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "promotions",
+      "surface_kind": "editor",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "promotion.read"
+        ],
+        "action_permissions": [
+          "promotion.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-PROMO-002",
+        "requirement_ids": [
+          "UC-013",
+          "PROMO-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-PROMO-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-PROMO-003",
+      "path": "/w/:workspaceKey/promotions/:id",
+      "title_key": "UI-PROMO-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "promotions",
+      "surface_kind": "detail",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "WA",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "promotion.read"
+        ],
+        "action_permissions": [
+          "promotion.manage"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-PROMO-003",
+        "requirement_ids": [
+          "UC-013",
+          "PROMO-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-PROMO-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DASH-001",
+      "path": "/w/:workspaceKey/dashboards",
+      "title_key": "UI-DASH-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "dashboards",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "report.read"
+        ],
+        "action_permissions": [
+          "dashboard.manage",
+          "dashboard.publish",
+          "dashboard_access.manage",
+          "comment.read",
+          "comment.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-DASH-001",
+        "requirement_ids": [
+          "UC-011",
+          "DASHBOARD-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DASH-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DASH-002",
+      "path": "/w/:workspaceKey/dashboards/:id",
+      "title_key": "UI-DASH-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "dashboards",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "allowed"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "report.read"
+        ],
+        "action_permissions": [
+          "dashboard.manage",
+          "dashboard.publish",
+          "dashboard_access.manage",
+          "comment.read",
+          "comment.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-DASH-002",
+        "requirement_ids": [
+          "UC-011",
+          "DASHBOARD-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DASH-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-DASH-003",
+      "path": "/w/:workspaceKey/dashboards/:id/edit",
+      "title_key": "UI-DASH-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "dashboards",
+      "surface_kind": "editor",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "report.read"
+        ],
+        "action_permissions": [
+          "dashboard.manage",
+          "dashboard.publish",
+          "dashboard_access.manage",
+          "comment.read",
+          "comment.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-DASH-003",
+        "requirement_ids": [
+          "UC-011",
+          "DASHBOARD-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-DASH-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-RPT-001",
+      "path": "/w/:workspaceKey/reports",
+      "title_key": "UI-RPT-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "reports_exports",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "report.read"
+        ],
+        "action_permissions": [
+          "report.manage",
+          "comment.read",
+          "comment.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-RPT-001",
+        "requirement_ids": [
+          "REPORT-001",
+          "REPORT-003"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-RPT-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-RPT-002",
+      "path": "/w/:workspaceKey/reports/:id/edit",
+      "title_key": "UI-RPT-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "reports_exports",
+      "surface_kind": "editor",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "report.read"
+        ],
+        "action_permissions": [
+          "report.manage"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-RPT-002",
+        "requirement_ids": [
+          "REPORT-001",
+          "REPORT-003"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-RPT-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-RPT-003",
+      "path": "/w/:workspaceKey/reports/:id/snapshots/:sid",
+      "title_key": "UI-RPT-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "reports_exports",
+      "surface_kind": "detail",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "allowed"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "report.read"
+        ],
+        "action_permissions": [
+          "report.manage",
+          "comment.read",
+          "comment.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-RPT-003",
+        "requirement_ids": [
+          "REPORT-001",
+          "REPORT-003"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-RPT-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-RPT-004",
+      "path": "/w/:workspaceKey/reports/:id/send",
+      "title_key": "UI-RPT-004",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "reports_exports",
+      "surface_kind": "detail",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "report.send"
+        ],
+        "action_permissions": [
+          "report.send"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "heavy_operation",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-RPT-004",
+        "requirement_ids": [
+          "UC-014",
+          "REPORT-MAIL-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-RPT-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-RPT-005",
+      "path": "/w/:workspaceKey/report-deliveries",
+      "title_key": "UI-RPT-005",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "reports_exports",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "WA",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "report.send",
+          "run.read"
+        ],
+        "action_permissions": [
+          "report.send",
+          "run.retry"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "heavy_operation",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-RPT-005",
+        "requirement_ids": [
+          "REPORT-001",
+          "REPORT-003"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-RPT-005",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-RPT-006",
+      "path": "/w/:workspaceKey/exports",
+      "title_key": "UI-RPT-006",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "reports_exports",
+      "surface_kind": "list",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "export.create",
+          "report.export_xlsx",
+          "artifact.download"
+        ],
+        "action_permissions": [
+          "export.create",
+          "report.export_xlsx",
+          "artifact.download"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "heavy_operation",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-RPT-006",
+        "requirement_ids": [
+          "UC-007",
+          "XLSX-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-RPT-006",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-RPT-007",
+      "path": "/w/:workspaceKey/settings/report-email",
+      "title_key": "UI-RPT-007",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "reports_exports",
+      "surface_kind": "settings",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "report_email_policy.manage"
+        ],
+        "action_permissions": [
+          "report_email_policy.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-RPT-007",
+        "requirement_ids": [
+          "REPORT-MAIL-003",
+          "RBAC-005"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-RPT-007",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-PIPE-001",
+      "path": "/w/:workspaceKey/pipelines",
+      "title_key": "UI-PIPE-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "pipelines",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "DS",
+        "ML",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "pipeline.read"
+        ],
+        "action_permissions": [
+          "pipeline.manage",
+          "pipeline.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-PIPE-001",
+        "requirement_ids": [
+          "UC-006",
+          "EXEC-STATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-PIPE-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-PIPE-002",
+      "path": "/w/:workspaceKey/pipelines/:id/edit",
+      "title_key": "UI-PIPE-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "pipelines",
+      "surface_kind": "editor",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "DS",
+        "ML"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "pipeline.read"
+        ],
+        "action_permissions": [
+          "pipeline.manage",
+          "pipeline.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-PIPE-002",
+        "requirement_ids": [
+          "UC-006",
+          "EXEC-STATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-PIPE-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-PIPE-003",
+      "path": "/w/:workspaceKey/pipelines/:id/versions",
+      "title_key": "UI-PIPE-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "pipelines",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "owners"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "pipeline.read"
+        ],
+        "action_permissions": [
+          "pipeline.manage",
+          "pipeline.publish"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-PIPE-003",
+        "requirement_ids": [
+          "UC-006",
+          "EXEC-STATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-PIPE-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-PIPE-004",
+      "path": "/w/:workspaceKey/schedules",
+      "title_key": "UI-PIPE-004",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "pipelines",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "ML",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "pipeline.read"
+        ],
+        "action_permissions": [
+          "pipeline.manage",
+          "pipeline.publish"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "heavy_operation",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-PIPE-004",
+        "requirement_ids": [
+          "UC-006",
+          "EXEC-STATE-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-PIPE-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-OPS-001",
+      "path": "/w/:workspaceKey/runs",
+      "title_key": "UI-OPS-001",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "operations",
+      "surface_kind": "operator",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "OP",
+        "owners"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "run.read"
+        ],
+        "action_permissions": [
+          "run.create",
+          "run.cancel",
+          "run.retry"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "operator",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-OPS-001",
+        "requirement_ids": [
+          "UC-010",
+          "OPS-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-OPS-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-OPS-002",
+      "path": "/w/:workspaceKey/runs/:id",
+      "title_key": "UI-OPS-002",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "operations",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "OP",
+        "owners"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "run.read"
+        ],
+        "action_permissions": [
+          "run.create",
+          "run.cancel",
+          "run.retry"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "operator",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-OPS-002",
+        "requirement_ids": [
+          "UC-010",
+          "OPS-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-OPS-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-OPS-003",
+      "path": "/w/:workspaceKey/runs/:id/nodes/:nodeId/attempts/:attemptId",
+      "title_key": "UI-OPS-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "operations",
+      "surface_kind": "detail",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "run.read"
+        ],
+        "action_permissions": [
+          "run.create",
+          "run.cancel",
+          "run.retry"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "operator",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-OPS-003",
+        "requirement_ids": [
+          "UC-010",
+          "OPS-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-OPS-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-OPS-004",
+      "path": "/admin/runtime",
+      "title_key": "UI-OPS-004",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "operations",
+      "surface_kind": "operator",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.diagnostics.read"
+        ],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "operator",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-OPS-004",
+        "requirement_ids": [
+          "UC-010",
+          "OPS-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-OPS-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-NOTIFY-001",
+      "path": "/notifications",
+      "title_key": "UI-NOTIFY-001",
+      "family": "global_user",
+      "shell_profile": "global",
+      "navigation_group": "notifications",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "all"
+      ],
+      "authorization": {
+        "mode": "authenticated",
+        "entry_permissions_any": [],
+        "action_permissions": [
+          "notification.read",
+          "notification.acknowledge"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "authenticated_global",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-NOTIFY-001",
+        "requirement_ids": [
+          "NOTIFY-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-NOTIFY-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-NOTIFY-002",
+      "path": "/notifications/preferences",
+      "title_key": "UI-NOTIFY-002",
+      "family": "global_user",
+      "shell_profile": "global",
+      "navigation_group": "notifications",
+      "surface_kind": "settings",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "all"
+      ],
+      "authorization": {
+        "mode": "authenticated",
+        "entry_permissions_any": [],
+        "action_permissions": [
+          "notification.read"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "authenticated_global",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-NOTIFY-002",
+        "requirement_ids": [
+          "NOTIFY-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-NOTIFY-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-NOTIFY-003",
+      "path": "/w/:workspaceKey/settings/notification-channels",
+      "title_key": "UI-NOTIFY-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "notifications",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "WA",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "workspace.manage"
+        ],
+        "action_permissions": [
+          "workspace.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-NOTIFY-003",
+        "requirement_ids": [
+          "NOTIFY-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-NOTIFY-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-001",
+      "path": "/admin",
+      "title_key": "UI-ADMIN-001",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "overview",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.diagnostics.read",
+          "installation.manage"
+        ],
+        "action_permissions": [
+          "installation.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-001",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-002",
+      "path": "/admin/workspaces",
+      "title_key": "UI-ADMIN-002",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.manage"
+        ],
+        "action_permissions": [
+          "installation.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-002",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-002",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-003",
+      "path": "/w/:workspaceKey/settings/access",
+      "title_key": "UI-ADMIN-003",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "administration",
+      "surface_kind": "settings",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "workspace.members.manage"
+        ],
+        "action_permissions": [
+          "workspace.members.manage",
+          "workspace.roles.assign",
+          "report_access.manage",
+          "dashboard_access.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-003",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-003",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-004",
+      "path": "/w/:workspaceKey/settings/policies",
+      "title_key": "UI-ADMIN-004",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "administration",
+      "surface_kind": "settings",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "workspace.manage"
+        ],
+        "action_permissions": [
+          "workspace.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-004",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-004",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-005",
+      "path": "/admin/capacity",
+      "title_key": "UI-ADMIN-005",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "WA",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.diagnostics.read",
+          "workspace.manage"
+        ],
+        "action_permissions": [
+          "installation.manage",
+          "workspace.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-005",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-005",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-006",
+      "path": "/admin/services",
+      "title_key": "UI-ADMIN-006",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "operator",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.diagnostics.read"
+        ],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "operator",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-006",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-006",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-007",
+      "path": "/admin/workers",
+      "title_key": "UI-ADMIN-007",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "operator",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.diagnostics.read"
+        ],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "operator",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-007",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-007",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-008",
+      "path": "/admin/plugins",
+      "title_key": "UI-ADMIN-008",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "IA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "plugin.manage"
+        ],
+        "action_permissions": [
+          "plugin.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-008",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-008",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-009",
+      "path": "/admin/storage-backup",
+      "title_key": "UI-ADMIN-009",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.diagnostics.read",
+          "installation.backup_restore"
+        ],
+        "action_permissions": [
+          "installation.backup_restore"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-009",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-009",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-010",
+      "path": "/audit",
+      "title_key": "UI-ADMIN-010",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "list",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "WA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "audit.read"
+        ],
+        "action_permissions": [
+          "audit.read"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-010",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-010",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-011",
+      "path": "/admin/localization-themes",
+      "title_key": "UI-ADMIN-011",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "settings",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "WA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.manage",
+          "workspace.manage"
+        ],
+        "action_permissions": [
+          "installation.manage",
+          "workspace.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-011",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-011",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-012",
+      "path": "/admin/system",
+      "title_key": "UI-ADMIN-012",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "settings",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "IA",
+        "OP"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "installation.diagnostics.read",
+          "installation.manage"
+        ],
+        "action_permissions": [
+          "installation.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-012",
+        "requirement_ids": [
+          "ADMIN-001",
+          "RBAC-002"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-ADMIN-012",
+        "baseline_version": "0.4.1-draft"
+      }
+    },
+    {
+      "id": "UI-ADMIN-013",
+      "path": "/w/:workspaceKey/settings/branding",
+      "title_key": "UI-ADMIN-013",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "administration",
+      "surface_kind": "settings",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "brand.read"
+        ],
+        "action_permissions": [
+          "brand.assign"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-013",
+        "requirement_ids": [
+          "UC-023",
+          "BRAND-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-ADMIN-013",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-ADMIN-014",
+      "path": "/admin/brand-profiles",
+      "title_key": "UI-ADMIN-014",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "list",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "IA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "brand.read"
+        ],
+        "action_permissions": [
+          "brand.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-014",
+        "requirement_ids": [
+          "UC-023",
+          "BRAND-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-ADMIN-014",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-ADMIN-015",
+      "path": "/admin/brand-profiles/:id",
+      "title_key": "UI-ADMIN-015",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "editor",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "IA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "brand.read"
+        ],
+        "action_permissions": [
+          "brand.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-015",
+        "requirement_ids": [
+          "UC-023",
+          "BRAND-001"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-ADMIN-015",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-ADMIN-016",
+      "path": "/admin/company-packs",
+      "title_key": "UI-ADMIN-016",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "list",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "IA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "company_pack.manage"
+        ],
+        "action_permissions": [
+          "company_pack.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-016",
+        "requirement_ids": [
+          "UC-023",
+          "BRAND-007"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-ADMIN-016",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-ADMIN-017",
+      "path": "/admin/company-packs/:id",
+      "title_key": "UI-ADMIN-017",
+      "family": "installation",
+      "shell_profile": "installation",
+      "navigation_group": "administration",
+      "surface_kind": "detail",
+      "release": "MVP/V1",
+      "status": "planned",
+      "role_hints": [
+        "IA"
+      ],
+      "authorization": {
+        "mode": "global_permission",
+        "entry_permissions_any": [
+          "company_pack.manage"
+        ],
+        "action_permissions": [
+          "company_pack.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "global_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-017",
+        "requirement_ids": [
+          "UC-023",
+          "BRAND-007"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-ADMIN-017",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-ADMIN-018",
+      "path": "/w/:workspaceKey/access/:resourceType/:resourceId",
+      "title_key": "UI-ADMIN-018",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "administration",
+      "surface_kind": "settings",
+      "release": "MVP",
+      "status": "planned",
+      "role_hints": [
+        "WA"
+      ],
+      "authorization": {
+        "mode": "workspace_permission",
+        "entry_permissions_any": [
+          "report_access.manage",
+          "dashboard_access.manage"
+        ],
+        "action_permissions": [
+          "report_access.manage",
+          "dashboard_access.manage"
+        ],
+        "object_scoped": false
+      },
+      "guard_profile": "workspace_permission",
+      "state_profile": "editor",
+      "navigation_profile": "editor",
+      "query_profile": "editor",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-ADMIN-018",
+        "requirement_ids": [
+          "UC-022",
+          "RBAC-013"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-ADMIN-018",
+        "baseline_version": "0.6.0-draft-target"
+      }
+    },
+    {
+      "id": "UI-HELP-001",
+      "path": "/help",
+      "title_key": "UI-HELP-001",
+      "family": "global_user",
+      "shell_profile": "global",
+      "navigation_group": "help",
+      "surface_kind": "list",
+      "release": "MVP/V1",
+      "status": "foundation",
+      "role_hints": [
+        "all"
+      ],
+      "authorization": {
+        "mode": "authenticated",
+        "entry_permissions_any": [],
+        "action_permissions": [],
+        "object_scoped": false
+      },
+      "guard_profile": "authenticated_global",
+      "state_profile": "browse",
+      "navigation_profile": "browse",
+      "query_profile": "standard",
+      "focus_explore": "not_applicable",
+      "source": {
+        "ui_blueprint_id": "UI-HELP-001",
+        "requirement_ids": [
+          "HELP-001",
+          "RBAC-006"
+        ]
+      },
+      "design": {
+        "penpot_status": "baseline_verified",
+        "frame_key": "UI-HELP-001",
+        "baseline_version": "0.4.1-draft"
+      }
+    }
+  ]
+}

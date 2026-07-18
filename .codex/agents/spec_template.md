@@ -2,7 +2,7 @@
 artifact_kind: delivery_spec
 delivery_contract: global/v1
 delivery_schema_version: 1
-spec_version: 0.8.2-draft
+spec_version: 0.9.1-draft
 status: draft
 ---
 

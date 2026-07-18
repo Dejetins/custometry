@@ -2,17 +2,17 @@
 document_family_id: CUSTOMETRY-TECH-BLUEPRINT
 document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
 title: Custometry — технический blueprint платформы клиентской аналитики и прогнозирования
-spec_version: 0.8.2-draft
+spec_version: 0.9.1-draft
 representation: machine
 normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-07-16
+updated_at: 2026-07-19
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
-  expected_spec_version: 0.8.2-draft
+  expected_spec_version: 0.9.1-draft
 intended_readers:
   - software_architect
   - backend_agent
@@ -39,7 +39,7 @@ license_target: Apache-2.0
 
 Этот документ является единым техническим blueprint для создания открытой self-hosted платформы клиентской аналитики и прогнозирования под названием `Custometry`.
 
-> Это нормативная машиночитаемая версия спецификации `0.8.2-draft`. Полное человекочитаемое смысловое зеркало: [custometry-technical-blueprint-human-ru.md](./custometry-technical-blueprint-human-ru.md). Обе версии MUST иметь одинаковый `document_family_id`, `spec_version` и набор нормативных requirement ID; при расхождении источником истины является этот документ.
+> Это нормативная машиночитаемая версия спецификации `0.9.1-draft`. Полное человекочитаемое смысловое зеркало: [custometry-technical-blueprint-human-ru.md](./custometry-technical-blueprint-human-ru.md). Обе версии MUST иметь одинаковый `document_family_id`, `spec_version` и набор нормативных requirement ID; при расхождении источником истины является этот документ.
 
 Документ объединяет:
 
@@ -90,7 +90,9 @@ interpretation_rules:
 
 ## 1.1. Определение
 
-`Custometry` — открытая self-hosted low-code платформа, которая подключается к клиентским и транзакционным данным, описывает их через семантическую модель, проверяет качество, создаёт аналитические витрины, выполняет типовые и пользовательские исследования и строит воспроизводимые прогнозы.
+`Custometry` — открытая self-hosted low-code операционная система B2C retail-аналитики, которая превращает разрозненные клиентские и транзакционные данные, локальные методики и повторяющиеся ad hoc-запросы в управляемый цикл: бизнес-вопрос, утверждённая методика, воспроизводимое исследование, проверенный вывод, опубликованный аналитический продукт и доступный бизнесу результат.
+
+Текущая доменная модель целенаправленно обслуживает B2C retail. Будущее расширение на B2B sales MUST быть additive и не должно заставлять текущие сущности `Customer`, `Receipt`, `ReceiptItem`, `Product`, `Store` или `Channel` притворяться `Account`, `Lead` либо `Opportunity`.
 
 Ключевая ценность продукта — собственный семантический слой, который понимает предметные сущности и правила бизнеса:
 
@@ -136,6 +138,12 @@ product_goals:
     goal: Изолированно обслуживать несколько workspaces в одной инсталляции.
   - id: GOAL-010
     goal: Предоставлять полный английский и русский интерфейс с возможностью добавлять языки каталогами переводов без изменения доменного кода.
+  - id: GOAL-011
+    goal: Стандартизировать аналитическую работу через versioned Metric Registry, Methodology Registry, Analysis Case, evidence-linked findings и повторно используемые analytical products.
+  - id: GOAL-012
+    goal: Позволять кастомизировать инсталляцию под компанию через versioned BrandProfile и CompanyPack без fork кода или customer-specific image.
+  - id: GOAL-013
+    goal: Давать аналитикам единое research-пространство от общего к частному с таблицами, графиками, metric groups, выводами и воспроизводимой публикацией.
 ```
 
 ## 1.3. Не входит в текущий scope
@@ -166,9 +174,15 @@ non_goals:
     item: Plotly как core chart dependency до и включая v1 target; будущий trusted plugin допускается только через утверждённый renderer contract.
   - id: NON-GOAL-012
     item: ECharts-GL, WebGL chart pipeline или GPU analytical compute до и включая v1 target.
+  - id: NON-GOAL-013
+    item: B2B sales ontology, включая Account, Contact, Lead, Opportunity, pipeline stages, quote и renewal, до отдельной будущей product specification.
+  - id: NON-GOAL-014
+    item: Публичный activation runtime, reverse ETL marketplace, campaign orchestration или destination connector implementation до отдельного private product decision после v1 target.
+  - id: NON-GOAL-015
+    item: Cloud/SaaS distribution, managed control plane, Kubernetes или multi-host production topology до отдельного будущего release decision; текущая distribution model — только self-host.
 ```
 
-`NON-GOAL-001`, `NON-GOAL-002` и `NON-GOAL-003` не запрещают вести исторический журнал внешних промокампаний и не запрещают пользователю вручную отправить один воспроизводимый аналитический отчёт разрешённым получателям. Платформа не запускает маркетинговую механику, не выбирает аудиторию для воздействия, не выполняет массовую или scheduled marketing-рассылку и не начисляет бонусы. Три visualization non-goals не запрещают будущий Plotly renderer plugin после v1, но запрещают второй production UI framework, core Plotly dependency, WebGL/GPU chart path и перенос аналитических вычислений в browser.
+`NON-GOAL-001`, `NON-GOAL-002` и `NON-GOAL-003` не запрещают вести исторический журнал внешних промокампаний и не запрещают пользователю вручную отправить один воспроизводимый аналитический отчёт разрешённым получателям. Платформа не запускает маркетинговую механику, не выбирает аудиторию для воздействия, не выполняет массовую или scheduled marketing-рассылку и не начисляет бонусы. Три visualization non-goals не запрещают будущий Plotly renderer plugin после v1, но запрещают второй production UI framework, core Plotly dependency, WebGL/GPU chart path и перенос аналитических вычислений в browser. `NON-GOAL-014` не отменяет публичные контракты ручного email/XLSX/CSV/Parquet report delivery: он отделяет доставку аналитического результата от будущей активации аудитории во внешних marketing systems.
 
 # 2. Пользователи и сценарии
 
@@ -176,13 +190,15 @@ non_goals:
 
 | Роль | Основные задачи | Ограничения |
 |---|---|---|
-| Installation Administrator | Bootstrap инсталляции, глобальные политики, плагины, health и backup | Не получает доступ к содержимому workspace без явного membership и audit |
-| Workspace Administrator | Участники, роли, подключения, секреты и политики своего workspace | Не управляет другими workspaces и глобальной инфраструктурой |
-| Data Steward | Mapping, качество, правила сущностей и метрик | Не обязан создавать прогнозы |
-| Analyst | Аналитические проекты, сегменты, отчёты, экспорты | Не управляет глобальными секретами |
-| ML Analyst | Forecast projects, backtesting, модели | Не управляет пользователями |
-| Operator | Запуск опубликованных pipeline, просмотр ошибок | Не редактирует опубликованные версии |
-| Viewer | Просмотр разрешённых результатов | Нет права запуска и изменения |
+| Installation Administrator | Bootstrap, lifecycle инсталляции, глобальные policy ceilings, trusted plugins, health и backup | Не получает workspace content или PII без отдельного time-bounded membership/grant |
+| Workspace Administrator | Участники, роли, object-level доступ к отчётам, подключения, secrets и политики workspace | По умолчанию не создаёт аналитический content, metrics, segments или reports и не получает PII автоматически |
+| Data Steward | Mapping, quality, canonical entities, semantic datasets, data contracts и Data Guides | Не управляет пользователями или подключениями без отдельной административной роли |
+| Analyst | Анализы, research cases, методики, metrics, segments, dashboards, reports, comments, отправка и exports | Не создаёт, не изменяет и не удаляет connections/secrets и не назначает пользователям доступ |
+| ML Analyst | Права Analyst плюс forecast projects, backtesting и model lifecycle | Не управляет пользователями или connections |
+| Operator | Запуск опубликованных pipeline, диагностика и восстановление execution | Не редактирует опубликованные определения, access policies или аналитический content |
+| Viewer | Просмотр явно разрешённых reports/dashboards и comments | Не запускает compute, не меняет definitions и никогда не получает raw personal/sensitive PII |
+
+Роли являются versioned permission bundles. Пользователь MAY иметь несколько ролей, но административная роль не должна молча наследовать аналитические права. `Data Steward`, `ML Analyst` и `Operator` являются специализированными профилями; базовое бизнес-разделение остаётся `Workspace Administrator`, `Analyst`, `Viewer`.
 
 ## 2.2. Ключевые сценарии
 
@@ -241,7 +257,7 @@ use_cases:
   - id: UC-011
     name: Совместное использование результата
     actor: Analyst
-    input: Версионированный dashboard или результат и access policy
+    input: Версионированный dashboard или published report snapshot и access policy
     output: Доступ внутри workspace, immutable reference и audit event
   - id: UC-012
     name: Сравнение с прошлым годом
@@ -278,6 +294,46 @@ use_cases:
     actor: Analyst
     input: Разрешённый reportable chart, table или range_timeline, inherited filters и presentation state
     output: Focus / Explore mode с локальными фильтрами, chart/table controls, Result Trust, экспортом и возвратом в исходный контекст
+  - id: UC-019
+    name: Управление аналитической методикой
+    actor: Analyst
+    input: Бизнес-вопрос, required capabilities, metric versions, правила расчёта, допущения, quality checks и output template
+    output: Reviewed immutable AnalysisMethodVersion со status, owner, reviewers и implementation bindings
+  - id: UC-020
+    name: Research от общего к частному
+    actor: Analyst
+    input: AnalysisCase, dataset, method, metrics, filters и reportable artifacts
+    output: Versioned research document с sections, metric groups, charts, tables, findings, conclusions и reproducible bindings
+  - id: UC-021
+    name: Комментарий к аналитическому результату
+    actor: Viewer
+    input: Разрешённый report/dashboard snapshot или block и неперсональный текст комментария
+    output: Auditable discussion thread без изменения immutable snapshot и без раскрытия PII
+  - id: UC-022
+    name: Управление доступом к отчёту
+    actor: Workspace Administrator
+    input: Published report/dashboard, пользователи или группы и object access policy
+    output: Versioned grant/revoke policy, effective-access preview и audit event
+  - id: UC-023
+    name: Корпоративное брендирование
+    actor: Installation Administrator
+    input: Brand assets, semantic color tokens, typography, product identity и channel-specific presentation policy
+    output: Validated immutable BrandProfileVersion и CompanyPack binding без fork кода
+  - id: UC-024
+    name: Шаблонный импорт файла
+    actor: Workspace Administrator
+    input: CSV/XLSX file и опубликованный FileImportTemplateVersion
+    output: Validated typed extraction с mapping evidence, rejected-row diagnostics и source lineage
+  - id: UC-025
+    name: Управляемая обработка выбросов
+    actor: Analyst
+    input: Версионированная population, grain, metric/feature, observation window, peer scope, method, parameters и action
+    output: Immutable PopulationTreatmentSpecVersion, воспроизводимые bounds, sensitivity diagnostics и разрешённый treated result без изменения canonical source/metric
+  - id: UC-026
+    name: Бакетная, стратифицированная и кластерная сегментация
+    actor: Analyst
+    input: Population, feature set, treatment version, segmentation method и требуемое количество конечных групп
+    output: Versioned definition, diagnostics, profiles и immutable SegmentMembershipSnapshot либо DistributionArtifact
 ```
 
 ## 2.3. Нормативные пользовательские пути
@@ -342,6 +398,18 @@ user_journeys:
       - compare_attempts_and_verify_cleanup
       - acknowledge_notification
     completion: Run находится в terminal state, а действие и причина зафиксированы в audit.
+  - id: JOURNEY-007
+    name: governed_research_to_analytical_product
+    steps:
+      - create_or_open_analysis_case
+      - select_or_draft_analysis_method
+      - verify_dataset_metric_identity_and_quality_capabilities
+      - explore_from_summary_to_detail_in_research_workspace
+      - bind_metric_groups_charts_tables_findings_and_limitations
+      - review_and_publish_immutable_research_document
+      - compose_dashboard_report_or_export_from_the_same_snapshot
+      - collect_contextual_comments_without_mutating_the_snapshot
+    completion: AnalysisCase связан с approved method, immutable evidence, published analytical product и auditable discussion.
 ```
 
 ```yaml
@@ -358,6 +426,14 @@ journey_requirements:
     requirement: Result Trust Panel MUST показывать as_of_date, freshness, quality, limitations, версии dataset и metrics, grain, filters, timezone, currency и lineage.
   - id: UX-JOURNEY-006
     requirement: Действия «Почему функция недоступна?», «Почему это число?» и «На что повлияет публикация?» MUST быть доступны из соответствующего контекста.
+  - id: UX-JOURNEY-007
+    requirement: Research workspace MUST поддерживать движение от executive summary к детализации через stable outline/sections, linked filters и drill-down без потери исходного контекста.
+  - id: UX-JOURNEY-008
+    requirement: Аналитический вывод MUST быть отдельным versioned finding/conclusion block с author, evidence bindings, scope, limitations и review status; свободный comment не становится опубликованным выводом автоматически.
+  - id: UX-JOURNEY-009
+    requirement: Viewer с доступом к report/dashboard MUST уметь читать и создавать comments на разрешённом snapshot/block, но comment path MUST применять object access, PII/DLP validation, audit и notification policies.
+  - id: UX-JOURNEY-010
+    requirement: Workspace Administrator MUST управлять report/dashboard access grants отдельно от authoring; Analyst MAY запросить публикацию или изменение доступа, но не расширяет ACL самостоятельно без соответствующей административной роли.
 ```
 
 ## 2.4. Жизненный цикл объектов и readiness
@@ -1060,6 +1136,80 @@ metric_requirements:
 - `discount_amount`;
 - `repeat_customer_rate`.
 
+### 6.3.1. Display formats и стабильная группировка метрик
+
+Raw numeric value, business unit и presentation format являются разными частями контракта. Платформа не сохраняет форматированную строку как числовую истину и не сортирует по ней. Один versioned `NumberFormatSpec` MUST одинаково разрешаться в Web, email, XLSX summary/table, PNG labels и доступном text alternative.
+
+```yaml
+number_format_spec:
+  format_spec_id: uuid
+  value_kind: integer|decimal|currency|percent|ratio|duration|count
+  unit: string|null
+  currency: ISO_4217|null
+  notation: standard|compact|scientific
+  compact_thresholds:
+    thousand: 1000
+    million: 1000000
+    billion: 1000000000
+  precision_policy: fixed|adaptive_significant
+  significant_digits: 3
+  min_fraction_digits: integer
+  max_fraction_digits: integer
+  non_zero_floor: decimal|null
+  negative_zero_policy: normalize_to_zero
+  null_policy: explicit_missing
+  locale: BCP_47
+```
+
+Default adaptive percent policy:
+
+| Абсолютное отображаемое значение | Default precision | Пример |
+|---:|---:|---|
+| `>= 10%` | 0 знаков | `75.44% → 75%` |
+| `>= 1%` и `< 10%` | 1 знак | `3.44% → 3.4%` |
+| `>= 0.1%` и `< 1%` | 2 знака | `0.234% → 0.23%` |
+| `> 0` и ниже минимально отображаемого порога | значащие цифры либо `< threshold` | `0.004%`, но никогда ложный `0%` |
+
+Для compact notation используются locale-aware suffixes (`K/M/B` для английского, `тыс./млн/млрд` для русского). Summary/KPI MAY применять compact notation; typed detail table и XLSX data sheet сохраняют полное numeric value и native unit/currency metadata. Tooltip, Focus/Data table либо accessible detail MUST раскрывать полное значение, если видимое значение округлено.
+
+```yaml
+metric_group_version:
+  metric_group_version_id: uuid
+  metric_group_id: finance
+  version: integer
+  status: draft|validating|published|deprecated|archived
+  localized_label: {en: Finance, ru: Финансы}
+  group_order: 10
+  members:
+    - metric_version_id: uuid
+      metric_order: 10
+      default_visible: true
+  created_by: uuid
+  created_at: timestamp_utc
+```
+
+Пример default-групп: `finance` содержит margin/revenue/discount metrics в утверждённом порядке; `client` содержит active customer/customer count/average receipt/retention metrics. Группы являются semantic presentation metadata, не меняют формулы и не создают новую metric truth.
+
+```yaml
+metric_presentation_requirements:
+  - id: METRIC-009
+    requirement: Каждая reportable numeric metric MUST ссылаться на versioned NumberFormatSpec либо на versioned system default по value_kind; форматирование внутри dashboard/component запрещено.
+  - id: METRIC-010
+    requirement: Web, email, XLSX и chart labels MUST разрешать одинаковые locale, unit, currency, sign, compact-notation и precision semantics из одного format contract.
+  - id: METRIC-011
+    requirement: Adaptive percent formatting MUST не превращать ненулевое значение в видимый 0%; значение ниже display threshold показывается с дополнительными significant digits либо как явное less-than значение.
+  - id: METRIC-012
+    requirement: Sorting, filtering, aggregation, comparison и export fidelity MUST использовать raw typed value; formatted label не является входом вычисления.
+  - id: METRIC-013
+    requirement: Rounded или compact visible value MUST иметь доступный путь к полному значению; missing, suppressed, not-applicable и zero MUST оставаться различимыми.
+  - id: METRIC-014
+    requirement: MetricGroupVersion MUST задавать stable localized group label, group_order и metric_order; default presentation сохраняет непрерывность групп и одинаковый порядок Web/email/XLSX.
+  - id: METRIC-015
+    requirement: Analyst MAY переопределить visibility и порядок только в versioned presentation/report specification; переопределение не меняет MetricGroupVersion и MUST сохранять явные group boundaries и accessible headers.
+  - id: METRIC-016
+    requirement: XLSX summary/report sheets MUST хранить numeric cells как числа с native number formats; преобразование business number в текст ради визуального сокращения запрещено.
+```
+
 ## 6.4. Capability Engine
 
 Capability Engine вычисляет доступность функций на основании опубликованной модели.
@@ -1199,6 +1349,116 @@ filter_requirements:
     requirement: Apply to report MUST повторно валидировать draft filters и authorization на backend, после чего включать их в normalized analysis/report specification и request/cache identity; system и locked filters всегда видимы и не могут быть удалены, переопределены либо ослаблены пользователем.
 ```
 
+## 6.6. Methodology Registry и аналитические knowledge objects
+
+`MethodologyRegistry` стандартизирует не только формулы метрик, но и способ ответа на повторяющийся класс бизнес-вопросов.
+
+```yaml
+analysis_method_version:
+  analysis_method_version_id: uuid
+  analysis_method_id: string
+  workspace_id: uuid
+  version: integer
+  status: draft|validating|published|deprecated|archived
+  revision: integer
+  localized_title: localized_text
+  business_question_types: []
+  required_capabilities: []
+  required_entity_roles: []
+  required_history_policy: object
+  metric_version_ids: []
+  allowed_dimension_ids: []
+  default_filter_expression: object|null
+  assumptions: []
+  exclusions: []
+  calculation_or_statistical_procedure: object
+  quality_checks: []
+  interpretation_guidance: localized_markdown
+  limitation_codes: []
+  output_template_ids: []
+  implementation_bindings: []
+  owner_id: uuid
+  reviewer_ids: []
+  created_by: uuid
+  created_at: timestamp_utc
+```
+
+```yaml
+analysis_case:
+  analysis_case_id: uuid
+  workspace_id: uuid
+  title: localized_text
+  business_question: localized_markdown
+  intended_decision: localized_markdown|null
+  requester_id: uuid|null
+  audience_role_keys: []
+  owner_id: uuid
+  priority: low|normal|high|critical
+  due_at: timestamp_utc|null
+  state: draft|triaged|in_research|in_review|answered|closed|cancelled
+  analysis_method_version_id: uuid|null
+  research_document_id: uuid|null
+  analytical_product_ids: []
+  created_at: timestamp_utc
+  updated_at: timestamp_utc
+
+finding_version:
+  finding_version_id: uuid
+  finding_id: uuid
+  version: integer
+  status: draft|in_review|published|deprecated
+  statement: localized_markdown
+  evidence_bindings: []
+  scope_and_filters: object
+  confidence_or_strength: descriptive|statistical_association|experimental|causal_model
+  limitations: []
+  recommendation: localized_markdown|null
+  owner_id: uuid
+  reviewer_ids: []
+  created_at: timestamp_utc
+
+decision_record:
+  decision_record_id: uuid
+  analysis_case_id: uuid
+  finding_version_ids: []
+  decision: localized_markdown
+  owner_id: uuid
+  decided_at: timestamp_utc
+  follow_up_at: timestamp_utc|null
+  outcome_note: localized_markdown|null
+
+analytical_product:
+  analytical_product_id: uuid
+  workspace_id: uuid
+  product_type: saved_analysis|research_document|dashboard|report|segment|forecast
+  published_version_ref: object
+  owner_id: uuid
+  lifecycle_status: published|deprecated|archived
+  usage_and_impact_refs: []
+```
+
+`AnalysisCase` организует работу, но не является универсальным ticket tracker: workflow ограничен аналитическим вопросом, evidence и опубликованным результатом. `DecisionRecord` и impact note являются доступными возможностями, но не обязательным adoption/pilot gate и не коммерческой метрикой готовности продукта.
+
+```yaml
+methodology_requirements:
+  - id: METHOD-001
+    requirement: Published AnalysisMethodVersion MUST быть immutable и ссылаться только на versioned capabilities, metrics, filters, procedures, quality checks и output templates.
+  - id: METHOD-002
+    requirement: Изменение расчёта, допущения, exclusion, interpretation rule или implementation binding MUST создавать новую method version с diff и downstream impact.
+  - id: METHOD-003
+    requirement: Analysis run, research document и published analytical product MUST фиксировать применённую AnalysisMethodVersion либо явный code `unregistered_method` с limitation и review requirement.
+  - id: METHOD-004
+    requirement: Method publication MUST требовать owner, минимум одного reviewer, capability validation и examples/interpretation guidance; author не может единолично утвердить method, если workspace policy требует separation of duties.
+  - id: METHOD-005
+    requirement: FindingVersion MUST ссылаться на immutable evidence bindings, filters, metric/dataset/method versions и limitations и MUST не называть descriptive association causal effect.
+  - id: METHOD-006
+    requirement: Search MUST находить разрешённые methods, analyses, findings и analytical products по business question, title, metric, entity, owner и glossary terms без раскрытия запрещённого content.
+  - id: METHOD-007
+    requirement: AnalysisCase state не изменяет immutable analytical artifacts; закрытие или отмена case не удаляет published method, finding, report, dashboard или audit evidence.
+  - id: METHOD-008
+    requirement: CompanyPack MAY поставлять installation-approved MethodologyPack и MetricGroup versions; workspace override создаёт отдельную version и не изменяет исходный pack.
+```
+
 # 7. Подключения и ingestion
 
 ## 7.1. Источники v1 target
@@ -1208,18 +1468,60 @@ source_support:
   mandatory:
     - postgresql
     - microsoft_sql_server
-    - csv
-    - parquet
-  should:
     - mysql_mariadb
-  optional:
-    - xlsx_small_files
-  later:
     - clickhouse
-    - snowflake
-    - bigquery
-    - oracle
-    - cdc_streams
+    - csv_template_import
+    - xlsx_template_import
+  later:
+    - yandex_metrica_reporting_api
+    - yandex_metrica_logs_api
+```
+
+Parquet остаётся обязательным внутренним artifact/export format, но не является пользовательским source connector в текущем product scope. Дополнительные DB/SaaS/advertising connectors не считаются обещанными только потому, что общий `SourceConnector` расширяем.
+
+CSV/XLSX импорт является template-first, а не произвольным workbook ingestion:
+
+```yaml
+file_import_template_version:
+  file_import_template_version_id: uuid
+  template_id: string
+  version: integer
+  status: draft|validating|published|deprecated|archived
+  accepted_media_types: [text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet]
+  sheet_policy:
+    allowed_sheet_names: []
+    required_sheets: []
+    hidden_sheet_policy: reject|ignore_declared
+  columns:
+    - source_header: string
+      canonical_field_role: string
+      data_type: string
+      required: boolean
+      locale_parse_policy: object
+      null_policy: object
+  row_limit: integer
+  file_size_limit: integer
+  formula_policy: reject_or_materialized_values_only
+  duplicate_policy: object
+  error_policy: reject_file|reject_rows_with_report
+  created_by: uuid
+  created_at: timestamp_utc
+```
+
+```yaml
+connector_requirements:
+  - id: CONNECTOR-001
+    requirement: V1 target MUST поставлять и release-test PostgreSQL, Microsoft SQL Server, MySQL/MariaDB, ClickHouse, CSV template и XLSX template source connectors.
+  - id: CONNECTOR-002
+    requirement: CSV/XLSX file MUST приниматься только через published FileImportTemplateVersion с typed columns, locale parse policy, size/row/sheet limits и rejected-row diagnostics; произвольные formulas, macros и unknown sheets запрещены.
+  - id: CONNECTOR-003
+    requirement: Database connector MUST объявлять driver/version, read-only enforcement, consistency modes, pushdown capabilities, identifier quoting, timezone/decimal semantics, supported source versions и integration-test evidence.
+  - id: CONNECTOR-004
+    requirement: Connector secret, DSN и source network detail MUST оставаться secret/reference data и не попадать в lineage labels, README exports, logs или support bundles.
+  - id: CONNECTOR-005
+    requirement: Yandex Metrica остаётся future capability с раздельными connector modes Reporting API и Logs API; aggregated report и raw/non-aggregated log MUST иметь разные capability, provenance, sampling/privacy и freshness contracts.
+  - id: CONNECTOR-006
+    requirement: Future connector name в roadmap не создаёт active runtime contract, dependency или UI credential flow до отдельной specification и acceptance matrix.
 ```
 
 ## 7.2. SourceConnector contract
@@ -2450,7 +2752,75 @@ module:
 - омниканальность MUST определяться в заданном временном окне;
 - сравнение магазинов SHOULD нормализоваться на дни работы, если они доступны.
 
-## 12.9. Rule-based и quantile segments
+## 12.9. Governed population и обработка выбросов
+
+Обработка выбросов является частью versioned analytical specification, а не обычным presentation filter и не исправлением source data. Она применяется после определения population/feature grain и до сегментации либо reportable analysis. Один и тот же contract используется в customer/sales analyses, segment builder, Research Workspace и опубликованных результатах.
+
+```yaml
+population_treatment_spec_version:
+  population_ref: immutable_population_or_analysis_input_ref
+  entity_grain: customer|receipt|receipt_item|product|store|period
+  feature_or_metric_id: stable_registry_id
+  observation_window: explicit_range_and_as_of
+  reference_population_ref: immutable_ref
+  peer_scope_dimensions: []
+  method: quantile|iqr|mad
+  parameters:
+    tail: lower|upper|both
+    quantile_bounds: optional
+    iqr_multiplier: optional
+    mad_threshold: optional
+    minimum_population: required
+    tie_policy: deterministic
+  action: flag|exclude|winsorize
+  missing_zero_negative_returns_policy: explicit
+  comparison_boundary_mode: pinned_shared|independent_exploratory
+  approximate_quantile_policy: exact_by_default
+```
+
+```yaml
+outlier_requirements:
+  - id: OUTLIER-001
+    requirement: PopulationTreatmentSpecVersion MUST быть immutable, workspace-scoped и не может изменять source artifacts, canonical entities либо MetricDefinitionVersion.
+  - id: OUTLIER-002
+    requirement: Specification MUST фиксировать entity grain, feature/metric ID, observation window/as-of, reference population и peer scope; одинаковый raw value MAY иметь разный status только при явно разных versioned scopes.
+  - id: OUTLIER-003
+    requirement: V1 MUST поддерживать quantile trimming, IQR и MAD; mean/standard-deviation z-score не является default method для скошенных retail distributions.
+  - id: OUTLIER-004
+    requirement: Method parameters MUST включать tail, deterministic tie policy, minimum population и фактически вычисленные bounds; approximate quantiles допускаются только explicit policy с engine/version/error evidence.
+  - id: OUTLIER-005
+    requirement: Действия MUST быть `flag`, `exclude` и `winsorize`; default нового policy — `flag`, а exclude/winsorize требуют явного analyst action и impact preview.
+  - id: OUTLIER-006
+    requirement: Data-quality invalid rows MUST обрабатываться DQ rule/gate отдельно; статистический outlier status не является доказательством ошибки и не может молча удалить VIP либо high-value customer.
+  - id: OUTLIER-007
+    requirement: Preview MUST показывать before/after count, customer/order share, revenue/value share, metric deltas, distribution и resolved bounds до запуска или публикации treated result.
+  - id: OUTLIER-008
+    requirement: Для `vs LY` default `pinned_shared` MUST применять одни versioned bounds к current и comparison periods; independent-period bounds доступны только как явно обозначенный exploratory mode и входят в Result Trust.
+  - id: OUTLIER-009
+    requirement: Treated result, SegmentMembershipSnapshot, ReportSnapshot, email и XLSX README MUST раскрывать treatment version, method/action, scope, resolved bounds, affected count/value share и limitations.
+  - id: OUTLIER-010
+    requirement: Preview, excluded-member inspection, export и drill-down MUST повторно применять object/row/PII policy; aggregate diagnostics не могут раскрывать denied members либо sensitive facets.
+  - id: OUTLIER-011
+    requirement: Реализация MUST использовать CPU vectorized/pushdown paths через Polars/DuckDB/NumPy и не выполнять row-wise Python или browser-side analytical filtering без измеренного исключения.
+  - id: OUTLIER-012
+    requirement: Для ML fit population и assignment population MUST быть различимы; flagged extremes MAY исключаться из fit, но после fit могут быть назначены с `outlier=true`, distance/confidence и sensitivity evidence вместо молчаливого исчезновения.
+```
+
+Time-series residual anomaly detection остаётся отдельной Forecasting policy: оно не переиспользует cross-sectional sales bounds без явного compatible contract.
+
+## 12.10. Rule, bucket и stratified segmentation
+
+```yaml
+segmentation_definition_version:
+  method: rule|rfm|bucket|kmeans
+  population_ref: immutable_ref
+  feature_refs: [stable_feature_or_metric_ids]
+  treatment_spec_version_id: optional
+  as_of_date: required
+  overlap_policy: allow|first_match|exclusive_error
+  output_group_count: explicit_when_applicable
+  seed: required_for_nondeterministic_method
+```
 
 ```yaml
 module:
@@ -2462,6 +2832,7 @@ module:
     - priority
     - overlap_policy: allow|first_match|exclusive_error
     - as_of_date
+    - population_treatment_spec_version_id_optional
   outputs:
     - segment_membership_snapshot
     - profile
@@ -2470,35 +2841,97 @@ module:
 
 Expression tree MUST быть сериализуемым и исполнимым как Polars expression. Пользовательский SQL MAY быть отдельным advanced mode.
 
-## 12.10. Cluster-based segmentation
+```yaml
+bucket_spec_version:
+  feature_id: stable_feature_or_metric_id
+  method: quantile|equal_width|custom_thresholds
+  bucket_count: required_for_quantile_or_equal_width
+  thresholds: required_for_custom_thresholds
+  boundary_mode: pinned|dynamic_exploratory
+  missing_bucket: explicit
+  tie_policy: deterministic
+  ordered_labels: required
+```
+
+```yaml
+stratification_spec:
+  analysis_version_id: required
+  bucket_spec_version_id: required
+  strata_dimensions: [one_or_two_allowed_dimensions]
+  boundary_scope: global|within_stratum
+  measures: [count, share, value, value_share, mean, median]
+  minimum_cell_size: policy_bound
+  excess_cardinality_policy: top_n_plus_other|blocked
+```
+
+```yaml
+segmentation_requirements:
+  - id: SEGMENT-001
+    requirement: Published segmentation MUST использовать immutable SegmentationDefinitionVersion с method, population, features, treatment, as_of, group-count и seed bindings.
+  - id: SEGMENT-002
+    requirement: SegmentMembershipSnapshot MUST pin definition, input artifacts, treatment/preprocessing/model versions, code version и member grain/key и не переписываться при refresh/retrain.
+  - id: SEGMENT-003
+    requirement: V1 bucket segmentation MUST поддерживать quantile, equal-width и custom-threshold methods.
+  - id: SEGMENT-004
+    requirement: Analyst MUST указывать требуемое bucket_count для quantile/equal-width; custom thresholds определяют число упорядоченных групп и проходят overlap/gap validation.
+  - id: SEGMENT-005
+    requirement: Bucket contract MUST фиксировать ordered labels, missing/unassigned behavior, boundary inclusivity и deterministic tie policy.
+  - id: SEGMENT-006
+    requirement: Dynamic quantile bounds допускаются для exploration; recurring published segment MUST pin resolved bounds либо использовать fixed business thresholds, чтобы distribution drift не менял определение молча.
+  - id: SEGMENT-007
+    requirement: Stratified distribution по умолчанию является DistributionArtifact внутри AnalysisVersion, а не постоянным сегментом.
+  - id: SEGMENT-008
+    requirement: Global bucket boundaries являются default для сравнимости strata; within-stratum quantiles доступны только с label, объясняющим относительный rank вместо absolute range.
+  - id: SEGMENT-009
+    requirement: Stratification MUST ограничивать dimensions/cardinality, применять minimum-cell privacy policy и агрегировать excess strata в `Other` либо блокировать результат.
+  - id: SEGMENT-010
+    requirement: Analyst MAY сохранить выбранный bucket/stratum cell как новую immutable SegmentDefinitionVersion с полным lineage исходного DistributionArtifact.
+  - id: SEGMENT-011
+    requirement: V1 clustering MUST начинаться с CPU KMeans и принимать explicit final group count K; diagnostic K-1/K/K+1 или bounded candidate range не может молча заменить выбранный K.
+  - id: SEGMENT-012
+    requirement: KMeans preprocessing MUST version feature allowlist/order, missing policy, transformations включая optional log1p, robust|standard scaling и запрещать identifiers, raw PII и leakage features.
+  - id: SEGMENT-013
+    requirement: Cluster result MUST содержать membership snapshot, profiles, centers, sizes, distance/confidence, preprocessing artifact, stability и silhouette либо explicit metric limitation.
+  - id: SEGMENT-014
+    requirement: Business label и описание назначаются analyst после profiling и versioned отдельно; numeric cluster ID не является стабильным business meaning.
+  - id: SEGMENT-015
+    requirement: Retraining MUST создавать новый snapshot; cross-version mapping использует profile matching и explicit analyst approval и не переписывает historical membership.
+  - id: SEGMENT-016
+    requirement: Assignment новых members к frozen model и full retrain являются разными explicit operations с разными result identities.
+  - id: SEGMENT-017
+    requirement: Gaussian Mixture, HDBSCAN, automatic K selection, Isolation Forest и multivariate anomaly detection остаются post-v1 extensions за versioned plugin/model contract.
+  - id: SEGMENT-018
+    requirement: Preview MUST сравнивать profiles, sizes, stability и business-metric sensitivity с/без выбранного treatment и блокировать публикацию при failed DQ, insufficient population или policy violation.
+```
+
+## 12.11. KMeans cluster-based segmentation
 
 ```yaml
 module:
   id: ANALYTICS-SEGMENT-CLUSTER
-  phase: POST_V1
+  phase: V1
   inputs:
     required: [MART-CUSTOMER-FEATURES]
-  models: [KMeans, HDBSCAN]
+  models: [KMeans]
+  parameters:
+    - feature_set_version
+    - cluster_count_k
+    - preprocessing_spec_version
+    - population_treatment_spec_version_id_optional
+    - seed
+    - fit_population_policy
+    - assignment_population_policy
   outputs:
-    - cluster_assignment
+    - segment_membership_snapshot
     - cluster_profile
+    - cluster_center_artifact
     - diagnostics
     - fitted_preprocessing_pipeline
 ```
 
-Обязательные diagnostics:
+Обязательные diagnostics: feature distributions, missing/transformation/scaling policy, treatment/outlier share, cluster sizes, stability across seeds/samples, silhouette либо явное ограничение, business-metric sensitivity и человекочитаемое описание отличий.
 
-- feature distributions;
-- missing policy;
-- transformations;
-- scaling;
-- outlier share;
-- cluster sizes;
-- stability across seeds/samples;
-- silhouette или другая применимая метрика;
-- человекочитаемое описание отличий.
-
-## 12.11. ABC/XYZ и Pareto
+## 12.12. ABC/XYZ и Pareto
 
 Этот модуль отсутствовал в исходном плане, но естественно дополняет продажи и ассортимент.
 
@@ -2519,7 +2952,7 @@ module:
     - pareto_summary
 ```
 
-## 12.12. Discount и margin analytics
+## 12.13. Discount и margin analytics
 
 ```yaml
 module:
@@ -2537,7 +2970,7 @@ module:
 
 Модуль является описательным. Он не должен заявлять причинный эффект скидки без экспериментального или квазиэкспериментального дизайна.
 
-## 12.13. Historical segment migration
+## 12.14. Historical segment migration
 
 ```yaml
 module:
@@ -2552,7 +2985,7 @@ module:
 
 Этот модуль требует сохранения snapshot membership, а не динамического пересчёта старого сегмента по новым правилам.
 
-## 12.14. Custom Analysis Builder
+## 12.15. Custom Analysis Builder
 
 Custom Analysis Builder закрывает универсальные ad hoc исследования без написания кода.
 
@@ -2583,6 +3016,85 @@ module:
 - Join выполняется только по опубликованным semantic relationships.
 - UI показывает итоговый grain и estimated row count до запуска.
 - Analysis specification MAY быть преобразована в pipeline template.
+
+## 12.16. Research Workspace и переход от ad hoc к reusable product
+
+Research Workspace является block-based аналитическим документом, а не произвольным notebook kernel и не вторым dashboard engine. Он использует те же AnalysisVersion, ReportSnapshot, ChartSpec, typed table artifacts, filters, Metric Registry, Methodology Registry и execution engine.
+
+```yaml
+research_document_version:
+  research_document_version_id: uuid
+  research_document_id: uuid
+  workspace_id: uuid
+  analysis_case_id: uuid|null
+  analysis_method_version_id: uuid|null
+  version: integer
+  status: draft|validating|published|deprecated|archived
+  revision: integer
+  localized_title: localized_text
+  purpose: localized_markdown
+  outline:
+    - section_id: uuid
+      parent_section_id: uuid|null
+      localized_title: localized_text
+      section_order: integer
+  blocks:
+    - block_id: uuid
+      section_id: uuid
+      block_type: heading|narrative|metric_group|chart|table|finding|conclusion|methodology|result_trust|data_guide_reference
+      block_order: integer
+      source_binding: object|null
+      presentation: object
+  global_filter_expression: object|null
+  access_policy_id: uuid
+  created_by: uuid
+  created_at: timestamp_utc
+```
+
+Analyst начинает с общего состояния и последовательно добавляет детали, разрезы и evidence. Linked-filter action MAY применяться к section или выбранным blocks, но MUST быть видимой и воспроизводимой. Опубликованный research document может быть использован как dashboard/report source без копирования вычислительной логики.
+
+Viewer comments хранятся отдельно:
+
+```yaml
+comment_thread:
+  thread_id: uuid
+  workspace_id: uuid
+  resource_type: research_document|dashboard|report_snapshot|analysis_result
+  resource_version_or_snapshot_id: uuid
+  block_id: uuid|null
+  state: open|resolved|archived
+  created_by: uuid
+  created_at: timestamp_utc
+
+comment:
+  comment_id: uuid
+  thread_id: uuid
+  body: localized_markdown
+  author_id: uuid
+  created_at: timestamp_utc
+  edited_at: timestamp_utc|null
+  moderation_state: visible|redacted|removed
+```
+
+```yaml
+research_requirements:
+  - id: RESEARCH-001
+    requirement: ResearchDocumentVersion MUST поддерживать heterogeneous blocks, stable outline и deterministic order, чтобы один surface содержал metric groups, charts, tables, methodology, findings и conclusions.
+  - id: RESEARCH-002
+    requirement: Каждый data/evidence block MUST ссылаться на immutable source artifact и фиксировать metrics, filters, comparison, grain, formats, lineage и PII class; pasted number без binding не является trusted evidence.
+  - id: RESEARCH-003
+    requirement: Published ResearchDocumentVersion MUST быть immutable; изменение outline, block, finding, binding или filter создаёт новую version с diff и impact.
+  - id: RESEARCH-004
+    requirement: Research mode MUST поддерживать section/global/local linked filters с явной областью действия; скрытое изменение других blocks запрещено.
+  - id: RESEARCH-005
+    requirement: Finding/conclusion block MUST ссылаться на FindingVersion и отображать author, review status, evidence и limitations отдельно от viewer discussion.
+  - id: RESEARCH-006
+    requirement: Comment MUST быть привязан к доступному version/snapshot/block, не изменять immutable content, проходить Markdown sanitization, PII/DLP validation и audit и не переживать потерю access grant.
+  - id: RESEARCH-007
+    requirement: Viewer MAY создавать и читать comments только на разрешённых resources; Analyst MAY resolve thread и явно promote содержание в новый draft FindingVersion, но автоматическое promotion запрещено.
+  - id: RESEARCH-008
+    requirement: Published research document MUST компилироваться в тот же ReportDefinition/ReportSnapshot contract для Web, email и XLSX без DOM capture или отдельного расчёта.
+```
 
 # 13. Прогнозирование
 
@@ -3166,10 +3678,13 @@ dashboard_version:
   description: localized_text|null
   layout_schema_version: semver
   layout: object
+  sections: []
   global_filters_schema: object
   widgets:
     - widget_id: uuid
-      widget_type: chart|metric|table|quality|forecast_status|text
+      section_id: uuid|null
+      widget_type: chart|metric|metric_group|table|quality|forecast_status|heading|text|finding|conclusion|methodology|result_trust
+      widget_order: integer
       source_binding:
         mode: pinned_result|latest_successful_by_spec
         analysis_version_id: uuid|null
@@ -3197,6 +3712,18 @@ dashboard_requirements:
     requirement: Stale, degraded, failed refresh или отсутствующий artifact MUST показываться на уровне widget и dashboard без подмены старых данных новыми.
   - id: DASHBOARD-006
     requirement: Template layout MUST иметь keyboard-accessible альтернативу любому drag-and-drop действию.
+  - id: DASHBOARD-007
+    requirement: Dashboard MUST поддерживать sections и heterogeneous blocks, включая metric groups, charts, tables, analyst findings/conclusions и narrative text, с deterministic reading order от общего к частному.
+  - id: DASHBOARD-008
+    requirement: Metric-group block MUST использовать published MetricGroupVersion либо versioned presentation override и сохранять group/metric order одинаково в Web, email и XLSX.
+  - id: DASHBOARD-009
+    requirement: Finding/conclusion на dashboard MUST быть evidence-linked versioned content; viewer comment отображается отдельным discussion layer и не становится частью published dashboard version.
+  - id: DASHBOARD-010
+    requirement: Только actor с report_access.manage MAY grant/revoke доступ пользователей и групп к published dashboard/report; authoring или publish permission само по себе не расширяет ACL.
+  - id: DASHBOARD-011
+    requirement: Effective viewer rendering MUST удалять или заменять permission-state blocks, недоступные по row/object/PII policy, не раскрывая их existence, values или labels через layout gaps, comments, counts или export.
+  - id: DASHBOARD-012
+    requirement: Dashboard viewer MUST предоставлять comments по разрешённым snapshot/block и сохранять deep link на конкретную immutable version.
 ```
 
 ## 14.3. Export
@@ -3213,6 +3740,42 @@ export_formats:
 ```
 
 Public MVP и v1 target не выполняют запись в таблицу внешней БД. Database destination export относится к post-MVP, то есть после v1 target, и до отдельного security/transactionality ADR не имеет активного runtime contract. Внутренний authenticated API MAY возвращать небольшие JSON results; публичный read-only result API относится к тому же будущему этапу и является отдельной поверхностью доступа.
+
+### 14.3.1. Distribution и future Activation boundary
+
+Три понятия не смешиваются:
+
+1. **Product distribution** — доставка и установка самой Custometry; текущая модель только self-host.
+2. **Report delivery** — разрешённые authenticated links, manual email, CSV/Parquet/XLSX и связанные manifests; это публичный core contract.
+3. **Audience activation** — будущая передача segment/audience snapshot во внешнюю marketing system; runtime и destination implementation отсутствуют в публичном v1.
+
+Публичная спецификация фиксирует только границу будущего activation port и обязательные safety свойства, необходимые для совместимости текущих SegmentSnapshot/Identity contracts. Детальный commercial design, destination catalog, entitlements, pricing, credentials, private connector code и delivery tickets MUST находиться вне публичного репозитория. Локальная `.gitignore`-директория является только защитой от случайного commit и не заменяет отдельный access-controlled private repository/storage.
+
+```yaml
+future_private_boundary:
+  current_product_distribution: self_host_only
+  public_activation_runtime: absent
+  public_destination_connectors: []
+  public_contract_placeholder:
+    input: immutable_segment_snapshot
+    required_future_stages: [identity_mapping, destination_mapping, dry_run, add_remove_skip_diff, approval, idempotent_submit, reconciliation]
+  local_ignored_draft_root: .private/distribution-activation/
+  authoritative_private_storage: separate_access_controlled_repository_or_storage
+```
+
+```yaml
+private_future_requirements:
+  - id: PRIVATE-FUTURE-001
+    requirement: До отдельного product decision Custometry MUST распространяться только как self-hosted product; SaaS/cloud control plane и managed customer data path отсутствуют.
+  - id: PRIVATE-FUTURE-002
+    requirement: Public repository MUST содержать только activation boundary/non-goals, но не destination implementation, commercial entitlement logic, private roadmap, credentials или private delivery artifacts.
+  - id: PRIVATE-FUTURE-003
+    requirement: `.private/` MUST быть исключён из Git как defense-in-depth; confidentiality MUST обеспечиваться отдельным access-controlled private repository/storage, потому что `.gitignore` не является security control.
+  - id: PRIVATE-FUTURE-004
+    requirement: Future activation MUST начинаться только с immutable SegmentSnapshot и предусматривать identity/destination mapping, dry-run, add/remove/skip diff, explicit approval, idempotency, per-record skip reason и reconciliation; HTTP success сам по себе не является доказательством приёма.
+  - id: PRIVATE-FUTURE-005
+    requirement: Report email/XLSX/CSV/Parquet delivery остаётся публичным core и MUST не зависеть от private activation package, license heartbeat или external control plane.
+```
 
 ## 14.4. Universal Report Composition
 
@@ -3231,11 +3794,13 @@ report_definition_version:
   reportable_source_type: analysis|forecast|dashboard|quality_report
   blocks:
     - block_id: uuid
-      block_type: heading|text|metric|table|chart|quality|forecast_status|metadata|data_guide
+      section_id: uuid|null
+      block_type: heading|text|metric|metric_group|table|chart|finding|conclusion|methodology|quality|forecast_status|metadata|data_guide
       title: localized_text|null
       data_binding: object|null
       presentation: object
   default_theme_id: paper
+  brand_profile_version_id: uuid
   created_by: uuid
   created_at: timestamp_utc
 
@@ -3276,6 +3841,8 @@ report_snapshot:
       lineage_artifact_id: uuid|null
       pii_class: none|internal|personal|sensitive
   data_guide_version_id: uuid|null
+  brand_profile_version_id: uuid
+  company_pack_version_id: uuid|null
   theme_id: abyss|graphite|slate|frost|paper|sand
   locale: BCP_47
   timezone: IANA_timezone
@@ -3318,6 +3885,14 @@ report_requirements:
     requirement: Report render MUST выполняться asynchronous run с preflight, cancellation, progress/ETA, resource profile, idempotency и stable error codes.
   - id: REPORT-010
     requirement: Retention/quota cleanup MUST удалять только rendered artifacts по policy и не удалять ReportDefinitionVersion, ReportSnapshot metadata или redacted audit history.
+  - id: REPORT-011
+    requirement: ReportDefinitionVersion MUST поддерживать ordered sections, metric groups, analyst findings/conclusions, methodology и narrative blocks наравне с charts/tables.
+  - id: REPORT-012
+    requirement: ReportSnapshot MUST pin BrandProfileVersion и CompanyPackVersion; Web preview, email, XLSX и generated documentation используют одну resolved corporate identity без remote assets.
+  - id: REPORT-013
+    requirement: Comment threads являются collaboration metadata и не входят в immutable rendered report по умолчанию; включение approved discussion summary требует отдельного versioned report block.
+  - id: REPORT-014
+    requirement: Access grant, report authoring, report sending и PII visibility MUST быть независимыми permissions; наличие одного не подразумевает остальные.
 ```
 
 ## 14.5. Пользовательская отправка отчёта по email
@@ -3412,8 +3987,10 @@ XLSX является последней функциональной часть
 
 ```yaml
 xlsx_workbook_contract:
-  schema_version: 1
+  schema_version: 2
   required_sheets: [README, Contents, Summary, Metadata]
+  readme_source: resolved_report_snapshot_and_data_guide
+  readme_sections: [report_identity, purpose, as_of_and_freshness, safe_data_sources, applied_filters, comparison, metric_definitions, metric_groups, grain_and_units, methodology, quality_and_limitations, lineage_summary, author_and_versions]
   data_sheet_per_report_block: true
   chart_strategy: native_when_lossless_else_raster
   values_policy: materialized_reproducible_values
@@ -3448,6 +4025,16 @@ xlsx_requirements:
     requirement: Sheet/table names MUST быть безопасными, уникальными, детерминированными и сопровождаться mapping в Contents при сокращении или transliteration.
   - id: XLSX-009
     requirement: Release gate MUST открывать generated workbook Excel-compatible reader, проверять OOXML integrity, formulas/charts/tables/hidden metadata и равенство golden totals Web/email/XLSX.
+  - id: XLSX-010
+    requirement: README sheet MUST автоматически и визуально структурированно объяснять purpose, as-of/freshness, безопасные source labels, все applied/default/locked filters, comparison, metric definitions, groups/order, methodology, grain, units, quality, limitations, lineage summary, author и pinned versions.
+  - id: XLSX-011
+    requirement: README MUST строиться только из ReportSnapshot, DataGuideVersion, MethodologyRegistry и safe catalog metadata; DSN, host, secret, raw source query, hidden filter value и недоступная PII запрещены.
+  - id: XLSX-012
+    requirement: Summary и presentation tables MUST применять тот же NumberFormatSpec и MetricGroupVersion, что Web/email; data sheets сохраняют full typed numeric values и native Excel number formats.
+  - id: XLSX-013
+    requirement: Compact labels MAY использоваться в Summary/README/chart labels, но workbook MUST сохранять machine-readable full numeric value, unit/currency и path к unsimplified data; visible non-zero percent не может стать 0%.
+  - id: XLSX-014
+    requirement: README, Contents, Summary и Metadata MUST использовать resolved BrandProfileVersion для logo, colors, typography и footer в пределах XLSX accessibility/openability contract.
 ```
 
 # 15. Web UI
@@ -3798,6 +4385,86 @@ theme_requirements:
     requirement: Email/XLSX default paper MAY быть явно заменён пользователем одним из шести themes; выбранный theme входит в ReportSnapshot и rendered artifact hash.
   - id: THEME-008
     requirement: Theme switcher, focus, status и charts MUST проходить en/ru, keyboard, reduced-motion, contrast и accessible-alternative checks для всех шести profiles.
+```
+
+### 15.4.2. White-label, BrandProfile и CompanyPack
+
+Shipped themes являются presets. Корпоративная кастомизация выполняется через versioned semantic tokens и validated assets, а не произвольный CSS/JavaScript override.
+
+```yaml
+brand_profile_version:
+  brand_profile_version_id: uuid
+  brand_profile_id: uuid
+  scope: installation|workspace
+  scope_id: uuid
+  version: integer
+  status: draft|validating|published|deprecated|archived
+  product_name: localized_text
+  short_name: localized_text
+  logos:
+    primary_light: asset_ref
+    primary_dark: asset_ref|null
+    compact_mark: asset_ref|null
+  favicon: asset_ref|null
+  icon_pack: bundled_default|validated_custom_pack
+  typography:
+    ui_font_family_id: bundled_font_id
+    document_font_family_id: bundled_font_id
+  theme_base_id: abyss|graphite|slate|frost|paper|sand
+  semantic_token_overrides: object
+  login_and_onboarding: object
+  email_identity_and_templates: object
+  report_xlsx_and_docs: object
+  support_links: object
+  legal_links_and_footer: object
+  custom_domain_policy: object|null
+  powered_by_policy: show|required|licensed_hide
+  asset_manifest_hash: sha256
+  created_by: uuid
+  created_at: timestamp_utc
+
+company_pack_version:
+  company_pack_version_id: uuid
+  company_pack_id: uuid
+  version: integer
+  status: draft|validating|published|deprecated|archived
+  brand_profile_version_id: uuid
+  semantic_mapping_template_ids: []
+  metric_pack_version_ids: []
+  metric_group_version_ids: []
+  methodology_pack_version_ids: []
+  role_policy_version_ids: []
+  dashboard_template_version_ids: []
+  report_template_version_ids: []
+  file_import_template_version_ids: []
+  data_guide_template_version_ids: []
+  connector_profile_refs_without_secrets: []
+  onboarding_configuration: object
+  manifest_hash: sha256
+```
+
+Installation profile задаёт corporate identity ceiling/default. Workspace overlay MAY выбирать разрешённый profile и сужать разрешённые presentation options, но не внедряет executable styles, remote assets либо невалидированные fonts. `CompanyPack` переносит конфигурацию, а не данные, credentials или customer-specific code.
+
+```yaml
+brand_requirements:
+  - id: BRAND-001
+    requirement: BrandProfileVersion MUST быть immutable, валидировать semantic tokens, contrast, required asset variants, file types/dimensions и безопасное rendering во всех supported channels.
+  - id: BRAND-002
+    requirement: Brand assets MUST быть content-addressed bundled PNG либо sanitized allowlisted SVG без script, external URL, font fetch, filter abuse или executable content.
+  - id: BRAND-003
+    requirement: Product name, logo/mark, favicon, icon pack, palette, typography, login/onboarding, email, report, XLSX, local docs, support/legal links и footer MUST разрешаться из одного pinned BrandProfileVersion.
+  - id: BRAND-004
+    requirement: Brand token override MUST использовать semantic token schema; raw component CSS, arbitrary HTML/JS и per-customer frontend fork запрещены.
+  - id: BRAND-005
+    requirement: Admin UI MUST предоставлять preview Web/login/email/XLSX/docs, validation evidence, diff, impact, publish, rollback-to-previous-binding и reset-to-base-theme.
+  - id: BRAND-006
+    requirement: Published report/dashboard/email/XLSX MUST фиксировать brand_profile_version_id и asset manifest hash, чтобы последующая смена бренда не переписывала исторический artifact.
+  - id: BRAND-007
+    requirement: CompanyPack import/export MUST иметь schema/version, manifest hash, compatibility preflight, diff/impact и MUST исключать secrets, source data, PII и private keys.
+  - id: BRAND-008
+    requirement: Custom icon pack MUST иметь stable semantic icon IDs, accessible labels where required и fallback к bundled Lucide icon; неизвестный icon ID не ломает navigation или report render.
+  - id: BRAND-009
+    requirement: White-label configuration MUST не изменять authorization, domain logic, metric values, run/cache identity или legal license/NOTICE obligations.
 ```
 
 ## 15.5. Интернационализация и локализация
@@ -4238,6 +4905,9 @@ API version prefix: `/api/v1`.
 | `/catalogs` | source catalog snapshots, preview |
 | `/datasets` | draft, validate, publish, capabilities |
 | `/metrics` | definitions, versions, validate |
+| `/metric-groups` | group versions, stable ordering, presentation overrides, validate |
+| `/number-formats` | workspace defaults, metric overrides, preview, validate |
+| `/methodologies` | draft, review, publish, deprecate, versions, usage impact |
 | `/filter-fields` | search allowed filter registry, operators, bounded facets |
 | `/quality-rules` | CRUD, version, execute |
 | `/quality-reports` | list, detail, samples |
@@ -4245,15 +4915,24 @@ API version prefix: `/api/v1`.
 | `/runs` | create, status, cancel, events, retry |
 | `/artifacts` | metadata, preview, download authorization |
 | `/analyses` | create specification, execute, results |
+| `/population-treatments` | draft/version/validate, resolve bounds, sensitivity preview, publish, usage impact |
+| `/segmentation-previews` | bucket/stratified/KMeans preflight, bounded diagnostics, cancel and result reference |
+| `/analysis-cases` | research case lifecycle, participants, evidence and product links |
+| `/research-documents` | block drafts, versions, findings, publication and export |
+| `/comments` | object-scoped threads, create, resolve, moderation and audit |
 | `/chart-specs` | resolve/read validated ChartSpec, bounded chart data, renderer capabilities и preview metadata |
 | `/promotions` | draft, validate, publish, versions, timeline, overlap diagnostics |
-| `/segments` | definitions, versions, snapshots, profiles |
+| `/segments` | definitions, versions, rule/RFM/bucket/KMeans method config, snapshots, profiles, migrations, frozen assignment and retrain |
 | `/forecasts` | specs, backtest, train, predict, monitor |
 | `/models` | registry, champion, archive |
 | `/reports` | definitions, versions, snapshots, preflight, render metadata |
 | `/report-deliveries` | email policy, sender verification, submit, status, reconcile, audit |
 | `/exports` | CSV/Parquet/JSON/XLSX create, preflight, status, audit |
 | `/dashboards` | draft, validate, publish, versions, render metadata |
+| `/access-policies` | report/dashboard grants, role bindings, expiry and effective-access preview |
+| `/brand-profiles` | asset upload, token validation, preview, publish and versions |
+| `/company-packs` | validate, publish, install preview and versions without secrets |
+| `/file-import-templates` | CSV/XLSX template versions, validation rules and safe preview |
 | `/data-guides` | template, upload, validate, publish, versions, rendered view |
 | `/notifications` | inbox, unread count, preferences, read, acknowledge, dismiss |
 | `/admin/plugins` | list installed, compatibility |
@@ -4364,7 +5043,7 @@ backend_modules:
   connection_catalog:
     owns: [connections, secrets_metadata, catalog_snapshots]
   semantic_model:
-    owns: [datasets, mappings, joins, metric_registry, filter_field_registry, capabilities]
+    owns: [datasets, mappings, joins, metric_registry, metric_groups, number_formats, filter_field_registry, capabilities]
   ingestion:
     owns: [extract_specs, watermarks, landing_manifests]
   execution:
@@ -4374,17 +5053,19 @@ backend_modules:
   data_quality:
     owns: [quality_rules, reports, drift]
   analytics:
-    owns: [analysis_specs, results, segments]
+    owns: [analysis_specs, population_treatment_specs, outlier_diagnostics, results, segmentation_definitions, bucket_specs, stratification_specs, segment_snapshots, cluster_models]
+  methodology_research:
+    owns: [analysis_methods, analysis_cases, research_documents, findings, decision_records, analytical_products, comments]
   promotion_journal:
     owns: [promotion_definitions, promotion_versions, windows, channel_scope, immutable_audience_bindings]
   forecasting:
     owns: [forecast_specs, backtests, model_registry, predictions]
   presentation:
-    owns: [chart_specs, chart_compiler_contract, shared_chart_compiler_ts_package, chart_render_artifact_metadata, dashboards, report_definitions, report_snapshots, rendered_reports, exports]
+    owns: [chart_specs, chart_compiler_contract, shared_chart_compiler_ts_package, chart_render_artifact_metadata, dashboards, dashboard_access_policies, report_definitions, report_access_policies, report_snapshots, rendered_reports, exports, brand_profiles, company_packs]
   report_delivery:
     owns: [report_email_policies, verified_sender_identities, report_email_deliveries, delivery_attempts]
   data_documentation:
-    owns: [data_guides, data_guide_versions, template_validation]
+    owns: [data_guides, data_guide_versions, file_import_templates, template_validation]
   notifications:
     owns: [notification_events, deliveries, preferences]
   audit:
@@ -4415,6 +5096,8 @@ entity_mappings
 identity_mapping_versions
 join_definitions
 metric_definitions
+metric_group_versions
+number_format_specs
 filter_field_definitions
 capability_evaluations
 version_diffs
@@ -4444,9 +5127,22 @@ artifact_dependencies
 
 analysis_projects
 analysis_versions
+population_treatment_spec_versions
+outlier_diagnostic_artifacts
+bucket_spec_versions
+stratification_specs
+analysis_method_versions
+analysis_cases
+research_document_versions
+finding_versions
+decision_records
+analytical_products
+object_comment_threads
+object_comments
 segment_definitions
 segment_versions
 segment_snapshots
+segment_model_versions
 promotion_definitions
 promotion_versions
 promotion_windows
@@ -4465,16 +5161,22 @@ chart_render_artifacts
 exports
 dashboards
 dashboard_versions
+dashboard_access_policy_versions
 report_definitions
 report_definition_versions
+report_access_policy_versions
 report_snapshots
 rendered_reports
 report_email_policy_versions
 verified_sender_identities
 report_email_deliveries
 report_email_delivery_attempts
+brand_profile_versions
+brand_assets
+company_pack_versions
 data_guides
 data_guide_versions
+file_import_template_versions
 notification_events
 notification_deliveries
 notification_preferences
@@ -4497,7 +5199,8 @@ audit_events
 | Alembic | Schema migrations | MUST | PostgreSQL | Forward и tested downgrade policy |
 | psycopg | PostgreSQL driver | MUST | Control DB, PG connector | Separate pools |
 | pyodbc | MS SQL driver | MUST | MSSQL connector | Требует ODBC Driver deployment docs |
-| PyMySQL или mysqlclient | MySQL driver | SHOULD | MySQL connector | Connector extra |
+| PyMySQL или mysqlclient | MySQL driver | MUST | MySQL/MariaDB connector | Connector extra, pinned supported server matrix |
+| clickhouse-connect | ClickHouse driver | MUST | ClickHouse connector | HTTP/native capability and decimal/timezone tests |
 | Celery | Task delivery и workers | MUST | Workers | PostgreSQL хранит authoritative state |
 | redis-py | Valkey protocol client | MUST | API/workers | Подключается к Valkey по совместимому протоколу |
 | croniter | Cron evaluation | SHOULD | Scheduler | Timezone tests обязательны |
@@ -4512,7 +5215,7 @@ audit_events
 | DuckDB | SQL над Parquet и локальный OLAP | MUST | Не control database |
 | ConnectorX/ADBC | Ускоренная extraction | OPTIONAL | Используется только после connector tests |
 | sqlglot | SQL parsing/transpilation | SHOULD | Не заменяет DB permissions |
-| openpyxl | XLSX small file import | OPTIONAL | Ограничение размера файла |
+| openpyxl либо выбранный после security/fidelity spike OOXML reader | Template-governed XLSX import | MUST | No macros/formula execution; sheet/row/file limits |
 
 Polars является основным dataframe engine. Pandas MAY использоваться только на границах совместимости библиотек и не должен становиться внутренним canonical format.
 
@@ -4710,6 +5413,12 @@ permissions:
   - dataset.read
   - dataset.manage
   - dataset.publish
+  - metric.read
+  - metric.manage
+  - metric.publish
+  - methodology.read
+  - methodology.manage
+  - methodology.publish
   - quality.read
   - quality.manage
   - quality.waiver.approve
@@ -4717,6 +5426,12 @@ permissions:
   - analysis.read
   - analysis.run
   - analysis.manage
+  - research.read
+  - research.manage
+  - finding.manage
+  - comment.read
+  - comment.create
+  - comment.resolve
   - promotion.read
   - promotion.manage
   - segment.read
@@ -4738,15 +5453,26 @@ permissions:
   - report.manage
   - report.send
   - report.export_xlsx
+  - report_access.manage
   - report_email_policy.manage
   - data_guide.read
   - data_guide.publish
+  - file_import_template.read
+  - file_import_template.manage
+  - file_import_template.publish
+  - file_import.read
+  - file_import.create
   - dashboard.manage
-  - dashboard.share
+  - dashboard.publish
+  - dashboard_access.manage
   - notification.read
   - notification.acknowledge
   - api_token.manage_own
   - plugin.manage
+  - brand.read
+  - brand.manage
+  - brand.assign
+  - company_pack.manage
   - audit.read
 ```
 
@@ -4755,18 +5481,24 @@ permissions:
 | Управление инсталляцией/plugins/backup | Да | Нет | Нет | Нет | Нет | Нет | Нет |
 | Создание workspace и глобальные policies | Да | Нет | Нет | Нет | Нет | Нет | Нет |
 | Участники и роли своего workspace | Только при membership | Да | Нет | Нет | Нет | Нет | Нет |
-| Connections и secrets | Только при membership | Да | По явному grant | Нет | Нет | Нет | Нет |
-| Dataset/metrics/DQ edit и publish | По workspace role | Да | Да | Read | Read | Read | Read |
-| DQ waiver approval | По workspace role | Да | Только отдельный grant | Нет | Нет | Нет | Нет |
-| Analysis/segments create/run | По workspace role | Да | Run | Да | Да | Published only | Read |
-| Promotion Journal read/manage | По workspace role | Да | Read | Own/Read | Read | Read | Read |
-| Forecast train/promote | По workspace role | Да | Нет | Read | Да | Published run only | Read |
-| Pipeline edit/publish | По workspace role | Да | Edit | Edit own | Edit own | Нет | Нет |
-| Run cancel/retry | По workspace role | Да | Own/allowed | Own/allowed | Own/allowed | Да | Нет |
-| PII preview/export | Только отдельный grant | Только отдельный grant | Только отдельный grant | Только отдельный grant | Только отдельный grant | Нет | Нет |
-| Report email/XLSX | Только при membership и grant | По grant | По grant | Own/allowed | Own/allowed | Нет | Нет |
-| Data Guide publish | Только при membership и grant | Да | По отдельному grant | Нет | Нет | Нет | Read |
-| Dashboard share | По workspace role | Да | Own | Own | Own | Нет | Нет |
+| Object-level report/dashboard access grants | Только при membership | Да | Нет | Нет | Нет | Нет | Нет |
+| Connections и secrets | Только при membership | Да | Нет | Нет | Нет | Нет | Нет |
+| File import templates и import runs | Только при membership и grant | Да | Read по grant | Нет | Нет | Read operational status | Нет |
+| Dataset/mapping/DQ edit и publish | По отдельной workspace role | Нет по умолчанию | Да | Read | Read | Read | Read |
+| Metrics/MetricGroup/NumberFormat/methodologies edit и publish | По отдельной analytical role | Нет по умолчанию | Да | Да | Да | Нет | Read |
+| DQ waiver approval | По отдельному grant | Нет по умолчанию | Только отдельный grant | Нет | Нет | Нет | Нет |
+| Analysis/research/segments create/run | По отдельной analytical role | Нет по умолчанию | Run/manage по grant | Да | Да | Published only | Read allowed |
+| Promotion Journal read/manage | По отдельной analytical role | Access policy only | Read/manage по grant | Да | Да | Read | Read allowed |
+| Forecast train/promote | По отдельной analytical role | Нет по умолчанию | Нет | Read | Да | Published run only | Read allowed |
+| Pipeline edit/publish | По отдельной analytical role | Нет по умолчанию | Edit | Edit own/allowed | Edit own/allowed | Нет | Нет |
+| Run cancel/retry | По отдельному operational grant | Нет по умолчанию | Own/allowed | Own/allowed | Own/allowed | Да | Нет |
+| PII preview/download/export | Только explicit time-bounded grant | Только explicit grant | Только explicit grant | Только explicit grant | Только explicit grant | Нет | Никогда |
+| Report email/XLSX | Только при membership и grant | Нет по умолчанию | По grant | Own/allowed | Own/allowed | Нет | Download non-PII allowed |
+| Data Guide publish | Только при membership и grant | Access policy only | По отдельному grant | По grant | По grant | Нет | Read allowed |
+| Dashboard/report authoring и publish | По отдельной analytical role | Нет | По grant | Да | Да | Нет | Нет |
+| Comments на разрешённом результате | По membership | По access | Да | Да | Да | Read/create по access | Read/create по access |
+| BrandProfile/CompanyPack manage/publish | Да | Нет | Нет | Нет | Нет | Нет | Read resolved brand |
+| Назначение разрешённого BrandProfile в workspace | Только при membership | Да по `brand.assign` | Нет | Нет | Нет | Нет | Read resolved brand |
 | Audit read | Global metadata или membership | Да | По grant | По grant | По grant | По grant | Нет |
 
 `Да` означает стандартный role grant в пределах указанного scope, а не обход object access policy. Пользователь MAY иметь несколько ролей; effective permissions являются объединением grants за вычетом explicit object/data restrictions. Installation Administrator не получает автоматический доступ к data/artifacts workspace.
@@ -4789,6 +5521,26 @@ rbac_requirements:
     requirement: PostgreSQL RLS SHOULD применяться как defense-in-depth после формализации transaction-local workspace context; application authorization остаётся обязательной.
   - id: RBAC-008
     requirement: Cache и idempotency scope MUST включать workspace_id и effective policy version.
+  - id: RBAC-009
+    requirement: Workspace Administrator default bundle MUST ограничиваться membership/role assignment, report/dashboard access policy, connections/secrets и workspace policy; analytical authoring/publish и PII не наследуются автоматически.
+  - id: RBAC-010
+    requirement: Analyst default bundle MUST включать создание/просмотр analyses, research documents, methodologies, metrics, segments, dashboards, reports, comments, sends и exports в пределах object policy, но MUST исключать connection/secret management и user/role/access assignment.
+  - id: RBAC-011
+    requirement: Viewer MUST иметь только явно granted read/comment access к reportable resources; raw personal/sensitive PII, source preview, segment member export, arbitrary artifact download и compute actions для Viewer запрещены независимо от report layout.
+  - id: RBAC-012
+    requirement: PII access MUST быть отдельным explicit permission с purpose, scope, expiry и audit и MAY назначаться только пользователям с Analyst/Data Steward/ML Analyst либо административной role ceiling; ни одна роль не получает PII автоматически.
+  - id: RBAC-013
+    requirement: report_access.manage и dashboard_access.manage MUST быть административными permissions, независимыми от report.manage/dashboard.publish; access change создаёт versioned policy diff, effective-access preview и audit event.
+  - id: RBAC-014
+    requirement: Comment read/create MUST проверять доступ к конкретной resource version/snapshot и block; revoke основного object grant немедленно прекращает доступ к thread без раскрытия его существования.
+  - id: RBAC-015
+    requirement: Пользователь с несколькими ролями получает union grants только в пределах installation/workspace/object/row/PII ceilings; separation-of-duties policy MAY запретить author-review-publish комбинацию для methodology и finding.
+  - id: RBAC-016
+    requirement: Metric definition, MetricGroupVersion и NumberFormatSpec MUST использовать отдельные `metric.read|manage|publish` permissions; `dataset.manage` не предоставляет неявное право менять аналитическую truth или presentation registry.
+  - id: RBAC-017
+    requirement: FileImportTemplateVersion lifecycle и file import execution MUST использовать отдельные template/import permissions; `connection.manage` не разрешает публикацию template или запуск upload автоматически.
+  - id: RBAC-018
+    requirement: Installation-level BrandProfile/CompanyPack manage/publish и workspace-level assignment MUST быть разделены; `brand.assign` позволяет выбрать только разрешённую published version и не позволяет менять assets, tokens или CompanyPack content.
 ```
 
 ### 20.2.1. Local auth lifecycle и будущий OIDC boundary
@@ -5219,6 +5971,32 @@ test_invariants:
     invariant: Motion matrix соблюдает tokens и reduced-motion; shell не remount-ится, refresh сохраняет previous data с freshness/status, dense/live/domain-changing charts не интерполируются, а tables не анимируют перемещение строк.
   - id: TEST-INV-052
     invariant: 403/404/session-expired/maintenance/upgrade-required, Help/shortcuts, notification-channel management и admin lifecycle surfaces показывают безопасные действия/codes, соблюдают permissions/redaction и не раскрывают secrets, denied resources или migration internals.
+  - id: TEST-INV-053
+    invariant: NumberFormatSpec даёт одинаковые Web/email/XLSX labels и native numeric cells; 75.44% по default policy отображается 75%, 0.23% не становится 0%, а sorting использует raw value.
+  - id: TEST-INV-054
+    invariant: Metric groups остаются contiguous и имеют одинаковые group/metric order и accessible headers в Web, email и XLSX при default presentation и versioned override.
+  - id: TEST-INV-055
+    invariant: XLSX README автоматически содержит safe sources, filters, metric definitions, groups, methodology, quality, limitations, lineage и versions и не раскрывает DSN, secrets, hidden values или запрещённую PII.
+  - id: TEST-INV-056
+    invariant: Workspace Administrator без дополнительных ролей не создаёт metrics/reports и не видит PII; Analyst не управляет connections/users/access grants; Viewer видит только granted non-PII result и может comment без изменения snapshot.
+  - id: TEST-INV-057
+    invariant: Research document from-summary-to-detail сохраняет deterministic outline, immutable evidence bindings, linked-filter scope и разделяет published finding от viewer comment.
+  - id: TEST-INV-058
+    invariant: BrandProfile assets проходят sanitization/contrast/channel render, один pinned profile даёт согласованные Web/login/email/XLSX/docs outputs и не меняет data/run/cache semantics.
+  - id: TEST-INV-059
+    invariant: PostgreSQL, MSSQL, MySQL/MariaDB и ClickHouse connectors проходят реальную supported-version integration matrix, а CSV/XLSX import отклоняет неизвестные columns/sheets, macros/formulas и violations published template.
+  - id: TEST-INV-060
+    invariant: Public build, image, SBOM, route registry и package graph не содержат private activation implementation или private artifacts; manual report delivery работает без private package.
+  - id: TEST-INV-061
+    invariant: PopulationTreatmentSpecVersion не изменяет source/canonical metric, одинаковые pinned inputs/method/bounds/action/code дают одинаковые flags/caps/exclusions, а Result Trust раскрывает affected count/value share.
+  - id: TEST-INV-062
+    invariant: Default `vs LY` применяет один pinned shared boundary set к current/comparison periods; independent exploratory bounds имеют отдельную result identity и явный disclosure.
+  - id: TEST-INV-063
+    invariant: Quantile/equal-width/custom buckets сохраняют deterministic ordered membership при ties/missing/boundary values, а recurring published segment не пересчитывает pinned bounds молча.
+  - id: TEST-INV-064
+    invariant: KMeans run соблюдает explicit K, feature order/preprocessing/seed/CPU allocation, не использует ID/PII/leakage features и публикует profiles/centers/stability/silhouette вместе с immutable membership snapshot.
+  - id: TEST-INV-065
+    invariant: Excluded-from-fit flagged extremes не исчезают из assignment population без explicit policy; post-fit assignment сохраняет outlier flag/distance/confidence, а sensitivity сравнивает result с/без treatment.
 ```
 
 ## 22.3. Golden datasets
@@ -5243,6 +6021,9 @@ test_invariants:
 - en/ru/pseudo-localized presentation fixtures.
 - previous-year leap-day/ISO-week-53/fiscal/incomplete-period fixtures;
 - overlapping promotions с channel и immutable segment/customer-list audiences;
+- skewed/zero-inflated/heavy-tail sales с quantile/IQR/MAD bounds, ties, missing, returns, legitimate VIP и DQ-invalid rows;
+- global/within-stratum boundaries, minimum-cell privacy и high-cardinality `Other` fixtures;
+- deterministic bucket boundaries и KMeans fixtures для exact K, seed stability, frozen assignment, retrain migration и treatment sensitivity;
 - low/high-cardinality и sensitive filter fields;
 - safe/unsafe Markdown Data Guide fixtures;
 - multi-block ReportSnapshot с Web/email/XLSX golden outputs;
@@ -5253,8 +6034,12 @@ test_invariants:
 - dense chart data для deterministic aggregate/sample/level-of-detail и SVG/Canvas threshold fixtures;
 - identical shared-compiler Web/SSR compiled-option hashes и Web/SSR-SVG/email-PNG/XLSX-native-or-raster semantic/golden outputs;
 - bundled-font, compiler-build и renderer-build rotation fixtures, доказывающие render-identity/cache invalidation;
+- adaptive number formatting, metric-group order и full-value disclosure fixtures;
+- governed CSV/XLSX templates с locale numbers/dates, unknown columns/sheets, formulas/macros и rejected rows;
+- research outline/findings/comments/access-revocation fixtures;
+- valid/invalid brand assets, token contrast, icon fallbacks и cross-channel white-label fixtures;
 
-MSSQL connector job MUST выполняться для release candidate на поддерживаемых Linux ODBC Driver и Windows Server client matrices; его нельзя заменять unit mock. Если лицензирование CI service ограничивает каждый PR, PR выполняет contract tests, а обязательный protected release job — реальную integration matrix.
+PostgreSQL, MSSQL, MySQL/MariaDB и ClickHouse connector jobs MUST выполняться для release candidate на заявленных supported server/driver matrices; их нельзя заменять unit mocks. MSSQL дополнительно проверяется на поддерживаемых Linux ODBC Driver и Windows Server client matrices. Если лицензирование CI service ограничивает каждый PR, PR выполняет contract tests, а обязательный protected release job — реальную integration matrix.
 
 # 23. Производительность и масштабирование
 
@@ -5393,6 +6178,9 @@ benchmark_dataset:
 - incremental day refresh;
 - customer_features build;
 - RFM;
+- quantile/IQR/MAD treatment preview and materialization;
+- quantile/equal-width bucket assignment and stratified distribution aggregation;
+- KMeans fit/profile/assignment for explicit K with and without treatment;
 - monthly cohorts;
 - basket pair aggregation;
 - revenue forecast backtest;
@@ -5619,7 +6407,7 @@ release_stage:
   auth:
     - local_admin_bootstrap
     - basic_session_revoke
-  sources: [CSV, Parquet]
+  sources: [CSV_template, XLSX_template]
   semantic_entities: [Customer, Receipt, Calendar]
   ingestion: [full_snapshot]
   quality: [schema, key, date, customer_reference]
@@ -5652,7 +6440,7 @@ release_stage:
     - complete_local_auth_lifecycle
     - invites_reset_sessions_and_scoped_API_tokens
     - OIDC_provider_boundary_without_OIDC_implementation
-  sources: [PostgreSQL, Microsoft_SQL_Server, CSV, Parquet]
+  sources: [PostgreSQL, Microsoft_SQL_Server, MySQL_MariaDB, ClickHouse, CSV_template, XLSX_template]
   semantic_entities: [Customer, CustomerIdentity, Receipt, ReceiptItem, Product, Calendar]
   ingestion: [full_snapshot, incremental_watermark, partition_refresh]
   quality:
@@ -5672,8 +6460,12 @@ release_stage:
   product:
     - saved_onboarding
     - guided_analysis
+    - metric_and_methodology_registries
+    - analysis_cases_and_research_workspace
     - result_trust_panel
     - template_dashboards
+    - report_access_and_comments
+    - installation_brand_profile_and_company_pack
     - schedules_and_operator_center
     - in_app_operational_notifications
   localization:
@@ -5691,9 +6483,8 @@ release_stage:
 release_stage:
   stage: v1_target
   sources:
-    required: [PostgreSQL, Microsoft_SQL_Server, CSV, Parquet]
-    should: [MySQL_MariaDB]
-    optional: [XLSX_small_files]
+    required: [PostgreSQL, Microsoft_SQL_Server, MySQL_MariaDB, ClickHouse, CSV_template, XLSX_template]
+    later_declared_only: [Yandex_Metrica_Reporting_API, Yandex_Metrica_Logs_API]
   semantic_entities: [Customer, CustomerIdentity, Receipt, ReceiptItem, Product, Store, Channel, Calendar, Promotion]
   ingestion: [full_snapshot, append, incremental_watermark, partition_refresh, upsert]
   quality: [all_public_mvp_checks, drift_history, issue_workflow]
@@ -5706,8 +6497,14 @@ release_stage:
     - store_channel
     - basic_basket_pairs
     - rule_segments
+    - governed_outlier_treatment_quantile_iqr_mad
+    - bucket_segments_quantile_equal_width_custom_thresholds
+    - stratified_distributions
+    - kmeans_segmentation_with_explicit_k
     - historical_segment_migration
     - custom_analysis_builder
+    - governed_research_workspace
+    - methodology_registry_and_analysis_cases
     - universal_previous_year_comparison
     - searchable_typed_filter_registry
     - promotion_journal_and_timeline
@@ -5737,12 +6534,15 @@ release_stage:
     - bounded_ECharts_SSR_SVG_to_PNG_for_email_and_XLSX_fallback
     - no_Dash_Plotly_core_EChartsGL_or_WebGL
     - versioned_Data_Guide
+    - adaptive_NumberFormatSpec_and_MetricGroupVersion
+    - versioned_BrandProfile_and_CompanyPack
     - universal_Report_Composition
     - user_initiated_report_email_with_verified_sender_and_domain_allowlist
     - benchmark_and_restore_drill
     - security_and_license_release_gates
   notifications: [in_app, email, webhook]
-  output: [web_results, dashboards, report_email, CSV, Parquet, bounded_internal_authenticated_JSON, universal_XLSX_last_functional_slice]
+  distribution: [self_host_only]
+  output: [web_results, research_documents, dashboards, comments, report_email, CSV, Parquet, bounded_internal_authenticated_JSON, universal_XLSX_last_functional_slice]
 ```
 
 ## 26.4. Реализационные phases
@@ -5759,7 +6559,7 @@ release_stage:
 
 ### Phase 1 — Vertical alpha (`vertical_alpha`)
 
-- CSV/Parquet discovery и mapping wizard для Customer/Receipt;
+- CSV/XLSX template discovery и mapping wizard для Customer/Receipt;
 - full extraction, базовый quality gate и capability preflight;
 - базовые marts, sales/customer/RFM;
 - первый allowlisted ChartSpec set и единственный Web adapter Apache ECharts SVG/Canvas без WebGL;
@@ -5768,30 +6568,35 @@ release_stage:
 
 ### Phase 2 — Data onboarding и security (`public_mvp`)
 
-- PostgreSQL/MSSQL connectors с обязательной integration CI;
+- PostgreSQL/MSSQL/MySQL/ClickHouse connectors с обязательной integration CI;
 - multi-workspace management, complete local auth, invites/reset/sessions/tokens;
 - CustomerIdentity, ReceiptItem/Product, version lifecycle и impact report;
 - incremental consistency, schema drift, DQ remediation/waivers;
 - searchable typed Filter Field Registry и versioned Data Guide upload/render foundation;
+- MetricGroup/NumberFormat contracts, Methodology Registry, AnalysisCase и Research Workspace foundation;
+- installation BrandProfile/CompanyPack schema, safe asset validation и Frost-based default preview;
 - canonical workspace routing, browser history/return-to-origin, system surfaces и unsaved-change guards;
 - complete en/ru coverage, WCAG shell и first-run onboarding.
 
 ### Phase 3 — Product analytics (`public_mvp`)
 
-- стандартные marts, cohorts, lifecycle и rule segments;
+- стандартные marts, cohorts, lifecycle, rule segments и foundation contracts для PopulationTreatmentSpecVersion/SegmentationDefinitionVersion;
 - универсальный previous-year TimeComparisonSpec для reportable analytics;
 - Promotion Journal с immutable audience bindings, first-class `range_timeline`, visible-window fetch и descriptive chart overlays;
 - полный public-MVP forecast set и monitoring;
 - template dashboards, schedules, Operator Center и in-app notifications;
+- heterogeneous research/dashboard blocks, evidence-linked findings, object access policies и comments;
 - CSV/Parquet exports, backup/restore и production Compose.
 
 ### Phase 4 — Advanced low-code (`v1_target`)
 
 - accessible pipeline canvas поверх уже работающего execution engine;
 - template pipelines, custom analysis builder, basket и store/channel;
+- governed quantile/IQR/MAD outlier treatment с sensitivity preview, bucket segmentation, stratified distributions и CPU KMeans с explicit K, immutable preprocessing/model/membership artifacts;
 - email и webhook operational notification channels поверх стабильной event/delivery model;
 - operational channel management, admin system lifecycle, contextual Help/shortcuts и production motion matrix;
 - universal Report Composition, bounded embedded Node ECharts SSR, deterministic SVG→PNG email renderer и user-initiated report delivery с verified sender/global-domain ceiling/workspace narrowing;
+- cross-channel metric grouping/adaptive formatting и auto-generated XLSX README contract;
 - plugin SDK, полный diff/impact UX и admin operations.
 
 ### Phase 5 — V1 pre-XLSX hardening (`v1_target`)
@@ -5802,6 +6607,7 @@ release_stage:
 - six-theme contrast/chart/accessibility matrix, invalid ChartSpec security fixtures и cross-render golden parity;
 - mail transport retry/unknown-state reconciliation canary и runbooks;
 - MSSQL release matrix;
+- PostgreSQL/MySQL/ClickHouse connector release matrices и governed CSV/XLSX template security fixtures;
 - license/SBOM/provenance gates;
 - user/developer documentation.
 
@@ -5823,8 +6629,9 @@ release_stage:
 ## 26.5. Post-MVP: после v1 target
 
 - database destination export после отдельного security/transactionality ADR;
+- Yandex Metrica Reporting API и Logs API connectors как два независимых capability modes после отдельной source/privacy specification;
 - OIDC/Keycloak runtime implementation поверх зафиксированного provider boundary;
-- cluster-based segmentation;
+- Gaussian Mixture, HDBSCAN, automatic K selection, Isolation Forest и multivariate anomaly detection;
 - ABC/XYZ расширения;
 - comparable store analytics;
 - discount/margin analytics;
@@ -5834,9 +6641,11 @@ release_stage:
 - Optuna tuning;
 - MLflow adapter;
 - Vault/KMS;
-- additional connectors;
+- additional connectors только по отдельным product decisions;
 - remote storage и distributed workers только после будущего ADR, указанного в разделе 8.3;
 - public read-only result API.
+- B2B sales ontology (`Account`, `Contact`, `Lead`, `Opportunity`, pipeline, quote, renewal) как отдельное additive product extension.
+- private activation/destination implementation в отдельном access-controlled repository; public v1 не содержит runtime или marketplace.
 
 # 27. End-to-end сценарии
 
@@ -5855,7 +6664,7 @@ One-time bootstrap token
 ## 27.2. Основной demo flow
 
 ```text
-MS SQL / CSV
+PostgreSQL / MS SQL / MySQL / ClickHouse / governed CSV-XLSX template
 → catalog discovery
 → Customer + Receipt + ReceiptItem mapping
 → schema/cardinality validation
@@ -5865,14 +6674,19 @@ MS SQL / CSV
 → customer_features_snapshot
 → active customer analytics
 → RFM
+→ governed PopulationTreatmentSpecVersion preview (flag/exclude/winsorize)
+→ bucket/stratified analysis or KMeans with explicit group count
+→ immutable SegmentMembershipSnapshot and diagnostics
 → cohorts
 → online/offline comparison
 → previous-year calendar-aligned comparison
 → Promotion Journal timeline overlay
+→ AnalysisCase + approved AnalysisMethodVersion
+→ ResearchDocument from executive summary to detailed evidence
 → revenue and active-base forecast for 12 months
 → ReportSnapshot
 → user-sent HTML email from verified sender
-→ dashboard + Parquet + universal XLSX export
+→ branded dashboard + comments + Parquet + universal XLSX with generated README
 ```
 
 ## 27.3. Incremental refresh
@@ -5940,7 +6754,7 @@ Worker lease expired
 ```yaml
 acceptance_criteria:
   - id: AC-001
-    criterion: Администратор подключает PostgreSQL и MSSQL read-only source из Web UI.
+    criterion: Workspace Administrator подключает PostgreSQL, MSSQL, MySQL/MariaDB и ClickHouse read-only sources и импортирует CSV/XLSX только по опубликованным templates из Web UI.
   - id: AC-002
     criterion: Пользователь создаёт и публикует semantic dataset без изменения кода.
   - id: AC-003
@@ -6019,6 +6833,16 @@ acceptance_criteria:
     criterion: Customer marts и segment snapshots используют canonical_customer_id и явные primary keys, а product-level revenue использует item-grain metric без размножения header measures.
   - id: AC-040
     criterion: Public MVP активирует только in-app operational delivery; email/webhook endpoints и adapters остаются выключены до v1_target.
+  - id: AC-041
+    criterion: Workspace Administrator управляет membership, roles, report/dashboard access и connections, но без дополнительной роли не создаёт analytical content и не получает PII; Analyst не управляет connections/access assignments.
+  - id: AC-042
+    criterion: Viewer читает только granted report/dashboard snapshots, не получает raw PII и может создать audited sanitized comment, не меняющий immutable content.
+  - id: AC-043
+    criterion: Methodology Registry публикует reviewed immutable AnalysisMethodVersion, а run/result фиксирует method binding либо explicit limitation `unregistered_method`.
+  - id: AC-044
+    criterion: Research Workspace создаёт reproducible document с outline, metric groups, charts, tables, findings и conclusions и публикует его через общий ReportSnapshot path.
+  - id: AC-045
+    criterion: Installation BrandProfile и CompanyPack проходят safe-asset/contrast/compatibility validation и кастомизируют identity без fork кода, secrets или изменения аналитических значений.
 ```
 
 ## 28.1. Критерии приёмки v1 target для отчётной платформы
@@ -6063,6 +6887,30 @@ v1_acceptance_criteria:
     criterion: Motion matrix соблюдает declared durations/easing, сохраняет shell и previous data при refresh, не искажает charts/tables и имеет проверенный prefers-reduced-motion вариант без translate/scale/bounce/shimmer/continuous animation.
   - id: V1-AC-019
     criterion: 403, 404, session expired, maintenance и upgrade required, Help/keyboard shortcuts, admin lifecycle и operational channel management имеют permission-aware accessible states, безопасные next actions, redaction и audit evidence.
+  - id: V1-AC-020
+    criterion: NumberFormatSpec одинаково форматирует Web/email/XLSX, использует locale-aware тыс./млн/млрд или K/M/B, не превращает ненулевой percent в 0% и всегда предоставляет full typed value.
+  - id: V1-AC-021
+    criterion: MetricGroupVersion обеспечивает одинаковые group headers и metric order в report tables, dashboards, email и XLSX, включая accessible reading order и versioned override.
+  - id: V1-AC-022
+    criterion: Каждый universal XLSX автоматически содержит оформленный README с safe data sources, filters, metric definitions/groups, methodology, grain, quality, limitations, lineage и pinned versions без secrets/PII leakage.
+  - id: V1-AC-023
+    criterion: Research document поддерживает движение от executive summary к деталям, linked-filter scope, evidence-linked findings и отдельные viewer comments с сохранением immutable version.
+  - id: V1-AC-024
+    criterion: Report/dashboard ACL управляется административным permission отдельно от authoring; revoke закрывает object, exports и comments без existence leak.
+  - id: V1-AC-025
+    criterion: BrandProfile кастомизирует product name, logos, favicon, icons, colors, typography, login, email, reports, XLSX, local docs и support/legal surfaces из одной pinned version и проходит cross-channel visual/accessibility tests.
+  - id: V1-AC-026
+    criterion: Все шесть source modes PostgreSQL/MSSQL/MySQL/ClickHouse/CSV-template/XLSX-template имеют supported-version/security/integration evidence; Yandex Metrica отсутствует в runtime и отмечена future-only.
+  - id: V1-AC-027
+    criterion: Release и public repository не содержат private activation runtime/artifacts, а self-host install и public report delivery полностью работают без private package или online license heartbeat.
+  - id: V1-AC-028
+    criterion: Current canonical model остаётся B2C retail; B2B Account/Lead/Opportunity contracts отсутствуют в v1 runtime и reserved names не переиспользуют Customer/Workspace semantics.
+  - id: V1-AC-029
+    criterion: Analyst создаёт immutable PopulationTreatmentSpecVersion с quantile/IQR/MAD и default flag, видит sensitivity before/after, явно выбирает exclude/winsorize, а Result Trust/email/XLSX раскрывают bounds, scope, affected count/value share и limitations без изменения canonical data/metric.
+  - id: V1-AC-030
+    criterion: Bucket segmentation поддерживает quantile/equal-width/custom thresholds с explicit group count либо thresholds, deterministic ties/missing/order и pinned published bounds; stratified distribution использует global bounds default, privacy-safe cells и сохраняется как segment только явным действием.
+  - id: V1-AC-031
+    criterion: CPU KMeans принимает explicit K, versioned feature/preprocessing/treatment/seed, показывает K-1/K/K+1 diagnostics без silent override, profiles/centers/stability/silhouette/sensitivity и создаёт новый immutable membership snapshot при retrain.
 ```
 
 # 29. Пробелы исходного плана и решения
@@ -6118,6 +6966,18 @@ v1_acceptance_criteria:
 | GAP-047 | Raw ECharts option был canonical chart artifact | Library lock-in, executable fields и невозможная стабильная mapping в email/XLSX | Product-owned validated ChartSpec; library outputs только derived artifacts |
 | GAP-048 | Не были разделены Web/static/XLSX renderer boundaries | Разные данные, Chrome/runtime sprawl и неясный fallback | ECharts Web adapter, bounded embedded SSR SVG→PNG и lossless native-or-same-PNG XLSX ports |
 | GAP-049 | Promotion timeline не имел отдельного chart type | Подмена frame timeline, потеря channel/audience/overlap semantics | First-class range_timeline contract и accessible table |
+| GAP-050 | Метрики форматировались компонентами | Разные округления, ложный 0% и текстовые числа в XLSX | NumberFormatSpec, adaptive precision и full typed value |
+| GAP-051 | Метрики не имели стабильных групп и порядка | Нечитаемые таблицы и дрейф Web/email/XLSX | MetricGroupVersion и versioned presentation override |
+| GAP-052 | Не было реестра аналитических методик | У каждого аналитика собственный способ расчёта | MethodologyRegistry, review и immutable methods |
+| GAP-053 | Ad hoc-запрос не превращался в reusable asset | Повторная ручная работа и потеря выводов | AnalysisCase, ResearchDocument, Finding и AnalyticalProduct |
+| GAP-054 | Dashboard не поддерживал research narrative | Нельзя идти от общего к частному в одном контексте | Sections, heterogeneous blocks, findings и comments |
+| GAP-055 | White-label ограничивался theme presets | Customer-specific forks и неполная корпоративная идентичность | BrandProfileVersion и CompanyPack |
+| GAP-056 | XLSX README был только общим упоминанием | Получатель не понимает источники, filters и metrics | Автоматический structured README из snapshot/guide/method |
+| GAP-057 | Административные и аналитические права пересекались | Admin создаёт content, Analyst управляет connections, Viewer видит PII | Раздельные role bundles, object ACL и explicit PII grant |
+| GAP-058 | Connector scope был размытым | Неограниченный marketplace и неподдерживаемые источники | Six governed v1 source modes и future-only Yandex boundary |
+| GAP-059 | Product/report distribution смешивалась с activation | Private roadmap мог случайно попасть в public core | Self-host-only public distribution и access-controlled private activation boundary |
+| GAP-060 | Выбросы обрабатывались локальными фильтрами | Тихое удаление VIP, разные выборки и несопоставимый `vs LY` | Immutable PopulationTreatmentSpecVersion, three robust methods, default flag, shared bounds и sensitivity evidence |
+| GAP-061 | Бакеты, strata и clusters не имели общего lifecycle | Невоспроизводимые группы, дрейф границ и нестабильные cluster IDs | SegmentationDefinitionVersion, DistributionArtifact, immutable membership/model/preprocessing snapshots и explicit K |
 
 # 30. Риски и открытые решения
 
@@ -6185,6 +7045,27 @@ risks:
   - id: RISK-020
     risk: Слишком большой chart dataset заблокирует browser или даст разные client-side reductions
     mitigation: Backend CPU aggregation/sample/level-of-detail artifacts, visible-window fetch и measured SVG/Canvas policy
+  - id: RISK-021
+    risk: Adaptive formatting скроет значимое малое значение или создаст ложную точность
+    mitigation: Versioned NumberFormatSpec, non-zero floor, full-value disclosure и golden boundary fixtures
+  - id: RISK-022
+    risk: Research comments будут приняты за утверждённые выводы или раскроют PII
+    mitigation: Отдельные FindingVersion/comment contracts, review status, DLP, access re-check и audit
+  - id: RISK-023
+    risk: White-label assets создадут XSS, remote fetch, unreadable contrast или customer-specific fork
+    mitigation: Sanitized content-addressed assets, semantic tokens, preview/gates и CompanyPack без code
+  - id: RISK-024
+    risk: Расширенная DB connector matrix превысит support capacity
+    mitigation: Явная supported-version matrix, protected release jobs и отсутствие неутверждённых connectors
+  - id: RISK-025
+    risk: Administrative role станет обходом analytical/PII access policy
+    mitigation: Separate role bundles, no implicit workspace membership, explicit expiring PII grant и access audit
+  - id: RISK-026
+    risk: `.gitignore` будет ошибочно воспринят как защита private activation материалов
+    mitigation: Private authoritative artifacts только в access-controlled repository/storage; ignored local root — defense-in-depth
+  - id: RISK-027
+    risk: Outlier policy удалит реальных VIP либо сделает current и prior-year populations несопоставимыми
+    mitigation: Default flag, отдельная DQ policy, impact preview, pinned shared LY bounds и явно различимые fit/assignment populations
 ```
 
 ## 30.2. Зафиксированные решения
@@ -6301,6 +7182,61 @@ resolved_decisions:
     resolution: ECharts-GL/WebGL не используется до v1; authoritative analytics, aggregation, sampling и level-of-detail выполняются на backend CPU.
     status: confirmed
     resolved_at: 2026-07-15
+  - id: RESOLVED-023
+    decision: Current business ontology
+    resolution: Текущий продукт и v1 canonical model ориентированы на B2C retail; B2B sales является отдельным будущим additive extension.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-024
+    decision: V1 source connector scope
+    resolution: Поддерживаются PostgreSQL, MSSQL, MySQL/MariaDB, ClickHouse и governed CSV/XLSX templates; Yandex Metrica закладывается только как future Reporting/Logs boundary.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-025
+    decision: Product distribution
+    resolution: Текущая модель распространения только self-host; cloud/SaaS и managed control plane не входят в v1.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-026
+    decision: Future activation confidentiality
+    resolution: Public core фиксирует только safety boundary; detailed destination/activation design и implementation остаются private и хранятся вне public repository, а `.private/` используется только как anti-accidental-commit defense.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-027
+    decision: White-label scope
+    resolution: Versioned BrandProfile/CompanyPack охватывает product identity, logos, favicon, icons, semantic colors, typography, login, email, reports, XLSX, local docs и support/legal surfaces без code fork.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-028
+    decision: Core business role separation
+    resolution: Workspace Administrator управляет users/roles/object access/connections; Analyst создаёт analytical content без connection/access administration; Viewer читает разрешённые results и комментирует без raw PII.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-029
+    decision: PII eligibility
+    resolution: PII является отдельным explicit expiring grant, доступным только analyst-specialist или administrative role ceiling; Viewer и Operator не могут получить raw PII.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-030
+    decision: Research surface
+    resolution: Research Workspace является block-based governed document от общего к частному поверх общих artifacts/ChartSpec/ReportSnapshot, а не notebook kernel или второй dashboard engine.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-031
+    decision: Numeric presentation
+    resolution: Один NumberFormatSpec и MetricGroupVersion управляют adaptive formatting, группами и порядком Web/email/XLSX; raw value всегда сохраняется и ненулевой percent не отображается как 0%.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-032
+    decision: Product breadth versus first-client optimization
+    resolution: Roadmap строит широкий кастомизируемый минимальный продуктовый набор и не ограничивается design-partner-specific requests, pilot KPI или customer-specific fork.
+    status: confirmed
+    resolved_at: 2026-07-18
+  - id: RESOLVED-033
+    decision: Governed population treatment and v1 segmentation methods
+    resolution: Quantile/IQR/MAD с default flag и explicit exclude/winsorize precede bucket/stratified/KMeans workflows; KMeans принимает explicit K, а HDBSCAN/GMM/automatic K/multivariate anomaly detection остаются post-v1.
+    status: confirmed
+    resolved_at: 2026-07-19
 ```
 
 ## 30.3. Открытые решения
@@ -6315,14 +7251,14 @@ open_decisions:
     recommendation: Capability rule по frequency, seasonality и horizon
 ```
 
-# 31. Рекомендуемый первый implementation slice
+# 31. Рекомендуемый первый внутренний implementation slice
 
-Первый slice не должен включать весь UI и все анализы. Он должен проверить архитектурное ядро.
+Первый slice является только технической последовательностью разработки и не ограничивает продукт под первого клиента, design-partner requests или pilot KPI. Он проверяет архитектурное ядро широкого v1 scope до параллельного расширения модулей.
 
 ```yaml
 first_slice:
   stage: vertical_alpha
-  source: CSV_or_Parquet
+  source: governed_CSV_or_XLSX_template
   entities: [Customer, Receipt]
   semantic_mapping: guided_JSON_backed_form_compiled_to_pipeline_specification
   quality_rules:
@@ -6351,7 +7287,7 @@ first_slice:
     - local_filesystem_artifacts
 ```
 
-После успешного slice добавляются SQL connectors, incremental refresh, cohorts, lifecycle и полноценный forecast model set.
+После успешного slice последовательно добавляются все зафиксированные SQL connectors, incremental refresh, Methodology/Research, cohorts, lifecycle, branding/reporting и полный forecast model set; ни один customer-specific fork не считается допустимым способом реализации.
 
 # 32. Definition of Done для нового модуля
 
@@ -6375,10 +7311,13 @@ module_definition_of_done:
     - PII classification declared
     - manifest emitted
     - lineage emitted
+    - population_treatment_and_segmentation_versions_pinned_when_applicable
+    - resolved_bounds_preprocessing_model_seed_and_membership_snapshot_recorded_when_applicable
   quality:
     - unit tests
     - contract tests
     - golden dataset
+    - treatment_and_segmentation_sensitivity_tests_when_applicable
     - negative cases
     - cross_workspace_negative_cases
   operations:

@@ -2,7 +2,7 @@
 doc_id: network-boundary
 title: Network boundary
 doc_version: 2
-product_spec_version: 0.8.2-draft
+product_spec_version: 0.9.1-draft
 locale: en
 visibility: public
 ship: true

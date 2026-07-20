@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 6
+doc_version: 7
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -70,6 +70,7 @@ The prefix for every direct command is `uv run python -m tools.custometry_qualit
 | `validate_delivery_tickets` | Delivery ticket changed or a Goal is prepared | PC, L, PP, CI, R | Always | Ticket identity, frontier blockers, exact scope, repair policy, validation boundary/proof-skill route, escalation set, blocked records, and the schema of terminal evidence; it does not prove the behavior |
 | `validate_agent_profiles` | Root governance documents, `AGENTS`, role TOML, templates, or skill routes changed | PC, L, PP, CI, R | Semantic role changes also require a canary | Schema, routing, reference integrity, and English-authoring rules for root contributor/governance documents, repository agent instructions, registries, profiles, and templates |
 | `doctor` | Setup, engine, configuration, ports, network, resources, Compose, or release changed | L static; PP/CI static; R static+runtime | `custometry-doctor --mode runtime` on the target | Preconditions, engine, and resources; not application readiness |
+| `development_runtime` | Hybrid CLI, development Compose override, host-process ownership, demo reset, or release isolation changed | PC, L, PP, CI, R | `scripts/dev validate`; real lifecycle is executed separately for W11 acceptance | Static ownership, loopback publication, volume separation, bounded logs, reset target, and release-entrypoint exclusion; static validation does not prove the Docker/host lifecycle |
 | `cleanup` | Generated, temporary, or container data deletion, or disk remediation | Not included automatically | Dry-run when triggered; R synthetic apply drill | Ownership-bounded deletion and post-condition; not broad deletion authority |
 | `check_ddd_boundaries` | Imports, package boundaries, allowlist, or context map changed | PC, L, PP, CI, R | Always | Compile-time dependency policy; not runtime SQL proof |
 | `check_contract_drift` | OpenAPI, JSON Schema, DTOs, examples, generated TypeScript, or mocks changed | PC, L, PP, CI, R | Always + provider/consumer tests | The generated client byte-matches its sources, and explicitly bound JSON Schema and OpenAPI components match in payload-validation semantics; not real API behavior |
@@ -107,6 +108,7 @@ uv run python -m tools.custometry_quality.validate_delivery_contract
 uv run python -m tools.custometry_quality.validate_delivery_tickets
 uv run python -m tools.custometry_quality.validate_agent_profiles
 uv run python -m tools.custometry_quality.doctor
+uv run python -m tools.custometry_quality.development_runtime validate
 uv run python -m tools.custometry_quality.check_ddd_boundaries
 uv run python -m tools.custometry_quality.check_contract_drift
 uv run python -m tools.custometry_quality.validate_route_registry
@@ -174,7 +176,7 @@ probes.
 | Route/UI/i18n | `validate_route_registry` + `check_i18n_parity` + browser smoke when runnable |
 | Schema/migration | `validate_migration_lifecycle` + clean PostgreSQL integration |
 | Fixture/generator | `validate_fixture_manifest` + golden expectations |
-| Compose/network/image | `doctor` + `compose_lifecycle` + browser smoke + SBOM/license; the static gate validates exact `Edge↔Web↔API` adjacency and the fixed Edge→Web proxy source/upstream, while the runtime gate observes Edge→Web success and Edge→API failure; production Edge egress denial still requires separate target firewall/CNI evidence |
+| Compose/network/image | `doctor` + `development_runtime` when Hybrid paths change + `compose_lifecycle` + browser smoke + SBOM/license; the static gates validate development/release separation and exact `Edge↔Web↔API` adjacency, while runtime evidence observes the selected boundary; production Edge egress denial still requires separate target firewall/CNI evidence |
 | Recovery/upgrade | `gate_recovery` + migration lifecycle + actual drill |
 | Performance/resource | `gate_performance` with baseline + doctor resource capture |
 | Release | Full `check --scope release`; separate green subsets do not replace it |

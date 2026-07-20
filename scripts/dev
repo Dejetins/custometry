@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="$(cd "${script_dir}/.." && pwd)"
+
+action="${1:-}"
+
+if [[ "${CUSTOMETRY_TOOLCHAIN_ACTIVE:-0}" != "1" && "${action}" == "up" ]]; then
+  # shellcheck disable=SC1091
+  source "${repo_root}/scripts/activate-toolchain.sh"
+fi
+
+expected_uv_version="$(tr -d '[:space:]' <"${repo_root}/.uv-version")"
+if ! command -v uv >/dev/null 2>&1; then
+  echo "uv ${expected_uv_version} is required. Run scripts/bootstrap-toolchain.sh." >&2
+  exit 1
+fi
+actual_uv_version="$(uv --version | awk '{print $2}')"
+if [[ "${actual_uv_version}" != "${expected_uv_version}" ]]; then
+  echo "uv ${actual_uv_version} is active; expected ${expected_uv_version}." >&2
+  exit 1
+fi
+
+cd "${repo_root}"
+exec uv run --locked python -m tools.custometry_quality.development_runtime "$@"

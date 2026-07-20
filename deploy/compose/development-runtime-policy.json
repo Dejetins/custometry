@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "runtime_id": "custometry-hybrid",
+  "compose_files": [
+    "compose.yaml",
+    "compose.dev.yaml"
+  ],
+  "compose_project_prefix": "custometry-hybrid-",
+  "state_root": ".runtime/development",
+  "database_services": {
+    "control-db": {
+      "host": "127.0.0.1",
+      "port": 55432,
+      "database": "custometry",
+      "user": "custometry",
+      "volume": "control_db_data",
+      "data_role": "control"
+    },
+    "demo-source-db": {
+      "host": "127.0.0.1",
+      "port": 55433,
+      "database": "northwind_retail",
+      "user": "demo_source_admin",
+      "volume": "demo_source_data",
+      "data_role": "demo"
+    }
+  },
+  "host_processes": {
+    "api": {
+      "host": "127.0.0.1",
+      "port": 8000,
+      "url": "http://127.0.0.1:8000",
+      "readiness_path": "/health/ready",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "--package",
+        "custometry-api",
+        "uvicorn",
+        "custometry_api.main:app",
+        "--app-dir",
+        "apps/api/src",
+        "--reload",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000"
+      ]
+    },
+    "web": {
+      "host": "127.0.0.1",
+      "port": 5173,
+      "url": "http://127.0.0.1:5173",
+      "readiness_path": "/",
+      "command": [
+        "corepack",
+        "pnpm",
+        "--filter",
+        "@custometry/web",
+        "dev"
+      ]
+    }
+  },
+  "secret_files": [
+    "control_db_password",
+    "demo_source_admin_password",
+    "demo_source_reader_password"
+  ],
+  "reset_confirmation": "RESET-DEMO",
+  "reset_volume": "demo_source_data",
+  "release_entrypoints": [
+    "deploy/compose/bootstrap.sh",
+    "deploy/compose/compose.release.yaml",
+    "deploy/compose/ci-smoke.sh"
+  ],
+  "logs": {
+    "tail_lines": 200,
+    "max_bytes": 65536
+  }
+}

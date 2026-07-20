@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 7
+doc_version: 8
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -43,15 +43,18 @@ Global Delivery Contract v1 selects the smallest sufficient delivery artifact:
 - one ready vertical ticket for one bounded observable outcome;
 - a specification before tickets when behavior, invariants, failure semantics,
   or the proof seam remain materially unresolved;
+- a blocker-linked ticket graph when several dependent slices need an explicit
+  ready frontier or disjoint path ownership;
 - an exceptional plan, ledger, or reusable procedure only when real
   multi-ticket coordination, risky external state, approval checkpoints, or a
   genuinely repeated method requires it.
 
-Custometry keeps no standing program plan, generated prompt-pack inventory, or
-parallel stage ledger. One ready ticket is one execution unit and is the only
-repository-local source of current scope, blockers, repair authority, and
-acceptance evidence. Goal mode is optional runtime orchestration; it is not a
-file-backed planning layer.
+Custometry keeps no standing program plan, generated prompt-pack inventory,
+parallel stage ledger, or duplicate status register. A ticket graph may record
+dependencies and path ownership, but the ticket frontmatter remains the only
+repository-local source of current status, scope, blockers, repair authority,
+and acceptance evidence. One ready ticket is one execution unit. Goal mode is
+optional runtime orchestration; it is not a file-backed planning layer.
 
 ## 3. Ticket lifecycle
 

@@ -1,12 +1,12 @@
 ---
 doc_id: ARCH-SYSTEM-DESIGN-001
 title: Custometry Target System Design
-doc_version: 7
-product_spec_version: 0.9.1-draft
+doc_version: 11
+product_spec_version: 0.9.4-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [ARCH-PRINCIPLE-001, GOAL-011, GOAL-012, GOAL-013, UC-017, UC-018, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, CONNECTOR-001, METHOD-001, METRIC-009, RBAC-009, RBAC-010, RBAC-011, REPORT-003, REPORT-012, ROUTE-001, ROUTE-012, OUTLIER-001, SEGMENT-001, PRIVATE-FUTURE-001]
+requirement_ids: [ARCH-PRINCIPLE-001, GOAL-011, GOAL-012, GOAL-013, UC-017, UC-018, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-009, RBAC-010, RBAC-011, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, ROUTE-001, ROUTE-012, OUTLIER-001, SEGMENT-001, THEME-001, WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-004, WEB-PERF-001, WEB-PERF-005, PRIVATE-FUTURE-001]
 status: accepted
 proof_boundary:
   label: accepted-v1-target-architecture
@@ -18,7 +18,7 @@ proof_boundary:
 ## Document status and authority
 
 This document projects the normative Custometry product specification
-`0.9.1-draft` into an implementable target architecture. It defines ownership,
+`0.9.4-draft` into an implementable target architecture. It defines ownership,
 dependency direction, integration contracts, trust boundaries, consistency,
 failure semantics, compatibility, and proof seams. It does not repeat every
 product requirement and does not replace:
@@ -51,16 +51,22 @@ result.
 The `v1_target` architecture includes:
 
 - local accounts, multiple workspaces, role and object access management;
+- a versioned organization tree, primary department assignments, scoped
+  leadership, department data policies, cross-department grants, analytical
+  resource ownership, and privacy-safe People & Creators views;
 - CSV/XLSX template import plus PostgreSQL, Microsoft SQL Server,
   MySQL/MariaDB, and ClickHouse source connectors;
 - catalog, semantic model, metrics, metric groups, number formats, filters,
   Data Guides, data quality, ingestion, immutable artifacts, and pipelines;
 - customer and sales analytics, governed population/outlier treatment,
   rule/bucket/stratified/exact-K KMeans segmentation,
-  cohort/lifecycle/basket/channel analysis, governed custom analysis,
+  cohort/lifecycle/basket/channel analysis, component discount/cap and
+  price-volume-mix analysis, governed custom analysis,
   Promotion Journal, and forecasting;
-- Methodology Registry, Analysis Cases, Research Workspace, reviewed findings,
-  decisions, comments, and reusable analytical products;
+- Methodology Registry with explicit availability, metric certification/proxy
+  quality, Methodology Packs, representativeness and robustness contracts,
+  Analysis Cases, Research Workspace, reviewed findings, decisions, comments,
+  and reusable analytical products;
 - dashboards and reports composed from typed blocks, user-initiated email,
   CSV/Parquet where allowed, and universal XLSX as the final v1 functional
   increment;
@@ -89,6 +95,9 @@ The following are outside the public `v1_target`:
 | Product form | Self-hosted multi-workspace B2C retail platform | Tenant and policy scope are installation/workspace/object, not SaaS account hierarchy |
 | Application form | Modular monolith through `v1_target` | Contexts share deployment and PostgreSQL but own code, tables, write paths, and public contracts |
 | UI delivery | UI-first, contract-backed vertical slices | A visible route is not accepted until the same contract reaches real API/data or artifact evidence |
+| Authenticated frontend | React/TypeScript/Vite with MobX, TanStack Query, styled-components, and semantic CSS variables | Linear-like local coordination remains separate from authoritative REST/SSE state and backend plans |
+| UI transition | Route-bounded reversible strangler with historical Penpot retained | Old shell remains fallback until vNext design, browser, accessibility, real-API, and performance evidence pass |
+| Theme set | Exactly `abyss`, `graphite`, `frost`, `paper` | Custometry and Roehub share four base modes while retaining product-owned brand and semantic colors |
 | Data truth | PostgreSQL control state plus immutable Parquet/other artifacts | Valkey, browser state, and task delivery cannot determine terminal truth |
 | Data compute | Polars/DuckDB/NumPy-first CPU execution; Numba only for measured kernels | Browser, chart library, and XLSX renderer do not perform analytical reduction |
 | Jobs | Transactional outbox, at-least-once tasks, leases/fencing, reconciliation | Duplicate delivery is expected; every side effect needs an idempotency identity |
@@ -96,6 +105,13 @@ The following are outside the public `v1_target`:
 | Report composition | One immutable `ReportSnapshot` for Web/email/XLSX | Export does not scrape the DOM or recalculate hidden channel-specific metrics |
 | Population treatment | Versioned `PopulationTreatmentSpecVersion` with quantile, IQR, and MAD methods | Treatment is reproducible, disclosed, sensitivity-testable, and distinct from data-quality correction |
 | Segmentation | One versioned builder for rules, buckets, strata, and exact-K KMeans | Published membership is stable; fit/assignment, features, scaling, seed, and model identity are explicit |
+| Discount economics | Receipt-line component fact plus effective `DiscountPolicyVersion` | Promotion, loyalty, bonus redemption, other, commercial discount, customer benefit, recognized revenue, stacking, cap, and attribution quality remain explicit and reproducible |
+| PVM | Versioned, exactly reconciled decomposition with explicit order | Price, volume, mix, assortment, and residual cannot be hidden chart calculations or causal claims |
+| Metric trust | Certification and value origin are separate from definition lifecycle | Published candidate/proxy values cannot appear canonical/direct without review and disclosure |
+| Method availability | `native_v1`, `template_v1`, `future_extension`, or `unsupported` | Future causal/uplift/anomaly/decision contracts are discoverable without becoming runnable claims |
+| Organization model | Functional roles, organization membership, and scoped leadership are independent | Company structure does not create role explosion or implicit PII/business-data authority |
+| Effective access | Role and workspace permission intersect with organization, department data, object, row/column, and PII policies; deny wins | Cross-department grants can only add a bounded allow inside existing ceilings |
+| Contributor insights | A redacted aggregate projection is separate from append-only Audit | People & Creators cannot become raw employee surveillance, ranking, or productivity scoring |
 | UI surfaces | Compact route identity, executable route policy, and complete UI surface coverage are separate contracts | URL identity remains stable; route policy evolves independently; every UI-visible use case must bind to a route, overlay, system surface, or reusable capability |
 | Branding | Versioned BrandProfile and CompanyPack | Customer identity changes by validated configuration, not code fork |
 | Distribution | Public self-host core only | Future activation/commercial implementation remains outside the public repository and public package graph |
@@ -141,16 +157,16 @@ The target has sixteen bounded contexts.
 
 | Context | Primary ownership | Public architectural role |
 |---|---|---|
-| Identity & Workspace | principals, local auth, memberships, roles, grants, policies, sessions, API tokens | resolves actor/workspace/object/data ceilings before protected work |
+| Identity & Workspace | principals, local auth, memberships, roles, organization units/assignments/leadership, department data policies, cross-department grants, resource ownership, contributor-activity projections, sessions, API tokens | resolves actor/workspace/organization/object/data ceilings before protected work |
 | Connection Catalog | connection definitions, secret references, source capabilities, catalog snapshots | exposes versioned, non-secret source metadata and connector policy |
-| Semantic Model | datasets, entity/field mappings, joins, metrics, metric groups, number formats, filters, capabilities | supplies immutable analytical meaning and presentation-neutral numeric semantics |
+| Semantic Model | datasets, entity/field mappings, joins, metrics, certification evidence, metric groups, number formats, discount policies, filters, capabilities | supplies immutable analytical meaning, component/policy semantics, and presentation-neutral numeric semantics |
 | Data Documentation | Data Guides and file-import templates | supplies governed documentation and typed CSV/XLSX intake contracts |
 | Ingestion | extract specifications, watermarks, batches, schema observations | converts approved source snapshots into committed landing artifacts |
 | Artifact Lifecycle | manifests, hashes, authorization, retention, staging/commit visibility | owns immutable bulk-result identity and access decisions |
 | Execution Control | pipelines, schedules, runs, node attempts, outbox, leases, cancellation, reconciliation | coordinates every asynchronous or restart-sensitive operation |
 | Data Quality | rules, reports, drift, remediation, waivers | produces visible quality evidence and gates downstream readiness |
-| Analytics | analysis specifications, result manifests, population-treatment specifications/diagnostics, bucket/stratification specifications, segment/model versions, membership snapshots, customer/sales domain analytics | produces bounded, reproducible reportable results, comparisons, and governed analytical populations |
-| Methodology & Research | methods, cases, research documents, findings, decisions, analytical products, comments | turns ad hoc questions into reviewed, reusable knowledge with pinned evidence |
+| Analytics | analysis specifications, result manifests, population-treatment specifications/diagnostics, bucket/stratification specifications, segment/model versions, membership snapshots, discount-component attribution/reconciliation results, PVM specifications/results, customer/sales domain analytics | produces bounded, reproducible reportable results, comparisons, pricing economics, and governed analytical populations |
+| Methodology & Research | methods with availability/robustness/representativeness contracts, Methodology Packs, cases, research documents, findings, decisions, analytical products, comments | turns ad hoc questions into reviewed, reusable knowledge with pinned evidence and prevents future methods from masquerading as implemented |
 | Promotion Journal | promotion versions, planned/actual windows, channel/client scope | supplies descriptive `range_timeline` overlays and promotion context |
 | Forecasting | series/features, forecast specs, backtests, models, predictions, monitoring | produces temporally valid forecasts and readiness/degradation evidence |
 | Presentation & Reports | ChartSpec, dashboards, report definitions/snapshots, object access bindings, branding, rendered metadata | composes governed results for interactive and static channels |
@@ -165,7 +181,9 @@ Detailed packages, ports, permitted relationships, and consistency rules are in
 
 Roles are default permission bundles, not hard-coded navigation branches.
 Effective permission is the union of explicit grants bounded by installation,
-workspace, object, row/data, PII, export, and separation-of-duties ceilings.
+workspace, organization, department data, object, row/column, PII, export, and
+separation-of-duties ceilings. A deny at any boundary wins. Functional role,
+primary organization assignment, and leadership scope are independent.
 
 | Role | Default responsibility | Explicit boundary |
 |---|---|---|
@@ -188,6 +206,49 @@ PII access is a separate purpose-, scope-, and expiry-bound grant available
 only under the role ceiling defined by the product specification. Branding,
 report authoring, report access administration, report sending, XLSX export,
 and comment moderation are independent permissions.
+
+### 5.1 Organization, ownership, and contributor privacy
+
+Identity & Workspace owns the organization model inside the existing modular
+monolith. This is not a new deployable service. `OrgUnit` is an effective-dated
+workspace tree with `company`, `division`, `department`, and `team` nodes,
+inactive/merged lifecycle, and successor mapping. Each active member has
+exactly one primary department or team assignment. A leadership assignment
+names its unit, whether descendants are included, effective dates, and reason;
+it is not a global role.
+
+The authorization decision is computed from these inputs:
+
+```text
+functional permission
+  AND active workspace membership
+  AND organization scope
+  AND DepartmentDataPolicyVersion
+  AND resource ObjectAccessPolicy
+  AND row/column/PII ceilings
+  MINUS explicit denies
+```
+
+`CrossDepartmentGrant` is an allow-only, reasoned, effective-dated and usually
+expiring exception over a bounded subject/resource/data/action scope. It does
+not change the member's primary department and cannot exceed functional or PII
+ceilings. Every list, count, search, facet, aggregation, pagination, cache hit,
+and object action applies the same effective policy before producing output.
+
+Creator and owner are separate. Personal drafts remain principal-owned. New
+published reports and dashboards default to the author's primary department;
+legacy publications migrate as `workspace_legacy` until audited assignment.
+Transfer or deactivation immediately terminates the old department scope,
+re-evaluates grants, preserves historical creator attribution, and creates
+deterministic handover work for published resources without an active owner.
+
+People & Creators reads `ContributorActivityProjection`, a privacy-safe read
+model fed by allowlisted, redacted domain events. It exposes only resources the
+viewer can discover and aggregate activity to a safe grain for self, scoped
+leaders, or explicit grantees. Raw Audit events, hidden-object counts, peer
+rankings, leaderboards, percentiles, and productivity scores are prohibited.
+Workspace administration authority does not imply activity, business-content,
+or PII read authority.
 
 ## 6. Target runtime and trust boundaries
 
@@ -315,7 +376,42 @@ registry, prediction intervals, monitoring, and degradation. It consumes pinned
 semantic/DQ/artifact references and publishes forecast artifacts; it cannot
 silently read Analytics private tables or rewrite observed actuals.
 
-#### 7.4.1. Governed population treatment and segmentation
+#### 7.4.1. Component discount, cap, and price-volume-mix
+
+1. Semantic Model publishes ReceiptItem field roles and an immutable effective
+   `DiscountPolicyVersion`: component catalog, attribution bindings, stacking
+   matrix, precedence, accounting treatment, base-price/cap definition,
+   tolerance, returns, and breach actions.
+2. Ingestion preserves source values. Data Quality validates field coverage,
+   reconciliation, impossible stacking, and historical cap breaches; it never
+   silently clamps a sale or invents a missing component.
+3. Analytics normalizes promotion, loyalty, bonus redemption, and other rows in
+   a line-grain component fact. Bonus accrual remains outside this fact.
+   Commercial discount, customer benefit, and recognized net revenue are
+   distinct measures with explicit attribution mode and coverage.
+4. Historical cap violations remain immutable evidence and may degrade/block
+   trusted analysis by policy. Simulation or prescriptive publication above the
+   cap is rejected before artifact commit.
+5. Promotion Journal can supply an optional exact `PromotionVersion` reference
+   and descriptive overlay. A date overlap alone never creates sale-level promo
+   attribution or a causal claim.
+6. A versioned PVM specification pins method/order, periods, product identity,
+   metrics, currency, returns, assortment/missing-price policy, and tolerance.
+   Price, volume, mix, assortment, and residual must reconcile to observed
+   change before a trusted result is committed.
+7. Presentation consumes reportable component/PVM result ports and exposes
+   policy, attribution, coverage, breaches, formula order, residual, and
+   limitations through Result Trust, email, and XLSX. It does not recalculate
+   or reattribute browser data.
+
+Semantic Model owns reusable field/metric/policy meaning. Analytics owns fitted
+attribution diagnostics, decomposition specifications/results, and result
+identity. Data Quality owns evidence, not business reclassification. Promotion
+Journal owns event context, not observed sale mechanics. Methodology & Research
+owns evidence-strength guidance and future-method availability, not result
+calculation.
+
+#### 7.4.2. Governed population treatment and segmentation
 
 1. An analysis or segmentation pins an eligible population, feature versions,
    filter policy, DQ evidence, PII ceiling, and a versioned
@@ -394,7 +490,9 @@ numeric with native formats and an accessible path to full precision.
 | Browser to API | OpenAPI, stable error envelope, generated TypeScript client, bounded pagination/sort/filter allowlists |
 | UI route identity | `ui-routes.json` owns ID, canonical path, title key, release, and implementation status |
 | UI route execution | `ui-route-contracts.json` owns family, shell, guards, roles/permissions, state and history profiles, dirty/focus behavior, source requirements, and design synchronization |
-| UI surface coverage | `ui-surface-contracts.json` owns route/overlay/system/capability catalogs, route-decision policy, Penpot baseline identity, and exact `UC-001...UC-026` bindings |
+| UI surface coverage | `ui-surface-contracts.json` owns route/overlay/system/capability catalogs, route-decision policy, Penpot baseline identity, and exact `UC-001...UC-029` bindings |
+| Organization | `OrganizationStructureVersion`, membership/leadership assignments, department data policies, cross-department grants, ownership bindings, and effective-access explanation ports owned by Identity & Workspace |
+| Contributor insights | Redacted `ContributorActivityProjection` owned by Identity & Workspace; Audit is an input event source, never the employee-analytics query store |
 | UI contract validation | Portable JSON Schemas plus the repository validator enforce route parity, permission/localization integrity, surface references, and complete product use-case coverage |
 | Draft mutation | ETag/`If-Match`; stale mutation returns the current revision conflict |
 | Repeatable command | workspace/actor/route-scoped idempotency key plus payload hash |
@@ -403,6 +501,10 @@ numeric with native formats and an accessible path to full precision.
 | Source connector | versioned `SourceConnector` port with read-only policy, capabilities, consistency, limits, secret reference, and integration evidence |
 | Bulk result | immutable artifact manifest/hash/schema/grain/key/lineage/PII; bounded JSON is control metadata only |
 | Metric presentation | versioned NumberFormatSpec and MetricGroupVersion; formatting never changes analytical identity |
+| Metric trust | lifecycle-independent certification record plus direct/policy-derived/residual origin, coverage, reference evidence, replacement, and limitations |
+| Discount policy | immutable effective `DiscountPolicyVersion`; component catalog, stacking/precedence, accounting, cap, rounding, returns, and breach behavior |
+| Discount result | line/component fact plus reconciliation/coverage/cap diagnostic ports; no implicit zero, clamp, or Promotion-Journal inference |
+| Price-volume-mix | versioned method/order and exactly reconciled price/volume/mix/assortment/residual result port |
 | Research | immutable method/result/finding bindings; comments are separately authorized collaboration metadata |
 | Population treatment | versioned PopulationTreatmentSpec, fitted parameters, action, diagnostics, sensitivity result, and stable comparison policy |
 | Segmentation | versioned rule/bucket/stratification/cluster specification plus immutable model and membership snapshot identities |
@@ -422,12 +524,16 @@ navigation and coverage graph without directory traversal.
 
 ## 9. Route and Web execution model
 
-The current UI target contains 110 route-level pages: W03 accepted revision 124
-with 91 route frames and 19 explicit route-frame backlog. The `0.6.1-draft`
-target also contains 25 typed overlays, 5 system surfaces, and 19 cross-surface
-capability contracts. W03 verified 23 overlays and all system surfaces;
-`UI-OVR-024` and `UI-OVR-025` remain additive design backlog. These counts are
-never a ceiling, and W03 evidence is not rewritten by later design deltas.
+The accepted UI target contains 116 route-level pages, 25 typed overlays, and 5
+system surfaces. W08 accepted the first 110 route frames plus all overlays and
+system surfaces at Penpot revision 181, including C24 and flow 09. Scoped
+repair/recovery established revision 197 as the W10 start baseline. W10 then
+accepted the six Product/UI `0.9.3/0.6.3` Organization, department
+access/ownership, and People & Creators routes, two reusable capabilities, C25,
+and flow 10 at terminal revision 213 with global inventory 116/25/5. Counts are
+never a ceiling, and historical W03/W05/W06/W08/recovery evidence is not
+rewritten. This remains design-artifact proof, not browser or authorization
+runtime proof.
 A standalone route is required for a durable/versioned lifecycle, deterministic
 deep link, independent Back/refresh/dirty/recovery semantics, or sufficiently
 complex permission boundary. Transient confirmations and inspectors remain
@@ -463,6 +569,53 @@ modal. Close, Escape, and Back restore origin route, block, scroll, and keyboard
 focus. Dirty editors guard sidebar navigation, workspace switch, browser Back,
 reload, and close with Stay/Discard/Save Draft where supported.
 
+### 9.1. Linear-workspace frontend projection
+
+The accepted transition standard is
+`docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md`; the
+project delivery spec and migration registry are respectively
+`.codex/delivery/specs/custometry-linear-workspace-ui-transition.md` and
+`docs/architecture/ui/custometry-linear-ui-migration-registry-v1.json`.
+
+The browser dependency direction is:
+
+```text
+route + shell composition
+        |
+        +--> MobX UI/workspace stores
+        |      navigation, command palette, panels, focus origin,
+        |      presentation preferences, reversible optimistic feedback
+        |
+        +--> TanStack Query server-state adapter
+               typed REST commands/queries + SSE snapshots
+                        |
+                        v
+                 existing FastAPI contracts
+```
+
+MobX cannot authorize an action, manufacture a terminal run/report/delivery
+state, or persist a domain result. TanStack Query does not own presentation
+geometry or command composition. Both consume generated/typed API adapters;
+the existing backend and W11-W17 graph do not depend on the UI framework.
+
+styled-components owns typed layout and component variants. CSS custom
+properties own runtime semantic tokens, the four base themes, and validated
+BrandProfile overrides. ECharts remains behind ChartSpec and never becomes a
+client-side analytical compute engine.
+
+The historical W10 Penpot file remains identity/domain evidence. A separate
+vNext file must establish new Foundations, four-theme representative matrix,
+resizable sidebar/detail panes, command palette, keyboard/focus rules, and
+motion before the production shell is accepted. The route-level fallback is
+removed only after measured browser parity.
+
+Performance evidence separates action-to-dispatch, network/API wait,
+response/SSE-to-paint, and final interaction latency. The initial targets are
+INP p75 at or below 100 ms, warm navigation acknowledgement p75 at or below
+100 ms, response/SSE-to-paint p75 at or below 100 ms, and no recurring
+interaction-blocking main-thread task above 50 ms on declared reference
+hardware. These targets are gates for W22/W23, not claims about the current UI.
+
 ## 10. Persistence, versioning, and consistency
 
 PostgreSQL is authoritative for identities, policies, definitions, versions,
@@ -471,9 +624,12 @@ ephemeral locks, and caches only. Bulk data/results are immutable artifacts with
 manifests and hashes.
 
 Published datasets, semantic definitions, methods, findings, dashboards,
-reports, brands, company packs, templates, population-treatment specifications,
+reports, brands, company packs, organization structures, department data
+policies, ownership bindings, templates, population-treatment specifications,
 segment definitions/models/membership snapshots, forecast models, and promotion
-windows are immutable versions. Editing creates a draft/revision; publication
+windows are immutable versions. Discount policies, certification records,
+component-attribution/reconciliation results, PVM specifications, and PVM
+results follow the same version/pinning rules. Editing creates a draft/revision; publication
 creates a new version and downstream impact. Archive/deprecation preserves
 lineage and replacement references. Closing a case or deleting a comment does
 not mutate published evidence.
@@ -523,6 +679,12 @@ and stable terminal errors. Normal demo and benchmark profiles remain separate.
   evidence gates.
 - Operator actions do not grant silent business-data access; support access is
   explicit, time-bound, purpose-bound, and audited.
+- Screenshot fidelity is not browser or performance evidence. Authenticated
+  golden slices require real-browser interaction, accessibility, console,
+  network, and measured response-to-paint proof on the declared hardware.
+- MobX never becomes authority for server state, access decisions, versions,
+  or freshness. It coordinates local/workspace interaction state; TanStack
+  Query and typed REST/SSE projections remain the frontend server-state seam.
 
 ## 13. Documentation, distribution, and private boundary
 
@@ -553,11 +715,14 @@ This is a dependency constraint, not a standing program plan:
 
 1. repository, security, runtime, documentation, route, and contract Foundation;
 2. identity/workspace policy, connectors/templates, artifacts, execution, DQ,
-   semantic model, and deterministic demo data;
+   semantic model, organization/access foundation, and deterministic demo data;
 3. reportable analytics with universal comparison, governed population
-   treatment, deterministic bucket/stratified segmentation, Result Trust,
-   charts/tables, and complete route/browser states;
-4. methodologies, research/findings/comments, dashboards/access, promotions,
+   treatment, deterministic bucket/stratified segmentation, component discount
+   reconciliation/cap/PVM, Result Trust, charts/tables, and complete
+   route/browser states;
+4. methodology availability/packs, metric certification/proxy quality,
+   representativeness/robustness, research/findings/comments, dashboards/access,
+   organization/People projections and ownership handover, promotions,
    forecasting, report composition, branding, and email;
 5. pipeline builder, exact-K KMeans segmentation, operational hardening,
    connector matrix, recovery, capacity, accessibility, and supply-chain proof;
@@ -574,7 +739,13 @@ prompts are exceptional rather than standing inventory.
 
 | Surface | Classification | Migration and rollback |
 |---|---|---|
-| Product specification 0.9.1 projection | compatible before first stable consumer | architecture docs can roll back together only if normative requirements remain represented elsewhere |
+| Product specification 0.9.4 projection | compatible before first stable consumer | architecture docs can roll back together only if normative requirements remain represented elsewhere |
+| Authenticated frontend engine | breaking before first stable Web consumer; route-bounded afterward | introduce React/MobX/Query/styled-components behind an explicit route boundary; rollback restores the previous shell without changing backend contracts |
+| Theme registry | breaking before first stable theme/report consumer | remove `slate` and `sand`, retain exactly abyss/graphite/frost/paper, and reject unknown IDs before persistence/render |
+| Organization/access persistence | compatible target addition before stable consumers | create versioned units/assignments/policies/grants/ownership/projection tables, backfill one primary department, migrate legacy publications to `workspace_legacy`, and fail closed until invariants pass |
+| Organization/People routes | additive accepted design target | six route IDs joined the accepted 116/25/5 Penpot baseline through W10 revision 213; runtime rollback may hide unimplemented navigation but cannot rewrite accepted route identity or design evidence |
+| Discount component/policy/PVM contracts | compatible target addition before persistence consumers | rollback disables new publication/UI capability but preserves imported source fields and pinned immutable results; later schema migration requires owner-context up/down proof |
+| Metric certification/method availability | compatible target addition | lifecycle remains intact; rollback hides the new projection but cannot relabel or delete historical evidence |
 | Population-treatment and segmentation contracts | compatible target addition | versioned specs/models/memberships migrate atomically; rollback disables new publication but preserves pinned results and historical assignment identity |
 | New Methodology & Research context | compatible target addition | create owner package/tables/contracts before consumers; rollback disables unpublished capability but preserves immutable published references |
 | Executable route contract | compatible addition; future schema changes versioned | identity registry stays v2; route contract starts v1, requires one-to-one validation, and must support deterministic schema migration |
@@ -592,14 +763,27 @@ Every implementing ticket must classify API, schema, configuration, identity,
 cache, side effect, browser, migration, rollback, and performance impact against
 the then-current consumers.
 
+The rejected frontend alternatives are deliberate. Copying Linear's product
+or creating a cross-repository runtime UI package would couple two independent
+products and blur ownership; the shared artifact is therefore a versioned
+behavioral standard, while each repository owns its tokens, components, and
+domain composition. A single global client store would duplicate server-state
+authority, so MobX is limited to interaction state and TanStack Query owns
+REST/SSE projections. Six palettes were rejected in favor of four exact,
+testable themes whose semantic tokens can be validated across shell, charts,
+tables, exports, and reduced-motion/accessibility variants.
+
 ## 16. Proof boundaries and acceptance
 
 This document proves only that an accepted architecture exists and is internally
-traceable to product specification `0.9.1-draft`. Static validation may prove:
+traceable to product specification `0.9.4-draft`. Static validation may prove:
 
 - route identity/execution/surface-contract/schema/localization/UI-blueprint parity and exact product use-case bindings;
 - requirement IDs and documentation links;
 - declared package/dependency rules;
+- discount/methodology ownership, port, and executable UI binding agreement;
+- organization/access/ownership/contributor-projection ownership and complete
+  route/capability binding agreement;
 - absence of maintained binary mirrors that could drift from the Markdown
   architecture authority.
 
@@ -624,6 +808,16 @@ The primary architectural risks are:
    visible sensitivity evidence;
 10. changing bucket boundaries, KMeans seed/features, or assignment semantics
     without a new immutable version and stable membership identity.
+11. averaging row discount rates, double-counting stacked components, clamping
+    historical breaches, or presenting residual attribution as direct evidence;
+12. publishing a non-reconciled PVM or advertising a future methodology as a
+    runnable v1 capability.
+13. encoding departments into roles or allowing a cross-department grant to
+    exceed role/PII ceilings;
+14. exposing hidden members/resources through contributor counts or treating
+    raw Audit as an employee-analytics database;
+15. losing published-resource ownership or retaining old department access
+    after a member transfer or deactivation.
 
 ## 17. Considered alternatives
 
@@ -639,3 +833,7 @@ The primary architectural risks are:
 | ECharts through ChartSpec | raw ECharts options or Dash/Plotly core | weakens security, portability, email/XLSX parity, and product ownership of visual semantics |
 | Governed treatment specification | ordinary hidden report filter for outliers | cannot reproduce fitted bounds, disclose impact, protect `vs LY` comparability, or distinguish analysis policy from DQ correction |
 | Exact-K KMeans in v1 | automatic-K, GMM, HDBSCAN, Isolation Forest, or arbitrary clustering core | keeps the first model explainable, reproducible, CPU-bounded, and aligned with an explicit requested group count while preserving future extension ports |
+| Effective discount policy plus normalized component fact | one customer-specific wide formula or mutable cap setting | preserves company configurability, temporal reproducibility, reconciliation, and extension without a fork |
+| Explicit certification and method availability | infer trust from published status or hide future methods | keeps definition lifecycle separate from evidence strength and prevents roadmap claims from becoming runtime claims |
+| Organization assignments plus functional roles | create a role per department/manager combination | avoids role explosion and keeps permission, hierarchy, and leadership independently versioned |
+| Redacted contributor projection | query raw Audit for People & Creators | prevents surveillance-oriented leakage and gives the product an explicit privacy/aggregation contract |

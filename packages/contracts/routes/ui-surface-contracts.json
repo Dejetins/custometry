@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "product_spec_version": "0.9.1-draft",
-  "ui_spec_version": "0.6.1-draft",
+  "product_spec_version": "0.9.4-draft",
+  "ui_spec_version": "0.7.0-draft",
   "route_contract_schema_version": "1.0.0",
   "source_files": [
     "custometry-technical-blueprint-ru.md",
@@ -32,10 +32,10 @@
   "penpot_baseline": {
     "file_id": "7cd71457-8d32-8044-8008-549f83bb4645",
     "working_name": "custometry",
-    "observed_revision": 124,
-    "page_count": 47,
-    "verified_route_count": 91,
-    "target_route_count": 110
+    "observed_revision": 213,
+    "page_count": 49,
+    "verified_route_count": 116,
+    "target_route_count": 116
   },
   "overlays": [
     {"id": "UI-OVR-001", "name": "Workspace switcher", "kind": "popover", "route_backed": false, "history_semantics": "none", "requirement_ids": ["ROUTE-010"]},
@@ -90,7 +90,10 @@
     {"id": "UI-CAP-016", "name": "Authorized PII-safe rendering", "delivery_form": "policy_contract", "requirement_ids": ["RBAC-005", "RBAC-011", "RBAC-012", "RBAC-013", "RBAC-014", "RBAC-015", "DASHBOARD-011"]},
     {"id": "UI-CAP-017", "name": "Localization, accessibility and reduced motion", "delivery_form": "component_contract", "requirement_ids": ["I18N-001", "I18N-002", "I18N-003", "I18N-004", "I18N-005", "I18N-006", "I18N-007", "I18N-008", "I18N-009", "I18N-010", "I18N-011", "A11Y-001", "A11Y-002", "A11Y-003", "A11Y-004", "A11Y-005", "A11Y-006", "A11Y-007", "A11Y-008", "A11Y-009", "A11Y-010", "MOTION-001", "MOTION-002", "MOTION-003", "MOTION-004", "MOTION-005", "MOTION-006", "MOTION-007", "MOTION-008", "MOTION-009", "MOTION-010", "MOTION-011", "MOTION-012"]},
     {"id": "UI-CAP-018", "name": "Governed population and outlier treatment", "delivery_form": "policy_contract", "requirement_ids": ["UC-025", "OUTLIER-001", "OUTLIER-002", "OUTLIER-003", "OUTLIER-004", "OUTLIER-005", "OUTLIER-006", "OUTLIER-007", "OUTLIER-008", "OUTLIER-009", "OUTLIER-010", "OUTLIER-011", "OUTLIER-012"]},
-    {"id": "UI-CAP-019", "name": "Bucket, stratified and KMeans segmentation", "delivery_form": "component_contract", "requirement_ids": ["UC-026", "SEGMENT-001", "SEGMENT-002", "SEGMENT-003", "SEGMENT-004", "SEGMENT-005", "SEGMENT-006", "SEGMENT-007", "SEGMENT-008", "SEGMENT-009", "SEGMENT-010", "SEGMENT-011", "SEGMENT-012", "SEGMENT-013", "SEGMENT-014", "SEGMENT-015", "SEGMENT-016", "SEGMENT-017", "SEGMENT-018"]}
+    {"id": "UI-CAP-019", "name": "Bucket, stratified and KMeans segmentation", "delivery_form": "component_contract", "requirement_ids": ["UC-026", "SEGMENT-001", "SEGMENT-002", "SEGMENT-003", "SEGMENT-004", "SEGMENT-005", "SEGMENT-006", "SEGMENT-007", "SEGMENT-008", "SEGMENT-009", "SEGMENT-010", "SEGMENT-011", "SEGMENT-012", "SEGMENT-013", "SEGMENT-014", "SEGMENT-015", "SEGMENT-016", "SEGMENT-017", "SEGMENT-018"]},
+    {"id": "UI-CAP-020", "name": "Discount components, cap and PVM trust", "delivery_form": "component_contract", "requirement_ids": ["UC-027", "DISCOUNT-001", "DISCOUNT-002", "DISCOUNT-003", "DISCOUNT-004", "DISCOUNT-005", "DISCOUNT-006", "DISCOUNT-007", "DISCOUNT-008", "DISCOUNT-009", "DISCOUNT-010", "DISCOUNT-011", "DISCOUNT-012", "DISCOUNT-013", "DISCOUNT-014", "DISCOUNT-015", "DISCOUNT-016", "DISCOUNT-017", "DISCOUNT-018", "DISCOUNT-019", "DISCOUNT-020", "PVM-001", "PVM-002", "PVM-003", "PVM-004", "PVM-005", "PVM-006", "METRIC-017", "METRIC-018", "METRIC-019", "METRIC-020", "METHOD-009", "METHOD-010", "METHOD-011", "METHOD-012", "METHOD-013", "METHOD-014"]},
+    {"id": "UI-CAP-021", "name": "Organization-scoped effective access and ownership", "delivery_form": "policy_contract", "requirement_ids": ["UC-028", "RBAC-019", "RBAC-020", "RBAC-021", "RBAC-022", "RBAC-023", "RBAC-024", "RBAC-025", "RBAC-026", "RBAC-027", "RBAC-028", "TEST-INV-076", "TEST-INV-077", "TEST-INV-078", "TEST-INV-079", "TEST-INV-080", "TEST-INV-081", "TEST-INV-082", "TEST-INV-083", "TEST-INV-084"]},
+    {"id": "UI-CAP-022", "name": "Privacy-safe People & Creators", "delivery_form": "component_contract", "requirement_ids": ["UC-029", "RBAC-022", "RBAC-027", "TEST-INV-078", "TEST-INV-079", "TEST-INV-080", "TEST-INV-081", "TEST-INV-082", "TEST-INV-083", "TEST-INV-084", "TEST-INV-085", "TEST-INV-086", "TEST-INV-087", "TEST-INV-088"]}
   ],
   "use_case_bindings": [
     {"use_case_id": "UC-001", "surface_ids": ["UI-DATA-001", "UI-DATA-002", "UI-DATA-003", "UI-DATA-004", "UI-DATA-005", "UI-DATA-006"], "coverage_types": ["route"], "rationale": "Connection creation discovery catalog inspection and bounded preview have durable independently authorized routes."},
@@ -118,6 +121,9 @@
     {"use_case_id": "UC-023", "surface_ids": ["UI-ADMIN-013", "UI-ADMIN-014", "UI-ADMIN-015", "UI-ADMIN-016", "UI-ADMIN-017", "UI-CAP-015"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Global profile and Company Pack lifecycle is separated from workspace assignment and all channels resolve one pinned brand contract."},
     {"use_case_id": "UC-024", "surface_ids": ["UI-DATA-023", "UI-DATA-024", "UI-DATA-025", "UI-DATA-026", "UI-DATA-027", "UI-OVR-010"], "coverage_types": ["route", "overlay"], "rationale": "Template lifecycle import history resumable upload and result diagnostics are durable independently addressable surfaces with shared progress."},
     {"use_case_id": "UC-025", "surface_ids": ["UI-AN-002", "UI-AN-011", "UI-AN-012", "UI-AN-014", "UI-SEG-002", "UI-SEG-003", "UI-OVR-025", "UI-CAP-008", "UI-CAP-014", "UI-CAP-018"], "coverage_types": ["route", "overlay", "cross_surface_capability"], "rationale": "Population treatment is a governed reusable policy applied by analytical and segmentation workflows, with contextual diagnostics, progress and Result Trust disclosure rather than a standalone resource route."},
-    {"use_case_id": "UC-026", "surface_ids": ["UI-AN-011", "UI-AN-012", "UI-AN-014", "UI-SEG-001", "UI-SEG-002", "UI-SEG-003", "UI-CAP-014", "UI-CAP-019"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Bucket, stratified and exact-K KMeans segmentation share one versioned builder and execution contract while published definitions and membership snapshots remain on existing segmentation routes."}
+    {"use_case_id": "UC-026", "surface_ids": ["UI-AN-011", "UI-AN-012", "UI-AN-014", "UI-SEG-001", "UI-SEG-002", "UI-SEG-003", "UI-CAP-014", "UI-CAP-019"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Bucket, stratified and exact-K KMeans segmentation share one versioned builder and execution contract while published definitions and membership snapshots remain on existing segmentation routes."},
+    {"use_case_id": "UC-027", "surface_ids": ["UI-DATA-008", "UI-DATA-010", "UI-DATA-013", "UI-DATA-014", "UI-DATA-021", "UI-DATA-022", "UI-AN-002", "UI-AN-010", "UI-AN-011", "UI-AN-012", "UI-AN-014", "UI-CAP-008", "UI-CAP-020"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Discount policy metric and methodology lifecycles reuse their durable data routes while Margin and Discounts owns the primary result; shared component cap PVM and trust semantics remain a reusable capability."},
+    {"use_case_id": "UC-028", "surface_ids": ["UI-ORG-001", "UI-ORG-002", "UI-ADMIN-003", "UI-ADMIN-018", "UI-ADMIN-019", "UI-ADMIN-020", "UI-CAP-011", "UI-CAP-021"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Organization hierarchy memberships leadership department policies grants and ownership have durable independently bookmarkable lifecycle routes while effective-access composition remains shared."},
+    {"use_case_id": "UC-029", "surface_ids": ["UI-ORG-002", "UI-PEOPLE-001", "UI-PEOPLE-002", "UI-RPT-001", "UI-DASH-001", "UI-CAP-016", "UI-CAP-022"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "People and contributor profiles are durable privacy-scoped surfaces while redaction visibility filtering and activity summaries are reusable policies across libraries and department hubs."}
   ]
 }

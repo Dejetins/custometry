@@ -1,12 +1,12 @@
 ---
 doc_id: CONTRACT-UI-ROUTE-001
 title: Executable UI route contract
-doc_version: 3
-product_spec_version: 0.9.1-draft
+doc_version: 6
+product_spec_version: 0.9.4-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [UC-025, UC-026, ROUTE-001, ROUTE-002, ROUTE-003, ROUTE-004, ROUTE-005, ROUTE-006, ROUTE-007, ROUTE-008, ROUTE-009, ROUTE-010, ROUTE-011, ROUTE-012, RBAC-002, RBAC-006, OUTLIER-001, SEGMENT-001]
+requirement_ids: [UC-025, UC-026, UC-027, UC-028, UC-029, ROUTE-001, ROUTE-002, ROUTE-003, ROUTE-004, ROUTE-005, ROUTE-006, ROUTE-007, ROUTE-008, ROUTE-009, ROUTE-010, ROUTE-011, ROUTE-012, RBAC-002, RBAC-006, RBAC-019, RBAC-020, RBAC-027, OUTLIER-001, SEGMENT-001, DISCOUNT-001, PVM-001, METHOD-009, METRIC-017]
 status: accepted
 proof_boundary:
   label: executable-route-contract-static
@@ -62,13 +62,13 @@ The identity registry remains schema `2.0.0` and contains only:
 - target `release`;
 - `status` (`planned`, `foundation`, or `implemented`).
 
-Foundation utility routes remain separate from the 110 product route-level
+Foundation utility routes remain separate from the 116 product route-level
 pages. A stable path rename later requires deterministic redirects, deprecation,
 telemetry, bookmark migration, and rollback.
 
 ## Executable manifest contract
 
-The manifest is one atomically versioned file. Each of the 110 identity routes
+The manifest is one atomically versioned file. Each of the 116 identity routes
 has exactly one record with:
 
 - route family and shell profile;
@@ -146,7 +146,7 @@ it does not prove browser behavior or accessibility.
 
 The repository validator checks:
 
-- exact route coverage derived from the UI blueprint, currently 110 unique
+- exact route coverage derived from the UI blueprint, currently 116 unique
   IDs/paths/title keys, without treating that number as a permanent ceiling;
 - identity fields against the compact registry;
 - roles against the UI blueprint row;
@@ -157,18 +157,25 @@ The repository validator checks:
   permission catalog;
 - requirement references against stable product requirement IDs;
 - English/Russian title parity;
-- all `UC-001...UC-026` surface bindings and references;
+- all `UC-001...UC-029` surface bindings and references;
 - overlay, system-surface, and cross-surface capability parity with the UI
   blueprint;
-- the W03 historical 91 verified plus 19 backlog route-frame boundary, while
-  later overlay/component deltas are tracked independently.
+- the accepted historical W10 `116/25/5` identity/domain baseline at terminal
+  revision 213, while the separate Linear-workspace Penpot vNext and browser
+  implementation remain independently evidenced.
 
-Product specification `0.9.1-draft` adds governed population treatment and
-bucket/stratified/KMeans segmentation without introducing a new durable route.
-Those behaviors attach to existing analytics, segmentation, and research
-routes through executable requirement references plus reusable overlay and
-capability contracts. A future standalone route still requires the route
-decision criteria rather than a count-driven expansion.
+Product specification `0.9.4-draft` retains governed treatment, segmentation,
+discount/PVM, and methodology trust and adds versioned organization structure,
+department access/ownership, and privacy-safe contributor insights. Six new
+durable routes are justified by independent lifecycle, deep-link, history, and
+permission boundaries; reusable effective-access and contributor-view behavior
+remains in `UI-CAP-021/022`. A future standalone route still requires the route
+decision criteria rather than count-driven expansion.
+
+The route count does not change for the Linear-workspace transition. W19-W23
+replace foundations, shell, themes, interaction grammar, and one golden-slice
+composition while preserving stable URLs and UI IDs. W10 remains historical
+Penpot evidence; it cannot be used as proof of vNext design or browser behavior.
 
 Changing an identity path or field after a stable consumer exists is a route
 compatibility change. Adding a profile/permission/state under the executable

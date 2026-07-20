@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-REPOSITORY-LAYOUT-001
 title: Custometry repository and agent infrastructure layout
-doc_version: 6
+doc_version: 7
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -38,8 +38,9 @@ Establish the minimal monorepo for Phase 0 (Foundation), retaining the complete 
 8. Until `v1_target`, only a single-server topology with a local artifact filesystem is permitted. Remote workers, object storage, and Kubernetes are not introduced implicitly.
 9. `.gitignore` and `.editorconfig` are added as portable hygiene and secret-state boundaries explicitly authorized by the repository-creation task.
 10. `.codex/delivery/` contains only currently justified specifications,
-    vertical tickets, and compact terminal evidence. It is not a standing
-    program-plan registry.
+    blocker-linked ticket graphs, vertical tickets, and compact terminal
+    evidence. A graph records dependencies and path ownership but never
+    duplicates ticket status; this is not a standing program-plan registry.
 
 ## Alternatives considered
 
@@ -104,6 +105,7 @@ AGENTS.md                       # standard discovery point
     iteration_report_template.md
   delivery/
     specs/                     # only when behavior or proof seam is unresolved
+    graphs/                    # only for a justified dependent-ticket frontier
     tickets/                   # current delivery frontier and execution state
     evidence/                  # ticket-local durable evidence
 docs/iterations/               # standalone bounded reports only

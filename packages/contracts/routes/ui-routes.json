@@ -766,6 +766,48 @@
       "title_key": "UI-ADMIN-018"
     },
     {
+      "id": "UI-ORG-001",
+      "path": "/w/:workspaceKey/organization",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ORG-001"
+    },
+    {
+      "id": "UI-ORG-002",
+      "path": "/w/:workspaceKey/organization/:orgUnitKey",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ORG-002"
+    },
+    {
+      "id": "UI-PEOPLE-001",
+      "path": "/w/:workspaceKey/people",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-PEOPLE-001"
+    },
+    {
+      "id": "UI-PEOPLE-002",
+      "path": "/w/:workspaceKey/people/:principalId",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-PEOPLE-002"
+    },
+    {
+      "id": "UI-ADMIN-019",
+      "path": "/w/:workspaceKey/settings/organization",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-019"
+    },
+    {
+      "id": "UI-ADMIN-020",
+      "path": "/w/:workspaceKey/settings/organization/:orgUnitKey",
+      "release": "MVP/V1",
+      "status": "planned",
+      "title_key": "UI-ADMIN-020"
+    },
+    {
       "id": "UI-HELP-001",
       "path": "/help",
       "release": "MVP/V1",

@@ -2,7 +2,7 @@
 doc_id: network-boundary
 title: Сетевая граница
 doc_version: 2
-product_spec_version: 0.9.1-draft
+product_spec_version: 0.9.4-draft
 locale: ru
 visibility: public
 ship: true

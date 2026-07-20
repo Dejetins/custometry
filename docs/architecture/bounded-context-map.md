@@ -1,12 +1,12 @@
 ---
 doc_id: ARCH-BOUNDED-CONTEXT-MAP-001
 title: Custometry bounded context map
-doc_version: 6
-product_spec_version: 0.9.1-draft
+doc_version: 8
+product_spec_version: 0.9.4-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [ARCH-PRINCIPLE-001, UC-025, UC-026, CONNECTOR-001, METHOD-001, METRIC-009, RBAC-002, RBAC-013, REPORT-003, REPORT-012, OUTLIER-001, SEGMENT-001]
+requirement_ids: [ARCH-PRINCIPLE-001, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-002, RBAC-013, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, OUTLIER-001, SEGMENT-001]
 status: accepted
 proof_boundary:
   label: target-ownership-dependency-and-integration-policy
@@ -18,7 +18,7 @@ proof_boundary:
 ## Purpose and interpretation
 
 This map establishes DDD ownership, permitted integration directions, public
-ports, consistency rules, and trust handoffs for the `0.9.1-draft` modular
+ports, consistency rules, and trust handoffs for the `0.9.4-draft` modular
 monolith. It elaborates the normative product blueprint without introducing new
 product requirements. `system-design.md` supplies the overall target flows;
 this document answers who owns each decision and how contexts may collaborate.
@@ -31,16 +31,16 @@ share private domain objects, repositories, tables, or write paths.
 
 | Context | Package(s) | Owns | Does not own | Boundary rationale |
 |---|---|---|---|---|
-| Identity & Workspace | `identity_access` | users, principals, local auth, memberships, roles, grants, object/data ceilings, workspaces, sessions, API tokens, policy decisions | report definitions, source secrets, business data, notification content | authorization and tenancy have independent security/lifecycle rules |
+| Identity & Workspace | `identity_access` | users, principals, local auth, memberships, roles, OrgUnit structures, primary memberships, scoped leadership, department data policies, cross-department grants, resource ownership bindings, contributor activity projections, object/data ceilings, workspaces, sessions, API tokens, policy decisions | report definitions, source secrets, business data, raw employee analytics, notification content | authorization, organization scope, ownership, and tenancy have independent security/lifecycle rules |
 | Connection Catalog | `connection_catalog` | connection versions, secret-reference metadata, source capabilities, source catalog snapshots, connector health | secret values, extracted rows, ingestion watermarks, semantic mappings | source configuration/metadata change independently from extraction |
-| Semantic Model | `semantic_model` | datasets, entity/field mappings, joins, metrics, metric groups, NumberFormatSpec, filters, capabilities | physical extraction, report layout, analysis results, comments | analytical meaning and reusable numeric semantics require immutable versions |
+| Semantic Model | `semantic_model` | datasets, entity/field mappings, joins, metrics/certification, metric groups, NumberFormatSpec, DiscountPolicyVersion, filters, capabilities | physical extraction, fitted attribution/decomposition results, report layout, comments | analytical meaning, pricing policy, and reusable numeric semantics require immutable versions |
 | Data Documentation | `data_documentation` | Data Guides, FileImportTemplateVersion, validation/publication lifecycle, safe documentation projections | arbitrary source files, ingestion state, report narrative | governed explanation and intake shape are independently published contracts |
 | Ingestion | `ingestion` | extraction specs, batches, source consistency observations, schema observations, watermark intents/commits, landing manifests | connection secrets, semantic definitions, DQ waivers | restartable source reads and watermark correctness form one consistency boundary |
 | Artifact Lifecycle | `artifacts` | staging/commit visibility, manifests, hashes, authorization, retention, orphan cleanup | business meaning, run orchestration, report definition | immutable bulk data needs atomic visibility and lifecycle independent of producers |
 | Execution Control | `execution` | pipelines, schedules, commands, runs/node attempts, outbox, leases/fencing, retry/cancellation, reconciliation, progress | domain calculation semantics, terminal artifact contents | durable coordination and recovery are shared execution policy, not business logic |
 | Data Quality | `data_quality` | rule versions, QualityReport, drift, remediation, waivers, gate/readiness decisions | semantic definitions, source extraction, analytical result identity | quality evidence and exception lifecycle have separate authority |
-| Analytics | `analytics_core`, `analytics_customer`, `analytics_sales` | AnalysisSpec, result identity/manifests, PopulationTreatmentSpecVersion and diagnostics, bucket/stratification specifications, segment/model versions, membership snapshots, customer/sales analytics, comparisons, migrations | methodology review, report layout, forecasts, promotion facts, DQ rule authority | analytical population, transformations, calculations, and segmentation evolve together under reproducibility contracts |
-| Methodology & Research | `methodology_research` | AnalysisMethodVersion, AnalysisCase, ResearchDocumentVersion, FindingVersion, DecisionRecord, AnalyticalProduct, comment threads | result calculation, report rendering, object-access policy source of truth | methods, evidence review, narrative, findings, and collaboration form a knowledge lifecycle |
+| Analytics | `analytics_core`, `analytics_customer`, `analytics_sales` | AnalysisSpec, result identity/manifests, PopulationTreatmentSpecVersion and diagnostics, bucket/stratification specifications, segment/model versions, membership snapshots, discount attribution/reconciliation and PVM specs/results, customer/sales analytics, comparisons, migrations | methodology review, reusable discount-policy meaning, report layout, forecasts, promotion facts, DQ rule authority | analytical population, transformations, calculations, pricing decompositions, and segmentation evolve together under reproducibility contracts |
+| Methodology & Research | `methodology_research` | AnalysisMethodVersion availability/robustness/representativeness, MethodologyPack, AnalysisCase, ResearchDocumentVersion, FindingVersion, DecisionRecord, AnalyticalProduct, comment threads | result calculation, report rendering, metric certification ownership, object-access policy source of truth | methods, evidence review, narrative, findings, and collaboration form a knowledge lifecycle |
 | Promotion Journal | `promotion_journal` | immutable promotion versions, planned/actual windows, channel/customer scope, audience bindings | causal attribution, segment calculation, chart rendering | business event history is descriptive input with its own lifecycle/ownership |
 | Forecasting | `forecasting` | forecast specs, series/features, temporal backtests, model registry, predictions, intervals, monitoring | source ingestion, generic analytics, chart rendering | temporal validation/model lifecycle needs specialized invariants |
 | Presentation & Reports | `presentation`, `chart_compiler_ts` | ChartSpec, dashboards, report definitions/snapshots, report/dashboard access-policy bindings, BrandProfile, CompanyPack, render metadata | analytical calculation, mail transport, comments, raw source rows | cross-channel composition and corporate identity require deterministic presentation versions |
@@ -87,7 +87,7 @@ share private domain objects, repositories, tables, or write paths.
 ### 3.2. Runtime
 
 - Every workspace call carries resolved `workspace_id`, actor, effective policy
-  version, trace identity, and contract version.
+  version, organization scope, trace identity, and contract version.
 - Authorization is evaluated before protected fetch/action and re-evaluated by
   workers before source, artifact, render, export, or external delivery access.
 - A write path belongs to exactly one context. Other contexts submit an owner
@@ -106,11 +106,16 @@ share private domain objects, repositories, tables, or write paths.
 |---|---|---|---|
 | Identity & Workspace | `AuthorizationDecisionPort` | all protected contexts and apps | deny before fetch; no existence leak; policy version included |
 | Identity & Workspace | actor/workspace/brand/locale projection | Web, Presentation, Notifications | installation role does not imply workspace membership |
+| Identity & Workspace | organization structure/membership/leadership command and query ports | Admin Web, policy engine, Audit | exactly one active primary department/team; no hard delete; optimistic versioning |
+| Identity & Workspace | department data policy, cross-department grant, ownership, and effective-access explanation ports | protected contexts, admin/member UI | bounded allow never exceeds functional/PII ceilings; deny wins |
+| Identity & Workspace | privacy-safe ContributorActivityProjection | Organization/People Web, Presentation search | only visible resources and redacted aggregates; no raw Audit/ranking/score |
 | Connection Catalog | versioned connection snapshot and connector capability projection | Ingestion, Semantic Model, operator UI | secret value/DSN never leaves adapter boundary |
 | Data Documentation | published import-template projection | file intake, Ingestion, UI | exact media/sheet/column/type/limit version is pinned |
 | Data Documentation | permission-aware Data Guide projection | Web Help, Reports, XLSX | safe labels only; no secret, denied PII, or raw query |
 | Semantic Model | immutable semantic contract | Analytics, Forecasting, DQ, Research, Presentation | dataset/metric/filter/capability versions are explicit |
 | Semantic Model | NumberFormatSpec/MetricGroup projection | Presentation, email, XLSX | raw typed value remains authoritative and ordering is stable |
+| Semantic Model | metric certification/value-origin projection | Analytics, Research, Presentation | published lifecycle does not imply verified/canonical; proxy coverage and evidence stay explicit |
+| Semantic Model | effective DiscountPolicy projection | Ingestion mapping, DQ, Analytics, Presentation | component catalog/stacking/precedence/accounting/cap/returns are immutable and interval-resolved |
 | Ingestion | landing artifact commit request | Artifact Lifecycle | staging is invisible; watermark advances only after durable commit |
 | Artifact Lifecycle | `ArtifactCommitPort` and authorized artifact reference | all bulk producers/consumers | manifest/hash/PII/lineage are immutable; access rechecked |
 | Execution Control | command/task/status/progress ports | executable contexts, API, Web, operators | outbox, attempt identity, lease/fencing, reconciliation |
@@ -118,7 +123,10 @@ share private domain objects, repositories, tables, or write paths.
 | Analytics | reportable result and segment snapshot ports | Research, Presentation, Forecasting inputs where declared | result identity pins inputs/spec/code/filter/policy |
 | Analytics | population-treatment specification/diagnostic ports | analytical routes, segment builder, Research, Presentation | method/action/fitted parameters/reference population/sensitivity and affected-row artifact identity are explicit |
 | Analytics | segmentation definition/model/assignment ports | analytical routes, Research, Presentation, Execution Control | rule/bucket/strata/KMeans specs and immutable membership identity are versioned; fit and assignment are distinct |
+| Analytics | discount component/reconciliation/cap diagnostic ports | analytical routes, Research, Presentation | line/component grain, policy, attribution mode, coverage, breach and result identity are pinned |
+| Analytics | PVM specification/result port | analytical routes, Research, Presentation | formula order and price/volume/mix/assortment/residual reconcile to observed delta |
 | Methodology & Research | published method/finding/research/product projections | Analytics orchestration, Presentation, search/help | comments cannot become findings; evidence/limitations are pinned |
+| Methodology & Research | method availability and MethodologyPack projection | Analytics capability, Semantic Model CompanyPack, UI/help | future/unsupported methods never appear runnable; robustness and representativeness requirements are versioned |
 | Methodology & Research | comment command/query ports | authorized Web, Notifications, Audit | binds exact resource version/snapshot/block and effective access |
 | Promotion Journal | immutable promotion overlay projection | Analytics, Presentation, Forecasting feature binding | descriptive range only; audience/window version pinned |
 | Forecasting | forecast artifact/model/readiness projections | Presentation, Research | temporal ordering and spec/model identity are required |
@@ -137,6 +145,10 @@ share private domain objects, repositories, tables, or write paths.
 | Web route guard | Identity & Workspace + executable route contract | synchronous policy resolution | role hint is discoverability only; API authorization remains mandatory |
 | UI composition/audit tooling | route identity + execution + surface coverage contracts | static resolution and generation | every product use case resolves to valid route/overlay/system/capability IDs; current route count is not a ceiling |
 | Identity & Workspace | Audit | outbox event for membership/role/grant/session mutation | record actor/scope/diff without secret/token value |
+| Organization administration | Identity & Workspace | versioned owner commands with ETag/If-Match | invalid hierarchy, overlapping primary assignments, or stale version fails atomically |
+| People & Creators query | Identity & Workspace | policy-filtered contributor projection | self/leader/grantee scopes differ; hidden resources and counts are omitted before aggregation |
+| Presentation publication/transfer | Identity & Workspace | ownership binding and handover command | creator attribution remains immutable; published default owner is primary department; deactivation fails closed |
+| Any cross-department consumer | Identity & Workspace | bounded grant/effective-access decision | grant expiry/revoke invalidates cache and never expands role/PII ceiling |
 | Connection Catalog | Audit | outbox event | connection/secret-reference changes recorded without DSN/secret |
 | File intake | Data Documentation | pinned template query | unknown sheets/columns, macros/formulas, limits, or type violations reject safely |
 | Ingestion | Connection Catalog | versioned connection snapshot | rotation cannot change a running batch; secret resolved only in adapter |
@@ -149,6 +161,8 @@ share private domain objects, repositories, tables, or write paths.
 | Analytics | Semantic Model + DQ + Artifacts | versioned query/reference | result identity includes inputs, spec, code, filters, comparison, policy |
 | Analytics population treatment | Semantic Model + DQ + Artifacts | pinned eligible population plus versioned fit/diagnostic artifact | treatment is not a DQ correction; current and `vs LY` share fitted policy unless explicitly versioned otherwise |
 | Analytics segmentation | Semantic Model + DQ + Artifacts | pinned features/treatment/model/membership artifacts | boundaries, order, null policy, transforms, scaling, K, seed, model and assignment versions are explicit |
+| Analytics discount economics | Semantic Model + DQ + Artifacts | effective policy plus line/component/source facts and immutable diagnostics | no unknown-as-zero, implicit allocation, hidden stacking, historical clamp, or unaudited residual attribution |
+| Analytics PVM | Semantic Model + Artifacts | pinned metrics/product identity/period/currency/returns/method | decomposition must reconcile before trusted commit; drill-down preserves parent totals |
 | Analytics | Promotion Journal | immutable overlay input | promotion overlap is descriptive; causal claim requires methodology |
 | Analytics | Execution Control + Artifacts | task plus result commit | repeated execution is idempotent; committed result immutable |
 | Forecasting | Semantic Model + DQ + Artifacts | pinned series/feature references | temporal order/model/spec identity and degradation are explicit |
@@ -203,6 +217,38 @@ visibility. Presentation and Research consume public projections and disclose
 treatment/model identity and limitations through Result Trust; they cannot
 re-fit or change membership.
 
+### 6.1. Discount economics and methodology trust dependency rules
+
+Semantic Model owns stable component roles, metric definitions/certification,
+and effective `DiscountPolicyVersion` because these meanings must be reused by
+every analysis and channel. It resolves non-overlapping effective intervals and
+publishes component catalog, source binding, stacking/precedence, bonus
+accounting treatment, cap/base/tolerance/rounding, returns, and breach rules.
+It does not fit residual attribution or calculate a report result.
+
+Ingestion preserves raw mapped values. Data Quality owns coverage,
+reconciliation, impossible combination, and historical cap-breach evidence. A
+quality action may degrade or block trusted analysis but cannot clamp or rewrite
+canonical sales. Promotion Journal may provide an exact version reference and
+descriptive time context; date overlap alone is not sale-level promotion
+evidence.
+
+Analytics owns normalized line/component facts, attribution diagnostics,
+component/total ratios, overlap/depth/cap result artifacts, and versioned PVM
+specifications/results. It commits only after grain-safe aggregation and declared
+tolerance reconciliation. A simulated cap violation blocks publication;
+historical violations remain visible evidence. Current and `vs LY` pin the same
+policy/method by default, while policy drift creates a different result identity
+and explicit comparability warning.
+
+Methodology & Research owns method availability, evidence-strength ceiling,
+robustness/representativeness expectations, and MethodologyPack composition. It
+does not own metric certification (Semantic Model) or execute Analytics private
+calculations. `future_extension` and `unsupported` entries are documentation and
+capability states, never worker bindings. Presentation consumes only public
+projections and exposes attribution mode, coverage, policy, cap, PVM order,
+residual, certification, and limitations through Result Trust and exports.
+
 ## 7. CompanyPack and branding dependency rules
 
 Presentation & Reports owns BrandProfile and CompanyPack identity, validation,
@@ -216,6 +262,7 @@ domain packs:
 - `BrandProfileVersion` owned by Presentation;
 - `MetricGroupVersion` and default `NumberFormatSpec` owned by Semantic Model;
 - `MethodologyPack` entries owned by Methodology & Research;
+- optional approved `DiscountPolicyVersion` binding owned by Semantic Model;
 - file-import templates and Data Guide templates owned by Data Documentation;
 - localization catalogs resolved through the localization adapter.
 
@@ -224,7 +271,30 @@ an immutable CompanyPack version. A workspace override creates a new version in
 the owning context and a new pack binding; it never mutates the approved source.
 Executable templates, remote assets, secrets, and customer code are prohibited.
 
-## 8. Object access, comments, and audit dependency rules
+## 8. Organization, object access, comments, and audit dependency rules
+
+Identity & Workspace owns organization structures and policy composition; no
+new Organization bounded context or deployable microservice is introduced.
+Functional roles, one primary OrgUnit assignment, and scoped leadership remain
+separate aggregates. `DepartmentDataPolicyVersion` constrains dataset, row,
+column, and PII scope. `CrossDepartmentGrant` adds only a bounded, reasoned,
+effective-dated allow within the existing role/PII ceilings. The authorization
+port intersects these layers with the resource policy and applies deny before
+fetch, count, search, aggregation, pagination, caching, or action.
+
+Presentation & Reports owns report/dashboard definitions and access-policy
+bindings but does not own organization truth. On publication it asks Identity
+to create a department-default `ResourceOwnershipBinding`. Creator identity is
+immutable; owner may transfer. A member transfer/deactivation closes the prior
+scope and produces handover work through owner commands/events. Legacy
+published resources migrate to `workspace_legacy` until audited assignment.
+
+Identity consumes allowlisted redacted domain events to maintain
+`ContributorActivityProjection`. Audit remains append-only accountability and
+is not queried as an employee-analytics store. People & Creators may show only
+visible resources and safe activity aggregates to self, scoped leaders, or
+explicit grantees. Rankings, leaderboards, productivity scores, peer
+percentiles, hidden counts, and raw event feeds are prohibited.
 
 Identity & Workspace owns generic principals, grants, policy ceilings, and the
 authorization engine. Presentation owns the report/dashboard access-policy
@@ -257,10 +327,14 @@ boundary and does not create an active public context or credential route.
 ## 10. Report, formatting, and export dependency rules
 
 Semantic Model owns what a metric means, its group/order, and its display
-contract. Analytics/Forecasting own typed raw values and result identity.
+contract. It also owns metric certification/value origin and reusable discount
+policy semantics. Analytics/Forecasting own typed raw values and result
+identity; Analytics owns component attribution and PVM diagnostics.
 Presentation resolves those values into ReportSnapshot blocks and ChartSpec.
 Static renderers, Report Delivery, and XLSX are adapters/consumers; they cannot
 override calculations, grouping, units, compact thresholds, or precision.
+They also cannot relabel a proxy as direct, clamp a breach, infer promotion from
+timeline overlap, or recompute PVM with another order.
 
 XLSX rendering remains an adapter behind `XlsxRendererPort`, not a separate
 bounded context, because it owns no durable business lifecycle. It commits the
@@ -288,12 +362,19 @@ the only supported way to keep a cross-context projection current.
 | Decision | Required consistency | Failure behavior |
 |---|---|---|
 | authorization before protected fetch/action | synchronous strong decision against current policy version | deny safely; no resource leak or stale-cache fallback |
+| organization structure/membership publication | Identity owner transaction plus audit/outbox intent | stale/invalid hierarchy or overlapping primary assignment rejects atomically; previous version remains active |
+| cross-department grant/revoke | strong policy write plus effective-policy cache invalidation | expiry/revoke fails closed; consumer never keeps broader stale access |
+| contributor activity projection | eventual redacted event projection with explicit freshness | stale marker allowed; raw Audit fallback and hidden-count approximation forbidden |
+| member transfer/deactivation handover | strong old-scope termination plus durable ownership handover events | access closes immediately; unresolved ownership is visible/blocked, creator history preserved |
 | publish immutable definition/method/report/brand/template | owner transaction plus audit/outbox intent | publication fails atomically; draft remains available |
 | artifact visibility | staging plus atomic manifest/hash commit | staging remains invisible and is reconciled/cleaned |
 | extraction watermark | commit only after source-consistent artifact visibility | retry from prior durable watermark; never skip unseen rows silently |
 | task delivery | at-least-once with idempotency and lease/fencing | duplicate safe; expired/lost work reconciled |
 | comment/notification | owner commit plus event projection | comment remains authoritative; delayed notification exposes freshness |
 | treatment/segmentation publication | Analytics owner transaction plus immutable artifact commits and audit/outbox intent | publication fails atomically; draft and prior published versions remain available |
+| discount-policy publication | Semantic Model owner transaction plus impact/audit/outbox | overlapping effective interval or invalid stacking/cap policy rejects publication; prior version remains available |
+| discount/PVM result commit | Analytics immutable artifact commit after DQ/reconciliation | mismatch, unknown policy, simulated cap breach, or unresolved residual blocks trusted visibility; source facts remain unchanged |
+| metric certification/method availability | owner-context immutable evidence/version transaction | failed review leaves prior certification/availability intact and cannot mutate metric/method history |
 | report render/export | immutable snapshot plus asynchronous artifact commit | stable failed/blocked state; no partial artifact visibility |
 | email submit | persisted idempotency/reconciliation handle before external effect | unknown state reconciles; no blind retry |
 | company pack resolution | immutable references across owner contexts | invalid binding rejected; last valid/system fallback remains available |

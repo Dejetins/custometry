@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "product_spec_version": "0.9.1-draft",
-  "ui_spec_version": "0.6.1-draft",
+  "product_spec_version": "0.9.4-draft",
+  "ui_spec_version": "0.7.0-draft",
   "identity_registry_schema_version": "2.0.0",
   "source_files": [
     "custometry-technical-blueprint-ru.md",
@@ -28,6 +28,14 @@
     "workspace.manage",
     "workspace.members.manage",
     "workspace.roles.assign",
+    "organization.read",
+    "organization.manage",
+    "organization.members.assign",
+    "organization.leadership.assign",
+    "organization.data_policy.manage",
+    "organization.access.delegate",
+    "organization.ownership.manage",
+    "organization.activity.read",
     "connection.read_metadata",
     "connection.manage",
     "connection.secret.rotate",
@@ -885,7 +893,12 @@
         "ui_blueprint_id": "UI-DATA-008",
         "requirement_ids": [
           "UC-002",
-          "CAPABILITY-001"
+          "UC-027",
+          "CAPABILITY-001",
+          "DISCOUNT-001",
+          "DISCOUNT-002",
+          "DISCOUNT-003",
+          "DISCOUNT-004"
         ]
       },
       "design": {
@@ -969,7 +982,16 @@
         "ui_blueprint_id": "UI-DATA-010",
         "requirement_ids": [
           "UC-002",
-          "CAPABILITY-001"
+          "UC-027",
+          "CAPABILITY-001",
+          "DISCOUNT-005",
+          "DISCOUNT-006",
+          "DISCOUNT-007",
+          "DISCOUNT-011",
+          "DISCOUNT-012",
+          "DISCOUNT-013",
+          "DISCOUNT-015",
+          "DISCOUNT-020"
         ]
       },
       "design": {
@@ -1098,7 +1120,11 @@
         "ui_blueprint_id": "UI-DATA-013",
         "requirement_ids": [
           "METRIC-001",
-          "METRIC-009"
+          "METRIC-009",
+          "METRIC-017",
+          "METRIC-018",
+          "METRIC-019",
+          "METRIC-020"
         ]
       },
       "design": {
@@ -1141,7 +1167,11 @@
         "ui_blueprint_id": "UI-DATA-014",
         "requirement_ids": [
           "METRIC-001",
-          "METRIC-009"
+          "METRIC-009",
+          "METRIC-017",
+          "METRIC-018",
+          "METRIC-019",
+          "METRIC-020"
         ]
       },
       "design": {
@@ -1444,13 +1474,20 @@
         "ui_blueprint_id": "UI-DATA-021",
         "requirement_ids": [
           "UC-019",
-          "METHOD-001"
+          "UC-027",
+          "METHOD-001",
+          "METHOD-009",
+          "METHOD-010",
+          "METHOD-011",
+          "METHOD-012",
+          "METHOD-013",
+          "METHOD-014"
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-021",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1488,13 +1525,20 @@
         "ui_blueprint_id": "UI-DATA-022",
         "requirement_ids": [
           "UC-019",
-          "METHOD-001"
+          "UC-027",
+          "METHOD-001",
+          "METHOD-009",
+          "METHOD-010",
+          "METHOD-011",
+          "METHOD-012",
+          "METHOD-013",
+          "METHOD-014"
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-022",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1535,9 +1579,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-023",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1578,9 +1622,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-024",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1621,9 +1665,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-025",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1662,9 +1706,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-026",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1706,9 +1750,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-027",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1750,9 +1794,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-028",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1794,9 +1838,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-029",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1838,9 +1882,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-030",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -1882,9 +1926,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-DATA-031",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -2179,6 +2223,8 @@
           "UC-012",
           "UC-025",
           "UC-026",
+          "UC-027",
+          "DISCOUNT-019",
           "OUTLIER-007",
           "SEGMENT-018"
         ]
@@ -2224,7 +2270,34 @@
         "ui_blueprint_id": "UI-AN-003",
         "requirement_ids": [
           "UC-004",
-          "UC-012"
+          "UC-012",
+          "UC-027",
+          "DISCOUNT-001",
+          "DISCOUNT-004",
+          "DISCOUNT-005",
+          "DISCOUNT-008",
+          "DISCOUNT-009",
+          "DISCOUNT-010",
+          "DISCOUNT-011",
+          "DISCOUNT-012",
+          "DISCOUNT-013",
+          "DISCOUNT-014",
+          "DISCOUNT-015",
+          "DISCOUNT-016",
+          "DISCOUNT-017",
+          "DISCOUNT-018",
+          "DISCOUNT-019",
+          "PVM-001",
+          "PVM-002",
+          "PVM-003",
+          "PVM-004",
+          "PVM-005",
+          "PVM-006",
+          "METRIC-017",
+          "METRIC-019",
+          "METHOD-010",
+          "METHOD-011",
+          "METHOD-012"
         ]
       },
       "design": {
@@ -2579,6 +2652,9 @@
           "UC-012",
           "UC-025",
           "UC-026",
+          "UC-027",
+          "DISCOUNT-019",
+          "PVM-001",
           "OUTLIER-001",
           "OUTLIER-007",
           "OUTLIER-008",
@@ -2631,6 +2707,9 @@
           "UC-012",
           "UC-025",
           "UC-026",
+          "UC-027",
+          "DISCOUNT-017",
+          "PVM-006",
           "OUTLIER-009",
           "OUTLIER-010",
           "SEGMENT-002",
@@ -2684,9 +2763,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-AN-013",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -2728,16 +2807,21 @@
           "UC-020",
           "UC-025",
           "UC-026",
+          "UC-027",
           "RESEARCH-001",
+          "METHOD-011",
+          "METHOD-012",
+          "DISCOUNT-017",
+          "PVM-006",
           "OUTLIER-009",
           "SEGMENT-007",
           "SEGMENT-010"
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-AN-014",
-        "baseline_version": "0.6.1-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev164"
       }
     },
     {
@@ -4790,9 +4874,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-ADMIN-013",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -4831,9 +4915,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-ADMIN-014",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -4872,9 +4956,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-ADMIN-015",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -4913,9 +4997,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-ADMIN-016",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -4954,9 +5038,9 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-ADMIN-017",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
     {
@@ -4997,13 +5081,272 @@
         ]
       },
       "design": {
-        "penpot_status": "backlog",
+        "penpot_status": "baseline_verified",
         "frame_key": "UI-ADMIN-018",
-        "baseline_version": "0.6.0-draft-target"
+        "baseline_version": "0.6.1-draft-penpot-rev156"
       }
     },
-    {
-      "id": "UI-HELP-001",
+  {
+    "id": "UI-ORG-001",
+    "path": "/w/:workspaceKey/organization",
+    "title_key": "UI-ORG-001",
+    "family": "workspace",
+    "shell_profile": "workspace",
+    "navigation_group": "organization",
+    "surface_kind": "list",
+    "release": "MVP/V1",
+    "status": "planned",
+    "role_hints": [
+      "all"
+    ],
+    "authorization": {
+      "mode": "workspace_permission",
+      "entry_permissions_any": [
+        "organization.read"
+      ],
+      "action_permissions": [],
+      "object_scoped": false
+    },
+    "guard_profile": "workspace_permission",
+    "state_profile": "browse",
+    "navigation_profile": "browse",
+    "query_profile": "standard",
+    "focus_explore": "not_applicable",
+    "source": {
+      "ui_blueprint_id": "UI-ORG-001",
+      "requirement_ids": [
+        "UC-028",
+        "RBAC-020",
+        "RBAC-021"
+      ]
+    },
+    "design": {
+      "penpot_status": "baseline_verified",
+      "frame_key": "UI-ORG-001",
+      "baseline_version": "0.6.3-draft-penpot-rev213"
+    }
+  },
+  {
+    "id": "UI-ORG-002",
+    "path": "/w/:workspaceKey/organization/:orgUnitKey",
+    "title_key": "UI-ORG-002",
+    "family": "workspace",
+    "shell_profile": "workspace",
+    "navigation_group": "organization",
+    "surface_kind": "detail",
+    "release": "MVP/V1",
+    "status": "planned",
+    "role_hints": [
+      "allowed"
+    ],
+    "authorization": {
+      "mode": "workspace_permission",
+      "entry_permissions_any": [
+        "organization.read"
+      ],
+      "action_permissions": [
+        "organization.activity.read"
+      ],
+      "object_scoped": false
+    },
+    "guard_profile": "workspace_permission",
+    "state_profile": "browse",
+    "navigation_profile": "browse",
+    "query_profile": "standard",
+    "focus_explore": "not_applicable",
+    "source": {
+      "ui_blueprint_id": "UI-ORG-002",
+      "requirement_ids": [
+        "UC-028",
+        "UC-029",
+        "RBAC-022",
+        "RBAC-027"
+      ]
+    },
+    "design": {
+      "penpot_status": "baseline_verified",
+      "frame_key": "UI-ORG-002",
+      "baseline_version": "0.6.3-draft-penpot-rev213"
+    }
+  },
+  {
+    "id": "UI-PEOPLE-001",
+    "path": "/w/:workspaceKey/people",
+    "title_key": "UI-PEOPLE-001",
+    "family": "workspace",
+    "shell_profile": "workspace",
+    "navigation_group": "organization",
+    "surface_kind": "list",
+    "release": "V1",
+    "status": "planned",
+    "role_hints": [
+      "all"
+    ],
+    "authorization": {
+      "mode": "workspace_permission",
+      "entry_permissions_any": [
+        "organization.read"
+      ],
+      "action_permissions": [
+        "organization.activity.read"
+      ],
+      "object_scoped": false
+    },
+    "guard_profile": "workspace_permission",
+    "state_profile": "browse",
+    "navigation_profile": "browse",
+    "query_profile": "standard",
+    "focus_explore": "not_applicable",
+    "source": {
+      "ui_blueprint_id": "UI-PEOPLE-001",
+      "requirement_ids": [
+        "UC-029",
+        "RBAC-027",
+        "RBAC-028"
+      ]
+    },
+    "design": {
+      "penpot_status": "baseline_verified",
+      "frame_key": "UI-PEOPLE-001",
+      "baseline_version": "0.6.3-draft-penpot-rev213"
+    }
+  },
+  {
+    "id": "UI-PEOPLE-002",
+    "path": "/w/:workspaceKey/people/:principalId",
+    "title_key": "UI-PEOPLE-002",
+    "family": "workspace",
+    "shell_profile": "workspace",
+    "navigation_group": "organization",
+    "surface_kind": "detail",
+    "release": "V1",
+    "status": "planned",
+    "role_hints": [
+      "allowed"
+    ],
+    "authorization": {
+      "mode": "workspace_permission",
+      "entry_permissions_any": [
+        "organization.read"
+      ],
+      "action_permissions": [
+        "organization.activity.read",
+        "report.read"
+      ],
+      "object_scoped": false
+    },
+    "guard_profile": "workspace_permission",
+    "state_profile": "browse",
+    "navigation_profile": "browse",
+    "query_profile": "standard",
+    "focus_explore": "not_applicable",
+    "source": {
+      "ui_blueprint_id": "UI-PEOPLE-002",
+      "requirement_ids": [
+        "UC-029",
+        "RBAC-025",
+        "RBAC-027"
+      ]
+    },
+    "design": {
+      "penpot_status": "baseline_verified",
+      "frame_key": "UI-PEOPLE-002",
+      "baseline_version": "0.6.3-draft-penpot-rev213"
+    }
+  },
+  {
+    "id": "UI-ADMIN-019",
+    "path": "/w/:workspaceKey/settings/organization",
+    "title_key": "UI-ADMIN-019",
+    "family": "workspace",
+    "shell_profile": "workspace",
+    "navigation_group": "administration",
+    "surface_kind": "settings",
+    "release": "MVP/V1",
+    "status": "planned",
+    "role_hints": [
+      "WA"
+    ],
+    "authorization": {
+      "mode": "workspace_permission",
+      "entry_permissions_any": [
+        "organization.manage"
+      ],
+      "action_permissions": [
+        "organization.manage",
+        "organization.members.assign",
+        "organization.leadership.assign"
+      ],
+      "object_scoped": false
+    },
+    "guard_profile": "workspace_permission",
+    "state_profile": "editor",
+    "navigation_profile": "editor",
+    "query_profile": "editor",
+    "focus_explore": "not_applicable",
+    "source": {
+      "ui_blueprint_id": "UI-ADMIN-019",
+      "requirement_ids": [
+        "UC-028",
+        "RBAC-019",
+        "RBAC-021",
+        "RBAC-022"
+      ]
+    },
+    "design": {
+      "penpot_status": "baseline_verified",
+      "frame_key": "UI-ADMIN-019",
+      "baseline_version": "0.6.3-draft-penpot-rev213"
+    }
+  },
+  {
+    "id": "UI-ADMIN-020",
+    "path": "/w/:workspaceKey/settings/organization/:orgUnitKey",
+    "title_key": "UI-ADMIN-020",
+    "family": "workspace",
+    "shell_profile": "workspace",
+    "navigation_group": "administration",
+    "surface_kind": "settings",
+    "release": "MVP/V1",
+    "status": "planned",
+    "role_hints": [
+      "WA"
+    ],
+    "authorization": {
+      "mode": "workspace_permission",
+      "entry_permissions_any": [
+        "organization.manage"
+      ],
+      "action_permissions": [
+        "organization.data_policy.manage",
+        "organization.access.delegate",
+        "organization.ownership.manage"
+      ],
+      "object_scoped": false
+    },
+    "guard_profile": "workspace_permission",
+    "state_profile": "editor",
+    "navigation_profile": "editor",
+    "query_profile": "editor",
+    "focus_explore": "not_applicable",
+    "source": {
+      "ui_blueprint_id": "UI-ADMIN-020",
+      "requirement_ids": [
+        "UC-028",
+        "RBAC-020",
+        "RBAC-023",
+        "RBAC-024",
+        "RBAC-026"
+      ]
+    },
+    "design": {
+      "penpot_status": "baseline_verified",
+      "frame_key": "UI-ADMIN-020",
+      "baseline_version": "0.6.3-draft-penpot-rev213"
+    }
+  },
+  {
+    "id": "UI-HELP-001",
       "path": "/help",
       "title_key": "UI-HELP-001",
       "family": "global_user",

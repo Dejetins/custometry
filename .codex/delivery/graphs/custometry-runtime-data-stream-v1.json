@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0.0",
+  "graph_id": "CUSTOMETRY-RUNTIME-DATA-STREAM-V1",
+  "stream_id": "S02-RUNTIME-DATA",
+  "title": "Custometry runtime, authorization, ingestion, and API projection stream",
+  "status_source": "ticket_frontmatter_only",
+  "coordination_model": "one_ready_ticket_one_chat_one_worktree",
+  "scope": [
+    "hybrid development runtime",
+    "identity, workspace, and local authentication",
+    "organization-scoped authorization core",
+    "source connection and governed file import",
+    "artifact, ingestion, data-quality, and semantic vertical slice",
+    "sales, customer, and RFM API projections",
+    "privacy-safe contributor activity projection"
+  ],
+  "excluded_scope": [
+    "Penpot writes or inspection",
+    "design-system changes",
+    "new Web visual implementation",
+    "product requirement changes",
+    "release, deployment, or production mutation"
+  ],
+  "nodes": [
+    {
+      "ticket_id": "W11-HYBRID-DEVELOPMENT-RUNTIME",
+      "ticket": ".codex/delivery/tickets/W11-HYBRID-DEVELOPMENT-RUNTIME.md",
+      "depends_on": [],
+      "initial_status": "ready",
+      "parallel_group": "runtime_vs_penpot"
+    },
+    {
+      "ticket_id": "W12-IDENTITY-WORKSPACE-LOCAL-AUTH",
+      "ticket": ".codex/delivery/tickets/W12-IDENTITY-WORKSPACE-LOCAL-AUTH.md",
+      "depends_on": ["W11-HYBRID-DEVELOPMENT-RUNTIME"],
+      "initial_status": "draft",
+      "parallel_group": "server_serial"
+    },
+    {
+      "ticket_id": "W13-ORGANIZATION-ACCESS-CORE",
+      "ticket": ".codex/delivery/tickets/W13-ORGANIZATION-ACCESS-CORE.md",
+      "depends_on": ["W12-IDENTITY-WORKSPACE-LOCAL-AUTH"],
+      "initial_status": "draft",
+      "parallel_group": "server_serial"
+    },
+    {
+      "ticket_id": "W14-SOURCE-CONNECTION-FILE-IMPORT-KERNEL",
+      "ticket": ".codex/delivery/tickets/W14-SOURCE-CONNECTION-FILE-IMPORT-KERNEL.md",
+      "depends_on": ["W13-ORGANIZATION-ACCESS-CORE"],
+      "initial_status": "draft",
+      "parallel_group": "server_serial"
+    },
+    {
+      "ticket_id": "W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE",
+      "ticket": ".codex/delivery/tickets/W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE.md",
+      "depends_on": ["W14-SOURCE-CONNECTION-FILE-IMPORT-KERNEL"],
+      "initial_status": "draft",
+      "parallel_group": "server_serial"
+    },
+    {
+      "ticket_id": "W16-SALES-CUSTOMER-RFM-API-PROJECTIONS",
+      "ticket": ".codex/delivery/tickets/W16-SALES-CUSTOMER-RFM-API-PROJECTIONS.md",
+      "depends_on": ["W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE"],
+      "initial_status": "draft",
+      "parallel_group": "server_serial"
+    },
+    {
+      "ticket_id": "W17-PEOPLE-CONTRIBUTOR-ACTIVITY-PROJECTION",
+      "ticket": ".codex/delivery/tickets/W17-PEOPLE-CONTRIBUTOR-ACTIVITY-PROJECTION.md",
+      "depends_on": [
+        "W13-ORGANIZATION-ACCESS-CORE",
+        "W16-SALES-CUSTOMER-RFM-API-PROJECTIONS"
+      ],
+      "initial_status": "draft",
+      "parallel_group": "server_serial"
+    }
+  ],
+  "path_ownership_contract": {
+    "W11-HYBRID-DEVELOPMENT-RUNTIME": [
+      "scripts/dev",
+      "compose.dev.yaml",
+      "deploy/compose/development-runtime-policy.json",
+      "tools/custometry_quality/development_runtime.py",
+      "tests/tooling/test_development_runtime.py",
+      "tests/integration/test_development_runtime.py",
+      "docs/architecture/development-runtime-contract.md",
+      "docs/architecture/runtime-network-installation.md",
+      "docs/runbooks/development-runtime.md"
+    ],
+    "W12-IDENTITY-WORKSPACE-LOCAL-AUTH": [
+      "packages/identity_access/**",
+      "apps/api/src/custometry_api/identity/**",
+      "apps/api/src/custometry_api/main.py",
+      "apps/api/src/custometry_api/config.py",
+      "apps/api/pyproject.toml",
+      "packages/contracts/identity/**",
+      "packages/contracts/openapi/**",
+      "packages/contracts/schemas/**",
+      "packages/contracts/src/**",
+      "docs/contracts/contract-drift.json",
+      "pyproject.toml",
+      "uv.lock",
+      "migrations/versions/*_identity_workspace_auth.py",
+      "tests/unit/identity_access/**",
+      "tests/contract/identity_access/**",
+      "tests/integration/identity_access/**"
+    ],
+    "W13-ORGANIZATION-ACCESS-CORE": [
+      "packages/identity_access/**",
+      "apps/api/src/custometry_api/organization/**",
+      "apps/api/src/custometry_api/main.py",
+      "apps/api/src/custometry_api/config.py",
+      "apps/api/pyproject.toml",
+      "packages/contracts/organization/**",
+      "packages/contracts/openapi/**",
+      "packages/contracts/schemas/**",
+      "packages/contracts/src/**",
+      "docs/contracts/contract-drift.json",
+      "pyproject.toml",
+      "uv.lock",
+      "migrations/versions/*_organization_access.py",
+      "tests/unit/organization_access/**",
+      "tests/contract/organization_access/**",
+      "tests/integration/organization_access/**"
+    ],
+    "W14-SOURCE-CONNECTION-FILE-IMPORT-KERNEL": [
+      "packages/connection_catalog/**",
+      "packages/data_documentation/**",
+      "plugins/connector_postgresql/**",
+      "plugins/connector_files/**",
+      "apps/api/src/custometry_api/connections/**",
+      "apps/api/src/custometry_api/imports/**",
+      "apps/api/src/custometry_api/main.py",
+      "apps/api/src/custometry_api/config.py",
+      "apps/api/pyproject.toml",
+      "packages/contracts/source_intake/**",
+      "packages/contracts/openapi/**",
+      "packages/contracts/schemas/**",
+      "packages/contracts/src/**",
+      "docs/contracts/contract-drift.json",
+      "pyproject.toml",
+      "uv.lock",
+      "migrations/versions/*_source_intake.py",
+      "deploy/demo-source/**",
+      "tests/golden/retail-demo-*",
+      "tests/contract/source_intake/**",
+      "tests/integration/source_intake/**"
+    ],
+    "W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE": [
+      "packages/artifacts/**",
+      "packages/execution/**",
+      "packages/ingestion/**",
+      "packages/data_quality/**",
+      "packages/semantic_model/**",
+      "apps/worker_data/**",
+      "packages/contracts/data_pipeline/**",
+      "pyproject.toml",
+      "uv.lock",
+      "migrations/versions/*_data_pipeline.py",
+      "tests/unit/data_pipeline/**",
+      "tests/contract/data_pipeline/**",
+      "tests/integration/data_pipeline/**"
+    ],
+    "W16-SALES-CUSTOMER-RFM-API-PROJECTIONS": [
+      "packages/analytics_core/**",
+      "packages/analytics_sales/**",
+      "packages/analytics_customer/**",
+      "apps/api/src/custometry_api/analytics/**",
+      "apps/api/src/custometry_api/main.py",
+      "apps/api/src/custometry_api/config.py",
+      "apps/api/pyproject.toml",
+      "packages/contracts/analytics/**",
+      "packages/contracts/openapi/**",
+      "packages/contracts/schemas/**",
+      "packages/contracts/src/**",
+      "docs/contracts/contract-drift.json",
+      "pyproject.toml",
+      "uv.lock",
+      "migrations/versions/*_analytics_projection.py",
+      "tests/unit/analytics/**",
+      "tests/contract/analytics/**",
+      "tests/integration/analytics/**"
+    ],
+    "W17-PEOPLE-CONTRIBUTOR-ACTIVITY-PROJECTION": [
+      "packages/identity_access/**",
+      "packages/presentation/**",
+      "apps/api/src/custometry_api/people/**",
+      "apps/api/src/custometry_api/main.py",
+      "apps/api/src/custometry_api/config.py",
+      "apps/api/pyproject.toml",
+      "packages/contracts/people/**",
+      "packages/contracts/openapi/**",
+      "packages/contracts/schemas/**",
+      "packages/contracts/src/**",
+      "docs/contracts/contract-drift.json",
+      "pyproject.toml",
+      "uv.lock",
+      "migrations/versions/*_contributor_projection.py",
+      "tests/unit/contributor_projection/**",
+      "tests/contract/contributor_projection/**",
+      "tests/integration/contributor_projection/**"
+    ]
+  },
+  "transition_rules": [
+    "Only ticket frontmatter status is authoritative.",
+    "A draft node may become ready only when every depends_on ticket is accepted with passed terminal evidence and its merge commit is present in the common base branch.",
+    "The coordinator never sets accepted; only the executor may do so after complete ticket evidence.",
+    "Concurrent execution requires separate branches or worktrees and disjoint active path ownership.",
+    "Accepted product specifications and executable contracts, not Penpot revision state, govern server behavior; this stream never writes Penpot."
+  ]
+}

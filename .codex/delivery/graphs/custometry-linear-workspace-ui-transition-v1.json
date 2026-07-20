@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "graph_id": "CUSTOMETRY-LINEAR-WORKSPACE-UI-TRANSITION-V1",
+  "stream_id": "S03-LINEAR-UI",
+  "title": "Custometry authenticated Linear-workspace UI transition",
+  "status_source": "ticket_frontmatter_only",
+  "coordination_model": "one_ready_ticket_one_chat_one_worktree",
+  "scope": [
+    "sanitized reference completion",
+    "frontend architecture and performance spike",
+    "separate Penpot vNext",
+    "reversible authenticated application shell",
+    "real Sales Analytics Focus Explore golden slice"
+  ],
+  "excluded_scope": [
+    "backend replatform",
+    "public-site redesign",
+    "domain or API contract changes",
+    "release or deployment"
+  ],
+  "nodes": [
+    {"ticket_id": "W19-LINEAR-REFERENCE-COMPLETION", "ticket": ".codex/delivery/tickets/W19-LINEAR-REFERENCE-COMPLETION.md", "depends_on": [], "initial_status": "ready", "parallel_group": "reference_vs_backend"},
+    {"ticket_id": "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "ticket": ".codex/delivery/tickets/W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE.md", "depends_on": ["W19-LINEAR-REFERENCE-COMPLETION"], "initial_status": "draft", "parallel_group": "ui_serial"},
+    {"ticket_id": "W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS", "ticket": ".codex/delivery/tickets/W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS.md", "depends_on": ["W19-LINEAR-REFERENCE-COMPLETION", "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE"], "initial_status": "draft", "parallel_group": "penpot_vs_backend"},
+    {"ticket_id": "W22-WEB-LINEAR-APPLICATION-SHELL", "ticket": ".codex/delivery/tickets/W22-WEB-LINEAR-APPLICATION-SHELL.md", "depends_on": ["W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS"], "initial_status": "draft", "parallel_group": "shell_vs_backend"},
+    {"ticket_id": "W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE", "ticket": ".codex/delivery/tickets/W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE.md", "depends_on": ["W16-SALES-CUSTOMER-RFM-API-PROJECTIONS", "W22-WEB-LINEAR-APPLICATION-SHELL"], "initial_status": "draft", "parallel_group": "integration"}
+  ],
+  "path_ownership_contract": {
+    "W19-LINEAR-REFERENCE-COMPLETION": ["docs/architecture/ui/linear-workspace-reference-manifest-v1.json", "docs/architecture/ui/linear-workspace-reference-measurements-v1.md"],
+    "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE": ["apps/web/**", "packages/ui-foundation/**", "tests/performance/**"],
+    "W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS": ["external:penpot/custometry-linear-workspace-v0.7", "custometry-ui-blueprint-ru.md", "docs/architecture/ui/custometry-linear-ui-migration-registry-v1.json"],
+    "W22-WEB-LINEAR-APPLICATION-SHELL": ["apps/web/**", "packages/ui-foundation/**", "packages/localization/**", "tests/e2e/**", "tests/accessibility/**", "tests/performance/**"],
+    "W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE": ["apps/web/**", "packages/ui-foundation/**", "packages/localization/**", "tests/e2e/**", "tests/accessibility/**", "tests/performance/**"]
+  },
+  "transition_rules": [
+    "Only ticket frontmatter status is authoritative.",
+    "A draft node becomes ready only after every dependency is accepted with passed terminal evidence present in the common base branch.",
+    "The UI stream may run beside W11-W17 only when branches or worktrees are separate and active path ownership is disjoint.",
+    "W23 cannot start until both the real W16 API projection and W22 shell are accepted.",
+    "Accepted W03-W10 design evidence remains historical and is never relabeled as Penpot vNext or browser proof."
+  ]
+}

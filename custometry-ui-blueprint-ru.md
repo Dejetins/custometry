@@ -2,8 +2,8 @@
 document_family_id: CUSTOMETRY-UI-BLUEPRINT
 document_id: CUSTOMETRY-UI-BLUEPRINT-RU
 title: Custometry — UI/UX blueprint Web-платформы
-ui_spec_version: 0.6.1-draft
-source_product_spec: 0.9.1-draft
+ui_spec_version: 0.7.0-draft
+source_product_spec: 0.9.4-draft
 source_documents:
   - ./custometry-technical-blueprint-ru.md
   - ./custometry-technical-blueprint-human-ru.md
@@ -11,7 +11,7 @@ status: active_design_iteration
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-07-19
+updated_at: 2026-07-20
 target: responsive_desktop_first_web_application
 design_tool: penpot
 design_phase: phase_1_foundations_components_screens
@@ -21,20 +21,22 @@ design_phase: phase_1_foundations_components_screens
 
 ## 0. Статус и назначение
 
-Этот документ переводит продуктовый blueprint Custometry `0.9.1-draft` в проектируемую структуру Web UI: информационную архитектуру, маршруты, страницы, компоненты, состояния, взаимодействия, accessibility, responsive-поведение и план Penpot-рендеров.
+Этот документ переводит продуктовый blueprint Custometry `0.9.4-draft` в проектируемую структуру Web UI: информационную архитектуру, маршруты, страницы, компоненты, состояния, взаимодействия, accessibility, responsive-поведение и план Penpot-рендеров.
 
 Документ является производным design-контрактом и не изменяет нормативную продуктовую спецификацию. Если UI-решение противоречит `custometry-technical-blueprint-ru.md`, действует machine blueprint. Новая бизнес-функция сначала должна появиться в двух продуктовых blueprint, а уже затем — здесь.
 
-Текущий результат Phase 1:
+Текущий исторический design baseline и новый target:
 
-- действующий Penpot baseline содержит Foundations темы «Иней / Frost», библиотеку компонентов и 91 route-level frame; полный product target содержит **110 основных route-level страниц**;
+- Penpot file `7cd71457-8d32-8044-8008-549f83bb4645`: W08 исторически принят на revision `181`, repair/recovery установил W10 start baseline `197`, а W10 принят на terminal revision `213`; Frost Foundations, components и **116 route-level страниц** сохраняются как accepted historical evidence и route/domain input;
 - отдельно определены overlays, drawers, modals и обязательные состояния;
-- в Penpot синхронизированы 47 pages, 68 local components, 91 route-level frame, 5 system surfaces и 23 overlay/state frame;
+- W05 подтвердил 110 routes, 25 overlays и 5 system surfaces без duplicate/missing/orphan UI-ID и visual QA всех 140 stable surfaces;
 - добавлены canonical URL/history, production motion, system/help surfaces и navigation guards;
 - expanded sidebar переведён на Lucide icon + label, collapsed/tablet sidebar — на icon-only без буквенных сокращений;
 - report-like surfaces получили общий compact header/context/KPI geometry contract с совпадающими separators и большей first-viewport data area;
-- собраны семь обязательных representative prototype flows с route navigation, transient overlays и return-to-origin;
-- полный structural QA существующих 91 route frames и 5 system surfaces пройден для W03 baseline revision 124; 19 route backlog frames, comments/data-treatment overlays, новые presentation/import/access/branding surfaces и additive treatment/segmentation delta существующих Analytics/Segments frames требуют следующей Penpot-синхронизации и visual QA.
+- собраны восемь representative prototype flows с route navigation, transient overlays и return-to-origin;
+- W06 подтвердил compact ordered MetricGroup tables и on-demand Result Trust, W08 на revision `181` — C24, flow 09 и discount/PVM delta, а W10 на revision `213` — C25, flow 10 и organization/People delta; browser/runtime/accessibility-runtime proof ещё отсутствует;
+- историческая delta `0.9.3/0.6.3` полностью представлена в Penpot: шесть organization/department/People route IDs, UI-CAP-021/022, C25 и flow 10 прошли W10 visual/structural acceptance без изменения исполняемых продуктовых контрактов;
+- UI target `0.7.0` заменяет foundation/shell/theme/interaction contract на общий Linear-workspace standard: React/TypeScript/Vite/MobX/TanStack Query/styled-components, четыре themes `abyss|graphite|frost|paper`, Inter Variable, resizable panels, keyboard-first navigation и измеримый perceived-performance contract; Penpot vNext и browser implementation ещё не приняты.
 
 ## 1. Design brief
 
@@ -143,6 +145,10 @@ Apple HIG используется как craft-check, а не как platform s
 ```text
 Overview
 
+Company
+  Organization
+  People & Creators
+
 Data Foundation
   Connections
   Data Catalog
@@ -224,7 +230,7 @@ Route registry имеет четыре области:
 | Installation | `/admin/*` либо `/audit` | `/admin/system`, `/admin/services`, `/audit` |
 | Workspace | `/w/:workspaceKey/*` | `/w/:workspaceKey/overview`, `/w/:workspaceKey/analytics/sales` |
 
-Машиночитаемый route contract разделён на три слоя. `packages/contracts/routes/ui-routes.json` остаётся компактным реестром identity/URL/title/release/status, `packages/contracts/routes/ui-route-contracts.json` хранит исполняемую политику family/shell, role hints, permissions, guards, states, history/query, Focus и Penpot status для всех 110 страниц, а `packages/contracts/routes/ui-surface-contracts.json` доказывает полное покрытие route, overlay, system и cross-surface capability surfaces. Portable schemas находятся рядом; семантический валидатор проверяет паритет с этим документом, все `UC-001…024`, product permission catalog и en/ru titles. Role hints используются только для discoverability и не заменяют API authorization.
+Машиночитаемый route contract разделён на три слоя. `packages/contracts/routes/ui-routes.json` остаётся компактным реестром identity/URL/title/release/status, `packages/contracts/routes/ui-route-contracts.json` хранит исполняемую политику family/shell, role hints, permissions, guards, states, history/query, Focus и Penpot status для всех 116 страниц, а `packages/contracts/routes/ui-surface-contracts.json` доказывает полное покрытие route, overlay, system и cross-surface capability surfaces. Portable schemas находятся рядом; семантический валидатор проверяет паритет с этим документом, все `UC-001…029`, product permission catalog и en/ru titles. Role hints используются только для discoverability и не заменяют API authorization.
 
 `workspaceKey` — неизменяемый opaque public identifier. Display name может меняться и не участвует в URL. Наличие ключа в URL не даёт доступ: guard до data fetch проверяет authenticated membership, effective permission и resource scope. Таблицы §9 показывают route suffix для читаемости; если строка не относится к public/global/installation scopes, её канонический URL строится как `/w/:workspaceKey` + указанный suffix.
 
@@ -250,7 +256,7 @@ History policy:
 
 | Диапазон | Поведение |
 |---|---|
-| `≥1440` | Sidebar 240 px по умолчанию; пользователь может свернуть или полностью скрыть его, content становится fluid, правый inspector может быть закреплён |
+| `≥1440` | Sidebar около 240 px по умолчанию; пользователь может pointer-resize его в bounded диапазоне около 208–320 px, свернуть в icon rail или полностью скрыть; правый inspector также может иметь bounded resize |
 | `1280–1439` | Sidebar 224 px, content cards перестраиваются 4→3 columns |
 | `1024–1279` | Sidebar 72 px в collapsed icon-only state: центрированные 20 px icons без сокращений; inspectors становятся drawers, secondary panels уходят ниже |
 | `768–1023` | Tablet landscape: read/review flows полные; сложные editors используют sequential panels |
@@ -278,30 +284,28 @@ Desktop reporting density для master frame `1440×900`:
 - четыре KPI используют общие column boundaries `256 / 526 / 796 px` внутри контейнера `1136 px`; Context Bar использует те же boundaries;
 - декоративный empty space не резервируется вместо данных; высота block определяется содержимым, viewport и состоянием.
 
-Значения утверждены как design/Penpot geometry для UI blueprint `0.6.1-draft`; при runtime-реализации они переходят в versioned production tokens после browser/accessibility verification без изменения зафиксированной плотности и иерархии.
+Значения утверждены как design/Penpot geometry для UI blueprint `0.7.0-draft`; при runtime-реализации они переходят в versioned production tokens после browser/accessibility verification без изменения зафиксированной плотности и иерархии.
 
 ## 6. Design system
 
 ### 6.1. Темы
 
-Нормативный registry содержит шесть профилей:
+Нормативный registry содержит ровно четыре профиля от near-black до bright-light:
 
 | Theme | Scheme | Назначение |
 |---|---|---|
 | `graphite` | dark | Product UI default |
 | `abyss` | dark | Самый глубокий контрастный operational режим |
-| `slate` | dark | Более мягкий dark режим |
 | `frost` | light | Холодный светлый UI |
-| `paper` | light | Email/XLSX default; вне текущего UI design scope |
-| `sand` | light | Тёплый светлый режим |
+| `paper` | light | Яркий дневной UI и Email/XLSX default |
 
-Penpot variables и design tokens для темы `frost` должны повторять соответствующий профиль machine `theme_registry`. Компоненты используют только semantic aliases: `canvas`, `background`, `surface`, `line`, `text`, `muted`, `accent`, `focus`, status и chart roles.
+Penpot variables и production tokens для всех четырёх themes должны повторять machine `theme_registry`. Каждый screen строится один раз на semantic aliases `canvas`, `background`, `surface`, `line`, `text`, `muted`, `accent`, `focus`, status и chart roles; representative matrix проверяет все themes без дублирования всех 116 routes.
 
 Дополнительно до component build должны быть определены отсутствующие в сыром palette registry aliases из `THEME-003`: `success`, `warning`, `error`, `info`, `positive`, `negative` и color-blind-safe categorical chart series. Они являются design tokens, а не новыми бизнес-правилами.
 
 ### 6.2. Typography
 
-Базовый шрифт Penpot-макета: `Inter` с системными fallback. Причины — доступность en/ru начертаний, нейтральность, читаемость плотных таблиц и визуальная близость к референсам. Название font bundle должно быть отдельно закреплено в product/runtime contract до implementation.
+Базовый шрифт: self-hosted versioned `Inter Variable` с системными fallback. Причины — доступность en/ru начертаний, нейтральность, читаемость плотных таблиц и визуальная близость к референсам. Использование font-файлов Linear запрещено; собственный bundle и license metadata входят в runtime/render identity.
 
 | Token | Size / line | Weight | Использование |
 |---|---|---|---|
@@ -332,7 +336,7 @@ Zoom до 200% не ломает flow. Таблицы не используют 
 - до получения официального SVG используется text-only wordmark `Custometry`;
 - runtime branding идёт через versioned BrandProfile: company product names, sanitized logos/favicon, optional sanitized custom icon pack, bundled fonts и semantic color overrides;
 - raw CSS/HTML/JS, remote assets и customer-specific component forks запрещены; preview проверяет contrast, broken assets, fallback wordmark и Web/email/XLSX/docs parity;
-- Penpot остаётся в одной production design theme `frost`; BrandProfile states показывают contract и preview, а не требуют дублировать все 110 screens для каждого клиента.
+- Penpot использует четыре production theme modes `abyss|graphite|frost|paper`; BrandProfile states показывают semantic overrides и preview, а не требуют дублировать все 116 screens для каждого клиента.
 
 ### 6.4. Elevation
 
@@ -403,6 +407,8 @@ Chart animation выключается при изменении domain/axis, de
 | Builder | Pipeline Node, Port, Edge, Canvas Toolbar, Inspector, Validation Summary |
 | Reports | Report Block, Block Toolbar, Snapshot Banner, Email Recipient Field, Export Preflight |
 | Promotion | Range Timeline, Lane Header, Promotion Bar, Overlap Density, Audience Badge |
+| Organization | Org Tree, Unit Card, Membership Assignment, Leadership Scope, Data Policy Summary, Effective Access Preview, Handover Status |
+| People | Contributor Card, People Directory Row, Activity Summary, Owned/Created Asset List, Scope/Privacy Badge |
 
 ### 7.3. Component states
 
@@ -549,6 +555,15 @@ Empty state содержит причину, prerequisite и одну следу
 |---|---|---|---|---|---|
 | UI-CORE-001 | `/overview` | Workspace Overview | MVP | all | KPI summary, freshness, quality, recent runs, forecast alerts, onboarding checklist, role-specific next actions |
 
+### 9.2.1. Organization и People — 4 страницы
+
+| ID | Route | Страница | Фаза | Роли | Основное содержимое и действия |
+|---|---|---|---|---|---|
+| UI-ORG-001 | `/organization` | Organization | MVP/V1 | all | Permission-filtered company/division/department/team tree, member/leader counts after policy filtering, status/successor, own primary department, open unit; no hidden counts |
+| UI-ORG-002 | `/organization/:orgUnitKey` | Department Hub | MVP/V1 | allowed | Unit summary, leadership, members, owned reports/dashboards, data scope, activity aggregate, child units and transfer/history states; actions depend on explicit permissions |
+| UI-PEOPLE-001 | `/people` | People & Creators | V1 | all | Compact searchable contributor cards/table, primary department, role hints, visible created/owned assets, privacy-safe activity and scope filter; no ranking/leaderboard/score |
+| UI-PEOPLE-002 | `/people/:principalId` | Contributor Profile | V1 | allowed | Profile/department/role badges, privacy explanation, visible reports/dashboards, created versus owned, activity summary, collaboration and last activity; self/leader/grantee policy is evaluated independently and inaccessible assets/counts are omitted |
+
 ### 9.3. Data Foundation — 31 страница
 
 | ID | Route | Страница | Фаза | Роли | Основное содержимое и действия |
@@ -608,13 +623,13 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-AN-007 | `/analytics/lifecycle` | Lifecycle and churn | MVP | AN, VW | State counts/revenue, transition matrix/flows, versioned rule set and impossible transitions |
 | UI-AN-008 | `/analytics/basket` | Basket Analytics | V1 | AN, VW | SKU/subcategory/category/brand level, basket KPIs, pairs, rules and affinity matrix |
 | UI-AN-009 | `/analytics/stores-channels` | Stores and Channels | V1 | AN, VW | Scorecards, online/offline migration, comparable-store policy, operating-day normalization |
-| UI-AN-010 | `/analytics/margin-discounts` | Margin and Discounts | V1 | AN, VW | Margin, discount depth, mix, contribution, negative/low-margin diagnostics |
+| UI-AN-010 | `/analytics/margin-discounts` | Margin and Discounts | V1 | AN, VW | Base price/recognized revenue, commercial discount/customer benefit, promo/loyalty/bonus/other breakdown, amount/rate/share/penetration, stacking overlap, depth, cap breaches, margin, PVM, vs LY, attribution coverage and Result Trust |
 | UI-AN-011 | `/analyses/custom` | Custom Builder | V1 | AN, DS | Dataset/population, metric/features, dimensions, typed filters, outlier policy, bucket/stratified mode, comparison, chart/table choice, preflight |
 | UI-AN-012 | `/analyses/:id/results/:runId` | Result detail and trust | MVP | allowed | Immutable result, ChartSpec/table/distribution, treatment chip and sensitivity, filters, YoY diagnostics, limitations, lineage, save/report/export |
 | UI-AN-013 | `/research` | Research Cases | MVP | AN, VW | Questions/cases, owner/status, pinned method/dataset, findings, related analytical products, create/open/filter |
 | UI-AN-014 | `/research/:id` | Research Workspace | MVP | AN, VW | Outline/sections, narrative, metric groups, charts/tables/distributions, treatment evidence, drill/filter, findings vs comments, publish to dashboard/report/segment |
 
-Товарная аналитика в текущем product blueprint реализуется через Sales, Basket и Custom Builder. Отдельная route-level страница «Products» пока не является нормативным модулем; произвольная товарная иерархия также остаётся отдельным будущим решением.
+Товарная аналитика в текущем product blueprint реализуется через Sales, Basket, Margin and Discounts и Custom Builder. Отдельная route-level страница «Products» пока не является нормативным модулем; произвольная товарная иерархия также остаётся отдельным будущим решением.
 
 ### 9.6. Segments — 3 страницы
 
@@ -690,7 +705,7 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-NOTIFY-002 | `/notifications/preferences` | Notification preferences | MVP/V1 | all | Per-category in-app preferences; email/webhook options появляются только когда channel enabled |
 | UI-NOTIFY-003 | `/settings/notification-channels` | Operational notification channels | V1 | WA, OP | Channel availability, immutable endpoint versions, verification/health, categories, bounded test, rotate/disable/revoke and audit links without destination/secret disclosure |
 
-### 9.14. Administration — 18 страниц
+### 9.14. Administration — 20 страниц
 
 | ID | Route | Страница | Фаза | Роли | Основное содержимое и действия |
 |---|---|---|---|---|---|
@@ -704,7 +719,7 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-ADMIN-008 | `/admin/plugins` | Plugins | V1 | IA | Installed/available trusted plugins, compatibility, permissions, enable/disable and warning |
 | UI-ADMIN-009 | `/admin/storage-backup` | Storage, retention, backup and restore | MVP | IA, OP | Capacity/watermarks/inodes/orphans, retention, backup manifests, drill status, restore action |
 | UI-ADMIN-010 | `/audit` | Audit Explorer | MVP | IA, WA | Installation/workspace scopes, actor/action/resource/result/time filters, redacted detail/export |
-| UI-ADMIN-011 | `/admin/localization-themes` | Localization and themes | MVP/V1 | IA, WA | en/ru coverage, workspace defaults, six themes, report default, accessibility validation status |
+| UI-ADMIN-011 | `/admin/localization-themes` | Localization and themes | MVP/V1 | IA, WA | en/ru coverage, workspace defaults, four themes, report default, accessibility validation status |
 | UI-ADMIN-012 | `/admin/system` | System lifecycle and upgrades | MVP/V1 | IA, OP | App/release/schema versions, compatibility, migrations, maintenance, upgrade requirement, license/SBOM/provenance, preflight, runbooks and guarded rollback |
 | UI-ADMIN-013 | `/settings/branding` | Workspace Branding Assignment | MVP/V1 | WA | Allowed published profile, workspace preview, effective identity, impact, assign/rollback/reset without asset or CompanyPack editing |
 | UI-ADMIN-014 | `/admin/brand-profiles` | Brand Profile Registry | MVP/V1 | IA | Installation/workspace profiles, lifecycle, base theme, asset/contrast status, usage impact, create and open |
@@ -712,6 +727,8 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-ADMIN-016 | `/admin/company-packs` | Company Pack Registry | MVP/V1 | IA | Pack versions, compatibility, installed/bound workspaces, included config refs, manifest hash, import and create |
 | UI-ADMIN-017 | `/admin/company-packs/:id` | Company Pack detail/preflight | MVP/V1 | IA | Contents without secrets/data, compatibility preflight, diff/impact, validate, publish, install/upgrade/rollback and export |
 | UI-ADMIN-018 | `/access/:resourceType/:resourceId` | Report/Dashboard Access Policy | MVP | WA | Allowlisted resource type, grants/groups/expiry, effective-access preview, PII ceiling, diff, grant/revoke and audit deep link without content editing |
+| UI-ADMIN-019 | `/settings/organization` | Organization Settings | MVP/V1 | WA | Draft/versioned hierarchy, unit lifecycle, primary member assignments, leadership scopes, validation, impact preview, publish and successor mapping |
+| UI-ADMIN-020 | `/settings/organization/:orgUnitKey` | Department Access & Ownership | MVP/V1 | WA | DepartmentDataPolicy, dataset/row/column/PII ceilings, bounded cross-department grants, publication defaults, ownership handover, effective-access preview and audit |
 
 ### 9.15. Help — 1 страница
 
@@ -719,7 +736,7 @@ Empty state содержит причину, prerequisite и одну следу
 |---|---|---|---|---|---|
 | UI-HELP-001 | `/help` | Help Center and keyboard shortcuts | MVP/V1 | all | Permission-aware search по shipped docs/Data Guides/codes, contextual help, shortcut reference, version/support and deterministic deep links |
 
-**Итого: 110 основных route-level страниц.** Из них 91 уже существует в текущем Penpot baseline. Design backlog состоит из 19 routes: `UI-DATA-021…031`, `UI-AN-013…014` и `UI-ADMIN-013…018`. Пять system surfaces §10.1 проектируются отдельно и не увеличивают основной route count. Target non-route contract содержит 25 overlays, 5 system surfaces и 19 cross-surface capabilities; baseline revision 124 содержит 23 overlay/state frames, поэтому `UI-OVR-024` и `UI-OVR-025` являются design backlog.
+**Итого: 116 основных route-level страниц.** W08 подтвердил accepted baseline из 110 route frames, 25 overlays и 5 system surfaces на revision `181`. Product/UI delta `0.9.3/0.6.3` добавила шесть route identities без нового overlay или system surface и два reusable capabilities. W10 создал эти шесть frames, C25 и flow 10 и принят на revision `213` с global design inventory `116/25/5`.
 
 ## 10. Overlays, drawers и modals
 
@@ -788,6 +805,9 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-CAP-017 | Localization, accessibility and reduced motion | Все routes, overlays и system surfaces | I18N-001…011, A11Y-001…010, MOTION-001…012 |
 | UI-CAP-018 | Governed population and outlier treatment | Analysis/segment authoring, Result Trust, report/email/XLSX | UC-025, OUTLIER-001…012 |
 | UI-CAP-019 | Bucket, stratified and KMeans segmentation | Custom Builder, Segment Builder/detail, Research | UC-026, SEGMENT-001…018 |
+| UI-CAP-020 | Discount components, cap and PVM trust | Mapping/policies/metrics/methods, Margin & Discounts, Result/Research/export | UC-027, DISCOUNT-001…020, PVM-001…006, METRIC-017…020, METHOD-009…014 |
+| UI-CAP-021 | Organization-scoped effective access and ownership | Shell/navigation, organization/admin/access, libraries, report/dashboard/detail/actions | UC-028, RBAC-019…028, TEST-INV-076…084 |
+| UI-CAP-022 | Privacy-safe People & Creators | Organization/People, report/dashboard libraries, contributor cards/profile | UC-029, RBAC-022, RBAC-027, TEST-INV-078…088 |
 
 ## 11. Страница аналитического результата
 
@@ -836,6 +856,46 @@ Actions: save, dashboard, report, export
 Drawer содержит population/grain/feature/window/peer scope, quantile/IQR/MAD method, tail и parameters, missing/zero/negative/returns policy, resolved bounds и action. До Apply/Publish обязательно показываются before/after count, customer/order/value shares, metric deltas, distribution overlay и warning о legitimate high-value customers. DQ-invalid rows отображаются отдельным слоем и не смешиваются со statistical outliers.
 
 Для `vs LY` editor по умолчанию показывает `Shared pinned bounds`; режим `Independent exploratory bounds` требует явного выбора, warning и отдельной result identity. Member preview, excluded rows, drill-down и export доступны только после отдельной permission/PII проверки. Все heavy previews используют общий progress/ETA/cancel contract и сохраняют предыдущий preview во время refresh.
+
+### 11.3.1. Discount components, cap и PVM
+
+`UI-AN-010` использует один compact result pattern, но не сворачивает разные
+экономические понятия в «total discount». Context Bar показывает dataset/policy,
+period, `vs LY` и filters. KPI strip имеет максимум четыре компактные ячейки:
+base-price GMV, recognized net revenue, commercial discount и customer benefit;
+остальные показатели находятся в ordered MetricGroup table и charts.
+
+Основная композиция:
+
+1. component bridge/stacked view для promo, loyalty, bonus redemption и other;
+2. table с amount, eligible base, rate, share, penetration, `vs LY`, attribution
+   mode/coverage и full typed value;
+3. stacking overlap matrix и discount-depth distribution;
+4. cap diagnostics с policy/base/rate/tolerance, breach count/amount/share и
+   отдельным historical/simulated state;
+5. exact-reconciled PVM waterfall/table с price, volume, mix, assortment,
+   residual и comparable coverage;
+6. margin/recognized-revenue view, linked drill-down и on-demand Result Trust.
+
+Direct/rule-derived/residual/total-only/unavailable имеют различимые badges и
+не полагаются только на цвет. Proxy и partial coverage всегда видны рядом с
+числом и раскрываются в Result Trust. Historical breach показывается как source
+fact и diagnostic, а не исправленный value; simulated breach блокирует publish.
+Promotion Journal overlap может быть contextual overlay, но не создаёт promo
+attribution без sale-level flag/direct mapping.
+
+Authoring path распределён по существующим routes: `UI-DATA-008` mapping,
+`UI-DATA-010` effective policy/stacking/cap, `UI-DATA-013…014` metric
+certification/proxy evidence, `UI-DATA-021…022` method availability/robustness,
+`UI-AN-002/011` setup, `UI-AN-012` immutable result и `UI-AN-014` research.
+Отдельный URL только ради этой configuration chain не создаётся.
+
+В `UI-AN-002` analysis identity размещается внутри штатной Configuration,
+а capability preflight и продолжение — внутри штатных validation/right-rail
+regions. В `UI-AN-011` builder pins остаются внутри Configuration, а
+MetricGroup availability, cap и table preview — внутри существующих правых
+regions. W08 methodology content не должен добавляться полноширинным слоем,
+перекрывающим Configuration, Metric groups или compact Result Trust.
 
 ### 11.4. Charts
 
@@ -965,6 +1025,29 @@ Responsive:
 
 Stratified distribution остаётся mode Custom Builder/Research, а не новым top-level route. Global bucket boundaries выбраны по умолчанию; within-stratum quantiles имеют явный `Relative rank within each stratum` label. Из selected cell можно выполнить `Save as segment`, после чего открывается normalized Segment Builder draft с lineage исходного DistributionArtifact.
 
+### 13.5. Organization, department access и People & Creators
+
+Company navigation объединяет `Organization` и `People & Creators`, но не смешивает admin configuration и business browsing. `UI-ORG-001/002` доступны в policy-filtered read mode всем members; edit actions появляются только при `organization.manage` или более узком delegated permission. `UI-ADMIN-019/020` являются полноценными editor routes с dirty guard, version diff, impact preview, publish и audit.
+
+Organization tree:
+
+- показывает `company/division/department/team`, active/inactive/merged status, primary member и leader labels; counts вычисляются после visibility filtering и MAY быть заменены на `Restricted`;
+- selection открывает Department Hub, а не nested modal; Back сохраняет expanded nodes, scroll и focus;
+- member assignment требует ровно один primary department/team; transfer preview показывает lost/gained scopes, grants to review и published-resource handover;
+- leadership editor задаёт unit, `include descendants`, effective dates и reason; слово `Manager` само по себе не выдаёт permission;
+- Department Access отображает data/object/row-column/PII ceilings отдельными слоями и итоговый allow/deny с объяснением без hidden values;
+- cross-department grant требует subject, bounded resource/data/actions, reason, start/expiry и preview; indefinite grant требует более строгого policy permission.
+
+People & Creators:
+
+- default presentation — compact card grid с avatar/initials, name, primary department, visible role hints, visible dashboard/report counts и recent activity; table alternative обязательна;
+- sorting по name/department/recent activity разрешена только внутри effective scope; ranking, leaderboard, productivity score, percentile и comparison-to-peers отсутствуют;
+- contributor profile разделяет `Created by`, `Owned by department`, `Collaborated on` и не включает inaccessible asset в count;
+- self-view, leader-view и explicit-grantee view имеют явный privacy/scope badge; Workspace Administrator без `organization.activity.read` видит configuration, но не activity;
+- loading/empty/filtered-empty/partial/forbidden/inactive/transferred states имеют объяснение и безопасное next action; удалённый/уволенный пользователь не исчезает из historical attribution.
+
+`C25 Organization, Access & People` содержит Org Tree, Unit Card, Membership/Leadership Assignment, Data Policy Summary, Effective Access Preview, Handover Status, Contributor Card и Activity Summary. Flow 10: `Organization → Department Hub → People → Contributor Profile → visible report → Back`, плюс admin branch `Organization Settings → transfer preview → access/ownership handover → publish`.
+
 ## 14. Accessibility, i18n и content
 
 ### 14.1. Accessibility baseline
@@ -1001,7 +1084,7 @@ Stratified distribution остаётся mode Custom Builder/Research, а не �
 
 ## 15. Обязательные состояния
 
-Каждая из 110 route-level страниц проектируется минимум для применимых состояний; system surfaces используют отдельные contracts §10.1:
+Каждая из 116 target route-level страниц проектируется минимум для применимых состояний; system surfaces используют отдельные contracts §10.1:
 
 | State | UI contract |
 |---|---|
@@ -1024,9 +1107,11 @@ Stratified distribution остаётся mode Custom Builder/Research, а не �
 
 ## 16. Penpot delivery contract
 
-### 16.1. Новый файл
+### 16.1. Historical baseline и vNext
 
-Целевое имя: `Custometry — Web UI Blueprint — Frost v0.6.1`. Канонический working file имеет Penpot file ID `7cd71457-8d32-8044-8008-549f83bb4645`; его техническое имя `custometry` может сохраняться до финального handoff.
+Historical accepted file `7cd71457-8d32-8044-8008-549f83bb4645` сохраняет имя `Custometry — Web UI Blueprint — Frost v0.6.3`; W08 accepted baseline revision — `181` с 49 pages и stable inventory `110/25/5`, repair/recovery установил W10 start baseline `197`, а W10 принят на terminal revision `213` с inventory `116/25/5`, C25 и flow 10.
+
+Новый design target получает отдельный canonical file `Custometry — Web UI — Linear Workspace v0.7`. Его file ID и стартовая revision фиксируются только W21 после read-only identity/concurrency guard. Старый файл не перезаписывается и не считается vNext acceptance. vNext сохраняет stable UI IDs и domain content, но пересобирает Foundations, shell, themes, motion, panels и representative flows по shared transition standard.
 
 ### 16.2. Структура Penpot
 
@@ -1062,6 +1147,8 @@ C20 Promotion Range Timeline
 C21 Operations Status & Attempt Timeline
 C22 Focus / Explore Surface & Toolbars
 C23 Population Treatment & Segmentation Diagnostics
+C24 Discount Components, Cap & PVM
+C25 Organization, Access & People
 --- Screens
 19 Help & System Surfaces
 20 Auth & Onboarding
@@ -1084,6 +1171,7 @@ C23 Population Treatment & Segmentation Diagnostics
 33 Administration
 33A Branding & Company Packs
 33B Resource Access Policies
+33C Organization & People
 34 Responsive Samples
 35 State Matrix
 36 Theme Matrix
@@ -1091,17 +1179,17 @@ C23 Population Treatment & Segmentation Diagnostics
 
 ### 16.3. Component strategy
 
-Foundations создаются раньше компонентов. Repeated UI создаётся как local component/component set; screen frames используют instances. Компоненты связываются с semantic variables, а не hardcoded fills/spacing/radii. В текущем scope поддерживается только тема `frost`.
+Foundations создаются раньше компонентов. Repeated UI создаётся как local component/component set; screen frames используют instances. Компоненты связываются с semantic variables, а не hardcoded fills/spacing/radii. В текущем scope поддерживаются ровно `abyss`, `graphite`, `frost`, `paper`; representative matrix проверяет все четыре, а каждый route frame не дублируется четыре раза.
 
 ### 16.4. Render output
 
-- 110 individual desktop master images по текущему route contract; 91 уже существуют в baseline, 19 ожидают Penpot generation;
+- 116 individual desktop master frames существуют в accepted W10 baseline; шесть historical frames `0.6.3` добавлены поверх W08 без изменения 25 overlays и 5 system surfaces;
 - 5 отдельные system-surface frames: 403, 404, session expired, maintenance, upgrade required;
-- отдельные state/contact sheets для wizard steps, drawers, comments, Data Treatment/sensitivity, bucket/stratified/KMeans diagnostics и mandatory states;
+- отдельные state/contact sheets для wizard steps, drawers, comments, Data Treatment/sensitivity, bucket/stratified/KMeans, discount components/cap/PVM, organization transfer/effective access/ownership handover, contributor privacy и mandatory states;
 - отдельные state frames Focus / Explore для chart, table, range timeline, filters draft/apply/undo и return-to-origin;
 - responsive samples для Overview, Catalog, Analytics Result, Report Composer, Pipeline Canvas и Operator Center;
-- representative analytics screen в единственной теме `frost`;
-- naming: `UI-<DOMAIN>-<NNN>--<slug>--frost--1440x900.png`;
+- representative shell, analytics, table, form, modal, popover и detail-pane surfaces во всех четырёх themes;
+- naming: `UI-<DOMAIN>-<NNN>--<slug>--<theme>--1440x900.png`;
 - Penpot frame name совпадает с ID и page title этого документа.
 
 Один screen считается готовым только после visual screenshot review: нет clipping/overlap/placeholder copy, правильный font, theme tokens, component instances и доступные labels.
@@ -1118,12 +1206,14 @@ Penpot prototype обязан иметь минимум следующие repre
 6. `Admin System → maintenance/upgrade state → runbook/preflight`;
 7. `Notification channels → bounded test → status/audit detail`.
 8. `Segment Builder → treatment preview → bucket/KMeans diagnostics → publish → snapshot detail`.
+9. `Dataset mapping → discount policy/certification → Margin & Discounts → PVM/Result Trust → Research/Export`.
+10. `Organization → Department Hub → People & Creators → Contributor Profile → visible report → Back`; admin branch выполняет transfer/access/ownership preview и publish.
 
 Prototype interaction не заменяет runtime contract: Focus и deep links должны моделироваться navigation flow, transient modal/drawer — overlay flow, Back/Escape — явным return connection. Motion annotations используют только матрицу §6.5 и содержат reduced-motion note.
 
 ### 16.6. Visual QA matrix
 
-Для всех 110 route frames и 5 system frames проверяются:
+Для всех 116 target route frames и 5 system frames проверяются:
 
 - уникальный ID, canonical route/scope, title, active navigation и primary action;
 - отсутствие placeholder copy, clipping, unintended overlap и content вне frame;
@@ -1136,6 +1226,7 @@ Prototype interaction не заменяет runtime contract: Focus и deep link
 - над chart/table/editor отсутствуют декоративные пустые полосы; `UI-DQ-001` и `UI-AN-001…014` отдельно проверяются на compact header и first-viewport data density;
 - loading/empty/failed/forbidden/stale/dirty/reduced-motion applicability;
 - `UI-AN-002/011/012/014` и `UI-SEG-001…003` проходят additive delta review для population/treatment/strata/KMeans, включая exact K, sensitivity, privacy и immutable snapshot semantics;
+- `UI-DATA-008/010/013/014/021/022`, `UI-AN-002/010/011/012/014`, C24 и Result Trust проходят additive review для component attribution, policy effective dates, stacking/cap, certification/proxy quality, PVM reconciliation и method availability;
 - component instances/semantic Frost tokens, focus names и minimum hit areas;
 - representative desktop/tablet/mobile reflow без двойной navigation модели;
 - prototype entry/return flow и route metadata.
@@ -1147,14 +1238,15 @@ QA receipt фиксирует `pass`, `pass_with_note` или `fix_required` д�
 | UI-область | Основные источники |
 |---|---|
 | Roles/navigation | §2.1, RBAC, AUTH |
+| Organization/People | UC-028/029, RBAC-019…028, TEST-INV-076…088, V1-AC-037…043 |
 | Onboarding | JOURNEY-001, UC-008, UX-JOURNEY-001 |
 | Data Foundation | JOURNEY-002, UC-024, Connection/Catalog/Semantic/Metric/MetricGroup/NumberFormat/FileImportTemplate/Filter contracts |
 | Quality | JOURNEY-003, DQ contracts, UC-003/009 |
-| Analytics, Segments и Research | §12, UC-004/012/017…020/025/026, OUTLIER, SEGMENT, METHOD, RESEARCH, comparison/filter/chart/FOCUS contracts |
+| Analytics, Segments и Research | §12, UC-004/012/017…020/025/026/027, OUTLIER, SEGMENT, DISCOUNT, PVM, METHOD, RESEARCH, comparison/filter/chart/FOCUS contracts |
 | Forecasting | JOURNEY-005, §13, ForecastSpec/Backtest/Model Registry |
 | Promotion Journal | UC-013, PROMO, `range_timeline` |
 | Dashboards/comments/access | DASHBOARD-007…012, RBAC-009…015, UC-021/022 |
-| Reports/email/XLSX | UC-014/015, REPORT, REPORT-MAIL, XLSX-001…014, METRIC-009…016 |
+| Reports/email/XLSX | UC-014/015/027, REPORT, REPORT-MAIL, XLSX-001…014, METRIC-009…020, DISCOUNT-017, PVM-006 |
 | Pipelines/runs | JOURNEY-006, PIPELINE, RUN/EXEC/PROGRESS |
 | Notifications | NOTIFY, RESOLVED-007 |
 | Admin/operations | OPS, COMPUTE, access policies, BrandProfile/CompanyPack, backup, plugins и audit |
@@ -1168,50 +1260,51 @@ QA receipt фиксирует `pass`, `pass_with_note` или `fix_required` д�
 ### 18.1. Что существовало в репозитории до сборки Penpot
 
 - нормативные machine/human blueprint;
-- six-theme palette registry;
+- four-theme palette registry;
 - роли, journeys, APIs, states и acceptance contracts;
 - React/pnpm workspace scaffold без UI implementation.
 
-### 18.2. Что существует в референсах, но не закреплено продуктовым contract
+### 18.2. Что существует в Linear reference archive
 
-- generated logo mark;
-- точная font family;
-- светлая theme как default;
-- точные component dimensions;
-- окончательная grouping sidebar.
+- dark authenticated shell, expanded/collapsed navigation и hover states;
+- list/table, settings, popover, modal, combobox, tabs и right detail pane;
+- user-confirmed pointer-resizable sidebar intent;
+- source archive SHA-256 и per-image hashes в `docs/architecture/ui/linear-workspace-reference-manifest-v1.json`.
 
 ### 18.3. Что отсутствует
 
-- финальное имя и sharing policy Penpot-файла;
+- canonical Penpot vNext file ID и start revision;
 - published component library для межпроектного reuse;
 - official logo SVG/brand pack;
-- browser implementation для capture/QA;
+- all-four-theme captures, command palette, keyboard/focus snapshots, motion recordings, error/loading/session state references и measured geometry;
+- browser implementation и perceived-performance baseline;
 - утверждённый mobile authoring scope.
 
 ### 18.4. Утверждённые и применённые решения scope lock
 
-1. Вести design-артефакт в Penpot через MCP и закрепить единый file ID для всех последующих итераций.
-2. Построить 110 route-level master frames, 5 system surfaces и отдельные state frames; v1 включает KMeans exact-K, но post-v1 B2B/Yandex/activation/GMM/HDBSCAN/automatic-K/multivariate-anomaly/ABC-XYZ/OIDC/Kubernetes/public API UI не включать.
-3. Использовать только тему `frost`; прочие цветовые профили остаются вне design scope.
-4. Использовать Inter в Penpot; до runtime implementation закрепить font bundle отдельным product decision.
+1. Сохранить W10 Penpot file как historical accepted evidence; вести vNext в отдельном canonical file, идентичность которого закрепляет W21.
+2. Поддерживать принятые 116 route-level master frames, 25 overlays и 5 system surfaces; W08 покрывает исторические первые 110, W10 добавил шесть Organization/People/Admin frames; post-v1 B2B/Yandex/activation/GMM/HDBSCAN/automatic-K/multivariate-anomaly/ABC-XYZ/OIDC/Kubernetes/public API UI не включать.
+3. Использовать ровно четыре темы `abyss`, `graphite`, `frost`, `paper`; проверять representative matrix, не дублируя каждый route.
+4. Использовать self-hosted versioned Inter Variable; Linear font files не копировать.
 5. Использовать text-only wordmark до получения официального SVG; generated logo из референса не перерисовывать.
 6. Считать route-level page единицей обязательного изображения; wizard steps и drawers поставлять state sheets, а не увеличивать основной счётчик страниц.
 7. Использовать canonical `/w/:workspaceKey/*` routing, route-backed Focus, production motion matrix и Help/System contracts до следующей массовой генерации/export.
 8. Использовать Lucide/`lucide-react` как единственную v1 core icon family; expanded sidebar показывает icon + label, collapsed/tablet — icon-only без сокращений.
 9. Использовать единый compact reporting geometry contract: header metadata от `y=80`, Context Bar `48 px`, KPI Strip `64 px`, primary data block от `y=308`, совпадающие Context/KPI boundaries.
+10. Использовать React/TypeScript/Vite/MobX/TanStack Query/styled-components, route-bounded fallback и performance budgets WEB-PERF-001…006; backend и W11-W17 не менять.
 
 ## 19. Contract impact текущего документа
 
 | Поверхность | Классификация | Пояснение |
 |---|---|---|
-| Product/API/ports/persistence | `compatible-change` | Добавлены Methodology/Research, FileImportTemplate/import, MetricGroup/NumberFormat, comments/access и split branding routes/contracts; runtime API, DTO/persistence ещё не реализованы |
-| Browser-visible behavior | `compatible-change` | Route-backed Focus, guards и motion matrix дополнены research narrative, adaptive formatting, comments/access separation и BrandProfile preview |
+| Product/API/ports/persistence | `none` для UI transition | Backend, domain, REST/SSE и W11-W17 не меняются |
+| Browser-visible behavior | `breaking-change with fallback` | Linear-workspace shell, panels, four themes, keyboard and motion replace the old composition route-by-route; stable route IDs remain |
 | Request hash/cache identity | `compatible-change` | Applied result filters используют общий normalized contract; presentation-only state явно исключён |
 | URL/bookmark/history | `breaking-change` для будущих legacy URLs; сейчас `compatible-change` | Канонический workspace prefix `/w/:workspaceKey`; Foundation runtime и stable bookmarks отсутствуют, поэтому миграция выполняется до первого release consumer |
-| Design tokens/defaults | `compatible-change` | Производный contract закрепляет одну production design theme `frost`, Lucide mapping, BrandProfile semantic overrides и common density geometry |
-| Penpot/components/images | `compatible-change`, pending sync | W03 revision-124 baseline сохранён; 19 routes, comments/data-treatment drawers, C23, presentation/import/access/branding/research components и additive Analytics/Segments frame delta ещё должны быть добавлены и visual-QA проверены |
-| Migration/rollback | `compatible-change` до runtime | До implementation rollback равен возврату docs/Penpot; после stable URLs нужны redirects/deprecation/telemetry, Saved View DTO — schema version |
+| Design tokens/defaults | `breaking-change` before stable runtime | Six-theme/single-Penpot-Frost target replaced by exactly abyss/graphite/frost/paper and semantic CSS variables |
+| Penpot/components/images | `new target required` | W10 remains historical identity/domain evidence; W21 separately accepts vNext |
+| Migration/rollback | `compatible route identities` | Existing shell remains fallback until each route slice has browser/a11y/performance evidence |
 
 ## 20. Phase 0 exit criteria
 
-Phase 0 завершена. Phase 1 активна. W03 принял read-only Penpot baseline revision `124`: 47 pages, 68 local components, 91 route frames, 5 system surfaces, 23 overlays/state frames и семь representative flows для contract set `0.9.0/0.6.0`. UI blueprint `0.6.1-draft` сохраняет 110 routes и добавляет governed population treatment, bucket/stratified/KMeans workflow, `UI-OVR-025`, `UI-CAP-018…019`, C23 и восьмой prototype flow поверх уже принятого backlog methodology/research/import/metric/branding/access/comments. W03 evidence не переписывается; следующий Penpot write ticket обязан загрузить новый contract set, добавить отсутствующие surfaces и провести additive review затронутых Analytics/Segments frames, structural scan и individual visual export review всех 110 routes. Browser/runtime accessibility-motion evidence остаётся отдельной future boundary.
+Historical Phase 0 design acceptance завершена: W08 принят на revision `181`, W10 — на terminal revision `213` с global `116/25/5`. Эти evidence подтверждают прежнюю композицию и route/domain coverage, но не новый Linear-workspace target. UI `0.7.0` начинает отдельный transition cycle: W19 reference completion → W20 architecture spike → W21 Penpot vNext → W22 browser shell → W23 real Sales Analytics golden slice. Browser/runtime accessibility, authorization, persistence и performance не следуют из W10 Penpot acceptance.

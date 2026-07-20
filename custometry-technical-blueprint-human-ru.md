@@ -1,24 +1,24 @@
 ---
 document_family_id: CUSTOMETRY-TECH-BLUEPRINT
 document_id: custometry-technical-blueprint-human-ru
-spec_version: 0.9.1-draft
+spec_version: 0.9.4-draft
 representation: human
 normative: false
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-07-19
+updated_at: 2026-07-20
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
-  expected_spec_version: 0.9.1-draft
+  expected_spec_version: 0.9.4-draft
 project_name: Custometry
 license_target: Apache-2.0
 ---
 
 # Custometry — полный технический план платформы
 
-> Это человекочитаемое смысловое зеркало спецификации `0.9.1-draft`. Нормативным источником истины является [машиночитаемый blueprint](./custometry-technical-blueprint-ru.md). Обе версии относятся к семейству `CUSTOMETRY-TECH-BLUEPRINT`, имеют одинаковый `spec_version` и одинаковый набор нормативных requirement ID. При любом расхождении действует machine-версия.
+> Это человекочитаемое смысловое зеркало спецификации `0.9.4-draft`. Нормативным источником истины является [машиночитаемый blueprint](./custometry-technical-blueprint-ru.md). Обе версии относятся к семейству `CUSTOMETRY-TECH-BLUEPRINT`, имеют одинаковый `spec_version` и одинаковый набор нормативных requirement ID. При любом расхождении действует machine-версия.
 
 ## 0. Как читать этот документ
 
@@ -113,6 +113,9 @@ Custometry — открытая self-hosted low-code операционная с
 | UC-024 | Workspace Administrator импортирует данные через опубликованный CSV/XLSX template, а платформа отклоняет неизвестные sheets/columns, формулы и macros |
 | UC-025 | Analyst задаёт population, grain, metric/feature, окно, peer scope и quantile/IQR/MAD policy, получает immutable bounds и sensitivity preview, после чего явно применяет flag/exclude/winsorize без изменения canonical data/metric |
 | UC-026 | Analyst строит rule/RFM/bucket/KMeans segment либо stratified distribution с требуемым числом групп и получает versioned definition, diagnostics, profiles и immutable membership/distribution artifact |
+| UC-027 | Analyst исследует promo/loyalty/bonus/other components, stacking, discount cap и price-volume-mix по ReceiptItem с pinned policy, reconciliation, `vs LY` и Result Trust |
+| UC-028 | Workspace Administrator ведёт versioned company/division/department/team tree, primary assignments, leadership scopes, department data policies и bounded cross-department grants с effective-access preview |
+| UC-029 | Department Leader или отдельно уполномоченный пользователь открывает People & Creators и видит privacy-safe activity и только разрешённые отчёты/dashboards без raw audit и ranking |
 
 ### 2.3. Сквозные пользовательские пути
 
@@ -260,7 +263,9 @@ Identity mapping связывает source identity с canonical customer. Кл�
 
 ### 5.5. Позиция — ENTITY-RECEIPT-ITEM
 
-Одна строка — позиция чека; ключ `[source_system_id, receipt_id, line_id]`. Product обязателен для product/basket analytics. Если line ID отсутствует, wizard предлагает стабильный составной ключ; номер строки нельзя использовать при нестабильном порядке incremental source.
+Одна строка — позиция чека; ключ `[source_system_id, receipt_id, line_id]`. Product обязателен для product/basket analytics. Помимо quantity/gross/net/cost строка может прямо содержать базовую unit/line price, promo/loyalty/bonus/other amounts, promo flag и promotion reference. Если line ID отсутствует, wizard предлагает стабильный составной ключ; номер строки нельзя использовать при нестабильном порядке incremental source.
+
+`ENTITY-RECEIPT-ITEM-DISCOUNT-COMPONENT` нормализует wide source в одну строку на line и component. Component имеет тип promotion/loyalty/bonus redemption/other, amount, attribution mode `direct|rule_derived|residual_proxy|total_only|unavailable`, policy/evidence и optional PromotionVersion. Списание бонусов отличается от бонусного начисления: accrual не является скидкой или способом оплаты и не попадает в этот fact.
 
 ### 5.6. Товар — ENTITY-PRODUCT
 
@@ -318,7 +323,7 @@ Promotion Journal хранит stable `promotion_id`, immutable versions, extern
 
 ### 6.3. Единый Metric Registry
 
-Метрика хранит отдельные `metric_version_id` и stable `metric_id`, `workspace_id`, version, lifecycle `draft/validating/published/deprecated/archived`, `revision`, author/time, английский и русский labels, вид метрики, исходную сущность и grain, expression, допустимые aggregations, time aggregation, filters, dimensions, unit, currency и null policies.
+Метрика хранит отдельные `metric_version_id` и stable `metric_id`, `workspace_id`, version, lifecycle `draft/validating/published/deprecated/archived`, независимый certification `candidate|verified|canonical|deprecated`, `revision`, author/time, английский и русский labels, вид метрики, исходную сущность и grain, expression, допустимые aggregations, time aggregation, filters, dimensions, unit, currency и null policies. Published candidate не становится verified автоматически; certification фиксирует owner/reviewers, reference datasets, reconciliation, robustness и replacement evidence.
 
 Системная `net_revenue` на grain одного чека допускает slicing по date/store/channel, но запрещает product/category/brand. Товарная выручка регистрируется отдельной `item_net_revenue` на `ReceiptItem` с grain одной строки чека и сверяется с header-level total; planner не вправе молча подменять одну метрику другой.
 
@@ -341,7 +346,7 @@ Promotion Journal хранит stable `promotion_id`, immutable versions, extern
 | METRIC-007 | System metric имеет English и Russian labels; IDs и expressions не переводятся |
 | METRIC-008 | Receipt-grain metric запрещает product/category/brand dimensions; item slicing использует отдельную ReceiptItem-grain metric с reconciliation к header total |
 
-Базовый registry содержит gross/net revenue, receipt/customer/active-customer counts, units, average receipt, revenue per customer, margin, discount и repeat-customer rate.
+Базовый registry содержит gross/net revenue, receipt/customer/active-customer counts, units, average receipt, revenue per customer, margin, base-price GMV, commercial discount, customer benefit, promo/loyalty/bonus components и repeat-customer rate.
 
 #### Числовое представление и стабильные группы метрик
 
@@ -359,10 +364,43 @@ Typed raw value остаётся источником истины, а форм�
 | METRIC-014 | MetricGroupVersion фиксирует group order и metric order внутри группы |
 | METRIC-015 | Один group/order contract используется в Web, email, reports и XLSX |
 | METRIC-016 | Presentation override может менять label/order/visibility, но не expression, grain, unit или permissions метрики |
+| METRIC-017 | Lifecycle и certification независимы; publication не означает verified/canonical |
+| METRIC-018 | Certification transition фиксирует reviewers/evidence/replacement/impact без переписывания historical metrics |
+| METRIC-019 | Direct, policy-derived и residual-proxy values имеют разные origin/quality/coverage labels |
+| METRIC-020 | Proxy раскрывает derivation, exclusions, residual, sensitivity и пределы применимости |
+
+#### Versioned политика скидок
+
+`DiscountPolicyVersion` выбирается semantic dataset/CompanyPack на effective interval и фиксирует component catalog, source bindings, stacking matrix, precedence, accounting treatment, base-price role, cap, tolerance/rounding, returns, historical/simulated breach actions и residual policy. Используются три разные истины: `commercial_discount_amount = promo + loyalty + other`, `customer_benefit_amount = commercial discount + bonus redemption` и source/policy-governed `recognized_net_revenue`. Неоднозначный label «total discount» запрещён.
+
+Для первого внедрения допускается installation-local CompanyPack с `promo+loyalty=false`, `promo+bonus=true`, `loyalty+bonus=true`, bonus-only, precedence promo→loyalty и cap 50% от base-price для promo/loyalty/bonus. Это configuration example, не встроенный default и не fork продукта.
+
+| ID | Инвариант скидочной модели |
+|---|---|
+| DISCOUNT-001 | Component analytics работает на ReceiptItem grain и объявленной base price; header allocation только versioned |
+| DISCOUNT-002 | Promo/loyalty/bonus redemption/other хранятся раздельно, unknown не становится zero |
+| DISCOUNT-003 | Bonus accrual отделён от redemption и не считается скидкой |
+| DISCOUNT-004 | Каждый component имеет direct/rule-derived/residual/total-only/unavailable attribution и evidence |
+| DISCOUNT-005 | DiscountPolicyVersion immutable, effective intervals не пересекаются и pin-ятся в result identity/lineage |
+| DISCOUNT-006 | Stacking matrix и precedence запрещают hidden priority и double attribution |
+| DISCOUNT-007 | Cap объявляет rate/base/components/tolerance/rounding/returns/actions; core не hardcode-ит 50% |
+| DISCOUNT-008 | Commercial discount, customer benefit и recognized net revenue не смешиваются одним total |
+| DISCOUNT-009 | Aggregate rate — ratio of sums, не среднее row rates |
+| DISCOUNT-010 | Share/penetration/depth/overlap имеют explicit denominator и не суммируют пересечения |
+| DISCOUNT-011 | Historical breach сохраняет source и excess diagnostics без automatic clamp |
+| DISCOUNT-012 | Unexplained history может degrade/block trust; simulated breach блокирует publication |
+| DISCOUNT-013 | Returns/cancels/negative quantity/zero base/currency имеют отдельные eligibility/sign rules |
+| DISCOUNT-014 | Sale promo может ссылаться на PromotionVersion, но timeline overlap сам не атрибутирует promo |
+| DISCOUNT-015 | Current и vs LY по умолчанию используют одну semantics/policy; drift явно предупреждается |
+| DISCOUNT-016 | Reconciliation показывает source total, known components, residual, net и coverage/tolerance |
+| DISCOUNT-017 | Result Trust/email/XLSX раскрывают policy, attribution, coverage, cap, formulas, PVM и limitations |
+| DISCOUNT-018 | Price base/components/margin/cap идут в стабильном MetricGroupVersion order |
+| DISCOUNT-019 | Capability различает full/partial/total-only/unavailable component analytics |
+| DISCOUNT-020 | Company defaults приходят через versioned pack/policy без customer-specific core |
 
 #### Реестр аналитических методик
 
-`AnalysisMethodVersion` хранит цель, область применимости, входные сущности и метрики, шаги, assumptions, exclusions, thresholds, validation и interpretation guidance. `AnalysisCase` фиксирует бизнес-вопрос, scope, участников, pinned data/method/metric/filter versions и связанное evidence. `FindingVersion` — рецензируемый вывод с evidence и limitations; discussion comment остаётся отдельной сущностью. `AnalyticalProduct` связывает опубликованные dashboard/report/research artifacts с использованной методикой.
+`AnalysisMethodVersion` хранит цель, область применимости, availability `native_v1|template_v1|future_extension|unsupported`, family/evidence ceiling, входные сущности и метрики, шаги, assumptions, exclusions, thresholds, representativeness, robustness/sensitivity, validation и interpretation guidance. `AnalysisCase` фиксирует бизнес-вопрос, scope, участников, pinned data/method/metric/filter versions и связанное evidence. `FindingVersion` — рецензируемый вывод с evidence и limitations; discussion comment остаётся отдельной сущностью. `AnalyticalProduct` связывает опубликованные dashboard/report/research artifacts с использованной методикой.
 
 | ID | Контракт методологии |
 |---|---|
@@ -374,6 +412,14 @@ Typed raw value остаётся источником истины, а форм�
 | METHOD-006 | AnalyticalProduct раскрывает method/metric/data lineage и Result Trust |
 | METHOD-007 | Deprecation не удаляет историческую воспроизводимость и предлагает replacement |
 | METHOD-008 | MethodologyRegistry стандартизирует работу, но не делает causal claim без отдельного доказательства |
+| METHOD-009 | Method/capability явно объявляет native/template/future/unsupported и не выдаёт future за runnable |
+| METHOD-010 | Default v1 pack покрывает descriptive/YoY/cohorts/RFM/basket/discount-PVM/outlier/bucket-strata-KMeans/research |
+| METHOD-011 | Published method имеет соразмерный robustness/sensitivity plan |
+| METHOD-012 | Target/observed population, coverage, missingness, selection и запрещённые generalizations раскрыты |
+| METHOD-013 | V1 даёт governed distributions, допустимые confidence intervals/differences/correlation с sample/multiple-test limitations |
+| METHOD-014 | DiD/event study/matching/synthetic control, causal ML/HTE, uplift, propensity/churn, advanced migration, multivariate anomaly и automated decisions остаются future_extension |
+
+Default MethodologyPack содержит native v1 recipes и template v1 reviews для representativeness, proxy quality и findings. Future contracts можно каталогизировать для архитектурной совместимости, но нельзя запускать или показывать как готовый функционал.
 
 ### 6.4. Capability Engine
 
@@ -593,6 +639,7 @@ Degraded gate status передаётся downstream и остаётся вид�
 | MART-GRAIN-005 | Planner выбирает fact по source grain metric и блокирует ambiguous mixed-grain query |
 | MART-GRAIN-006 | Customer-level marts и segment snapshots после identity resolution используют `canonical_customer_id` в grain, primary key и outputs; неоднозначный `customer_id` запрещён |
 | MART-GRAIN-007 | Period mart объявляет period, `fact_scope` и полный ordered tuple materialized dimension keys как primary key и отклоняет collision |
+| MART-GRAIN-008 | Discount component fact связывается полным line key и агрегируется до join, не размножая base/net measures |
 
 ### 11.2. Стандартные marts
 
@@ -637,11 +684,28 @@ Canonical primary keys: customer transaction — `[canonical_customer_id, source
 | ANALYTICS-SEGMENT-RULES | Customer feature snapshot + optional treatment version → membership/profile/overlap; serializable Polars expression tree и explicit overlap policy |
 | ANALYTICS-SEGMENT-CLUSTER | V1 CPU KMeans с explicit K, versioned preprocessing/treatment/seed, fit/assignment policy, profiles, centers, stability, silhouette и immutable membership snapshot |
 | ANALYTICS-ABC-XYZ | Post-v1 классификация customer/product/store по value/variability с concentration/Pareto outputs |
-| ANALYTICS-MARGIN-DISCOUNT | Post-v1 описательная discount/margin analytics; correlation не объявляется causal effect |
+| ANALYTICS-MARGIN-DISCOUNT | V1 component discount/margin analytics: base price, commercial discount, customer benefit, components, overlap, depth, cap, attribution coverage и PVM; correlation не объявляется causal effect |
 | ANALYTICS-SEGMENT-MIGRATION | Stored snapshots → transitions, inflow/outflow и stability без пересчёта истории новыми правилами |
 | ANALYTICS-CUSTOM-BUILDER | Typed mart + allowed filters/dimensions/metrics/date/comparison/top/sort → reproducible ad hoc table, metrics и chart |
 
 Custom Builder разрешает только MetricRegistry/draft-validated metrics и published semantic joins, блокирует non-additive aggregation и показывает resulting grain/estimated rows до запуска.
+
+Discount module фильтруется по period/`vs LY`, channel/store/product/category/brand,
+customer/segment, component, stacking combination, attribution mode, policy,
+discount band и cap state. V1 `PriceVolumeMixSpecVersion` использует объявленный
+method/order; default `portfolio_laspeyres_price_last_v1` разлагает delta на
+aggregate volume, mix, price, assortment и residual. New/discontinued items,
+missing price, UOM, returns и currency обрабатываются explicit policy. Иной
+symmetric/Shapley method является новой version, а не скрытой заменой.
+
+| ID | Инвариант PVM |
+|---|---|
+| PVM-001 | Version pin-ит method/order, periods, grain, product identity и quantity/price/revenue metrics |
+| PVM-002 | Price+volume+mix+assortment+residual сходятся с observed delta в tolerance |
+| PVM-003 | New/discontinued/missing/zero/UOM cases используют explicit policy без hidden imputation |
+| PVM-004 | Returns/currency/tax/base-price definitions одинаково pin-ятся во всех effects |
+| PVM-005 | Filters, `vs LY` и drill-down сохраняют parent reconciliation без double counting |
+| PVM-006 | Result Trust/export раскрывают formula order, coverage, assortment, residual и non-causal limitation |
 
 ### 12.1. Governed population и обработка выбросов
 
@@ -991,18 +1055,18 @@ Compute UX действует для всех пользовательски н�
 
 ### Цветовые профили
 
-Custometry использует те же шесть палитр, что Roehub: `abyss`, `graphite`, `slate`, `frost`, `paper`, `sand`. Machine blueprint фиксирует исходные palette values. UI default — `graphite`, email/XLSX default — `paper`; user может выбрать любую тему. Компоненты используют semantic tokens, а `ChartSpec` остаётся theme-neutral.
+Custometry и Roehub используют единый набор из четырёх палитр от near-black до bright-light: `abyss`, `graphite`, `frost`, `paper`. Machine blueprint фиксирует исходные palette values. UI default — `graphite`, email/XLSX default — `paper`; user может выбрать любую тему. Компоненты используют semantic tokens, а `ChartSpec` остаётся theme-neutral.
 
 | ID | Theme invariant |
 |---|---|
-| THEME-001 | Registry содержит ровно шесть profiles; graphite UI default, paper report default |
+| THEME-001 | Registry содержит ровно четыре profiles: abyss, graphite, frost, paper; graphite UI default, paper report default |
 | THEME-002 | Компоненты используют semantic canvas/surface/text/border/accent/focus/status/chart tokens |
 | THEME-003 | Themes имеют status/positive-negative/color-blind chart tokens и WCAG AA validation |
 | THEME-004 | Authenticated preference хранится в profile; local browser value только до входа/fallback |
 | THEME-005 | Theme switch без reload и без изменения analytics/run/artifact/cache identity |
 | THEME-006 | ChartSpec theme-neutral; renderer pin-ит theme в report manifest |
-| THEME-007 | Email/XLSX default paper можно заменить одной из шести themes; theme входит в snapshot/hash |
-| THEME-008 | Switcher/focus/status/charts проходят en/ru, keyboard, reduced-motion, contrast и table-alternative gates |
+| THEME-007 | Email/XLSX default paper можно заменить одной из четырёх themes; theme входит в snapshot/hash |
+| THEME-008 | Switcher/focus/status/charts проходят en/ru, keyboard, reduced-motion, contrast и table-alternative gates для четырёх profiles |
 
 ### White-label: BrandProfile и CompanyPack
 
@@ -1227,9 +1291,9 @@ Workspace scope берётся из authenticated membership/path/resource, а �
 | SVC-PROXY | Secretless/state-free инфраструктурный Edge-адаптер входа: TLS, routing и limits только к фиксированному Web upstream; это не bounded context и не новый продуктовый микросервис |
 | SVC-OTEL | Optional telemetry collector |
 
-Backend разбит на domains: identity/access; connections/catalog; semantic model с metrics/groups/formats/filter registry; data documentation и file-import templates; ingestion; execution с outbox/leases/reconciliation; artifacts; DQ; analytics; methodology/research с cases/findings/comments/products; Promotion Journal; forecasting; presentation, владеющий canonical ChartSpec/compiler ports, dashboards/reports/access policies/branding/company packs и render metadata; report delivery; notifications; audit. Один domain не читает private tables другого напрямую — только contract/repository.
+Backend разбит на domains: identity/access, который также владеет OrgUnit, memberships, leadership, department policies, grants, ownership и privacy-safe contributor projection; connections/catalog; semantic model с metrics/groups/formats/filter registry; data documentation и file-import templates; ingestion; execution с outbox/leases/reconciliation; artifacts; DQ; analytics; methodology/research с cases/findings/comments/products; Promotion Journal; forecasting; presentation, владеющий canonical ChartSpec/compiler ports, dashboards/reports/access policies/branding/company packs и render metadata; report delivery; notifications; audit. Один domain не читает private tables другого напрямую — только contract/repository. Нового deployable organization service не создаётся.
 
-PostgreSQL содержит users/roles/workspaces/members/invites/sessions/reset tokens/API tokens; connections/secrets/catalogs; semantic/identity/metric/group/format/filter/capability versions и diffs/impacts; extraction batches/watermarks; quality rules/reports/issues/waivers; pipelines/schedules/runs/nodes/outbox/leases/reconciliation/idempotency; artifact manifests/dependencies; analyses/methodologies/cases/research documents/findings/decisions/analytical products/comments/segments/promotions/windows/audience bindings; forecasts/backtests/models/monitoring; ChartSpec/render-artifact metadata; dashboard/report definitions/access policies/snapshots/rendered artifacts/email policies/senders/deliveries; brand profiles/assets/company packs; exports/Data Guides/file-import templates; notifications; plugins и audit.
+PostgreSQL содержит users/roles/workspaces/members/invites/sessions/reset tokens/API tokens; OrgUnit/structure versions, primary memberships, leadership assignments, department data policies, cross-department grants, resource ownership bindings и contributor projections; connections/secrets/catalogs; semantic/identity/metric/group/format/filter/capability versions и diffs/impacts; extraction batches/watermarks; quality rules/reports/issues/waivers; pipelines/schedules/runs/nodes/outbox/leases/reconciliation/idempotency; artifact manifests/dependencies; analyses/methodologies/cases/research documents/findings/decisions/analytical products/comments/segments/promotions/windows/audience bindings; forecasts/backtests/models/monitoring; ChartSpec/render-artifact metadata; dashboard/report definitions/access policies/snapshots/rendered artifacts/email policies/senders/deliveries; brand profiles/assets/company packs; exports/Data Guides/file-import templates; notifications; plugins и audit.
 
 ## 18. Технические зависимости
 
@@ -1243,7 +1307,32 @@ NumPy/SciPy обязательны, statsmodels желателен, scikit-learn
 
 ### 18.3. Frontend и localization
 
-Node.js active LTS, React, TypeScript, Vite, i18next/react-i18next, React Flow, TanStack Query, `lucide-react`, Apache ECharts core и Playwright обязательны. Lucide является единственной core outline icon family с versioned semantic mapping для navigation/actions. Node используется для frontend build и bounded ECharts SSR внутри report-worker image. Presentation-owned `@custometry/chart-compiler` из `packages/chart_compiler_ts` является единственной ChartSpec→ECharts implementation для обоих consumers; versioned bundled en/ru font pack обеспечивает одинаковую typographic layout. TanStack Table, Zod и React Hook Form желательны; Zustand optional. Dash, Plotly core, ECharts-GL и WebGL chart runtime отсутствуют в v1 lockfile. Конкретный network-disabled SVG→PNG rasterizer выбирается fidelity/performance/security spike без изменения ChartSpec. Accessibility regression использует axe-core/`@axe-core/playwright`. Backend-generated text при его появлении использует Python gettext catalogs и Babel; domain/API errors и events остаются locale-neutral.
+Node.js active LTS, React, TypeScript, Vite, MobX, styled-components, i18next/react-i18next, React Flow, TanStack Query, `lucide-react`, Apache ECharts core и Playwright обязательны. Lucide является единственной core outline icon family с versioned semantic mapping для navigation/actions. Node используется для frontend build и bounded ECharts SSR внутри report-worker image. Presentation-owned `@custometry/chart-compiler` из `packages/chart_compiler_ts` является единственной ChartSpec→ECharts implementation для обоих consumers; versioned bundled en/ru Inter Variable pack обеспечивает одинаковую typographic layout. TanStack Table, Zod и React Hook Form желательны. Dash, Plotly core, ECharts-GL и WebGL chart runtime отсутствуют в v1 lockfile. Конкретный network-disabled SVG→PNG rasterizer выбирается fidelity/performance/security spike без изменения ChartSpec. Accessibility regression использует axe-core/`@axe-core/playwright`. Backend-generated text при его появлении использует Python gettext catalogs и Babel; domain/API errors и events остаются locale-neutral.
+
+MobX отвечает за быстрый local/workspace state: навигацию, command palette,
+геометрию панелей и обратимое optimistic feedback. TanStack Query отвечает за
+authoritative REST/SSE snapshots, invalidation, cancellation и
+stale-while-revalidate. UI не может сам выдать право, подтвердить persistence,
+run, delivery или terminal result. styled-components строит typed composition,
+а четыре темы и white-label разрешаются через semantic CSS custom properties.
+
+| ID | Frontend architecture invariant |
+|---|---|
+| WEB-ARCH-001 | Authenticated Web использует React/TypeScript/Vite/MobX/TanStack Query/styled-components; backend и REST/SSE планы не меняются |
+| WEB-ARCH-002 | MobX владеет client/workspace state, server-state adapter — authoritative snapshots; frontend не принимает authorization/terminal decisions |
+| WEB-ARCH-003 | Themes/white-label используют semantic CSS variables; arbitrary CSS/JS, remote fonts и untrusted styles запрещены |
+| WEB-ARCH-004 | Route migration обратима, сохраняет deep links/history/Back/refresh и fallback до полного browser evidence |
+| WEB-ARCH-005 | Linear задаёт измеримую fidelity, но его branding/entities/assets/text/source/undocumented policy не копируются |
+| WEB-ARCH-006 | Sidebar/detail panes имеют bounded pointer resize, persisted preference, reset и keyboard alternative без влияния на permissions/routes |
+
+| ID | Perceived-performance invariant |
+|---|---|
+| WEB-PERF-001 | Evidence фиксирует hardware/browser/viewport/CPU/RAM/data/sample/cold-warm-cache и p50/p75/p95, разделяя client/network/API/render |
+| WEB-PERF-002 | Feedback target p75 <= 50 ms/p95 <= 100 ms; recurring main-thread tasks > 50 ms в accepted journey запрещены |
+| WEB-PERF-003 | Warm navigation acknowledgement target p75 <= 100 ms/p95 <= 200 ms; uncached route truthful acknowledges within 100 ms |
+| WEB-PERF-004 | Dispatch target p75 <= 20 ms/p95 <= 50 ms; response/SSE-to-paint target p75 <= 100 ms/p95 <= 200 ms |
+| WEB-PERF-005 | Representative INP p75 <= 100 ms, hard ceiling 200 ms; animations target 60 fps без recurring jank |
+| WEB-PERF-006 | Refresh сохраняет authorized data/reserved layout, отделяет client overhead от backend wait и не выдаёт optimistic/stale state за terminal truth |
 
 ### 18.4. Toolchain и лицензии
 
@@ -1273,11 +1362,11 @@ Python packages/lock — `uv`/`uv.lock`; frontend — `pnpm`/`pnpm-lock.yaml`; R
 
 ## 20. Безопасность и приватность
 
-Threat model включает утечку secrets, SQL injection, IDOR/workspace bypass, session/token theft и refresh replay, CSRF, brute force, excessive preview, cross-workspace/PII leaks, report email на запрещённый/confusable domain, spoofed sender, duplicate after unknown submit, executable/raw chart options, chart callbacks/URLs/regex, SSR/raster resource exhaustion или remote fetch, trusted plugin risk, path traversal, CSV/XLSX formula injection, unsafe Markdown/email HTML, unsafe model deserialization и SSRF.
+Threat model включает утечку secrets, SQL injection, IDOR/workspace/department bypass, hidden counts соседнего отдела, неконтролируемый cross-department grant, превращение contributor analytics в employee surveillance, session/token theft и refresh replay, CSRF, brute force, excessive preview, cross-workspace/PII leaks, report email на запрещённый/confusable domain, spoofed sender, duplicate after unknown submit, executable/raw chart options, chart callbacks/URLs/regex, SSR/raster resource exhaustion или remote fetch, trusted plugin risk, path traversal, CSV/XLSX formula injection, unsafe Markdown/email HTML, unsafe model deserialization и SSRF.
 
 ### 20.1. RBAC и multi-workspace isolation
 
-Permissions разделяют installation/workspace management, members/roles, connections/secrets, file-import templates/import execution, dataset/quality/waiver, metric definitions/groups/number formats/methodologies, analytics/promotions/segments/forecasts/pipelines/runs, PII, artifacts, report read/manage/send/XLSX/email-policy, Data Guide read/publish, exports/dashboards/notifications, global BrandProfile/CompanyPack management, workspace brand assignment, tokens/plugins/audit. Installation Administrator не получает автоматический доступ к workspace data. Effective permission объединяет role grants, но не обходит object/data restrictions.
+Permissions разделяют installation/workspace management, members/roles, organization read/manage/assignment/leadership/data-policy/delegation/ownership/activity, connections/secrets, file-import templates/import execution, dataset/quality/waiver, metric definitions/groups/number formats/methodologies, analytics/promotions/segments/forecasts/pipelines/runs, PII, artifacts, report read/manage/send/XLSX/email-policy, Data Guide read/publish, exports/dashboards/notifications, global BrandProfile/CompanyPack management, workspace brand assignment, tokens/plugins/audit. Installation Administrator не получает автоматический доступ к workspace data. Functional role, organization membership и leadership assignment независимы; effective access пересекает role, organization, data, object, row/column и PII ceilings, а deny побеждает allow.
 
 | ID | RBAC invariant |
 |---|---|
@@ -1299,8 +1388,26 @@ Permissions разделяют installation/workspace management, members/roles,
 | RBAC-016 | Metric, MetricGroup и NumberFormat используют отдельные read/manage/publish permissions; dataset management не меняет их неявно |
 | RBAC-017 | FileImportTemplate lifecycle и import execution разделены permissions и не наследуются автоматически от connection management |
 | RBAC-018 | Global BrandProfile/CompanyPack management отделён от workspace `brand.assign`, который выбирает только разрешённую published version |
+| RBAC-019 | Functional role, department membership и leadership — независимые измерения; названия отделов не создают новые role bundles |
+| RBAC-020 | Effective access — пересечение role, workspace, organization, DepartmentDataPolicy, ObjectAccessPolicy, row/column и PII ceilings; deny wins |
+| RBAC-021 | Каждый active member имеет ровно один primary department/team; orphan member не читает business data |
+| RBAC-022 | Department Leader — effective-dated scoped assignment для unit и optional subtree, а не глобальная роль |
+| RBAC-023 | CrossDepartmentGrant bounded, reasoned, effective-dated/expiring и не повышает role/PII ceiling |
+| RBAC-024 | Personal drafts остаются personal; published resource по умолчанию department-owned, creator attribution immutable |
+| RBAC-025 | Snapshot read не означает dataset/edit/run/drill-down/raw artifact/PII permission |
+| RBAC-026 | Transfer/deactivation прекращает старый scope, переоценивает grants и запускает ownership handover без переписывания истории |
+| RBAC-027 | ContributorActivityProjection агрегирована и redacted; raw audit, hidden counts, peer ranking и productivity score запрещены |
+| RBAC-028 | Workspace Administrator конфигурирует organization, но не получает activity/business content/PII автоматически |
 
-### 20.2. Local auth и будущий OIDC boundary
+### 20.2. Организационная структура, ownership и privacy
+
+`OrgUnit` образует workspace-scoped дерево `company → division → department → team` с effective dates, status и successor mapping; hard delete запрещён. Для активного пользователя существует ровно одно primary assignment. Leadership assignment отдельно задаёт unit, optional descendants и срок действия. `DepartmentDataPolicyVersion` определяет dataset/row/column/PII ceiling и default visibility, а `CrossDepartmentGrant` временно расширяет только явно указанный allow scope.
+
+Автор и владелец ресурса различаются. Draft личный; новая публикация по умолчанию принадлежит primary department автора; legacy objects получают `workspace_legacy` до аудита. Transfer сохраняет creator attribution, закрывает старый доступ и создаёт handover для published resources.
+
+People & Creators читает отдельную `ContributorActivitySummary`, построенную из allowlisted redacted domain events. Профиль показывает доступные отчёты/dashboards и безопасные агрегаты только самому сотруднику, scoped leader или explicit grantee. Рейтинги, leaderboard, productivity score, hidden counts и raw audit feed не входят в продукт.
+
+### 20.3. Local auth и будущий OIDC boundary
 
 Local auth входит в public MVP. Общий `IdentityProvider` normalizes platform principal, но OIDC/Keycloak/Authlib runtime относится к post-v1 и отдельному security ADR.
 
@@ -1320,7 +1427,7 @@ Bootstrap работает только при zero users и защищён од
 | AUTH-010 | CORS allowlist deployment-configured; wildcard origin с credentials запрещён |
 | AUTH-011 | OIDC post-v1, но provider contract и normalized-principal tests существуют заранее |
 
-### 20.3. Secrets, PII, files, plugins и audit
+### 20.4. Secrets, PII, files, plugins и audit
 
 Encrypted secret payload/reference хранится в PostgreSQL, master key — только environment/file secret. Envelope использует authenticated encryption, key version и rotation; plaintext не возвращается и редактируется из logs/traces. Vault/KMS — post-v1.
 
@@ -1372,7 +1479,7 @@ Backup включает PostgreSQL, local artifacts, master key/KMS config, depl
 
 ## 22. Тестирование
 
-Test pyramid включает pytest unit/property/contract/API, Testcontainers integrations, golden Parquet, forecast regression, Vitest components, Playwright E2E, i18next/gettext localization, axe/manual accessibility, security scans, Compose recovery fault injection и dedicated performance benchmarks. Отдельные chart gates проверяют valid/invalid ChartSpec, executable/network-field rejection, bounded data, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantics, range timeline, SSR SVG→PNG, bundled-font/compiler/renderer-build identity invalidation, XLSX native/raster mapping и six-theme accessibility. Report gates проверяют golden parity Web/email/XLSX, OOXML/openability/charts/split/formula-injection и email transport на test adapter плюс approved real-boundary canary. Реальные PostgreSQL, MSSQL, MySQL/MariaDB и ClickHouse connector matrices обязательны; CSV/XLSX templates проходят security fixtures. Mocks не заменяют release evidence.
+Test pyramid включает pytest unit/property/contract/API, Testcontainers integrations, golden Parquet, forecast regression, Vitest components, Playwright E2E, i18next/gettext localization, axe/manual accessibility, security scans, Compose recovery fault injection и dedicated performance benchmarks. Отдельные chart gates проверяют valid/invalid ChartSpec, executable/network-field rejection, bounded data, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantics, range timeline, SSR SVG→PNG, bundled-font/compiler/renderer-build identity invalidation, XLSX native/raster mapping и four-theme accessibility. Report gates проверяют golden parity Web/email/XLSX, OOXML/openability/charts/split/formula-injection и email transport на test adapter плюс approved real-boundary canary. Реальные PostgreSQL, MSSQL, MySQL/MariaDB и ClickHouse connector matrices обязательны; CSV/XLSX templates проходят security fixtures. Mocks не заменяют release evidence.
 
 ### 22.1. Обязательные инварианты
 
@@ -1443,8 +1550,31 @@ Test pyramid включает pytest unit/property/contract/API, Testcontainers 
 | TEST-INV-063 | Bucket membership детерминирован на ties/missing/boundaries, а published pinned bounds не пересчитываются молча |
 | TEST-INV-064 | KMeans соблюдает exact K, feature order/preprocessing/seed/CPU, исключает ID/PII/leakage и публикует полный diagnostic snapshot |
 | TEST-INV-065 | Excluded-from-fit extremes не исчезают из assignment без policy; post-fit сохраняет outlier/distance/confidence и sensitivity |
+| TEST-INV-066 | Promo/loyalty/bonus/other сходятся с source total/net/base в tolerance; unknown не равен zero |
+| TEST-INV-067 | Bonus accrual не попадает в redemption/discount, stacking/precedence не допускает double attribution |
+| TEST-INV-068 | Aggregate rate является ratio-of-sums; average row rates и overlap double count ловятся golden tests |
+| TEST-INV-069 | Historical cap breach сохраняется без clamp, simulated breach блокирует publication, включая boundary rounding/returns |
+| TEST-INV-070 | Timeline overlap не создаёт promo attribution без sale flag/direct mapping |
+| TEST-INV-071 | PVM effects сходятся с observed delta и детерминированно обрабатывают assortment/missing/UOM cases |
+| TEST-INV-072 | Current/LY pin-ят compatible policy/method; drift меняет result identity и disclosure |
+| TEST-INV-073 | Direct/derived/proxy/total-only/unavailable дают разные capability/trust outcomes во всех channels |
+| TEST-INV-074 | Metric lifecycle/certification независимы, replacement сохраняет historical lineage |
+| TEST-INV-075 | Future method не запускается и не показывается как implemented |
+| TEST-INV-076 | У active member ровно одно primary department/team assignment; overlaps запрещены |
+| TEST-INV-077 | Effective access пересекает role/organization/data/object/row-column/PII; deny не отменяется grant |
+| TEST-INV-078 | People/resources list/count/search/pagination не раскрывают hidden departments или counts |
+| TEST-INV-079 | Leader видит activity только своего scope и не получает raw AuditEvent/PII автоматически |
+| TEST-INV-080 | CrossDepartmentGrant bounded, reasoned, expiring и после revoke не остаётся в cache |
+| TEST-INV-081 | Snapshot read не выдаёт dataset/edit/run/drill-down/artifact/PII actions |
+| TEST-INV-082 | Draft personal, publication department-owned, creator attribution immutable |
+| TEST-INV-083 | Transfer прекращает старый scope, сохраняет attribution и создаёт ownership handover |
+| TEST-INV-084 | Deactivated/merged OrgUnit сохраняет историю/successor; hard delete невозможен |
+| TEST-INV-085 | Contributor projection redacted/allowlisted, без ranking/score/hidden refs/raw audit |
+| TEST-INV-086 | Workspace Admin управляет structure без автоматического activity/content/PII access |
+| TEST-INV-087 | Structure/data-policy versions используют ETag, immutable publish и auditable diff |
+| TEST-INV-088 | Self/leader/grantee получают разные policy-correct contributor projections |
 
-Golden datasets включают ideal, anonymous, returns, multi-currency, late corrections, duplicates, missing products, SCD, irregular/intermittent series, new store, incomplete month, duplicate source IDs, overlapping/gapped validity, разные metric kinds, percentage/compact-format boundaries, stable metric groups, YoY leap/week53/fiscal cases, overlapping promotions, skewed/zero-inflated/heavy-tail sales с legitimate VIP и DQ-invalid rows, quantile/IQR/MAD bounds/ties/missing, global/within-stratum/privacy-cardinality cases, exact-K/frozen/retrain KMeans fixtures, research findings/comments, low/high-cardinality sensitive filters, safe/unsafe Markdown и brand assets, multi-block reports, generated XLSX README/limits/injection/names, six themes, полный ChartSpec allowlist, invalid executable/network specs, range timeline, dense aggregate/sample/LOD, identical shared-compiler Web/SSR option hashes и Web/SSR/email/XLSX semantic outputs, а также bundled-font/compiler/renderer build rotation fixtures.
+Golden datasets включают ideal, anonymous, returns, multi-currency, late corrections, duplicates, missing products, SCD, irregular/intermittent series, new store, incomplete month, duplicate source IDs, overlapping/gapped validity, разные metric kinds, percentage/compact-format boundaries, stable metric groups, YoY leap/week53/fiscal cases, overlapping promotions, skewed/zero-inflated/heavy-tail sales с legitimate VIP и DQ-invalid rows, quantile/IQR/MAD bounds/ties/missing, global/within-stratum/privacy-cardinality cases, exact-K/frozen/retrain KMeans fixtures, research findings/comments, low/high-cardinality sensitive filters, safe/unsafe Markdown и brand assets, multi-block reports, generated XLSX README/limits/injection/names, four themes, полный ChartSpec allowlist, invalid executable/network specs, range timeline, dense aggregate/sample/LOD, identical shared-compiler Web/SSR option hashes и Web/SSR/email/XLSX semantic outputs, а также bundled-font/compiler/renderer build rotation fixtures.
 
 ## 23. Производительность и масштабирование
 
@@ -1508,24 +1638,24 @@ Public backend methods объявляются через Protocol/ABC; construct
 
 ### 26.2. Public MVP
 
-Добавляет несколько изолированных workspaces; полный local auth с invites/reset/sessions/scoped tokens и OIDC boundary без runtime; PostgreSQL/MSSQL/MySQL/ClickHouse и governed CSV/XLSX templates; CustomerIdentity и item/product entities; full/incremental/partition refresh; полный основной DQ gate с remediation/waiver; sales/customer/RFM/cohorts/lifecycle/rule segments; Metric/Methodology Registry, Analysis Case и Research Workspace; основные forecasts с baselines/CatBoost, intervals, registry и monitoring; saved onboarding, guided analysis, Result Trust, template dashboards, object access/comments, BrandProfile/CompanyPack, schedules, Operator Center и in-app notifications; canonical workspace routing/history, system surfaces и unsaved-change guards; полный en/ru, WCAG 2.2 AA; web/CSV/Parquet/bounded internal JSON; production one-server Compose/local filesystem.
+Добавляет несколько изолированных workspaces; полный local auth с invites/reset/sessions/scoped tokens и OIDC boundary без runtime; organization tree, primary departments, scoped leadership, department data policies и cross-department grants; PostgreSQL/MSSQL/MySQL/ClickHouse и governed CSV/XLSX templates; CustomerIdentity и item/product entities; full/incremental/partition refresh; полный основной DQ gate с remediation/waiver; sales/customer/RFM/cohorts/lifecycle/rule segments; Metric/Methodology Registry, Analysis Case и Research Workspace; основные forecasts с baselines/CatBoost, intervals, registry и monitoring; saved onboarding, guided analysis, Result Trust, template dashboards, object access/comments, BrandProfile/CompanyPack, schedules, Operator Center и in-app notifications; canonical workspace routing/history, system surfaces и unsaved-change guards; полный en/ru, WCAG 2.2 AA; web/CSV/Parquet/bounded internal JSON; production one-server Compose/local filesystem.
 
 ### 26.3. V1 target
 
-Завершает Store/Channel/Promotion, append/upsert, drift history/issue workflow, store/channel, basic basket, historical migration и Custom Builder; governed quantile/IQR/MAD treatment, bucket segments, stratified distributions и CPU KMeans с exact K; universal previous-year comparison, searchable filters, NumberFormatSpec/MetricGroupVersion, полный forecast set, Promotion Journal, Data Guide, Research publication, branding/company packs, CPU-only capacity/admin cap, progress/ETA, шесть base themes, canonical ChartSpec, ECharts-only Web SVG/Canvas, range timeline, bounded SSR SVG→PNG, Report Composition, verified-sender/domain-allowlisted user email, production motion/reduced-motion, Help/shortcuts, admin system lifecycle, operational channel management, mature guided/canvas/templates, plugin SDK, full admin, benchmarks/restore/security/license gates, dashboards и notifications. Dash/Plotly core/ECharts-GL/WebGL отсутствуют. Универсальный XLSX report renderer с generated README является последней функциональной частью v1. Product distribution остаётся self-host-only; Yandex Metrica и B2B остаются future-only.
+Завершает Store/Channel/Promotion, append/upsert, drift history/issue workflow, store/channel, basic basket, component discount/cap/PVM, historical migration и Custom Builder; People & Creators с privacy-safe activity projection и ownership handover; governed quantile/IQR/MAD treatment, bucket segments, stratified distributions и CPU KMeans с exact K; metric certification/proxy quality, robustness/representativeness/basic statistical primitives и default MethodologyPack; universal previous-year comparison, searchable filters, NumberFormatSpec/MetricGroupVersion, полный forecast set, Promotion Journal, Data Guide, Research publication, branding/company packs, CPU-only capacity/admin cap, progress/ETA, четыре base themes, canonical ChartSpec, ECharts-only Web SVG/Canvas, range timeline, bounded SSR SVG→PNG, Report Composition, verified-sender/domain-allowlisted user email, production motion/reduced-motion, Help/shortcuts, admin system lifecycle, operational channel management, mature guided/canvas/templates, plugin SDK, full admin, benchmarks/restore/security/license gates, dashboards и notifications. Dash/Plotly core/ECharts-GL/WebGL отсутствуют. Универсальный XLSX report renderer с generated README является последней функциональной частью v1. Product distribution остаётся self-host-only; Yandex Metrica и B2B остаются future-only.
 
 ### 26.4. Реализационные phases
 
 1. Foundation: monorepo/contracts/locale-neutral core, workspace DB/auth/RBAC, object access/comments, local artifacts/partition commit, run/outbox/fencing/reconciler, CPU/progress/theme/BrandProfile и canonical ChartSpec/compiler-port foundations, minimal guided shell, observability и Compose.
 2. Vertical alpha: governed CSV/XLSX template discovery/mapping, full extraction/DQ/preflight, marts/analytics/RFM, forecast backtest, первый ChartSpec set и ECharts SVG/Canvas adapter, Result Trust и en/ru catalog structure.
-3. Data onboarding/security public MVP: PostgreSQL/MSSQL/MySQL/ClickHouse connectors с integration CI, multi-workspace/local auth, identity/items/products, Filter Registry, Data Guide/FileImportTemplate, lifecycle/impact, incremental/drift/remediation, canonical routes/history/system surfaces/dirty guards, complete en/ru/WCAG/onboarding.
-4. Product analytics public MVP: Metric/Methodology Registry, Analysis Case/Research Workspace, marts/cohorts/lifecycle/segments, universal YoY, metric grouping/formatting, Promotion Journal first-class range timeline/overlays, forecast monitoring, dashboards/comments/schedules/Operator/in-app inbox, BrandProfile/CompanyPack, exports, backup/restore и production Compose.
-5. Advanced low-code v1: accessible canvas, templates, Research publication, Custom Builder, governed outlier treatment, buckets/stratification/KMeans, basket/store/channel, operational email/webhook и channel management, Report Composition, bounded embedded ECharts SSR→PNG, HTML/user report email, production motion, Help/shortcuts, admin lifecycle, plugin SDK и admin/diff UX.
-6. Pre-XLSX hardening: analytics/treatment/segmentation/chart/report/CPU/email benchmarks, invalid ChartSpec security, cross-render/six-theme parity, restore/upgrades, a11y/i18n, mail canary/runbooks, MSSQL matrix, SBOM/provenance и документация.
+3. Data onboarding/security public MVP: PostgreSQL/MSSQL/MySQL/ClickHouse connectors с integration CI, multi-workspace/local auth, organization/access foundation, identity/items/products, Filter Registry, Data Guide/FileImportTemplate, lifecycle/impact, incremental/drift/remediation, canonical routes/history/system surfaces/dirty guards, complete en/ru/WCAG/onboarding.
+4. Product analytics public MVP: Metric/Methodology Registry, Analysis Case/Research Workspace, People & Creators/department ownership, marts/cohorts/lifecycle/segments, universal YoY, metric grouping/formatting, Promotion Journal first-class range timeline/overlays, forecast monitoring, dashboards/comments/schedules/Operator/in-app inbox, BrandProfile/CompanyPack, exports, backup/restore и production Compose.
+5. Advanced low-code v1: accessible canvas, templates, Research publication, Custom Builder, governed outlier treatment, buckets/stratification/KMeans, basket/store/channel, component discount/cap/PVM, metric certification/proxy/robustness/representativeness, operational email/webhook и channel management, Report Composition, bounded embedded ECharts SSR→PNG, HTML/user report email, production motion, Help/shortcuts, admin lifecycle, plugin SDK и admin/diff UX.
+6. Pre-XLSX hardening: analytics/treatment/segmentation/chart/report/CPU/email benchmarks, invalid ChartSpec security, cross-render/four-theme parity, restore/upgrades, a11y/i18n, mail canary/runbooks, MSSQL matrix, SBOM/provenance и документация.
 7. Universal XLSX: последняя feature — canonical ChartSpec→native chart либо same-pipeline PNG, typed data sheet, sheet split, injection/openability/golden parity.
 8. Final v1 acceptance: только full acceptance/security/performance/recovery/rollback evidence, без новых features.
 
-Post-v1 остаются Yandex Metrica Reporting/Logs connectors, B2B sales ontology, DB destination export, OIDC/Keycloak implementation, Gaussian Mixture/HDBSCAN/automatic K/Isolation Forest/multivariate anomaly detection, расширенный ABC/XYZ, comparable stores, discount/margin, hierarchical/scenario/decomposed forecasting, Optuna/MLflow, Vault/KMS, новые connectors, remote storage/distributed workers по будущему ADR и public result API. Detailed activation/distribution work ведётся только в отдельном private access-controlled контуре.
+Post-v1 остаются Yandex Metrica Reporting/Logs connectors, B2B sales ontology, DB destination export, OIDC/Keycloak implementation, Gaussian Mixture/HDBSCAN/automatic K/Isolation Forest/multivariate anomaly detection, DiD/event study/matching/synthetic control, causal ML/HTE, uplift, generic propensity/churn, advanced channel-migration economics и automated decision analysis, расширенный ABC/XYZ, comparable stores, hierarchical/scenario/decomposed forecasting, Optuna/MLflow, Vault/KMS, новые connectors, remote storage/distributed workers по будущему ADR и public result API. Detailed activation/distribution work ведётся только в отдельном private access-controlled контуре.
 
 ## 27. End-to-end сценарии
 
@@ -1535,7 +1665,7 @@ One-time host token создаёт local installation admin и первый work
 
 ### 27.2. Основной demo flow
 
-PostgreSQL/MSSQL/MySQL/ClickHouse либо governed CSV/XLSX template → catalog → Customer/Receipt/ReceiptItem mapping → schema/cardinality validation → landing Parquet → quality gate → approved metrics/method → Analysis Case/Research Workspace → transaction/features marts → active base/RFM → PopulationTreatment preview → bucket/stratified analysis либо KMeans exact K → immutable membership/diagnostics → cohorts/online-offline → previous-year comparison с shared treatment bounds → reviewed findings → Promotion range timeline/overlay → forecast → canonical ChartSpec → ECharts Web SVG/Canvas → branded ReportSnapshot → comments/ACL → SSR SVG→email PNG → dashboard, Parquet и native/raster universal XLSX с generated README.
+PostgreSQL/MSSQL/MySQL/ClickHouse либо governed CSV/XLSX template → catalog → Customer/Receipt/ReceiptItem mapping → schema/cardinality validation → landing Parquet → quality gate → approved metrics/method → Analysis Case/Research Workspace → transaction/features marts → active base/RFM → PopulationTreatment preview → bucket/stratified analysis либо KMeans exact K → immutable membership/diagnostics → cohorts/online-offline → previous-year comparison с shared treatment bounds → DiscountPolicy/component reconciliation → stacking/cap/PVM → reviewed findings → Promotion range timeline/overlay → forecast → canonical ChartSpec → ECharts Web SVG/Canvas → branded ReportSnapshot → comments/ACL → SSR SVG→email PNG → dashboard, Parquet и native/raster universal XLSX с generated README.
 
 ### 27.3. Incremental refresh
 
@@ -1638,6 +1768,18 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | V1-AC-029 | Quantile/IQR/MAD treatment имеет default flag, sensitivity, explicit exclude/winsorize и раскрывает bounds/scope/impact во всех result/export channels без изменения canonical data |
 | V1-AC-030 | Buckets поддерживают quantile/equal-width/custom с deterministic boundaries; strata используют global default/privacy-safe cells и сохраняются в segment только явно |
 | V1-AC-031 | CPU KMeans принимает exact K и versioned features/preprocessing/treatment/seed, показывает diagnostics/sensitivity и создаёт новый immutable snapshot при retrain |
+| V1-AC-032 | Promo/loyalty/bonus/other, commercial discount, customer benefit и recognized net revenue разделены и reconciliation-сведены без unknown-as-zero/accrual confusion |
+| V1-AC-033 | Versioned stacking/precedence/cap/base/tolerance/returns сохраняет historical breaches, блокирует simulated breaches и остаётся configurable через CompanyPack |
+| V1-AC-034 | UI-AN-010 показывает component rates/shares/penetration/overlap/depth/cap и vs LY через ratio-of-sums и stable groups/formats |
+| V1-AC-035 | PVM точно сводит price/volume/mix/assortment/residual и раскрывает method/coverage/new-discontinued/missing/UOM/currency/returns |
+| V1-AC-036 | Metric certification/proxy quality/representativeness/robustness/basic statistics/MethodologyPack доступны в v1, advanced methods остаются future-only |
+| V1-AC-037 | Versioned company/division/department/team tree и один primary department имеют effective-dated transfer/merge lifecycle |
+| V1-AC-038 | Organization-aware authorization не раскрывает hidden rows/counts и пересекает все policy ceilings |
+| V1-AC-039 | Department Leader scoped к unit/subtree и не делегирует выше своего ceiling |
+| V1-AC-040 | Cross-department grant bounded/reasoned/expiring, не меняет primary department и ceilings |
+| V1-AC-041 | Ownership/creator/transfer/legacy migration deterministic и сохраняют историю |
+| V1-AC-042 | People & Creators показывает privacy-safe assets/activity без ranking, score или raw audit |
+| V1-AC-043 | Шесть Organization/People routes, effective-access states, C25 и flow 10 проходят design/runtime gates |
 
 ## 29. Закрытые пробелы исходного плана
 
@@ -1704,6 +1846,13 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | GAP-059 | Distribution смешивалась с activation | Self-host-only public core и отдельная private boundary |
 | GAP-060 | Выбросы были локальными filters | Immutable treatment, robust methods, default flag, shared LY bounds и sensitivity |
 | GAP-061 | Buckets/strata/clusters не имели lifecycle | Versioned definitions/distributions/preprocessing/models/membership и exact K |
+| GAP-062 | Общая скидка смешивала promo/loyalty/bonus и cap | Component fact, DiscountPolicyVersion, attribution и reconciliation |
+| GAP-063 | PVM/proxy/method readiness не имели доказательного контракта | Versioned PVM, certification, proxy quality, MethodologyPack и availability class |
+| GAP-064 | Роли не отражали структуру компании | Separate roles, OrgUnit tree и scoped leadership |
+| GAP-065 | Department access смешивался с object ACL | Data policy intersection и bounded grants |
+| GAP-066 | Ресурсы теряли owner при переводе автора | Creator/owner separation и handover lifecycle |
+| GAP-067 | Creator showcase мог стать surveillance | Privacy-safe projection и anti-ranking policy |
+| GAP-068 | Organization/People не имели UI contract | Six routes, UI-CAP-021/022, C25 и flow 10 |
 
 ## 30. Риски и решения
 
@@ -1736,6 +1885,16 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | RISK-025 | Admin role обходит analytical/PII policy | Separate bundles, explicit expiring PII grant и access audit |
 | RISK-026 | `.gitignore` принимают за защиту private материалов | Authoritative private storage отдельно; ignored root — только defense-in-depth |
 | RISK-027 | Outlier policy удаляет реальных VIP или делает периоды несопоставимыми | Default flag, DQ separation, impact preview, pinned shared LY bounds и explicit fit/assignment populations |
+| RISK-028 | Promo/loyalty/bonus считаются дважды или путаются с accrual | Component fact, accounting treatment, stacking/precedence и reconciliation |
+| RISK-029 | Cap молча исправляет или скрывает historical sale | Immutable source, no-clamp diagnostics и simulated-publication block |
+| RISK-030 | Residual/total-only показывается как точная attribution | Origin/coverage/certification/Result Trust disclosure |
+| RISK-031 | PVM зависит от скрытого порядка и не сходится | Versioned order, exact reconciliation, assortment/residual и golden data |
+| RISK-032 | Hierarchy зашивается в roles | Separate functional roles и scoped organization assignments |
+| RISK-033 | Cross-department grant превышает ceilings | Central intersection, bounded grant, expiry/revoke tests |
+| RISK-034 | Transfer оставляет старый access/orphan resources | Immediate rescope, handover и successor mapping |
+| RISK-035 | People & Creators превращается в employee ranking | Redacted aggregates и запрет leaderboard/score |
+| RISK-036 | Snapshot read принимают за underlying data access | Authorization каждого action отдельно |
+| RISK-037 | Admin configuration обходит privacy | `organization.manage` отделён от activity/content/PII grants |
 
 ### 30.1. Зафиксированные решения
 
@@ -1774,6 +1933,16 @@ Forecast проходит history/preflight, series preview, rolling comparison,
 | RESOLVED-031 | NumberFormatSpec и MetricGroupVersion едины для Web/email/XLSX; raw value сохраняется, non-zero percent не становится 0% |
 | RESOLVED-032 | Продукт строится как широкий кастомизируемый minimum product set, не как first-client fork или pilot KPI solution |
 | RESOLVED-033 | V1 использует quantile/IQR/MAD и rule/bucket/stratified/KMeans exact-K workflow; GMM/HDBSCAN/automatic-K/multivariate anomalies остаются post-v1 |
+| RESOLVED-034 | Promo/loyalty/bonus redemption/other — отдельные components; versioned policy управляет stacking/cap, historical facts не clamp-ятся, simulated breach блокируется |
+| RESOLVED-035 | Commercial discount/customer benefit/recognized net revenue разделены; attribution quality обязательна, aggregate rate — ratio-of-sums |
+| RESOLVED-036 | V1 включает discount/PVM и методологическое качество; advanced causal/uplift/anomaly/decision methods остаются future_extension |
+| RESOLVED-037 | V1 organization — workspace tree company/division/department/team и один active primary department/team |
+| RESOLVED-038 | Functional role и hierarchy независимы; Department Leader — scoped assignment |
+| RESOLVED-039 | Effective access — policy intersection, deny wins |
+| RESOLVED-040 | Cross-department access — bounded reasoned expiring allow grant |
+| RESOLVED-041 | Draft personal, publication department-owned, creator immutable, transfer auditable |
+| RESOLVED-042 | People & Creators использует redacted projection без raw audit/ranking/score |
+| RESOLVED-043 | UI delta — six routes, UI-CAP-021/022, C25 и flow 10 приняты W10 на Penpot revision 213 с inventory 116/25/5 |
 
 Открыты только `OPEN-007` — customer ID completeness threshold как workspace degraded policy, и `OPEN-008` — minimum history для forecast target как capability rule по frequency/seasonality/horizon.
 
@@ -1783,7 +1952,7 @@ Vertical alpha берёт governed CSV/XLSX template, Customer/Receipt, guided J
 
 ## 32. Definition of Done нового модуля
 
-Готовый модуль имеет versioned I/O contracts, owner, capability rule, lifecycle/actions/permissions; не использует hidden global state, фиксирует seed, structured errors, cancellation, workspace/idempotency, CPU/thread allocation и ProgressEvent/ETA для heavy work; объявляет grain/key/PII, manifest/lineage и, когда применимо, treatment bounds, preprocessing/model/seed/membership versions и sensitivity; имеет unit/contract/golden/negative/cross-workspace tests; logs/metrics/timeout/resource profile; guided/node UI, searchable typed filters, previous-year comparison и ReportSnapshot binding когда reportable, canonical ChartSpec/bounded chart data/ECharts renderer capability/textual summary/accessibility table когда visualized, en/ru keys, все шесть themes, keyboard/screen-reader path, все states и нужные notification events; документацию, examples и limitations.
+Готовый модуль имеет versioned I/O contracts, owner, capability rule, lifecycle/actions/permissions; не использует hidden global state, фиксирует seed, structured errors, cancellation, workspace/idempotency, CPU/thread allocation и ProgressEvent/ETA для heavy work; объявляет grain/key/PII, manifest/lineage и, когда применимо, treatment bounds, preprocessing/model/seed/membership versions и sensitivity; имеет unit/contract/golden/negative/cross-workspace tests; logs/metrics/timeout/resource profile; guided/node UI, searchable typed filters, previous-year comparison и ReportSnapshot binding когда reportable, canonical ChartSpec/bounded chart data/ECharts renderer capability/textual summary/accessibility table когда visualized, en/ru keys, все четыре themes, keyboard/screen-reader path, все states и нужные notification events; документацию, examples и limitations.
 
 ## 33. Основные технологические стандарты
 

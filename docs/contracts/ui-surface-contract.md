@@ -1,12 +1,12 @@
 ---
 doc_id: CONTRACT-UI-SURFACE-001
 title: UI surface coverage contract
-doc_version: 2
-product_spec_version: 0.9.1-draft
+doc_version: 5
+product_spec_version: 0.9.4-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [UC-001, UC-002, UC-003, UC-004, UC-005, UC-006, UC-007, UC-008, UC-009, UC-010, UC-011, UC-012, UC-013, UC-014, UC-015, UC-016, UC-017, UC-018, UC-019, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, ROUTE-001, RBAC-002, OUTLIER-001, SEGMENT-001]
+requirement_ids: [UC-001, UC-002, UC-003, UC-004, UC-005, UC-006, UC-007, UC-008, UC-009, UC-010, UC-011, UC-012, UC-013, UC-014, UC-015, UC-016, UC-017, UC-018, UC-019, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, UC-027, UC-028, UC-029, ROUTE-001, RBAC-002, RBAC-019, RBAC-020, RBAC-027, OUTLIER-001, SEGMENT-001, DISCOUNT-001, PVM-001, METHOD-009, METRIC-017]
 status: accepted
 proof_boundary:
   label: static-ui-surface-coverage
@@ -24,12 +24,13 @@ UI-visible product use case to one or more canonical routes, overlays, system
 surfaces, or cross-surface capability contracts. Its JSON Schema is stored next
 to it.
 
-The current target contains 110 route-level pages, 25 overlays, 5 system
-surfaces, and 19 cross-surface capabilities. W03 accepted Penpot revision 124
-as a historical baseline with 91 route frames, 23 overlay frames, and all 5
-system surfaces. The remaining 19 routes plus `UI-OVR-024` and `UI-OVR-025` are
-design backlog. These are observed and target counts, not a permanent route
-ceiling.
+The current target contains 116 route-level pages, 25 overlays, 5 system
+surfaces, and 22 cross-surface capabilities. W08 accepted Penpot revision 181
+with the first 110 route frames, all overlays/system surfaces, C24, and flow 09.
+The controlled W10 baseline recovery established revision 197; W10 then
+accepted all six Organization/People routes, C25, and flow 10 at terminal
+revision 213 with inventory `116/25/5`. These are observed identity/domain
+counts, not a permanent route ceiling and not proof of the new Web target.
 
 ## Authority and agent load order
 
@@ -75,13 +76,13 @@ an overloaded existing frame.
 
 Static acceptance requires all of the following:
 
-- product use cases `UC-001...UC-026` are present exactly once in the coverage
+- product use cases `UC-001...UC-029` are present exactly once in the coverage
   binding set and each has at least one valid surface;
 - every referenced route exists in both route manifests and the UI blueprint;
 - overlay, system-surface, and cross-surface capability IDs, names, and complete
   requirement-reference sets match the UI blueprint exactly;
 - every surface requirement ID exists in the product blueprint;
-- all 110 routes have English/Russian title parity and executable route policy;
+- all 116 routes have English/Russian title parity and executable route policy;
 - the Penpot file ID is canonical, while revision drift is recorded rather than
   silently treated as a different file.
 
@@ -94,19 +95,23 @@ authorization enforcement, accessibility, or runtime readiness.
 
 - file ID: `7cd71457-8d32-8044-8008-549f83bb4645`;
 - current working name: `custometry`;
-- W03 accepted historical revision: `124`;
-- observed pages: `47`;
-- structurally and visually verified route frames: `91`;
-- verified overlay frames at W03: `23` of the then-target `24`;
-- verified system surfaces at W03: `5` of `5`;
-- target route frames for UI specification `0.6.1-draft`: `110`;
-- target overlays for UI specification `0.6.1-draft`: `25`;
-- target cross-surface capabilities: `19`.
+- W03 accepted historical audit revision: `124`;
+- W05 accepted complete architecture delta revision: `156`;
+- W06 accepted analytics-density repair revision: `164`;
+- W08 accepted discount/methodology Penpot delta revision: `181`;
+- W10 controlled start baseline revision: `197`;
+- W10 accepted terminal revision: `213`;
+- structurally stable and visually reviewed route frames: `116`;
+- structurally stable and visually reviewed overlays: `25`;
+- structurally stable and visually reviewed system surfaces: `5`;
+- target route frames for UI specification `0.7.0-draft`: `116`;
+- target overlays for UI specification `0.7.0-draft`: `25`;
+- target cross-surface capabilities: `22`.
 
 The file ID is the stable identity. A revision change is expected during design
 work and must be recorded by the audit. A file-ID mismatch is a hard stop.
-W03 evidence and ticket state remain immutable: subsequent work records a new
-start/end revision and contract fingerprint instead of rewriting revision 124.
+W03/W05/W06/W08 evidence and ticket state remain immutable: subsequent work records
+a new start/end revision and contract fingerprint instead of rewriting history.
 
 ## Population treatment and segmentation surface decision
 
@@ -117,6 +122,40 @@ and sensitivity inspection. `UI-CAP-018` owns the reusable population-treatment
 policy and `UI-CAP-019` owns the bucket, stratified, and exact-K KMeans builder
 contract. This keeps URLs stable while making methods, fitted parameters,
 exclusion effects, group counts, model/seed identity, and Result Trust visible.
+
+## Discount and methodology-trust surface decision
+
+`UC-027` reuses `UI-DATA-008/010/013/014/021/022` and
+`UI-AN-002/010/011/012/014`. Durable dataset, metric, method, analysis, result,
+and research lifecycles already own the relevant URLs. `UI-CAP-020` owns the
+reusable component-discount, effective-policy/cap, PVM, certification/proxy,
+and method-availability presentation contract. No new route or overlay is
+created solely for controls. The `0.6.2` Penpot delta adds C24 and updates the
+declared existing frames from accepted revision 164; W08 accepted it at 181.
+`W08-PENPOT-ANALYTICS-BASELINE-RECOVERY` restored `UI-AN-002` and the
+non-overlapping `UI-AN-011` authoring structure; the later controlled recovery
+established revision 197 as W10's safe start without changing route or product
+identity.
+
+## Organization and contributor-insight surface decision
+
+`UC-028` receives `UI-ORG-001/002` and `UI-ADMIN-019/020` because organization
+structure, department policy, grants, ownership, version conflicts, and dirty
+editing require durable deep links and independent authorization/history.
+`UC-029` receives `UI-PEOPLE-001/002` because the contributor directory/profile
+are bookmarkable privacy-scoped views. No new overlay is required.
+`UI-CAP-021` owns effective-access/ownership behavior reused across routes, and
+`UI-CAP-022` owns privacy-safe contributor cards/activity projection. W10
+accepted the six frames, C25, and flow 10 at terminal revision 213.
+
+## Linear-workspace successor boundary
+
+The accepted W10 file remains historical route, domain, and composition
+evidence. UI specification `0.7.0-draft` introduces a separate Penpot vNext and
+browser transition through W19-W23. Stable route IDs, overlays, systems, and
+capability bindings remain unchanged; foundations, four themes, shell density,
+resizable panels, keyboard/motion grammar, and the Sales Analytics golden slice
+receive new evidence. No W10 frame is relabeled as vNext or runtime proof.
 
 ## Change and proof rules
 

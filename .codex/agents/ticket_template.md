@@ -2,7 +2,7 @@
 artifact_kind: delivery_ticket
 delivery_contract: global/v1
 delivery_schema_version: 1
-spec_version: 0.9.1-draft
+spec_version: 0.9.4-draft
 ticket_id: <WORKSTREAM-VERB-NOUN>
 status: draft
 workstream_id: <B01-or-W00>
@@ -17,6 +17,13 @@ blockers: []
 # Add this scalar only when status is superseded:
 # supersession_reason: <why this ticket will not be accepted>
 context_sources: [AGENTS.md, .codex/AGENTS.md]
+# Add this mapping only when an external or volatile target is the first
+# execution boundary. It is an early read-only readiness probe, not a second
+# execution mode or a substitute for the pre-write guard in validation.
+# start_probe:
+#   boundary: <external-file-or-runtime-identity>
+#   read_only_check: <smallest-permitted-check>
+#   stop_on: [unavailable, identity_mismatch, state_drift]
 change_scope:
   allowed_write_paths: [<exact-path-or-directory>]
   forbidden_write_paths: [<exact-path-or-directory>]
@@ -26,6 +33,10 @@ repair_policy:
   retest_invalidated_evidence: true
 validation:
   depth: tests
+  # For Penpot source inspection, writes, restore, or visual proof, use
+  # [penpot-design-delivery]. Name complete target-frame and focused changed-region
+  # inspection in commands; do not use product-design:audit as a proxy.
+  # Add browser-qa-evidence only when a browser surface is in scope.
   proof_skills: []
   commands: [<focused-command>]
   proof_boundary: <exact-boundary>

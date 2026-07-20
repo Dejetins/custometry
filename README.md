@@ -8,8 +8,9 @@ The repository is permanently public. Never commit credentials, customer data, p
 
 ## Specifications
 
-- [Machine-readable technical blueprint](./custometry-technical-blueprint-ru.md) — normative source of truth, version `0.9.1-draft`.
+- [Machine-readable technical blueprint](./custometry-technical-blueprint-ru.md) — normative source of truth, version `0.9.4-draft`.
 - [Human-readable technical blueprint](./custometry-technical-blueprint-human-ru.md) — synchronized explanatory representation.
+- [Linear-workspace UI transition specification](./.codex/delivery/specs/custometry-linear-workspace-ui-transition.md) — accepted authenticated-Web migration boundary; backend plans remain unchanged.
 
 If the documents diverge, the machine-readable blueprint wins. New normative requirements must first be added there and mirrored into the human-readable document.
 
@@ -21,10 +22,17 @@ If the documents diverge, the machine-readable blueprint wins. New normative req
 - one execution engine for Guided and Pipeline modes;
 - transactional outbox, at-least-once delivery, fencing, and reconciliation;
 - multiple isolated workspaces in one installation;
+- versioned company structure, department-scoped access/ownership, and privacy-safe contributor insights;
 - English default/fallback and complete Russian localization;
 - single-server Docker Compose topology through `v1_target`.
 
-Development is contract-backed UI-first: the shared Web experience platform and canonical routes are created before domain expansion, then each bounded context replaces contract-generated mocks with a real vertical slice through API, domain/application, PostgreSQL or artifacts, and browser/runtime proof. Static disconnected screens are not accepted as a product increment.
+Development is contract-backed UI-first. The authenticated Web moves through a
+reversible Linear-workspace route boundary with React, TypeScript, Vite, MobX,
+TanStack Query, styled-components, and exactly four semantic themes; existing
+backend plans and REST/SSE contracts do not change. Each bounded context then
+replaces contract-generated mocks with a real vertical slice through API,
+domain/application, PostgreSQL or artifacts, and browser/runtime proof. Static
+disconnected screens are not accepted as a product increment.
 
 Start with the [architecture index](./docs/architecture/README.md). The approved Foundation direction is summarized in the [system design](./docs/architecture/system-design.md), while the [repository layout](./docs/architecture/repository-layout.md) records exact ownership paths.
 

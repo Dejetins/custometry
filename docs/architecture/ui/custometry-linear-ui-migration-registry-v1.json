@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "CUSTOMETRY-LINEAR-UI-MIGRATION-V1",
+  "status": "accepted_preparation",
+  "shared_standard": "docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md",
+  "reference_manifest": "docs/architecture/ui/linear-workspace-reference-manifest-v1.json",
+  "project_spec": ".codex/delivery/specs/custometry-linear-workspace-ui-transition.md",
+  "existing_authority": {
+    "routes": "packages/contracts/routes/ui-routes.json",
+    "route_contracts": "packages/contracts/routes/ui-route-contracts.json",
+    "surface_contracts": "packages/contracts/routes/ui-surface-contracts.json",
+    "accepted_penpot_evidence": ".codex/delivery/evidence/W10-PENPOT-093-ORGANIZATION-PEOPLE-DELTA-IMPLEMENTATION.md",
+    "accepted_inventory": {"routes": 116, "overlays": 25, "system_surfaces": 5}
+  },
+  "target": {
+    "scope": "authenticated_application_only",
+    "frontend": ["react", "typescript", "vite", "mobx", "tanstack_query", "styled_components", "css_custom_properties"],
+    "themes": ["abyss", "graphite", "frost", "paper"],
+    "backend_change": "none",
+    "transport": ["rest", "sse"],
+    "chart_engine": "apache_echarts_via_product_chartspec",
+    "migration_mode": "route_bounded_reversible_strangler"
+  },
+  "clusters": [
+    {"cluster_id": "reference", "order": 1, "ticket": "W19-LINEAR-REFERENCE-COMPLETION", "state": "ready"},
+    {"cluster_id": "architecture_spike", "order": 2, "ticket": "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "state": "draft"},
+    {"cluster_id": "penpot_vnext", "order": 3, "ticket": "W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS", "state": "draft"},
+    {"cluster_id": "application_shell", "order": 4, "ticket": "W22-WEB-LINEAR-APPLICATION-SHELL", "state": "draft"},
+    {"cluster_id": "sales_analytics_golden_slice", "order": 5, "ticket": "W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE", "state": "draft"}
+  ],
+  "legacy": {
+    "superseded_ticket": "W18-WEB-FOUNDATIONS-APPLICATION-SHELL",
+    "accepted_evidence_policy": "retain",
+    "penpot_w10_policy": "historical_identity_and_requirement_input_not_vnext_acceptance"
+  }
+}

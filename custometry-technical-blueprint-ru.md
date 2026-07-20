@@ -2,17 +2,17 @@
 document_family_id: CUSTOMETRY-TECH-BLUEPRINT
 document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
 title: Custometry — технический blueprint платформы клиентской аналитики и прогнозирования
-spec_version: 0.9.1-draft
+spec_version: 0.9.4-draft
 representation: machine
 normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-07-19
+updated_at: 2026-07-20
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
-  expected_spec_version: 0.9.1-draft
+  expected_spec_version: 0.9.4-draft
 intended_readers:
   - software_architect
   - backend_agent
@@ -39,7 +39,7 @@ license_target: Apache-2.0
 
 Этот документ является единым техническим blueprint для создания открытой self-hosted платформы клиентской аналитики и прогнозирования под названием `Custometry`.
 
-> Это нормативная машиночитаемая версия спецификации `0.9.1-draft`. Полное человекочитаемое смысловое зеркало: [custometry-technical-blueprint-human-ru.md](./custometry-technical-blueprint-human-ru.md). Обе версии MUST иметь одинаковый `document_family_id`, `spec_version` и набор нормативных requirement ID; при расхождении источником истины является этот документ.
+> Это нормативная машиночитаемая версия спецификации `0.9.4-draft`. Полное человекочитаемое смысловое зеркало: [custometry-technical-blueprint-human-ru.md](./custometry-technical-blueprint-human-ru.md). Обе версии MUST иметь одинаковый `document_family_id`, `spec_version` и набор нормативных requirement ID; при расхождении источником истины является этот документ.
 
 Документ объединяет:
 
@@ -200,6 +200,8 @@ non_goals:
 
 Роли являются versioned permission bundles. Пользователь MAY иметь несколько ролей, но административная роль не должна молча наследовать аналитические права. `Data Steward`, `ML Analyst` и `Operator` являются специализированными профилями; базовое бизнес-разделение остаётся `Workspace Administrator`, `Analyst`, `Viewer`.
 
+Функциональная роль и положение в организационной структуре MUST быть независимыми измерениями. `Department Leader` — scoped leadership assignment для выбранного подразделения и, при явной политике, его поддерева, а не новая глобальная роль. Каждый активный workspace member MUST иметь ровно одно primary department assignment; дополнительные доступы к данным, отчётам или аналитическим объектам других подразделений выдаются отдельными bounded grants и никогда не расширяют базовый role/PII ceiling.
+
 ## 2.2. Ключевые сценарии
 
 ```yaml
@@ -334,6 +336,21 @@ use_cases:
     actor: Analyst
     input: Population, feature set, treatment version, segmentation method и требуемое количество конечных групп
     output: Versioned definition, diagnostics, profiles и immutable SegmentMembershipSnapshot либо DistributionArtifact
+  - id: UC-027
+    name: Компонентная аналитика скидок и price-volume-mix
+    actor: Analyst
+    input: ReceiptItem, базовая цена, component facts, DiscountPolicyVersion, период, comparison и разрешённые dimensions
+    output: Reconciled component-discount metrics, stacking/cap diagnostics, PVM decomposition и Result Trust с disclosure качества атрибуции
+  - id: UC-028
+    name: Управление организационной структурой и доступом подразделений
+    actor: Workspace Administrator
+    input: Иерархия company/division/department/team, primary assignments, leadership scopes, department data policies и cross-department grants
+    output: Версионированная OrganizationStructureVersion, effective-access preview, ownership bindings и auditable change events
+  - id: UC-029
+    name: Витрина People & Creators и активность сотрудников
+    actor: Department Leader
+    input: Разрешённый organizational scope, redacted domain events и опубликованные аналитические объекты
+    output: Privacy-safe contributor cards/profile с activity summary, owned/created reports и dashboards без employee ranking или доступа к raw audit
 ```
 
 ## 2.3. Нормативные пользовательские пути
@@ -811,16 +828,61 @@ entity:
   optional_fields:
     product_id: string
     quantity: decimal
+    base_unit_price_amount: decimal
+    base_price_amount: decimal
     gross_amount: decimal
     discount_amount: decimal
+    promotion_discount_amount: decimal
+    loyalty_discount_amount: decimal
+    bonus_redemption_amount: decimal
+    other_discount_amount: decimal
     net_amount: decimal
     tax_amount: decimal
     cost_amount: decimal
+    promotion_flag: boolean
+    external_promotion_id: string
+    promotion_version_id: uuid
     status: categorical
     source_updated_at: timestamp
 ```
 
 Если `line_id` отсутствует, mapping wizard MUST предложить стабильный составной ключ. Генерация ключа по номеру строки запрещена для инкрементальных данных, если порядок строк нестабилен.
+
+### 5.5.1. ReceiptItemDiscountComponent
+
+Исходная wide-схема `ReceiptItem` удобна для прямого mapping, но аналитический
+контракт нормализует каждую известную составляющую скидки в отдельный fact. Это
+позволяет добавлять company-specific компоненты без новых колонок и не смешивать
+экономическую скидку, оплату бонусами и бонусное начисление.
+
+```yaml
+entity:
+  id: ENTITY-RECEIPT-ITEM-DISCOUNT-COMPONENT
+  name: ReceiptItemDiscountComponent
+  grain: one_row_per_receipt_line_discount_component
+  primary_key: [source_system_id, receipt_id, line_id, discount_component_id]
+  required_fields:
+    source_system_id: uuid
+    receipt_id: string
+    line_id: string
+    discount_component_id: string
+    component_type: promotion|loyalty|bonus_redemption|other
+    component_amount: decimal
+    attribution_mode: direct|rule_derived|residual_proxy|total_only|unavailable
+  optional_fields:
+    source_field_ref: string
+    source_rule_ref: string
+    promotion_version_id: uuid
+    discount_policy_version_id: uuid
+    attribution_evidence_ref: object
+    quality_code: string
+```
+
+`bonus_redemption` означает списание/использование бонусов покупателем. Бонусное
+начисление является отдельным событием loyalty accounting и MUST не попадать в
+discount component fact. `base_price_amount` — стоимость строки по опубликованной
+базовой цене до скидок с учётом количества и return policy; unit и line amount
+не взаимозаменяются молча.
 
 ## 5.6. Product
 
@@ -941,6 +1003,8 @@ promotion_version:
   workspace_id: uuid
   version: integer
   status: draft|validating|published|deprecated|archived
+  availability_class: native_v1|template_v1|future_extension|unsupported
+  method_family: descriptive|diagnostic|segmentation|forecasting|experimental|causal|decision
   revision: integer
   external_campaign_id: string|null
   title: localized_text
@@ -1066,6 +1130,7 @@ metric_definition:
   workspace_id: uuid
   version: 1
   status: draft|validating|published|deprecated|archived
+  certification_status: candidate|verified|canonical|deprecated
   revision: integer
   label_key: metrics.net_revenue.label
   description_key: metrics.net_revenue.description
@@ -1089,6 +1154,13 @@ metric_definition:
   created_by: uuid
   created_at: timestamp_utc
 ```
+
+`status` управляет lifecycle конкретной immutable definition version, а
+`certification_status` — степенью организационного доверия к metric family.
+Публикация candidate-метрики не делает её verified или canonical. Сертификация
+ссылается на owner/reviewer, reference datasets, reconciliation, sensitivity и
+compatibility evidence; изменение evidence создаёт новую certification record,
+но не переписывает исторический metric result.
 
 `net_revenue` выше привязан к grain чека и поэтому не допускает product/category/brand slicing. Выручка по товару MUST регистрироваться отдельной метрикой на `ReceiptItem`, например `item_net_revenue` с `source_grain: one_row_per_receipt_line`, и проходить reconciliation с header-level `net_revenue`; planner не подменяет один binding другим молча.
 
@@ -1134,6 +1206,12 @@ metric_requirements:
 - `revenue_per_customer`;
 - `margin_amount`;
 - `discount_amount`;
+- `base_price_gmv`;
+- `commercial_discount_amount`;
+- `customer_benefit_amount`;
+- `promotion_discount_amount`;
+- `loyalty_discount_amount`;
+- `bonus_redemption_amount`;
 - `repeat_customer_rate`.
 
 ### 6.3.1. Display formats и стабильная группировка метрик
@@ -1208,6 +1286,116 @@ metric_presentation_requirements:
     requirement: Analyst MAY переопределить visibility и порядок только в versioned presentation/report specification; переопределение не меняет MetricGroupVersion и MUST сохранять явные group boundaries и accessible headers.
   - id: METRIC-016
     requirement: XLSX summary/report sheets MUST хранить numeric cells как числа с native number formats; преобразование business number в текст ради визуального сокращения запрещено.
+  - id: METRIC-017
+    requirement: Metric lifecycle status и certification_status MUST быть независимы; published candidate не может отображаться как verified/canonical без отдельного review и evidence.
+  - id: METRIC-018
+    requirement: Переход candidate→verified→canonical и deprecation MUST фиксировать owner, reviewers, reference datasets, reconciliation/robustness evidence, replacement и downstream impact без изменения исторических metric versions.
+  - id: METRIC-019
+    requirement: Metric и result MUST объявлять value_origin direct|policy_derived|residual_proxy и quality/coverage; proxy не может иметь тот же trust label, что прямой source component.
+  - id: METRIC-020
+    requirement: Residual/proxy metric MUST раскрывать derivation, excluded components, coverage, reconciliation residual, sensitivity и запрет на использование вне заявленной применимости.
+```
+
+### 6.3.2. DiscountPolicyVersion и компонентная семантика скидок
+
+Состав скидки определяется не hardcoded customer branch, а immutable
+`DiscountPolicyVersion`, выбранной semantic dataset или CompanyPack binding на
+effective interval. Политика отличает коммерческое снижение цены от оплаты
+бонусами и от бонусного начисления, задаёт совместимость, приоритет, потолок и
+accounting treatment.
+
+```yaml
+discount_policy_version:
+  discount_policy_version_id: uuid
+  discount_policy_id: string
+  workspace_id: uuid
+  version: integer
+  status: draft|validating|published|deprecated|archived
+  effective_from: timestamp
+  effective_to: timestamp|null
+  base_price_field_role: string
+  currency_policy_version_id: uuid
+  component_catalog:
+    - component_type: promotion|loyalty|bonus_redemption|other
+      source_binding: direct_field|source_rule|residual|unavailable
+      precedence: integer
+      affects_recognized_net_revenue: boolean
+  stacking_matrix: object
+  maximum_effective_discount_rate: decimal|null
+  cap_basis: base_price_amount
+  cap_component_types: []
+  cap_tolerance: decimal
+  rounding_policy: object
+  return_and_cancellation_policy: object
+  historical_breach_action: flag|degrade|block_trusted_analysis
+  simulated_breach_action: block_publication
+  residual_attribution_policy: disabled|explicit_proxy
+  created_by: uuid
+  created_at: timestamp_utc
+```
+
+Канонические derived amounts имеют недвусмысленные имена:
+
+```yaml
+discount_derived_measures:
+  commercial_discount_amount: promotion_discount_amount + loyalty_discount_amount + other_discount_amount
+  customer_benefit_amount: commercial_discount_amount + bonus_redemption_amount
+  commercial_net_price_amount: base_price_amount - commercial_discount_amount
+  recognized_net_revenue: source_or_policy_governed_financial_measure
+  commercial_discount_rate: safe_divide(commercial_discount_amount, base_price_amount)
+  customer_benefit_rate: safe_divide(customer_benefit_amount, base_price_amount)
+```
+
+Понятие `total discount` в UI/API/export запрещено без явной ссылки на
+`commercial_discount_amount` либо `customer_benefit_amount`. Для первого
+клиентского внедрения installation-local CompanyPack MAY зафиксировать
+`promotion+loyalty=false`, `promotion+bonus=true`, `loyalty+bonus=true`,
+`bonus_only=true`, precedence `promotion → loyalty`, cap `50%` от
+`base_price_amount` и inclusion promotion/loyalty/bonus in cap. Это
+конфигурационный пример, а не встроенный default или customer-specific fork.
+
+```yaml
+discount_requirements:
+  - id: DISCOUNT-001
+    requirement: Component analytics MUST использовать ReceiptItem grain и объявленный base_price_amount; header total не распределяется по строкам без versioned allocation policy.
+  - id: DISCOUNT-002
+    requirement: Promotion, loyalty, bonus_redemption и other MUST храниться как отдельные component facts; неизвестное значение не подменяется нулём.
+  - id: DISCOUNT-003
+    requirement: Bonus redemption и bonus accrual MUST быть разными entities/semantics; начисление не считается скидкой или оплатой.
+  - id: DISCOUNT-004
+    requirement: Каждая component value MUST иметь attribution_mode direct|rule_derived|residual_proxy|total_only|unavailable и evidence/quality disclosure.
+  - id: DISCOUNT-005
+    requirement: Published DiscountPolicyVersion MUST быть immutable, иметь non-overlapping effective intervals и фиксироваться в dataset, analysis, cache/result identity и lineage.
+  - id: DISCOUNT-006
+    requirement: Stacking matrix и precedence MUST явно разрешать или запрещать каждую комбинацию компонентов; скрытый приоритет и двойная атрибуция запрещены.
+  - id: DISCOUNT-007
+    requirement: Cap MUST задавать rate, base, component set, tolerance, rounding, observed/simulated actions и return policy; platform core не hardcode-ит 50% или customer-specific комбинации.
+  - id: DISCOUNT-008
+    requirement: commercial_discount_amount, customer_benefit_amount и recognized_net_revenue MUST оставаться разными measures и не называться неоднозначным total discount.
+  - id: DISCOUNT-009
+    requirement: Aggregate component rate MUST вычисляться как SUM(component_amount)/SUM(eligible_base_price_amount), а не как среднее row-level rates.
+  - id: DISCOUNT-010
+    requirement: Component share, penetration, depth bands и stacking overlap MUST использовать явный denominator и не суммировать mutually overlapping shares как части одного total.
+  - id: DISCOUNT-011
+    requirement: Historical cap breach MUST сохранять исходную строку, amount/rate excess и DQ evidence; автоматический clamp canonical history запрещён.
+  - id: DISCOUNT-012
+    requirement: Material unexplained historical breach MAY блокировать trusted analysis по policy, но MUST оставаться доступным в redacted diagnostics; simulated/prescriptive breach MUST блокировать publication.
+  - id: DISCOUNT-013
+    requirement: Return, cancellation, negative quantity, zero/null base price и currency conversion MUST иметь отдельные denominator/sign/eligibility rules до расчёта rates и cap.
+  - id: DISCOUNT-014
+    requirement: Promotion flag/component MAY ссылаться на PromotionVersion, но date overlap с Promotion Journal не создаёт sale-level promo attribution автоматически.
+  - id: DISCOUNT-015
+    requirement: Current и vs LY MUST использовать одну pinned policy/metric semantics по умолчанию; различающиеся policies допускаются только с explicit comparability warning и separate values.
+  - id: DISCOUNT-016
+    requirement: Component reconciliation MUST сравнивать source total, known components, residual и recognized net revenue в versioned tolerance и публиковать coverage/residual diagnostics.
+  - id: DISCOUNT-017
+    requirement: Result Trust, Research, ReportSnapshot, email и XLSX README MUST раскрывать DiscountPolicyVersion, attribution modes, coverage, cap basis/breaches, formulas, limitations и PVM method.
+  - id: DISCOUNT-018
+    requirement: Metric grouping MUST показывать price base, commercial discount, customer benefit, component contributions, margin и cap diagnostics в стабильном MetricGroupVersion order.
+  - id: DISCOUNT-019
+    requirement: Capability Engine MUST различать full_component, partial_component, total_only и unavailable discount analytics и объяснять missing mappings/policy/evidence.
+  - id: DISCOUNT-020
+    requirement: Company-specific discount defaults MUST поставляться versioned CompanyPack/semantic policy binding без fork кода, customer name в core и изменения generic calculation contracts.
 ```
 
 ## 6.4. Capability Engine
@@ -1373,6 +1561,9 @@ analysis_method_version:
   exclusions: []
   calculation_or_statistical_procedure: object
   quality_checks: []
+  representativeness_checks: []
+  robustness_and_sensitivity_plan: object
+  evidence_strength_ceiling: descriptive|association|quasi_experimental|experimental|causal
   interpretation_guidance: localized_markdown
   limitation_codes: []
   output_template_ids: []
@@ -1457,6 +1648,47 @@ methodology_requirements:
     requirement: AnalysisCase state не изменяет immutable analytical artifacts; закрытие или отмена case не удаляет published method, finding, report, dashboard или audit evidence.
   - id: METHOD-008
     requirement: CompanyPack MAY поставлять installation-approved MethodologyPack и MetricGroup versions; workspace override создаёт отдельную version и не изменяет исходный pack.
+  - id: METHOD-009
+    requirement: Каждая method/capability MUST объявлять availability_class native_v1|template_v1|future_extension|unsupported; future contract не отображается как implemented или runnable.
+  - id: METHOD-010
+    requirement: Default v1 MethodologyPack MUST включать reviewed templates для descriptive profiling, vs LY/contribution, cohorts/retention, RFM/lifecycle, basket, discount components/PVM, outlier sensitivity, bucket/strata/KMeans и research synthesis.
+  - id: METHOD-011
+    requirement: Любая опубликованная методика MUST задавать минимальный robustness/sensitivity plan, достаточный для её assumptions, thresholds, exclusions, population treatment и decision risk.
+  - id: METHOD-012
+    requirement: Method publication MUST описывать target population, observed population, coverage, missingness, selection/representativeness limitations и запрещённые generalizations.
+  - id: METHOD-013
+    requirement: V1 statistical primitives MUST поддерживать governed descriptive distributions, confidence intervals где assumptions выполнены, effect/difference estimates, correlation с non-causal warning и explicit multiple-comparison/low-sample limitations.
+  - id: METHOD-014
+    requirement: DiD/event study/matching/synthetic control, causal ML/HTE, uplift, generic propensity/churn, advanced channel-migration economics, multivariate anomaly и automated decision analysis MUST оставаться future_extension до отдельного contract, implementation и real-method evidence.
+```
+
+```yaml
+default_methodology_pack_v1:
+  native_v1:
+    - descriptive_profile_and_distribution
+    - period_and_vs_ly_comparison
+    - contribution_and_concentration
+    - cohort_retention_and_lifecycle
+    - rfm_and_rule_segmentation
+    - basket_affinity_descriptive
+    - discount_component_and_pvm
+    - outlier_robustness_and_sensitivity
+    - bucket_stratified_and_exact_k_kmeans
+    - basic_statistical_primitives
+  template_v1:
+    - analysis_case_triage
+    - representativeness_and_selection_review
+    - proxy_metric_quality_review
+    - research_finding_and_limitation_review
+  future_extension:
+    - difference_in_differences_and_event_study
+    - matching_and_synthetic_control
+    - causal_ml_and_heterogeneous_treatment_effects
+    - uplift_modeling
+    - generic_propensity_and_churn_models
+    - advanced_channel_migration_economics
+    - multivariate_anomaly_detection
+    - automated_decision_analysis
 ```
 
 # 7. Подключения и ingestion
@@ -2243,7 +2475,12 @@ facts:
   receipt_item_fact:
     grain: one_row_per_source_receipt_line
     primary_key: [source_system_id, receipt_id, line_id]
-    owns_measures: [line_gross_amount, line_discount_amount, line_net_amount, line_tax_amount, line_cost_amount, line_quantity]
+    owns_measures: [base_price_amount, line_gross_amount, line_discount_amount, line_net_amount, line_tax_amount, line_cost_amount, line_quantity]
+  receipt_item_discount_component_fact:
+    grain: one_row_per_source_receipt_line_discount_component
+    primary_key: [source_system_id, receipt_id, line_id, discount_component_id]
+    owns_measures: [component_amount]
+    dimensions: [component_type, attribution_mode, discount_policy_version_id, promotion_version_id]
   customer_receipt_fact:
     grain: one_row_per_canonical_customer_source_receipt
     primary_key: [canonical_customer_id, source_system_id, receipt_id]
@@ -2266,6 +2503,8 @@ fact_requirements:
     requirement: Customer-level marts и segment snapshots после identity resolution MUST использовать canonical_customer_id в grain, primary key и outputs; неоднозначный customer_id запрещён.
   - id: MART-GRAIN-007
     requirement: Period mart MUST объявлять period, fact_scope и полный ordered tuple materialized dimension keys как primary key и отклонять collision.
+  - id: MART-GRAIN-008
+    requirement: Discount-component fact MUST связываться с ReceiptItem по полному line key и не размножать base/list/net measures; component totals агрегируются до присоединения к иному grain.
 ```
 
 ## 11.3. customer_transaction_mart
@@ -2388,10 +2627,17 @@ mart:
   measures:
     - net_revenue
     - gross_revenue
+    - base_price_gmv
     - receipt_count
     - customer_count
     - units
     - discount_amount
+    - commercial_discount_amount
+    - customer_benefit_amount
+    - promotion_discount_amount
+    - loyalty_discount_amount
+    - bonus_redemption_amount
+    - cap_breach_amount
     - margin
 ```
 
@@ -2957,18 +3203,70 @@ module:
 ```yaml
 module:
   id: ANALYTICS-MARGIN-DISCOUNT
-  phase: POST_V1
+  phase: V1_TARGET
   inputs:
-    required: [gross_revenue, net_revenue]
-    optional: [cost_amount, Promotion]
+    required: [ReceiptItem, base_price_amount, DiscountPolicyVersion]
+    conditional: [ReceiptItemDiscountComponent, source_discount_total, recognized_net_revenue]
+    optional: [cost_amount, PromotionVersion, Customer, SegmentMembershipSnapshot]
   outputs:
+    - base_price_gmv_and_recognized_net_revenue
+    - commercial_discount_and_customer_benefit
+    - component_amount_rate_share_and_penetration
+    - component_stacking_overlap_matrix
     - discount_distribution
     - margin_distribution
     - sales_by_discount_band
     - customer_discount_dependency
+    - cap_breach_diagnostics
+    - component_reconciliation_and_attribution_coverage
+    - price_volume_mix_decomposition
 ```
 
-Модуль является описательным. Он не должен заявлять причинный эффект скидки без экспериментального или квазиэкспериментального дизайна.
+Модуль является описательным/диагностическим. Он не должен заявлять causal
+эффект скидки без отдельной approved experimental/quasi-experimental method.
+Фильтры и разрезы включают period/`vs LY`, channel, store, product/category/
+brand, customer/segment, component type, stacking combination, attribution
+mode, policy version, discount band и cap-breach state в пределах разрешённого
+grain и privacy policy.
+
+```yaml
+price_volume_mix_spec_version:
+  pvm_spec_version_id: uuid
+  method: portfolio_laspeyres_price_last_v1|registered_plugin
+  base_period: object
+  comparison_period: object
+  product_identity_policy: object
+  quantity_metric_version_id: uuid
+  unit_price_metric_version_id: uuid
+  revenue_metric_version_id: uuid
+  currency_policy_version_id: uuid
+  returns_policy_version_id: uuid
+  new_discontinued_product_policy: separate_assortment_effect|comparable_only
+  missing_price_policy: block|separate_unattributed
+  reconciliation_tolerance: decimal
+```
+
+V1 template `portfolio_laspeyres_price_last_v1` раскладывает изменение выручки
+на aggregate volume, mix и price в фиксированном порядке, отдельно показывает
+new/discontinued assortment и residual. UI MUST не скрывать, что порядок
+decomposition влияет на экономическую интерпретацию; альтернативная symmetric/
+Shapley implementation требует новой method version и validation evidence.
+
+```yaml
+pvm_requirements:
+  - id: PVM-001
+    requirement: Price/volume/mix decomposition MUST фиксировать method version, base/comparison periods, grain, product identity, quantity/unit-price/revenue metrics и calculation order.
+  - id: PVM-002
+    requirement: Price, volume, mix, assortment и residual effects MUST reconciliation-сходиться с observed delta в declared tolerance; несхождение блокирует trusted publication.
+  - id: PVM-003
+    requirement: New/discontinued products, missing/zero quantities, changing packs/UOM и absent comparable price MUST обрабатываться explicit policy, а не hidden imputation.
+  - id: PVM-004
+    requirement: Returns, cancellations, currency/FX, taxes и base-price definition MUST быть pinned и одинаково применены ко всем effect components.
+  - id: PVM-005
+    requirement: PVM MUST поддерживать разрешённые filters/dimensions и vs LY без double counting; drill-down сохраняет parent reconciliation.
+  - id: PVM-006
+    requirement: Result Trust/export MUST раскрывать formula/method order, comparable coverage, assortment policy, residual, tolerance и limitations; decomposition не является causal proof.
+```
 
 ## 12.14. Historical segment migration
 
@@ -3576,7 +3874,7 @@ chart_requirements:
   - id: CHART-018
     requirement: Static adapter MUST запрещать outbound network и remote assets, иметь batch/width/height/output/temp/memory/CPU/time limits, cancellation, stable error codes и cleanup incomplete artifacts после crash.
   - id: CHART-019
-    requirement: Release gate MUST проверять ChartSpec validation/security, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantic parity, SSR-SVG-to-PNG fidelity, font/render-build identity invalidation, range_timeline behavior, XLSX native/raster mapping, all-six-theme accessibility и golden data parity.
+    requirement: Release gate MUST проверять ChartSpec validation/security, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantic parity, SSR-SVG-to-PNG fidelity, font/render-build identity invalidation, range_timeline behavior, XLSX native/raster mapping, all-four-theme accessibility и golden data parity.
 ```
 
 ### 14.1.1. Полноэкранный Focus / Explore mode
@@ -3843,7 +4141,7 @@ report_snapshot:
   data_guide_version_id: uuid|null
   brand_profile_version_id: uuid
   company_pack_version_id: uuid|null
-  theme_id: abyss|graphite|slate|frost|paper|sand
+  theme_id: abyss|graphite|frost|paper
   locale: BCP_47
   timezone: IANA_timezone
   currency_policy: object
@@ -4214,7 +4512,7 @@ progress_requirements:
 
 ### 15.4.1. Цветовые профили и theme tokens
 
-Custometry использует шесть профилей Roehub как собственный versioned semantic-token contract. Компоненты и ChartSpec не содержат theme-specific hardcoded colors.
+Custometry и Roehub используют единый набор из четырёх versioned semantic-token profiles, упорядоченных от near-black до bright-light. Компоненты и ChartSpec не содержат theme-specific hardcoded colors.
 
 ```yaml
 theme_registry:
@@ -4269,30 +4567,6 @@ theme_registry:
       backdrop: 'rgba(2, 8, 13, 0.78)'
       shadow_panel: '0 12px 36px rgba(0, 0, 0, 0.18)'
       shadow_glow: none
-    slate:
-      color_scheme: dark
-      canvas: '#111923'
-      background: '#111923'
-      background_elevated: '#18232e'
-      surface: '#1e2b38'
-      surface_2: '#263645'
-      surface_3: '#304354'
-      line: '#50697d'
-      line_strong: '#718b9f'
-      line_muted: '#40596c'
-      divider: '#364c5e'
-      chart_grid_line: 'rgba(143, 168, 185, 0.2)'
-      text: '#dde5eb'
-      text_strong: '#ffffff'
-      muted: '#a3b2be'
-      muted_2: '#778c9c'
-      accent: '#85cbe3'
-      accent_2: '#b3e1ef'
-      focus: '#9bddf2'
-      on_accent: '#0b1720'
-      backdrop: 'rgba(8, 14, 20, 0.76)'
-      shadow_panel: '0 12px 34px rgba(0, 0, 0, 0.2)'
-      shadow_glow: none
     frost:
       color_scheme: light
       canvas: '#edf3f6'
@@ -4341,36 +4615,12 @@ theme_registry:
       backdrop: 'rgba(16, 28, 34, 0.32)'
       shadow_panel: '0 12px 32px rgba(25, 41, 50, 0.08)'
       shadow_glow: none
-    sand:
-      color_scheme: light
-      canvas: '#f2efe8'
-      background: '#f2efe8'
-      background_elevated: '#f8f6f1'
-      surface: '#fffdf8'
-      surface_2: '#ece7dc'
-      surface_3: '#dfd7c8'
-      line: '#aa9e8b'
-      line_strong: '#796d5c'
-      line_muted: '#cec5b7'
-      divider: '#ddd6ca'
-      chart_grid_line: 'rgba(93, 80, 61, 0.14)'
-      text: '#4d463b'
-      text_strong: '#29251f'
-      muted: '#746b5e'
-      muted_2: '#958b7d'
-      accent: '#196f89'
-      accent_2: '#105b71'
-      focus: '#0e667f'
-      on_accent: '#ffffff'
-      backdrop: 'rgba(45, 39, 30, 0.3)'
-      shadow_panel: '0 12px 32px rgba(61, 51, 37, 0.08)'
-      shadow_glow: none
 ```
 
 ```yaml
 theme_requirements:
   - id: THEME-001
-    requirement: Shipped registry MUST содержать abyss, graphite, slate, frost, paper и sand; graphite является UI default, paper — email/XLSX render default.
+    requirement: Shipped registry MUST содержать ровно abyss, graphite, frost и paper в порядке от near-black до bright-light; graphite является UI default, paper — email/XLSX render default.
   - id: THEME-002
     requirement: UI MUST использовать semantic canvas/surface/text/border/accent/focus/status/chart tokens; component-specific raw palette values запрещены.
   - id: THEME-003
@@ -4382,9 +4632,9 @@ theme_requirements:
   - id: THEME-006
     requirement: ChartSpec MUST оставаться theme-neutral; renderer разрешает semantic colors по выбранному theme и фиксирует theme_id в rendered report manifest.
   - id: THEME-007
-    requirement: Email/XLSX default paper MAY быть явно заменён пользователем одним из шести themes; выбранный theme входит в ReportSnapshot и rendered artifact hash.
+    requirement: Email/XLSX default paper MAY быть явно заменён пользователем одним из четырёх themes; выбранный theme входит в ReportSnapshot и rendered artifact hash.
   - id: THEME-008
-    requirement: Theme switcher, focus, status и charts MUST проходить en/ru, keyboard, reduced-motion, contrast и accessible-alternative checks для всех шести profiles.
+    requirement: Theme switcher, focus, status и charts MUST проходить en/ru, keyboard, reduced-motion, contrast и accessible-alternative checks для всех четырёх profiles.
 ```
 
 ### 15.4.2. White-label, BrandProfile и CompanyPack
@@ -4410,7 +4660,7 @@ brand_profile_version:
   typography:
     ui_font_family_id: bundled_font_id
     document_font_family_id: bundled_font_id
-  theme_base_id: abyss|graphite|slate|frost|paper|sand
+  theme_base_id: abyss|graphite|frost|paper
   semantic_token_overrides: object
   login_and_onboarding: object
   email_identity_and_templates: object
@@ -4930,6 +5180,10 @@ API version prefix: `/api/v1`.
 | `/exports` | CSV/Parquet/JSON/XLSX create, preflight, status, audit |
 | `/dashboards` | draft, validate, publish, versions, render metadata |
 | `/access-policies` | report/dashboard grants, role bindings, expiry and effective-access preview |
+| `/organization` | versioned OrgUnit tree, primary memberships, leadership scopes, successor mapping and impact preview |
+| `/organization/data-policies` | department dataset/row/column/PII policies, effective-access preview and publish |
+| `/organization/access-grants` | bounded cross-department grant, revoke, expiry and resource ownership handover |
+| `/people` | visibility-filtered People & Creators directory, profile and contributor activity summaries |
 | `/brand-profiles` | asset upload, token validation, preview, publish and versions |
 | `/company-packs` | validate, publish, install preview and versions without secrets |
 | `/file-import-templates` | CSV/XLSX template versions, validation rules and safe preview |
@@ -5039,7 +5293,7 @@ api_requirements:
 ```yaml
 backend_modules:
   identity_access:
-    owns: [users, roles, memberships, invites, sessions, api_tokens, oidc_contract_metadata]
+    owns: [users, roles, memberships, invites, sessions, api_tokens, oidc_contract_metadata, org_units, org_membership_assignments, org_leadership_assignments, department_data_policies, cross_department_grants, resource_ownership_bindings, contributor_activity_projections]
   connection_catalog:
     owns: [connections, secrets_metadata, catalog_snapshots]
   semantic_model:
@@ -5085,6 +5339,14 @@ workspace_invites
 sessions
 password_reset_tokens
 api_tokens
+org_units
+organization_structure_versions
+org_membership_assignments
+org_leadership_assignments
+department_data_policy_versions
+cross_department_grants
+resource_ownership_bindings
+contributor_activity_projections
 
 connections
 secret_references
@@ -5263,6 +5525,8 @@ Polars является основным dataframe engine. Pandas MAY испол
 | Node.js active LTS | Vite build и bounded ECharts SSR runtime внутри report-worker image | MUST |
 | React | UI runtime | MUST |
 | TypeScript | Типизация | MUST |
+| MobX | Client/workspace/navigation/panel/command state и bounded optimistic presentation | MUST |
+| styled-components | Typed component composition поверх semantic CSS custom properties | MUST |
 | `lucide-react` | Единая web-safe outline icon family для core navigation и стандартных UI actions; semantic mapping versioned | MUST |
 | `@custometry/chart-compiler` workspace package | Единственная versioned ChartSpec→ECharts implementation для Web и embedded Node SSR | MUST |
 | Vite | Build tool | MUST |
@@ -5275,11 +5539,51 @@ Polars является основным dataframe engine. Pandas MAY испол
 | React Hook Form | Forms | SHOULD |
 | Apache ECharts core | Единственный v1 Web chart engine и SSR SVG engine | MUST |
 | Versioned bundled en/ru font pack | Детерминированная typographic layout для SSR SVG, PNG, email и XLSX raster | MUST |
-| Zustand или reducer-based store | Local UI state | OPTIONAL |
 | Playwright | End-to-end tests | MUST |
 | axe-core / `@axe-core/playwright` | Automated accessibility regression | MUST |
 
 Frontend не должен дублировать authoritative validation backend.
+
+MobX владеет только быстрым client/workspace state: navigation, command palette,
+panel geometry, drafts presentation и обратимым optimistic feedback. TanStack
+Query владеет authoritative REST/SSE snapshots, invalidation, cancellation и
+stale-while-revalidate. Ни один frontend store не может повышать server
+capability, подтверждать persistence/run/delivery либо заменять reconciliation.
+styled-components задаёт композицию и variants, а четыре base themes,
+white-label и runtime switch разрешаются через versioned semantic CSS custom
+properties без arbitrary customer CSS/JavaScript.
+
+```yaml
+web_architecture_requirements:
+  - id: WEB-ARCH-001
+    requirement: Authenticated Web MUST использовать React, TypeScript, Vite, MobX, TanStack Query и styled-components; backend, REST/SSE и domain plans при UI migration не меняются.
+  - id: WEB-ARCH-002
+    requirement: MobX MUST владеть только client/workspace/navigation/panel/command state, а authoritative REST/SSE snapshots, invalidation и cancellation MUST оставаться у typed server-state adapter; frontend не принимает authorization или terminal domain decisions.
+  - id: WEB-ARCH-003
+    requirement: Themes и white-label MUST разрешаться через semantic CSS custom properties под typed styled-components composition; arbitrary CSS/JavaScript, remote font и untrusted runtime style injection запрещены.
+  - id: WEB-ARCH-004
+    requirement: Route migration MUST быть обратимой по route boundary, сохранять deep links/history/Back/refresh и удерживать прежний UI fallback до browser, accessibility, real-API и performance evidence.
+  - id: WEB-ARCH-005
+    requirement: Linear reference используется для максимальной измеримой fidelity density/shell/panels/keyboard/motion/perceived latency; Linear branding, product entities, private assets, text, source code и undocumented authorization behavior не копируются.
+  - id: WEB-ARCH-006
+    requirement: Expanded sidebar и применимые detail panes MUST иметь bounded pointer resize, 60-fps live feedback, persisted presentation preference, min/max/default/reset и keyboard-accessible step controls; resize не меняет permissions или route identity.
+```
+
+```yaml
+web_performance_requirements:
+  - id: WEB-PERF-001
+    requirement: Performance evidence MUST объявлять hardware, browser build, viewport, CPU/RAM, data volume, sample count, cold/warm/cache state и p50/p75/p95, отдельно измеряя client, network, REST/SSE и render boundaries.
+  - id: WEB-PERF-002
+    requirement: Pointer/key feedback MUST появляться не позднее следующего practical frame с target p75 <= 50 ms и p95 <= 100 ms; recurring interaction-blocking main-thread tasks > 50 ms запрещены в accepted steady-state journeys.
+  - id: WEB-PERF-003
+    requirement: Warm local navigation MUST дать stable-shell/content acknowledgement с target p75 <= 100 ms и p95 <= 200 ms; uncached route MUST truthful acknowledge within 100 ms без скрытия backend latency.
+  - id: WEB-PERF-004
+    requirement: Interaction-to-request dispatch MUST иметь target p75 <= 20 ms/p95 <= 50 ms, REST response-end-to-stable-paint и SSE-receipt-to-visible-state target p75 <= 100 ms/p95 <= 200 ms.
+  - id: WEB-PERF-005
+    requirement: Representative journeys MUST иметь INP p75 <= 100 ms и hard ceiling 200 ms на declared reference hardware; animation target — 60 fps без recurring dropped-frame clusters.
+  - id: WEB-PERF-006
+    requirement: UI MUST сохранять предыдущие authorized data либо reserved layout при refresh, отделять client overhead от backend wait и не выдавать optimistic/stale presentation за persisted, authorized или terminal result.
+```
 
 `Dash`, `Plotly`, `ECharts-GL` и сторонний WebGL chart runtime не входят в core lockfile до и включая v1 target. ECharts импортируется tree-shakable allowlist набором chart/component/renderer modules. Конкретный SVG→PNG rasterizer выбирается отдельным cross-platform fidelity/performance/security spike; он реализует `ChartStaticRendererPort`, не меняя `ChartSpec`, и не может добавлять remote network dependency.
 
@@ -5384,6 +5688,8 @@ Lucide распространяется по ISC; унаследованные u
 - brute force login/reset/invite endpoints;
 - чрезмерный preview;
 - доступ между workspaces;
+- обход department scope, утечка существования объектов соседнего подразделения и неконтролируемый cross-department grant;
+- превращение contributor analytics в скрытый employee ranking или использование raw audit как кадровой аналитики;
 - экспорт PII;
 - отправка отчёта на неразрешённый или confusable email domain;
 - spoofed/unverified sender identity и повторная отправка после unknown provider state;
@@ -5407,6 +5713,14 @@ permissions:
   - workspace.manage
   - workspace.members.manage
   - workspace.roles.assign
+  - organization.read
+  - organization.manage
+  - organization.members.assign
+  - organization.leadership.assign
+  - organization.data_policy.manage
+  - organization.access.delegate
+  - organization.ownership.manage
+  - organization.activity.read
   - connection.read_metadata
   - connection.manage
   - connection.secret.rotate
@@ -5481,6 +5795,9 @@ permissions:
 | Управление инсталляцией/plugins/backup | Да | Нет | Нет | Нет | Нет | Нет | Нет |
 | Создание workspace и глобальные policies | Да | Нет | Нет | Нет | Нет | Нет | Нет |
 | Участники и роли своего workspace | Только при membership | Да | Нет | Нет | Нет | Нет | Нет |
+| Организационная структура и primary department assignments | Только при membership | Да | Read | Read own scope | Read own scope | Read own scope | Read own scope |
+| Department data policy и cross-department grants | Только при membership и grant | Да | По отдельному grant | Нет | Нет | Нет | Нет |
+| People & Creators activity | Нет автоматически | Configuration only, без activity data | По leadership/grant | Self и leadership scope | Self и leadership scope | Self | Self |
 | Object-level report/dashboard access grants | Только при membership | Да | Нет | Нет | Нет | Нет | Нет |
 | Connections и secrets | Только при membership | Да | Нет | Нет | Нет | Нет | Нет |
 | File import templates и import runs | Только при membership и grant | Да | Read по grant | Нет | Нет | Read operational status | Нет |
@@ -5541,9 +5858,59 @@ rbac_requirements:
     requirement: FileImportTemplateVersion lifecycle и file import execution MUST использовать отдельные template/import permissions; `connection.manage` не разрешает публикацию template или запуск upload автоматически.
   - id: RBAC-018
     requirement: Installation-level BrandProfile/CompanyPack manage/publish и workspace-level assignment MUST быть разделены; `brand.assign` позволяет выбрать только разрешённую published version и не позволяет менять assets, tokens или CompanyPack content.
+  - id: RBAC-019
+    requirement: Functional role, organization membership и leadership assignment MUST быть независимыми; department name или leader status не создают новый role bundle и не расширяют permission ceiling.
+  - id: RBAC-020
+    requirement: Effective access MUST быть пересечением functional permission, workspace membership, organization scope, DepartmentDataPolicyVersion, resource ObjectAccessPolicy и row/column/PII ceilings; deny на любом уровне побеждает allow.
+  - id: RBAC-021
+    requirement: Каждый active workspace member MUST иметь ровно одно primary OrgUnit assignment уровня department или team; orphan membership блокирует business-data access до исправления, но не host-level recovery.
+  - id: RBAC-022
+    requirement: Department Leader MUST быть scoped assignment с `org_unit_id`, `include_descendants`, effective dates и audit reason; он может читать ContributorActivityProjection только своего разрешённого scope.
+  - id: RBAC-023
+    requirement: CrossDepartmentGrant MUST быть allow-only, bounded по subject/resource/data scope, иметь reason, issuer, effective dates и optional expiry и никогда не превышать role/PII ceiling.
+  - id: RBAC-024
+    requirement: Published reports/dashboards по умолчанию получают department ownership автора; personal drafts остаются личными, а explicit owner transfer MUST быть auditable и не меняет creator attribution.
+  - id: RBAC-025
+    requirement: Доступ к report snapshot MUST NOT неявно выдавать underlying dataset, edit, rerun, drill-down, raw artifact или PII access; каждое действие повторно вычисляет effective access.
+  - id: RBAC-026
+    requirement: Transfer/deactivation MUST немедленно прекратить старый department scope, переоценить grants и ownership, сохранить historical creator attribution и выполнить deterministic handover published resources.
+  - id: RBAC-027
+    requirement: ContributorActivityProjection MUST строиться из allowlisted redacted domain events, агрегироваться до privacy-safe grain и не предоставлять raw AuditEvent, hidden-object counts, peer ranking или productivity score.
+  - id: RBAC-028
+    requirement: Workspace Administrator MAY конфигурировать organization/access policies, но не получает organization.activity.read, business content или PII автоматически; activity read требует отдельного leadership или explicit scoped grant.
 ```
 
-### 20.2.1. Local auth lifecycle и будущий OIDC boundary
+### 20.2.1. Организационная структура, ownership и contributor privacy
+
+```yaml
+organization_model:
+  OrgUnit:
+    fields: [id, workspace_id, kind, parent_id, code, name, status, successor_id, effective_from, effective_to, version]
+    kinds: [company, division, department, team]
+    delete_policy: no_hard_delete
+  OrgMembershipAssignment:
+    fields: [principal_id, org_unit_id, is_primary, effective_from, effective_to, version]
+    invariant: exactly_one_active_primary_department_or_team
+  OrgLeadershipAssignment:
+    fields: [principal_id, org_unit_id, include_descendants, effective_from, effective_to, reason, version]
+  DepartmentDataPolicyVersion:
+    fields: [org_unit_id, dataset_scopes, row_scope_refs, column_policy_refs, pii_ceiling, default_resource_visibility, effective_from, version]
+  ResourceOwnershipBinding:
+    fields: [resource_type, resource_id, creator_principal_id, owner_type, owner_id, effective_from, version]
+    owner_types: [principal, org_unit, workspace_legacy]
+  CrossDepartmentGrant:
+    fields: [subject_type, subject_id, resource_scope, data_scope, actions, reason, issued_by, effective_from, expires_at, revoked_at, version]
+  ContributorActivitySummary:
+    fields: [principal_id, org_scope_id, window, created_counts, published_counts, collaboration_counts, last_activity_at, visible_resource_refs, projection_version]
+```
+
+OrganizationStructureVersion MUST быть workspace-scoped immutable snapshot с optimistic concurrency. Неактивные/объединённые подразделения не удаляются: сохраняется successor mapping и историческая атрибуция. Иерархия v1 — дерево; matrix/project organization, HRIS/SCIM/OIDC group synchronization являются future extensions.
+
+Новые публикации по умолчанию принадлежат primary department автора. Старые опубликованные объекты мигрируют с owner type `workspace_legacy` и остаются доступными по прежней object policy до явного audit assignment. Смена department не переписывает автора и историю: система прекращает старый scope, проверяет временные grants и требует назначить нового owner/steward для published resources без активного владельца.
+
+`ContributorActivitySummary` — отдельная privacy-safe read model, а не запрос к append-only audit log. Он показывает только разрешённые отчёты/dashboards и агрегаты собственнику профиля, scoped leader или explicit grantee. Поиск, count, aggregation и pagination MUST выполняться после visibility filtering. Product MUST NOT строить рейтинги, leaderboard, performance score, скрытые сравнительные percentile или manager-only raw event feed.
+
+### 20.2.2. Local auth lifecycle и будущий OIDC boundary
 
 Local auth MUST входить в public MVP. Логический provider boundary закладывается сейчас, но OIDC/Keycloak implementation и Authlib runtime относятся к post-MVP, то есть после v1 target.
 
@@ -5950,7 +6317,7 @@ test_invariants:
   - id: TEST-INV-041
     invariant: Progress sequence/overall percent monotonic, reconnect восстанавливает события, unknown total даёт null percent/ETA и authoritative run state не зависит от delivery.
   - id: TEST-INV-042
-    invariant: Все шесть themes проходят contrast/keyboard/chart-table checks, а смена UI theme не меняет analysis/result/cache identity.
+    invariant: Все четыре themes проходят contrast/keyboard/chart-table checks, а смена UI theme не меняет analysis/result/cache identity.
   - id: TEST-INV-043
     invariant: Canonical ChartSpec не содержит raw ECharts/Plotly option, executable callback/renderItem, raw HTML/CSS, arbitrary URL/asset или unbounded regex; invalid spec отклоняется до compile/render.
   - id: TEST-INV-044
@@ -5997,6 +6364,52 @@ test_invariants:
     invariant: KMeans run соблюдает explicit K, feature order/preprocessing/seed/CPU allocation, не использует ID/PII/leakage features и публикует profiles/centers/stability/silhouette вместе с immutable membership snapshot.
   - id: TEST-INV-065
     invariant: Excluded-from-fit flagged extremes не исчезают из assignment population без explicit policy; post-fit assignment сохраняет outlier flag/distance/confidence, а sensitivity сравнивает result с/без treatment.
+  - id: TEST-INV-066
+    invariant: Promotion, loyalty, bonus redemption и other components reconciliation-сходятся с source total и net/base identities в pinned tolerance; unknown остаётся unknown, а не нулём.
+  - id: TEST-INV-067
+    invariant: Bonus accrual никогда не попадает в redemption/discount measures, а promo/loyalty/bonus stacking соблюдает pinned matrix и precedence без двойной атрибуции.
+  - id: TEST-INV-068
+    invariant: Aggregate discount rates равны ratio-of-sums на eligible base; average of row rates и double counting overlapping component shares обнаруживаются golden tests.
+  - id: TEST-INV-069
+    invariant: Historical cap breach сохраняет source values и diagnostics без clamp; simulated breach блокирует publication, включая rounding/tolerance/return boundary cases.
+  - id: TEST-INV-070
+    invariant: Promotion Journal date overlap не создаёт promo component без sale-level flag/direct mapping; optional promotion_version_id не меняет observed attribution.
+  - id: TEST-INV-071
+    invariant: PVM price+volume+mix+assortment+residual reconciliation-сходится с observed delta, сохраняет parent/drill-down totals и детерминированно обрабатывает new/discontinued/missing/UOM cases.
+  - id: TEST-INV-072
+    invariant: Current и vs LY используют pinned compatible DiscountPolicyVersion и method; policy drift создаёт warning/separate values и другую result identity.
+  - id: TEST-INV-073
+    invariant: Direct, rule-derived, residual proxy, total-only и unavailable inputs дают разные capability/trust outcomes и одинаково раскрываются в Web/email/XLSX.
+  - id: TEST-INV-074
+    invariant: Metric lifecycle и certification независимы; candidate не отображается canonical, а deprecation/replacement сохраняют исторический result lineage.
+  - id: TEST-INV-075
+    invariant: Future methodology entries никогда не запускаются через v1 engine и отображаются как future_extension/unsupported без implementation claim.
+  - id: TEST-INV-076
+    invariant: Каждый active member имеет ровно один primary department/team assignment, а overlapping primary intervals отклоняются.
+  - id: TEST-INV-077
+    invariant: Effective access равен пересечению role, organization, data, object, row/column и PII policies; deny не может быть отменён cross-department allow.
+  - id: TEST-INV-078
+    invariant: List/count/search/facets/aggregation/pagination People и resources не раскрывают hidden department members, objects или counts.
+  - id: TEST-INV-079
+    invariant: Department Leader видит activity только своего effective unit/subtree scope и не получает raw AuditEvent либо PII автоматически.
+  - id: TEST-INV-080
+    invariant: CrossDepartmentGrant имеет bounded scope/reason/effective dates, истекает и отзывается без сохранения cached access.
+  - id: TEST-INV-081
+    invariant: Report snapshot read не предоставляет dataset/edit/run/drill-down/artifact/PII actions без их независимой authorization.
+  - id: TEST-INV-082
+    invariant: Personal draft остаётся personal, published object по умолчанию получает department owner, а creator attribution не меняется при transfer.
+  - id: TEST-INV-083
+    invariant: Member transfer прекращает старый scope, переоценивает grants, сохраняет historical attribution и создаёт deterministic ownership handover tasks.
+  - id: TEST-INV-084
+    invariant: Deactivated/merged OrgUnit сохраняет историю и successor mapping; hard delete и orphan active membership невозможны.
+  - id: TEST-INV-085
+    invariant: ContributorActivityProjection принимает только allowlisted redacted domain events и не содержит ranking, score, hidden-object references или raw audit payload.
+  - id: TEST-INV-086
+    invariant: Workspace Administrator без отдельного grant конфигурирует organization, но не читает contributor activity, business content или PII.
+  - id: TEST-INV-087
+    invariant: OrganizationStructureVersion и DepartmentDataPolicyVersion используют ETag/If-Match, immutable publication и auditable diff.
+  - id: TEST-INV-088
+    invariant: Self, leader и explicit-grantee views People & Creators дают разные policy-correct projections при одинаковом underlying event set.
 ```
 
 ## 22.3. Golden datasets
@@ -6028,7 +6441,7 @@ test_invariants:
 - safe/unsafe Markdown Data Guide fixtures;
 - multi-block ReportSnapshot с Web/email/XLSX golden outputs;
 - XLSX boundary sizes, sheet-name collisions и formula-injection cells;
-- six-theme report/chart fixtures;
+- four-theme report/chart fixtures;
 - полный allowlisted ChartSpec type set, invalid executable/network-capable specs и renderer capability matrix;
 - range_timeline planned/actual/multi-channel/audience/overlap/visible-window fixtures;
 - dense chart data для deterministic aggregate/sample/level-of-detail и SVG/Canvas threshold fixtures;
@@ -6465,6 +6878,8 @@ release_stage:
     - result_trust_panel
     - template_dashboards
     - report_access_and_comments
+    - organization_tree_primary_department_and_scoped_leadership
+    - department_owned_publications_and_cross_department_grants
     - installation_brand_profile_and_company_pack
     - schedules_and_operator_center
     - in_app_operational_notifications
@@ -6527,7 +6942,7 @@ release_stage:
     - admin_system_lifecycle_and_operational_channel_management
     - CPU_only_capacity_detection_and_admin_cap
     - progress_ETA_contract
-    - six_Roehub_color_profiles
+    - four_shared_color_profiles
     - canonical_product_owned_ChartSpec
     - ECharts_only_Web_renderer_SVG_or_Canvas
     - range_timeline_and_promotion_overlays
@@ -6536,6 +6951,7 @@ release_stage:
     - versioned_Data_Guide
     - adaptive_NumberFormatSpec_and_MetricGroupVersion
     - versioned_BrandProfile_and_CompanyPack
+    - privacy_safe_People_and_Creators_projection
     - universal_Report_Composition
     - user_initiated_report_email_with_verified_sender_and_domain_allowlist
     - benchmark_and_restore_drill
@@ -6570,6 +6986,7 @@ release_stage:
 
 - PostgreSQL/MSSQL/MySQL/ClickHouse connectors с обязательной integration CI;
 - multi-workspace management, complete local auth, invites/reset/sessions/tokens;
+- organization tree, primary department assignments, scoped leadership, department data policies и central effective-access composition;
 - CustomerIdentity, ReceiptItem/Product, version lifecycle и impact report;
 - incremental consistency, schema drift, DQ remediation/waivers;
 - searchable typed Filter Field Registry и versioned Data Guide upload/render foundation;
@@ -6586,6 +7003,7 @@ release_stage:
 - полный public-MVP forecast set и monitoring;
 - template dashboards, schedules, Operator Center и in-app notifications;
 - heterogeneous research/dashboard blocks, evidence-linked findings, object access policies и comments;
+- People & Creators directory/profile, privacy-safe activity projection, department ownership defaults и transfer/deactivation handover;
 - CSV/Parquet exports, backup/restore и production Compose.
 
 ### Phase 4 — Advanced low-code (`v1_target`)
@@ -6604,7 +7022,7 @@ release_stage:
 - performance benchmarks для analytics, bounded chart data, ChartSpec compile, ECharts SVG/Canvas, SSR SVG→PNG, report composition, CPU allocation и HTML/email render;
 - backup/restore drill и upgrade testing;
 - security/accessibility/localization review;
-- six-theme contrast/chart/accessibility matrix, invalid ChartSpec security fixtures и cross-render golden parity;
+- four-theme contrast/chart/accessibility matrix, invalid ChartSpec security fixtures и cross-render golden parity;
 - mail transport retry/unknown-state reconciliation canary и runbooks;
 - MSSQL release matrix;
 - PostgreSQL/MySQL/ClickHouse connector release matrices и governed CSV/XLSX template security fixtures;
@@ -6634,7 +7052,6 @@ release_stage:
 - Gaussian Mixture, HDBSCAN, automatic K selection, Isolation Forest и multivariate anomaly detection;
 - ABC/XYZ расширения;
 - comparable store analytics;
-- discount/margin analytics;
 - hierarchical forecast reconciliation;
 - forecast scenarios;
 - decomposed customer-base forecasting;
@@ -6680,6 +7097,8 @@ PostgreSQL / MS SQL / MySQL / ClickHouse / governed CSV-XLSX template
 → cohorts
 → online/offline comparison
 → previous-year calendar-aligned comparison
+→ DiscountPolicyVersion + component reconciliation
+→ component discount/stacking/cap diagnostics + PVM
 → Promotion Journal timeline overlay
 → AnalysisCase + approved AnalysisMethodVersion
 → ResearchDocument from executive summary to detailed evidence
@@ -6862,7 +7281,7 @@ v1_acceptance_criteria:
   - id: V1-AC-006
     criterion: Все user-observable compute operations показывают accessible loading state; asynchronous operations дополнительно имеют stage/overall progress, indeterminate state при неизвестном total, ETA/confidence когда вычислимы, reconnect и cancel.
   - id: V1-AC-007
-    criterion: Шесть themes abyss/graphite/slate/frost/paper/sand работают во всех core journeys; graphite default UI, paper default email/XLSX, все проходят WCAG/chart-table gates.
+    criterion: Четыре themes abyss/graphite/frost/paper работают во всех core journeys; graphite default UI, paper default email/XLSX, все проходят WCAG/chart-table gates.
   - id: V1-AC-008
     criterion: Web и email одного ReportSnapshot используют одинаковые canonical ChartSpec, chart-data artifacts, filters/comparison/metrics/lineage, а email имеет accessible HTML, plain-text alternative и deterministic PNG charts из SSR SVG.
   - id: V1-AC-009
@@ -6872,7 +7291,7 @@ v1_acceptance_criteria:
   - id: V1-AC-011
     criterion: Универсальный XLSX всех reportable results содержит README/Contents/Summary/data/charts/Metadata, lossless native charts либо same-pipeline PNG fallback с data sheets, не обрезает данные молча, безопасно split и открывается Excel-compatible reader.
   - id: V1-AC-012
-    criterion: Golden report fixtures доказывают равенство totals, ChartSpec semantics, filters, comparison и lineage между Web SVG/Canvas, email PNG и XLSX native/raster для en/ru и всех шести themes.
+    criterion: Golden report fixtures доказывают равенство totals, ChartSpec semantics, filters, comparison и lineage между Web SVG/Canvas, email PNG и XLSX native/raster для en/ru и всех четырёх themes.
   - id: V1-AC-013
     criterion: Runtime/dependency graph доказывает Apache ECharts как единственный v1 Web chart engine и отсутствие Dash, Plotly core, ECharts-GL/WebGL и browser-side analytical compute.
   - id: V1-AC-014
@@ -6911,6 +7330,30 @@ v1_acceptance_criteria:
     criterion: Bucket segmentation поддерживает quantile/equal-width/custom thresholds с explicit group count либо thresholds, deterministic ties/missing/order и pinned published bounds; stratified distribution использует global bounds default, privacy-safe cells и сохраняется как segment только явным действием.
   - id: V1-AC-031
     criterion: CPU KMeans принимает explicit K, versioned feature/preprocessing/treatment/seed, показывает K-1/K/K+1 diagnostics без silent override, profiles/centers/stability/silhouette/sensitivity и создаёт новый immutable membership snapshot при retrain.
+  - id: V1-AC-032
+    criterion: ReceiptItem discount components promo/loyalty/bonus/other, commercial discount, customer benefit и recognized net revenue имеют отдельные semantics, attribution/coverage и reconciliation без unknown-as-zero или bonus-accrual confusion.
+  - id: V1-AC-033
+    criterion: Versioned DiscountPolicy задаёт stacking/precedence/cap/base/tolerance/returns; historical breach сохраняется и виден, simulated breach блокируется, а CompanyPack defaults не создают customer-specific fork.
+  - id: V1-AC-034
+    criterion: UI-AN-010 и reusable analytics показывают component amount/rate/share/penetration, overlap, depth, cap diagnostics и `vs LY` с ratio-of-sums и стабильными MetricGroup/NumberFormat contracts.
+  - id: V1-AC-035
+    criterion: PVM versioned method точно reconciliation-сводит price, volume, mix, assortment и residual к observed delta и раскрывает comparable coverage/new-discontinued/missing/UOM/currency/returns limitations во всех channels.
+  - id: V1-AC-036
+    criterion: Metric certification, proxy-quality, representativeness, robustness/sensitivity, basic statistical primitives и default MethodologyPack имеют reviewed v1 contracts; advanced causal/uplift/anomaly/decision methods остаются future_extension без runtime claim.
+  - id: V1-AC-037
+    criterion: Workspace поддерживает versioned company/division/department/team tree, ровно один primary department для active member и auditable effective-dated transfer/merge lifecycle.
+  - id: V1-AC-038
+    criterion: Organization-aware authorization пересекает role, department data policy, object policy и PII ceilings и не раскрывает hidden rows/counts через search или aggregation.
+  - id: V1-AC-039
+    criterion: Department Leader является scoped assignment, читает только свой unit/subtree и может управлять доступом только в пределах делегированного ceiling.
+  - id: V1-AC-040
+    criterion: Cross-department access является bounded reasoned expiring allow grant, не меняет primary department и не повышает functional/PII ceiling.
+  - id: V1-AC-041
+    criterion: Draft/publication ownership, creator attribution, transfer/deactivation и legacy workspace ownership имеют deterministic migration/handover без потери доступа или истории.
+  - id: V1-AC-042
+    criterion: People & Creators показывает privacy-safe cards/profile, разрешённые authored/owned assets и агрегированную activity только self/leader/explicit scope без ranking, score или raw audit.
+  - id: V1-AC-043
+    criterion: Organization/People UI имеет шесть route-backed surfaces, effective-access preview и empty/partial/forbidden/transfer states, а C25/flow 10 проходят Penpot и последующую browser/accessibility verification.
 ```
 
 # 29. Пробелы исходного плана и решения
@@ -6978,6 +7421,13 @@ v1_acceptance_criteria:
 | GAP-059 | Product/report distribution смешивалась с activation | Private roadmap мог случайно попасть в public core | Self-host-only public distribution и access-controlled private activation boundary |
 | GAP-060 | Выбросы обрабатывались локальными фильтрами | Тихое удаление VIP, разные выборки и несопоставимый `vs LY` | Immutable PopulationTreatmentSpecVersion, three robust methods, default flag, shared bounds и sensitivity evidence |
 | GAP-061 | Бакеты, strata и clusters не имели общего lifecycle | Невоспроизводимые группы, дрейф границ и нестабильные cluster IDs | SegmentationDefinitionVersion, DistributionArtifact, immutable membership/model/preprocessing snapshots и explicit K |
+| GAP-062 | Общая скидка не различала promo/loyalty/bonus и правила stacking/cap | Двойная атрибуция, неверные доли и customer-specific formulas | ReceiptItemDiscountComponent, DiscountPolicyVersion, attribution modes и reconciliation |
+| GAP-063 | PVM и качество аналитической методики не имели общего доказательного контракта | Несводимые decompositions, proxy принимается за факт и future method за готовую функцию | Versioned PVM, metric certification/proxy quality, MethodologyPack, robustness и availability class |
+| GAP-064 | Роли не отражали организационную структуру компании | Role explosion и неявные полномочия начальников | Независимые role bundles, OrgUnit tree и scoped leadership assignments |
+| GAP-065 | Доступ отдела смешивался с object ACL | Утечки данных и невозможность временного cross-department access | DepartmentDataPolicyVersion, effective-access intersection и bounded grants |
+| GAP-066 | У отчётов не было стабильного organizational ownership | Потеря ресурсов при переводе/увольнении автора | Creator/owner separation, department default ownership и handover lifecycle |
+| GAP-067 | Витрина авторов могла превратиться в employee surveillance | Рейтинги, скрытые counts и использование raw audit | Privacy-safe ContributorActivityProjection, scoped views и explicit anti-ranking rule |
+| GAP-068 | Organization/People не имели route и design contracts | Непроверяемая админка и несогласованная UI-реализация | Шесть route IDs, UI-CAP-021/022, C25 и flow 10 |
 
 # 30. Риски и открытые решения
 
@@ -7066,6 +7516,36 @@ risks:
   - id: RISK-027
     risk: Outlier policy удалит реальных VIP либо сделает current и prior-year populations несопоставимыми
     mitigation: Default flag, отдельная DQ policy, impact preview, pinned shared LY bounds и явно различимые fit/assignment populations
+  - id: RISK-028
+    risk: Bonus redemption, loyalty и promotion будут учтены дважды либо перепутаны с bonus accrual
+    mitigation: Normalized component fact, explicit accounting treatment, stacking matrix, precedence и reconciliation
+  - id: RISK-029
+    risk: Cap будет молча исправлять исторические продажи или скрывать нарушение
+    mitigation: Immutable source, no-clamp diagnostics, policy severity и hard block только для simulated publication
+  - id: RISK-030
+    risk: Residual proxy либо total-only discount будет показан как точная component attribution
+    mitigation: Attribution mode, coverage/residual, certification и Result Trust disclosure во всех channels
+  - id: RISK-031
+    risk: PVM зависит от скрытого порядка формул и не сходится с observed delta
+    mitigation: Versioned method/order, exact reconciliation, explicit assortment/residual и golden boundary datasets
+  - id: RISK-032
+    risk: Organization hierarchy будет закодирована в ролях и приведёт к role explosion
+    mitigation: Независимые functional roles, OrgUnit memberships и scoped leadership assignments
+  - id: RISK-033
+    risk: Cross-department grant превысит role или PII ceiling
+    mitigation: Allow-only bounded grant, central effective-access intersection, expiry/revoke и negative tests
+  - id: RISK-034
+    risk: Перевод или увольнение сотрудника оставит orphan published resources либо старый доступ
+    mitigation: Effective-dated transfer, immediate scope termination, ownership handover tasks и successor mapping
+  - id: RISK-035
+    risk: People & Creators станет инструментом скрытого employee ranking
+    mitigation: Redacted aggregate projection, no leaderboard/score/percentile, scoped visibility и policy review
+  - id: RISK-036
+    risk: Snapshot access будет ошибочно принят за право drill-down к underlying data
+    mitigation: Отдельная authorization каждого action и явное различие snapshot/object/data permissions
+  - id: RISK-037
+    risk: Admin configuration authority станет обходом activity/business-data privacy
+    mitigation: `organization.manage` отделён от `organization.activity.read`, business content и PII grants
 ```
 
 ## 30.2. Зафиксированные решения
@@ -7149,7 +7629,7 @@ resolved_decisions:
     resolved_at: 2026-07-15
   - id: RESOLVED-016
     decision: Report theme default
-    resolution: UI default — graphite, email/XLSX default — paper; пользователь MAY выбрать любой из шести profiles, и выбранный theme фиксируется в ReportSnapshot/manifest.
+    resolution: UI default — graphite, email/XLSX default — paper; пользователь MAY выбрать любой из четырёх profiles, и выбранный theme фиксируется в ReportSnapshot/manifest.
     status: confirmed
     resolved_at: 2026-07-15
   - id: RESOLVED-017
@@ -7237,6 +7717,56 @@ resolved_decisions:
     resolution: Quantile/IQR/MAD с default flag и explicit exclude/winsorize precede bucket/stratified/KMeans workflows; KMeans принимает explicit K, а HDBSCAN/GMM/automatic K/multivariate anomaly detection остаются post-v1.
     status: confirmed
     resolved_at: 2026-07-19
+  - id: RESOLVED-034
+    decision: Discount component and cap model
+    resolution: Promotion, loyalty, bonus redemption и other являются отдельными component facts; DiscountPolicyVersion управляет stacking/precedence/cap, historical facts не clamp-ятся, а simulated breach блокирует publication.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-035
+    decision: Discount totals and attribution quality
+    resolution: Commercial discount, customer benefit и recognized net revenue имеют разные имена; direct/rule-derived/residual/total-only/unavailable disclosure обязательно, а aggregate rates являются ratio-of-sums.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-036
+    decision: V1 methodology breadth
+    resolution: V1 включает component discounts/PVM, metric certification/proxy quality, representativeness, robustness/sensitivity, basic statistical primitives и MethodologyPack; advanced causal/uplift/anomaly/decision methods остаются future_extension.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-037
+    decision: Organization model
+    resolution: V1 использует workspace-scoped tree company/division/department/team и ровно один active primary department/team assignment для каждого member.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-038
+    decision: Role and hierarchy separation
+    resolution: Functional roles не кодируют department/manager status; Department Leader является effective-dated scoped assignment.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-039
+    decision: Effective access composition
+    resolution: Authorization является пересечением role, organization, department data policy, object policy, row/column и PII ceilings; deny wins.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-040
+    decision: Cross-department access
+    resolution: Дополнительный доступ выдаётся bounded reasoned expiring allow grant, не меняет primary department и не расширяет базовые ceilings.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-041
+    decision: Analytical resource ownership
+    resolution: Personal drafts принадлежат creator; новая публикация по умолчанию department-owned; creator attribution immutable, а transfer/deactivation запускает auditable handover.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-042
+    decision: Contributor analytics privacy
+    resolution: People & Creators использует отдельную redacted aggregate projection и запрещает raw audit, hidden counts, ranking, leaderboard и productivity score.
+    status: confirmed
+    resolved_at: 2026-07-20
+  - id: RESOLVED-043
+    decision: Organization and People UI scope
+    resolution: Product добавляет шесть route-backed surfaces, UI-CAP-021/022, C25 и flow 10; W10 принял Penpot delta на terminal revision 213 с inventory 116/25/5 после сохранённой исторической baseline/recovery chain.
+    status: confirmed
+    resolved_at: 2026-07-20
 ```
 
 ## 30.3. Открытые решения
@@ -7339,7 +7869,7 @@ module_definition_of_done:
     - canonical_ChartSpec_and_bounded_chart_data_when_visualized
     - ECharts_Web_and_static_renderer_capability_when_visualized
     - textual_summary_and_accessible_table_for_every_chart
-    - all_six_theme_profiles
+    - all_four_theme_profiles
   documentation:
     - module reference
     - examples

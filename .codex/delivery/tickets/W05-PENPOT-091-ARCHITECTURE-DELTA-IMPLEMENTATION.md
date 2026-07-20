@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.9.1-draft
 ticket_id: W05-PENPOT-091-ARCHITECTURE-DELTA-IMPLEMENTATION
-status: ready
+status: accepted
 workstream_id: W05
 summary: Update the canonical Penpot file from the accepted revision-124 audit baseline to complete product 0.9.1 and UI 0.6.1 design coverage, without changing product or route contracts.
 requirement_ids: [UC-001, UC-002, UC-003, UC-004, UC-005, UC-006, UC-007, UC-008, UC-009, UC-010, UC-011, UC-012, UC-013, UC-014, UC-015, UC-016, UC-017, UC-018, UC-019, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, OUTLIER-001, OUTLIER-002, OUTLIER-003, OUTLIER-004, OUTLIER-005, OUTLIER-006, OUTLIER-007, OUTLIER-008, OUTLIER-009, OUTLIER-010, OUTLIER-011, OUTLIER-012, SEGMENT-001, SEGMENT-002, SEGMENT-003, SEGMENT-004, SEGMENT-005, SEGMENT-006, SEGMENT-007, SEGMENT-008, SEGMENT-009, SEGMENT-010, SEGMENT-011, SEGMENT-012, SEGMENT-013, SEGMENT-014, SEGMENT-015, SEGMENT-016, SEGMENT-017, SEGMENT-018, ROUTE-001, ROUTE-002, ROUTE-003, ROUTE-004, ROUTE-005, ROUTE-006, ROUTE-007, ROUTE-008, ROUTE-009, ROUTE-010, ROUTE-011, ROUTE-012, TEST-INV-049, TEST-INV-050, TEST-INV-052, TEST-INV-053, TEST-INV-054, TEST-INV-055, TEST-INV-056, TEST-INV-057, TEST-INV-058, TEST-INV-059, TEST-INV-061, TEST-INV-062, TEST-INV-063, TEST-INV-064, TEST-INV-065, AC-041, AC-042, AC-043, AC-044, AC-045, V1-AC-029, V1-AC-030, V1-AC-031]
@@ -78,7 +78,8 @@ validation:
   proof_boundary: canonical-penpot-product-0.9.1-ui-0.6.1-architecture-delta-and-visual-coverage
   evidence_target: .codex/delivery/evidence/W05-PENPOT-091-ARCHITECTURE-DELTA-IMPLEMENTATION.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence:
+  - .codex/delivery/evidence/W05-PENPOT-091-ARCHITECTURE-DELTA-IMPLEMENTATION.md
 ---
 
 # Outcome

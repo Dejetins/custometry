@@ -18,6 +18,15 @@ Russian unless the user requests otherwise.
 
 ## Start and local sources
 
+For an external or volatile target that determines whether work can begin, use
+the global first-boundary probe after reading the root instructions, this
+adapter, and the smallest task or ticket envelope that identifies the target.
+For Penpot, that probe is a minimal read-only current-file and revision check;
+it precedes bulk context reads, routing, and delivery-artifact creation. It
+does not waive required source reads or replace the full predecessor,
+fingerprint, file-identity, revision, and concurrency checks immediately before
+a Penpot write.
+
 1. Read root `AGENTS.md`, this adapter, and the user request.
 2. Read the relevant IDs in `custometry-technical-blueprint-ru.md`, its human
    mirror, and the smallest linked architecture document.
@@ -27,6 +36,14 @@ Russian unless the user requests otherwise.
    `delivery-orchestrator`; then read only the selected ticket and its declared
    context. A trivial explicit repair may execute directly. Create a platform
    Goal only when the user or platform explicitly authorizes it.
+
+For authenticated Web transition work, also load the accepted shared standard
+at `docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md`, the
+Custometry transition specification under `.codex/delivery/specs/`, and the
+applicable node in `custometry-linear-workspace-ui-transition-v1.json`. W10 is
+historical Penpot identity/domain evidence; W18 is superseded and must not be
+executed. The separate Penpot vNext and browser runtime require their own
+ticket evidence.
 
 ## Custometry representation
 
@@ -38,6 +55,9 @@ Russian unless the user requests otherwise.
 - Terminal ticket evidence uses `.codex/agents/iteration_report_template.md`:
   a redacted record that names the ticket, proof boundary, checks,
   observations, and verdict.
+- Ticket graphs live under `.codex/delivery/graphs/` only when several
+  dependent slices need one explicit ready frontier. A graph records topology
+  and path ownership; ticket frontmatter remains the sole status authority.
 - Tickets use `Bxx`/`Wxx` workstream IDs and are checked with
   `uv run python -m tools.custometry_quality.validate_delivery_tickets`.
 - `uv run python -m tools.custometry_quality.validate_delivery_contract`
@@ -47,8 +67,8 @@ Russian unless the user requests otherwise.
 - A specification is created only when behavior or its proof seam is unresolved.
   A plan, ledger, or reusable procedure prompt is exceptional and is created
   only when the global contract classifies it as necessary for the current
-  delivery topology. Custometry keeps no standing program plan or generated
-  prompt-pack inventory.
+  delivery topology. Custometry keeps no standing program plan, parallel
+  status register, or generated prompt-pack inventory.
 
 ## Product, scope, and proof
 
@@ -76,6 +96,7 @@ The global skill router selects technical skills. Custometry-specific routes:
 | Trigger | Primary skill |
 |---|---|
 | Reusable procedure prompt or explicitly justified prompt pack | `prompt-manager` after `delivery-orchestrator` |
+| Penpot MCP inspection, write, restore, or artifact-level visual proof | `penpot-design-delivery`; use `ui-ux-pro-max` only for an unresolved design-direction decision |
 | Browser-depth ticket | `browser-qa-evidence`; declare it in `validation.proof_skills`, and add `playwright` when terminal automation is needed |
 
 Role TOMLs select expertise boundaries and handoffs; they do not create

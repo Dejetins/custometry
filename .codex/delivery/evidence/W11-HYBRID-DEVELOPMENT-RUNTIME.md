@@ -17,6 +17,7 @@ executed_checks:
   - uv run --locked pytest -q tests/tooling/test_development_runtime.py tests/integration/test_development_runtime.py
   - uv run --locked pytest -q
   - scripts/dev validate
+  - run scripts/dev validate with an unavailable NVM directory
   - scripts/dev up --mode hybrid
   - scripts/dev status
   - repeat scripts/dev up --mode hybrid and compare owned API/Web PIDs
@@ -43,7 +44,8 @@ observations:
   - Confirmed demo reset recreated only the demo volume and removed the demo marker; the control volume and marker were preserved until the marker was explicitly removed after proof.
   - Restart from preserved volumes succeeded after file-backed credential synchronization through container stdin; credentials were absent from process arguments and retained output.
   - Final down left no owned host processes, containers, networks, runtime logs, state, or temporary secret files; separate control and demo volumes remained according to policy.
-  - Focused tests passed 14 tests, the full suite passed 122 tests, and local plus pre-push grouped profiles passed.
+  - Static validation remained available without Node/NVM because it requires only the pinned Python toolchain; full host toolchain activation remains mandatory for up.
+  - Focused tests passed 14 tests, the full suite passed 123 tests, and local plus pre-push grouped profiles passed.
 ---
 
 # W11 Hybrid Development Runtime Evidence
@@ -67,7 +69,7 @@ observations:
 | Command or action | Result | Redacted observation / durable reference |
 |---|---|---|
 | Docker start probe | pass | One selected Docker Desktop engine through `desktop-linux`; Compose v5.3.0. |
-| `scripts/dev validate` and development static gate in grouped profiles | pass | Loopback ports, separate volumes, exact reset target, bounded logging contract, and release-entrypoint exclusion passed. |
+| `scripts/dev validate` and development static gate in grouped profiles | pass | Validation remained available without Node/NVM; loopback ports, separate volumes, exact reset target, bounded logging contract, and release-entrypoint exclusion passed. |
 | Fresh `scripts/dev up --mode hybrid` | pass | Both PostgreSQL services, migration, owned API, and owned Web reached `overall=healthy`. |
 | Host SQL and HTTP readiness | pass | Both loopback databases answered `select 1`; API and Web returned HTTP 200. |
 | Repeated `up` | pass | API/Web PIDs were reused and no duplicate process groups or containers appeared. |
@@ -77,7 +79,7 @@ observations:
 | Confirmed demo reset | pass | Demo volume recreated and demo marker removed; control volume and marker preserved. |
 | Persistent restart | pass | Fresh secret files were synchronized through container stdin and preserved data reopened successfully. |
 | Final `down` | pass | No owned processes, containers, networks, state, logs, or secret files remained; control/demo volumes were preserved. |
-| Focused and full tests | pass | 14 focused tests and 122 repository tests passed. |
+| Focused and full tests | pass | 14 focused tests and 123 repository tests passed. |
 | Repository gates | pass | Delivery-ticket validator, local profile, pre-push profile, docs index/links, and `git diff --check` passed. |
 
 ## Verdict

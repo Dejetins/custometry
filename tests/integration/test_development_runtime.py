@@ -60,7 +60,11 @@ def test_development_compose_config_is_loopback_only_and_data_is_separated() -> 
 
 
 def test_cli_static_validation_and_reset_fail_closed_before_docker_mutation() -> None:
-    validation = run(str(SCRIPT), "validate")
+    validation = run(
+        str(SCRIPT),
+        "validate",
+        env={"NVM_DIR": str(ROOT / ".runtime" / "test-missing-nvm")},
+    )
     assert validation.returncode == 0, validation.stderr
     assert "development-runtime-validation=passed" in validation.stdout
 

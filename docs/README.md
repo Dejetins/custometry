@@ -39,6 +39,7 @@
 ## runbooks
 
 - [Runbooks](runbooks/README.md)
+- [Hybrid Development Runtime Operations](runbooks/development-runtime.md)
 - [GitHub repository governance](runbooks/github-repository-governance.md)
 - [RUNBOOK-NNN: <Failure or recovery action>](runbooks/runbook-template.md)
 

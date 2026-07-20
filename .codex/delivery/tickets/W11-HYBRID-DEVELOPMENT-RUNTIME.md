@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.9.3-draft
 ticket_id: W11-HYBRID-DEVELOPMENT-RUNTIME
-status: ready
+status: accepted
 workstream_id: W11
 summary: Implement and prove the canonical Hybrid development runtime so host Web and API processes can use isolated loopback-only control and demo PostgreSQL infrastructure without rebuilding the full application stack on every edit.
 requirement_ids: [ARCH-PRINCIPLE-001, DOC-RULE-008]
@@ -30,14 +30,20 @@ change_scope:
   allowed_write_paths:
     - .codex/delivery/tickets/W11-HYBRID-DEVELOPMENT-RUNTIME.md
     - .codex/delivery/evidence/W11-HYBRID-DEVELOPMENT-RUNTIME.md
+    - .codex/delivery/graphs/custometry-runtime-data-stream-v1.json
     - scripts/dev
     - compose.dev.yaml
     - deploy/compose/development-runtime-policy.json
+    - tools/custometry_quality/check.py
     - tools/custometry_quality/development_runtime.py
+    - tests/tooling/__init__.py
     - tests/tooling/test_development_runtime.py
+    - tests/integration/__init__.py
     - tests/integration/test_development_runtime.py
     - docs/architecture/development-runtime-contract.md
     - docs/architecture/runtime-network-installation.md
+    - docs/architecture/tooling-gates.md
+    - docs/README.md
     - docs/runbooks/development-runtime.md
   forbidden_write_paths:
     - custometry-technical-blueprint-ru.md
@@ -82,7 +88,7 @@ validation:
   proof_boundary: local-hybrid-development-runtime-lifecycle-and-release-isolation
   evidence_target: .codex/delivery/evidence/W11-HYBRID-DEVELOPMENT-RUNTIME.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W11-HYBRID-DEVELOPMENT-RUNTIME.md]
 ---
 
 # Outcome

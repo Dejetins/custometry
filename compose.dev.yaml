@@ -1,0 +1,53 @@
+name: ${CUSTOMETRY_HYBRID_PROJECT_NAME:-custometry-hybrid-config}
+
+x-custometry-development-runtime:
+  mode: hybrid
+  owner: W11-HYBRID-DEVELOPMENT-RUNTIME
+  release_eligible: false
+
+services:
+  control-db:
+    restart: "no"
+    ports:
+      - name: control-postgresql
+        target: 5432
+        host_ip: 127.0.0.1
+        published: "${CUSTOMETRY_CONTROL_DB_PORT:-55432}"
+        protocol: tcp
+
+  demo-source-db:
+    restart: "no"
+    ports:
+      - name: demo-postgresql
+        target: 5432
+        host_ip: 127.0.0.1
+        published: "${CUSTOMETRY_DEMO_DB_PORT:-55433}"
+        protocol: tcp
+
+volumes:
+  control_db_data:
+    name: ${CUSTOMETRY_HYBRID_PROJECT_NAME:-custometry-hybrid-config}-control-data
+    labels:
+      com.custometry.owner: W11-HYBRID-DEVELOPMENT-RUNTIME
+      com.custometry.runtime: hybrid
+      com.custometry.data-role: control
+  demo_source_data:
+    name: ${CUSTOMETRY_HYBRID_PROJECT_NAME:-custometry-hybrid-config}-demo-data
+    labels:
+      com.custometry.owner: W11-HYBRID-DEVELOPMENT-RUNTIME
+      com.custometry.runtime: hybrid
+      com.custometry.data-role: demo
+
+networks:
+  control:
+    name: ${CUSTOMETRY_HYBRID_PROJECT_NAME:-custometry-hybrid-config}-control
+    internal: false
+    labels:
+      com.custometry.owner: W11-HYBRID-DEVELOPMENT-RUNTIME
+      com.custometry.runtime: hybrid
+  demo_source:
+    name: ${CUSTOMETRY_HYBRID_PROJECT_NAME:-custometry-hybrid-config}-demo-source
+    internal: false
+    labels:
+      com.custometry.owner: W11-HYBRID-DEVELOPMENT-RUNTIME
+      com.custometry.runtime: hybrid

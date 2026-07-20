@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="$(cd "${script_dir}/.." && pwd)"
+
+if [[ "${CUSTOMETRY_TOOLCHAIN_ACTIVE:-0}" != "1" ]]; then
+  # shellcheck disable=SC1091
+  source "${repo_root}/scripts/activate-toolchain.sh"
+fi
+
+cd "${repo_root}"
+exec uv run --locked python -m tools.custometry_quality.development_runtime "$@"

@@ -80,11 +80,16 @@
       "scripts/dev",
       "compose.dev.yaml",
       "deploy/compose/development-runtime-policy.json",
+      "tools/custometry_quality/check.py",
       "tools/custometry_quality/development_runtime.py",
+      "tests/tooling/__init__.py",
       "tests/tooling/test_development_runtime.py",
+      "tests/integration/__init__.py",
       "tests/integration/test_development_runtime.py",
       "docs/architecture/development-runtime-contract.md",
       "docs/architecture/runtime-network-installation.md",
+      "docs/architecture/tooling-gates.md",
+      "docs/README.md",
       "docs/runbooks/development-runtime.md"
     ],
     "W12-IDENTITY-WORKSPACE-LOCAL-AUTH": [

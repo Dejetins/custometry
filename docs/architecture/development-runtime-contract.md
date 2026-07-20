@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-RUNTIME-001
 title: Custometry development runtime contract
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -9,8 +9,8 @@ owner: engineering
 requirement_ids: [ARCH-PRINCIPLE-001, DOC-RULE-008]
 status: accepted
 proof_boundary:
-  label: accepted-development-runtime-policy
-  exclusions: [hybrid-runtime-implementation, unified-dev-cli-implementation, product-runtime-acceptance, release-readiness]
+  label: accepted-development-runtime-policy-and-hybrid-interface
+  exclusions: [full-stack-runtime-acceptance, browser-product-runtime, release-readiness, production-hardening]
 ---
 
 # Custometry Development Runtime Contract
@@ -29,9 +29,9 @@ This contract defines four canonical modes:
 3. `full-stack`;
 4. `release`.
 
-It does not implement a new launcher, a development Compose override, generated
-mocks, API hot reload, or a release bundle. Those remain owned implementation
-outcomes and require their own real-boundary evidence.
+The Hybrid launcher and development Compose override are implemented by W11.
+Generated mocks, browser-visible mock/real disclosure, complete Full Stack
+acceptance, and a release bundle remain separately owned outcomes.
 
 ## 2. Current-state fact ledger
 
@@ -42,7 +42,7 @@ outcomes and require their own real-boundary evidence.
 | Fact | The repository has one full Foundation Compose topology and a build-capable bootstrap. | `compose.yaml`, `deploy/compose/bootstrap.sh` | `full-stack` exists for Foundation proof; it is not the default edit loop. |
 | Fact | CI can exercise disposable migration, Compose, and browser boundaries. | `.github/workflows/ci.yml`, quality-tool profiles | Clean-stack evidence is available without making every local edit container-first. |
 | Fact | Immutable SHA-scoped candidate images and a fail-closed release launcher contract exist. | `.github/workflows/publish-candidates.yml`, `deploy/compose/compose.release.yaml` | This is not an accepted end-user release bundle. |
-| Target | `compose.dev.yaml`, a unified `scripts/dev` interface, infra-only startup, API hot reload, and an explicit mock/real switch. | This contract | These capabilities must not be described as implemented until observed. |
+| Fact | `compose.dev.yaml` and `scripts/dev up --mode hybrid` provide infra-only startup, host API/Web processes, status, bounded logs, safe demo reset, and owned cleanup. | W11 implementation and terminal evidence | Hybrid claims require the observed W11 lifecycle; generated mocks and browser-visible mock/real disclosure remain separate Experience work. |
 
 ## 3. Canonical modes
 
@@ -88,9 +88,9 @@ recovery, supply-chain, target-security, and performance claims require
 `release`. A failed higher mode cannot be replaced by evidence from a cheaper
 mode.
 
-## 6. Target Hybrid topology
+## 6. Hybrid topology
 
-The target developer path is:
+The accepted developer path is:
 
 ```text
 Browser
@@ -109,25 +109,26 @@ Rules:
   boundaries;
 - the Hybrid topology uses a separate project identity and does not attach to
   release volumes;
-- developer secrets live only in ignored, installation-owned local files and
+- developer secrets live only in ignored, runtime-owned local files and
   are never embedded in Compose, logs, prompts, or generated mocks;
 - Edge is omitted unless ingress behavior is the subject of the check;
 - a browser-visible development indicator must disclose generated-mock versus
   real-API mode without becoming an authorization mechanism.
 
-## 7. Planned developer interface
+## 7. Developer interface
 
-Once implemented, `scripts/dev` becomes the canonical orchestration interface:
+W11 establishes the canonical Hybrid orchestration interface:
 
 ```text
-scripts/dev up --mode <fast-loop|hybrid|full-stack>
+scripts/dev up --mode hybrid
 scripts/dev down
 scripts/dev status
 scripts/dev logs [service]
 scripts/dev reset-demo --confirm RESET-DEMO
+scripts/dev validate
 ```
 
-The exact process manager may evolve, but these semantics are stable:
+The exact process manager may evolve, but these Hybrid semantics are stable:
 
 - `up` is idempotent and reports actual URLs, processes, containers, and mode;
 - `down` stops only resources owned by the current development identity;
@@ -136,18 +137,22 @@ The exact process manager may evolve, but these semantics are stable:
 - `reset-demo` affects only repository-owned demo data, is dry-run or
   confirmation-gated, and cannot target control or foreign databases.
 
-Direct `pnpm` and `uv` commands remain valid focused tools. They do not become
-an alternative source of runtime truth once the canonical interface exists.
+Direct `pnpm` and `uv` commands remain valid Fast Loop tools. The existing
+`deploy/compose/bootstrap.sh --build [--with-demo]` remains the canonical Full
+Stack launcher. Adding those modes to `scripts/dev` requires a later ticket and
+must not blur their different proof boundaries.
 
 ## 8. Compose development override and release isolation
 
-The planned `compose.dev.yaml` is an explicit development override, not a
+`compose.dev.yaml` is an explicit development override, not a
 second product topology. It may publish loopback-only infrastructure ports,
 enable development-only health aids, and select infra-only profiles. It must
 not weaken the canonical `compose.yaml` or `compose.release.yaml`.
 
-CI and release validation must fail when a release composition contains any
-of the following:
+The shared quality profiles run the development-runtime validator. Release
+entrypoints must not reference the override, and validation fails when a
+release path acquires a development override reference. Release composition
+must also reject any of the following:
 
 - `compose.dev.yaml` or a development-only profile;
 - source bind mounts, hot-reload commands, debug servers, or mutable image
@@ -182,8 +187,8 @@ Full Stack Compose check does not establish that proof.
 |---|---|---|
 | Public API, DTOs, persisted product data | `none` | No product contract changes. |
 | Contributor runtime selection | `compatible-change` | The modes name existing and target paths; current focused commands remain usable. |
-| Future `scripts/dev` interface | `compatible-change` before stable consumers | Introduce additively; retain direct focused commands during adoption. Removing or changing stable command semantics later requires migration. |
-| Future `compose.dev.yaml` | `compatible-change` | Add as an explicit override; deletion rolls back to current Fast Loop and Full Stack paths. |
+| `scripts/dev` Hybrid interface | `compatible-change` | Introduced additively; direct focused and Full Stack commands remain available. Removing or changing stable command semantics later requires migration. |
+| `compose.dev.yaml` | `compatible-change` | Explicit development override; deletion rolls back to Fast Loop and Full Stack paths after owned Hybrid resources are stopped. |
 | Ticket proof-mode declarations | `compatible-change` | Existing focused commands remain valid; each new ticket names the required mode and proof boundary. |
 | Release composition/security | `none` now; fail-closed compatibility requirement for implementation | Development topology must remain unreachable from release workflows. |
 | Browser-visible development disclosure | `compatible-change` | Visible only in development builds; production validation rejects it. |
@@ -191,19 +196,22 @@ Full Stack Compose check does not establish that proof.
 ## 11. Validation and proof boundary
 
 Documentation acceptance requires metadata, links, documentation index, and a
-cold self-review proportional to the change. Implementation acceptance
-later requires:
+cold self-review proportional to the change. W11 implementation acceptance
+requires:
 
 - focused tests for mode selection and resource ownership;
 - real infra-only PostgreSQL startup, migration, reset, and cleanup evidence;
-- real Web/API hot-reload behavior and mock/real parity;
+- real host Web/API ownership and reload-capable process behavior;
 - negative validation showing development overrides cannot enter release;
-- a clean Full Stack lifecycle after Hybrid development;
+- static confirmation that the canonical Full Stack and release entrypoints do
+  not load the Hybrid override; real Full Stack lifecycle remains a separate
+  proof boundary;
 - unchanged release fail-closed behavior.
 
-This document proves only the accepted policy. It does not prove that Hybrid,
-the unified CLI, hot reload, generated mocks, or an accepted release bundle
-exists.
+This document and source tree define the accepted interface. Only W11 terminal
+evidence proves the observed Hybrid lifecycle. Generated mocks, browser-visible
+mock/real disclosure, complete Full Stack acceptance, and an accepted release
+bundle remain outside this proof boundary.
 
 ## 12. Residual risks
 
@@ -211,6 +219,6 @@ exists.
 |---|---|---|
 | Host and container behavior diverge. | DevOps + owning ticket | Require Full Stack proof whenever image/runtime behavior changes. |
 | Generated mocks drift from real contracts. | Experience + contract owner | Generate both from one versioned source and verify parity before real integration. |
-| Development ports or secrets leak into release. | Production hardening owner | Add a fail-closed release-topology validator before `compose.dev.yaml` is introduced. |
+| Development ports or secrets leak into release. | Production hardening owner | Keep the development-runtime release-entrypoint exclusion in every quality profile and retain separate release runtime evidence. |
 | A single CLI becomes opaque or destructive. | DevOps | Print owned resources and actual commands; scope cleanup; confirmation-gate data reset. |
 | Developers overuse Full Stack and lose feedback speed. | Engineering productivity | Keep focused host commands first-class and measure startup/reload time when the CLI is implemented. |

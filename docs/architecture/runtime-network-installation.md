@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 5
+doc_version: 6
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -59,11 +59,11 @@ accepted [development runtime contract](./development-runtime-contract.md)
 defines `fast-loop`, `hybrid`, `full-stack`, and `release`, including their
 proof limits.
 
-The target Hybrid path keeps Web/API on the host and starts only required
-stateful infrastructure in containers. It is not implemented yet:
-`compose.dev.yaml`, the unified `scripts/dev` interface, infra-only port
-publication, API hot reload, and mock/real switching remain planned
-capabilities.
+The accepted Hybrid path keeps Web/API on the host and starts only control and
+demo-source PostgreSQL in containers. `scripts/dev up --mode hybrid` owns the
+loopback-only infrastructure, host process groups, migration, readiness,
+bounded logs, safe demo reset, and cleanup lifecycle. Generated mocks and
+browser-visible mock/real switching remain separate Experience capabilities.
 
 Release mode uses immutable GHCR references, `pull` and `--no-build`; a user installation must not silently compile the product from source. Public static `/docs` ships with the public Web surface. Authenticated operator/admin docs are excluded from that public docs image until the protected serving boundary is implemented.
 
@@ -132,10 +132,14 @@ Compose does not provide a portable ingress-only network primitive. In particula
 
 Docker network names alone are insufficient for a production security claim. The connector allowlist includes DNS/IP validation, redirect policy, and protection of loopback, link-local, and private ranges according to deployment policy; the database-source allowlist specifies exact hosts and ports. The future connector, mail, and update egress zones in the table are target contracts, not active Foundation services.
 
-Development topology is intentionally separate. A future
-`compose.dev.yaml` may publish required infrastructure ports only to
-`127.0.0.1`, use development-owned project names and volumes, and omit Edge
-when ingress is not under test. Release validation must reject that override,
+Development topology is intentionally separate. `compose.dev.yaml` publishes
+the control and demo PostgreSQL ports only to `127.0.0.1`, uses a
+repository-specific Hybrid project plus separately labelled volumes, and omits
+Edge from the selected service lifecycle when ingress is not under test.
+Its two database bridges override `internal` to `false` because Docker Desktop
+cannot reliably publish host ports from an internal network; loopback host
+binding, exact service membership, and repository ownership remain mandatory.
+Release validation rejects that override,
 source bind mounts, reload/debug commands, mock flags, development credentials,
 mutable image tags, and host-published core ports. Full Stack and Release
 continue to use the canonical topology and never inherit Hybrid convenience

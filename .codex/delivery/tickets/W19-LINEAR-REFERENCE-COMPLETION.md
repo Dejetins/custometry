@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.9.4-draft
 ticket_id: W19-LINEAR-REFERENCE-COMPLETION
-status: ready
+status: accepted
 workstream_id: W19
 summary: Complete the sanitized, reproducible Linear reference evidence needed to measure geometry, motion, keyboard behavior, accessibility structure, state continuity, and the four Custometry themes before design or runtime implementation begins.
 requirement_ids: [WEB-ARCH-005, WEB-ARCH-006, WEB-PERF-001, WEB-PERF-002, THEME-001, THEME-008, A11Y-001, A11Y-003, MOTION-001, MOTION-012]
@@ -54,7 +54,7 @@ validation:
   proof_boundary: sanitized-reproducible-linear-reference-measurements-and-evidence-gap-closure
   evidence_target: .codex/delivery/evidence/W19-LINEAR-REFERENCE-COMPLETION.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W19-LINEAR-REFERENCE-COMPLETION.md]
 ---
 
 # Outcome

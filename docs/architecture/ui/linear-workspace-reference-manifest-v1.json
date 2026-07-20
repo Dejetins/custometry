@@ -1,16 +1,27 @@
 {
   "schema_version": "1.0.0",
   "reference_id": "LINEAR-WORKSPACE-REFERENCE-2026-07-20",
-  "status": "partial_accepted_input",
+  "status": "accepted_sanitized_reference_with_explicit_waivers",
   "source": {
     "kind": "user_supplied_local_archive",
     "archive_name": "reference.zip",
     "archive_sha256": "eb7b0ab070f64d553baafacefa90fdb2e87e51bc174c63db9af73bc77f8e41c2",
+    "archive_size_bytes": 2381246,
+    "screenshot_count": 16,
+    "macos_metadata_entry_count": 16,
     "observed_at": "2026-07-20",
     "distributable": false,
     "commit_policy": "commit_sanitized_measurements_and_hashes_only"
   },
-  "viewport": {"width": 2560, "height": 1440, "browser_chrome_included": true},
+  "viewport": {
+    "width": 2560,
+    "height": 1440,
+    "browser_chrome_included": true,
+    "png_dpi": 72,
+    "css_viewport": "unknown_not_embedded",
+    "device_scale_factor": "unknown_not_embedded",
+    "measurement_unit": "physical_archive_pixels"
+  },
   "captures": [
     {"file": "SCR-20260720-uiqd.png", "sha256": "e8e65a7de2fcc86c6241ba26f6c95b47b025132df7daaf785da76a1fd01f5d59", "tags": ["inbox", "expanded_sidebar", "secondary_list", "empty_detail"]},
     {"file": "SCR-20260720-uitn.png", "sha256": "6aad94fcecb3c4e16dede4d6983285350ec97564578f6b67aeb556285255a52a", "tags": ["collapsed_sidebar", "icon_rail", "empty_detail"]},
@@ -29,20 +40,47 @@
     {"file": "SCR-20260720-ujqr.png", "sha256": "208ecb2c9f6fc1f07a83848fc678a030c5d3ed797b87fe221354da77596a6c06", "tags": ["right_detail_pane", "combobox", "nested_overlay"]},
     {"file": "SCR-20260720-ujyx.png", "sha256": "7d7c5e2740b981e124daf24f9b4925f3ac30858f78d4670493a68aadbb4cb55b", "tags": ["preferences", "theme_control", "settings_form"]}
   ],
+  "live_browser_observation": {
+    "observed_at": "2026-07-21",
+    "browser": "Google Chrome 150.0.7871.129",
+    "operating_system": "macOS 15.7.4 arm64",
+    "hardware": "Apple M3 Pro, 19327352832 bytes RAM",
+    "auth_boundary": "existing_claimed_authenticated_tab_read_only_no_storage_or_cookie_access",
+    "default_viewport": {"width": 1512, "height": 790, "device_scale_factor": 2},
+    "controlled_viewports": [
+      {"width": 1440, "height": 900, "device_scale_factor": 1},
+      {"width": 1280, "height": 800, "device_scale_factor": 1}
+    ],
+    "console_error_or_warning_count": 0,
+    "network_timing_available": false,
+    "raw_snapshot_committed": false,
+    "screenshot_or_recording_committed": false
+  },
   "observed_intent": {
     "sidebar_pointer_resizable": true,
     "authenticated_desktop_first": true,
     "dark_reference_available": true,
     "project_brand_and_domain_content_are_not_shared": true
   },
-  "missing_required_evidence": [
-    "abyss_graphite_frost_paper_representative_matrix",
-    "command_palette_interaction",
-    "keyboard_focus_sequence",
-    "sidebar_pointer_resize_recording_and_geometry",
-    "route_drawer_modal_popover_motion_recordings",
-    "loading_empty_error_stale_forbidden_session_expired_states",
-    "sanitized_accessibility_snapshots",
-    "measured_motion_and_component_geometry"
-  ]
+  "evidence_closure": [
+    {"id": "command_palette_interaction", "disposition": "partially_closed_with_waiver", "evidence": "Playwright Meta+K opened an expanded Command menu combobox/listbox; text entry, active descendant, Escape close, and 12 warm open samples were observed.", "waiver": "The available execute commands would mutate issue state or copy provider content, so no command was executed in the read-only evidence session."},
+    {"id": "keyboard_focus_sequence", "disposition": "closed", "evidence": "A sanitized 15-step Tab sequence recorded element kinds, focus geometry, and focus treatment without retaining text or account data."},
+    {"id": "sidebar_pointer_resize_recording_and_geometry", "disposition": "closed_with_derived_measurements", "evidence": "A 7 px col-resize target, expanded widths, bounded maximum, collapsed rail, live main-surface reflow, and accessible restore control were observed; no recording was retained."},
+    {"id": "sanitized_accessibility_snapshots", "disposition": "closed_with_derived_snapshot", "evidence": "Playwright accessibility snapshots proved landmark, label, combobox/listbox/dialog, skip-link, autofocus, Escape, and focus-return structure; only redacted aggregates are durable."},
+    {"id": "measured_component_geometry", "disposition": "closed", "evidence": "Archive pixel boundaries and live DOM geometry for shell, sidebar, resize target, main, command menu, popover, and modal are recorded in the terminal W19 evidence."},
+    {"id": "abyss_graphite_frost_paper_representative_matrix", "disposition": "waived", "waiver": "The Linear reference supplies dark presentation only; the four target theme IDs are Custometry-owned and cannot be derived from third-party captures."},
+    {"id": "route_drawer_modal_popover_motion_recordings", "disposition": "partially_closed_with_waiver", "evidence": "Live modal and popover structure, focus, computed transition, and automation latency were observed.", "waiver": "No sanitized drawer or route-motion recording was available, and provider screenshots or traces are forbidden from the repository."},
+    {"id": "loading_empty_error_stale_forbidden_session_expired_states", "disposition": "partially_closed_with_waiver", "evidence": "The archive contains an empty-detail state.", "waiver": "Loading, error, stale, forbidden, and session-expired states were not induced in the authenticated provider because doing so would require unsafe auth or network manipulation."},
+    {"id": "measured_motion", "disposition": "partially_closed_with_waiver", "evidence": "Command-menu and issue-popover samples plus modal computed transition were measured.", "waiver": "The selected authenticated browser surface did not provide a safe sanitized trace or network/render split; normative motion tokens remain the target."}
+  ],
+  "explicit_waivers": [
+    {"id": "W19-WVR-001", "scope": "four_theme_reference_matrix", "impact": "W21 must design the four Custometry themes from the normative token contract; W22 and W23 must provide real four-theme browser, contrast, localization, and reduced-motion evidence."},
+    {"id": "W19-WVR-002", "scope": "provider_error_and_auth_states", "impact": "W22 and W23 must use project-owned local fixtures to prove loading, error, stale, degraded, forbidden, and session-expired behavior without depending on Linear."},
+    {"id": "W19-WVR-003", "scope": "route_drawer_motion_and_history", "impact": "W20 must specify deterministic project-owned state boundaries; W22 and W23 must prove route, Back, Escape, drawer, and state continuity in a clean browser context."},
+    {"id": "W19-WVR-004", "scope": "network_api_render_performance_split", "impact": "W20 owns the benchmark seam; W22 and W23 must report client, network, API, and render samples separately on declared hardware."},
+    {"id": "W19-WVR-005", "scope": "archive_css_scale", "impact": "Archive measurements are physical pixels only. Design and runtime tokens must use the exact live CSS viewport and device-scale metadata declared by their own evidence."},
+    {"id": "W19-WVR-006", "scope": "reduced_motion_reference_run", "impact": "The live provider session reported reduced motion disabled. W22 and W23 must run project-owned reduced-motion browser checks against the normative 80 ms ceiling."},
+    {"id": "W19-WVR-007", "scope": "command_palette_execute", "impact": "The reference proves open, input, focus, and close only. W22 and W23 must execute a project-owned non-destructive command and verify result plus focus return."}
+  ],
+  "missing_required_evidence": []
 }

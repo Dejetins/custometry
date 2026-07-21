@@ -94,6 +94,7 @@
     ],
     "W12-IDENTITY-WORKSPACE-LOCAL-AUTH": [
       "packages/identity_access/**",
+      "apps/api/Dockerfile",
       "apps/api/src/custometry_api/identity/**",
       "apps/api/src/custometry_api/main.py",
       "apps/api/src/custometry_api/config.py",

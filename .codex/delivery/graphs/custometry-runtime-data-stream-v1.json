@@ -113,6 +113,7 @@
     ],
     "W13-ORGANIZATION-ACCESS-CORE": [
       "packages/identity_access/**",
+      "apps/api/Dockerfile",
       "apps/api/src/custometry_api/organization/**",
       "apps/api/src/custometry_api/main.py",
       "apps/api/src/custometry_api/config.py",

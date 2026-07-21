@@ -5,6 +5,7 @@ description = "Custometry Foundation API composition root"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "alembic==1.16.2",
+  "argon2-cffi==25.1.0",
   "fastapi==0.115.14",
   "psycopg[binary]==3.2.9",
   "pydantic-settings==2.10.1",

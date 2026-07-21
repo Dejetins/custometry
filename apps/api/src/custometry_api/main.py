@@ -4,11 +4,13 @@ from collections.abc import Awaitable, Callable
 from typing import Literal
 
 from fastapi import FastAPI, Request, Response, status
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from custometry_api.config import Settings
 from custometry_api.health import PostgreSQLReadinessProbe, ReadinessProbe
+from custometry_api.identity.router import create_identity_app
 
 
 class HealthResponse(BaseModel):
@@ -46,6 +48,13 @@ def create_app(
         docs_url=None,
         redoc_url=None,
         openapi_url="/openapi.json",
+    )
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=runtime_settings.cors_allowed_origins,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "DELETE"],
+        allow_headers=["Authorization", "Content-Type", "X-Bootstrap-Token", "X-CSRF-Token"],
     )
 
     @app.middleware("http")
@@ -85,6 +94,8 @@ def create_app(
     @app.get("/version", response_model=VersionResponse, tags=["version"])
     def version() -> VersionResponse:
         return VersionResponse(service="api", version=runtime_settings.version)
+
+    app.mount("/identity", create_identity_app(runtime_settings), name="identity")
 
     _ = (no_store_health_responses, live, ready, version)
     return app

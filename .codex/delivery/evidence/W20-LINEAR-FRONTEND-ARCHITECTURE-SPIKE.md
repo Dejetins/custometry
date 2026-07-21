@@ -22,6 +22,7 @@ executed_checks:
   - source scripts/activate-toolchain.sh && pnpm exec playwright test --config apps/web/playwright.spike.config.cjs
   - source scripts/activate-toolchain.sh && pnpm exec playwright test --config tests/performance/playwright.config.ts
   - source scripts/activate-toolchain.sh && pnpm exec playwright test --config tests/performance/playwright.config.ts --repeat-each=2 --workers=1
+  - docker build --file apps/web/Dockerfile --target web-build --tag custometry-w20-web-build-check:local .
   - source scripts/activate-toolchain.sh && uv run --locked python -m tools.custometry_quality.validate_delivery_tickets
   - source scripts/activate-toolchain.sh && uv run --locked python -m tools.check --scope local
   - git diff --check
@@ -31,6 +32,7 @@ observations:
   - Exactly abyss, graphite, frost, and paper are available through typed semantic CSS variables; all four switched without reload or server-snapshot identity changes.
   - Post-rebase browser proof passed 6 of 6 tests at 1440x900 and 1280x800 with zero console errors, page errors, or unexpected failed requests.
   - Three sequential post-rebase 30-sample performance runs passed the declared client-overhead budgets on Apple M3 Pro hardware; no long task above 50 ms was observed.
+  - The Web image build stage includes the ui-foundation manifest and source explicitly; its isolated Docker build passed after PR CI exposed the selective-copy omission.
   - The production Web bundle measured 460774 raw bytes and 143428 gzip bytes across generated JavaScript and CSS.
 ---
 
@@ -50,8 +52,9 @@ observations:
 - included: `apps/web/**`, `packages/ui-foundation/**`, exact dependency and
   lock updates, ticket-owned unit/browser/performance tests, and this evidence;
 - exclusions: no backend, API contract, persistence, blueprint, docs, Penpot,
-  deployment, migration, release, or production data change; deterministic
-  mock latency is not real API latency or release performance evidence.
+  deploy orchestration, migration, release, or production data change;
+  deterministic mock latency is not real API latency or release performance
+  evidence.
 
 ## Preflight and isolation
 
@@ -95,6 +98,7 @@ added or changed.
 | `pnpm exec playwright test --config apps/web/playwright.spike.config.cjs` | pass | Post-rebase 6/6 Chromium tests passed in 7.1 s at 1440x900 and 1280x800. Route mount/rollback/history/refresh, four-theme switch, pointer and keyboard resize/persistence, REST cancellation, SSE replacement, reserved layout, overflow, console, page-error, and failed-request boundaries were exercised. |
 | Passing browser traces | pass, ephemeral | Six `trace.zip` files were produced below ignored `apps/web/test-results/w20-browser/**`. They contain only deterministic local fixture traffic and are not tracked. Screenshots were configured failure-only and no passing screenshot was retained. |
 | `pnpm exec playwright test --config tests/performance/playwright.config.ts` | pass | Canonical post-rebase standalone 30-sample run passed in 6.2 s; two additional sequential 30-sample reruns passed in 10.8 s total. The first revalidation attempt exposed a REST/SSE mock race; phase-gating deterministic SSE traffic removed the race without changing measured application code or budgets. |
+| `docker build --file apps/web/Dockerfile --target web-build --tag custometry-w20-web-build-check:local .` | pass | PR CI run `29842728443` exposed that the selective Web image context omitted the new workspace package. Adding only the ui-foundation manifest and source `COPY` boundaries made the isolated Web build pass with the same 1,762-module production output. |
 | `uv run --locked python -m tools.custometry_quality.validate_delivery_tickets` | pass | Post-rebase `PASS validate_delivery_tickets (observed=true)` with 26 tickets and W20 accepted. |
 | `uv run --locked python -m tools.check --scope local` | pass | Post-rebase `PASS check:local (observed=true)` under Node 24.18.0, pnpm 11.13.0, uv 0.9.26, and Python 3.12.2. |
 | `git diff --check` | pass | No whitespace errors. |

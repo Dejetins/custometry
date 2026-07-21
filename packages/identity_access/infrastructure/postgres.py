@@ -78,6 +78,75 @@ class PostgresIdentityRepository:
         )
         return [str(row["role"]) for row in cursor.fetchall()]
 
+    @staticmethod
+    def _ensure_legacy_root_assignment(
+        cursor: Any,
+        *,
+        workspace_id: UUID,
+        workspace_name: str,
+        principal_id: UUID,
+        at: datetime,
+    ) -> None:
+        """Keep active memberships total while fail-closing legacy root scope."""
+
+        cursor.execute(
+            """
+            SELECT id FROM organization_units
+            WHERE workspace_id = %s AND key = 'company'
+            """,
+            (workspace_id,),
+        )
+        root = cursor.fetchone()
+        if root is None:
+            root_id = uuid4()
+            cursor.execute(
+                """
+                INSERT INTO organization_units
+                  (id, workspace_id, key, current_version, created_at, updated_at)
+                VALUES (%s, %s, 'company', 1, %s, %s)
+                """,
+                (root_id, workspace_id, at, at),
+            )
+            cursor.execute(
+                """
+                INSERT INTO organization_unit_versions
+                  (org_unit_id, version, kind, parent_org_unit_id, display_name,
+                   status, effective_from, created_by, created_at)
+                VALUES (%s, 1, 'company', NULL, %s, 'active', %s, %s, %s)
+                """,
+                (root_id, workspace_name, at, principal_id, at),
+            )
+        else:
+            root_id = UUID(str(root["id"]))
+        cursor.execute(
+            """
+            INSERT INTO organization_primary_assignments
+              (id, workspace_id, principal_id, org_unit_id, effective_from,
+               needs_department_assignment, assigned_by, created_at, updated_at)
+            SELECT %s, %s, %s, %s, %s, TRUE, %s, %s, %s
+            WHERE NOT EXISTS (
+              SELECT 1 FROM organization_primary_assignments
+              WHERE workspace_id = %s AND principal_id = %s
+                AND effective_from <= %s
+                AND (effective_to IS NULL OR effective_to > %s)
+            )
+            """,
+            (
+                uuid4(),
+                workspace_id,
+                principal_id,
+                root_id,
+                at,
+                principal_id,
+                at,
+                at,
+                workspace_id,
+                principal_id,
+                at,
+                at,
+            ),
+        )
+
     def bootstrap(
         self,
         *,
@@ -126,6 +195,13 @@ class PostgresIdentityRepository:
                     VALUES (%s, %s, 'workspace_owner', %s, %s, %s)
                     """,
                     (workspace_id, principal_id, principal_id, at, at),
+                )
+                self._ensure_legacy_root_assignment(
+                    cursor,
+                    workspace_id=workspace_id,
+                    workspace_name=workspace_name,
+                    principal_id=principal_id,
+                    at=at,
                 )
                 cursor.execute(
                     """
@@ -180,6 +256,13 @@ class PostgresIdentityRepository:
                         VALUES (%s, %s, 'workspace_owner', %s, %s, %s)
                         """,
                         (workspace_id, actor.principal_id, actor.principal_id, at, at),
+                    )
+                    self._ensure_legacy_root_assignment(
+                        cursor,
+                        workspace_id=workspace_id,
+                        workspace_name=name,
+                        principal_id=actor.principal_id,
+                        at=at,
                     )
                     self._audit(
                         cursor,
@@ -677,8 +760,11 @@ class PostgresIdentityRepository:
             with connection.cursor(row_factory=dict_row) as cursor:
                 cursor.execute(
                     """
-                    SELECT id, workspace_id, email, roles, expires_at, accepted_at, revoked_at
-                    FROM identity_invitations WHERE token_hash = %s FOR UPDATE
+                    SELECT i.id, i.workspace_id, i.email, i.roles, i.expires_at,
+                           i.accepted_at, i.revoked_at, w.name AS workspace_name
+                    FROM identity_invitations AS i
+                    JOIN identity_workspaces AS w ON w.id = i.workspace_id
+                    WHERE i.token_hash = %s FOR UPDATE OF i
                     """,
                     (token_hash,),
                 )
@@ -720,6 +806,13 @@ class PostgresIdentityRepository:
                         """,
                         (row["workspace_id"], principal_id, role, at, at),
                     )
+                self._ensure_legacy_root_assignment(
+                    cursor,
+                    workspace_id=UUID(str(row["workspace_id"])),
+                    workspace_name=str(row["workspace_name"]),
+                    principal_id=principal_id,
+                    at=at,
+                )
                 cursor.execute(
                     """
                     UPDATE identity_invitations SET accepted_at = %s, updated_at = %s

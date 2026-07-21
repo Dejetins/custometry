@@ -33,6 +33,7 @@ WORKDIR /app
 COPY --from=build --chown=10001:10001 /app/.venv /app/.venv
 COPY --chown=10001:10001 packages/identity_access /app/.venv/lib/python3.12/site-packages/packages/identity_access
 COPY --chown=10001:10001 packages/contracts/identity /app/.venv/lib/python3.12/site-packages/packages/contracts/identity
+COPY --chown=10001:10001 packages/contracts/organization /app/.venv/lib/python3.12/site-packages/packages/contracts/organization
 COPY --chown=10001:10001 migrations /app/migrations
 
 USER 10001:10001

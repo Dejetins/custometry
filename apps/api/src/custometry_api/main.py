@@ -11,6 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from custometry_api.config import Settings
 from custometry_api.health import PostgreSQLReadinessProbe, ReadinessProbe
 from custometry_api.identity.router import create_identity_app
+from custometry_api.organization.router import create_organization_app
 
 
 class HealthResponse(BaseModel):
@@ -96,6 +97,11 @@ def create_app(
         return VersionResponse(service="api", version=runtime_settings.version)
 
     app.mount("/identity", create_identity_app(runtime_settings), name="identity")
+    app.mount(
+        "/organization",
+        create_organization_app(runtime_settings),
+        name="organization",
+    )
 
     _ = (no_store_health_responses, live, ready, version)
     return app

@@ -24,6 +24,8 @@ import { Link, matchPath, useLocation } from "react-router-dom";
 
 import { routeRegistry, type RouteDefinition } from "@custometry/contracts";
 
+import { ArchitectureSpike } from "./architecture-spike/ArchitectureSpike";
+
 const workspaceKey = "northwind-retail";
 
 const navigation = [
@@ -137,7 +139,13 @@ function HelpSurface(): React.JSX.Element {
   );
 }
 
-function PlannedSurface({ route }: { readonly route: RouteDefinition }): React.JSX.Element {
+function PlannedSurface({
+  route,
+  spikeHref,
+}: {
+  readonly route: RouteDefinition;
+  readonly spikeHref?: string;
+}): React.JSX.Element {
   const { t } = useTranslation();
   const title = t(route.title_key, { ns: "routeTitles" });
   return (
@@ -150,6 +158,11 @@ function PlannedSurface({ route }: { readonly route: RouteDefinition }): React.J
         <span className="planned-badge">{t("plannedSurface")}</span>
       </div>
       <p>{t("plannedSurfaceDescription")}</p>
+      {spikeHref && (
+        <Link className="primary-button" data-testid="open-architecture-spike" to={spikeHref}>
+          Open frontend architecture spike
+        </Link>
+      )}
       <dl className="route-contract">
         <div><dt>{t("canonicalRoute")}</dt><dd>{route.path}</dd></div>
         <div><dt>{t("lifecycle")}</dt><dd>{route.status}</dd></div>
@@ -178,6 +191,8 @@ export function App(): React.JSX.Element {
   const [apiStatus, setApiStatus] = useState<ApiStatus>({ label: "checking" });
   const mobileMenuRef = useRef<HTMLDialogElement>(null);
   const route = useMemo(() => findRoute(location.pathname), [location.pathname]);
+  const architectureSpikeActive =
+    route?.id === "UI-AN-003" && new URLSearchParams(location.search).get("view") === "linear-spike";
 
   useEffect(() => {
     const controller = new AbortController();
@@ -222,10 +237,19 @@ export function App(): React.JSX.Element {
     closeMobileMenu();
   }, [location.pathname]);
 
+  if (architectureSpikeActive) {
+    return <ArchitectureSpike fallbackHref={location.pathname} />;
+  }
+
   let content: React.JSX.Element;
   if (location.pathname === "/") content = <FoundationHome />;
   else if (location.pathname === "/help") content = <HelpSurface />;
-  else if (route) content = <PlannedSurface route={route} />;
+  else if (route) {
+    const spikeHref = route.id === "UI-AN-003"
+      ? `${location.pathname}?view=linear-spike`
+      : undefined;
+    content = <PlannedSurface route={route} spikeHref={spikeHref} />;
+  }
   else content = <NotFound />;
 
   return (

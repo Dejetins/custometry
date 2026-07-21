@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.9.4-draft
 ticket_id: W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE
-status: draft
+status: accepted
 workstream_id: W20
 summary: Prove the React, MobX, TanStack Query, styled-components, semantic-token, typed REST/SSE, reversible route-boundary, and performance-harness architecture before committing the full Custometry application shell.
 requirement_ids: [WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-003, WEB-ARCH-004, WEB-ARCH-006, WEB-PERF-001, WEB-PERF-002, WEB-PERF-003, WEB-PERF-004, WEB-PERF-005, WEB-PERF-006, THEME-001, THEME-005]
@@ -62,7 +62,7 @@ validation:
   proof_boundary: browser-proven-custometry-frontend-architecture-and-local-performance-spike
   evidence_target: .codex/delivery/evidence/W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE.md]
 ---
 
 # Outcome

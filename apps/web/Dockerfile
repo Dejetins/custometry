@@ -8,11 +8,13 @@ COPY apps/web/package.json apps/web/package.json
 COPY packages/contracts/package.json packages/contracts/package.json
 COPY packages/localization/package.json packages/localization/package.json
 COPY packages/chart_compiler_ts/package.json packages/chart_compiler_ts/package.json
+COPY packages/ui-foundation/package.json packages/ui-foundation/package.json
 RUN pnpm install --frozen-lockfile
 COPY apps/web apps/web
 COPY packages/contracts packages/contracts
 COPY packages/localization packages/localization
 COPY packages/chart_compiler_ts packages/chart_compiler_ts
+COPY packages/ui-foundation packages/ui-foundation
 RUN pnpm --filter @custometry/web build
 
 FROM ghcr.io/astral-sh/uv:0.9.26-python3.12-bookworm-slim@sha256:add251a8fbfa14ff5e115adf93cb113c7b58c57bc84f0992164f5b6631b3451f AS docs-build

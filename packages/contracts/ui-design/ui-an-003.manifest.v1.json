@@ -1,0 +1,43 @@
+{
+  "$schema": "./screen-manifest.schema.json",
+  "schema_version": "custometry.ui-design.screen-manifest/v1",
+  "manifest_version": "1.0.0",
+  "surface_id": "UI-AN-003",
+  "route": "/w/:workspaceKey/analytics/sales",
+  "product_state": "success",
+  "role": "AN",
+  "permissions": ["analysis.read"],
+  "allowed_actions": ["analysis.run", "analysis.manage", "export.create", "share.link", "report.email"],
+  "locale": "en",
+  "theme": "graphite",
+  "viewport": {"width": 1440, "height": 900},
+  "contracts": {
+    "token_version": "1.0.0",
+    "component_registry_version": "1.0.0",
+    "icon_version": "1.0.0",
+    "renderer_version": "1.0.0"
+  },
+  "target": {
+    "library_file_key": "hX3nQOtcSdCc97uv26m9eG",
+    "library_page_id": "0:1",
+    "product_file_key": "MXfxuhSFpIczbUtFmOSyPp",
+    "product_page_id": "0:1",
+    "candidate_id": "UI-AN-003--success--graphite--v1",
+    "mutation_policy": "isolated-candidate-only"
+  },
+  "required_regions": [
+    "shell", "sidebar", "page-header", "context-bar", "kpi-strip",
+    "chart-frame", "channel-table", "context-inspector", "result-trust"
+  ],
+  "regions": [
+    {"region_id": "shell", "instance_id": "shell", "component_id": "shell/app", "variant": "desktop-context-open", "props": {"workspace": "Northwind Retail", "contextVisible": true}, "bindings": {"fills": "semantic", "text": "styles"}},
+    {"region_id": "sidebar", "instance_id": "sidebar", "component_id": "navigation/sidebar", "variant": "expanded", "props": {"workspace": "Northwind Retail", "activeItem": "Sales", "searchCount": 1}, "action_id": "analysis.run", "bindings": {"fills": "semantic", "text": "styles", "icons": "instances"}},
+    {"region_id": "page-header", "instance_id": "page-header", "component_id": "page/header", "variant": "compact", "props": {"title": "Sales overview", "breadcrumb": "Analytics / Sales", "notifications": {"unread": true}}, "action_id": "analysis.run", "bindings": {"fills": "semantic", "text": "styles", "icons": "instances"}},
+    {"region_id": "kpi-strip", "instance_id": "kpi-strip", "component_id": "kpi/rail", "variant": "four-cell-compact", "props": {"metrics": [{"label": "Revenue", "value": "₽2.48B", "delta": "+12.4%"}, {"label": "Orders", "value": "1.84M", "delta": "+8.7%"}, {"label": "AOV", "value": "₽1,348", "delta": "+3.4%"}, {"label": "Margin", "value": "31.6%", "delta": "−0.8 pp"}]}, "bindings": {"fills": "semantic", "text": "styles"}},
+    {"region_id": "context-bar", "instance_id": "chart-toolbar", "component_id": "chart/toolbar", "variant": "chart-integrated", "props": {"period": "Monthly", "view": "Chart", "viewStates": {"Chart": "active", "Data": "default", "hover": true}, "chartType": "line", "filterCount": 0, "savedView": "Save view", "fullscreen": true}, "action_id": "analysis.manage", "bindings": {"fills": "semantic", "text": "styles", "icons": "instances"}},
+    {"region_id": "chart-frame", "instance_id": "revenue-trend", "component_id": "chart/frame", "variant": "line-comparison", "props": {"title": "Revenue trend", "series": "Revenue", "comparison": "Revenue (LY)", "period": "Jan–Jun 2026", "locale": "en"}, "action_id": "analysis.run", "bindings": {"fills": "semantic", "text": "styles", "dataSeries": "semantic"}},
+    {"region_id": "channel-table", "instance_id": "channel-table", "component_id": "table/channel", "variant": "compact-four-metric", "props": {"locale": "en", "rows": ["Online", "Mobile app", "In-store", "Total"], "actionOrder": ["overflow", "export"]}, "action_id": "export.create", "bindings": {"fills": "semantic", "text": "styles", "icons": "instances"}},
+    {"region_id": "context-inspector", "instance_id": "context-inspector", "component_id": "context/inspector", "variant": "open", "props": {"sections": ["Overview", "Revenue trend", "By channel"], "filters": {"Dataset": "Retail sales v24", "Period": "Jan–Jun 2026", "Comparison": "vs LY", "Stores": "All stores", "Channels": "All channels", "Audience": "Executive"}, "trust": "Trusted", "hideable": true, "contextActions": true, "shareActions": ["Copy link", "Send by email"]}, "action_id": "analysis.run", "bindings": {"fills": "semantic", "text": "styles", "icons": "instances"}},
+    {"region_id": "result-trust", "instance_id": "result-trust", "component_id": "trust/trigger", "variant": "trusted-compact", "props": {"status": "trusted", "label": "Result trust"}, "action_id": "analysis.run", "bindings": {"fills": "semantic", "text": "styles", "icons": "instances"}}
+  ]
+}

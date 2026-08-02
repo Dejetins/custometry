@@ -21,6 +21,7 @@
 - [Custometry Runtime, Network, and Installation](architecture/runtime-network-installation.md)
 - [Custometry - Target System Design](architecture/system-design.md)
 - [Custometry Quality Tooling and Gates](architecture/tooling-gates.md)
+- [Custometry HTML-first UI prototyping and reuse plan v1](architecture/ui/custometry-contract-compiled-ui-prototyping-plan-v1.md)
 - [Linear workspace UI transition standard v1](architecture/ui/linear-workspace-ui-transition-standard-v1.md)
 
 ## contracts

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://custometry.local/contracts/ui-design/render-receipt.schema.json",
+  "title": "Custometry Figma render receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "candidate_id", "manifest_digest", "renderer_version",
+    "target", "wrappers", "instances", "detached_instance_count", "binding_audit"
+  ],
+  "properties": {
+    "schema_version": {"const": "custometry.ui-design.render-receipt/v1"},
+    "candidate_id": {"type": "string"},
+    "manifest_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "renderer_version": {"type": "string"},
+    "target": {"type": "object"},
+    "wrappers": {"type": "array", "items": {"type": "string"}},
+    "instances": {"type": "array", "items": {"type": "object"}},
+    "detached_instance_count": {"const": 0},
+    "binding_audit": {"type": "object"}
+  }
+}

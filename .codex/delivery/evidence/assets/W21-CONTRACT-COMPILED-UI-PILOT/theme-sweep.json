@@ -1,0 +1,13 @@
+{
+  "schema_version": "custometry.ui-design.theme-sweep/v1",
+  "source_candidate_node_id": "40:536",
+  "collection_key": "9d940eb036cbfd021501a403ebf72a5fd3131e6e",
+  "modes": [
+    {"name": "abyss", "mode_id": "4:0", "node_id": "42:859", "region_instance_count": 9, "detached_instance_count": 0, "control_color": "#142533", "screenshot": "theme-abyss.png", "sha256": "ae667d828d8fc072ac72e2940fb17fabe430a53d6cb7b379d22ae590f1f3211e"},
+    {"name": "graphite", "mode_id": "4:1", "node_id": "42:1194", "region_instance_count": 9, "detached_instance_count": 0, "control_color": "#1B2C3B", "screenshot": "theme-graphite.png", "sha256": "c721dd7c24bfcde40c9bff71a8be42d51acb535eeb2eff9860a09d5f16b7e0a1"},
+    {"name": "frost", "mode_id": "4:2", "node_id": "42:1529", "region_instance_count": 9, "detached_instance_count": 0, "control_color": "#DDE8ED", "screenshot": "theme-frost.png", "sha256": "a610a948a0e6679e92a6f427a47316c0e834168a1391bde62f06fd4addb96855"},
+    {"name": "paper", "mode_id": "4:3", "node_id": "42:1864", "region_instance_count": 9, "detached_instance_count": 0, "control_color": "#E4E9EC", "screenshot": "theme-paper.png", "sha256": "ceec193add1b4c4589d253936ebabf544e6db4f5c2f8c9e30031e32e18958a01"}
+  ],
+  "scope": "semantic-token compatibility only; no separate aesthetic acceptance",
+  "status": "passed"
+}

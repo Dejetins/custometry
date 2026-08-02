@@ -25,7 +25,7 @@ Skill routing:
 - Concrete browser/frontend defect -> root-cause-debugging.
 - Browser-visible default/API compatibility -> contract-impact-analysis.
 - Real-browser verification -> browser-qa-evidence; add playwright only for terminal-driven browser mechanics.
-- Product Design and Figma skills activate only on their explicit section-7 triggers.
+- Product Design skills activate only on their explicit section-7 triggers. Current Custometry UI delivery is HTML-first and uses repository-owned components plus browser evidence.
 - Diff risk or ship readiness -> production-risk-review or pre-ship-gate in read-only mode.
 
 Result and evidence:

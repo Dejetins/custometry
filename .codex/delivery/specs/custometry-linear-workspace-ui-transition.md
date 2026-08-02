@@ -10,66 +10,77 @@ status: accepted
 
 ## Problem and outcome
 
-Custometry has an accepted and extensive Penpot `0.6.3` baseline, executable
-route contracts, and a provisional React foundation ticket, but those artifacts
-precede the decision to adopt the shared Linear-workspace frontend baseline.
-Executing the old foundation ticket would encode a single-theme Frost shell and
-would make the later replatform more expensive.
+Custometry needs an authenticated Web application with measurable Linear-like
+visual and behavioral fidelity while retaining Custometry routes, B2C retail
+semantics, permissions, analytical contracts, branding, ECharts boundary,
+REST/SSE APIs, and all backend delivery plans.
 
-The target is an authenticated Custometry application with maximum measurable
-Linear-like visual and behavioral fidelity while retaining Custometry routes,
-B2C retail semantics, permissions, analytical contracts, branding, ECharts
-boundary, REST/SSE APIs, and all backend delivery plans.
+The accepted W27 responsive HTML candidate proves the first Sales visual and
+interaction direction. The remaining transition must turn that candidate into
+one reusable repository-owned UI foundation without copying screen markup or
+introducing a second design source.
 
 ## Accepted decisions
 
 - Only the Web UI is replatformed. FastAPI, PostgreSQL, Valkey, workers,
   artifacts, REST/SSE, domain boundaries, and W11-W17 remain unchanged.
 - The frontend baseline is React + TypeScript + Vite + MobX + TanStack Query +
-  styled-components + CSS semantic tokens.
+  styled-components + semantic CSS tokens.
 - The four shipped base themes are exactly `abyss`, `graphite`, `frost`, and
   `paper`. `graphite` is the UI default; `paper` is the static render default.
 - Inter Variable is self-hosted and versioned. Custometry brand assets and
   white-label overrides remain project-owned.
-- The accepted W10 Penpot inventory is historical evidence and the route/surface
-  identity baseline. It is not evidence of the new design or browser runtime.
-- Penpot vNext reuses stable Custometry route IDs and product requirements but
-  replaces foundations, shell, theme matrix, density, motion, and interaction
-  grammar under an explicitly new accepted version.
+- Historical design inventories and earlier editor artifacts are truthful
+  evidence only. They are not current generation or implementation inputs.
+- W27's accepted responsive HTML candidate is the sole visual source for the
+  first reusable `UI-AN-003` foundation slice.
+- Current UI delivery is code-first and slice-first: product contracts → typed
+  components and manifests → responsive browser candidate → browser validation
+  → explicit product-owner acceptance → production integration.
+- Reusable decisions are promoted into `packages/ui-foundation`, stable code
+  identities, versioned component/icon/token registries, screen manifests, and
+  a browser-rendered catalog.
+- Catalog, review screens, and product routes render the same component
+  implementation. Screenshots remain evidence rather than downstream source.
 - The first runtime golden slice is Sales Analytics with route-backed
   Focus/Explore. It must exercise filters, period and `vs LY`, compact metric
   groups, chart/table switching, detail surfaces, Result Trust, keyboard,
   history, four themes, and real API projections.
 - Migration is route-bounded and reversible. The existing shell remains a
   fallback until browser and performance evidence accepts the replacement.
+- Product-owner decisions place Search and Notifications in the sidebar utility
+  area, Help and the user menu in its footer, retain Products as a dedicated
+  Analytics route, require expanded/collapsed/hidden/resizable sidebar states,
+  and combine dataset/version with trust/freshness in one result-level trigger.
 
 ## Current authority and supersession
 
-The following remain authoritative inputs:
+Authoritative inputs are:
 
 - `custometry-technical-blueprint-ru.md` and its human mirror;
-- `custometry-ui-blueprint-ru.md` for route inventory and domain UX after its
-  `0.7.0` transition delta;
+- `custometry-ui-blueprint-ru.md`;
 - executable route and surface registries;
-- accepted W03-W10 evidence;
+- accepted W03-W10 historical evidence;
+- W27 accepted HTML/browser evidence;
+- `docs/architecture/ui/custometry-contract-compiled-ui-prototyping-plan-v1.md`;
 - existing API and backend delivery graph.
 
-`W18-WEB-FOUNDATIONS-APPLICATION-SHELL` is superseded because its Frost-only
-foundation and old design guard conflict with this accepted transition. Its
-scope is replaced by the W19-W23 graph. Supersession does not claim that W18 was
-implemented or accepted.
+`W18-WEB-FOUNDATIONS-APPLICATION-SHELL` remains superseded. The blocked W28
+external synchronization unit is also superseded by the accepted HTML-first
+decision. Neither ticket is an active delivery dependency.
 
 ## Compatibility
 
 | Surface | Classification | Decision |
-|---|---|---|
+| --- | --- | --- |
 | Backend/API/persistence | `none` | Existing plans and runtime contracts remain authoritative. |
-| Frontend dependencies | `breaking-change` before first stable Web release | Add MobX and styled-components; local state ownership changes. |
-| Theme IDs | `breaking-change` before first stable consumer | `slate` and `sand` are removed; no runtime migration is required because no stable report/theme consumer exists yet. |
-| Routes and stable UI IDs | `compatible-change` | Identity is preserved; visual composition and shell change. |
-| Penpot | `new accepted target required` | W10 remains evidence; vNext must be separately accepted. |
+| Frontend dependencies | `breaking-change` before first stable Web release | MobX and styled-components remain the accepted baseline. |
+| Theme IDs | `breaking-change` before first stable consumer | Exactly four current IDs remain. |
+| Routes and stable UI IDs | `none` | Identity is preserved. |
+| Accepted Sales browser behavior | `compatible-change` | Componentized rebuild must preserve the W27 visual and interaction boundary. |
+| UI component/render contracts | `breaking-change` before stable consumer | Repository code identities and DOM receipts replace legacy external identities. |
 | Browser behavior | `breaking-change with fallback` | Route-level cutover and rollback protect migration. |
-| Reports/charts | `compatible contract change` | ChartSpec remains theme-neutral; renderer allows the four accepted IDs. |
+| Reports/charts | `compatible-change` | ChartSpec remains theme-neutral; the renderer supports the four accepted IDs. |
 
 ## Delivery graph
 
@@ -77,38 +88,36 @@ The executable graph is
 `.codex/delivery/graphs/custometry-linear-workspace-ui-transition-v1.json`.
 One ready ticket is one execution unit.
 
-1. W19 completes missing reference, motion, geometry, keyboard, accessibility,
-   and four-theme evidence without changing product code or Penpot.
-2. W20 proves the frontend architecture, state boundaries, reversible mount,
-   typed REST/SSE adapters, and benchmark harness.
-3. W21 creates and accepts Penpot vNext foundations and representative states.
-4. W22 implements the production application shell behind the reversible route
-   boundary and collects browser/performance evidence.
-5. W23 implements the real Sales Analytics Focus/Explore golden slice.
+1. W19 completes reference, motion, geometry, keyboard, accessibility, and
+   four-theme evidence.
+2. W20 proves frontend architecture, state boundaries, reversible mount, typed
+   REST/SSE adapters, and benchmark harness.
+3. W21 records the historical contract-compiled UI process pilot.
+4. W24-W27 produce and explicitly accept the responsive `UI-AN-003` HTML
+   candidate.
+5. W29 extracts the accepted tokens/components, establishes the registry and
+   catalog, rebuilds Sales Overview, proves browser equivalence, and renders
+   Focus/Explore as a second reuse composition.
+6. W22 consumes the accepted W29 code foundation to implement the production
+   application shell behind the reversible route boundary.
+7. W23 connects the real Sales Analytics Focus/Explore golden slice.
 
-Later route-cluster tickets are created from measured W23 results rather than
-prewriting speculative implementation instructions. W11-W17 may continue in
-parallel whenever path ownership is disjoint.
+Later screens follow the same contract → component/manifest → browser candidate
+→ browser QA → product acceptance sequence. The shared foundation grows only
+through accepted vertical slices. W11-W17 may continue in parallel whenever
+path ownership is disjoint.
 
-## Reference and proof boundary
+## Proof boundary
 
-The shared standard and manifest are under `docs/architecture/ui/`. The current
-archive is a sufficient dark-shell input, not complete acceptance evidence.
-W19 must close or explicitly waive every `missing_required_evidence` item before
-W20 or Penpot vNext starts.
-
-Penpot acceptance cannot prove browser behavior. Source tests cannot prove
-performance. W22 and W23 therefore require real-browser traces and measurements
-on declared local hardware, separating client overhead, REST/SSE latency, and
-render time.
+The W29 boundary is repository components, schemas, manifests, catalog output,
+DOM provenance, and real-browser evidence. Source tests do not prove responsive
+layout, accessibility, visual equivalence, or performance. W22 and W23 require
+their own browser and performance evidence on declared local hardware.
 
 ## Non-goals
 
-- No Node.js backend, GraphQL, Temporal, WebSocket sync framework, cloud
-  platform, or public-site redesign.
-- No change to Custometry domain scope, roles, data contracts, computation,
-  analytics methodology, reports, email, XLSX, or chart semantics.
-- No copying Linear branding, text, source code, proprietary assets, or product
-  entities.
-- No deletion of accepted evidence or silent mutation of historical Penpot
-  claims.
+- No backend, API, persistence, migration, or deployment change.
+- No speculative all-route component library.
+- No copied screen markup as a reuse strategy.
+- No claim that HTML review proves production data, authorization, performance,
+  recovery, release, or deployment readiness.

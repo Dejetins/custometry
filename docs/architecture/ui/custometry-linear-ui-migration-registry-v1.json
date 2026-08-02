@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "registry_id": "CUSTOMETRY-LINEAR-UI-MIGRATION-V1",
-  "status": "accepted_preparation",
+  "status": "accepted_html_first_transition",
   "shared_standard": "docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md",
   "reference_manifest": "docs/architecture/ui/linear-workspace-reference-manifest-v1.json",
   "project_spec": ".codex/delivery/specs/custometry-linear-workspace-ui-transition.md",
@@ -9,12 +9,17 @@
     "routes": "packages/contracts/routes/ui-routes.json",
     "route_contracts": "packages/contracts/routes/ui-route-contracts.json",
     "surface_contracts": "packages/contracts/routes/ui-surface-contracts.json",
-    "accepted_penpot_evidence": ".codex/delivery/evidence/W10-PENPOT-093-ORGANIZATION-PEOPLE-DELTA-IMPLEMENTATION.md",
-    "accepted_inventory": {"routes": 116, "overlays": 25, "system_surfaces": 5}
+    "accepted_historical_evidence": ".codex/delivery/evidence/W10-PENPOT-093-ORGANIZATION-PEOPLE-DELTA-IMPLEMENTATION.md",
+    "accepted_historical_inventory": {"routes": 116, "overlays": 25, "system_surfaces": 5},
+    "accepted_current_visual_source_ticket": "W27-UI-AN-003-HTML-CONTRACT-COMPLETION",
+    "accepted_current_visual_source_url": "http://127.0.0.1:5173/w/northwind-retail/analytics/sales?view=html-prototype",
+    "accepted_current_visual_source_path": "apps/web/src/sales-overview-prototype/**"
   },
   "target": {
     "scope": "authenticated_application_only",
+    "ui_source": "repository_html_react_components",
     "frontend": ["react", "typescript", "vite", "mobx", "tanstack_query", "styled_components", "css_custom_properties"],
+    "design_contracts": ["semantic_tokens", "icon_registry", "component_registry", "screen_manifests", "browser_component_catalog", "browser_qa_receipts"],
     "themes": ["abyss", "graphite", "frost", "paper"],
     "backend_change": "none",
     "transport": ["rest", "sse"],
@@ -22,15 +27,19 @@
     "migration_mode": "route_bounded_reversible_strangler"
   },
   "clusters": [
-    {"cluster_id": "reference", "order": 1, "ticket": "W19-LINEAR-REFERENCE-COMPLETION", "state": "ready"},
-    {"cluster_id": "architecture_spike", "order": 2, "ticket": "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "state": "draft"},
-    {"cluster_id": "penpot_vnext", "order": 3, "ticket": "W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS", "state": "draft"},
-    {"cluster_id": "application_shell", "order": 4, "ticket": "W22-WEB-LINEAR-APPLICATION-SHELL", "state": "draft"},
-    {"cluster_id": "sales_analytics_golden_slice", "order": 5, "ticket": "W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE", "state": "draft"}
+    {"cluster_id": "reference", "order": 1, "ticket": "W19-LINEAR-REFERENCE-COMPLETION", "state": "accepted"},
+    {"cluster_id": "architecture_spike", "order": 2, "ticket": "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "state": "accepted"},
+    {"cluster_id": "historical_contract_pilot", "order": 3, "ticket": "W21-CONTRACT-COMPILED-UI-PILOT", "state": "accepted_historical"},
+    {"cluster_id": "html_candidate_acceptance", "order": 4, "ticket": "W27-UI-AN-003-HTML-CONTRACT-COMPLETION", "state": "accepted"},
+    {"cluster_id": "html_first_ui_foundation", "order": 5, "ticket": "W29-HTML-FIRST-UI-FOUNDATION", "state": "ready"},
+    {"cluster_id": "application_shell", "order": 6, "ticket": "W22-WEB-LINEAR-APPLICATION-SHELL", "state": "draft"},
+    {"cluster_id": "sales_analytics_golden_slice", "order": 7, "ticket": "W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE", "state": "draft"}
   ],
-  "legacy": {
+  "historical_policy": {
     "superseded_ticket": "W18-WEB-FOUNDATIONS-APPLICATION-SHELL",
-    "accepted_evidence_policy": "retain",
-    "penpot_w10_policy": "historical_identity_and_requirement_input_not_vnext_acceptance"
+    "accepted_evidence_policy": "retain_immutable",
+    "historical_design_policy": "identity_and_requirement_input_not_current_acceptance",
+    "unpublished_artifact_policy": "retain_as_history_not_operational_input",
+    "active_delivery_policy": "accepted_html_to_code_components_to_registry_manifests_to_browser_proof_to_production"
   }
 }

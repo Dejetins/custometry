@@ -33,9 +33,9 @@ repair_policy:
   retest_invalidated_evidence: true
 validation:
   depth: tests
-  # For Penpot source inspection, writes, restore, or visual proof, use
-  # [penpot-design-delivery]. Name complete target-frame and focused changed-region
-  # inspection in commands; do not use product-design:audit as a proxy.
+  # Historical design-tool artifacts are evidence only. For screenshot-led
+  # UX/design audit, use product-design:audit. For browser runtime, component
+  # catalog, or HTML candidate proof, use browser-qa-evidence.
   # Add browser-qa-evidence only when a browser surface is in scope.
   proof_skills: []
   commands: [<focused-command>]

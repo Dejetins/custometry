@@ -1,0 +1,5 @@
+{
+  "artifact": "manifest",
+  "mutation": {"op": "delete", "path": ["regions", 8]},
+  "expected_code": "missing-region"
+}

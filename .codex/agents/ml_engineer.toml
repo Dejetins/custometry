@@ -25,7 +25,7 @@ Skill routing:
 - Concrete forecast defect, leakage regression, failure, or flake -> root-cause-debugging.
 - Python lint/type/test or CI-equivalent evidence -> backend-quality-gates.
 - Model protocol, forecast/result DTO, registry/persisted schema, config/default, or identity compatibility -> contract-impact-analysis.
-- Performance/memory/latency/throughput claim -> backend-performance-evidence. Add numba only after it identifies an eligible measured NumPy-heavy CPU kernel and its runtime gate passes.
+- Performance/memory/latency/throughput claim -> backend-performance-evidence. Use a dedicated numba skill only if the current Codex skill list exposes it and a measured NumPy-heavy CPU kernel is eligible.
 - Cross-domain target architecture, new topology, distributed execution, or post-v1 boundary change -> architect using architecture-design.
 
 Result and evidence:

@@ -1,0 +1,68 @@
+{
+  "ticket_id": "W28-UI-AN-003-FIGMA-SYNCHRONIZATION",
+  "file_key": "hX3nQOtcSdCc97uv26m9eG",
+  "page_id": "0:1",
+  "before": {
+    "top_level_count": 44,
+    "local_variable_count": 42,
+    "local_variable_collection_count": 2,
+    "local_text_style_count": 5,
+    "registered_w21_component_count": 16,
+    "registered_w21_icon_count": 28
+  },
+  "after": {
+    "top_level_count": 95,
+    "w28_variable_count": 53,
+    "w28_text_style_count": 6,
+    "w28_icon_component_count": 28,
+    "w28_foundation_component_count": 23
+  },
+  "collections": [
+    {"id": "VariableCollectionId:54:231", "key": "68dfb7a52a3babbbe41be541e375281099dd64f7", "name": "Custometry W28 / Theme v1", "variable_count": 18, "modes": ["abyss", "graphite", "frost", "paper"]},
+    {"id": "VariableCollectionId:54:250", "key": "4fcf7378a4bd9cba066b7a9fc412d879edfe6c07", "name": "Custometry W28 / Foundation v1", "variable_count": 35, "modes": ["default"]}
+  ],
+  "text_styles": [
+    {"key": "6ff5789e08438369a19e12a03b12c3e0782586eb", "name": "W28/Text/Page title", "font": "Inter Semi Bold", "size": 24, "line": 32},
+    {"key": "f99c01793ceb319bf453ef5fb3de938061879982", "name": "W28/Text/Heading", "font": "Inter Semi Bold", "size": 16, "line": 24},
+    {"key": "9cbdae5fd7eeba39e335bf33affbc345f356c629", "name": "W28/Text/Body strong", "font": "Inter Semi Bold", "size": 14, "line": 20},
+    {"key": "4ec4284c7af46aa89135ec028d5074e80186252f", "name": "W28/Text/Body", "font": "Inter Regular", "size": 14, "line": 20},
+    {"key": "cd1e50f95cb8abd7c2276e35ec032bf92de789e0", "name": "W28/Text/Small", "font": "Inter Regular", "size": 12, "line": 16},
+    {"key": "0ef0a691c4942745201dc79259f9516ec9756cdf", "name": "W28/Text/Micro", "font": "Inter Regular", "size": 11, "line": 16}
+  ],
+  "foundation_components": [
+    ["55:231", "8090dde41e79f66f717d1a408e31128f7ddfa202", "W28/Control/Icon Button/Default/v1", 32, 32],
+    ["55:238", "32f042424f88751eee273b94e29aff31a6c934f8", "W28/Control/Icon Button/Quiet/v1", 32, 32],
+    ["55:244", "bd5b1593141157b39f9104b0c01cbf889465f303", "W28/Control/Icon Button/Focus/v1", 36, 36],
+    ["55:248", "d5fbc388bd098e1a894e95faef34063b3a4f8a76", "W28/Control/Segmented/Chart/v1", 72, 32],
+    ["55:258", "ab496b639b3181318d2c2eb12c9192dc54ca8813", "W28/Control/Segmented/Comparison/v1", 72, 32],
+    ["55:262", "382fdaa96727ba2de286e5db50553ec0198a037f", "W28/Navigation/Nav Item/Default/v1", 208, 32],
+    ["55:270", "dd712ca900897b55a66fda584f84633dba27986c", "W28/Navigation/Nav Item/Selected/v1", 208, 32],
+    ["55:277", "4fe9b4e4f64c0775b2093f3d99b112b68d635e05", "W28/Navigation/Utility Row/v1", 208, 32],
+    ["55:284", "f2a01d8755ae7ddfb4d1ea0a463e9f4d5d4c6d38", "W28/Navigation/Sidebar Hidden Restore/v1", 32, 32],
+    ["55:288", "fd4cbd832ef1c7636a00cead4f35e4726a74e999", "W28/Navigation/Sidebar Expanded/v1", 224, 876],
+    ["55:409", "cbdbf1530966f5eea3b95178e65b840b3baf2c89", "W28/Navigation/Sidebar Resized/v1", 232, 876],
+    ["55:445", "ee707f031463078038cc2ef512dd1aaf4d483793", "W28/Navigation/Sidebar Collapsed/v1", 64, 876],
+    ["55:528", "cd36d6f7a4f6c306eadee469f6a8dd1772ba77f6", "W28/KPI/Rail/v1", 900, 72],
+    ["55:544", "a0d547ba088c79a6b9e9c941db0963ab7f8e87a5", "W28/Chart/Toolbar/v1", 500, 32],
+    ["55:581", "9384bdfa1fcaa60771ac5f591d3b7e22e3a18705", "W28/Chart/Container/v1", 900, 390],
+    ["55:641", "979a81673a2d0e7a40e502d0722a1a68dd4aee8d", "W28/Chart/Data Table/v1", 900, 390],
+    ["55:702", "c127562f645fa8984793cd58e5505c0f2e24ca45", "W28/Table/Breakdown/v1", 900, 296],
+    ["55:780", "e27e0cc1df48f7a6b685c5ed02055b3e9e584ca9", "W28/Context/Filter Row/v1", 216, 32],
+    ["55:790", "3c4031e56f74ea47ce29687b061c3f6a38ded0d5", "W28/Context/Share Row/v1", 216, 32],
+    ["55:797", "d35c909e4097fc4c875f8b652ef46a370ec59170", "W28/Trust/Trigger/v1", 310, 28],
+    ["55:807", "b08092a783f9f8003635996e0d184a3704c54b8b", "W28/Context/Panel/v1", 240, 786],
+    ["55:904", "77e2020372f7dafda1b08d1c015edb94e54ad299", "W28/Trust/Drawer/v1", 360, 876],
+    ["55:943", "7381d4ce8c54df05422fe7ee1d7d87f130a6cfd6", "W28/Focus/Explore Shell/v1", 1440, 900]
+  ],
+  "audit": {
+    "component_count_read_back": 23,
+    "detached_instances": 0,
+    "unbound_semantic_paints": 0,
+    "unbound_text_styles": 0,
+    "raw_icons": 0,
+    "small_rectangles": "named semantic rules only",
+    "publish_status": "UNPUBLISHED",
+    "publication_authorized": false,
+    "cross_file_import_probe": "not_found"
+  }
+}

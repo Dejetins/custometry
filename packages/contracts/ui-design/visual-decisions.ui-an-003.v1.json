@@ -1,0 +1,63 @@
+{
+  "schema_version": "custometry.ui-design.visual-decisions/v1",
+  "decision_version": "1.0.0",
+  "surface_id": "UI-AN-003",
+  "selected_exploration": {
+    "exploration_id": "ui-an-003-graphite-direction-c-compact-v4",
+    "source_asset": "exec-82e38a55-693d-486d-96b9-441cc051c325.png",
+    "source_dimensions": {"width": 1586, "height": 992},
+    "normalized_viewport": {"width": 1440, "height": 900},
+    "product_decision": "accepted",
+    "decision_date": "2026-07-31"
+  },
+  "exploration_set": [
+    {
+      "exploration_id": "ui-an-003-graphite-direction-a-separated-shell",
+      "source_asset": "exec-e188e885-280f-4792-b3bf-9819f3eab655.png",
+      "disposition": "not_selected"
+    },
+    {
+      "exploration_id": "ui-an-003-graphite-direction-b-contained-context",
+      "source_asset": "exec-659c13e1-7a31-4208-a4f5-0fffe8540ece.png",
+      "disposition": "not_selected"
+    },
+    {
+      "exploration_id": "ui-an-003-graphite-direction-c-compact-v4",
+      "source_asset": "exec-82e38a55-693d-486d-96b9-441cc051c325.png",
+      "disposition": "selected"
+    }
+  ],
+  "frozen_product_contract": {
+    "route": "/w/:workspaceKey/analytics/sales",
+    "state": "success",
+    "role": "AN",
+    "permission": "analysis.read",
+    "actions": ["analysis.run", "analysis.manage", "export.create", "share.link", "report.email"],
+    "required_regions": [
+      "sidebar", "page-header", "context-bar", "kpi-strip", "chart-frame",
+      "channel-table", "context-inspector", "result-trust"
+    ]
+  },
+  "compiled_decisions": {
+    "surface_model": "separate dark control sidebar, raised application canvas, modular panels",
+    "density": "desktop-native high density with 14 px body, 12 px labels, 32 px controls",
+    "layout": "240 px sidebar, fluid center, 240 px hideable context inspector, 12 px gaps",
+    "hierarchy": "compact heading and KPI strip; chart is primary; table is secondary but visible",
+    "radii": "20 px outer canvas, 16 px panels, 10 px controls, 8 px selected rows",
+    "controls": "one search action; chart period, chart type, classic funnel filter, save, and fullscreen share one tight toolbar; chart overflow is removed",
+    "header_actions": "the 32 px notification and overflow controls are anchored at the absolute top-right of the 1152 px global header; the Codex-like context-actions trigger is aligned directly below the notification",
+    "navigation": "single hierarchical sidebar with no duplicate collapsed rail",
+    "tabs": "fixed-width text-only Chart/Data switch with quiet default and active states; 120 ms hover adds the shared control surface without layout shift",
+    "action_alignment": "chart fullscreen and table export share the same absolute vertical axis; table overflow precedes export with an 8 px gap",
+    "context_groups": "the inspector is grouped as On this page, View, and Share; Copy link and Send by email use 216 by 32 px action rows",
+    "icons": "monochrome Lucide-style 1.5 px strokes; no text glyphs or primitive rectangles",
+    "motion": "subtle 120-180 ms feedback; reduced-motion state remains a runtime obligation",
+    "color": "graphite neutral surfaces, semantic status colors, violet primary data series"
+  },
+  "source_classification": {
+    "product_semantics": "normative blueprint and route contracts",
+    "core_theme_semantics": "packages/ui-foundation/src/themes.ts",
+    "supplemental_surface_and_chart_roles": "accepted exploration",
+    "exploration_image_use": "human decision evidence only; excluded from Figma executor input"
+  }
+}

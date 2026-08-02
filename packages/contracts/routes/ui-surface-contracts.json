@@ -35,7 +35,7 @@
     "observed_revision": 213,
     "page_count": 49,
     "verified_route_count": 116,
-    "target_route_count": 116
+    "target_route_count": 117
   },
   "overlays": [
     {"id": "UI-OVR-001", "name": "Workspace switcher", "kind": "popover", "route_backed": false, "history_semantics": "none", "requirement_ids": ["ROUTE-010"]},
@@ -99,7 +99,7 @@
     {"use_case_id": "UC-001", "surface_ids": ["UI-DATA-001", "UI-DATA-002", "UI-DATA-003", "UI-DATA-004", "UI-DATA-005", "UI-DATA-006"], "coverage_types": ["route"], "rationale": "Connection creation discovery catalog inspection and bounded preview have durable independently authorized routes."},
     {"use_case_id": "UC-002", "surface_ids": ["UI-DATA-007", "UI-DATA-008", "UI-DATA-009", "UI-DATA-010", "UI-DATA-011", "UI-DATA-012", "UI-DATA-020"], "coverage_types": ["route"], "rationale": "Semantic dataset publication spans a durable dataset lifecycle with mapping policy readiness and version routes."},
     {"use_case_id": "UC-003", "surface_ids": ["UI-DQ-001", "UI-DQ-002", "UI-DQ-003", "UI-DQ-004"], "coverage_types": ["route"], "rationale": "Quality rules execution overview and immutable reports require independently addressable surfaces."},
-    {"use_case_id": "UC-004", "surface_ids": ["UI-AN-001", "UI-AN-002", "UI-AN-003", "UI-AN-004", "UI-AN-005", "UI-AN-006", "UI-AN-007", "UI-AN-008", "UI-AN-009", "UI-AN-010", "UI-AN-011", "UI-AN-012", "UI-DATA-028", "UI-DATA-029", "UI-DATA-030", "UI-DATA-031", "UI-CAP-002", "UI-CAP-004", "UI-CAP-005"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Customer analytics uses dedicated analytical routes plus governed metric presentation filter and visualization capabilities."},
+    {"use_case_id": "UC-004", "surface_ids": ["UI-AN-001", "UI-AN-002", "UI-AN-003", "UI-AN-004", "UI-AN-005", "UI-AN-006", "UI-AN-007", "UI-AN-008", "UI-AN-009", "UI-AN-010", "UI-AN-011", "UI-AN-012", "UI-AN-015", "UI-DATA-028", "UI-DATA-029", "UI-DATA-030", "UI-DATA-031", "UI-CAP-002", "UI-CAP-004", "UI-CAP-005"], "coverage_types": ["route", "cross_surface_capability"], "rationale": "Customer and product analytics use dedicated analytical routes plus governed metric presentation filter and visualization capabilities."},
     {"use_case_id": "UC-005", "surface_ids": ["UI-FCST-001", "UI-FCST-002", "UI-FCST-003", "UI-FCST-004", "UI-FCST-005", "UI-FCST-006", "UI-FCST-007"], "coverage_types": ["route"], "rationale": "Forecast specifications models backtests prediction and monitoring have durable lifecycle and evidence routes."},
     {"use_case_id": "UC-006", "surface_ids": ["UI-PIPE-001", "UI-PIPE-002", "UI-PIPE-003", "UI-PIPE-004", "UI-OVR-015", "UI-CAP-014"], "coverage_types": ["route", "overlay", "cross_surface_capability"], "rationale": "Pipeline definitions versions schedules and node inspection combine durable routes with contextual inspection and progress."},
     {"use_case_id": "UC-007", "surface_ids": ["UI-RPT-006", "UI-OVR-012"], "coverage_types": ["route", "overlay"], "rationale": "Export jobs are durable resources while preflight remains a transient confirmation owned by the source route."},

@@ -1,0 +1,5 @@
+{
+  "artifact": "manifest",
+  "mutation": {"op": "set", "path": ["regions", 0, "component_id"], "value": "unknown/component"},
+  "expected_code": "unknown-component"
+}

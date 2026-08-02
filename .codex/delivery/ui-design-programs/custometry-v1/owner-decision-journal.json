@@ -1,0 +1,48 @@
+{
+  "schema_id": "codex.ui-design-program.owner-decision-journal/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V1",
+  "iterations": [
+    {
+      "iteration_id": "G1-r2",
+      "gate_id": "G1",
+      "status": "accepted",
+      "recorded_on": "2026-08-02",
+      "owner_decision": {
+        "decision_id": "CUSTOMETRY-G1-R2-OWNER-ACCEPTANCE",
+        "status": "accepted",
+        "revision": 2,
+        "source_user_message_ref": "current Codex task, explicit owner decision on 2026-08-02",
+        "decision_text": "Принимаю G1 revision 2.",
+        "accepted_value_sha256s": [
+          "8a8d9a0636437725318364093057c3b02b7a453f17036e819b071cb2539d6065"
+        ],
+        "accepted_review_artifacts": [
+          {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/ui-design-program.json",
+            "sha256": "177ae8247f04eb7a1998041f30e49b0b79117a4b149b3d82a9a81c84b50ad817"
+          },
+          {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "sha256": "d1bccb9a0ac4201180b6ffcdf7a5e1488ccdcb60bc9e658c471225ebbdb6ca31"
+          },
+          {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/screen-atlas.html",
+            "sha256": "88005b1dd43cd0cdd291b08a3b42d612f76249b8512b335ab7064b0585cbc605"
+          },
+          {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/screen-atlas.resolved.json",
+            "sha256": "09eb203aeaa5edee89ab35a87d5a1e1406d1540e4813c364eb964de61cdc0d96"
+          }
+        ],
+        "automatic_gate": {
+          "profile": "atlas_gate",
+          "status": "passed",
+          "errors": 0,
+          "warnings": 0
+        },
+        "proof_boundary": "static source reconciliation and generated atlas only",
+        "mobile_scope": "unauthorized"
+      }
+    }
+  ]
+}

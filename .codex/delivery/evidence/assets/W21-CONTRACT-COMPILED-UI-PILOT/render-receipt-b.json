@@ -1,0 +1,39 @@
+{
+  "schema_version": "custometry.ui-design.render-receipt/v1",
+  "candidate_id": "UI-AN-003--success--graphite--render-b",
+  "manifest_digest": "a5a324263d0cfa88e9af3e1d87a6ff5cdb1d49d0e893ff598e3183db7c31ecbd",
+  "renderer_version": "1.0.0",
+  "target": {
+    "library_file_key": "hX3nQOtcSdCc97uv26m9eG",
+    "library_page_id": "0:1",
+    "product_file_key": "MXfxuhSFpIczbUtFmOSyPp",
+    "product_page_id": "0:1",
+    "candidate_id": "UI-AN-003--success--graphite--render-b",
+    "candidate_node_id": "40:536"
+  },
+  "wrappers": ["candidate-root", "application-grid", "primary-content-stack"],
+  "instances": [
+    {"region_id": "shell", "instance_id": "shell", "component_id": "shell/app", "variant": "desktop-context-open", "node_type": "INSTANCE", "component_key": "6c944829354a51811878105d98fdb5116dbfd6b0", "figma_instance_id": "40:538"},
+    {"region_id": "sidebar", "instance_id": "sidebar", "component_id": "navigation/sidebar", "variant": "expanded", "node_type": "INSTANCE", "component_key": "7f8459a9d07d4d02157fddd19f72a356407a3de6", "figma_instance_id": "40:698"},
+    {"region_id": "page-header", "instance_id": "page-header", "component_id": "page/header", "variant": "compact", "node_type": "INSTANCE", "component_key": "9e24aca0bcb4e88457bbd7219e5a6e69028e2791", "figma_instance_id": "40:541"},
+    {"region_id": "kpi-strip", "instance_id": "kpi-strip", "component_id": "kpi/rail", "variant": "four-cell-compact", "node_type": "INSTANCE", "component_key": "0853786ece04f8ab430e44c3192b07af2674488c", "figma_instance_id": "40:553"},
+    {"region_id": "context-bar", "instance_id": "chart-toolbar", "component_id": "chart/toolbar", "variant": "chart-integrated", "node_type": "INSTANCE", "component_key": "0cc3207aff1282c712e5eab07c1f3552f3a776c4", "figma_instance_id": "40:598"},
+    {"region_id": "chart-frame", "instance_id": "revenue-trend", "component_id": "chart/frame", "variant": "line-comparison", "node_type": "INSTANCE", "component_key": "512f9d5cf01873eabc3d97aae900b1d5eaf971a1", "figma_instance_id": "40:569"},
+    {"region_id": "channel-table", "instance_id": "channel-table", "component_id": "table/channel", "variant": "compact-four-metric", "node_type": "INSTANCE", "component_key": "185abcc3584d6c649a9bfa4372ee58a93a78771a", "figma_instance_id": "40:634"},
+    {"region_id": "context-inspector", "instance_id": "context-inspector", "component_id": "context/inspector", "variant": "open", "node_type": "INSTANCE", "component_key": "e6009f45aa048d6e8c349d36d1b08e3a4f6530c5", "figma_instance_id": "40:778"},
+    {"region_id": "result-trust", "instance_id": "result-trust", "component_id": "trust/trigger", "variant": "trusted-compact", "node_type": "INSTANCE", "component_key": "a962d6a5ac42cc3fcbfc00a0c2a804c6140372d2", "figma_instance_id": "40:863"}
+  ],
+  "detached_instance_count": 0,
+  "binding_audit": {
+    "semantic_variable_mode": "graphite",
+    "explicit_mode_id": "4:1",
+    "unbound_paint_count": 0,
+    "unbound_text_style_count": 0,
+    "raw_icon_count": 0,
+    "raw_visible_direct_count": 0,
+    "text_count": 117,
+    "paint_count": 278,
+    "total_instance_count": 79,
+    "icon_instance_count": 37
+  }
+}

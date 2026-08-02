@@ -1,0 +1,4590 @@
+{
+  "schema_id": "codex.ui-screen-atlas/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V1",
+  "program_revision": 2,
+  "program_sha256": "fe639d3e7c17061333b0fedee9273bca752137b082ce05409428c3bda92e55a6",
+  "mobile_scope": "unauthorized",
+  "journeys": [
+    {
+      "journey_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/journeys/0",
+        "expected_id": "JOURNEY-001"
+      },
+      "entry_screen_ids": [
+        "UI-AUTH-002"
+      ],
+      "intermediate_screen_ids": [
+        "UI-AUTH-005",
+        "UI-SYS-003"
+      ],
+      "alternate_screen_ids": [],
+      "failure_screen_ids": [
+        "UI-SYS-003"
+      ],
+      "recovery_screen_ids": [
+        "UI-AUTH-001"
+      ],
+      "terminal_screen_ids": [
+        "UI-CORE-001"
+      ],
+      "external_boundary_ids": [],
+      "transitions": [
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/0/transitions/0",
+            "expected_id": "JOURNEY-001-T001"
+          },
+          "from_id": "UI-AUTH-002",
+          "to_id": "UI-AUTH-005",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/0/transitions/1",
+            "expected_id": "JOURNEY-001-T002"
+          },
+          "from_id": "UI-AUTH-005",
+          "to_id": "UI-CORE-001",
+          "outcome": "terminal"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/0/transitions/2",
+            "expected_id": "JOURNEY-001-T003"
+          },
+          "from_id": "UI-AUTH-002",
+          "to_id": "UI-SYS-003",
+          "outcome": "failure"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/0/transitions/3",
+            "expected_id": "JOURNEY-001-T004"
+          },
+          "from_id": "UI-AUTH-005",
+          "to_id": "UI-SYS-003",
+          "outcome": "failure"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/0/transitions/4",
+            "expected_id": "JOURNEY-001-T005"
+          },
+          "from_id": "UI-SYS-003",
+          "to_id": "UI-AUTH-001",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/0/transitions/5",
+            "expected_id": "JOURNEY-001-T006"
+          },
+          "from_id": "UI-AUTH-001",
+          "to_id": "UI-AUTH-005",
+          "outcome": "forward"
+        }
+      ],
+      "unresolved_fields": []
+    },
+    {
+      "journey_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/journeys/1",
+        "expected_id": "JOURNEY-002"
+      },
+      "entry_screen_ids": [
+        "UI-DATA-001"
+      ],
+      "intermediate_screen_ids": [
+        "UI-DATA-002",
+        "UI-DATA-004",
+        "UI-DATA-005",
+        "UI-DATA-008",
+        "UI-DATA-009",
+        "UI-DATA-010",
+        "UI-DATA-013",
+        "UI-DATA-014",
+        "UI-DATA-006",
+        "UI-DATA-020",
+        "UI-DATA-012",
+        "UI-DQ-004"
+      ],
+      "alternate_screen_ids": [
+        "UI-DATA-026",
+        "UI-DATA-027"
+      ],
+      "failure_screen_ids": [
+        "UI-DQ-005"
+      ],
+      "recovery_screen_ids": [
+        "UI-DQ-004"
+      ],
+      "terminal_screen_ids": [
+        "UI-DATA-011"
+      ],
+      "external_boundary_ids": [],
+      "transitions": [
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/0",
+            "expected_id": "JOURNEY-002-T001"
+          },
+          "from_id": "UI-DATA-001",
+          "to_id": "UI-DATA-002",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/1",
+            "expected_id": "JOURNEY-002-T002"
+          },
+          "from_id": "UI-DATA-001",
+          "to_id": "UI-DATA-026",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/2",
+            "expected_id": "JOURNEY-002-T003"
+          },
+          "from_id": "UI-DATA-026",
+          "to_id": "UI-DATA-027",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/3",
+            "expected_id": "JOURNEY-002-T004"
+          },
+          "from_id": "UI-DATA-027",
+          "to_id": "UI-DATA-004",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/4",
+            "expected_id": "JOURNEY-002-T005"
+          },
+          "from_id": "UI-DATA-002",
+          "to_id": "UI-DATA-004",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/5",
+            "expected_id": "JOURNEY-002-T006"
+          },
+          "from_id": "UI-DATA-004",
+          "to_id": "UI-DATA-005",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/6",
+            "expected_id": "JOURNEY-002-T007"
+          },
+          "from_id": "UI-DATA-005",
+          "to_id": "UI-DATA-008",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/7",
+            "expected_id": "JOURNEY-002-T008"
+          },
+          "from_id": "UI-DATA-008",
+          "to_id": "UI-DATA-009",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/8",
+            "expected_id": "JOURNEY-002-T009"
+          },
+          "from_id": "UI-DATA-009",
+          "to_id": "UI-DATA-010",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/9",
+            "expected_id": "JOURNEY-002-T010"
+          },
+          "from_id": "UI-DATA-010",
+          "to_id": "UI-DATA-013",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/10",
+            "expected_id": "JOURNEY-002-T011"
+          },
+          "from_id": "UI-DATA-013",
+          "to_id": "UI-DATA-014",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/11",
+            "expected_id": "JOURNEY-002-T012"
+          },
+          "from_id": "UI-DATA-014",
+          "to_id": "UI-DATA-006",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/12",
+            "expected_id": "JOURNEY-002-T013"
+          },
+          "from_id": "UI-DATA-006",
+          "to_id": "UI-DATA-020",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/13",
+            "expected_id": "JOURNEY-002-T014"
+          },
+          "from_id": "UI-DATA-020",
+          "to_id": "UI-DATA-012",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/14",
+            "expected_id": "JOURNEY-002-T015"
+          },
+          "from_id": "UI-DATA-012",
+          "to_id": "UI-DQ-004",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/15",
+            "expected_id": "JOURNEY-002-T016"
+          },
+          "from_id": "UI-DQ-004",
+          "to_id": "UI-DQ-005",
+          "outcome": "failure"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/16",
+            "expected_id": "JOURNEY-002-T017"
+          },
+          "from_id": "UI-DQ-005",
+          "to_id": "UI-DQ-004",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/1/transitions/17",
+            "expected_id": "JOURNEY-002-T018"
+          },
+          "from_id": "UI-DQ-004",
+          "to_id": "UI-DATA-011",
+          "outcome": "terminal"
+        }
+      ],
+      "unresolved_fields": []
+    },
+    {
+      "journey_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/journeys/2",
+        "expected_id": "JOURNEY-003"
+      },
+      "entry_screen_ids": [
+        "UI-DQ-005"
+      ],
+      "intermediate_screen_ids": [
+        "UI-DQ-004",
+        "UI-OVR-024",
+        "UI-OVR-011",
+        "UI-OVR-010"
+      ],
+      "alternate_screen_ids": [
+        "UI-DATA-008",
+        "UI-DQ-003",
+        "UI-OVR-008"
+      ],
+      "failure_screen_ids": [
+        "UI-DQ-005"
+      ],
+      "recovery_screen_ids": [
+        "UI-DQ-004"
+      ],
+      "terminal_screen_ids": [
+        "UI-DQ-001"
+      ],
+      "external_boundary_ids": [],
+      "transitions": [
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/0",
+            "expected_id": "JOURNEY-003-T001"
+          },
+          "from_id": "UI-DQ-005",
+          "to_id": "UI-DQ-004",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/1",
+            "expected_id": "JOURNEY-003-T002"
+          },
+          "from_id": "UI-DQ-004",
+          "to_id": "UI-DATA-008",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/2",
+            "expected_id": "JOURNEY-003-T003"
+          },
+          "from_id": "UI-DQ-004",
+          "to_id": "UI-DQ-003",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/3",
+            "expected_id": "JOURNEY-003-T004"
+          },
+          "from_id": "UI-DATA-008",
+          "to_id": "UI-OVR-024",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/4",
+            "expected_id": "JOURNEY-003-T005"
+          },
+          "from_id": "UI-DQ-003",
+          "to_id": "UI-OVR-024",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/5",
+            "expected_id": "JOURNEY-003-T006"
+          },
+          "from_id": "UI-DQ-005",
+          "to_id": "UI-OVR-008",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/6",
+            "expected_id": "JOURNEY-003-T007"
+          },
+          "from_id": "UI-OVR-024",
+          "to_id": "UI-OVR-011",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/7",
+            "expected_id": "JOURNEY-003-T008"
+          },
+          "from_id": "UI-OVR-008",
+          "to_id": "UI-OVR-010",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/8",
+            "expected_id": "JOURNEY-003-T009"
+          },
+          "from_id": "UI-OVR-011",
+          "to_id": "UI-OVR-010",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/9",
+            "expected_id": "JOURNEY-003-T010"
+          },
+          "from_id": "UI-OVR-010",
+          "to_id": "UI-DQ-005",
+          "outcome": "failure"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/10",
+            "expected_id": "JOURNEY-003-T011"
+          },
+          "from_id": "UI-OVR-010",
+          "to_id": "UI-DQ-004",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/2/transitions/11",
+            "expected_id": "JOURNEY-003-T012"
+          },
+          "from_id": "UI-DQ-004",
+          "to_id": "UI-DQ-001",
+          "outcome": "terminal"
+        }
+      ],
+      "unresolved_fields": []
+    },
+    {
+      "journey_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/journeys/3",
+        "expected_id": "JOURNEY-004"
+      },
+      "entry_screen_ids": [
+        "UI-AN-001"
+      ],
+      "intermediate_screen_ids": [
+        "UI-AN-002",
+        "UI-OVR-010",
+        "UI-OVR-006"
+      ],
+      "alternate_screen_ids": [
+        "UI-DASH-003",
+        "UI-ADMIN-018",
+        "UI-PIPE-004",
+        "UI-RPT-006"
+      ],
+      "failure_screen_ids": [
+        "UI-AN-002"
+      ],
+      "recovery_screen_ids": [
+        "UI-OVR-010"
+      ],
+      "terminal_screen_ids": [
+        "UI-AN-012"
+      ],
+      "external_boundary_ids": [],
+      "transitions": [
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/0",
+            "expected_id": "JOURNEY-004-T001"
+          },
+          "from_id": "UI-AN-001",
+          "to_id": "UI-AN-002",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/1",
+            "expected_id": "JOURNEY-004-T002"
+          },
+          "from_id": "UI-AN-002",
+          "to_id": "UI-OVR-010",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/2",
+            "expected_id": "JOURNEY-004-T003"
+          },
+          "from_id": "UI-OVR-010",
+          "to_id": "UI-AN-002",
+          "outcome": "failure"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/3",
+            "expected_id": "JOURNEY-004-T004"
+          },
+          "from_id": "UI-OVR-010",
+          "to_id": "UI-OVR-006",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/4",
+            "expected_id": "JOURNEY-004-T005"
+          },
+          "from_id": "UI-OVR-006",
+          "to_id": "UI-DASH-003",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/5",
+            "expected_id": "JOURNEY-004-T006"
+          },
+          "from_id": "UI-OVR-006",
+          "to_id": "UI-ADMIN-018",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/6",
+            "expected_id": "JOURNEY-004-T007"
+          },
+          "from_id": "UI-OVR-006",
+          "to_id": "UI-PIPE-004",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/7",
+            "expected_id": "JOURNEY-004-T008"
+          },
+          "from_id": "UI-OVR-006",
+          "to_id": "UI-RPT-006",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/8",
+            "expected_id": "JOURNEY-004-T009"
+          },
+          "from_id": "UI-OVR-006",
+          "to_id": "UI-AN-012",
+          "outcome": "terminal"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/9",
+            "expected_id": "JOURNEY-004-T010"
+          },
+          "from_id": "UI-DASH-003",
+          "to_id": "UI-AN-012",
+          "outcome": "terminal"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/10",
+            "expected_id": "JOURNEY-004-T011"
+          },
+          "from_id": "UI-ADMIN-018",
+          "to_id": "UI-AN-012",
+          "outcome": "terminal"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/11",
+            "expected_id": "JOURNEY-004-T012"
+          },
+          "from_id": "UI-PIPE-004",
+          "to_id": "UI-AN-012",
+          "outcome": "terminal"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/3/transitions/12",
+            "expected_id": "JOURNEY-004-T013"
+          },
+          "from_id": "UI-RPT-006",
+          "to_id": "UI-AN-012",
+          "outcome": "terminal"
+        }
+      ],
+      "unresolved_fields": []
+    },
+    {
+      "journey_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/journeys/4",
+        "expected_id": "JOURNEY-005"
+      },
+      "entry_screen_ids": [
+        "UI-FCST-001"
+      ],
+      "intermediate_screen_ids": [
+        "UI-FCST-002",
+        "UI-FCST-003",
+        "UI-FCST-005",
+        "UI-PIPE-004",
+        "UI-FCST-006"
+      ],
+      "alternate_screen_ids": [
+        "UI-FCST-007"
+      ],
+      "failure_screen_ids": [
+        "UI-FCST-002"
+      ],
+      "recovery_screen_ids": [
+        "UI-FCST-003"
+      ],
+      "terminal_screen_ids": [
+        "UI-FCST-004"
+      ],
+      "external_boundary_ids": [],
+      "transitions": [
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/0",
+            "expected_id": "JOURNEY-005-T001"
+          },
+          "from_id": "UI-FCST-001",
+          "to_id": "UI-FCST-002",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/1",
+            "expected_id": "JOURNEY-005-T002"
+          },
+          "from_id": "UI-FCST-002",
+          "to_id": "UI-FCST-003",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/2",
+            "expected_id": "JOURNEY-005-T003"
+          },
+          "from_id": "UI-FCST-003",
+          "to_id": "UI-FCST-002",
+          "outcome": "failure"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/3",
+            "expected_id": "JOURNEY-005-T004"
+          },
+          "from_id": "UI-FCST-003",
+          "to_id": "UI-FCST-005",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/4",
+            "expected_id": "JOURNEY-005-T005"
+          },
+          "from_id": "UI-FCST-005",
+          "to_id": "UI-PIPE-004",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/5",
+            "expected_id": "JOURNEY-005-T006"
+          },
+          "from_id": "UI-PIPE-004",
+          "to_id": "UI-FCST-006",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/6",
+            "expected_id": "JOURNEY-005-T007"
+          },
+          "from_id": "UI-FCST-006",
+          "to_id": "UI-FCST-007",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/7",
+            "expected_id": "JOURNEY-005-T008"
+          },
+          "from_id": "UI-FCST-007",
+          "to_id": "UI-FCST-003",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/4/transitions/8",
+            "expected_id": "JOURNEY-005-T009"
+          },
+          "from_id": "UI-FCST-006",
+          "to_id": "UI-FCST-004",
+          "outcome": "terminal"
+        }
+      ],
+      "unresolved_fields": []
+    },
+    {
+      "journey_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/journeys/5",
+        "expected_id": "JOURNEY-006"
+      },
+      "entry_screen_ids": [
+        "UI-OPS-001"
+      ],
+      "intermediate_screen_ids": [
+        "UI-OPS-002",
+        "UI-OVR-011",
+        "UI-OVR-010",
+        "UI-NOTIFY-001",
+        "UI-OVR-016"
+      ],
+      "alternate_screen_ids": [
+        "UI-PIPE-004",
+        "UI-OPS-004"
+      ],
+      "failure_screen_ids": [
+        "UI-OPS-003"
+      ],
+      "recovery_screen_ids": [
+        "UI-OPS-002",
+        "UI-OVR-010"
+      ],
+      "terminal_screen_ids": [
+        "UI-ADMIN-010"
+      ],
+      "external_boundary_ids": [],
+      "transitions": [
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/0",
+            "expected_id": "JOURNEY-006-T001"
+          },
+          "from_id": "UI-OPS-001",
+          "to_id": "UI-OPS-002",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/1",
+            "expected_id": "JOURNEY-006-T002"
+          },
+          "from_id": "UI-OPS-001",
+          "to_id": "UI-PIPE-004",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/2",
+            "expected_id": "JOURNEY-006-T003"
+          },
+          "from_id": "UI-PIPE-004",
+          "to_id": "UI-OPS-002",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/3",
+            "expected_id": "JOURNEY-006-T004"
+          },
+          "from_id": "UI-OPS-001",
+          "to_id": "UI-OPS-004",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/4",
+            "expected_id": "JOURNEY-006-T005"
+          },
+          "from_id": "UI-OPS-004",
+          "to_id": "UI-OPS-002",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/5",
+            "expected_id": "JOURNEY-006-T006"
+          },
+          "from_id": "UI-OPS-002",
+          "to_id": "UI-OPS-003",
+          "outcome": "failure"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/6",
+            "expected_id": "JOURNEY-006-T007"
+          },
+          "from_id": "UI-OPS-003",
+          "to_id": "UI-OVR-011",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/7",
+            "expected_id": "JOURNEY-006-T008"
+          },
+          "from_id": "UI-OPS-002",
+          "to_id": "UI-OVR-011",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/8",
+            "expected_id": "JOURNEY-006-T009"
+          },
+          "from_id": "UI-OVR-011",
+          "to_id": "UI-OVR-010",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/9",
+            "expected_id": "JOURNEY-006-T010"
+          },
+          "from_id": "UI-OVR-010",
+          "to_id": "UI-OPS-002",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/10",
+            "expected_id": "JOURNEY-006-T011"
+          },
+          "from_id": "UI-OPS-002",
+          "to_id": "UI-NOTIFY-001",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/11",
+            "expected_id": "JOURNEY-006-T012"
+          },
+          "from_id": "UI-NOTIFY-001",
+          "to_id": "UI-OVR-016",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/5/transitions/12",
+            "expected_id": "JOURNEY-006-T013"
+          },
+          "from_id": "UI-OVR-016",
+          "to_id": "UI-ADMIN-010",
+          "outcome": "terminal"
+        }
+      ],
+      "unresolved_fields": []
+    },
+    {
+      "journey_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/journeys/6",
+        "expected_id": "JOURNEY-007"
+      },
+      "entry_screen_ids": [
+        "UI-AN-013"
+      ],
+      "intermediate_screen_ids": [
+        "UI-DATA-021",
+        "UI-DATA-022",
+        "UI-DATA-011",
+        "UI-DQ-004",
+        "UI-AN-014",
+        "UI-DATA-028",
+        "UI-DATA-029",
+        "UI-OVR-006",
+        "UI-RPT-002",
+        "UI-RPT-003",
+        "UI-OVR-024"
+      ],
+      "alternate_screen_ids": [
+        "UI-DASH-003",
+        "UI-DASH-002",
+        "UI-RPT-006"
+      ],
+      "failure_screen_ids": [
+        "UI-DQ-005"
+      ],
+      "recovery_screen_ids": [
+        "UI-DQ-004"
+      ],
+      "terminal_screen_ids": [
+        "UI-RPT-001"
+      ],
+      "external_boundary_ids": [],
+      "transitions": [
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/0",
+            "expected_id": "JOURNEY-007-T001"
+          },
+          "from_id": "UI-AN-013",
+          "to_id": "UI-DATA-021",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/1",
+            "expected_id": "JOURNEY-007-T002"
+          },
+          "from_id": "UI-DATA-021",
+          "to_id": "UI-DATA-022",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/2",
+            "expected_id": "JOURNEY-007-T003"
+          },
+          "from_id": "UI-DATA-022",
+          "to_id": "UI-DATA-011",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/3",
+            "expected_id": "JOURNEY-007-T004"
+          },
+          "from_id": "UI-DATA-011",
+          "to_id": "UI-DQ-004",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/4",
+            "expected_id": "JOURNEY-007-T005"
+          },
+          "from_id": "UI-DQ-004",
+          "to_id": "UI-DQ-005",
+          "outcome": "failure"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/5",
+            "expected_id": "JOURNEY-007-T006"
+          },
+          "from_id": "UI-DQ-005",
+          "to_id": "UI-DQ-004",
+          "outcome": "recovery"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/6",
+            "expected_id": "JOURNEY-007-T007"
+          },
+          "from_id": "UI-DQ-004",
+          "to_id": "UI-AN-014",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/7",
+            "expected_id": "JOURNEY-007-T008"
+          },
+          "from_id": "UI-AN-014",
+          "to_id": "UI-DATA-028",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/8",
+            "expected_id": "JOURNEY-007-T009"
+          },
+          "from_id": "UI-DATA-028",
+          "to_id": "UI-DATA-029",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/9",
+            "expected_id": "JOURNEY-007-T010"
+          },
+          "from_id": "UI-DATA-029",
+          "to_id": "UI-OVR-006",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/10",
+            "expected_id": "JOURNEY-007-T011"
+          },
+          "from_id": "UI-OVR-006",
+          "to_id": "UI-RPT-002",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/11",
+            "expected_id": "JOURNEY-007-T012"
+          },
+          "from_id": "UI-RPT-002",
+          "to_id": "UI-RPT-003",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/12",
+            "expected_id": "JOURNEY-007-T013"
+          },
+          "from_id": "UI-RPT-002",
+          "to_id": "UI-DASH-003",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/13",
+            "expected_id": "JOURNEY-007-T014"
+          },
+          "from_id": "UI-DASH-003",
+          "to_id": "UI-DASH-002",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/14",
+            "expected_id": "JOURNEY-007-T015"
+          },
+          "from_id": "UI-DASH-002",
+          "to_id": "UI-OVR-024",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/15",
+            "expected_id": "JOURNEY-007-T016"
+          },
+          "from_id": "UI-RPT-003",
+          "to_id": "UI-RPT-006",
+          "outcome": "alternate"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/16",
+            "expected_id": "JOURNEY-007-T017"
+          },
+          "from_id": "UI-RPT-006",
+          "to_id": "UI-OVR-024",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/17",
+            "expected_id": "JOURNEY-007-T018"
+          },
+          "from_id": "UI-RPT-003",
+          "to_id": "UI-OVR-024",
+          "outcome": "forward"
+        },
+        {
+          "transition_ref": {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+            "json_pointer": "/journeys/6/transitions/18",
+            "expected_id": "JOURNEY-007-T019"
+          },
+          "from_id": "UI-OVR-024",
+          "to_id": "UI-RPT-001",
+          "outcome": "terminal"
+        }
+      ],
+      "unresolved_fields": []
+    }
+  ],
+  "coverage_profiles": [],
+  "screens": [
+    {
+      "screen_id": "UI-AUTH-001",
+      "title": "UI-AUTH-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/auth/sign-in",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/0",
+        "expected_id": "UI-AUTH-001"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-002",
+      "title": "UI-AUTH-002",
+      "classification": "route_flow",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/bootstrap",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/1",
+        "expected_id": "UI-AUTH-002"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-003",
+      "title": "UI-AUTH-003",
+      "classification": "route_flow",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/invites/:token",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/2",
+        "expected_id": "UI-AUTH-003"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "title": "UI-AUTH-004",
+      "classification": "route_flow",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/auth/recovery",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/3",
+        "expected_id": "UI-AUTH-004"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "title": "UI-AUTH-005",
+      "classification": "route_flow",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/onboarding",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/4",
+        "expected_id": "UI-AUTH-005"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-006",
+      "title": "UI-AUTH-006",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/profile/security",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/5",
+        "expected_id": "UI-AUTH-006"
+      }
+    },
+    {
+      "screen_id": "UI-CORE-001",
+      "title": "UI-CORE-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/overview",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/6",
+        "expected_id": "UI-CORE-001"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-001",
+      "title": "UI-DATA-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/connections",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/7",
+        "expected_id": "UI-DATA-001"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-002",
+      "title": "UI-DATA-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/connections/new",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/8",
+        "expected_id": "UI-DATA-002"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-003",
+      "title": "UI-DATA-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/connections/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/9",
+        "expected_id": "UI-DATA-003"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-004",
+      "title": "UI-DATA-004",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/catalog",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/10",
+        "expected_id": "UI-DATA-004"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-005",
+      "title": "UI-DATA-005",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/catalog/objects/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/11",
+        "expected_id": "UI-DATA-005"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-006",
+      "title": "UI-DATA-006",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/catalog/objects/:id/preview",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/12",
+        "expected_id": "UI-DATA-006"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-007",
+      "title": "UI-DATA-007",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/datasets",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/13",
+        "expected_id": "UI-DATA-007"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-008",
+      "title": "UI-DATA-008",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/datasets/:id/mapping",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/14",
+        "expected_id": "UI-DATA-008"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-009",
+      "title": "UI-DATA-009",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/datasets/:id/relationships",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/15",
+        "expected_id": "UI-DATA-009"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-010",
+      "title": "UI-DATA-010",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/datasets/:id/policies",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/16",
+        "expected_id": "UI-DATA-010"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-011",
+      "title": "UI-DATA-011",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/datasets/:id/capabilities",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/17",
+        "expected_id": "UI-DATA-011"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-012",
+      "title": "UI-DATA-012",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/datasets/:id/versions",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/18",
+        "expected_id": "UI-DATA-012"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-013",
+      "title": "UI-DATA-013",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/metrics",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/19",
+        "expected_id": "UI-DATA-013"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-014",
+      "title": "UI-DATA-014",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/metrics/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/20",
+        "expected_id": "UI-DATA-014"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-015",
+      "title": "UI-DATA-015",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/filter-fields",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/21",
+        "expected_id": "UI-DATA-015"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-016",
+      "title": "UI-DATA-016",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/data-guides",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/22",
+        "expected_id": "UI-DATA-016"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-017",
+      "title": "UI-DATA-017",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/data-guides/:id/edit",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/23",
+        "expected_id": "UI-DATA-017"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-018",
+      "title": "UI-DATA-018",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/data-guides/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/24",
+        "expected_id": "UI-DATA-018"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-019",
+      "title": "UI-DATA-019",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/artifacts",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/25",
+        "expected_id": "UI-DATA-019"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-020",
+      "title": "UI-DATA-020",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/datasets/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/26",
+        "expected_id": "UI-DATA-020"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-021",
+      "title": "UI-DATA-021",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/methodologies",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/27",
+        "expected_id": "UI-DATA-021"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-022",
+      "title": "UI-DATA-022",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/methodologies/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/28",
+        "expected_id": "UI-DATA-022"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-023",
+      "title": "UI-DATA-023",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/file-import-templates",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/29",
+        "expected_id": "UI-DATA-023"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-024",
+      "title": "UI-DATA-024",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/file-import-templates/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/30",
+        "expected_id": "UI-DATA-024"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-025",
+      "title": "UI-DATA-025",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/imports",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/31",
+        "expected_id": "UI-DATA-025"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-026",
+      "title": "UI-DATA-026",
+      "classification": "route_flow",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/imports/new",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/32",
+        "expected_id": "UI-DATA-026"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-027",
+      "title": "UI-DATA-027",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/imports/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/33",
+        "expected_id": "UI-DATA-027"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-028",
+      "title": "UI-DATA-028",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/metric-groups",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/34",
+        "expected_id": "UI-DATA-028"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-029",
+      "title": "UI-DATA-029",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/metric-groups/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/35",
+        "expected_id": "UI-DATA-029"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-030",
+      "title": "UI-DATA-030",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/number-formats",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/36",
+        "expected_id": "UI-DATA-030"
+      }
+    },
+    {
+      "screen_id": "UI-DATA-031",
+      "title": "UI-DATA-031",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/number-formats/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/37",
+        "expected_id": "UI-DATA-031"
+      }
+    },
+    {
+      "screen_id": "UI-DQ-001",
+      "title": "UI-DQ-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/data-quality",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/38",
+        "expected_id": "UI-DQ-001"
+      }
+    },
+    {
+      "screen_id": "UI-DQ-002",
+      "title": "UI-DQ-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/quality-rules",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/39",
+        "expected_id": "UI-DQ-002"
+      }
+    },
+    {
+      "screen_id": "UI-DQ-003",
+      "title": "UI-DQ-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/quality-rules/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/40",
+        "expected_id": "UI-DQ-003"
+      }
+    },
+    {
+      "screen_id": "UI-DQ-004",
+      "title": "UI-DQ-004",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/quality-reports/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/41",
+        "expected_id": "UI-DQ-004"
+      }
+    },
+    {
+      "screen_id": "UI-DQ-005",
+      "title": "UI-DQ-005",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/quality-issues/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/42",
+        "expected_id": "UI-DQ-005"
+      }
+    },
+    {
+      "screen_id": "UI-AN-001",
+      "title": "UI-AN-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analyses",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/43",
+        "expected_id": "UI-AN-001"
+      }
+    },
+    {
+      "screen_id": "UI-AN-002",
+      "title": "UI-AN-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analyses/new",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/44",
+        "expected_id": "UI-AN-002"
+      }
+    },
+    {
+      "screen_id": "UI-AN-003",
+      "title": "UI-AN-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/sales",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json#/pilot_baseline",
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/45",
+        "expected_id": "UI-AN-003"
+      }
+    },
+    {
+      "screen_id": "UI-AN-004",
+      "title": "UI-AN-004",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/customers",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/46",
+        "expected_id": "UI-AN-004"
+      }
+    },
+    {
+      "screen_id": "UI-AN-005",
+      "title": "UI-AN-005",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/rfm",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/47",
+        "expected_id": "UI-AN-005"
+      }
+    },
+    {
+      "screen_id": "UI-AN-006",
+      "title": "UI-AN-006",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/cohorts",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/48",
+        "expected_id": "UI-AN-006"
+      }
+    },
+    {
+      "screen_id": "UI-AN-007",
+      "title": "UI-AN-007",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/lifecycle",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/49",
+        "expected_id": "UI-AN-007"
+      }
+    },
+    {
+      "screen_id": "UI-AN-008",
+      "title": "UI-AN-008",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/basket",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/50",
+        "expected_id": "UI-AN-008"
+      }
+    },
+    {
+      "screen_id": "UI-AN-009",
+      "title": "UI-AN-009",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/stores-channels",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/51",
+        "expected_id": "UI-AN-009"
+      }
+    },
+    {
+      "screen_id": "UI-AN-010",
+      "title": "UI-AN-010",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/margin-discounts",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/52",
+        "expected_id": "UI-AN-010"
+      }
+    },
+    {
+      "screen_id": "UI-AN-011",
+      "title": "UI-AN-011",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analyses/custom",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/53",
+        "expected_id": "UI-AN-011"
+      }
+    },
+    {
+      "screen_id": "UI-AN-012",
+      "title": "UI-AN-012",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analyses/:id/results/:runId",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/54",
+        "expected_id": "UI-AN-012"
+      }
+    },
+    {
+      "screen_id": "UI-AN-013",
+      "title": "UI-AN-013",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/research",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/55",
+        "expected_id": "UI-AN-013"
+      }
+    },
+    {
+      "screen_id": "UI-AN-014",
+      "title": "UI-AN-014",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/research/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/56",
+        "expected_id": "UI-AN-014"
+      }
+    },
+    {
+      "screen_id": "UI-AN-015",
+      "title": "UI-AN-015",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/analytics/products",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/57",
+        "expected_id": "UI-AN-015"
+      }
+    },
+    {
+      "screen_id": "UI-SEG-001",
+      "title": "UI-SEG-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/segments",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/58",
+        "expected_id": "UI-SEG-001"
+      }
+    },
+    {
+      "screen_id": "UI-SEG-002",
+      "title": "UI-SEG-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/segments/new",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/59",
+        "expected_id": "UI-SEG-002"
+      }
+    },
+    {
+      "screen_id": "UI-SEG-003",
+      "title": "UI-SEG-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/segments/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/60",
+        "expected_id": "UI-SEG-003"
+      }
+    },
+    {
+      "screen_id": "UI-FCST-001",
+      "title": "UI-FCST-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/forecasts",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/61",
+        "expected_id": "UI-FCST-001"
+      }
+    },
+    {
+      "screen_id": "UI-FCST-002",
+      "title": "UI-FCST-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/forecasts/new",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/62",
+        "expected_id": "UI-FCST-002"
+      }
+    },
+    {
+      "screen_id": "UI-FCST-003",
+      "title": "UI-FCST-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/forecasts/:id/backtests",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/63",
+        "expected_id": "UI-FCST-003"
+      }
+    },
+    {
+      "screen_id": "UI-FCST-004",
+      "title": "UI-FCST-004",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/forecasts/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/64",
+        "expected_id": "UI-FCST-004"
+      }
+    },
+    {
+      "screen_id": "UI-FCST-005",
+      "title": "UI-FCST-005",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/models/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/65",
+        "expected_id": "UI-FCST-005"
+      }
+    },
+    {
+      "screen_id": "UI-FCST-006",
+      "title": "UI-FCST-006",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/forecasts/:id/monitoring",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/66",
+        "expected_id": "UI-FCST-006"
+      }
+    },
+    {
+      "screen_id": "UI-FCST-007",
+      "title": "UI-FCST-007",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/models",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/67",
+        "expected_id": "UI-FCST-007"
+      }
+    },
+    {
+      "screen_id": "UI-PROMO-001",
+      "title": "UI-PROMO-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/promotions",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/68",
+        "expected_id": "UI-PROMO-001"
+      }
+    },
+    {
+      "screen_id": "UI-PROMO-002",
+      "title": "UI-PROMO-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/promotions/new",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/69",
+        "expected_id": "UI-PROMO-002"
+      }
+    },
+    {
+      "screen_id": "UI-PROMO-003",
+      "title": "UI-PROMO-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/promotions/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/70",
+        "expected_id": "UI-PROMO-003"
+      }
+    },
+    {
+      "screen_id": "UI-DASH-001",
+      "title": "UI-DASH-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/dashboards",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/71",
+        "expected_id": "UI-DASH-001"
+      }
+    },
+    {
+      "screen_id": "UI-DASH-002",
+      "title": "UI-DASH-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/dashboards/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/72",
+        "expected_id": "UI-DASH-002"
+      }
+    },
+    {
+      "screen_id": "UI-DASH-003",
+      "title": "UI-DASH-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/dashboards/:id/edit",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/73",
+        "expected_id": "UI-DASH-003"
+      }
+    },
+    {
+      "screen_id": "UI-RPT-001",
+      "title": "UI-RPT-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/reports",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/74",
+        "expected_id": "UI-RPT-001"
+      }
+    },
+    {
+      "screen_id": "UI-RPT-002",
+      "title": "UI-RPT-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/reports/:id/edit",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/75",
+        "expected_id": "UI-RPT-002"
+      }
+    },
+    {
+      "screen_id": "UI-RPT-003",
+      "title": "UI-RPT-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/reports/:id/snapshots/:sid",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/76",
+        "expected_id": "UI-RPT-003"
+      }
+    },
+    {
+      "screen_id": "UI-RPT-004",
+      "title": "UI-RPT-004",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/reports/:id/send",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/77",
+        "expected_id": "UI-RPT-004"
+      }
+    },
+    {
+      "screen_id": "UI-RPT-005",
+      "title": "UI-RPT-005",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/report-deliveries",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/78",
+        "expected_id": "UI-RPT-005"
+      }
+    },
+    {
+      "screen_id": "UI-RPT-006",
+      "title": "UI-RPT-006",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/exports",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/79",
+        "expected_id": "UI-RPT-006"
+      }
+    },
+    {
+      "screen_id": "UI-RPT-007",
+      "title": "UI-RPT-007",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/settings/report-email",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/80",
+        "expected_id": "UI-RPT-007"
+      }
+    },
+    {
+      "screen_id": "UI-PIPE-001",
+      "title": "UI-PIPE-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/pipelines",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/81",
+        "expected_id": "UI-PIPE-001"
+      }
+    },
+    {
+      "screen_id": "UI-PIPE-002",
+      "title": "UI-PIPE-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/pipelines/:id/edit",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/82",
+        "expected_id": "UI-PIPE-002"
+      }
+    },
+    {
+      "screen_id": "UI-PIPE-003",
+      "title": "UI-PIPE-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/pipelines/:id/versions",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/83",
+        "expected_id": "UI-PIPE-003"
+      }
+    },
+    {
+      "screen_id": "UI-PIPE-004",
+      "title": "UI-PIPE-004",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/schedules",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/84",
+        "expected_id": "UI-PIPE-004"
+      }
+    },
+    {
+      "screen_id": "UI-OPS-001",
+      "title": "UI-OPS-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/runs",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/85",
+        "expected_id": "UI-OPS-001"
+      }
+    },
+    {
+      "screen_id": "UI-OPS-002",
+      "title": "UI-OPS-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/runs/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/86",
+        "expected_id": "UI-OPS-002"
+      }
+    },
+    {
+      "screen_id": "UI-OPS-003",
+      "title": "UI-OPS-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/runs/:id/nodes/:nodeId/attempts/:attemptId",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/87",
+        "expected_id": "UI-OPS-003"
+      }
+    },
+    {
+      "screen_id": "UI-OPS-004",
+      "title": "UI-OPS-004",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/runtime",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/88",
+        "expected_id": "UI-OPS-004"
+      }
+    },
+    {
+      "screen_id": "UI-NOTIFY-001",
+      "title": "UI-NOTIFY-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/notifications",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/89",
+        "expected_id": "UI-NOTIFY-001"
+      }
+    },
+    {
+      "screen_id": "UI-NOTIFY-002",
+      "title": "UI-NOTIFY-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/notifications/preferences",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/90",
+        "expected_id": "UI-NOTIFY-002"
+      }
+    },
+    {
+      "screen_id": "UI-NOTIFY-003",
+      "title": "UI-NOTIFY-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/settings/notification-channels",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/91",
+        "expected_id": "UI-NOTIFY-003"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-001",
+      "title": "UI-ADMIN-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/92",
+        "expected_id": "UI-ADMIN-001"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-002",
+      "title": "UI-ADMIN-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/workspaces",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/93",
+        "expected_id": "UI-ADMIN-002"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-003",
+      "title": "UI-ADMIN-003",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/settings/access",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/94",
+        "expected_id": "UI-ADMIN-003"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-004",
+      "title": "UI-ADMIN-004",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/settings/policies",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/95",
+        "expected_id": "UI-ADMIN-004"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-005",
+      "title": "UI-ADMIN-005",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/capacity",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/96",
+        "expected_id": "UI-ADMIN-005"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-006",
+      "title": "UI-ADMIN-006",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/services",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/97",
+        "expected_id": "UI-ADMIN-006"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-007",
+      "title": "UI-ADMIN-007",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/workers",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/98",
+        "expected_id": "UI-ADMIN-007"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-008",
+      "title": "UI-ADMIN-008",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/plugins",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/99",
+        "expected_id": "UI-ADMIN-008"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-009",
+      "title": "UI-ADMIN-009",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/storage-backup",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/100",
+        "expected_id": "UI-ADMIN-009"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-010",
+      "title": "UI-ADMIN-010",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/audit",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/101",
+        "expected_id": "UI-ADMIN-010"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-011",
+      "title": "UI-ADMIN-011",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/localization-themes",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/102",
+        "expected_id": "UI-ADMIN-011"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-012",
+      "title": "UI-ADMIN-012",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/system",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/103",
+        "expected_id": "UI-ADMIN-012"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-013",
+      "title": "UI-ADMIN-013",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/settings/branding",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/104",
+        "expected_id": "UI-ADMIN-013"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-014",
+      "title": "UI-ADMIN-014",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/brand-profiles",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/105",
+        "expected_id": "UI-ADMIN-014"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-015",
+      "title": "UI-ADMIN-015",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/brand-profiles/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/106",
+        "expected_id": "UI-ADMIN-015"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-016",
+      "title": "UI-ADMIN-016",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/company-packs",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/107",
+        "expected_id": "UI-ADMIN-016"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-017",
+      "title": "UI-ADMIN-017",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/admin/company-packs/:id",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/108",
+        "expected_id": "UI-ADMIN-017"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-018",
+      "title": "UI-ADMIN-018",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/access/:resourceType/:resourceId",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/109",
+        "expected_id": "UI-ADMIN-018"
+      }
+    },
+    {
+      "screen_id": "UI-ORG-001",
+      "title": "UI-ORG-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/organization",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/110",
+        "expected_id": "UI-ORG-001"
+      }
+    },
+    {
+      "screen_id": "UI-ORG-002",
+      "title": "UI-ORG-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/organization/:orgUnitKey",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/111",
+        "expected_id": "UI-ORG-002"
+      }
+    },
+    {
+      "screen_id": "UI-PEOPLE-001",
+      "title": "UI-PEOPLE-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/people",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/112",
+        "expected_id": "UI-PEOPLE-001"
+      }
+    },
+    {
+      "screen_id": "UI-PEOPLE-002",
+      "title": "UI-PEOPLE-002",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/people/:principalId",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/113",
+        "expected_id": "UI-PEOPLE-002"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-019",
+      "title": "UI-ADMIN-019",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/settings/organization",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/114",
+        "expected_id": "UI-ADMIN-019"
+      }
+    },
+    {
+      "screen_id": "UI-ADMIN-020",
+      "title": "UI-ADMIN-020",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/w/:workspaceKey/settings/organization/:orgUnitKey",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/115",
+        "expected_id": "UI-ADMIN-020"
+      }
+    },
+    {
+      "screen_id": "UI-HELP-001",
+      "title": "UI-HELP-001",
+      "classification": "route_screen",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": "/help",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-routes.json",
+        "json_pointer": "/routes/116",
+        "expected_id": "UI-HELP-001"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-001",
+      "title": "Workspace switcher",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/0",
+        "expected_id": "UI-OVR-001"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-002",
+      "title": "Global command palette",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/1",
+        "expected_id": "UI-OVR-002"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-003",
+      "title": "Searchable Filter Explorer",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/2",
+        "expected_id": "UI-OVR-003"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-004",
+      "title": "Filter expression editor",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/3",
+        "expected_id": "UI-OVR-004"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-005",
+      "title": "Previous-year comparison editor",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/4",
+        "expected_id": "UI-OVR-005"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-006",
+      "title": "Result Trust drawer",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/5",
+        "expected_id": "UI-OVR-006"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-007",
+      "title": "Chart data table",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/6",
+        "expected_id": "UI-OVR-007"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-008",
+      "title": "Publish diff and impact modal",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/7",
+        "expected_id": "UI-OVR-008"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-009",
+      "title": "Clone/deprecate/archive modal",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/8",
+        "expected_id": "UI-OVR-009"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-010",
+      "title": "Operation progress drawer",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/9",
+        "expected_id": "UI-OVR-010"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-011",
+      "title": "Cancel/retry/rerun confirmation",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/10",
+        "expected_id": "UI-OVR-011"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-012",
+      "title": "Export preflight modal",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/11",
+        "expected_id": "UI-OVR-012"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-013",
+      "title": "Email send confirmation",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/12",
+        "expected_id": "UI-OVR-013"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-014",
+      "title": "Promotion item detail drawer",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/13",
+        "expected_id": "UI-OVR-014"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-015",
+      "title": "Pipeline node inspector",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/14",
+        "expected_id": "UI-OVR-015"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-016",
+      "title": "Notification detail drawer",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/15",
+        "expected_id": "UI-OVR-016"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-017",
+      "title": "Theme switcher",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/16",
+        "expected_id": "UI-OVR-017"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-018",
+      "title": "Permission/forbidden explanation",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/17",
+        "expected_id": "UI-OVR-018"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-019",
+      "title": "Destructive action confirmation",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/18",
+        "expected_id": "UI-OVR-019"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-020",
+      "title": "Full-screen Focus / Explore Surface",
+      "classification": "route_backed_transient",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/19",
+        "expected_id": "UI-OVR-020"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-021",
+      "title": "Help and contextual-help menu",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/20",
+        "expected_id": "UI-OVR-021"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-022",
+      "title": "Keyboard shortcuts reference",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/21",
+        "expected_id": "UI-OVR-022"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-023",
+      "title": "Unsaved changes confirmation",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/22",
+        "expected_id": "UI-OVR-023"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-024",
+      "title": "Discussion and comments drawer",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/23",
+        "expected_id": "UI-OVR-024"
+      }
+    },
+    {
+      "screen_id": "UI-OVR-025",
+      "title": "Data treatment and sensitivity drawer",
+      "classification": "overlay",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/overlays/24",
+        "expected_id": "UI-OVR-025"
+      }
+    },
+    {
+      "screen_id": "UI-SYS-001",
+      "title": "403 Forbidden",
+      "classification": "system_state_family",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/system_surfaces/0",
+        "expected_id": "UI-SYS-001"
+      }
+    },
+    {
+      "screen_id": "UI-SYS-002",
+      "title": "404 Not Found",
+      "classification": "system_state_family",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/system_surfaces/1",
+        "expected_id": "UI-SYS-002"
+      }
+    },
+    {
+      "screen_id": "UI-SYS-003",
+      "title": "Session expired",
+      "classification": "system_state_family",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/system_surfaces/2",
+        "expected_id": "UI-SYS-003"
+      }
+    },
+    {
+      "screen_id": "UI-SYS-004",
+      "title": "Maintenance",
+      "classification": "system_state_family",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/system_surfaces/3",
+        "expected_id": "UI-SYS-004"
+      }
+    },
+    {
+      "screen_id": "UI-SYS-005",
+      "title": "Upgrade required",
+      "classification": "system_state_family",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "json_pointer": "/system_surfaces/4",
+        "expected_id": "UI-SYS-005"
+      }
+    },
+    {
+      "screen_id": "auth",
+      "title": "Persistent shell profile: auth",
+      "classification": "persistent_shell",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/0",
+        "expected_id": "auth"
+      }
+    },
+    {
+      "screen_id": "global",
+      "title": "Persistent shell profile: global",
+      "classification": "persistent_shell",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/1",
+        "expected_id": "global"
+      }
+    },
+    {
+      "screen_id": "installation",
+      "title": "Persistent shell profile: installation",
+      "classification": "persistent_shell",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/2",
+        "expected_id": "installation"
+      }
+    },
+    {
+      "screen_id": "workspace",
+      "title": "Persistent shell profile: workspace",
+      "classification": "persistent_shell",
+      "disposition": "in_scope",
+      "disposition_reason_ref": null,
+      "review_consequence": null,
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/3",
+        "expected_id": "workspace"
+      }
+    },
+    {
+      "screen_id": "UI-AN-003?view=html-prototype",
+      "title": "Sales Overview HTML prototype query surface",
+      "classification": "internal_or_non_visual",
+      "disposition": "internal",
+      "disposition_reason_ref": "apps/web/src/App.tsx#L196-L197",
+      "review_consequence": "Retain as internal QA coverage; do not count as a product route.",
+      "route": "/w/northwind-retail/analytics/sales?view=html-prototype",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json#/pilot_baseline",
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/4",
+        "expected_id": "UI-AN-003?view=html-prototype"
+      }
+    },
+    {
+      "screen_id": "UI-AN-003?view=linear-spike",
+      "title": "Sales Overview architecture-spike query surface",
+      "classification": "internal_or_non_visual",
+      "disposition": "internal",
+      "disposition_reason_ref": "apps/web/src/App.tsx#L196-L197",
+      "review_consequence": "Retain as internal QA coverage; do not count as a product route.",
+      "route": "/w/northwind-retail/analytics/sales?view=linear-spike",
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/5",
+        "expected_id": "UI-AN-003?view=linear-spike"
+      }
+    },
+    {
+      "screen_id": "W10-PENPOT-093-ORGANIZATION-PEOPLE-DELTA-IMPLEMENTATION",
+      "title": "Historical Penpot inventory evidence",
+      "classification": "historical_exclusion",
+      "disposition": "excluded",
+      "disposition_reason_ref": "docs/architecture/ui/custometry-linear-ui-migration-registry-v1.json#/existing_authority/accepted_historical_evidence",
+      "review_consequence": "Preserve provenance history only; exclude from active atlas source counts.",
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/6",
+        "expected_id": "W10-PENPOT-093-ORGANIZATION-PEOPLE-DELTA-IMPLEMENTATION"
+      }
+    },
+    {
+      "screen_id": "W21-CONTRACT-COMPILED-UI-PILOT",
+      "title": "Historical contract-compiled Figma pilot",
+      "classification": "historical_exclusion",
+      "disposition": "excluded",
+      "disposition_reason_ref": "docs/architecture/ui/custometry-linear-ui-migration-registry-v1.json#/clusters/2",
+      "review_consequence": "Preserve provenance history only; exclude from active atlas source counts.",
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/7",
+        "expected_id": "W21-CONTRACT-COMPILED-UI-PILOT"
+      }
+    },
+    {
+      "screen_id": "W28-UI-AN-003-FIGMA-SYNCHRONIZATION",
+      "title": "Superseded W28 Figma synchronization evidence",
+      "classification": "historical_exclusion",
+      "disposition": "excluded",
+      "disposition_reason_ref": ".codex/delivery/evidence/assets/W28-UI-AN-003-FIGMA-SYNCHRONIZATION/browser-reference-receipt.json#/ticket_id",
+      "review_consequence": "Preserve provenance history only; exclude from active atlas source counts.",
+      "route": null,
+      "journey_ids": [],
+      "required_states": [],
+      "family_id": null,
+      "wave_id": null,
+      "representative": false,
+      "coverage_profile": null,
+      "visual_baseline_ref": null,
+      "unresolved_fields": [],
+      "source_ref": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v1/g1-source-reconciliation.json",
+        "json_pointer": "/extension_screens/8",
+        "expected_id": "W28-UI-AN-003-FIGMA-SYNCHRONIZATION"
+      }
+    }
+  ]
+}

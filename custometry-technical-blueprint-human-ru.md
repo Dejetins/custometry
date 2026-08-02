@@ -7,7 +7,7 @@ normative: false
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-07-20
+updated_at: 2026-08-01
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
@@ -1019,9 +1019,13 @@ Guided mode ведёт аналитика через connections, semantic model
 | UI-SHELL-001 | Expanded sidebar показывает стабильную outline icon и полное локализованное название; collapsed использует те же icons без текста, а буквенные сокращения и инициалы вместо navigation icons запрещены |
 | UI-SHELL-002 | Icon-only navigation имеет локализованные accessible name и tooltip по hover/focus, visible focus, `aria-current` и hit area не менее 40×40 CSS px; collapse не меняет порядок, route, authorization или focus semantics |
 | UI-SHELL-003 | Core Web navigation использует одну pinned OSS/web-distributable family и versioned semantic mapping; для v1 это Lucide через `lucide-react`, без смешивания families, emoji и platform-proprietary assets без license/accessibility review |
+| UI-SHELL-004 | Global Search и Notifications находятся в sidebar сразу после workspace identity; Help и user menu закреплены в footer sidebar; page header не дублирует эти действия |
+| UI-SHELL-005 | Sidebar поддерживает expanded/collapsed/hidden, pointer resize примерно 208–320 px, keyboard step/reset, сохранение presentation preference и доступное восстановление без изменения route, прав, порядка или current-item semantics |
+| UI-SHELL-006 | Analytics navigation включает отдельные Sales, Customers, Products и Forecasts; Sales, Products и Forecasts имеют разные Lucide icons, активный route — `aria-current="page"` |
 | UI-DENSITY-001 | Reportable result и каждый `UI-AN` route используют compact page-header/context и KPI, когда применимо, чтобы primary visualization, table или editor начинались в первом desktop viewport; декоративный пустой space не вытесняет рабочие данные |
 | UI-DENSITY-002 | Четыре primary KPI по умолчанию находятся в одном Compact KPI Strip с общей baseline, согласованными column boundaries/dividers и коротким `vs LY`; четыре высокие самостоятельные cards не используются как default report header |
 | UI-DENSITY-003 | Report surfaces используют общие versioned geometry/spacing tokens; context/KPI separators и baselines совпадают, per-page ad hoc spacing запрещён; правило обязательно для `UI-DQ-001` и `UI-AN-001…012`, включая compact header/context на screens без KPI |
+| UI-DENSITY-004 | `UI-AN-003` не показывает отдельные Dataset control и Result Trust row; dataset/version, trust/freshness и last update объединены в компактный result-level trigger, доступный в Chart и Data и открывающий полный Trust drawer |
 
 ### Data Guide
 

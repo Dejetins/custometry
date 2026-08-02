@@ -43,6 +43,40 @@
         "proof_boundary": "static source reconciliation and generated atlas only",
         "mobile_scope": "unauthorized"
       }
+    },
+    {
+      "iteration_id": "G2-r3",
+      "gate_id": "G2",
+      "status": "accepted",
+      "recorded_on": "2026-08-03",
+      "owner_decision": {
+        "decision_id": "CUSTOMETRY-G2-R3-STRUCTURE-GATE-OWNER-ACCEPTANCE",
+        "status": "accepted",
+        "revision": 3,
+        "source_user_message_ref": "current Codex task, explicit owner decision on 2026-08-03",
+        "decision_text": "accept CUSTOMETRY-UI-DESIGN-PROGRAM-V1 revision 3 validation_profile structure_gate",
+        "accepted_value_sha256s": [
+          "3a98719d7d75e6aa187d8a7ce4c67f5136a9c82eb8352b44f9faf28bed5bdf13"
+        ],
+        "accepted_review_artifacts": [
+          {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/ui-design-program.json",
+            "sha256": "cdd1f788caceed5b8a7bf42b8733222d5c182661e798d4674fcbc5c3ec555c14"
+          },
+          {
+            "path": ".codex/delivery/ui-design-programs/custometry-v1/g2-owner-review-r3.md",
+            "sha256": "bbe8380a700205e6a3bb124ce7c6ae4386e3f9aa9f9cc3e51e5398ba5f41092f"
+          }
+        ],
+        "automatic_gate": {
+          "profile": "structure_gate",
+          "status": "passed",
+          "errors": 0,
+          "warnings": 0
+        },
+        "proof_boundary": "static source reconciliation, journey graph, family, coverage-profile, representative, and wave structure only; no browser, raster, accessibility, runtime, or implementation proof",
+        "mobile_scope": "unauthorized"
+      }
     }
   ]
 }

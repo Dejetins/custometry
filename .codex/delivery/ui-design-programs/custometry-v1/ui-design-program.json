@@ -3,9 +3,9 @@
   "schema_id": "codex.ui-design-program/v1",
   "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V1",
   "program_name": "Custometry Product-wide UI Design Program",
-  "revision": 3,
+  "revision": 4,
   "status": "accepted",
-  "validation_profile": "structure_gate",
+  "validation_profile": "program_ready",
   "source_contracts": [
     {
       "path": "custometry-technical-blueprint-ru.md",
@@ -146,6 +146,14 @@
       "authority": "single-screen pilot manifest explicitly excluded from product-wide inventory",
       "required_status": null,
       "sha256": "edbf95b330f55fcac90c052ff61767b3fa69216fc216ab52d175877afba5c148",
+      "screen_collections": [],
+      "journey_collections": []
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json",
+      "authority": "hash-pinned owner decision for the G3 responsive-Web range, anchor values, outside-range validation boundary, and unauthorized mobile scope",
+      "required_status": null,
+      "sha256": "5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036",
       "screen_collections": [],
       "journey_collections": []
     },
@@ -7638,16 +7646,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-AUTH-FLOW-IA",
@@ -7706,16 +7717,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-AUTH-FLOW-INVITED",
@@ -7774,16 +7788,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-IA-WA",
@@ -7846,16 +7863,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-ALL",
@@ -7917,16 +7937,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-ALL",
@@ -7989,16 +8012,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-WA",
@@ -8061,16 +8087,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-WA",
@@ -8132,16 +8161,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-WA-DS",
@@ -8205,16 +8237,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-DS",
@@ -8277,16 +8312,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-DS-AN",
@@ -8350,16 +8388,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-DS",
@@ -8421,16 +8462,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-DS-AN-ML",
@@ -8495,16 +8539,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-DS-AN",
@@ -8567,16 +8614,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-DS-AN-VW",
@@ -8641,16 +8691,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-ALLOWED",
@@ -8713,16 +8766,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-DS-AN-ML-OP",
@@ -8788,16 +8844,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-AN-DS-VW",
@@ -8862,16 +8921,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-AN-DS-VW",
@@ -8935,16 +8997,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-WA-DS",
@@ -9007,16 +9072,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-WA-DS-OP",
@@ -9081,16 +9149,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-HEAVY-OPERATION-WA-DS-OP",
@@ -9157,16 +9228,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-DS-AN-ML",
@@ -9230,16 +9304,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-DS-OP",
@@ -9303,16 +9380,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-DS-AN-OP",
@@ -9377,16 +9457,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-AN",
@@ -9448,16 +9531,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-AN-VW",
@@ -9521,16 +9607,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-AN-DS",
@@ -9593,16 +9682,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-ML-AN-VW",
@@ -9667,16 +9759,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-ML",
@@ -9738,16 +9833,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-ML-AN",
@@ -9811,16 +9909,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-ML",
@@ -9883,16 +9984,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-ML-OP",
@@ -9956,16 +10060,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-ML-AN-OP",
@@ -10030,16 +10137,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-AN-WA-VW",
@@ -10104,16 +10214,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-AN-WA",
@@ -10176,16 +10289,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-HEAVY-OPERATION-AN",
@@ -10250,16 +10366,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-HEAVY-OPERATION-AN-WA-OP",
@@ -10326,16 +10445,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-HEAVY-OPERATION-AN-VW-OP",
@@ -10402,16 +10524,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-AN-DS-ML-OP",
@@ -10477,16 +10602,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-AN-DS-ML",
@@ -10550,16 +10678,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-OWNERS",
@@ -10622,16 +10753,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-HEAVY-OPERATION-AN-ML-OP",
@@ -10698,16 +10832,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-OPERATOR-OP-OWNERS",
@@ -10772,16 +10909,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-OPERATOR-OP",
@@ -10845,16 +10985,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-OPERATOR-IA-OP",
@@ -10919,16 +11062,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-WA-OP",
@@ -10992,16 +11138,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-IA",
@@ -11064,16 +11213,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-IA-WA-OP",
@@ -11138,16 +11290,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-IA-OP",
@@ -11211,16 +11366,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-BROWSE-IA-WA",
@@ -11284,16 +11442,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-IA-OP",
@@ -11356,16 +11517,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-ROUTE-EDITOR-IA",
@@ -11427,16 +11591,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-OVERLAY-POPOVER",
@@ -11496,16 +11663,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-OVERLAY-DRAWER",
@@ -11571,16 +11741,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-OVERLAY-MODAL",
@@ -11640,16 +11813,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-OVERLAY-ROUTE-SURFACE",
@@ -11715,16 +11891,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-SYSTEM-STATE",
@@ -11774,16 +11953,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-SHELL-AUTH",
@@ -11838,16 +12020,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-SHELL-GLOBAL",
@@ -11902,16 +12087,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-SHELL-INSTALLATION",
@@ -11966,16 +12154,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     },
     {
       "coverage_profile_id": "CP-SHELL-WORKSPACE",
@@ -12037,16 +12228,19 @@
       },
       "viewport_anchor_ids": {
         "mode": "required",
-        "values": [],
+        "values": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
         "origin": {
-          "kind": "normative_requirement",
-          "ref": "references/stage-profiles-v1.md#g2-journeys-and-families"
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684#/decisions/0"
         },
         "not_applicable_reason_ref": null
       },
-      "unresolved_fields": [
-        "viewport_anchor_ids"
-      ]
+      "unresolved_fields": []
     }
   ],
   "families": [
@@ -13323,14 +13517,55 @@
   "responsive_policy": {
     "adaptive_web_required": true,
     "supported_web_width_range": {
-      "min_width": null,
-      "max_width": null,
+      "min_width": 768,
+      "max_width": 2560,
       "origin": {
-        "kind": "normative_requirement",
-        "ref": "/Users/daniildegtyarev/.codex/skills/ui-design-program/references/responsive-policy-v1.md#Responsive-Web-Requirement"
+        "kind": "owner_decision",
+        "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=660e7441a18cae9dba4844c1436209d8ef2c21bc5c4655d34f32d6d6dc7047de#/decisions/0"
       }
     },
-    "anchor_viewports": [],
+    "anchor_viewports": [
+      {
+        "anchor_id": "web-min-768",
+        "width": 768,
+        "height": 900,
+        "class": "responsive_web",
+        "origin": {
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=4cea0db7a44380c2c23fa6d7bd31463853bcba35f1509b2e7129cc730cf9f3bd#/decisions/0"
+        }
+      },
+      {
+        "anchor_id": "web-standard-1440",
+        "width": 1440,
+        "height": 900,
+        "class": "responsive_web",
+        "origin": {
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=33bb42a8ca1a27949510aee03228164b324d32a7b5dd2a912d7dab2a9cfdc85f#/decisions/0"
+        }
+      },
+      {
+        "anchor_id": "web-wide-1920",
+        "width": 1920,
+        "height": 1080,
+        "class": "responsive_web",
+        "origin": {
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=bbbdfc499f214a457c9177c57f420514a63c9b0f610a35a6ac59f4d037a76dc8#/decisions/0"
+        }
+      },
+      {
+        "anchor_id": "web-max-2560",
+        "width": 2560,
+        "height": 1440,
+        "class": "responsive_web",
+        "origin": {
+          "kind": "owner_decision",
+          "ref": "owner-decision://5f4693b0f1ff330fff4ec8220ddccbb9e3a34bff451e5d533b298327b4e20036/.codex/delivery/ui-design-programs/custometry-v1/g3-responsive-web-range-owner-decision.json?value_sha256=a6f540b9321dba11cac5637d26319e237c39190f7139c7bf35dcf41822ef3178#/decisions/0"
+        }
+      }
+    ],
     "breakpoint_policy": "content_driven",
     "breakpoint_policy_origin": {
       "kind": "normative_requirement",
@@ -13366,8 +13601,8 @@
   },
   "program_acceptance": {
     "agent_self_acceptance": "prohibited",
-    "owner_decision_ref": "owner-decision://3ee4be0dfc6d1ef9a191165b0758645f66e58f39a4be6db72de8973985ae3053/.codex/delivery/ui-design-programs/custometry-v1/owner-decision-journal.json?value_sha256=3a98719d7d75e6aa187d8a7ce4c67f5136a9c82eb8352b44f9faf28bed5bdf13#/iterations/1/owner_decision",
-    "accepted_revision": 3
+    "owner_decision_ref": "owner-decision://eae547c42c2babd0ed1dffd9635c388205dd15ac69e04eaee86581540c42dd2c/.codex/delivery/ui-design-programs/custometry-v1/g3-owner-acceptance-r4.json?value_sha256=813053a1e977cab2d6baa38567fea7206220f0620d766ae660a3847a97f56828#/decisions/0",
+    "accepted_revision": 4
   },
   "execution_artifacts": {
     "plan_doc": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v1/ui-design-program.json",

@@ -11,17 +11,17 @@ status: active_design_iteration
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-07-20
+updated_at: 2026-08-02
 target: responsive_desktop_first_web_application
-design_tool: penpot
-design_phase: phase_1_foundations_components_screens
+design_tool: browser_html_code_components
+design_phase: phase_1_html_first_foundations_components_screens
 ---
 
 # Custometry — полный UI/UX blueprint Web-платформы
 
 ## 0. Статус и назначение
 
-Этот документ переводит продуктовый blueprint Custometry `0.9.4-draft` в проектируемую структуру Web UI: информационную архитектуру, маршруты, страницы, компоненты, состояния, взаимодействия, accessibility, responsive-поведение и план Penpot-рендеров.
+Этот документ переводит продуктовый blueprint Custometry `0.9.4-draft` в проектируемую структуру Web UI: информационную архитектуру, маршруты, страницы, компоненты, состояния, взаимодействия, accessibility, responsive-поведение и HTML-first план прототипирования и повторного использования UI.
 
 Документ является производным design-контрактом и не изменяет нормативную продуктовую спецификацию. Если UI-решение противоречит `custometry-technical-blueprint-ru.md`, действует machine blueprint. Новая бизнес-функция сначала должна появиться в двух продуктовых blueprint, а уже затем — здесь.
 
@@ -36,7 +36,7 @@ design_phase: phase_1_foundations_components_screens
 - собраны восемь representative prototype flows с route navigation, transient overlays и return-to-origin;
 - W06 подтвердил compact ordered MetricGroup tables и on-demand Result Trust, W08 на revision `181` — C24, flow 09 и discount/PVM delta, а W10 на revision `213` — C25, flow 10 и organization/People delta; browser/runtime/accessibility-runtime proof ещё отсутствует;
 - историческая delta `0.9.3/0.6.3` полностью представлена в Penpot: шесть organization/department/People route IDs, UI-CAP-021/022, C25 и flow 10 прошли W10 visual/structural acceptance без изменения исполняемых продуктовых контрактов;
-- UI target `0.7.0` заменяет foundation/shell/theme/interaction contract на общий Linear-workspace standard: React/TypeScript/Vite/MobX/TanStack Query/styled-components, четыре themes `abyss|graphite|frost|paper`, Inter Variable, resizable panels, keyboard-first navigation и измеримый perceived-performance contract; Penpot vNext и browser implementation ещё не приняты.
+- UI target `0.7.0` заменяет foundation/shell/theme/interaction contract на общий Linear-workspace standard: React/TypeScript/Vite/MobX/TanStack Query/styled-components, четыре themes `abyss|graphite|frost|paper`, Inter Variable, resizable panels, keyboard-first navigation и измеримый perceived-performance contract; current delivery идёт slice-first от принятого responsive HTML к reusable code components, registry/manifests, browser acceptance и затем production implementation.
 
 ## 1. Design brief
 
@@ -161,6 +161,7 @@ Data Foundation
 Analytics
   Analysis Library
   Sales
+  Products
   Customer Base
   RFM
   Cohorts
@@ -193,16 +194,20 @@ Administration
   Localization & Themes
 ```
 
-Sidebar показывает только разрешённые группы. В `expanded` каждый item содержит Lucide icon и полное локализованное название; в `collapsed` остаются те же icons без текста. Буквенные сокращения (`OV`, `DF`, `AN` и подобные) запрещены. Icon identity, порядок и route не меняются между состояниями; active item имеет контрастный selection marker и `aria-current`. Для icon-only item обязательны локализованные accessible name, tooltip по hover/focus, visible focus и hit area не менее 40×40 CSS px. Группа раскрывается автоматически при переходе на вложенный route и сохраняет состояние пользователя. Sidebar имеет три состояния: `expanded`, `collapsed` и `hidden`; выбор сохраняется для пользователя. В `hidden` остаётся доступный keyboard/focusable control для возврата навигации без перезагрузки страницы.
+Sidebar показывает только разрешённые группы. В `expanded` каждый item содержит Lucide icon и полное локализованное название; в `collapsed` остаются те же icons без текста. Буквенные сокращения (`OV`, `DF`, `AN` и подобные) запрещены. Icon identity, порядок и route не меняются между состояниями; active item имеет контрастный selection marker и `aria-current="page"`. Sales, Products и Forecasts используют разные semantic icons. Для icon-only item обязательны локализованные accessible name, tooltip по hover/focus, visible focus и hit area не менее 40×40 CSS px. Группа раскрывается автоматически при переходе на вложенный route и сохраняет состояние пользователя.
+
+Sidebar имеет три состояния: `expanded`, `collapsed` и `hidden`. В expanded состоянии его pointer-resize ограничен диапазоном примерно `208–320 px`; separator имеет keyboard step/reset и double-click reset, а presentation preference сохраняется для пользователя. В `hidden` остаётся доступный keyboard/focusable control для возврата навигации без перезагрузки страницы. Global Search и Notifications находятся в utility area непосредственно под workspace identity, а Help и user menu — в стабильном footer sidebar. Page header не дублирует эти действия.
 
 ### 4.2. Глобальный application shell
 
 | Область | Содержимое |
 |---|---|
-| Верхняя строка | Text wordmark, workspace switcher, global search/command palette, help, notifications, user menu |
-| Sidebar | Permission-aware navigation, expanded/collapsed/hidden control, active route, environment marker при необходимости |
+| Sidebar identity | Text wordmark и workspace switcher |
+| Sidebar utility | Global search/command palette и notifications непосредственно после workspace identity |
+| Sidebar navigation | Permission-aware groups, expanded/collapsed/hidden и resize control, active route, environment marker при необходимости |
+| Sidebar footer | Help и user menu в стабильной нижней области |
 | Page header | Breadcrumb, title, description/status, primary action и secondary actions |
-| Context bar | Dataset/version, date range, comparison, filters, timezone/currency, saved view |
+| Context bar | Dataset/version, date range, comparison, filters, timezone/currency, saved view; `UI-AN-003` не дублирует Dataset отдельным control и переносит dataset/version в compact Result Trust trigger |
 | Main content | Fluid page grid с ограничением читаемости long-form blocks |
 | Context panel | Right drawer 360–480 px для detail/lineage/issue/node без потери списка |
 | Progress surface | Persistent operation drawer; run продолжается после ухода со страницы |
@@ -230,7 +235,7 @@ Route registry имеет четыре области:
 | Installation | `/admin/*` либо `/audit` | `/admin/system`, `/admin/services`, `/audit` |
 | Workspace | `/w/:workspaceKey/*` | `/w/:workspaceKey/overview`, `/w/:workspaceKey/analytics/sales` |
 
-Машиночитаемый route contract разделён на три слоя. `packages/contracts/routes/ui-routes.json` остаётся компактным реестром identity/URL/title/release/status, `packages/contracts/routes/ui-route-contracts.json` хранит исполняемую политику family/shell, role hints, permissions, guards, states, history/query, Focus и Penpot status для всех 116 страниц, а `packages/contracts/routes/ui-surface-contracts.json` доказывает полное покрытие route, overlay, system и cross-surface capability surfaces. Portable schemas находятся рядом; семантический валидатор проверяет паритет с этим документом, все `UC-001…029`, product permission catalog и en/ru titles. Role hints используются только для discoverability и не заменяют API authorization.
+Машиночитаемый route contract разделён на три слоя. `packages/contracts/routes/ui-routes.json` остаётся компактным реестром identity/URL/title/release/status, `packages/contracts/routes/ui-route-contracts.json` хранит исполняемую политику family/shell, role hints, permissions, guards, states, history/query, Focus и design status для всех 117 target страниц, а `packages/contracts/routes/ui-surface-contracts.json` доказывает полное покрытие route, overlay, system и cross-surface capability surfaces. Portable schemas находятся рядом; семантический валидатор проверяет паритет с этим документом, все `UC-001…029`, product permission catalog и en/ru titles. Role hints используются только для discoverability и не заменяют API authorization. Historical Penpot baseline по-прежнему содержит 116 принятых route frames; новый `UI-AN-015` имеет `backlog` design status до собственного accepted HTML/component/browser stage.
 
 `workspaceKey` — неизменяемый opaque public identifier. Display name может меняться и не участвует в URL. Наличие ключа в URL не даёт доступ: guard до data fetch проверяет authenticated membership, effective permission и resource scope. Таблицы §9 показывают route suffix для читаемости; если строка не относится к public/global/installation scopes, её канонический URL строится как `/w/:workspaceKey` + указанный suffix.
 
@@ -299,7 +304,7 @@ Desktop reporting density для master frame `1440×900`:
 | `frost` | light | Холодный светлый UI |
 | `paper` | light | Яркий дневной UI и Email/XLSX default |
 
-Penpot variables и production tokens для всех четырёх themes должны повторять machine `theme_registry`. Каждый screen строится один раз на semantic aliases `canvas`, `background`, `surface`, `line`, `text`, `muted`, `accent`, `focus`, status и chart roles; representative matrix проверяет все themes без дублирования всех 116 routes.
+Production CSS tokens для всех четырёх themes должны повторять machine `theme_registry`. Каждый screen строится один раз на semantic aliases `canvas`, `background`, `surface`, `line`, `text`, `muted`, `accent`, `focus`, status и chart roles; representative browser matrix проверяет все themes без дублирования всех 117 target routes.
 
 Дополнительно до component build должны быть определены отсутствующие в сыром palette registry aliases из `THEME-003`: `success`, `warning`, `error`, `info`, `positive`, `negative` и color-blind-safe categorical chart series. Они являются design tokens, а не новыми бизнес-правилами.
 
@@ -336,7 +341,7 @@ Zoom до 200% не ломает flow. Таблицы не используют 
 - до получения официального SVG используется text-only wordmark `Custometry`;
 - runtime branding идёт через versioned BrandProfile: company product names, sanitized logos/favicon, optional sanitized custom icon pack, bundled fonts и semantic color overrides;
 - raw CSS/HTML/JS, remote assets и customer-specific component forks запрещены; preview проверяет contrast, broken assets, fallback wordmark и Web/email/XLSX/docs parity;
-- Penpot использует четыре production theme modes `abyss|graphite|frost|paper`; BrandProfile states показывают semantic overrides и preview, а не требуют дублировать все 116 screens для каждого клиента.
+- Code foundation использует четыре production theme modes `abyss|graphite|frost|paper`; BrandProfile states показывают semantic overrides и browser preview, а не требуют дублировать все 117 target screens для каждого клиента.
 
 ### 6.4. Elevation
 
@@ -610,7 +615,7 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-DQ-004 | `/quality-reports/:id` | QualityReport | MVP | DS, AN, OP | Gate decision, rules, redacted samples, comparison, trust/lineage, export |
 | UI-DQ-005 | `/quality-issues/:id` | Issue remediation and waiver | MVP | DS, OP | Evidence, affected capabilities, owner/comments, fix link, expiring scoped waiver, rerun |
 
-### 9.5. Analytics и Research — 14 страниц
+### 9.5. Analytics и Research — 15 страниц
 
 | ID | Route | Страница | Фаза | Роли | Основное содержимое и действия |
 |---|---|---|---|---|---|
@@ -628,8 +633,11 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-AN-012 | `/analyses/:id/results/:runId` | Result detail and trust | MVP | allowed | Immutable result, ChartSpec/table/distribution, treatment chip and sensitivity, filters, YoY diagnostics, limitations, lineage, save/report/export |
 | UI-AN-013 | `/research` | Research Cases | MVP | AN, VW | Questions/cases, owner/status, pinned method/dataset, findings, related analytical products, create/open/filter |
 | UI-AN-014 | `/research/:id` | Research Workspace | MVP | AN, VW | Outline/sections, narrative, metric groups, charts/tables/distributions, treatment evidence, drill/filter, findings vs comments, publish to dashboard/report/segment |
+| UI-AN-015 | `/analytics/products` | Products | V1 | AN, VW | Product/category/brand contribution, revenue/orders/AOV/margin, `vs LY`, product/store/channel context and Result Trust |
 
-Товарная аналитика в текущем product blueprint реализуется через Sales, Basket, Margin and Discounts и Custom Builder. Отдельная route-level страница «Products» пока не является нормативным модулем; произвольная товарная иерархия также остаётся отдельным будущим решением.
+Products является отдельным стабильным navigation/route identity для товарной аналитики. Он переиспользует утверждённую product/category/brand семантику Sales, Basket, Margin and Discounts и Custom Builder; произвольная новая товарная иерархия по-прежнему требует отдельного продуктового решения.
+
+Для `UI-AN-003` действует принятая композиционная конкретизация: standalone Dataset control и standalone Result Trust row отсутствуют. Dataset/version, trust/freshness и дата-время последнего обновления объединяются в компактный result-level trigger в правой части блока результата; trigger остаётся доступным при `Chart ↔ Data` и открывает полный Trust drawer. Embedded Sales показывает revenue/orders/AOV/margin, trend и переключаемый contribution breakdown по channel/store/product. Chart и table имеют отдельные route-backed Focus / Explore actions; focus сохраняет period, `vs LY`, applied context, representation и return-to-origin.
 
 ### 9.6. Segments — 3 страницы
 
@@ -736,7 +744,7 @@ Empty state содержит причину, prerequisite и одну следу
 |---|---|---|---|---|---|
 | UI-HELP-001 | `/help` | Help Center and keyboard shortcuts | MVP/V1 | all | Permission-aware search по shipped docs/Data Guides/codes, contextual help, shortcut reference, version/support and deterministic deep links |
 
-**Итого: 116 основных route-level страниц.** W08 подтвердил accepted baseline из 110 route frames, 25 overlays и 5 system surfaces на revision `181`. Product/UI delta `0.9.3/0.6.3` добавила шесть route identities без нового overlay или system surface и два reusable capabilities. W10 создал эти шесть frames, C25 и flow 10 и принят на revision `213` с global design inventory `116/25/5`.
+**Итого: 117 target route-level страниц.** W08 подтвердил accepted baseline из 110 route frames, 25 overlays и 5 system surfaces на revision `181`. Product/UI delta `0.9.3/0.6.3` добавила шесть route identities без нового overlay или system surface и два reusable capabilities. W10 создал эти шесть frames, C25 и flow 10 и принят на revision `213` с historical design inventory `116/25/5`. `UI-AN-015` добавлен как route-contract backlog и не считается принятой browser composition до собственной HTML acceptance и registered-component proof.
 
 ## 10. Overlays, drawers и modals
 
@@ -1084,7 +1092,7 @@ People & Creators:
 
 ## 15. Обязательные состояния
 
-Каждая из 116 target route-level страниц проектируется минимум для применимых состояний; system surfaces используют отдельные contracts §10.1:
+Каждая из 117 target route-level страниц проектируется минимум для применимых состояний; system surfaces используют отдельные contracts §10.1:
 
 | State | UI contract |
 |---|---|
@@ -1105,133 +1113,64 @@ People & Creators:
 | Session expired | Protected cache cleared, safe sign-in/return reference и re-authorization |
 | Upgrade required | Read-only/degraded boundary, required version и admin/runbook action |
 
-## 16. Penpot delivery contract
+## 16. HTML-first UI delivery contract
 
-### 16.1. Historical baseline и vNext
+### 16.1. Source of truth и stable identity
 
-Historical accepted file `7cd71457-8d32-8044-8008-549f83bb4645` сохраняет имя `Custometry — Web UI Blueprint — Frost v0.6.3`; W08 accepted baseline revision — `181` с 49 pages и stable inventory `110/25/5`, repair/recovery установил W10 start baseline `197`, а W10 принят на terminal revision `213` с inventory `116/25/5`, C25 и flow 10.
+Historical accepted inventory `116/25/5` с W10 terminal revision `213` сохраняется как immutable evidence прежней композиции и route/domain coverage, но не является operational source для UI `0.7.0`. Единственный accepted visual source для текущего slice — W27 responsive HTML для `UI-AN-003`, его репозиторные source paths и browser evidence.
 
-Новый design target получает отдельный canonical file `Custometry — Web UI — Linear Workspace v0.7`. Его file ID и стартовая revision фиксируются только W21 после read-only identity/concurrency guard. Старый файл не перезаписывается и не считается vNext acceptance. vNext сохраняет stable UI IDs и domain content, но пересобирает Foundations, shell, themes, motion, panels и representative flows по shared transition standard.
+Целевой reusable source — versioned React/HTML components и semantic CSS tokens в `packages/ui-foundation/**`, machine-readable component/screen manifests в `packages/contracts/ui-design/**` и browser component catalog в `apps/web/**`. Каждый public component имеет stable code ID, typed props/states, token bindings, accessibility contract и DOM provenance attribute. Screen manifest ссылается на component IDs и props, но не копирует visible markup.
 
-### 16.2. Структура Penpot
+### 16.1.1. Slice-first foundation boundary
+
+Global all-route catalog не является prerequisite. Каждый новый route или material composition delta сначала фиксируется в product/executable contracts, затем реализуется как isolated responsive HTML candidate, проходит fresh-browser validation и получает explicit product-owner acceptance. После acceptance только доказанные tokens, icons, primitives, patterns и compositions повышаются до reusable code foundation.
+
+### 16.1.2. HTML-first screen acceptance cycle
+
+1. Normative blueprint и executable contracts фиксируют scope, semantics, states и proof boundary.
+2. Isolated responsive HTML candidate реализует выбранную композицию и проходит focused tests и fresh-browser review.
+3. Product owner явно принимает либо возвращает HTML candidate на доработку.
+4. Accepted decisions извлекаются в semantic CSS tokens, typed reusable components, registry/manifests и component catalog.
+5. Accepted source screen пересобирается из этих компонентов без копирования markup.
+6. Same-viewport DOM/visual browser QA доказывает структурную и визуальную эквивалентность.
+7. Вторая composition собирается из того же registry, чтобы доказать реальное reuse.
+
+HTML candidate не становится production implementation автоматически. Реальный ECharts rendering, command palette, More page actions, typed filter expressions/chips и внешние share/email/download/export side effects входят в последующие implementation tickets по мере появления соответствующего production boundary.
+
+### 16.2. Целевая repository structure
 
 ```text
-00 Cover
-01 Getting Started
-02 Foundations — Colors
-03 Foundations — Typography
-04 Foundations — Spacing & Effects
-05 Foundations — Charts
---- Components
-C00 Components Index
-C01 Button
-C02 Icon Button & Menu Item
-C03 Text Field & Textarea
-C04 Select & Combobox
-C05 Date, Time & Period
-C06 Choice Controls
-C07 App Sidebar & Nav Item
-C08 Breadcrumb, Tabs, Pagination & Stepper
-C09 Badge, Status & Avatar
-C10 Card, KPI Card & Section
-C11 Modal, Drawer & Popover
-C12 Data Grid
-C13 Filter Builder
-C14 Chart Frame & Table Alternative
-C15 Feedback, Empty & Skeleton
-C16 Progress & ETA
-C17 Result Trust
-C18 Pipeline Node, Port & Edge
-C19 Report Block
-C20 Promotion Range Timeline
-C21 Operations Status & Attempt Timeline
-C22 Focus / Explore Surface & Toolbars
-C23 Population Treatment & Segmentation Diagnostics
-C24 Discount Components, Cap & PVM
-C25 Organization, Access & People
---- Screens
-19 Help & System Surfaces
-20 Auth & Onboarding
-21 Overview
-22 Data Foundation
-22A Methodology Registry
-22B File Imports & Templates
-22C Metric Presentation
-23 Data Quality
-24 Analytics
-24A Research Workspace
-25 Segments
-26 Forecasting
-27 Promotions
-28 Dashboards
-29 Reports & Exports
-30 Pipelines
-31 Operations
-32 Notifications
-33 Administration
-33A Branding & Company Packs
-33B Resource Access Policies
-33C Organization & People
-34 Responsive Samples
-35 State Matrix
-36 Theme Matrix
+packages/ui-foundation/
+  tokens/          semantic CSS tokens and four theme modes
+  components/      primitives and reusable analytical patterns
+packages/contracts/ui-design/
+  token-registry   portable token identities and schema
+  icon-registry    registered Lucide identities
+  component-registry and schema
+  screen-manifests and schema
+  browser QA receipts
+apps/web/
+  UI Lab           inspectable component catalog
+  accepted screens and second-composition reuse proof
 ```
+
+W27 Sales Overview остаётся rollback visual reference. W29 извлекает из него foundation, пересобирает Sales Overview и рендерит Focus/Explore как вторую composition. W22 может начать production shell только после accepted W29 evidence.
 
 ### 16.3. Component strategy
 
-Foundations создаются раньше компонентов. Repeated UI создаётся как local component/component set; screen frames используют instances. Компоненты связываются с semantic variables, а не hardcoded fills/spacing/radii. В текущем scope поддерживаются ровно `abyss`, `graphite`, `frost`, `paper`; representative matrix проверяет все четыре, а каждый route frame не дублируется четыре раза.
+Foundation применяет dependency direction `tokens → primitives → analytical patterns → screen compositions`. Repeated UI всегда создаётся как typed code component; screens и catalog используют те же imports. Компоненты связываются с semantic tokens, а не hardcoded fills/spacing/radii. В текущем scope поддерживаются ровно `abyss`, `graphite`, `frost`, `paper`.
 
 ### 16.4. Render output
 
-- 116 individual desktop master frames существуют в accepted W10 baseline; шесть historical frames `0.6.3` добавлены поверх W08 без изменения 25 overlays и 5 system surfaces;
-- 5 отдельные system-surface frames: 403, 404, session expired, maintenance, upgrade required;
-- отдельные state/contact sheets для wizard steps, drawers, comments, Data Treatment/sensitivity, bucket/stratified/KMeans, discount components/cap/PVM, organization transfer/effective access/ownership handover, contributor privacy и mandatory states;
-- отдельные state frames Focus / Explore для chart, table, range timeline, filters draft/apply/undo и return-to-origin;
-- responsive samples для Overview, Catalog, Analytics Result, Report Composer, Pipeline Canvas и Operator Center;
-- representative shell, analytics, table, form, modal, popover и detail-pane surfaces во всех четырёх themes;
-- naming: `UI-<DOMAIN>-<NNN>--<slug>--<theme>--1440x900.png`;
-- Penpot frame name совпадает с ID и page title этого документа.
-
-Один screen считается готовым только после visual screenshot review: нет clipping/overlap/placeholder copy, правильный font, theme tokens, component instances и доступные labels.
+W29 рендерит из registered components: Sales Overview Chart/Data, Result Trust drawer, Focus chart/breakdown, expanded/collapsed/hidden/resized Sidebar и compact `1024 × 768` state. Focus/Explore обязан использовать те же shell, toolbar, chart, data/trust primitives и token IDs; скопированный markup и duplicate private components не считаются reuse proof.
 
 ### 16.5. Prototype flows
 
-Penpot prototype обязан иметь минимум следующие representative flows:
+Текущий accepted slice моделирует `Sales → Focus chart/breakdown → return` и on-demand Result Trust disclosure. Prototype interaction не заменяет runtime contract: Focus/deep links, Back/Escape, drawer focus management и side effects доказываются в production browser implementation.
 
-1. `Workspace Overview → Sales → Focus → Back to source block`;
-2. `Dataset Overview → Capability → remediation link → Back`;
-3. `Draft editor → sidebar navigation → UI-OVR-023 Stay/Save/Discard`;
-4. `Topbar Help → UI-OVR-021 → UI-HELP-001 → UI-OVR-022`;
-5. `Session expired → Sign in → safe return/re-authorization`;
-6. `Admin System → maintenance/upgrade state → runbook/preflight`;
-7. `Notification channels → bounded test → status/audit detail`.
-8. `Segment Builder → treatment preview → bucket/KMeans diagnostics → publish → snapshot detail`.
-9. `Dataset mapping → discount policy/certification → Margin & Discounts → PVM/Result Trust → Research/Export`.
-10. `Organization → Department Hub → People & Creators → Contributor Profile → visible report → Back`; admin branch выполняет transfer/access/ownership preview и publish.
+### 16.6. Browser QA matrix
 
-Prototype interaction не заменяет runtime contract: Focus и deep links должны моделироваться navigation flow, transient modal/drawer — overlay flow, Back/Escape — явным return connection. Motion annotations используют только матрицу §6.5 и содержат reduced-motion note.
-
-### 16.6. Visual QA matrix
-
-Для всех 116 target route frames и 5 system frames проверяются:
-
-- уникальный ID, canonical route/scope, title, active navigation и primary action;
-- отсутствие placeholder copy, clipping, unintended overlap и content вне frame;
-- text alignment кнопок/controls, consistent row/column geometry, readable long ru copy;
-- sidebar expanded/collapsed/hidden affordance и корректный restore control;
-- expanded/collapsed используют один semantic icon mapping; collapsed и tablet sidebar не содержат буквенных сокращений, а icon-only items имеют accessible names и hover/focus tooltips;
-- compact KPI strip, `vs LY`, optional Result Trust drawer и Focus trigger на reportable surfaces;
-- Data Treatment chip/drawer не смешивается с обычными filters, показывает action/method/affected share и shared-vs-independent LY bounds;
-- Context Bar и KPI Strip имеют одинаковые column boundary X coordinates; separator Y/height, KPI baselines и text placement едины внутри template;
-- над chart/table/editor отсутствуют декоративные пустые полосы; `UI-DQ-001` и `UI-AN-001…014` отдельно проверяются на compact header и first-viewport data density;
-- loading/empty/failed/forbidden/stale/dirty/reduced-motion applicability;
-- `UI-AN-002/011/012/014` и `UI-SEG-001…003` проходят additive delta review для population/treatment/strata/KMeans, включая exact K, sensitivity, privacy и immutable snapshot semantics;
-- `UI-DATA-008/010/013/014/021/022`, `UI-AN-002/010/011/012/014`, C24 и Result Trust проходят additive review для component attribution, policy effective dates, stacking/cap, certification/proxy quality, PVM reconciliation и method availability;
-- component instances/semantic Frost tokens, focus names и minimum hit areas;
-- representative desktop/tablet/mobile reflow без двойной navigation модели;
-- prototype entry/return flow и route metadata.
-
-QA receipt фиксирует `pass`, `pass_with_note` или `fix_required` для каждого frame. Structural MCP scan может подтвердить geometry/metadata, но итоговый `pass` требует visual export review; browser/runtime accessibility и motion acceptance остаются отдельной future implementation boundary.
+Same-viewport QA проверяет exact route/title/control order, DOM component provenance, no clipping/overlap, Russian long-copy fit, Sidebar state affordances, stable semantic icon identities, compact KPI/Chart/Data/Trust/Focus composition, `1440 × 900` и `1024 × 768` reflow, console/network health и four-theme token compatibility. Screenshot diff доказывает visual equivalence с W27 accepted source, а structural receipt — реальное использование registry/components. Authorization, API, persistence, measured performance и external side effects остаются отдельной implementation boundary.
 
 ## 17. Traceability к product blueprint
 
@@ -1255,9 +1194,9 @@ QA receipt фиксирует `pass`, `pass_with_note` или `fix_required` д�
 | Motion/loading | MOTION-001…012, PROGRESS, TEST-INV-051, V1-AC-018 |
 | System/help/lifecycle | SYS-UI-001…005, HELP-001…004, ADMIN-010…011, NOTIFY-014…015, V1-AC-019 |
 
-## 18. Phase 0 gap analysis и решения перед Penpot
+## 18. Phase 0 gap analysis и решения перед HTML-first component foundation
 
-### 18.1. Что существовало в репозитории до сборки Penpot
+### 18.1. Что существовало в репозитории до HTML-first пилота
 
 - нормативные machine/human blueprint;
 - four-theme palette registry;
@@ -1273,8 +1212,8 @@ QA receipt фиксирует `pass`, `pass_with_note` или `fix_required` д�
 
 ### 18.3. Что отсутствует
 
-- canonical Penpot vNext file ID и start revision;
-- published component library для межпроектного reuse;
+- production implementation identity и runtime artifact package;
+- production component catalog, code registry и screen manifests beyond the accepted `UI-AN-003` HTML slice;
 - official logo SVG/brand pack;
 - all-four-theme captures, command palette, keyboard/focus snapshots, motion recordings, error/loading/session state references и measured geometry;
 - browser implementation и perceived-performance baseline;
@@ -1282,8 +1221,8 @@ QA receipt фиксирует `pass`, `pass_with_note` или `fix_required` д�
 
 ### 18.4. Утверждённые и применённые решения scope lock
 
-1. Сохранить W10 Penpot file как historical accepted evidence; вести vNext в отдельном canonical file, идентичность которого закрепляет W21.
-2. Поддерживать принятые 116 route-level master frames, 25 overlays и 5 system surfaces; W08 покрывает исторические первые 110, W10 добавил шесть Organization/People/Admin frames; post-v1 B2B/Yandex/activation/GMM/HDBSCAN/automatic-K/multivariate-anomaly/ABC-XYZ/OIDC/Kubernetes/public API UI не включать.
+1. Сохранить W10 historical artifact как accepted evidence; вести UI `0.7.0` slice-first только через repository-owned HTML/React source, semantic CSS tokens, component registry/manifests и browser evidence.
+2. Сохранять принятые historical `116/25/5` и добавить `UI-AN-015` как 117-й target route только через собственный HTML acceptance → component/registry promotion → browser QA cycle; W08 покрывает исторические первые 110, W10 добавил шесть Organization/People/Admin frames; post-v1 B2B/Yandex/activation/GMM/HDBSCAN/automatic-K/multivariate-anomaly/ABC-XYZ/OIDC/Kubernetes/public API UI не включать.
 3. Использовать ровно четыре темы `abyss`, `graphite`, `frost`, `paper`; проверять representative matrix, не дублируя каждый route.
 4. Использовать self-hosted versioned Inter Variable; Linear font files не копировать.
 5. Использовать text-only wordmark до получения официального SVG; generated logo из референса не перерисовывать.
@@ -1301,10 +1240,10 @@ QA receipt фиксирует `pass`, `pass_with_note` или `fix_required` д�
 | Browser-visible behavior | `breaking-change with fallback` | Linear-workspace shell, panels, four themes, keyboard and motion replace the old composition route-by-route; stable route IDs remain |
 | Request hash/cache identity | `compatible-change` | Applied result filters используют общий normalized contract; presentation-only state явно исключён |
 | URL/bookmark/history | `breaking-change` для будущих legacy URLs; сейчас `compatible-change` | Канонический workspace prefix `/w/:workspaceKey`; Foundation runtime и stable bookmarks отсутствуют, поэтому миграция выполняется до первого release consumer |
-| Design tokens/defaults | `breaking-change` before stable runtime | Six-theme/single-Penpot-Frost target replaced by exactly abyss/graphite/frost/paper and semantic CSS variables |
-| Penpot/components/images | `new target required` | W10 remains historical identity/domain evidence; W21 separately accepts vNext |
+| Design tokens/defaults | `breaking-change` before stable runtime | Six-theme/single-Frost historical target replaced by exactly abyss/graphite/frost/paper and semantic CSS variables |
+| HTML/code foundations/components/manifests | `breaking-change before stable runtime` | Existing external-identity artifacts become historical-only; accepted responsive HTML slices add versioned tokens, components, manifests, catalog entries and browser receipts in the repository |
 | Migration/rollback | `compatible route identities` | Existing shell remains fallback until each route slice has browser/a11y/performance evidence |
 
 ## 20. Phase 0 exit criteria
 
-Historical Phase 0 design acceptance завершена: W08 принят на revision `181`, W10 — на terminal revision `213` с global `116/25/5`. Эти evidence подтверждают прежнюю композицию и route/domain coverage, но не новый Linear-workspace target. UI `0.7.0` начинает отдельный transition cycle: W19 reference completion → W20 architecture spike → W21 Penpot vNext → W22 browser shell → W23 real Sales Analytics golden slice. Browser/runtime accessibility, authorization, persistence и performance не следуют из W10 Penpot acceptance.
+Historical Phase 0 design acceptance завершена: W08 принят на revision `181`, W10 — на terminal revision `213` с global `116/25/5`. Эти evidence подтверждают прежнюю композицию и route/domain coverage, но не новый Linear-workspace target. UI `0.7.0` использует transition cycle W19 reference completion → W20 architecture spike → W21 historical pilot → W24-W27 responsive HTML acceptance → W29 HTML-first UI foundation → W22 browser shell → W23 real Sales Analytics golden slice. Browser/runtime accessibility, authorization, persistence и performance не следуют из historical design evidence или HTML review сами по себе.

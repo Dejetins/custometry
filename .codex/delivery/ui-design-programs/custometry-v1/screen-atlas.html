@@ -1,0 +1,2855 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="ui-design-program-sha256" content="fe639d3e7c17061333b0fedee9273bca752137b082ce05409428c3bda92e55a6">
+  <title>Custometry Product-wide UI Design Program — screen atlas</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background:#0e1116; color:#eef1f5; }
+    * { box-sizing:border-box; } body { margin:0; } main { max-width:1600px; margin:auto; padding:24px; }
+    header.hero { display:flex; gap:24px; align-items:flex-end; justify-content:space-between; margin-bottom:32px; }
+    h1,h2,h3,p { margin-top:0; } h1 { margin-bottom:8px; font-size:26px; } h2 { font-size:18px; } h3 { margin:14px 0; font-size:15px; }
+    .meta,.quiet,.label,dt { color:#929aa6; font-size:12px; } .stats { display:flex; flex-wrap:wrap; gap:8px; }
+    .stat,.screen-card,.table-wrap { border:1px solid #2a3039; border-radius:10px; background:#151a21; }
+    .stat { min-width:112px; padding:12px; } .stat strong { display:block; font-size:20px; }
+    section { margin-top:32px; } .section-head { display:flex; justify-content:space-between; gap:16px; align-items:baseline; }
+    .screen-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:14px; }
+    .screen-card { min-width:0; padding:16px; } .screen-card.blocked { border-color:#7e5421; }
+    .screen-head { display:flex; gap:8px; justify-content:space-between; align-items:center; } code { overflow-wrap:anywhere; color:#d8cbff; }
+    .representative,.chip { display:inline-flex; align-items:center; min-height:22px; border-radius:5px; background:#242b35; padding:3px 7px; font-size:11px; }
+    .representative { background:#3b2b6f; color:#e1d8ff; } .chips { display:flex; flex-wrap:wrap; gap:5px; margin:5px 0 12px; }
+    dl { display:grid; gap:6px; } dl div { display:grid; grid-template-columns:72px minmax(0,1fr); gap:8px; } dt,dd { margin:0; overflow-wrap:anywhere; }
+    .table-wrap { overflow:auto; } table { width:100%; min-width:720px; border-collapse:collapse; } th,td { padding:10px 12px; border-bottom:1px solid #252b34; text-align:start; vertical-align:top; }
+    th { color:#aab2bd; font-size:12px; }
+    @media (max-width:760px) { main { padding:16px; } header.hero { align-items:flex-start; flex-direction:column; } }
+  </style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div><h1>Custometry Product-wide UI Design Program</h1><p class="meta">Derived screen atlas · revision 2 · SHA-256 fe639d3e7c170613…</p></div>
+    <div class="stats">
+      <div class="stat"><strong>156</strong><span class="meta">screens</span></div>
+      <div class="stat"><strong>1</strong><span class="meta">families</span></div>
+      <div class="stat"><strong>7</strong><span class="meta">journeys</span></div>
+      <div class="stat"><strong>0</strong><span class="meta">blocked</span></div>
+    </div>
+  </header>
+  <p><strong>Responsive web:</strong> required · <strong>Mobile scope:</strong> unauthorized. This atlas is generated evidence, not a source of truth.</p>
+  <section><div class="section-head"><h2>Inventory</h2></div><div class="table-wrap"><table><thead><tr><th>Classification</th><th>Count</th></tr></thead><tbody><tr><td>historical_exclusion</td><td>3</td></tr><tr><td>internal_or_non_visual</td><td>2</td></tr><tr><td>overlay</td><td>24</td></tr><tr><td>persistent_shell</td><td>4</td></tr><tr><td>route_backed_transient</td><td>1</td></tr><tr><td>route_flow</td><td>5</td></tr><tr><td>route_screen</td><td>112</td></tr><tr><td>system_state_family</td><td>5</td></tr></tbody></table></div></section>
+  <section><div class="section-head"><h2>Journey map</h2></div><div class="table-wrap"><table><thead><tr><th>Journey</th><th>Entry</th><th>Intermediate</th><th>Alternate</th><th>Failure</th><th>Recovery</th><th>Terminal</th><th>External</th><th>Transitions</th></tr></thead><tbody><tr><td><code>JOURNEY-001</code></td><td><span class="chip">UI-AUTH-002</span></td><td><span class="chip">UI-AUTH-005</span><span class="chip">UI-SYS-003</span></td><td><span class="quiet">—</span></td><td><span class="chip">UI-SYS-003</span></td><td><span class="chip">UI-AUTH-001</span></td><td><span class="chip">UI-CORE-001</span></td><td><span class="quiet">—</span></td><td><span class="chip">UI-AUTH-002 → UI-AUTH-005 (forward)</span><span class="chip">UI-AUTH-005 → UI-CORE-001 (terminal)</span><span class="chip">UI-AUTH-002 → UI-SYS-003 (failure)</span><span class="chip">UI-AUTH-005 → UI-SYS-003 (failure)</span><span class="chip">UI-SYS-003 → UI-AUTH-001 (recovery)</span><span class="chip">UI-AUTH-001 → UI-AUTH-005 (forward)</span></td></tr><tr><td><code>JOURNEY-002</code></td><td><span class="chip">UI-DATA-001</span></td><td><span class="chip">UI-DATA-002</span><span class="chip">UI-DATA-004</span><span class="chip">UI-DATA-005</span><span class="chip">UI-DATA-008</span><span class="chip">UI-DATA-009</span><span class="chip">UI-DATA-010</span><span class="chip">UI-DATA-013</span><span class="chip">UI-DATA-014</span><span class="chip">UI-DATA-006</span><span class="chip">UI-DATA-020</span><span class="chip">UI-DATA-012</span><span class="chip">UI-DQ-004</span></td><td><span class="chip">UI-DATA-026</span><span class="chip">UI-DATA-027</span></td><td><span class="chip">UI-DQ-005</span></td><td><span class="chip">UI-DQ-004</span></td><td><span class="chip">UI-DATA-011</span></td><td><span class="quiet">—</span></td><td><span class="chip">UI-DATA-001 → UI-DATA-002 (forward)</span><span class="chip">UI-DATA-001 → UI-DATA-026 (alternate)</span><span class="chip">UI-DATA-026 → UI-DATA-027 (forward)</span><span class="chip">UI-DATA-027 → UI-DATA-004 (forward)</span><span class="chip">UI-DATA-002 → UI-DATA-004 (forward)</span><span class="chip">UI-DATA-004 → UI-DATA-005 (forward)</span><span class="chip">UI-DATA-005 → UI-DATA-008 (forward)</span><span class="chip">UI-DATA-008 → UI-DATA-009 (forward)</span><span class="chip">UI-DATA-009 → UI-DATA-010 (forward)</span><span class="chip">UI-DATA-010 → UI-DATA-013 (forward)</span><span class="chip">UI-DATA-013 → UI-DATA-014 (forward)</span><span class="chip">UI-DATA-014 → UI-DATA-006 (forward)</span><span class="chip">UI-DATA-006 → UI-DATA-020 (forward)</span><span class="chip">UI-DATA-020 → UI-DATA-012 (forward)</span><span class="chip">UI-DATA-012 → UI-DQ-004 (forward)</span><span class="chip">UI-DQ-004 → UI-DQ-005 (failure)</span><span class="chip">UI-DQ-005 → UI-DQ-004 (recovery)</span><span class="chip">UI-DQ-004 → UI-DATA-011 (terminal)</span></td></tr><tr><td><code>JOURNEY-003</code></td><td><span class="chip">UI-DQ-005</span></td><td><span class="chip">UI-DQ-004</span><span class="chip">UI-OVR-024</span><span class="chip">UI-OVR-011</span><span class="chip">UI-OVR-010</span></td><td><span class="chip">UI-DATA-008</span><span class="chip">UI-DQ-003</span><span class="chip">UI-OVR-008</span></td><td><span class="chip">UI-DQ-005</span></td><td><span class="chip">UI-DQ-004</span></td><td><span class="chip">UI-DQ-001</span></td><td><span class="quiet">—</span></td><td><span class="chip">UI-DQ-005 → UI-DQ-004 (recovery)</span><span class="chip">UI-DQ-004 → UI-DATA-008 (alternate)</span><span class="chip">UI-DQ-004 → UI-DQ-003 (alternate)</span><span class="chip">UI-DATA-008 → UI-OVR-024 (forward)</span><span class="chip">UI-DQ-003 → UI-OVR-024 (forward)</span><span class="chip">UI-DQ-005 → UI-OVR-008 (alternate)</span><span class="chip">UI-OVR-024 → UI-OVR-011 (forward)</span><span class="chip">UI-OVR-008 → UI-OVR-010 (forward)</span><span class="chip">UI-OVR-011 → UI-OVR-010 (forward)</span><span class="chip">UI-OVR-010 → UI-DQ-005 (failure)</span><span class="chip">UI-OVR-010 → UI-DQ-004 (recovery)</span><span class="chip">UI-DQ-004 → UI-DQ-001 (terminal)</span></td></tr><tr><td><code>JOURNEY-004</code></td><td><span class="chip">UI-AN-001</span></td><td><span class="chip">UI-AN-002</span><span class="chip">UI-OVR-010</span><span class="chip">UI-OVR-006</span></td><td><span class="chip">UI-DASH-003</span><span class="chip">UI-ADMIN-018</span><span class="chip">UI-PIPE-004</span><span class="chip">UI-RPT-006</span></td><td><span class="chip">UI-AN-002</span></td><td><span class="chip">UI-OVR-010</span></td><td><span class="chip">UI-AN-012</span></td><td><span class="quiet">—</span></td><td><span class="chip">UI-AN-001 → UI-AN-002 (forward)</span><span class="chip">UI-AN-002 → UI-OVR-010 (forward)</span><span class="chip">UI-OVR-010 → UI-AN-002 (failure)</span><span class="chip">UI-OVR-010 → UI-OVR-006 (forward)</span><span class="chip">UI-OVR-006 → UI-DASH-003 (alternate)</span><span class="chip">UI-OVR-006 → UI-ADMIN-018 (alternate)</span><span class="chip">UI-OVR-006 → UI-PIPE-004 (alternate)</span><span class="chip">UI-OVR-006 → UI-RPT-006 (alternate)</span><span class="chip">UI-OVR-006 → UI-AN-012 (terminal)</span><span class="chip">UI-DASH-003 → UI-AN-012 (terminal)</span><span class="chip">UI-ADMIN-018 → UI-AN-012 (terminal)</span><span class="chip">UI-PIPE-004 → UI-AN-012 (terminal)</span><span class="chip">UI-RPT-006 → UI-AN-012 (terminal)</span></td></tr><tr><td><code>JOURNEY-005</code></td><td><span class="chip">UI-FCST-001</span></td><td><span class="chip">UI-FCST-002</span><span class="chip">UI-FCST-003</span><span class="chip">UI-FCST-005</span><span class="chip">UI-PIPE-004</span><span class="chip">UI-FCST-006</span></td><td><span class="chip">UI-FCST-007</span></td><td><span class="chip">UI-FCST-002</span></td><td><span class="chip">UI-FCST-003</span></td><td><span class="chip">UI-FCST-004</span></td><td><span class="quiet">—</span></td><td><span class="chip">UI-FCST-001 → UI-FCST-002 (forward)</span><span class="chip">UI-FCST-002 → UI-FCST-003 (recovery)</span><span class="chip">UI-FCST-003 → UI-FCST-002 (failure)</span><span class="chip">UI-FCST-003 → UI-FCST-005 (forward)</span><span class="chip">UI-FCST-005 → UI-PIPE-004 (forward)</span><span class="chip">UI-PIPE-004 → UI-FCST-006 (forward)</span><span class="chip">UI-FCST-006 → UI-FCST-007 (alternate)</span><span class="chip">UI-FCST-007 → UI-FCST-003 (recovery)</span><span class="chip">UI-FCST-006 → UI-FCST-004 (terminal)</span></td></tr><tr><td><code>JOURNEY-006</code></td><td><span class="chip">UI-OPS-001</span></td><td><span class="chip">UI-OPS-002</span><span class="chip">UI-OVR-011</span><span class="chip">UI-OVR-010</span><span class="chip">UI-NOTIFY-001</span><span class="chip">UI-OVR-016</span></td><td><span class="chip">UI-PIPE-004</span><span class="chip">UI-OPS-004</span></td><td><span class="chip">UI-OPS-003</span></td><td><span class="chip">UI-OPS-002</span><span class="chip">UI-OVR-010</span></td><td><span class="chip">UI-ADMIN-010</span></td><td><span class="quiet">—</span></td><td><span class="chip">UI-OPS-001 → UI-OPS-002 (forward)</span><span class="chip">UI-OPS-001 → UI-PIPE-004 (alternate)</span><span class="chip">UI-PIPE-004 → UI-OPS-002 (forward)</span><span class="chip">UI-OPS-001 → UI-OPS-004 (alternate)</span><span class="chip">UI-OPS-004 → UI-OPS-002 (forward)</span><span class="chip">UI-OPS-002 → UI-OPS-003 (failure)</span><span class="chip">UI-OPS-003 → UI-OVR-011 (forward)</span><span class="chip">UI-OPS-002 → UI-OVR-011 (forward)</span><span class="chip">UI-OVR-011 → UI-OVR-010 (recovery)</span><span class="chip">UI-OVR-010 → UI-OPS-002 (recovery)</span><span class="chip">UI-OPS-002 → UI-NOTIFY-001 (forward)</span><span class="chip">UI-NOTIFY-001 → UI-OVR-016 (forward)</span><span class="chip">UI-OVR-016 → UI-ADMIN-010 (terminal)</span></td></tr><tr><td><code>JOURNEY-007</code></td><td><span class="chip">UI-AN-013</span></td><td><span class="chip">UI-DATA-021</span><span class="chip">UI-DATA-022</span><span class="chip">UI-DATA-011</span><span class="chip">UI-DQ-004</span><span class="chip">UI-AN-014</span><span class="chip">UI-DATA-028</span><span class="chip">UI-DATA-029</span><span class="chip">UI-OVR-006</span><span class="chip">UI-RPT-002</span><span class="chip">UI-RPT-003</span><span class="chip">UI-OVR-024</span></td><td><span class="chip">UI-DASH-003</span><span class="chip">UI-DASH-002</span><span class="chip">UI-RPT-006</span></td><td><span class="chip">UI-DQ-005</span></td><td><span class="chip">UI-DQ-004</span></td><td><span class="chip">UI-RPT-001</span></td><td><span class="quiet">—</span></td><td><span class="chip">UI-AN-013 → UI-DATA-021 (forward)</span><span class="chip">UI-DATA-021 → UI-DATA-022 (forward)</span><span class="chip">UI-DATA-022 → UI-DATA-011 (forward)</span><span class="chip">UI-DATA-011 → UI-DQ-004 (forward)</span><span class="chip">UI-DQ-004 → UI-DQ-005 (failure)</span><span class="chip">UI-DQ-005 → UI-DQ-004 (recovery)</span><span class="chip">UI-DQ-004 → UI-AN-014 (forward)</span><span class="chip">UI-AN-014 → UI-DATA-028 (forward)</span><span class="chip">UI-DATA-028 → UI-DATA-029 (forward)</span><span class="chip">UI-DATA-029 → UI-OVR-006 (forward)</span><span class="chip">UI-OVR-006 → UI-RPT-002 (forward)</span><span class="chip">UI-RPT-002 → UI-RPT-003 (forward)</span><span class="chip">UI-RPT-002 → UI-DASH-003 (alternate)</span><span class="chip">UI-DASH-003 → UI-DASH-002 (forward)</span><span class="chip">UI-DASH-002 → UI-OVR-024 (forward)</span><span class="chip">UI-RPT-003 → UI-RPT-006 (alternate)</span><span class="chip">UI-RPT-006 → UI-OVR-024 (forward)</span><span class="chip">UI-RPT-003 → UI-OVR-024 (forward)</span><span class="chip">UI-OVR-024 → UI-RPT-001 (terminal)</span></td></tr></tbody></table></div></section>
+  <section><div class="section-head"><h2>Coverage matrix</h2></div><div class="table-wrap"><table><thead><tr><th>Profile</th><th>States</th><th>Roles</th><th>Locales</th><th>Themes</th><th>Viewports</th><th>Cases/screen</th></tr></thead><tbody><tr><td colspan="7" class="quiet">No coverage profiles mapped</td></tr></tbody></table></div></section>
+  <section><div class="section-head"><h2>Design waves</h2></div><div class="table-wrap"><table><thead><tr><th>Wave</th><th>Title</th><th>Families</th><th>Depends on</th><th>Gate</th></tr></thead><tbody><tr><td colspan="5" class="quiet">No waves assigned</td></tr></tbody></table></div></section>
+  <section><header class="section-head"><h2>unresolved-family</h2><span>156 screens</span></header><div class="screen-grid">
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-001</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-002</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/workspaces</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-003</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/settings/access</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-004</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/settings/policies</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-005</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-005</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/capacity</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-006</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-006</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/services</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-007</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-007</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/workers</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-008</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-008</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/plugins</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-009</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-009</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/storage-backup</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-010</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-010</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/audit</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-011</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-011</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/localization-themes</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-012</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-012</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/system</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-013</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-013</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/settings/branding</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-014</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-014</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/brand-profiles</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-015</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-015</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/brand-profiles/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-016</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-016</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/company-packs</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-017</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-017</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/company-packs/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-018</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-018</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/access/:resourceType/:resourceId</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-019</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-019</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/settings/organization</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ADMIN-020</code>
+                    
+                  </div>
+                  <h3>UI-ADMIN-020</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/settings/organization/:orgUnitKey</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-001</code>
+                    
+                  </div>
+                  <h3>UI-AN-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analyses</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-002</code>
+                    
+                  </div>
+                  <h3>UI-AN-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analyses/new</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-003</code>
+                    
+                  </div>
+                  <h3>UI-AN-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/sales</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-003?view=html-prototype</code>
+                    
+                  </div>
+                  <h3>Sales Overview HTML prototype query surface</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/northwind-retail/analytics/sales?view=html-prototype</dd></div>
+                    <div><dt>Class</dt><dd>internal_or_non_visual</dd></div>
+                    <div><dt>Scope</dt><dd>internal</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-003?view=linear-spike</code>
+                    
+                  </div>
+                  <h3>Sales Overview architecture-spike query surface</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/northwind-retail/analytics/sales?view=linear-spike</dd></div>
+                    <div><dt>Class</dt><dd>internal_or_non_visual</dd></div>
+                    <div><dt>Scope</dt><dd>internal</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-004</code>
+                    
+                  </div>
+                  <h3>UI-AN-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/customers</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-005</code>
+                    
+                  </div>
+                  <h3>UI-AN-005</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/rfm</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-006</code>
+                    
+                  </div>
+                  <h3>UI-AN-006</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/cohorts</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-007</code>
+                    
+                  </div>
+                  <h3>UI-AN-007</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/lifecycle</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-008</code>
+                    
+                  </div>
+                  <h3>UI-AN-008</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/basket</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-009</code>
+                    
+                  </div>
+                  <h3>UI-AN-009</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/stores-channels</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-010</code>
+                    
+                  </div>
+                  <h3>UI-AN-010</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/margin-discounts</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-011</code>
+                    
+                  </div>
+                  <h3>UI-AN-011</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analyses/custom</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-012</code>
+                    
+                  </div>
+                  <h3>UI-AN-012</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analyses/:id/results/:runId</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-013</code>
+                    
+                  </div>
+                  <h3>UI-AN-013</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/research</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-014</code>
+                    
+                  </div>
+                  <h3>UI-AN-014</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/research/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AN-015</code>
+                    
+                  </div>
+                  <h3>UI-AN-015</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/analytics/products</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AUTH-001</code>
+                    
+                  </div>
+                  <h3>UI-AUTH-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/auth/sign-in</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AUTH-002</code>
+                    
+                  </div>
+                  <h3>UI-AUTH-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/bootstrap</dd></div>
+                    <div><dt>Class</dt><dd>route_flow</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AUTH-003</code>
+                    
+                  </div>
+                  <h3>UI-AUTH-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/invites/:token</dd></div>
+                    <div><dt>Class</dt><dd>route_flow</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AUTH-004</code>
+                    
+                  </div>
+                  <h3>UI-AUTH-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/auth/recovery</dd></div>
+                    <div><dt>Class</dt><dd>route_flow</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AUTH-005</code>
+                    
+                  </div>
+                  <h3>UI-AUTH-005</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/onboarding</dd></div>
+                    <div><dt>Class</dt><dd>route_flow</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-AUTH-006</code>
+                    
+                  </div>
+                  <h3>UI-AUTH-006</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/profile/security</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-CORE-001</code>
+                    
+                  </div>
+                  <h3>UI-CORE-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/overview</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DASH-001</code>
+                    
+                  </div>
+                  <h3>UI-DASH-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/dashboards</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DASH-002</code>
+                    
+                  </div>
+                  <h3>UI-DASH-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/dashboards/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DASH-003</code>
+                    
+                  </div>
+                  <h3>UI-DASH-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/dashboards/:id/edit</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-001</code>
+                    
+                  </div>
+                  <h3>UI-DATA-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/connections</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-002</code>
+                    
+                  </div>
+                  <h3>UI-DATA-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/connections/new</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-003</code>
+                    
+                  </div>
+                  <h3>UI-DATA-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/connections/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-004</code>
+                    
+                  </div>
+                  <h3>UI-DATA-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/catalog</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-005</code>
+                    
+                  </div>
+                  <h3>UI-DATA-005</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/catalog/objects/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-006</code>
+                    
+                  </div>
+                  <h3>UI-DATA-006</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/catalog/objects/:id/preview</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-007</code>
+                    
+                  </div>
+                  <h3>UI-DATA-007</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/datasets</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-008</code>
+                    
+                  </div>
+                  <h3>UI-DATA-008</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/datasets/:id/mapping</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-009</code>
+                    
+                  </div>
+                  <h3>UI-DATA-009</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/datasets/:id/relationships</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-010</code>
+                    
+                  </div>
+                  <h3>UI-DATA-010</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/datasets/:id/policies</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-011</code>
+                    
+                  </div>
+                  <h3>UI-DATA-011</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/datasets/:id/capabilities</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-012</code>
+                    
+                  </div>
+                  <h3>UI-DATA-012</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/datasets/:id/versions</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-013</code>
+                    
+                  </div>
+                  <h3>UI-DATA-013</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/metrics</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-014</code>
+                    
+                  </div>
+                  <h3>UI-DATA-014</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/metrics/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-015</code>
+                    
+                  </div>
+                  <h3>UI-DATA-015</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/filter-fields</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-016</code>
+                    
+                  </div>
+                  <h3>UI-DATA-016</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/data-guides</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-017</code>
+                    
+                  </div>
+                  <h3>UI-DATA-017</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/data-guides/:id/edit</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-018</code>
+                    
+                  </div>
+                  <h3>UI-DATA-018</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/data-guides/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-019</code>
+                    
+                  </div>
+                  <h3>UI-DATA-019</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/artifacts</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-020</code>
+                    
+                  </div>
+                  <h3>UI-DATA-020</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/datasets/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-021</code>
+                    
+                  </div>
+                  <h3>UI-DATA-021</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/methodologies</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-022</code>
+                    
+                  </div>
+                  <h3>UI-DATA-022</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/methodologies/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-023</code>
+                    
+                  </div>
+                  <h3>UI-DATA-023</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/file-import-templates</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-024</code>
+                    
+                  </div>
+                  <h3>UI-DATA-024</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/file-import-templates/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-025</code>
+                    
+                  </div>
+                  <h3>UI-DATA-025</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/imports</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-026</code>
+                    
+                  </div>
+                  <h3>UI-DATA-026</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/imports/new</dd></div>
+                    <div><dt>Class</dt><dd>route_flow</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-027</code>
+                    
+                  </div>
+                  <h3>UI-DATA-027</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/imports/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-028</code>
+                    
+                  </div>
+                  <h3>UI-DATA-028</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/metric-groups</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-029</code>
+                    
+                  </div>
+                  <h3>UI-DATA-029</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/metric-groups/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-030</code>
+                    
+                  </div>
+                  <h3>UI-DATA-030</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/number-formats</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DATA-031</code>
+                    
+                  </div>
+                  <h3>UI-DATA-031</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/number-formats/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DQ-001</code>
+                    
+                  </div>
+                  <h3>UI-DQ-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/data-quality</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DQ-002</code>
+                    
+                  </div>
+                  <h3>UI-DQ-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/quality-rules</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DQ-003</code>
+                    
+                  </div>
+                  <h3>UI-DQ-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/quality-rules/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DQ-004</code>
+                    
+                  </div>
+                  <h3>UI-DQ-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/quality-reports/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-DQ-005</code>
+                    
+                  </div>
+                  <h3>UI-DQ-005</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/quality-issues/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-FCST-001</code>
+                    
+                  </div>
+                  <h3>UI-FCST-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/forecasts</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-FCST-002</code>
+                    
+                  </div>
+                  <h3>UI-FCST-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/forecasts/new</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-FCST-003</code>
+                    
+                  </div>
+                  <h3>UI-FCST-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/forecasts/:id/backtests</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-FCST-004</code>
+                    
+                  </div>
+                  <h3>UI-FCST-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/forecasts/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-FCST-005</code>
+                    
+                  </div>
+                  <h3>UI-FCST-005</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/models/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-FCST-006</code>
+                    
+                  </div>
+                  <h3>UI-FCST-006</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/forecasts/:id/monitoring</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-FCST-007</code>
+                    
+                  </div>
+                  <h3>UI-FCST-007</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/models</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-HELP-001</code>
+                    
+                  </div>
+                  <h3>UI-HELP-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/help</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-NOTIFY-001</code>
+                    
+                  </div>
+                  <h3>UI-NOTIFY-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/notifications</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-NOTIFY-002</code>
+                    
+                  </div>
+                  <h3>UI-NOTIFY-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/notifications/preferences</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-NOTIFY-003</code>
+                    
+                  </div>
+                  <h3>UI-NOTIFY-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/settings/notification-channels</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OPS-001</code>
+                    
+                  </div>
+                  <h3>UI-OPS-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/runs</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OPS-002</code>
+                    
+                  </div>
+                  <h3>UI-OPS-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/runs/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OPS-003</code>
+                    
+                  </div>
+                  <h3>UI-OPS-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/runs/:id/nodes/:nodeId/attempts/:attemptId</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OPS-004</code>
+                    
+                  </div>
+                  <h3>UI-OPS-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/admin/runtime</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ORG-001</code>
+                    
+                  </div>
+                  <h3>UI-ORG-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/organization</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-ORG-002</code>
+                    
+                  </div>
+                  <h3>UI-ORG-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/organization/:orgUnitKey</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-001</code>
+                    
+                  </div>
+                  <h3>Workspace switcher</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-002</code>
+                    
+                  </div>
+                  <h3>Global command palette</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-003</code>
+                    
+                  </div>
+                  <h3>Searchable Filter Explorer</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-004</code>
+                    
+                  </div>
+                  <h3>Filter expression editor</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-005</code>
+                    
+                  </div>
+                  <h3>Previous-year comparison editor</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-006</code>
+                    
+                  </div>
+                  <h3>Result Trust drawer</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-007</code>
+                    
+                  </div>
+                  <h3>Chart data table</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-008</code>
+                    
+                  </div>
+                  <h3>Publish diff and impact modal</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-009</code>
+                    
+                  </div>
+                  <h3>Clone/deprecate/archive modal</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-010</code>
+                    
+                  </div>
+                  <h3>Operation progress drawer</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-011</code>
+                    
+                  </div>
+                  <h3>Cancel/retry/rerun confirmation</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-012</code>
+                    
+                  </div>
+                  <h3>Export preflight modal</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-013</code>
+                    
+                  </div>
+                  <h3>Email send confirmation</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-014</code>
+                    
+                  </div>
+                  <h3>Promotion item detail drawer</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-015</code>
+                    
+                  </div>
+                  <h3>Pipeline node inspector</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-016</code>
+                    
+                  </div>
+                  <h3>Notification detail drawer</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-017</code>
+                    
+                  </div>
+                  <h3>Theme switcher</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-018</code>
+                    
+                  </div>
+                  <h3>Permission/forbidden explanation</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-019</code>
+                    
+                  </div>
+                  <h3>Destructive action confirmation</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-020</code>
+                    
+                  </div>
+                  <h3>Full-screen Focus / Explore Surface</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>route_backed_transient</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-021</code>
+                    
+                  </div>
+                  <h3>Help and contextual-help menu</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-022</code>
+                    
+                  </div>
+                  <h3>Keyboard shortcuts reference</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-023</code>
+                    
+                  </div>
+                  <h3>Unsaved changes confirmation</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-024</code>
+                    
+                  </div>
+                  <h3>Discussion and comments drawer</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-OVR-025</code>
+                    
+                  </div>
+                  <h3>Data treatment and sensitivity drawer</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>overlay</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PEOPLE-001</code>
+                    
+                  </div>
+                  <h3>UI-PEOPLE-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/people</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PEOPLE-002</code>
+                    
+                  </div>
+                  <h3>UI-PEOPLE-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/people/:principalId</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PIPE-001</code>
+                    
+                  </div>
+                  <h3>UI-PIPE-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/pipelines</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PIPE-002</code>
+                    
+                  </div>
+                  <h3>UI-PIPE-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/pipelines/:id/edit</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PIPE-003</code>
+                    
+                  </div>
+                  <h3>UI-PIPE-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/pipelines/:id/versions</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PIPE-004</code>
+                    
+                  </div>
+                  <h3>UI-PIPE-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/schedules</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PROMO-001</code>
+                    
+                  </div>
+                  <h3>UI-PROMO-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/promotions</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PROMO-002</code>
+                    
+                  </div>
+                  <h3>UI-PROMO-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/promotions/new</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-PROMO-003</code>
+                    
+                  </div>
+                  <h3>UI-PROMO-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/promotions/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-RPT-001</code>
+                    
+                  </div>
+                  <h3>UI-RPT-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/reports</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-RPT-002</code>
+                    
+                  </div>
+                  <h3>UI-RPT-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/reports/:id/edit</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-RPT-003</code>
+                    
+                  </div>
+                  <h3>UI-RPT-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/reports/:id/snapshots/:sid</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-RPT-004</code>
+                    
+                  </div>
+                  <h3>UI-RPT-004</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/reports/:id/send</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-RPT-005</code>
+                    
+                  </div>
+                  <h3>UI-RPT-005</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/report-deliveries</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-RPT-006</code>
+                    
+                  </div>
+                  <h3>UI-RPT-006</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/exports</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-RPT-007</code>
+                    
+                  </div>
+                  <h3>UI-RPT-007</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/settings/report-email</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-SEG-001</code>
+                    
+                  </div>
+                  <h3>UI-SEG-001</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/segments</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-SEG-002</code>
+                    
+                  </div>
+                  <h3>UI-SEG-002</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/segments/new</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-SEG-003</code>
+                    
+                  </div>
+                  <h3>UI-SEG-003</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>/w/:workspaceKey/segments/:id</dd></div>
+                    <div><dt>Class</dt><dd>route_screen</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-SYS-001</code>
+                    
+                  </div>
+                  <h3>403 Forbidden</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>system_state_family</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-SYS-002</code>
+                    
+                  </div>
+                  <h3>404 Not Found</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>system_state_family</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-SYS-003</code>
+                    
+                  </div>
+                  <h3>Session expired</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>system_state_family</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-SYS-004</code>
+                    
+                  </div>
+                  <h3>Maintenance</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>system_state_family</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>UI-SYS-005</code>
+                    
+                  </div>
+                  <h3>Upgrade required</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>system_state_family</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>W10-PENPOT-093-ORGANIZATION-PEOPLE-DELTA-IMPLEMENTATION</code>
+                    
+                  </div>
+                  <h3>Historical Penpot inventory evidence</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>historical_exclusion</dd></div>
+                    <div><dt>Scope</dt><dd>excluded</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>W21-CONTRACT-COMPILED-UI-PILOT</code>
+                    
+                  </div>
+                  <h3>Historical contract-compiled Figma pilot</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>historical_exclusion</dd></div>
+                    <div><dt>Scope</dt><dd>excluded</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>W28-UI-AN-003-FIGMA-SYNCHRONIZATION</code>
+                    
+                  </div>
+                  <h3>Superseded W28 Figma synchronization evidence</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>historical_exclusion</dd></div>
+                    <div><dt>Scope</dt><dd>excluded</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>auth</code>
+                    
+                  </div>
+                  <h3>Persistent shell profile: auth</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>persistent_shell</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>global</code>
+                    
+                  </div>
+                  <h3>Persistent shell profile: global</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>persistent_shell</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>installation</code>
+                    
+                  </div>
+                  <h3>Persistent shell profile: installation</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>persistent_shell</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                
+                <article class="screen-card">
+                  <div class="screen-head">
+                    <code>workspace</code>
+                    
+                  </div>
+                  <h3>Persistent shell profile: workspace</h3>
+                  <dl>
+                    <div><dt>Route</dt><dd>—</dd></div>
+                    <div><dt>Class</dt><dd>persistent_shell</dd></div>
+                    <div><dt>Scope</dt><dd>in_scope</dd></div>
+                    <div><dt>Wave</dt><dd>unresolved</dd></div>
+                    <div><dt>Coverage</dt><dd>unresolved</dd></div>
+                  </dl>
+                  <div class="label">Journeys</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Required states</div><div class="chips"><span class="quiet">—</span></div>
+                  <div class="label">Unresolved</div><div class="chips"><span class="quiet">—</span></div>
+                </article>
+                </div></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "schema_version": "custometry.ui-design.figma-library-audit/v1",
+  "file_key": "hX3nQOtcSdCc97uv26m9eG",
+  "page_id": "0:1",
+  "baseline": {"top_level_children": 0, "variable_collections": 0, "variables": 0, "text_styles": 0},
+  "final": {
+    "top_level_publishable_roots": 44,
+    "registry_roots": 16,
+    "icon_roots": 28,
+    "variable_collections": [
+      {"name": "Custometry / Theme", "id": "VariableCollectionId:4:2", "key": "9d940eb036cbfd021501a403ebf72a5fd3131e6e", "modes": ["abyss", "graphite", "frost", "paper"], "variable_count": 17},
+      {"name": "Custometry / Foundation", "id": "VariableCollectionId:4:20", "key": "208186b9d397dad4738ba4803ce5b868294e38da", "modes": ["default"], "variable_count": 25}
+    ],
+    "variable_count": 42,
+    "text_style_count": 5,
+    "publish_status": {"CURRENT": 44},
+    "bindings": {"text_count": 129, "unbound_text_style_count": 0, "paint_count": 400, "unbound_paint_count": 0, "nested_instance_count": 81}
+  }
+}

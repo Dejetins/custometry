@@ -1,0 +1,5 @@
+{
+  "artifact": "manifest",
+  "mutation": {"op": "set", "path": ["regions", 1, "action_id"], "value": "workspace.delete"},
+  "expected_code": "forbidden-action"
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "./token-contract.schema.json",
+  "schema_version": "custometry.ui-design.tokens/v1",
+  "token_version": "1.0.0",
+  "source": {
+    "core_theme_registry": "packages/ui-foundation/src/themes.ts",
+    "visual_decisions": "packages/contracts/ui-design/visual-decisions.ui-an-003.v1.json",
+    "font": "Inter Variable"
+  },
+  "figma_identity": {
+    "file_key": "hX3nQOtcSdCc97uv26m9eG",
+    "page_id": "0:1",
+    "collections": {
+      "Custometry / Theme": {"node_id": "VariableCollectionId:4:2", "key": "9d940eb036cbfd021501a403ebf72a5fd3131e6e"},
+      "Custometry / Foundation": {"node_id": "VariableCollectionId:4:20", "key": "208186b9d397dad4738ba4803ce5b868294e38da"}
+    },
+    "text_styles": {
+      "Text/Page title": "2004d491db80963aa9aa93944e18fea2b6e25afb",
+      "Text/Heading": "98528fce93ec24d72cceb5535fe5cccf7297f58e",
+      "Text/Body strong": "381d466577466324598c3da964a38545d54435dc",
+      "Text/Body": "a97817c284db78f0af9d571bc1613d1a165a6fec",
+      "Text/Caption": "2072fd3f12a22be98550e649eee0b0b490551cdd"
+    }
+  },
+  "themes": ["abyss", "graphite", "frost", "paper"],
+  "tokens": [
+    {"name": "color/bg/window", "type": "color", "values": {"abyss": "#03080D", "graphite": "#081018", "frost": "#EDF3F6", "paper": "#F4F5F6"}, "source": "ui-foundation:surfaceCanvas"},
+    {"name": "color/bg/sidebar", "type": "color", "values": {"abyss": "#071018", "graphite": "#0B151F", "frost": "#FFFFFF", "paper": "#FFFFFF"}, "source": "accepted-exploration:supplemental-surface-role"},
+    {"name": "color/bg/application", "type": "color", "values": {"abyss": "#0A1621", "graphite": "#111E2A", "frost": "#FFFFFF", "paper": "#FFFFFF"}, "source": "ui-foundation:surface"},
+    {"name": "color/bg/module", "type": "color", "values": {"abyss": "#0E1D2A", "graphite": "#162534", "frost": "#E8F0F4", "paper": "#EEF1F3"}, "source": "ui-foundation:surfaceRaised"},
+    {"name": "color/bg/control", "type": "color", "values": {"abyss": "#142533", "graphite": "#1B2C3B", "frost": "#DDE8ED", "paper": "#E4E9EC"}, "source": "accepted-exploration:supplemental-control-role"},
+    {"name": "color/border/subtle", "type": "color", "values": {"abyss": "#28465B", "graphite": "#365066", "frost": "#9DB2BF", "paper": "#A7B2B9"}, "source": "ui-foundation:line"},
+    {"name": "color/border/strong", "type": "color", "values": {"abyss": "#47718B", "graphite": "#55748C", "frost": "#6E8999", "paper": "#707F88"}, "source": "ui-foundation:lineStrong"},
+    {"name": "color/text/primary", "type": "color", "values": {"abyss": "#F2F7FA", "graphite": "#F5F8FA", "frost": "#132B39", "paper": "#15242C"}, "source": "ui-foundation:textStrong"},
+    {"name": "color/text/default", "type": "color", "values": {"abyss": "#C8D5DE", "graphite": "#D5DEE6", "frost": "#334B5A", "paper": "#34434C"}, "source": "ui-foundation:text"},
+    {"name": "color/text/muted", "type": "color", "values": {"abyss": "#8297A7", "graphite": "#8FA2B2", "frost": "#5F7887", "paper": "#667780"}, "source": "ui-foundation:textMuted"},
+    {"name": "color/interaction/accent", "type": "color", "values": {"abyss": "#68B9D7", "graphite": "#79C3DF", "frost": "#16769A", "paper": "#126E91"}, "source": "ui-foundation:accent"},
+    {"name": "color/interaction/focus", "type": "color", "values": {"abyss": "#8DD9EF", "graphite": "#8AD8F2", "frost": "#096B91", "paper": "#075F82"}, "source": "ui-foundation:focus"},
+    {"name": "color/status/positive", "type": "color", "values": {"abyss": "#66C7A7", "graphite": "#70C9AA", "frost": "#18765F", "paper": "#176F5A"}, "source": "ui-foundation:positive"},
+    {"name": "color/status/warning", "type": "color", "values": {"abyss": "#E7BD72", "graphite": "#E2B76B", "frost": "#8A650D", "paper": "#80600D"}, "source": "ui-foundation:warning"},
+    {"name": "color/status/negative", "type": "color", "values": {"abyss": "#EF8E98", "graphite": "#ED8792", "frost": "#A43F4B", "paper": "#9B3D48"}, "source": "ui-foundation:negative"},
+    {"name": "color/data/series-primary", "type": "color", "values": {"abyss": "#858BFF", "graphite": "#7B82FF", "frost": "#5D63D8", "paper": "#565CCF"}, "source": "accepted-exploration:primary-series"},
+    {"name": "color/data/series-comparison", "type": "color", "values": {"abyss": "#8297A7", "graphite": "#8FA2B2", "frost": "#5F7887", "paper": "#667780"}, "source": "ui-foundation:textMuted"},
+    {"name": "space/1", "type": "number", "values": {"default": 4}},
+    {"name": "space/2", "type": "number", "values": {"default": 8}},
+    {"name": "space/3", "type": "number", "values": {"default": 12}},
+    {"name": "space/4", "type": "number", "values": {"default": 16}},
+    {"name": "space/6", "type": "number", "values": {"default": 24}},
+    {"name": "space/8", "type": "number", "values": {"default": 32}},
+    {"name": "radius/outer", "type": "number", "values": {"default": 20}},
+    {"name": "radius/panel", "type": "number", "values": {"default": 16}},
+    {"name": "radius/control", "type": "number", "values": {"default": 10}},
+    {"name": "radius/selection", "type": "number", "values": {"default": 8}},
+    {"name": "size/control/compact", "type": "number", "values": {"default": 32}},
+    {"name": "size/hit-target/desktop", "type": "number", "values": {"default": 36}},
+    {"name": "size/sidebar/default", "type": "number", "values": {"default": 240}},
+    {"name": "size/inspector/default", "type": "number", "values": {"default": 240}},
+    {"name": "size/kpi-strip/default", "type": "number", "values": {"default": 72}},
+    {"name": "stroke/icon/default", "type": "number", "values": {"default": 1.5}},
+    {"name": "type/font/family", "type": "string", "values": {"default": "Inter"}},
+    {"name": "type/page-title/size", "type": "number", "values": {"default": 24}},
+    {"name": "type/page-title/line", "type": "number", "values": {"default": 32}},
+    {"name": "type/heading/size", "type": "number", "values": {"default": 16}},
+    {"name": "type/heading/line", "type": "number", "values": {"default": 24}},
+    {"name": "type/body/size", "type": "number", "values": {"default": 14}},
+    {"name": "type/body/line", "type": "number", "values": {"default": 20}},
+    {"name": "type/caption/size", "type": "number", "values": {"default": 12}},
+    {"name": "type/caption/line", "type": "number", "values": {"default": 16}}
+  ]
+}

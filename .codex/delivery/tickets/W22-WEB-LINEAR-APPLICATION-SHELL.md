@@ -8,22 +8,16 @@ status: draft
 workstream_id: W22
 summary: Implement the production-shaped four-theme Custometry application shell behind the accepted reversible route boundary with native-feeling navigation, command, resizable panel, system-state, localization, accessibility, and measured browser behavior.
 requirement_ids: [WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-003, WEB-ARCH-004, WEB-ARCH-006, WEB-PERF-001, WEB-PERF-002, WEB-PERF-003, WEB-PERF-004, WEB-PERF-005, WEB-PERF-006, THEME-001, THEME-005, THEME-008, ROUTE-001, ROUTE-004, ROUTE-009, ROUTE-012, MOTION-001, MOTION-002, MOTION-003, MOTION-011, MOTION-012, SYS-UI-001, SYS-UI-002, SYS-UI-003, SYS-UI-004, SYS-UI-005, HELP-001, HELP-002, HELP-003, HELP-004]
-blockers: [W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE, W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS]
+blockers: [W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE, W29-HTML-FIRST-UI-FOUNDATION]
 context_sources:
   - AGENTS.md
   - .codex/AGENTS.md
   - .codex/delivery/specs/custometry-linear-workspace-ui-transition.md
   - .codex/delivery/tickets/W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE.md
-  - .codex/delivery/tickets/W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS.md
+  - .codex/delivery/tickets/W29-HTML-FIRST-UI-FOUNDATION.md
+  - docs/architecture/ui/custometry-contract-compiled-ui-prototyping-plan-v1.md
   - custometry-ui-blueprint-ru.md
   - docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md
-  - packages/contracts/routes/ui-routes.json
-  - packages/contracts/routes/ui-route-contracts.json
-  - packages/contracts/routes/ui-surface-contracts.json
-start_probe:
-  boundary: accepted Custometry Penpot vNext terminal file identity and revision recorded by W21
-  read_only_check: confirm the exact file ID revision and W21 passed evidence before source loading or implementation
-  stop_on: [unavailable, identity_mismatch, state_drift]
 change_scope:
   allowed_write_paths:
     - .codex/delivery/tickets/W22-WEB-LINEAR-APPLICATION-SHELL.md
@@ -53,7 +47,7 @@ repair_policy:
   retest_invalidated_evidence: true
 validation:
   depth: browser
-  proof_skills: [browser-qa-evidence, backend-performance-evidence, playwright, penpot-design-delivery]
+  proof_skills: [browser-qa-evidence, backend-performance-evidence, playwright-cli, product-design:audit]
   commands:
     - source scripts/activate-toolchain.sh
     - pnpm --filter @custometry/web lint
@@ -87,13 +81,16 @@ localization, accessibility states, system surfaces, and a real rollback seam.
 
 # Work and repair boundary
 
-Build reusable foundations and shell composition from W21, keeping MobX local
-and Query remote authority. Planned domain routes remain honest placeholders.
+Build the shell from W29's accepted semantic tokens, typed code components,
+component registry, screen manifests, catalog, and browser receipts, keeping
+MobX local and Query remote authority. Planned domain routes remain honest
+placeholders.
 Repair only shell/foundation defects inside owned paths and rerun invalidated
 browser, accessibility, localization, and performance evidence.
 
 # Acceptance evidence
 
 Evidence includes fresh screenshots/traces, theme/viewport/keyboard matrices,
-console/network results, Penpot comparison, performance samples, exact fallback
-exercise, exclusions, and remaining risks.
+console/network results, W29 component provenance and accepted-browser-source
+comparison, performance samples, exact fallback exercise, exclusions, and
+remaining risks.

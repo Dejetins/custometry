@@ -24,7 +24,7 @@ Skill routing:
 - Concrete defect or regression -> root-cause-debugging as primary.
 - Python lint/type/test or CI-equivalent evidence -> backend-quality-gates.
 - API/DTO/port/persistence/config/identity compatibility -> contract-impact-analysis.
-- Measured backend performance claim -> backend-performance-evidence; add numba only for an eligible measured NumPy-heavy kernel.
+- Measured backend performance claim -> backend-performance-evidence; use a dedicated numba skill only if the current Codex skill list exposes it and a measured NumPy-heavy CPU kernel is eligible.
 - Diff production-risk review -> production-risk-review. Ship-readiness verdict -> pre-ship-gate. Neither authorizes fixes or publication.
 
 Result and evidence:

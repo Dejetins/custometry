@@ -1,0 +1,26 @@
+{
+  "schema_version": "custometry.ui-design.reproducibility/v1",
+  "manifest_digest": "a5a324263d0cfa88e9af3e1d87a6ff5cdb1d49d0e893ff598e3183db7c31ecbd",
+  "renderer_version": "1.0.0",
+  "candidate_a": {
+    "candidate_id": "UI-AN-003--success--graphite--render-a",
+    "node_id": "35:311",
+    "receipt": "render-receipt-a.json",
+    "screenshot": "figma-candidate-a.png",
+    "screenshot_sha256": "c721dd7c24bfcde40c9bff71a8be42d51acb535eeb2eff9860a09d5f16b7e0a1",
+    "repair_count": 2
+  },
+  "candidate_b": {
+    "candidate_id": "UI-AN-003--success--graphite--render-b",
+    "node_id": "40:536",
+    "receipt": "render-receipt-b.json",
+    "screenshot": "figma-candidate-b.png",
+    "screenshot_sha256": "c721dd7c24bfcde40c9bff71a8be42d51acb535eeb2eff9860a09d5f16b7e0a1",
+    "repair_count": 0
+  },
+  "normalized_semantic_structure_digest": "08314ced6c1fdb3102801399dbdbc742a67294263dd7b5fb9dd107c5cd11b8b5",
+  "normalized_structure_equal": true,
+  "pixel_sha256_equal": true,
+  "bounded_visual_diff": {"different_pixels": 0, "total_pixels": 1296000, "ratio": 0.0},
+  "status": "passed"
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "custometry.ui-design.cross-file-gate/v1",
+  "library_file_key": "hX3nQOtcSdCc97uv26m9eG",
+  "product_file_key": "MXfxuhSFpIczbUtFmOSyPp",
+  "variable": {"name": "color/bg/window", "key": "18d4d12552033e6b9f00e2481ef8f3120721ed73", "remote": true},
+  "component": {"name": "Variant=Filled", "key": "c25505192d94125b8e3ff3a7a46d8cdf1f7dd364", "remote": true},
+  "ephemeral_instance": {"node_type": "INSTANCE", "main_component_key": "c25505192d94125b8e3ff3a7a46d8cdf1f7dd364"},
+  "cleanup": {"before_top_level_count": 7, "after_top_level_count": 7, "ephemeral_instance_removed": true},
+  "status": "passed"
+}

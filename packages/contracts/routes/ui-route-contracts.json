@@ -2825,6 +2825,51 @@
       }
     },
     {
+      "id": "UI-AN-015",
+      "path": "/w/:workspaceKey/analytics/products",
+      "title_key": "UI-AN-015",
+      "family": "workspace",
+      "shell_profile": "workspace",
+      "navigation_group": "analytics_research",
+      "surface_kind": "list",
+      "release": "V1",
+      "status": "planned",
+      "role_hints": [
+        "AN",
+        "VW"
+      ],
+      "authorization": {
+        "mode": "workspace_permission_or_object_access",
+        "entry_permissions_any": [
+          "analysis.read"
+        ],
+        "action_permissions": [
+          "analysis.run",
+          "analysis.manage",
+          "export.create"
+        ],
+        "object_scoped": true
+      },
+      "guard_profile": "workspace_object",
+      "state_profile": "browse",
+      "navigation_profile": "focus_capable",
+      "query_profile": "focus",
+      "focus_explore": "reportable_blocks",
+      "source": {
+        "ui_blueprint_id": "UI-AN-015",
+        "requirement_ids": [
+          "UC-004",
+          "UC-012",
+          "UI-SHELL-006"
+        ]
+      },
+      "design": {
+        "penpot_status": "backlog",
+        "frame_key": "UI-AN-015",
+        "baseline_version": "0.7.0-draft-html-first"
+      }
+    },
+    {
       "id": "UI-SEG-001",
       "path": "/w/:workspaceKey/segments",
       "title_key": "UI-SEG-001",

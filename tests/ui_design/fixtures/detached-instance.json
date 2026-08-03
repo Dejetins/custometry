@@ -1,0 +1,5 @@
+{
+  "artifact": "receipt",
+  "mutation": {"op": "set", "path": ["detached_instance_count"], "value": 1},
+  "expected_code": "detached-instance"
+}

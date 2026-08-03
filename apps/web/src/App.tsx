@@ -25,6 +25,7 @@ import { Link, matchPath, useLocation } from "react-router-dom";
 import { routeRegistry, type RouteDefinition } from "@custometry/contracts";
 
 import { ArchitectureSpike } from "./architecture-spike/ArchitectureSpike";
+import { SalesOverviewPrototype } from "./sales-overview-prototype/SalesOverviewPrototype";
 
 const workspaceKey = "northwind-retail";
 
@@ -191,10 +192,13 @@ export function App(): React.JSX.Element {
   const [apiStatus, setApiStatus] = useState<ApiStatus>({ label: "checking" });
   const mobileMenuRef = useRef<HTMLDialogElement>(null);
   const route = useMemo(() => findRoute(location.pathname), [location.pathname]);
-  const architectureSpikeActive =
-    route?.id === "UI-AN-003" && new URLSearchParams(location.search).get("view") === "linear-spike";
+  const selectedView = new URLSearchParams(location.search).get("view");
+  const architectureSpikeActive = route?.id === "UI-AN-003" && selectedView === "linear-spike";
+  const htmlPrototypeActive = route?.id === "UI-AN-003" && selectedView === "html-prototype";
 
   useEffect(() => {
+    if (htmlPrototypeActive) return undefined;
+
     const controller = new AbortController();
     void fetch("/api/health/ready", { signal: controller.signal, headers: { Accept: "application/json" } })
       .then(async (response) => {
@@ -207,7 +211,7 @@ export function App(): React.JSX.Element {
         setApiStatus({ label: "unavailable" });
       });
     return () => controller.abort();
-  }, []);
+  }, [htmlPrototypeActive]);
 
   const switchLanguage = (): void => {
     const nextLanguage = i18n.language === "ru" ? "en" : "ru";
@@ -236,6 +240,10 @@ export function App(): React.JSX.Element {
   useEffect(() => {
     closeMobileMenu();
   }, [location.pathname]);
+
+  if (htmlPrototypeActive) {
+    return <SalesOverviewPrototype />;
+  }
 
   if (architectureSpikeActive) {
     return <ArchitectureSpike fallbackHref={location.pathname} />;

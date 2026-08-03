@@ -86,7 +86,15 @@ focus, controls, status, and chart/table alternatives.
   and optional detail pane use continuous separators and restrained elevation.
 - Expanded navigation shows icon plus label. Collapsed navigation shows icons
   only and retains accessible names and tooltips.
-- The expanded sidebar is pointer-resizable through a visible or discoverable
+- Global Search and Notifications live in the sidebar utility area immediately
+  after workspace identity. Help and the user menu live in a stable sidebar
+  footer. The page header does not duplicate these global actions.
+- The active route exposes `aria-current="page"`. Distinct product concepts,
+  including Sales, Products, and Forecasts, use distinct semantic icons from
+  the pinned icon family.
+- The sidebar has explicit expanded, collapsed, and hidden presentation states.
+  A keyboard-focusable restore control remains available while hidden. The
+  expanded sidebar is pointer-resizable through a visible or discoverable
   separator. The initial implementation must validate a default near `240px`,
   a bounded range near `208-320px`, a collapsed rail near `44-48px`, and an
   `8px` effective drag target before freezing tokens.
@@ -164,6 +172,27 @@ marketing pages, and a phone-specific authoring experience are excluded.
 Project contracts select their supported desktop widths; the shared reference
 capture baseline is `1440x900`, with `1280x800` and a larger desktop check.
 Zoom, reflow, keyboard access, and bounded table overflow remain required.
+CSS `zoom` or whole-application transform scaling is not a responsive strategy:
+control and text sizes remain CSS-pixel stable while grids reflow, sidebars
+collapse or hide, optional inspectors become drawers, and dense tables receive
+their own bounded overflow region.
+
+## HTML-first product-design delivery cycle
+
+After the `UI-AN-003` pilot proved the workflow, a new screen or material
+composition change is delivered as a contract-bounded responsive HTML review
+candidate. Focused tests and fresh-browser evidence precede explicit
+product-owner acceptance. Accepted reusable decisions are then promoted into
+repository-owned semantic CSS tokens, typed React/HTML components, a
+machine-readable component registry, and screen manifests. The component
+catalog and product screens render the same implementation; there is no second
+external design synchronization boundary.
+
+The HTML review surface may deliberately defer production integrations such as
+the real chart engine, command palette, typed filter expressions, contextual
+menus, and external share, email, download, or export side effects. Deferrals
+must remain explicit in the delivery ticket and cannot be presented as runtime
+proof.
 
 ## Perceived-performance contract
 
@@ -202,8 +231,8 @@ committing third-party screenshots. The current archive is sufficient for the
 dark shell, navigation, resizable-sidebar intent, list/table, settings, modal,
 popover, and right-detail-pane composition.
 
-Before Penpot vNext or runtime foundations are accepted, the reference set must
-also contain or explicitly waive:
+Before the project-owned design target or runtime foundations are accepted, the
+reference set must also contain or explicitly waive:
 
 - all four target themes on representative surfaces;
 - command palette open/search/execute states;
@@ -226,11 +255,15 @@ Each repository follows the same sequence with its own delivery graph:
 1. freeze current UI authority and supersede conflicting future execution;
 2. complete and hash the reference pack;
 3. run a bounded architecture and compatibility spike;
-4. build Penpot vNext foundations and representative compositions;
-5. implement the React application shell behind a reversible route boundary;
-6. prove one real read-only golden slice against existing APIs;
-7. migrate route clusters from read-only to authoring and sensitive/admin flows;
-8. cut over only after parity, browser, accessibility, performance, and rollback
+4. build and browser-validate a contract-bounded responsive HTML candidate,
+   then obtain explicit product-owner acceptance;
+5. promote only that accepted slice into versioned code components, registry
+   entries, catalog states, and screen manifests with DOM and visual QA;
+6. implement the React application shell behind a reversible route boundary
+   from accepted foundation contracts;
+7. prove one real read-only golden slice against existing APIs;
+8. migrate route clusters from read-only to authoring and sensitive/admin flows;
+9. cut over only after parity, browser, accessibility, performance, and rollback
    evidence; then remove legacy UI intentionally.
 
 One ready ticket is one execution unit. Accepted historical audits and designs

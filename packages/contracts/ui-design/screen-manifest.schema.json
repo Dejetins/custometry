@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://custometry.local/contracts/ui-design/screen-manifest.schema.json",
+  "title": "Custometry restricted screen manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "manifest_version", "surface_id", "route", "product_state",
+    "role", "permissions", "allowed_actions", "locale", "theme", "viewport",
+    "contracts", "target", "required_regions", "regions"
+  ],
+  "properties": {
+    "schema_version": {"const": "custometry.ui-design.screen-manifest/v1"},
+    "manifest_version": {"type": "string"},
+    "surface_id": {"const": "UI-AN-003"},
+    "route": {"const": "/w/:workspaceKey/analytics/sales"},
+    "product_state": {"const": "success"},
+    "role": {"enum": ["AN", "VW"]},
+    "permissions": {"type": "array", "items": {"type": "string"}},
+    "allowed_actions": {"type": "array", "items": {"type": "string"}},
+    "locale": {"enum": ["en", "ru"]},
+    "theme": {"enum": ["abyss", "graphite", "frost", "paper"]},
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {"width": {"const": 1440}, "height": {"const": 900}}
+    },
+    "contracts": {"type": "object"},
+    "target": {"type": "object"},
+    "required_regions": {"type": "array", "items": {"type": "string"}},
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["region_id", "instance_id", "component_id", "variant", "props"],
+        "properties": {
+          "region_id": {"type": "string"},
+          "instance_id": {"type": "string"},
+          "component_id": {"type": "string"},
+          "variant": {"type": "string"},
+          "props": {"type": "object"},
+          "action_id": {"type": "string"},
+          "bindings": {"type": "object"}
+        }
+      }
+    }
+  }
+}

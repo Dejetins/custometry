@@ -1,0 +1,18 @@
+{
+  "schema_version": "custometry.ui-design.locale-stress/v1",
+  "node_id": "46:2475",
+  "verification_id": "UI-AN-003--locale-stress--ru",
+  "locale": "ru",
+  "theme": "graphite",
+  "explicit_mode_id": "4:1",
+  "stress_container_count": 35,
+  "text_count": 73,
+  "overflow_count": 0,
+  "unbound_text_style_count": 0,
+  "paint_count": 134,
+  "unbound_paint_count": 0,
+  "screenshot": "figma-locale-stress-ru.png",
+  "sha256": "e7451c4c66f270da2c911468a8f308bdd1fe821f4f039c2c5433417d6d4abdfb",
+  "scope": "verification-only copy-fit matrix using actual sidebar, toolbar, table, and inspector widths; excluded from candidate lifecycle",
+  "status": "passed"
+}

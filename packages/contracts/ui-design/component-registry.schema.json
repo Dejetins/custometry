@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://custometry.local/contracts/ui-design/component-registry.schema.json",
+  "title": "Custometry UI component registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "registry_version", "token_version", "components"],
+  "properties": {
+    "schema_version": {"const": "custometry.ui-design.components/v1"},
+    "registry_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "token_version": {"type": "string"},
+    "source": {"type": "object"},
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "figma_name", "kind", "variants", "states", "required_tokens"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+(?:/[a-z0-9-]+)+$"},
+          "figma_name": {"type": "string"},
+          "kind": {"enum": ["control", "navigation", "shell", "content", "status"]},
+          "variants": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "states": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "properties": {"type": "array", "items": {"type": "string"}},
+          "slots": {"type": "array", "items": {"type": "string"}},
+          "actions": {"type": "array", "items": {"type": "string"}},
+          "text_styles": {"type": "array", "items": {"type": "string"}},
+          "required_tokens": {"type": "array", "items": {"type": "string"}},
+          "figma_identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["file_key", "page_id", "node_id", "node_key", "node_type"],
+            "properties": {
+              "file_key": {"const": "hX3nQOtcSdCc97uv26m9eG"},
+              "page_id": {"const": "0:1"},
+              "node_id": {"type": "string"},
+              "node_key": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+              "node_type": {"enum": ["COMPONENT", "COMPONENT_SET"]}
+            }
+          },
+          "description": {"type": "string"}
+        }
+      }
+    }
+  }
+}

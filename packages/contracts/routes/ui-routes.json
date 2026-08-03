@@ -402,6 +402,13 @@
       "title_key": "UI-AN-014"
     },
     {
+      "id": "UI-AN-015",
+      "path": "/w/:workspaceKey/analytics/products",
+      "release": "V1",
+      "status": "planned",
+      "title_key": "UI-AN-015"
+    },
+    {
       "id": "UI-SEG-001",
       "path": "/w/:workspaceKey/segments",
       "release": "MVP",

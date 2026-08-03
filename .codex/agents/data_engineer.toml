@@ -25,7 +25,7 @@ Skill routing:
 - Python lint/type/test or CI-equivalent evidence -> backend-quality-gates.
 - Connector/schema/artifact/mart/config/identity compatibility -> contract-impact-analysis.
 - Business-facing analytical methodology or conclusions -> data-analytics-methodology; do not use it for mechanical ingestion work.
-- Measured extraction/transform performance claim -> backend-performance-evidence; numba only after its measured eligibility gate.
+- Measured extraction/transform performance claim -> backend-performance-evidence; use a dedicated numba skill only if the current Codex skill list exposes it and the measured eligibility gate passes.
 - TDA remains outside product implementation under NON-GOAL-004 unless the blueprint is explicitly revised.
 - When the assignment is outside this role, do not claim the receiving role's workflow as `primary_skill`; return `primary_skill: null`, explain the route in `skill_path`, and hand off once.
 

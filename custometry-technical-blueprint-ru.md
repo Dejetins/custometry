@@ -8,7 +8,7 @@ normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-07-20
+updated_at: 2026-08-01
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -4449,12 +4449,20 @@ web_ui_shell_and_density_requirements:
     requirement: Каждый icon-only navigation item MUST иметь локализованные accessible name и tooltip по hover/focus, visible focus, aria-current для активного route и hit area не менее 40x40 CSS px; collapse/expand не меняет порядок, route, authorization или focus semantics.
   - id: UI-SHELL-003
     requirement: Core Web navigation MUST использовать одну pinned OSS/web-distributable outline icon family и versioned semantic icon mapping; для v1 это Lucide через lucide-react, а смешивание families, emoji и platform-proprietary assets без license/accessibility review запрещено.
+  - id: UI-SHELL-004
+    requirement: Global Search и Notifications MUST находиться в sidebar utility area непосредственно после workspace identity; Help и user menu MUST находиться в стабильном footer sidebar; page header MUST не дублировать эти global actions.
+  - id: UI-SHELL-005
+    requirement: Authenticated sidebar MUST поддерживать expanded, collapsed и hidden presentation states, pointer resize в bounded диапазоне около 208...320 CSS px, keyboard step/reset, сохранение пользовательского presentation preference и доступный restore control; изменение состояния MUST не менять route, authorization, navigation order или current-item semantics.
+  - id: UI-SHELL-006
+    requirement: Canonical Analytics navigation MUST включать Sales, Customers, Products и Forecasts как отдельные route identities; Sales, Products и Forecasts MUST использовать разные semantic Lucide icons, а активный route MUST иметь aria-current="page".
   - id: UI-DENSITY-001
     requirement: Reportable result и каждый UI-AN route MUST использовать compact vertical hierarchy page-header/context и KPI, когда применимо, чтобы primary visualization, table или editor начинались в первом desktop viewport; декоративный пустой space не может вытеснять рабочие данные.
   - id: UI-DENSITY-002
     requirement: Когда поверхность показывает четыре primary KPI, default presentation MUST быть одним Compact KPI Strip с общей baseline, согласованными column boundaries/dividers и коротким vs LY; четыре высокие самостоятельные KPI cards запрещены как default report header.
   - id: UI-DENSITY-003
     requirement: Report surfaces MUST использовать общие versioned geometry/spacing tokens; несовпадающие context/KPI separator coordinates, разные внутренние baselines и per-page ad hoc spacing запрещены; правило обязательно для UI-DQ-001 и UI-AN-001...012, включая compact header/context на screens без KPI.
+  - id: UI-DENSITY-004
+    requirement: UI-AN-003 MUST не показывать standalone Dataset control или standalone Result Trust row; dataset/version, trust/freshness и last-updated metadata MUST быть объединены в compact result-level trigger, доступный в Chart и Data representations и раскрывающий полный Result Trust drawer по запросу.
 ```
 
 ## 15.4. Progress updates

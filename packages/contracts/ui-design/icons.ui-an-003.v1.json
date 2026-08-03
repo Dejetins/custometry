@@ -1,0 +1,48 @@
+{
+  "schema_version": "custometry.ui-design.icons/v1",
+  "icon_version": "1.0.0",
+  "source": "Lucide icon vocabulary; authored as SVG-path components in Figma",
+  "rules": {
+    "view_box": "0 0 24 24",
+    "stroke_width_token": "stroke/icon/default",
+    "color_token": "color/text/default",
+    "forbidden": ["text glyph icons", "raw rectangle icons", "emoji", "mixed stroke systems"]
+  },
+  "icons": [
+    "search", "chevron-down", "chevron-left", "overview", "database", "sales",
+    "customers", "products", "forecast", "report", "operations", "settings",
+    "line-chart", "bar-chart", "filter", "bookmark", "overflow", "expand",
+    "download", "calendar", "store", "channels", "audience", "trust",
+    "bell", "context-actions", "link", "mail"
+  ],
+  "figma_components": {
+    "search": {"node_id": "8:2", "key": "c3a54266a5f8f18727024d973540ec32ed39c59e"},
+    "chevron-down": {"node_id": "8:6", "key": "60dda7a65e39f9604bc1d08d31293267a22fdde2"},
+    "chevron-left": {"node_id": "8:9", "key": "6e8ab350d319148d4d715d000ff35ecda7fad533"},
+    "overview": {"node_id": "8:12", "key": "1f75f27437a9696e74ec1c3b6b9f811df73828c8"},
+    "database": {"node_id": "8:18", "key": "cb42a2391e8264e89971102890b678af0f268955"},
+    "sales": {"node_id": "8:23", "key": "6301fe3e4f8d3d36d8735fa79d065e006165a8ff"},
+    "customers": {"node_id": "8:27", "key": "33b894e62d14f751e9139fca74b95ca71fe9c9f3"},
+    "products": {"node_id": "8:33", "key": "fe3df7bd6b3a82008fbe3d559492d4f96d26d36e"},
+    "forecast": {"node_id": "8:39", "key": "978825fd4abaaea0b893c04c852404051f6fbedd"},
+    "report": {"node_id": "8:44", "key": "4a028344ab2c65d4d4ef607755672297091b91df"},
+    "operations": {"node_id": "8:49", "key": "78e6f629ea242e69f684cfed7f48f638732352f3"},
+    "settings": {"node_id": "8:54", "key": "42be8b555624dc0584b15e4f75c7811c6565b9b6"},
+    "line-chart": {"node_id": "8:58", "key": "57d8b215df4e7edf7627fb0ad70c769d09cb9872"},
+    "bar-chart": {"node_id": "8:62", "key": "4ce5cb11e4b6d18cb3025894060f922b4b6b73a1"},
+    "filter": {"node_id": "8:66", "key": "e468316a7611e79210553e5858126b4944e0b35c"},
+    "bookmark": {"node_id": "8:72", "key": "85896b34203f1fb3aa929881d7a51b5e50e510be"},
+    "overflow": {"node_id": "8:75", "key": "fa96c1e61dd29dd305bfe49e7979f0ff085a2629"},
+    "expand": {"node_id": "8:80", "key": "7cafb827dbf755e077ebe4cdbfbeebe60a8f86c2"},
+    "download": {"node_id": "8:83", "key": "94545565e831c79a9b7a344fdf2a52dce88b3f02"},
+    "calendar": {"node_id": "8:88", "key": "8b32d644707f0e539f2ef343b555224a8170fd7d"},
+    "store": {"node_id": "8:92", "key": "fa784f0686aeef73224b4aa489e40c9788fdff97"},
+    "channels": {"node_id": "8:98", "key": "cf5e64f967af7f2035bb9deae6520ba53abd491a"},
+    "audience": {"node_id": "8:104", "key": "4e47a35b2a2fdd2a7438238612932151630cb602"},
+    "trust": {"node_id": "8:109", "key": "9c6ee2c21b2920232ac19607e4f3474b1b9b9709"},
+    "bell": {"node_id": "22:223", "key": "dafdb70cfb0b831a17c938b1a97400386dfd66de"},
+    "context-actions": {"node_id": "22:227", "key": "5562f9df17f1234d4e213b1357e646cf67d74018"},
+    "link": {"node_id": "47:227", "key": "14542bcf37cf095a4b1f2018e20257ce516fa4eb"},
+    "mail": {"node_id": "47:232", "key": "e1ce979e7540e54dab540e3d972d5804b4e36cb2"}
+  }
+}

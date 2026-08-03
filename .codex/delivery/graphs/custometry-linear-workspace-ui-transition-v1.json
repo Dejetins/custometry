@@ -2,13 +2,15 @@
   "schema_version": "1.0.0",
   "graph_id": "CUSTOMETRY-LINEAR-WORKSPACE-UI-TRANSITION-V1",
   "stream_id": "S03-LINEAR-UI",
-  "title": "Custometry authenticated Linear-workspace UI transition",
+  "title": "Custometry authenticated Linear-workspace HTML-first UI transition",
   "status_source": "ticket_frontmatter_only",
   "coordination_model": "one_ready_ticket_one_chat_one_worktree",
   "scope": [
     "sanitized reference completion",
     "frontend architecture and performance spike",
-    "separate Penpot vNext",
+    "historical contract-compiled UI-AN-003 pilot",
+    "accepted responsive HTML UI-AN-003 review cycle",
+    "repository-owned UI foundation component registry manifests and browser catalog",
     "reversible authenticated application shell",
     "real Sales Analytics Focus Explore golden slice"
   ],
@@ -16,19 +18,30 @@
     "backend replatform",
     "public-site redesign",
     "domain or API contract changes",
+    "external design-editor dependency",
     "release or deployment"
   ],
   "nodes": [
-    {"ticket_id": "W19-LINEAR-REFERENCE-COMPLETION", "ticket": ".codex/delivery/tickets/W19-LINEAR-REFERENCE-COMPLETION.md", "depends_on": [], "initial_status": "ready", "parallel_group": "reference_vs_backend"},
-    {"ticket_id": "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "ticket": ".codex/delivery/tickets/W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE.md", "depends_on": ["W19-LINEAR-REFERENCE-COMPLETION"], "initial_status": "draft", "parallel_group": "ui_serial"},
-    {"ticket_id": "W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS", "ticket": ".codex/delivery/tickets/W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS.md", "depends_on": ["W19-LINEAR-REFERENCE-COMPLETION", "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE"], "initial_status": "draft", "parallel_group": "penpot_vs_backend"},
-    {"ticket_id": "W22-WEB-LINEAR-APPLICATION-SHELL", "ticket": ".codex/delivery/tickets/W22-WEB-LINEAR-APPLICATION-SHELL.md", "depends_on": ["W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS"], "initial_status": "draft", "parallel_group": "shell_vs_backend"},
+    {"ticket_id": "W19-LINEAR-REFERENCE-COMPLETION", "ticket": ".codex/delivery/tickets/W19-LINEAR-REFERENCE-COMPLETION.md", "depends_on": [], "initial_status": "accepted", "parallel_group": "reference_vs_backend"},
+    {"ticket_id": "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "ticket": ".codex/delivery/tickets/W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE.md", "depends_on": ["W19-LINEAR-REFERENCE-COMPLETION"], "initial_status": "accepted", "parallel_group": "ui_serial"},
+    {"ticket_id": "W21-CONTRACT-COMPILED-UI-PILOT", "ticket": ".codex/delivery/tickets/W21-CONTRACT-COMPILED-UI-PILOT.md", "depends_on": ["W19-LINEAR-REFERENCE-COMPLETION", "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE"], "initial_status": "accepted", "parallel_group": "historical_ui_pilot"},
+    {"ticket_id": "W24-UI-AN-003-HTML-PROTOTYPE", "ticket": ".codex/delivery/tickets/W24-UI-AN-003-HTML-PROTOTYPE.md", "depends_on": ["W21-CONTRACT-COMPILED-UI-PILOT"], "initial_status": "accepted", "parallel_group": "html_review_serial"},
+    {"ticket_id": "W25-UI-AN-003-HTML-ALIGNMENT-REFINEMENT", "ticket": ".codex/delivery/tickets/W25-UI-AN-003-HTML-ALIGNMENT-REFINEMENT.md", "depends_on": ["W24-UI-AN-003-HTML-PROTOTYPE"], "initial_status": "accepted", "parallel_group": "html_review_serial"},
+    {"ticket_id": "W26-UI-AN-003-HTML-GLOBAL-ACTIONS-REFINEMENT", "ticket": ".codex/delivery/tickets/W26-UI-AN-003-HTML-GLOBAL-ACTIONS-REFINEMENT.md", "depends_on": ["W25-UI-AN-003-HTML-ALIGNMENT-REFINEMENT"], "initial_status": "accepted", "parallel_group": "html_review_serial"},
+    {"ticket_id": "W27-UI-AN-003-HTML-CONTRACT-COMPLETION", "ticket": ".codex/delivery/tickets/W27-UI-AN-003-HTML-CONTRACT-COMPLETION.md", "depends_on": ["W26-UI-AN-003-HTML-GLOBAL-ACTIONS-REFINEMENT"], "initial_status": "accepted", "parallel_group": "html_review_serial"},
+    {"ticket_id": "W29-HTML-FIRST-UI-FOUNDATION", "ticket": ".codex/delivery/tickets/W29-HTML-FIRST-UI-FOUNDATION.md", "depends_on": ["W27-UI-AN-003-HTML-CONTRACT-COMPLETION"], "initial_status": "ready", "parallel_group": "html_foundation_serial"},
+    {"ticket_id": "W22-WEB-LINEAR-APPLICATION-SHELL", "ticket": ".codex/delivery/tickets/W22-WEB-LINEAR-APPLICATION-SHELL.md", "depends_on": ["W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE", "W29-HTML-FIRST-UI-FOUNDATION"], "initial_status": "draft", "parallel_group": "shell_vs_backend"},
     {"ticket_id": "W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE", "ticket": ".codex/delivery/tickets/W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE.md", "depends_on": ["W16-SALES-CUSTOMER-RFM-API-PROJECTIONS", "W22-WEB-LINEAR-APPLICATION-SHELL"], "initial_status": "draft", "parallel_group": "integration"}
   ],
   "path_ownership_contract": {
     "W19-LINEAR-REFERENCE-COMPLETION": ["docs/architecture/ui/linear-workspace-reference-manifest-v1.json", "docs/architecture/ui/linear-workspace-reference-measurements-v1.md"],
     "W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE": ["apps/web/**", "packages/ui-foundation/**", "tests/performance/**"],
-    "W21-PENPOT-LINEAR-VNEXT-FOUNDATIONS": ["external:penpot/custometry-linear-workspace-v0.7", "custometry-ui-blueprint-ru.md", "docs/architecture/ui/custometry-linear-ui-migration-registry-v1.json"],
+    "W21-CONTRACT-COMPILED-UI-PILOT": ["packages/contracts/ui-design/**", "tools/custometry_quality/ui_design/**", "tests/ui_design/**", ".codex/delivery/evidence/assets/W21-CONTRACT-COMPILED-UI-PILOT/**"],
+    "W24-UI-AN-003-HTML-PROTOTYPE": ["apps/web/src/sales-overview-prototype/**", "apps/web/tests/sales-overview-prototype.test.tsx", ".codex/delivery/evidence/assets/W24-UI-AN-003-HTML-PROTOTYPE/**"],
+    "W25-UI-AN-003-HTML-ALIGNMENT-REFINEMENT": ["apps/web/src/sales-overview-prototype/**", "apps/web/tests/sales-overview-prototype.test.tsx", ".codex/delivery/evidence/assets/W25-UI-AN-003-HTML-ALIGNMENT-REFINEMENT/**"],
+    "W26-UI-AN-003-HTML-GLOBAL-ACTIONS-REFINEMENT": ["apps/web/src/sales-overview-prototype/**", "apps/web/tests/sales-overview-prototype.test.tsx", ".codex/delivery/evidence/assets/W26-UI-AN-003-HTML-GLOBAL-ACTIONS-REFINEMENT/**"],
+    "W27-UI-AN-003-HTML-CONTRACT-COMPLETION": ["apps/web/src/sales-overview-prototype/**", "apps/web/tests/sales-overview-prototype.test.tsx", "custometry-technical-blueprint-ru.md", "custometry-technical-blueprint-human-ru.md", "custometry-ui-blueprint-ru.md", "packages/contracts/routes/**", "packages/localization/locales/*/route-titles.json", ".codex/delivery/evidence/assets/W27-UI-AN-003-HTML-CONTRACT-COMPLETION/**"],
+    "W29-HTML-FIRST-UI-FOUNDATION": ["apps/web/src/sales-overview-prototype/**", "apps/web/src/ui-lab/**", "apps/web/tests/sales-overview-prototype.test.tsx", "apps/web/tests/ui-lab/**", "packages/ui-foundation/**", "packages/contracts/ui-design/**", "tools/custometry_quality/ui_design/**", "tests/ui_design/**", "tests/e2e/**", "tests/accessibility/**", ".codex/delivery/evidence/assets/W29-HTML-FIRST-UI-FOUNDATION/**"],
     "W22-WEB-LINEAR-APPLICATION-SHELL": ["apps/web/**", "packages/ui-foundation/**", "packages/localization/**", "tests/e2e/**", "tests/accessibility/**", "tests/performance/**"],
     "W23-SALES-ANALYTICS-LINEAR-GOLDEN-SLICE": ["apps/web/**", "packages/ui-foundation/**", "packages/localization/**", "tests/e2e/**", "tests/accessibility/**", "tests/performance/**"]
   },
@@ -37,6 +50,11 @@
     "A draft node becomes ready only after every dependency is accepted with passed terminal evidence present in the common base branch.",
     "The UI stream may run beside W11-W17 only when branches or worktrees are separate and active path ownership is disjoint.",
     "W23 cannot start until both the real W16 API projection and W22 shell are accepted.",
-    "Accepted W03-W10 design evidence remains historical and is never relabeled as Penpot vNext or browser proof."
+    "Historical W03-W10 and W21 evidence is retained truthfully and is not an operational source for the current UI.",
+    "W27 responsive HTML and its browser evidence are the sole current visual source for UI-AN-003.",
+    "No external design editor or publication step is part of the active delivery graph.",
+    "Reusable UI decisions compile into versioned repository tokens typed components registries manifests catalog entries and browser receipts.",
+    "W29 must rebuild Sales Overview from registered components and prove same-viewport equivalence plus Focus Explore reuse before W22 may begin.",
+    "W27 deliberately defers the production ECharts adapter command palette typed filters More actions and external share email download export side effects to later runtime tickets."
   ]
 }

@@ -1,0 +1,5 @@
+{
+  "artifact": "manifest",
+  "mutation": {"op": "set", "path": ["regions", 0, "raw_node"], "value": "RECTANGLE"},
+  "expected_code": "raw-node-forbidden"
+}

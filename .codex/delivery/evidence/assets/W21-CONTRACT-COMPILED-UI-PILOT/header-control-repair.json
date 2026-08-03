@@ -1,0 +1,43 @@
+{
+  "schema_version": "custometry.ui-design.header-control-repair/v1",
+  "requested_by": "annotated product-owner reviews on 2026-07-31",
+  "library_file_key": "hX3nQOtcSdCc97uv26m9eG",
+  "product_file_key": "MXfxuhSFpIczbUtFmOSyPp",
+  "published_components": [
+    {"name": "Page/Header", "node_id": "10:120", "key": "9e24aca0bcb4e88457bbd7219e5a6e69028e2791", "publish_status": "CURRENT"},
+    {"name": "Chart/Toolbar", "node_id": "10:149", "key": "0cc3207aff1282c712e5eab07c1f3552f3a776c4", "publish_status": "CURRENT"},
+    {"name": "Context/Inspector", "node_id": "11:242", "key": "e6009f45aa048d6e8c349d36d1b08e3a4f6530c5", "publish_status": "CURRENT"},
+    {"name": "Context/Action Row", "node_id": "47:242", "key": "7d54e67ddf9fa05bb0d96d27a954c71f0217588b", "publish_status": "CURRENT"}
+  ],
+  "published_icons": [
+    {"name": "Icon/filter", "node_id": "8:66", "key": "e468316a7611e79210553e5858126b4944e0b35c", "geometry": "classic-funnel"},
+    {"name": "Icon/context-actions", "node_id": "22:227", "key": "5562f9df17f1234d4e213b1357e646cf67d74018", "geometry": "codex-like-two-dot-list"},
+    {"name": "Icon/link", "node_id": "47:227", "key": "14542bcf37cf095a4b1f2018e20257ce516fa4eb"},
+    {"name": "Icon/mail", "node_id": "47:232", "key": "e1ce979e7540e54dab540e3d972d5804b4e36cb2"}
+  ],
+  "after": {
+    "header_actions": {
+      "notifications": {"x": 1080, "y": 0, "absolute_x": 1344, "absolute_y": 24, "width": 32, "height": 32, "unread_indicator": {"diameter": 7, "color_token": "color/status/negative"}},
+      "overflow": {"x": 1120, "y": 0, "width": 32, "height": 32}
+    },
+    "inspector_context_actions": {"x": 168, "y": 10, "absolute_x": 1344, "absolute_y": 106, "width": 32, "height": 32},
+    "chart_toolbar": {"width": 508, "instance_x_in_primary_stack": 372, "filter_icon": "Icon/filter", "fullscreen": {"local_x": 476, "screen_x": 1112, "screen_y": 196, "width": 32, "height": 32}},
+    "table_actions": {"order": ["overflow", "export"], "overflow": {"screen_x": 1072}, "export": {"screen_x": 1112, "screen_y": 596, "width": 32, "height": 32}, "gap": 8},
+    "axis_assertion": {"chart_fullscreen_x": 1112, "table_export_x": 1112, "equal": true},
+    "context_groups": ["ON THIS PAGE", "VIEW", "SHARE"],
+    "share_actions": [
+      {"label": "Copy link", "screen_x": 1188, "screen_y": 746, "width": 216, "height": 32},
+      {"label": "Send by email", "screen_x": 1188, "screen_y": 782, "width": 216, "height": 32}
+    ],
+    "gap": 8,
+    "corner_radius": 10
+  },
+  "updated_header_instances": ["35:466", "40:541", "42:863", "42:1198", "42:1533", "42:1868"],
+  "updated_toolbar_instances": ["35:533", "40:598", "42:866", "42:1201", "42:1536", "42:1871"],
+  "updated_inspector_instances": ["35:684", "40:778", "42:869", "42:1204", "42:1539", "42:1874"],
+  "screen_count": 6,
+  "library_screenshot": "header-control-repair-library.png",
+  "library_screenshot_sha256": "41da785374cdeb17e77cdf2f0faa9f37f16c21b7eab1588030d432ed911e5856",
+  "binding_audit": {"unbound_paint_count": 0, "unbound_text_style_count": 0},
+  "status": "passed"
+}

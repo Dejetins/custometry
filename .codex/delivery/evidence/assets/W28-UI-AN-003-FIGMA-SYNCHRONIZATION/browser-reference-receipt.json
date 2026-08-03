@@ -1,0 +1,58 @@
+{
+  "ticket_id": "W28-UI-AN-003-FIGMA-SYNCHRONIZATION",
+  "source": "http://127.0.0.1:5173/w/northwind-retail/analytics/sales?view=html-prototype",
+  "captured_at": "2026-08-01",
+  "session": "w28",
+  "geometry": {
+    "desktop_1440x900": {
+      "sidebar_expanded": {"x": 12, "y": 12, "width": 224, "height": 876},
+      "application": {"x": 248, "y": 12, "width": 1180, "height": 876},
+      "header": {"x": 264, "y": 24, "width": 1152, "height": 64},
+      "kpi_rail": {"x": 264, "y": 96, "width": 1152, "height": 72},
+      "chart": {"x": 264, "y": 184, "width": 1152, "height": 390},
+      "breakdown": {"x": 264, "y": 586, "width": 1152, "height": 296}
+    },
+    "sidebar_resized_1440x900": {
+      "sidebar": {"x": 12, "y": 12, "width": 232, "height": 876},
+      "application": {"x": 256, "y": 12, "width": 1172, "height": 876}
+    },
+    "compact_1024x768": {
+      "sidebar_collapsed": {"x": 12, "y": 12, "width": 64, "height": 744},
+      "application": {"x": 88, "y": 12, "width": 924, "height": 744},
+      "header": {"x": 104, "y": 24, "width": 896, "height": 64},
+      "kpi_rail": {"x": 104, "y": 96, "width": 896, "height": 72},
+      "chart": {"x": 104, "y": 184, "width": 896, "height": 340},
+      "breakdown": {"x": 104, "y": 536, "width": 896, "height": 296},
+      "root_font_size": "14px",
+      "css_zoom": "1",
+      "document_scroll_width": 1024,
+      "document_client_width": 1024
+    },
+    "focus_1440x900": {
+      "surface": {"x": 12, "y": 12, "width": 1416, "height": 876},
+      "header": {"x": 33, "y": 33, "width": 1374, "height": 69.78125},
+      "content": {"x": 33, "y": 154.78125, "width": 1374, "height": 712.21875}
+    },
+    "result_trust_1440x900": {
+      "drawer": {"x": 1068, "y": 12, "width": 360, "height": 876}
+    }
+  },
+  "artifacts": [
+    {"path": "html-chart-1440x900.png", "sha256": "be28cd5236ad1c92cf6c63c9fd8e74162e01a628b9b780ca6edac502d8284e0a", "width": 1440, "height": 900},
+    {"path": "html-data-1440x900.png", "sha256": "fa8149348f61c784cc9f5d7674f41749812a9160b170cc26058708c94b9f5de6", "width": 1440, "height": 900},
+    {"path": "html-result-trust-1440x900.png", "sha256": "611adae394032ab10ab42f001ebf0de683748509db850994815a09df7483b7c2", "width": 1440, "height": 900},
+    {"path": "html-focus-chart-1440x900.png", "sha256": "3a1c4ab27405d69ca016e4c9d0faf6b5cc78b84408a73f48d00a3daefd53cf17", "width": 1440, "height": 900},
+    {"path": "html-focus-breakdown-1440x900.png", "sha256": "a0b236b1c5f23e2efe24a2f1b2d63ff5978e0fcbda14f2904f100cf0eebe991a", "width": 1440, "height": 900},
+    {"path": "html-sidebar-collapsed-1440x900.png", "sha256": "f8d23068b6b02e5c776e531ee7b767257f9b21d5015753f1f92934a1043f92ae", "width": 1440, "height": 900},
+    {"path": "html-sidebar-hidden-1440x900.png", "sha256": "7af28c7ef7e7f580d8a7a90f57e493d3f9303d6d9e72abcfc6a9ea973b5e4e83", "width": 1440, "height": 900},
+    {"path": "html-sidebar-resized-1440x900.png", "sha256": "ac321716ab9663bc530d7f2d6340d2462d863b491e6acf8a42a7bc3eb55d8bc8", "width": 1440, "height": 900},
+    {"path": "html-compact-1024x768.png", "sha256": "a9c2561d1048c87552329ee2e10bba6663971eaad28e8b33b3987eb3d2121e51", "width": 1024, "height": 768}
+  ],
+  "diagnostics": {
+    "console_errors": 0,
+    "console_warnings": 0,
+    "dynamic_requests": 0,
+    "static_requests_observed": 155,
+    "session_closed": true
+  }
+}

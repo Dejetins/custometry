@@ -36,6 +36,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [Executable UI route contract](../contracts/ui-route-contract.md) | Identity/execution manifest split, guard/permission/state/history semantics, agent resolution, and validation rules |
 | [UI surface coverage contract](../contracts/ui-surface-contract.md) | Requirement-to-surface coverage, route decision policy, Penpot baseline identity, and complete agent load order |
 | [Linear-workspace transition standard](./ui/linear-workspace-ui-transition-standard-v1.md) | Shared React/MobX/Query/styled-components baseline, four themes, workspace behavior, motion, responsiveness, performance budgets, and migration method |
+| [Contract-compiled UI prototyping plan](./ui/custometry-contract-compiled-ui-prototyping-plan-v1.md) | Accepted HTML-first component, registry, screen-manifest, browser-QA, and product-acceptance process |
 | [Linear reference manifest](./ui/linear-workspace-reference-manifest-v1.json) | Sanitized source hashes, observed reference states, viewport metadata, and evidence gaps without shipping third-party captures |
 | [Custometry UI migration registry](./ui/custometry-linear-ui-migration-registry-v1.json) | Project-owned legacy authority, target stack, W19-W23 route, and supersession mapping |
 | [Custometry UI transition specification](../../.codex/delivery/specs/custometry-linear-workspace-ui-transition.md) | Accepted compatibility and delivery boundary for the authenticated Web replatform |

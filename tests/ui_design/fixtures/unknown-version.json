@@ -1,0 +1,5 @@
+{
+  "artifact": "manifest",
+  "mutation": {"op": "set", "path": ["manifest_version"], "value": "9.0.0"},
+  "expected_code": "unknown-contract-version"
+}

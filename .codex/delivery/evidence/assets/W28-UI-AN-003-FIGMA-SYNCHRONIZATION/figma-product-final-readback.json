@@ -1,0 +1,36 @@
+{
+  "ticket_id": "W28-UI-AN-003-FIGMA-SYNCHRONIZATION",
+  "file_key": "MXfxuhSFpIczbUtFmOSyPp",
+  "page_id": "0:1",
+  "before": {
+    "top_level_count": 8,
+    "preserved_w21_node": {"id": "40:536", "name": "Accepted / UI-AN-003 / Graphite / v1", "width": 1440, "height": 900}
+  },
+  "attempts": [
+    {
+      "kind": "initial_mutation",
+      "result": "failed",
+      "error": "setPluginData is not supported in this host runtime; setSharedPluginData is required",
+      "exact_readback_w28_count": 0
+    },
+    {
+      "kind": "repair_pass_1",
+      "result": "failed",
+      "error": "Application surface x cannot be overridden inside an instance",
+      "exact_readback_w28_count": 0
+    },
+    {
+      "kind": "repair_pass_2",
+      "result": "failed",
+      "error": "findOne callback encountered missing instance-child I131:2254;10:31",
+      "exact_readback_w28_count": 0
+    }
+  ],
+  "final": {
+    "top_level_count": 8,
+    "w28_product_composition_count": 0,
+    "preserved_w21_node": {"id": "40:536", "name": "Accepted / UI-AN-003 / Graphite / v1", "x": 1600, "y": 0, "width": 1440, "height": 900},
+    "partial_nodes_present": false,
+    "repair_budget_exhausted": true
+  }
+}

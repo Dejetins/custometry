@@ -1,0 +1,5 @@
+{
+  "artifact": "manifest",
+  "mutation": {"op": "set", "path": ["target", "product_file_key"], "value": "wrong-product-file"},
+  "expected_code": "target-drift"
+}

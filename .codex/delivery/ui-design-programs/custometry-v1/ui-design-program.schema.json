@@ -17,7 +17,7 @@
     "program_name": {"type": "string", "minLength": 1},
     "revision": {"type": "integer", "minimum": 1},
     "status": {"enum": ["draft", "review", "accepted", "superseded"]},
-    "validation_profile": {"enum": ["draft", "atlas_gate", "program_ready", "handoff_ready"]},
+    "validation_profile": {"enum": ["draft", "atlas_gate", "structure_gate", "program_ready", "handoff_ready"]},
     "source_contracts": {
       "type": "array",
       "items": {
@@ -91,7 +91,7 @@
         "additionalProperties": false,
         "required": ["gate_id", "title", "owner_decision_required"],
         "properties": {
-          "gate_id": {"pattern": "^G[0-6]$"},
+          "gate_id": {"type": "string", "pattern": "^G[0-6]$"},
           "title": {"type": "string", "minLength": 1},
           "owner_decision_required": {"type": "boolean"}
         }
@@ -247,7 +247,7 @@
         "title": {"type": "string", "minLength": 1},
         "family_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
         "depends_on": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "gate_id": {"pattern": "^G[3-6]$"},
+        "gate_id": {"type": "string", "pattern": "^G[3-6]$"},
         "decision_origin": {"$ref": "#/$defs/origin"}
       }
     },

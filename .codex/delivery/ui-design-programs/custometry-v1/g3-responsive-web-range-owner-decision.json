@@ -1,0 +1,69 @@
+{
+  "schema_id": "codex.ui-design-program.owner-decision/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V1",
+  "decisions": [
+    {
+      "decision_id": "CUSTOMETRY-G3-RESPONSIVE-WEB-RANGE-OWNER-DECISION-R1",
+      "status": "accepted",
+      "revision": 1,
+      "decision_scope": "responsive_web_range_anchor_values_and_mobile_boundary_only",
+      "program_gate_acceptance": false,
+      "source_user_message_ref": "current Codex task, explicit owner decision on 2026-08-03",
+      "decision_text": "Утверждаю responsive-Web range 768–2560 CSS px. Anchors: web-min-768 768×900, web-standard-1440 1440×900, web-wide-1920 1920×1080, web-max-2560 2560×1440. Ниже 768 и выше 2560 — вне обязательного диапазона проверки. mobile_scope: unauthorized.",
+      "accepted_values": {
+        "supported_web_width_range": {
+          "min_width": 768,
+          "max_width": 2560
+        },
+        "anchor_viewports": [
+          {
+            "anchor_id": "web-min-768",
+            "width": 768,
+            "height": 900,
+            "class": "responsive_web"
+          },
+          {
+            "anchor_id": "web-standard-1440",
+            "width": 1440,
+            "height": 900,
+            "class": "responsive_web"
+          },
+          {
+            "anchor_id": "web-wide-1920",
+            "width": 1920,
+            "height": 1080,
+            "class": "responsive_web"
+          },
+          {
+            "anchor_id": "web-max-2560",
+            "width": 2560,
+            "height": 1440,
+            "class": "responsive_web"
+          }
+        ],
+        "viewport_anchor_ids": [
+          "web-min-768",
+          "web-standard-1440",
+          "web-wide-1920",
+          "web-max-2560"
+        ],
+        "outside_range_policy": {
+          "below_min_width": "outside_mandatory_validation_range",
+          "above_max_width": "outside_mandatory_validation_range"
+        },
+        "mobile_scope": "unauthorized"
+      },
+      "accepted_value_sha256s": [
+        "275547336c9aa8096678588f4a2f02b19727328f7efb2ca7f10aedec340da4ac",
+        "33bb42a8ca1a27949510aee03228164b324d32a7b5dd2a912d7dab2a9cfdc85f",
+        "3b7d24eba21fd25f3394f10900a16a1f1d7f8a0bd4aba4157ea367a2c0733684",
+        "4cea0db7a44380c2c23fa6d7bd31463853bcba35f1509b2e7129cc730cf9f3bd",
+        "660e7441a18cae9dba4844c1436209d8ef2c21bc5c4655d34f32d6d6dc7047de",
+        "a6f540b9321dba11cac5637d26319e237c39190f7139c7bf35dcf41822ef3178",
+        "bbbdfc499f214a457c9177c57f420514a63c9b0f610a35a6ac59f4d037a76dc8",
+        "c6d7515eee8ace469d42d3ce251de2e1a675e2537a189c43b3050094aefc80d1"
+      ],
+      "proof_boundary": "Owner-declared responsive-Web support range, four exact anchor identities and dimensions, outside-range validation boundary, and unauthorized mobile scope only; this is not G3 program-gate acceptance and contains no browser, raster, accessibility, runtime, or implementation proof."
+    }
+  ]
+}

@@ -7,7 +7,7 @@ normative: false
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-08-01
+updated_at: 2026-08-03
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
@@ -810,7 +810,7 @@ Post-v1: декомпозиция `active = retained + new + reactivated`, hiera
 
 Канонический visual contract — собственный versioned, renderer-neutral и theme-neutral `ChartSpec`, а не ECharts `option` и не изображение. Он фиксирует source/data artifacts, schema/grain/size, dimensions/measures, axes/series/annotations, comparison, interaction, semantic styles, accessibility и export policy. ECharts option, SVG, PNG и native Excel chart являются только derived render artifacts с compiler/renderer/theme/locale/timezone/render-profile versions и content hash.
 
-Семь подтверждённых границ:
+Одиннадцать подтверждённых границ:
 
 1. Apache ECharts — единственный v1 Web chart engine.
 2. Dash отсутствует в production dependencies/runtime и application lifecycle.
@@ -819,6 +819,10 @@ Post-v1: декомпозиция `active = retained + new + reactivated`, hiera
 5. Promotion Journal использует отдельный `range_timeline` chart type.
 6. Web рендерит SVG/Canvas, email получает PNG из deterministic SSR SVG, XLSX — lossless native chart либо PNG из того же static pipeline.
 7. ECharts-GL/WebGL и GPU analytics не используются; aggregation/sampling/level-of-detail выполняются на backend CPU.
+8. Любой разрешённый immutable dataset может быть источником графика, если его schema, grain, semantic roles, cardinality и bounded-data policy совместимы с выбранным типом.
+9. Доступный ordered set типов графика определяется versioned compatibility rules для конкретной пары dataset profile и report type; разные отчёты могут иметь разные наборы и defaults.
+10. Пользователь видит текущий тип графика и может выбрать любой доступный для этого dataset/report type вариант без изменения source, filters, measures, permissions и Result Trust.
+11. Начиная с новых G4+ browser-proven и production surfaces, реальные графики рендерятся Apache ECharts через ChartSpec/compiler; hand-authored SVG/CSS/Canvas substitute не считается доказательством ECharts, а доступная data table остаётся отдельным product data-grid surface.
 
 `range_timeline` хранит lane field, promotion version, start/end, planned/actual, status, immutable audience reference, overlap policy, visible-window state и detail action. Multi-channel promotions занимают соответствующие lanes; overlap отображается stack/swimlane/density summary. Overlay акции на аналитическом chart остаётся descriptive и не получает causal label. Это не ECharts `timeline` component для frame switching: Web adapter использует заранее зарегистрированный trusted range-series renderer.
 
@@ -863,6 +867,10 @@ ChartSpec не принимает JavaScript functions, `renderItem`, raw EChart
 | CHART-017 | ECharts-GL/WebGL/GPU analytics выключены до v1; browser SVG/Canvas не выполняет analytical reduction |
 | CHART-018 | Static adapter без network, с batch/dimension/output/temp/memory/CPU/time limits, cancellation и cleanup partial artifacts |
 | CHART-019 | Release gate проверяет schema/security, shared-compiler option hash Web/SSR, SVG/Canvas semantics, SSR→PNG, font/render-build cache invalidation, range timeline, native/raster XLSX, themes/a11y и golden parity |
+| CHART-020 | Любой authorized immutable dataset допустим как chart source при валидных schema/grain/semantic roles/bounded-data/access rules; route-specific hardcode не блокирует совместимый dataset |
+| CHART-021 | Versioned compatibility rules возвращают ordered available types и default по dataset profile + report type; наборы и defaults могут отличаться между отчётами |
+| CHART-022 | Пользователь выбирает текущий тип только из available set; сохранённый выбор versioned и не меняет скрыто source/filters/grain/measures/permissions/Result Trust |
+| CHART-023 | Новые G4+ browser-proven и production графики используют реальный ECharts через ChartSpec/compiler; mock SVG/CSS/Canvas не заменяет renderer, data grid остаётся отдельным surface |
 
 #### 14.1.1. Полноэкранный Focus / Explore mode
 

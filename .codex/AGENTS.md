@@ -105,6 +105,14 @@ accepted HTML pilot provide only their declared route/family evidence.
 Mobile-specific composition remains unauthorized without exact current user
 authorization; narrow responsive Web is not permission to invent a mobile UI.
 
+For chart-bearing UI work, follow `CHART-004` and `CHART-020...023` from the
+normative product blueprint. Every new G4+ browser-proven or production chart
+uses actual Apache ECharts through validated `ChartSpec` and the shared chart
+compiler. Historical pilot deferrals do not authorize new hand-authored
+SVG/CSS/Canvas chart substitutes. Available chart types are derived from the
+authorized dataset profile and report type and exposed for user selection;
+accessible tables and product data grids remain separate from ECharts.
+
 For authenticated Web transition work, also read
 `docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md`, the
 selected Custometry specification under `.codex/delivery/specs/`, and the

@@ -3,9 +3,9 @@ import { describe, expect, it } from "vitest";
 import { routeRegistry } from "../src/index";
 
 describe("canonical route registry", () => {
-  it("contains the 116 normative route-level UI entries", () => {
-    expect(routeRegistry.routes).toHaveLength(116);
-    expect(new Set(routeRegistry.routes.map((route) => route.id)).size).toBe(116);
+  it("contains the 117 normative route-level UI entries", () => {
+    expect(routeRegistry.routes).toHaveLength(117);
+    expect(new Set(routeRegistry.routes.map((route) => route.id)).size).toBe(117);
   });
 
   it("uses canonical workspace paths and known lifecycle states", () => {

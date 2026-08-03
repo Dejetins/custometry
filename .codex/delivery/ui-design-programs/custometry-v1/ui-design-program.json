@@ -3,7 +3,7 @@
   "schema_id": "codex.ui-design-program/v1",
   "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V1",
   "program_name": "Custometry Product-wide UI Design Program",
-  "revision": 4,
+  "revision": 5,
   "status": "accepted",
   "validation_profile": "program_ready",
   "source_contracts": [
@@ -11,7 +11,7 @@
       "path": "custometry-technical-blueprint-ru.md",
       "authority": "normative product specification and JOURNEY-001...007",
       "required_status": null,
-      "sha256": "eb453f8ab3a316de434d5a272422ebf320475498272b0167c17e32bd3b5a4ee1",
+      "sha256": "197d6b8049db536d30c94f7bf84b5b2ba3882f7fc88c1c16ab63a42c2c0fe3f9",
       "screen_collections": [],
       "journey_collections": []
     },
@@ -19,7 +19,7 @@
       "path": "custometry-technical-blueprint-human-ru.md",
       "authority": "required explanatory mirror",
       "required_status": null,
-      "sha256": "6e84cf0de2adc45b0bba335e2a0af9c1ef2df95055ebb466ed9cff0de0880918",
+      "sha256": "593ba5a43d419e0c69fe7d49dd3ebdbe6e744d0df4e7a54accc5869ad191f6f9",
       "screen_collections": [],
       "journey_collections": []
     },
@@ -27,7 +27,7 @@
       "path": "custometry-ui-blueprint-ru.md",
       "authority": "normative UI/UX requirements and historical exclusions",
       "required_status": null,
-      "sha256": "bca5441981a3956bb4a4433faa1beb24c6d007ad7b002cbfe3f80b39d45146b5",
+      "sha256": "9ca1697652f3ee00a8062231c760d8d79ea82c3c43378d9c78de0f3cdd64fa6c",
       "screen_collections": [],
       "journey_collections": []
     },
@@ -13601,12 +13601,12 @@
   },
   "program_acceptance": {
     "agent_self_acceptance": "prohibited",
-    "owner_decision_ref": "owner-decision://eae547c42c2babd0ed1dffd9635c388205dd15ac69e04eaee86581540c42dd2c/.codex/delivery/ui-design-programs/custometry-v1/g3-owner-acceptance-r4.json?value_sha256=813053a1e977cab2d6baa38567fea7206220f0620d766ae660a3847a97f56828#/decisions/0",
-    "accepted_revision": 4
+    "owner_decision_ref": "owner-decision://146ab563520f3b01e4d3560735c94d136298f392ba83b181acb4695f4a9c0a22/.codex/delivery/ui-design-programs/custometry-v1/g4-chart-rendering-policy-owner-acceptance-r5.json?value_sha256=9ccfd5f5fc21dbc6c0fa59da99dec4cbdf96a43762c06e2ab1f918892e662fbe#/decisions/0",
+    "accepted_revision": 5
   },
   "execution_artifacts": {
     "plan_doc": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v1/ui-design-program.json",
-    "prompt_pack_dir": "<prompt-manager-prompt-pack-dir>",
-    "stage_ledger": "<prompt-manager-stage-ledger>"
+    "prompt_pack_dir": "/Users/daniildegtyarev/Projects/Custometry/.codex/agents/generated/custometry-ui-design-g4-v1",
+    "stage_ledger": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v1/g4-stage-ledger.md"
   }
 }

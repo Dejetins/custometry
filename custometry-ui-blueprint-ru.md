@@ -11,7 +11,7 @@ status: active_design_iteration
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-08-02
+updated_at: 2026-08-03
 target: responsive_desktop_first_web_application
 design_tool: browser_html_code_components
 design_phase: phase_1_html_first_foundations_components_screens
@@ -909,6 +909,11 @@ regions. W08 methodology content не должен добавляться пол
 
 - ECharts — единственный Web renderer v1;
 - `ChartSpec` остаётся source of truth;
+- каждый новый chart-bearing G4+ browser-proven или production surface использует реальный Apache ECharts через validated `ChartSpec` и shared chart compiler; hand-authored SVG/CSS/Canvas/HTML chart substitute допустим только как явно зарегистрированный loading/empty/error skeleton либо truthful historical evidence;
+- любой authorized immutable dataset может быть chart source, если versioned compatibility rules подтверждают его schema, grain, semantic roles, cardinality, bounded-data и access constraints;
+- chart header/toolbar показывает текущий тип и selector только с `available_chart_types`, вычисленными для текущих dataset profile и report type; разные типы отчётов могут иметь разные наборы и defaults;
+- пользователь может временно переключить доступный тип без изменения source, filters, comparison, grain, measures, permissions и Result Trust; сохранённый выбор создаёт versioned `ChartSpec` либо versioned presentation binding;
+- если совместимых chart types нет, UI объясняет причину и использует доступную data table как primary representation, не подменяя её ECharts `dataView`;
 - Web использует SVG/Canvas по policy;
 - chart header содержит title, unit, info, actions и table toggle;
 - tooltip не является единственным источником значения;
@@ -970,6 +975,7 @@ Responsive:
 
 ## 12. Таблицы и большие данные
 
+- product Data Grid и accessible chart table alternative являются отдельными HTML/React surfaces и не реализуются через ECharts `dataset`/`dataView`;
 - sticky header и первая смысловая колонка, когда это помогает сравнению;
 - column chooser, sort, typed filter, resize и density preference;
 - server-side pagination/virtualization;
@@ -1135,7 +1141,7 @@ Global all-route catalog не является prerequisite. Каждый нов
 6. Same-viewport DOM/visual browser QA доказывает структурную и визуальную эквивалентность.
 7. Вторая composition собирается из того же registry, чтобы доказать реальное reuse.
 
-HTML candidate не становится production implementation автоматически. Реальный ECharts rendering, command palette, More page actions, typed filter expressions/chips и внешние share/email/download/export side effects входят в последующие implementation tickets по мере появления соответствующего production boundary.
+HTML candidate не становится production implementation автоматически. Историческая W27-дефераль реального ECharts остаётся правдивой только для уже принятого pilot evidence. Начиная с текущего contract lock, каждый новый chart-bearing G4 representative, HTML candidate и production implementation обязан использовать реальный Apache ECharts через validated `ChartSpec` и shared chart compiler; новый hand-authored chart substitute не может получить browser acceptance. Command palette, More page actions, typed filter expressions/chips и внешние share/email/download/export side effects по-прежнему входят в отдельные implementation tickets по мере появления соответствующего production boundary.
 
 ### 16.2. Целевая repository structure
 

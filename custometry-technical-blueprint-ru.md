@@ -8,7 +8,7 @@ normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-08-01
+updated_at: 2026-08-03
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -3688,6 +3688,14 @@ chart_spec:
   workspace_id: uuid
   schema_version: semver
   chart_type: metric|line|bar|stacked_bar|area|combo|scatter|bubble|histogram|boxplot|heatmap|waterfall|funnel|sankey|range_timeline
+  chart_type_selection:
+    selection_source: report_default|user
+    report_type_id: string
+    compatibility_policy_id: string
+    compatibility_policy_version: semver
+    dataset_profile_hash: sha256
+    available_chart_types: []
+    default_chart_type: string
   title_key: string|null
   title_override: localized_text|null
   description_key: string|null
@@ -3738,6 +3746,24 @@ chart_spec:
   access_policy: object
   created_at: timestamp_utc
 ```
+
+Любой разрешённый пользователю immutable dataset или производный chart-data
+artifact MAY быть источником графика, если его schema, grain, semantic field
+roles, cardinality, size и bounded-data policy проходят versioned chart-type
+compatibility rules. Это разрешение не означает, что любой dataset совместим с
+каждым chart type: доступный ordered set вычисляется детерминированно для
+конкретной пары `dataset profile + report type`, фиксируется в
+`chart_type_selection` и может отличаться между отчётами. Route-specific
+hardcode, запрещающий в целом визуализировать совместимый dataset, не является
+источником истины.
+
+UI MUST показывать пользователю текущий `chart_type` и позволять выбрать любой
+тип из `available_chart_types`. Несовместимый тип не может быть выбран или
+передан через raw ECharts option; при необходимости UI показывает стабильную
+локализованную причину несовместимости. Временное переключение не меняет source,
+filters, grain, measures, permissions или Result Trust. Сохранение выбора в
+report/dashboard/Saved View создаёт новую versioned `ChartSpec` либо versioned
+presentation binding по применимому lifecycle contract.
 
 `range_timeline` является отдельным first-class chart type для Promotion Journal, а не использованием ECharts `timeline` component для переключения кадров.
 
@@ -3874,7 +3900,15 @@ chart_requirements:
   - id: CHART-018
     requirement: Static adapter MUST запрещать outbound network и remote assets, иметь batch/width/height/output/temp/memory/CPU/time limits, cancellation, stable error codes и cleanup incomplete artifacts после crash.
   - id: CHART-019
-    requirement: Release gate MUST проверять ChartSpec validation/security, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantic parity, SSR-SVG-to-PNG fidelity, font/render-build identity invalidation, range_timeline behavior, XLSX native/raster mapping, all-four-theme accessibility и golden data parity.
+    requirement: Release gate MUST проверять ChartSpec validation/security, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantic parity, SSR-SVG-to-PNG fidelity, font/render-build identity invalidation, range_timeline behavior, XLSX native/raster mapping, all-four-theme accessibility, chart-type compatibility/selection и golden data parity.
+  - id: CHART-020
+    requirement: Любой authorized immutable dataset или derived chart-data artifact MUST быть допустимым chart source при наличии валидных schema, grain, semantic field roles, bounded size/reduction и access policy; route-specific allowlist не может произвольно запрещать совместимый dataset.
+  - id: CHART-021
+    requirement: Versioned compatibility rules MUST детерминированно выдавать ordered available_chart_types и default для конкретных dataset profile и report type; разные report types MAY иметь разные доступные/default chart types, а один глобальный список или default для всех отчётов запрещён.
+  - id: CHART-022
+    requirement: Web UI MUST показывать текущий chart_type и позволять пользователю выбрать любой тип из available_chart_types; несовместимые types MUST быть недоступны с локализованной причиной, а сохранённый выбор MUST входить в versioned ChartSpec либо versioned presentation binding без скрытого изменения source, filters, grain, measures, permissions или Result Trust.
+  - id: CHART-023
+    requirement: Каждый новый chart-bearing G4+ browser-proven или production Web surface MUST рендерить графики реальным Apache ECharts через validated ChartSpec и shared chart compiler; hand-authored SVG/CSS/Canvas/HTML chart substitutes запрещены, кроме явно зарегистрированных loading/empty/error skeletons и правдивого historical evidence. Accessible data table и product data grid остаются отдельными render surfaces и не реализуются через ECharts dataView.
 ```
 
 ### 14.1.1. Полноэкранный Focus / Explore mode

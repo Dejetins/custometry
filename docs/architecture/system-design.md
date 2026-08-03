@@ -1,12 +1,12 @@
 ---
 doc_id: ARCH-SYSTEM-DESIGN-001
 title: Custometry Target System Design
-doc_version: 11
+doc_version: 12
 product_spec_version: 0.9.4-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [ARCH-PRINCIPLE-001, GOAL-011, GOAL-012, GOAL-013, UC-017, UC-018, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-009, RBAC-010, RBAC-011, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, ROUTE-001, ROUTE-012, OUTLIER-001, SEGMENT-001, THEME-001, WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-004, WEB-PERF-001, WEB-PERF-005, PRIVATE-FUTURE-001]
+requirement_ids: [ARCH-PRINCIPLE-001, GOAL-011, GOAL-012, GOAL-013, UC-017, UC-018, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-009, RBAC-010, RBAC-011, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, ROUTE-001, ROUTE-012, OUTLIER-001, SEGMENT-001, THEME-001, CHART-004, CHART-020, CHART-021, CHART-022, CHART-023, WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-004, WEB-PERF-001, WEB-PERF-005, PRIVATE-FUTURE-001]
 status: accepted
 proof_boundary:
   label: accepted-v1-target-architecture
@@ -453,14 +453,24 @@ client configures and visualizes them but does not fit bounds or clusters.
 4. ECharts is the only v1 Web chart engine. Email uses PNG produced by a
    network-disabled SSR SVG pipeline. XLSX uses a lossless native chart when
    possible and the same PNG fallback otherwise, always retaining typed data.
-5. User email is an explicit authenticated action. Sender identity, recipient
+5. Any authorized immutable dataset may drive a chart when versioned
+   compatibility rules accept its schema, grain, semantic roles, cardinality,
+   bounded-data policy, and the current report type. Those rules return the
+   ordered available chart types and report-specific default; the user may
+   choose any returned type without changing source, filters, measures,
+   permissions, or Result Trust.
+6. New G4+ browser-proven and production chart surfaces render actual Apache
+   ECharts through validated ChartSpec and the shared compiler. Hand-authored
+   SVG/CSS/Canvas substitutes do not prove the chart boundary. Accessible
+   tables and product data grids remain separate render surfaces.
+7. User email is an explicit authenticated action. Sender identity, recipient
    domain allowlist, report/source access, PII/DLP policy, and transport
    authorization are rechecked before render and submit.
-6. Unknown provider result enters reconciliation; blind retry is forbidden.
-7. Universal XLSX preflight checks Excel limits, memory/temp disk, sheet count,
+8. Unknown provider result enters reconciliation; blind retry is forbidden.
+9. Universal XLSX preflight checks Excel limits, memory/temp disk, sheet count,
    charts, and final size. It produces README, Contents, Summary, typed data
    sheets, charts, and Metadata/Lineage without silent truncation.
-8. README derives from the snapshot, Data Guide, Methodology Registry, and safe
+10. README derives from the snapshot, Data Guide, Methodology Registry, and safe
    catalog metadata and explains purpose, freshness, filters, comparison,
    metrics/groups, grain, quality, limitations, lineage, author, and versions.
 

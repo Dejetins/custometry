@@ -1,0 +1,35 @@
+{
+  "schema_id": "codex.ui-design-program.owner-acceptance/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V1",
+  "decisions": [
+    {
+      "decision_id": "CUSTOMETRY-G3-CHART-POLICY-R5-PROGRAM-READY-OWNER-ACCEPTANCE",
+      "status": "accepted",
+      "revision": 5,
+      "validation_profile": "program_ready",
+      "source_user_message_ref": "current Codex task, explicit owner decision on 2026-08-03",
+      "decision_text": "accept CUSTOMETRY-UI-DESIGN-PROGRAM-V1 revision 5 validation_profile program_ready",
+      "accepted_value_sha256s": [
+        "9ccfd5f5fc21dbc6c0fa59da99dec4cbdf96a43762c06e2ab1f918892e662fbe"
+      ],
+      "accepted_review_artifacts": [
+        {
+          "path": ".codex/delivery/ui-design-programs/custometry-v1/ui-design-program.json",
+          "sha256": "e96ad11b8c334f896657409d075b225a9b92195b55de8d0e0b60d586044a498f"
+        },
+        {
+          "path": ".codex/delivery/ui-design-programs/custometry-v1/g4-chart-rendering-policy-owner-review-r5.md",
+          "sha256": "97541991679b097879cfe1bc742ebb4ca17b7875af6687aeb3d5acfa848bc33f"
+        }
+      ],
+      "automatic_gate": {
+        "profile": "program_ready",
+        "status": "passed",
+        "errors": 0,
+        "warnings": 0
+      },
+      "proof_boundary": "Static product/UI source, program-structure, responsive-coverage, chart-policy, exact triad-link, and owner-decision validation only; no G4 executor claim, screen contract, browser, raster, accessibility, runtime, implementation, release, or deployment proof.",
+      "mobile_scope": "unauthorized"
+    }
+  ]
+}

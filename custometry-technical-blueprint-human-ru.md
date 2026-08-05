@@ -67,6 +67,8 @@ Custometry — открытая self-hosted low-code операционная с
 | GOAL-014 | Превратить dashboards, reports и research documents в совместное рабочее пространство с заказчиками, исполнителями, обсуждениями, реакциями, подписками и privacy-safe adoption analytics без рейтингов людей |
 | GOAL-015 | Исключать повторный эквивалентный compute через content-addressed reuse, materializations, incremental invalidation, single-flight execution и off-peak precomputation с явной freshness/permission semantics |
 | GOAL-016 | Связать web, mobile app, advertising, campaign-cost и offline retail события в воспроизводимую customer journey и governed acquisition, attribution и unit economics без подмены атрибуции причинным эффектом |
+| GOAL-017 | Дать Dashboard, многостраничному Workbook/Report и narrative Research одну масштабируемую модель глав, страниц-вкладок, секций, блоков, filters, notes, annotations и snapshots для Web/email/XLSX |
+| GOAL-018 | Заложить полноценную товарно-категорийную аналитику: иерархия, ассортимент, запасы/availability, price/markdown, lifecycle, ABC/XYZ, affinity и descriptive substitution с честным missing-data behavior |
 
 ### 1.2. Границы продукта
 
@@ -312,7 +314,7 @@ Promotion Journal хранит stable `promotion_id`, immutable versions, extern
 
 ### Digital journey, acquisition и marketing costs
 
-Платформа вводит четыре canonical facts: `DigitalEvent` для web/app поведения, `MarketingTouchpoint` для impressions/clicks/installs/re-engagement, `MarketingSpendFact` для рекламных расходов и `BusinessCostFact` для себестоимости, доставки, платежей, возвратов и других элементов unit economics. Provider totals остаются source evidence; общая customer journey строится только после явного grain/cardinality/reconciliation contract. Anonymous actors не склеиваются с Customer без deterministic evidence.
+Платформа вводит четыре canonical facts: `DigitalEvent` для web/app поведения, `MarketingTouchpoint` для impressions/clicks/installs/re-engagement, `MarketingSpendFact` для рекламных расходов и `BusinessCostFact` для себестоимости, доставки, платежей, возвратов и других элементов unit economics. Provider totals остаются source evidence; общая customer journey строится только после явного grain/cardinality/reconciliation contract. Anonymous actors не склеиваются с Customer без deterministic evidence. Raw `canonical_customer_id` остаётся nullable source claim: published journey pin-ит отдельный `IdentityResolutionArtifact`, mapping/campaign/journey/conversion/cost-reconciliation versions, а raw events не переписываются после merge/split.
 
 | ID | Инвариант digital measurement |
 |---|---|
@@ -328,6 +330,9 @@ Promotion Journal хранит stable `promotion_id`, immutable versions, extern
 | DIGITAL-010 | Late/corrected/deleted/restated data создаёт новую batch и пересчитывает только затронутые partitions/windows с impact report |
 | DIGITAL-011 | Consent/retention/deletion/PII применяются до identity/path/export; запрещённая identity не попадает в cache, URL, log или evidence |
 | DIGITAL-012 | Provider connector объявляет raw/aggregate, sampling/modeling, timezone/currency, attribution, corrections, quotas и support evidence |
+| DIGITAL-013 | Canonical journey проходит impression → click → session → install → first open → registration → cart → order → online/offline purchase → refund → repeat и показывает missing/unmatched/conflicted transitions |
+| DIGITAL-014 | First-user acquisition и acquisition текущей session/traffic остаются разными measures/views |
+| DIGITAL-015 | Аналитика поддерживает channel/campaign/ad-group/creative/source/medium/platform и reconciliation Web/iOS/Android/offline с coverage/residual |
 
 ### 5.11. Reconciliation
 
@@ -504,6 +509,8 @@ Marketing measurement не является набором случайных fo
 | UNIT-ECON-010 | Multi-currency result pin-ит source/reporting currency, FX version и conversion-date rule |
 | UNIT-ECON-011 | Scenario/sensitivity хранит baseline, changed assumptions, range и delta отдельно от actuals |
 | UNIT-ECON-012 | Certification `canonical|candidate|proxy`; proxy раскрывает limitation |
+| UNIT-ECON-013 | Один governed result даёт CAC, CPI/eCPI, CPA, ROAS, ROI, LTV, contribution-margin ladder и payback по разрешённым cohort/channel/campaign/product/category/store scopes |
+| UNIT-ECON-014 | Observed actual, attributed result и scenario/sensitivity хранятся и показываются раздельно |
 
 | ID | Контракт governed assumptions |
 |---|---|
@@ -650,6 +657,10 @@ Cache/reuse identity состоит из `workspace_id`, `effective_policy_versi
 | MATERIALIZE-013 | Retention учитывает lineage, recompute cost, access, SLO, quota и reproducibility |
 | MATERIALIZE-014 | Web/email/XLSX/API используют общие immutable artifacts, а не отдельный пересчёт |
 | MATERIALIZE-015 | Benchmark покрывает cold/warm/hot/concurrent/invalidation/lanes и доказывает отсутствие duplicate compute |
+| MATERIALIZE-016 | Document/block preflight показывает reuse, planned compute, rows/bytes/time class, freshness и affected pages/blocks |
+| MATERIALIZE-017 | Одинаковые block requests coalesce; tab navigation и Web/email/XLSX не повторяют equivalent compute |
+| MATERIALIZE-018 | Admin UI показывает hit rate, avoided work, slow documents/blocks, wasted precompute, staleness и high-cost requests без data leakage |
+| MATERIALIZE-019 | Benchmark 100 pages × 30 blocks проверяет open/switch/mount/network/duplicate compute/memory/RU-EN/keyboard/200%; hard limit задаётся только после измерений |
 
 Network/timeout/worker-lost errors могут повторяться с bounded backoff; validation и OOM автоматически не повторяются.
 
@@ -733,9 +744,12 @@ Degraded gate status передаётся downstream и остаётся вид�
 | MART-CUSTOMER-FEATURES | Customer × as-of date; окна 30/90/180/365 дней, RFM-like features, tenure, interpurchase, channel shares и preferences; только события до cutoff |
 | MART-RECEIPT-FEATURES | Один source receipt; counts товаров/категорий, units, net revenue, discount share и margin из header/item facts и Product |
 | MART-SALES-PERIOD | Period × dimensions с явным `receipt_header` или `receipt_item` fact scope; mixed header/item metrics строятся без размножения |
-| MART-SEGMENT-MEMBERSHIP | Segment version × snapshot date × customer с score и assignment reason |
+| MART-SEGMENT-MEMBERSHIP | Stable segment snapshot × canonical customer с definition/as-of/window, score и assignment reason |
+| MART-PRODUCT-PERIOD | Period × product × hierarchy version × location × channel с item-grain revenue/units/receipts/buyers/margin/discount/returns/contribution |
+| MART-INVENTORY-POSITION | Observed time × product × location с nullable on-hand/available/in-transit/reserved |
+| MART-ASSORTMENT-AVAILABILITY | Effective interval × assortment scope × product × location × channel с planned/listed/availability states |
 
-Canonical primary keys: customer transaction — `[canonical_customer_id, source_system_id, receipt_id]`; customer-period — `[canonical_customer_id, period_start, frequency]`; customer features — `[canonical_customer_id, as_of_date]`; receipt features — `[source_system_id, receipt_id]`; segment snapshot — `[segment_version_id, snapshot_date, canonical_customer_id]`. Sales-period mart использует `[period_start, fact_scope, materialized_dimension_key_tuple]`, где tuple содержит все реально materialized dimension keys в объявленном порядке. Одна materialization имеет один `fact_scope`; product/category требуют item fact, а header metrics сначала агрегируются на receipt grain.
+Canonical primary keys: customer transaction — `[canonical_customer_id, source_system_id, receipt_id]`; customer-period — `[canonical_customer_id, period_start, frequency]`; customer features — `[canonical_customer_id, as_of_date]`; receipt features — `[source_system_id, receipt_id]`; segment snapshot — `[segment_snapshot_id, canonical_customer_id]`. Sales-period mart использует `[period_start, fact_scope, materialized_dimension_key_tuple]`, где tuple содержит все реально materialized dimension keys в объявленном порядке. Одна materialization имеет один `fact_scope`; product/category требуют item fact, а header metrics сначала агрегируются на receipt grain. Missing inventory, unknown availability и unavailable listing не становятся zero; category aggregation pin-ит hierarchy version или explicit rebase.
 
 `first_purchase_flag` и новые клиенты помечают left censoring при недостаточной предыстории. Historical dimensions и segment membership выбираются на дату события, а не по сегодняшнему значению.
 
@@ -813,12 +827,12 @@ Forecast residual anomalies остаются отдельной time-series poli
 
 ### 12.2. Buckets, strata и KMeans
 
-`SegmentationDefinitionVersion` объединяет rule, RFM, bucket и KMeans definitions. Любой published membership snapshot pin-ит population, inputs, treatment, preprocessing/model/code и as-of. Bucket mode поддерживает quantile, equal-width и custom thresholds. Stratified distribution сначала является исследовательским `DistributionArtifact`; выбранную ячейку Analyst может явно сохранить как segment. KMeans является первым кластерным методом v1 и принимает точное K. Платформа может показать K-1/K/K+1 diagnostics, но не меняет K без решения Analyst. HDBSCAN, Gaussian Mixture, automatic K и multivariate anomaly detection остаются post-v1.
+`SegmentationDefinitionVersion` объединяет rule, RFM, bucket и KMeans definitions и хранит reusable evaluation-window policy, но не exact as-of. Каждый SegmentRun разрешает policy в observation window/as-of, а immutable snapshot pin-ит definition, population, inputs, treatment, preprocessing/model/code и exact time context. Bucket mode поддерживает quantile, equal-width и custom thresholds. Stratified distribution сначала является исследовательским `DistributionArtifact`; выбранную ячейку Analyst может явно сохранить как segment. KMeans является первым кластерным методом v1 и принимает точное K. Платформа может показать K-1/K/K+1 diagnostics, но не меняет K без решения Analyst. HDBSCAN, Gaussian Mixture, automatic K и multivariate anomaly detection остаются post-v1.
 
 | ID | Инвариант сегментации |
 |---|---|
-| SEGMENT-001 | Published definition pin-ит method, population, features, treatment, as-of, group count и seed |
-| SEGMENT-002 | Membership snapshot immutable и содержит definition/input/treatment/preprocessing/model/code/member-grain bindings |
+| SEGMENT-001 | Published reusable definition pin-ит method, population, features, treatment, window policy, group count и seed; exact as-of задаёт run |
+| SEGMENT-002 | Snapshot имеет stable ID и immutable definition/as-of/window/input/treatment/preprocessing/model/code/member-grain bindings |
 | SEGMENT-003 | Bucket methods v1: quantile, equal-width и custom thresholds |
 | SEGMENT-004 | Quantile/equal-width требуют group count; custom thresholds задают количество групп и валидируют gaps/overlaps |
 | SEGMENT-005 | Ordered labels, missing bucket, inclusivity и tie policy обязательны |
@@ -835,6 +849,27 @@ Forecast residual anomalies остаются отдельной time-series poli
 | SEGMENT-016 | Frozen-model assignment и full retrain — разные operations и result identities |
 | SEGMENT-017 | GMM/HDBSCAN/automatic K/Isolation Forest/multivariate anomaly detection остаются post-v1 |
 | SEGMENT-018 | Preview сравнивает profiles/sizes/stability/business sensitivity с/без treatment и блокирует invalid publication |
+| SEGMENT-019 | Каждый run фиксирует definition, as-of/window, inputs, trigger/policies, diagnostics, lineage и exact snapshot |
+| SEGMENT-020 | Versioned schedule различает next/last-successful/failed/paused/manual states и history |
+| SEGMENT-021 | Consumer явно выбирает pinned snapshot либо latest successful by definition; result manifest всегда хранит resolved snapshot |
+| SEGMENT-022 | Published workbook/research pin-ят snapshot; live dashboard может явно использовать latest-successful, разрешённый в exact snapshot при публикации |
+| SEGMENT-023 | Segment detail показывает size/value trend, entrants/exits, migration, overlap, drift, quality, limitations и treatment sensitivity |
+| SEGMENT-024 | Permission-filtered `Used by` связывает segment с dashboard/report/research/forecast/promotion без утечки закрытых assets |
+| SEGMENT-025 | Historical comparison использует exact immutable pair of snapshots и не пересчитывает прошлое новыми правилами |
+| SEGMENT-026 | Доступ к segment не выдаёт member rows или PII; это отдельная authorization |
+
+Единый block builder используется во всех трёх профилях аналитического документа:
+
+| ID | Инвариант универсального builder |
+|---|---|
+| BLOCK-BUILDER-001 | Metric/chart/table/pivot block создаётся одним normalized contract в Dashboard, Workbook и Research |
+| BLOCK-BUILDER-002 | Обязательный порядок: subject/data product → metric(s)+grain → dimensions+period; preview/run до этого недоступен |
+| BLOCK-BUILDER-003 | Segment/population обязателен только когда этого требует метод или метрика, с объяснением binding/snapshot |
+| BLOCK-BUILDER-004 | Filters, comparison и presentation идут после основы; влияющие defaults входят в spec |
+| BLOCK-BUILDER-005 | До Add/Run видны capability, permission, Result Trust, cost/reuse/freshness preflight |
+| BLOCK-BUILDER-006 | Guided и Advanced компилируются в один versioned BlockDefinition и один runtime |
+| BLOCK-BUILDER-007 | Draft resumable, но не попадает в result/cache identity и не запускает compute |
+| BLOCK-BUILDER-008 | Add выбирает destination page/section, сохраняет stable block ID и переиспользует compatible artifact |
 
 ### 12.3. Research Workspace — от общего к частному
 
@@ -850,6 +885,25 @@ Research Workspace — governed block document поверх тех же artifact
 | RESEARCH-006 | Viewer comments наследуют object/row/PII policy и проходят DLP/audit |
 | RESEARCH-007 | Research blocks публикуются в dashboard/report без потери lineage и Result Trust |
 | RESEARCH-008 | Export использует pinned snapshot; browser DOM scraping и hidden notebook state запрещены |
+
+### 12.4. Products, Categories & Assortment
+
+Semantic Model владеет versioned product/category hierarchy и reusable assortment/store scopes; Ingestion — inventory, availability и price facts; Analytics — specs/results; Promotions дают только descriptive overlays. Новый bounded context не вводится.
+
+| ID | Инвариант товарной аналитики |
+|---|---|
+| PRODUCT-ANALYTICS-001 | Hierarchy versioned/effective-dated, поддерживает SKU/brand/levels/pack/UOM/reclassification history |
+| PRODUCT-ANALYTICS-002 | Category/SKU result включает revenue/units/receipts/buyers/margin/discount/returns/contribution/growth/coverage |
+| PRODUCT-ANALYTICS-003 | Assortment связывает planned/listed range, store/channel clusters, dates и availability scope |
+| PRODUCT-ANALYTICS-004 | Sell-through, days of inventory и turnover имеют versioned formula, snapshot/window и missing policy |
+| PRODUCT-ANALYTICS-005 | Zero stock, missing feed, unavailable listing и lost-sales proxy различаются; zero sales не доказывает stockout |
+| PRODUCT-ANALYTICS-006 | Basic ABC/XYZ/Pareto входит в V1 target и pin-ит scope/metrics/thresholds/period/version |
+| PRODUCT-ANALYTICS-007 | Base/list/selling price, markdown, discount components, margin и bands не смешиваются |
+| PRODUCT-ANALYTICS-008 | Lifecycle versioned: new/ramp-up/core/declining/discontinued/reintroduced |
+| PRODUCT-ANALYTICS-009 | Affinity/substitution показывает support/population/period/availability confounders и не называется causal |
+| PRODUCT-ANALYTICS-010 | Promo plan/actual overlay pin-ит product/category/store/channel/audience и показывает overlaps без hidden attribution |
+| PRODUCT-ANALYTICS-011 | Product results переиспользуются в document/forecast/segment через common block/public projection contracts |
+| PRODUCT-ANALYTICS-012 | Missing inventory/assortment/price/hierarchy создаёт blocker с next data requirement, а не synthetic zero |
 
 ## 13. Прогнозирование
 
@@ -888,6 +942,25 @@ Monitoring считает actual-vs-forecast, coverage, WAPE/bias, residual tren
 Post-v1: декомпозиция `active = retained + new + reactivated`, hierarchical reconciliation bottom-up/top-down/MinT и отдельные what-if scenarios. В v1 независимые hierarchy forecasts допустимы только с предупреждением.
 
 ## 14. Визуализация, dashboards и экспорт
+
+### 14.0. Общий Analytical Document contract
+
+Dashboard, Workbook/Report и Research используют один presentation-owned composition/snapshot contract, но сохраняют разные сценарии чтения и domain lifecycle. Структура документа — optional chapter → ordered page/tab → ordered section → ordered block. Бизнес-контексты поставляют только versioned public projections: композиция не хранит raw SQL, executable HTML, library options или вычислительную логику. ResearchDocument остаётся исследовательским source of truth; Presentation отвечает за общую структуру и render/snapshot path.
+
+| ID | Инвариант аналитического документа |
+|---|---|
+| ANALYTICAL-DOC-001 | Dashboard/Report/Research используют общий versioned composition/snapshot contract и отличаются профилем |
+| ANALYTICAL-DOC-002 | Stable hierarchy chapter → page → section → block имеет deterministic/accessible order; duplicate получает новые IDs |
+| ANALYTICAL-DOC-003 | Профили: compact live dashboard, multi-page workbook_report и outline narrative_research; story остаётся future |
+| ANALYTICAL-DOC-004 | Общие blocks включают text/note/metric/chart/table/pivot/finding/conclusion/methodology/trust/forecast/scenario/quality/metadata/Data Guide; executable content запрещён |
+| ANALYTICAL-DOC-005 | Reorder/duplicate/hide/lock/group страниц создают draft revision и сохраняют lineage/permission/export semantics |
+| ANALYTICAL-DOC-006 | Filter scopes document/chapter/page/section/block имеют явные precedence, locks, linked DAG и effective set |
+| ANALYTICAL-DOC-007 | Deep link pin-ит authorized version/snapshot/page/block и безопасно возвращает origin/scroll/focus без PII в URL |
+| ANALYTICAL-DOC-008 | Explore/custom view не меняет publication; сохранённый view versioned и explicit personal/shared |
+| ANALYTICAL-DOC-009 | Малого hard cap нет; обязательный design envelope — минимум 100 pages × 30 blocks/page, limits после benchmark |
+| ANALYTICAL-DOC-010 | Viewer получает разрешённый page index и монтирует active page; bounded prefetch не считается view и не раскрывает denied content |
+| ANALYTICAL-DOC-011 | Publication атомарно разрешает hierarchy/filters/segments/blocks в один root snapshot для Web/email/XLSX/export |
+| ANALYTICAL-DOC-012 | Responsive Web сохраняет hierarchy/reading/data meaning для RU/EN, keyboard/tab overflow/200%; mobile IA не входит в scope |
 
 ### 14.1. Chart specification
 
@@ -978,7 +1051,7 @@ ChartSpec не принимает JavaScript functions, `renderItem`, raw EChart
 
 ### 14.2. Dashboard как versioned product object
 
-Public MVP имеет templates для Overview, Sales, Customer Base, RFM, Cohorts, Lifecycle, Basket, Stores/Channels и Forecast. Свободный BI drag-and-drop не обязателен до v1.
+Public MVP имеет templates для Overview, Sales, Customer Base, RFM, Cohorts, Lifecycle, Basket, Stores/Channels и Forecast. Свободный BI drag-and-drop не обязателен до v1. Dashboard хранит lifecycle и live-binding policy, но authoring использует общий Analytical Document block engine; старые `sections/widgets` являются только compatibility projection.
 
 DashboardVersion хранит отдельные `dashboard_version_id` и stable `dashboard_id`, version, lifecycle/revision, `workspace_id`, localized title/description, layout schema/layout, global filter schema, widgets, access/freshness policies и author/time. Widget имеет type, pinned либо latest-successful source binding, projection, local filters и visualization.
 
@@ -1005,9 +1078,9 @@ Dashboard, report и research asset становятся совместным р
 |---|---|
 | COLLAB-001 | Asset поддерживает versioned requester/executor/owner/reviewer bindings с history/effective period |
 | COLLAB-002 | Participant role не выдаёт permissions и не меняет content ownership |
-| COLLAB-003 | Comment pin-ит exact version/snapshot/block и safe context без hidden values/PII |
+| COLLAB-003 | Comment pin-ит exact version/snapshot/page/block/filter/view/period/comparison/segment и optional stable data key без hidden values/PII |
 | COLLAB-004 | Mention/subscription только для allowed members; notification/deep link повторно проверяют доступ |
-| COLLAB-005 | Like/unlike — одна idempotent boolean state на user и version с append-only history |
+| COLLAB-005 | Like/unlike — одна idempotent boolean state только на published asset version; block/comment/cell reactions отсутствуют |
 | COLLAB-006 | Нет dislikes, ratings, employee leaderboard/ranking или popularity-only recommendation |
 | COLLAB-007 | Feed показывает только доступные assets/events без existence/title/count leak |
 | COLLAB-008 | View считается после meaningful authorized render; bot/preload/refresh/failure исключаются и session window дедуплицируется |
@@ -1017,6 +1090,15 @@ Dashboard, report и research asset становятся совместным р
 | COLLAB-012 | View/notification telemetry имеет retention/minimization/export/deletion/anonymization policy |
 | COLLAB-013 | Engagement не является data quality, certification, impact или employee performance |
 | COLLAB-014 | Revocation немедленно убирает asset из feed/mentions/subscriptions/comments/person reporting |
+| COLLAB-015 | AnalystNoteVersion — immutable published content со scope, author, evidence/limitations и review, отдельно от discussion |
+| COLLAB-016 | DataAnnotation pin-ит exact snapshot/page/block/artifact и semantic point/range/cell/row/column/period key, не pixels/index |
+| COLLAB-017 | Discussion имеет replies, mentions, resolve/reopen, moderation и audit отдельно от content |
+| COLLAB-018 | Comment становится note/finding только явным author action в новый sanitized draft/version с provenance/review |
+| COLLAB-019 | Refresh не переносит anchor: он остаётся на original snapshot; manual re-anchor создаёт audited new version |
+| COLLAB-020 | Discussion scopes document/page/block/data имеют одинаковую deny-before-fetch semantics без count leakage |
+| COLLAB-021 | Approved discussion summary входит в publication/export только отдельным versioned block через preflight |
+| COLLAB-022 | Adoption показывает aggregate meaningful usage/freshness/trend без employee score или popularity-as-quality |
+| COLLAB-023 | Never/rarely used content виден для operations, но usage отделён от certification, Result Trust и impact |
 
 #### Metric watches и data-driven alerts
 
@@ -1051,7 +1133,7 @@ CSV использует `UTF-8` и UI row limit, Parquet — основной l
 
 ### 14.4. Universal Report Composition
 
-Web, email и XLSX не собирают отчёт независимо. `ReportDefinitionVersion` описывает ordered sections и versioned blocks `heading|text|metric|metric_group|table|chart|finding|conclusion|methodology|quality|forecast_status|metadata|data_guide`, а каждый binding pin-ит artifact, projection, filters, comparison, metrics, schema/grain, unit/format и lineage policies и PII class. До render создаётся immutable `ReportSnapshot`; его `resolved_blocks[]` однозначно связывает каждый `block_id` с source artifact/projection/filter/comparison, canonical ChartSpec ID/hash, schema/grain, row/column counts, units/formats, lineage и PII class. Snapshot также фиксирует BrandProfile/CompanyPack, Data Guide, theme, locale/timezone/currency и renderer contract. UI редактирует эту specification; DOM scraping и raw library options запрещены.
+Web, email и XLSX не собирают отчёт независимо. Workbook/Report — профиль общего Analytical Document composition kernel; `ReportDefinitionVersion` хранит report lifecycle и compatibility identity, но не отдельный block engine. До render создаётся immutable root snapshot с page manifests и resolved blocks: source artifact/projection/filter/comparison, canonical ChartSpec ID/hash, schema/grain, size, units/formats, lineage и PII class. Snapshot также фиксирует BrandProfile/CompanyPack, Data Guide, theme, locale/timezone/currency и renderer contract. UI редактирует одну specification; DOM scraping, raw library options и dual-write двух composition formats запрещены.
 
 ```python
 class ReportRendererPort(Protocol):
@@ -1692,6 +1774,12 @@ Test pyramid включает backend unit/property/contract/API tests, real-dat
 | TEST-INV-093 | Digital/touch/spend/offline join reconciles grain/time/currency и сохраняет unattributed/residual/missingness |
 | TEST-INV-094 | Unit metrics pin-ят cost/attribution/identity/FX/assumptions без causal relabeling |
 | TEST-INV-095 | Watch использует committed artifact, dedup/cooldown/access recheck и не делает activation/writeback |
+| TEST-INV-096 | Common document atomically фиксирует hierarchy/filters/segments/page manifests; Web/email/XLSX читают один root snapshot без dual-write |
+| TEST-INV-097 | Comment/annotation после refresh остаётся на old snapshot и переносится только audited re-anchor; revoke закрывает links |
+| TEST-INV-098 | Одна segment definition создаёт несколько runs/snapshots; pinned/latest deterministic, history не пересчитывается, members отдельно авторизуются |
+| TEST-INV-099 | Product reclassification сохраняет history; missing inventory ≠ zero, zero sales ≠ stockout, totals сходятся с item grain |
+| TEST-INV-100 | First-user/session/provider/platform/actual/scenario measures разделены и используют reconciled purchase/refund identity |
+| TEST-INV-101 | Workbook 100×30 mount-ит active page, не раскрывает denied metadata, не считает prefetch view и не повторяет compute |
 
 Golden datasets включают ideal, anonymous, returns, multi-currency, late corrections, duplicates, missing products, SCD, irregular/intermittent series, new store, incomplete month, duplicate source IDs, overlapping/gapped validity, разные metric kinds, percentage/compact-format boundaries, stable metric groups, YoY leap/week53/fiscal cases, overlapping promotions, skewed/zero-inflated/heavy-tail sales с legitimate VIP и DQ-invalid rows, quantile/IQR/MAD bounds/ties/missing, global/within-stratum/privacy-cardinality cases, exact-K/frozen/retrain KMeans fixtures, research findings/comments, requester/executor/mentions/like/view/feed/admin-suppression cases, cold/warm/hot/concurrent/invalidation/last-good/resource-lane reuse cases, web/app identity/session/touch/spend/FX/offline/refund/cohort-maturity cases, governed assumptions и watches, low/high-cardinality sensitive filters, safe/unsafe Markdown и brand assets, multi-block reports, generated XLSX README/limits/injection/names, все shipped themes, полный ChartSpec allowlist, invalid executable/network specs, range timeline, dense aggregate/sample/LOD, identical shared-compiler Web/SSR option hashes и Web/SSR/email/XLSX semantic outputs, а также bundled-font/compiler/renderer build rotation fixtures.
 
@@ -1914,6 +2002,13 @@ Versioned web/app taxonomy и sessions → impressions/clicks/installs/opens/eco
 | V1-AC-045 | Deterministic attribution сравнивает models на одном scope, разделяет provider/observed и не называется causal/incremental |
 | V1-AC-046 | CAC/CPI/CPA, ROAS/ROI, LTV/margin/payback pin-ят cohort/cost/refund/FX/identity/attribution/assumptions, residuals и certification |
 | V1-AC-047 | Metric watches используют committed artifacts, dedup/cooldown/access recheck и не выполняют activation/pricing/source writeback |
+| V1-AC-048 | Dashboard, 100-page workbook и research создаются одним guided/advanced block contract со stable hierarchy/scoped filters/Custom Views/deep links |
+| V1-AC-049 | Один root/page snapshot питает Web/email/XLSX; lazy 100×30 проходит RU/EN/pseudo, keyboard, 200% и performance/no-duplicate-compute evidence |
+| V1-AC-050 | Notes, data annotations, discussions и findings различаются; refresh сохраняет old anchor, re-anchor audited, approved summary versioned |
+| V1-AC-051 | Segment runs/schedules/snapshots показывают time/trends/migration/usage; report pins snapshot, dashboard explicit latest, members отдельно authorized |
+| V1-AC-052 | Digital UI даёт complete journey, acquisition scopes, campaign/creative, coverage, attribution comparison и actual/attributed/scenario economics без hidden winner/double count/missing-as-zero |
+| V1-AC-053 | Products/Categories покрывает hierarchy, SKU/category, assortment, inventory/availability, ABC/XYZ, price/markdown, lifecycle, affinity/substitution/promo и честные blockers |
+| V1-AC-054 | Adoption и analytical performance разделены: meaningful usage без ratings; reuse/avoided work/slow/stale/waste без data leakage |
 
 ## 29. Закрытые пробелы исходного плана
 

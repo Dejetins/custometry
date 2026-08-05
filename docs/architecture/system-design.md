@@ -1,12 +1,12 @@
 ---
 doc_id: ARCH-SYSTEM-DESIGN-001
 title: Custometry Target System Design
-doc_version: 12
+doc_version: 13
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [ARCH-PRINCIPLE-001, GOAL-011, GOAL-012, GOAL-013, GOAL-014, GOAL-015, GOAL-016, UC-017, UC-018, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, DIGITAL-001, ATTRIBUTION-001, UNIT-ECON-001, ASSUMPTION-001, MATERIALIZE-001, COLLAB-001, WATCH-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-009, RBAC-010, RBAC-011, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, ROUTE-001, ROUTE-012, OUTLIER-001, SEGMENT-001, THEME-001, WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-004, WEB-PERF-001, WEB-PERF-005, PRIVATE-FUTURE-001]
+requirement_ids: [ARCH-PRINCIPLE-001, GOAL-011, GOAL-012, GOAL-013, GOAL-014, GOAL-015, GOAL-016, GOAL-017, GOAL-018, ANALYTICAL-DOC-001, BLOCK-BUILDER-001, PRODUCT-ANALYTICS-001, UC-017, UC-018, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, DIGITAL-001, ATTRIBUTION-001, UNIT-ECON-001, ASSUMPTION-001, MATERIALIZE-001, COLLAB-001, WATCH-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-009, RBAC-010, RBAC-011, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, ROUTE-001, ROUTE-012, OUTLIER-001, SEGMENT-001, SEGMENT-019, THEME-001, WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-004, WEB-PERF-001, WEB-PERF-005, PRIVATE-FUTURE-001]
 status: accepted
 proof_boundary:
   label: accepted-v1-target-architecture
@@ -61,7 +61,9 @@ The `v1_target` architecture includes:
 - customer and sales analytics, governed population/outlier treatment,
   rule/bucket/stratified/exact-K KMeans segmentation,
   cohort/lifecycle/basket/channel analysis, component discount/cap and
-  price-volume-mix analysis, governed custom analysis,
+  price-volume-mix analysis, product/category hierarchy, assortment,
+  inventory/availability, pricing/markdown, ABC/XYZ and lifecycle analytics,
+  governed custom analysis,
   Promotion Journal, and forecasting;
 - Methodology Registry with explicit availability, metric certification/proxy
   quality, Methodology Packs, representativeness and robustness contracts,
@@ -77,9 +79,11 @@ The `v1_target` architecture includes:
 - content-addressed materialization and aggregate-aware reuse over local
   Parquet, with single-flight execution, partition invalidation, off-peak
   precompute, and priority isolation for interactive work;
-- dashboards and reports composed from typed blocks, user-initiated email,
-  CSV/Parquet where allowed, and universal XLSX as the final v1 functional
-  increment;
+- one analytical-document composition and root/page snapshot path for compact
+  dashboards, multi-page workbook reports and narrative research, including
+  notes, data annotations, discussions, page/filter scopes, lazy active-page
+  projection, user-initiated email, CSV/Parquet where allowed, and universal
+  XLSX as the final v1 functional increment;
 - white-label Brand Profiles and Company Packs without customer-specific code
   forks or images;
 - local documentation at `/docs` and permission-aware help at `/help`;
@@ -111,13 +115,16 @@ The following are outside the public `v1_target`:
 | Data truth | PostgreSQL control state plus immutable Parquet/other artifacts | Valkey, browser state, and task delivery cannot determine terminal truth |
 | Data compute | Polars/DuckDB/NumPy-first CPU execution; Numba only for measured kernels | Browser, chart library, and XLSX renderer do not perform analytical reduction |
 | Compute reuse | Content-addressed materializations with aggregate-aware planning and single-flight | Equivalent work is reused; invalidation is partition-scoped and precompute cannot starve interactive work |
+| Analytical documents | Presentation-owned `AnalyticalDocumentCompositionV1` with dashboard, workbook-report, and narrative-research profiles | One hierarchy/filter/root-page snapshot path serves Web/email/XLSX without merging domain lifecycles or creating a new service |
+| Large-document execution | Permission-filtered page index, active-page mount, bounded prefetch and block/page reuse | The 100-by-30 envelope is benchmarked; production hard limits follow evidence and versioned resource policy |
+| Product analytics | Semantic hierarchy/assortment meaning, ingestion-owned source facts, Analytics-owned results | Category history is versioned; missing inventory is not zero; basic ABC/XYZ is V1 target |
 | Collaboration | Separate Collaboration & Adoption context | Requester/executor/comments/likes/views/follows are permission-aware; ratings and employee leaderboards are prohibited |
 | Digital measurement | Canonical event/touch/spend/cost facts plus versioned attribution and unit-economics specs | Provider claims stay distinct, identity coverage is explicit, and attributed is never silently causal |
 | Jobs | Transactional outbox, at-least-once tasks, leases/fencing, reconciliation | Duplicate delivery is expected; every side effect needs an idempotency identity |
 | Visualization | Product-owned `ChartSpec`, compiled to ECharts | Raw ECharts options, callbacks, code, URLs, and remote assets are rejected |
 | Report composition | One immutable `ReportSnapshot` for Web/email/XLSX | Export does not scrape the DOM or recalculate hidden channel-specific metrics |
 | Population treatment | Versioned `PopulationTreatmentSpecVersion` with quantile, IQR, and MAD methods | Treatment is reproducible, disclosed, sensitivity-testable, and distinct from data-quality correction |
-| Segmentation | One versioned builder for rules, buckets, strata, and exact-K KMeans | Published membership is stable; fit/assignment, features, scaling, seed, and model identity are explicit |
+| Segmentation | Reusable definition, time-bound run, immutable snapshot, and explicit consumer binding | Exact as-of belongs to the run/snapshot; report/research pin exact snapshots; live dashboard latest-successful resolves to an exact ID |
 | Discount economics | Receipt-line component fact plus effective `DiscountPolicyVersion` | Promotion, loyalty, bonus redemption, other, commercial discount, customer benefit, recognized revenue, stacking, cap, and attribution quality remain explicit and reproducible |
 | PVM | Versioned, exactly reconciled decomposition with explicit order | Price, volume, mix, assortment, and residual cannot be hidden chart calculations or causal claims |
 | Metric trust | Certification and value origin are separate from definition lifecycle | Published candidate/proxy values cannot appear canonical/direct without review and disclosure |
@@ -172,19 +179,19 @@ The target has eighteen bounded contexts.
 |---|---|---|
 | Identity & Workspace | principals, local auth, memberships, roles, organization units/assignments/leadership, department data policies, cross-department grants, resource ownership, contributor-activity projections, sessions, API tokens | resolves actor/workspace/organization/object/data ceilings before protected work |
 | Connection Catalog | connection definitions, secret references, source capabilities, catalog snapshots | exposes versioned, non-secret source metadata and connector policy |
-| Semantic Model | datasets, entity/field mappings, joins, metrics, certification evidence, metric groups, number formats, discount policies, filters, capabilities | supplies immutable analytical meaning, component/policy semantics, and presentation-neutral numeric semantics |
+| Semantic Model | datasets, entity/field mappings, joins, metrics, certification evidence, metric groups, number formats, discount policies, product/category hierarchy and assortment-scope semantics, filters, capabilities | supplies immutable analytical meaning, hierarchy history, component/policy semantics, and presentation-neutral numeric semantics |
 | Data Documentation | Data Guides and file-import templates | supplies governed documentation and typed CSV/XLSX intake contracts |
-| Ingestion | extract specifications, watermarks, batches, schema observations | converts approved source snapshots into committed landing artifacts |
+| Ingestion | extract specifications, watermarks, batches, schema observations, inventory/availability/price/planned-assortment source facts | converts approved source snapshots into committed landing artifacts |
 | Artifact Lifecycle | manifests, hashes, authorization, retention/eviction, dependency references, staging/commit visibility | owns immutable bulk-result and Parquet-materialization identity and access decisions |
 | Execution Control | pipelines, schedules, materialization definitions/reuse planning/single-flight, resource lanes, runs, node attempts, outbox, leases, cancellation, reconciliation | coordinates every asynchronous, reuse, or restart-sensitive operation |
 | Data Quality | rules, reports, drift, remediation, waivers | produces visible quality evidence and gates downstream readiness |
-| Analytics | analysis specifications, result manifests, population-treatment specifications/diagnostics, bucket/stratification specifications, segment/model versions, membership snapshots, discount-component attribution/reconciliation results, PVM specifications/results, customer/sales domain analytics | produces bounded, reproducible reportable results, comparisons, pricing economics, and governed analytical populations |
+| Analytics | analysis and normalized block specifications, result manifests, population-treatment specifications/diagnostics, bucket/stratification specifications, segment definitions/runs/snapshots/bindings, discount-component attribution/reconciliation results, PVM specifications/results, customer/sales/product/category/assortment/inventory analytics | produces bounded, reproducible reportable results, comparisons, pricing/product economics, and governed analytical populations |
 | Methodology & Research | methods with availability/robustness/representativeness contracts, Methodology Packs, cases, research documents, findings, decisions, analytical products | turns ad hoc questions into reviewed, reusable knowledge with pinned evidence and prevents future methods from masquerading as implemented |
-| Collaboration & Adoption | participant bindings, anchored comments, mentions, likes, subscriptions, meaningful views, feed, adoption aggregates, metric watches | supplies permission-safe collaboration and usage evidence without becoming employee scoring or report content |
-| Digital Journey & Marketing Measurement | event taxonomy, sessions, touches, spend/cost, attribution, unit economics, governed assumptions, funnels/journeys | joins digital acquisition behavior to governed offline retail facts with explicit identity/provenance/causality limits |
+| Collaboration & Adoption | participant bindings, document/page/block/data discussions and replies, mentions, resolve/reopen and re-anchor provenance, likes, subscriptions, meaningful views, feed, adoption aggregates, metric watches | supplies permission-safe collaboration and usage evidence without becoming employee scoring or authored report content |
+| Digital Journey & Marketing Measurement | event taxonomy, sessions, touches, spend/cost, identity-resolution artifacts, campaign normalization, journey/conversion and cost-reconciliation versions, attribution, unit economics, governed assumptions, funnels/journeys | joins digital acquisition behavior to governed offline retail facts with explicit identity/provenance/causality limits |
 | Promotion Journal | promotion versions, planned/actual windows, channel/client scope | supplies descriptive `range_timeline` overlays and promotion context |
 | Forecasting | series/features, forecast specs, backtests, models, predictions, monitoring | produces temporally valid forecasts and readiness/degradation evidence |
-| Presentation & Reports | ChartSpec, dashboards, report definitions/snapshots, object access bindings, branding, rendered metadata | composes governed results for interactive and static channels |
+| Presentation & Reports | AnalyticalDocumentVersion/CompositionV1, root/page snapshots, notes/annotations, ChartSpec, dashboard/report lifecycle projections, object access bindings, branding, rendered metadata | composes governed results for interactive and static channels through one composition/snapshot path |
 | Report Delivery | sender/domain policies, delivery attempts, reconciliation | owns user-initiated email as a recoverable external side effect |
 | Notifications | preferences, in-app events, operational channel deliveries | projects domain/operational events without becoming report email |
 | Audit | append-only redacted events and authorized projections | records security and business mutations without secrets or raw PII |
@@ -458,25 +465,32 @@ client configures and visualizes them but does not fit bounds or clusters.
 
 ### 7.5. Dashboard, report, email, and XLSX
 
-1. Presentation composes ordered typed blocks into an immutable
-   `ReportDefinitionVersion` or dashboard version.
-2. A render request resolves every block into one `ReportSnapshot`: source
-   artifact, filters, comparison, metric/schema/grain, units/formats, ChartSpec,
-   lineage, PII class, locale/timezone, brand, theme, and renderer version.
-3. Web, accessible data-table alternatives, email, and XLSX consume the same
-   snapshot and result artifacts. DOM scraping and channel-specific calculations
-   are forbidden.
-4. ECharts is the only v1 Web chart engine. Email uses PNG produced by a
+1. Presentation composes stable chapters, pages, sections, and typed blocks
+   into one `AnalyticalDocumentVersion`; dashboard, workbook-report, and
+   narrative-research are profiles, not separate block engines.
+2. The common builder compiles guided or advanced authoring into one normalized
+   block definition after capability, permission, trust, cost, freshness, and
+   reuse preflight.
+3. Publication resolves hierarchy, effective filter scopes, segment bindings,
+   required block artifacts, locale/timezone, brand, theme, and renderer into
+   one atomic root snapshot with page manifests. ReportSnapshot remains a
+   compatibility/report-lifecycle projection over that root.
+4. A viewer receives an authorized page index and mounts only the active page;
+   bounded prefetch cannot count as adoption or reveal denied metadata.
+5. Web, accessible data-table alternatives, email, and XLSX consume the same
+   root/page snapshots and result artifacts. DOM scraping, channel-specific
+   calculations, and dual-write composition are forbidden.
+6. ECharts is the only v1 Web chart engine. Email uses PNG produced by a
    network-disabled SSR SVG pipeline. XLSX uses a lossless native chart when
    possible and the same PNG fallback otherwise, always retaining typed data.
-5. User email is an explicit authenticated action. Sender identity, recipient
+7. User email is an explicit authenticated action. Sender identity, recipient
    domain allowlist, report/source access, PII/DLP policy, and transport
    authorization are rechecked before render and submit.
-6. Unknown provider result enters reconciliation; blind retry is forbidden.
-7. Universal XLSX preflight checks Excel limits, memory/temp disk, sheet count,
+8. Unknown provider result enters reconciliation; blind retry is forbidden.
+9. Universal XLSX preflight checks Excel limits, memory/temp disk, sheet count,
    charts, and final size. It produces README, Contents, Summary, typed data
    sheets, charts, and Metadata/Lineage without silent truncation.
-8. README derives from the snapshot, Data Guide, Methodology Registry, and safe
+10. README derives from the snapshot, Data Guide, Methodology Registry, and safe
    catalog metadata and explains purpose, freshness, filters, comparison,
    metrics/groups, grain, quality, limitations, lineage, author, and versions.
 
@@ -535,6 +549,22 @@ numeric with native formats and an accessible path to full precision.
 6. Targets, budgets, allocations and scenarios are immutable reviewed inputs;
    they never overwrite actuals or authorize campaign/source writeback.
 
+### 7.9. Product, category, assortment, and inventory analytics
+
+1. Ingestion commits versioned inventory, availability, price, and planned
+   assortment source facts without converting missing values to zero.
+2. Semantic Model publishes the effective product hierarchy, assignments,
+   store clusters, and assortment-scope meaning for the requested time.
+3. Analytics pins that hierarchy version or an explicit rebase and produces
+   reconciled category/SKU, assortment, sell-through, inventory-turnover,
+   stockout/availability, ABC/XYZ, pricing/markdown, lifecycle, affinity, and
+   descriptive-substitution results.
+4. Zero sales cannot prove stockout; substitution cannot become a causal claim;
+   missing required facts produce capability blockers with the next data input.
+5. Presentation consumes the same result projection through the common block
+   contract, so product analysis can be reused in documents, forecasts, and
+   segment definitions without copying computation.
+
 ## 8. Canonical contracts and ports
 
 | Boundary | Owner and rule |
@@ -543,6 +573,9 @@ numeric with native formats and an accessible path to full precision.
 | UI route identity | `ui-routes.json` owns ID, canonical path, title key, release, and implementation status |
 | UI route execution | `ui-route-contracts.json` owns family, shell, guards, roles/permissions, state and history profiles, dirty/focus behavior, source requirements, and design synchronization |
 | UI surface coverage | `ui-surface-contracts.json` owns the current route/overlay/system/capability inventory, route-decision policy, legacy design provenance, and exact `UC-001...UC-029` bindings; it is not the future all-screen atlas |
+| Analytical-document composition | Presentation-owned schema-v2 hierarchy, filter scopes, normalized block references, root/page manifests, and active-page projection; no generic shared kernel or dual-write |
+| Segment evaluation | Analytics-owned reusable definition, time-bound run/evaluation, immutable snapshot, and explicit pinned/latest-successful binding; member access remains separate |
+| Product analytics | Semantic hierarchy/assortment contracts plus ingestion facts and Analytics result ports; history, missingness, and reconciliation are explicit |
 | Organization | `OrganizationStructureVersion`, membership/leadership assignments, department data policies, cross-department grants, ownership bindings, and effective-access explanation ports owned by Identity & Workspace |
 | Contributor insights | Redacted `ContributorActivityProjection` owned by Identity & Workspace; Audit is an input event source, never the employee-analytics query store |
 | UI contract validation | Portable JSON Schemas plus the repository validator enforce route parity, permission/localization integrity, surface references, and complete product use-case coverage |
@@ -780,16 +813,20 @@ This is a dependency constraint, not a standing program plan:
 2. identity/workspace policy, connectors/templates, artifacts, execution, DQ,
    semantic model, organization/access foundation, and deterministic demo data;
 3. reportable analytics with universal comparison, governed population
-   treatment, deterministic bucket/stratified segmentation, component discount
-   reconciliation/cap/PVM, Result Trust, charts/tables, and complete
-   route/browser states;
+   treatment, reusable segment definitions/runs/snapshots, product hierarchy and
+   inventory/availability facts, deterministic bucket/stratified segmentation,
+   component discount reconciliation/cap/PVM, Result Trust, charts/tables, and
+   complete route/browser states;
 4. materialization/reuse planner, methodology availability/packs, metric
    certification/proxy quality, representativeness/robustness,
-   research/findings, collaboration/adoption/watches, dashboards/access,
+   common analytical-document schema-v2 and root/page snapshots,
+   research/findings, notes/annotations/discussions, collaboration/adoption/
+   watches, dashboards/access, product/category/assortment analytics,
    organization/People projections and ownership handover, promotions,
    forecasting, report composition, branding, and email;
-5. canonical digital events/touches/spend/cost, deterministic identity joining,
-   attribution, unit economics, governed assumptions, journey/funnel results,
+5. canonical digital events/touches/spend/cost, versioned identity resolution,
+   campaign/journey/cost reconciliation, attribution, unit economics, governed
+   assumptions, journey/funnel results and acquisition-scope separation,
    pipeline builder, exact-K KMeans segmentation, operational hardening,
    connector matrix, recovery, capacity, accessibility, and supply-chain proof;
 6. universal XLSX only after reportable block contracts and snapshot semantics
@@ -808,14 +845,18 @@ prompts are exceptional rather than standing inventory.
 | Product specification projection | compatible before first stable consumer | architecture docs can roll back together only if normative requirements remain represented elsewhere |
 | Authenticated frontend target | unresolved before UI-program platform baseline | select and pin the stack in a later architecture decision; rollback preserves backend contracts and restores only the last accepted browser boundary |
 | Presentation registry | unresolved before UI-program platform baseline | migrate theme, typography, icon, geometry, and motion identities only from an accepted versioned baseline; reject unknown persisted identities once consumers exist |
+| Dashboard/research/report composition shapes | breaking target schema-v2 change | add common composition DTO and legacy read adapters, backfill stable hierarchy IDs, move new drafts to v2, and prohibit dual-write or lossy rollback |
+| Report snapshot | compatible first migration step | add root/page manifests while preserving legacy reads; all channels switch together before retiring the old resolved-block projection |
 | Organization/access persistence | compatible target addition before stable consumers | create versioned units/assignments/policies/grants/ownership/projection tables, backfill one primary department, migrate legacy publications to `workspace_legacy`, and fail closed until invariants pass |
 | Organization/People routes | additive current-inventory evidence | the six route IDs remain in current route contracts; the future atlas may reshape their composition without silently changing product meaning or stable route compatibility |
 | Discount component/policy/PVM contracts | compatible target addition before persistence consumers | rollback disables new publication/UI capability but preserves imported source fields and pinned immutable results; later schema migration requires owner-context up/down proof |
 | Metric certification/method availability | compatible target addition | lifecycle remains intact; rollback hides the new projection but cannot relabel or delete historical evidence |
-| Population-treatment and segmentation contracts | compatible target addition | versioned specs/models/memberships migrate atomically; rollback disables new publication but preserves pinned results and historical assignment identity |
+| Population-treatment contracts | compatible target addition | versioned specs/results migrate atomically; rollback disables new publication but preserves pinned results |
+| Segment membership identity | breaking persistence/key migration | backfill stable segment snapshot IDs, keep a legacy-reference map and all historical memberships, and resolve pinned/latest bindings explicitly |
 | New Methodology & Research context | compatible target addition | create owner package/tables/contracts before consumers; rollback disables unpublished capability but preserves immutable published references |
 | Collaboration & Adoption context | compatible target addition | migrate existing comment ownership before new reactions/views; rollback disables new projections but preserves discussion and audit history |
 | Digital Journey & Marketing Measurement context | compatible target addition | add canonical contracts before provider adapters; rollback stops new publication but preserves immutable event/spend/result lineage |
+| Product/category/inventory facts and analytics | compatible target addition | add hierarchy/fact/result contracts before surfaces; rollback stops new publications but preserves imported facts and pinned history |
 | Materialization/reuse contracts | compatible target addition before persisted consumers | invalidate by versioned reuse identity; rollback disables planner reuse but never treats stale or policy-incompatible bytes as valid |
 | Executable route contract | compatible addition; future schema changes versioned | identity registry stays v2; route contract starts v1, requires one-to-one validation, and must support deterministic schema migration |
 | UI surface coverage contract | compatible target addition; future schema changes versioned | use-case bindings and route/overlay/component rationale migrate atomically; rollback cannot remove the only UI coverage for a normative use case |

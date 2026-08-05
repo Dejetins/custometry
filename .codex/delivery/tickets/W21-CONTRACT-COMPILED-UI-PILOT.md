@@ -8,7 +8,7 @@ status: accepted
 workstream_id: W21
 summary: Prove the accepted contract-compiled UI delivery process on one selected premium Linear-style UI-AN-003 Sales Overview variant, from three isolated explorations through a restricted manifest, deterministic Figma render, read-back audit, bounded repair, product acceptance, and reproducibility rerender.
 requirement_ids: [WEB-ARCH-003, WEB-ARCH-005, WEB-ARCH-006, THEME-001, THEME-002, THEME-003, THEME-005, THEME-008, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, FILTER-001, FILTER-002, FILTER-003, FILTER-004, FILTER-010, COMPARE-001, COMPARE-002, COMPARE-003, CHART-001, CHART-002, CHART-006, A11Y-001, A11Y-003]
-blockers: [W19-LINEAR-REFERENCE-COMPLETION, W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE]
+blockers: []
 context_sources:
   - AGENTS.md
   - .codex/AGENTS.md

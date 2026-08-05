@@ -1,6 +1,6 @@
 ---
 artifact_kind: ui_design_program_stage_ledger
-ledger_status: draft
+ledger_status: superseded
 execution_mode: manual_sequential
 goal_artifact_required: false
 plan_doc: /Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v1/ui-design-program.json
@@ -17,19 +17,21 @@ mobile_scope: unauthorized
 
 | Stage instance | Gate | Target ID | Prompt | Ticket | Status | Dependencies | Stage evidence | Ticket evidence | Owner decision | Executor claim | Claimed at |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `G4@FAM-ROUTE-WORKSPACE-OVERVIEW-BROWSE-FOCUS-CAPABLE-FOCUS-r1` | G4 | `FAM-ROUTE-WORKSPACE-OVERVIEW-BROWSE-FOCUS-CAPABLE-FOCUS@r1` | `/Users/daniildegtyarev/Projects/Custometry/.codex/agents/generated/custometry-ui-design-g4-v1/010-g4-ui-an-003-family-r1.md` | `/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/tickets/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md` | pending | `CUSTOMETRY-UI-DESIGN-PROGRAM-V1@5` accepted | `/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v1/evidence/g4-fam-workspace-overview-browse-focus-r1/stage-report.md` | `/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/evidence/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md` | required | — | — |
+| `G4@FAM-ROUTE-WORKSPACE-OVERVIEW-BROWSE-FOCUS-CAPABLE-FOCUS-r1` | G4 | `FAM-ROUTE-WORKSPACE-OVERVIEW-BROWSE-FOCUS-CAPABLE-FOCUS@r1` | `/Users/daniildegtyarev/Projects/Custometry/.codex/agents/generated/custometry-ui-design-g4-v1/010-g4-ui-an-003-family-r1.md` | `/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/tickets/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md` | superseded | `CUSTOMETRY-UI-DESIGN-PROGRAM-V1@5` superseded by the 0.10.0/0.8.0 pre-G0 baseline | historical only | `/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/evidence/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md` | not applicable | — | — |
 
 `completed`, `blocked`, and `superseded` are terminal for this stage-instance
 ID. A rerun requires a new revisioned instance and an explicit dependency on
 the prior terminal instance.
 
-## Current blockers
+## Terminal status
 
-- None at prompt-pack initialization. The executor must stop and record a
-  blocker if exact source-backed chart compatibility choices or any other
-  G4-required material value remain unresolved.
+- The owner replaced the program's product semantics and visual-authority
+  contract before the G4 executor claim.
+- This ledger is terminal `superseded`; it has no claimable row and cannot be
+  migrated into a new G0-G6 program.
+- Historical atlas, decisions, receipts, and review evidence remain readable.
 
-## Latest validation
+## Historical validation before supersession
 
 - Commands:
   - `python3 /Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/validate_ui_design_program.py --profile program_ready --project-root /Users/daniildegtyarev/Projects/Custometry .codex/delivery/ui-design-programs/custometry-v1/ui-design-program.json`
@@ -48,7 +50,7 @@ the prior terminal instance.
   ticket and delivery contract validation passed, UI preflight passed, local
   grouped gate passed, and diff validation passed
 
-## Cold-head review receipt
+## Historical cold-head review receipt
 
 - Cold-head review: completed
 - Mode: independent subagent
@@ -73,9 +75,10 @@ the prior terminal instance.
   the acceptance-state manifest has a different reported byte hash because it
   contains the resulting self-referential owner-decision URI
 
-## Expected touch zones
+## Historical expected touch zones
 
-The sole pending stage and ready ticket share this exact write envelope:
+Before supersession, the pending stage and ready ticket shared this write
+envelope. It is retained for provenance and grants no current write authority:
 
 - `.codex/delivery/tickets/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md`
 - `.codex/delivery/evidence/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md`
@@ -93,7 +96,7 @@ The sole pending stage and ready ticket share this exact write envelope:
 - `apps/web/tests/sales-overview-prototype/**`
 - `pnpm-lock.yaml`
 
-## File manifest summary
+## Historical file manifest summary
 
 - created:
   - `.codex/agents/generated/custometry-ui-design-g4-v1/010-g4-ui-an-003-family-r1.md`
@@ -115,11 +118,10 @@ The sole pending stage and ready ticket share this exact write envelope:
 
 ## Handoff
 
-- Residual risk: `available_chart_types` and the default for the exact
-  `UI-AN-003` dataset/report profile require source-backed compatibility rules;
-  they may not be inferred from generic chart conventions.
-- Next executor must know: `prompt-manager` prepared this pack but selected no
-  current stage. A future explicit execution request must route through
-  `staged-plan-runner`, claim the sole pending instance, and preserve the
-  accepted revision-5 source hashes.
+- Residual risk: the historical evidence remains truthful but does not cover
+  the owner's expanded analytical-document, segment, digital, product/category,
+  adoption, or performance requirements.
+- No executor may claim or resume this row. A future authorized UI program must
+  create a new revisioned pre-G0 path from the current blueprints and pilot
+  manifest; it must not migrate this terminal row into a claimable state.
 - Next stage allowed: false

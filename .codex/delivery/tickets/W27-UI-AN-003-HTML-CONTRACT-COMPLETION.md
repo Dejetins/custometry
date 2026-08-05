@@ -7,7 +7,7 @@ ticket_id: W27-UI-AN-003-HTML-CONTRACT-COMPLETION
 status: accepted
 workstream_id: W27
 summary: Complete the accepted UI-AN-003 HTML review candidate and align the normative shell, route, trust, focus, coverage, and HTML-first prototyping contracts with the product-owner decisions.
-requirement_ids: [WEB-ARCH-003, WEB-ARCH-006, THEME-001, THEME-005, THEME-008, UI-SHELL-001, UI-SHELL-002, UI-SHELL-003, UI-SHELL-004, UI-SHELL-005, UI-SHELL-006, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, UI-DENSITY-004, FOCUS-001, FOCUS-002, FOCUS-003, FOCUS-004, FOCUS-005, FOCUS-006, FOCUS-007, FOCUS-008, FOCUS-009, FOCUS-010, A11Y-001, A11Y-003, A11Y-008, ROUTE-004]
+requirement_ids: [WEB-ARCH-003, WEB-ARCH-006, THEME-001, THEME-005, THEME-008, UI-SHELL-001, UI-SHELL-002, UI-SHELL-003, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, FOCUS-001, FOCUS-002, FOCUS-003, FOCUS-004, FOCUS-005, FOCUS-006, FOCUS-007, FOCUS-008, FOCUS-009, FOCUS-010, A11Y-001, A11Y-003, A11Y-008, ROUTE-004]
 blockers: [W26-UI-AN-003-HTML-GLOBAL-ACTIONS-REFINEMENT]
 context_sources:
   - AGENTS.md
@@ -17,7 +17,6 @@ context_sources:
   - custometry-technical-blueprint-ru.md
   - custometry-technical-blueprint-human-ru.md
   - custometry-ui-blueprint-ru.md
-  - docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md
   - .codex/delivery/specs/custometry-contract-compiled-ui-prototyping-pilot.md
   - apps/web/src/sales-overview-prototype/SalesOverviewPrototype.tsx
 change_scope:
@@ -26,12 +25,9 @@ change_scope:
     - .codex/delivery/evidence/W27-UI-AN-003-HTML-CONTRACT-COMPLETION.md
     - .codex/delivery/evidence/assets/W27-UI-AN-003-HTML-CONTRACT-COMPLETION/**
     - .codex/delivery/specs/custometry-contract-compiled-ui-prototyping-pilot.md
-    - .codex/delivery/specs/custometry-linear-workspace-ui-transition.md
-    - .codex/delivery/graphs/custometry-linear-workspace-ui-transition-v1.json
     - custometry-technical-blueprint-ru.md
     - custometry-technical-blueprint-human-ru.md
     - custometry-ui-blueprint-ru.md
-    - docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md
     - packages/contracts/routes/ui-routes.json
     - packages/contracts/routes/ui-route-contracts.json
     - packages/contracts/routes/ui-surface-contracts.json

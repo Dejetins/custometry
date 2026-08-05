@@ -150,6 +150,10 @@ product_goals:
     goal: Исключать повторный эквивалентный compute через content-addressed reuse, управляемые materializations, incremental invalidation, single-flight execution и off-peak precomputation при явной freshness и permission semantics.
   - id: GOAL-016
     goal: Связывать web, mobile app, advertising, campaign-cost и offline retail события в воспроизводимую customer journey и считать governed acquisition, attribution и unit-economics metrics без подмены атрибуции причинным эффектом.
+  - id: GOAL-017
+    goal: Дать dashboard, workbook-report и narrative research один масштабируемый Analytical Document contract с главами, страницами-вкладками, секциями, блоками, фильтрами, заметками, annotations, discussions и единым snapshot path для Web, email и XLSX.
+  - id: GOAL-018
+    goal: Заложить полноценную товарно-категорийную аналитику B2C retail: versioned hierarchy, assortment, inventory/availability, pricing/markdown, lifecycle, ABC/XYZ, affinity и descriptive substitution с честным missing-data behavior.
 ```
 
 ## 1.3. Не входит в текущий scope
@@ -1139,7 +1143,40 @@ business_cost_fact:
   currency: ISO_4217
   source_kind: imported|governed_assumption
   assumption_version_id: uuid|null
+
+identity_resolution_artifact:
+  identity_resolution_artifact_id: uuid
+  identity_mapping_version_id: uuid
+  input_artifact_ids: []
+  resolved_count: integer
+  unmatched_count: integer
+  conflicted_count: integer
+  denied_count: integer
+  mapping_artifact_id: uuid
+
+journey_definition_version:
+  journey_definition_version_id: uuid
+  scope: person|session
+  ordered_steps: []
+  required_optional_policy: object
+  conversion_definition_version_id: uuid
+  windows: object
+
+campaign_normalization_version:
+  campaign_normalization_version_id: uuid
+  provider_account_mapping: object
+  campaign_ad_group_creative_mapping: object
+  utm_namespace_mapping: object
+
+marketing_cost_reconciliation_spec_version:
+  marketing_cost_reconciliation_spec_version_id: uuid
+  native_grain_policy: object
+  duplicate_overlap_policy: object
+  fees_fx_time_alignment: object
+  allocation_and_residual_policy: object
 ```
+
+`DigitalEvent.canonical_customer_id` и аналогичное поле touchpoint являются nullable source claims, а не authoritative linkage. Published journey/result MUST pin-ить `IdentityResolutionArtifact`; raw events не переписываются после identity merge/split.
 
 ```yaml
 digital_measurement_requirements:
@@ -1167,6 +1204,12 @@ digital_measurement_requirements:
     requirement: Consent state, retention, deletion request и PII classification MUST применяться до identity mapping, path analysis, export и person-level drill-down; запрещённая identity не может сохраняться в cache key, URL, log или durable evidence.
   - id: DIGITAL-012
     requirement: Provider connector MUST объявлять aggregate/raw mode, sampling/modeling, timezone, currency, attribution semantics, lookback limits, correction delay, quotas и supported-version evidence; общий connector интерфейс не делает непроверенный provider supported.
+  - id: DIGITAL-013
+    requirement: Canonical retail journey MUST поддерживать упорядоченные stages impression, click, session, install, first_open, registration, cart, order, offline_or_online_purchase, refund и repeat_purchase и показывать missing, unmatched и conflicted transitions, а не достраивать их неявно.
+  - id: DIGITAL-014
+    requirement: First-user acquisition и session/traffic acquisition MUST быть разными measures и representations; канал первого привлечения не подменяется каналом текущей сессии и наоборот.
+  - id: DIGITAL-015
+    requirement: Digital analytics MUST поддерживать versioned channel, campaign, ad-group, creative, source, medium и platform breakdowns и reconciliation между Web, iOS, Android и offline facts с явными coverage и residual.
 ```
 
 ## 5.11. Reconciliation
@@ -1892,6 +1935,10 @@ unit_economics_requirements:
     requirement: Scenario/sensitivity result MUST хранить baseline, changed assumptions, range и result delta отдельно от observed actuals.
   - id: UNIT-ECON-012
     requirement: Unit-economics metric MUST иметь certification status canonical|candidate|proxy; proxy MUST показывать limitation и не заменять canonical measure без review.
+  - id: UNIT-ECON-013
+    requirement: Governed unit-economics result MUST предоставлять CAC, CPI/eCPI, CPA, ROAS, ROI, LTV, configurable contribution-margin ladder и payback по разрешённым cohort, channel, campaign, product, category и store scopes.
+  - id: UNIT-ECON-014
+    requirement: Observed actual, attributed result и scenario/sensitivity MUST храниться, подписываться и визуализироваться раздельно; общая немаркированная series или axis, смешивающая эти классы результата, запрещена.
 
 assumption_requirements:
   - id: ASSUMPTION-001
@@ -2457,6 +2504,14 @@ materialization_requirements:
     requirement: Web, email, XLSX и API consumers MUST переиспользовать одни immutable semantic/result artifacts вместо независимого пересчёта одинаковых metrics.
   - id: MATERIALIZE-015
     requirement: Benchmark proof MUST включать cold, warm, hot, concurrent same-key, invalidation и off-peak-versus-interactive profiles и доказывать отсутствие duplicate compute, а не только median latency.
+  - id: MATERIALIZE-016
+    requirement: Document/block preflight MUST показывать compatible reusable artifact, planned new compute, estimated rows/bytes/time class, freshness и affected pages/blocks до Add, Open, Publish или Export.
+  - id: MATERIALIZE-017
+    requirement: Blocks одного document с одинаковой reuse identity MUST coalesce; page navigation, reopen, Web/email/XLSX render и несколько consumers не запускают duplicate equivalent compute.
+  - id: MATERIALIZE-018
+    requirement: Workspace operational UI MUST показывать cache/materialization hit rate, avoided scans/bytes/CPU, slow documents/blocks, wasted precompute, staleness и high-cost requests без customer-data leakage и без смешения с adoption quality.
+  - id: MATERIALIZE-019
+    requirement: Benchmark MUST включать document envelope 100 pages x 30 blocks: initial open, cold/warm tab switch, mounted block count, network requests, duplicate compute, memory, RU/EN overflow, keyboard path и 200% zoom; hard limits задаются versioned policy только после baseline evidence.
 ```
 
 ## 9.8. Retry
@@ -2924,14 +2979,34 @@ mart:
 mart:
   id: MART-SEGMENT-MEMBERSHIP
   grain: one_row_per_canonical_customer_segment_snapshot
-  primary_key: [segment_version_id, snapshot_date, canonical_customer_id]
+  primary_key: [segment_snapshot_id, canonical_customer_id]
   outputs:
-    - segment_version_id
-    - snapshot_date
+    - segment_snapshot_id
+    - segment_definition_version_id
+    - evaluated_as_of
     - canonical_customer_id
     - membership_score
     - assignment_reason
 ```
+
+## 11.9. Product, assortment и inventory marts
+
+Target product analytics использует item-grain sales mart вместе с versioned hierarchy/assortment projections и отдельными inventory/availability snapshots. Canonical minimum:
+
+```yaml
+marts:
+  - id: MART-PRODUCT-PERIOD
+    grain: [period_start, product_version_id, hierarchy_version_id, location_scope_key, channel_id]
+    measures: [net_revenue, units, receipts, buyers, margin, discount, returns, contribution]
+  - id: MART-INVENTORY-POSITION
+    grain: [observed_at, product_version_id, location_scope_key]
+    measures: [on_hand, available, in_transit, reserved]
+  - id: MART-ASSORTMENT-AVAILABILITY
+    grain: [effective_interval, assortment_scope_version_id, product_version_id, location_scope_key, channel_id]
+    states: [planned, listed, delisted, seasonal, available, low_stock, out_of_stock, unknown]
+```
+
+Продажный zero, отсутствующий inventory feed, unknown availability и unavailable listing не объединяются. Product/category aggregation pin-ит hierarchy version либо явный rebase и reconciliation-сходится с `receipt_item` measures.
 
 # 12. Аналитические модули
 
@@ -3337,7 +3412,7 @@ segmentation_definition_version:
   population_ref: immutable_ref
   feature_refs: [stable_feature_or_metric_ids]
   treatment_spec_version_id: optional
-  as_of_date: required
+  evaluation_window_policy: required
   overlap_policy: allow|first_match|exclusive_error
   output_group_count: explicit_when_applicable
   seed: required_for_nondeterministic_method
@@ -3352,7 +3427,7 @@ module:
     - expression_tree
     - priority
     - overlap_policy: allow|first_match|exclusive_error
-    - as_of_date
+    - evaluation_window_policy
     - population_treatment_spec_version_id_optional
   outputs:
     - segment_membership_snapshot
@@ -3388,9 +3463,9 @@ stratification_spec:
 ```yaml
 segmentation_requirements:
   - id: SEGMENT-001
-    requirement: Published segmentation MUST использовать immutable SegmentationDefinitionVersion с method, population, features, treatment, as_of, group-count и seed bindings.
+    requirement: Published segmentation MUST использовать immutable reusable SegmentationDefinitionVersion с method, population, features, treatment, evaluation-window policy, group-count и seed bindings; exact as-of принадлежит SegmentRun/Snapshot.
   - id: SEGMENT-002
-    requirement: SegmentMembershipSnapshot MUST pin definition, input artifacts, treatment/preprocessing/model versions, code version и member grain/key и не переписываться при refresh/retrain.
+    requirement: SegmentMembershipSnapshot MUST иметь stable segment_snapshot_id и pin-ить definition, evaluated as-of, resolved observation window, input artifacts, treatment/preprocessing/model versions, code version и member grain/key и не переписываться при refresh/retrain.
   - id: SEGMENT-003
     requirement: V1 bucket segmentation MUST поддерживать quantile, equal-width и custom-threshold methods.
   - id: SEGMENT-004
@@ -3459,7 +3534,7 @@ module:
 ```yaml
 module:
   id: ANALYTICS-ABC-XYZ
-  phase: POST_V1
+  phase: V1_TARGET
   inputs:
     required: [MART-SALES-PERIOD]
   parameters:
@@ -3558,6 +3633,52 @@ module:
 
 Этот модуль требует сохранения snapshot membership, а не динамического пересчёта старого сегмента по новым правилам.
 
+```yaml
+segment_evaluation_request:
+  segment_definition_version_id: uuid
+  as_of: timestamp
+  resolved_observation_window: object
+  input_artifact_ids: []
+  effective_policy_version: string
+segment_snapshot:
+  segment_snapshot_id: uuid
+  segment_definition_version_id: uuid
+  evaluated_as_of: timestamp
+  resolved_observation_window: object
+  membership_artifact_id: uuid
+  input_artifact_ids: []
+  result_identity_hash: sha256
+  member_grain: string
+  member_key_schema: object
+segment_binding:
+  mode: pinned_snapshot|latest_successful_by_definition
+  segment_definition_version_id: uuid
+  segment_snapshot_id: uuid|null
+  freshness_policy_version_id: uuid|null
+```
+
+Новая target identity membership — `[segment_snapshot_id, canonical_customer_id]`. Текущие schema-v1 references мигрируют через schema v2, legacy-reference map и backfill stable snapshot IDs; historical immutable memberships не удаляются и не downconvert-ятся.
+
+```yaml
+segment_temporal_requirements:
+  - id: SEGMENT-019
+    requirement: Каждый SegmentRun MUST pin-ить SegmentDefinitionVersion, evaluated as-of, resolved observation window, input artifacts, trigger, policy versions, status, diagnostics, lineage и exact immutable SegmentSnapshot.
+  - id: SEGMENT-020
+    requirement: Recalculation schedule MUST быть versioned и различать next run, last successful, failed, paused и manually triggered states с history и recovery.
+  - id: SEGMENT-021
+    requirement: Consumer binding MUST быть explicit `pinned_snapshot` либо `latest_successful_by_definition_version`; resolved SegmentSnapshot ID всегда фиксируется в result manifest.
+  - id: SEGMENT-022
+    requirement: Published workbook-report и research MUST pin-ить exact SegmentSnapshot; live dashboard MAY использовать explicit latest-successful policy, но каждый опубликованный document snapshot разрешает её в конкретный snapshot ID.
+  - id: SEGMENT-023
+    requirement: Segment detail MUST показывать size/value trend, entrants, exits, migration, overlap, drift, quality, limitations и treatment sensitivity при соблюдении minimum-cell и PII policy.
+  - id: SEGMENT-024
+    requirement: `Used by` MUST строиться по permission-filtered dependency graph и включать dashboards, reports, research, forecasts и promotions без раскрытия запрещённых assets.
+  - id: SEGMENT-025
+    requirement: Historical comparison MUST использовать immutable historical memberships и explicit pair of snapshots; пересчёт прошлого новой definition version запрещён.
+  - id: SEGMENT-026
+    requirement: Доступ к definition или aggregate SegmentSnapshot MUST не расширять object, row, member-level или PII permissions; просмотр members требует отдельной authorization.
+```
+
 ## 12.15. Custom Analysis Builder
 
 Custom Analysis Builder закрывает универсальные ad hoc исследования без написания кода.
@@ -3582,6 +3703,28 @@ module:
     - reproducible_analysis_specification
 ```
 
+Любой аналитический data block, независимо от профиля документа, создаётся через общий normalized builder contract:
+
+```yaml
+block_builder_requirements:
+  - id: BLOCK-BUILDER-001
+    requirement: Любой metric, metric-group, chart, table или pivot block MUST создаваться через один normalized builder contract независимо от dashboard, workbook или research profile.
+  - id: BLOCK-BUILDER-002
+    requirement: Первые три stages MUST быть обязательны и идти в одном порядке: subject/data product; metric(s) и grain; dimensions и period. Preview и Run до их валидного завершения запрещены.
+  - id: BLOCK-BUILDER-003
+    requirement: Population/Segment stage MUST становиться required только когда выбранная method, metric или grain требует population binding; UI и preflight объясняют причину, definition version, snapshot и binding policy.
+  - id: BLOCK-BUILDER-004
+    requirement: Optional stages MUST включать filters, comparison и presentation; defaults видимы и входят в normalized definition там, где меняют смысл или результат.
+  - id: BLOCK-BUILDER-005
+    requirement: До Add или Run MUST выполняться capability, permission, Result Trust и performance/reuse preflight с grain, rows/bytes/time class, freshness и reused/new-compute outcome.
+  - id: BLOCK-BUILDER-006
+    requirement: Guided и Advanced modes MUST компилироваться в один schema-versioned normalized BlockDefinition; Advanced mode не создаёт скрытый второй runtime или несовместимую result identity.
+  - id: BLOCK-BUILDER-007
+    requirement: Draft builder state MUST быть resumable и не входить в result/cache identity до validated commit; autosave не публикует и не запускает compute.
+  - id: BLOCK-BUILDER-008
+    requirement: Add MUST вставлять block в явно выбранные page/section, сохранять stable block ID и не запускать duplicate compute при fresh compatible artifact.
+```
+
 Ограничения:
 
 - Пользователь выбирает только метрики из MetricRegistry или создаёт draft metric с валидацией.
@@ -3604,6 +3747,7 @@ research_document_version:
   version: integer
   status: draft|validating|published|deprecated|archived
   revision: integer
+  analytical_document_version_id: uuid
   localized_title: localized_text
   purpose: localized_markdown
   outline:
@@ -3667,6 +3811,83 @@ research_requirements:
     requirement: Viewer MAY создавать и читать comments только на разрешённых resources; Analyst MAY resolve thread и явно promote содержание в новый draft FindingVersion, но автоматическое promotion запрещено.
   - id: RESEARCH-008
     requirement: Published research document MUST компилироваться в тот же ReportDefinition/ReportSnapshot contract для Web, email и XLSX без DOM capture или отдельного расчёта.
+```
+
+## 12.17. Products, Categories & Assortment
+
+Товарная аналитика является частью существующего Analytics context: Semantic Model владеет versioned product/category hierarchy и reusable store/assortment scopes, Ingestion — inventory/availability/price facts, Analytics — specs/results, Promotion Journal — только descriptive overlays. Новый bounded context или deployable service не создаётся.
+
+```yaml
+product_hierarchy_version:
+  hierarchy_version_id: uuid
+  hierarchy_id: uuid
+  levels: []
+  nodes: [{node_id: uuid, parent_node_id: uuid|null, level_id: string, stable_code: string, localized_label: localized_text, valid_from: timestamp, valid_to: timestamp|null}]
+product_hierarchy_assignment:
+  hierarchy_version_id: uuid
+  product_version_id: uuid
+  node_id: uuid
+  assignment_role: primary|secondary
+  valid_from: timestamp
+  valid_to: timestamp|null
+inventory_position_fact:
+  product_id: string
+  location_scope: object
+  observed_at: timestamp
+  on_hand: decimal|null
+  available: decimal|null
+  in_transit: decimal|null
+  reserved: decimal|null
+availability_interval_fact:
+  product_id: string
+  location_scope: object
+  starts_at: timestamp
+  ends_at: timestamp|null
+  state: available|low_stock|out_of_stock|unknown
+price_position_fact:
+  product_id: string
+  location_scope: object
+  valid_from: timestamp
+  valid_to: timestamp|null
+  regular_price: decimal|null
+  selling_price: decimal|null
+  markdown_amount: decimal|null
+  currency: ISO_4217
+assortment_scope_version:
+  assortment_scope_version_id: uuid
+  product_scope: object
+  store_or_cluster_scope: object
+  channel_scope: object
+  effective_period: object
+  status: planned|listed|delisted|seasonal
+```
+
+```yaml
+product_analytics_requirements:
+  - id: PRODUCT-ANALYTICS-001
+    requirement: Product/category hierarchy MUST быть versioned, effective-dated и поддерживать SKU, brand, category levels, pack/UOM и reclassification history; historical result pin-ит hierarchy version либо explicit rebase policy.
+  - id: PRODUCT-ANALYTICS-002
+    requirement: Category/SKU performance MUST включать revenue, units, receipts, buyers, margin, discount, returns, contribution, growth и comparable coverage на одном reconciled item grain.
+  - id: PRODUCT-ANALYTICS-003
+    requirement: Assortment analytics MUST связывать planned/listed product range, store/channel clusters, active dates и availability scope и различать planned, listed, delisted и seasonal states.
+  - id: PRODUCT-ANALYTICS-004
+    requirement: Sell-through, days of inventory и inventory turnover MUST иметь versioned numerator/denominator, inventory snapshot или time window и explicit missing-stock policy.
+  - id: PRODUCT-ANALYTICS-005
+    requirement: Stockout/availability MUST различать observed zero stock, missing feed, unavailable listing и inferred lost-sales proxy; zero sales не доказывает stockout, а proxy всегда раскрывает limitation.
+  - id: PRODUCT-ANALYTICS-006
+    requirement: ABC/XYZ/Pareto MUST быть V1 target capability и фиксировать entity level, value/variability metrics, thresholds, population, period и definition version.
+  - id: PRODUCT-ANALYTICS-007
+    requirement: Pricing analytics MUST отдельно хранить и показывать base/list/selling price, markdown, discount components, margin и price bands без смешения source и derived prices.
+  - id: PRODUCT-ANALYTICS-008
+    requirement: Product lifecycle MUST различать new, ramp-up, core, declining, discontinued и reintroduced по versioned rule set и effective history.
+  - id: PRODUCT-ANALYTICS-009
+    requirement: Basket affinity, substitution и complementary-product results MUST раскрывать support, population, period, availability confounders и descriptive/non-causal status; causal cannibalization claim без отдельного метода запрещён.
+  - id: PRODUCT-ANALYTICS-010
+    requirement: Promotion overlay MUST связывать planned/actual windows, product/category/store/channel scope и immutable audience без скрытого attribution claim и показывать overlaps.
+  - id: PRODUCT-ANALYTICS-011
+    requirement: Product/category results MUST переиспользоваться в dashboard, workbook-report, research, forecast и segment через общий analytical block и versioned public projection contracts.
+  - id: PRODUCT-ANALYTICS-012
+    requirement: Отсутствие inventory, assortment, price или hierarchy source MUST создавать explicit capability blocker с требуемым следующим data input, а не synthetic zero/default.
 ```
 
 # 13. Прогнозирование
@@ -3953,6 +4174,94 @@ What-if сценарии по известным будущим регрессо
 
 # 14. Визуализация, отчёты и экспорт
 
+## 14.0. Analytical Document Composition Kernel
+
+`AnalyticalDocumentVersion` — aggregate контекста Presentation & Reports, а `AnalyticalDocumentCompositionV1` — его публичный versioned contract. Это не generic shared kernel и не объединение бизнес-контекстов: Analytics, Forecasting, Data Quality, Digital Measurement, Promotions и Methodology & Research сохраняют собственные определения, вычисления и lifecycle и передают только versioned public projections. ResearchDocumentVersion остаётся source of truth исследования, но публикует композицию через Presentation port.
+
+```yaml
+analytical_document_version:
+  analytical_document_version_id: uuid
+  analytical_document_id: uuid
+  workspace_id: uuid
+  profile: dashboard|workbook_report|narrative_research
+  composition_schema_version: 1
+  source_owner_ref: {context: presentation|methodology_research, resource_type: string, resource_version_id: uuid}
+  navigation_mode: dashboard|tabs|outline|hybrid
+  default_page_id: uuid
+  chapters: [{chapter_id: uuid, order: integer, title: localized_text}]
+  pages: [{page_id: uuid, chapter_id: uuid|null, order: integer, title: localized_text, visibility: visible|hidden, layout_mode: dashboard_grid|flow|narrative}]
+  sections: [{section_id: uuid, page_id: uuid, parent_section_id: uuid|null, order: integer, title: localized_text|null}]
+  blocks:
+    - block_id: uuid
+      section_id: uuid
+      order: integer
+      block_type: heading|narrative|analyst_note|metric|metric_group|chart|table|pivot|finding|conclusion|methodology|result_trust|forecast|scenario|quality|metadata|data_guide
+      source_binding: object|null
+      content_binding: object|null
+      presentation: object
+  brand_profile_version_id: uuid
+  access_policy_id: uuid
+
+analytical_document_snapshot:
+  analytical_document_snapshot_id: uuid
+  analytical_document_version_id: uuid
+  page_snapshot_refs: []
+  resolved_document_context: object
+  manifest_artifact_id: uuid
+
+analytical_page_snapshot:
+  analytical_page_snapshot_id: uuid
+  analytical_document_snapshot_id: uuid
+  page_id: uuid
+  resolved_blocks:
+    - block_id: uuid
+      source_artifact_id: uuid|null
+      effective_filter_hash: sha256
+      segment_binding: object|null
+      comparison_artifact_id: uuid|null
+      metric_version_ids: []
+      chart_spec_id: uuid|null
+      lineage_artifact_id: uuid|null
+      readiness: ready|last_good|stale|blocked|failed
+
+filter_scope_binding:
+  scope: document|chapter|page|section|block
+  scope_resource_id: uuid
+  expression: typed_filter_expression
+  combine_mode: intersect|replace_allowed_parent_field
+  linked_target_block_ids: []
+```
+
+Порядок фильтров детерминирован: security policy AND system/locked restrictions AND source/metric restrictions AND document AND chapter AND page AND section AND block AND explicit saved-view/explore state. Пользовательский scope не ослабляет security/system restrictions; URL не содержит raw values или PII. Root snapshot становится видимым атомарно после commit обязательных page/block references. Большие block/page results хранятся как immutable Parquet/other artifacts, metadata — в PostgreSQL.
+
+```yaml
+analytical_document_requirements:
+  - id: ANALYTICAL-DOC-001
+    requirement: Dashboard, Report и ResearchDocument MUST реализовывать общий versioned AnalyticalDocument composition/snapshot contract и различаться presentation profile, а не несовместимыми block, filter и snapshot semantics.
+  - id: ANALYTICAL-DOC-002
+    requirement: Document MUST иметь stable hierarchy `optional chapter -> ordered page -> ordered section -> ordered block`; каждый node имеет stable ID, deterministic order и reading order, а duplicate создаёт новые IDs.
+  - id: ANALYTICAL-DOC-003
+    requirement: Profiles MUST быть dashboard для compact live monitoring, workbook_report для multi-page/tab analysis и narrative_research для outline/long-form evidence; story/presentation остаётся future capability без active enum.
+  - id: ANALYTICAL-DOC-004
+    requirement: Общий block union MUST включать heading, narrative, analyst_note, metric, metric_group, chart, table, pivot, finding, conclusion, methodology, result_trust, forecast, scenario, quality, metadata и Data Guide reference; raw SQL, executable HTML и library options в composition запрещены.
+  - id: ANALYTICAL-DOC-005
+    requirement: Page operations reorder, duplicate, hide, lock и group MUST создавать новую draft revision, сохранять origin lineage и не обходить permission, filter, export или publication semantics.
+  - id: ANALYTICAL-DOC-006
+    requirement: Filter scopes MUST быть document, chapter, page, section и block; precedence, inheritance, locks, linked-target DAG, normalized identity и effective filter set MUST быть явными, воспроизводимыми и authorization-safe.
+  - id: ANALYTICAL-DOC-007
+    requirement: Canonical deep link MUST pin-ить authorized document version/snapshot, page и optional block; open/return повторно проверяет access и восстанавливает origin, scroll и keyboard focus без PII в URL.
+  - id: ANALYTICAL-DOC-008
+    requirement: Personal Explore/Custom View MUST не менять published document; persisted view MUST быть versioned, pin-ить document version и normalized filters и иметь explicit personal/shared visibility.
+  - id: ANALYTICAL-DOC-009
+    requirement: Product MUST не задавать малый hard cap числа pages/blocks; acceptance benchmark MUST доказывать design envelope минимум 100 pages x 30 blocks/page, а production limits задаются versioned installation/workspace resource policy после измерений.
+  - id: ANALYTICAL-DOC-010
+    requirement: Viewer MUST получать authorized page index и mount-ить только active page; adjacent prefetch MAY выполняться bounded policy, не считается view и не раскрывает denied page/block metadata.
+  - id: ANALYTICAL-DOC-011
+    requirement: Publication MUST resolve hierarchy, effective filters, segment bindings и все included blocks в один immutable root snapshot; Web, email, XLSX и full export используют его page manifests без duplicate compute.
+  - id: ANALYTICAL-DOC-012
+    requirement: Responsive Web MUST сохранять hierarchy, reading order, data meaning и primary outcomes для RU/EN, tab overflow, keyboard и 200% zoom; mobile-specific IA остаётся unauthorized.
+```
+
 ## 14.1. Chart specification
 
 Каноническим визуальным контрактом является product-owned, renderer-neutral и theme-neutral `ChartSpec`, а не Apache ECharts `option` и не изображение. `ChartSpec` хранит смысл графика и binding к воспроизводимым данным; ECharts option, SVG, PNG и native Excel chart являются только производными render outputs.
@@ -4237,7 +4546,7 @@ Public MVP SHOULD поддерживать template dashboards для:
 - stores/channels;
 - forecast.
 
-Произвольный drag-and-drop BI dashboard builder не является обязательным для v1 target.
+Произвольный drag-and-drop BI dashboard builder не является обязательным для v1 target. Dashboard authoring MUST использовать общий composition/block engine; собственные `sections/widgets` ниже являются только legacy read projection до schema-v2 migration и не создают второй write path.
 
 ```yaml
 dashboard_version:
@@ -4246,14 +4555,15 @@ dashboard_version:
   version: integer
   status: draft|validating|published|deprecated|archived
   revision: integer
+  analytical_document_version_id: uuid
   workspace_id: uuid
   title: localized_text
   description: localized_text|null
   layout_schema_version: semver
   layout: object
-  sections: []
+  sections: [] # schema-v1 compatibility projection; target writes use AnalyticalDocumentVersion
   global_filters_schema: object
-  widgets:
+  widgets: # schema-v1 compatibility projection; target writes use common blocks
     - widget_id: uuid
       section_id: uuid|null
       widget_type: chart|metric|metric_group|table|quality|forecast_status|heading|text|finding|conclusion|methodology|result_trust
@@ -4361,11 +4671,11 @@ collaboration_requirements:
   - id: COLLAB-002
     requirement: Participant binding MUST не выдавать data/object permission, не менять content ownership и не обходить workspace membership или effective policy.
   - id: COLLAB-003
-    requirement: Comment MUST привязываться к exact asset version/snapshot и optional block, сохранять safe filter/saved-view context и не копировать hidden values либо PII в thread metadata.
+    requirement: Comment MUST привязываться к exact document version/snapshot, page, optional block, filter/saved-view, period, comparison, segment binding и optional stable data-anchor key и не копировать hidden values либо PII в thread metadata.
   - id: COLLAB-004
     requirement: Mention и subscription MUST разрешать только текущих allowed members; перед notification и deep-link open access проверяется повторно.
   - id: COLLAB-005
-    requirement: Like/unlike MUST быть одной идемпотентной boolean reaction state на principal и asset version с append-only history; повторный request не увеличивает count.
+    requirement: Like/unlike MUST быть одной идемпотентной boolean reaction state на principal и published analytical asset version с append-only history; reactions на block, comment, cell или data point отсутствуют, повторный request не увеличивает count.
   - id: COLLAB-006
     requirement: Dislike, star score, rating, employee leaderboard, contributor ranking и recommendation, основанная только на popularity, MUST отсутствовать.
   - id: COLLAB-007
@@ -4384,6 +4694,24 @@ collaboration_requirements:
     requirement: Engagement metric MUST не означать data quality, certification, business impact или contributor performance и MUST показываться отдельно от Result Trust.
   - id: COLLAB-014
     requirement: Permission revocation MUST немедленно убрать asset из feed, mentions, subscriptions, comments и person-level reporting; historical aggregates следуют published privacy/retention policy.
+  - id: COLLAB-015
+    requirement: AnalystNoteVersion MUST быть immutable published document content со scope document/page/block, author, evidence/limitation references и review state и визуально/семантически отличаться от discussion.
+  - id: COLLAB-016
+    requirement: DataAnnotation MUST anchor-иться к exact document snapshot, page, block, source artifact и stable point/range/cell/row/column/period semantic key; screen coordinates или row index не являются authoritative anchor.
+  - id: COLLAB-017
+    requirement: Discussion thread MUST поддерживать reply, mention, resolve/reopen, moderation и audit отдельно от published document content.
+  - id: COLLAB-018
+    requirement: Promotion discussion в AnalystNote или Finding MUST быть explicit author action, создающим новый sanitized draft/version с provenance и review; automatic promotion запрещено.
+  - id: COLLAB-019
+    requirement: После refresh или republication anchor MUST оставаться на original snapshot и показывать changed/newer context; manual re-anchor создаёт audited new anchor version и не переписывает историю.
+  - id: COLLAB-020
+    requirement: Thread scope MUST поддерживать document, page, block и data anchor с одинаковой deny-before-fetch authorization semantics и без leakage через counts.
+  - id: COLLAB-021
+    requirement: Approved discussion summary MAY входить в publication/export только как отдельный versioned narrative или analyst-note block, включённый в publish preflight.
+  - id: COLLAB-022
+    requirement: Adoption UI MUST показывать asset-level total, unique, repeat и active viewers, last meaningful view, comments, likes, subscriptions, freshness и trend без employee score или popularity-as-quality claim.
+  - id: COLLAB-023
+    requirement: Content operations SHOULD показывать never/rarely used assets, stale subscriptions и usage trend, но usage/popularity MUST быть отделены от quality, certification, Result Trust и business impact.
 ```
 
 ### 14.2.2. Metric watches и data-driven alerts
@@ -4471,7 +4799,7 @@ private_future_requirements:
 
 ## 14.4. Universal Report Composition
 
-Web UI, email и XLSX MUST собираться из одной versioned report specification и immutable report snapshot. Экспорт не читает DOM и не воспроизводит скрытое browser state.
+Web UI, email и XLSX MUST собираться из одной versioned report specification и immutable analytical document root snapshot. Workbook/Report является `workbook_report` profile общего composition kernel; `ReportDefinitionVersion` сохраняется как report lifecycle/compatibility object, но не владеет отдельным block engine. Экспорт не читает DOM и не воспроизводит скрытое browser state.
 
 ```yaml
 report_definition_version:
@@ -4481,10 +4809,11 @@ report_definition_version:
   version: integer
   status: draft|validating|published|deprecated|archived
   revision: integer
+  analytical_document_version_id: uuid
   title: localized_text
   description: localized_text|null
   reportable_source_type: analysis|forecast|dashboard|quality_report
-  blocks:
+  blocks: # schema-v1 compatibility projection; target writes use AnalyticalDocumentVersion
     - block_id: uuid
       section_id: uuid|null
       block_type: heading|text|metric|metric_group|table|chart|finding|conclusion|methodology|quality|forecast_status|metadata|data_guide
@@ -4513,6 +4842,7 @@ report_snapshot:
   report_snapshot_id: uuid
   workspace_id: uuid
   report_definition_version_id: uuid
+  analytical_document_snapshot_id: uuid
   resolved_blocks:
     - block_id: uuid
       source_artifact_id: uuid|null
@@ -6693,6 +7023,18 @@ test_invariants:
     invariant: CAC/CPI/CPA, ROAS/ROI, LTV/margin/payback pin-ят exact cost/attribution/identity/FX/assumption versions; model comparison не меняет observed facts и не создаёт causal claim.
   - id: TEST-INV-095
     invariant: Metric watch вычисляется после committed materialization, дедуплицируется/cooldown, повторно проверяет recipient access и никогда не выполняет activation/writeback.
+  - id: TEST-INV-096
+    invariant: Common AnalyticalDocument publication атомарно фиксирует chapter/page/section/block order, effective filters, segment bindings и page manifests; Web/email/XLSX читают один root snapshot без dual-write composition.
+  - id: TEST-INV-097
+    invariant: Comment/annotation после refresh остаётся на original document/data snapshot, показывает changed context и переносится только audited manual re-anchor; revoke закрывает old/new deep links.
+  - id: TEST-INV-098
+    invariant: Одна SegmentDefinitionVersion создаёт несколько as-of SegmentRuns/Snapshots; pinned/latest-successful binding разрешается детерминированно, historical comparison не пересчитывает прошлое и не выдаёт member access.
+  - id: TEST-INV-099
+    invariant: Product hierarchy reclassification сохраняет historical version, missing inventory не становится zero, zero sales не доказывает stockout, а category/SKU totals reconciliation-сходятся с item grain.
+  - id: TEST-INV-100
+    invariant: First-user acquisition, session acquisition, provider claim, platform attribution, observed actual и scenario остаются разными measures/views с одним reconciled purchase/refund identity.
+  - id: TEST-INV-101
+    invariant: Document 100 pages x 30 blocks mount-ит только active page, не раскрывает denied metadata, не считает prefetch как view и не запускает duplicate compute при navigation/reopen/render.
 ```
 
 ## 22.3. Golden datasets
@@ -7703,6 +8045,20 @@ v1_acceptance_criteria:
     criterion: Governed CAC/CPI/CPA, ROAS/ROI, LTV, contribution margin и payback pin-ят cohort/cost/refund/FX/identity/attribution/assumption versions, residuals и certification status.
   - id: V1-AC-047
     criterion: Metric watches используют committed artifacts, idempotency/cooldown/access recheck и safe delivery history и не выполняют activation, pricing или source writeback.
+  - id: V1-AC-048
+    criterion: Analyst создаёт dashboard, 100-page workbook-report и narrative research через один guided/advanced normalized block contract; chapters/pages/sections/blocks, scoped filters, Custom Views и deep links сохраняют stable accessible semantics.
+  - id: V1-AC-049
+    criterion: Publication создаёт один immutable root/page snapshot для Web/email/XLSX, lazy-open загружает только authorized active page, а 100x30 browser/performance envelope проходит RU/EN/pseudo-locale, keyboard и 200% zoom evidence без duplicate compute.
+  - id: V1-AC-050
+    criterion: Analyst notes, exact data annotations, discussion replies/mentions/resolve и reviewed findings различаются; refresh сохраняет old anchor, manual re-anchor audited, approved summary публикуется только отдельным versioned block.
+  - id: V1-AC-051
+    criterion: Segment definition/run/schedule/snapshot UI показывает next/last/failure, trends, entrants/exits/migration/overlap/drift/Used by; report/research pin exact snapshot, live dashboard explicit latest-successful, а member authorization отдельна.
+  - id: V1-AC-052
+    criterion: Digital foundation показывает complete journey, first-user/session scopes, campaign/ad-group/creative, identity/cost coverage, attribution comparison и actual/attributed/scenario unit economics без hidden winner, double conversion или missing-as-zero.
+  - id: V1-AC-053
+    criterion: Products/Categories surface pin-ит hierarchy version и доказывает category/SKU, assortment, inventory/availability, sell-through/DOI/turnover, ABC/XYZ, pricing/markdown, lifecycle, affinity/substitution и promo overlays; missing inputs объясняют blocker.
+  - id: V1-AC-054
+    criterion: Workspace administration раздельно показывает adoption и analytical performance: meaningful/unique/repeat usage без ratings и hit/reuse/avoided work/slow blocks/staleness/wasted precompute без customer-data leakage.
 ```
 
 # 29. Пробелы исходного плана и решения

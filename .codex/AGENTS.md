@@ -34,14 +34,17 @@ select Penpot as an active design source, mutation route, or delivery target.
    context. A trivial explicit repair may execute directly. Create a platform
    Goal only when the user or platform explicitly authorizes it.
 
-For product-wide Web UI work, use `custometry-ui-blueprint-ru.md` only as the
-pre-G0 product/UI requirements and current-inventory source. The previous
-Linear/Penpot target and W19-W23 route are retired. W03-W10 remain historical
-evidence, and W18 remains superseded; none is current visual authority or an
-execution route. Initialize `ui-design-program` only after the detailed product
-path is exact and an accepted pilot or bounded pre-G0 proposal establishes the
-visual authority. Current visual proof must come from the program-selected
-evidence mode and real browser evidence required by the active gate.
+For product-wide Web UI work, use `custometry-ui-blueprint-ru.md` as the accepted
+pre-G0 product/UI intent and current-inventory source. The previous
+Linear/Penpot target, W19-W23 route, `CUSTOMETRY-UI-DESIGN-PROGRAM-V1` revision
+5, and W29/W30 execution units are retired or superseded. W03-W10 and the later
+program atlas/receipts remain historical evidence; none is an execution route.
+The hash-pinned RU/EN pilot manifest is visual-language/density authority only,
+not exact composition or frontend architecture authority. Initialize a new
+`ui-design-program` at pre-G0 only under current user authorization, importing
+the exact pilot sources into durable evidence before a source-fidelity claim.
+Current visual proof must come from the new program-selected evidence mode and
+real browser evidence required by its active gate.
 
 ## Custometry representation
 

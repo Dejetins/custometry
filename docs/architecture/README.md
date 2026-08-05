@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 11
+doc_version: 13
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -21,7 +21,7 @@ This directory contains accepted architecture decisions and shared engineering c
 
 1. `custometry-technical-blueprint-ru.md` contains the normative product requirements, version `0.10.0-draft`.
 2. `custometry-technical-blueprint-human-ru.md` is the synchronized human-readable mirror.
-3. `custometry-ui-blueprint-ru.md` is the pre-G0 UI/UX requirements and current-inventory baseline; it is not accepted visual or frontend architecture authority.
+3. `custometry-ui-blueprint-ru.md` is the accepted pre-G0 UI/UX intent and current-inventory baseline; its hash-pinned pilot is visual-language authority only, not exact composition or frontend architecture authority.
 4. Documents in this directory contain accepted architecture and process decisions within the blueprint.
 5. Global Delivery Contract v1 defines artifact choice and ticket authority. A ready Custometry delivery ticket is the current execution source for one execution unit; a platform Goal is optional and requires explicit user or platform authority. Custometry keeps no standing program plan, generated prompt-pack inventory, or execution ledger. `validate_delivery_contract` validates the portable adapter and can optionally inspect an installed global source.
 
@@ -37,6 +37,9 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [UI surface coverage contract](../contracts/ui-surface-contract.md) | Requirement-to-surface coverage, route decision policy, historical design provenance, and complete agent load order |
 | [UI design program governance ADR](../adr/0004-ui-design-program-governance.md) | Retires the previous Linear/Penpot target, defines the pre-G0 boundary, and routes future product-wide UI work through `ui-design-program` |
 | [Collaboration, digital measurement, and compute reuse ADR](../adr/0005-collaboration-measurement-and-compute-reuse.md) | Audits comparable products and accepts the new collaboration/adoption, retail digital-measurement, and materialization/reuse boundaries |
+| [Analytical documents, segments, and product analytics ADR](../adr/0006-analytical-document-retail-product-and-time-aware-segmentation.md) | Accepts one analytical-document composition/snapshot path, time-aware segment identity, retail product/category/inventory boundaries, compatibility, and migration direction |
+| [Comparable analytics platform capability audit](./ui/comparable-analytics-platform-capability-audit-v1.md) | Official-documentation audit of established multi-page authoring, collaboration, segments, digital/product analysis, adoption, and compute-reuse patterns plus Custometry's accepted response and deliberate non-copy boundary |
+| [Pre-G0 pilot manifest](./ui/custometry-pre-g0-pilot-manifest-v1.json) | Hash-pins the accepted RU/EN `renderable_html` visual-language/density anchor and its explicit exclusions |
 | [Development operating model](./development-operating-model.md) | UI-first vertical slices, ticket-first execution, optional coordination artifacts, Git, and CI/CD |
 | [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Ticket-first execution and removal of the obsolete staged planning system |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |

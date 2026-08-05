@@ -2,7 +2,7 @@
 doc_id: docs-home
 title: Custometry documentation
 doc_version: 1
-product_spec_version: 0.9.4-draft
+product_spec_version: 0.10.0-draft
 locale: en
 visibility: public
 ship: true

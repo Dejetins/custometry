@@ -1,178 +1,122 @@
----
-doc: agents
-schema_version: agents-md/v1
-version: "1.0"
-status: active
-language: en
-user_report_language: ru
-user_report_language_policy: always
-scope: project
-role: project_delivery_adapter
-delivery_contract: /Users/daniildegtyarev/.codex/skills/delivery-orchestrator/references/delivery-contract-v1.md
-prompt_pack_contract: /Users/daniildegtyarev/.codex/skills/prompt-manager/references/prompt-pack-artifacts-v1.md
----
-
 # Custometry Delivery Adapter
 
-## Source Order
+This repository adopts Global Delivery Contract v1 at
+`/Users/daniildegtyarev/.codex/skills/delivery-orchestrator/references/delivery-contract-v1.md`.
+The global contract chooses artifacts and execution authority. This adapter
+defines only Custometry sources of truth, representation, proof, and safety.
 
-Follow platform instructions, current user authority, root `AGENTS.md`, this
-adapter, `custometry-technical-blueprint-ru.md`, accepted architecture and ADRs,
-the ready ticket and its declared sources, then implementation and tests. Use
-`custometry-technical-blueprint-human-ru.md` as the required explanatory mirror
-and stop on material conflict in favor of the higher-priority source.
+## Local authority
 
-This adapter narrows the global router for Custometry. It defines project
-sources, representation, commands, proof, and safety; it does not create
-delivery or publication authority.
+Precedence is platform instructions, current user authority, root `AGENTS.md`,
+this adapter, the normative machine blueprint, accepted architecture/ADRs, a
+ready ticket and its declared sources, then implementation and tests. Stop on
+a material conflict and follow the higher source.
 
-## Delivery Contract
+Repository-created engineering artifacts are English. The `*-ru.md` blueprints
+and localized product docs are exceptions. Final user-facing reports are
+Russian unless the user requests otherwise.
 
-Custometry adopts Global Delivery Contract v1 through `delivery_contract` in
-front matter. Use it for non-trivial or authority-unclear work, then read only
-the selected specification, ticket, plan, and declared context. A specification
-exists only when behavior or its proof seam is unresolved. Plans, ledgers, and
-reusable prompt packs are exceptional and exist only when the global contract
-or user explicitly selects them.
+## Start and local sources
 
-Preserve modular-monolith-first direction, PostgreSQL state truth, Valkey's
-cache/delivery role, immutable artifacts, transactional outbox, workspace
-isolation, local-first topology, and a locale-neutral core. `apps/*` compose;
-`packages/*` own domain/application contracts and ports; adapters implement
-ports. Domain/application code must not import framework, SQL-driver, or
-filesystem implementations or read another bounded context's private tables.
+For an external or volatile target that determines whether work can begin, use
+the global first-boundary probe after reading the root instructions, this
+adapter, and the smallest task or ticket envelope that identifies the target.
+Penpot evidence is historical only: preserve truthful references, but never
+select Penpot as an active design source, mutation route, or delivery target.
 
-## Execution Units
+1. Read root `AGENTS.md`, this adapter, and the user request.
+2. Read the relevant IDs in `custometry-technical-blueprint-ru.md`, its human
+   mirror, and the smallest linked architecture document.
+3. Use `docs/architecture/README.md` for architecture navigation and
+   `docs/architecture/tooling-gates.md` for local commands.
+4. For non-trivial or authority-unclear executable work, use
+   `delivery-orchestrator`; then read only the selected ticket and its declared
+   context. A trivial explicit repair may execute directly. Create a platform
+   Goal only when the user or platform explicitly authorizes it.
 
-| situation | execution unit | authoritative artifact |
-|---|---|---|
-| Behavior and proof are settled | One ready ticket | `.codex/delivery/tickets/` using `.codex/agents/ticket_template.md` |
-| Behavior or proof seam is unresolved | One specification slice | `.codex/delivery/specs/` using `.codex/agents/spec_template.md` |
-| Several dependent slices need a frontier | One ready ticket at a time | `.codex/delivery/graphs/` records topology and path ownership; ticket front matter owns status |
-| An exceptional current prompt pack is authorized | One ledger-allowed stage | The linked `plan_doc`, `prompt_pack_dir`, and `stage_ledger` |
-| Tiny explicit repair has settled scope and proof | Direct repair | Current user request plus repository contracts |
+For product-wide Web UI work, use `custometry-ui-blueprint-ru.md` only as the
+pre-G0 product/UI requirements and current-inventory source. The previous
+Linear/Penpot target and W19-W23 route are retired. W03-W10 remain historical
+evidence, and W18 remains superseded; none is current visual authority or an
+execution route. Initialize `ui-design-program` only after the detailed product
+path is exact and an accepted pilot or bounded pre-G0 proposal establishes the
+visual authority. Current visual proof must come from the program-selected
+evidence mode and real browser evidence required by the active gate.
 
-Tickets declare `delivery_contract: global/v1`, map `requirement_ids` to the
-normative blueprint, use `Bxx`/`Wxx` workstream IDs, and record terminal proof
-with `.codex/agents/iteration_report_template.md`. Custometry keeps no standing
-program plan, parallel status register, or generated prompt-pack inventory.
+## Custometry representation
 
-## Skill Routing
+- Specs live under `.codex/delivery/specs/` when needed and use
+  `.codex/agents/spec_template.md`.
+- Tickets live under `.codex/delivery/tickets/`, use
+  `.codex/agents/ticket_template.md`, declare `delivery_contract: global/v1`,
+  and map `requirement_ids` to the normative machine blueprint.
+- Terminal ticket evidence uses `.codex/agents/iteration_report_template.md`:
+  a redacted record that names the ticket, proof boundary, checks,
+  observations, and verdict.
+- Ticket graphs live under `.codex/delivery/graphs/` only when several
+  dependent slices need one explicit ready frontier. A graph records topology
+  and path ownership; ticket frontmatter remains the sole status authority.
+- Tickets use `Bxx`/`Wxx` workstream IDs and are checked with
+  `uv run python -m tools.custometry_quality.validate_delivery_tickets`.
+- `uv run python -m tools.custometry_quality.validate_delivery_contract`
+  validates the portable repository adapter. A local environment audit may
+  add `--contract <installed-path>` to resolve the global source and supplying
+  skill; CI does not depend on a developer-home path.
+- A specification is created only when behavior or its proof seam is unresolved.
+  A plan, ledger, or reusable procedure prompt is exceptional and is created
+  only when the global contract classifies it as necessary for the current
+  delivery topology. Custometry keeps no standing program plan, parallel
+  status register, or generated prompt-pack inventory.
 
-The global table remains the default. These rows narrow Custometry behavior.
+## Product, scope, and proof
 
-| trigger | route | use_when | do_not_use_when |
-|---|---|---|---|
-| Artifact choice or unclear execution authority | `delivery-orchestrator` | Delivery topology is non-trivial or no ready ticket settles the work | A tiny explicit repair already has bounded paths and proof |
-| DDD or cross-context design | `architecture-design` | A bounded context, ports/adapters, ADR, dependency, or rollout is unresolved; read `docs/architecture/bounded-context-map.md` before cross-context writes | Reviewing an accepted design without changing it |
-| Product-wide Custometry UI program or all-screen atlas | `ui-design-program`; add interface-craft and browser skills only at their gated evidence stages | The request authorizes complete route/overlay/system-surface coverage, information architecture, journeys/states, families/waves, scaling from an accepted HTML pilot, exact screen contracts, responsive-Web anchors, or owner review gates | A component catalog, one settled route or component, production implementation, historical design-tool work, or execution of an active prompt-pack triad |
-| Reusable prompt or exceptional prompt pack | `prompt-manager` | The global router selected a reusable staged artifact | Routine ticket execution or an unaccepted plan |
-| Current staged workflow | `staged-plan-runner` | A current source selects a consistent prompt-pack triad and allowed stage | A pack is merely present, historical, or inconsistent |
-| Compatibility-sensitive ticket | `contract-impact-analysis` | API, port, DTO/schema, persistence, config, identity/cache, browser default, migration, or rollback may change | The ticket proves no relied-upon contract is touched |
-| Backend gates | `backend-quality-gates` | Package/app checks or failing local Python gates need triage; use the smallest profile in `docs/architecture/tooling-gates.md` | A green local gate would be used as database, browser, Compose, recovery, or release proof |
-| Interface craft for an authorized current surface | Use only the crossed domain skills from `better-accessibility`, `better-layout`, `better-writing`, `better-typography`, `better-colors`, or `better-ui`; combine them only when the review actually crosses several domains | A ready ticket or selected specification asks to review or implement interface craft, accessibility, layout, copy, typography, color, visual polish, icons, or motion within the current Custometry UI contract | Overriding the normative product/UI blueprints, selecting historical Penpot, mutating a design target without exact authority, or claiming browser/runtime proof |
-| HTML-first UI foundation or component catalog | `better-ui`; add only the crossed craft skill and `browser-qa-evidence` when real-browser proof is required | A current ticket authorizes reusable React/HTML components, CSS tokens, catalog states, screen manifests, or browser-accepted compositions | Product-policy decisions, backend semantics, or claims beyond the observed browser boundary |
-| Screenshot-led UX audit | `product-design:audit`; add `ui-ux-pro-max` only for unresolved design direction | The ticket asks for a captured-flow critique | Browser runtime proof or mutation of the accepted HTML source |
-| Browser-depth ticket | `browser-qa-evidence`; add `playwright-cli` for terminal automation | `validation.proof_skills` names browser proof | Static-only work or design-source inspection; `playwright` is a legacy-artifact alias |
-| Readiness or production-risk review | `pre-ship-gate` or `production-risk-review` | The ticket asks for the corresponding review boundary | Publishing or deploying; `publish-ci-deploy` is not a Custometry route |
-
-## Project Sources
-
-| path | authority / use |
-|---|---|
-| `custometry-technical-blueprint-ru.md` | Normative machine product specification and requirement IDs |
-| `custometry-technical-blueprint-human-ru.md` | Required explanatory mirror |
-| `custometry-ui-blueprint-ru.md` | UI/UX requirement source |
-| `packages/contracts/routes/ui-routes.json` | Current stable route identities for all-screen reconciliation |
-| `packages/contracts/routes/ui-route-contracts.json` | Route roles, permissions, states, profiles, and source traceability |
-| `packages/contracts/routes/ui-surface-contracts.json` | Overlay, system-surface, cross-surface capability, and use-case coverage |
-| `docs/architecture/ui/custometry-contract-compiled-ui-prototyping-plan-v1.md` | Accepted HTML-first mechanics, reuse direction, and pilot acceptance boundary |
-| `docs/architecture/ui/custometry-linear-ui-migration-registry-v1.json` | Current transition status and exact linked UI sources |
-| `docs/architecture/README.md` | Architecture navigation |
-| `docs/architecture/tooling-gates.md` | Local command and proof profiles |
-| `docs/architecture/bounded-context-map.md` | Required before adding cross-context dependencies |
-| `.codex/agents/spec_template.md` | Specification shape |
-| `.codex/agents/ticket_template.md` | Ticket shape and status contract |
-| `.codex/agents/iteration_report_template.md` | Redacted terminal ticket evidence shape |
-
-For product-wide Custometry UI planning, compile the complete atlas from the
-normative UI blueprint plus the route, route-contract, and surface-contract
-registries. The blueprint's statement that a global all-route catalog is not a
-prerequisite means that every route need not be visually designed or added to
-a component catalog before slice work; it does not waive the complete
-screen-atlas and coverage control plane. Historical inventories and the
-accepted HTML pilot provide only their declared route/family evidence.
-Mobile-specific composition remains unauthorized without exact current user
-authorization; narrow responsive Web is not permission to invent a mobile UI.
-
-For chart-bearing UI work, follow `CHART-004` and `CHART-020...023` from the
-normative product blueprint. Every new G4+ browser-proven or production chart
-uses actual Apache ECharts through validated `ChartSpec` and the shared chart
-compiler. Historical pilot deferrals do not authorize new hand-authored
-SVG/CSS/Canvas chart substitutes. Available chart types are derived from the
-authorized dataset profile and report type and exposed for user selection;
-accessible tables and product data grids remain separate from ECharts.
-
-For authenticated Web transition work, also read
-`docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md`, the
-selected Custometry specification under `.codex/delivery/specs/`, and the
-applicable node in
-`.codex/delivery/graphs/custometry-linear-workspace-ui-transition-v1.json`.
-W10 is historical Penpot identity/domain evidence; W18 is superseded and must
-not execute. Browser runtime requires separate evidence.
-
-## Prompt Pack And Ledger Contract
-
-An exceptional current prompt pack must follow `prompt_pack_contract` and
-cross-link `plan_doc`, `prompt_pack_dir`, `stage_ledger`, its selected ticket,
-and `.codex/agents/iteration_report_template.md` evidence. No repository-local
-prompt or ledger template is implied unless a current accepted artifact names
-an existing path.
-
-Use `required_keywords` for compact domain vocabulary and `required_literals`
-only for exact strings. Keep pre-implementation context to the declared ticket
-sources and normally no more than eight files or roughly 35k-50k tokens. Stop
-reading when scope, contracts, documentation, proof boundary, and blockers are
-known. Do not create `GOAL.md` unless the user explicitly asks for it.
-
-## Safety And Evidence
-
-- For an external or volatile first boundary, perform the smallest read-only
-  identity/readiness probe after root instructions, this adapter, and the task
-  envelope; it does not replace the full pre-write guard.
-- Historical design-tool evidence is retained truthfully but is never an active
-  UI source or execution route. Current visual work is performed through
-  repository-owned HTML/React components and observed browser evidence.
-- Keep work inside ticket scope and preserve foreign changes. Do not publish,
-  deploy, use secrets, or perform external, irreversible, or paid work without
-  explicit authority.
-- Classify non-trivial API, port, DTO/schema, persistence, config,
+- Preserve modular-monolith-first direction, PostgreSQL state truth, Valkey
+  cache/delivery role, immutable artifacts, transactional outbox, workspace
+  isolation, local-first topology, and locale-neutral core.
+- `apps/*` compose; `packages/*` own domain/application contracts and ports;
+  adapters implement ports. Domain/application code does not import framework,
+  SQL-driver, or filesystem implementations. Do not read private context tables
+  across a bounded-context boundary.
+- Read `docs/architecture/bounded-context-map.md` before adding a cross-context
+  dependency. Classify non-trivial API, port, DTO/schema, persistence, config,
   identity/cache, side-effect, browser, migration, rollback, and performance
   impact as `none`, `compatible-change`, `breaking-change`, or `unknown`.
+- Keep work inside ticket scope; preserve foreign worktree changes; do not
+  publish, deploy, use secrets, or perform external/irreversible work without
+  explicit authority.
 - Evidence must match the changed boundary. Source tests do not prove database,
   browser, Compose, recovery, performance, or release behavior.
-- Before a grouped profile outside a hook or CI, source
-  `scripts/activate-toolchain.sh`, then run the smallest relevant profile from
-  `docs/architecture/tooling-gates.md`.
-- Validate tickets with
-  `uv run python -m tools.custometry_quality.validate_delivery_tickets` and the
-  portable adapter with
-  `uv run python -m tools.custometry_quality.validate_delivery_contract`. A
-  local audit may add `--contract <installed-path>`; CI must not depend on a
-  developer-home path.
-- Role TOMLs select expertise boundaries and handoffs only; they do not create
-  authority or repeat product specifications.
 
-## Output Contract
+## Local routing and verification
 
-Repository-authored engineering artifacts are English. Normative `*-ru.md`
-blueprints and localized product docs are exceptions. Durable output may
-include specs, tickets, justified coordination artifacts, ADRs, contracts, and
-redacted evidence; never persist transcripts, browser state, cookies,
-credentials, environment dumps, provider payloads, sessions, or temporary
-runtime data.
+The global skill router selects technical skills. Custometry-specific routes:
 
-Non-trivial reports state requirement IDs, actual scope, contract impact,
-validation and observed proof boundary, residual risk, and next safe action.
-All final user-facing reports must always be written in Russian; this rule has
-no language override.
+| Trigger | Primary skill |
+|---|---|
+| Reusable procedure prompt or explicitly justified prompt pack | `prompt-manager` after `delivery-orchestrator` |
+| Product-wide multi-screen Web UI program | `ui-design-program` when the user authorizes complete all-screen/journey/family/wave work rather than one ticket-local screen; use its pre-G0 intake, stage-specific read sets, exact family/wave aggregates, and HTML/browser evidence route |
+| Browser-depth ticket | `browser-qa-evidence`; declare it in `validation.proof_skills`, and add `playwright-cli` when terminal automation is needed |
+
+For an authorized UI program, the user supplies the initial detailed product
+path and later reviews finished visual checkpoints. The agent owns hashes,
+artifact identities, routine program-owned writes, prompt/ledger mechanics,
+and technical confirmation. G1/G2 have no routine owner acceptance gate;
+G3-G6 use `review_ready` before natural-language acceptance. This exception
+permits the UI program's draft triad during G0 bootstrap but does not create a
+standing repository-wide plan outside the authorized program paths.
+The initial brief and later corrections remain the sole authority for desired
+product meaning; repository sources constrain current-state compatibility but
+do not silently redefine the user's intent or create repeated scope questions.
+
+Role TOMLs select expertise boundaries and handoffs; they do not create
+authority or repeat product specifications. Before a grouped profile outside a
+hook/CI, source `scripts/activate-toolchain.sh`; then run the smallest relevant
+profile from `docs/architecture/tooling-gates.md`.
+
+## Durable output
+
+Commit durable specs, tickets, justified coordination artifacts, ADRs,
+contracts, and redacted evidence. Never commit transcripts, browser state,
+cookies, credentials, environment dumps, provider payloads, sessions, or
+temporary runtime data. Non-trivial reports state requirement IDs, actual
+scope, contract impact, evidence, residual risk, and the next safe action.

@@ -2,7 +2,7 @@
 doc_id: CONTRACT-UI-ROUTE-001
 title: Executable UI route contract
 doc_version: 6
-product_spec_version: 0.9.4-draft
+product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -10,7 +10,7 @@ requirement_ids: [UC-025, UC-026, UC-027, UC-028, UC-029, ROUTE-001, ROUTE-002, 
 status: accepted
 proof_boundary:
   label: executable-route-contract-static
-  exclusions: [router-implementation, api-authorization, browser-behavior, penpot-generation]
+  exclusions: [router-implementation, api-authorization, browser-behavior, future-ui-program-acceptance]
 ---
 
 # Executable UI Route Contract
@@ -33,7 +33,7 @@ Custometry separates stable route identity from executable page policy:
 
 The split is intentional. URL identity, localization, generated navigation, and
 redirect consumers should not change merely because a page gains a state,
-permission, or Penpot status. Conversely, agents must not reconstruct route
+permission, or historical design-provenance status. Conversely, agents must not reconstruct route
 security and history behavior from prose or role names.
 
 ## Authority and precedence
@@ -79,7 +79,9 @@ has exactly one record with:
 - named guard, state, navigation, and safe-query profiles;
 - Focus/Explore applicability;
 - normative requirement references and UI blueprint ID;
-- implementation status and Penpot frame synchronization status.
+- implementation status and legacy historical design-provenance status. The
+  `penpot_status` field name is retained for schema compatibility only and is
+  not current visual authority.
 
 Shared profiles are declared once in the same manifest. A consumer resolves a
 route by ID and then resolves the named profiles. Missing profiles, duplicate
@@ -138,9 +140,10 @@ Refreshable protected pages retain their last authorized result while showing
 local freshness/loading. They must drop cached data immediately when current
 authorization no longer permits it.
 
-`status: planned` is not implementation evidence. Penpot `baseline_verified`
-means only that the frame passed the declared design structural/visual review;
-it does not prove browser behavior or accessibility.
+`status: planned` is not implementation evidence. Legacy
+`penpot_status: baseline_verified` means only that a historical frame passed its
+then-declared structural/visual review; it does not prove the current target,
+browser behavior, or accessibility.
 
 ## Validation and change rules
 
@@ -161,10 +164,10 @@ The repository validator checks:
 - overlay, system-surface, and cross-surface capability parity with the UI
   blueprint;
 - the accepted historical W10 `116/25/5` identity/domain baseline at terminal
-  revision 213, while the separate Linear-workspace Penpot vNext and browser
-  implementation remain independently evidenced.
+  revision 213 as history only; the future UI-program atlas and browser
+  implementation require independent current evidence.
 
-Product specification `0.9.4-draft` retains governed treatment, segmentation,
+Product specification `0.10.0-draft` retains governed treatment, segmentation,
 discount/PVM, and methodology trust and adds versioned organization structure,
 department access/ownership, and privacy-safe contributor insights. Six new
 durable routes are justified by independent lifecycle, deep-link, history, and
@@ -172,10 +175,10 @@ permission boundaries; reusable effective-access and contributor-view behavior
 remains in `UI-CAP-021/022`. A future standalone route still requires the route
 decision criteria rather than count-driven expansion.
 
-The route count does not change for the Linear-workspace transition. W19-W23
-replace foundations, shell, themes, interaction grammar, and one golden-slice
-composition while preserving stable URLs and UI IDs. W10 remains historical
-Penpot evidence; it cannot be used as proof of vNext design or browser behavior.
+The current route count is current-state evidence, not a future ceiling. The
+retired W19-W23 transition creates no implementation authority. W10 remains
+historical coverage evidence; it cannot be used as proof of the next UI-program
+atlas, platform baseline, design, or browser behavior.
 
 Changing an identity path or field after a stable consumer exists is a route
 compatibility change. Adding a profile/permission/state under the executable
@@ -190,4 +193,4 @@ to routes/overlays/capabilities through the surface manifest, then select a
 route by stable ID, resolve profiles, read its requirement IDs, and consult the
 matching UI blueprint row for screen-specific content/components. Agents must
 not infer permission from a page title, role hint, navigation visibility,
-Penpot frame, or workspaceKey.
+historical design frame, or workspaceKey.

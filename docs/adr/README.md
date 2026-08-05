@@ -11,6 +11,8 @@ New records use the [ADR template](./adr-template.md); the template itself has `
 | [ADR-0001](./0001-foundation-operating-model.md) | accepted | Foundation operating model: public repository, protected main, UI-first slices, local-first runtime, documentation, and download-first installation |
 | [ADR-0002](./0002-edge-ingress-network-segmentation.md) | accepted | Edge as an infrastructure ingress adapter; separate `edge_to_web` and `web_to_api` networks; production firewall/CNI hardening separate from Compose |
 | [ADR-0003](./0003-agent-delivery-model.md) | accepted | Ticket-first agent delivery; optional coordination artifacts; static pack migration |
+| [ADR-0004](./0004-ui-design-program-governance.md) | accepted | Retire the Linear/Penpot target and route product-wide UI work through `ui-design-program` pre-G0 intake |
+| [ADR-0005](./0005-collaboration-measurement-and-compute-reuse.md) | accepted | Add collaboration/adoption and digital-measurement contexts plus content-addressed materialization/reuse inside the modular monolith |
 
 ## Rules
 

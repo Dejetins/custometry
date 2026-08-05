@@ -7,6 +7,8 @@
 - [ADR-0001: Foundation operating model](adr/0001-foundation-operating-model.md)
 - [ADR-0002: Edge ingress adapter and network segmentation](adr/0002-edge-ingress-network-segmentation.md)
 - [ADR-0003: Custometry Adapter to Global Ticket-First Delivery](adr/0003-agent-delivery-model.md)
+- [ADR-0004: UI design program governance and target reset](adr/0004-ui-design-program-governance.md)
+- [ADR-0005: Collaboration, digital measurement, and content-addressed compute reuse](adr/0005-collaboration-measurement-and-compute-reuse.md)
 - [Architecture Decision Records](adr/README.md)
 - [ADR-NNNN: <Decision title>](adr/adr-template.md)
 
@@ -21,8 +23,6 @@
 - [Custometry Runtime, Network, and Installation](architecture/runtime-network-installation.md)
 - [Custometry - Target System Design](architecture/system-design.md)
 - [Custometry Quality Tooling and Gates](architecture/tooling-gates.md)
-- [Custometry HTML-first UI prototyping and reuse plan v1](architecture/ui/custometry-contract-compiled-ui-prototyping-plan-v1.md)
-- [Linear workspace UI transition standard v1](architecture/ui/linear-workspace-ui-transition-standard-v1.md)
 
 ## contracts
 
@@ -40,7 +40,6 @@
 ## runbooks
 
 - [Runbooks](runbooks/README.md)
-- [Hybrid Development Runtime Operations](runbooks/development-runtime.md)
 - [GitHub repository governance](runbooks/github-repository-governance.md)
 - [RUNBOOK-NNN: <Failure or recovery action>](runbooks/runbook-template.md)
 

@@ -2,7 +2,7 @@
 artifact_kind: delivery_ticket
 delivery_contract: global/v1
 delivery_schema_version: 1
-spec_version: 0.9.4-draft
+spec_version: 0.10.0-draft
 ticket_id: <WORKSTREAM-VERB-NOUN>
 status: draft
 workstream_id: <B01-or-W00>
@@ -33,10 +33,9 @@ repair_policy:
   retest_invalidated_evidence: true
 validation:
   depth: tests
-  # Historical design-tool artifacts are evidence only. For screenshot-led
-  # UX/design audit, use product-design:audit. For browser runtime, component
-  # catalog, or HTML candidate proof, use browser-qa-evidence.
-  # Add browser-qa-evidence only when a browser surface is in scope.
+# For a product-wide UI program, use ui-design-program artifacts rather than
+# treating a ticket-local route list or historical design source as visual
+# authority. Add browser-qa-evidence only when a browser surface is in scope.
   proof_skills: []
   commands: [<focused-command>]
   proof_boundary: <exact-boundary>

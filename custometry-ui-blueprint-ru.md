@@ -1,42 +1,49 @@
 ---
 document_family_id: CUSTOMETRY-UI-BLUEPRINT
 document_id: CUSTOMETRY-UI-BLUEPRINT-RU
-title: Custometry — UI/UX blueprint Web-платформы
-ui_spec_version: 0.7.0-draft
-source_product_spec: 0.9.4-draft
+title: Custometry — требования к Web UI и pre-G0 baseline
+ui_spec_version: 0.8.0-draft
+source_product_spec: 0.10.0-draft
 source_documents:
   - ./custometry-technical-blueprint-ru.md
   - ./custometry-technical-blueprint-human-ru.md
-status: active_design_iteration
+  - ./docs/architecture/ui/custometry-pre-g0-pilot-manifest-v1.json
+status: pre_g0_intent_baseline_accepted
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-08-03
-target: responsive_desktop_first_web_application
-design_tool: browser_html_code_components
-design_phase: phase_1_html_first_foundations_components_screens
+updated_at: 2026-08-05
+artifact_role: pre_g0_product_ui_requirements_and_current_inventory
+program_route: ui-design-program
+active_program: null
+visual_authority:
+  status: accepted_pre_g0_visual_language_anchor
+  source_evidence_mode: renderable_html
+  scope: platform_visual_language_and_analytics_density
+  manifest: ./docs/architecture/ui/custometry-pre-g0-pilot-manifest-v1.json
+target: adaptive_responsive_web_application
+mobile_scope: unauthorized
 ---
 
-# Custometry — полный UI/UX blueprint Web-платформы
+# Custometry — требования к Web UI и pre-G0 baseline
 
 ## 0. Статус и назначение
 
-Этот документ переводит продуктовый blueprint Custometry `0.9.4-draft` в проектируемую структуру Web UI: информационную архитектуру, маршруты, страницы, компоненты, состояния, взаимодействия, accessibility, responsive-поведение и HTML-first план прототипирования и повторного использования UI.
+Этот документ переводит продуктовый blueprint Custometry `0.10.0-draft` в исходные требования к Web UI: пользовательские результаты, роли, journeys, данные, текущие поверхности, состояния, действия, permissions, accessibility, localization и responsive-приоритеты.
 
-Документ является производным design-контрактом и не изменяет нормативную продуктовую спецификацию. Если UI-решение противоречит `custometry-technical-blueprint-ru.md`, действует machine blueprint. Новая бизнес-функция сначала должна появиться в двух продуктовых blueprint, а уже затем — здесь.
+Документ является производным pre-G0 источником и не изменяет нормативную продуктовую спецификацию. Если UI-требование противоречит `custometry-technical-blueprint-ru.md`, действует machine blueprint. Новая бизнес-функция сначала появляется в machine blueprint и его human mirror, затем получает UI-представление здесь.
 
-Текущий исторический design baseline и новый target:
+В этом документе сейчас зафиксированы:
 
-- Penpot file `7cd71457-8d32-8044-8008-549f83bb4645`: W08 исторически принят на revision `181`, repair/recovery установил W10 start baseline `197`, а W10 принят на terminal revision `213`; Frost Foundations, components и **116 route-level страниц** сохраняются как accepted historical evidence и route/domain input;
-- отдельно определены overlays, drawers, modals и обязательные состояния;
-- W05 подтвердил 110 routes, 25 overlays и 5 system surfaces без duplicate/missing/orphan UI-ID и visual QA всех 140 stable surfaces;
-- добавлены canonical URL/history, production motion, system/help surfaces и navigation guards;
-- expanded sidebar переведён на Lucide icon + label, collapsed/tablet sidebar — на icon-only без буквенных сокращений;
-- report-like surfaces получили общий compact header/context/KPI geometry contract с совпадающими separators и большей first-viewport data area;
-- собраны восемь representative prototype flows с route navigation, transient overlays и return-to-origin;
-- W06 подтвердил compact ordered MetricGroup tables и on-demand Result Trust, W08 на revision `181` — C24, flow 09 и discount/PVM delta, а W10 на revision `213` — C25, flow 10 и organization/People delta; browser/runtime/accessibility-runtime proof ещё отсутствует;
-- историческая delta `0.9.3/0.6.3` полностью представлена в Penpot: шесть organization/department/People route IDs, UI-CAP-021/022, C25 и flow 10 прошли W10 visual/structural acceptance без изменения исполняемых продуктовых контрактов;
-- UI target `0.7.0` заменяет foundation/shell/theme/interaction contract на общий Linear-workspace standard: React/TypeScript/Vite/MobX/TanStack Query/styled-components, четыре themes `abyss|graphite|frost|paper`, Inter Variable, resizable panels, keyboard-first navigation и измеримый perceived-performance contract; current delivery идёт slice-first от принятого responsive HTML к reusable code components, registry/manifests, browser acceptance и затем production implementation.
+- текущий продуктовый и функциональный baseline;
+- текущий реестр `117` route-level страниц, `25` overlays, `5` system surfaces и `22` cross-surface capabilities;
+- обязательные lifecycle, data, permission, loading, empty, partial, error, recovery и terminal states;
+- сквозные требования к аналитике, исследованиям, прогнозам, отчётам, операциям, администрированию, accessibility и localization;
+- историческое evidence W03-W10 как свидетельство прежнего покрытия, но не как текущая визуальная власть;
+- принятая capability expansion: общий multi-page Analytical Document, universal block builder, точные notes/annotations/discussions, time-aware segmentation, Products/Categories/Assortment/Inventory, digital acquisition/retail journeys, unit economics, adoption и analytical-performance administration;
+- два hash-pinned RU/EN HTML-пилота как принятый visual-language/density anchor, но не exact composition authority.
+
+В этом документе намеренно **не выбраны** frontend framework, state/query library, component system, окончательные theme/token/typography/icon contracts, shell geometry, motion implementation или rollout. Визуальный характер пилота принят только в границах §2.2 и manifest; он не фиксирует layout всех экранов. Предыдущий Linear/Penpot target, его поздняя UI-программа и исполнимые tickets выведены из действия; их артефакты сохраняются только как historical evidence.
 
 ## 1. Design brief
 
@@ -55,11 +62,17 @@ Custometry — self-hosted операционная система B2C retail-а
 → проверить качество
 → выбрать утверждённые метрики и методику
 → определить population, обработку выбросов и способ сегментации
+→ создать или выбрать versioned product/category hierarchy, assortment и segment snapshot
 → выполнить research от общего к частному или прогноз
 → зафиксировать evidence-linked findings
 → понять достоверность результата
-→ опубликовать branded dashboard/report и выдать доступ
-→ обсудить результат в comments без расширения прав
+→ собрать Dashboard, многостраничный Workbook/Report или narrative Research через один guided block builder
+→ организовать chapters, page tabs, sections и blocks и опубликовать один immutable root snapshot
+→ назначить requester/executor и обсудить document/page/block/data через notes, annotations, comments, mentions, likes и follows без расширения прав
+→ увидеть privacy-safe adoption и permission-filtered activity
+→ связать impression/click/session/install/app/web с online/offline purchase/refund/repeat и посчитать governed unit economics
+→ увидеть reuse/materialization plan и стоимость только действительно нового compute
+→ поставить metric watch без внешнего activation
 → отправить email или выгрузить XLSX
 → диагностировать run и инфраструктуру
 ```
@@ -68,56 +81,52 @@ Custometry — self-hosted операционная система B2C retail-а
 
 | Сокращение | Роль | Главная задача в UI |
 |---|---|---|
-| `IA` | Installation Administrator | Установка, сервисы, плагины, backup и global policies без неявного доступа к workspace data |
-| `WA` | Workspace Administrator | Users, roles, report/dashboard access, connections, policies и branding без аналитического authoring по умолчанию |
+| `IA` | Installation Administrator | Установка, сервисы, плагины, backup, global policies и suppressed aggregate adoption/capacity без неявного доступа к workspace data/identity |
+| `WA` | Workspace Administrator | Users, roles, report/dashboard access, connections, policies, branding и scoped aggregate-first adoption без аналитического authoring по умолчанию |
 | `DS` | Data Steward | Catalog, mapping, data contracts, Data Guide и Data Quality |
-| `AN` | Analyst | Метрики, методики, research, сегменты, dashboards, reports, comments, send и exports без управления connections/access grants |
+| `AN` | Analyst | Метрики, методики, research, сегменты, dashboards, reports, requester/executor collaboration, watches, send и exports без управления connections/access grants |
 | `ML` | ML Analyst | Forecast specifications, backtests, models и monitoring |
 | `OP` | Operator | Runs, schedules, attempts, queues, recovery и acknowledgements |
-| `VW` | Viewer | Просмотр и комментарии к разрешённым non-PII результатам без изменения definitions/snapshots |
+| `VW` | Viewer | Просмотр, comments, likes, follows, feed и watches для разрешённых non-PII результатов без изменения definitions/snapshots |
 
 Один пользователь может иметь несколько ролей. Навигация и действия формируются из effective permissions, но расположение разрешённых функций остаётся стабильным.
 
-## 2. Разбор предоставленных референсов
+## 2. Pre-G0 intent baseline
 
-Четыре изображения задают визуальное направление, но не являются готовой спецификацией.
+### 2.1. Принятое направление
 
-### 2.1. Что сохраняем
+- строится одна цельная продуктовая программа для полного responsive Web;
+- текущий функциональный baseline используется как исходное evidence, а не как потолок;
+- Dashboard, Workbook/Report и Research обязаны использовать один document/page/section/block composer, но разные presentation profiles и reading journeys;
+- Workbook/Report поддерживает большое число страниц-вкладок, chapter groups, overview/search/overflow, reorder/duplicate/hide/lock/group и deep links до page/block;
+- universal block builder всегда начинает с subject/data product → metric(s)+grain → dimensions+period, затем условно добавляет Segment и опционально filters/comparison/presentation с trust/performance/reuse preflight;
+- analyst note, data annotation, discussion comment и reviewed finding являются разными объектами; refresh не переносит anchor на новые данные автоматически;
+- сегменты создаются и пересчитываются в отдельной части платформы, имеют definition/run/schedule/snapshot history и explicit pinned/latest-successful bindings для повторного использования;
+- foundation включает Digital Acquisition & App, Products/Categories/Assortment/Inventory, governed unit economics, adoption и analytical-performance administration;
+- новый all-screen atlas обязан покрыть routes, route flows, persistent shells, route-backed transients, overlays, system-state families, internal/non-visual surfaces и обоснованные historical exclusions;
+- каждая поверхность получает source-backed purpose, data meaning, roles, permissions, regions, states, actions, outcomes, failure и recovery;
+- mobile-specific information architecture и composition не входят в scope без отдельной текущей авторизации.
 
-- desktop-first application shell;
-- постоянная левая навигация и верхняя utility bar;
-- компактная, но не перегруженная enterprise analytical density;
-- спокойные поверхности, тонкие границы и один основной accent;
-- KPI cards, таблицы, tabs, right-side details panels;
-- графики как часть рабочего процесса, а не декоративный hero;
-- status badges и operational health без неоновой перегрузки;
-- master-detail для Catalog, Metrics, Notifications и Runs;
-- wizard/stepper для onboarding и сложного mapping;
-- canvas только там, где он действительно нужен — Pipelines.
+### 2.2. Текущие источники
 
-### 2.2. Что корректируем по blueprint
+| Область | Источник | Статус в будущей программе |
+|---|---|---|
+| Product meaning и обязательства | `custometry-technical-blueprint-ru.md` | Нормативный источник |
+| Объясняющее представление | `custometry-technical-blueprint-human-ru.md` | Синхронизированное зеркало |
+| Текущие UI requirements и inventory | Этот документ | Pre-G0 input, подлежит расширению |
+| Route identity и execution policy | `packages/contracts/routes/ui-routes.json`, `ui-route-contracts.json` | Current-state evidence, не G1 atlas |
+| Surface coverage | `packages/contracts/routes/ui-surface-contracts.json` | Current-state evidence, не permanent ceiling |
+| Исторический дизайн W03-W10 | `.codex/delivery/evidence/` | Historical-only, не visual authority |
+| Принятый RU/EN HTML-пилот | `docs/architecture/ui/custometry-pre-g0-pilot-manifest-v1.json` | Visual-language/density anchor; не exact composition и не frontend authority |
+| Текущий Web-код | `apps/web/**` | Implementation evidence, не target baseline |
 
-| В референсах | В итоговом UI |
-|---|---|
-| Несколько несовместимых вариантов sidebar | Один permission-aware navigation contract |
-| Смешаны `Data`, `Models`, `Settings`, `Admin` | Явные продуктовые домены и стабильные группы |
-| Нет разделения lifecycle/readiness/execution status | Три отдельных status surfaces |
-| Previous period toggle не объясняет политику сравнения | Versioned comparison editor с coverage/compatibility |
-| Показан только простой filter bar | Searchable typed Filter Registry и expression chips |
-| Нет системного Result Trust | На каждом reportable result есть compact trigger; полный Trust drawer открывается по запросу |
-| Светлый визуальный default | В design-артефакте закреплена единственная тема `frost`; прочие цветовые профили не входят в текущий scope |
-| Логотип является частью generated mock | До официального asset используется text-only wordmark |
+### 2.3. Зафиксированный scope и critical journeys
 
-### 2.3. Визуальный характер
+Материально необходимых owner inputs для этой requirements-итерации не осталось: продуктовый смысл, новый capability scope и visual-language anchor приняты. В included scope входят adaptive Web, все текущие surfaces, document profiles/composer, segment lifecycle/reuse, collaboration, digital acquisition/unit economics, product/category/assortment/inventory, adoption и analytical performance. Excluded: mobile-specific IA, presentation/story profile, B2B ontology, activation/reverse ETL, arbitrary browser code/notebooks и автоматические causal claims.
 
-Рабочее название направления: **Calm Analytical Workbench**.
+Приоритетные journeys будущего G2: `data-to-trusted-result`, `compose-large-workbook`, `publish-review-collaborate`, `refresh-with-stable-anchors`, `define-recalculate-reuse-segment`, `digital-to-offline-unit-economics`, `product-category-assortment-inventory`, `open-100x30-document-without-duplicate-compute`, `adoption-and-performance-operations`. Это требования, а не готовые G2 IDs или wave plan.
 
-- профессиональный и спокойный;
-- data-dense, но с чёткой иерархией;
-- без декоративных gradients и glassmorphism;
-- без чрезмерной карточности: карточка означает самостоятельный блок;
-- операционные проблемы видны, но не окрашивают весь экран в красный;
-- данные и ограничения важнее иллюстраций.
+G0 намеренно не создаётся этой задачей. Технические решения, repository-owned source import, responsive anchors, exact families/waves, hashes и validator mechanics ведутся агентом при следующем авторизованном запуске программы; владельцу не нужно повторять принятый scope.
 
 ## 3. Основные UX-принципы
 
@@ -132,11 +141,11 @@ Custometry — self-hosted операционная система B2C retail-а
 9. **Keyboard is a primary input.** Все основные flows работают без drag-only и hover-only действий.
 10. **Localization is structural.** Layout допускает длинные русские строки, plural forms и future RTL.
 
-### 3.1. Что берём из Apple HIG, а что не копируем
+### 3.1. Политика внешних визуальных референсов
 
-Apple HIG используется как craft-check, а не как platform skin для Web. Берём: ясную визуальную иерархию, deference к content, предсказуемую navigation history, немедленную обратную связь, заметный focus, reduced motion, сохранение context и достаточные hit targets. Для Custometry это означает спокойный shell, минимум декоративного motion, route-backed Focus, понятный Back/Escape, status рядом с обновляемым block и progressive disclosure сложных controls.
+Внешний продукт, design system или platform guideline может стать только source-backed visual-language reference либо craft-check после явного выбора. Он не переносит в Custometry чужие сущности, тексты, assets, branding, source code, скрытые permission rules или platform-specific interaction без Web semantics. Один референсный экран не заменяет platform baseline и полный atlas.
 
-Не копируем macOS/iOS chrome, native-only gestures, hidden hover-only actions, full-screen slide stacks и platform-specific icons без Web semantics. Web/WCAG, keyboard, browser history, enterprise density, en/ru и self-hosted constraints имеют приоритет.
+Принятый пилот наследует calm professional tone, компактную аналитическую плотность, короткий KPI/context chrome, явно видимый Result Trust и характер Focus/Explore. Не наследуются фиксированная композиция `KPI → chart → table`, конкретная сетка, обязательное расположение controls, полный component set или screen inventory. Existing-screen families используют source fidelity только там, где будущий contract явно ссылается на pilot; новые families доказывают visual-language conformance, а не pixel fidelity к несуществующему source screen.
 
 ## 4. Информационная архитектура
 
@@ -161,7 +170,6 @@ Data Foundation
 Analytics
   Analysis Library
   Sales
-  Products
   Customer Base
   RFM
   Cohorts
@@ -169,7 +177,16 @@ Analytics
   Basket
   Stores & Channels
   Margin & Discounts
-  Segments
+  Products, Categories & Assortment
+
+Digital Acquisition & App
+  Journey & Funnel
+  Acquisition & Campaigns
+  Attribution Comparison
+  Unit Economics
+  Identity & Cost Coverage
+
+Segments
 
 Forecasting
 Promotions
@@ -192,29 +209,27 @@ Administration
   Storage & Backup
   Audit
   Localization & Themes
+  Workspace Adoption
+  Analytical Performance
 ```
 
-Sidebar показывает только разрешённые группы. В `expanded` каждый item содержит Lucide icon и полное локализованное название; в `collapsed` остаются те же icons без текста. Буквенные сокращения (`OV`, `DF`, `AN` и подобные) запрещены. Icon identity, порядок и route не меняются между состояниями; active item имеет контрастный selection marker и `aria-current="page"`. Sales, Products и Forecasts используют разные semantic icons. Для icon-only item обязательны локализованные accessible name, tooltip по hover/focus, visible focus и hit area не менее 40×40 CSS px. Группа раскрывается автоматически при переходе на вложенный route и сохраняет состояние пользователя.
-
-Sidebar имеет три состояния: `expanded`, `collapsed` и `hidden`. В expanded состоянии его pointer-resize ограничен диапазоном примерно `208–320 px`; separator имеет keyboard step/reset и double-click reset, а presentation preference сохраняется для пользователя. В `hidden` остаётся доступный keyboard/focusable control для возврата навигации без перезагрузки страницы. Global Search и Notifications находятся в utility area непосредственно под workspace identity, а Help и user menu — в стабильном footer sidebar. Page header не дублирует эти действия.
+Навигация показывает только разрешённые группы, но не используется как источник authorization. Порядок, labels, destinations, active-state semantics, focus behavior, workspace switching и safe recovery фиксируются в будущем platform baseline. Если выбранный baseline использует icon-only состояние, оно обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Способ collapse/hide, icon library, размеры и геометрия сейчас не выбраны.
 
 ### 4.2. Глобальный application shell
 
 | Область | Содержимое |
 |---|---|
-| Sidebar identity | Text wordmark и workspace switcher |
-| Sidebar utility | Global search/command palette и notifications непосредственно после workspace identity |
-| Sidebar navigation | Permission-aware groups, expanded/collapsed/hidden и resize control, active route, environment marker при необходимости |
-| Sidebar footer | Help и user menu в стабильной нижней области |
+| Product/global controls | Product identity, workspace switch, global search/command access, help, notifications и user menu; точная композиция определяется baseline |
+| Primary navigation | Permission-aware destinations, current location и доступный способ перехода/возврата |
 | Page header | Breadcrumb, title, description/status, primary action и secondary actions |
-| Context bar | Dataset/version, date range, comparison, filters, timezone/currency, saved view; `UI-AN-003` не дублирует Dataset отдельным control и переносит dataset/version в compact Result Trust trigger |
+| Context bar | Dataset/version, date range, comparison, filters, timezone/currency, saved view |
 | Main content | Fluid page grid с ограничением читаемости long-form blocks |
-| Context panel | Right drawer 360–480 px для detail/lineage/issue/node без потери списка |
-| Progress surface | Persistent operation drawer; run продолжается после ухода со страницы |
+| Context/detail surface | Detail, lineage, issue или node context без потери owning surface; placement определяется responsive contract |
+| Progress surface | Persistent operation access; run продолжается после ухода со страницы |
 
 ### 4.3. Global search
 
-`Cmd/Ctrl + K` открывает command palette с секциями:
+Глобальный поиск и command access должны быть доступны с keyboard shortcut, объявленным в принятом baseline, и покрывать:
 
 - navigation;
 - datasets, metrics, reports, dashboards, pipelines и runs;
@@ -235,7 +250,7 @@ Route registry имеет четыре области:
 | Installation | `/admin/*` либо `/audit` | `/admin/system`, `/admin/services`, `/audit` |
 | Workspace | `/w/:workspaceKey/*` | `/w/:workspaceKey/overview`, `/w/:workspaceKey/analytics/sales` |
 
-Машиночитаемый route contract разделён на три слоя. `packages/contracts/routes/ui-routes.json` остаётся компактным реестром identity/URL/title/release/status, `packages/contracts/routes/ui-route-contracts.json` хранит исполняемую политику family/shell, role hints, permissions, guards, states, history/query, Focus и design status для всех 117 target страниц, а `packages/contracts/routes/ui-surface-contracts.json` доказывает полное покрытие route, overlay, system и cross-surface capability surfaces. Portable schemas находятся рядом; семантический валидатор проверяет паритет с этим документом, все `UC-001…029`, product permission catalog и en/ru titles. Role hints используются только для discoverability и не заменяют API authorization. Historical Penpot baseline по-прежнему содержит 116 принятых route frames; новый `UI-AN-015` имеет `backlog` design status до собственного accepted HTML/component/browser stage.
+Машиночитаемый route contract разделён на три слоя. `packages/contracts/routes/ui-routes.json` остаётся компактным реестром identity/URL/title/release/status, `packages/contracts/routes/ui-route-contracts.json` хранит текущую исполняемую политику family/shell, role hints, permissions, guards, states, history/query и Focus для 117 известных страниц, а `packages/contracts/routes/ui-surface-contracts.json` хранит текущее покрытие routes, overlays, system surfaces и cross-surface capabilities. Portable schemas находятся рядом; семантический валидатор проверяет паритет с этим документом, все `UC-001…029`, product permission catalog и en/ru titles. Эти manifests являются current-state inventory и не заменяют будущий G1 atlas. Role hints используются только для discoverability и не заменяют API authorization.
 
 `workspaceKey` — неизменяемый opaque public identifier. Display name может меняться и не участвует в URL. Наличие ключа в URL не даёт доступ: guard до data fetch проверяет authenticated membership, effective permission и resource scope. Таблицы §9 показывают route suffix для читаемости; если строка не относится к public/global/installation scopes, её канонический URL строится как `/w/:workspaceKey` + указанный suffix.
 
@@ -253,138 +268,62 @@ History policy:
 
 Все редакторы с dirty draft регистрируют navigation guard для sidebar route, workspace switch, Back, reload и close. Confirmation предлагает `Stay`, `Discard` и `Save draft`, если сохранение поддерживается. После route change обновляются document title, breadcrumb/current-location semantics и focus; shell/sidebar/topbar не remount-ятся.
 
-## 5. Layout и responsive contract
+## 5. Adaptive Web и responsive requirements
 
-### 5.1. Master viewport
+Responsive Web обязателен, но точный supported width range, anchor viewports, shell transformations, component queries и density modes фиксируются только в G0/G2 после принятого product path и platform baseline. Mobile-specific information architecture остаётся `unauthorized`.
 
-Все основные Penpot frames создаются в `1440 × 900`. Это не фиксированный runtime viewport, а общий размер visual review.
+До выбора baseline действуют следующие инварианты:
 
-| Диапазон | Поведение |
-|---|---|
-| `≥1440` | Sidebar около 240 px по умолчанию; пользователь может pointer-resize его в bounded диапазоне около 208–320 px, свернуть в icon rail или полностью скрыть; правый inspector также может иметь bounded resize |
-| `1280–1439` | Sidebar 224 px, content cards перестраиваются 4→3 columns |
-| `1024–1279` | Sidebar 72 px в collapsed icon-only state: центрированные 20 px icons без сокращений; inspectors становятся drawers, secondary panels уходят ниже |
-| `768–1023` | Tablet landscape: read/review flows полные; сложные editors используют sequential panels |
-| `<768` | Viewer/approval/read-only flows; canvas, model mapping и report composition предлагают открыть desktop |
+- reading order, user outcomes, primary actions, permission boundaries и data meaning сохраняются на всём принятом Web-диапазоне;
+- сложные editors могут переходить к последовательным regions, если это не удаляет capability и не выдаёт новый mobile scope;
+- горизонтальный scroll всей страницы не используется как основная responsive-стратегия; bounded data grids, timelines и canvases имеют явный affordance;
+- content priorities задаются для каждой screen/state пары, а breakpoints выводятся из content pressure и принятого shell contract;
+- keyboard, zoom/reflow, focus order, reduced motion и accessible alternatives проверяются на anchor viewports;
+- фиксированные widths/heights допускаются только с source-backed причиной и responsive exception.
 
-Ни один layout не полагается на горизонтальный scroll всей страницы. Горизонтальный scroll допустим внутри data grid, timeline и canvas с явным affordance.
+## 6. Platform UI baseline — требования до выбора реализации
 
-### 5.2. Grid
+Сейчас отсутствует принятый `platform-ui-baseline`. G0 не может закрыться, пока один baseline не определит source-backed shell variants, navigation, foundation tokens, fonts, assets, icons, component states, interaction patterns, layouts, responsive transformations, accessibility и copy policies.
 
-- content padding: 24 px desktop, 16 px tablet;
-- base spacing unit: 4 px;
-- common gaps: 8, 12, 16, 24, 32 px;
-- card radius: 8 px;
-- controls: 36 px compact, 40 px default, 44 px touch-priority;
-- primary content uses 12-column grid;
-- data tables и canvas могут занимать всю доступную ширину.
+### 6.1. Themes и semantic tokens
 
-Desktop reporting density для master frame `1440×900`:
+- точный theme set, identifiers и defaults не выбраны;
+- компоненты и ChartSpec используют semantic roles, а не hardcoded product colors;
+- каждый принятый theme покрывает canvas/surface/text/border/accent/focus/status/positive-negative/chart roles и проверяется на contrast и color-blind-safe alternatives;
+- theme preference не меняет domain values, run/artifact identity или cache identity;
+- report/email/XLSX rendering pin-ит выбранный theme/brand version в snapshot и artifact identity;
+- BrandProfile использует validated versioned semantic overrides, а raw CSS/HTML/JavaScript, remote fonts и untrusted runtime injection запрещены.
 
-- compact header metadata/title/action начинается на `80 px` от верхней границы frame и занимает не более `88 px` после topbar;
-- context bar: `48 px`;
-- Compact KPI Strip: `64 px`;
-- vertical gaps между context, KPI и primary data block: `12–16 px`;
-- primary chart/table/editor начинается не ниже `308–320 px`;
-- четыре KPI используют общие column boundaries `256 / 526 / 796 px` внутри контейнера `1136 px`; Context Bar использует те же boundaries;
-- декоративный empty space не резервируется вместо данных; высота block определяется содержимым, viewport и состоянием.
+### 6.2. Typography, icons и assets
 
-Значения утверждены как design/Penpot geometry для UI blueprint `0.7.0-draft`; при runtime-реализации они переходят в versioned production tokens после browser/accessibility verification без изменения зафиксированной плотности и иерархии.
+- font families, weights, scale, line heights, bundled files и fallback policy выбираются и hash-pin-ятся в baseline;
+- en/ru coverage, 200% zoom/reflow, dense-table readability и deterministic report rendering обязательны;
+- одна согласованная icon system получает version/commit, semantic mapping, sizes, optical rules и license provenance;
+- незнакомое действие не обозначается только icon, а status не кодируется только цветом или движением;
+- official brand assets либо явно принятый temporary identity проходят sanitization, provenance и Web/email/XLSX/docs parity.
 
-## 6. Design system
+### 6.3. Layout, components и interaction patterns
 
-### 6.1. Темы
+- baseline определяет shell regions и variants, grid/content-width/scroll policy, spacing relationships, layering и responsive transformations;
+- каждый reusable component определяет variants, size classes, internal elements, required interaction states, content rules и accessibility behavior;
+- overlays, menus, dialogs, drawers, tooltips, tables, forms, charts, tabs и splitters получают placement, dismissal, focus, keyboard и state contracts;
+- exact geometry и visual properties наблюдаются из принятого source evidence, а не изобретаются вручную;
+- raw palette, radius, shadow, duration и easing values не становятся требованиями до принятия baseline.
 
-Нормативный registry содержит ровно четыре профиля от near-black до bright-light:
+### 6.4. Motion и perceived performance
 
-| Theme | Scheme | Назначение |
-|---|---|---|
-| `graphite` | dark | Product UI default |
-| `abyss` | dark | Самый глубокий контрастный operational режим |
-| `frost` | light | Холодный светлый UI |
-| `paper` | light | Яркий дневной UI и Email/XLSX default |
-
-Production CSS tokens для всех четырёх themes должны повторять machine `theme_registry`. Каждый screen строится один раз на semantic aliases `canvas`, `background`, `surface`, `line`, `text`, `muted`, `accent`, `focus`, status и chart roles; representative browser matrix проверяет все themes без дублирования всех 117 target routes.
-
-Дополнительно до component build должны быть определены отсутствующие в сыром palette registry aliases из `THEME-003`: `success`, `warning`, `error`, `info`, `positive`, `negative` и color-blind-safe categorical chart series. Они являются design tokens, а не новыми бизнес-правилами.
-
-### 6.2. Typography
-
-Базовый шрифт: self-hosted versioned `Inter Variable` с системными fallback. Причины — доступность en/ru начертаний, нейтральность, читаемость плотных таблиц и визуальная близость к референсам. Использование font-файлов Linear запрещено; собственный bundle и license metadata входят в runtime/render identity.
-
-| Token | Size / line | Weight | Использование |
-|---|---|---|---|
-| `display-sm` | 28 / 36 | 600 | Auth и onboarding welcome |
-| `heading-xl` | 24 / 32 | 600 | Page title |
-| `heading-lg` | 20 / 28 | 600 | Major section |
-| `heading-md` | 16 / 24 | 600 | Card/inspector title |
-| `body-lg` | 16 / 24 | 400 | Help, descriptions, Data Guide |
-| `body` | 14 / 20 | 400 | Main application text |
-| `body-strong` | 14 / 20 | 600 | Labels and emphasis |
-| `caption` | 12 / 16 | 400 | Metadata, table secondary text |
-| `code` | 13 / 20 | 500 mono | IDs, expressions, hashes, schemas |
-
-Zoom до 200% не ломает flow. Таблицы не используют текст меньше 12 px.
-
-### 6.3. Icons и brand
-
-- единственная core outline icon family v1 — Lucide через pinned `lucide-react`;
-- sidebar icons — 20 px, стандартный stroke 2 px, round caps/joins; остальные icons 16/20/24 px;
-- semantic mapping sidebar: `House`, `Database`, `ChartNoAxesCombined`, `ChartSpline`, `BadgePercent`, `LayoutDashboard`, `FileChartColumn`, `Workflow`, `Activity`, `Settings`;
-- expanded navigation использует icon + label; collapsed navigation может использовать icon-only только с accessible name, hover/focus tooltip и stable route identity;
-- иконка никогда не является единственным label для незнакомого действия;
-- status не выражается только icon или цветом;
-- emoji, handcrafted SVG, смешивание icon families и псевдографика запрещены;
-- SF Symbols не являются Web core asset: Apple-only license boundary несовместима с cross-platform self-hosted distribution;
-- distribution сохраняет upstream Lucide ISC и унаследованные Feather MIT notices в `THIRD_PARTY_NOTICES`;
-- canonical provenance: [Lucide](https://lucide.dev/), [upstream LICENSE](https://github.com/lucide-icons/lucide/blob/main/LICENSE), [Apple Design Resources License](https://developer.apple.com/support/downloads/terms/apple-design-resources/Apple-Design-Resources-License-20230621-English.pdf);
-- до получения официального SVG используется text-only wordmark `Custometry`;
-- runtime branding идёт через versioned BrandProfile: company product names, sanitized logos/favicon, optional sanitized custom icon pack, bundled fonts и semantic color overrides;
-- raw CSS/HTML/JS, remote assets и customer-specific component forks запрещены; preview проверяет contrast, broken assets, fallback wordmark и Web/email/XLSX/docs parity;
-- Code foundation использует четыре production theme modes `abyss|graphite|frost|paper`; BrandProfile states показывают semantic overrides и browser preview, а не требуют дублировать все 117 target screens для каждого клиента.
-
-### 6.4. Elevation
-
-- основной layout преимущественно плоский;
-- border важнее shadow;
-- `shadow_panel` используется для modal, popover, command palette и floating drawer;
-- nested cards не получают отдельную тень;
-- backdrop применяется только к modal, не к side inspector.
-
-### 6.5. Motion
-
-Semantic tokens:
-
-| Token | Duration | Назначение |
-|---|---:|---|
-| `motion.none` | 0 ms | Immediate state |
-| `motion.fast` | 120 ms | Menu, popover, indicator |
-| `motion.route` | 160 ms | Main-content fade, modal base |
-| `motion.panel` | 220 ms | Sidebar, drawer |
-| `motion.slow` | 240 ms | Верхняя граница safe chart/panel transition |
-
-Standard easing: `cubic-bezier(0.2, 0, 0, 1)`; exit: `cubic-bezier(0.4, 0, 1, 1)`. Компоненты не создают собственные duration tokens.
-
-| Surface | Production transition | Reduced-motion variant |
-|---|---|---|
-| Route navigation | Shell/sidebar/topbar неподвижны; main content fade 120–160 ms | Fade ≤80 ms либо instant |
-| Sidebar | Expand/collapse 180–220 ms, без bounce и text blur | Instant size/state change |
-| Tabs | Indicator 120–160 ms; previous data сохраняются до ready | Instant indicator, status update |
-| Drawer | Directional 200–240 ms | Без translate, fade ≤80 ms |
-| Modal | Fade + минимальный scale 160–200 ms | Без scale, fade ≤80 ms |
-| Popover/menu | 100–140 ms | Instant/fade ≤80 ms |
-| Focus / Explore | Route-backed surface, без full-screen slide | То же, instant/fade |
-| Charts | Только safe transition 160–240 ms при стабильном domain/axis и малой density | Без continuous/interpolated animation |
-| Tables | Без перемещения строк; краткая highlight + textual status | Status и non-animated highlight |
-| Loading/refresh | Previous data + local freshness/loading; skeleton преимущественно first load | Без shimmer; status/progress остаются |
-
-Chart animation выключается при изменении domain/axis, dense series, live operational data и comparison policy, чтобы промежуточные кадры не выглядели как реальные значения. Refresh использует stale-while-revalidate и reserved layout; stale controls, которые больше нельзя безопасно применить, временно блокируются с объяснением. Motion не является единственным носителем status и не задерживает focus/live-region announcements.
+- motion language, duration и easing сейчас не выбраны;
+- feedback не задерживает action outcome, focus или live-region update;
+- reduced-motion variant обязателен для каждого meaningful transition;
+- charts не интерполируют изменение domain/axis или плотные/live data так, чтобы промежуточный кадр выглядел достоверным значением;
+- performance budgets определяются для critical journeys и отдельно измеряют input feedback, client dispatch, network/API wait, response/SSE-to-paint и final interaction latency;
+- previous authorized data либо reserved layout сохраняются при refresh без выдачи stale/optimistic presentation за persisted terminal truth.
 
 ## 7. Библиотека компонентов
 
 ### 7.1. Foundations
 
-- color primitives и semantic mode темы `frost`; остальные профили нормативного registry остаются вне design scope;
+- semantic color roles и принятые theme modes;
 - spacing, radii, sizing и opacity;
 - typography и code styles;
 - elevation/effects;
@@ -411,6 +350,12 @@ Chart animation выключается при изменении domain/axis, de
 | Operations | Run Status, Attempt Timeline, Queue Health, Worker Card, Log Viewer |
 | Builder | Pipeline Node, Port, Edge, Canvas Toolbar, Inspector, Validation Summary |
 | Reports | Report Block, Block Toolbar, Snapshot Banner, Email Recipient Field, Export Preflight |
+| Analytical documents | Chapter Tree, Page Tab Strip, Page Overview/Search, Section, Block Catalog, Block Toolbar, Filter Scope Indicator, Document Open Plan, Publish Preflight |
+| Collaboration | Analyst Note, Data Annotation Marker/Anchor Detail, Discussion Thread/Reply, Mention, Resolve/Reopen, Stale Anchor Banner, Re-anchor Diff |
+| Segments | Segment Definition Summary, Run History, Schedule Status, Snapshot Picker, Binding Mode, Entrants/Exits, Migration/Overlap/Drift, Used By |
+| Product analytics | Product Hierarchy, Category/SKU Table, Assortment Matrix, Inventory/Availability State, ABC/XYZ Matrix, Price/Markdown, Lifecycle Timeline, Affinity/Substitution Matrix |
+| Digital | Journey/Funnel, Attribution Scope Switch, Campaign/Creative Breakdown, Identity/Cost Coverage, Unit Economics Ladder, Actual/Attributed/Scenario Legend |
+| Administration | Adoption Summary, Content Usage Table, Materialization Hit Rate, Slow Document/Block, Avoided Work, Wasted Precompute, High-cost Request |
 | Promotion | Range Timeline, Lane Header, Promotion Bar, Overlap Density, Audience Badge |
 | Organization | Org Tree, Unit Card, Membership Assignment, Leadership Scope, Data Policy Summary, Effective Access Preview, Handover Status |
 | People | Contributor Card, People Directory Row, Activity Summary, Owned/Created Asset List, Scope/Privacy Badge |
@@ -487,13 +432,13 @@ Header всегда разделяет:
 
 ### 8.5.1. Reporting density
 
-- четыре primary KPI находятся в одном контейнере высотой `64 px`, а не в четырёх самостоятельных высоких cards;
-- KPI label находится на первой строке, value и короткий `vs LY` — на второй; все четыре cells используют общую baseline;
-- Context Bar и KPI Strip используют одинаковые column boundaries/divider X coordinates; divider Y/height выравниваются внутри своего контейнера;
-- primary visualization начинается в master `1440×900` на `y=308` и получает приоритет над декоративным whitespace;
-- sample data table начинается на `y=684`, показывает минимум две data rows и range/pagination status; production height остаётся content- и viewport-aware;
+- когда surface использует primary KPI, они группируются в компактный strip, а не автоматически превращаются в ряд высоких декоративных cards; число KPI определяется metric group и задачей, а не universal `4`;
+- label, typed value, period/comparison и trust state читаются как одна compact group; full value остаётся доступным;
+- Context Bar, KPI group и primary content используют согласованные alignment lines, но exact geometry определяется screen contract;
+- primary visualization получает приоритет в первом рабочем viewport и не вытесняется декоративным whitespace;
+- sample table показывает data rows и range/pagination status в pilot-compatible view; production placement зависит от document profile/page composition;
 - Result Trust остаётся optional compact trigger и не резервирует постоянную широкую колонку;
-- contract применяется к `UI-DQ-001`, всем `UI-AN-001…014` и остальным report-like routes; list/wizard/builder screens без KPI используют тот же compact header, но собственный content template.
+- calm density является общим visual-language anchor, но fixed `KPI → chart → table` не является универсальным layout contract.
 
 ### 8.5.2. Metric groups, adaptive numbers и research narrative
 
@@ -504,6 +449,17 @@ Header всегда разделяет:
 - approved Finding имеет author/review/evidence/limitations surface; comment имеет avatar/time/thread/resolve surface и никогда не выглядит как утверждённый вывод;
 - Viewer может открыть и добавить comment только к разрешённой non-PII projection; comment drawer не показывает hidden filters, denied facets или raw source values;
 - report/dashboard access находится в отдельной admin surface; Analyst видит effective access summary, но не grant/revoke controls.
+
+### 8.5.3. Analytical document profiles, pages и collaboration
+
+- `dashboard` — compact monitoring composition с live/pinned bindings и ограниченным authoring chrome;
+- `workbook_report` — главы и большое число ordered page tabs; доступны overview/search/overflow, reorder, duplicate, hide, lock и group с keyboard alternatives;
+- `narrative_research` — outline, long-form narrative и evidence-linked findings, но те же page/section/block/filter/snapshot contracts;
+- deep link и Back/Close сохраняют exact document version/snapshot, page, optional block, scroll и focus;
+- document/page/block filters показывают scope, inheritance и effective set; personal/shared Custom View не мутирует publication;
+- analyst note публикуется с document version; data annotation pin-ит artifact/semantic data key; discussion остаётся отдельно; finding/conclusion проходит review;
+- refresh показывает old/new context и не перемещает comments/annotations автоматически; explicit re-anchor имеет diff и audit;
+- like доступен только в header published document version; rating, dislike, block/comment/cell reaction и employee score отсутствуют.
 
 ### 8.6. Empty и blocked states
 
@@ -533,7 +489,7 @@ Empty state содержит причину, prerequisite и одну следу
 
 ### 4.5. Критерий route-backed surface
 
-Количество Penpot frames не является потолком route registry. Самостоятельный route обязателен, когда surface имеет durable entity/version lifecycle, должен открываться из notification/audit/deep link, требует собственных Back/refresh/unsaved semantics либо имеет независимую permission boundary и достаточно сложное состояние для bookmark/recovery. Transient подтверждение или inspector остаётся modal/drawer; повторяемое поведение таблиц, графиков и отчётов становится cross-surface capability. Каждый UI-visible use case обязан иметь binding хотя бы к одному из этих типов поверхности; совпадение количества строк между двумя JSON не является доказательством полноты.
+Количество известных routes не является потолком будущего atlas. Самостоятельный route обязателен, когда surface имеет durable entity/version lifecycle, должен открываться из notification/audit/deep link, требует собственных Back/refresh/unsaved semantics либо имеет независимую permission boundary и достаточно сложное состояние для bookmark/recovery. Transient подтверждение или inspector остаётся modal/drawer; повторяемое поведение таблиц, графиков и отчётов становится cross-surface capability. Каждый UI-visible use case обязан иметь binding хотя бы к одному из этих типов поверхности; совпадение количества строк между двумя JSON не является доказательством полноты.
 
 ### 8.9. System и lifecycle surfaces
 
@@ -633,11 +589,7 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-AN-012 | `/analyses/:id/results/:runId` | Result detail and trust | MVP | allowed | Immutable result, ChartSpec/table/distribution, treatment chip and sensitivity, filters, YoY diagnostics, limitations, lineage, save/report/export |
 | UI-AN-013 | `/research` | Research Cases | MVP | AN, VW | Questions/cases, owner/status, pinned method/dataset, findings, related analytical products, create/open/filter |
 | UI-AN-014 | `/research/:id` | Research Workspace | MVP | AN, VW | Outline/sections, narrative, metric groups, charts/tables/distributions, treatment evidence, drill/filter, findings vs comments, publish to dashboard/report/segment |
-| UI-AN-015 | `/analytics/products` | Products | V1 | AN, VW | Product/category/brand contribution, revenue/orders/AOV/margin, `vs LY`, product/store/channel context and Result Trust |
-
-Products является отдельным стабильным navigation/route identity для товарной аналитики. Он переиспользует утверждённую product/category/brand семантику Sales, Basket, Margin and Discounts и Custom Builder; произвольная новая товарная иерархия по-прежнему требует отдельного продуктового решения.
-
-Для `UI-AN-003` действует принятая композиционная конкретизация: standalone Dataset control и standalone Result Trust row отсутствуют. Dataset/version, trust/freshness и дата-время последнего обновления объединяются в компактный result-level trigger в правой части блока результата; trigger остаётся доступным при `Chart ↔ Data` и открывает полный Trust drawer. Embedded Sales показывает revenue/orders/AOV/margin, trend и переключаемый contribution breakdown по channel/store/product. Chart и table имеют отдельные route-backed Focus / Explore actions; focus сохраняет period, `vs LY`, applied context, representation и return-to-origin.
+| UI-AN-015 | `/analytics/products` | Products | V1 | AN, VW | Product/category hierarchy version, category/SKU performance, assortment/store clusters, inventory/availability, sell-through/DOI/turnover, ABC/XYZ, price/markdown/margin, lifecycle, affinity/substitution, promo overlays и Result Trust |
 
 ### 9.6. Segments — 3 страницы
 
@@ -727,7 +679,7 @@ Products является отдельным стабильным navigation/rou
 | UI-ADMIN-008 | `/admin/plugins` | Plugins | V1 | IA | Installed/available trusted plugins, compatibility, permissions, enable/disable and warning |
 | UI-ADMIN-009 | `/admin/storage-backup` | Storage, retention, backup and restore | MVP | IA, OP | Capacity/watermarks/inodes/orphans, retention, backup manifests, drill status, restore action |
 | UI-ADMIN-010 | `/audit` | Audit Explorer | MVP | IA, WA | Installation/workspace scopes, actor/action/resource/result/time filters, redacted detail/export |
-| UI-ADMIN-011 | `/admin/localization-themes` | Localization and themes | MVP/V1 | IA, WA | en/ru coverage, workspace defaults, four themes, report default, accessibility validation status |
+| UI-ADMIN-011 | `/admin/localization-themes` | Localization and themes | MVP/V1 | IA, WA | en/ru coverage, workspace defaults, accepted theme registry, report default, accessibility validation status |
 | UI-ADMIN-012 | `/admin/system` | System lifecycle and upgrades | MVP/V1 | IA, OP | App/release/schema versions, compatibility, migrations, maintenance, upgrade requirement, license/SBOM/provenance, preflight, runbooks and guarded rollback |
 | UI-ADMIN-013 | `/settings/branding` | Workspace Branding Assignment | MVP/V1 | WA | Allowed published profile, workspace preview, effective identity, impact, assign/rollback/reset without asset or CompanyPack editing |
 | UI-ADMIN-014 | `/admin/brand-profiles` | Brand Profile Registry | MVP/V1 | IA | Installation/workspace profiles, lifecycle, base theme, asset/contrast status, usage impact, create and open |
@@ -744,11 +696,26 @@ Products является отдельным стабильным navigation/rou
 |---|---|---|---|---|---|
 | UI-HELP-001 | `/help` | Help Center and keyboard shortcuts | MVP/V1 | all | Permission-aware search по shipped docs/Data Guides/codes, contextual help, shortcut reference, version/support and deterministic deep links |
 
-**Итого: 117 target route-level страниц.** W08 подтвердил accepted baseline из 110 route frames, 25 overlays и 5 system surfaces на revision `181`. Product/UI delta `0.9.3/0.6.3` добавила шесть route identities без нового overlay или system surface и два reusable capabilities. W10 создал эти шесть frames, C25 и flow 10 и принят на revision `213` с historical design inventory `116/25/5`. `UI-AN-015` добавлен как route-contract backlog и не считается принятой browser composition до собственной HTML acceptance и registered-component proof.
+**Итого: 117 основных route-level страниц.** Исторический W10 зафиксировал прежний inventory `116/25/5`; позднее current route registry добавил planned `UI-AN-015 Products`, поэтому фактический current inventory теперь `117/25/5`. Это не новый G1 atlas и не означает, что остальные принятые target families уже имеют exact route identities.
+
+### 9.16. Обязательный target family delta до G1
+
+Новый G1 обязан решить route/embedded/overlay identity, но не может исключить следующие результаты:
+
+| Target family | Минимальное покрытие |
+|---|---|
+| Analytical Documents | Library/create, profile choice, chapter/page manager, page/block deep link, Custom Views, publish diff/root snapshot, large-document open plan |
+| Collaboration | Document/page/block/data discussions, replies/mentions/resolve, analyst notes, annotations, stale anchor/re-anchor, approved-summary publication |
+| Segmentation | Definition/run/schedule/snapshot history, pinned/latest binding, profiles, trends, entrants/exits, migration/overlap/drift, permission-filtered Used by |
+| Digital Acquisition & App | Journey/funnel, first-user vs session scope, campaign/ad-group/creative, Web/iOS/Android reconciliation, identity/event/cost coverage |
+| Unit Economics | CAC/CPI/CPA/ROAS/ROI/LTV/CM/payback, cohort/activity views, actual vs attributed vs scenario, assumptions and residuals |
+| Products & Categories | Hierarchy versions, category/SKU performance, assortment/store clusters, inventory/availability, ABC/XYZ, price/markdown/margin, lifecycle, affinity/substitution, promo overlays |
+| Adoption | Total/unique/repeat/active viewers, meaningful-view semantics, comments/likes/follows, freshness/trend, never/rarely used assets без ratings |
+| Analytical Performance | Reuse/materialization hit, avoided work, slow documents/blocks, staleness, high-cost requests, wasted precompute и resource lanes |
 
 ## 10. Overlays, drawers и modals
 
-Они не считаются отдельными route-level страницами, но получают собственные Penpot state frames. `UI-OVR-020` исторически сохраняет prefix `OVR`, однако реализуется как route-backed surface, а не modal/overlay в DOM.
+Они не считаются отдельными route-level страницами, но получают собственные screen/state contracts и review entries в будущей программе. `UI-OVR-020` исторически сохраняет prefix `OVR`, однако реализуется как route-backed surface, а не modal/overlay в DOM.
 
 | ID | Surface | Вызывается из | Основные требования |
 |---|---|---|---|
@@ -790,7 +757,7 @@ Products является отдельным стабильным navigation/rou
 
 ### 10.2. Cross-surface capability contracts
 
-Эти capabilities не создают самостоятельную страницу только ради повторения одного control pattern, но являются обязательными машиночитаемыми bindings и Penpot component/state contracts.
+Эти capabilities не создают самостоятельную страницу только ради повторения одного control pattern, но являются обязательными машиночитаемыми bindings и будущими component/state contracts.
 
 | ID | Capability | Применимость | Основные требования |
 |---|---|---|---|
@@ -817,9 +784,11 @@ Products является отдельным стабильным navigation/rou
 | UI-CAP-021 | Organization-scoped effective access and ownership | Shell/navigation, organization/admin/access, libraries, report/dashboard/detail/actions | UC-028, RBAC-019…028, TEST-INV-076…084 |
 | UI-CAP-022 | Privacy-safe People & Creators | Organization/People, report/dashboard libraries, contributor cards/profile | UC-029, RBAC-022, RBAC-027, TEST-INV-078…088 |
 
+Принятый target delta пока не получает новые стабильные `UI-*` IDs: exact identities создаст новый G1 atlas. Он MUST exact-cover минимум девять surface families: analytical-document profiles/hierarchy; workbook pages/tabs/chapters; universal block builder; notes/annotations/discussions; segment runs/snapshots/bindings; digital journey/acquisition/unit economics; products/categories/assortment/inventory; materialization/reuse preflight; adoption и analytical-performance administration. Current manifests не расширяются фиктивными screen contracts до G1.
+
 ## 11. Страница аналитического результата
 
-Все специализированные analytics pages используют один composition pattern:
+Все специализированные analytics pages используют общий data/trust vocabulary, но не один фиксированный layout. Pilot-compatible compact result MAY использовать следующую композицию:
 
 ```text
 Page header
@@ -836,6 +805,8 @@ Data table
 Compact Result Trust trigger; optional drawer on demand
 Actions: save, dashboard, report, export
 ```
+
+Это один screen pattern, а не форма каждого документа. Workbook page может быть narrative/table-first, comparison-first, scenario-first или mixed; Dashboard остаётся compact monitoring surface; Research использует outline/long-form evidence. Любая композиция сохраняет явные data bindings, filter scopes, Result Trust, accessible table alternatives и deterministic reading order.
 
 ### 11.1. Comparison
 
@@ -909,11 +880,6 @@ regions. W08 methodology content не должен добавляться пол
 
 - ECharts — единственный Web renderer v1;
 - `ChartSpec` остаётся source of truth;
-- каждый новый chart-bearing G4+ browser-proven или production surface использует реальный Apache ECharts через validated `ChartSpec` и shared chart compiler; hand-authored SVG/CSS/Canvas/HTML chart substitute допустим только как явно зарегистрированный loading/empty/error skeleton либо truthful historical evidence;
-- любой authorized immutable dataset может быть chart source, если versioned compatibility rules подтверждают его schema, grain, semantic roles, cardinality, bounded-data и access constraints;
-- chart header/toolbar показывает текущий тип и selector только с `available_chart_types`, вычисленными для текущих dataset profile и report type; разные типы отчётов могут иметь разные наборы и defaults;
-- пользователь может временно переключить доступный тип без изменения source, filters, comparison, grain, measures, permissions и Result Trust; сохранённый выбор создаёт versioned `ChartSpec` либо versioned presentation binding;
-- если совместимых chart types нет, UI объясняет причину и использует доступную data table как primary representation, не подменяя её ECharts `dataView`;
 - Web использует SVG/Canvas по policy;
 - chart header содержит title, unit, info, actions и table toggle;
 - tooltip не является единственным источником значения;
@@ -975,7 +941,6 @@ Responsive:
 
 ## 12. Таблицы и большие данные
 
-- product Data Grid и accessible chart table alternative являются отдельными HTML/React surfaces и не реализуются через ECharts `dataset`/`dataView`;
 - sticky header и первая смысловая колонка, когда это помогает сравнению;
 - column chooser, sort, typed filter, resize и density preference;
 - server-side pagination/virtualization;
@@ -985,6 +950,16 @@ Responsive:
 - cell truncation имеет tooltip и keyboard-accessible expand;
 - table не симулирует бесконечный список без loading/terminal state;
 - empty, loading, partial, error и permission states не заменяются пустой сеткой.
+
+Большой analytical document дополнительно следует такому contract:
+
+- initial route загружает shell, permission-filtered page index и только active page; denied/hidden metadata не выдаётся через tabs, gaps или counts;
+- direct deep link сразу гидратирует target page/block; соседняя page MAY prefetch только bounded policy, и prefetch не считается meaningful view;
+- page switch отменяет ненужный client request, но не отменяет shared single-flight compute; одинаковые blocks/pages используют один operation link;
+- внутри active page применяются bounded concurrency, block skeletons и virtualization/lazy fetch; browser не монтирует все страницы;
+- page tabs имеют keyboard navigation, overflow/search/overview и chapter grouping; на узкой ширине они переходят в доступный overflow/list, а не обрезаются;
+- `DocumentOpenPlan` показывает reuse/compute/last-good/blocked по page/block, freshness и ожидаемые resources без навязывания технических деталей обычному Viewer;
+- design/benchmark envelope — 100 pages × 30 blocks/page с cold/warm open/switch, DOM/memory/request counts, duplicate-compute proof, RU/EN/pseudo-locale и 200% zoom; это не обещание unlimited и не hard production limit.
 
 ## 13. Forms и builders
 
@@ -996,6 +971,21 @@ Responsive:
 - step error summary фокусируется и связывается с полями;
 - unfinished draft можно продолжить из library;
 - final step показывает normalized summary и impact.
+
+Для действия `Add analytical block` общий wizard имеет обязательный порядок:
+
+```text
+1 Subject / data product
+2 Metrics and grain
+3 Dimensions and period
+4 Population / Segment — только когда требуется
+5 Filters — optional
+6 Comparison — optional
+7 Presentation — optional
+8 Trust, performance and reuse preflight → Add
+```
+
+Guided и Advanced показывают один normalized `BlockDefinition` и сохраняют selections при переключении. Preflight показывает capability/permission blockers, grain, rows/bytes/time class, freshness, compatible artifact и planned compute. Draft resumable, но autosave не запускает compute. `Add` всегда называет destination page/section и reuse outcome.
 
 ### 13.2. Expression builder
 
@@ -1020,7 +1010,7 @@ Responsive:
 `UI-SEG-002` переиспользует общий wizard и не превращается в отдельный canvas:
 
 ```text
-1 Population & As-of
+1 Definition scope & observation-window policy
 2 Features & Metrics
 3 Data Treatment
 4 Method & Group Count
@@ -1028,14 +1018,14 @@ Responsive:
 6 Publish
 ```
 
-- Step 1 фиксирует dataset/version, entity grain, eligible population, observation window и as-of.
+- Step 1 фиксирует dataset/version, entity grain, eligible population и reusable observation-window policy; exact as-of задаётся SegmentRun, а не переписывает definition.
 - Step 2 разрешает только опубликованные features/metrics, показывает type, missingness, PII class и запрещает identifiers/leakage.
 - Step 3 использует `UI-OVR-025`; default `Flag only`, а `Exclude/Winsorize` требуют impact acknowledgement.
 - Step 4 предлагает rule, RFM, quantile/equal-width/custom bucket и KMeans; exact group count обязателен там, где это применимо. HDBSCAN/GMM/automatic-K controls в v1 отсутствуют.
 - Step 5 показывает bucket/distribution/cluster profiles, sizes, center/feature distinctions, stability, silhouette/limitation, treatment sensitivity, minimum-cell privacy и blockers. Для KMeans diagnostic K-1/K/K+1 не меняет выбранный K.
 - Step 6 показывает normalized immutable definition, pinned boundaries/treatment/preprocessing/seed, downstream impact и publish diff.
 
-`UI-SEG-003` использует tabs `Overview`, `Definition`, `Profiles`, `Members`, `Snapshots & Migration`, `Diagnostics`, `Usage`. `Members` и excluded/flagged observations загружаются только после authorization и PII policy. Frozen-model assignment и full retrain имеют разные actions и confirmation copy; retrain создаёт новый snapshot и не переименовывает historical cluster IDs.
+`UI-SEG-003` использует tabs `Overview`, `Definition`, `Runs & Schedule`, `Profiles`, `Members`, `Snapshots & Migration`, `Diagnostics`, `Usage`. Header показывает definition version, last successful, next run, failed/paused state, selected snapshot и binding mode. Trends включают size/value, entrants/exits, migration, overlap и drift. `Members` и excluded/flagged observations загружаются только после authorization и PII policy. Frozen-model assignment и full retrain имеют разные actions и confirmation copy; retrain создаёт новый snapshot и не переименовывает historical cluster IDs. Published Workbook/Research выбирает `pinned_snapshot`; live Dashboard может явно выбрать `latest_successful`, но publish preflight показывает resolved snapshot и freshness. `Used by` permission-filtered и не раскрывает denied assets.
 
 Stratified distribution остаётся mode Custom Builder/Research, а не новым top-level route. Global bucket boundaries выбраны по умолчанию; within-stratum quantiles имеют явный `Relative rank within each stratum` label. Из selected cell можно выполнить `Save as segment`, после чего открывается normalized Segment Builder draft с lineage исходного DistributionArtifact.
 
@@ -1085,6 +1075,7 @@ People & Creators:
 - даты/числа/проценты форматируются locale-aware;
 - machine IDs, enums, hashes, API fields и canonical CSV headers не переводятся;
 - layout тестируется на длинных русских строках и pseudo-locale;
+- каждый responsive anchor и large-document state проверяется на RU, EN и pseudo-locale expansion; tabs, breadcrumbs, primary/overflow actions, trust badges и table chrome не clipping-ся и не исчезают;
 - CSS logical properties используются с начала проекта.
 
 ### 14.3. Content style
@@ -1098,7 +1089,7 @@ People & Creators:
 
 ## 15. Обязательные состояния
 
-Каждая из 117 target route-level страниц проектируется минимум для применимых состояний; system surfaces используют отдельные contracts §10.1:
+Каждая из 117 известных route-level страниц и каждая новая поверхность будущего atlas проектируется минимум для применимых состояний; system surfaces используют отдельные contracts §10.1:
 
 | State | UI contract |
 |---|---|
@@ -1119,64 +1110,46 @@ People & Creators:
 | Session expired | Protected cache cleared, safe sign-in/return reference и re-authorization |
 | Upgrade required | Read-only/degraded boundary, required version и admin/runbook action |
 
-## 16. HTML-first UI delivery contract
+## 16. Вход в `ui-design-program`
 
-### 16.1. Source of truth и stable identity
+### 16.1. Текущее состояние admission
 
-Historical accepted inventory `116/25/5` с W10 terminal revision `213` сохраняется как immutable evidence прежней композиции и route/domain coverage, но не является operational source для UI `0.7.0`. Единственный accepted visual source для текущего slice — W27 responsive HTML для `UI-AN-003`, его репозиторные source paths и browser evidence.
+Активная UI-программа отсутствует. `active_program: null` является намеренным: прежняя program revision и её G4 triad superseded после изменения product semantics и visual authority. Новый product path записан, а hash-pinned RU/EN pilot принят как ограниченный visual-language anchor. Эта requirements-задача не создаёт G0, prompt pack или ledger.
 
-Целевой reusable source — versioned React/HTML components и semantic CSS tokens в `packages/ui-foundation/**`, machine-readable component/screen manifests в `packages/contracts/ui-design/**` и browser component catalog в `apps/web/**`. Каждый public component имеет stable code ID, typed props/states, token bindings, accessibility contract и DOM provenance attribute. Screen manifest ссылается на component IDs и props, но не копирует visible markup.
+### 16.2. Что должно войти в durable intake
 
-### 16.1.1. Slice-first foundation boundary
+Будущий `ui-program-intake` exact-cover фиксирует:
 
-Global all-route catalog не является prerequisite. Каждый новый route или material composition delta сначала фиксируется в product/executable contracts, затем реализуется как isolated responsive HTML candidate, проходит fresh-browser validation и получает explicit product-owner acceptance. После acceptance только доказанные tokens, icons, primitives, patterns и compositions повышаются до reusable code foundation.
+- purpose, operating model, primary user outcomes, domain entities и terms;
+- included/excluded release slices, public-site boundary и `mobile_scope`;
+- source contracts для product, routes, screens, journeys, roles, permissions, states, data, copy, locales, themes, assets и runtime;
+- roles, permission profiles, locales, themes и global data contracts;
+- journeys с entry/terminal screens, transitions, outcomes, failures и recovery;
+- каждый screen с purpose, user outcomes, entry/exit, data reads/writes/computed values, regions, states, actions, context menus, permissions, accessibility и responsive priorities;
+- exact hash-pinned pilot с `renderable_html` mode, импортированный в program-owned/repository-owned evidence из manifest до source-fidelity claim;
+- unresolved inputs только для материального product meaning, которое нельзя вывести из источников.
 
-### 16.1.2. HTML-first screen acceptance cycle
+### 16.3. Current inventory как исходное evidence
 
-1. Normative blueprint и executable contracts фиксируют scope, semantics, states и proof boundary.
-2. Isolated responsive HTML candidate реализует выбранную композицию и проходит focused tests и fresh-browser review.
-3. Product owner явно принимает либо возвращает HTML candidate на доработку.
-4. Accepted decisions извлекаются в semantic CSS tokens, typed reusable components, registry/manifests и component catalog.
-5. Accepted source screen пересобирается из этих компонентов без копирования markup.
-6. Same-viewport DOM/visual browser QA доказывает структурную и визуальную эквивалентность.
-7. Вторая composition собирается из того же registry, чтобы доказать реальное reuse.
+Текущие manifests фиксируют `117` routes, `25` overlays, `5` system surfaces, `22` cross-surface capabilities и `29` use-case bindings. Это нижняя граница известного current-state coverage, но не authoritative G1 inventory и не permanent ceiling. В G1 каждый authoritative surface должен быть представлен ровно один раз, включая persistent shell, route flows, route-backed transients, internal/non-visual surfaces и обоснованные historical exclusions.
 
-HTML candidate не становится production implementation автоматически. Историческая W27-дефераль реального ECharts остаётся правдивой только для уже принятого pilot evidence. Начиная с текущего contract lock, каждый новый chart-bearing G4 representative, HTML candidate и production implementation обязан использовать реальный Apache ECharts через validated `ChartSpec` и shared chart compiler; новый hand-authored chart substitute не может получить browser acceptance. Command palette, More page actions, typed filter expressions/chips и внешние share/email/download/export side effects по-прежнему входят в отдельные implementation tickets по мере появления соответствующего production boundary.
+Исторические W03-W10 и terminal revision `213` сохраняют правдивое evidence прежней route/domain coverage. Они не задают новый visual language, frontend architecture, responsive baseline или browser acceptance.
 
-### 16.2. Целевая repository structure
+### 16.4. Gate boundary
 
-```text
-packages/ui-foundation/
-  tokens/          semantic CSS tokens and four theme modes
-  components/      primitives and reusable analytical patterns
-packages/contracts/ui-design/
-  token-registry   portable token identities and schema
-  icon-registry    registered Lucide identities
-  component-registry and schema
-  screen-manifests and schema
-  browser QA receipts
-apps/web/
-  UI Lab           inspectable component catalog
-  accepted screens and second-composition reuse proof
-```
+- G0 закрывает source authority, полный intake, platform baseline и runnable control plane;
+- G1 создаёт полный rendered atlas;
+- G2 связывает journeys, criticality, families, coverage и bounded waves;
+- G3 принимает foundations и application shell;
+- G4 принимает каждую family по exact representative screen/state coverage;
+- G5 принимает каждую bounded wave только после всех G4 families;
+- G6 закрывает critical journeys и implementation handoff.
 
-W27 Sales Overview остаётся rollback visual reference. W29 извлекает из него foundation, пересобирает Sales Overview и рендерит Focus/Explore как вторую composition. W22 может начать production shell только после accepted W29 evidence.
+G3-G6 требуют finished review board и отдельного natural-language owner acceptance. Machine validation не является owner acceptance, а историческое evidence не закрывает текущий gate.
 
-### 16.3. Component strategy
+### 16.5. Visual и browser proof
 
-Foundation применяет dependency direction `tokens → primitives → analytical patterns → screen compositions`. Repeated UI всегда создаётся как typed code component; screens и catalog используют те же imports. Компоненты связываются с semantic tokens, а не hardcoded fills/spacing/radii. В текущем scope поддерживаются ровно `abyss`, `graphite`, `frost`, `paper`.
-
-### 16.4. Render output
-
-W29 рендерит из registered components: Sales Overview Chart/Data, Result Trust drawer, Focus chart/breakdown, expanded/collapsed/hidden/resized Sidebar и compact `1024 × 768` state. Focus/Explore обязан использовать те же shell, toolbar, chart, data/trust primitives и token IDs; скопированный markup и duplicate private components не считаются reuse proof.
-
-### 16.5. Prototype flows
-
-Текущий accepted slice моделирует `Sales → Focus chart/breakdown → return` и on-demand Result Trust disclosure. Prototype interaction не заменяет runtime contract: Focus/deep links, Back/Escape, drawer focus management и side effects доказываются в production browser implementation.
-
-### 16.6. Browser QA matrix
-
-Same-viewport QA проверяет exact route/title/control order, DOM component provenance, no clipping/overlap, Russian long-copy fit, Sidebar state affordances, stable semantic icon identities, compact KPI/Chart/Data/Trust/Focus composition, `1440 × 900` и `1024 × 768` reflow, console/network health и four-theme token compatibility. Screenshot diff доказывает visual equivalence с W27 accepted source, а structural receipt — реальное использование registry/components. Authorization, API, persistence, measured performance и external side effects остаются отдельной implementation boundary.
+Каждый screen contract exact-cover связывает anchors, regions, elements, states, actions, responsive priorities и exceptions. Render provenance связывает program authority, source, candidate, geometry, viewport и artifact hash. Browser proof использует loopback fixtures, redaction, executable outcomes, console/network checks, responsive anchors и accessibility smoke. Оно не доказывает полное WCAG conformance, production authorization, performance или deployment без отдельного evidence boundary.
 
 ## 17. Traceability к product blueprint
 
@@ -1199,57 +1172,64 @@ Same-viewport QA проверяет exact route/title/control order, DOM compone
 | URL/history/workspaces | ROUTE-001…012, TEST-INV-050, V1-AC-017 |
 | Motion/loading | MOTION-001…012, PROGRESS, TEST-INV-051, V1-AC-018 |
 | System/help/lifecycle | SYS-UI-001…005, HELP-001…004, ADMIN-010…011, NOTIFY-014…015, V1-AC-019 |
+| Analytical documents/builders | GOAL-017, ANALYTICAL-DOC-001…012, BLOCK-BUILDER-001…008 |
+| Collaboration/adoption/annotations | GOAL-014, COLLAB-001…023, WATCH-001…006, AC-046…047 |
+| Segments over time | SEGMENT-001…026 |
+| Products/categories/assortment | GOAL-018, PRODUCT-ANALYTICS-001…012 |
+| Compute reuse/materialization | GOAL-015, MATERIALIZE-001…019, AC-048 |
+| Digital journey/marketing/unit economics | GOAL-016, DIGITAL-001…015, ATTRIBUTION-001…010, UNIT-ECON-001…014, ASSUMPTION-001…006, V1-AC-044…047 |
 
-## 18. Phase 0 gap analysis и решения перед HTML-first component foundation
+## 18. Pre-G0 gap analysis
 
-### 18.1. Что существовало в репозитории до HTML-first пилота
+### 18.1. Что уже известно
 
-- нормативные machine/human blueprint;
-- four-theme palette registry;
-- роли, journeys, APIs, states и acceptance contracts;
-- React/pnpm workspace scaffold без UI implementation.
+- нормативные product machine/human blueprints;
+- роли, use cases, journeys, permissions, data contracts, lifecycle и acceptance requirements;
+- current-state route/surface manifests и localization catalogs;
+- широкий функциональный baseline аналитики, data foundation, quality, forecasting, research, reporting, operations и administration;
+- принятые базовые contracts для collaboration/adoption/watches, compute reuse/materialization и digital-to-offline attribution/unit economics;
+- историческое route/domain coverage W03-W10;
+- принятый product path и pilot manifest с RU/EN hash-pinned `renderable_html` visual-language anchor;
+- responsive Web как единственная сейчас авторизованная UI-платформа.
 
-### 18.2. Что существует в Linear reference archive
+### 18.2. Что должен создать новый G0
 
-- dark authenticated shell, expanded/collapsed navigation и hover states;
-- list/table, settings, popover, modal, combobox, tabs и right detail pane;
-- user-confirmed pointer-resizable sidebar intent;
-- source archive SHA-256 и per-image hashes в `docs/architecture/ui/linear-workspace-reference-manifest-v1.json`.
+- repository/program-owned копию либо другой durable import точных pilot sources из hash manifest;
+- accepted platform baseline, расширяющий принятый visual-language anchor до foundations, shell, components и states;
+- complete authoritative inventory, который exact-cover включает не только routes, но также flows, shells, transients, overlays, system families и non-visual surfaces;
+- target frontend architecture, design system, assets и implementation rollout;
+- accepted Web width range и anchor viewports;
+- browser, accessibility, responsive и perceived-performance evidence нового target.
 
-### 18.3. Что отсутствует
+Текущие `117/25/5/22` manifests ещё не покрывают новые target-capability families и не должны расширяться ad hoc до G1. Будущий atlas обязан exact-cover определить поверхности, journeys и responsive states минимум для:
 
-- production implementation identity и runtime artifact package;
-- production component catalog, code registry и screen manifests beyond the accepted `UI-AN-003` HTML slice;
-- official logo SVG/brand pack;
-- all-four-theme captures, command palette, keyboard/focus snapshots, motion recordings, error/loading/session state references и measured geometry;
-- browser implementation и perceived-performance baseline;
-- утверждённый mobile authoring scope.
+- chapter/page/tab document composition, universal block builder, Custom Views и 100x30 open/publish path;
+- requester/executor, analyst notes, data annotations, anchored discussions/replies/re-anchor, mentions/likes/follows и permission-filtered activity feed;
+- segment definition/run/schedule/snapshot/binding/trend/migration/usage;
+- products/categories/assortment/inventory/availability/ABC-XYZ/pricing/lifecycle/affinity;
+- workspace/install adoption, metric watches и governed assumption input/review;
+- materialization/reuse observability, freshness/last-good, invalidation, off-peak policy и interactive/precompute capacity;
+- event taxonomy, web/app journeys/funnels, identity coverage, touch/spend/cost reconciliation, attribution comparison и unit economics.
 
-### 18.4. Утверждённые и применённые решения scope lock
+### 18.3. Решения, которые не переносятся автоматически
 
-1. Сохранить W10 historical artifact как accepted evidence; вести UI `0.7.0` slice-first только через repository-owned HTML/React source, semantic CSS tokens, component registry/manifests и browser evidence.
-2. Сохранять принятые historical `116/25/5` и добавить `UI-AN-015` как 117-й target route только через собственный HTML acceptance → component/registry promotion → browser QA cycle; W08 покрывает исторические первые 110, W10 добавил шесть Organization/People/Admin frames; post-v1 B2B/Yandex/activation/GMM/HDBSCAN/automatic-K/multivariate-anomaly/ABC-XYZ/OIDC/Kubernetes/public API UI не включать.
-3. Использовать ровно четыре темы `abyss`, `graphite`, `frost`, `paper`; проверять representative matrix, не дублируя каждый route.
-4. Использовать self-hosted versioned Inter Variable; Linear font files не копировать.
-5. Использовать text-only wordmark до получения официального SVG; generated logo из референса не перерисовывать.
-6. Считать route-level page единицей обязательного изображения; wizard steps и drawers поставлять state sheets, а не увеличивать основной счётчик страниц.
-7. Использовать canonical `/w/:workspaceKey/*` routing, route-backed Focus, production motion matrix и Help/System contracts до следующей массовой генерации/export.
-8. Использовать Lucide/`lucide-react` как единственную v1 core icon family; expanded sidebar показывает icon + label, collapsed/tablet — icon-only без сокращений.
-9. Использовать единый compact reporting geometry contract: header metadata от `y=80`, Context Bar `48 px`, KPI Strip `64 px`, primary data block от `y=308`, совпадающие Context/KPI boundaries.
-10. Использовать React/TypeScript/Vite/MobX/TanStack Query/styled-components, route-bounded fallback и performance budgets WEB-PERF-001…006; backend и W11-W17 не менять.
+Предыдущие choices темы, typography, icons, shell, panels, exact geometry, motion, frontend libraries и one-golden-slice rollout не имеют текущего target status. Исключение — явно принятый visual-language scope пилота: calm professional density, compact context/KPI language, visible Result Trust и Focus/Explore character. Он не восстанавливает старую программу и не фиксирует exact composition.
 
-## 19. Contract impact текущего документа
+## 19. Contract impact текущей редакции
 
 | Поверхность | Классификация | Пояснение |
 |---|---|---|
-| Product/API/ports/persistence | `none` для UI transition | Backend, domain, REST/SSE и W11-W17 не меняются |
-| Browser-visible behavior | `breaking-change with fallback` | Linear-workspace shell, panels, four themes, keyboard and motion replace the old composition route-by-route; stable route IDs remain |
-| Request hash/cache identity | `compatible-change` | Applied result filters используют общий normalized contract; presentation-only state явно исключён |
-| URL/bookmark/history | `breaking-change` для будущих legacy URLs; сейчас `compatible-change` | Канонический workspace prefix `/w/:workspaceKey`; Foundation runtime и stable bookmarks отсутствуют, поэтому миграция выполняется до первого release consumer |
-| Design tokens/defaults | `breaking-change` before stable runtime | Six-theme/single-Frost historical target replaced by exactly abyss/graphite/frost/paper and semantic CSS variables |
-| HTML/code foundations/components/manifests | `breaking-change before stable runtime` | Existing external-identity artifacts become historical-only; accepted responsive HTML slices add versioned tokens, components, manifests, catalog entries and browser receipts in the repository |
-| Migration/rollback | `compatible route identities` | Existing shell remains fallback until each route slice has browser/a11y/performance evidence |
+| Product/API/ports/persistence | `additive plus planned schema-v2 breaking targets` | Новые product/category/digital/collaboration поля additive; common composition и SegmentSnapshot identity требуют future versioned migration, legacy read adapters и отдельного implementation evidence |
+| Documentation/design authority | `breaking-change` | Linear/Penpot standard, прежняя accepted UI program revision и её ready G4 triad retired/superseded; новый baseline начинается pre-G0 |
+| Current route/surface identity | `compatible current-state evidence` | 117/25/5/22 сохраняются для traceability, но не являются target ceiling или G1 acceptance |
+| Browser-visible target | `unknown until G3` | Новый shell, foundations и representative screen ещё не приняты |
+| Frontend architecture | `unknown until architecture decision` | Текущий implementation stack не становится target автоматически |
+| Request hash/cache identity | `new compatible namespace required` | Document/page/filter/segment/materialization versions входят в future normalized identity; zoom/legend/tab chrome остаются presentation-only |
+| Mobile scope | `unauthorized` | Адаптивный Web обязателен; mobile-specific IA/composition не добавлены |
+| Rollback | `documentation recovery only` | Возврат старого target требует нового owner decision; Git history сама по себе не создаёт authority |
 
-## 20. Phase 0 exit criteria
+## 20. Pre-G0 readiness
 
-Historical Phase 0 design acceptance завершена: W08 принят на revision `181`, W10 — на terminal revision `213` с global `116/25/5`. Эти evidence подтверждают прежнюю композицию и route/domain coverage, но не новый Linear-workspace target. UI `0.7.0` использует transition cycle W19 reference completion → W20 architecture spike → W21 historical pilot → W24-W27 responsive HTML acceptance → W29 HTML-first UI foundation → W22 browser shell → W23 real Sales Analytics golden slice. Browser/runtime accessibility, authorization, persistence и performance не следуют из historical design evidence или HTML review сами по себе.
+Документ является принятым pre-G0 intent baseline: product path, included/excluded scope, critical journeys и visual-language anchor зафиксированы. Он не открывает G0 автоматически. Следующий безопасный шаг после отдельной авторизации полного UI-программы — импортировать pilot evidence, собрать durable intake/platform baseline и создать новую draft triad по текущему `ui-design-program`; прежняя программа не возобновляется.
+
+Observed proof boundary этой редакции ограничен documentation authority, blueprint synchronization и current-inventory consistency. Он не доказывает новый дизайн, frontend architecture, responsive behavior, accessibility, browser runtime, performance или implementation readiness.

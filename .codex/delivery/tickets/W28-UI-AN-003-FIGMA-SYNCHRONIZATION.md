@@ -7,7 +7,7 @@ ticket_id: W28-UI-AN-003-FIGMA-SYNCHRONIZATION
 status: superseded
 workstream_id: W28
 summary: Consume the formally accepted UI-AN-003 HTML pilot, remove the remaining index-first design-contract drift, synchronize the accepted responsive candidate into the exact Custometry Figma library and product files, and freeze the minimum proven UI foundation v1 without changing HTML or production runtime behavior.
-requirement_ids: [WEB-ARCH-003, WEB-ARCH-005, WEB-ARCH-006, THEME-001, THEME-002, THEME-003, THEME-005, THEME-008, UI-SHELL-001, UI-SHELL-002, UI-SHELL-003, UI-SHELL-004, UI-SHELL-005, UI-SHELL-006, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, UI-DENSITY-004, FILTER-001, FILTER-002, FILTER-003, FILTER-004, FILTER-010, COMPARE-001, COMPARE-002, COMPARE-003, CHART-001, CHART-002, CHART-006, FOCUS-001, FOCUS-002, FOCUS-003, FOCUS-004, FOCUS-005, FOCUS-006, FOCUS-007, FOCUS-008, FOCUS-009, FOCUS-010, A11Y-001, A11Y-003, A11Y-008, ROUTE-004]
+requirement_ids: [WEB-ARCH-003, WEB-ARCH-005, WEB-ARCH-006, THEME-001, THEME-002, THEME-003, THEME-005, THEME-008, UI-SHELL-001, UI-SHELL-002, UI-SHELL-003, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, FILTER-001, FILTER-002, FILTER-003, FILTER-004, FILTER-010, COMPARE-001, COMPARE-002, COMPARE-003, CHART-001, CHART-002, CHART-006, FOCUS-001, FOCUS-002, FOCUS-003, FOCUS-004, FOCUS-005, FOCUS-006, FOCUS-007, FOCUS-008, FOCUS-009, FOCUS-010, A11Y-001, A11Y-003, A11Y-008, ROUTE-004]
 blockers: [W27-UI-AN-003-HTML-CONTRACT-COMPLETION]
 supersession_reason: The product owner accepted the repository-owned HTML-first UI foundation path on 2026-08-02; this external synchronization unit is retained only as historical evidence and is no longer an active delivery dependency.
 context_sources:
@@ -18,7 +18,6 @@ context_sources:
   - .codex/delivery/evidence/W21-CONTRACT-COMPILED-UI-PILOT.md
   - .codex/delivery/specs/custometry-contract-compiled-ui-prototyping-pilot.md
   - custometry-ui-blueprint-ru.md
-  - docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md
 start_probe:
   boundary: exact authorized Figma library hX3nQOtcSdCc97uv26m9eG page 0:1 and product file MXfxuhSFpIczbUtFmOSyPp page 0:1, including preserved W21 product node 40:536 and its registered library identities
   read_only_check: use figma:figma-use before any write to confirm both files are Figma Design targets, compare their current top-level and registered component inventory with W21 evidence and packages/contracts/ui-design, confirm node 40:536 is still readable, and capture any intervening drift without inspecting credentials, cookies, browser storage, or unrelated files
@@ -29,11 +28,8 @@ change_scope:
     - .codex/delivery/evidence/W28-UI-AN-003-FIGMA-SYNCHRONIZATION.md
     - .codex/delivery/evidence/assets/W28-UI-AN-003-FIGMA-SYNCHRONIZATION/**
     - .codex/delivery/specs/custometry-contract-compiled-ui-prototyping-pilot.md
-    - .codex/delivery/specs/custometry-linear-workspace-ui-transition.md
-    - .codex/delivery/graphs/custometry-linear-workspace-ui-transition-v1.json
     - .codex/delivery/tickets/W22-WEB-LINEAR-APPLICATION-SHELL.md
     - custometry-ui-blueprint-ru.md
-    - docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md
     - docs/architecture/ui/custometry-linear-ui-migration-registry-v1.json
     - packages/contracts/ui-design/**
     - tools/custometry_quality/ui_design/**

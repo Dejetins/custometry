@@ -2,7 +2,7 @@
 doc_id: install-local
 title: Local development installation
 doc_version: 2
-product_spec_version: 0.9.4-draft
+product_spec_version: 0.10.0-draft
 locale: en
 visibility: public
 ship: true

@@ -2,7 +2,7 @@
 doc_id: CONTRACT-UI-SURFACE-001
 title: UI surface coverage contract
 doc_version: 5
-product_spec_version: 0.9.4-draft
+product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -10,7 +10,7 @@ requirement_ids: [UC-001, UC-002, UC-003, UC-004, UC-005, UC-006, UC-007, UC-008
 status: accepted
 proof_boundary:
   label: static-ui-surface-coverage
-  exclusions: [penpot-visual-conformance, browser-behavior, api-authorization, runtime-implementation]
+  exclusions: [ui-program-visual-conformance, browser-behavior, api-authorization, runtime-implementation]
 ---
 
 # UI Surface Coverage Contract
@@ -24,17 +24,17 @@ UI-visible product use case to one or more canonical routes, overlays, system
 surfaces, or cross-surface capability contracts. Its JSON Schema is stored next
 to it.
 
-The current target contains 116 route-level pages, 25 overlays, 5 system
-surfaces, and 22 cross-surface capabilities. W08 accepted Penpot revision 181
+The current-state inventory contains 116 route-level pages, 25 overlays, 5 system
+surfaces, and 22 cross-surface capabilities. W08 accepted historical Penpot revision 181
 with the first 110 route frames, all overlays/system surfaces, C24, and flow 09.
 The controlled W10 baseline recovery established revision 197; W10 then
 accepted all six Organization/People routes, C25, and flow 10 at terminal
 revision 213 with inventory `116/25/5`. These are observed identity/domain
-counts, not a permanent route ceiling and not proof of the new Web target.
+counts, not a permanent route ceiling, future G1 atlas, or proof of the new Web target.
 
 ## Authority and agent load order
 
-An agent performing UI architecture, Penpot, or Web work loads sources in this
+An agent performing UI architecture, `ui-design-program`, or Web work loads sources in this
 order:
 
 1. `AGENTS.md` and `.codex/AGENTS.md` for authority and delivery rules.
@@ -50,8 +50,9 @@ order:
    requirement-to-surface coverage and route-decision rationale.
 8. The applicable ready delivery ticket for exact write scope and evidence.
 
-Penpot is design evidence. It may reveal a delta, but it does not override the
-product blueprint or executable contracts.
+Historical Penpot is evidence only. It may reveal a current-inventory delta,
+but it does not override the product blueprint, executable contracts, accepted
+UI-program visual authority, or current gate evidence.
 
 ## Surface decision policy
 
@@ -83,15 +84,15 @@ Static acceptance requires all of the following:
   requirement-reference sets match the UI blueprint exactly;
 - every surface requirement ID exists in the product blueprint;
 - all 116 routes have English/Russian title parity and executable route policy;
-- the Penpot file ID is canonical, while revision drift is recorded rather than
-  silently treated as a different file.
+- legacy Penpot identity metadata remains internally consistent while it is
+  retained for historical traceability.
 
 JSON Schema proves portable shape. The repository semantic validator proves
-cross-file identity, product requirement, permission, localization, and Penpot
-count relationships. Neither proves rendered design, browser behavior,
+cross-file identity, product requirement, permission, localization, and legacy
+historical count relationships. Neither proves rendered design, browser behavior,
 authorization enforcement, accessibility, or runtime readiness.
 
-## Canonical Penpot baseline
+## Historical Penpot baseline
 
 - file ID: `7cd71457-8d32-8044-8008-549f83bb4645`;
 - current working name: `custometry`;
@@ -104,14 +105,13 @@ authorization enforcement, accessibility, or runtime readiness.
 - structurally stable and visually reviewed route frames: `116`;
 - structurally stable and visually reviewed overlays: `25`;
 - structurally stable and visually reviewed system surfaces: `5`;
-- target route frames for UI specification `0.7.0-draft`: `116`;
-- target overlays for UI specification `0.7.0-draft`: `25`;
+- current known route rows for UI requirements `0.8.0-draft`: `116`;
+- current known overlays for UI requirements `0.8.0-draft`: `25`;
 - target cross-surface capabilities: `22`.
 
-The file ID is the stable identity. A revision change is expected during design
-work and must be recorded by the audit. A file-ID mismatch is a hard stop.
-W03/W05/W06/W08 evidence and ticket state remain immutable: subsequent work records
-a new start/end revision and contract fingerprint instead of rewriting history.
+The file ID and revisions describe historical identity only. W03/W05/W06/W08
+evidence and ticket state remain immutable. Future program work does not write
+this file or use it as a current start guard.
 
 ## Population treatment and segmentation surface decision
 
@@ -148,24 +148,25 @@ are bookmarkable privacy-scoped views. No new overlay is required.
 `UI-CAP-022` owns privacy-safe contributor cards/activity projection. W10
 accepted the six frames, C25, and flow 10 at terminal revision 213.
 
-## Linear-workspace successor boundary
+## `ui-design-program` successor boundary
 
 The accepted W10 file remains historical route, domain, and composition
-evidence. UI specification `0.7.0-draft` introduces a separate Penpot vNext and
-browser transition through W19-W23. Stable route IDs, overlays, systems, and
-capability bindings remain unchanged; foundations, four themes, shell density,
-resizable panels, keyboard/motion grammar, and the Sales Analytics golden slice
-receive new evidence. No W10 frame is relabeled as vNext or runtime proof.
+evidence. UI requirements `0.8.0-draft` do not select a new visual or frontend
+target. Stable current route IDs, overlays, systems, and capability bindings are
+inputs to pre-G0 intake, but the future G1 atlas may expand them from product
+requirements and owner intent. No W10 frame or legacy `penpot_status` is
+relabeled as current design, browser, or program acceptance.
 
 ## Change and proof rules
 
-Adding or removing a route updates the UI blueprint, identity registry,
+Adding or removing a current route updates the UI blueprint, identity registry,
 executable manifest, localization catalogs, surface bindings, schemas when
-their shape changes, validators, and Penpot backlog/baseline evidence in one
-change. Adding an overlay, system surface, or cross-surface capability updates
+their shape changes, validators, and current program inventory when one exists.
+Legacy historical metadata changes only when its factual provenance changes.
+Adding an overlay, system surface, or cross-surface capability updates
 the UI blueprint and surface manifest together.
 
 An audit may recommend a new route only by applying the decision policy and
 showing why an existing route, tab, query state, drawer, modal, or reusable
 component is insufficient. It may not change normative product behavior or
-edit Penpot unless a later ticket explicitly authorizes those writes.
+mutate a design source without current program authority.

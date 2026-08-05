@@ -8,9 +8,9 @@ The repository is permanently public. Never commit credentials, customer data, p
 
 ## Specifications
 
-- [Machine-readable technical blueprint](./custometry-technical-blueprint-ru.md) — normative source of truth, version `0.9.4-draft`.
+- [Machine-readable technical blueprint](./custometry-technical-blueprint-ru.md) — normative source of truth, version `0.10.0-draft`.
 - [Human-readable technical blueprint](./custometry-technical-blueprint-human-ru.md) — synchronized explanatory representation.
-- [Linear-workspace UI transition specification](./.codex/delivery/specs/custometry-linear-workspace-ui-transition.md) — accepted authenticated-Web migration boundary; backend plans remain unchanged.
+- [UI/UX requirements baseline](./custometry-ui-blueprint-ru.md) — pre-G0 product UI requirements and current surface inventory for the next product-wide UI design program.
 
 If the documents diverge, the machine-readable blueprint wins. New normative requirements must first be added there and mirrored into the human-readable document.
 
@@ -26,11 +26,13 @@ If the documents diverge, the machine-readable blueprint wins. New normative req
 - English default/fallback and complete Russian localization;
 - single-server Docker Compose topology through `v1_target`.
 
-Development is contract-backed UI-first. The authenticated Web moves through a
-reversible Linear-workspace route boundary with React, TypeScript, Vite, MobX,
-TanStack Query, styled-components, and exactly four semantic themes; existing
-backend plans and REST/SSE contracts do not change. Each bounded context then
-replaces contract-generated mocks with a real vertical slice through API,
+Development is contract-backed and UI-first. The previous Linear/Penpot target
+has been retired. Product-wide UI work starts with `ui-design-program` pre-G0
+intake, then establishes a complete screen atlas, journeys, families, waves,
+an accepted platform baseline, and responsive-Web evidence before implementation
+handoff. The current frontend implementation and historical design artifacts
+are evidence, not target authority. Each bounded context still replaces
+contract-generated mocks with a real vertical slice through API,
 domain/application, PostgreSQL or artifacts, and browser/runtime proof. Static
 disconnected screens are not accepted as a product increment.
 

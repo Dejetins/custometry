@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "manifest_id": "CUSTOMETRY-PRE-G0-PILOT-V1",
+  "status": "accepted_visual_language_anchor",
+  "accepted_at": "2026-08-05",
+  "source_evidence_mode": "renderable_html",
+  "authority_scope": [
+    "calm_professional_visual_language",
+    "compact_analytics_density",
+    "visible_result_trust",
+    "focus_explore_interaction_character",
+    "ru_en_content_stress_reference"
+  ],
+  "explicit_exclusions": [
+    "exact_screen_composition",
+    "fixed_kpi_chart_table_order",
+    "complete_information_architecture",
+    "frontend_architecture",
+    "component_implementation",
+    "responsive_acceptance",
+    "mobile_specific_scope"
+  ],
+  "sources": [
+    {
+      "locale": "ru",
+      "path": "/Users/daniildegtyarev/Projects/Custometry-preserved-ui-an-004-20260804/.codex/delivery/ui-design-programs/custometry-v1/evidence/g4-fam-workspace-list-browse-focus-r1/source-visual-candidate-r2/tuples/ui-an-004--ready--vw--ru--paper--r1/source.html",
+      "sha256": "9d82b59fdf766ccc2b72616fa2c0945d99e1110794be4698c049f232425be780",
+      "size_bytes": 108920
+    },
+    {
+      "locale": "en",
+      "path": "/Users/daniildegtyarev/Projects/Custometry-preserved-ui-an-004-20260804/.codex/delivery/ui-design-programs/custometry-v1/evidence/g4-fam-workspace-list-browse-focus-r1/source-visual-candidate-r2/tuples/ui-an-004--ready--vw--en--paper--r1/source.html",
+      "sha256": "233b3c94723a14dde1eb41f1c54610bc157b311d7cf1e42338302cf839f4e8f4",
+      "size_bytes": 106664
+    }
+  ],
+  "durability_policy": "The next authorized G0 must import or otherwise repository-own the exact hash-pinned sources before treating them as gate evidence. Missing external files do not revoke the accepted intent, but they block source-fidelity claims.",
+  "mobile_scope": "unauthorized"
+}

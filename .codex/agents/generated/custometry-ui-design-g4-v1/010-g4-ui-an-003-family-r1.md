@@ -1,5 +1,6 @@
 ---
 artifact_kind: ui_design_program_stage_prompt
+status: superseded
 stage_instance_id: G4@FAM-ROUTE-WORKSPACE-OVERVIEW-BROWSE-FOCUS-CAPABLE-FOCUS-r1
 gate_id: G4
 target_id: FAM-ROUTE-WORKSPACE-OVERVIEW-BROWSE-FOCUS-CAPABLE-FOCUS@r1
@@ -49,7 +50,6 @@ context:
   consult_if_needed:
     - custometry-ui-blueprint-ru.md
     - docs/architecture/system-design.md
-    - docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md
 
 required_literals:
   - CUSTOMETRY-UI-DESIGN-PROGRAM-V1

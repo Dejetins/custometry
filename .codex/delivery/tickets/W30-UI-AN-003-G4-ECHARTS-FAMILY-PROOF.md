@@ -4,11 +4,12 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.9.4-draft
 ticket_id: W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF
-status: ready
+status: superseded
 workstream_id: W30
 summary: Prove the UI-AN-003 G4 representative family across all required states, roles, locales, themes, and responsive-Web anchors using real Apache ECharts through ChartSpec and the shared compiler, a source-backed chart-type selector, and a separate accessible Data Grid.
-requirement_ids: [ROUTE-004, THEME-001, THEME-005, THEME-008, UI-SHELL-001, UI-SHELL-002, UI-SHELL-003, UI-SHELL-004, UI-SHELL-005, UI-SHELL-006, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, UI-DENSITY-004, CHART-004, CHART-020, CHART-021, CHART-022, CHART-023, FOCUS-001, FOCUS-002, FOCUS-003, FOCUS-004, FOCUS-005, FOCUS-006, FOCUS-007, FOCUS-008, FOCUS-009, FOCUS-010, A11Y-001, A11Y-003, A11Y-008]
+requirement_ids: [ROUTE-004, THEME-001, THEME-005, THEME-008, UI-SHELL-001, UI-SHELL-002, UI-SHELL-003, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, CHART-004, FOCUS-001, FOCUS-002, FOCUS-003, FOCUS-004, FOCUS-005, FOCUS-006, FOCUS-007, FOCUS-008, FOCUS-009, FOCUS-010, A11Y-001, A11Y-003, A11Y-008]
 blockers: []
+supersession_reason: CUSTOMETRY-UI-DESIGN-PROGRAM-V1 revision 5 and its G4 family hypothesis were replaced by the owner's expanded pre-G0 product/UI baseline and accepted pilot-as-language-only authority. The old family proof is historical and must not execute or advance G5.
 plan_doc: .codex/delivery/ui-design-programs/custometry-v1/ui-design-program.json
 prompt_pack_dir: .codex/agents/generated/custometry-ui-design-g4-v1
 stage_ledger: .codex/delivery/ui-design-programs/custometry-v1/g4-stage-ledger.md
@@ -83,7 +84,7 @@ validation:
   proof_boundary: exact-ui-an-003-g4-screen-contract-plus-four-anchor-browser-raster-accessibility-keyboard-console-network-evidence-with-real-echarts
   evidence_target: .codex/delivery/evidence/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md]
 ---
 
 # Outcome

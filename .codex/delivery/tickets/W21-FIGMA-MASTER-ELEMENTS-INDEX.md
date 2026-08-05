@@ -8,20 +8,14 @@ status: superseded
 workstream_id: W21
 summary: Create the Custometry Figma Master Elements Index frame that turns the UI blueprint, route registry, roles, states, and design-standard requirements into a traceable design-system coverage contract before detail maps or screens are produced.
 requirement_ids: [WEB-ARCH-003, WEB-ARCH-005, WEB-ARCH-006, THEME-001, THEME-002, THEME-003, THEME-005, THEME-008, MOTION-001, MOTION-002, MOTION-003, MOTION-011, MOTION-012, A11Y-001, A11Y-003]
-blockers: [W19-LINEAR-REFERENCE-COMPLETION, W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE]
+blockers: []
 supersession_reason: The accepted contract-compiled UI prototyping plan replaces the index-first separate-agent workflow with a slice-first restricted manifest, deterministic renderer, read-back audit, and reproducibility pilot on UI-AN-003; W21-CONTRACT-COMPILED-UI-PILOT is the executable successor.
 context_sources:
   - AGENTS.md
   - .codex/AGENTS.md
-  - .codex/delivery/specs/custometry-linear-workspace-ui-transition.md
-  - .codex/delivery/tickets/W19-LINEAR-REFERENCE-COMPLETION.md
-  - .codex/delivery/tickets/W20-LINEAR-FRONTEND-ARCHITECTURE-SPIKE.md
   - custometry-technical-blueprint-ru.md
   - custometry-technical-blueprint-human-ru.md
   - custometry-ui-blueprint-ru.md
-  - docs/architecture/ui/linear-workspace-ui-transition-standard-v1.md
-  - docs/architecture/ui/linear-workspace-reference-manifest-v1.json
-  - docs/architecture/ui/custometry-linear-ui-migration-registry-v1.json
   - packages/contracts/routes/ui-routes.json
   - packages/contracts/routes/ui-route-contracts.json
   - packages/contracts/routes/ui-surface-contracts.json

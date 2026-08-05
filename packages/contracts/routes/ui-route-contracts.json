@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "product_spec_version": "0.9.4-draft",
-  "ui_spec_version": "0.7.0-draft",
+  "product_spec_version": "0.10.0-draft",
+  "ui_spec_version": "0.8.0-draft",
   "identity_registry_schema_version": "2.0.0",
   "source_files": [
     "custometry-technical-blueprint-ru.md",
@@ -2860,7 +2860,7 @@
         "requirement_ids": [
           "UC-004",
           "UC-012",
-          "UI-SHELL-006"
+          "PRODUCT-ANALYTICS-001"
         ]
       },
       "design": {

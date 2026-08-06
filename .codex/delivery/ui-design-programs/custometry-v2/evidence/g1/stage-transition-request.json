@@ -1,0 +1,32 @@
+{
+  "$schema": "stage-transition-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "from_stage_id": "G1@atlas-r1",
+  "from_gate": "G1",
+  "from_target": "atlas-r1",
+  "from_revision": 1,
+  "artifact": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1/ui-design-program.snapshot.json",
+  "to_gate": "G2",
+  "to_stage_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r1",
+  "to_target": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r1",
+  "to_task": ".codex/agents/generated/custometry-ui-design-g0-v2/20-g2-structure.md",
+  "status": "ready",
+  "owner_decision": null,
+  "decision_inventory": null,
+  "blockers": null,
+  "checks": [
+    "current_gate=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/current_gate.json",
+    "source_freshness=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/source_freshness.json",
+    "next_stage_inputs=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/next_stage_inputs.json",
+    "write_scope=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/write_scope.json",
+    "foreign_changes=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/foreign_changes.json",
+    "execution_route=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/execution_route.json",
+    "handoff_artifact=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/handoff_artifact.json"
+  ],
+  "summary": "G1 exact-covers 175 authoritative screens and 9 journeys with hash-pinned G1 shards and a deterministic rendered atlas; G2 structure inputs are complete and no G2 work was executed.",
+  "review_artifacts": [
+    ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1/screen-atlas.md",
+    ".codex/delivery/evidence/custometry-ui-design-program-v2/g1-atlas-report.md"
+  ],
+  "questions": []
+}

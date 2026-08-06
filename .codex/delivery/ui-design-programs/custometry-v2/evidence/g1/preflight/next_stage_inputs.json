@@ -1,0 +1,14 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "next_stage_inputs",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G1@atlas-r1",
+  "gate_id": "G1",
+  "status": "passed",
+  "facts": {
+    "next_stage_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r1",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/20-g2-structure.md",
+    "unresolved_inputs": []
+  }
+}

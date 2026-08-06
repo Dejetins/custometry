@@ -1,0 +1,24 @@
+{
+  "status": "accepted",
+  "revision": 1,
+  "decision_kind": "baseline_exception",
+  "source": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json",
+    "sha256": "4f71c55b88751839e93e5dc01b8ef3f9e5b7151a42c2949501946fe9a798b8b5"
+  },
+  "baseline_exception": {
+    "exception_id": "baseline-exception-auth",
+    "screen_ids": [
+      "UI-AUTH-001",
+      "UI-AUTH-002",
+      "UI-AUTH-003",
+      "UI-AUTH-004",
+      "UI-SHELL-AUTH"
+    ],
+    "shell_variant_id": "shell.auth",
+    "allowed_differences": [
+      "shell region presence and composition required by the source-defined surface class"
+    ],
+    "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json#baseline_exceptions/auth"
+  }
+}

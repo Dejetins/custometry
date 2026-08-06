@@ -10,6 +10,7 @@
 - [ADR-0004: UI design program governance and target reset](adr/0004-ui-design-program-governance.md)
 - [ADR-0005: Collaboration, digital measurement, and content-addressed compute reuse](adr/0005-collaboration-measurement-and-compute-reuse.md)
 - [ADR-0006: Common analytical documents, time-aware segments, and retail product analytics](adr/0006-analytical-document-retail-product-and-time-aware-segmentation.md)
+- [ADR-0007: Responsive Web frontend platform and ownership boundaries](adr/0007-responsive-web-frontend-platform.md)
 - [Architecture Decision Records](adr/README.md)
 - [ADR-NNNN: <Decision title>](adr/adr-template.md)
 

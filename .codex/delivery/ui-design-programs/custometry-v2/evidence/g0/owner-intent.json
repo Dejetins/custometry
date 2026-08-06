@@ -1,0 +1,95 @@
+{
+  "schema_id": "custometry.ui-program-owner-intent/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "task_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-G0",
+  "revision": 1,
+  "status": "accepted",
+  "source_task": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-task.txt",
+    "sha256": "485ccb2a413235689bf67a0cf1435afd41b79c42c445c39acded15e0048ed008"
+  },
+  "source_hierarchy": [
+    "current owner task and this normalized owner-intent baseline",
+    "repository AGENTS.md chain",
+    "custometry-technical-blueprint-ru.md",
+    "custometry-technical-blueprint-human-ru.md",
+    "custometry-ui-blueprint-ru.md",
+    "accepted repository architecture and ADRs",
+    "hash-pinned route and surface contracts"
+  ],
+  "scope": {
+    "platform": "responsive_web",
+    "included_release_slices": [
+      "trusted data ingestion, semantic data, metrics, methodologies, and quality",
+      "analytical documents, large workbook composition, reports, dashboards, and exports",
+      "publishing, review, comments, findings, collaboration, and stable refresh anchors",
+      "segments and reusable recalculation workflows",
+      "digital acquisition, promotion, channel, offline, and unit-economics analysis",
+      "product, category, assortment, inventory, margin, and discount analysis",
+      "forecasting, pipelines, runs, notifications, adoption, capacity, and performance operations",
+      "workspace, organization, people, access, branding, localization, themes, help, and installation administration"
+    ],
+    "excluded_release_slices": [
+      "mobile-specific information architecture or native mobile application",
+      "B2B product scope",
+      "activation or reverse ETL",
+      "arbitrary notebooks or arbitrary SQL authoring",
+      "probabilistic identity resolution",
+      "unapproved causal attribution",
+      "rankings or leaderboards",
+      "cloning another platform"
+    ],
+    "public_site_in_scope": false,
+    "mobile_scope": "unauthorized"
+  },
+  "critical_journeys": [
+    "data-to-trusted-result",
+    "compose-large-workbook",
+    "publish-review-collaborate",
+    "refresh-with-stable-anchors",
+    "define-recalculate-reuse-segment",
+    "digital-to-offline-unit-economics",
+    "product-category-assortment-inventory",
+    "open-100x30-document-without-duplicate-compute",
+    "adoption-and-performance-operations"
+  ],
+  "visual_authority": {
+    "source_evidence_mode": "renderable_html",
+    "screen_acceptance_scope": "Visual-language anchor only; no exact-screen fidelity authority for novel or target surfaces.",
+    "visual_language_scope": "Calm professional character, compact analytical density, concise KPI and context chrome, visible Result Trust, Focus/Explore interaction character, and independent RU/EN content-stress evidence.",
+    "reusable_foundation_scope": "Only source-backed primitives measured into the G0 platform baseline; exact composition, information architecture, responsive acceptance, and implementation remain excluded.",
+    "inheritance_policy": "required",
+    "mobile_scope": "unauthorized"
+  },
+  "source_visual": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot/ru/source.html",
+    "sha256": "9d82b59fdf766ccc2b72616fa2c0945d99e1110794be4698c049f232425be780"
+  },
+  "supporting_visual": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot/en/source.html",
+    "sha256": "233b3c94723a14dde1eb41f1c54610bc157b311d7cf1e42338302cf839f4e8f4"
+  },
+  "pilot_limits": [
+    "visual-language and density anchor only",
+    "not exact composition, information architecture, frontend architecture, component implementation, responsive acceptance, or novel-screen fidelity authority"
+  ],
+  "architecture_boundary": {
+    "path": "docs/adr/0007-responsive-web-frontend-platform.md",
+    "frontend": "React/TypeScript responsive Web application with product-owned semantic UI foundation",
+    "server_state": "TanStack Query is the sole server-state cache and invalidation owner",
+    "presentation_state": "MobX is limited to scoped presentation and draft state",
+    "ports_and_adapters": "API/SSE adapters own transport, cancellation, errors, and redaction; the browser cannot create terminal domain state",
+    "responsive_range_css_px": {
+      "min_width": 768,
+      "max_width": 1920
+    }
+  },
+  "execution_limits": {
+    "active_gate": "G0",
+    "next_gate_not_executed": "G1",
+    "no_git_publication": true,
+    "no_deployment": true,
+    "no_figma_or_browser_work": true,
+    "v1_status": "terminal_historical_evidence_only"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2.visual-authority",
+  "decision_kind": "visual_authority",
+  "status": "accepted",
+  "revision": 1,
+  "decision_text": "Record the exact pilot as a visual-language and density anchor for responsive Web, with no mobile or exact-screen authority.",
+  "owner_input": "The exact accepted owner request is hash-pinned at .codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-task.txt; its normalized scope and visual limits are in .codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json.",
+  "recorded_at": "2026-08-05T22:00:00+00:00",
+  "accepted_values": [
+    {
+      "visual_authority": {
+        "source_evidence_mode": "renderable_html",
+        "screen_acceptance_scope": "Visual-language anchor only; no exact-screen fidelity authority for novel or target surfaces.",
+        "visual_language_scope": "Calm professional character, compact analytical density, concise KPI and context chrome, visible Result Trust, Focus/Explore interaction character, and independent RU/EN content-stress evidence.",
+        "reusable_foundation_scope": "Only source-backed primitives measured into the G0 platform baseline; exact composition, information architecture, responsive acceptance, and implementation remain excluded.",
+        "inheritance_policy": "required",
+        "mobile_scope": "unauthorized"
+      },
+      "source_visual": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot/ru/source.html",
+        "sha256": "9d82b59fdf766ccc2b72616fa2c0945d99e1110794be4698c049f232425be780"
+      },
+      "supporting_visual": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot/en/source.html",
+        "sha256": "233b3c94723a14dde1eb41f1c54610bc157b311d7cf1e42338302cf839f4e8f4"
+      },
+      "pilot_limits": [
+        "visual-language and density anchor only",
+        "not exact composition, information architecture, frontend architecture, component implementation, responsive acceptance, or novel-screen fidelity authority"
+      ]
+    }
+  ],
+  "target": {
+    "artifact_kind": "program",
+    "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+    "revision": 1,
+    "validation_profile": "g0_owner_intent",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json"
+  }
+}

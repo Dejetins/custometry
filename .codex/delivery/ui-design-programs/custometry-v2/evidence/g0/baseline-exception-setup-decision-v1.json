@@ -1,0 +1,35 @@
+{
+  "status": "accepted",
+  "revision": 1,
+  "decision_kind": "baseline_exception",
+  "source": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json",
+    "sha256": "4f71c55b88751839e93e5dc01b8ef3f9e5b7151a42c2949501946fe9a798b8b5"
+  },
+  "baseline_exception": {
+    "exception_id": "baseline-exception-setup",
+    "screen_ids": [
+      "UI-ADMIN-001",
+      "UI-ADMIN-002",
+      "UI-ADMIN-005",
+      "UI-ADMIN-006",
+      "UI-ADMIN-007",
+      "UI-ADMIN-008",
+      "UI-ADMIN-009",
+      "UI-ADMIN-010",
+      "UI-ADMIN-011",
+      "UI-ADMIN-012",
+      "UI-ADMIN-014",
+      "UI-ADMIN-015",
+      "UI-ADMIN-016",
+      "UI-ADMIN-017",
+      "UI-OPS-004",
+      "UI-SHELL-INSTALLATION"
+    ],
+    "shell_variant_id": "shell.setup",
+    "allowed_differences": [
+      "shell region presence and composition required by the source-defined surface class"
+    ],
+    "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json#baseline_exceptions/setup"
+  }
+}

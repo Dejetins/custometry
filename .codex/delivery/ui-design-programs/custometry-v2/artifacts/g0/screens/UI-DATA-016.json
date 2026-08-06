@@ -1,0 +1,259 @@
+{
+  "screen": {
+    "screen_id": "UI-DATA-016",
+    "page_id": "UI-DATA-016",
+    "route_id": "UI-DATA-016",
+    "route": "/w/:workspaceKey/data-guides",
+    "surface_kind": "route_screen",
+    "visual_surface": true,
+    "shell_variant_id": "shell.workspace",
+    "purpose": "Provide the list contract for /w/:workspaceKey/data-guides",
+    "user_outcomes": [
+      "Provide the list contract for /w/:workspaceKey/data-guides"
+    ],
+    "entry_points": [
+      "source-defined product navigation or invocation"
+    ],
+    "exit_points": [
+      "return to the invoking or permitted destination"
+    ],
+    "source_refs": [
+      "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+    ],
+    "data": {
+      "reads": [],
+      "writes": [],
+      "computed": [],
+      "refresh_behavior": "source-defined refresh with stable object and result anchors",
+      "freshness_behavior": "show freshness and Result Trust metadata when applicable",
+      "empty_data_meaning": "the source-defined dataset or result has no permitted records"
+    },
+    "role_ids": [
+      "DS",
+      "AN",
+      "VW"
+    ],
+    "permission_behavior": "guard profile workspace_permission with source-defined object and action scope",
+    "regions": [
+      {
+        "region_id": "UI-DATA-016.content",
+        "purpose": "Provide the list contract for /w/:workspaceKey/data-guides",
+        "content": "source-backed content, controls, state, trust, and recovery information",
+        "data_refs": [],
+        "state_ids": [
+          "UI-DATA-016.initial",
+          "UI-DATA-016.loading",
+          "UI-DATA-016.populated",
+          "UI-DATA-016.error",
+          "UI-DATA-016.permission_denied",
+          "UI-DATA-016.recovery"
+        ],
+        "action_ids": [
+          "UI-DATA-016.data_guide.publish"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+        ]
+      }
+    ],
+    "states": [
+      {
+        "state_id": "UI-DATA-016.initial",
+        "kind": "initial",
+        "trigger": "the source-backed initial condition is active",
+        "visible_region_ids": [
+          "UI-DATA-016.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+        ]
+      },
+      {
+        "state_id": "UI-DATA-016.loading",
+        "kind": "loading",
+        "trigger": "the source-backed loading condition is active",
+        "visible_region_ids": [
+          "UI-DATA-016.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+        ]
+      },
+      {
+        "state_id": "UI-DATA-016.populated",
+        "kind": "populated",
+        "trigger": "the source-backed populated condition is active",
+        "visible_region_ids": [
+          "UI-DATA-016.content"
+        ],
+        "available_action_ids": [
+          "UI-DATA-016.data_guide.publish"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+        ]
+      },
+      {
+        "state_id": "UI-DATA-016.error",
+        "kind": "error",
+        "trigger": "the source-backed error condition is active",
+        "visible_region_ids": [
+          "UI-DATA-016.content"
+        ],
+        "available_action_ids": [
+          "UI-DATA-016.data_guide.publish"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+        ]
+      },
+      {
+        "state_id": "UI-DATA-016.permission_denied",
+        "kind": "permission_denied",
+        "trigger": "the source-backed permission_denied condition is active",
+        "visible_region_ids": [
+          "UI-DATA-016.content"
+        ],
+        "available_action_ids": [
+          "UI-DATA-016.data_guide.publish"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+        ]
+      },
+      {
+        "state_id": "UI-DATA-016.recovery",
+        "kind": "recovery",
+        "trigger": "the source-backed recovery condition is active",
+        "visible_region_ids": [
+          "UI-DATA-016.content"
+        ],
+        "available_action_ids": [
+          "UI-DATA-016.data_guide.publish"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+        ]
+      }
+    ],
+    "state_applicability": [
+      {
+        "kind": "initial",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "loading",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "populated",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "empty",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/22: empty is not required by the G0 source contract"
+      },
+      {
+        "kind": "partial",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/22: partial is not required by the G0 source contract"
+      },
+      {
+        "kind": "error",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "permission_denied",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "offline",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/22: offline is not required by the G0 source contract"
+      },
+      {
+        "kind": "recovery",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "terminal",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/22: terminal is not required by the G0 source contract"
+      },
+      {
+        "kind": "other",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/22: other is not required by the G0 source contract"
+      }
+    ],
+    "actions": [
+      {
+        "action_id": "UI-DATA-016.data_guide.publish",
+        "control_type": "button",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "size_class": "sm",
+        "label": "Data guide Publish",
+        "icon_id": null,
+        "region_id": "UI-DATA-016.content",
+        "intent": "Data guide Publish",
+        "visibility": "when the source contract and permission profile allow it",
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "preconditions": [
+          "permission data_guide.publish"
+        ],
+        "trigger": "click, Enter, or Space",
+        "outcome": "Data guide Publish completes or the next contract-bound surface opens",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "recovery": "retain context and expose a safe retry or return path",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "side_effects": [],
+        "destructive": false,
+        "permission_refs": [
+          "data_guide.publish"
+        ],
+        "keyboard": "Enter or Space on the focused control",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/22"
+        ]
+      }
+    ],
+    "context_menus": [],
+    "related_surface_ids": [],
+    "no_actions_reason": null,
+    "accessibility_contract": "semantic structure, complete keyboard operation, visible focus, named controls, and non-color-only state",
+    "responsive_content_priorities": [
+      "preserve task, trust, recovery, and primary action meaning across the supported Web range"
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "1.2.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G1@atlas-r1",
+    "gate_id": "G1",
+    "target_id": "atlas-r1",
+    "revision": 1,
+    "validation_profile": "atlas_gate",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1/ui-design-program.snapshot.json",
+    "artifact_sha256": "842e2f2f43715a5bb2aba904d3371186e03e19746e557443caf840c6e7ac7a98"
+  },
+  "to_stage": {
+    "stage_instance_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r1",
+    "gate_id": "G2",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r1",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/20-g2-structure.md"
+  },
+  "readiness_status": "ready",
+  "next_stage_allowed": true,
+  "decision_inventory": [],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/current_gate.json",
+      "evidence_sha256": "c40cd35a4d07c4874566afc1f35578d48d743270750ee87b3d7ae1a6115081f5"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/execution_route.json",
+      "evidence_sha256": "012c0216ddf2a50d3895e5c97a7ebefe5db04d1b7de2587647239bbce5a8854c"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/foreign_changes.json",
+      "evidence_sha256": "d6e34070624069c5bac75fd82acc1f65f648a507f28d309d5508c1db719aa80e"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/handoff_artifact.json",
+      "evidence_sha256": "b5d46984ef20f253f782e1472dbabca6b2c1ef797926e1552a4bfca404d10640"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/next_stage_inputs.json",
+      "evidence_sha256": "3a807c1c3f3fb2b1743ef1ce05ca6cb05dedd59549ca4d64b9a6a5efc0f43691"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/source_freshness.json",
+      "evidence_sha256": "05aa7168579b2cec7701b4d79c23ea1e0533f0e8899de275a0cd2b97e6e009fb"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1/preflight/write_scope.json",
+      "evidence_sha256": "fd77c56ccaf0d073ccccb931fda5f043d1b8544f1787167d96885ed9a8d3ef2f"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "G1 exact-covers 175 authoritative screens and 9 journeys with hash-pinned G1 shards and a deterministic rendered atlas; G2 structure inputs are complete and no G2 work was executed.",
+    "review_artifact_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1/screen-atlas.md",
+      ".codex/delivery/evidence/custometry-ui-design-program-v2/g1-atlas-report.md"
+    ],
+    "questions": []
+  },
+  "owner_decision_ref": null,
+  "owner_decision_sha256": null,
+  "program_complete": false
+}

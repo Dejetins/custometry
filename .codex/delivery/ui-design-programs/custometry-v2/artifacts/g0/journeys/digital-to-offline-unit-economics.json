@@ -1,0 +1,52 @@
+{
+  "journey": {
+    "journey_id": "digital-to-offline-unit-economics",
+    "purpose": "digital to offline unit economics",
+    "role_ids": [
+      "all"
+    ],
+    "preconditions": [
+      "the user has a permitted workspace or installation context"
+    ],
+    "entry_screen_ids": [
+      "UI-AN-009"
+    ],
+    "terminal_screen_ids": [
+      "UI-PROMO-003"
+    ],
+    "outcomes": [
+      "complete digital to offline unit economics with trust and stable context"
+    ],
+    "transitions": [
+      {
+        "transition_id": "digital-to-offline-unit-economics.1",
+        "from_screen_id": "UI-AN-009",
+        "action_id": "journey.digital-to-offline-unit-economics.1",
+        "to_screen_id": "UI-PROMO-001",
+        "external_boundary": null,
+        "outcome": "advance the accepted digital-to-offline-unit-economics journey",
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json#critical_journeys/5"
+        ]
+      },
+      {
+        "transition_id": "digital-to-offline-unit-economics.2",
+        "from_screen_id": "UI-PROMO-001",
+        "action_id": "journey.digital-to-offline-unit-economics.2",
+        "to_screen_id": "UI-PROMO-003",
+        "external_boundary": null,
+        "outcome": "advance the accepted digital-to-offline-unit-economics journey",
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json#critical_journeys/5"
+        ]
+      }
+    ],
+    "source_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0/owner-intent.json#critical_journeys/5"
+    ]
+  }
+}

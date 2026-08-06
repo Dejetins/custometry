@@ -1,0 +1,18 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "write_scope",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G1@atlas-r1",
+  "gate_id": "G1",
+  "status": "passed",
+  "facts": {
+    "allowed_paths": [
+      ".codex/delivery/ui-design-programs/custometry-v2/**",
+      ".codex/agents/generated/custometry-ui-design-g0-v2/**",
+      ".codex/delivery/evidence/custometry-ui-design-program-v2/**"
+    ],
+    "authorization_basis": "explicit_current_user_authorization",
+    "outside_scope_paths": []
+  }
+}

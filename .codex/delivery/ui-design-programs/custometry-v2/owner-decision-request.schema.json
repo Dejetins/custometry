@@ -8,7 +8,7 @@
     "$schema": {"type": "string"},
     "program_id": {"type": "string", "minLength": 1},
     "decision_id": {"type": "string", "minLength": 1},
-    "decision_kind": {"enum": ["visual_authority", "baseline_exception", "mobile_scope", "stage_acceptance", "screen_acceptance", "family_acceptance", "wave_acceptance", "program_completion"]},
+    "decision_kind": {"enum": ["visual_authority", "baseline_exception", "standard_exception", "mobile_scope", "stage_acceptance", "screen_acceptance", "family_acceptance", "wave_acceptance", "program_completion"]},
     "status": {"enum": ["accepted", "rejected", "requested_changes"]},
     "revision": {"type": "integer", "minimum": 1},
     "decision_text": {"type": "string", "minLength": 1},

@@ -1,0 +1,18 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2.finished-result",
+  "decision_kind": "stage_acceptance",
+  "status": "accepted",
+  "revision": 2,
+  "decision_text": "The owner fully accepts the corrected G3 r2 pilot-derived foundations and application-shell contract as presented in the exact hash-bound review board, and authorizes completion of this G3 task without claiming or executing G4.",
+  "owner_input": "да, вот этот вариант соответствует нужному формату и принимается полностью, завершай задачу",
+  "recorded_at": "2026-08-11T23:42:00Z",
+  "target": {
+    "artifact_kind": "program",
+    "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "revision": 2,
+    "validation_profile": "program_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json"
+  }
+}

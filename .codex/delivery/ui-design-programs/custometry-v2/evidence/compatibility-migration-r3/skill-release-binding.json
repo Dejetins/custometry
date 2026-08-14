@@ -1,0 +1,79 @@
+{
+  "cold_head_review": {
+    "disposition": "fixed_and_locally_reproved",
+    "follow_up_checks": [
+      "migrate_historical_control_plane.py --self-test",
+      "validate_stage_ledger.py --self-test",
+      "validate_cross_skill_contract.py --self-test",
+      "validate_skill_release.py"
+    ],
+    "high_findings": 4,
+    "initial_verdict": "block"
+  },
+  "files": [
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/SKILL.md",
+      "sha256": "c96923f95ba157f0ecd69454cb8ea7060fbf3c5140be3d71e8b03944fbfecf5d"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/contract-versions.json",
+      "sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/contract-versions.schema.json",
+      "sha256": "d209c4468506d0e26f14c6d0f75a97917a8fa039ffd1a6120e5a397645f09060"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/historical-control-plane-migration-request.schema.json",
+      "sha256": "9aa3245d7ace098ae9af3564762a8fff3e67a26db5383ca602ff33a1f0120766"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/historical-control-plane-successor-topology.schema.json",
+      "sha256": "57e5df0265259cff078196207513cb5e9a573069074a466469a8ea90f757c816"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/historical-control-plane-migration-receipt.schema.json",
+      "sha256": "5324eda80724cf56f9dc5cc06507980cc178394c27f44727e89ca0912c91965a"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-ledger-template.md",
+      "sha256": "8bc5d81848980eb93175a4bdf947500e8a2954306f44c112dfdeb152aec29ef0"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-runtime-profiles.json",
+      "sha256": "29260a881ce4a4114233a714f586e0b282fc32a11ad5435a62e0584ce743b402"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/negative-test-matrix.json",
+      "sha256": "4811efcd991e9ddcdbd6567a9369e038d89680284a0165b02f9d1b83a473b9db"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/references/ui-design-program-contract-v1.md",
+      "sha256": "84329d7cd413775d4b4be06699ef8c366cf60ff230586b1b617d7795f00c3a5c"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/migrate_historical_control_plane.py",
+      "sha256": "e8d1cb46030ef723bc4f1c4a4300b2147a301e4160ad9c2101925855a3ed500d"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/validate_cross_skill_contract.py",
+      "sha256": "5b7734e5291866fa099d695603bd27d4e9d642920459c2e133438cc4cb2e62b9"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/validate_skill_release.py",
+      "sha256": "aec8c7f5243549707adc59c7e25d1b540177e41841b5d4a18b484cdecd484108"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/validate_stage_ledger.py",
+      "sha256": "93e823e4cf1005806ceedc7e036cf24abcf97545a60e5ee1708fda8276dd717f"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/validate_ui_design_program.py",
+      "sha256": "1afc15b10fbb0c55fae9f6b1ed33199d1495c6da312b56af8ceca4252484acb5"
+    }
+  ],
+  "release_command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_skill_release.py",
+  "release_status": "passed",
+  "schema_id": "codex.ui-skill-release-binding/v1",
+  "skill": "/Users/daniildegtyarev/.codex/skills/ui-design-program"
+}

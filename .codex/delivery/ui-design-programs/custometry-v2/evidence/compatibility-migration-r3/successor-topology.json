@@ -1,0 +1,535 @@
+{
+  "$schema": "historical-control-plane-successor-topology.schema.json",
+  "current_stage": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+  "ledger_status": "active",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "schema_id": "codex.ui-historical-control-plane-successor-topology/v1",
+  "source_ledger_sha256": "f7aaffd8fe1f57bf66dec3011b2de174880ab18d1a3fb74dea853df99cc1fed8",
+  "successor_rows": [
+    {
+      "dependencies": [],
+      "execution_allowed": true,
+      "gate": "G0",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/02-g0-authoritative-sources-r3.md",
+      "stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+      "status": "pending",
+      "supersedes_stage": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+      "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+    },
+    {
+      "dependencies": [
+        "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G1",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/12-g1-complete-screen-atlas-r3.md",
+      "stage_instance_id": "G1@atlas-r3",
+      "status": "pending",
+      "supersedes_stage": "G1@atlas-r2",
+      "target_id": "atlas-r3"
+    },
+    {
+      "dependencies": [
+        "G1@atlas-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G2",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/22-g2-structure-r3.md",
+      "stage_instance_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+      "status": "pending",
+      "supersedes_stage": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+      "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+    },
+    {
+      "dependencies": [
+        "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G3",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/32-g3-foundations-shell-r3.md",
+      "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+      "status": "pending",
+      "supersedes_stage": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+      "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-01-family-auth-shell-auth-baseline-exception-auth-r4.md",
+      "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r4",
+      "status": "pending",
+      "supersedes_stage": "G4@family.auth.shell-auth.baseline-exception-auth-r3",
+      "target_id": "family.auth.shell-auth.baseline-exception-auth-r4"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-02-family-auth-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.auth.shell-workspace.baseline-r2",
+      "target_id": "family.auth.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-03-family-core-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.core.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.core.shell-workspace.baseline-r2",
+      "target_id": "family.core.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-04-family-data-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.data.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.data.shell-workspace.baseline-r2",
+      "target_id": "family.data.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-05-family-dq-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.dq.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.dq.shell-workspace.baseline-r2",
+      "target_id": "family.dq.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-06-family-an-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.an.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.an.shell-workspace.baseline-r2",
+      "target_id": "family.an.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-07-family-seg-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.seg.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.seg.shell-workspace.baseline-r2",
+      "target_id": "family.seg.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-08-family-fcst-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.fcst.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.fcst.shell-workspace.baseline-r2",
+      "target_id": "family.fcst.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-09-family-promo-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.promo.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.promo.shell-workspace.baseline-r2",
+      "target_id": "family.promo.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-10-family-dash-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.dash.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.dash.shell-workspace.baseline-r2",
+      "target_id": "family.dash.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-11-family-rpt-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.rpt.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.rpt.shell-workspace.baseline-r2",
+      "target_id": "family.rpt.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-12-family-pipe-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.pipe.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.pipe.shell-workspace.baseline-r2",
+      "target_id": "family.pipe.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-13-family-ops-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.ops.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.ops.shell-workspace.baseline-r2",
+      "target_id": "family.ops.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-14-family-ops-shell-setup-baseline-exception-setup-r3.md",
+      "stage_instance_id": "G4@family.ops.shell-setup.baseline-exception-setup-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.ops.shell-setup.baseline-exception-setup-r2",
+      "target_id": "family.ops.shell-setup.baseline-exception-setup-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-15-family-notify-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.notify.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.notify.shell-workspace.baseline-r2",
+      "target_id": "family.notify.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-16-family-admin-shell-setup-baseline-exception-setup-r3.md",
+      "stage_instance_id": "G4@family.admin.shell-setup.baseline-exception-setup-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.admin.shell-setup.baseline-exception-setup-r2",
+      "target_id": "family.admin.shell-setup.baseline-exception-setup-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-17-family-admin-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.admin.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.admin.shell-workspace.baseline-r2",
+      "target_id": "family.admin.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-18-family-org-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.org.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.org.shell-workspace.baseline-r2",
+      "target_id": "family.org.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-19-family-people-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.people.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.people.shell-workspace.baseline-r2",
+      "target_id": "family.people.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-20-family-help-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.help.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.help.shell-workspace.baseline-r2",
+      "target_id": "family.help.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-21-family-shell-shell-auth-baseline-exception-auth-r3.md",
+      "stage_instance_id": "G4@family.shell.shell-auth.baseline-exception-auth-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.shell.shell-auth.baseline-exception-auth-r2",
+      "target_id": "family.shell.shell-auth.baseline-exception-auth-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-22-family-shell-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.shell.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.shell.shell-workspace.baseline-r2",
+      "target_id": "family.shell.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-23-family-shell-shell-setup-baseline-exception-setup-r3.md",
+      "stage_instance_id": "G4@family.shell.shell-setup.baseline-exception-setup-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.shell.shell-setup.baseline-exception-setup-r2",
+      "target_id": "family.shell.shell-setup.baseline-exception-setup-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-24-family-ovr-shell-workspace-baseline-r3.md",
+      "stage_instance_id": "G4@family.ovr.shell-workspace.baseline-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.ovr.shell-workspace.baseline-r2",
+      "target_id": "family.ovr.shell-workspace.baseline-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-25-family-ovr-shell-focus-baseline-exception-focus-r3.md",
+      "stage_instance_id": "G4@family.ovr.shell-focus.baseline-exception-focus-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.ovr.shell-focus.baseline-exception-focus-r2",
+      "target_id": "family.ovr.shell-focus.baseline-exception-focus-r3"
+    },
+    {
+      "dependencies": [
+        "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G4",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-26-family-sys-shell-system-baseline-exception-system-r3.md",
+      "stage_instance_id": "G4@family.sys.shell-system.baseline-exception-system-r3",
+      "status": "pending",
+      "supersedes_stage": "G4@family.sys.shell-system.baseline-exception-system-r2",
+      "target_id": "family.sys.shell-system.baseline-exception-system-r3"
+    },
+    {
+      "dependencies": [
+        "G4@family.auth.shell-auth.baseline-exception-auth-r4",
+        "G4@family.auth.shell-workspace.baseline-r3",
+        "G4@family.core.shell-workspace.baseline-r3",
+        "G4@family.data.shell-workspace.baseline-r3",
+        "G4@family.dq.shell-workspace.baseline-r3",
+        "G4@family.an.shell-workspace.baseline-r3",
+        "G4@family.seg.shell-workspace.baseline-r3",
+        "G4@family.fcst.shell-workspace.baseline-r3",
+        "G4@family.promo.shell-workspace.baseline-r3",
+        "G4@family.dash.shell-workspace.baseline-r3",
+        "G4@family.rpt.shell-workspace.baseline-r3",
+        "G4@family.pipe.shell-workspace.baseline-r3",
+        "G4@family.ops.shell-workspace.baseline-r3",
+        "G4@family.ops.shell-setup.baseline-exception-setup-r3",
+        "G4@family.notify.shell-workspace.baseline-r3",
+        "G4@family.admin.shell-setup.baseline-exception-setup-r3",
+        "G4@family.admin.shell-workspace.baseline-r3",
+        "G4@family.org.shell-workspace.baseline-r3",
+        "G4@family.people.shell-workspace.baseline-r3",
+        "G4@family.help.shell-workspace.baseline-r3",
+        "G4@family.shell.shell-auth.baseline-exception-auth-r3",
+        "G4@family.shell.shell-workspace.baseline-r3",
+        "G4@family.shell.shell-setup.baseline-exception-setup-r3",
+        "G4@family.ovr.shell-workspace.baseline-r3",
+        "G4@family.ovr.shell-focus.baseline-exception-focus-r3",
+        "G4@family.sys.shell-system.baseline-exception-system-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G5",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/50-g5-01-wave-g5-01-r3.md",
+      "stage_instance_id": "G5@wave.g5.01-r3",
+      "status": "pending",
+      "supersedes_stage": "G5@wave.g5.01-r2",
+      "target_id": "wave.g5.01-r3"
+    },
+    {
+      "dependencies": [
+        "G4@family.auth.shell-auth.baseline-exception-auth-r4",
+        "G4@family.auth.shell-workspace.baseline-r3",
+        "G4@family.core.shell-workspace.baseline-r3",
+        "G4@family.data.shell-workspace.baseline-r3",
+        "G4@family.dq.shell-workspace.baseline-r3",
+        "G4@family.an.shell-workspace.baseline-r3",
+        "G4@family.seg.shell-workspace.baseline-r3",
+        "G4@family.fcst.shell-workspace.baseline-r3",
+        "G4@family.promo.shell-workspace.baseline-r3",
+        "G4@family.dash.shell-workspace.baseline-r3",
+        "G4@family.rpt.shell-workspace.baseline-r3",
+        "G4@family.pipe.shell-workspace.baseline-r3",
+        "G4@family.ops.shell-workspace.baseline-r3",
+        "G4@family.ops.shell-setup.baseline-exception-setup-r3",
+        "G4@family.notify.shell-workspace.baseline-r3",
+        "G4@family.admin.shell-setup.baseline-exception-setup-r3",
+        "G4@family.admin.shell-workspace.baseline-r3",
+        "G4@family.org.shell-workspace.baseline-r3",
+        "G4@family.people.shell-workspace.baseline-r3",
+        "G4@family.help.shell-workspace.baseline-r3",
+        "G4@family.shell.shell-auth.baseline-exception-auth-r3",
+        "G4@family.shell.shell-workspace.baseline-r3",
+        "G4@family.shell.shell-setup.baseline-exception-setup-r3",
+        "G4@family.ovr.shell-workspace.baseline-r3",
+        "G4@family.ovr.shell-focus.baseline-exception-focus-r3",
+        "G4@family.sys.shell-system.baseline-exception-system-r3",
+        "G5@wave.g5.01-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G5",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/50-g5-02-wave-g5-02-r3.md",
+      "stage_instance_id": "G5@wave.g5.02-r3",
+      "status": "pending",
+      "supersedes_stage": "G5@wave.g5.02-r2",
+      "target_id": "wave.g5.02-r3"
+    },
+    {
+      "dependencies": [
+        "G4@family.auth.shell-auth.baseline-exception-auth-r4",
+        "G4@family.auth.shell-workspace.baseline-r3",
+        "G4@family.core.shell-workspace.baseline-r3",
+        "G4@family.data.shell-workspace.baseline-r3",
+        "G4@family.dq.shell-workspace.baseline-r3",
+        "G4@family.an.shell-workspace.baseline-r3",
+        "G4@family.seg.shell-workspace.baseline-r3",
+        "G4@family.fcst.shell-workspace.baseline-r3",
+        "G4@family.promo.shell-workspace.baseline-r3",
+        "G4@family.dash.shell-workspace.baseline-r3",
+        "G4@family.rpt.shell-workspace.baseline-r3",
+        "G4@family.pipe.shell-workspace.baseline-r3",
+        "G4@family.ops.shell-workspace.baseline-r3",
+        "G4@family.ops.shell-setup.baseline-exception-setup-r3",
+        "G4@family.notify.shell-workspace.baseline-r3",
+        "G4@family.admin.shell-setup.baseline-exception-setup-r3",
+        "G4@family.admin.shell-workspace.baseline-r3",
+        "G4@family.org.shell-workspace.baseline-r3",
+        "G4@family.people.shell-workspace.baseline-r3",
+        "G4@family.help.shell-workspace.baseline-r3",
+        "G4@family.shell.shell-auth.baseline-exception-auth-r3",
+        "G4@family.shell.shell-workspace.baseline-r3",
+        "G4@family.shell.shell-setup.baseline-exception-setup-r3",
+        "G4@family.ovr.shell-workspace.baseline-r3",
+        "G4@family.ovr.shell-focus.baseline-exception-focus-r3",
+        "G4@family.sys.shell-system.baseline-exception-system-r3",
+        "G5@wave.g5.02-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G5",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/50-g5-03-wave-g5-03-r3.md",
+      "stage_instance_id": "G5@wave.g5.03-r3",
+      "status": "pending",
+      "supersedes_stage": "G5@wave.g5.03-r2",
+      "target_id": "wave.g5.03-r3"
+    },
+    {
+      "dependencies": [
+        "G4@family.auth.shell-auth.baseline-exception-auth-r4",
+        "G4@family.auth.shell-workspace.baseline-r3",
+        "G4@family.core.shell-workspace.baseline-r3",
+        "G4@family.data.shell-workspace.baseline-r3",
+        "G4@family.dq.shell-workspace.baseline-r3",
+        "G4@family.an.shell-workspace.baseline-r3",
+        "G4@family.seg.shell-workspace.baseline-r3",
+        "G4@family.fcst.shell-workspace.baseline-r3",
+        "G4@family.promo.shell-workspace.baseline-r3",
+        "G4@family.dash.shell-workspace.baseline-r3",
+        "G4@family.rpt.shell-workspace.baseline-r3",
+        "G4@family.pipe.shell-workspace.baseline-r3",
+        "G4@family.ops.shell-workspace.baseline-r3",
+        "G4@family.ops.shell-setup.baseline-exception-setup-r3",
+        "G4@family.notify.shell-workspace.baseline-r3",
+        "G4@family.admin.shell-setup.baseline-exception-setup-r3",
+        "G4@family.admin.shell-workspace.baseline-r3",
+        "G4@family.org.shell-workspace.baseline-r3",
+        "G4@family.people.shell-workspace.baseline-r3",
+        "G4@family.help.shell-workspace.baseline-r3",
+        "G4@family.shell.shell-auth.baseline-exception-auth-r3",
+        "G4@family.shell.shell-workspace.baseline-r3",
+        "G4@family.shell.shell-setup.baseline-exception-setup-r3",
+        "G4@family.ovr.shell-workspace.baseline-r3",
+        "G4@family.ovr.shell-focus.baseline-exception-focus-r3",
+        "G4@family.sys.shell-system.baseline-exception-system-r3",
+        "G5@wave.g5.03-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G5",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/50-g5-04-wave-g5-04-r3.md",
+      "stage_instance_id": "G5@wave.g5.04-r3",
+      "status": "pending",
+      "supersedes_stage": "G5@wave.g5.04-r2",
+      "target_id": "wave.g5.04-r3"
+    },
+    {
+      "dependencies": [
+        "G5@wave.g5.01-r3",
+        "G5@wave.g5.02-r3",
+        "G5@wave.g5.03-r3",
+        "G5@wave.g5.04-r3"
+      ],
+      "execution_allowed": false,
+      "gate": "G6",
+      "prompt_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/62-g6-handoff-r3.md",
+      "stage_instance_id": "G6@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+      "status": "pending",
+      "supersedes_stage": "G6@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+      "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+    }
+  ],
+  "target_registry_sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31"
+}

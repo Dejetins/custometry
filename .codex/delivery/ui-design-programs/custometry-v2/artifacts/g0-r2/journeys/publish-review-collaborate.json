@@ -1,0 +1,52 @@
+{
+  "journey": {
+    "journey_id": "publish-review-collaborate",
+    "purpose": "publish review collaborate",
+    "role_ids": [
+      "all"
+    ],
+    "preconditions": [
+      "the user has a permitted workspace or installation context"
+    ],
+    "entry_screen_ids": [
+      "UI-AN-013"
+    ],
+    "terminal_screen_ids": [
+      "UI-OVR-024"
+    ],
+    "outcomes": [
+      "complete publish review collaborate with trust and stable context"
+    ],
+    "transitions": [
+      {
+        "transition_id": "publish-review-collaborate.1",
+        "from_screen_id": "UI-AN-013",
+        "action_id": "journey.publish-review-collaborate.1",
+        "to_screen_id": "UI-AN-014",
+        "external_boundary": null,
+        "outcome": "advance the accepted publish-review-collaborate journey",
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/2"
+        ]
+      },
+      {
+        "transition_id": "publish-review-collaborate.2",
+        "from_screen_id": "UI-AN-014",
+        "action_id": "journey.publish-review-collaborate.2",
+        "to_screen_id": "UI-OVR-024",
+        "external_boundary": null,
+        "outcome": "advance the accepted publish-review-collaborate journey",
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/2"
+        ]
+      }
+    ],
+    "source_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/2"
+    ]
+  }
+}

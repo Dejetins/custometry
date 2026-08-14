@@ -1,0 +1,42 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2.finished-result",
+  "decision_kind": "stage_acceptance",
+  "target": {
+    "artifact_kind": "program",
+    "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "revision": 2,
+    "validation_profile": "program_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "21810c42b847bfc591db9a7ad76cf3df64c6bb5ad0cb82dd80082bd0c7a124d2"
+  },
+  "decision": {
+    "status": "accepted",
+    "revision": 2,
+    "decision_text": "The owner fully accepts the corrected G3 r2 pilot-derived foundations and application-shell contract as presented in the exact hash-bound review board, and authorizes completion of this G3 task without claiming or executing G4.",
+    "accepted_values": [
+      {
+        "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+        "revision": 2,
+        "validation_profile": "program_ready",
+        "sha256": "21810c42b847bfc591db9a7ad76cf3df64c6bb5ad0cb82dd80082bd0c7a124d2"
+      }
+    ],
+    "accepted_value_sha256s": [
+      "242f34e57d4f8529770609c48a3e1ded76160392d6fd4c58c855e83188897494"
+    ]
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "да, вот этот вариант соответствует нужному формату и принимается полностью, завершай задачу",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-11T23:42:00Z"
+  }
+}

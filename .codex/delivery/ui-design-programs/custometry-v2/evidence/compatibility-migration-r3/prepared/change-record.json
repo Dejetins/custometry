@@ -1,0 +1,14 @@
+{
+  "$schema": "change-record.schema.json",
+  "schema_id": "codex.ui-change-record/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "change_id": "custometry-v2-active-contract-and-pilot-standard-migration-r3",
+  "change_kind": "baseline_or_visual_authority_replacement",
+  "target": {
+    "stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-design-program.snapshot.json",
+    "artifact_sha256": "ff2ef293fff2fe9ddfe4cb7487fc0e7b428bfcf3a783d31648f1878de36341bc"
+  },
+  "owner_input": "Migrate the accepted Custometry UI program from registered historical profiles to the current pilot-standard contract, preserve product meaning and historical evidence, and create a revisioned successor chain beginning at G0.",
+  "recorded_by": "agent"
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "owner-input-response-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/owner-review-decision-packet.json",
+  "response_kind": "visual_acceptance",
+  "owner_input": "ок, G3 r4 принимается",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/stage-acceptance-decision-r4.json"
+}

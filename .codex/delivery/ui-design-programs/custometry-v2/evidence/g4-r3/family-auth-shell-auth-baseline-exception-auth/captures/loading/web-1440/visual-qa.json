@@ -1,0 +1,183 @@
+{
+  "$schema": "visual-qa-receipt.schema.json",
+  "schema_id": "codex.ui-visual-qa-receipt/v1",
+  "screen_revision_id": "UI-AUTH-001.loading.all.ru-RU.graphite.r3",
+  "anchor_id": "web-1440",
+  "contract_sha256": "9fc87ddb24b837af517fbf26bc1a221f8095e19d2746acf5233812da302d48b2",
+  "generated_by": {
+    "script": "assemble_visual_qa_receipt.py",
+    "version": "1.5.0",
+    "command": "assemble_visual_qa_receipt.py <paths-redacted>"
+  },
+  "evidence_inputs": {
+    "contract": {
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/contracts/UI-AUTH-001.loading.r3.json",
+      "sha256": "9fc87ddb24b837af517fbf26bc1a221f8095e19d2746acf5233812da302d48b2"
+    },
+    "reference_geometry": {
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/loading/web-1440/reference-geometry.json",
+      "sha256": "1156cf2e7cd18531808f3854b2239ca2e4ba3aaaeb4f34ae8c2c2761753a5579"
+    },
+    "implementation_geometry": {
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/loading/web-1440/implementation-geometry.json",
+      "sha256": "d41eae2d396b15df3a5456d941916a89a02b829eefe58dae694ef43e05673036"
+    },
+    "raster": {
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/loading/web-1440/raster.json",
+      "sha256": "2e4a357ef5181e5dc5965708502cd6c8a611a6789b6b09cd969efe3def887efc"
+    }
+  },
+  "proof_scope": {
+    "reference_capture_profile": "visual_authority_reference",
+    "implementation_capture_profile": "screen_implementation",
+    "reference_target_screen_checks_applied": false,
+    "implementation_target_screen_checks_applied": true
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "font_bundle_sha256": "61fbde09be027a0a4948811eff8653bc0ac3161438f5ec9547a7ae2c0a6a263f",
+    "fixture_sha256": "19f5399903b4325ac16dad1aebc144d4ab745806d341b942e99721d4f00e2dbd"
+  },
+  "captures": {
+    "reference_sha256": "3986879a0d50e0977f03da6cbf6fb50aa7e1071941eae70d7286b8a32e66a07d",
+    "implementation_sha256": "8d7b64d93650261c0984144269049537e999e646214d81f9f7be36bf2b2b4722"
+  },
+  "comparison": {
+    "purpose": "visual_language_conformance",
+    "reference_logical_artifact_id": "custometry-v2:accepted-pilot:ru:r2",
+    "implementation_logical_artifact_id": "custometry-v2:UI-AUTH-001:loading:r3",
+    "visual_authority_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "visual_authority_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+    "reference_render_provenance_sha256": "5ec5678be6b579072d6234f72bfd0fb73c89bb28c5ba40bbc2c45ae8a5917be8",
+    "implementation_render_provenance_sha256": "a261853a25c5c69296ca2bea06c9a0484a47fb131f8c5c04b2dd51c8918bec53",
+    "reference_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "reference_source_artifact_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+    "implementation_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/auth/sign-in/index.html",
+    "implementation_source_artifact_sha256": "7df428461d4e936afd29f3708dcdc214f3f3ee3c073352635ba14e72dba997bb",
+    "provenance_passed": true,
+    "proves_fidelity": false,
+    "blockers": []
+  },
+  "interaction": {
+    "visible_action_ids": [
+      "UI-AUTH-001.inspect"
+    ],
+    "observed_outcomes": [
+      {
+        "action_id": "UI-AUTH-001.inspect",
+        "outcome": "Форма доступна",
+        "expected_outcome": "Inspect current surface completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [
+      {
+        "check_id": "keyboard_activation",
+        "passed": true
+      },
+      {
+        "check_id": "focus_visibility",
+        "passed": true
+      },
+      {
+        "check_id": "tab_radio_behavior",
+        "passed": true
+      },
+      {
+        "check_id": "menus",
+        "passed": true
+      },
+      {
+        "check_id": "toggles",
+        "passed": true
+      },
+      {
+        "check_id": "refresh_feedback",
+        "passed": true
+      },
+      {
+        "check_id": "state_transitions",
+        "passed": true
+      },
+      {
+        "check_id": "no_unresolved_file_navigation",
+        "passed": true
+      },
+      {
+        "check_id": "no_console_errors",
+        "passed": true
+      },
+      {
+        "check_id": "no_request_failures",
+        "passed": true
+      },
+      {
+        "check_id": "no_page_horizontal_overflow",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "geometry": [
+    {
+      "region_id": "UI-AUTH-001.content",
+      "comparison_scope": "implementation_contract_only",
+      "reference": null,
+      "implementation": {
+        "x": 510,
+        "y": 175.25,
+        "width": 420,
+        "height": 549.5
+      },
+      "delta": null,
+      "allowed_delta_px": null,
+      "passed": true
+    }
+  ],
+  "computed_style_mismatches": [],
+  "missing_required_regions": [],
+  "unexpected_visible_regions": [],
+  "console_errors": [],
+  "request_failures": [],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 1,
+    "keyboard_sequence": [
+      "button"
+    ],
+    "keyboard_issues": [],
+    "passed": true
+  },
+  "pixel_diff": {
+    "dimensions_match": true,
+    "reference_size": [
+      1440,
+      900
+    ],
+    "implementation_size": [
+      1440,
+      900
+    ],
+    "different_pixels": 1195134,
+    "different_ratio": 0.9221712962962964,
+    "maximum_channel_delta": 248,
+    "channel_threshold": 0,
+    "approved_max_different_pixels": 2073600,
+    "passed": true
+  },
+  "mobile_scope": "unauthorized",
+  "result": "passed",
+  "blockers": []
+}

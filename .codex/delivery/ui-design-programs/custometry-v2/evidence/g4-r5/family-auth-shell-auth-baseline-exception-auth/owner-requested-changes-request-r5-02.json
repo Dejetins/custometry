@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r5.bounded-correction-02",
+  "decision_kind": "family_acceptance",
+  "status": "requested_changes",
+  "revision": 5,
+  "decision_text": "Structurally redesign sign-in and recovery: remove the rejected password-help phrase, correct control semantics, copy provenance, alignment, action hierarchy, and reusable pilot inheritance without changing scope or accepting the family.",
+  "owner_input": "Requested changes. The sign-in and recovery compositions are visually unacceptable. The visible phrase ‘Помощь с паролем’ is unacceptable and must not return. Buttons have incoherent geometry, hierarchy, alignment, and grouping. Text hierarchy, wording, and alignment are visibly poor. The correction must be systemic and reusable, not a one-off patch.",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.auth.shell-auth.baseline-exception-auth-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-auth-baseline-exception-auth/review-board.html"
+  }
+}

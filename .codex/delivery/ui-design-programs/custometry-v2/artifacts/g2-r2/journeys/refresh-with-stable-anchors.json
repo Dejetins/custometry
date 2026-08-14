@@ -1,0 +1,58 @@
+{
+  "journey": {
+    "journey_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+      "json_pointer": "/journeys/3",
+      "expected_id": "refresh-with-stable-anchors"
+    },
+    "criticality": "critical",
+    "criticality_origin": {
+      "kind": "product_contract",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/journeys/3/source_refs/0"
+    },
+    "entry_screen_ids": [
+      "UI-DASH-001"
+    ],
+    "intermediate_screen_ids": [],
+    "alternate_screen_ids": [],
+    "failure_screen_ids": [],
+    "recovery_screen_ids": [],
+    "terminal_screen_ids": [
+      "UI-DASH-002"
+    ],
+    "external_boundary_ids": [],
+    "transitions": [
+      {
+        "transition_ref": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/refresh-with-stable-anchors.json",
+          "json_pointer": "/normalized_transitions/0",
+          "expected_id": "refresh-with-stable-anchors.1"
+        },
+        "from_id": "UI-DASH-001",
+        "to_id": "UI-DASH-002",
+        "outcome": "terminal"
+      }
+    ],
+    "unresolved_fields": []
+  },
+  "normalized_transitions": [
+    {
+      "transition_id": "refresh-with-stable-anchors.1",
+      "from_id": "UI-DASH-001",
+      "to_id": "UI-DASH-002",
+      "outcome": "terminal",
+      "action_id": "journey.refresh-with-stable-anchors.1",
+      "failure_semantics": "retain the source screen and show deterministic failure feedback",
+      "recovery_semantics": "retry or return without losing the stable source anchor",
+      "source_refs": [
+        ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/3"
+      ],
+      "source_pointer": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/journeys/3/transitions/0"
+    }
+  ],
+  "derivation": {
+    "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/journeys/3",
+    "formula": "normalize accepted from_screen_id/to_screen_id edges; mark an edge terminal only when its target is an accepted terminal_screen_id",
+    "failure_and_recovery_semantics_preserved": true
+  }
+}

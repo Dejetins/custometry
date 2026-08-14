@@ -1,0 +1,295 @@
+{
+  "screen": {
+    "screen_id": "UI-ADMIN-018",
+    "page_id": "UI-ADMIN-018",
+    "route_id": "UI-ADMIN-018",
+    "route": "/w/:workspaceKey/access/:resourceType/:resourceId",
+    "surface_kind": "route_screen",
+    "visual_surface": true,
+    "shell_variant_id": "shell.workspace",
+    "purpose": "Provide the settings contract for /w/:workspaceKey/access/:resourceType/:resourceId",
+    "user_outcomes": [
+      "Provide the settings contract for /w/:workspaceKey/access/:resourceType/:resourceId"
+    ],
+    "entry_points": [
+      "source-defined product navigation or invocation"
+    ],
+    "exit_points": [
+      "return to the invoking or permitted destination"
+    ],
+    "source_refs": [
+      "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+    ],
+    "data": {
+      "reads": [],
+      "writes": [],
+      "computed": [],
+      "refresh_behavior": "source-defined refresh with stable object and result anchors",
+      "freshness_behavior": "show freshness and Result Trust metadata when applicable",
+      "empty_data_meaning": "the source-defined dataset or result has no permitted records"
+    },
+    "role_ids": [
+      "WA"
+    ],
+    "permission_behavior": "guard profile workspace_permission with source-defined object and action scope",
+    "regions": [
+      {
+        "region_id": "UI-ADMIN-018.content",
+        "purpose": "Provide the settings contract for /w/:workspaceKey/access/:resourceType/:resourceId",
+        "content": "source-backed content, controls, state, trust, and recovery information",
+        "data_refs": [],
+        "state_ids": [
+          "UI-ADMIN-018.initial",
+          "UI-ADMIN-018.loading",
+          "UI-ADMIN-018.populated",
+          "UI-ADMIN-018.error",
+          "UI-ADMIN-018.permission_denied",
+          "UI-ADMIN-018.recovery"
+        ],
+        "action_ids": [
+          "UI-ADMIN-018.report_access.manage",
+          "UI-ADMIN-018.dashboard_access.manage"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      }
+    ],
+    "states": [
+      {
+        "state_id": "UI-ADMIN-018.initial",
+        "kind": "initial",
+        "trigger": "the source-backed initial condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-018.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-018.loading",
+        "kind": "loading",
+        "trigger": "the source-backed loading condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-018.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-018.populated",
+        "kind": "populated",
+        "trigger": "the source-backed populated condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-018.content"
+        ],
+        "available_action_ids": [
+          "UI-ADMIN-018.report_access.manage",
+          "UI-ADMIN-018.dashboard_access.manage"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-018.error",
+        "kind": "error",
+        "trigger": "the source-backed error condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-018.content"
+        ],
+        "available_action_ids": [
+          "UI-ADMIN-018.report_access.manage",
+          "UI-ADMIN-018.dashboard_access.manage"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-018.permission_denied",
+        "kind": "permission_denied",
+        "trigger": "the source-backed permission_denied condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-018.content"
+        ],
+        "available_action_ids": [
+          "UI-ADMIN-018.report_access.manage",
+          "UI-ADMIN-018.dashboard_access.manage"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-018.recovery",
+        "kind": "recovery",
+        "trigger": "the source-backed recovery condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-018.content"
+        ],
+        "available_action_ids": [
+          "UI-ADMIN-018.report_access.manage",
+          "UI-ADMIN-018.dashboard_access.manage"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      }
+    ],
+    "state_applicability": [
+      {
+        "kind": "initial",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "loading",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "populated",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "empty",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/109: empty is not required by the G0 source contract"
+      },
+      {
+        "kind": "partial",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/109: partial is not required by the G0 source contract"
+      },
+      {
+        "kind": "error",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "permission_denied",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "offline",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/109: offline is not required by the G0 source contract"
+      },
+      {
+        "kind": "recovery",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "terminal",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/109: terminal is not required by the G0 source contract"
+      },
+      {
+        "kind": "other",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/109: other is not required by the G0 source contract"
+      }
+    ],
+    "actions": [
+      {
+        "action_id": "UI-ADMIN-018.report_access.manage",
+        "control_type": "button",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "size_class": "sm",
+        "label": "Report access Manage",
+        "icon_id": null,
+        "region_id": "UI-ADMIN-018.content",
+        "intent": "Report access Manage",
+        "visibility": "when the source contract and permission profile allow it",
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "preconditions": [
+          "permission report_access.manage"
+        ],
+        "trigger": "click, Enter, or Space",
+        "outcome": "Report access Manage completes or the next contract-bound surface opens",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "recovery": "retain context and expose a safe retry or return path",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "side_effects": [],
+        "destructive": false,
+        "permission_refs": [
+          "report_access.manage"
+        ],
+        "keyboard": "Enter or Space on the focused control",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      },
+      {
+        "action_id": "UI-ADMIN-018.dashboard_access.manage",
+        "control_type": "button",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "size_class": "sm",
+        "label": "Dashboard access Manage",
+        "icon_id": null,
+        "region_id": "UI-ADMIN-018.content",
+        "intent": "Dashboard access Manage",
+        "visibility": "when the source contract and permission profile allow it",
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "preconditions": [
+          "permission dashboard_access.manage"
+        ],
+        "trigger": "click, Enter, or Space",
+        "outcome": "Dashboard access Manage completes or the next contract-bound surface opens",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "recovery": "retain context and expose a safe retry or return path",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "side_effects": [],
+        "destructive": false,
+        "permission_refs": [
+          "dashboard_access.manage"
+        ],
+        "keyboard": "Enter or Space on the focused control",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/109"
+        ]
+      }
+    ],
+    "context_menus": [],
+    "related_surface_ids": [],
+    "no_actions_reason": null,
+    "accessibility_contract": "semantic structure, complete keyboard operation, visible focus, named controls, and non-color-only state",
+    "responsive_content_priorities": [
+      "preserve task, trust, recovery, and primary action meaning across the supported Web range"
+    ]
+  }
+}

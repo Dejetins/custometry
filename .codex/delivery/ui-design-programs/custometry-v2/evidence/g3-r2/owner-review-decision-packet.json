@@ -1,0 +1,22 @@
+{
+  "schema_id": "custometry.ui-owner-review-decision-packet/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "review_artifact": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/review-board.html",
+    "sha256": "c85d7102feb50e40a1165e89f96a734758625a96b9d8d456c695a20e31b3495f"
+  },
+  "machine_gate": {
+    "profile": "program_ready",
+    "result": "passed",
+    "artifact": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "21810c42b847bfc591db9a7ad76cf3df64c6bb5ad0cb82dd80082bd0c7a124d2"
+  },
+  "question": "Принять правила foundations и application shell, извлечённые из пилота и зафиксированные для проектирования экранов G4, или запросить ограниченную коррекцию в этой же ревизии?",
+  "allowed_responses": [
+    "accept",
+    "bounded_corrections"
+  ],
+  "resume_condition": "An unambiguous natural-language owner acceptance or bounded correction request is recorded through the canonical typed owner-response flow for this exact G3 review artifact.",
+  "next_stage_allowed": false
+}

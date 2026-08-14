@@ -22,7 +22,7 @@ owner_review_target: <non_visual_summary_for_G0-G2|finished_visuals_only_for_G3-
 visual_authority:
   source_visual_ref: <exact-current-source-visual-path>
   source_visual_sha256: <exact-current-source-visual-sha256>
-  source_evidence_mode: <renderable_html|native_image|figma_adapter>
+  source_evidence_mode: <renderable_html|native_image>
   owner_decision_ref: <exact-current-owner-decision-ref>
   screen_acceptance_scope: <exact-screen-acceptance-scope>
   visual_language_scope: <exact-visual-language-scope>

@@ -1,0 +1,259 @@
+{
+  "screen": {
+    "screen_id": "UI-PROMO-003",
+    "page_id": "UI-PROMO-003",
+    "route_id": "UI-PROMO-003",
+    "route": "/w/:workspaceKey/promotions/:id",
+    "surface_kind": "route_screen",
+    "visual_surface": true,
+    "shell_variant_id": "shell.workspace",
+    "purpose": "Provide the detail contract for /w/:workspaceKey/promotions/:id",
+    "user_outcomes": [
+      "Provide the detail contract for /w/:workspaceKey/promotions/:id"
+    ],
+    "entry_points": [
+      "source-defined product navigation or invocation"
+    ],
+    "exit_points": [
+      "return to the invoking or permitted destination"
+    ],
+    "source_refs": [
+      "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+    ],
+    "data": {
+      "reads": [],
+      "writes": [],
+      "computed": [],
+      "refresh_behavior": "source-defined refresh with stable object and result anchors",
+      "freshness_behavior": "show freshness and Result Trust metadata when applicable",
+      "empty_data_meaning": "the source-defined dataset or result has no permitted records"
+    },
+    "role_ids": [
+      "AN",
+      "WA",
+      "VW"
+    ],
+    "permission_behavior": "guard profile workspace_object with source-defined object and action scope",
+    "regions": [
+      {
+        "region_id": "UI-PROMO-003.content",
+        "purpose": "Provide the detail contract for /w/:workspaceKey/promotions/:id",
+        "content": "source-backed content, controls, state, trust, and recovery information",
+        "data_refs": [],
+        "state_ids": [
+          "UI-PROMO-003.initial",
+          "UI-PROMO-003.loading",
+          "UI-PROMO-003.populated",
+          "UI-PROMO-003.error",
+          "UI-PROMO-003.permission_denied",
+          "UI-PROMO-003.recovery"
+        ],
+        "action_ids": [
+          "UI-PROMO-003.promotion.manage"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+        ]
+      }
+    ],
+    "states": [
+      {
+        "state_id": "UI-PROMO-003.initial",
+        "kind": "initial",
+        "trigger": "the source-backed initial condition is active",
+        "visible_region_ids": [
+          "UI-PROMO-003.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+        ]
+      },
+      {
+        "state_id": "UI-PROMO-003.loading",
+        "kind": "loading",
+        "trigger": "the source-backed loading condition is active",
+        "visible_region_ids": [
+          "UI-PROMO-003.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+        ]
+      },
+      {
+        "state_id": "UI-PROMO-003.populated",
+        "kind": "populated",
+        "trigger": "the source-backed populated condition is active",
+        "visible_region_ids": [
+          "UI-PROMO-003.content"
+        ],
+        "available_action_ids": [
+          "UI-PROMO-003.promotion.manage"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+        ]
+      },
+      {
+        "state_id": "UI-PROMO-003.error",
+        "kind": "error",
+        "trigger": "the source-backed error condition is active",
+        "visible_region_ids": [
+          "UI-PROMO-003.content"
+        ],
+        "available_action_ids": [
+          "UI-PROMO-003.promotion.manage"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+        ]
+      },
+      {
+        "state_id": "UI-PROMO-003.permission_denied",
+        "kind": "permission_denied",
+        "trigger": "the source-backed permission_denied condition is active",
+        "visible_region_ids": [
+          "UI-PROMO-003.content"
+        ],
+        "available_action_ids": [
+          "UI-PROMO-003.promotion.manage"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+        ]
+      },
+      {
+        "state_id": "UI-PROMO-003.recovery",
+        "kind": "recovery",
+        "trigger": "the source-backed recovery condition is active",
+        "visible_region_ids": [
+          "UI-PROMO-003.content"
+        ],
+        "available_action_ids": [
+          "UI-PROMO-003.promotion.manage"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+        ]
+      }
+    ],
+    "state_applicability": [
+      {
+        "kind": "initial",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "loading",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "populated",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "empty",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/70: empty is not required by the G0 source contract"
+      },
+      {
+        "kind": "partial",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/70: partial is not required by the G0 source contract"
+      },
+      {
+        "kind": "error",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "permission_denied",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "offline",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/70: offline is not required by the G0 source contract"
+      },
+      {
+        "kind": "recovery",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "terminal",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/70: terminal is not required by the G0 source contract"
+      },
+      {
+        "kind": "other",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/70: other is not required by the G0 source contract"
+      }
+    ],
+    "actions": [
+      {
+        "action_id": "UI-PROMO-003.promotion.manage",
+        "control_type": "button",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "size_class": "sm",
+        "label": "Promotion Manage",
+        "icon_id": null,
+        "region_id": "UI-PROMO-003.content",
+        "intent": "Promotion Manage",
+        "visibility": "when the source contract and permission profile allow it",
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "preconditions": [
+          "permission promotion.manage"
+        ],
+        "trigger": "click, Enter, or Space",
+        "outcome": "Promotion Manage completes or the next contract-bound surface opens",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "recovery": "retain context and expose a safe retry or return path",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "side_effects": [],
+        "destructive": false,
+        "permission_refs": [
+          "promotion.manage"
+        ],
+        "keyboard": "Enter or Space on the focused control",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/70"
+        ]
+      }
+    ],
+    "context_menus": [],
+    "related_surface_ids": [],
+    "no_actions_reason": null,
+    "accessibility_contract": "semantic structure, complete keyboard operation, visible focus, named controls, and non-color-only state",
+    "responsive_content_priorities": [
+      "preserve task, trust, recovery, and primary action meaning across the supported Web range"
+    ]
+  }
+}

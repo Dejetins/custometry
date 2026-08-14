@@ -1,0 +1,333 @@
+{
+  "screen": {
+    "accessibility_contract": "semantic structure, complete keyboard operation, visible focus, named controls, and non-color-only state",
+    "actions": [
+      {
+        "action_id": "UI-RPT-003.report.manage",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Report Manage",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Report Manage",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "outcome": "Report Manage completes or the next contract-bound surface opens",
+        "permission_refs": [
+          "report.manage"
+        ],
+        "preconditions": [
+          "permission report.manage"
+        ],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-RPT-003.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      },
+      {
+        "action_id": "UI-RPT-003.comment.read",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Comment Read",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Comment Read",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "outcome": "Comment Read completes or the next contract-bound surface opens",
+        "permission_refs": [
+          "comment.read"
+        ],
+        "preconditions": [
+          "permission comment.read"
+        ],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-RPT-003.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      },
+      {
+        "action_id": "UI-RPT-003.comment.create",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Comment Create",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Comment Create",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "outcome": "Comment Create completes or the next contract-bound surface opens",
+        "permission_refs": [
+          "comment.create"
+        ],
+        "preconditions": [
+          "permission comment.create"
+        ],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-RPT-003.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      }
+    ],
+    "context_menus": [],
+    "data": {
+      "computed": [],
+      "empty_data_meaning": "the source-defined dataset or result has no permitted records",
+      "freshness_behavior": "show freshness and Result Trust metadata when applicable",
+      "reads": [],
+      "refresh_behavior": "source-defined refresh with stable object and result anchors",
+      "writes": []
+    },
+    "entry_points": [
+      "source-defined product navigation or invocation"
+    ],
+    "exit_points": [
+      "return to the invoking or permitted destination"
+    ],
+    "no_actions_reason": null,
+    "page_id": "UI-RPT-003",
+    "permission_behavior": "guard profile workspace_object with source-defined object and action scope",
+    "purpose": "Provide the detail contract for /w/:workspaceKey/reports/:id/snapshots/:sid",
+    "regions": [
+      {
+        "action_ids": [
+          "UI-RPT-003.report.manage",
+          "UI-RPT-003.comment.read",
+          "UI-RPT-003.comment.create"
+        ],
+        "content": "source-backed content, controls, state, trust, and recovery information",
+        "data_refs": [],
+        "purpose": "Provide the detail contract for /w/:workspaceKey/reports/:id/snapshots/:sid",
+        "region_id": "UI-RPT-003.content",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "state_ids": [
+          "UI-RPT-003.initial",
+          "UI-RPT-003.loading",
+          "UI-RPT-003.populated",
+          "UI-RPT-003.error",
+          "UI-RPT-003.permission_denied",
+          "UI-RPT-003.recovery"
+        ]
+      }
+    ],
+    "related_surface_ids": [],
+    "responsive_content_priorities": [
+      "preserve task, trust, recovery, and primary action meaning across the supported Web range"
+    ],
+    "role_ids": [
+      "allowed"
+    ],
+    "route": "/w/:workspaceKey/reports/:id/snapshots/:sid",
+    "route_id": "UI-RPT-003",
+    "screen_id": "UI-RPT-003",
+    "shell_variant_id": "shell.workspace",
+    "source_refs": [
+      "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+    ],
+    "state_applicability": [
+      {
+        "kind": "initial",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "loading",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "populated",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "empty",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/76: empty is not required by the G0 source contract"
+      },
+      {
+        "kind": "partial",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/76: partial is not required by the G0 source contract"
+      },
+      {
+        "kind": "error",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "permission_denied",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "offline",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/76: offline is not required by the G0 source contract"
+      },
+      {
+        "kind": "recovery",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "terminal",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/76: terminal is not required by the G0 source contract"
+      },
+      {
+        "kind": "other",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/76: other is not required by the G0 source contract"
+      }
+    ],
+    "states": [
+      {
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "initial",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "state_id": "UI-RPT-003.initial",
+        "trigger": "the source-backed initial condition is active",
+        "visible_region_ids": [
+          "UI-RPT-003.content"
+        ]
+      },
+      {
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "loading",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "state_id": "UI-RPT-003.loading",
+        "trigger": "the source-backed loading condition is active",
+        "visible_region_ids": [
+          "UI-RPT-003.content"
+        ]
+      },
+      {
+        "available_action_ids": [
+          "UI-RPT-003.report.manage",
+          "UI-RPT-003.comment.read",
+          "UI-RPT-003.comment.create"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "populated",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "state_id": "UI-RPT-003.populated",
+        "trigger": "the source-backed populated condition is active",
+        "visible_region_ids": [
+          "UI-RPT-003.content"
+        ]
+      },
+      {
+        "available_action_ids": [
+          "UI-RPT-003.report.manage",
+          "UI-RPT-003.comment.read",
+          "UI-RPT-003.comment.create"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "error",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "state_id": "UI-RPT-003.error",
+        "trigger": "the source-backed error condition is active",
+        "visible_region_ids": [
+          "UI-RPT-003.content"
+        ]
+      },
+      {
+        "available_action_ids": [
+          "UI-RPT-003.report.manage",
+          "UI-RPT-003.comment.read",
+          "UI-RPT-003.comment.create"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "permission_denied",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "state_id": "UI-RPT-003.permission_denied",
+        "trigger": "the source-backed permission_denied condition is active",
+        "visible_region_ids": [
+          "UI-RPT-003.content"
+        ]
+      },
+      {
+        "available_action_ids": [
+          "UI-RPT-003.report.manage",
+          "UI-RPT-003.comment.read",
+          "UI-RPT-003.comment.create"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "recovery",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/76"
+        ],
+        "state_id": "UI-RPT-003.recovery",
+        "trigger": "the source-backed recovery condition is active",
+        "visible_region_ids": [
+          "UI-RPT-003.content"
+        ]
+      }
+    ],
+    "surface_kind": "route_screen",
+    "user_outcomes": [
+      "Provide the detail contract for /w/:workspaceKey/reports/:id/snapshots/:sid"
+    ],
+    "visual_surface": true
+  }
+}

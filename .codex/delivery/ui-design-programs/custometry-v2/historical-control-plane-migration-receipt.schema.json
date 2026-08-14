@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex.local/skills/ui-design-program/historical-control-plane-migration-receipt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "generated_by", "program_id", "source", "target_registry", "historical_contract_profiles", "source_frontier", "historical_rows", "successor_topology", "change_record", "change_impact"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "migration_class": {"enum": ["historical_contract_upgrade", "active_semantic_compatibility"]},
+    "schema_id": {"const": "codex.ui-historical-control-plane-migration-receipt/v1"},
+    "generated_by": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script", "version", "command"],
+      "properties": {
+        "script": {"const": "migrate_historical_control_plane.py"},
+        "version": {"const": "1.0.0"},
+        "command": {"const": "migrate_historical_control_plane.py prepare <paths-redacted>"}
+      }
+    },
+    "program_id": {"type": "string", "minLength": 1},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ledger_ref", "ledger_sha256", "ledger_snapshot_ref", "ledger_snapshot_sha256", "plan_doc_ref", "plan_doc_sha256", "plan_doc_snapshot_ref", "plan_doc_snapshot_sha256", "prompt_pack_dir", "contract_registry_ref", "contract_registry_sha256", "contract_registry_snapshot_ref", "contract_registry_snapshot_sha256"],
+      "properties": {
+        "ledger_ref": {"type": "string", "minLength": 1},
+        "ledger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "ledger_snapshot_ref": {"type": "string", "minLength": 1},
+        "ledger_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "plan_doc_ref": {"type": "string", "minLength": 1},
+        "plan_doc_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "plan_doc_snapshot_ref": {"type": "string", "minLength": 1},
+        "plan_doc_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "prompt_pack_dir": {"type": "string", "minLength": 1},
+        "contract_registry_ref": {"type": "string", "minLength": 1},
+        "contract_registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "contract_registry_snapshot_ref": {"type": "string", "minLength": 1},
+        "contract_registry_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "target_registry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "active_runtime_profile", "active_program_contract"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "active_runtime_profile": {"type": "string", "minLength": 1},
+        "active_program_contract": {"type": "string", "minLength": 1}
+      }
+    },
+    "historical_contract_profiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["program_contract", "runtime_profiles"],
+      "properties": {
+        "program_contract": {"type": "string", "minLength": 1},
+        "runtime_profiles": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "source_frontier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ledger_status", "current_stage", "stage_status", "executor_claim", "claimed_at"],
+      "properties": {
+        "ledger_status": {"enum": ["active", "awaiting_input", "blocked"]},
+        "current_stage": {"type": "string", "minLength": 1},
+        "stage_status": {"enum": ["pending", "in_progress", "needs_input", "blocked"]},
+        "executor_claim": {"type": "string", "minLength": 1},
+        "claimed_at": {"type": "string", "minLength": 1}
+      }
+    },
+    "historical_rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stage_instance_id", "gate", "status", "historical_outcome", "executor_claim", "claimed_at", "row_sha256", "detail_sha256", "resources"],
+        "properties": {
+          "stage_instance_id": {"type": "string", "minLength": 1},
+          "gate": {"enum": ["G0", "G1", "G2", "G3", "G4", "G5", "G6"]},
+          "status": {"type": "string", "minLength": 1},
+          "historical_outcome": {"enum": ["pending", "in_progress", "accepted", "needs_input", "blocked", "skipped", "superseded"]},
+          "executor_claim": {"type": "string", "minLength": 1},
+          "claimed_at": {"type": "string", "minLength": 1},
+          "row_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "detail_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["field", "path", "sha256"],
+              "properties": {
+                "field": {"type": "string", "minLength": 1},
+                "path": {"type": "string", "minLength": 1},
+                "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "successor_topology": {"$ref": "#/$defs/ref"},
+    "change_record": {"$ref": "#/$defs/ref"},
+    "change_impact": {"$ref": "#/$defs/ref"},
+    "source_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["errors_sha256", "error_count", "exempted_stage_instance_id"],
+      "properties": {
+        "errors_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "error_count": {"type": "integer", "minimum": 1},
+        "exempted_stage_instance_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "successor_plan_doc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "target_path"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "target_path": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"migration_class": {"const": "active_semantic_compatibility"}}, "required": ["migration_class"]},
+      "then": {"required": ["source_validation", "successor_plan_doc"]}
+    }
+  ],
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

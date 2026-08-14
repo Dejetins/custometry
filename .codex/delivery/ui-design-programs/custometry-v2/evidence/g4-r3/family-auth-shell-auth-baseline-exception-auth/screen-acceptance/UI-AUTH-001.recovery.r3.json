@@ -1,0 +1,59 @@
+{
+  "$schema": "screen-acceptance.schema.json",
+  "schema_id": "codex.ui-screen-acceptance/v1",
+  "screen_revision_id": "UI-AUTH-001.recovery.all.ru-RU.graphite.r3",
+  "screen_id": "UI-AUTH-001",
+  "state_id": "UI-AUTH-001.recovery",
+  "accessibility_claim": "accessibility_smoke",
+  "generated_by": {
+    "script": "assemble_screen_acceptance.py",
+    "version": "1.3.0",
+    "command": "assemble_screen_acceptance.py <paths-redacted>"
+  },
+  "contract_input": {
+    "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/contracts/UI-AUTH-001.recovery.r3.json",
+    "sha256": "0a9161e19f3a1f3c7f16d1f9d1fa0802ddcca65b3863c065c2ac15138c67da52"
+  },
+  "required_anchor_ids": [
+    "web-768",
+    "web-1024",
+    "web-1440",
+    "web-1920"
+  ],
+  "anchor_receipts": [
+    {
+      "anchor_id": "web-768",
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-768/visual-qa.json",
+      "sha256": "9852f37a5ce383c8598504b6bce92d7919934c2906d94e8152559350a16036ec",
+      "result": "passed",
+      "accessibility_passed": true,
+      "keyboard_passed": true
+    },
+    {
+      "anchor_id": "web-1024",
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-1024/visual-qa.json",
+      "sha256": "31c9a00ad39b694dde72735b88cf13a78b0e863e9858b26a45cad95b65e4fc7a",
+      "result": "passed",
+      "accessibility_passed": true,
+      "keyboard_passed": true
+    },
+    {
+      "anchor_id": "web-1440",
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-1440/visual-qa.json",
+      "sha256": "95779c94778780d2290af6002051c9c64ec4defb0e007a2aea71be29fd5afc6d",
+      "result": "passed",
+      "accessibility_passed": true,
+      "keyboard_passed": true
+    },
+    {
+      "anchor_id": "web-1920",
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-1920/visual-qa.json",
+      "sha256": "0227b399c2182cfebc056823a034718ccd6ff0e9e1b1c6e5ab608489f77f60af",
+      "result": "passed",
+      "accessibility_passed": true,
+      "keyboard_passed": true
+    }
+  ],
+  "result": "passed",
+  "blockers": []
+}

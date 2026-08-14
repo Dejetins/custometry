@@ -1,0 +1,622 @@
+{
+  "schema_id": "codex.ui-stage-runtime-profiles/v1",
+  "gate": "G3",
+  "core": {
+    "contract_registry": "assets/contract-versions.json",
+    "control_plane": [
+      "plan_doc",
+      "prompt_pack_dir",
+      "stage_ledger"
+    ],
+    "control_assets": [
+      "stage-preflight-evidence.template.json",
+      "stage-preflight-evidence.schema.json",
+      "owner-input-response.template.json",
+      "owner-input-response.schema.json",
+      "owner-input-response-request.schema.json",
+      "change-impact-matrix.json",
+      "change-impact-matrix.schema.json",
+      "change-record.template.json",
+      "change-record.schema.json",
+      "change-impact-request.schema.json",
+      "change-impact-receipt.schema.json",
+      "historical-control-plane-migration-request.schema.json",
+      "historical-control-plane-successor-topology.schema.json",
+      "historical-control-plane-migration-receipt.schema.json",
+      "stage-context-manifest.schema.json"
+    ],
+    "control_commands": [
+      "python3 scripts/ui_program_context.py --ledger <stage-ledger> --project-root <root>",
+      "python3 scripts/assemble_owner_input_response.py --request <owner-response-request.json> --project-root <root> --ledger <stage-ledger> --output <owner-response>",
+      "python3 scripts/assemble_change_impact.py --request <change-impact-request.json> --project-root <root> --ledger <stage-ledger> --output <impact-receipt>",
+      "python3 scripts/apply_stage_ledger_update.py --project-root <root> --ledger <stage-ledger> --candidate-ledger <candidate-ledger> --expected-ledger-sha256 <sha256>",
+      "python3 scripts/migrate_historical_control_plane.py prepare --request <migration-request.json> --project-root <root> --ledger <stage-ledger> --output-dir <migration-evidence-dir>",
+      "python3 scripts/migrate_historical_control_plane.py apply --receipt <migration-receipt.json> --project-root <root> --ledger <stage-ledger> --candidate-ledger <candidate-ledger>"
+    ],
+    "input_contracts": [
+      "ui-program-intake",
+      "platform-ui-baseline"
+    ],
+    "visual_authority_fields": [
+      "source_visual_ref",
+      "source_visual_sha256",
+      "source_evidence_mode",
+      "owner_decision_ref",
+      "screen_acceptance_scope",
+      "visual_language_scope",
+      "reusable_foundation_scope",
+      "inheritance_policy",
+      "mobile_scope"
+    ],
+    "decision_classes": {
+      "agent_decidable": "Resolve reversible technical and presentation choices inside the accepted product and visual envelope; generate paths, hashes, receipts, ledgers, and routine writes without asking the user.",
+      "owner_required": "Ask only for missing product meaning or scope, new mobile scope, materially different visual direction, irreversible or costly choices, and acceptance or correction of a finished visual result.",
+      "external_authority": "Use an already-authorized repository route; hard-block only when a required permission or external state is genuinely unavailable."
+    },
+    "user_role_policy": [
+      "The user's initial brief and later corrections are the sole authority for desired product meaning; repository sources are current-state evidence, not a second product owner.",
+      "The user describes the desired product path once with the agent; the agent records and carries that durable intent baseline through the program.",
+      "The user reviews finished visuals and corrects material product or visual mistakes.",
+      "Never ask the user to calculate hashes, name technical artifact owners, edit JSON, operate the ledger, choose routine tools, or repeat ordinary write permission already granted by the task.",
+      "The agent records natural-language decisions as canonical receipts and owns routine program coordination."
+    ],
+    "owner_surface": [
+      "Lead with the stage's declared owner surface; use finished visuals or one compact review board only for G3-G6.",
+      "Show material exceptions and at most three questions.",
+      "Keep raw JSON, inventories, hashes, permissions, and validator logs in linked evidence.",
+      "Accept unambiguous natural-language decisions; never require identifiers or magic syntax."
+    ],
+    "invariants": [
+      "A component catalog never substitutes for the all-screen atlas.",
+      "Desired product semantics come from the initial user brief and later user corrections; current product sources constrain factual compatibility but cannot silently redefine intent.",
+      "Generated views and passing receipts are assembled by scripts, not hand-edited.",
+      "Agent self-acceptance is prohibited; machine review readiness and user acceptance are separate states.",
+      "Responsive Web is required; mobile-specific product scope requires explicit current user authorization.",
+      "Current-gate success alone never permits the adjacent stage.",
+      "Historical contract profiles are read-only and cannot close active gates.",
+      "Determinism, source fidelity, native-image comparison, and visual-language conformance are separate claims.",
+      "The accepted pilot is normative for every applicable reusable UI clause; novel target semantics, content, data, actions, and screen-specific composition remain target-owned.",
+      "Applicability is independently derived and every clause application exact-covers conforms, accepted_exception, or source_backed_not_applicable; candidate-to-self comparison is never standard proof."
+    ],
+    "preflight_checks": [
+      "current_gate",
+      "source_freshness",
+      "next_stage_inputs",
+      "write_scope",
+      "foreign_changes",
+      "execution_route",
+      "handoff_artifact"
+    ],
+    "state_policy": {
+      "review_ready": "Machine evidence is complete and the finished result may be shown to the user; the stage remains non-terminal until the user accepts or requests a bounded revision.",
+      "needs_input": "Ledger-only non-terminal state for a material product question or finished-result review; resume the same row from typed owner-response evidence.",
+      "blocked": "Terminal only for authority, safety, evidence, permission, inseparable foreign change, or unavailable external state.",
+      "revision": "Create a replacement only when target, scope, dependencies, accepted sources, prompt requirements, or acceptance criteria materially change."
+    }
+  },
+  "stage": {
+    "title": "Foundations, shell, and responsive Web",
+    "artifact_kind": "program",
+    "validation_profile": "program_ready",
+    "objective": "Realize and prove the fixed foundations, complete typography, reusable components/states, shell/layout and responsive clauses using the declared evidence mode.",
+    "owns": [
+      "baseline realization",
+      "representative shell screen contract",
+      "responsive-Web evidence",
+      "anchor binding",
+      "reversible implementation decisions"
+    ],
+    "required_outputs": [
+      "program-ready manifest",
+      "candidate artifact",
+      "active representative shell screen contract created and validated before capture",
+      "mode-correct source evidence",
+      "candidate captures",
+      "compact standard board covering foundations, typography, components/states, shell/layout and responsive behavior",
+      "review board",
+      "clause-exact inheritance report"
+    ],
+    "allowed_unresolved": [],
+    "forbidden": [
+      "guessed range",
+      "unauthorized mobile composition",
+      "prose-only proof",
+      "unrelated foundation",
+      "fake source-fidelity claim"
+    ],
+    "required_references": [
+      "references/responsive-policy-v1.md",
+      "references/visual-provenance-contract-v1.md"
+    ],
+    "read_set": {
+      "always": [
+        "current ledger row",
+        "visual-authority block"
+      ],
+      "exact": [
+        "full platform baseline",
+        "G3 rendered-proof section",
+        "family shard index",
+        "representative shell source slice"
+      ],
+      "conditional": [
+        "source adapter contract selected by source_evidence_mode"
+      ],
+      "max_files": 16,
+      "target_tokens": 600000
+    },
+    "required_assets": [
+      "screen-design-contract.template.json",
+      "screen-design-contract.schema.json",
+      "render-provenance-request.template.json",
+      "render-provenance-request.schema.json",
+      "render-provenance-receipt.template.json",
+      "render-provenance-receipt.schema.json",
+      "review-board-manifest.schema.json",
+      "review-board-manifest.template.json",
+      "owner-decision.schema.json",
+      "owner-decision-request.schema.json",
+      "owner-decision-request.template.json",
+      "proposal-for-owner-review.template.md",
+      "stage-transition-request.template.json",
+      "stage-transition-request.schema.json",
+      "stage-transition-readiness.template.json",
+      "stage-transition-readiness.schema.json"
+    ],
+    "required_commands": [
+      "python3 scripts/ui_design_tool.py preflight",
+      "python3 scripts/ui_design_tool.py capture -- --url <loopback-url> --contract <screen-contract> --anchor-id <anchor-id> --target <reference|implementation> --source-artifact <rendered-source-artifact> --logical-artifact-id <logical-id> --output <geometry-receipt> --screenshot <redacted-png>",
+      "python3 scripts/assemble_render_provenance.py --request <render-provenance-request.json> --project-root <root> --output <render-provenance-receipt>",
+      "python3 scripts/ui_design_tool.py compare -- --reference <reference-png> --implementation <implementation-png> --output <raster-receipt> --screen-revision-id <screen-revision-id> --anchor-id <anchor-id> --comparison-purpose <purpose> --reference-logical-artifact-id <reference-id> --implementation-logical-artifact-id <implementation-id> --visual-authority-ref <authority-path> --visual-authority-sha256 <authority-sha256> --reference-render-provenance <reference-render-provenance> --implementation-render-provenance <implementation-render-provenance> --project-root <root>",
+      "python3 scripts/assemble_owner_decision.py --request <owner-decision-request.json> --project-root <root> --output <owner-decision>",
+      "python3 scripts/assemble_stage_transition.py --request <stage-transition-request.json> --project-root <root> --ledger <stage-ledger> --output <transition-receipt>"
+    ],
+    "required_validators": [
+      "python3 scripts/validate_ui_design_program.py --profile screen_contract_ready --project-root <root> <representative-shell-screen-contract>",
+      "python3 scripts/validate_ui_design_program.py --profile program_ready --project-root <root> <program>",
+      "python3 scripts/validate_stage_ledger.py --project-root <root> <stage-ledger>",
+      "python3 scripts/validate_stage_transition.py --project-root <root> --ledger <stage-ledger> <transition-receipt>"
+    ],
+    "companion_skills": [
+      "browser-qa-evidence with playwright-cli for canonical captures"
+    ],
+    "owner_gate": {
+      "required": true,
+      "review_profile": "program_ready",
+      "decision_kind": "stage_acceptance"
+    },
+    "owner_review_surface": "Finished standard board covering foundations, complete typography, reusable components/states, shell/layout and responsive endpoints; the agent records the answer.",
+    "requires_visual_authority_context": true,
+    "next_gates": [
+      "G4"
+    ],
+    "completion_behavior": {
+      "transition_kind": "advance",
+      "next_stage_allowed": true,
+      "program_complete": false
+    },
+    "next_preflight": [
+      "every representative family has its exact functional and visual inputs",
+      "G4 prompt exists with no known stop trap"
+    ]
+  },
+  "context_manifest": {
+    "schema_id": "codex.ui-stage-context-manifest/v1",
+    "runtime_profile": "codex.ui-stage-runtime-profiles/v1@2.0.0",
+    "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+    "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+    "gate_id": "G3",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+    "entries": [
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/AGENTS.md",
+        "sha256": "13f20c0d1e7a0bd46c9b780720cb7c014adaa83ebc2c5f3aa45aee668acb139d",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "repository instruction authority",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/AGENTS.md",
+        "sha256": "63a8908c101acea94e7d0e7c2ef9483c5919ffccc36ed8bad565dd58c59f7ef5",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "repository instruction authority",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/stage-ledger.md",
+        "sha256": "38e54aa8e97cef07a19e69b6cd30b20cef6402bcc2ccd6b2d2b2ec4e1db083b4",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "live stage ledger and validated transition topology",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/agents/generated/custometry-ui-design-g0-v2/33-g3-foundations-shell-r4.md",
+        "sha256": "35a4baf828120c4579ce9930bc1725f08dd8e30a5409eec7ef3ecc94fd37386d",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "exact stage prompt",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/evidence/custometry-ui-design-program-v2/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4-report.md",
+        "sha256": "c5a52b1bb32aaf38a2edbcddde81b8464a0e5e96f4d8063e5fe1ceeaf8c9ca4a",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "current stage evidence when already materialized",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/active-semantic-migration/prepared/historical-control-plane-migration-receipt.json",
+        "sha256": "7ed515c24e3a6c9370690fa705ec06cb757ded74957d09f12b903b44f10162b6",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "hash-pinned incoming transition",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "full fixed platform baseline (hash-bound full artifact)",
+        "conditional_trigger": null,
+        "covers": [
+          "full platform baseline"
+        ]
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/$schema",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/accessibility_contract",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/asset_contract",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/baseline_id",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/change_control",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/component_contracts",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/contract_profile",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/default_shell_variant_id",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/exceptions",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/font_contract",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/foundation_tokens",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/icon_contract",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/interaction_patterns",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/layout_contract",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/navigation_contracts",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/responsive_contract",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/revision",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/schema_id",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/scope",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/shell_variants",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/source_visual",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/status",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/supporting_sources",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/unresolved_inputs",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/standard_contract/standard_revision_id",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/standard_contract/source_inventory",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/standard_contract/clause_inventory_sha256",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/standard_contract/clauses",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642",
+        "json_pointer": "/standard_contract/applicability_policy",
+        "expected_identity": null,
+        "reason": "full fixed platform baseline compact projection",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+        "sha256": "f50eccde7c2ab4e1415dc64aaa1ac29496530c14a0ecabf466cdeba37e3ed34f",
+        "json_pointer": "/g3_rendered_proof",
+        "expected_identity": null,
+        "reason": "G3 rendered proof",
+        "conditional_trigger": null,
+        "covers": [
+          "G3 rendered-proof section"
+        ]
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/families-index.json",
+        "sha256": "37702c3023ccdf11580958ad121044578b560cf05fbd38675452e3e8c2ff7e74",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "family shard index",
+        "conditional_trigger": null,
+        "covers": [
+          "family shard index"
+        ]
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/screens/UI-ADMIN-003.json",
+        "sha256": "83a9c57f1ca13de4b6525cc0a2a6ba9abec444c5543c8bcc90d3e0f7dc280f08",
+        "json_pointer": "/screen",
+        "expected_identity": "UI-ADMIN-003",
+        "reason": "deterministic representative shell source slice",
+        "conditional_trigger": null,
+        "covers": [
+          "representative shell source slice"
+        ]
+      }
+    ],
+    "program_digest": {
+      "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+      "revision": 4,
+      "contract_profile": "codex.ui-design-program/v1@2.0.0",
+      "validation_profile": "program_ready",
+      "input_contracts": {
+        "intake": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json",
+          "sha256": "cb358d4aac4b53a15bfb3bd6e3b1833ccda78a2e788db558eea837009d590ebe"
+        },
+        "baseline": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+          "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642"
+        }
+      },
+      "visual_authority": {
+        "source_visual_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+        "source_visual_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+        "source_evidence_mode": "renderable_html",
+        "owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r4/visual-authority-decision-r4.json",
+        "screen_acceptance_scope": "Visual-language and platform-baseline authority only; never exact target-screen composition, product semantics, fixture truth, legend-threshold truth, production implementation, or novel-screen fidelity.",
+        "visual_language_scope": "Linear Graphite shell character, calm professional density, compact contextual navigation, bounded analytical surfaces, concise KPI and command language, visible Result Trust, Focus/Explore character, readable analytical labels and tables, and adaptive external series-panel behavior as a visual-language reference.",
+        "reusable_foundation_scope": "Hash-pinned source-backed colors, typography stack, spacing rhythm, compact controls, rounded command language, shell/navigation relationships, overlay behavior, and analytical presentation primitives only; exact composition, information architecture, component implementation, runtime semantics, and target-screen acceptance remain later-gate work.",
+        "inheritance_policy": "required",
+        "mobile_scope": "unauthorized",
+        "product_semantics_scope": "source_registry_only"
+      },
+      "execution_artifacts": {
+        "plan_doc": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+        "prompt_pack_dir": ".codex/agents/generated/custometry-ui-design-g0-v2",
+        "stage_ledger": ".codex/delivery/ui-design-programs/custometry-v2/stage-ledger.md"
+      }
+    },
+    "program_digest_covers": [],
+    "resolved_exact_labels": [
+      "full platform baseline",
+      "G3 rendered-proof section",
+      "family shard index",
+      "representative shell source slice"
+    ],
+    "conditional_triggers": [
+      "source adapter contract selected by source_evidence_mode"
+    ],
+    "file_count": 10,
+    "estimated_tokens": 328154,
+    "limits": {
+      "max_files": 16,
+      "target_tokens": 600000
+    },
+    "status": "bounded"
+  }
+}

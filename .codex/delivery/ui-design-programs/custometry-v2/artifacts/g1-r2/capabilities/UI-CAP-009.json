@@ -1,0 +1,27 @@
+{
+  "capability": {
+    "id": "UI-CAP-009",
+    "name": "Research composition and findings",
+    "delivery_form": "component_contract",
+    "requirement_ids": [
+      "UC-020",
+      "RESEARCH-001",
+      "RESEARCH-002",
+      "RESEARCH-003",
+      "RESEARCH-004",
+      "RESEARCH-005",
+      "RESEARCH-006",
+      "RESEARCH-007",
+      "RESEARCH-008"
+    ]
+  },
+  "promoted_binding_ids": [],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

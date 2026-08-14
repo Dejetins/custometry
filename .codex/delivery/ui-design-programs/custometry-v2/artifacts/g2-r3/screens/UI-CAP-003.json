@@ -1,0 +1,61 @@
+{
+  "screen": {
+    "screen_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+      "json_pointer": "/screens/153",
+      "expected_id": "UI-CAP-003"
+    },
+    "classification": "internal_or_non_visual",
+    "classification_origin": {
+      "kind": "product_contract",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json#/screens/153/classification"
+    },
+    "disposition": "internal",
+    "disposition_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json#/screens/153/classification",
+      "formula": "historical_exclusion -> excluded; internal_or_non_visual -> internal; every other admitted classification -> in_scope"
+    },
+    "disposition_reason_ref": null,
+    "review_consequence": null,
+    "design_family_id": null,
+    "family_assignment_origin": {
+      "kind": "delegated_design_decision",
+      "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+      "rationale": "design_family_id is intentionally unresolved until G2 r3 structure work.",
+      "constraints": [
+        "Do not assign family, wave, criticality, representative, or coverage structure during G1."
+      ]
+    },
+    "wave_id": null,
+    "wave_assignment_origin": {
+      "kind": "delegated_design_decision",
+      "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+      "rationale": "wave_id is intentionally unresolved until G2 r3 structure work.",
+      "constraints": [
+        "Do not assign family, wave, criticality, representative, or coverage structure during G1."
+      ]
+    },
+    "representative": false,
+    "coverage_profile": null,
+    "coverage_assignment_origin": {
+      "kind": "delegated_design_decision",
+      "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+      "rationale": "coverage_profile is intentionally unresolved until G2 r3 structure work.",
+      "constraints": [
+        "Do not assign family, wave, criticality, representative, or coverage structure during G1."
+      ]
+    },
+    "visual_baseline_ref": null,
+    "functional_contract_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json",
+      "sha256": "cb358d4aac4b53a15bfb3bd6e3b1833ccda78a2e788db558eea837009d590ebe",
+      "json_pointer": "/screens/153",
+      "expected_id": "UI-CAP-003"
+    },
+    "shell_variant_id": null,
+    "baseline_exception_ref": null,
+    "expected_action_ids": [],
+    "unresolved_fields": []
+  }
+}

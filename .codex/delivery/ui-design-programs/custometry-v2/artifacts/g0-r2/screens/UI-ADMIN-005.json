@@ -1,0 +1,331 @@
+{
+  "screen": {
+    "screen_id": "UI-ADMIN-005",
+    "page_id": "UI-ADMIN-005",
+    "route_id": "UI-ADMIN-005",
+    "route": "/admin/capacity",
+    "surface_kind": "route_screen",
+    "visual_surface": true,
+    "shell_variant_id": "shell.setup",
+    "purpose": "Provide the list contract for /admin/capacity",
+    "user_outcomes": [
+      "Provide the list contract for /admin/capacity"
+    ],
+    "entry_points": [
+      "source-defined product navigation or invocation"
+    ],
+    "exit_points": [
+      "return to the invoking or permitted destination"
+    ],
+    "source_refs": [
+      "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+    ],
+    "data": {
+      "reads": [],
+      "writes": [],
+      "computed": [],
+      "refresh_behavior": "source-defined refresh with stable object and result anchors",
+      "freshness_behavior": "show freshness and Result Trust metadata when applicable",
+      "empty_data_meaning": "the source-defined dataset or result has no permitted records"
+    },
+    "role_ids": [
+      "IA",
+      "WA",
+      "OP"
+    ],
+    "permission_behavior": "guard profile global_permission with source-defined object and action scope",
+    "regions": [
+      {
+        "region_id": "UI-ADMIN-005.content",
+        "purpose": "Provide the list contract for /admin/capacity",
+        "content": "source-backed content, controls, state, trust, and recovery information",
+        "data_refs": [],
+        "state_ids": [
+          "UI-ADMIN-005.initial",
+          "UI-ADMIN-005.loading",
+          "UI-ADMIN-005.populated",
+          "UI-ADMIN-005.error",
+          "UI-ADMIN-005.permission_denied",
+          "UI-ADMIN-005.recovery"
+        ],
+        "action_ids": [
+          "UI-ADMIN-005.installation.manage",
+          "UI-ADMIN-005.workspace.manage",
+          "journey.adoption-and-performance-operations.1"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      }
+    ],
+    "states": [
+      {
+        "state_id": "UI-ADMIN-005.initial",
+        "kind": "initial",
+        "trigger": "the source-backed initial condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-005.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-005.loading",
+        "kind": "loading",
+        "trigger": "the source-backed loading condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-005.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-005.populated",
+        "kind": "populated",
+        "trigger": "the source-backed populated condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-005.content"
+        ],
+        "available_action_ids": [
+          "UI-ADMIN-005.installation.manage",
+          "UI-ADMIN-005.workspace.manage",
+          "journey.adoption-and-performance-operations.1"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-005.error",
+        "kind": "error",
+        "trigger": "the source-backed error condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-005.content"
+        ],
+        "available_action_ids": [
+          "UI-ADMIN-005.installation.manage",
+          "UI-ADMIN-005.workspace.manage",
+          "journey.adoption-and-performance-operations.1"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-005.permission_denied",
+        "kind": "permission_denied",
+        "trigger": "the source-backed permission_denied condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-005.content"
+        ],
+        "available_action_ids": [
+          "UI-ADMIN-005.installation.manage",
+          "UI-ADMIN-005.workspace.manage",
+          "journey.adoption-and-performance-operations.1"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      },
+      {
+        "state_id": "UI-ADMIN-005.recovery",
+        "kind": "recovery",
+        "trigger": "the source-backed recovery condition is active",
+        "visible_region_ids": [
+          "UI-ADMIN-005.content"
+        ],
+        "available_action_ids": [
+          "UI-ADMIN-005.installation.manage",
+          "UI-ADMIN-005.workspace.manage",
+          "journey.adoption-and-performance-operations.1"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      }
+    ],
+    "state_applicability": [
+      {
+        "kind": "initial",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "loading",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "populated",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "empty",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/96: empty is not required by the G0 source contract"
+      },
+      {
+        "kind": "partial",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/96: partial is not required by the G0 source contract"
+      },
+      {
+        "kind": "error",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "permission_denied",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "offline",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/96: offline is not required by the G0 source contract"
+      },
+      {
+        "kind": "recovery",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "terminal",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/96: terminal is not required by the G0 source contract"
+      },
+      {
+        "kind": "other",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/96: other is not required by the G0 source contract"
+      }
+    ],
+    "actions": [
+      {
+        "action_id": "UI-ADMIN-005.installation.manage",
+        "control_type": "button",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "size_class": "sm",
+        "label": "Installation Manage",
+        "icon_id": null,
+        "region_id": "UI-ADMIN-005.content",
+        "intent": "Installation Manage",
+        "visibility": "when the source contract and permission profile allow it",
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "preconditions": [
+          "permission installation.manage"
+        ],
+        "trigger": "click, Enter, or Space",
+        "outcome": "Installation Manage completes or the next contract-bound surface opens",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "recovery": "retain context and expose a safe retry or return path",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "side_effects": [],
+        "destructive": false,
+        "permission_refs": [
+          "installation.manage"
+        ],
+        "keyboard": "Enter or Space on the focused control",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      },
+      {
+        "action_id": "UI-ADMIN-005.workspace.manage",
+        "control_type": "button",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "size_class": "sm",
+        "label": "Workspace Manage",
+        "icon_id": null,
+        "region_id": "UI-ADMIN-005.content",
+        "intent": "Workspace Manage",
+        "visibility": "when the source contract and permission profile allow it",
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "preconditions": [
+          "permission workspace.manage"
+        ],
+        "trigger": "click, Enter, or Space",
+        "outcome": "Workspace Manage completes or the next contract-bound surface opens",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "recovery": "retain context and expose a safe retry or return path",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "side_effects": [],
+        "destructive": false,
+        "permission_refs": [
+          "workspace.manage"
+        ],
+        "keyboard": "Enter or Space on the focused control",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/96"
+        ]
+      },
+      {
+        "action_id": "journey.adoption-and-performance-operations.1",
+        "control_type": "button",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "size_class": "sm",
+        "label": "Continue adoption and performance operations",
+        "icon_id": null,
+        "region_id": "UI-ADMIN-005.content",
+        "intent": "Continue adoption and performance operations",
+        "visibility": "when the source contract and permission profile allow it",
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "preconditions": [],
+        "trigger": "click, Enter, or Space",
+        "outcome": "Continue adoption and performance operations completes or the next contract-bound surface opens",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "recovery": "retain context and expose a safe retry or return path",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "side_effects": [],
+        "destructive": false,
+        "permission_refs": [],
+        "keyboard": "Enter or Space on the focused control",
+        "navigation_target": "UI-ADMIN-006",
+        "opens_surface_id": null,
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/8"
+        ]
+      }
+    ],
+    "context_menus": [],
+    "related_surface_ids": [],
+    "no_actions_reason": null,
+    "accessibility_contract": "semantic structure, complete keyboard operation, visible focus, named controls, and non-color-only state",
+    "responsive_content_priorities": [
+      "preserve task, trust, recovery, and primary action meaning across the supported Web range"
+    ]
+  }
+}

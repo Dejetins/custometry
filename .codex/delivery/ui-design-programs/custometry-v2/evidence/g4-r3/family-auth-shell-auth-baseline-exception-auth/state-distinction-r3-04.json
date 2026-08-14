@@ -1,0 +1,52 @@
+{
+  "schema_id": "custometry.ui-state-distinction-evidence/v1",
+  "screen_id": "UI-AUTH-001",
+  "correction": "r3-04",
+  "comparison": [
+    "UI-AUTH-001.initial",
+    "UI-AUTH-001.recovery"
+  ],
+  "required_only_in_recovery": [
+    "back-to-sign-in",
+    "recovery-form",
+    "recovery-result",
+    "recovery-submit"
+  ],
+  "forbidden_in_recovery": [
+    "auth-form",
+    "continue-button",
+    "inspect-action",
+    "inspect-result",
+    "password-field",
+    "state-panel"
+  ],
+  "observed_recovery_element_ids": [
+    "auth-panel",
+    "back-to-sign-in",
+    "brand-story",
+    "email-field",
+    "form-subtitle",
+    "form-title",
+    "recovery-form",
+    "recovery-result",
+    "recovery-submit",
+    "route-label"
+  ],
+  "observed_sign_in_element_ids": [
+    "auth-form",
+    "auth-panel",
+    "brand-story",
+    "continue-button",
+    "email-field",
+    "form-subtitle",
+    "form-title",
+    "inspect-action",
+    "inspect-result",
+    "password-field",
+    "route-label",
+    "state-panel"
+  ],
+  "same_element_inventory": false,
+  "result": "passed",
+  "proof_boundary": "Contract-level structural distinction; canonical browser capture separately proves the rendered inventory and interactions."
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "owner-input-response-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet.json",
+  "response_kind": "requested_changes",
+  "owner_input": "и цвет и стиль не соотвевуют пилотной версии, то что я сейчас вижу на твоем скриншоте",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/owner-requested-changes-r3-02.json"
+}

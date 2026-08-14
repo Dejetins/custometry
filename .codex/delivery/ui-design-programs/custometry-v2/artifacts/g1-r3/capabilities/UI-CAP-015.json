@@ -1,0 +1,28 @@
+{
+  "capability": {
+    "id": "UI-CAP-015",
+    "name": "Effective brand resolution",
+    "delivery_form": "policy_contract",
+    "requirement_ids": [
+      "UC-023",
+      "BRAND-001",
+      "BRAND-002",
+      "BRAND-003",
+      "BRAND-004",
+      "BRAND-005",
+      "BRAND-006",
+      "BRAND-007",
+      "BRAND-008",
+      "BRAND-009"
+    ]
+  },
+  "promoted_binding_ids": [],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

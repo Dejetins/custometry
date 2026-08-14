@@ -1,0 +1,470 @@
+{
+  "schema_id": "custometry.ui-g3-file-manifest/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "entries": [
+    {
+      "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-01-family-auth-shell-auth-baseline-exception-auth-r2.md",
+      "sha256": "3c0652457903311408ceff9195b4f2e5850b03332f6dfe0733b1e33f50b548e3",
+      "bytes": 8039
+    },
+    {
+      "path": ".codex/delivery/evidence/custometry-ui-design-program-v2/g3-r2-foundations-shell-report.md",
+      "sha256": "c4aaca2747a05a63f7772a60d2b816db130a7667249f02e0e555ffb8a49bb33d",
+      "bytes": 3727
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/candidate-shell.html",
+      "sha256": "1400551cc91184366a13aedfc17b696654882030e83a54767d97e69cb405c8a4",
+      "bytes": 40362
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/fixture.json",
+      "sha256": "329444abfd25a544cd55443f5171b9702bea5d72ea5a96b92b678fb34a11bc5b",
+      "bytes": 410
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/inheritance-report.json",
+      "sha256": "ac6ab38ed816e2d689b1d718736b47ab25781f6b565e60ccd6b93c061fdf6e35",
+      "bytes": 61670
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/representative-shell-contract.json",
+      "sha256": "1b5f5f336621a859802fef1bcc555c78130bede878a26881a8a23e1100b25408",
+      "bytes": 64549
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/review-board.html",
+      "sha256": "c85d7102feb50e40a1165e89f96a734758625a96b9d8d456c695a20e31b3495f",
+      "bytes": 14084
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/review-board.manifest.json",
+      "sha256": "d0ae6d9c8c19a073fa148110a0678ad3a12ffb3970ff8865519e4b4d37aff96f",
+      "bytes": 5634
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/shell-behavior-matrix.json",
+      "sha256": "8d3120fff5c3cc1610cda400f381ea311406791cbf9856dbefe315936a92d33e",
+      "bytes": 1556
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/ui-design-program.snapshot.json",
+      "sha256": "e641cc71e454fc96989a14e7a0a216cde34489927100a1fd4e1b69e9b81b4c7e",
+      "bytes": 892052
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/build_g3_r2_artifacts.py",
+      "sha256": "239544fd2b11ba8bed71cbefe6817e454d0f55e000dbfe9d1f6319139f013a8b",
+      "bytes": 97789
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/accepted-pilot-fixed-domain-browser-observation.json",
+      "sha256": "39478ca0aa7666df9eac5296f7991af3b640c58a29a30bddbf9812b3bd3ae254",
+      "bytes": 2714
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/browser-r3-capture.js",
+      "sha256": "d314aa602b236b6a49f86b06ac71566fcc2a92d8b34af76c32f646681f471455",
+      "bytes": 7849
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1024-geometry.json",
+      "sha256": "4a740bcb76ddadab47e8390df7e72fa2a6deea69b8f3b911a70c19dfe0a700de",
+      "bytes": 12692
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1024-provenance.json",
+      "sha256": "2166b5cbbea9f09e754003d1c702263f092e11bfdbd2da8c01b679821784b463",
+      "bytes": 1215
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1024.png",
+      "sha256": "d698e766d6553b503909df7d2dd9f7798b002984a1747ae9373afe67a41dbcb2",
+      "bytes": 71264
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1440-en.png",
+      "sha256": "61a5c8379ed3eeec677822afa9c6ade57e88d058955bb7352384803772dbc85f",
+      "bytes": 89967
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1440-geometry.json",
+      "sha256": "6e6ec78fa2e79a0051e72b470ef647fa08765a941f25fc24875c6c0217b900e0",
+      "bytes": 12698
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1440-provenance.json",
+      "sha256": "4359f6eece3271b6b45a94624f8db5d8661ad62ae8e0176ee58df53f4c32f604",
+      "bytes": 1215
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1440-table.png",
+      "sha256": "104f599a4cb15de0a379c93de07d0ab4e0ea873415cf974da995f890eb3efc3f",
+      "bytes": 93110
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1440.png",
+      "sha256": "104f599a4cb15de0a379c93de07d0ab4e0ea873415cf974da995f890eb3efc3f",
+      "bytes": 93110
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1920-geometry.json",
+      "sha256": "f16b6e5d3709ff9cb0b9fea4b506f2679d411636a1d9bb6acfe78ce7a373e342",
+      "bytes": 12708
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1920-inspector.png",
+      "sha256": "15c7244f17c8443fbb355ba8b4d3b4b5700771cad2b9ea08df2d2da547e0e95f",
+      "bytes": 160798
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1920-provenance.json",
+      "sha256": "6782ec783ad3077b52d7e21597649ee3076ceecb289cf2300de08c2d2f235c14",
+      "bytes": 1215
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1920.png",
+      "sha256": "9806e1db61fab0fcc028533bc65903bd72b240c72efc3e984cec41b42a2fb979",
+      "bytes": 111758
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768-drawer.png",
+      "sha256": "73bd52ccc61421dc6a526ecf77b5d6cddada93260362354f1cd568390a877090",
+      "bytes": 20034
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768-geometry.json",
+      "sha256": "f87e24668046395b8abcc43aee9e04faacdf910818e30adfcfb990a111574ae7",
+      "bytes": 12694
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768-inspector.png",
+      "sha256": "d59f9eff32ef655e311fb86d58bc0a1539415498d2ce5ae83d08222118dcdd0c",
+      "bytes": 113491
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768-provenance.json",
+      "sha256": "1b3b48ae9c9690248b08bce3f82bb26ff01b2e6ccaee9d6fb242051d4d837870",
+      "bytes": 1212
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768-zoom-200.png",
+      "sha256": "6189560631507892ba27093508f2bc653e5d5818b761f622d6a68b3c3282d85c",
+      "bytes": 101492
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768.png",
+      "sha256": "305b6b459fda69ac182f9069de0ecca4359a2d511c61b9e79c4557c24b93af82",
+      "bytes": 80240
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/detailed-visual-inheritance-evidence.json",
+      "sha256": "cba4593f4034d09a665e04022f32d68c649d7f018a056969d3be49d39a36e530",
+      "bytes": 5023
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/fixed-domain-browser-observation.json",
+      "sha256": "c3878cf8075f335b2f3a4ba23403cdbec6eee5b29d4a0a62bf3860027f65b95f",
+      "bytes": 3592
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/known-blockers.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-acceptance-r2-request.json",
+      "sha256": "3338db5b68a2ad70aadb1b446f7cfe47b0376afc70d88fea0e16a47d61e5127d",
+      "bytes": 996
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-acceptance-r2.json",
+      "sha256": "9bae65aed9e786a007f6fad1510605b0debf26fefdfc33c667e28e3191fbb6ea",
+      "bytes": 1770
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-input-response-acceptance-r2-request.json",
+      "sha256": "377b53a2ac0fcaf84c2bfe777b61c208af880a44041d6e63019159da7c5f1dec",
+      "bytes": 657
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-input-response-acceptance-r2.json",
+      "sha256": "f3669dbe5f3e8eefc7a5779740f57d3aa5347bb7dde83ed164d60689e0d02b54",
+      "bytes": 1067
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-input-response-r1-request.json",
+      "sha256": "cd4ce52e560411d5bae8d3362fb07db7268a379cddfdb19815334f9ec6316c0f",
+      "bytes": 636
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-input-response-r1.json",
+      "sha256": "cdefbbc2ce6bacd4dab8f343aee02bbeb180eedc699c81ac19e67786958ecb64",
+      "bytes": 1046
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-input-response-r2-request.json",
+      "sha256": "3ea3ec380600bade3f140cbfb001bcb0854c3d64476523a2c9bce4c11a609197",
+      "bytes": 720
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-input-response-r2.json",
+      "sha256": "d1187e7c04e048c2f7d42cc4f7b88a7bad0ef1574c00993695ff9e693140470f",
+      "bytes": 1130
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-input-response-r3-request.json",
+      "sha256": "b043eb5eb4a2dcf344bafcbac458e6cbf540581d7f86fde632a0ffca74f60cd5",
+      "bytes": 959
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-input-response-r3.json",
+      "sha256": "2175610a3a29162a0c36fa3a68059eb7ed7cd8e71c19f7ac92c94326fc1c0fba",
+      "bytes": 1369
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-requested-changes-r1-request.json",
+      "sha256": "c76e445badcb8b6e2402d1ef0dfa331080de1c7b04960d4d1617f9fce05875fd",
+      "bytes": 1026
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-requested-changes-r1.json",
+      "sha256": "9f5f7c26b83ff39e52cea2b32f4076c0df564fb72e2508ca7b6c3879df5ebef0",
+      "bytes": 1485
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-requested-changes-r2-request.json",
+      "sha256": "50e7fbd6d3d29e692ad38a208acb2405451f8b8f66b9acde6799f8895c0eb3f2",
+      "bytes": 1124
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-requested-changes-r2.json",
+      "sha256": "73493aef06b4733d263b3e1a65f47a0552fb2841d798fe7bd962089427764187",
+      "bytes": 1583
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-requested-changes-r3-request.json",
+      "sha256": "56cc4b9ad30772d8575029cc5f848b21a0ebc9ddfa7c1d6fa46e3b6bd762f381",
+      "bytes": 1439
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-requested-changes-r3.json",
+      "sha256": "b32bbbd0ac9a90c18d3a08a432389b84fa1c84cb86d1ab445b77fc2c1e257660",
+      "bytes": 1898
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-review-decision-packet.json",
+      "sha256": "f70df8dd94ba26fd90336fbb26946a39c2122c6fab7ce39d4bc8add6b583b29f",
+      "bytes": 1256
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/pending-owner-decisions.json",
+      "sha256": "ce4f39cd5c5de1bbeed069371ee856536c36d3d4b3b340c37c70450985b7ee9e",
+      "bytes": 342
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/current_gate.json",
+      "sha256": "4106c1c7bcd2115fc980f1ef394245fa2acd2f340f3005ca0aeca418568c5fff",
+      "bytes": 567
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/execution_route.json",
+      "sha256": "384c859874d6c9ea8bb723c4bcfd38016b94b6944e11e0e064f173fa91ed42b7",
+      "bytes": 468
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/foreign_changes.json",
+      "sha256": "f538864a969e59d6115d505d02da29c730ad0aad193d5a62734ebad0fe54711f",
+      "bytes": 705
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/handoff_artifact.json",
+      "sha256": "0dca7a7f2ff69022ff284ed05ee9384311fbf595964ce3219985dd4ddf7d0a33",
+      "bytes": 582
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/next_stage_inputs.json",
+      "sha256": "7719cc2466c1731060a6cfd71706efa559e0e41a95f4f9a302bd22092b1f7d1e",
+      "bytes": 557
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/source_freshness.json",
+      "sha256": "eb9cadbba4ccfd3b02cbcacd65e8aea4d4c5bfebfe2911a0aefa60783a7166ff",
+      "bytes": 7956
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/write_scope.json",
+      "sha256": "90821482e3e1a186c1ed0e2708b5cb57608008380229c4c4eef1ef1ef501485b",
+      "bytes": 632
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/render-provenance-requests/implementation-web-1024.json",
+      "sha256": "a22ae3bfb0d6dad19ccb59641031b3c09856978f0f1491b905299bd791d43f9f",
+      "bytes": 575
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/render-provenance-requests/implementation-web-1440.json",
+      "sha256": "e6724b0dea658063e9a90064c46186c47b00c2ee200ee4f77546f401be6895ae",
+      "bytes": 575
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/render-provenance-requests/implementation-web-1920.json",
+      "sha256": "30981bcfd47f17bde86f85e7b3fab78562aef4be3618d205fc214b1986ce27fb",
+      "bytes": 575
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/render-provenance-requests/implementation-web-768.json",
+      "sha256": "0174cb20eaf5e6d5a721f50afcf93e209de5fc6903acf54d81cdd2a60869d5c1",
+      "bytes": 572
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/render-provenance-requests/reference-web-1024.json",
+      "sha256": "a47d872da45372209c8da9088ff986c2eed4fb2fff2e8dfdceb6ea7d5ce09f3d",
+      "bytes": 575
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/render-provenance-requests/reference-web-1440.json",
+      "sha256": "3c3bd008b1c5a6c7a61e13724028f1673ac3ad1761853c5f1fb0d4485b916b3e",
+      "bytes": 575
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/render-provenance-requests/reference-web-1920.json",
+      "sha256": "ec1b87f2de8cf3a3f99a4dea30b403674ee2301501c2432ea9ce81761278b498",
+      "bytes": 575
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/render-provenance-requests/reference-web-768.json",
+      "sha256": "a5e00d55bf27e9ffe2b6b71b217cb21479d317a22f28257413f804e6e0b11500",
+      "bytes": 572
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/responsive-language-accessibility-smoke.json",
+      "sha256": "46f2a49ad01bb4ce2b2fc97afaaa25beef7af590dd76a234d925b21343066203",
+      "bytes": 5241
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/resumed-context-manifest-r3.json",
+      "sha256": "453bf2838355f86b15b671b642537aa9f075a8c6d3a64d2cc2d88ead42f24940",
+      "bytes": 18082
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/resumed-context-manifest.json",
+      "sha256": "6c16b99d4878707fe50907f2811eb74356071900ac43c405a7c2ba62dc8c8491",
+      "bytes": 18082
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/review-board-1440.png",
+      "sha256": "4dc32ea4ab40dd6c68f9fe3d1e943d87f6366bd92bf45c3a2b8497d3553c097c",
+      "bytes": 883564
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1024-geometry.json",
+      "sha256": "ca84c3c58c7e79f31bee207f813438b8ea175a1b6eba5c582fcf5d5f16ddb10c",
+      "bytes": 2533
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1024-provenance.json",
+      "sha256": "417ce0dc5e1f9612bd5807cddbfbfe5b7e39ab86f0287152ab47715a9fcce9f5",
+      "bytes": 1215
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1024.png",
+      "sha256": "8879dc44eefcebe30a0f88a10d6c725ac0ed25d38adedd51a97dca7ffc891023",
+      "bytes": 79894
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1440-geometry.json",
+      "sha256": "496767f32db6ea9d427053552af8164c466f8a7412ac43d621987c71a00b38a7",
+      "bytes": 2533
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1440-provenance.json",
+      "sha256": "7f8bdcdebd4b53f34ab510537867858ccafb38b9d3d9b25222ddc5c58b06261c",
+      "bytes": 1215
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1440.png",
+      "sha256": "0b2e496591701399b89891f24aa927b3bf9067b4d03a6737a1a745574438dbe2",
+      "bytes": 92898
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1920-geometry.json",
+      "sha256": "6787d6852b20950348169bbf793dca33815cdcf2cc73ba2ae15b5050bc4ffc5c",
+      "bytes": 2536
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1920-provenance.json",
+      "sha256": "74f91141864fc7a4127403b70d365e7d89f2f661a387e73ff87ea92d20c14371",
+      "bytes": 1215
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1920.png",
+      "sha256": "671d55afb8ab8d245a326d23f25b91e72458fdec066c55b4987fb9585c83b3fd",
+      "bytes": 101754
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-768-geometry.json",
+      "sha256": "fa1feb08156b029160c59485f5cd9c0b1759c872eec19c52ce2c9ea304592fb5",
+      "bytes": 2532
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-768-provenance.json",
+      "sha256": "15d4cadf744216fcb59d8b89c47f4354795c26a1cb31020ce8ac46612205d41e",
+      "bytes": 1212
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-768.png",
+      "sha256": "4ad7a441b6fd84cbad721f97f4fed647ed5a35543df6f63a7ebcdaab26a8eae8",
+      "bytes": 72333
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/stage-transition-request.json",
+      "sha256": "2359a22466e53cf60eaa62472530a9e4512d34ba4f65d1c15350fa3652774b78",
+      "bytes": 2587
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/stage-transition.json",
+      "sha256": "9c91cdb1bab21a57a28a28b337001f4518fe13fea058c14011affea2fb74840e",
+      "bytes": 4671
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/visual-language-web-1024.json",
+      "sha256": "9d10cb115056ea27965070e1a8eb914ced22adb6ba1aeed220362661beaa347c",
+      "bytes": 3090
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/visual-language-web-1440.json",
+      "sha256": "3753715f893ddcb9fc7a1617563c6e127cf802e70afc16e3ef4dc18dccdaf398",
+      "bytes": 3091
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/visual-language-web-1920.json",
+      "sha256": "ecc17bb92de57d69ffe5cb603edca9150db3abcf93c221a6334cb70404a2f7d6",
+      "bytes": 3094
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/visual-language-web-768.json",
+      "sha256": "8e97fedf18ee8b7becb3c123abf5a5e6e53de002203228daf24fb20c7b95b952",
+      "bytes": 3085
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/prepare_g3_r2_transition.py",
+      "sha256": "125220f430a1159cd6da84a24fe02aa11ae6335f71c98e358b14c2a80e051609",
+      "bytes": 11769
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/stage-ledger.md",
+      "sha256": "d9da235b1e9e90cd70ff3dba8a5c4277f834b88a804482f62beb69262bc2f5ac",
+      "bytes": 86592
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+      "sha256": "21810c42b847bfc591db9a7ad76cf3df64c6bb5ad0cb82dd80082bd0c7a124d2",
+      "bytes": 892027
+    }
+  ],
+  "deleted": [],
+  "outside_expected_paths": [],
+  "foreign_changes_excluded": true
+}

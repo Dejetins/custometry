@@ -1,0 +1,26 @@
+{
+  "family": {
+    "family_id": "family.pipe.shell-workspace.baseline",
+    "title": "pipe / shell-workspace / baseline",
+    "representative_screen_ids": [
+      "UI-PIPE-001"
+    ],
+    "screen_ids": [
+      "UI-PIPE-001",
+      "UI-PIPE-002",
+      "UI-PIPE-003",
+      "UI-PIPE-004"
+    ],
+    "reuse_hypothesis_status": "hypothesis",
+    "decision_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/screens/81",
+      "formula": "group in-scope screens by stable screen namespace, exact shell_variant_id, exact baseline_exception_ref, and deterministic workload partition; select the highest state/action complexity as representative with screen_id tie-break"
+    },
+    "workload_budget": {
+      "max_screens": 4,
+      "max_screen_state_pairs": 24,
+      "rationale": "Exact family membership and accepted intake state cardinality; any expansion requires a separate family row."
+    }
+  }
+}

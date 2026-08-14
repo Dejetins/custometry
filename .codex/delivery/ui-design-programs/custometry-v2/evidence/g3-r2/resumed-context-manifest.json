@@ -1,0 +1,352 @@
+{
+  "schema_id": "codex.ui-stage-runtime-profiles/v1",
+  "gate": "G3",
+  "core": {
+    "contract_registry": "assets/contract-versions.json",
+    "control_plane": [
+      "plan_doc",
+      "prompt_pack_dir",
+      "stage_ledger"
+    ],
+    "control_assets": [
+      "stage-preflight-evidence.template.json",
+      "stage-preflight-evidence.schema.json",
+      "owner-input-response.template.json",
+      "owner-input-response.schema.json",
+      "owner-input-response-request.schema.json",
+      "change-impact-matrix.json",
+      "change-impact-matrix.schema.json",
+      "change-record.template.json",
+      "change-record.schema.json",
+      "change-impact-request.schema.json",
+      "change-impact-receipt.schema.json",
+      "stage-context-manifest.schema.json"
+    ],
+    "control_commands": [
+      "python3 scripts/ui_program_context.py --ledger <stage-ledger> --project-root <root>",
+      "python3 scripts/assemble_owner_input_response.py --request <owner-response-request.json> --project-root <root> --ledger <stage-ledger> --output <owner-response>",
+      "python3 scripts/assemble_change_impact.py --request <change-impact-request.json> --project-root <root> --ledger <stage-ledger> --output <impact-receipt>"
+    ],
+    "input_contracts": [
+      "ui-program-intake",
+      "platform-ui-baseline"
+    ],
+    "visual_authority_fields": [
+      "source_visual_ref",
+      "source_visual_sha256",
+      "source_evidence_mode",
+      "owner_decision_ref",
+      "screen_acceptance_scope",
+      "visual_language_scope",
+      "reusable_foundation_scope",
+      "inheritance_policy",
+      "mobile_scope"
+    ],
+    "decision_classes": {
+      "agent_decidable": "Resolve reversible technical and presentation choices inside the accepted product and visual envelope; generate paths, hashes, receipts, ledgers, and routine writes without asking the user.",
+      "owner_required": "Ask only for missing product meaning or scope, new mobile scope, materially different visual direction, irreversible or costly choices, and acceptance or correction of a finished visual result.",
+      "external_authority": "Use an already-authorized repository route; hard-block only when a required permission or external state is genuinely unavailable."
+    },
+    "user_role_policy": [
+      "The user's initial brief and later corrections are the sole authority for desired product meaning; repository sources are current-state evidence, not a second product owner.",
+      "The user describes the desired product path once with the agent; the agent records and carries that durable intent baseline through the program.",
+      "The user reviews finished visuals and corrects material product or visual mistakes.",
+      "Never ask the user to calculate hashes, name technical artifact owners, edit JSON, operate the ledger, choose routine tools, or repeat ordinary write permission already granted by the task.",
+      "The agent records natural-language decisions as canonical receipts and owns routine program coordination."
+    ],
+    "owner_surface": [
+      "Lead with the stage's declared owner surface; use finished visuals or one compact review board only for G3-G6.",
+      "Show material exceptions and at most three questions.",
+      "Keep raw JSON, inventories, hashes, permissions, and validator logs in linked evidence.",
+      "Accept unambiguous natural-language decisions; never require identifiers or magic syntax."
+    ],
+    "invariants": [
+      "A component catalog never substitutes for the all-screen atlas.",
+      "Desired product semantics come from the initial user brief and later user corrections; current product sources constrain factual compatibility but cannot silently redefine intent.",
+      "Generated views and passing receipts are assembled by scripts, not hand-edited.",
+      "Agent self-acceptance is prohibited; machine review readiness and user acceptance are separate states.",
+      "Responsive Web is required; mobile-specific product scope requires explicit current user authorization.",
+      "Current-gate success alone never permits the adjacent stage.",
+      "Historical contract profiles are read-only and cannot close active gates.",
+      "Determinism, source fidelity, native-image comparison, and visual-language conformance are separate claims."
+    ],
+    "preflight_checks": [
+      "current_gate",
+      "source_freshness",
+      "next_stage_inputs",
+      "write_scope",
+      "foreign_changes",
+      "execution_route",
+      "handoff_artifact"
+    ],
+    "state_policy": {
+      "review_ready": "Machine evidence is complete and the finished result may be shown to the user; the stage remains non-terminal until the user accepts or requests a bounded revision.",
+      "needs_input": "Ledger-only non-terminal state for a material product question or finished-result review; resume the same row from typed owner-response evidence.",
+      "blocked": "Terminal only for authority, safety, evidence, permission, inseparable foreign change, or unavailable external state.",
+      "revision": "Create a replacement only when target, scope, dependencies, accepted sources, prompt requirements, or acceptance criteria materially change."
+    }
+  },
+  "stage": {
+    "title": "Foundations, shell, and responsive Web",
+    "artifact_kind": "program",
+    "validation_profile": "program_ready",
+    "objective": "Realize and prove the fixed foundations and shell using the declared HTML or native-image evidence mode.",
+    "owns": [
+      "baseline realization",
+      "representative shell screen contract",
+      "responsive-Web evidence",
+      "anchor binding",
+      "reversible implementation decisions"
+    ],
+    "required_outputs": [
+      "program-ready manifest",
+      "candidate artifact",
+      "active representative shell screen contract created and validated before capture",
+      "mode-correct source evidence",
+      "candidate captures",
+      "review board",
+      "inheritance report"
+    ],
+    "allowed_unresolved": [],
+    "forbidden": [
+      "guessed range",
+      "unauthorized mobile composition",
+      "prose-only proof",
+      "unrelated foundation",
+      "fake source-fidelity claim"
+    ],
+    "required_references": [
+      "references/responsive-policy-v1.md",
+      "references/visual-provenance-contract-v1.md"
+    ],
+    "read_set": {
+      "always": [
+        "current ledger row",
+        "visual-authority block"
+      ],
+      "exact": [
+        "full platform baseline",
+        "G3 rendered-proof section",
+        "family shard index",
+        "representative shell source slice"
+      ],
+      "conditional": [
+        "source adapter contract selected by source_evidence_mode"
+      ],
+      "max_files": 16,
+      "target_tokens": 600000
+    },
+    "required_assets": [
+      "screen-design-contract.template.json",
+      "screen-design-contract.schema.json",
+      "render-provenance-request.template.json",
+      "render-provenance-request.schema.json",
+      "render-provenance-receipt.template.json",
+      "render-provenance-receipt.schema.json",
+      "review-board-manifest.schema.json",
+      "review-board-manifest.template.json",
+      "owner-decision.schema.json",
+      "owner-decision-request.schema.json",
+      "owner-decision-request.template.json",
+      "proposal-for-owner-review.template.md",
+      "stage-transition-request.template.json",
+      "stage-transition-request.schema.json",
+      "stage-transition-readiness.template.json",
+      "stage-transition-readiness.schema.json"
+    ],
+    "required_commands": [
+      "python3 scripts/ui_design_tool.py preflight",
+      "python3 scripts/ui_design_tool.py capture -- --url <loopback-url> --contract <screen-contract> --anchor-id <anchor-id> --target <reference|implementation> --source-artifact <rendered-source-artifact> --logical-artifact-id <logical-id> --output <geometry-receipt> --screenshot <redacted-png>",
+      "python3 scripts/assemble_render_provenance.py --request <render-provenance-request.json> --project-root <root> --output <render-provenance-receipt>",
+      "python3 scripts/ui_design_tool.py compare -- --reference <reference-png> --implementation <implementation-png> --output <raster-receipt> --screen-revision-id <screen-revision-id> --anchor-id <anchor-id> --comparison-purpose <purpose> --reference-logical-artifact-id <reference-id> --implementation-logical-artifact-id <implementation-id> --visual-authority-ref <authority-path> --visual-authority-sha256 <authority-sha256> --reference-render-provenance <reference-render-provenance> --implementation-render-provenance <implementation-render-provenance> --project-root <root>",
+      "python3 scripts/assemble_owner_decision.py --request <owner-decision-request.json> --project-root <root> --output <owner-decision>",
+      "python3 scripts/assemble_stage_transition.py --request <stage-transition-request.json> --project-root <root> --ledger <stage-ledger> --output <transition-receipt>"
+    ],
+    "required_validators": [
+      "python3 scripts/validate_ui_design_program.py --profile screen_contract_ready --project-root <root> <representative-shell-screen-contract>",
+      "python3 scripts/validate_ui_design_program.py --profile program_ready --project-root <root> <program>",
+      "python3 scripts/validate_stage_ledger.py --project-root <root> <stage-ledger>",
+      "python3 scripts/validate_stage_transition.py --project-root <root> --ledger <stage-ledger> <transition-receipt>"
+    ],
+    "companion_skills": [
+      "browser-qa-evidence with playwright-cli for canonical captures"
+    ],
+    "owner_gate": {
+      "required": true,
+      "review_profile": "program_ready",
+      "decision_kind": "stage_acceptance"
+    },
+    "owner_review_surface": "Finished shell/foundations and responsive endpoint review board; the agent records the answer.",
+    "requires_visual_authority_context": true,
+    "next_gates": [
+      "G4"
+    ],
+    "completion_behavior": {
+      "transition_kind": "advance",
+      "next_stage_allowed": true,
+      "program_complete": false
+    },
+    "next_preflight": [
+      "every representative family has its exact functional and visual inputs",
+      "G4 prompt exists with no known stop trap"
+    ]
+  },
+  "context_manifest": {
+    "schema_id": "codex.ui-stage-context-manifest/v1",
+    "runtime_profile": "codex.ui-stage-runtime-profiles/v1@1.6.0",
+    "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+    "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "gate_id": "G3",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "entries": [
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/AGENTS.md",
+        "sha256": "13f20c0d1e7a0bd46c9b780720cb7c014adaa83ebc2c5f3aa45aee668acb139d",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "repository instruction authority",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/AGENTS.md",
+        "sha256": "63a8908c101acea94e7d0e7c2ef9483c5919ffccc36ed8bad565dd58c59f7ef5",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "repository instruction authority",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/stage-ledger.md",
+        "sha256": "a4f5b409819c2aad8ee6bdefc6128f9a6daab41f81024139d7d4b2cf5ba48a88",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "live stage ledger and validated transition topology",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/agents/generated/custometry-ui-design-g0-v2/31-g3-foundations-shell-r2.md",
+        "sha256": "6d2a55583a30b49c9e112843777c3761a0a17a1e2b86b8aed2e82e8a56889a0e",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "exact stage prompt",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/evidence/custometry-ui-design-program-v2/g3-r2-foundations-shell-report.md",
+        "sha256": "ec437b3f15051aa02a14098974c8278e107bd41a31ee772b997f9a90beb2c17f",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "current stage evidence when already materialized",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g2-r2/stage-transition.json",
+        "sha256": "562e62f911cba2bc89ccb73b9a0b385b206d5f63a984788ca942536c9b201445",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "hash-pinned incoming transition",
+        "conditional_trigger": null,
+        "covers": []
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/platform-ui-baseline.json",
+        "sha256": "c0e6c547f61211c2ae7b21dde614a3dee1637667c156d03233f3138175f935a3",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "full fixed platform baseline",
+        "conditional_trigger": null,
+        "covers": [
+          "full platform baseline"
+        ]
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+        "sha256": "febd52bbc01efefb0297cd9e65c8357e9dfdd7ad7221bf9e5d0deb6efed34c47",
+        "json_pointer": "/g3_rendered_proof",
+        "expected_identity": null,
+        "reason": "G3 rendered proof",
+        "conditional_trigger": null,
+        "covers": [
+          "G3 rendered-proof section"
+        ]
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/families-index.json",
+        "sha256": "a3d7a12929ea8f96ca6a01022130a03fc1f17240bf0c343e9f90ec31bf80d35e",
+        "json_pointer": null,
+        "expected_identity": null,
+        "reason": "family shard index",
+        "conditional_trigger": null,
+        "covers": [
+          "family shard index"
+        ]
+      },
+      {
+        "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/screens/UI-ADMIN-003.json",
+        "sha256": "f8b1e3fef727f267601badce7ffea0eb0230f492b16914631e808ab259129f84",
+        "json_pointer": "/screen",
+        "expected_identity": "UI-ADMIN-003",
+        "reason": "deterministic representative shell source slice",
+        "conditional_trigger": null,
+        "covers": [
+          "representative shell source slice"
+        ]
+      }
+    ],
+    "program_digest": {
+      "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+      "revision": 2,
+      "contract_profile": "codex.ui-design-program/v1@1.6.0",
+      "validation_profile": "program_ready",
+      "input_contracts": {
+        "intake": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json",
+          "sha256": "ead497ba8918b21b16ae2dac8ff5163eb968518938d016f40fc80900811f0b57"
+        },
+        "baseline": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/platform-ui-baseline.json",
+          "sha256": "c0e6c547f61211c2ae7b21dde614a3dee1637667c156d03233f3138175f935a3"
+        }
+      },
+      "visual_authority": {
+        "source_visual_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+        "source_visual_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+        "source_evidence_mode": "renderable_html",
+        "owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+        "screen_acceptance_scope": "Visual-language and platform-baseline authority only; never exact target-screen composition, product semantics, fixture truth, legend-threshold truth, production implementation, or novel-screen fidelity.",
+        "visual_language_scope": "Linear Graphite shell character, calm professional density, compact contextual navigation, bounded analytical surfaces, concise KPI and command language, visible Result Trust, Focus/Explore character, readable analytical labels and tables, and adaptive external series-panel behavior as a visual-language reference.",
+        "reusable_foundation_scope": "Hash-pinned source-backed colors, typography stack, spacing rhythm, compact controls, rounded command language, shell/navigation relationships, overlay behavior, and analytical presentation primitives only; exact composition, information architecture, component implementation, runtime semantics, and target-screen acceptance remain later-gate work.",
+        "inheritance_policy": "required",
+        "mobile_scope": "unauthorized",
+        "product_semantics_scope": "source_registry_only"
+      },
+      "execution_artifacts": {
+        "plan_doc": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+        "prompt_pack_dir": ".codex/agents/generated/custometry-ui-design-g0-v2",
+        "stage_ledger": ".codex/delivery/ui-design-programs/custometry-v2/stage-ledger.md"
+      }
+    },
+    "program_digest_covers": [],
+    "resolved_exact_labels": [
+      "full platform baseline",
+      "G3 rendered-proof section",
+      "family shard index",
+      "representative shell source slice"
+    ],
+    "conditional_triggers": [
+      "source adapter contract selected by source_evidence_mode"
+    ],
+    "file_count": 10,
+    "estimated_tokens": 46885,
+    "limits": {
+      "max_files": 16,
+      "target_tokens": 600000
+    },
+    "status": "bounded"
+  }
+}

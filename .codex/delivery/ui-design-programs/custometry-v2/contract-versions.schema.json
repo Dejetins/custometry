@@ -14,9 +14,10 @@
       "required": [
         "runtime_profile", "program_contract", "screen_contract",
         "intake_contract", "baseline_contract", "capture_tool",
+        "standard_source_capture", "standard_applicability_assembler",
         "raster_diff_tool",
         "visual_qa_assembler", "screen_acceptance_assembler",
-        "owner_decision_assembler", "owner_input_response_assembler", "render_provenance_assembler", "change_impact_assembler", "family_acceptance_assembler",
+        "owner_decision_assembler", "owner_input_response_assembler", "render_provenance_assembler", "historical_control_plane_migration_assembler", "change_impact_assembler", "family_acceptance_assembler",
         "wave_acceptance_assembler", "journey_proof_assembler",
         "implementation_handoff_assembler", "transition_assembler"
       ],
@@ -26,6 +27,8 @@
         "screen_contract": {"type": "string", "minLength": 1},
         "intake_contract": {"type": "string", "minLength": 1},
         "baseline_contract": {"type": "string", "minLength": 1},
+        "standard_source_capture": {"type": "string", "minLength": 1},
+        "standard_applicability_assembler": {"type": "string", "minLength": 1},
         "capture_tool": {"type": "string", "minLength": 1},
         "raster_diff_tool": {"type": "string", "minLength": 1},
         "visual_qa_assembler": {"type": "string", "minLength": 1},
@@ -33,6 +36,7 @@
         "owner_decision_assembler": {"type": "string", "minLength": 1},
         "owner_input_response_assembler": {"type": "string", "minLength": 1},
         "render_provenance_assembler": {"type": "string", "minLength": 1},
+        "historical_control_plane_migration_assembler": {"type": "string", "minLength": 1},
         "change_impact_assembler": {"type": "string", "minLength": 1},
         "family_acceptance_assembler": {"type": "string", "minLength": 1},
         "wave_acceptance_assembler": {"type": "string", "minLength": 1},
@@ -44,11 +48,13 @@
     "historical_read_only": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["runtime_profiles", "program_contracts", "screen_contracts"],
+      "required": ["capture_tools", "runtime_profiles", "program_contracts", "screen_contracts", "baseline_contracts"],
       "properties": {
+        "capture_tools": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
         "runtime_profiles": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
         "program_contracts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
-        "screen_contracts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+        "screen_contracts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "baseline_contracts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
       }
     }
   }

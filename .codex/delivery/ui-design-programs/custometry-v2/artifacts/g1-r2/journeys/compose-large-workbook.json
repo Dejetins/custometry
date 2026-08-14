@@ -1,0 +1,28 @@
+{
+  "journey": {
+    "journey_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+      "json_pointer": "/journeys/1",
+      "expected_id": "compose-large-workbook"
+    },
+    "entry_screen_ids": [
+      "UI-RPT-001"
+    ],
+    "intermediate_screen_ids": [
+      "UI-RPT-002"
+    ],
+    "alternate_screen_ids": [],
+    "failure_screen_ids": [],
+    "recovery_screen_ids": [],
+    "terminal_screen_ids": [
+      "UI-RPT-003"
+    ],
+    "external_boundary_ids": [],
+    "transitions": [],
+    "unresolved_fields": [
+      "criticality",
+      "criticality_origin",
+      "transitions"
+    ]
+  }
+}

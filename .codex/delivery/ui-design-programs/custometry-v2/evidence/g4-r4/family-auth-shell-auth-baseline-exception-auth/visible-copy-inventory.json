@@ -1,0 +1,738 @@
+{
+  "schema_id": "custometry.ui-visible-copy-inventory/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r4",
+  "screen_state_locale_pairs": [
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.initial",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Вход в Custometry",
+        "lead": "Введите рабочий email и пароль.",
+        "email_label": "Рабочий email",
+        "email_placeholder": "name@company.ru",
+        "password_label": "Пароль",
+        "remember": "Запомнить меня",
+        "recovery_link": "Восстановить пароль",
+        "submit": "Войти",
+        "trust": "Данные остаются в вашей инсталляции.",
+        "message": "",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.first_loading",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Вход в Custometry",
+        "lead": "Введите рабочий email и пароль.",
+        "email_label": "Рабочий email",
+        "email_placeholder": "name@company.ru",
+        "password_label": "Пароль",
+        "remember": "Запомнить меня",
+        "recovery_link": "Восстановить пароль",
+        "submit": "Войти",
+        "trust": "Данные остаются в вашей инсталляции.",
+        "message": "Входим…",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.ready",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Вход в Custometry",
+        "lead": "Введите рабочий email и пароль.",
+        "email_label": "Рабочий email",
+        "email_placeholder": "name@company.ru",
+        "password_label": "Пароль",
+        "remember": "Запомнить меня",
+        "recovery_link": "Восстановить пароль",
+        "submit": "Войти",
+        "trust": "Данные остаются в вашей инсталляции.",
+        "message": "",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.validation_error",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Вход в Custometry",
+        "lead": "Введите рабочий email и пароль.",
+        "email_label": "Рабочий email",
+        "email_placeholder": "name@company.ru",
+        "password_label": "Пароль",
+        "remember": "Запомнить меня",
+        "recovery_link": "Восстановить пароль",
+        "submit": "Войти",
+        "trust": "Данные остаются в вашей инсталляции.",
+        "message": "Проверьте выделенные поля.",
+        "email_error": "Введите рабочий email.",
+        "password_error": "Введите пароль."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.failed",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Вход в Custometry",
+        "lead": "Введите рабочий email и пароль.",
+        "email_label": "Рабочий email",
+        "email_placeholder": "name@company.ru",
+        "password_label": "Пароль",
+        "remember": "Запомнить меня",
+        "recovery_link": "Восстановить пароль",
+        "submit": "Войти",
+        "trust": "Данные остаются в вашей инсталляции.",
+        "message": "Не удалось войти. Проверьте данные и повторите.",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.session_expired",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Вход в Custometry",
+        "lead": "Введите рабочий email и пароль.",
+        "email_label": "Рабочий email",
+        "email_placeholder": "name@company.ru",
+        "password_label": "Пароль",
+        "remember": "Запомнить меня",
+        "recovery_link": "Восстановить пароль",
+        "submit": "Войти",
+        "trust": "Данные остаются в вашей инсталляции.",
+        "message": "Сессия истекла. Войдите снова.",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.initial",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Смена пароля",
+        "lead": "Введите код сброса, полученный у администратора, и задайте новый пароль.",
+        "step_code": "Код",
+        "step_password": "Новый пароль",
+        "step_done": "Готово",
+        "token_label": "Код сброса",
+        "token_placeholder": "Введите код",
+        "password_label": "Новый пароль",
+        "confirm_label": "Повторите пароль",
+        "password_hint": "Требования к паролю проверяются при сохранении.",
+        "validate": "Проверить код",
+        "submit": "Сохранить новый пароль",
+        "return_link": "Вернуться ко входу",
+        "trust": "Если у вас нет кода, обратитесь к администратору инсталляции.",
+        "message": "",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.first_loading",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Смена пароля",
+        "lead": "Введите код сброса, полученный у администратора, и задайте новый пароль.",
+        "step_code": "Код",
+        "step_password": "Новый пароль",
+        "step_done": "Готово",
+        "token_label": "Код сброса",
+        "token_placeholder": "Введите код",
+        "password_label": "Новый пароль",
+        "confirm_label": "Повторите пароль",
+        "password_hint": "Требования к паролю проверяются при сохранении.",
+        "validate": "Проверить код",
+        "submit": "Сохранить новый пароль",
+        "return_link": "Вернуться ко входу",
+        "trust": "Если у вас нет кода, обратитесь к администратору инсталляции.",
+        "message": "Проверяем код…",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.ready",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Смена пароля",
+        "lead": "Введите код сброса, полученный у администратора, и задайте новый пароль.",
+        "step_code": "Код",
+        "step_password": "Новый пароль",
+        "step_done": "Готово",
+        "token_label": "Код сброса",
+        "token_placeholder": "Введите код",
+        "password_label": "Новый пароль",
+        "confirm_label": "Повторите пароль",
+        "password_hint": "Требования к паролю проверяются при сохранении.",
+        "validate": "Проверить код",
+        "submit": "Сохранить новый пароль",
+        "return_link": "Вернуться ко входу",
+        "trust": "Если у вас нет кода, обратитесь к администратору инсталляции.",
+        "message": "Код подтверждён. Задайте новый пароль.",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.validation_error",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Смена пароля",
+        "lead": "Введите код сброса, полученный у администратора, и задайте новый пароль.",
+        "step_code": "Код",
+        "step_password": "Новый пароль",
+        "step_done": "Готово",
+        "token_label": "Код сброса",
+        "token_placeholder": "Введите код",
+        "password_label": "Новый пароль",
+        "confirm_label": "Повторите пароль",
+        "password_hint": "Требования к паролю проверяются при сохранении.",
+        "validate": "Проверить код",
+        "submit": "Сохранить новый пароль",
+        "return_link": "Вернуться ко входу",
+        "trust": "Если у вас нет кода, обратитесь к администратору инсталляции.",
+        "message": "",
+        "token_error": "Проверьте код сброса и повторите."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.failed",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Смена пароля",
+        "lead": "Введите код сброса, полученный у администратора, и задайте новый пароль.",
+        "step_code": "Код",
+        "step_password": "Новый пароль",
+        "step_done": "Готово",
+        "token_label": "Код сброса",
+        "token_placeholder": "Введите код",
+        "password_label": "Новый пароль",
+        "confirm_label": "Повторите пароль",
+        "password_hint": "Требования к паролю проверяются при сохранении.",
+        "validate": "Проверить код",
+        "submit": "Сохранить новый пароль",
+        "return_link": "Вернуться ко входу",
+        "trust": "Если у вас нет кода, обратитесь к администратору инсталляции.",
+        "message": "Не удалось изменить пароль. Проверьте данные и повторите.",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.session_expired",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Смена пароля",
+        "lead": "Введите код сброса, полученный у администратора, и задайте новый пароль.",
+        "step_code": "Код",
+        "step_password": "Новый пароль",
+        "step_done": "Готово",
+        "token_label": "Код сброса",
+        "token_placeholder": "Введите код",
+        "password_label": "Новый пароль",
+        "confirm_label": "Повторите пароль",
+        "password_hint": "Требования к паролю проверяются при сохранении.",
+        "validate": "Проверить код",
+        "submit": "Сохранить новый пароль",
+        "return_link": "Вернуться ко входу",
+        "trust": "Если у вас нет кода, обратитесь к администратору инсталляции.",
+        "message": "Срок действия кода истёк. Получите новый код у администратора.",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.initial",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Sign in to Custometry",
+        "lead": "Enter your work email and password.",
+        "email_label": "Work email",
+        "email_placeholder": "name@company.com",
+        "password_label": "Password",
+        "remember": "Remember me",
+        "recovery_link": "Reset password",
+        "submit": "Sign in",
+        "trust": "Your data stays in your installation.",
+        "message": "",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.first_loading",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Sign in to Custometry",
+        "lead": "Enter your work email and password.",
+        "email_label": "Work email",
+        "email_placeholder": "name@company.com",
+        "password_label": "Password",
+        "remember": "Remember me",
+        "recovery_link": "Reset password",
+        "submit": "Sign in",
+        "trust": "Your data stays in your installation.",
+        "message": "Signing in…",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.ready",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Sign in to Custometry",
+        "lead": "Enter your work email and password.",
+        "email_label": "Work email",
+        "email_placeholder": "name@company.com",
+        "password_label": "Password",
+        "remember": "Remember me",
+        "recovery_link": "Reset password",
+        "submit": "Sign in",
+        "trust": "Your data stays in your installation.",
+        "message": "",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.validation_error",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Sign in to Custometry",
+        "lead": "Enter your work email and password.",
+        "email_label": "Work email",
+        "email_placeholder": "name@company.com",
+        "password_label": "Password",
+        "remember": "Remember me",
+        "recovery_link": "Reset password",
+        "submit": "Sign in",
+        "trust": "Your data stays in your installation.",
+        "message": "Check the highlighted fields.",
+        "email_error": "Enter your work email.",
+        "password_error": "Enter your password."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.failed",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Sign in to Custometry",
+        "lead": "Enter your work email and password.",
+        "email_label": "Work email",
+        "email_placeholder": "name@company.com",
+        "password_label": "Password",
+        "remember": "Remember me",
+        "recovery_link": "Reset password",
+        "submit": "Sign in",
+        "trust": "Your data stays in your installation.",
+        "message": "Unable to sign in. Check the details and try again.",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-001",
+      "state_id": "UI-AUTH-001.session_expired",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Sign in to Custometry",
+        "lead": "Enter your work email and password.",
+        "email_label": "Work email",
+        "email_placeholder": "name@company.com",
+        "password_label": "Password",
+        "remember": "Remember me",
+        "recovery_link": "Reset password",
+        "submit": "Sign in",
+        "trust": "Your data stays in your installation.",
+        "message": "Your session expired. Sign in again.",
+        "email_error": "",
+        "password_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/0",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.initial",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Reset password",
+        "lead": "Enter the reset code from your administrator and choose a new password.",
+        "step_code": "Code",
+        "step_password": "New password",
+        "step_done": "Done",
+        "token_label": "Reset code",
+        "token_placeholder": "Enter code",
+        "password_label": "New password",
+        "confirm_label": "Confirm password",
+        "password_hint": "Password requirements are checked when you save.",
+        "validate": "Check code",
+        "submit": "Save new password",
+        "return_link": "Return to sign in",
+        "trust": "If you do not have a code, contact your installation administrator.",
+        "message": "",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.first_loading",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Reset password",
+        "lead": "Enter the reset code from your administrator and choose a new password.",
+        "step_code": "Code",
+        "step_password": "New password",
+        "step_done": "Done",
+        "token_label": "Reset code",
+        "token_placeholder": "Enter code",
+        "password_label": "New password",
+        "confirm_label": "Confirm password",
+        "password_hint": "Password requirements are checked when you save.",
+        "validate": "Check code",
+        "submit": "Save new password",
+        "return_link": "Return to sign in",
+        "trust": "If you do not have a code, contact your installation administrator.",
+        "message": "Checking the code…",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.ready",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Reset password",
+        "lead": "Enter the reset code from your administrator and choose a new password.",
+        "step_code": "Code",
+        "step_password": "New password",
+        "step_done": "Done",
+        "token_label": "Reset code",
+        "token_placeholder": "Enter code",
+        "password_label": "New password",
+        "confirm_label": "Confirm password",
+        "password_hint": "Password requirements are checked when you save.",
+        "validate": "Check code",
+        "submit": "Save new password",
+        "return_link": "Return to sign in",
+        "trust": "If you do not have a code, contact your installation administrator.",
+        "message": "Code confirmed. Choose a new password.",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.validation_error",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Reset password",
+        "lead": "Enter the reset code from your administrator and choose a new password.",
+        "step_code": "Code",
+        "step_password": "New password",
+        "step_done": "Done",
+        "token_label": "Reset code",
+        "token_placeholder": "Enter code",
+        "password_label": "New password",
+        "confirm_label": "Confirm password",
+        "password_hint": "Password requirements are checked when you save.",
+        "validate": "Check code",
+        "submit": "Save new password",
+        "return_link": "Return to sign in",
+        "trust": "If you do not have a code, contact your installation administrator.",
+        "message": "",
+        "token_error": "Check the reset code and try again."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.failed",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Reset password",
+        "lead": "Enter the reset code from your administrator and choose a new password.",
+        "step_code": "Code",
+        "step_password": "New password",
+        "step_done": "Done",
+        "token_label": "Reset code",
+        "token_placeholder": "Enter code",
+        "password_label": "New password",
+        "confirm_label": "Confirm password",
+        "password_hint": "Password requirements are checked when you save.",
+        "validate": "Check code",
+        "submit": "Save new password",
+        "return_link": "Return to sign in",
+        "trust": "If you do not have a code, contact your installation administrator.",
+        "message": "Unable to reset the password. Check the details and try again.",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "state_id": "UI-AUTH-004.session_expired",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Reset password",
+        "lead": "Enter the reset code from your administrator and choose a new password.",
+        "step_code": "Code",
+        "step_password": "New password",
+        "step_done": "Done",
+        "token_label": "Reset code",
+        "token_placeholder": "Enter code",
+        "password_label": "New password",
+        "confirm_label": "Confirm password",
+        "password_hint": "Password requirements are checked when you save.",
+        "validate": "Check code",
+        "submit": "Save new password",
+        "return_link": "Return to sign in",
+        "trust": "If you do not have a code, contact your installation administrator.",
+        "message": "The code expired. Ask your administrator for a new code.",
+        "token_error": ""
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц",
+          "custometry-technical-blueprint-ru.md#20.2-authentication"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/3",
+        "classification": "source_bound_product_copy_and_minimal_target_authored_connective_copy",
+        "connective_copy_justification": "Names only the action, destination, recovery step, or next safe action without inventing a delivery channel, product policy, or implementation detail."
+      }
+    }
+  ],
+  "expected_pairs": 24,
+  "observed_pairs": 24,
+  "forbidden_visible_copy": [
+    "Помощь с паролем",
+    "/auth/sign-in",
+    "/auth/recovery",
+    "Проверочное значение",
+    "separate route",
+    "Отдельный маршрут"
+  ],
+  "result": "passed"
+}

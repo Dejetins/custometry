@@ -1,0 +1,51 @@
+{
+  "capability": {
+    "id": "UI-CAP-017",
+    "name": "Localization, accessibility and reduced motion",
+    "delivery_form": "component_contract",
+    "requirement_ids": [
+      "I18N-001",
+      "I18N-002",
+      "I18N-003",
+      "I18N-004",
+      "I18N-005",
+      "I18N-006",
+      "I18N-007",
+      "I18N-008",
+      "I18N-009",
+      "I18N-010",
+      "I18N-011",
+      "A11Y-001",
+      "A11Y-002",
+      "A11Y-003",
+      "A11Y-004",
+      "A11Y-005",
+      "A11Y-006",
+      "A11Y-007",
+      "A11Y-008",
+      "A11Y-009",
+      "A11Y-010",
+      "MOTION-001",
+      "MOTION-002",
+      "MOTION-003",
+      "MOTION-004",
+      "MOTION-005",
+      "MOTION-006",
+      "MOTION-007",
+      "MOTION-008",
+      "MOTION-009",
+      "MOTION-010",
+      "MOTION-011",
+      "MOTION-012"
+    ]
+  },
+  "promoted_binding_ids": [],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

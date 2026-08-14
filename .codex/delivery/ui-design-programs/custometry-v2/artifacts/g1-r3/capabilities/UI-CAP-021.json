@@ -1,0 +1,38 @@
+{
+  "capability": {
+    "id": "UI-CAP-021",
+    "name": "Organization-scoped effective access and ownership",
+    "delivery_form": "policy_contract",
+    "requirement_ids": [
+      "UC-028",
+      "RBAC-019",
+      "RBAC-020",
+      "RBAC-021",
+      "RBAC-022",
+      "RBAC-023",
+      "RBAC-024",
+      "RBAC-025",
+      "RBAC-026",
+      "RBAC-027",
+      "RBAC-028",
+      "TEST-INV-076",
+      "TEST-INV-077",
+      "TEST-INV-078",
+      "TEST-INV-079",
+      "TEST-INV-080",
+      "TEST-INV-081",
+      "TEST-INV-082",
+      "TEST-INV-083",
+      "TEST-INV-084"
+    ]
+  },
+  "promoted_binding_ids": [],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

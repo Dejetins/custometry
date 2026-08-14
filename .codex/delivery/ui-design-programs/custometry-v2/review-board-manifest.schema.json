@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex.local/skills/ui-design-program/review-board-manifest.schema.json",
+  "title": "Hash-bound owner review board manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "program_id", "artifact_id", "revision", "validation_profile", "entries"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_id": {"const": "codex.ui-review-board-manifest/v1"},
+    "program_id": {"type": "string", "minLength": 1},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "validation_profile": {"enum": ["program_ready", "family_review_ready", "wave_review_ready", "handoff_review_ready"]},
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["entry_id", "role", "artifact_ref", "sha256", "anchor_id", "state_id"],
+        "properties": {
+          "entry_id": {"type": "string", "minLength": 1},
+          "role": {"enum": ["source_native", "source_anchor", "candidate", "candidate_anchor", "render_provenance", "inheritance", "standard_conformance", "screen_acceptance", "wave_acceptance", "journey_proof", "implementation_handoff", "screen_contract"]},
+          "artifact_ref": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "anchor_id": {"type": ["string", "null"]},
+          "state_id": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

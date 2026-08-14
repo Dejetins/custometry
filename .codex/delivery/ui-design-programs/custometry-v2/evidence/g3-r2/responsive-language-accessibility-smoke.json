@@ -1,0 +1,176 @@
+{
+  "schema_id": "custometry.ui-g3-browser-stress/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "revision": 2,
+  "browser_mechanic": "playwright-cli 0.1.17 / Chromium 150.0.7871.187",
+  "origin": "http://127.0.0.1:4173",
+  "checks": [
+    {
+      "check": "desktop contextual navigation overlay",
+      "status": "passed",
+      "observed": {
+        "workspace_before": {
+          "x": 86,
+          "width": 1822
+        },
+        "workspace_open": {
+          "x": 86,
+          "width": 1822
+        },
+        "flyout": {
+          "x": 76,
+          "y": 58,
+          "width": 290
+        },
+        "aria_modal": false,
+        "escape_focus_return": "nav-toggle"
+      },
+      "artifact": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1920.png",
+        "sha256": "9806e1db61fab0fcc028533bc65903bd72b240c72efc3e984cec41b42a2fb979"
+      }
+    },
+    {
+      "check": "narrow modal drawer",
+      "status": "passed",
+      "observed": {
+        "bounds": {
+          "x": 5,
+          "y": 5,
+          "width": 360,
+          "height": 1014
+        },
+        "viewport_contained": true,
+        "aria_modal": true,
+        "workspace_inert": true,
+        "workspace_scroll_lock": "hidden",
+        "focus_transfer": "Основа",
+        "focus_trap_wrap": [
+          "Доверие к результату",
+          "Основа"
+        ],
+        "outside_dismiss_focus_return": "nav-toggle",
+        "escape_focus_return": "nav-toggle",
+        "workspace_geometry_stable": true
+      },
+      "artifact": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768-drawer.png",
+        "sha256": "73bd52ccc61421dc6a526ecf77b5d6cddada93260362354f1cd568390a877090"
+      }
+    },
+    {
+      "check": "inspector wide full-height sibling and narrow overlay",
+      "status": "passed",
+      "observed": {
+        "wide": {
+          "position": "static",
+          "width": 400,
+          "height": 959,
+          "workspace_body_height": 959,
+          "fills_workspace_body": true,
+          "focus_transfer": "inspector-close",
+          "escape_focus_return": "inspector-toggle"
+        },
+        "narrow": {
+          "x": 363,
+          "y": 5,
+          "width": 400,
+          "height": 1014,
+          "viewport_contained": true,
+          "focus_transfer": "inspector-close",
+          "escape_focus_return": "inspector-toggle"
+        }
+      },
+      "artifact": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1920-inspector.png",
+        "sha256": "15c7244f17c8443fbb355ba8b4d3b4b5700771cad2b9ea08df2d2da547e0e95f"
+      }
+    },
+    {
+      "check": "visible analytical table and grouped icon controls",
+      "status": "passed",
+      "observed": {
+        "visible_without_mode_switch": true,
+        "named_sort_control": "Сортировать демонстрационные значения",
+        "row_heights": [
+          36,
+          36,
+          36,
+          36
+        ],
+        "group_rows": 2,
+        "sticky_heading_tabindexes": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "grouped_control_surfaces": 4,
+        "grouped_icon_buttons": 10,
+        "document_overflow": false
+      },
+      "artifact": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1440-table.png",
+        "sha256": "104f599a4cb15de0a379c93de07d0ab4e0ea873415cf974da995f890eb3efc3f"
+      }
+    },
+    {
+      "check": "RU and EN content stress",
+      "status": "passed",
+      "observed": {
+        "locales": [
+          "ru",
+          "en"
+        ],
+        "en_heading": "Shell and visual-language rules",
+        "document_overflow": false,
+        "hero_clipped": false
+      },
+      "artifact": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1440-en.png",
+        "sha256": "61a5c8379ed3eeec677822afa9c6ade57e88d058955bb7352384803772dbc85f"
+      }
+    },
+    {
+      "check": "200% browser zoom",
+      "status": "passed",
+      "observed": {
+        "visualViewportScale": 2,
+        "visualViewport": {
+          "width": 384,
+          "height": 512
+        },
+        "primaryTask": true,
+        "resultTrust": true,
+        "recovery": true,
+        "horizontalDocumentOverflow": false
+      },
+      "artifact": {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768-zoom-200.png",
+        "sha256": "6189560631507892ba27093508f2bc653e5d5818b761f622d6a68b3c3282d85c"
+      }
+    },
+    {
+      "check": "prefers-reduced-motion",
+      "status": "passed",
+      "observed": {
+        "matches": true,
+        "transition_duration_seconds": 1e-05
+      }
+    },
+    {
+      "check": "console and network",
+      "status": "passed",
+      "observed": {
+        "console_errors": 0,
+        "request_failures": 0,
+        "external_requests": 0
+      }
+    }
+  ],
+  "proof_boundary": "Browser smoke and visible responsive preservation only; not full WCAG conformance or production runtime proof.",
+  "result": "passed"
+}

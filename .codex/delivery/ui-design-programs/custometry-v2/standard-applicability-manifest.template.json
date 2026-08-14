@@ -1,0 +1,16 @@
+{
+  "$schema": "standard-applicability-manifest.schema.json",
+  "schema_id": "codex.ui-standard-applicability-manifest/v1",
+  "generated_by": {
+    "script": "assemble_standard_applicability.py",
+    "version": "1.0.0",
+    "command": "assemble_standard_applicability.py <paths-redacted>"
+  },
+  "manifest_id": "<screen-revision>@<standard-revision>",
+  "screen_revision_id": "<screen-revision>",
+  "screen_identity_sha256": "<computed-screen-identity-sha256>",
+  "baseline": {"baseline_id": "<baseline-id>", "path": "<baseline-path>", "sha256": "<baseline-sha256>"},
+  "standard_revision_id": "<standard-revision>",
+  "clause_inventory_sha256": "<clause-inventory-sha256>",
+  "entries": []
+}

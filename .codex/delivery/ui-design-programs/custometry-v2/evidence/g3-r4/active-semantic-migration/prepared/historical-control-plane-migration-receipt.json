@@ -1,0 +1,659 @@
+{
+  "$schema": "historical-control-plane-migration-receipt.schema.json",
+  "schema_id": "codex.ui-historical-control-plane-migration-receipt/v1",
+  "generated_by": {
+    "script": "migrate_historical_control_plane.py",
+    "version": "1.0.0",
+    "command": "migrate_historical_control_plane.py prepare <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "source": {
+    "contract_registry_ref": ".codex/delivery/ui-design-programs/custometry-v2/contract-versions.json",
+    "contract_registry_sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31",
+    "ledger_ref": ".codex/delivery/ui-design-programs/custometry-v2/stage-ledger.md",
+    "ledger_sha256": "8f19bb1fdad12a5a2e7394c760ab26151807e16eeeb5353ca29a18b576761aaa",
+    "plan_doc_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "plan_doc_sha256": "f8a1eda1437d3dd86ad3bf5765c9f4e68ae066f440247fadc7e99c2e8991ddb7",
+    "prompt_pack_dir": ".codex/agents/generated/custometry-ui-design-g0-v2",
+    "ledger_snapshot_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/active-semantic-migration/prepared/source-stage-ledger.md",
+    "ledger_snapshot_sha256": "8f19bb1fdad12a5a2e7394c760ab26151807e16eeeb5353ca29a18b576761aaa",
+    "plan_doc_snapshot_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/active-semantic-migration/prepared/source-plan-doc.json",
+    "plan_doc_snapshot_sha256": "f8a1eda1437d3dd86ad3bf5765c9f4e68ae066f440247fadc7e99c2e8991ddb7",
+    "contract_registry_snapshot_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/active-semantic-migration/prepared/source-contract-versions.json",
+    "contract_registry_snapshot_sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31"
+  },
+  "target_registry": {
+    "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/contract-versions.json",
+    "sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31",
+    "active_runtime_profile": "codex.ui-stage-runtime-profiles/v1@2.0.0",
+    "active_program_contract": "codex.ui-design-program/v1@2.0.0"
+  },
+  "historical_contract_profiles": {
+    "program_contract": "codex.ui-design-program/v1@2.0.0",
+    "runtime_profiles": [
+      "codex.ui-stage-runtime-profiles/v1@1.6.0",
+      "codex.ui-stage-runtime-profiles/v1@2.0.0"
+    ]
+  },
+  "source_frontier": {
+    "ledger_status": "active",
+    "current_stage": "G4@family.auth.shell-auth.baseline-exception-auth-r4",
+    "stage_status": "in_progress",
+    "executor_claim": "codex-root-g4-auth-r4-20260813T200738Z",
+    "claimed_at": "2026-08-13T20:07:38Z"
+  },
+  "historical_rows": [
+    {
+      "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+      "gate": "G3",
+      "status": "accepted",
+      "historical_outcome": "accepted",
+      "executor_claim": "codex-root-g3-r3-20260813T141404Z",
+      "claimed_at": "2026-08-13T14:14:04Z",
+      "row_sha256": "a6b527b95c0b53979525b58306bf233b7421aa8f59ad563e6ec594321d6196b7",
+      "detail_sha256": "377530010690094cf7101e3f9d989821bfa71d9743aec424f7e8d453aedc1d5d",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/32-g3-foundations-shell-r3.md",
+          "sha256": "8f0a7cbf4456adc7c8a462644434ab7ee4befde218325e5c2fa20ff2f536f3af"
+        },
+        {
+          "field": "evidence",
+          "path": ".codex/delivery/evidence/custometry-ui-design-program-v2/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3-report.md",
+          "sha256": "564fc290e8cc8e94f0f13e859f3e8fcfdf1429eaa759b3a79df1232f2f0501a2"
+        },
+        {
+          "field": "transition_receipt",
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/stage-transition.json",
+          "sha256": "f8ba6753dd57e2aa6e166f5fa66a27ca7c726bfb621349c411ff2673b9c07e64"
+        },
+        {
+          "field": "owner_decision",
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/stage-acceptance-decision-r3.json",
+          "sha256": "7f019284bd624179e9427f67b97e213e82e5fec9b4066b23533e72d85e8ed9f5"
+        },
+        {
+          "field": "decision_packet",
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/owner-review-decision-packet.json",
+          "sha256": "69e1780874ede74346e69f137b9691bf3dc02cf1e332dc3b1e1d759014fc9497"
+        },
+        {
+          "field": "resume_evidence_ref",
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/owner-input-response-acceptance-r3.json",
+          "sha256": "34769bc34ee52b426c16ae34f79c2516e7e2fd8348d9e671394e281b77adf346"
+        },
+        {
+          "field": "incoming_transition_receipt",
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/stage-transition.json",
+          "sha256": "0f0402673c2939b18b62e66e9aab508a0f45632d9ebd359bd21646ac46c35ac6"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r4",
+      "gate": "G4",
+      "status": "in_progress",
+      "historical_outcome": "in_progress",
+      "executor_claim": "codex-root-g4-auth-r4-20260813T200738Z",
+      "claimed_at": "2026-08-13T20:07:38Z",
+      "row_sha256": "724c21f0103ba7742c0476d003d48427b022f37474e2a5a41ac464b2bc9b4745",
+      "detail_sha256": "163ae77df21c03c3eb2b62becae127664322990f542ad3b954f251a873bcc0b7",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-01-family-auth-shell-auth-baseline-exception-auth-r4.md",
+          "sha256": "c6ac489ca0cfa436eb413f94760ea4018ac9f0a72dcd5d7e13f76a8b521efcf3"
+        },
+        {
+          "field": "incoming_transition_receipt",
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/stage-transition.json",
+          "sha256": "f8ba6753dd57e2aa6e166f5fa66a27ca7c726bfb621349c411ff2673b9c07e64"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "a6d25618df44c7b6eac2a35f419e2a35414c5bb784eea96b40aaa03e1bcfa4c0",
+      "detail_sha256": "86424c5502054cb9b3e68ce4785ee87dcc43905c9bb4611c913cac8259f77832",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-02-family-auth-shell-workspace-baseline-r3.md",
+          "sha256": "fe94689706e8bad81a144fab956ca42ef9b04420080b9d792056eecbda514cc9"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.core.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "83356fb39a3d398015a01afe49de528a727a6dc126f6dd29fe35cbc97153942b",
+      "detail_sha256": "8125df522af49fc456cfde93a2f966dd3a1eabc9cc3353c262f129fa2e3770b0",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-03-family-core-shell-workspace-baseline-r3.md",
+          "sha256": "9949d61eaab975f017bbe71016a29e21580c902393407de531e5d07c8694cfd7"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.data.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "67ed07c349f28cb4374dfa090da913d190bfb2112aa670266ef9f5f9dd0a7692",
+      "detail_sha256": "0d7f937b61814014a41d3223495e9dae4f36fb9b2ce47dd47585df7a2c7d3ceb",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-04-family-data-shell-workspace-baseline-r3.md",
+          "sha256": "2f5f4e2001f1e6a8c521d960062e0e9f8a0e0dc73d40cb5d6f48b319b7148894"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.dq.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "db272522f21374fef657807b7c606bb910a1e1ba05b975440ee5ab964e3c679d",
+      "detail_sha256": "d46062f12ad262252674c5f76ac9bbc2c3c613952c5d0b12c1f7e95f6e2b02ee",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-05-family-dq-shell-workspace-baseline-r3.md",
+          "sha256": "9f825a8eb75718de68cffbc7f07a60d8da68957160489b27643423a311866a56"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.an.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "d69c1a66bf3fe088f4cd99f0f13e2ac1bd7b16607bf9f0fb02d673fa609dd681",
+      "detail_sha256": "6406808015b0d2a897ad5a331f5232359969b7db5d4498b9cedebdbdba4fad20",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-06-family-an-shell-workspace-baseline-r3.md",
+          "sha256": "32195ece2362346663222600859d7676b0430411d98ccc23101a1403f2794077"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.seg.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "0c0e7860f3f78b150b264ff82fd041b41e5bc17c67cdaf0f5cfba4a66a771f96",
+      "detail_sha256": "b1cf26c2fb521547eaf5dd3e48c7a43be5635564651f6fb34ff1a9bec71c87d7",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-07-family-seg-shell-workspace-baseline-r3.md",
+          "sha256": "4fd7595eedc1f6e241a818d8cd6ed61943055cef5daee4204fbcbdea6469d53c"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.fcst.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "896dfc0566e0ce7d8c06ce6a7bc5d2bb5a511cdedb1574ef2561c8109b4060f6",
+      "detail_sha256": "ec3c2f9f97ba46840bf8e12edb332aa70a2cf1fba9f4dd199f9822809b6bff0c",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-08-family-fcst-shell-workspace-baseline-r3.md",
+          "sha256": "92a90677d37c21f24e23a595ff89ce953aab0625e6e7464cb1aced056e5ecfa1"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.promo.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "9f737dd5790779afac97075022ae8625975f085550d7a87996c15014bb116e61",
+      "detail_sha256": "2ffe9393718196e23abbb8e69797668b2a9177cd77054498cf0104f18ed7aab6",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-09-family-promo-shell-workspace-baseline-r3.md",
+          "sha256": "c8d210c264e3eb9ff4de75e75cd36eb608fd17d6b2ecb464581ecd65d3e12c85"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.dash.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "2965d00adc24eea3b1bf99604cd1c60537ed4aa14abac4606639938974416ff8",
+      "detail_sha256": "67582bf86bb3b8b8c0a84c683a9996392626b6e3876858547dedd18406d4baee",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-10-family-dash-shell-workspace-baseline-r3.md",
+          "sha256": "fae5e6ca0c3b4c7cdaa4d716bfbb275a88a0b4a11ec14e75e2e5180cd196120e"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.rpt.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "9a67be05ba4cca4d5bafed24bbd2b38fcbba4d1651b8f38d2bbeedae504d591e",
+      "detail_sha256": "5cb633c22b7e8fc1c51b844cf3be4fa685a198deb0263271ebe20822cf89d07e",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-11-family-rpt-shell-workspace-baseline-r3.md",
+          "sha256": "0642dbee7b491cc77e86eef5485a4c6c9ce91b05ea3d9c3d5429b1aa23ea1874"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.pipe.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "82907ba6c3e3bde3828fb51e866523d4d840fc210bdf99940023c211b8887cb6",
+      "detail_sha256": "a248f9ed6d13eb311088346f35a31790617a60b69272fa4148d65a77034e1227",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-12-family-pipe-shell-workspace-baseline-r3.md",
+          "sha256": "70a8f2b4b1a7e0bfce4d0ef0b05a4e314b6d12015ea17b12c7c98426333aa2ba"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.ops.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "8ae5a958f006618536283e409f49637141132532b53a0ac3eea694f70d1fbfe9",
+      "detail_sha256": "bb15b66d39076ce3cc4d19f05f3ab97c38a134288c858793e7dad5871dbd8413",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-13-family-ops-shell-workspace-baseline-r3.md",
+          "sha256": "f3c393f07c5eaca900dade7d5c3dd6a326ed80ae2b4f6d9d4b8fc807308bd46c"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.ops.shell-setup.baseline-exception-setup-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "cb615f79a050a9903ad9661d047efe06ff2873d62db6a609ce45689e75377be9",
+      "detail_sha256": "2845e1cbe9f9367dee5d86523c7a1b0e929eadc07d9984376d5a9303ef459b5a",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-14-family-ops-shell-setup-baseline-exception-setup-r3.md",
+          "sha256": "8c72fc92ebb8c66376000982a22174b785011197ef886c6ae8b025c6db4966a2"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.notify.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "c9f103d5fefa1a82c83cebbe22dd37f67a4245a94b8b2ff2a436517ef73eb6a7",
+      "detail_sha256": "cb4e60538618ae9f48455a7b9f8d48591485a2d041a150d0a649a36e26e01035",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-15-family-notify-shell-workspace-baseline-r3.md",
+          "sha256": "9ccefc10216b829a7953367af6445e3140e76bdd403bd1af27b906d3ad6f9e51"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.admin.shell-setup.baseline-exception-setup-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "defbb84601525a429fd6a87ccb12e99049c3a7931675f8f922e005e8335fafdd",
+      "detail_sha256": "ec66e9630098e3e83cd4165a226a21bf110b29d681db1bff117838c99c8d7b2a",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-16-family-admin-shell-setup-baseline-exception-setup-r3.md",
+          "sha256": "69ac78bec5d3ed960ad718b06de72fbe1abf0b70f01321693704308ccdee8d35"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.admin.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "511c8ced276764d0cff76673ffb7a8219b9278516c9c9b5f39d7ec096cba79c0",
+      "detail_sha256": "61461acda57592297caf19e085ca8118346fae4cd7230f055c4bf6944ef86195",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-17-family-admin-shell-workspace-baseline-r3.md",
+          "sha256": "bf6a413bf301aab66ce5298009630f4ca3d95e9b7b2c057b0b605f47d574c025"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.org.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "1d5583257db61d69ee00a086f7fbcbf8753a8264bd85de33e7ba7cbcbc696a94",
+      "detail_sha256": "5924b395962a15fb363becc396ce78fd64af9ff4d237ac03443eb430b2626021",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-18-family-org-shell-workspace-baseline-r3.md",
+          "sha256": "e61ae6cbfa5c6a8d1ed5f9251ae9c27b1fe167dc501ac522bec1f4ed5a3fc688"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.people.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "382ffc6be11a368c031c8089c5f033c35c37625f2e68b9aa1ec1c734f1c2f0e8",
+      "detail_sha256": "7c8daaf25e50f5a3e779667c99068c5c08ac15d63c186a589a705071958fa12f",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-19-family-people-shell-workspace-baseline-r3.md",
+          "sha256": "d4236105d77b45f7be5e079fef6c5fffe1a1ed77a1f04ccf6738111f40dd447e"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.help.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "50e389aeda5d2ff931546af78e962b01ac02c8b039527c5fb3feb05995f4bedc",
+      "detail_sha256": "1b380e50c8407b3c985b6db2497166086e1f26de212a580dd078618974827e54",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-20-family-help-shell-workspace-baseline-r3.md",
+          "sha256": "fa20bb73132014191ac0d453547547a478af2ccb5612e61fc5f3c6cc3a28f38e"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.shell.shell-auth.baseline-exception-auth-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "23d3bc44d7d722bda008f05fb16be5caf0d27b45e1aadb6d28e9ee7b80dbe5f5",
+      "detail_sha256": "dbea9a02117e2f0d1f4e2b19ad0779dc593e93df32d4c0f9c34c89da593991cc",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-21-family-shell-shell-auth-baseline-exception-auth-r3.md",
+          "sha256": "af72b6fc41cb1007ba7afabcad5961a23635af9041c78880fe574dcdc956c801"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.shell.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "a622159c3305765a499894f1be67edb2ae23bafb4631da2dc3b406e21e9f08b2",
+      "detail_sha256": "06c294a82add2e76ae90d100c83804dbf50d8eec2b8a6ae13d0785cbb17071c0",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-22-family-shell-shell-workspace-baseline-r3.md",
+          "sha256": "f8fb7061a2296f7204c2ae0eb0b3dba369d32161cfa9f380206bae7ea4ea6297"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.shell.shell-setup.baseline-exception-setup-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "2361d3c177c37b3a1eb62b8b5017199b7e42f6098a2f75cdd677d9c73d71e29a",
+      "detail_sha256": "37016075ae4b4fb1415bed6016cfc61f6a927515d3e609ad8e51616bb95d11db",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-23-family-shell-shell-setup-baseline-exception-setup-r3.md",
+          "sha256": "967dbadec075b5798c9ff71aabae5147624c8d31da67d6faad32181b0626b5d0"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.ovr.shell-workspace.baseline-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "a9b87e09d60501e73c6b5d076081357314e2dbb37f79184a53c180f3665c7763",
+      "detail_sha256": "0afebac2fdcaab55b070bc64812bc2db735db11d7b2ec51b01d4abb8d043320b",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-24-family-ovr-shell-workspace-baseline-r3.md",
+          "sha256": "81fe2784d7470bae5abe0947a9f63e8edf76c22aeff6b27e70d73e25eeeed690"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.ovr.shell-focus.baseline-exception-focus-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "82125fa9569cedc3628a8d67d3db6d1cfc3d39771768d3a5c97d654b0edca777",
+      "detail_sha256": "910d4e2955b45eebcd8a160ddbcfd4d20a405c3af7b72d67f3a23723c6a98823",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-25-family-ovr-shell-focus-baseline-exception-focus-r3.md",
+          "sha256": "6a0779ef5d395f4de2f7eb553e4611f8c2dad2a042d1f3db04614813c37096c1"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G4@family.sys.shell-system.baseline-exception-system-r3",
+      "gate": "G4",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "744ba32d64034500d02b9b972ccf3c1c3187a77ad0642e39e8be6c076b310679",
+      "detail_sha256": "c060c363202ff3826cafd7b5bcf62cebdf75ee6e5b4c05bd66e3d83196eb039e",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-26-family-sys-shell-system-baseline-exception-system-r3.md",
+          "sha256": "e0b94ff0720dd6c0420f0dc8fdade0b7d0c9fef6109e7d74e8ab7a5ca3ee0d76"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G5@wave.g5.01-r3",
+      "gate": "G5",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "ebcf3c2f0e67ac916be94eed1e66e18b8639cd924a6c8b8bb62ae7059b52635c",
+      "detail_sha256": "05da5e879a8c3d4af29107664d172c0aa7731ccfaeea9d581e5dd876fa507c75",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/50-g5-01-wave-g5-01-r3.md",
+          "sha256": "5e1d09e7f7dfdcdebbdc63981de36941baecb025f535b6f980afa602611413b1"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G5@wave.g5.02-r3",
+      "gate": "G5",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "245d0d82e1f3d0a6d4187f064880fdce966bec01b05ac469008d9000d6e2f350",
+      "detail_sha256": "be7512f2140944159687779dd5b3c7edf0a473e6c8f74d1db00d980d1dcb4e91",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/50-g5-02-wave-g5-02-r3.md",
+          "sha256": "1b9fcfa81d38463216beb22849981b10ea92efcc83a966bd97715425a94c138e"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G5@wave.g5.03-r3",
+      "gate": "G5",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "0811f73b2ad5df94c35f36a9faddb017b8c77bef1cc8f7ccade54f59cae0dfa7",
+      "detail_sha256": "8597739a1383fb6bd468eddaae816bfe00b411e54b9a70c67d3e3a020da8a9a9",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/50-g5-03-wave-g5-03-r3.md",
+          "sha256": "9a31f5434cd0032c7230f3a8b7a33ce492d7e58ba1d24a6703fbdf68934e048e"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G5@wave.g5.04-r3",
+      "gate": "G5",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "d268dc29dbfea37609c0ed61b19953fc97f4c191ffe912e68d635a1bd05fc8eb",
+      "detail_sha256": "26b375d557f0ce1a1fe79778499c49d48089dfd02ef5724bf3a711e8c867ec8d",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/50-g5-04-wave-g5-04-r3.md",
+          "sha256": "db2f871e0491ba0bc6f348f7891c62ea54449edf38d086fc214e948ffa0dd5d9"
+        }
+      ]
+    },
+    {
+      "stage_instance_id": "G6@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+      "gate": "G6",
+      "status": "pending",
+      "historical_outcome": "pending",
+      "executor_claim": "—",
+      "claimed_at": "—",
+      "row_sha256": "412110e5976914916ce84821d164e1110ce6136031d2b052f87c9d2a63533d2f",
+      "detail_sha256": "db80fff53c05f48a23b8a030afa4a43aacdf5b102bb776e5ef14c2546ef526ff",
+      "resources": [
+        {
+          "field": "prompt",
+          "path": ".codex/agents/generated/custometry-ui-design-g0-v2/62-g6-handoff-r3.md",
+          "sha256": "824c39f510798942c26b630b1db5fa6e219992e0dbf4bf4c9097750a8940bbf4"
+        },
+        {
+          "field": "evidence",
+          "path": ".codex/delivery/evidence/custometry-ui-design-program-v2/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3-report.md",
+          "sha256": "564fc290e8cc8e94f0f13e859f3e8fcfdf1429eaa759b3a79df1232f2f0501a2"
+        },
+        {
+          "field": "transition_receipt",
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/stage-transition.json",
+          "sha256": "0f0402673c2939b18b62e66e9aab508a0f45632d9ebd359bd21646ac46c35ac6"
+        }
+      ]
+    }
+  ],
+  "successor_topology": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/active-semantic-migration/successor-topology.json",
+    "sha256": "088c06f0633a0ae324c703bb4b1211fc3cee155d80114c1d2b298e57de5b094a"
+  },
+  "change_record": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/active-semantic-migration/prepared/change-record.json",
+    "sha256": "fb83a0774759b78ded605e2a230666f97b3cf6907bcfe7762503dc0fcd0064ad"
+  },
+  "change_impact": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/active-semantic-migration/prepared/change-impact-receipt.json",
+    "sha256": "6ea5e6563880b3d4631975981f8427fd4a4dfae43009e9408ed236329fc4dd25"
+  },
+  "migration_class": "active_semantic_compatibility",
+  "source_validation": {
+    "errors_sha256": "c64e7c794f50070b32e9988106fe68fbabbfda4cc2ca2e61d5230b9f2eebdf3e",
+    "error_count": 106,
+    "exempted_stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3"
+  },
+  "successor_plan_doc": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r4/ui-design-program.promotion-candidate.json",
+    "sha256": "f50eccde7c2ab4e1415dc64aaa1ac29496530c14a0ecabf466cdeba37e3ed34f",
+    "target_path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json"
+  }
+}

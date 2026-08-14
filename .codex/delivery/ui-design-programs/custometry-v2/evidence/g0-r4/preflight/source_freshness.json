@@ -1,0 +1,75 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "source_freshness",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+  "gate_id": "G0",
+  "status": "passed",
+  "facts": {
+    "source_refs": [
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/families-index.json",
+        "sha256": "520ee791163d7a36d00a0d93df9e4cabb0de0df1d4c1afb86c5a0115e5920d40"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/journeys-index.json",
+        "sha256": "b0263b306b2973b38035745ebe926ac8f7009e199f8cfc5c02011dbbffd13b23"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/screens-index.json",
+        "sha256": "228d204950ee0a62a511e109d09babfceb25f19196628721acbfd4738eaf795a"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json",
+        "sha256": "cb358d4aac4b53a15bfb3bd6e3b1833ccda78a2e788db558eea837009d590ebe"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/waves-index.json",
+        "sha256": "1423dc0ca6b60bc5bfecfcecccc963ef8087709141885da2b93f6c8d08f1ea9d"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+        "sha256": "860abede176a5fa34675774ed9ca9c60a496b44d8fa3f303b3f9e69e70a41138"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+        "sha256": "b57b836e371df3726381d9cb54c39d0761150291831146514c8c45f5be849359"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r4/visual-authority-decision-r4.json",
+        "sha256": "f2e0557153b794b68ebba2633d3c7cca745467a3600791e1e555b9b3e41b26cf"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+        "sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700"
+      },
+      {
+        "path": "custometry-technical-blueprint-human-ru.md",
+        "sha256": "e6d2f180a7d736afcaa17a37016b2ed0dc90c491fe841f212e7fd4f0bcb4d2eb"
+      },
+      {
+        "path": "custometry-technical-blueprint-ru.md",
+        "sha256": "25bb555c3d4f2f7a425cee81d658f34b86c343be69efb18756cb0ded12308311"
+      },
+      {
+        "path": "custometry-ui-blueprint-ru.md",
+        "sha256": "cbf4cbcbb3068f1984c5c6c907ecd4d6f9a0639673cf6bd678e9c4280ced6fb6"
+      },
+      {
+        "path": "packages/contracts/routes/ui-route-contracts.json",
+        "sha256": "2e15e15e3626b3068e7e47d335ff923d854781004ba9c0e0687bbbd875517089"
+      },
+      {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "sha256": "c281a4a2cccf30f4e370998297b74a5df7b10ab47a13d4b16a984b38ce74fc87"
+      }
+    ],
+    "drift_classification": "accepted_change",
+    "stale_refs": []
+  }
+}

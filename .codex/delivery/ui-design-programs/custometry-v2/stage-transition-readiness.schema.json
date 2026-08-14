@@ -14,7 +14,7 @@
       "required": ["script", "version", "command"],
       "properties": {
         "script": {"const": "assemble_stage_transition.py"},
-        "version": {"const": "1.2.0"},
+        "version": {"const": "2.0.0"},
         "command": {"const": "assemble_stage_transition.py <paths-redacted>"}
       }
     },

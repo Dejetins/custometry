@@ -13,7 +13,7 @@
   "properties": {
     "$schema": {"type": "string"},
     "schema_id": {"const": "codex.ui-design-program/v1"},
-    "contract_profile": {"enum": ["codex.ui-design-program/v1@1.1.0", "codex.ui-design-program/v1@1.2.0", "codex.ui-design-program/v1@1.3.0", "codex.ui-design-program/v1@1.4.0", "codex.ui-design-program/v1@1.5.0", "codex.ui-design-program/v1@1.6.0"]},
+    "contract_profile": {"enum": ["codex.ui-design-program/v1@1.1.0", "codex.ui-design-program/v1@1.2.0", "codex.ui-design-program/v1@1.3.0", "codex.ui-design-program/v1@1.4.0", "codex.ui-design-program/v1@1.5.0", "codex.ui-design-program/v1@1.6.0", "codex.ui-design-program/v1@2.0.0"]},
     "program_id": {"type": "string", "minLength": 1},
     "program_name": {"type": "string", "minLength": 1},
     "revision": {"type": "integer", "minimum": 1},
@@ -171,7 +171,7 @@
       "properties": {
         "source_visual_ref": {"type": "string", "minLength": 1},
         "source_visual_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "source_evidence_mode": {"enum": ["renderable_html", "native_image", "figma_adapter"]},
+        "source_evidence_mode": {"description": "Active values are renderable_html and native_image; figma_adapter is retained only for historical readability and is rejected by active validation.", "enum": ["renderable_html", "native_image", "figma_adapter"]},
         "owner_decision_ref": {"type": "string", "minLength": 1},
         "screen_acceptance_scope": {"type": "string", "minLength": 1},
         "visual_language_scope": {"type": "string", "minLength": 1},
@@ -199,6 +199,9 @@
           }
         },
         "baseline_ref": {"type": "string", "minLength": 1},
+        "standard_revision_id": {"type": "string", "minLength": 1},
+        "clause_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "applicability_policy": {"const": "deterministic_exact_identity_match_with_typed_exceptions"},
         "owner_exception_ref": {"type": ["string", "null"]}
       }
     },
@@ -238,7 +241,7 @@
             "screen_revision_id": {"type": "string", "minLength": 1}
           }
         },
-        "source_evidence_mode": {"enum": ["renderable_html", "native_image", "figma_adapter"]},
+        "source_evidence_mode": {"description": "Active values are renderable_html and native_image; figma_adapter is retained only for historical readability and is rejected by active validation.", "enum": ["renderable_html", "native_image", "figma_adapter"]},
         "source_native_capture": {
           "type": "object",
           "additionalProperties": false,
@@ -256,6 +259,7 @@
         "candidate_anchor_captures": {"type": "array", "items": {"$ref": "#/$defs/anchorEvidenceRef"}},
         "review_board": {"$ref": "#/$defs/evidenceRef"},
         "inheritance_report": {"$ref": "#/$defs/evidenceRef"}
+        ,"standard_board": {"$ref": "#/$defs/evidenceRef"}
       }
     },
     "g6Handoff": {

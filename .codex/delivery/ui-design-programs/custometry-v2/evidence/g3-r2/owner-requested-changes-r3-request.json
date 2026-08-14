@@ -1,0 +1,18 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2.requested-changes.3",
+  "decision_kind": "stage_acceptance",
+  "status": "requested_changes",
+  "revision": 3,
+  "decision_text": "The owner requests a bounded correction to the same G3 r2 revision: the inspector must match the pilot geometry rather than remain constrained to a small pane; the specimen must visibly include the pilot-derived table pattern and control icons grouped on a shared backing surface; and the review must support element-by-element pilot-to-realization verification.",
+  "owner_input": "инспектор открывается только в ограниченном экранном пространстве ин е соответвует пилоту.\nне вижу ни одного табличного элемента, не вижу иконок управлений сгруппированных под одной подложкой. я не могу проверить соответствие каждого элемента пилоту",
+  "recorded_at": "2026-08-11T23:13:32Z",
+  "target": {
+    "artifact_kind": "program",
+    "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "revision": 2,
+    "validation_profile": "program_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json"
+  }
+}

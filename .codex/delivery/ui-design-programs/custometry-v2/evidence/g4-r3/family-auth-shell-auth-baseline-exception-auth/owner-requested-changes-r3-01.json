@@ -1,0 +1,33 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3.bounded-correction-01",
+  "decision_kind": "family_acceptance",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.auth.shell-auth.baseline-exception-auth-r3",
+    "revision": 3,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/review-board.html",
+    "sha256": "7b7691acb2230462cc3e437dda3624f1f1044c46387cbdd8fac14df7cd9d32a8"
+  },
+  "decision": {
+    "status": "requested_changes",
+    "revision": 3,
+    "decision_text": "Make the local review board load its review surfaces under file://, make state selection genuinely interactive, and remove non-functional marketing copy from the auth screen.",
+    "accepted_values": [],
+    "accepted_value_sha256s": []
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "что то он не грузится и совсем не интерактивный. + не надо добавлять никакой текст \"маркетинговый\" который я увидел твоем скриншоте",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-12T12:18:25.279892+00:00"
+  }
+}

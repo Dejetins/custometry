@@ -1,0 +1,30 @@
+{
+  "capability": {
+    "id": "UI-CAP-013",
+    "name": "Verified-user report email",
+    "delivery_form": "policy_contract",
+    "requirement_ids": [
+      "UC-014",
+      "REPORT-MAIL-001",
+      "REPORT-MAIL-002",
+      "REPORT-MAIL-003",
+      "REPORT-MAIL-004",
+      "REPORT-MAIL-005",
+      "REPORT-MAIL-006",
+      "REPORT-MAIL-007",
+      "REPORT-MAIL-008",
+      "REPORT-MAIL-009",
+      "REPORT-MAIL-010",
+      "REPORT-MAIL-011"
+    ]
+  },
+  "promoted_binding_ids": [],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

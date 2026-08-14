@@ -1,0 +1,29 @@
+{
+  "$schema": "layout-correction-evidence.schema.json",
+  "schema_id": "codex.ui-layout-correction-evidence/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3",
+  "correction_id": "bounded-correction-03",
+  "accepted_pilot_measurements": {
+    "source": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "viewport": "1920x1080",
+    "context_panel_width_px": 420,
+    "dialog_width_px": 510,
+    "readability_popover_width_px": 360,
+    "panel_radius_px": 12
+  },
+  "decision": {
+    "previous_auth_width_px": 520,
+    "selected_auth_width_px": 420,
+    "selection_reason": "The auth task is a compact contextual surface, so the pilot context-panel width is the closer layout analogue than the larger pilot dialog.",
+    "expected_field_width_px": 370
+  },
+  "browser_observation": {
+    "auth_width_px": 420,
+    "field_width_px": 370,
+    "center_delta_px": 0,
+    "horizontal_overflow_768": false,
+    "ru_en_stress": "passed"
+  },
+  "result": "passed"
+}

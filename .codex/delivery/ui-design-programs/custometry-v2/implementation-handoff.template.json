@@ -3,7 +3,7 @@
   "schema_id": "codex.ui-implementation-handoff/v1",
   "generated_by": {
     "script": "assemble_implementation_handoff.py",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "command": "assemble_implementation_handoff.py <paths-redacted>"
   },
   "program_id": "<program-id>",
@@ -14,6 +14,12 @@
   "expected_critical_journey_ids": [],
   "accepted_wave_receipts": [],
   "critical_journey_evidence": [],
+  "standard_lineage": {
+    "standard_revision_id": "<pilot-standard-revision>", "clause_inventory_sha256": "<sha256>",
+    "clause_inventory_size": 0, "source_inventory": {"path": "<path>", "sha256": "<sha256>"},
+    "applicability_manifest_sha256s": [], "expected_application_ids": [], "observed_application_ids": [],
+    "accepted_exception_clause_ids": [], "result": "passed"
+  },
   "implementation_inputs": [
     {"input_id": "input_contract:intake", "kind": "product_intake", "path": "<computed-from-program>", "sha256": "<computed-by-assembler>"},
     {"input_id": "input_contract:baseline", "kind": "platform_baseline", "path": "<computed-from-program>", "sha256": "<computed-by-assembler>"},

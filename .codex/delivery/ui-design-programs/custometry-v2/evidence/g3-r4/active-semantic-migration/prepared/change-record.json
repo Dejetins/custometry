@@ -1,0 +1,14 @@
+{
+  "$schema": "change-record.schema.json",
+  "schema_id": "codex.ui-change-record/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "change_id": "custometry-g3-exact-standard-applicability-r4",
+  "change_kind": "g3_realization_inside_accepted_baseline",
+  "target": {
+    "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "artifact_sha256": "f8a1eda1437d3dd86ad3bf5765c9f4e68ae066f440247fadc7e99c2e8991ddb7"
+  },
+  "owner_input": "ок, G3 r4 принимается",
+  "recorded_by": "agent"
+}

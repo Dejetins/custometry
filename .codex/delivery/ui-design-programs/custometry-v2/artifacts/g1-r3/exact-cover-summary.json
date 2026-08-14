@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "screens": 175,
+  "journeys": 9,
+  "capabilities": 22,
+  "bindings": 81,
+  "capabilities_index": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/capabilities-index.json",
+    "sha256": "89c81ecd415ac25d4bb7575265f05fa04ef6d5dd095b0c01f572fa44f7b4006d"
+  },
+  "bindings_index": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/promoted-requirement-bindings.json",
+    "sha256": "ba221e85fc39d582d638b40b7a69757ac0bbfa25a40f945d0fd3254b2bcf120f"
+  },
+  "screens_index": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/screens-index.json",
+    "sha256": "4f8520ddfcac607f08956bb398764f470951f7241519324a250aa13dd05baf3e"
+  },
+  "journeys_index": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/journeys-index.json",
+    "sha256": "6d5fc2459c17a594776e8ee0feb5baa9455334b714590dee73a6a038eed3d3a7"
+  },
+  "program_sha256": "79c48c31c1999fb2fd251d478c675ce230376116aaa99e89ba4942e3c08a62a0",
+  "snapshot_sha256": "79c48c31c1999fb2fd251d478c675ce230376116aaa99e89ba4942e3c08a62a0",
+  "program_revision": 4,
+  "auth_route_invariant": {
+    "UI-AUTH-001": "/auth/sign-in",
+    "UI-AUTH-004": "/auth/recovery",
+    "forbidden_state": "UI-AUTH-001.recovery",
+    "status": "passed"
+  }
+}

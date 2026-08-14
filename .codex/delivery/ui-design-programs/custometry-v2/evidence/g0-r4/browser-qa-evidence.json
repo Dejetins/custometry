@@ -1,0 +1,29 @@
+{
+  "schema_id": "codex.browser-qa-evidence/v1",
+  "stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+  "mechanic": "playwright-cli",
+  "session": "custometry-g0-r4-full-inheritance",
+  "target": "full-inheritance owner-decision rendering of g0-review-board.html over loopback HTTP",
+  "viewports": [
+    {"width": 1440, "height": 900, "screenshot": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r4/g0-review-board-1440x900.png", "sha256": "fe96a3b0a7967d922d9b826afebabbabc7e23e1b348675cfe116a8ed364ca329"},
+    {"width": 800, "height": 900, "screenshot": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r4/g0-review-board-800x900.png", "sha256": "3bd9c64d3d06cb2079bab0f33f3b2e91e34b6522e51665e6d9f9587689244f43"}
+  ],
+  "checks": {
+    "title_and_semantic_snapshot": "passed",
+    "source_image": "loaded_1440x900",
+    "owner_decision_scope": "complete_applicable_pilot_rule_set_per_element_with_corresponding_pilot_pattern",
+    "partial_inheritance_and_aesthetic_approximation": "explicitly_forbidden",
+    "pixel_language_on_owner_surface": "absent",
+    "already_accepted_new_and_excluded_scopes": "present_and_distinct",
+    "standard_clause_rows": 203,
+    "clause_details_toggle": "operable",
+    "rendered_review_entries": 7,
+    "horizontal_overflow_1440": "none",
+    "horizontal_overflow_800": "none",
+    "console_errors": 0,
+    "console_warnings": 0,
+    "failed_material_requests": 0
+  },
+  "proof_boundary": "owner review board comprehension of full per-element inheritance, responsive rendering, exact clause-row presence, details interaction, and source-image closure; metadata-candidate equivalence remains machine evidence outside the owner decision surface",
+  "result": "passed"
+}

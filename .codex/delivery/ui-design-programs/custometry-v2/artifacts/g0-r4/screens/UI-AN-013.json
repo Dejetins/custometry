@@ -1,0 +1,444 @@
+{
+  "screen": {
+    "accessibility_contract": "semantic structure, complete keyboard operation, visible focus, named controls, and non-color-only state",
+    "actions": [
+      {
+        "action_id": "UI-AN-013.research.manage",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Research Manage",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Research Manage",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "outcome": "Research Manage completes or the next contract-bound surface opens",
+        "permission_refs": [
+          "research.manage"
+        ],
+        "preconditions": [
+          "permission research.manage"
+        ],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-AN-013.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      },
+      {
+        "action_id": "UI-AN-013.finding.manage",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Finding Manage",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Finding Manage",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "outcome": "Finding Manage completes or the next contract-bound surface opens",
+        "permission_refs": [
+          "finding.manage"
+        ],
+        "preconditions": [
+          "permission finding.manage"
+        ],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-AN-013.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      },
+      {
+        "action_id": "UI-AN-013.comment.read",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Comment Read",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Comment Read",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "outcome": "Comment Read completes or the next contract-bound surface opens",
+        "permission_refs": [
+          "comment.read"
+        ],
+        "preconditions": [
+          "permission comment.read"
+        ],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-AN-013.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      },
+      {
+        "action_id": "UI-AN-013.comment.create",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Comment Create",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Comment Create",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "outcome": "Comment Create completes or the next contract-bound surface opens",
+        "permission_refs": [
+          "comment.create"
+        ],
+        "preconditions": [
+          "permission comment.create"
+        ],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-AN-013.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      },
+      {
+        "action_id": "UI-AN-013.comment.resolve",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Comment Resolve",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Comment Resolve",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "outcome": "Comment Resolve completes or the next contract-bound surface opens",
+        "permission_refs": [
+          "comment.resolve"
+        ],
+        "preconditions": [
+          "permission comment.resolve"
+        ],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-AN-013.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      },
+      {
+        "action_id": "journey.publish-review-collaborate.1",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "control_type": "button",
+        "destructive": false,
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "icon_id": null,
+        "intent": "Continue publish review collaborate",
+        "keyboard": "Enter or Space on the focused control",
+        "label": "Continue publish review collaborate",
+        "navigation_target": "UI-AN-014",
+        "opens_surface_id": null,
+        "outcome": "Continue publish review collaborate completes or the next contract-bound surface opens",
+        "permission_refs": [],
+        "preconditions": [],
+        "recovery": "retain context and expose a safe retry or return path",
+        "region_id": "UI-AN-013.content",
+        "side_effects": [],
+        "size_class": "sm",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/2"
+        ],
+        "trigger": "click, Enter, or Space",
+        "visibility": "when the source contract and permission profile allow it"
+      }
+    ],
+    "context_menus": [],
+    "data": {
+      "computed": [],
+      "empty_data_meaning": "the source-defined dataset or result has no permitted records",
+      "freshness_behavior": "show freshness and Result Trust metadata when applicable",
+      "reads": [],
+      "refresh_behavior": "source-defined refresh with stable object and result anchors",
+      "writes": []
+    },
+    "entry_points": [
+      "source-defined product navigation or invocation"
+    ],
+    "exit_points": [
+      "return to the invoking or permitted destination"
+    ],
+    "no_actions_reason": null,
+    "page_id": "UI-AN-013",
+    "permission_behavior": "guard profile workspace_object with source-defined object and action scope",
+    "purpose": "Provide the list contract for /w/:workspaceKey/research",
+    "regions": [
+      {
+        "action_ids": [
+          "UI-AN-013.research.manage",
+          "UI-AN-013.finding.manage",
+          "UI-AN-013.comment.read",
+          "UI-AN-013.comment.create",
+          "UI-AN-013.comment.resolve",
+          "journey.publish-review-collaborate.1"
+        ],
+        "content": "source-backed content, controls, state, trust, and recovery information",
+        "data_refs": [],
+        "purpose": "Provide the list contract for /w/:workspaceKey/research",
+        "region_id": "UI-AN-013.content",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "state_ids": [
+          "UI-AN-013.initial",
+          "UI-AN-013.loading",
+          "UI-AN-013.populated",
+          "UI-AN-013.error",
+          "UI-AN-013.permission_denied",
+          "UI-AN-013.recovery"
+        ]
+      }
+    ],
+    "related_surface_ids": [],
+    "responsive_content_priorities": [
+      "preserve task, trust, recovery, and primary action meaning across the supported Web range"
+    ],
+    "role_ids": [
+      "AN",
+      "VW"
+    ],
+    "route": "/w/:workspaceKey/research",
+    "route_id": "UI-AN-013",
+    "screen_id": "UI-AN-013",
+    "shell_variant_id": "shell.workspace",
+    "source_refs": [
+      "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+    ],
+    "state_applicability": [
+      {
+        "kind": "initial",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "loading",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "populated",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "empty",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/55: empty is not required by the G0 source contract"
+      },
+      {
+        "kind": "partial",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/55: partial is not required by the G0 source contract"
+      },
+      {
+        "kind": "error",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "permission_denied",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "offline",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/55: offline is not required by the G0 source contract"
+      },
+      {
+        "kind": "recovery",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "terminal",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/55: terminal is not required by the G0 source contract"
+      },
+      {
+        "kind": "other",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-route-contracts.json#/routes/55: other is not required by the G0 source contract"
+      }
+    ],
+    "states": [
+      {
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "initial",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "state_id": "UI-AN-013.initial",
+        "trigger": "the source-backed initial condition is active",
+        "visible_region_ids": [
+          "UI-AN-013.content"
+        ]
+      },
+      {
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "loading",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "state_id": "UI-AN-013.loading",
+        "trigger": "the source-backed loading condition is active",
+        "visible_region_ids": [
+          "UI-AN-013.content"
+        ]
+      },
+      {
+        "available_action_ids": [
+          "UI-AN-013.research.manage",
+          "UI-AN-013.finding.manage",
+          "UI-AN-013.comment.read",
+          "UI-AN-013.comment.create",
+          "UI-AN-013.comment.resolve",
+          "journey.publish-review-collaborate.1"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "populated",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "state_id": "UI-AN-013.populated",
+        "trigger": "the source-backed populated condition is active",
+        "visible_region_ids": [
+          "UI-AN-013.content"
+        ]
+      },
+      {
+        "available_action_ids": [
+          "UI-AN-013.research.manage",
+          "UI-AN-013.finding.manage",
+          "UI-AN-013.comment.read",
+          "UI-AN-013.comment.create",
+          "UI-AN-013.comment.resolve",
+          "journey.publish-review-collaborate.1"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "error",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "state_id": "UI-AN-013.error",
+        "trigger": "the source-backed error condition is active",
+        "visible_region_ids": [
+          "UI-AN-013.content"
+        ]
+      },
+      {
+        "available_action_ids": [
+          "UI-AN-013.research.manage",
+          "UI-AN-013.finding.manage",
+          "UI-AN-013.comment.read",
+          "UI-AN-013.comment.create",
+          "UI-AN-013.comment.resolve",
+          "journey.publish-review-collaborate.1"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "permission_denied",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "state_id": "UI-AN-013.permission_denied",
+        "trigger": "the source-backed permission_denied condition is active",
+        "visible_region_ids": [
+          "UI-AN-013.content"
+        ]
+      },
+      {
+        "available_action_ids": [
+          "UI-AN-013.research.manage",
+          "UI-AN-013.finding.manage",
+          "UI-AN-013.comment.read",
+          "UI-AN-013.comment.create",
+          "UI-AN-013.comment.resolve",
+          "journey.publish-review-collaborate.1"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "kind": "recovery",
+        "source_refs": [
+          "packages/contracts/routes/ui-route-contracts.json#/routes/55"
+        ],
+        "state_id": "UI-AN-013.recovery",
+        "trigger": "the source-backed recovery condition is active",
+        "visible_region_ids": [
+          "UI-AN-013.content"
+        ]
+      }
+    ],
+    "surface_kind": "route_screen",
+    "user_outcomes": [
+      "Provide the list contract for /w/:workspaceKey/research"
+    ],
+    "visual_surface": true
+  }
+}

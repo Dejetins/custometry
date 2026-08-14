@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-input-response.schema.json",
+  "schema_id": "codex.ui-owner-input-response/v1",
+  "generated_by": {
+    "script": "assemble_owner_input_response.py",
+    "version": "1.1.0",
+    "command": "assemble_owner_input_response.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r5",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet-correction-r5-03.json",
+  "decision_packet_sha256": "6017753a8fe901efbb2ad91b12de30c5430e9b9ae62529efb6e04d08eeb23c90",
+  "response_kind": "visual_acceptance",
+  "owner_input": "теперь отлично! [Интерактивная доска](/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-auth-baseline-exception-auth/review-board.html) принимается полностью! зафиксируй и заверши итерацию,  доставь все  изменения в main ветку",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/family-acceptance-decision-r5-03.json",
+  "canonical_owner_decision_sha256": "3237f9770e2c9e472a7e9c985e06da969593f385f4ff0c0f8f40660fdfa87246"
+}

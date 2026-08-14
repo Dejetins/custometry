@@ -1,0 +1,78 @@
+{
+  "schema_id": "custometry.ui-g2-structure-summary/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "program_revision": 4,
+  "stage_instance_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+  "counts": {
+    "screens_total": 175,
+    "screens_in_scope": 151,
+    "screens_internal_or_non_visual": 22,
+    "screens_historical_exclusions": 2,
+    "journeys": 9,
+    "critical_journeys": 9,
+    "transitions": 16,
+    "families": 26,
+    "representatives": 27,
+    "coverage_profiles": 151,
+    "waves": 4,
+    "owner_recommendations": 68,
+    "reconciliation_additions": 13,
+    "promoted_bindings": 81
+  },
+  "indexes": {
+    "screens": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/screens-index.json",
+      "sha256": "47f07d14e4986cdfb9dc60f2bba180177e5ad30221e5edf57c544ad903c46754"
+    },
+    "journeys": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys-index.json",
+      "sha256": "3f17df016120a7271bc8b971c8a29b7ac5eb71cfba968e4410bc89c61831075a"
+    },
+    "families": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/families-index.json",
+      "sha256": "b9fcbdb5d7fa67027906609cb7ccbb22d185a9d95e7d94afda328396e9452326"
+    },
+    "waves": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/waves-index.json",
+      "sha256": "1637b0be53e8b1eb4391e4b3f56953196501dd64ae2e46cb1e429c197690be22"
+    }
+  },
+  "coverage_profiles": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/coverage-profiles.json",
+    "sha256": "3cccab4341dba67ae1aeb00b6bd6980e6eb3e3dd2fe89d11e87b11991f35495d"
+  },
+  "promoted_structure_bindings": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/promoted-structure-bindings.json",
+    "sha256": "a724649b92a7b61c2f85a714b2b6352830c30243b2ed3648db4d05f9fe5d5393"
+  },
+  "program_snapshot": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/ui-design-program.snapshot.json",
+    "sha256": "8612986cafe5bf17c075471c7567c0b91d0e4f07f17397fe32ac8c13f163c165"
+  },
+  "checks": {
+    "journey_graphs_reachable": true,
+    "families_exact_cover_in_scope_screens": true,
+    "coverage_exact_cover_in_scope_screens": true,
+    "representatives_exact_cover_families": true,
+    "waves_exact_cover_families": true,
+    "workload_budgets_within_limits": true,
+    "baseline_inheritance_exact_cover": true,
+    "viewport_anchor_ids_only_deferral": true,
+    "promoted_bindings_preserved": true,
+    "g3_bounded_context_seeded_without_claim_or_gate_proof": true
+  },
+  "proof_boundary": "Static source-backed structure, exact-cover, workload-budget, baseline-inheritance, deterministic artifact, and documentation/control-plane evidence only; no target-screen design, browser runtime, production implementation, accessibility conformance, responsive behavior, performance, publication, deployment, or mobile-specific proof.",
+  "auth_family_invariant": {
+    "family_id": "family.auth.shell-auth.baseline-exception-auth",
+    "representative_screen_ids": [
+      "UI-AUTH-001",
+      "UI-AUTH-004"
+    ],
+    "routes": {
+      "UI-AUTH-001": "/auth/sign-in",
+      "UI-AUTH-004": "/auth/recovery"
+    },
+    "distinct_composition_required": true,
+    "status": "passed"
+  }
+}

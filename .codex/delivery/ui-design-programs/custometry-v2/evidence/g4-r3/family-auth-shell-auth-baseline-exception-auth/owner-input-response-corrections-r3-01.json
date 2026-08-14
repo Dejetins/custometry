@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-input-response.schema.json",
+  "schema_id": "codex.ui-owner-input-response/v1",
+  "generated_by": {
+    "script": "assemble_owner_input_response.py",
+    "version": "1.1.0",
+    "command": "assemble_owner_input_response.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet.json",
+  "decision_packet_sha256": "2e2a2191f5e6fe0702cbc5b8e112ae38280086886317be13d9476445acaf20b3",
+  "response_kind": "requested_changes",
+  "owner_input": "что то он не грузится и совсем не интерактивный. + не надо добавлять никакой текст \"маркетинговый\" который я увидел твоем скриншоте",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/owner-requested-changes-r3-01.json",
+  "canonical_owner_decision_sha256": "f40a4fddb84fead5f182111cf2e44d51711976df876d02e7f01aeec348554ec7"
+}

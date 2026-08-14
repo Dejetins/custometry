@@ -1,0 +1,9 @@
+{
+  "$schema": "owner-input-response-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r5",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet-correction-r5-02.json",
+  "response_kind": "requested_changes",
+  "owner_input": "В целом хорошо, но один момент который надо пофиксить — недопустимы разные размеры окна входа и восстановления в зависимости от этапа (начало/загрузка и все остальное). Окно всегда одного размера должно оставаться, не изменяя изначальный размер экрана с этапа «Начало».",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/owner-requested-changes-r5-03.json"
+}

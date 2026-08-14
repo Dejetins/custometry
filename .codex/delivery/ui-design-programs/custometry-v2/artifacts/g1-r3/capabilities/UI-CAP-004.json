@@ -1,0 +1,33 @@
+{
+  "capability": {
+    "id": "UI-CAP-004",
+    "name": "Metric groups and adaptive formats",
+    "delivery_form": "component_contract",
+    "requirement_ids": [
+      "METRIC-009",
+      "METRIC-010",
+      "METRIC-011",
+      "METRIC-012",
+      "METRIC-013",
+      "METRIC-014",
+      "METRIC-015",
+      "METRIC-016"
+    ]
+  },
+  "promoted_binding_ids": [
+    "OWNER-REC-009",
+    "OWNER-REC-016",
+    "RECON-ADD-001",
+    "RECON-ADD-002",
+    "RECON-ADD-003",
+    "RECON-ADD-004"
+  ],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

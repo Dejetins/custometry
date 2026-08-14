@@ -1,0 +1,24 @@
+{
+  "capability": {
+    "id": "UI-CAP-011",
+    "name": "Resource access policy",
+    "delivery_form": "policy_contract",
+    "requirement_ids": [
+      "UC-011",
+      "UC-022",
+      "UX-JOURNEY-010",
+      "DASHBOARD-010",
+      "RBAC-013",
+      "RBAC-015"
+    ]
+  },
+  "promoted_binding_ids": [],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

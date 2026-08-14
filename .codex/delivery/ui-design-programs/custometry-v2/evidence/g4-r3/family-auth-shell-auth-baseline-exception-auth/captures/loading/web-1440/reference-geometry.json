@@ -1,0 +1,186 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-AUTH-001.loading.all.ru-RU.graphite.r3",
+  "target": "reference",
+  "capture_profile": "visual_authority_reference",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": true,
+    "region_gate_applied": false,
+    "element_gate_applied": false,
+    "document_identity_gate_applied": false,
+    "fixture_meta_gate_applied": false,
+    "accessibility_gate_applied": false,
+    "interaction_gate_applied": false,
+    "overflow_gate_applied": false
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "1.6.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/contracts/UI-AUTH-001.loading.r3.json --anchor-id web-1440 --target reference --source-artifact .codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html --logical-artifact-id custometry-v2:accepted-pilot:ru:r2 --output .codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/loading/web-1440/reference-geometry.json --screenshot .codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/loading/web-1440/reference.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "contract_sha256": "9fc87ddb24b837af517fbf26bc1a221f8095e19d2746acf5233812da302d48b2",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "artifact_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+    "logical_artifact_id": "custometry-v2:accepted-pilot:ru:r2",
+    "main_document_response_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "anchor_id": "web-1440",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [],
+  "elements": [],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "scroll_height": 900,
+    "client_height": 900
+  },
+  "environment_checks": [
+    {
+      "check": "fixed_clock",
+      "expected": 1786521600000,
+      "observed": 1786521600000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 68,
+    "keyboard_sequence": [
+      "a",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "comments-open",
+      "trust-open",
+      "context-open",
+      "tab-overview",
+      "period-menu-open",
+      "comparison-menu-open",
+      "stores-menu-open",
+      "filters-menu-open",
+      "groupby-menu-open",
+      "appearance-menu-open",
+      "view-menu-open",
+      "kpi-open",
+      "summary",
+      "summary",
+      "summary",
+      "button",
+      "button",
+      "chart-settings-open",
+      "summary",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "lifecycle-metric",
+      "summary",
+      "summary",
+      "summary",
+      "summary",
+      "button",
+      "div",
+      "a",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "comments-open",
+      "trust-open",
+      "context-open",
+      "tab-overview",
+      "period-menu-open",
+      "comparison-menu-open",
+      "stores-menu-open",
+      "filters-menu-open",
+      "groupby-menu-open",
+      "appearance-menu-open",
+      "view-menu-open",
+      "kpi-open",
+      "summary",
+      "summary"
+    ],
+    "keyboard_issues": [
+      "tab_did_not_focus_element:43"
+    ],
+    "passed": false
+  },
+  "accessibility_claim": "observed_not_acceptance_gating",
+  "browser_interaction": {
+    "visible_action_ids": [],
+    "observed_outcomes": [],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/loading/web-1440/reference.png",
+  "screenshot_sha256": "3986879a0d50e0977f03da6cbf6fb50aa7e1071941eae70d7286b8a32e66a07d",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']"
+    ],
+    "redaction_match_counts": [
+      0,
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "stage-transition-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "from_stage_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "from_gate": "G3",
+  "from_target": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "from_revision": 2,
+  "artifact": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+  "to_gate": "G4",
+  "to_stage_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3",
+  "to_target": "family.auth.shell-auth.baseline-exception-auth-r3",
+  "to_task": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-01-family-auth-shell-auth-baseline-exception-auth-r3.md",
+  "status": "ready",
+  "owner_decision": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-acceptance-r2.json",
+  "decision_inventory": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/pending-owner-decisions.json",
+  "blockers": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/known-blockers.json",
+  "checks": [
+    "current_gate=.codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/current_gate.json",
+    "source_freshness=.codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/source_freshness.json",
+    "next_stage_inputs=.codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/replacement-auth-r3/preflight/next_stage_inputs.json",
+    "write_scope=.codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/write_scope.json",
+    "foreign_changes=.codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/foreign_changes.json",
+    "execution_route=.codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/preflight/execution_route.json",
+    "handoff_artifact=.codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/replacement-auth-r3/preflight/handoff_artifact.json"
+  ],
+  "summary": "The accepted G3 r2 result remains current. The capture/visual-QA proof-contract defect that blocked the first G4 instance is repaired and independently browser-probed with capture 1.6.0; the revisioned r3 replacement is ready for claim without executing G4.",
+  "review_artifacts": [
+    ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/review-board.html",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/review-board-1440.png",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/repair-evidence.json"
+  ],
+  "questions": []
+}

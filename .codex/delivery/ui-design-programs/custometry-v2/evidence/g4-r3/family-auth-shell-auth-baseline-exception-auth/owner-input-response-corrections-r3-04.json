@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-input-response.schema.json",
+  "schema_id": "codex.ui-owner-input-response/v1",
+  "generated_by": {
+    "script": "assemble_owner_input_response.py",
+    "version": "1.1.0",
+    "command": "assemble_owner_input_response.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet.json",
+  "decision_packet_sha256": "a66224bb151483e9194d619355cdccde6159f32735e84d547db7134c57d5073d",
+  "response_kind": "requested_changes",
+  "owner_input": "а почему форма восстановления выглядит как и форма входа? конечно исправляй! такие ошибки недопустимы в будущем",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/owner-requested-changes-r3-04.json",
+  "canonical_owner_decision_sha256": "ea1e6e64cb018c4cfa6488f635d7103730b3d268d1fc2e8bf4ebe478930a779a"
+}

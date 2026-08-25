@@ -1,0 +1,9 @@
+{
+  "$schema": "owner-input-response-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet.json",
+  "response_kind": "visual_acceptance",
+  "owner_input": "да, перенеси принятие",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/family-acceptance-decision-r6.json"
+}

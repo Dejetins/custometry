@@ -1,0 +1,9 @@
+[
+  {
+    "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r5.finished-result",
+    "class": "owner_required",
+    "status": "resolved",
+    "summary": "The owner fully accepted the exact finished auth-family review board.",
+    "resolution_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/family-acceptance-decision-r5-03.json"
+  }
+]

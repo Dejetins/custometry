@@ -1,0 +1,21 @@
+{
+  "$schema": "render-provenance-receipt.schema.json",
+  "schema_id": "codex.ui-render-provenance/v1",
+  "generated_by": {
+    "script": "assemble_render_provenance.py",
+    "version": "1.0.0",
+    "command": "assemble_render_provenance.py <paths-redacted>"
+  },
+  "target": "implementation",
+  "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-005:UI-AUTH-005.recovery:r5",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "validation_profile": "program_ready",
+  "anchor_id": "web-1440",
+  "visual_authority_sha256": "689a51ab272c156f7848b94c2e8a1c45bc4a38b52e6eed6a922974a7314be3ef",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html",
+  "source_artifact_sha256": "8742fe354c36a370ebc340e98d50fdf35e2891d84718628092d59f87e4929ea5",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/captures/UI-AUTH-005.recovery/web-1440/implementation.png",
+  "capture_sha256": "e6e37f9423769e198328eb66e4c029fe3c5c5eae7c94986fb8f483a0b264e835",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/captures/UI-AUTH-005.recovery/web-1440/implementation-geometry.json",
+  "geometry_receipt_sha256": "c2d7c1a9bfb1c6bf9b00c5568d7255bb0536155d20d8fb16ce30365468d5e693"
+}

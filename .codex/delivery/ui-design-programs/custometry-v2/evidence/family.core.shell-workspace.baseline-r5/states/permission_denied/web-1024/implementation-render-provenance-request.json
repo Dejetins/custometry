@@ -1,0 +1,9 @@
+{
+  "program_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+  "target": "implementation",
+  "logical_artifact_id": "UI-CORE-001.permission_denied.all.ru.graphite@r5",
+  "anchor_id": "web-1024",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-core-shell-workspace-baseline/states/permission_denied/screen.html",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.core.shell-workspace.baseline-r5/states/permission_denied/web-1024/implementation.png",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.core.shell-workspace.baseline-r5/states/permission_denied/web-1024/implementation-geometry.json"
+}

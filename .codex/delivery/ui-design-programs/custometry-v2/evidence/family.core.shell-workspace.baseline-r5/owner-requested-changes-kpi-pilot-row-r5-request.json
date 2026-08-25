@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.core.shell-workspace.baseline-r5.bounded-correction.kpi-pilot-row",
+  "decision_kind": "family_acceptance",
+  "status": "requested_changes",
+  "revision": 1,
+  "decision_text": "В состоянии populated привести KPI-строку к принятому pilot: единый компактный горизонтальный модуль с заголовком слева, метриками справа и тонкими разделителями вместо четырёх отдельных карточек.",
+  "owner_input": "вот здесь надо kpi строку сделать как в пилотной версии принятой",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.core.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-core-shell-workspace-baseline/review-board.html"
+  }
+}

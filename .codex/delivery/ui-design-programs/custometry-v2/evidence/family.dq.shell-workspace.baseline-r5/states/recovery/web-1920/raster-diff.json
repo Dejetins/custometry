@@ -1,0 +1,63 @@
+{
+  "schema_id": "codex.ui-raster-diff/v1",
+  "screen_revision_id": "UI-DQ-001.recovery.all.ru.graphite@r5",
+  "anchor_id": "web-1920",
+  "generated_by": {
+    "script": "compare_visual_revision.py",
+    "version": "1.4.0",
+    "command": "compare_visual_revision.py <paths-redacted>"
+  },
+  "reference": {
+    "path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.dq.shell-workspace.baseline-r5/states/recovery/web-1920/reference.png",
+    "sha256": "4b0d54cd38aa175a97c7baa25180661470d3dae291dc0b8ccaa0dc6cb79156d4"
+  },
+  "implementation": {
+    "path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.dq.shell-workspace.baseline-r5/states/recovery/web-1920/implementation.png",
+    "sha256": "e0fdc13c96c06f6d490f7f5d64a8d353fe5afce9695b31c52fb7f0fe356132f4"
+  },
+  "render_provenance": {
+    "reference": {
+      "path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.dq.shell-workspace.baseline-r5/states/recovery/web-1920/reference-render-provenance.json",
+      "sha256": "0d718b618d885bfc4a173a21d203012cab2699bed653c6e1d04f14a036620185"
+    },
+    "implementation": {
+      "path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.dq.shell-workspace.baseline-r5/states/recovery/web-1920/implementation-render-provenance.json",
+      "sha256": "2ac4421d37f6f7d2195bb0784bda62e2f8fe72bda7f01c13bde01514e2ac6e32"
+    }
+  },
+  "comparison": {
+    "purpose": "visual_language_conformance",
+    "reference_logical_artifact_id": "custometry-pilot-v3-metadata-ru",
+    "implementation_logical_artifact_id": "UI-DQ-001.recovery.all.ru.graphite@r5",
+    "visual_authority_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "visual_authority_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "reference_render_provenance_sha256": "0d718b618d885bfc4a173a21d203012cab2699bed653c6e1d04f14a036620185",
+    "implementation_render_provenance_sha256": "2ac4421d37f6f7d2195bb0784bda62e2f8fe72bda7f01c13bde01514e2ac6e32",
+    "reference_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "reference_source_artifact_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "implementation_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-dq-shell-workspace-baseline/states/recovery/screen.html",
+    "implementation_source_artifact_sha256": "41435f9fa75975b1de3a8771e3a8ee6858044256965385751ef2608159932fa2",
+    "provenance_passed": true,
+    "proves_fidelity": false,
+    "blockers": []
+  },
+  "diff_image": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.dq.shell-workspace.baseline-r5/states/recovery/web-1920/diff.png",
+  "pixel_diff": {
+    "dimensions_match": true,
+    "reference_size": [
+      1920,
+      1080
+    ],
+    "implementation_size": [
+      1920,
+      1080
+    ],
+    "different_pixels": 1724961,
+    "different_ratio": 0.8318677662037037,
+    "maximum_channel_delta": 246,
+    "channel_threshold": 0,
+    "approved_max_different_pixels": 0,
+    "passed": false
+  },
+  "result": "blocked"
+}

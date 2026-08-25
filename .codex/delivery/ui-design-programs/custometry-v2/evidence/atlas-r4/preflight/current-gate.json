@@ -1,0 +1,15 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "current_gate",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G1@atlas-r4",
+  "gate_id": "G1",
+  "status": "passed",
+  "facts": {
+    "validation_profile": "atlas_gate",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r4/ui-design-program.snapshot.json",
+    "artifact_sha256": "5f474644e1ec768013b63a4c768ccd943f679d0e5f053bc8fb75f3b920da6498",
+    "result": "passed"
+  }
+}

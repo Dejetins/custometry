@@ -1,0 +1,45 @@
+{
+  "schema_id": "custometry.ui-active-skill-release-evidence/v1",
+  "release_gate": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 /Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/validate_skill_release.py",
+    "result": "passed"
+  },
+  "files": [
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/SKILL.md",
+      "sha256": "53b16c6a9e4824d4a36eaccaae6f6558271ee57457cb726a1ac62bbf4c77a08f"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/contract-versions.json",
+      "sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/screen-design-contract.schema.json",
+      "sha256": "b380481b645d8477cbd539073891687dd4e312abd92d95b8e2a830ca326b092f"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/assemble_standard_applicability.py",
+      "sha256": "865f147afd15ab6593b88e1b1c1c4daf23e658e6d2b2e091461ea40ea0c5d991"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/capture_geometry.cjs",
+      "sha256": "d8f6cc8a407980558e44f9c72f46275701c359f8a4edafa1c089baa133285954"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/ui_standard_contract.py",
+      "sha256": "f566f2dd8125e9c5be21b8854b7f2179f53547baf363eb1d248adc817c6ab37c"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/validate_skill_release.py",
+      "sha256": "103bb2877bc03b7129d6716f8271be975ff71455c3ddc07e50a64ea71108d025"
+    }
+  ],
+  "program_owned_screen_schema": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/screen-design-contract.schema.json",
+    "sha256": "b380481b645d8477cbd539073891687dd4e312abd92d95b8e2a830ca326b092f"
+  },
+  "schema_copy_matches_active": true,
+  "standard_identity_contract": "Product component identity remains source-of-truth for actions; standard_identity independently binds one exact accepted-pilot visual pattern.",
+  "generic_element_type_fallback_for_stable_identity": false,
+  "result": "passed"
+}

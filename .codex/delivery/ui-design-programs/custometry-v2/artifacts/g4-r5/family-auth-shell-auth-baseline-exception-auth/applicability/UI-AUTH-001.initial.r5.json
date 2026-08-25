@@ -1,0 +1,1511 @@
+{
+  "$schema": "standard-applicability-manifest.schema.json",
+  "schema_id": "codex.ui-standard-applicability-manifest/v1",
+  "generated_by": {
+    "script": "assemble_standard_applicability.py",
+    "version": "1.0.0",
+    "command": "assemble_standard_applicability.py <paths-redacted>"
+  },
+  "manifest_id": "UI-AUTH-001.initial.all.ru-RU.graphite.r5@custometry.pilot-standard.v3.metadata.r4",
+  "screen_revision_id": "UI-AUTH-001.initial.all.ru-RU.graphite.r5",
+  "screen_identity_sha256": "9c6da402d69bde2a39b96095b91ded5b93fe49ca196a0db16ccd7a2a327765dd",
+  "baseline": {
+    "baseline_id": "custometry.platform-baseline.v3.metadata.r4",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+    "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642"
+  },
+  "standard_revision_id": "custometry.pilot-standard.v3.metadata.r4",
+  "clause_inventory_sha256": "f2ca158c083c0d225d8fc25dd87226787fe20863e4e56f7e5b99fb2d3574c1de",
+  "entries": [
+    {
+      "clause_id": "standard.border.border-color.113f1c240f04",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.e6531dcb2a63b7484fbd1201"
+    },
+    {
+      "clause_id": "standard.border.border-color.32e1f263db9b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.076eae269d8367c05632dd64"
+    },
+    {
+      "clause_id": "standard.border.border-color.33cdc578907b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.62419d481ac99ddaebdbe27f"
+    },
+    {
+      "clause_id": "standard.border.border-color.6021d9ecb051",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.d3bab7aeb766cc552555171e"
+    },
+    {
+      "clause_id": "standard.border.border-color.6eeb36a193a0",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.border.border-color.6eeb36a193a0::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.border.border-color.75a3b865617f",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.03274e8352640e6f934aac55"
+    },
+    {
+      "clause_id": "standard.border.border-color.79c29fcc9331",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.27cc4e36fe3c266cf5a0d311"
+    },
+    {
+      "clause_id": "standard.border.border-color.996dd8e7d7d9",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1059f5909649dab45f1e7b26"
+    },
+    {
+      "clause_id": "standard.border.border-style.5a19575b3c18",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.border.border-style.5a19575b3c18::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0279b9c961b1109513d92e25"
+    },
+    {
+      "clause_id": "standard.border.border-width.3474aa875405",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.border.border-width.3474aa875405::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.01abc8086b1e9f76a717bd3b"
+    },
+    {
+      "clause_id": "standard.color.background-color.08a050bf7798",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0227b1223bf12fd3c4046380"
+    },
+    {
+      "clause_id": "standard.color.background-color.0b3382443268",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.color.background-color.0b3382443268::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.color.background-color.11cb2df3e428",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.c2a9451d686d8b505b659739"
+    },
+    {
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.011211b58edd679875638e82"
+    },
+    {
+      "clause_id": "standard.color.background-color.5a8397c5052a",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.e67cda5c6e33fc3868d1b862"
+    },
+    {
+      "clause_id": "standard.color.background-color.62dbc7c2f815",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.87ccdf71ab296c67bd5a0b51"
+    },
+    {
+      "clause_id": "standard.color.background-color.81f8708f46c1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.2f494bf1d4b6f2efbb951ff2"
+    },
+    {
+      "clause_id": "standard.color.background-color.f5ce5f252864",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.b72370a636067814414b1777"
+    },
+    {
+      "clause_id": "standard.color.color.423a62b4e43b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.063bfc3265602c5ea7c8ba8b"
+    },
+    {
+      "clause_id": "standard.color.color.558df6c1a818",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.10bba4264ffca4a0cbd47d68"
+    },
+    {
+      "clause_id": "standard.color.color.61e66af7483e",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.01b47c4a82c34aeca213b8e6"
+    },
+    {
+      "clause_id": "standard.color.color.766c2bf6d0a9",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0a3233b6ab75be5df4afaf38"
+    },
+    {
+      "clause_id": "standard.color.color.9f64a97a6e82",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.f48a63c072ddee3623701c01"
+    },
+    {
+      "clause_id": "standard.color.color.c863c07a7c53",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.color.color.c863c07a7c53::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.elevation.box-shadow.37337d6fe8c1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.22271995fd505dce7e479277"
+    },
+    {
+      "clause_id": "standard.elevation.box-shadow.47855f6e7502",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.32dc97c6e33f983f1e548fae"
+    },
+    {
+      "clause_id": "standard.elevation.box-shadow.78c4a0c777cd",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.53479fc4ff1e04fd6d07b3be"
+    },
+    {
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.elevation.box-shadow.846dd608356a::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.elevation.box-shadow.cd848ab1bf52",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.be1939e4c2cb406933cf42c0"
+    },
+    {
+      "clause_id": "standard.elevation.box-shadow.d0a31290ffda",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.7f4f8a0afdf7c9cca4777dae"
+    },
+    {
+      "clause_id": "standard.elevation.box-shadow.e19da9138878",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.b15dd7f3636c1108c3b08ecc"
+    },
+    {
+      "clause_id": "standard.focus.outline-color.068da97ecd02",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.010f3a5c071e9ad7d243e56d"
+    },
+    {
+      "clause_id": "standard.focus.outline-color.2d1c10789901",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0a69ffb320f356a6373dfc06"
+    },
+    {
+      "clause_id": "standard.focus.outline-color.3f0aafaa6634",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.focus.outline-color.3f0aafaa6634::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.focus.outline-color.47cc5caf5af5",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.6f2a5f2c9d6a2c7291f12b6d"
+    },
+    {
+      "clause_id": "standard.focus.outline-color.6eddfee609e1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.00ebde34de9e52e12bb2c848"
+    },
+    {
+      "clause_id": "standard.focus.outline-color.f62f644ab604",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.e8cccd4c6fd9425670e684ab"
+    },
+    {
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.focus.outline-style.5f4017179266::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.focus.outline-width.fb16926059df::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.layout.display.1a4f8041ef71",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1db6a6fd74503ddbec24d0d7"
+    },
+    {
+      "clause_id": "standard.layout.display.5b8bdc5ac602",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.7477ab27607493f8b46b18bf"
+    },
+    {
+      "clause_id": "standard.layout.display.880a101b7ddb",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0bec1bf7617346a8e508a35c"
+    },
+    {
+      "clause_id": "standard.layout.display.a4bee902fcee",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.layout.display.a4bee902fcee::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.layout.display.c7249af1ff30",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0294d8972a94d626b36228ef"
+    },
+    {
+      "clause_id": "standard.layout.position.0be8f94559c2",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.3005668b3f4806b534c0a87c"
+    },
+    {
+      "clause_id": "standard.layout.position.559fa61c2c4b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.e8e7b52d3e23ab307e4e1b24"
+    },
+    {
+      "clause_id": "standard.layout.position.6b167b5a90e5",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.03650b3eb1bea34d79b57cc8"
+    },
+    {
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.layout.position.d54cf8c43cc2::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.motion.transition-property.38a35f26200d",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1badbcc3a5155dc1e42b8375"
+    },
+    {
+      "clause_id": "standard.motion.transition-property.4b701e9dcb3f",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.9d35f0715322e7f12f454b1e"
+    },
+    {
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.006d7fa0309b155f92b1e5cc"
+    },
+    {
+      "clause_id": "standard.motion.transition-property.7cb49513c248",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.motion.transition-property.7cb49513c248::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.motion.transition-property.969dda741cf4",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.f6d7ce1fe471c2c5c624530b"
+    },
+    {
+      "clause_id": "standard.motion.transition-property.c9f3779f516c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.01922484945e5979b1bcf737"
+    },
+    {
+      "clause_id": "standard.motion.transition-property.ed79867d5460",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.51df397285ff3f08f12b5e3a"
+    },
+    {
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.radius.border-radius.054f6effc63a",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.32a8faba0da8241338384ba4"
+    },
+    {
+      "clause_id": "standard.radius.border-radius.23288213488d",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.92b1b9533f20133b2185eb01"
+    },
+    {
+      "clause_id": "standard.radius.border-radius.5ce1c9180749",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.27cf835a808fcd334b44122a"
+    },
+    {
+      "clause_id": "standard.radius.border-radius.706762912380",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.122af7436ad3e9f02b0273eb"
+    },
+    {
+      "clause_id": "standard.radius.border-radius.c7b79d896e0f",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.00fd2fa49e1a26d5f074b0ae"
+    },
+    {
+      "clause_id": "standard.radius.border-radius.e205a326be00",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.radius.border-radius.e205a326be00::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.radius.border-radius.eb47cec1141b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.38ab8acca9cb893585c6c0fb"
+    },
+    {
+      "clause_id": "standard.radius.border-radius.f14e9b21c7bd",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.9eea306992b830cbca1bd18b"
+    },
+    {
+      "clause_id": "standard.responsive.overflow-x.5d305ebffed6",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.f81e609a92cd8f595b9a9462"
+    },
+    {
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.responsive.overflow-x.67f70c28374d::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.responsive.overflow-x.714843af0d04",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.00b305733e55539e8b866962"
+    },
+    {
+      "clause_id": "standard.responsive.overflow-y.7ab4b6c5f2e9",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.07be0479260c34115003914c"
+    },
+    {
+      "clause_id": "standard.responsive.overflow-y.b74f9167e03e",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.c33868e673895932c76bd233"
+    },
+    {
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.sizing.height.037a51fa3c4e",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.4b4b28430d3aa2a215d3d4f1"
+    },
+    {
+      "clause_id": "standard.sizing.height.36d47c93e789",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.9cec924165159007c77c9b25"
+    },
+    {
+      "clause_id": "standard.sizing.height.3939db2d8468",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.2eff3b0c78cb052f50b91710"
+    },
+    {
+      "clause_id": "standard.sizing.height.3a940033701a",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.31fcc7910a5022b9e14a4458"
+    },
+    {
+      "clause_id": "standard.sizing.height.3f73bde3804b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.099c499c9b616b5ab3f18ef4"
+    },
+    {
+      "clause_id": "standard.sizing.height.40547cd907b4",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.d629f5813fdaa5743517f5c8"
+    },
+    {
+      "clause_id": "standard.sizing.height.4dd7e57e8fd3",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.sizing.height.4dd7e57e8fd3::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.sizing.height.4e2943482ade",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1fafb64fe7841d8b590810f9"
+    },
+    {
+      "clause_id": "standard.sizing.height.52637ffbc3af",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.2986d895fdfb92695c20f280"
+    },
+    {
+      "clause_id": "standard.sizing.height.5898615f3481",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.a5960921ae315eb84ae845b8"
+    },
+    {
+      "clause_id": "standard.sizing.height.5fe97f3b848c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.062f9e9515f6dd3ac37aa04d"
+    },
+    {
+      "clause_id": "standard.sizing.height.80338eb92219",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1f10cdecbbce94fcf37d1947"
+    },
+    {
+      "clause_id": "standard.sizing.height.a5aaf64f1da9",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.7af7e6bf7bda09ce5af702cf"
+    },
+    {
+      "clause_id": "standard.sizing.height.a862ade8dbd4",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.5fb6c65275000c6f9a44aaee"
+    },
+    {
+      "clause_id": "standard.sizing.height.aa2de3467cc7",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.2cb39d9b5cb93538469d2a61"
+    },
+    {
+      "clause_id": "standard.sizing.height.b5dff0e5c365",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.f7d081dd909723b642a99b3f"
+    },
+    {
+      "clause_id": "standard.sizing.height.bfa5d7dc6fce",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.f40d657caa6857350fb0779f"
+    },
+    {
+      "clause_id": "standard.sizing.height.da231839ebd1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.098576eacb6953d83a7a2006"
+    },
+    {
+      "clause_id": "standard.sizing.height.e15ac8e1ac43",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.9ca4c719cab2395bf6c2f8c6"
+    },
+    {
+      "clause_id": "standard.sizing.height.efe678b60045",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.4b3e8f97a7176fe4bd32f733"
+    },
+    {
+      "clause_id": "standard.sizing.height.f966fbc53444",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.253913046a3a4baf7d843f79"
+    },
+    {
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.sizing.max-height.6de12e13956d::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.sizing.max-width.7fd14661c987",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.22aa61860cf976ae765a6061"
+    },
+    {
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.sizing.max-width.b17c4b251e6e::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.sizing.min-height.1db5bd1508b4",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.f62d551ca707ef4671624dca"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.5193aa2dcbfc",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.32fd4a5f219cf131031b1d4b"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.688a58aeea92",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.6ed4d300dff4d46fa42df577"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.769ae775055b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0b201b36ec6f58cf09e734e3"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.7ba4bbd31a0d",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.060a233bb019d8d8402c4b93"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.816c7f24bb71",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0a0de8e256cc6a8be2d1144b"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.8ec53f8779d5",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.28b1d334b1763a32fadb48fa"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.a098004b8ec2",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.4b8049d2943bc53a125259ec"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.a5b34efb2d57",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.sizing.min-height.a5b34efb2d57::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.sizing.min-height.bc07e3400e95",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.9f255186009019bc71cdf80d"
+    },
+    {
+      "clause_id": "standard.sizing.min-height.e4228f7c8fe0",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.d3779806373a2a1c541ef6d6"
+    },
+    {
+      "clause_id": "standard.sizing.min-width.0215441dc5c5",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.9ceea0ae6dddbee5142a2675"
+    },
+    {
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0028040e2890360d4987adbb"
+    },
+    {
+      "clause_id": "standard.sizing.min-width.0fd90b874a80",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.sizing.min-width.0fd90b874a80::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.sizing.min-width.2a43ab3ff7b4",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.d6f198d9f276da014a3facaa"
+    },
+    {
+      "clause_id": "standard.sizing.min-width.acda65ae99f2",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.08b62d9cd5ee8f75df942ea5"
+    },
+    {
+      "clause_id": "standard.sizing.min-width.ba2f396d3cc1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.3131cde5565bc96bf96f7865"
+    },
+    {
+      "clause_id": "standard.sizing.width.0452f5addf27",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1f64a4fa77f53f8748caedaf"
+    },
+    {
+      "clause_id": "standard.sizing.width.0673ea0e08a8",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1e4a3661f11b84f0d9ff9982"
+    },
+    {
+      "clause_id": "standard.sizing.width.0e2634dc59c7",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.18eb8366e7c4b9960d9a9e59"
+    },
+    {
+      "clause_id": "standard.sizing.width.1042fc3cdc65",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0ae329c25e9a2d9b88b09f56"
+    },
+    {
+      "clause_id": "standard.sizing.width.159db49f8119",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.be8cb5f75f949781a3520fb0"
+    },
+    {
+      "clause_id": "standard.sizing.width.21c95389aad8",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1519859217bda77063b87f9f"
+    },
+    {
+      "clause_id": "standard.sizing.width.2201827cfa77",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.adf2576f3075f93f9b590c79"
+    },
+    {
+      "clause_id": "standard.sizing.width.2966c69261b9",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.15a9d8771cc27adaebab9236"
+    },
+    {
+      "clause_id": "standard.sizing.width.2ff5e7523c8c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.70c1234ec501d49193df19b7"
+    },
+    {
+      "clause_id": "standard.sizing.width.32eccbdcd6d6",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.sizing.width.32eccbdcd6d6::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.sizing.width.34e63d379e4a",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.3b8c1be8867cacd089205777"
+    },
+    {
+      "clause_id": "standard.sizing.width.40cbce346d0a",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.3bed677fdc2282cfff342c42"
+    },
+    {
+      "clause_id": "standard.sizing.width.4e681766b122",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.8c2491589d18f0631c2ec457"
+    },
+    {
+      "clause_id": "standard.sizing.width.59d48d4c7160",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.a1fefaa38ae597eb8d9ce0b8"
+    },
+    {
+      "clause_id": "standard.sizing.width.5a3421bbbd07",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.10eb05709285d7b60157d5b9"
+    },
+    {
+      "clause_id": "standard.sizing.width.6590433ac104",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.66aea7d464bf49098bac6e01"
+    },
+    {
+      "clause_id": "standard.sizing.width.6afacb36b4dc",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.a9d98177c8443a342a099625"
+    },
+    {
+      "clause_id": "standard.sizing.width.6d721bb507f1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.4b5ae59d1f25ada95afcbc13"
+    },
+    {
+      "clause_id": "standard.sizing.width.717d17866098",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.51ab53d9dff58d0eaa02a177"
+    },
+    {
+      "clause_id": "standard.sizing.width.752ac0a35e71",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.07cbd9725a077408b45fff60"
+    },
+    {
+      "clause_id": "standard.sizing.width.785983823b1b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.10e823d325ab4087385961d3"
+    },
+    {
+      "clause_id": "standard.sizing.width.78ffe3a6203c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.e8c83a5fe387ee2d49fa2732"
+    },
+    {
+      "clause_id": "standard.sizing.width.8cd816f79543",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.4278654ffe49c9e840bb5ea0"
+    },
+    {
+      "clause_id": "standard.sizing.width.9022b0a38799",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0752fc16b3e91274f44b4a89"
+    },
+    {
+      "clause_id": "standard.sizing.width.95adab953630",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1627a55b68ef3c0c999627f9"
+    },
+    {
+      "clause_id": "standard.sizing.width.ae096f30b6b1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.c734237fab92a8afffaead66"
+    },
+    {
+      "clause_id": "standard.sizing.width.b26a64e529a6",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.b98b9398061a900d38f8fb44"
+    },
+    {
+      "clause_id": "standard.sizing.width.bae08826a54c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.00841a201e303359a02ebd89"
+    },
+    {
+      "clause_id": "standard.sizing.width.bc97bf255aea",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.36964e9d217a3b53b2150452"
+    },
+    {
+      "clause_id": "standard.sizing.width.c3850186da89",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.6c89cc036a2836c1d37d8cab"
+    },
+    {
+      "clause_id": "standard.sizing.width.c4dc1310e079",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.285d747c1534038b5870f07e"
+    },
+    {
+      "clause_id": "standard.sizing.width.c89b26b9fd5c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.651ace8f258db5f535c45183"
+    },
+    {
+      "clause_id": "standard.sizing.width.cb72eacaa709",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.211ae867a39d3c60ff8c46bd"
+    },
+    {
+      "clause_id": "standard.sizing.width.fac8ff37daf4",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.5986583fa50b779cc516196a"
+    },
+    {
+      "clause_id": "standard.spacing.column-gap.1205bb257e63",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.659a421e954659b086d0e022"
+    },
+    {
+      "clause_id": "standard.spacing.column-gap.226efbd70607",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.00c0956cd0a1e8cfc62d8e91"
+    },
+    {
+      "clause_id": "standard.spacing.column-gap.2dacdd20c7a9",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.50e1a47e16613ce3f1197838"
+    },
+    {
+      "clause_id": "standard.spacing.column-gap.3b86f6320e30",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.spacing.column-gap.3b86f6320e30::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.spacing.column-gap.869769522516",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.03528e5b68aad4b0f669a041"
+    },
+    {
+      "clause_id": "standard.spacing.column-gap.a096732a871a",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.cbfa3621eede882c9b1fedc1"
+    },
+    {
+      "clause_id": "standard.spacing.column-gap.c07bee868304",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1baa627f160f88c66ba9b7c4"
+    },
+    {
+      "clause_id": "standard.spacing.padding-bottom.0c356f73b14f",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.f882d58069ef690746d29ced"
+    },
+    {
+      "clause_id": "standard.spacing.padding-bottom.2bbb921df85d",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.071f793c827a4a3b688b83d8"
+    },
+    {
+      "clause_id": "standard.spacing.padding-bottom.55ceee80fb85",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.8d4df2e7b33f6fa694ae9944"
+    },
+    {
+      "clause_id": "standard.spacing.padding-bottom.69827837cc1c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.3475264f1207f27188e7506f"
+    },
+    {
+      "clause_id": "standard.spacing.padding-bottom.86aa83d3d465",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.spacing.padding-bottom.86aa83d3d465::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.spacing.padding-bottom.92e5db4321fb",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.c9d724280c7298cdf7a1b9d2"
+    },
+    {
+      "clause_id": "standard.spacing.padding-left.0559c089e04b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.13d5881d46fd40aa8f31a9ee"
+    },
+    {
+      "clause_id": "standard.spacing.padding-left.2eedaa025066",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.a042cdcdb3372baca83fa4c0"
+    },
+    {
+      "clause_id": "standard.spacing.padding-left.4b89d10f1489",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0bcc21bc3898efd3702d1268"
+    },
+    {
+      "clause_id": "standard.spacing.padding-left.7f022a4db558",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.spacing.padding-left.7f022a4db558::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.spacing.padding-left.d6b27e8f31cb",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.06eae2ceef27e44f759ecac6"
+    },
+    {
+      "clause_id": "standard.spacing.padding-left.e8fc527a837a",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0f5a10fe26ee55c2ea962d04"
+    },
+    {
+      "clause_id": "standard.spacing.padding-left.f31f928331bf",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.2377befe87c499e1fadc58e3"
+    },
+    {
+      "clause_id": "standard.spacing.padding-right.52f6e242feb2",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.2205769ce89e8a8b3435ff4a"
+    },
+    {
+      "clause_id": "standard.spacing.padding-right.668c84e63d6c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.42e430fa3e3d89a5f0d79915"
+    },
+    {
+      "clause_id": "standard.spacing.padding-right.a39aead9151e",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.412370e5db6603ba576d4c2f"
+    },
+    {
+      "clause_id": "standard.spacing.padding-right.b2288d280a28",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.8351532e6bba85fbb303c9a6"
+    },
+    {
+      "clause_id": "standard.spacing.padding-right.c2a50c01c960",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.02a9fdfe92539af41401a787"
+    },
+    {
+      "clause_id": "standard.spacing.padding-right.cd7f4bdb3adc",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1b0b5cbd26ec7f63994a1597"
+    },
+    {
+      "clause_id": "standard.spacing.padding-right.e74d6f52d3d9",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0016a1c3c9e1ccd53b856332"
+    },
+    {
+      "clause_id": "standard.spacing.padding-right.f3f06834d995",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.spacing.padding-right.f3f06834d995::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.spacing.padding-top.0bb8f13f998b",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.4f461b2014f7daf6454c4da4"
+    },
+    {
+      "clause_id": "standard.spacing.padding-top.3a8487232894",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.spacing.padding-top.3a8487232894::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.spacing.padding-top.3fd92d0347cf",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0fe17384a230d83e8e8c5853"
+    },
+    {
+      "clause_id": "standard.spacing.padding-top.59ddcc49f298",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.b90c323b1a7ada0506936f66"
+    },
+    {
+      "clause_id": "standard.spacing.padding-top.b9792c894a99",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.0f6344190d51234ec49592ac"
+    },
+    {
+      "clause_id": "standard.spacing.row-gap.02cc3c0f3843",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.e8293c62941385adae668a05"
+    },
+    {
+      "clause_id": "standard.spacing.row-gap.111924ad8400",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.05019c33314630fc8c642baf"
+    },
+    {
+      "clause_id": "standard.spacing.row-gap.23fd5aa03355",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.cd8a572da7cf9f4f82e6d7ab"
+    },
+    {
+      "clause_id": "standard.spacing.row-gap.2abc0ff5a983",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.a7a188f3aa0e4bde4a24a7fa"
+    },
+    {
+      "clause_id": "standard.spacing.row-gap.a203d963a2c4",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.2710e8becbb7bf13a37cf356"
+    },
+    {
+      "clause_id": "standard.spacing.row-gap.bf24d3cc5c3d",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.004c94c339862722deb782a3"
+    },
+    {
+      "clause_id": "standard.spacing.row-gap.d9a3728eacba",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.spacing.row-gap.d9a3728eacba::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.typography.font-family.0bf0d20098a5::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.typography.font-size.441863c97538",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.typography.font-size.441863c97538::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.typography.font-size.9409e71e7e88",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.03920051a92e7d63c1a5c39f"
+    },
+    {
+      "clause_id": "standard.typography.font-size.9927a35841b1",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.38a7e613cee5f7880e2282e1"
+    },
+    {
+      "clause_id": "standard.typography.font-size.b7722a2bfe75",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.16fc47070009dc96a1c0726f"
+    },
+    {
+      "clause_id": "standard.typography.font-weight.512d67e8dddc",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.039487d227a152f51a1b88f1"
+    },
+    {
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.typography.font-weight.a1ca90e332a6::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.typography.font-weight.fa8c9e9d5cab",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.5e3aa25e26dd071a3c8ceb54"
+    },
+    {
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.typography.line-height.0d83613ee825",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.168a686c8d24365e3a2ee68c"
+    },
+    {
+      "clause_id": "standard.typography.line-height.1c65a5e6ac7b",
+      "disposition": "applicable",
+      "targets": [
+        {
+          "application_id": "standard.typography.line-height.1c65a5e6ac7b::element::signin-locale::web-1440",
+          "target_kind": "element",
+          "target_id": "signin-locale",
+          "locator": "[data-ui-element=\"signin-locale\"]",
+          "anchor_id": "web-1440"
+        }
+      ],
+      "reason_ref": null
+    },
+    {
+      "clause_id": "standard.typography.line-height.487374697d95",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.1041e66b29efea16a2ddb817"
+    },
+    {
+      "clause_id": "standard.typography.line-height.75942ed57487",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.2b1114921418b8697878e141"
+    },
+    {
+      "clause_id": "standard.typography.line-height.f6ef92270cb2",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.44a8829869ee690e9cfa14e0"
+    },
+    {
+      "clause_id": "standard.typography.line-height.fc00a5c3086c",
+      "disposition": "source_backed_not_applicable",
+      "targets": [],
+      "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json#observation=obs.012d6a53279d666ed57fae2a"
+    }
+  ]
+}

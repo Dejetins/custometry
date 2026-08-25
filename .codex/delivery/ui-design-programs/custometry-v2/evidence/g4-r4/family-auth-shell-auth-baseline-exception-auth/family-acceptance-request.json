@@ -1,0 +1,23 @@
+{
+  "$schema": "family-acceptance-request.schema.json",
+  "program_path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r4/family-auth-shell-auth-baseline-exception-auth/ui-design-program.snapshot.json",
+  "family_id": "family.auth.shell-auth.baseline-exception-auth",
+  "family_revision_id": "family.auth.shell-auth.baseline-exception-auth-r4",
+  "revision": 4,
+  "screen_acceptance_paths": [
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.failed.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.first_loading.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.initial.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.ready.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.session_expired.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.validation_error.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.failed.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.first_loading.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.initial.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.ready.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.session_expired.r4.json",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.validation_error.r4.json"
+  ],
+  "review_board_path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r4/family-auth-shell-auth-baseline-exception-auth/review-board.html",
+  "owner_decision_ref": null
+}

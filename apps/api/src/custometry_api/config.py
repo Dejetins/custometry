@@ -30,6 +30,15 @@ class Settings(BaseSettings):
     identity_refresh_ttl_seconds: int = Field(default=2_592_000, ge=3600, le=7_776_000)
     identity_rate_limit_requests: int = Field(default=20, ge=1, le=1000)
     identity_rate_limit_window_seconds: int = Field(default=60, ge=1, le=3600)
+    source_postgresql_profile_ref: str = "retail_demo"
+    source_postgresql_secret_ref: str = "retail_demo_reader"
+    source_postgresql_host: str = "demo-source-db"
+    source_postgresql_port: int = Field(default=5432, ge=1, le=65535)
+    source_postgresql_database: str = "northwind_retail"
+    source_postgresql_user: str = "demo_reader"
+    source_postgresql_password_file: Path = Path("/run/secrets/demo_source_reader_password")
+    source_postgresql_connect_timeout_seconds: int = Field(default=3, ge=1, le=10)
+    source_postgresql_statement_timeout_ms: int = Field(default=5_000, ge=100, le=60_000)
 
     @field_validator("cors_allowed_origins")
     @classmethod
@@ -57,3 +66,11 @@ class Settings(BaseSettings):
         if not token:
             raise ValueError("bootstrap token file is empty")
         return token
+
+    def read_source_postgresql_password(self) -> str:
+        """Resolve the configured source secret only inside the trusted adapter factory."""
+
+        password = self.source_postgresql_password_file.read_text(encoding="utf-8").strip()
+        if not password:
+            raise ValueError("source password file is empty")
+        return password

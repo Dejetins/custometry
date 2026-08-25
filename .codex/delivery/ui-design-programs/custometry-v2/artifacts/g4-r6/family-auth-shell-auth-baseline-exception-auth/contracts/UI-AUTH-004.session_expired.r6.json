@@ -1,0 +1,2031 @@
+{
+  "$schema": "screen-design-contract.schema.json",
+  "schema_id": "codex.ui-screen-design-contract/v1",
+  "contract_profile": "codex.ui-screen-design-contract/v1@2.0.0",
+  "screen_revision_id": "UI-AUTH-004.session_expired.all.ru-RU.graphite.r6",
+  "program_revision_ref": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2@5",
+  "functional_contract_ref": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json",
+    "sha256": "1bde5b03571efe80145622d18bea1e8ec40d461e5df897e6b604f385f3c09ba5",
+    "json_pointer": "/screens/3",
+    "screen_id": "UI-AUTH-004"
+  },
+  "baseline_binding": {
+    "baseline_id": "custometry.platform-baseline.v3.metadata.r5",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json",
+    "sha256": "ec3108e8d23cf4dd59f217766082ef938dda83245aa46dcc43968c64a8f2bc7c",
+    "shell_variant_id": "shell.auth",
+    "exception_id": "baseline-exception-auth"
+  },
+  "status": "review",
+  "product_identity": {
+    "screen_id": "UI-AUTH-004",
+    "route_id": "UI-AUTH-004",
+    "route": "/auth/recovery",
+    "state_id": "UI-AUTH-004.session_expired",
+    "role_id": "all",
+    "permission_profile": "organization.read",
+    "locale": "ru",
+    "theme": "graphite"
+  },
+  "source_visual": {
+    "kind": "delegated_design_output",
+    "evidence_mode": "visual_language_only",
+    "html_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "image_path": null,
+    "html_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "image_sha256": null,
+    "owner_decision_ref": null,
+    "delegation_ref": "references/stage-transition-contract-v1.md#delegated-design-envelope"
+  },
+  "visual_authority": {
+    "source_visual_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "source_visual_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r4/visual-authority-decision-r4.json",
+    "screen_acceptance_scope": "Visual-language and platform-baseline authority only; never exact target-screen composition, product semantics, fixture truth, legend-threshold truth, production implementation, or novel-screen fidelity.",
+    "visual_language_scope": "Linear Graphite shell character, calm professional density, compact contextual navigation, bounded analytical surfaces, concise KPI and command language, visible Result Trust, Focus/Explore character, readable analytical labels and tables, and adaptive external series-panel behavior as a visual-language reference.",
+    "reusable_foundation_scope": "Hash-pinned source-backed colors, typography stack, spacing rhythm, compact controls, rounded command language, shell/navigation relationships, overlay behavior, and analytical presentation primitives only; exact composition, information architecture, component implementation, runtime semantics, and target-screen acceptance remain later-gate work.",
+    "inheritance_policy": "required",
+    "mobile_scope": "unauthorized"
+  },
+  "comparison_claims": {
+    "required_purpose": "visual_language_conformance",
+    "deterministic_render_proves_fidelity": false,
+    "reference_logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:accepted-pilot:ru:r6",
+    "implementation_logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-004:UI-AUTH-004.session_expired:r6"
+  },
+  "interaction_contract": {
+    "visible_actions": [
+      {
+        "action_id": "UI-AUTH-004.validate-reset-token",
+        "expected_outcome": "A valid token advances to password entry; invalid or expired tokens get a generic safe error",
+        "side_effect_class": "local_state",
+        "activation_policy": "execute_in_fixture",
+        "outcome_assertion": {
+          "kind": "dom",
+          "selector": "[data-result]",
+          "property": "textContent",
+          "expected": "Код подтверждён."
+        }
+      },
+      {
+        "action_id": "UI-AUTH-004.set-new-password",
+        "expected_outcome": "The password is reset and the user returns to sign in; failure preserves the step and safe retry",
+        "side_effect_class": "local_state",
+        "activation_policy": "execute_in_fixture",
+        "outcome_assertion": {
+          "kind": "dom",
+          "selector": "[data-result]",
+          "property": "textContent",
+          "expected": "Пароль обновлён. Вернитесь ко входу."
+        }
+      },
+      {
+        "action_id": "UI-AUTH-004.return-sign-in",
+        "expected_outcome": "The sign-in route opens without implying an email reset channel",
+        "side_effect_class": "local_state",
+        "activation_policy": "execute_in_fixture",
+        "outcome_assertion": {
+          "kind": "dom",
+          "selector": "[data-result]",
+          "property": "textContent",
+          "expected": "Открыт экран входа."
+        }
+      }
+    ],
+    "no_actions_reason_ref": null,
+    "required_checks": [
+      "focus_visibility",
+      "keyboard_activation",
+      "menus",
+      "no_console_errors",
+      "no_page_horizontal_overflow",
+      "no_request_failures",
+      "no_unresolved_file_navigation",
+      "refresh_feedback",
+      "state_transitions",
+      "tab_radio_behavior",
+      "toggles"
+    ],
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "fixture_mode": "isolated_local",
+    "evidence_redaction_required": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']",
+      "input[autocomplete='one-time-code']"
+    ]
+  },
+  "render_environment": {
+    "browser": "chromium/150.0.7871.187",
+    "browser_mechanic": "playwright_cli",
+    "device_scale_factor": 1,
+    "timezone": "Europe/Moscow",
+    "fixed_clock_iso": "2026-08-13T20:07:38Z",
+    "reduced_motion": true,
+    "animations": "disabled",
+    "fixture_data_path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r6/family-auth-shell-auth-baseline-exception-auth/fixture.json",
+    "fixture_data_sha256": "64c3ca4bd37db9d5d5d80d2fa3c41ae4e81c1c04a5f80d9d86a60c93c19840c7",
+    "font_bundle_sha256": "3b8993a3bbd287c797c3f5c66323d7202316fb4fb4f7f1accc2f898ca1a7a0c5",
+    "asset_bundle_sha256": "fbcfc25fdec97cebe22549822ba7742cfed164bc21ab922e6121837247f746ad"
+  },
+  "viewport_contract": {
+    "mode": "responsive_web",
+    "supported_web_width_range": {
+      "max_width": 1920,
+      "min_width": 768,
+      "origin": {
+        "kind": "product_contract",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+      }
+    },
+    "anchors": [
+      {
+        "anchor_id": "web-768",
+        "width": 768,
+        "height": 1024,
+        "class": "responsive_web",
+        "state_ref": "UI-AUTH-004.session_expired",
+        "origin": {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+        }
+      },
+      {
+        "anchor_id": "web-1024",
+        "width": 1024,
+        "height": 768,
+        "class": "responsive_web",
+        "state_ref": "UI-AUTH-004.session_expired",
+        "origin": {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+        }
+      },
+      {
+        "anchor_id": "web-1440",
+        "width": 1440,
+        "height": 900,
+        "class": "responsive_web",
+        "state_ref": "UI-AUTH-004.session_expired",
+        "origin": {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+        }
+      },
+      {
+        "anchor_id": "web-1920",
+        "width": 1920,
+        "height": 1080,
+        "class": "responsive_web",
+        "state_ref": "UI-AUTH-004.session_expired",
+        "origin": {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+        }
+      }
+    ],
+    "breakpoint_policy": "content_driven",
+    "breakpoint_policy_origin": {
+      "kind": "normative_requirement",
+      "ref": "references/responsive-policy-v1.md#viewport-contract"
+    },
+    "below_supported_range": "out_of_scope",
+    "below_supported_range_origin": {
+      "kind": "normative_requirement",
+      "ref": "references/responsive-policy-v1.md#viewport-contract"
+    },
+    "above_supported_range": "max_content_width",
+    "above_supported_range_origin": {
+      "kind": "product_contract",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+    },
+    "mobile_scope": "unauthorized",
+    "mobile_scope_origin": {
+      "kind": "normative_requirement",
+      "ref": "references/responsive-policy-v1.md#mobile-authorization-boundary"
+    },
+    "mobile_authorization_ref": null,
+    "mobile_specific_composition": false,
+    "authorized_mobile_surfaces": [],
+    "authorized_mobile_viewports": [],
+    "allowed_mobile_changes": []
+  },
+  "regions": [
+    {
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-screen-id=\"UI-AUTH-004\"]:not([hidden])",
+      "visibility": "required",
+      "component_id": "candidate.auth-surface",
+      "component_status": "candidate",
+      "variant": "recovery-wizard",
+      "state": "session_expired",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "UI-AUTH-004.brand",
+      "locator": "[data-ui-region=\"UI-AUTH-004.brand\"]",
+      "visibility": "required",
+      "component_id": "candidate.auth-brandbar",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "session_expired",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "UI-AUTH-004.form",
+      "locator": "[data-ui-region=\"UI-AUTH-004.form\"]",
+      "visibility": "required",
+      "component_id": "candidate.auth-form",
+      "component_status": "candidate",
+      "variant": "recovery-wizard",
+      "state": "session_expired",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    }
+  ],
+  "element_contracts": [
+    {
+      "element_id": "recovery-brand",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.brand",
+      "locator": "[data-ui-element=\"recovery-brand\"]",
+      "visibility": "required",
+      "element_type": "brand",
+      "component_id": null,
+      "variant": "graphite",
+      "size_class": null,
+      "content_contract": "Custometry",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-locale-field",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-locale-field\"]",
+      "visibility": "required",
+      "element_type": "label",
+      "component_id": null,
+      "variant": "language-control",
+      "size_class": null,
+      "content_contract": "Language control label",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-locale",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-locale\"]",
+      "visibility": "required",
+      "element_type": "select",
+      "component_id": null,
+      "variant": "language-control",
+      "size_class": "compact",
+      "content_contract": "Language / Язык",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": "shell.main-content.select",
+      "component_state_ids": [
+        "default",
+        "hover",
+        "focus_visible",
+        "disabled"
+      ],
+      "standard_identity": {
+        "component_id": "control.compact",
+        "variant": "compact-control.lifecycle-metric-select",
+        "size_class": "compact",
+        "element_type": "select",
+        "icon_id": null,
+        "state_ids": [
+          "default"
+        ]
+      }
+    },
+    {
+      "element_id": "recovery-surface",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.form",
+      "locator": "[data-ui-element=\"recovery-surface\"]",
+      "visibility": "required",
+      "element_type": "wizard",
+      "component_id": null,
+      "variant": "recovery-wizard",
+      "size_class": null,
+      "content_contract": "Password reset wizard",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-title",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-title\"]",
+      "visibility": "required",
+      "element_type": "heading",
+      "component_id": null,
+      "variant": null,
+      "size_class": null,
+      "content_contract": "Reset password / Смена пароля",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-description",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-description\"]",
+      "visibility": "required",
+      "element_type": "text",
+      "component_id": null,
+      "variant": null,
+      "size_class": null,
+      "content_contract": "Administrator-issued reset code and new password",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-steps",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-steps\"]",
+      "visibility": "required",
+      "element_type": "list",
+      "component_id": null,
+      "variant": "stepper",
+      "size_class": null,
+      "content_contract": "Code, new password, done",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-token",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-token\"]",
+      "visibility": "required",
+      "element_type": "input",
+      "component_id": null,
+      "variant": null,
+      "size_class": "md",
+      "content_contract": "Reset code",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-token-error",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-token-error\"]",
+      "visibility": "conditional",
+      "element_type": "error",
+      "component_id": null,
+      "variant": null,
+      "size_class": null,
+      "content_contract": "Inline reset-code recovery instruction",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-password",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-password\"]",
+      "visibility": "required",
+      "element_type": "input",
+      "component_id": null,
+      "variant": null,
+      "size_class": "md",
+      "content_contract": "New password",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-confirm",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-confirm\"]",
+      "visibility": "required",
+      "element_type": "input",
+      "component_id": null,
+      "variant": null,
+      "size_class": "md",
+      "content_contract": "Confirm password",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-validate",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-validate\"]",
+      "visibility": "required",
+      "element_type": "button",
+      "component_id": "action.button",
+      "variant": "secondary",
+      "size_class": "sm",
+      "content_contract": "Check reset code",
+      "icon_id": null,
+      "action_ids": [
+        "UI-AUTH-004.validate-reset-token"
+      ],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default",
+        "hover",
+        "focus_visible",
+        "active",
+        "disabled",
+        "loading",
+        "error"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-return",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-return\"]",
+      "visibility": "required",
+      "element_type": "link",
+      "component_id": "action.button",
+      "variant": "secondary",
+      "size_class": "sm",
+      "content_contract": "Return to sign in",
+      "icon_id": null,
+      "action_ids": [
+        "UI-AUTH-004.return-sign-in"
+      ],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default",
+        "hover",
+        "focus_visible",
+        "active",
+        "disabled"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-set-password",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-set-password\"]",
+      "visibility": "required",
+      "element_type": "button",
+      "component_id": "action.button",
+      "variant": "primary",
+      "size_class": "sm",
+      "content_contract": "Save new password",
+      "icon_id": null,
+      "action_ids": [
+        "UI-AUTH-004.set-new-password"
+      ],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default",
+        "hover",
+        "focus_visible",
+        "active",
+        "disabled",
+        "loading",
+        "error"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-message",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-message\"]",
+      "visibility": "required",
+      "element_type": "status",
+      "component_id": null,
+      "variant": null,
+      "size_class": null,
+      "content_contract": "State-specific safe feedback",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-result",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-result\"]",
+      "visibility": "conditional",
+      "element_type": "status",
+      "component_id": null,
+      "variant": null,
+      "size_class": null,
+      "content_contract": "Action outcome",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "recovery-trust",
+      "parent_element_id": null,
+      "region_id": "UI-AUTH-004.content",
+      "locator": "[data-ui-element=\"recovery-trust\"]",
+      "visibility": "conditional",
+      "element_type": "note",
+      "component_id": null,
+      "variant": null,
+      "size_class": null,
+      "content_contract": "Administrator-assisted reset guidance",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-AUTH-004.session_expired"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/3"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    }
+  ],
+  "allowed_provenance_kinds": [
+    "product_contract",
+    "normative_requirement",
+    "accepted_visual",
+    "measured_baseline",
+    "design_token",
+    "owner_decision",
+    "derived_formula",
+    "delegated_design_decision"
+  ],
+  "unresolved_decisions": [],
+  "acceptance": {
+    "agent_self_acceptance": "prohibited",
+    "machine_receipt_required": true,
+    "owner_decision_required": true,
+    "owner_decision_ref": null,
+    "screen_acceptance_receipt_path": null,
+    "screen_acceptance_receipt_sha256": null,
+    "pixel_diff_policy": {
+      "channel_threshold": {
+        "value": 18,
+        "unit": "channel-value",
+        "origin": {
+          "kind": "normative_requirement",
+          "ref": "references/responsive-policy-v1.md#viewport-contract"
+        },
+        "tolerance": 0,
+        "change_policy": "source_revision_required"
+      },
+      "approved_max_different_pixels": {
+        "value": 2073600,
+        "unit": "px",
+        "origin": {
+          "kind": "normative_requirement",
+          "ref": "references/responsive-policy-v1.md#viewport-contract"
+        },
+        "tolerance": 0,
+        "change_policy": "source_revision_required"
+      }
+    }
+  },
+  "standard_binding": {
+    "standard_revision_id": "custometry.pilot-standard.v3.metadata.r5",
+    "clause_inventory_sha256": "f2ca158c083c0d225d8fc25dd87226787fe20863e4e56f7e5b99fb2d3574c1de",
+    "applicability_manifest": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r6/family-auth-shell-auth-baseline-exception-auth/applicability/UI-AUTH-004.session_expired.r6.json",
+      "sha256": "1de600bf6de2ef2121bc3cba719bddef6413308f99ef7b43f273af964e1ec374"
+    }
+  },
+  "standard_exceptions": []
+}

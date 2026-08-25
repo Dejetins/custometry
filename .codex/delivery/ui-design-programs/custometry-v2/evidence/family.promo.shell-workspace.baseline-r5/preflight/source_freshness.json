@@ -1,0 +1,47 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "source_freshness",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.promo.shell-workspace.baseline-r5",
+  "gate_id": "G4",
+  "status": "passed",
+  "facts": {
+    "source_refs": [
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-promo-shell-workspace-baseline/review-board.html",
+        "sha256": "081dd02b3088f8832bf421e1f9b2b120308e9b208be1e54b0367ca1e6992f74e"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-promo-shell-workspace-baseline/ui-design-program.snapshot.json",
+        "sha256": "a3767d03a4abf86874489ca2007f36e68c895263f57de280b904b08c0ad04880"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/error/screen-acceptance.json",
+        "sha256": "e9161bc7960975b08a980914f45bf45e16454b58922bb753dc9f5f887ffcc568"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/initial/screen-acceptance.json",
+        "sha256": "3171cf30f4d9fe247e233fa5a6382371e9c6f7e862574fa1f71aba9c41b33b57"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/loading/screen-acceptance.json",
+        "sha256": "d450d9b22401c517bfd70bd7abf9051a0cc798b6106fe7a5dfb033631ae2ef07"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/permission_denied/screen-acceptance.json",
+        "sha256": "0b5ac7c256494ac532a1b7395d143101b4bdd991ad8274f236d515bbb5420d3c"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/populated/screen-acceptance.json",
+        "sha256": "66b5fcb9153c7b3ebf42a787720b11fe5bef28a8f3b0a7f5b2825e878ce993e6"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/recovery/screen-acceptance.json",
+        "sha256": "854b1cd8785eb7a0b77e4a7ca56511669a05086a3856d1f0afe9d2bef927fb38"
+      }
+    ],
+    "drift_classification": "owned_generated_change",
+    "stale_refs": []
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "review-board-manifest.schema.json",
+  "schema_id": "codex.ui-review-board-manifest/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "revision": 4,
+  "validation_profile": "program_ready",
+  "entries": [
+    {
+      "entry_id": "review-01",
+      "role": "source_native",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/equivalence/candidate-web-1920-ru-default.png",
+      "sha256": "2df4490857cf08205562e6314c2680e59b7d73d50e0638d9c3ddccfe45354f97",
+      "anchor_id": null,
+      "state_id": null
+    },
+    {
+      "entry_id": "review-02",
+      "role": "source_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/source-web-768.png",
+      "sha256": "8253d5928e092b35b4eb341383f62335f5f1c995db27958388625fd0153d0760",
+      "anchor_id": "web-768",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-03",
+      "role": "source_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/source-web-1024.png",
+      "sha256": "9db832f515832a94ed3cce6507e0a49f33487c773fa49dcfc2630b1462eee573",
+      "anchor_id": "web-1024",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-04",
+      "role": "source_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/source-web-1440.png",
+      "sha256": "3986879a0d50e0977f03da6cbf6fb50aa7e1071941eae70d7286b8a32e66a07d",
+      "anchor_id": "web-1440",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-05",
+      "role": "source_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/source-web-1920.png",
+      "sha256": "467121b8325162266029c42f6494911f25138240a74efef440f71f10b1e406b1",
+      "anchor_id": "web-1920",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-06",
+      "role": "candidate",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/candidate-shell.html",
+      "sha256": "a8db4d4554eb66e0a0f85ff382c3e95bdf25f6c55352d1f904c60e8084856f05",
+      "anchor_id": null,
+      "state_id": null
+    },
+    {
+      "entry_id": "review-07",
+      "role": "candidate_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-768.png",
+      "sha256": "305b6b459fda69ac182f9069de0ecca4359a2d511c61b9e79c4557c24b93af82",
+      "anchor_id": "web-768",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-08",
+      "role": "candidate_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1024.png",
+      "sha256": "d698e766d6553b503909df7d2dd9f7798b002984a1747ae9373afe67a41dbcb2",
+      "anchor_id": "web-1024",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-09",
+      "role": "candidate_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1440.png",
+      "sha256": "104f599a4cb15de0a379c93de07d0ab4e0ea873415cf974da995f890eb3efc3f",
+      "anchor_id": "web-1440",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-10",
+      "role": "candidate_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1920.png",
+      "sha256": "c38f33f689b20546cc224f3adf95bce72155842f0047c5bab822255ff037e82a",
+      "anchor_id": "web-1920",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-11",
+      "role": "render_provenance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-768-provenance.json",
+      "sha256": "db3587bfec94f86325fd01bed77c72a6e872ee92fbeb6ee073a463e0ffb720a1",
+      "anchor_id": "web-768",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-12",
+      "role": "render_provenance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1024-provenance.json",
+      "sha256": "e23389e1c1f2677a78bee0d9bf5d42ab0e93ad34131b26293ceddf8a4c0b81ee",
+      "anchor_id": "web-1024",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-13",
+      "role": "render_provenance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1440-provenance.json",
+      "sha256": "2d9dd79cec239222e4c8f760eb0b8d5e10abab6f8f5ac3555a3755a20ad458c1",
+      "anchor_id": "web-1440",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-14",
+      "role": "render_provenance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1920-provenance.json",
+      "sha256": "6eccce501ec159a90476b2e6ce4614adf32b208ba8c7b629adf533142e39ab0b",
+      "anchor_id": "web-1920",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-15",
+      "role": "inheritance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/inheritance-report.json",
+      "sha256": "e0a8db9730abc12d300eef4c4f44fbf0468c1c751cf0151f89a9ac8dd840bb01",
+      "anchor_id": null,
+      "state_id": null
+    },
+    {
+      "entry_id": "review-16",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/standard-board.html",
+      "sha256": "db8a16a06cd09da794716e32d635ac48e7bdd298356e6daab63c057c1a6a7c92",
+      "anchor_id": null,
+      "state_id": null
+    },
+    {
+      "entry_id": "review-17",
+      "role": "screen_contract",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/representative-shell-contract.json",
+      "sha256": "4bae37dab84283e75809e6ebefe75bb4ebb8aa001730a90b2678e61e8bca0c7a",
+      "anchor_id": null,
+      "state_id": null
+    }
+  ]
+}

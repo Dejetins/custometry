@@ -1,0 +1,95 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "2.0.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G4@family.dash.shell-workspace.baseline-r5",
+    "gate_id": "G4",
+    "target_id": "family.dash.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_gate",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/family-acceptance.json",
+    "artifact_sha256": "18bbc1633799fff798115a0306ba72bf6acdccd0d3af4ccbf885c64d553ed924"
+  },
+  "to_stage": {
+    "stage_instance_id": "G4@family.rpt.shell-workspace.baseline-r5",
+    "gate_id": "G4",
+    "target_id": "family.rpt.shell-workspace.baseline-r5",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-11-family-rpt-shell-workspace-baseline-r5.md"
+  },
+  "readiness_status": "ready",
+  "next_stage_allowed": true,
+  "decision_inventory": [
+    {
+      "decision_id": "G4@family.dash.shell-workspace.baseline-r5.finished-result",
+      "class": "owner_required",
+      "status": "resolved",
+      "summary": "The owner explicitly accepted the complete Dashboards r5 HTML review board.",
+      "resolution_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/family-acceptance-decision-r5.json"
+    }
+  ],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/preflight/current_gate.json",
+      "evidence_sha256": "8480a308aa649193b6b4ec5a05450101b95501c44a5322fa86183269d24c187c"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/preflight/execution_route.json",
+      "evidence_sha256": "b7042fd39f187ad99f293784342deeb743f0b922f6571df5f27ae7fbcabcafd2"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/preflight/foreign_changes.json",
+      "evidence_sha256": "abebb152d762e85c1d5108a7a6a0ff16629217143e2fe2a0c989365ddc32c7d5"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/preflight/handoff_artifact.json",
+      "evidence_sha256": "f72f947b59db4002dd4fa8a208da85d144e82c8f41285bb699274f8bbe1bf837"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/preflight/next_stage_inputs.json",
+      "evidence_sha256": "f07c5d45a3d6f4954184329edcb19f90d9d7e4c37780ce1303953496394425a7"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/preflight/source_freshness.json",
+      "evidence_sha256": "b924dc6c7e485e92154f5ef77da5d4b99a27741619285f263552ea26d9eda910"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/preflight/write_scope.json",
+      "evidence_sha256": "66c2cb8c77fb7bd8f79d6bdeb53e2f47188ccfd89a7e3c35cafeb3fd2018c380"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "The owner accepted the complete Dashboards HTML review board; the strict family gate and adjacent-stage preflight pass.",
+    "review_artifact_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-dash-shell-workspace-baseline/review-board.html",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/review-board-1440.png",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/browser-board-qa.json"
+    ],
+    "questions": []
+  },
+  "owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/family-acceptance-decision-r5.json",
+  "owner_decision_sha256": "9ca0a9b2a290418bbe8bc3098f7d17d4d3fb76c836f71c8c090b43dac396ea37",
+  "program_complete": false
+}

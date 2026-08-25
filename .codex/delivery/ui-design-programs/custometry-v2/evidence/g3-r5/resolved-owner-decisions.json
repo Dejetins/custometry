@@ -1,0 +1,9 @@
+[
+  {
+    "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5.finished-foundations-shell",
+    "class": "owner_required",
+    "status": "resolved",
+    "summary": "The owner accepted the exact finished G3 r5 foundations and shell checkpoint.",
+    "resolution_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/stage-acceptance-decision-r5.json"
+  }
+]

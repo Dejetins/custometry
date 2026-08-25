@@ -1,0 +1,1 @@
+"""Data Documentation domain contracts."""

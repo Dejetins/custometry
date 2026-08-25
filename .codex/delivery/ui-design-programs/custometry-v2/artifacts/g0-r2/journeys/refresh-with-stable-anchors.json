@@ -1,0 +1,39 @@
+{
+  "journey": {
+    "journey_id": "refresh-with-stable-anchors",
+    "purpose": "refresh with stable anchors",
+    "role_ids": [
+      "all"
+    ],
+    "preconditions": [
+      "the user has a permitted workspace or installation context"
+    ],
+    "entry_screen_ids": [
+      "UI-DASH-001"
+    ],
+    "terminal_screen_ids": [
+      "UI-DASH-002"
+    ],
+    "outcomes": [
+      "complete refresh with stable anchors with trust and stable context"
+    ],
+    "transitions": [
+      {
+        "transition_id": "refresh-with-stable-anchors.1",
+        "from_screen_id": "UI-DASH-001",
+        "action_id": "journey.refresh-with-stable-anchors.1",
+        "to_screen_id": "UI-DASH-002",
+        "external_boundary": null,
+        "outcome": "advance the accepted refresh-with-stable-anchors journey",
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/3"
+        ]
+      }
+    ],
+    "source_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/3"
+    ]
+  }
+}

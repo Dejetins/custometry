@@ -5,16 +5,44 @@
   "type": "object",
   "additionalProperties": true,
   "required": ["schema_id", "screen_revision_id", "target", "generated_by", "contract_sha256", "render_source", "screenshot_sha256", "environment", "regions", "elements", "document_geometry", "accessibility", "accessibility_claim", "browser_interaction", "console_errors", "request_failures", "evidence_safety", "result", "blockers"],
+  "allOf": [
+    {
+      "if": {"properties": {"generated_by": {"properties": {"version": {"enum": ["1.6.0", "2.0.0"]}}}}},
+      "then": {"required": ["capture_profile", "proof_scope"]}
+    },
+    {
+      "if": {"properties": {"generated_by": {"properties": {"version": {"const": "2.0.0"}}}}},
+      "then": {"required": ["standard_observations"]}
+    }
+  ],
   "properties": {
     "schema_id": {"const": "codex.ui-geometry-capture/v1"},
     "screen_revision_id": {"type": "string", "minLength": 1},
     "target": {"type": "string", "minLength": 1},
+    "capture_profile": {"enum": ["visual_authority_reference", "screen_reference", "screen_implementation"]},
+    "proof_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["comparison_purpose", "reference_source_integrity_applied", "region_gate_applied", "element_gate_applied", "document_identity_gate_applied", "fixture_meta_gate_applied", "accessibility_gate_applied", "interaction_gate_applied", "overflow_gate_applied", "standard_clause_gate_applied"],
+      "properties": {
+        "comparison_purpose": {"enum": ["deterministic_render", "source_fidelity", "native_image_comparison", "visual_language_conformance"]},
+        "reference_source_integrity_applied": {"type": "boolean"},
+        "region_gate_applied": {"type": "boolean"},
+        "element_gate_applied": {"type": "boolean"},
+        "document_identity_gate_applied": {"type": "boolean"},
+        "fixture_meta_gate_applied": {"type": "boolean"},
+        "accessibility_gate_applied": {"type": "boolean"},
+        "interaction_gate_applied": {"type": "boolean"},
+        "overflow_gate_applied": {"type": "boolean"},
+        "standard_clause_gate_applied": {"type": "boolean"}
+      }
+    },
     "generated_by": {
       "type": "object",
       "required": ["script", "version", "command"],
       "properties": {
         "script": {"const": "capture_geometry.cjs"},
-        "version": {"const": "1.5.0"},
+        "version": {"enum": ["1.5.0", "1.6.0", "2.0.0"]},
         "command": {"type": "string", "minLength": 1}
       }
     },
@@ -24,9 +52,26 @@
     "environment": {"type": "object"},
     "regions": {"type": "array"},
     "elements": {"type": "array"},
+    "standard_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["application_id", "clause_id", "property", "value", "target_kind", "target_id", "anchor_id"],
+        "properties": {
+          "application_id": {"type": "string", "minLength": 1},
+          "clause_id": {"type": "string", "minLength": 1},
+          "property": {"type": "string", "minLength": 1},
+          "value": {},
+          "target_kind": {"enum": ["element", "region", "anchor", "interaction"]},
+          "target_id": {"type": "string", "minLength": 1},
+          "anchor_id": {"type": "string", "minLength": 1}
+        }
+      }
+    },
     "document_geometry": {"type": "object"},
     "accessibility": {"type": "object"},
-    "accessibility_claim": {"const": "accessibility_smoke"},
+    "accessibility_claim": {"enum": ["accessibility_smoke", "observed_not_acceptance_gating"]},
     "browser_interaction": {"type": "object"},
     "console_errors": {"type": "array"},
     "request_failures": {"type": "array"},

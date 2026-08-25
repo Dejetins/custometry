@@ -1,0 +1,480 @@
+{
+  "copies": [
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/change-impact-matrix.json",
+      "source_sha256": "050a5b4d0ccd3459192dda8fb353eef293baf4d55f2bf45b6c310f5aced3cd21",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/change-impact-matrix.json",
+      "target_sha256": "050a5b4d0ccd3459192dda8fb353eef293baf4d55f2bf45b6c310f5aced3cd21"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/change-impact-matrix.schema.json",
+      "source_sha256": "e935ae4465016450ed0de3cfbbd126cf3d382c48bda4d9480d31e87ab92c4993",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/change-impact-matrix.schema.json",
+      "target_sha256": "e935ae4465016450ed0de3cfbbd126cf3d382c48bda4d9480d31e87ab92c4993"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/change-impact-receipt.schema.json",
+      "source_sha256": "ab9eb2e6eaf8ffa6db2475768e7e6f6151d579de0d4584156fdbdde974c6bc1f",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/change-impact-receipt.schema.json",
+      "target_sha256": "ab9eb2e6eaf8ffa6db2475768e7e6f6151d579de0d4584156fdbdde974c6bc1f"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/change-impact-request.schema.json",
+      "source_sha256": "75e810e62db6440899bf6ca68da8478542e4a457647180099c935f0c39f4d54f",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/change-impact-request.schema.json",
+      "target_sha256": "75e810e62db6440899bf6ca68da8478542e4a457647180099c935f0c39f4d54f"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/change-record.schema.json",
+      "source_sha256": "6af31121d489eb414e801710ea84962a789584cee0be22ed463d5351cebe1ed9",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/change-record.schema.json",
+      "target_sha256": "6af31121d489eb414e801710ea84962a789584cee0be22ed463d5351cebe1ed9"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/change-record.template.json",
+      "source_sha256": "b9c9220840bd2c4ad00978047471b5436c4a4dbe2d1c262efc6e0aa7bb80c6b1",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/change-record.template.json",
+      "target_sha256": "b9c9220840bd2c4ad00978047471b5436c4a4dbe2d1c262efc6e0aa7bb80c6b1"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/contract-versions.json",
+      "source_sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/contract-versions.json",
+      "target_sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/contract-versions.schema.json",
+      "source_sha256": "d209c4468506d0e26f14c6d0f75a97917a8fa039ffd1a6120e5a397645f09060",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/contract-versions.schema.json",
+      "target_sha256": "d209c4468506d0e26f14c6d0f75a97917a8fa039ffd1a6120e5a397645f09060"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/critical-journey-proof.schema.json",
+      "source_sha256": "eb0b3fa04cf7fb2c3d79f5203a67c425e86c412480ae411c58b9db02c9b5788d",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/critical-journey-proof.schema.json",
+      "target_sha256": "eb0b3fa04cf7fb2c3d79f5203a67c425e86c412480ae411c58b9db02c9b5788d"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/critical-journey-proof.template.json",
+      "source_sha256": "776b573dc9193f6c6ad9433b4d3b60f7eeae51314f3b84d919fc7311841c8d32",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/critical-journey-proof.template.json",
+      "target_sha256": "776b573dc9193f6c6ad9433b4d3b60f7eeae51314f3b84d919fc7311841c8d32"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/family-acceptance-request.schema.json",
+      "source_sha256": "5ff54e69086247e9af9168f8691a2208a016e24a051071869c438075ed5b70db",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/family-acceptance-request.schema.json",
+      "target_sha256": "5ff54e69086247e9af9168f8691a2208a016e24a051071869c438075ed5b70db"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/family-acceptance-request.template.json",
+      "source_sha256": "22c1a60476dcb3ef33dd6e722d008748f08ff8e30a8812a2cfa2994408b1a6fd",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/family-acceptance-request.template.json",
+      "target_sha256": "22c1a60476dcb3ef33dd6e722d008748f08ff8e30a8812a2cfa2994408b1a6fd"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/family-acceptance.schema.json",
+      "source_sha256": "9668cec17df47749fbddbcb741be5cc2491101a0407478e3ab2db5b93fec9b5a",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/family-acceptance.schema.json",
+      "target_sha256": "9668cec17df47749fbddbcb741be5cc2491101a0407478e3ab2db5b93fec9b5a"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/family-acceptance.template.json",
+      "source_sha256": "af78620a97d8f89d43c985d4cdd8cf977eb9b08d0f53dd323662e7f66649f1d4",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/family-acceptance.template.json",
+      "target_sha256": "af78620a97d8f89d43c985d4cdd8cf977eb9b08d0f53dd323662e7f66649f1d4"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/geometry-capture.schema.json",
+      "source_sha256": "9c947e8c1b31bd4387adc3e63b133af58079d9929aa16f1995eca42555d2e4c1",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/geometry-capture.schema.json",
+      "target_sha256": "9c947e8c1b31bd4387adc3e63b133af58079d9929aa16f1995eca42555d2e4c1"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/historical-control-plane-migration-receipt.schema.json",
+      "source_sha256": "5324eda80724cf56f9dc5cc06507980cc178394c27f44727e89ca0912c91965a",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/historical-control-plane-migration-receipt.schema.json",
+      "target_sha256": "5324eda80724cf56f9dc5cc06507980cc178394c27f44727e89ca0912c91965a"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/historical-control-plane-migration-request.schema.json",
+      "source_sha256": "9aa3245d7ace098ae9af3564762a8fff3e67a26db5383ca602ff33a1f0120766",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/historical-control-plane-migration-request.schema.json",
+      "target_sha256": "9aa3245d7ace098ae9af3564762a8fff3e67a26db5383ca602ff33a1f0120766"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/historical-control-plane-successor-topology.schema.json",
+      "source_sha256": "57e5df0265259cff078196207513cb5e9a573069074a466469a8ea90f757c816",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/historical-control-plane-successor-topology.schema.json",
+      "target_sha256": "57e5df0265259cff078196207513cb5e9a573069074a466469a8ea90f757c816"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/implementation-handoff.schema.json",
+      "source_sha256": "55d4e06d2fe01ec3e70e319d3665d35d9ed6304f34fe76612d3f83b34a6431a1",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/implementation-handoff.schema.json",
+      "target_sha256": "55d4e06d2fe01ec3e70e319d3665d35d9ed6304f34fe76612d3f83b34a6431a1"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/implementation-handoff.template.json",
+      "source_sha256": "e6c3aa1e955b9dd7b478cd444c6c72d8c3232dda17f5a53a8f659a6e111731f5",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/implementation-handoff.template.json",
+      "target_sha256": "e6c3aa1e955b9dd7b478cd444c6c72d8c3232dda17f5a53a8f659a6e111731f5"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/negative-test-matrix.json",
+      "source_sha256": "4811efcd991e9ddcdbd6567a9369e038d89680284a0165b02f9d1b83a473b9db",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/negative-test-matrix.json",
+      "target_sha256": "4811efcd991e9ddcdbd6567a9369e038d89680284a0165b02f9d1b83a473b9db"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/negative-test-matrix.schema.json",
+      "source_sha256": "ff1a249755ce28453cfcae926003cfa5e728f5e5b04ac1e837c737e00edf0755",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/negative-test-matrix.schema.json",
+      "target_sha256": "ff1a249755ce28453cfcae926003cfa5e728f5e5b04ac1e837c737e00edf0755"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-decision-packet.template.md",
+      "source_sha256": "c27e2a17db3714ba30738898b7237919f9b4b568519d1924f79f78ccc4f0ff43",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-decision-packet.template.md",
+      "target_sha256": "c27e2a17db3714ba30738898b7237919f9b4b568519d1924f79f78ccc4f0ff43"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-decision-request.schema.json",
+      "source_sha256": "dc33511ea3d5a14261666110d70c261d0fc1bc1050d7d97ca3feccd0218bf4a2",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-decision-request.schema.json",
+      "target_sha256": "dc33511ea3d5a14261666110d70c261d0fc1bc1050d7d97ca3feccd0218bf4a2"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-decision-request.template.json",
+      "source_sha256": "61823c4235226f2e35b835a11051b3b1446926946f0ed3fd3866f3ac5b68c231",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-decision-request.template.json",
+      "target_sha256": "61823c4235226f2e35b835a11051b3b1446926946f0ed3fd3866f3ac5b68c231"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-decision.schema.json",
+      "source_sha256": "ef58ed80cc98663889f0c207b0a8aff6984146043807fea1573735e2ae74fabb",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-decision.schema.json",
+      "target_sha256": "ef58ed80cc98663889f0c207b0a8aff6984146043807fea1573735e2ae74fabb"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-decision.template.json",
+      "source_sha256": "15c0584c0abc303aa5db9380df2a887c7203c60a284f2c07301f8f9efd3f02f9",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-decision.template.json",
+      "target_sha256": "15c0584c0abc303aa5db9380df2a887c7203c60a284f2c07301f8f9efd3f02f9"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-input-response-request.schema.json",
+      "source_sha256": "94ed957ce5f97210d54db8531e56de65b78fff992b8a35f89d5ecac29f8860c4",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-input-response-request.schema.json",
+      "target_sha256": "94ed957ce5f97210d54db8531e56de65b78fff992b8a35f89d5ecac29f8860c4"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-input-response.schema.json",
+      "source_sha256": "4dd7a7c4c4ddad9f5aee34fdf6582c80de3be08512203a22677dadaf2297f8e6",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-input-response.schema.json",
+      "target_sha256": "4dd7a7c4c4ddad9f5aee34fdf6582c80de3be08512203a22677dadaf2297f8e6"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-input-response.template.json",
+      "source_sha256": "59e5e7c4b80dd22d5f6cf7e065bf85b04898211a5c2e0201ca1082334c6f7e5f",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-input-response.template.json",
+      "target_sha256": "59e5e7c4b80dd22d5f6cf7e065bf85b04898211a5c2e0201ca1082334c6f7e5f"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/owner-review-template.md",
+      "source_sha256": "0878dab4b6f32e8b065897d49eb7a0ad53b5ecedfd669457b96d2581409e955e",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/owner-review-template.md",
+      "target_sha256": "0878dab4b6f32e8b065897d49eb7a0ad53b5ecedfd669457b96d2581409e955e"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/platform-ui-baseline.schema.json",
+      "source_sha256": "2ccd37973bb18725a687bd9bc1fa7c0fdb6a9daf96a2d2a1064fe9251d21ef63",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/platform-ui-baseline.schema.json",
+      "target_sha256": "2ccd37973bb18725a687bd9bc1fa7c0fdb6a9daf96a2d2a1064fe9251d21ef63"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/platform-ui-baseline.template.json",
+      "source_sha256": "dd0d4041ffac4865dcbc9e6fd31ac402efed8ff7eeaf6258bed4e20675cd00dd",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/platform-ui-baseline.template.json",
+      "target_sha256": "dd0d4041ffac4865dcbc9e6fd31ac402efed8ff7eeaf6258bed4e20675cd00dd"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/program-artifact-index.schema.json",
+      "source_sha256": "1a74a297e380b3e66766241e19d65c329e88fde9733d069cf7a0d08cf39c648d",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/program-artifact-index.schema.json",
+      "target_sha256": "1a74a297e380b3e66766241e19d65c329e88fde9733d069cf7a0d08cf39c648d"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/program-artifact-index.template.json",
+      "source_sha256": "7fbdafbb7e20d804d72886c746afaa42e007c281538f430056d270e98063cf0e",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/program-artifact-index.template.json",
+      "target_sha256": "7fbdafbb7e20d804d72886c746afaa42e007c281538f430056d270e98063cf0e"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/proposal-for-owner-review.template.md",
+      "source_sha256": "0c49a3bde99c038320687dd47064ad08abe5891c5031f38172f81446910f2f37",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/proposal-for-owner-review.template.md",
+      "target_sha256": "0c49a3bde99c038320687dd47064ad08abe5891c5031f38172f81446910f2f37"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/raster-diff.schema.json",
+      "source_sha256": "57d2b7cc8439e251f9f3bdf5a4d0f6d23744bee5f86f0366174dc4b7ae848314",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/raster-diff.schema.json",
+      "target_sha256": "57d2b7cc8439e251f9f3bdf5a4d0f6d23744bee5f86f0366174dc4b7ae848314"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/render-provenance-receipt.schema.json",
+      "source_sha256": "1ea1c334993b6237884ead3331a7112ab4ac2a09a62cf441b7df24b24179eec5",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/render-provenance-receipt.schema.json",
+      "target_sha256": "1ea1c334993b6237884ead3331a7112ab4ac2a09a62cf441b7df24b24179eec5"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/render-provenance-receipt.template.json",
+      "source_sha256": "19d3761c61473823e8c6304068fc87d31b3fee98de4ffd841cbf7b5ad5c01341",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/render-provenance-receipt.template.json",
+      "target_sha256": "19d3761c61473823e8c6304068fc87d31b3fee98de4ffd841cbf7b5ad5c01341"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/render-provenance-request.schema.json",
+      "source_sha256": "e7319ae018e95a577164cd6f8bae2e29d61dff3d70923660501dfb4af095ac45",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/render-provenance-request.schema.json",
+      "target_sha256": "e7319ae018e95a577164cd6f8bae2e29d61dff3d70923660501dfb4af095ac45"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/render-provenance-request.template.json",
+      "source_sha256": "d87491685181eea52b4d8d675069f39fbd349a221dcf57ee43cf1411b3fdca65",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/render-provenance-request.template.json",
+      "target_sha256": "d87491685181eea52b4d8d675069f39fbd349a221dcf57ee43cf1411b3fdca65"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/review-board-manifest.schema.json",
+      "source_sha256": "69375fb9b8af42e1048ebd8ec69e675490209795090a93e0d39e80f11cb587b9",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/review-board-manifest.schema.json",
+      "target_sha256": "69375fb9b8af42e1048ebd8ec69e675490209795090a93e0d39e80f11cb587b9"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/review-board-manifest.template.json",
+      "source_sha256": "15b2baf64eeb100eeb9f652184b6f6521cabdf89592e690a152f1fb4cc7ddb70",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/review-board-manifest.template.json",
+      "target_sha256": "15b2baf64eeb100eeb9f652184b6f6521cabdf89592e690a152f1fb4cc7ddb70"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/screen-acceptance.schema.json",
+      "source_sha256": "a88c023ab4db7ceaf7444bd61fc4b860a7c613ce6eb6e3645d839ba081b1373c",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/screen-acceptance.schema.json",
+      "target_sha256": "a88c023ab4db7ceaf7444bd61fc4b860a7c613ce6eb6e3645d839ba081b1373c"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/screen-acceptance.template.json",
+      "source_sha256": "7ebba9ef540bb740957a4684e4dce586982502bcf91f286346276b1103fb6d22",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/screen-acceptance.template.json",
+      "target_sha256": "7ebba9ef540bb740957a4684e4dce586982502bcf91f286346276b1103fb6d22"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/screen-atlas.schema.json",
+      "source_sha256": "832563ba5bb148486b47c003fda1e7f1e880bb7b29a937c6382a23fff1b8da7d",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/screen-atlas.schema.json",
+      "target_sha256": "832563ba5bb148486b47c003fda1e7f1e880bb7b29a937c6382a23fff1b8da7d"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/screen-design-contract.schema.json",
+      "source_sha256": "8d292973eadc297d57face986ecfcf3f084d4d44c56a68062607fbeb1cfd9f87",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/screen-design-contract.schema.json",
+      "target_sha256": "8d292973eadc297d57face986ecfcf3f084d4d44c56a68062607fbeb1cfd9f87"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/screen-design-contract.template.json",
+      "source_sha256": "31974b4956c7b7a766818d52eb4def38694ab70003310cbd51de3a0dca998d9f",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/screen-design-contract.template.json",
+      "target_sha256": "31974b4956c7b7a766818d52eb4def38694ab70003310cbd51de3a0dca998d9f"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-completion-receipt.template.json",
+      "source_sha256": "c57a1f158e6a052f5cb4c3918d1ef95dba40f4e131fb93c99bc6153bd592193a",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-completion-receipt.template.json",
+      "target_sha256": "c57a1f158e6a052f5cb4c3918d1ef95dba40f4e131fb93c99bc6153bd592193a"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-context-manifest.schema.json",
+      "source_sha256": "0195fc80448737981b8e089bb25b2087ebb2f2faa1689966d673439bd5e0ddaf",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-context-manifest.schema.json",
+      "target_sha256": "0195fc80448737981b8e089bb25b2087ebb2f2faa1689966d673439bd5e0ddaf"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-ledger-template.md",
+      "source_sha256": "8bc5d81848980eb93175a4bdf947500e8a2954306f44c112dfdeb152aec29ef0",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-ledger-template.md",
+      "target_sha256": "8bc5d81848980eb93175a4bdf947500e8a2954306f44c112dfdeb152aec29ef0"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-preflight-evidence.schema.json",
+      "source_sha256": "2315a74dd7ad3d0ad1eff02cd7d4a44e807d2b6131d1259941c10efef7fff6f1",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-preflight-evidence.schema.json",
+      "target_sha256": "2315a74dd7ad3d0ad1eff02cd7d4a44e807d2b6131d1259941c10efef7fff6f1"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-preflight-evidence.template.json",
+      "source_sha256": "93ff072cad585b05d5adcdf43644dab83648bb2b6b72fcaa209886c314c5b760",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-preflight-evidence.template.json",
+      "target_sha256": "93ff072cad585b05d5adcdf43644dab83648bb2b6b72fcaa209886c314c5b760"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-prompt-template.md",
+      "source_sha256": "8bc61e5b5f0490452819e87b38ef0a4d61b3070bf662bb54226b19438b5497f9",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-prompt-template.md",
+      "target_sha256": "8bc61e5b5f0490452819e87b38ef0a4d61b3070bf662bb54226b19438b5497f9"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-runtime-profiles.json",
+      "source_sha256": "29260a881ce4a4114233a714f586e0b282fc32a11ad5435a62e0584ce743b402",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-runtime-profiles.json",
+      "target_sha256": "29260a881ce4a4114233a714f586e0b282fc32a11ad5435a62e0584ce743b402"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-runtime-profiles.schema.json",
+      "source_sha256": "f5a7ce91ea709985d0e478db913671ab2bc1e79cd2b006ddf3146f7462d16172",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-runtime-profiles.schema.json",
+      "target_sha256": "f5a7ce91ea709985d0e478db913671ab2bc1e79cd2b006ddf3146f7462d16172"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-transition-readiness.schema.json",
+      "source_sha256": "c7e9acceb6a3b2dcfa2515985a9ce1f9563c0ee8050a3701c7fe1888f5609221",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-transition-readiness.schema.json",
+      "target_sha256": "c7e9acceb6a3b2dcfa2515985a9ce1f9563c0ee8050a3701c7fe1888f5609221"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-transition-readiness.template.json",
+      "source_sha256": "545f062949d991d042d5223ad2b5b87abf81606bd70717f88c9445b8d484de8a",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-transition-readiness.template.json",
+      "target_sha256": "545f062949d991d042d5223ad2b5b87abf81606bd70717f88c9445b8d484de8a"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-transition-request.schema.json",
+      "source_sha256": "be18c7e8258b34d74a01b7199bd57ff20b1fdefa79cb36d7864b58a99befa030",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-transition-request.schema.json",
+      "target_sha256": "be18c7e8258b34d74a01b7199bd57ff20b1fdefa79cb36d7864b58a99befa030"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/stage-transition-request.template.json",
+      "source_sha256": "c781a2290f3647db80d179cd7733121d30b2ae377fcaeea0ab3fb9653254554c",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/stage-transition-request.template.json",
+      "target_sha256": "c781a2290f3647db80d179cd7733121d30b2ae377fcaeea0ab3fb9653254554c"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/standard-applicability-manifest.schema.json",
+      "source_sha256": "068b6473eb329a13452e220d102d5c0e4046a335b0c84210550c0103db20d6cc",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/standard-applicability-manifest.schema.json",
+      "target_sha256": "068b6473eb329a13452e220d102d5c0e4046a335b0c84210550c0103db20d6cc"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/standard-applicability-manifest.template.json",
+      "source_sha256": "f7f5791cb7029d24e6d7fa284ef26176cab57982e8f98466b2b8a2ef09b995fa",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/standard-applicability-manifest.template.json",
+      "target_sha256": "f7f5791cb7029d24e6d7fa284ef26176cab57982e8f98466b2b8a2ef09b995fa"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/trigger-evals.json",
+      "source_sha256": "3e6efd4a71d5da3cacd8471a7cd6200425bb136375e648483aad1f4ca1d7a37a",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/trigger-evals.json",
+      "target_sha256": "3e6efd4a71d5da3cacd8471a7cd6200425bb136375e648483aad1f4ca1d7a37a"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/trigger-evals.schema.json",
+      "source_sha256": "567443bfaf306b7c85adee87a5a0ccb3c37e92ad88a601f7ec78b82e5d9a62f1",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/trigger-evals.schema.json",
+      "target_sha256": "567443bfaf306b7c85adee87a5a0ccb3c37e92ad88a601f7ec78b82e5d9a62f1"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/ui-design-program.schema.json",
+      "source_sha256": "ca3dcdfeb9eddfe0096280350b4a765dfc99a93bea1d9bd0f70aa0f5e39c9446",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.schema.json",
+      "target_sha256": "ca3dcdfeb9eddfe0096280350b4a765dfc99a93bea1d9bd0f70aa0f5e39c9446"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/ui-design-program.template.json",
+      "source_sha256": "8414d7d128cdc897d3c2603b79ca1279989686e64226b59e6d447d7e14eca4e0",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.template.json",
+      "target_sha256": "8414d7d128cdc897d3c2603b79ca1279989686e64226b59e6d447d7e14eca4e0"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/ui-program-intake.schema.json",
+      "source_sha256": "5462f5c089532c2fb2dc0e8cb9997625729225d8390cbdab4548b295e7544f1d",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/ui-program-intake.schema.json",
+      "target_sha256": "5462f5c089532c2fb2dc0e8cb9997625729225d8390cbdab4548b295e7544f1d"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/ui-program-intake.template.json",
+      "source_sha256": "45ae17c32432cdcd6324b141850ccf7590748a080548ea27ec3ac5f106a48dfe",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/ui-program-intake.template.json",
+      "target_sha256": "45ae17c32432cdcd6324b141850ccf7590748a080548ea27ec3ac5f106a48dfe"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/ui-standard-source-inventory.schema.json",
+      "source_sha256": "60fd4f973142d2432d924c1e7620fc7596c9f1904aca017feb954af752472385",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/ui-standard-source-inventory.schema.json",
+      "target_sha256": "60fd4f973142d2432d924c1e7620fc7596c9f1904aca017feb954af752472385"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/ui-standard-source-inventory.template.json",
+      "source_sha256": "e68cf5273a0d3ceb6ccfeb517883beb555d6f5e74089347eea122cdd70bdc593",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/ui-standard-source-inventory.template.json",
+      "target_sha256": "e68cf5273a0d3ceb6ccfeb517883beb555d6f5e74089347eea122cdd70bdc593"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/visual-qa-receipt.schema.json",
+      "source_sha256": "7e1a4bf84585d7a5d9b0bd15399fc3e191eaa3744f1fefe361703c07906df080",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/visual-qa-receipt.schema.json",
+      "target_sha256": "7e1a4bf84585d7a5d9b0bd15399fc3e191eaa3744f1fefe361703c07906df080"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/visual-qa-receipt.template.json",
+      "source_sha256": "945b23ab19690a5a8e8c30252e62b4e994cdd17eab02c4382c06817eb7df144d",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/visual-qa-receipt.template.json",
+      "target_sha256": "945b23ab19690a5a8e8c30252e62b4e994cdd17eab02c4382c06817eb7df144d"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/wave-acceptance-request.schema.json",
+      "source_sha256": "5334b43b14436a58c3de375154cca054c86b0cf3074e0186f2a34805379725fd",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/wave-acceptance-request.schema.json",
+      "target_sha256": "5334b43b14436a58c3de375154cca054c86b0cf3074e0186f2a34805379725fd"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/wave-acceptance-request.template.json",
+      "source_sha256": "dc7cde9faafe34bf8579b060691054706a9dd6b70225975de3ddc118ddd39503",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/wave-acceptance-request.template.json",
+      "target_sha256": "dc7cde9faafe34bf8579b060691054706a9dd6b70225975de3ddc118ddd39503"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/wave-acceptance.schema.json",
+      "source_sha256": "aff688462d6c3c02514b8b36a2266f16fcf7cda10299b0cb944de1aaaae840c3",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/wave-acceptance.schema.json",
+      "target_sha256": "aff688462d6c3c02514b8b36a2266f16fcf7cda10299b0cb944de1aaaae840c3"
+    },
+    {
+      "source": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/wave-acceptance.template.json",
+      "source_sha256": "8312c286fb0697c97a7621a88196a1ba177e196581ecee99ffccb73035739608",
+      "target": ".codex/delivery/ui-design-programs/custometry-v2/wave-acceptance.template.json",
+      "target_sha256": "8312c286fb0697c97a7621a88196a1ba177e196581ecee99ffccb73035739608"
+    }
+  ],
+  "draft_inputs": [
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r3/ui-program-intake.json",
+      "sha256": "3e26dab22473850c3e0f2e2cef0dbf1a20bbf0b2d14b967d283ce1c70d2a012c"
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r3/platform-ui-baseline.json",
+      "sha256": "6315e7138dea459a99b040d285ea550164de4da750fb682a0241fa56a618bfce"
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+      "sha256": "f94b0c974b99ab21a6c71408438364d28c672883fc9876882230873bb9076fe2"
+    }
+  ],
+  "schema_id": "codex.ui-program-contract-copy-provenance/v1",
+  "source_registry": {
+    "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/contract-versions.json",
+    "sha256": "db160f57b30d0085f5599b5c6c049704bf0df67cd59cf8a9234d7a674b758e31"
+  },
+  "status": "preclaim_draft_pending_G0_standard_capture_and_owner_checkpoint"
+}

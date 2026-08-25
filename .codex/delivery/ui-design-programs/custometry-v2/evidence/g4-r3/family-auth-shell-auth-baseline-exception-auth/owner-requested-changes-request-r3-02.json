@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3.bounded-correction-02",
+  "decision_kind": "family_acceptance",
+  "status": "requested_changes",
+  "revision": 3,
+  "decision_text": "Align the auth screen palette, surfaces, radii, typography, and density with the accepted pilot.",
+  "owner_input": "и цвет и стиль не соотвевуют пилотной версии, то что я сейчас вижу на твоем скриншоте",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.auth.shell-auth.baseline-exception-auth-r3",
+    "revision": 3,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/review-board.html"
+  }
+}

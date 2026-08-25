@@ -1,0 +1,85 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "2.0.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+    "gate_id": "G2",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+    "revision": 4,
+    "validation_profile": "structure_gate",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/ui-design-program.snapshot.json",
+    "artifact_sha256": "8612986cafe5bf17c075471c7567c0b91d0e4f07f17397fe32ac8c13f163c165"
+  },
+  "to_stage": {
+    "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+    "gate_id": "G3",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/32-g3-foundations-shell-r3.md"
+  },
+  "readiness_status": "ready",
+  "next_stage_allowed": true,
+  "decision_inventory": [],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/preflight/current_gate.json",
+      "evidence_sha256": "1e4d8492355489fb5c82206dcd7cec60b43ead9ac59a7d4d39776dc5e3236efa"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/preflight/execution_route.json",
+      "evidence_sha256": "a48694c83744e174987068b365d34127343cf99fac35fb1d7a9cba452d9773b5"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/preflight/foreign_changes.json",
+      "evidence_sha256": "d8749478c044d659d7ab00c09c4dc776c297fece5dae5c55996793701c9bbc30"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/preflight/handoff_artifact.json",
+      "evidence_sha256": "3b5a4b6a418decbf314deecec779362454cbad6f4ef5d2822c67732c70adfbdb"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/preflight/next_stage_inputs.json",
+      "evidence_sha256": "b37dcf28f01ad4a60b11301891f21fc19acc6121e008c82c53c7a29372212a4a"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/preflight/source_freshness.json",
+      "evidence_sha256": "409c2f24ff1a5818bdc58e817df01b5090b229fcd47cd462047e1bb0126a81b2"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3/preflight/write_scope.json",
+      "evidence_sha256": "4a5653d213e688a2080029a209ee5224a7c51a21a23bec557360347dd928e5f7"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "G2 r3 exact-covers 26 families and four waves under the accepted pilot standard; one auth family binds UI-AUTH-001 and UI-AUTH-004 as distinct representatives, and G3 r3 remains unclaimed.",
+    "review_artifact_refs": [
+      ".codex/delivery/evidence/custometry-ui-design-program-v2/CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3-report.md"
+    ],
+    "questions": []
+  },
+  "owner_decision_ref": null,
+  "owner_decision_sha256": null,
+  "program_complete": false
+}

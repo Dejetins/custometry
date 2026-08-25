@@ -1,0 +1,9 @@
+{
+  "$schema": "owner-input-response-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r5",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet-correction-r5-03.json",
+  "response_kind": "visual_acceptance",
+  "owner_input": "теперь отлично! [Интерактивная доска](/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-auth-baseline-exception-auth/review-board.html) принимается полностью! зафиксируй и заверши итерацию,  доставь все  изменения в main ветку",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/family-acceptance-decision-r5-03.json"
+}

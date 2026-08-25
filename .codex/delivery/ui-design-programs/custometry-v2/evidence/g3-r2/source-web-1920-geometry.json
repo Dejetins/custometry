@@ -1,0 +1,81 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-SHELL-GLOBAL.populated.all.ru.graphite.r2",
+  "target": "reference",
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "1.5.0",
+    "command": "capture_geometry.cjs <playwright-cli-source-observation-redacted>"
+  },
+  "contract_sha256": "1b5f5f336621a859802fef1bcc555c78130bede878a26881a8a23e1100b25408",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "artifact_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+    "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:accepted-pilot:ru:r2",
+    "main_document_response_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15"
+  },
+  "screenshot_sha256": "671d55afb8ab8d245a326d23f25b91e72458fdec066c55b4987fb9585c83b3fd",
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "browser_mechanic": "playwright_cli",
+    "anchor_id": "web-1920",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized",
+    "observation_scope": "visual_language_reference_only"
+  },
+  "regions": [],
+  "elements": [],
+  "document_geometry": {
+    "scroll_width": 1920,
+    "client_width": 1920,
+    "scroll_height": 1080,
+    "client_height": 1080,
+    "scope": "viewport source observation"
+  },
+  "accessibility": {
+    "scope": "source visual observation only",
+    "automated_violations": [],
+    "keyboard_issues": [],
+    "target_screen_conformance_claimed": false
+  },
+  "accessibility_claim": "accessibility_smoke",
+  "browser_interaction": {
+    "scope": "visual_language_only",
+    "visible_action_ids": [],
+    "observed_outcomes": [],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']"
+    ],
+    "redaction_match_counts": [
+      0,
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

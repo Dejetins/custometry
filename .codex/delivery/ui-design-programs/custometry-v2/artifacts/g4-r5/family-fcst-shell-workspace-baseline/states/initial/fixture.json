@@ -1,0 +1,17 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-FCST-001",
+  "state_id": "UI-FCST-001.initial",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Прогнозирование · модели",
+    "status": "Прогнозный контур готов",
+    "title": "Прогнозы готовы к первому обзору",
+    "summary": "Безопасный старт списка прогнозов без production-запросов и внешних изменений.",
+    "panel": "Структура списка, Result Trust и recovery controls уже на месте; реальные наборы данных не запрашиваются.",
+    "tone": "neutral"
+  }
+}

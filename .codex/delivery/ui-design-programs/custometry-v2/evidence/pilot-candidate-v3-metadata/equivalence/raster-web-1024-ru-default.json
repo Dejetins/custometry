@@ -1,0 +1,57 @@
+{
+  "schema_id": "codex.ui-raster-diff/v1",
+  "screen_revision_id": "custometry-pilot-metadata-r3",
+  "anchor_id": "web-1024-ru-default",
+  "generated_by": {
+    "script": "compare_visual_revision.py",
+    "version": "1.4.0",
+    "command": "compare_visual_revision.py <paths-redacted>"
+  },
+  "reference": {
+    "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/equivalence/source-web-1024-ru-default.png",
+    "sha256": "f67fbeddb1f0d4eb48935c07066f49365dc5429af846d7c0613c88c87f4656c3"
+  },
+  "implementation": {
+    "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/equivalence/candidate-web-1024-ru-default.png",
+    "sha256": "f67fbeddb1f0d4eb48935c07066f49365dc5429af846d7c0613c88c87f4656c3"
+  },
+  "render_provenance": {
+    "reference": null,
+    "implementation": null
+  },
+  "comparison": {
+    "purpose": "deterministic_render",
+    "reference_logical_artifact_id": null,
+    "implementation_logical_artifact_id": null,
+    "visual_authority_ref": null,
+    "visual_authority_sha256": null,
+    "reference_render_provenance_sha256": null,
+    "implementation_render_provenance_sha256": null,
+    "reference_source_artifact_ref": null,
+    "reference_source_artifact_sha256": null,
+    "implementation_source_artifact_ref": null,
+    "implementation_source_artifact_sha256": null,
+    "provenance_passed": true,
+    "proves_fidelity": false,
+    "blockers": []
+  },
+  "diff_image": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/equivalence/diff-web-1024-ru-default.png",
+  "pixel_diff": {
+    "dimensions_match": true,
+    "reference_size": [
+      1024,
+      768
+    ],
+    "implementation_size": [
+      1024,
+      768
+    ],
+    "different_pixels": 0,
+    "different_ratio": 0.0,
+    "maximum_channel_delta": 0,
+    "channel_threshold": 0,
+    "approved_max_different_pixels": 0,
+    "passed": true
+  },
+  "result": "passed"
+}

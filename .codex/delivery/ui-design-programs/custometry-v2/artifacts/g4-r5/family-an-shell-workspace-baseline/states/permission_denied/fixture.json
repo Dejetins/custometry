@@ -1,0 +1,16 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-AN-013",
+  "state_id": "UI-AN-013.permission_denied",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Аналитика · исследования",
+    "title": "Недостаточно прав для исследований",
+    "summary": "Закрытые исследования, находки и комментарии не раскрываются; shell-навигация сохранена.",
+    "tone": "warning",
+    "status": "Требуется research.manage или разрешение на комментарии"
+  }
+}

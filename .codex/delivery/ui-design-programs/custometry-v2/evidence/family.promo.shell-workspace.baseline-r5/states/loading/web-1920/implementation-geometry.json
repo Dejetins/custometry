@@ -1,0 +1,397 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-PROMO-001.loading.all.ru.graphite@r5",
+  "target": "implementation",
+  "capture_profile": "screen_implementation",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": false,
+    "region_gate_applied": true,
+    "element_gate_applied": true,
+    "document_identity_gate_applied": true,
+    "fixture_meta_gate_applied": true,
+    "accessibility_gate_applied": true,
+    "interaction_gate_applied": true,
+    "overflow_gate_applied": true,
+    "standard_clause_gate_applied": true
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "2.0.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-promo-shell-workspace-baseline/states/loading/screen-contract.json --anchor-id web-1920 --target implementation --source-artifact .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-promo-shell-workspace-baseline/states/loading/screen.html --logical-artifact-id UI-PROMO-001.loading.all.ru.graphite@r5 --output .codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/loading/web-1920/implementation-geometry.json --screenshot .codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/loading/web-1920/implementation.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --project-root ."
+  },
+  "contract_sha256": "bc75a30eabc4f4fd56c42d0ef2d2b5ba017ce2eb421c56e539c270ba17ffca17",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-promo-shell-workspace-baseline/states/loading/screen.html",
+    "artifact_sha256": "3cf3b2553e4107c8815bc708a7f848802d6f2e4cd1cd875d4973165833437256",
+    "logical_artifact_id": "UI-PROMO-001.loading.all.ru.graphite@r5",
+    "main_document_response_sha256": "3cf3b2553e4107c8815bc708a7f848802d6f2e4cd1cd875d4973165833437256"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "anchor_id": "web-1920",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [
+    {
+      "region_id": "shell.application",
+      "locator": "#app-shell",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "computed_styles": {
+        "background-color": "rgb(7, 7, 8)",
+        "color": "rgb(240, 240, 242)",
+        "display": "grid",
+        "overflow-x": "hidden",
+        "overflow-y": "hidden"
+      }
+    },
+    {
+      "region_id": "shell.page-header",
+      "locator": "#page-header",
+      "bounds": {
+        "x": 64,
+        "y": 0,
+        "width": 1856,
+        "height": 40.297
+      },
+      "computed_styles": {
+        "background-color": "rgba(7, 7, 8, 0.96)",
+        "color": "rgb(240, 240, 242)",
+        "display": "grid",
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      }
+    },
+    {
+      "region_id": "shell.main-content",
+      "locator": "#overview-main",
+      "bounds": {
+        "x": 64,
+        "y": 40.297,
+        "width": 1856,
+        "height": 514.516
+      },
+      "computed_styles": {
+        "background-color": "rgb(7, 7, 8)",
+        "color": "rgb(240, 240, 242)",
+        "display": "block",
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      }
+    },
+    {
+      "region_id": "UI-PROMO-001.content",
+      "locator": "#overview-content",
+      "bounds": {
+        "x": 332,
+        "y": 40.297,
+        "width": 1320,
+        "height": 514.516
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(240, 240, 242)",
+        "display": "flex",
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      }
+    }
+  ],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [],
+  "elements": [
+    {
+      "element_id": "shell-application",
+      "locator": "#app-shell",
+      "region_id": "shell.application",
+      "action_ids": [],
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "page-header",
+      "locator": "#page-header",
+      "region_id": "shell.page-header",
+      "action_ids": [],
+      "bounds": {
+        "x": 64,
+        "y": 0,
+        "width": 1856,
+        "height": 40.297
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "overview-main",
+      "locator": "#overview-main",
+      "region_id": "shell.main-content",
+      "action_ids": [],
+      "bounds": {
+        "x": 64,
+        "y": 40.297,
+        "width": 1856,
+        "height": 514.516
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "overview-content",
+      "locator": "#overview-content",
+      "region_id": "UI-PROMO-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 332,
+        "y": 40.297,
+        "width": 1320,
+        "height": 514.516
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "nav-overview",
+      "locator": "#nav-overview",
+      "region_id": "shell.application",
+      "action_ids": [],
+      "bounds": {
+        "x": 12.5,
+        "y": 70,
+        "width": 38,
+        "height": 38
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "nav-overview-icon",
+      "locator": "#nav-overview-icon",
+      "region_id": "shell.application",
+      "action_ids": [],
+      "bounds": {
+        "x": 21.5,
+        "y": 79,
+        "width": 20,
+        "height": 20
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "train-action",
+      "locator": "#train-action",
+      "region_id": "UI-PROMO-001.content",
+      "action_ids": [
+        "UI-PROMO-001.promotion.manage"
+      ],
+      "bounds": {
+        "x": 1250.031,
+        "y": 102.813,
+        "width": 147.313,
+        "height": 24
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "promote-action",
+      "locator": "#promote-action",
+      "region_id": "UI-PROMO-001.content",
+      "action_ids": [
+        "journey.digital-to-offline-unit-economics.2"
+      ],
+      "bounds": {
+        "x": 1405.344,
+        "y": 102.813,
+        "width": 225.656,
+        "height": 24
+      },
+      "computed_styles": {}
+    }
+  ],
+  "standard_observations": [],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 1920,
+    "client_width": 1920,
+    "scroll_height": 1080,
+    "client_height": 1080
+  },
+  "environment_checks": [
+    {
+      "check": "document_locale",
+      "expected": "ru",
+      "observed": "ru",
+      "passed": true
+    },
+    {
+      "check": "document_theme",
+      "expected": "graphite",
+      "observed": "graphite",
+      "passed": true
+    },
+    {
+      "check": "fixture_sha256",
+      "expected": "c15bb79e4a4eba77d5815ec7e757ebdb29c2d347863c39cfeb87f2680b20f2df",
+      "observed": "c15bb79e4a4eba77d5815ec7e757ebdb29c2d347863c39cfeb87f2680b20f2df",
+      "passed": true
+    },
+    {
+      "check": "font_bundle_sha256",
+      "expected": "d6bd0b01ee22a7e69c46e1e114c3fef614b9186ab5e03720defa3feaec2d35f6",
+      "observed": "d6bd0b01ee22a7e69c46e1e114c3fef614b9186ab5e03720defa3feaec2d35f6",
+      "passed": true
+    },
+    {
+      "check": "asset_bundle_sha256",
+      "expected": "4fdcad7cd3c91d0ac892d156389d043cfc94eb25b6868bca99e2b00b0e2f5963",
+      "observed": "4fdcad7cd3c91d0ac892d156389d043cfc94eb25b6868bca99e2b00b0e2f5963",
+      "passed": true
+    },
+    {
+      "check": "fixed_clock",
+      "expected": 1771052400000,
+      "observed": 1771052400000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 3,
+    "keyboard_sequence": [
+      "nav-overview",
+      "train-action",
+      "promote-action"
+    ],
+    "keyboard_issues": [],
+    "passed": true
+  },
+  "accessibility_claim": "accessibility_smoke",
+  "browser_interaction": {
+    "visible_action_ids": [
+      "UI-PROMO-001.promotion.manage",
+      "journey.digital-to-offline-unit-economics.2"
+    ],
+    "observed_outcomes": [
+      {
+        "action_id": "UI-PROMO-001.promotion.manage",
+        "outcome": "Управление промо открыто в fixture",
+        "expected_outcome": "Promotion Manage completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      },
+      {
+        "action_id": "journey.digital-to-offline-unit-economics.2",
+        "outcome": "Переход к unit economics подготовлен в fixture",
+        "expected_outcome": "Continue digital to offline unit economics completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [
+      {
+        "check_id": "keyboard_activation",
+        "passed": true
+      },
+      {
+        "check_id": "focus_visibility",
+        "passed": true
+      },
+      {
+        "check_id": "tab_radio_behavior",
+        "passed": true
+      },
+      {
+        "check_id": "menus",
+        "passed": true
+      },
+      {
+        "check_id": "toggles",
+        "passed": true
+      },
+      {
+        "check_id": "refresh_feedback",
+        "passed": true
+      },
+      {
+        "check_id": "state_transitions",
+        "passed": true
+      },
+      {
+        "check_id": "no_unresolved_file_navigation",
+        "passed": true
+      },
+      {
+        "check_id": "no_console_errors",
+        "passed": true
+      },
+      {
+        "check_id": "no_request_failures",
+        "passed": true
+      },
+      {
+        "check_id": "no_page_horizontal_overflow",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/loading/web-1920/implementation.png",
+  "screenshot_sha256": "a0e1ca9d2a86dbb7cd58086dc7ddd49cbec93b19d523157203c1dac366073e1a",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']"
+    ],
+    "redaction_match_counts": [
+      0,
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

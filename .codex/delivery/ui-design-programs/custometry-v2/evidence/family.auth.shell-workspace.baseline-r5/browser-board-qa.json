@@ -1,0 +1,128 @@
+{
+  "schema_id": "custometry.ui-g4-browser-board-qa/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r5",
+  "generated_by": {
+    "script": "run_g4_auth_workspace_r5_board_qa.py",
+    "browser_mechanic": "playwright-cli / Chrome"
+  },
+  "artifacts": {
+    "review_board": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/review-board.html",
+      "sha256": "2898f951534979925558ce800c3fa92be34721e28aa744f107a70d10b10806c3"
+    },
+    "target_surface": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html",
+      "sha256": "8742fe354c36a370ebc340e98d50fdf35e2891d84718628092d59f87e4929ea5"
+    },
+    "screenshot": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/review-board-1440.png",
+      "sha256": "e99ae7d55434c4f630d3010d0b899be4a4a48bae968d2dbc5ae1215ea222d1e9"
+    }
+  },
+  "checks": [
+    {
+      "check_id": "all_states_selectable",
+      "status": "passed"
+    },
+    {
+      "check_id": "five_step_onboarding",
+      "status": "passed"
+    },
+    {
+      "check_id": "keyboard_action_feedback",
+      "status": "passed"
+    },
+    {
+      "check_id": "responsive_web_no_overflow",
+      "status": "passed"
+    },
+    {
+      "check_id": "ru_en_equivalence",
+      "status": "passed"
+    },
+    {
+      "check_id": "bounded_action_states",
+      "status": "passed"
+    },
+    {
+      "check_id": "reduced_motion",
+      "status": "passed"
+    },
+    {
+      "check_id": "review_closure",
+      "status": "passed"
+    },
+    {
+      "check_id": "console_network_clean",
+      "status": "passed"
+    }
+  ],
+  "observed": {
+    "selected": [
+      {
+        "id": "UI-AUTH-005.initial",
+        "state": "UI-AUTH-005.initial",
+        "url": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html?screen=UI-AUTH-005&state=UI-AUTH-005.initial&lang=ru"
+      },
+      {
+        "id": "UI-AUTH-005.loading",
+        "state": "UI-AUTH-005.loading",
+        "url": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html?screen=UI-AUTH-005&state=UI-AUTH-005.loading&lang=ru"
+      },
+      {
+        "id": "UI-AUTH-005.populated",
+        "state": "UI-AUTH-005.populated",
+        "url": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html?screen=UI-AUTH-005&state=UI-AUTH-005.populated&lang=ru"
+      },
+      {
+        "id": "UI-AUTH-005.error",
+        "state": "UI-AUTH-005.error",
+        "url": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html?screen=UI-AUTH-005&state=UI-AUTH-005.error&lang=ru"
+      },
+      {
+        "id": "UI-AUTH-005.permission_denied",
+        "state": "UI-AUTH-005.permission_denied",
+        "url": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html?screen=UI-AUTH-005&state=UI-AUTH-005.permission_denied&lang=ru"
+      },
+      {
+        "id": "UI-AUTH-005.recovery",
+        "state": "UI-AUTH-005.recovery",
+        "url": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html?screen=UI-AUTH-005&state=UI-AUTH-005.recovery&lang=ru"
+      }
+    ],
+    "title": "Настройте рабочее пространство",
+    "steps": 5,
+    "checks": 4,
+    "result": "Следующий шаг подготовлен.",
+    "responsive": [
+      {
+        "width": 768,
+        "overflow": false
+      },
+      {
+        "width": 1024,
+        "overflow": false
+      },
+      {
+        "width": 1440,
+        "overflow": false
+      },
+      {
+        "width": 1920,
+        "overflow": false
+      }
+    ],
+    "enTitle": "Set up your workspace",
+    "loadingDisabled": true,
+    "permissionDisabled": true,
+    "reduced": true,
+    "duration": "0s",
+    "manifest": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/review-board.manifest.json",
+    "entries": 12,
+    "errors": [],
+    "failures": []
+  },
+  "proof_boundary": "Local isolated browser proof for the finished family board, six states, RU/EN, four responsive Web anchors, keyboard activation and reduced motion; not production runtime, mobile-specific design or full WCAG conformance.",
+  "result": "passed"
+}

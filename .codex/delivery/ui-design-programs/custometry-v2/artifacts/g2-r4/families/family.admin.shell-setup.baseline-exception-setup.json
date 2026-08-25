@@ -1,0 +1,36 @@
+{
+  "family": {
+    "family_id": "family.admin.shell-setup.baseline-exception-setup",
+    "title": "admin / shell-setup / baseline-exception-setup",
+    "representative_screen_ids": [
+      "UI-ADMIN-005"
+    ],
+    "screen_ids": [
+      "UI-ADMIN-001",
+      "UI-ADMIN-002",
+      "UI-ADMIN-005",
+      "UI-ADMIN-006",
+      "UI-ADMIN-007",
+      "UI-ADMIN-008",
+      "UI-ADMIN-009",
+      "UI-ADMIN-010",
+      "UI-ADMIN-011",
+      "UI-ADMIN-012",
+      "UI-ADMIN-014",
+      "UI-ADMIN-015",
+      "UI-ADMIN-016",
+      "UI-ADMIN-017"
+    ],
+    "reuse_hypothesis_status": "hypothesis",
+    "decision_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/92",
+      "formula": "group in-scope screens by stable screen namespace, exact shell_variant_id, exact baseline_exception_ref, and deterministic workload partition; select the highest state/action complexity as representative with screen_id tie-break"
+    },
+    "workload_budget": {
+      "max_screens": 14,
+      "max_screen_state_pairs": 84,
+      "rationale": "Exact family membership and accepted intake state cardinality; any expansion requires a separate family row."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-input-response.schema.json",
+  "schema_id": "codex.ui-owner-input-response/v1",
+  "generated_by": {
+    "script": "assemble_owner_input_response.py",
+    "version": "1.1.0",
+    "command": "assemble_owner_input_response.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-review-decision-packet.json",
+  "decision_packet_sha256": "8719d4ba4ff60d88b0a0e4e981f48a1dd02f6a58b9bfa6e36c12e361bb26f7fe",
+  "response_kind": "requested_changes",
+  "owner_input": "нет текущий вариант не наследует пилот, только в общих чертах но не в деталях.",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-requested-changes-r1.json",
+  "canonical_owner_decision_sha256": "9f5f7c26b83ff39e52cea2b32f4076c0df564fb72e2508ca7b6c3879df5ebef0"
+}

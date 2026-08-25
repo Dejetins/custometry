@@ -1,0 +1,16 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-DATA-001",
+  "state_id": "UI-DATA-001.loading",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Данные · подключения",
+    "title": "Загружаем подключения",
+    "summary": "Сохраняем shell, контекст и recovery controls, пока изолированный fixture готовит список.",
+    "tone": "neutral",
+    "status": "Загрузка · без внешних запросов"
+  }
+}

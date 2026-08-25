@@ -1,0 +1,2540 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-FCST-001.permission_denied.all.ru.graphite@r5",
+  "target": "implementation",
+  "capture_profile": "screen_implementation",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": false,
+    "region_gate_applied": true,
+    "element_gate_applied": true,
+    "document_identity_gate_applied": true,
+    "fixture_meta_gate_applied": true,
+    "accessibility_gate_applied": true,
+    "interaction_gate_applied": true,
+    "overflow_gate_applied": true,
+    "standard_clause_gate_applied": true
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "2.0.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/states/permission_denied/screen-contract.json --anchor-id web-1440 --target implementation --source-artifact .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/states/permission_denied/screen.html --logical-artifact-id UI-FCST-001.permission_denied.all.ru.graphite@r5 --output .codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/permission_denied/web-1440/implementation-geometry.json --screenshot .codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/permission_denied/web-1440/implementation.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --project-root ."
+  },
+  "contract_sha256": "5f9b9d707a359f0553c4548abb25b9a5d0a81efbaa3b884b3faf9533f00d8de4",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/states/permission_denied/screen.html",
+    "artifact_sha256": "ab5341ac174dda089c83de16f4355c178098ce19a0eabe2a51d645326053db9e",
+    "logical_artifact_id": "UI-FCST-001.permission_denied.all.ru.graphite@r5",
+    "main_document_response_sha256": "ab5341ac174dda089c83de16f4355c178098ce19a0eabe2a51d645326053db9e"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "anchor_id": "web-1440",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [
+    {
+      "region_id": "shell.application",
+      "locator": "#app-shell",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "computed_styles": {
+        "background-color": "rgb(7, 7, 8)",
+        "color": "rgb(240, 240, 242)",
+        "display": "grid",
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      }
+    },
+    {
+      "region_id": "shell.page-header",
+      "locator": "#page-header",
+      "bounds": {
+        "x": 64,
+        "y": 0,
+        "width": 1368,
+        "height": 56
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(240, 240, 242)",
+        "display": "grid",
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      }
+    },
+    {
+      "region_id": "shell.main-content",
+      "locator": "#overview-main",
+      "bounds": {
+        "x": 64,
+        "y": 56,
+        "width": 1368,
+        "height": 1982.734
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(240, 240, 242)",
+        "display": "block",
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      }
+    },
+    {
+      "region_id": "UI-FCST-001.content",
+      "locator": "#overview-content",
+      "bounds": {
+        "x": 88,
+        "y": 72,
+        "width": 1320,
+        "height": 1924.734
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(240, 240, 242)",
+        "display": "flex",
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      }
+    }
+  ],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [],
+  "elements": [
+    {
+      "element_id": "shell-application",
+      "locator": "#app-shell",
+      "region_id": "shell.application",
+      "action_ids": [],
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "page-header",
+      "locator": "#page-header",
+      "region_id": "shell.page-header",
+      "action_ids": [],
+      "bounds": {
+        "x": 64,
+        "y": 0,
+        "width": 1368,
+        "height": 56
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "overview-main",
+      "locator": "#overview-main",
+      "region_id": "shell.main-content",
+      "action_ids": [],
+      "bounds": {
+        "x": 64,
+        "y": 56,
+        "width": 1368,
+        "height": 1982.734
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "overview-content",
+      "locator": "#overview-content",
+      "region_id": "UI-FCST-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 88,
+        "y": 72,
+        "width": 1320,
+        "height": 1924.734
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "nav-overview",
+      "locator": "#nav-overview",
+      "region_id": "shell.application",
+      "action_ids": [],
+      "bounds": {
+        "x": 10.5,
+        "y": 70,
+        "width": 42,
+        "height": 42
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "nav-overview-icon",
+      "locator": "#nav-overview-icon",
+      "region_id": "shell.application",
+      "action_ids": [],
+      "bounds": {
+        "x": 23,
+        "y": 82.5,
+        "width": 17,
+        "height": 17
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "train-action",
+      "locator": "#train-action",
+      "region_id": "UI-FCST-001.content",
+      "action_ids": [
+        "UI-FCST-001.forecast.train"
+      ],
+      "bounds": {
+        "x": 1091,
+        "y": 132.313,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "promote-action",
+      "locator": "#promote-action",
+      "region_id": "UI-FCST-001.content",
+      "action_ids": [
+        "UI-FCST-001.forecast.promote"
+      ],
+      "bounds": {
+        "x": 1243,
+        "y": 132.313,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {}
+    }
+  ],
+  "standard_observations": [
+    {
+      "application_id": "standard.border.border-color.32e1f263db9b::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.border.border-color.32e1f263db9b",
+      "property": "border-color",
+      "value": "rgb(139, 140, 147)",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.32e1f263db9b::element::nav-overview::web-1440",
+      "clause_id": "standard.border.border-color.32e1f263db9b",
+      "property": "border-color",
+      "value": "rgb(139, 140, 147)",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.75a3b865617f::element::promote-action::web-1440",
+      "clause_id": "standard.border.border-color.75a3b865617f",
+      "property": "border-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.75a3b865617f::element::train-action::web-1440",
+      "clause_id": "standard.border.border-color.75a3b865617f",
+      "property": "border-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.996dd8e7d7d9::element::overview-main::web-1440",
+      "clause_id": "standard.border.border-color.996dd8e7d7d9",
+      "property": "border-color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.996dd8e7d7d9::element::page-header::web-1440",
+      "clause_id": "standard.border.border-color.996dd8e7d7d9",
+      "property": "border-color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.996dd8e7d7d9::element::shell-application::web-1440",
+      "clause_id": "standard.border.border-color.996dd8e7d7d9",
+      "property": "border-color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::nav-overview::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::overview-main::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::page-header::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::promote-action::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::shell-application::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::train-action::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::nav-overview::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::overview-main::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::page-header::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::promote-action::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::shell-application::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::train-action::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::nav-overview::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::overview-main::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::page-header::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::promote-action::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::train-action::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.f5ce5f252864::element::shell-application::web-1440",
+      "clause_id": "standard.color.background-color.f5ce5f252864",
+      "property": "background-color",
+      "value": "rgb(7, 7, 8)",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.423a62b4e43b::element::overview-main::web-1440",
+      "clause_id": "standard.color.color.423a62b4e43b",
+      "property": "color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.423a62b4e43b::element::page-header::web-1440",
+      "clause_id": "standard.color.color.423a62b4e43b",
+      "property": "color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.423a62b4e43b::element::shell-application::web-1440",
+      "clause_id": "standard.color.color.423a62b4e43b",
+      "property": "color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.61e66af7483e::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.color.color.61e66af7483e",
+      "property": "color",
+      "value": "rgb(139, 140, 147)",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.61e66af7483e::element::nav-overview::web-1440",
+      "clause_id": "standard.color.color.61e66af7483e",
+      "property": "color",
+      "value": "rgb(139, 140, 147)",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.c863c07a7c53::element::promote-action::web-1440",
+      "clause_id": "standard.color.color.c863c07a7c53",
+      "property": "color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.c863c07a7c53::element::train-action::web-1440",
+      "clause_id": "standard.color.color.c863c07a7c53",
+      "property": "color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::nav-overview::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::overview-main::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::page-header::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::promote-action::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::shell-application::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::train-action::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.068da97ecd02::element::overview-main::web-1440",
+      "clause_id": "standard.focus.outline-color.068da97ecd02",
+      "property": "outline-color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.068da97ecd02::element::page-header::web-1440",
+      "clause_id": "standard.focus.outline-color.068da97ecd02",
+      "property": "outline-color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.068da97ecd02::element::shell-application::web-1440",
+      "clause_id": "standard.focus.outline-color.068da97ecd02",
+      "property": "outline-color",
+      "value": "rgb(240, 240, 242)",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.3f0aafaa6634::element::promote-action::web-1440",
+      "clause_id": "standard.focus.outline-color.3f0aafaa6634",
+      "property": "outline-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.3f0aafaa6634::element::train-action::web-1440",
+      "clause_id": "standard.focus.outline-color.3f0aafaa6634",
+      "property": "outline-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.6eddfee609e1::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.focus.outline-color.6eddfee609e1",
+      "property": "outline-color",
+      "value": "rgb(139, 140, 147)",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.6eddfee609e1::element::nav-overview::web-1440",
+      "clause_id": "standard.focus.outline-color.6eddfee609e1",
+      "property": "outline-color",
+      "value": "rgb(139, 140, 147)",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::nav-overview::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::overview-main::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::page-header::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::promote-action::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::shell-application::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::train-action::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::nav-overview::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::overview-main::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::page-header::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::promote-action::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::shell-application::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::train-action::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.1a4f8041ef71::element::nav-overview::web-1440",
+      "clause_id": "standard.layout.display.1a4f8041ef71",
+      "property": "display",
+      "value": "grid",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.1a4f8041ef71::element::page-header::web-1440",
+      "clause_id": "standard.layout.display.1a4f8041ef71",
+      "property": "display",
+      "value": "grid",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.1a4f8041ef71::element::shell-application::web-1440",
+      "clause_id": "standard.layout.display.1a4f8041ef71",
+      "property": "display",
+      "value": "grid",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.a4bee902fcee::element::promote-action::web-1440",
+      "clause_id": "standard.layout.display.a4bee902fcee",
+      "property": "display",
+      "value": "flex",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.a4bee902fcee::element::train-action::web-1440",
+      "clause_id": "standard.layout.display.a4bee902fcee",
+      "property": "display",
+      "value": "flex",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.c7249af1ff30::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.layout.display.c7249af1ff30",
+      "property": "display",
+      "value": "block",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.c7249af1ff30::element::overview-main::web-1440",
+      "clause_id": "standard.layout.display.c7249af1ff30",
+      "property": "display",
+      "value": "block",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.6b167b5a90e5::element::nav-overview::web-1440",
+      "clause_id": "standard.layout.position.6b167b5a90e5",
+      "property": "position",
+      "value": "relative",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.6b167b5a90e5::element::shell-application::web-1440",
+      "clause_id": "standard.layout.position.6b167b5a90e5",
+      "property": "position",
+      "value": "relative",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::overview-main::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::page-header::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::promote-action::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::train-action::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::nav-overview::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::overview-main::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::page-header::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::promote-action::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::shell-application::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::train-action::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.38a35f26200d::element::nav-overview::web-1440",
+      "clause_id": "standard.motion.transition-property.38a35f26200d",
+      "property": "transition-property",
+      "value": "color, background-color, box-shadow, transform",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::overview-main::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::page-header::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::promote-action::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::train-action::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.969dda741cf4::element::shell-application::web-1440",
+      "clause_id": "standard.motion.transition-property.969dda741cf4",
+      "property": "transition-property",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::nav-overview::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::overview-main::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::page-header::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::promote-action::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::shell-application::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::train-action::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.054f6effc63a::element::nav-overview::web-1440",
+      "clause_id": "standard.radius.border-radius.054f6effc63a",
+      "property": "border-radius",
+      "value": "13px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.23288213488d::element::promote-action::web-1440",
+      "clause_id": "standard.radius.border-radius.23288213488d",
+      "property": "border-radius",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.23288213488d::element::train-action::web-1440",
+      "clause_id": "standard.radius.border-radius.23288213488d",
+      "property": "border-radius",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.c7b79d896e0f::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.radius.border-radius.c7b79d896e0f",
+      "property": "border-radius",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.c7b79d896e0f::element::overview-main::web-1440",
+      "clause_id": "standard.radius.border-radius.c7b79d896e0f",
+      "property": "border-radius",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.c7b79d896e0f::element::page-header::web-1440",
+      "clause_id": "standard.radius.border-radius.c7b79d896e0f",
+      "property": "border-radius",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.c7b79d896e0f::element::shell-application::web-1440",
+      "clause_id": "standard.radius.border-radius.c7b79d896e0f",
+      "property": "border-radius",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::nav-overview::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::overview-main::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::page-header::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::promote-action::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::shell-application::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::train-action::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.714843af0d04::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.responsive.overflow-x.714843af0d04",
+      "property": "overflow-x",
+      "value": "hidden",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.7ab4b6c5f2e9::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.responsive.overflow-y.7ab4b6c5f2e9",
+      "property": "overflow-y",
+      "value": "hidden",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::nav-overview::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::overview-main::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::page-header::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::promote-action::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::shell-application::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::train-action::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.40547cd907b4::element::page-header::web-1440",
+      "clause_id": "standard.sizing.height.40547cd907b4",
+      "property": "height",
+      "value": "56px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.4e2943482ade::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.sizing.height.4e2943482ade",
+      "property": "height",
+      "value": "17px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.aa2de3467cc7::element::nav-overview::web-1440",
+      "clause_id": "standard.sizing.height.aa2de3467cc7",
+      "property": "height",
+      "value": "42px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.b5dff0e5c365::element::shell-application::web-1440",
+      "clause_id": "standard.sizing.height.b5dff0e5c365",
+      "property": "height",
+      "value": "900px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.bfa5d7dc6fce::element::overview-main::web-1440",
+      "clause_id": "standard.sizing.height.bfa5d7dc6fce",
+      "property": "height",
+      "value": "1982.73px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.da231839ebd1::element::promote-action::web-1440",
+      "clause_id": "standard.sizing.height.da231839ebd1",
+      "property": "height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.da231839ebd1::element::train-action::web-1440",
+      "clause_id": "standard.sizing.height.da231839ebd1",
+      "property": "height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::nav-overview::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::overview-main::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::page-header::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::promote-action::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::shell-application::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::train-action::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::nav-overview::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::overview-main::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::page-header::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::promote-action::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::shell-application::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::train-action::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.1db5bd1508b4::element::overview-main::web-1440",
+      "clause_id": "standard.sizing.min-height.1db5bd1508b4",
+      "property": "min-height",
+      "value": "100%",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.688a58aeea92::element::page-header::web-1440",
+      "clause_id": "standard.sizing.min-height.688a58aeea92",
+      "property": "min-height",
+      "value": "56px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.7ba4bbd31a0d::element::shell-application::web-1440",
+      "clause_id": "standard.sizing.min-height.7ba4bbd31a0d",
+      "property": "min-height",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.816c7f24bb71::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.sizing.min-height.816c7f24bb71",
+      "property": "min-height",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.816c7f24bb71::element::nav-overview::web-1440",
+      "clause_id": "standard.sizing.min-height.816c7f24bb71",
+      "property": "min-height",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.8ec53f8779d5::element::promote-action::web-1440",
+      "clause_id": "standard.sizing.min-height.8ec53f8779d5",
+      "property": "min-height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.8ec53f8779d5::element::train-action::web-1440",
+      "clause_id": "standard.sizing.min-height.8ec53f8779d5",
+      "property": "min-height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fa82aaa5ae1::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "property": "min-width",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fa82aaa5ae1::element::nav-overview::web-1440",
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "property": "min-width",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fa82aaa5ae1::element::promote-action::web-1440",
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "property": "min-width",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fa82aaa5ae1::element::train-action::web-1440",
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "property": "min-width",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.acda65ae99f2::element::overview-main::web-1440",
+      "clause_id": "standard.sizing.min-width.acda65ae99f2",
+      "property": "min-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.acda65ae99f2::element::page-header::web-1440",
+      "clause_id": "standard.sizing.min-width.acda65ae99f2",
+      "property": "min-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.acda65ae99f2::element::shell-application::web-1440",
+      "clause_id": "standard.sizing.min-width.acda65ae99f2",
+      "property": "min-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.2ff5e7523c8c::element::shell-application::web-1440",
+      "clause_id": "standard.sizing.width.2ff5e7523c8c",
+      "property": "width",
+      "value": "1440px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.5a3421bbbd07::element::nav-overview::web-1440",
+      "clause_id": "standard.sizing.width.5a3421bbbd07",
+      "property": "width",
+      "value": "42px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.785983823b1b::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.sizing.width.785983823b1b",
+      "property": "width",
+      "value": "17px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.bae08826a54c::element::promote-action::web-1440",
+      "clause_id": "standard.sizing.width.bae08826a54c",
+      "property": "width",
+      "value": "144px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.bae08826a54c::element::train-action::web-1440",
+      "clause_id": "standard.sizing.width.bae08826a54c",
+      "property": "width",
+      "value": "144px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.cb72eacaa709::element::overview-main::web-1440",
+      "clause_id": "standard.sizing.width.cb72eacaa709",
+      "property": "width",
+      "value": "1368px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.cb72eacaa709::element::page-header::web-1440",
+      "clause_id": "standard.sizing.width.cb72eacaa709",
+      "property": "width",
+      "value": "1368px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.226efbd70607::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.spacing.column-gap.226efbd70607",
+      "property": "column-gap",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.226efbd70607::element::nav-overview::web-1440",
+      "clause_id": "standard.spacing.column-gap.226efbd70607",
+      "property": "column-gap",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.226efbd70607::element::overview-main::web-1440",
+      "clause_id": "standard.spacing.column-gap.226efbd70607",
+      "property": "column-gap",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.2dacdd20c7a9::element::shell-application::web-1440",
+      "clause_id": "standard.spacing.column-gap.2dacdd20c7a9",
+      "property": "column-gap",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.869769522516::element::promote-action::web-1440",
+      "clause_id": "standard.spacing.column-gap.869769522516",
+      "property": "column-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.869769522516::element::train-action::web-1440",
+      "clause_id": "standard.spacing.column-gap.869769522516",
+      "property": "column-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.c07bee868304::element::page-header::web-1440",
+      "clause_id": "standard.spacing.column-gap.c07bee868304",
+      "property": "column-gap",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.0c356f73b14f::element::shell-application::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.0c356f73b14f",
+      "property": "padding-bottom",
+      "value": "8px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.55ceee80fb85::element::page-header::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.55ceee80fb85",
+      "property": "padding-bottom",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.69827837cc1c::element::nav-overview::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.69827837cc1c",
+      "property": "padding-bottom",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.69827837cc1c::element::promote-action::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.69827837cc1c",
+      "property": "padding-bottom",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.69827837cc1c::element::train-action::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.69827837cc1c",
+      "property": "padding-bottom",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.86aa83d3d465::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.86aa83d3d465",
+      "property": "padding-bottom",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.92e5db4321fb::element::overview-main::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.92e5db4321fb",
+      "property": "padding-bottom",
+      "value": "42px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.2eedaa025066::element::page-header::web-1440",
+      "clause_id": "standard.spacing.padding-left.2eedaa025066",
+      "property": "padding-left",
+      "value": "18px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.4b89d10f1489::element::nav-overview::web-1440",
+      "clause_id": "standard.spacing.padding-left.4b89d10f1489",
+      "property": "padding-left",
+      "value": "6px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.7f022a4db558::element::promote-action::web-1440",
+      "clause_id": "standard.spacing.padding-left.7f022a4db558",
+      "property": "padding-left",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.7f022a4db558::element::train-action::web-1440",
+      "clause_id": "standard.spacing.padding-left.7f022a4db558",
+      "property": "padding-left",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.d6b27e8f31cb::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.spacing.padding-left.d6b27e8f31cb",
+      "property": "padding-left",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.d6b27e8f31cb::element::shell-application::web-1440",
+      "clause_id": "standard.spacing.padding-left.d6b27e8f31cb",
+      "property": "padding-left",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.f31f928331bf::element::overview-main::web-1440",
+      "clause_id": "standard.spacing.padding-left.f31f928331bf",
+      "property": "padding-left",
+      "value": "20px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.52f6e242feb2::element::shell-application::web-1440",
+      "clause_id": "standard.spacing.padding-right.52f6e242feb2",
+      "property": "padding-right",
+      "value": "8px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.668c84e63d6c::element::page-header::web-1440",
+      "clause_id": "standard.spacing.padding-right.668c84e63d6c",
+      "property": "padding-right",
+      "value": "14px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.b2288d280a28::element::overview-main::web-1440",
+      "clause_id": "standard.spacing.padding-right.b2288d280a28",
+      "property": "padding-right",
+      "value": "20px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.c2a50c01c960::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.spacing.padding-right.c2a50c01c960",
+      "property": "padding-right",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.cd7f4bdb3adc::element::promote-action::web-1440",
+      "clause_id": "standard.spacing.padding-right.cd7f4bdb3adc",
+      "property": "padding-right",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.cd7f4bdb3adc::element::train-action::web-1440",
+      "clause_id": "standard.spacing.padding-right.cd7f4bdb3adc",
+      "property": "padding-right",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.e74d6f52d3d9::element::nav-overview::web-1440",
+      "clause_id": "standard.spacing.padding-right.e74d6f52d3d9",
+      "property": "padding-right",
+      "value": "6px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.0bb8f13f998b::element::overview-main::web-1440",
+      "clause_id": "standard.spacing.padding-top.0bb8f13f998b",
+      "property": "padding-top",
+      "value": "16px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3a8487232894::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.spacing.padding-top.3a8487232894",
+      "property": "padding-top",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3a8487232894::element::shell-application::web-1440",
+      "clause_id": "standard.spacing.padding-top.3a8487232894",
+      "property": "padding-top",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3fd92d0347cf::element::nav-overview::web-1440",
+      "clause_id": "standard.spacing.padding-top.3fd92d0347cf",
+      "property": "padding-top",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3fd92d0347cf::element::promote-action::web-1440",
+      "clause_id": "standard.spacing.padding-top.3fd92d0347cf",
+      "property": "padding-top",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3fd92d0347cf::element::train-action::web-1440",
+      "clause_id": "standard.spacing.padding-top.3fd92d0347cf",
+      "property": "padding-top",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.59ddcc49f298::element::page-header::web-1440",
+      "clause_id": "standard.spacing.padding-top.59ddcc49f298",
+      "property": "padding-top",
+      "value": "8px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.111924ad8400::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.spacing.row-gap.111924ad8400",
+      "property": "row-gap",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.111924ad8400::element::nav-overview::web-1440",
+      "clause_id": "standard.spacing.row-gap.111924ad8400",
+      "property": "row-gap",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.111924ad8400::element::overview-main::web-1440",
+      "clause_id": "standard.spacing.row-gap.111924ad8400",
+      "property": "row-gap",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.2abc0ff5a983::element::page-header::web-1440",
+      "clause_id": "standard.spacing.row-gap.2abc0ff5a983",
+      "property": "row-gap",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.a203d963a2c4::element::shell-application::web-1440",
+      "clause_id": "standard.spacing.row-gap.a203d963a2c4",
+      "property": "row-gap",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.bf24d3cc5c3d::element::promote-action::web-1440",
+      "clause_id": "standard.spacing.row-gap.bf24d3cc5c3d",
+      "property": "row-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.bf24d3cc5c3d::element::train-action::web-1440",
+      "clause_id": "standard.spacing.row-gap.bf24d3cc5c3d",
+      "property": "row-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::nav-overview::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::overview-main::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::page-header::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::promote-action::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::shell-application::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::train-action::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.441863c97538::element::promote-action::web-1440",
+      "clause_id": "standard.typography.font-size.441863c97538",
+      "property": "font-size",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.441863c97538::element::train-action::web-1440",
+      "clause_id": "standard.typography.font-size.441863c97538",
+      "property": "font-size",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.9409e71e7e88::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.typography.font-size.9409e71e7e88",
+      "property": "font-size",
+      "value": "14px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.9409e71e7e88::element::nav-overview::web-1440",
+      "clause_id": "standard.typography.font-size.9409e71e7e88",
+      "property": "font-size",
+      "value": "14px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.9409e71e7e88::element::overview-main::web-1440",
+      "clause_id": "standard.typography.font-size.9409e71e7e88",
+      "property": "font-size",
+      "value": "14px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.9409e71e7e88::element::page-header::web-1440",
+      "clause_id": "standard.typography.font-size.9409e71e7e88",
+      "property": "font-size",
+      "value": "14px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.9409e71e7e88::element::shell-application::web-1440",
+      "clause_id": "standard.typography.font-size.9409e71e7e88",
+      "property": "font-size",
+      "value": "14px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::nav-overview::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::overview-main::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::page-header::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::promote-action::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::shell-application::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::train-action::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::nav-overview::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::overview-main::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::page-header::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::promote-action::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::shell-application::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::train-action::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.487374697d95::element::promote-action::web-1440",
+      "clause_id": "standard.typography.line-height.487374697d95",
+      "property": "line-height",
+      "value": "13.5px",
+      "target_kind": "element",
+      "target_id": "promote-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.487374697d95::element::train-action::web-1440",
+      "clause_id": "standard.typography.line-height.487374697d95",
+      "property": "line-height",
+      "value": "13.5px",
+      "target_kind": "element",
+      "target_id": "train-action",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.fc00a5c3086c::element::nav-overview-icon::web-1440",
+      "clause_id": "standard.typography.line-height.fc00a5c3086c",
+      "property": "line-height",
+      "value": "18.9px",
+      "target_kind": "element",
+      "target_id": "nav-overview-icon",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.fc00a5c3086c::element::nav-overview::web-1440",
+      "clause_id": "standard.typography.line-height.fc00a5c3086c",
+      "property": "line-height",
+      "value": "18.9px",
+      "target_kind": "element",
+      "target_id": "nav-overview",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.fc00a5c3086c::element::overview-main::web-1440",
+      "clause_id": "standard.typography.line-height.fc00a5c3086c",
+      "property": "line-height",
+      "value": "18.9px",
+      "target_kind": "element",
+      "target_id": "overview-main",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.fc00a5c3086c::element::page-header::web-1440",
+      "clause_id": "standard.typography.line-height.fc00a5c3086c",
+      "property": "line-height",
+      "value": "18.9px",
+      "target_kind": "element",
+      "target_id": "page-header",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.fc00a5c3086c::element::shell-application::web-1440",
+      "clause_id": "standard.typography.line-height.fc00a5c3086c",
+      "property": "line-height",
+      "value": "18.9px",
+      "target_kind": "element",
+      "target_id": "shell-application",
+      "anchor_id": "web-1440"
+    }
+  ],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "scroll_height": 900,
+    "client_height": 900
+  },
+  "environment_checks": [
+    {
+      "check": "document_locale",
+      "expected": "ru",
+      "observed": "ru",
+      "passed": true
+    },
+    {
+      "check": "document_theme",
+      "expected": "graphite",
+      "observed": "graphite",
+      "passed": true
+    },
+    {
+      "check": "fixture_sha256",
+      "expected": "52eaadbef800d9cbb869a6b3ae141cc4d267cc0b5979dda6ac3ba7cb97aedd0f",
+      "observed": "52eaadbef800d9cbb869a6b3ae141cc4d267cc0b5979dda6ac3ba7cb97aedd0f",
+      "passed": true
+    },
+    {
+      "check": "font_bundle_sha256",
+      "expected": "d6bd0b01ee22a7e69c46e1e114c3fef614b9186ab5e03720defa3feaec2d35f6",
+      "observed": "d6bd0b01ee22a7e69c46e1e114c3fef614b9186ab5e03720defa3feaec2d35f6",
+      "passed": true
+    },
+    {
+      "check": "asset_bundle_sha256",
+      "expected": "4fdcad7cd3c91d0ac892d156389d043cfc94eb25b6868bca99e2b00b0e2f5963",
+      "observed": "4fdcad7cd3c91d0ac892d156389d043cfc94eb25b6868bca99e2b00b0e2f5963",
+      "passed": true
+    },
+    {
+      "check": "fixed_clock",
+      "expected": 1771052400000,
+      "observed": 1771052400000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 3,
+    "keyboard_sequence": [
+      "nav-overview",
+      "train-action",
+      "promote-action"
+    ],
+    "keyboard_issues": [],
+    "passed": true
+  },
+  "accessibility_claim": "accessibility_smoke",
+  "browser_interaction": {
+    "visible_action_ids": [
+      "UI-FCST-001.forecast.train",
+      "UI-FCST-001.forecast.promote"
+    ],
+    "observed_outcomes": [
+      {
+        "action_id": "UI-FCST-001.forecast.train",
+        "outcome": "Обучение прогноза запущено в fixture",
+        "expected_outcome": "Forecast Train completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      },
+      {
+        "action_id": "UI-FCST-001.forecast.promote",
+        "outcome": "Продвижение версии подготовлено в fixture",
+        "expected_outcome": "Forecast Promote completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [
+      {
+        "check_id": "keyboard_activation",
+        "passed": true
+      },
+      {
+        "check_id": "focus_visibility",
+        "passed": true
+      },
+      {
+        "check_id": "tab_radio_behavior",
+        "passed": true
+      },
+      {
+        "check_id": "menus",
+        "passed": true
+      },
+      {
+        "check_id": "toggles",
+        "passed": true
+      },
+      {
+        "check_id": "refresh_feedback",
+        "passed": true
+      },
+      {
+        "check_id": "state_transitions",
+        "passed": true
+      },
+      {
+        "check_id": "no_unresolved_file_navigation",
+        "passed": true
+      },
+      {
+        "check_id": "no_console_errors",
+        "passed": true
+      },
+      {
+        "check_id": "no_request_failures",
+        "passed": true
+      },
+      {
+        "check_id": "no_page_horizontal_overflow",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/permission_denied/web-1440/implementation.png",
+  "screenshot_sha256": "356071a48f359ddf7ba6ed280133106065f3218403f53d0ef37f62323e6d7cfb",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']"
+    ],
+    "redaction_match_counts": [
+      0,
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

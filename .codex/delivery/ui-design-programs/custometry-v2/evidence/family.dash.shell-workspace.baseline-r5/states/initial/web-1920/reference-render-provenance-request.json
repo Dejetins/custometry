@@ -1,0 +1,9 @@
+{
+  "program_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+  "target": "reference",
+  "logical_artifact_id": "custometry-pilot-v3-metadata-ru",
+  "anchor_id": "web-1920",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/states/initial/web-1920/reference.png",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/states/initial/web-1920/reference-geometry.json"
+}

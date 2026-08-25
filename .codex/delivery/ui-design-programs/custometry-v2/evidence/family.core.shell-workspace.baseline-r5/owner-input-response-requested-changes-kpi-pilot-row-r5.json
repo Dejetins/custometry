@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-input-response.schema.json",
+  "schema_id": "codex.ui-owner-input-response/v1",
+  "generated_by": {
+    "script": "assemble_owner_input_response.py",
+    "version": "1.1.0",
+    "command": "assemble_owner_input_response.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.core.shell-workspace.baseline-r5",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.core.shell-workspace.baseline-r5/owner-review-decision-packet.md",
+  "decision_packet_sha256": "6683306554eefd25c96030cc3fc2fac03b68bd3760900fd917c62457fb840be3",
+  "response_kind": "requested_changes",
+  "owner_input": "вот здесь надо kpi строку сделать как в пилотной версии принятой",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.core.shell-workspace.baseline-r5/family-review-requested-changes-kpi-pilot-row-r5.json",
+  "canonical_owner_decision_sha256": "6e59698e8afa83c825c43f7606ca46a2d0457ec46ccf94c5e6f2ca5c0f1ad345"
+}

@@ -1,0 +1,2184 @@
+{
+  "$schema": "screen-design-contract.schema.json",
+  "schema_id": "codex.ui-screen-design-contract/v1",
+  "contract_profile": "codex.ui-screen-design-contract/v1@2.0.0",
+  "screen_revision_id": "UI-ADMIN-003.populated.IA.ru.graphite.g3-r5",
+  "program_revision_ref": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2@5",
+  "functional_contract_ref": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json",
+    "sha256": "1bde5b03571efe80145622d18bea1e8ec40d461e5df897e6b604f385f3c09ba5",
+    "json_pointer": "/screens/94",
+    "screen_id": "UI-ADMIN-003"
+  },
+  "baseline_binding": {
+    "baseline_id": "custometry.platform-baseline.v3.metadata.r5",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json",
+    "sha256": "ec3108e8d23cf4dd59f217766082ef938dda83245aa46dcc43968c64a8f2bc7c",
+    "shell_variant_id": "shell.workspace",
+    "exception_id": null
+  },
+  "status": "review",
+  "product_identity": {
+    "screen_id": "UI-ADMIN-003",
+    "route_id": "UI-ADMIN-003",
+    "route": "/w/:workspaceKey/settings/access",
+    "state_id": "UI-ADMIN-003.populated",
+    "role_id": "IA",
+    "permission_profile": "workspace.manage",
+    "locale": "ru",
+    "theme": "graphite"
+  },
+  "source_visual": {
+    "kind": "delegated_design_output",
+    "evidence_mode": "visual_language_only",
+    "html_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "image_path": null,
+    "html_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "image_sha256": null,
+    "owner_decision_ref": null,
+    "delegation_ref": "references/stage-transition-contract-v1.md#delegated-design-envelope"
+  },
+  "visual_authority": {
+    "source_visual_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "source_visual_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r4/visual-authority-decision-r4.json",
+    "screen_acceptance_scope": "Visual-language and platform-baseline authority only; never exact target-screen composition, product semantics, fixture truth, legend-threshold truth, production implementation, or novel-screen fidelity.",
+    "visual_language_scope": "Linear Graphite shell character, calm professional density, compact contextual navigation, bounded analytical surfaces, concise KPI and command language, visible Result Trust, Focus/Explore character, readable analytical labels and tables, and adaptive external series-panel behavior as a visual-language reference.",
+    "reusable_foundation_scope": "Hash-pinned source-backed colors, typography stack, spacing rhythm, compact controls, rounded command language, shell/navigation relationships, overlay behavior, and analytical presentation primitives only; exact composition, information architecture, component implementation, runtime semantics, and target-screen acceptance remain later-gate work.",
+    "inheritance_policy": "required",
+    "mobile_scope": "unauthorized"
+  },
+  "comparison_claims": {
+    "required_purpose": "visual_language_conformance",
+    "deterministic_render_proves_fidelity": false,
+    "reference_logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:accepted-pilot:ru:r5",
+    "implementation_logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:g3-candidate:r5"
+  },
+  "interaction_contract": {
+    "visible_actions": [
+      {
+        "action_id": "UI-ADMIN-003.workspace.members.manage",
+        "expected_outcome": "Workspace Members Manage completes or the next contract-bound surface opens",
+        "side_effect_class": "local_state",
+        "activation_policy": "execute_in_fixture",
+        "outcome_assertion": {
+          "kind": "dom",
+          "selector": "[data-result-for=\"workspace-members-manage\"]",
+          "property": "textContent",
+          "expected": "Workspace Members Manage completes or the next contract-bound surface opens"
+        }
+      },
+      {
+        "action_id": "UI-ADMIN-003.workspace.roles.assign",
+        "expected_outcome": "Workspace Roles Assign completes or the next contract-bound surface opens",
+        "side_effect_class": "local_state",
+        "activation_policy": "execute_in_fixture",
+        "outcome_assertion": {
+          "kind": "dom",
+          "selector": "[data-result-for=\"workspace-roles-assign\"]",
+          "property": "textContent",
+          "expected": "Workspace Roles Assign completes or the next contract-bound surface opens"
+        }
+      },
+      {
+        "action_id": "UI-ADMIN-003.report_access.manage",
+        "expected_outcome": "Report access Manage completes or the next contract-bound surface opens",
+        "side_effect_class": "local_state",
+        "activation_policy": "execute_in_fixture",
+        "outcome_assertion": {
+          "kind": "dom",
+          "selector": "[data-result-for=\"report_access-manage\"]",
+          "property": "textContent",
+          "expected": "Report access Manage completes or the next contract-bound surface opens"
+        }
+      },
+      {
+        "action_id": "UI-ADMIN-003.dashboard_access.manage",
+        "expected_outcome": "Dashboard access Manage completes or the next contract-bound surface opens",
+        "side_effect_class": "local_state",
+        "activation_policy": "execute_in_fixture",
+        "outcome_assertion": {
+          "kind": "dom",
+          "selector": "[data-result-for=\"dashboard_access-manage\"]",
+          "property": "textContent",
+          "expected": "Dashboard access Manage completes or the next contract-bound surface opens"
+        }
+      }
+    ],
+    "no_actions_reason_ref": null,
+    "required_checks": [
+      "focus_visibility",
+      "keyboard_activation",
+      "menus",
+      "no_console_errors",
+      "no_page_horizontal_overflow",
+      "no_request_failures",
+      "no_unresolved_file_navigation",
+      "refresh_feedback",
+      "state_transitions",
+      "tab_radio_behavior",
+      "toggles"
+    ],
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "fixture_mode": "isolated_local",
+    "evidence_redaction_required": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']"
+    ]
+  },
+  "render_environment": {
+    "browser": "chromium/150.0.7871.187",
+    "browser_mechanic": "playwright_cli",
+    "device_scale_factor": 1,
+    "timezone": "Europe/Moscow",
+    "fixed_clock_iso": "2026-08-13T14:14:04Z",
+    "reduced_motion": true,
+    "animations": "disabled",
+    "fixture_data_path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/fixture.json",
+    "fixture_data_sha256": "d70800a4e9ae789eb762ef575885644b4a0aec6bd49e64d5100a192badebe35c",
+    "font_bundle_sha256": "3b8993a3bbd287c797c3f5c66323d7202316fb4fb4f7f1accc2f898ca1a7a0c5",
+    "asset_bundle_sha256": "fbcfc25fdec97cebe22549822ba7742cfed164bc21ab922e6121837247f746ad"
+  },
+  "viewport_contract": {
+    "mode": "responsive_web",
+    "supported_web_width_range": {
+      "max_width": 1920,
+      "min_width": 768,
+      "origin": {
+        "kind": "product_contract",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+      }
+    },
+    "anchors": [
+      {
+        "anchor_id": "web-768",
+        "width": 768,
+        "height": 1024,
+        "class": "responsive_web",
+        "state_ref": "UI-ADMIN-003.populated",
+        "origin": {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+        }
+      },
+      {
+        "anchor_id": "web-1024",
+        "width": 1024,
+        "height": 768,
+        "class": "responsive_web",
+        "state_ref": "UI-ADMIN-003.populated",
+        "origin": {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+        }
+      },
+      {
+        "anchor_id": "web-1440",
+        "width": 1440,
+        "height": 900,
+        "class": "responsive_web",
+        "state_ref": "UI-ADMIN-003.populated",
+        "origin": {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+        }
+      },
+      {
+        "anchor_id": "web-1920",
+        "width": 1920,
+        "height": 1080,
+        "class": "responsive_web",
+        "state_ref": "UI-ADMIN-003.populated",
+        "origin": {
+          "kind": "product_contract",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+        }
+      }
+    ],
+    "breakpoint_policy": "content_driven",
+    "breakpoint_policy_origin": {
+      "kind": "normative_requirement",
+      "ref": "references/responsive-policy-v1.md#viewport-contract"
+    },
+    "below_supported_range": "out_of_scope",
+    "below_supported_range_origin": {
+      "kind": "normative_requirement",
+      "ref": "references/responsive-policy-v1.md#viewport-contract"
+    },
+    "above_supported_range": "max_content_width",
+    "above_supported_range_origin": {
+      "kind": "product_contract",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/responsive_contract"
+    },
+    "mobile_scope": "unauthorized",
+    "mobile_scope_origin": {
+      "kind": "normative_requirement",
+      "ref": "references/responsive-policy-v1.md#mobile-authorization-boundary"
+    },
+    "mobile_authorization_ref": null,
+    "mobile_specific_composition": false,
+    "authorized_mobile_surfaces": [],
+    "authorized_mobile_viewports": [],
+    "allowed_mobile_changes": []
+  },
+  "regions": [
+    {
+      "region_id": "shell.workspace.primary-nav",
+      "locator": ".sidebar",
+      "visibility": "required",
+      "component_id": "candidate.shell.rail",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "shell.workspace.header",
+      "locator": ".workspace-chrome",
+      "visibility": "required",
+      "component_id": "candidate.shell.header",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "shell.workspace.workspace",
+      "locator": ".workspace",
+      "visibility": "required",
+      "component_id": "candidate.shell.workspace",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "UI-ADMIN-003.content",
+      "locator": ".report-page:not([hidden])",
+      "visibility": "required",
+      "component_id": "candidate.shell.specimen",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "result-trust",
+      "locator": ".trust-strip",
+      "visibility": "required",
+      "component_id": "candidate.result-trust",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "analytics.chart",
+      "locator": ".chart-stage[data-chart-view=\"overview\"]",
+      "visibility": "required",
+      "component_id": "candidate.chart",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "analytics.series-panel",
+      "locator": ".series-panel",
+      "visibility": "required",
+      "component_id": "candidate.series-panel",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "analytics.inspector",
+      "locator": "#inspector-panel-context",
+      "visibility": "conditional",
+      "component_id": "candidate.inspector",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    },
+    {
+      "region_id": "analytics.table",
+      "locator": ".chart-table",
+      "visibility": "required",
+      "component_id": "candidate.table",
+      "component_status": "candidate",
+      "variant": "graphite",
+      "state": "populated",
+      "source_refs": [
+        {
+          "kind": "accepted_visual",
+          "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+        }
+      ],
+      "geometry": {},
+      "layout_rules": [
+        {
+          "value": "bounded responsive-Web region with local overflow",
+          "unit": null,
+          "origin": {
+            "kind": "delegated_design_decision",
+            "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+            "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+            "constraints": [
+              "custometry.platform-baseline.v2.r4",
+              "pilot-candidate-v3-metadata:accepted-visual-language",
+              "responsive-web:768-1920"
+            ]
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {},
+      "content": {},
+      "interactions": [],
+      "accessibility": {
+        "keyboard": {
+          "value": "logical DOM and focus order",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "preserve primary task, trust and recovery controls",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "geometry_tolerance_px": 0,
+      "geometry_tolerance_origin": {
+        "kind": "normative_requirement",
+        "ref": "references/responsive-policy-v1.md#viewport-contract"
+      },
+      "computed_style_properties": [
+        "display",
+        "position",
+        "overflow",
+        "background-color",
+        "border-radius"
+      ],
+      "computed_style_properties_origin": {
+        "kind": "accepted_visual",
+        "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html"
+      }
+    }
+  ],
+  "element_contracts": [
+    {
+      "element_id": "shell-preview",
+      "parent_element_id": null,
+      "region_id": "shell.workspace.workspace",
+      "locator": "[data-ui-element=\"shell-preview\"]",
+      "visibility": "required",
+      "element_type": "application-shell",
+      "component_id": null,
+      "variant": "workspace",
+      "size_class": null,
+      "content_contract": "G3 neutral foundations and application-shell specimen",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-ADMIN-003.populated"
+      ],
+      "geometry": {
+        "shell_gap": {
+          "value": 12,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "compact rail + 12px gap + fluid workspace",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "background-color": {
+          "value": "#111214",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "desktop overlay becomes viewport-contained narrow-Web drawer",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "focus_model": {
+          "value": "Escape closes overlays and focus returns to trigger",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "workspace-members-manage",
+      "parent_element_id": "shell-preview",
+      "region_id": "UI-ADMIN-003.content",
+      "locator": "[data-ui-element=\"workspace-members-manage\"]",
+      "visibility": "required",
+      "element_type": "button",
+      "component_id": "action.button",
+      "variant": "secondary",
+      "size_class": "sm",
+      "content_contract": "Workspace Members Manage",
+      "icon_id": null,
+      "action_ids": [
+        "UI-ADMIN-003.workspace.members.manage"
+      ],
+      "state_ids": [
+        "UI-ADMIN-003.initial",
+        "UI-ADMIN-003.loading",
+        "UI-ADMIN-003.populated",
+        "UI-ADMIN-003.error",
+        "UI-ADMIN-003.permission_denied",
+        "UI-ADMIN-003.recovery"
+      ],
+      "geometry": {
+        "min_height": {
+          "value": 32,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "8px shell rhythm",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "display": {
+          "value": "inline-flex",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "remains named and reachable at every responsive-Web anchor",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "name": {
+          "value": "Workspace Members Manage",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json#/screens/94/actions"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": "shell.main-content.button",
+      "component_state_ids": [
+        "default",
+        "hover",
+        "focus_visible",
+        "active",
+        "disabled",
+        "loading",
+        "error"
+      ],
+      "standard_identity": {
+        "component_id": "action.button",
+        "variant": "button",
+        "size_class": "standard",
+        "element_type": "button",
+        "icon_id": null,
+        "state_ids": [
+          "default"
+        ]
+      }
+    },
+    {
+      "element_id": "workspace-roles-assign",
+      "parent_element_id": "shell-preview",
+      "region_id": "UI-ADMIN-003.content",
+      "locator": "[data-ui-element=\"workspace-roles-assign\"]",
+      "visibility": "required",
+      "element_type": "button",
+      "component_id": "action.button",
+      "variant": "secondary",
+      "size_class": "sm",
+      "content_contract": "Workspace Roles Assign",
+      "icon_id": null,
+      "action_ids": [
+        "UI-ADMIN-003.workspace.roles.assign"
+      ],
+      "state_ids": [
+        "UI-ADMIN-003.initial",
+        "UI-ADMIN-003.loading",
+        "UI-ADMIN-003.populated",
+        "UI-ADMIN-003.error",
+        "UI-ADMIN-003.permission_denied",
+        "UI-ADMIN-003.recovery"
+      ],
+      "geometry": {
+        "min_height": {
+          "value": 32,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "8px shell rhythm",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "display": {
+          "value": "inline-flex",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "remains named and reachable at every responsive-Web anchor",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "name": {
+          "value": "Workspace Roles Assign",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json#/screens/94/actions"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": "shell.main-content.button",
+      "component_state_ids": [
+        "default",
+        "hover",
+        "focus_visible",
+        "active",
+        "disabled",
+        "loading",
+        "error"
+      ],
+      "standard_identity": {
+        "component_id": "action.button",
+        "variant": "button",
+        "size_class": "standard",
+        "element_type": "button",
+        "icon_id": null,
+        "state_ids": [
+          "default"
+        ]
+      }
+    },
+    {
+      "element_id": "report_access-manage",
+      "parent_element_id": "shell-preview",
+      "region_id": "UI-ADMIN-003.content",
+      "locator": "[data-ui-element=\"report_access-manage\"]",
+      "visibility": "required",
+      "element_type": "button",
+      "component_id": "action.button",
+      "variant": "secondary",
+      "size_class": "sm",
+      "content_contract": "Report access Manage",
+      "icon_id": null,
+      "action_ids": [
+        "UI-ADMIN-003.report_access.manage"
+      ],
+      "state_ids": [
+        "UI-ADMIN-003.initial",
+        "UI-ADMIN-003.loading",
+        "UI-ADMIN-003.populated",
+        "UI-ADMIN-003.error",
+        "UI-ADMIN-003.permission_denied",
+        "UI-ADMIN-003.recovery"
+      ],
+      "geometry": {
+        "min_height": {
+          "value": 32,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "8px shell rhythm",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "display": {
+          "value": "inline-flex",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "remains named and reachable at every responsive-Web anchor",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "name": {
+          "value": "Report access Manage",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json#/screens/94/actions"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": "shell.main-content.button",
+      "component_state_ids": [
+        "default",
+        "hover",
+        "focus_visible",
+        "active",
+        "disabled",
+        "loading",
+        "error"
+      ],
+      "standard_identity": {
+        "component_id": "action.button",
+        "variant": "button",
+        "size_class": "standard",
+        "element_type": "button",
+        "icon_id": null,
+        "state_ids": [
+          "default"
+        ]
+      }
+    },
+    {
+      "element_id": "dashboard_access-manage",
+      "parent_element_id": "shell-preview",
+      "region_id": "UI-ADMIN-003.content",
+      "locator": "[data-ui-element=\"dashboard_access-manage\"]",
+      "visibility": "required",
+      "element_type": "button",
+      "component_id": "action.button",
+      "variant": "secondary",
+      "size_class": "sm",
+      "content_contract": "Dashboard access Manage",
+      "icon_id": null,
+      "action_ids": [
+        "UI-ADMIN-003.dashboard_access.manage"
+      ],
+      "state_ids": [
+        "UI-ADMIN-003.initial",
+        "UI-ADMIN-003.loading",
+        "UI-ADMIN-003.populated",
+        "UI-ADMIN-003.error",
+        "UI-ADMIN-003.permission_denied",
+        "UI-ADMIN-003.recovery"
+      ],
+      "geometry": {
+        "min_height": {
+          "value": 32,
+          "unit": "px",
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "8px shell rhythm",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "display": {
+          "value": "inline-flex",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json#/responsive_contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "remains named and reachable at every responsive-Web anchor",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "name": {
+          "value": "Dashboard access Manage",
+          "unit": null,
+          "origin": {
+            "kind": "product_contract",
+            "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json#/screens/94/actions"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": "shell.main-content.button",
+      "component_state_ids": [
+        "default",
+        "hover",
+        "focus_visible",
+        "active",
+        "disabled",
+        "loading",
+        "error"
+      ],
+      "standard_identity": {
+        "component_id": "action.button",
+        "variant": "button",
+        "size_class": "standard",
+        "element_type": "button",
+        "icon_id": null,
+        "state_ids": [
+          "default"
+        ]
+      }
+    },
+    {
+      "element_id": "skip-link",
+      "parent_element_id": null,
+      "region_id": "shell.workspace.header",
+      "locator": "[data-ui-element=\"skip-link\"]",
+      "visibility": "required",
+      "element_type": "link",
+      "component_id": null,
+      "variant": "skip-link",
+      "size_class": null,
+      "content_contract": "Перейти к рабочей области",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-ADMIN-003.populated"
+      ],
+      "geometry": {
+        "display": {
+          "value": "inline",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "first focusable control",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "visibility": {
+          "value": "visible on focus",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "available at every responsive-Web anchor",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "name": {
+          "value": "Перейти к рабочей области",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "normative_requirement",
+          "ref": "references/responsive-policy-v1.md#viewport-contract"
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "region-shell-workspace-primary-nav",
+      "parent_element_id": "shell-preview",
+      "region_id": "shell.workspace.primary-nav",
+      "locator": "[data-ui-region=\"shell.workspace.primary-nav\"]",
+      "visibility": "required",
+      "element_type": "region",
+      "component_id": null,
+      "variant": "graphite",
+      "size_class": null,
+      "content_contract": "shell.workspace.primary-nav",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-ADMIN-003.populated"
+      ],
+      "geometry": {
+        "display": {
+          "value": "block",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "inside bounded shell",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "surface": {
+          "value": "graphite",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "reachable across the fixed responsive-Web range",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "presence": {
+          "value": "named or structurally exposed",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "region-result-trust",
+      "parent_element_id": "shell-preview",
+      "region_id": "result-trust",
+      "locator": "[data-ui-region=\"result-trust\"]",
+      "visibility": "required",
+      "element_type": "region",
+      "component_id": null,
+      "variant": "graphite",
+      "size_class": null,
+      "content_contract": "result-trust",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-ADMIN-003.populated"
+      ],
+      "geometry": {
+        "display": {
+          "value": "block",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "inside bounded shell",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "surface": {
+          "value": "graphite",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "reachable across the fixed responsive-Web range",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "presence": {
+          "value": "named or structurally exposed",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "region-analytics-chart",
+      "parent_element_id": "shell-preview",
+      "region_id": "analytics.chart",
+      "locator": "[data-ui-region=\"analytics.chart\"]",
+      "visibility": "required",
+      "element_type": "region",
+      "component_id": null,
+      "variant": "graphite",
+      "size_class": null,
+      "content_contract": "analytics.chart",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-ADMIN-003.populated"
+      ],
+      "geometry": {
+        "display": {
+          "value": "block",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "inside bounded shell",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "surface": {
+          "value": "graphite",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "reachable across the fixed responsive-Web range",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "presence": {
+          "value": "named or structurally exposed",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "region-analytics-series-panel",
+      "parent_element_id": "shell-preview",
+      "region_id": "analytics.series-panel",
+      "locator": "[data-ui-region=\"analytics.series-panel\"]",
+      "visibility": "required",
+      "element_type": "region",
+      "component_id": null,
+      "variant": "graphite",
+      "size_class": null,
+      "content_contract": "analytics.series-panel",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-ADMIN-003.populated"
+      ],
+      "geometry": {
+        "display": {
+          "value": "block",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "inside bounded shell",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "surface": {
+          "value": "graphite",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "reachable across the fixed responsive-Web range",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "presence": {
+          "value": "named or structurally exposed",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "region-analytics-inspector",
+      "parent_element_id": "shell-preview",
+      "region_id": "analytics.inspector",
+      "locator": "[data-ui-region=\"analytics.inspector\"]",
+      "visibility": "conditional",
+      "element_type": "region",
+      "component_id": null,
+      "variant": "graphite",
+      "size_class": null,
+      "content_contract": "analytics.inspector",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-ADMIN-003.populated"
+      ],
+      "geometry": {
+        "display": {
+          "value": "block",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "inside bounded shell",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "surface": {
+          "value": "graphite",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "reachable across the fixed responsive-Web range",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "presence": {
+          "value": "named or structurally exposed",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    },
+    {
+      "element_id": "region-analytics-table",
+      "parent_element_id": "shell-preview",
+      "region_id": "analytics.table",
+      "locator": "[data-ui-region=\"analytics.table\"]",
+      "visibility": "required",
+      "element_type": "region",
+      "component_id": null,
+      "variant": "graphite",
+      "size_class": null,
+      "content_contract": "analytics.table",
+      "icon_id": null,
+      "action_ids": [],
+      "state_ids": [
+        "UI-ADMIN-003.populated"
+      ],
+      "geometry": {
+        "display": {
+          "value": "block",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "spacing_relations": [
+        {
+          "value": "inside bounded shell",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "visual_properties": {
+        "surface": {
+          "value": "graphite",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "responsive_behavior": [
+        {
+          "value": "reachable across the fixed responsive-Web range",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      ],
+      "accessibility": {
+        "presence": {
+          "value": "named or structurally exposed",
+          "unit": null,
+          "origin": {
+            "kind": "normative_requirement",
+            "ref": "references/responsive-policy-v1.md#viewport-contract"
+          },
+          "tolerance": 0,
+          "change_policy": "source_revision_required"
+        }
+      },
+      "source_refs": [
+        {
+          "kind": "delegated_design_decision",
+          "ref": "references/stage-transition-contract-v1.md#delegated-design-envelope",
+          "rationale": "Realize the accepted complete pilot standard for the representative shell without changing target product meaning.",
+          "constraints": [
+            "custometry.platform-baseline.v2.r4",
+            "pilot-candidate-v3-metadata:accepted-visual-language",
+            "responsive-web:768-1920"
+          ]
+        }
+      ],
+      "standard_slot_id": null,
+      "component_state_ids": [
+        "default"
+      ],
+      "standard_identity": null
+    }
+  ],
+  "allowed_provenance_kinds": [
+    "product_contract",
+    "normative_requirement",
+    "accepted_visual",
+    "measured_baseline",
+    "design_token",
+    "owner_decision",
+    "derived_formula",
+    "delegated_design_decision"
+  ],
+  "unresolved_decisions": [],
+  "acceptance": {
+    "agent_self_acceptance": "prohibited",
+    "machine_receipt_required": true,
+    "owner_decision_required": true,
+    "owner_decision_ref": null,
+    "screen_acceptance_receipt_path": null,
+    "screen_acceptance_receipt_sha256": null,
+    "pixel_diff_policy": {
+      "channel_threshold": {
+        "value": 18,
+        "unit": "channel-value",
+        "origin": {
+          "kind": "normative_requirement",
+          "ref": "references/responsive-policy-v1.md#viewport-contract"
+        },
+        "tolerance": 0,
+        "change_policy": "source_revision_required"
+      },
+      "approved_max_different_pixels": {
+        "value": 2073600,
+        "unit": "px",
+        "origin": {
+          "kind": "normative_requirement",
+          "ref": "references/responsive-policy-v1.md#viewport-contract"
+        },
+        "tolerance": 0,
+        "change_policy": "source_revision_required"
+      }
+    }
+  },
+  "standard_binding": {
+    "standard_revision_id": "custometry.pilot-standard.v3.metadata.r5",
+    "clause_inventory_sha256": "f2ca158c083c0d225d8fc25dd87226787fe20863e4e56f7e5b99fb2d3574c1de",
+    "applicability_manifest": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/representative-shell-standard-applicability.json",
+      "sha256": "0a41bd8db99371444398ae5822b7aab65774ceb6968c405422357d3bc483d71b"
+    }
+  },
+  "standard_exceptions": []
+}

@@ -1,0 +1,53 @@
+{
+  "family": {
+    "family_id": "family.data.shell-workspace.baseline",
+    "title": "data / shell-workspace / baseline",
+    "representative_screen_ids": [
+      "UI-DATA-001"
+    ],
+    "screen_ids": [
+      "UI-DATA-001",
+      "UI-DATA-002",
+      "UI-DATA-003",
+      "UI-DATA-004",
+      "UI-DATA-005",
+      "UI-DATA-006",
+      "UI-DATA-007",
+      "UI-DATA-008",
+      "UI-DATA-009",
+      "UI-DATA-010",
+      "UI-DATA-011",
+      "UI-DATA-012",
+      "UI-DATA-013",
+      "UI-DATA-014",
+      "UI-DATA-015",
+      "UI-DATA-016",
+      "UI-DATA-017",
+      "UI-DATA-018",
+      "UI-DATA-019",
+      "UI-DATA-020",
+      "UI-DATA-021",
+      "UI-DATA-022",
+      "UI-DATA-023",
+      "UI-DATA-024",
+      "UI-DATA-025",
+      "UI-DATA-026",
+      "UI-DATA-027",
+      "UI-DATA-028",
+      "UI-DATA-029",
+      "UI-DATA-030",
+      "UI-DATA-031"
+    ],
+    "reuse_hypothesis_status": "hypothesis",
+    "decision_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/screens/7",
+      "formula": "group in-scope screens by stable screen namespace, exact shell_variant_id, exact baseline_exception_ref, and deterministic workload partition; select the highest state/action complexity as representative with screen_id tie-break"
+    },
+    "workload_budget": {
+      "max_screens": 31,
+      "max_screen_state_pairs": 186,
+      "rationale": "Exact family membership and accepted intake state cardinality; any expansion requires a separate family row."
+    }
+  }
+}

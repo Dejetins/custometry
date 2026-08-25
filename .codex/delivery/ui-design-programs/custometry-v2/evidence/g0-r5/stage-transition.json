@@ -1,0 +1,83 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "2.0.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+    "gate_id": "G0",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+    "revision": 5,
+    "validation_profile": "draft",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-design-program.promotion-candidate.json",
+    "artifact_sha256": "493d83de89ad2e2b113c61e51ca12e9af7f8551c3a626e7b986ef28b12d5331d"
+  },
+  "to_stage": {
+    "stage_instance_id": "G1@atlas-r4",
+    "gate_id": "G1",
+    "target_id": "atlas-r4",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/13-g1-complete-screen-atlas-r4.md"
+  },
+  "readiness_status": "ready",
+  "next_stage_allowed": true,
+  "decision_inventory": [],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/current-gate.json",
+      "evidence_sha256": "f6d8e11c7069cbd76fcc473ccc657437745d9e9068e2431fa987bb42d1a59f0a"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/execution-route.json",
+      "evidence_sha256": "c6cc9d0376c0bac4ee0d0b649e7867bcc79b6eb77e8a2fc05fc8a4aaad284d0f"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/foreign-changes.json",
+      "evidence_sha256": "c030964eb5da0fc1e4184d45c91d53062a18f664dbab9675b3f245fd48f40a61"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/handoff-artifact.json",
+      "evidence_sha256": "557b5e9dc9c6d14f6f2801e8a9e5a2a2c94cac9250400785fd61aa2b4a485bf0"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/next-stage-inputs.json",
+      "evidence_sha256": "c161b0604a0962eff74f6efb445e90e13f005ab0b53ef0f89a668daf788ca875"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/source-freshness.json",
+      "evidence_sha256": "39f4d9fa736053e361859de0c56804aec11a406918dc014bcdb1e6406d015cbb"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/write-scope.json",
+      "evidence_sha256": "23d6f9f061ace61e7dafcb5ebd6c0f266852b4aaa0ddc33bfdc9599b376e3d0b"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "G0 r5 rebound the accepted blueprint semantics to a complete current intake and inherited visual baseline; G1 atlas r4 is uniquely ready.",
+    "review_artifact_refs": [],
+    "questions": []
+  },
+  "owner_decision_ref": null,
+  "owner_decision_sha256": null,
+  "program_complete": false
+}

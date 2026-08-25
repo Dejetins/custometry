@@ -1,0 +1,41 @@
+{
+  "capability": {
+    "id": "UI-CAP-007",
+    "name": "Focus / Explore",
+    "delivery_form": "route_state_contract",
+    "requirement_ids": [
+      "UC-018",
+      "FOCUS-001",
+      "FOCUS-002",
+      "FOCUS-003",
+      "FOCUS-004",
+      "FOCUS-005",
+      "FOCUS-006",
+      "FOCUS-007",
+      "FOCUS-008",
+      "FOCUS-009",
+      "FOCUS-010",
+      "FOCUS-011",
+      "FOCUS-012"
+    ]
+  },
+  "promoted_binding_ids": [
+    "OWNER-REC-001",
+    "OWNER-REC-022",
+    "OWNER-REC-023",
+    "OWNER-REC-032",
+    "OWNER-REC-034",
+    "OWNER-REC-055",
+    "OWNER-REC-059",
+    "OWNER-REC-064",
+    "OWNER-REC-067"
+  ],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

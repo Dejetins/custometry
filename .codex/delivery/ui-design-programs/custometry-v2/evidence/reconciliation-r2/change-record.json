@@ -1,0 +1,14 @@
+{
+  "$schema": "change-record.schema.json",
+  "schema_id": "codex.ui-change-record/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "change_id": "custometry-v2-g0-r2-source-and-visual-reconciliation",
+  "change_kind": "baseline_or_visual_authority_replacement",
+  "target": {
+    "stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r1",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0/ui-design-program.snapshot.json",
+    "artifact_sha256": "f95aad34ecc7ae5f7b15b1496816bd402003f1979cc7a6c925478e532880059a"
+  },
+  "owner_input": "Reconcile the current canonical product and UI sources with the complete pilot-candidate-v2 evidence, promote the accepted OWNER-REC and RECON-ADD requirements, preserve explicit conflicts, and replace the active visual-language and platform-baseline authority without granting exact target-screen composition, production semantics, fixture truth, legend-threshold truth, mobile-specific IA, implementation, publication, or deployment authority.",
+  "recorded_by": "agent"
+}

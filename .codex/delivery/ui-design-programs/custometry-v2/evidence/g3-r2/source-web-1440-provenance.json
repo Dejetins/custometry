@@ -1,0 +1,21 @@
+{
+  "$schema": "render-provenance-receipt.schema.json",
+  "schema_id": "codex.ui-render-provenance/v1",
+  "generated_by": {
+    "script": "assemble_render_provenance.py",
+    "version": "1.0.0",
+    "command": "assemble_render_provenance.py <paths-redacted>"
+  },
+  "target": "reference",
+  "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:accepted-pilot:ru:r2",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "validation_profile": "program_ready",
+  "anchor_id": "web-1440",
+  "visual_authority_sha256": "25456f74abb10eddd5a7e5f7dd399be93ac48719ccbe3cc77f16575c2bc6821d",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+  "source_artifact_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1440.png",
+  "capture_sha256": "0b2e496591701399b89891f24aa927b3bf9067b4d03a6737a1a745574438dbe2",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1440-geometry.json",
+  "geometry_receipt_sha256": "496767f32db6ea9d427053552af8164c466f8a7412ac43d621987c71a00b38a7"
+}

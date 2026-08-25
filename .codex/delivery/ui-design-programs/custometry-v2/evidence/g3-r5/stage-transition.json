@@ -1,0 +1,94 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "2.0.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+    "gate_id": "G3",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+    "revision": 5,
+    "validation_profile": "program_ready",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "artifact_sha256": "a61517db5be687e2ee01986f79f6942259b3a1341790cc2b8546162f9219ce24"
+  },
+  "to_stage": {
+    "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6",
+    "gate_id": "G4",
+    "target_id": "family.auth.shell-auth.baseline-exception-auth-r6",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-01-family-auth-shell-auth-baseline-exception-auth-r6.md"
+  },
+  "readiness_status": "ready",
+  "next_stage_allowed": true,
+  "decision_inventory": [
+    {
+      "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5.finished-foundations-shell",
+      "class": "owner_required",
+      "status": "resolved",
+      "summary": "The owner accepted the exact finished G3 r5 foundations and shell checkpoint.",
+      "resolution_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/stage-acceptance-decision-r5.json"
+    }
+  ],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/preflight/current-gate.json",
+      "evidence_sha256": "4df97bf7a026873d2eb8f3a3dac3810e19afcaa284a3891a6ef521e01695cb77"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/preflight/execution-route.json",
+      "evidence_sha256": "341e3baa48dac9ffdf85b93b175af55c03406b91aa64c1cdb51c0f54f6e9fe55"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/preflight/foreign-changes.json",
+      "evidence_sha256": "d5f3cd9ff8dd16e5d33b5aefaa8f1027f3877b3c14190e21d9e1c5ad2ff6088e"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/preflight/handoff-artifact.json",
+      "evidence_sha256": "1887cbb4330ff310a07171edaff96878bcdb0403e88d7eb34940e7fc498ad0ea"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/preflight/next-stage-inputs.json",
+      "evidence_sha256": "7aae995a7cb81eaad6669f109a9b4bec8a0bddd2a22b68c1d60b1ef802ec69be"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/preflight/source-freshness.json",
+      "evidence_sha256": "d2535b35b35b53c20332bd4428e193a6f97deec9c99cf52b586a9cbd84b8e02d"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/preflight/write-scope.json",
+      "evidence_sha256": "03321fd8eaae790b6f292a4381bb6308b79ba3b3b0fec4c23e9e5f9b7c0607ca"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "The owner accepted the exact G3 r5 checkpoint. The strict G3 gate remains passing and the unique auth-family G4 r6 successor is ready for claim.",
+    "review_artifact_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/review-board.html",
+      ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/candidate-shell.html"
+    ],
+    "questions": []
+  },
+  "owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/stage-acceptance-decision-r5.json",
+  "owner_decision_sha256": "bcc9a0d5c82a29535664d975b3397c1f6f11858cc94afb03bb304ddcb73362a5",
+  "program_complete": false
+}

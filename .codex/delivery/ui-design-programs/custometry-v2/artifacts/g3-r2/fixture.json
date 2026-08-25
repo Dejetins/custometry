@@ -1,0 +1,17 @@
+{
+  "screen_id": "UI-SHELL-GLOBAL",
+  "state_id": "UI-SHELL-GLOBAL.populated",
+  "role_id": "all",
+  "locale_stress": [
+    "ru",
+    "en"
+  ],
+  "fixed_clock_iso": "2026-08-11T21:18:52Z",
+  "values": {
+    "series_a": 82,
+    "series_b": 64,
+    "series_c": 47,
+    "series_d": 73
+  },
+  "fixture_authority": "isolated neutral specimen values; not product data, production truth, or legend-threshold truth"
+}

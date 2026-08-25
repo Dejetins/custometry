@@ -8,11 +8,13 @@
   "properties": {
     "$schema": {"type": "string"},
     "schema_id": {"const": "codex.ui-screen-design-contract/v1"},
-    "contract_profile": {"enum": ["codex.ui-screen-design-contract/v1@1.1.0", "codex.ui-screen-design-contract/v1@1.2.0", "codex.ui-screen-design-contract/v1@1.3.0", "codex.ui-screen-design-contract/v1@1.4.0"]},
+    "contract_profile": {"enum": ["codex.ui-screen-design-contract/v1@1.1.0", "codex.ui-screen-design-contract/v1@1.2.0", "codex.ui-screen-design-contract/v1@1.3.0", "codex.ui-screen-design-contract/v1@1.4.0", "codex.ui-screen-design-contract/v1@2.0.0"]},
     "screen_revision_id": {"type": "string", "minLength": 1},
     "program_revision_ref": {"type": "string", "minLength": 1},
     "functional_contract_ref": {"$ref": "#/$defs/functionalContractRef"},
     "baseline_binding": {"$ref": "#/$defs/baselineBinding"},
+    "standard_binding": {"$ref": "#/$defs/standardBinding"},
+    "standard_exceptions": {"type": "array", "items": {"$ref": "#/$defs/standardException"}},
     "status": {"enum": ["draft", "review", "accepted", "superseded"]},
     "product_identity": {"$ref": "#/$defs/productIdentity"},
     "source_visual": {"$ref": "#/$defs/sourceVisual"},
@@ -82,13 +84,42 @@
         "exception_id": {"type": ["string", "null"]}
       }
     },
+    "standardBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["standard_revision_id", "clause_inventory_sha256", "applicability_manifest"],
+      "properties": {
+        "standard_revision_id": {"type": "string", "minLength": 1},
+        "clause_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "applicability_manifest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256"],
+          "properties": {
+            "path": {"type": "string", "minLength": 1},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
+        }
+      }
+    },
+    "standardException": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exception_id", "clause_ids", "reason_ref", "owner_decision_ref"],
+      "properties": {
+        "exception_id": {"type": "string", "minLength": 1},
+        "clause_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "reason_ref": {"type": "string", "minLength": 1},
+        "owner_decision_ref": {"type": "string", "minLength": 1}
+      }
+    },
     "elementContract": {
       "type": "object",
       "additionalProperties": false,
       "required": [
         "element_id", "parent_element_id", "region_id", "locator", "visibility", "element_type",
         "component_id", "variant", "size_class", "content_contract", "icon_id",
-        "action_ids", "state_ids", "responsive_behavior", "accessibility", "source_refs"
+        "action_ids", "state_ids", "component_state_ids", "responsive_behavior", "accessibility", "source_refs"
       ],
       "properties": {
         "element_id": {"type": "string", "minLength": 1},
@@ -97,6 +128,20 @@
         "locator": {"type": "string", "minLength": 1},
         "visibility": {"enum": ["required", "conditional", "forbidden"]},
         "element_type": {"type": "string", "minLength": 1},
+        "standard_slot_id": {"type": ["string", "null"]},
+        "standard_identity": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["component_id", "variant", "size_class", "element_type", "icon_id", "state_ids"],
+          "properties": {
+            "component_id": {"type": ["string", "null"]},
+            "variant": {"type": ["string", "null"]},
+            "size_class": {"type": ["string", "null"]},
+            "element_type": {"type": ["string", "null"]},
+            "icon_id": {"type": ["string", "null"]},
+            "state_ids": {"type": "array", "minItems": 1, "items": {"enum": ["default", "hover", "focus_visible", "active", "selected", "disabled", "loading", "error"]}, "uniqueItems": true}
+          }
+        },
         "component_id": {"type": ["string", "null"]},
         "variant": {"type": ["string", "null"]},
         "size_class": {"type": ["string", "null"]},
@@ -104,6 +149,7 @@
         "icon_id": {"type": ["string", "null"]},
         "action_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
         "state_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "component_state_ids": {"type": "array", "minItems": 1, "items": {"enum": ["default", "hover", "focus_visible", "active", "selected", "disabled", "loading", "error"]}, "uniqueItems": true},
         "geometry": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/specifiedValue"}},
         "spacing_relations": {"type": "array", "items": {"$ref": "#/$defs/specifiedValue"}, "minItems": 1},
         "visual_properties": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/specifiedValue"}},
@@ -297,7 +343,7 @@
       "required": ["kind", "html_path", "image_path", "html_sha256", "image_sha256", "owner_decision_ref"],
       "properties": {
         "kind": {"enum": ["accepted_visual", "baseline_reference", "delegated_design_output"]},
-        "evidence_mode": {"enum": ["exact_screen_html", "native_image", "visual_language_only", "figma_adapter"]},
+        "evidence_mode": {"enum": ["exact_screen_html", "native_image", "visual_language_only"]},
         "html_path": {"type": ["string", "null"]},
         "image_path": {"type": ["string", "null"]},
         "html_sha256": {"type": ["string", "null"]},

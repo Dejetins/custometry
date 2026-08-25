@@ -21,7 +21,7 @@
     "program_id": {"type": "string", "minLength": 1},
     "decision_id": {"type": "string", "minLength": 1},
     "decision_kind": {
-      "enum": ["visual_authority", "baseline_exception", "mobile_scope", "stage_acceptance", "screen_acceptance", "family_acceptance", "wave_acceptance", "program_completion"]
+      "enum": ["visual_authority", "baseline_exception", "standard_exception", "mobile_scope", "stage_acceptance", "screen_acceptance", "family_acceptance", "wave_acceptance", "program_completion"]
     },
     "target": {
       "type": "object",

@@ -8,7 +8,7 @@ normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-08-05
+updated_at: 2026-08-07
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -1420,6 +1420,28 @@ metric_group_version:
   created_at: timestamp_utc
 ```
 
+Персональная KPI-полоса является представлением разрешённых опубликованных
+метрик, а не отдельной metric truth. Published presentation задаёт исходный
+набор, а пользователь MAY сохранить собственный порядок и видимость в
+versioned personal Saved View. Такая настройка не меняет shared publication и
+не применяется к другим пользователям.
+
+```yaml
+personal_kpi_view:
+  saved_view_version_id: uuid
+  owner_user_id: uuid
+  workspace_id: uuid
+  analytical_document_version_id: uuid
+  page_id: uuid|null
+  result_block_id: uuid|null
+  visibility: personal
+  metric_slots:
+    - metric_version_id: uuid
+      metric_group_version_id: uuid
+      order: integer
+  reset_target: published_default
+```
+
 Пример default-групп: `finance` содержит margin/revenue/discount metrics в утверждённом порядке; `client` содержит active customer/customer count/average receipt/retention metrics. Группы являются semantic presentation metadata, не меняют формулы и не создают новую metric truth.
 
 ```yaml
@@ -1448,6 +1470,14 @@ metric_presentation_requirements:
     requirement: Metric и result MUST объявлять value_origin direct|policy_derived|residual_proxy и quality/coverage; proxy не может иметь тот же trust label, что прямой source component.
   - id: METRIC-020
     requirement: Residual/proxy metric MUST раскрывать derivation, excluded components, coverage, reconciliation residual, sensitivity и запрет на использование вне заявленной применимости.
+  - id: METRIC-021
+    requirement: Reportable result MAY предоставлять персональную KPI-полосу; published presentation задаёт default, а authorized user MAY выбирать и упорядочивать только доступные compatible published metrics в пределах bounded slot contract без изменения shared publication или представления других пользователей.
+  - id: METRIC-022
+    requirement: Персональный KPI selection MUST сохраняться как versioned Saved View с explicit personal visibility и binding к user, workspace, analytical-document version и применимым page/result scope; UI MUST предоставлять reset к published default.
+  - id: METRIC-023
+    requirement: KPI label, unit, aggregation и time basis MUST разрешаться из MetricVersion, NumberFormatSpec и resolved result period; UI MUST NOT синтезировать `/month` либо другую нормализацию, поэтому годовая frequency отображается как значение за период, если сама metric version не определяет нормализованную месячную частоту.
+  - id: METRIC-024
+    requirement: Изменение visibility/order уже разрешённых projection является presentation state; выбор метрики, требующий нового data projection или compute, MUST входить в normalized request, manifest, request_hash и cache identity и выполняться backend CPU, а не вычисляться браузером.
 ```
 
 ### 6.3.2. DiscountPolicyVersion и компонентная семантика скидок
@@ -1689,6 +1719,10 @@ filter_requirements:
     requirement: Focus / Explore mode MUST позволять создавать draft local filters без изменения родительского report до явного Apply to report; Reset возвращает inherited filter state, а Undo отменяет последнее draft-действие.
   - id: FILTER-010
     requirement: Apply to report MUST повторно валидировать draft filters и authorization на backend, после чего включать их в normalized analysis/report specification и request/cache identity; system и locked filters всегда видимы и не могут быть удалены, переопределены либо ослаблены пользователем.
+  - id: FILTER-011
+    requirement: Filter builder MUST предоставлять searchable catalog, сгруппированный по business entity, явные AND/OR groups и nested refinements, сохраняющие область одного события, заказа либо другого versioned container; UI MUST показывать читаемое итоговое выражение до Apply.
+  - id: FILTER-012
+    requirement: Draft expression, applied expression и permission-filtered preview estimate MUST быть различимы; estimate является необязательной оценкой, не заменяет backend validation, а Apply MUST материализовать только повторно авторизованное normalized expression tree.
 ```
 
 ## 6.6. Methodology Registry и аналитические knowledge objects
@@ -3099,6 +3133,12 @@ comparison_requirements:
     requirement: Capability Engine MUST проверять history coverage, data quality, permissions и definition compatibility отдельно для обоих периодов.
   - id: COMPARE-007
     requirement: UI, email и XLSX MUST показывать применённый comparison mode и limitation codes одинаково и использовать один comparison artifact.
+  - id: COMPARE-008
+    requirement: Reportable document MUST иметь единый shared default для grain/current period/comparison, а каждый visual или table block MAY явно наследовать его либо задавать local override; effective resolved spec каждого блока MUST входить в request, cache и snapshot identity.
+  - id: COMPARE-009
+    requirement: Month, quarter и year comparisons MUST использовать calendar-aligned resolved periods на всех поддерживаемых report tabs, включая segment size и migration; current/comparison snapshot pair, coverage и definition compatibility MUST разрешаться для каждого effective block period.
+  - id: COMPARE-010
+    requirement: Переключение effective grain между month, quarter и year MUST менять resolved bucket boundaries, aggregation/reduction и число точек данных; chart, accessible table и export MUST использовать один и тот же bucketed artifact, а production-size reduction MUST выполняться backend CPU, не браузером.
 ```
 
 ## 12.2. Обзор продаж
@@ -3677,6 +3717,10 @@ segment_temporal_requirements:
     requirement: Historical comparison MUST использовать immutable historical memberships и explicit pair of snapshots; пересчёт прошлого новой definition version запрещён.
   - id: SEGMENT-026
     requirement: Доступ к definition или aggregate SegmentSnapshot MUST не расширять object, row, member-level или PII permissions; просмотр members требует отдельной authorization.
+  - id: SEGMENT-027
+    requirement: Segment migration result MUST представлять полную направленную transition matrix для каждого разрешённого origin/destination pair, включая zero cells и диагональ stayed; top-N либо выборочные переходы MAY быть производным view, но MUST NOT заменять canonical matrix artifact.
+  - id: SEGMENT-028
+    requirement: Segment size и migration comparison MUST использовать exact immutable current/comparison SegmentSnapshot pair для month, quarter либо year grain и показывать count/rate delta, coverage, definition compatibility и limitation codes без пересчёта истории новой definition.
 ```
 
 ## 12.15. Custom Analysis Builder
@@ -4260,6 +4304,8 @@ analytical_document_requirements:
     requirement: Publication MUST resolve hierarchy, effective filters, segment bindings и все included blocks в один immutable root snapshot; Web, email, XLSX и full export используют его page manifests без duplicate compute.
   - id: ANALYTICAL-DOC-012
     requirement: Responsive Web MUST сохранять hierarchy, reading order, data meaning и primary outcomes для RU/EN, tab overflow, keyboard и 200% zoom; mobile-specific IA остаётся unauthorized.
+  - id: ANALYTICAL-DOC-013
+    requirement: Published document и immutable snapshot MUST показывать permission-safe author identity, updated_at и publication/version metadata; author binding MUST быть pin-нут в snapshot manifest и одинаково отображаться в Web и exports.
 ```
 
 ## 14.1. Chart specification
@@ -4459,6 +4505,8 @@ chart_requirements:
     requirement: Static adapter MUST запрещать outbound network и remote assets, иметь batch/width/height/output/temp/memory/CPU/time limits, cancellation, stable error codes и cleanup incomplete artifacts после crash.
   - id: CHART-019
     requirement: Release gate MUST проверять ChartSpec validation/security, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantic parity, SSR-SVG-to-PNG fidelity, font/render-build identity invalidation, range_timeline behavior, XLSX native/raster mapping, all-shipped-theme accessibility и golden data parity.
+  - id: CHART-020
+    requirement: Versioned visual style template MUST задавать semantic palette, contrast policy, typography scale и table density; report MUST иметь default template, block MAY задать explicit override, effective template/version MUST входить в snapshot/export/render/cache identity, а отдельный template builder MUST жить в Settings и проверять shipped-theme contrast.
 ```
 
 ### 14.1.1. Полноэкранный Focus / Explore mode

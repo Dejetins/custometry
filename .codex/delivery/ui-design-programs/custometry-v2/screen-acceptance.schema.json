@@ -4,7 +4,7 @@
   "title": "All-anchor screen acceptance receipt",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_id", "screen_revision_id", "screen_id", "state_id", "accessibility_claim", "generated_by", "contract_input", "required_anchor_ids", "anchor_receipts", "result", "blockers"],
+  "required": ["schema_id", "screen_revision_id", "screen_id", "state_id", "accessibility_claim", "generated_by", "contract_input", "required_anchor_ids", "anchor_receipts", "standard_coverage", "result", "blockers"],
   "properties": {
     "$schema": {"type": "string"},
     "schema_id": {"const": "codex.ui-screen-acceptance/v1"},
@@ -18,7 +18,7 @@
       "required": ["script", "version", "command"],
       "properties": {
         "script": {"const": "assemble_screen_acceptance.py"},
-        "version": {"const": "1.3.0"},
+        "version": {"const": "2.0.0"},
         "command": {"const": "assemble_screen_acceptance.py <paths-redacted>"}
       }
     },
@@ -29,7 +29,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["anchor_id", "path", "sha256", "result", "accessibility_passed", "keyboard_passed"],
+        "required": ["anchor_id", "path", "sha256", "result", "accessibility_passed", "keyboard_passed", "standard_passed"],
         "properties": {
           "anchor_id": {"type": "string", "minLength": 1},
           "path": {"type": "string", "minLength": 1},
@@ -37,7 +37,23 @@
           "result": {"enum": ["passed", "blocked"]},
           "accessibility_passed": {"type": "boolean"},
           "keyboard_passed": {"type": "boolean"}
+          ,"standard_passed": {"type": "boolean"}
         }
+      }
+    },
+    "standard_coverage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["standard_revision_id", "clause_inventory_sha256", "applicability_manifest_sha256", "expected_clause_ids", "dispositioned_clause_ids", "expected_application_ids", "observed_application_ids", "accepted_exception_clause_ids", "result"],
+      "properties": {
+        "standard_revision_id": {"type": "string", "minLength": 1},
+        "clause_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "applicability_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "expected_clause_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "dispositioned_clause_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "expected_application_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "observed_application_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "accepted_exception_clause_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "result": {"enum": ["passed", "blocked"]}
       }
     },
     "result": {"enum": ["passed", "blocked"]},

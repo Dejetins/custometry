@@ -1,0 +1,52 @@
+{
+  "journey": {
+    "entry_screen_ids": [
+      "UI-RPT-001"
+    ],
+    "journey_id": "compose-large-workbook",
+    "outcomes": [
+      "complete compose large workbook with trust and stable context"
+    ],
+    "preconditions": [
+      "the user has a permitted workspace or installation context"
+    ],
+    "purpose": "compose large workbook",
+    "role_ids": [
+      "all"
+    ],
+    "source_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/1"
+    ],
+    "terminal_screen_ids": [
+      "UI-RPT-003"
+    ],
+    "transitions": [
+      {
+        "action_id": "journey.compose-large-workbook.1",
+        "external_boundary": null,
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "from_screen_id": "UI-RPT-001",
+        "outcome": "advance the accepted compose-large-workbook journey",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/1"
+        ],
+        "to_screen_id": "UI-RPT-002",
+        "transition_id": "compose-large-workbook.1"
+      },
+      {
+        "action_id": "journey.compose-large-workbook.2",
+        "external_boundary": null,
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "from_screen_id": "UI-RPT-002",
+        "outcome": "advance the accepted compose-large-workbook journey",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/1"
+        ],
+        "to_screen_id": "UI-RPT-003",
+        "transition_id": "compose-large-workbook.2"
+      }
+    ]
+  }
+}

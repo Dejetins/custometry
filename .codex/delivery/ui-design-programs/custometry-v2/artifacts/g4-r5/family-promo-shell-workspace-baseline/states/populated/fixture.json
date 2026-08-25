@@ -1,0 +1,17 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-PROMO-001",
+  "state_id": "UI-PROMO-001.populated",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Прогнозирование · модели",
+    "status": "6 промо · 2 требуют внимания",
+    "title": "Промо и unit economics собраны",
+    "summary": "Список связывает управление промо, Result Trust и переход к offline unit economics в одной поверхности.",
+    "panel": "",
+    "tone": "neutral"
+  }
+}

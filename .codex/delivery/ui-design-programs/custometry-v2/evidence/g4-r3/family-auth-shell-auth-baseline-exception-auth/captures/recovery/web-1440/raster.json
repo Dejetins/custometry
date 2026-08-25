@@ -1,0 +1,63 @@
+{
+  "schema_id": "codex.ui-raster-diff/v1",
+  "screen_revision_id": "UI-AUTH-001.recovery.all.ru-RU.graphite.r3",
+  "anchor_id": "web-1440",
+  "generated_by": {
+    "script": "compare_visual_revision.py",
+    "version": "1.4.0",
+    "command": "compare_visual_revision.py <paths-redacted>"
+  },
+  "reference": {
+    "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-1440/reference.png",
+    "sha256": "3986879a0d50e0977f03da6cbf6fb50aa7e1071941eae70d7286b8a32e66a07d"
+  },
+  "implementation": {
+    "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-1440/implementation.png",
+    "sha256": "9322884ae7a21944ef43cb13891ae1b31f90acf7af2f8ef7bffe9b039e353f93"
+  },
+  "render_provenance": {
+    "reference": {
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-1440/reference-provenance.json",
+      "sha256": "27c0f8f6f93efa3e14ffe3d7da61b31af4f098040b0b0c47cf2e7dae3d91fb33"
+    },
+    "implementation": {
+      "path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-1440/implementation-provenance.json",
+      "sha256": "2ba7be6bd008af854b03fe78c943dc7bf12d57bd0033aed7883e347f5a2a5f84"
+    }
+  },
+  "comparison": {
+    "purpose": "visual_language_conformance",
+    "reference_logical_artifact_id": "custometry-v2:accepted-pilot:ru:r2",
+    "implementation_logical_artifact_id": "custometry-v2:UI-AUTH-001:recovery:r3",
+    "visual_authority_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "visual_authority_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+    "reference_render_provenance_sha256": "27c0f8f6f93efa3e14ffe3d7da61b31af4f098040b0b0c47cf2e7dae3d91fb33",
+    "implementation_render_provenance_sha256": "2ba7be6bd008af854b03fe78c943dc7bf12d57bd0033aed7883e347f5a2a5f84",
+    "reference_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "reference_source_artifact_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+    "implementation_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/auth/sign-in/index.html",
+    "implementation_source_artifact_sha256": "7df428461d4e936afd29f3708dcdc214f3f3ee3c073352635ba14e72dba997bb",
+    "provenance_passed": true,
+    "proves_fidelity": false,
+    "blockers": []
+  },
+  "diff_image": null,
+  "pixel_diff": {
+    "dimensions_match": true,
+    "reference_size": [
+      1440,
+      900
+    ],
+    "implementation_size": [
+      1440,
+      900
+    ],
+    "different_pixels": 1195768,
+    "different_ratio": 0.9226604938271605,
+    "maximum_channel_delta": 248,
+    "channel_threshold": 0,
+    "approved_max_different_pixels": 2073600,
+    "passed": true
+  },
+  "result": "passed"
+}

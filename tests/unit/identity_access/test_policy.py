@@ -37,6 +37,27 @@ def test_default_role_bundles_preserve_functional_ceiling() -> None:
     assert ROLE_PERMISSIONS[ANALYST] <= ROLE_PERMISSIONS[WORKSPACE_OWNER]
 
 
+def test_file_template_and_import_permissions_are_separate_from_connection_management() -> None:
+    admin = ROLE_PERMISSIONS[WORKSPACE_ADMIN]
+
+    assert "connection.manage" in admin
+    assert "file_import_template.manage" in admin
+    assert "file_import_template.publish" in admin
+    assert "file_import.create" in admin
+    assert (
+        len(
+            {
+                "connection.manage",
+                "file_import_template.manage",
+                "file_import_template.publish",
+                "file_import.create",
+            }
+            & admin
+        )
+        == 4
+    )
+
+
 @given(st.lists(st.sampled_from(sorted(ROLE_PERMISSIONS)), min_size=1, max_size=8))
 def test_grants_never_exceed_issuer_permission_ceiling(requested_roles: list[str]) -> None:
     owner = actor(WORKSPACE_OWNER)

@@ -1,0 +1,85 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "1.2.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G1@atlas-r2",
+    "gate_id": "G1",
+    "target_id": "atlas-r2",
+    "revision": 2,
+    "validation_profile": "atlas_gate",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r2/ui-design-program.snapshot.json",
+    "artifact_sha256": "ea37fa3847db86a0b332fed24b2899017d4f481a3da5d8f81df52fd4fb5f2340"
+  },
+  "to_stage": {
+    "stage_instance_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "gate_id": "G2",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/21-g2-structure-r2.md"
+  },
+  "readiness_status": "ready",
+  "next_stage_allowed": true,
+  "decision_inventory": [],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/current_gate.json",
+      "evidence_sha256": "7139a3b299284c56aba918aed106d5a5c0ebfe43fa65cc0ae856d045a2fb175e"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/execution_route.json",
+      "evidence_sha256": "2859af8cbf1f20121132e394410229f54cc8feb5a938aa8b64daeb3c6ef9459b"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/foreign_changes.json",
+      "evidence_sha256": "7c1521c954bf2981aa736832c5556ff7addff1e97759ebeac708a4f14cc23ea9"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/handoff_artifact.json",
+      "evidence_sha256": "881d9f1e5859c39e138cf3b4fc11522529bcf7fddf00f57593131eb9787a476a"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/next_stage_inputs.json",
+      "evidence_sha256": "e8397867d9c79e2e37d7833270cb9717a9557ea5a028d4004919d6379d605c55"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/source_freshness.json",
+      "evidence_sha256": "7ec010233a0ac624c7259242cf303388322f1160ae2e879bb8f88992ad8fcf23"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/write_scope.json",
+      "evidence_sha256": "ceef697ce8c83797cf1e0f170fc5265478253cd2f4a25f664af8d0d5e56d7814"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "G1 r2 exact-covers the authoritative screen, journey, capability, OWNER-REC, and RECON-ADD inventories; G2 r2 is ready and remains unclaimed.",
+    "review_artifact_refs": [
+      ".codex/delivery/evidence/custometry-ui-design-program-v2/g1-r2-atlas-report.md"
+    ],
+    "questions": []
+  },
+  "owner_decision_ref": null,
+  "owner_decision_sha256": null,
+  "program_complete": false
+}

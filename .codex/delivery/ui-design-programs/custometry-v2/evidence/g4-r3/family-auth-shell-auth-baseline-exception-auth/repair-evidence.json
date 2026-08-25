@@ -1,0 +1,146 @@
+{
+  "schema_id": "codex.ui-program-repair-evidence/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "created_at": "2026-08-12T10:34:26Z",
+  "status": "passed",
+  "repair_scope": "control_plane_only",
+  "blocked_stage_id": "G4@family.auth.shell-auth.baseline-exception-auth-r2",
+  "replacement_stage_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3",
+  "root_cause": "The former visual_language_conformance proof contract applied novel target-screen actions, fixture metadata, accessibility, keyboard, overflow, regions, and elements symmetrically to the immutable accepted pilot reference and the target implementation.",
+  "blocked_evidence": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r2/family-auth-shell-auth-baseline-exception-auth/runtime-proof-blocker.json",
+    "sha256": "84737d881fbd6f867e1a320cc6f7dfb0b6557740ce00e46f2fb7eff57fddffd2"
+  },
+  "repair_contract": {
+    "runtime_profile": "codex.ui-stage-runtime-profiles/v1@1.6.0",
+    "capture_tool": "1.6.0",
+    "visual_qa_assembler": "1.5.0",
+    "visual_language_reference_profile": "visual_authority_reference",
+    "screen_reference_profile": "screen_reference",
+    "implementation_profile": "screen_implementation",
+    "legacy_capture_policy": "capture 1.5.0 remains historical-read-only and cannot be assembled into a new active proof chain"
+  },
+  "installed_skill_bindings": [
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/SKILL.md",
+      "sha256": "2fc3e53986191d25eccc61a62bb53d06c021e9f4eca2d14cc81e519167d136b6"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/assets/contract-versions.json",
+      "sha256": "f9aa7ce3879fb9b374b6d1aef147df14ed9b392f761d92564fdc9f914dc32823"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/capture_geometry.cjs",
+      "sha256": "eafe379394ecc3529258fc64501cb762f16b1e091c843ccaadad96729cb803be"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/assemble_visual_qa_receipt.py",
+      "sha256": "361129c770f8d7f1f3b9bca472c836b685a8c5d225a9621c7d4eebe1061a1c7f"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/assemble_render_provenance.py",
+      "sha256": "05bd408c5d36ed5a79e8cee31d45cf930f8f0646be5c9efaf20466e23e5d2c23"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/validate_ui_design_program.py",
+      "sha256": "d839a1a4ed61207a332e5bec90980525527ad00817fe8010450fcd800cdba178"
+    },
+    {
+      "path": "/Users/daniildegtyarev/.codex/skills/ui-design-program/references/visual-provenance-contract-v1.md",
+      "sha256": "0a8222a4b83e64e455a40c4d2aa914e658f1f4f68a28bedeb9b0aaff1f854c80"
+    }
+  ],
+  "accepted_authority_bindings": {
+    "program": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+      "sha256": "21810c42b847bfc591db9a7ad76cf3df64c6bb5ad0cb82dd80082bd0c7a124d2"
+    },
+    "accepted_visual_source": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+      "sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15"
+    },
+    "accepted_g3_owner_decision": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-acceptance-r2.json",
+      "sha256": "9bae65aed9e786a007f6fad1510605b0debf26fefdfc33c667e28e3191fbb6ea"
+    },
+    "platform_baseline": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/platform-ui-baseline.json",
+      "sha256": "c0e6c547f61211c2ae7b21dde614a3dee1637667c156d03233f3138175f935a3"
+    },
+    "target_family_slice": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/families/family.auth.shell-auth.baseline-exception-auth.json",
+      "sha256": "15187dd655888a5619f0593848e7729a4028fe626ea4b06edee999768e5e7371"
+    },
+    "representative_screen_slice": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/screens/UI-AUTH-001.json",
+      "sha256": "e79f5f9cda9d246765e745cff83c163685ae075e7a5d30620e6325074f118846"
+    }
+  },
+  "real_browser_probe": {
+    "mechanic": "playwright-cli through ui_design_tool.py",
+    "browser": "chromium/150.0.7871.187",
+    "anchor_id": "web-1440",
+    "reference": {
+      "geometry_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/repair-capture/reference-geometry.json",
+      "geometry_sha256": "fc923e4a09ee79510bcb22a1c8c6cc50eb54774e1101280467478cbc691785be",
+      "screenshot_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/repair-capture/reference.png",
+      "screenshot_sha256": "3986879a0d50e0977f03da6cbf6fb50aa7e1071941eae70d7286b8a32e66a07d",
+      "capture_profile": "visual_authority_reference",
+      "target_screen_checks_applied": false,
+      "accessibility_claim": "observed_not_acceptance_gating",
+      "result": "passed",
+      "blockers": []
+    },
+    "implementation": {
+      "geometry_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/repair-capture/implementation-geometry.json",
+      "geometry_sha256": "193f27d367000c6d4e2a292637817ef0eda9a702db5193e92561a8ad20ac0b90",
+      "screenshot_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/repair-capture/implementation.png",
+      "screenshot_sha256": "104f599a4cb15de0a379c93de07d0ab4e0ea873415cf974da995f890eb3efc3f",
+      "capture_profile": "screen_implementation",
+      "target_screen_checks_applied": true,
+      "accessibility_claim": "accessibility_smoke",
+      "unexpected_visible_regions": [],
+      "result": "passed",
+      "blockers": []
+    }
+  },
+  "validation": {
+    "skill_release": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_skill_release.py",
+      "status": "passed",
+      "failures": [],
+      "proof_boundary": "skill_packaging_and_synthetic_g0_g6_contract_runtime_not_real_product_browser_runtime"
+    },
+    "transient_cache_cleanup": "Two generated __pycache__ files created by local validator imports were removed; the final release-gate rerun passed with no stale bytecode.",
+    "replacement_prompt": {
+      "path": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-01-family-auth-shell-auth-baseline-exception-auth-r3.md",
+      "sha256": "1d5d599ad35a574d29244e5adcfe45e4a9103b5fa676db56cb27b15d0ef6dff7"
+    },
+    "incoming_transition": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/replacement-auth-r3/stage-transition.json",
+      "sha256": "36a10295cb916cc432d7fd49c39b6933c6be45ebb2ccb87c06eabd06daad776c",
+      "assembled_by": "assemble_stage_transition.py@1.2.0"
+    }
+  },
+  "ledger_sync": {
+    "blocked_row_current_authority": false,
+    "replacement_row_current_authority": true,
+    "replacement_status": "pending",
+    "replacement_execution_allowed": true,
+    "replacement_executor_claim": "none",
+    "g5_dependency_repointing": "Only the superseded family dependency was changed from r2 to r3; no G5 row was claimed or executed.",
+    "accepted_g3_control_plane_sync": "The accepted G3 result and owner evidence remain unchanged; only its outgoing transition declaration now names the assembled replacement transition."
+  },
+  "resolved_invariants": [
+    "The visual-authority reference keeps exact bytes, provenance, screenshot, common browser/viewport/motion conditions, fixed clock, network isolation, and redaction.",
+    "Novel target-screen regions, elements, actions, fixture/font/asset metadata, accessibility smoke, keyboard behavior, and overflow are implementation-only for visual_language_conformance.",
+    "source_fidelity remains strict through screen_reference.",
+    "unexpected_visible_regions blocks the implementation capture.",
+    "No accepted G0-G3 artifact, accepted pilot byte, product semantic, family scope, responsive-Web range, or mobile authorization changed."
+  ],
+  "proof_limits": [
+    "The repair probe proves the corrected capture split on the accepted pilot and accepted G3 candidate only.",
+    "It does not execute, design, or accept UI-AUTH-001 or any G4 family result.",
+    "The r3 stage must generate a fresh capture 1.6.0 proof chain for its own target screen and states."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema_id": "codex.ui-stage-program-snapshot-binding/v1",
+  "canonical_program": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "a61517db5be687e2ee01986f79f6942259b3a1341790cc2b8546162f9219ce24"
+  },
+  "snapshot": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/ui-design-program.snapshot.json",
+    "sha256": "3afbab6a709421f5d5db7ceea7ff6a481415fb27bf460857c1dbb3242b10a307"
+  },
+  "projection": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/g1-admission-inventory.family-projection.json",
+    "sha256": "5cd8e627969c7fb8c457e48f362606f8556fdd5b4c2b3b7a49c5c481f9a07c37"
+  },
+  "screen_index_snapshot": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/screens-index.snapshot.json",
+    "sha256": "728b3d51fdf6f79ec1c4e36d427ee51f3d40638ac97078e49f4f4c9575886ad1"
+  },
+  "changed_pointers": [
+    "/source_contracts",
+    "/screens/*/screen_ref/path",
+    "/artifact_indexes/screens",
+    "/execution_artifacts/plan_doc"
+  ],
+  "reason": "Family aggregation adds exact accepted required_states only for UI-FCST-001; no other inventory meaning changes.",
+  "accepted_authority_changed": false,
+  "result": "passed"
+}

@@ -3,7 +3,7 @@
   "schema_id": "codex.ui-wave-acceptance/v1",
   "generated_by": {
     "script": "assemble_wave_acceptance.py",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "command": "assemble_wave_acceptance.py <paths-redacted>"
   },
   "wave_revision_id": "<wave-id>@r1",
@@ -16,6 +16,12 @@
   "expected_screen_revision_ids": [],
   "screen_acceptance_receipts": [],
   "coverage": {"required_screen_state_ids": [], "accepted_screen_state_ids": []},
+  "standard_compliance": {
+    "standard_revision_id": "<pilot-standard-revision>", "clause_inventory_sha256": "<sha256>",
+    "applicability_manifest_sha256s": [], "expected_clause_ids": [], "dispositioned_clause_ids": [],
+    "expected_application_ids": [], "observed_application_ids": [], "accepted_exception_clause_ids": [],
+    "result": "blocked"
+  },
   "review_board": {"path": "<review-board-path>", "sha256": "<sha256>"},
   "result": "review_ready",
   "blockers": [],

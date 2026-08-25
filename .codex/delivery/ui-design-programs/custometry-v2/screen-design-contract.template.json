@@ -1,7 +1,7 @@
 {
   "$schema": "screen-design-contract.schema.json",
   "schema_id": "codex.ui-screen-design-contract/v1",
-  "contract_profile": "codex.ui-screen-design-contract/v1@1.4.0",
+  "contract_profile": "codex.ui-screen-design-contract/v1@2.0.0",
   "screen_revision_id": "<screen-state-role-locale-theme-revision>",
   "program_revision_ref": "<program-id>@<revision>",
   "functional_contract_ref": {
@@ -17,6 +17,12 @@
     "shell_variant_id": "<shell-variant-id>",
     "exception_id": null
   },
+  "standard_binding": {
+    "standard_revision_id": "<pilot-standard-revision>",
+    "clause_inventory_sha256": "<pilot-clause-inventory-sha256>",
+    "applicability_manifest": {"path": "<generated-applicability-manifest-path>", "sha256": "<generated-applicability-manifest-sha256>"}
+  },
+  "standard_exceptions": [],
   "status": "draft",
   "product_identity": {
     "screen_id": "<screen-id>",

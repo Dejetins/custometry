@@ -7,7 +7,7 @@ normative: false
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-08-05
+updated_at: 2026-08-07
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
@@ -381,6 +381,13 @@ Typed raw value остаётся источником истины, а форм�
 
 `MetricGroupVersion` задаёт стабильные идентификаторы групп, порядок групп и порядок метрик внутри каждой группы. Поэтому Finance всегда может показывать, например, Margin перед Revenue, а Client — AOV перед customer measures, независимо от Web, email или XLSX.
 
+Опубликованный dashboard/report задаёт исходный KPI-набор, но каждый
+пользователь может сохранить личный порядок и видимость доступных метрик в
+versioned personal Saved View. Личный вид не меняет опубликованный документ и
+не влияет на других пользователей. Название, единица и временная база берутся
+из версии метрики: годовую частоту нельзя самовольно подписывать `/мес.`, если
+сама metric version не определяет месячную нормализацию.
+
 | ID | Правило представления |
 |---|---|
 | METRIC-009 | NumberFormatSpec versioned, locale-aware и одинаков для Web/email/XLSX |
@@ -395,6 +402,10 @@ Typed raw value остаётся источником истины, а форм�
 | METRIC-018 | Certification transition фиксирует reviewers/evidence/replacement/impact без переписывания historical metrics |
 | METRIC-019 | Direct, policy-derived и residual-proxy values имеют разные origin/quality/coverage labels |
 | METRIC-020 | Proxy раскрывает derivation, exclusions, residual, sensitivity и пределы применимости |
+| METRIC-021 | Персональная KPI-полоса выбирает и упорядочивает только разрешённые compatible published metrics в bounded slot contract и не меняет shared publication |
+| METRIC-022 | Личный KPI selection хранится в versioned personal Saved View, привязанном к user/workspace/document scope, и сбрасывается к published default |
+| METRIC-023 | KPI label/unit/time basis берутся из MetricVersion и периода; UI не изобретает `/month` или другую нормализацию |
+| METRIC-024 | Visibility/order готовых projections — presentation state; новая projection меняет request/manifest/cache identity и считается только backend |
 
 #### Versioned политика скидок
 
@@ -477,6 +488,8 @@ Capability возвращает `available`, `degraded` или `unavailable` н�
 | FILTER-008 | UI показывает applied/default/locked filters, resulting grain и estimated rows; hidden business rule только versioned metric rule |
 | FILTER-009 | Focus / Explore позволяет draft local filters без изменения parent report до Apply to report; Reset возвращает inherited state, Undo отменяет последнее draft-действие |
 | FILTER-010 | Apply to report повторно валидирует filters и authorization на backend и обновляет normalized spec/request identity; system/locked filters видимы и не могут быть удалены либо ослаблены |
+| FILTER-011 | Builder даёт поиск по сгруппированному по сущностям каталогу, явные AND/OR-группы и вложенные уточнения в области одного события/заказа; до Apply видно читаемое итоговое выражение |
+| FILTER-012 | Черновик, применённое выражение и permission-filtered предварительная оценка различимы; оценка не заменяет backend validation, Apply материализует только повторно авторизованное normalized tree |
 
 ### 6.7. Attribution, unit economics и управляемые допущения
 
@@ -768,6 +781,9 @@ Canonical primary keys: customer transaction — `[canonical_customer_id, source
 | COMPARE-005 | Immutable artifact фиксирует resolved spec/periods, timezone, calendar/policy hash и metric/activity/segment/dataset/filter versions; несовместимость блокируется либо требует auditable rebase |
 | COMPARE-006 | Capability отдельно проверяет history, quality, permissions и definition compatibility обоих периодов |
 | COMPARE-007 | UI/email/XLSX показывают одинаковые mode/limitations из одного comparison artifact |
+| COMPARE-008 | Документ имеет общий default grain/period/comparison; каждый chart/table block явно наследует его либо задаёт local override, а effective spec входит в request/cache/snapshot identity |
+| COMPARE-009 | Month/quarter/year comparisons выровнены по календарю на всех поддерживаемых вкладках, включая размер и миграцию сегментов; для effective period проверяются snapshot pair, coverage и compatibility |
+| COMPARE-010 | Переключение month/quarter/year реально меняет границы корзин, агрегацию и число точек; график, таблица и export читают один bucketed artifact, production reduction выполняется backend CPU |
 
 | ID | Назначение, вход и ключевой результат |
 |---|---|
@@ -857,6 +873,8 @@ Forecast residual anomalies остаются отдельной time-series poli
 | SEGMENT-024 | Permission-filtered `Used by` связывает segment с dashboard/report/research/forecast/promotion без утечки закрытых assets |
 | SEGMENT-025 | Historical comparison использует exact immutable pair of snapshots и не пересчитывает прошлое новыми правилами |
 | SEGMENT-026 | Доступ к segment не выдаёт member rows или PII; это отдельная authorization |
+| SEGMENT-027 | Canonical migration artifact содержит полную направленную матрицу всех origin/destination pairs, включая нули и диагональ stayed; top-N остаётся только производным представлением |
+| SEGMENT-028 | Size/migration comparison использует exact immutable current/comparison snapshots для месяца, квартала или года и показывает count/rate delta, coverage, compatibility и limitations |
 
 Единый block builder используется во всех трёх профилях аналитического документа:
 
@@ -961,6 +979,7 @@ Dashboard, Workbook/Report и Research используют один presentatio
 | ANALYTICAL-DOC-010 | Viewer получает разрешённый page index и монтирует active page; bounded prefetch не считается view и не раскрывает denied content |
 | ANALYTICAL-DOC-011 | Publication атомарно разрешает hierarchy/filters/segments/blocks в один root snapshot для Web/email/XLSX/export |
 | ANALYTICAL-DOC-012 | Responsive Web сохраняет hierarchy/reading/data meaning для RU/EN, keyboard/tab overflow/200%; mobile IA не входит в scope |
+| ANALYTICAL-DOC-013 | Опубликованный документ и snapshot показывают permission-safe автора, дату обновления и версию; author binding pin-ится в manifest и совпадает в Web/exports |
 
 ### 14.1. Chart specification
 
@@ -1019,6 +1038,7 @@ ChartSpec не принимает JavaScript functions, `renderItem`, raw EChart
 | CHART-017 | ECharts-GL/WebGL/GPU analytics выключены до v1; browser SVG/Canvas не выполняет analytical reduction |
 | CHART-018 | Static adapter без network, с batch/dimension/output/temp/memory/CPU/time limits, cancellation и cleanup partial artifacts |
 | CHART-019 | Release gate проверяет schema/security, shared-compiler option hash Web/SSR, SVG/Canvas semantics, SSR→PNG, font/render-build cache invalidation, range timeline, native/raster XLSX, themes/a11y и golden parity |
+| CHART-020 | Versioned visual template задаёт semantic palette, contrast, typography scale и table density; отчёт имеет default, блок — override, effective template входит в snapshot/export/render/cache identity, builder живёт отдельно в Settings |
 
 #### 14.1.1. Полноэкранный Focus / Explore mode
 

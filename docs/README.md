@@ -27,6 +27,7 @@
 - [Custometry Quality Tooling and Gates](architecture/tooling-gates.md)
 - [Comparable analytics platform capability audit](architecture/ui/comparable-analytics-platform-capability-audit-v1.md)
 - [Custometry HTML-first UI prototyping and reuse plan v1](architecture/ui/custometry-contract-compiled-ui-prototyping-plan-v1.md)
+- [Custometry Web implementation source contract v1](architecture/ui/custometry-web-implementation-source-contract-v1.md)
 
 ## contracts
 

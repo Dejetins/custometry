@@ -1,0 +1,146 @@
+{
+  "$schema": "review-board-manifest.schema.json",
+  "schema_id": "codex.ui-review-board-manifest/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "revision": 4,
+  "validation_profile": "program_ready",
+  "entries": [
+    {
+      "entry_id": "review-01",
+      "role": "source_native",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/equivalence/candidate-web-1920-ru-default.png",
+      "sha256": "2df4490857cf08205562e6314c2680e59b7d73d50e0638d9c3ddccfe45354f97",
+      "anchor_id": null,
+      "state_id": null
+    },
+    {
+      "entry_id": "review-02",
+      "role": "source_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-768/reference.png",
+      "sha256": "4ad7a441b6fd84cbad721f97f4fed647ed5a35543df6f63a7ebcdaab26a8eae8",
+      "anchor_id": "web-768",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-03",
+      "role": "source_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1024/reference.png",
+      "sha256": "8879dc44eefcebe30a0f88a10d6c725ac0ed25d38adedd51a97dca7ffc891023",
+      "anchor_id": "web-1024",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-04",
+      "role": "source_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1440/reference.png",
+      "sha256": "f83b7404610b2469ff2bd85d1b57fd491eed37e1a38a3346252141ba2ffdce91",
+      "anchor_id": "web-1440",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-05",
+      "role": "source_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1920/reference.png",
+      "sha256": "a901a705d8f0cf267da087f5e03c375f28ca669d9c0680bef3b50dee9583254f",
+      "anchor_id": "web-1920",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-06",
+      "role": "candidate",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r4/candidate-shell.html",
+      "sha256": "cfa864ccfece2dc74a6e8e51926bf2275d039fc1302387faefd91dbddcd90413",
+      "anchor_id": null,
+      "state_id": null
+    },
+    {
+      "entry_id": "review-07",
+      "role": "candidate_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-768/implementation.png",
+      "sha256": "305b6b459fda69ac182f9069de0ecca4359a2d511c61b9e79c4557c24b93af82",
+      "anchor_id": "web-768",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-08",
+      "role": "candidate_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1024/implementation.png",
+      "sha256": "d698e766d6553b503909df7d2dd9f7798b002984a1747ae9373afe67a41dbcb2",
+      "anchor_id": "web-1024",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-09",
+      "role": "candidate_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1440/implementation.png",
+      "sha256": "104f599a4cb15de0a379c93de07d0ab4e0ea873415cf974da995f890eb3efc3f",
+      "anchor_id": "web-1440",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-10",
+      "role": "candidate_anchor",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1920/implementation.png",
+      "sha256": "1648d46be8952554c199a0fd83ec5adedc721c005ac5effc1a1f12a37ed9273c",
+      "anchor_id": "web-1920",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-11",
+      "role": "render_provenance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-768/implementation-provenance.json",
+      "sha256": "ae1a710e2f9edfd93d9d67cd69b2ed75015959e9f17e96641fd2e2369ffeccb3",
+      "anchor_id": "web-768",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-12",
+      "role": "render_provenance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1024/implementation-provenance.json",
+      "sha256": "b4206d45d4cde0df2e3270dd2421090632da37c8dec5241ac43d34ce9553b501",
+      "anchor_id": "web-1024",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-13",
+      "role": "render_provenance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1440/implementation-provenance.json",
+      "sha256": "2d30d620ab7a2b954a03b9bab9232b507f89fcb10c81bee5bd00fba721264835",
+      "anchor_id": "web-1440",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-14",
+      "role": "render_provenance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r4/captures/web-1920/implementation-provenance.json",
+      "sha256": "1bc9f7a20645900fb1770157ec4d9055fdfb51139f8d4715d94f98fd60e5e0d7",
+      "anchor_id": "web-1920",
+      "state_id": null
+    },
+    {
+      "entry_id": "review-15",
+      "role": "inheritance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/inheritance-report.json",
+      "sha256": "e0a8db9730abc12d300eef4c4f44fbf0468c1c751cf0151f89a9ac8dd840bb01",
+      "anchor_id": null,
+      "state_id": null
+    },
+    {
+      "entry_id": "review-16",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/standard-board.html",
+      "sha256": "db8a16a06cd09da794716e32d635ac48e7bdd298356e6daab63c057c1a6a7c92",
+      "anchor_id": null,
+      "state_id": null
+    },
+    {
+      "entry_id": "review-17",
+      "role": "screen_contract",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r4/representative-shell-contract.json",
+      "sha256": "5b298e8c08f5b177124519e534ce5d74502150fdf4f64b8ce77bb5aed12edc49",
+      "anchor_id": null,
+      "state_id": null
+    }
+  ]
+}

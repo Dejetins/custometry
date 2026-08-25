@@ -1,0 +1,29 @@
+{
+  "$schema": "stage-transition-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "from_stage_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+  "from_gate": "G0",
+  "from_target": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+  "from_revision": 5,
+  "artifact": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-design-program.promotion-candidate.json",
+  "to_gate": "G1",
+  "to_stage_id": "G1@atlas-r4",
+  "to_target": "atlas-r4",
+  "to_task": ".codex/agents/generated/custometry-ui-design-g0-v2/13-g1-complete-screen-atlas-r4.md",
+  "status": "ready",
+  "owner_decision": null,
+  "decision_inventory": null,
+  "blockers": null,
+  "checks": [
+    "current_gate=.codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/current-gate.json",
+    "source_freshness=.codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/source-freshness.json",
+    "next_stage_inputs=.codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/next-stage-inputs.json",
+    "write_scope=.codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/write-scope.json",
+    "foreign_changes=.codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/foreign-changes.json",
+    "execution_route=.codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/execution-route.json",
+    "handoff_artifact=.codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r5/preflight/handoff-artifact.json"
+  ],
+  "summary": "G0 r5 rebound the accepted blueprint semantics to a complete current intake and inherited visual baseline; G1 atlas r4 is uniquely ready.",
+  "review_artifacts": [],
+  "questions": []
+}

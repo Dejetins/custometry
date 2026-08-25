@@ -1,0 +1,54 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3.finished-foundations-shell",
+  "decision_kind": "stage_acceptance",
+  "target": {
+    "artifact_kind": "program",
+    "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+    "revision": 4,
+    "validation_profile": "program_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "f8a1eda1437d3dd86ad3bf5765c9f4e68ae066f440247fadc7e99c2e8991ddb7"
+  },
+  "decision": {
+    "status": "accepted",
+    "revision": 4,
+    "decision_text": "The owner accepts the exact finished G3 foundations and shell result as the mandatory visual foundation for G4. Every target element with a corresponding accepted-pilot pattern must inherit the complete applicable pilot rule set; partial inheritance and aesthetic approximation remain forbidden. This decision does not accept any G4 screen or family, target product meaning, production code, publication, deployment, mobile-specific design, or full WCAG conformance.",
+    "accepted_values": [
+      {
+        "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+        "review_board": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/review-board.html",
+          "sha256": "b80fbcd335bb3b5e051a7c3735e05adaace14854512cd4060e5207461fcdce35"
+        },
+        "standard_board": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/standard-board.html",
+          "sha256": "db8a16a06cd09da794716e32d635ac48e7bdd298356e6daab63c057c1a6a7c92"
+        },
+        "candidate_shell": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/candidate-shell.html",
+          "sha256": "a8db4d4554eb66e0a0f85ff382c3e95bdf25f6c55352d1f904c60e8084856f05"
+        },
+        "inheritance_policy": "complete_applicable_rule_set_per_matching_target_element",
+        "partial_inheritance": "forbidden",
+        "aesthetic_approximation": "forbidden"
+      }
+    ],
+    "accepted_value_sha256s": [
+      "474b8aec5902ee992d683c22b6059716859a779273c52172ce64973aa5f5fd5a"
+    ]
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "ок, G3 принимается",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-13T20:03:09.241730+00:00"
+  }
+}

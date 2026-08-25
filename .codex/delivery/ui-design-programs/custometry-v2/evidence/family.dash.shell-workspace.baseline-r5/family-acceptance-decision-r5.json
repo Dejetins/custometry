@@ -1,0 +1,60 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.dash.shell-workspace.baseline-r5.finished-result",
+  "decision_kind": "family_acceptance",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.dash.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-dash-shell-workspace-baseline/review-board.html",
+    "sha256": "5537a3ea391fbb1ce1de56d93d09a0c05bf4a470adb90870f45fe768e3fc26bc"
+  },
+  "decision": {
+    "status": "accepted",
+    "revision": 5,
+    "decision_text": "The owner explicitly accepted the complete HTML review board shown for the G4 Dashboards family. Acceptance covers UI-DASH-001 in all six required states, the four responsive-Web anchors, all six visible isolated actions, Result Trust, and applicable pilot visual-language inheritance. It does not authorize production implementation, publication, deployment, mobile-specific design, another G4 family, G5, G6, or full WCAG conformance.",
+    "accepted_values": [
+      {
+        "stage_instance_id": "G4@family.dash.shell-workspace.baseline-r5",
+        "screen_ids": [
+          "UI-DASH-001"
+        ],
+        "required_states": [
+          "initial",
+          "loading",
+          "populated",
+          "error",
+          "permission_denied",
+          "recovery"
+        ],
+        "responsive_web_anchors": [
+          768,
+          1024,
+          1440,
+          1920
+        ],
+        "source_bound_fixture_action_count": 6,
+        "result_trust_visible": true,
+        "mobile_scope": "unauthorized",
+        "production_implementation": "not_accepted_by_this_decision"
+      }
+    ],
+    "accepted_value_sha256s": [
+      "9338c556abff0d0d3b25ab0a48d9c698b06ad23b7a673767a5ef95ca7e5201e3"
+    ]
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "ок это принимается",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-23T14:24:10.688529+00:00"
+  }
+}

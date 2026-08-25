@@ -11,12 +11,12 @@
     "asset_contract", "icon_contract", "component_contracts",
     "interaction_patterns", "layout_contract", "responsive_contract",
     "accessibility_contract", "exceptions", "change_control",
-    "unresolved_inputs"
+    "standard_contract", "unresolved_inputs"
   ],
   "properties": {
     "$schema": {"type": "string"},
     "schema_id": {"const": "codex.platform-ui-baseline/v1"},
-    "contract_profile": {"const": "codex.platform-ui-baseline/v1@1.0.0"},
+    "contract_profile": {"const": "codex.platform-ui-baseline/v1@2.0.0"},
     "baseline_id": {"type": "string", "minLength": 1},
     "revision": {"type": "integer", "minimum": 1},
     "status": {"enum": ["draft", "accepted", "superseded"]},
@@ -37,6 +37,7 @@
     "accessibility_contract": {"$ref": "#/$defs/accessibilityContract"},
     "exceptions": {"type": "array", "items": {"$ref": "#/$defs/exception"}},
     "change_control": {"$ref": "#/$defs/changeControl"},
+    "standard_contract": {"$ref": "#/$defs/standardContract"},
     "unresolved_inputs": {"type": "array", "items": {"$ref": "#/$defs/unresolvedInput"}}
   },
   "$defs": {
@@ -428,6 +429,92 @@
         "allowed_differences": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
         "reason_ref": {"type": "string", "minLength": 1},
         "owner_decision_ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "standardSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope", "component_id", "variant", "size_class", "slot_id",
+        "state_id", "shell_region_id", "icon_id", "element_type", "anchor_id"
+      ],
+      "properties": {
+        "scope": {"enum": ["component", "shell_region", "icon", "interaction", "responsive", "foundation"]},
+        "component_id": {"type": ["string", "null"]},
+        "variant": {"type": ["string", "null"]},
+        "size_class": {"type": ["string", "null"]},
+        "slot_id": {"type": ["string", "null"]},
+        "state_id": {"type": ["string", "null"]},
+        "shell_region_id": {"type": ["string", "null"]},
+        "icon_id": {"type": ["string", "null"]},
+        "element_type": {"type": ["string", "null"]},
+        "anchor_id": {"type": ["string", "null"]}
+      }
+    },
+    "standardClause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clause_id", "domain", "property", "value", "unit", "tolerance",
+        "source_observation_ids", "baseline_paths", "applicability", "change_policy"
+      ],
+      "properties": {
+        "clause_id": {"type": "string", "minLength": 1},
+        "domain": {"enum": ["typography", "control", "color", "border", "elevation", "opacity", "component", "icon", "focus", "motion", "shell", "layout", "responsive", "interaction", "spacing", "radius", "sizing"]},
+        "property": {"type": "string", "minLength": 1},
+        "value": {},
+        "unit": {"type": ["string", "null"]},
+        "tolerance": {"type": "number", "minimum": 0},
+        "source_observation_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "baseline_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^/"}},
+        "applicability": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/standardSelector"}},
+        "change_policy": {"const": "fixed"}
+      }
+    },
+    "sourceDisposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observation_id", "disposition", "reason_ref"],
+      "properties": {
+        "observation_id": {"type": "string", "minLength": 1},
+        "disposition": {"const": "source_backed_not_reusable"},
+        "reason_ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "standardContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standard_revision_id", "source_inventory", "clause_inventory_sha256",
+        "clauses", "source_dispositions", "applicability_policy"
+      ],
+      "properties": {
+        "standard_revision_id": {"type": "string", "minLength": 1},
+        "source_inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["inventory_id", "revision", "path", "sha256"],
+          "properties": {
+            "inventory_id": {"type": "string", "minLength": 1},
+            "revision": {"type": "integer", "minimum": 1},
+            "path": {"type": "string", "minLength": 1},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
+        },
+        "clause_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "clauses": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/standardClause"}},
+        "source_dispositions": {"type": "array", "items": {"$ref": "#/$defs/sourceDisposition"}},
+        "applicability_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["derivation", "clause_dispositions", "exception_policy", "delegated_design_boundary"],
+          "properties": {
+            "derivation": {"const": "deterministic_exact_identity_match"},
+            "clause_dispositions": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"enum": ["conforms", "accepted_exception", "source_backed_not_applicable"]}},
+            "exception_policy": {"const": "typed_narrow_source_bound_owner_acceptance"},
+            "delegated_design_boundary": {"const": "screen_specific_composition_only"}
+          }
+        }
       }
     },
     "changeControl": {

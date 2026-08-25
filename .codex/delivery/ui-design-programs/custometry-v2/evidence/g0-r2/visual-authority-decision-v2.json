@@ -1,0 +1,52 @@
+{
+  "schema_id": "custometry.ui-program-owner-authority/v2",
+  "status": "accepted",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "task_id": "custometry-v2-complete-g0-r2-and-g1-r2",
+  "revision": 2,
+  "execution_mode": "goal_driven",
+  "authorized_stage_sequence": [
+    "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "G1@atlas-r2"
+  ],
+  "terminal_target": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2 pending and unclaimed",
+  "scope": {
+    "platform": "responsive_web",
+    "mobile_scope": "unauthorized",
+    "publication_authorized": false,
+    "owner_acceptance": {
+      "G0": false,
+      "G1": false
+    }
+  },
+  "source_visual": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15"
+  },
+  "visual_authority": {
+    "source_visual_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "source_visual_sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+    "source_evidence_mode": "renderable_html",
+    "screen_acceptance_scope": "Visual-language and platform-baseline authority only; never exact target-screen composition, product semantics, fixture truth, legend-threshold truth, production implementation, or novel-screen fidelity.",
+    "visual_language_scope": "Linear Graphite shell character, calm professional density, compact contextual navigation, bounded analytical surfaces, concise KPI and command language, visible Result Trust, Focus/Explore character, readable analytical labels and tables, and adaptive external series-panel behavior as a visual-language reference.",
+    "reusable_foundation_scope": "Hash-pinned source-backed colors, typography stack, spacing rhythm, compact controls, rounded command language, shell/navigation relationships, overlay behavior, and analytical presentation primitives only; exact composition, information architecture, component implementation, runtime semantics, and target-screen acceptance remain later-gate work.",
+    "inheritance_policy": "required",
+    "mobile_scope": "unauthorized"
+  },
+  "promoted_requirement_ids": [
+    "METRIC-021",
+    "METRIC-022",
+    "METRIC-023",
+    "METRIC-024",
+    "FILTER-011",
+    "FILTER-012",
+    "COMPARE-008",
+    "COMPARE-009",
+    "COMPARE-010",
+    "SEGMENT-027",
+    "SEGMENT-028",
+    "ANALYTICAL-DOC-013",
+    "CHART-020"
+  ],
+  "decision_policy": "routine technical and reversible choices are agent_decidable; no routine owner input remains for G0 or G1"
+}

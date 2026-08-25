@@ -1,0 +1,65 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4.finished-foundations-shell",
+  "decision_kind": "stage_acceptance",
+  "target": {
+    "artifact_kind": "program",
+    "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+    "revision": 4,
+    "validation_profile": "program_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "f50eccde7c2ab4e1415dc64aaa1ac29496530c14a0ecabf466cdeba37e3ed34f"
+  },
+  "decision": {
+    "status": "accepted",
+    "revision": 4,
+    "decision_text": "The owner accepts the exact finished G3 r4 compatibility reproof as the mandatory visual foundation for G4. Each matching target element inherits one complete applicable accepted-pilot rule set; partial inheritance, cross-variant mixing and aesthetic approximation remain forbidden. This decision does not accept any G4 family, target product meaning, production code, publication, deployment, mobile-specific design or full WCAG conformance.",
+    "accepted_values": [
+      {
+        "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+        "review_board": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r4/review-board.html",
+          "sha256": "c52463bef636d0fb69b116d93ee3bb8ddae47bbffa1b1ae3172658d649930c1d"
+        },
+        "standard_board": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/standard-board.html",
+          "sha256": "db8a16a06cd09da794716e32d635ac48e7bdd298356e6daab63c057c1a6a7c92"
+        },
+        "candidate_shell": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r4/candidate-shell.html",
+          "sha256": "cfa864ccfece2dc74a6e8e51926bf2275d039fc1302387faefd91dbddcd90413"
+        },
+        "inheritance_policy": "one_complete_applicable_accepted_pilot_rule_set_per_matching_target_element",
+        "partial_inheritance": "forbidden",
+        "cross_variant_mixing": "forbidden",
+        "aesthetic_approximation": "forbidden",
+        "affected_elements": [
+          "workspace-members-manage",
+          "workspace-roles-assign",
+          "report_access-manage",
+          "dashboard_access-manage"
+        ],
+        "prior_stage": {
+          "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+          "historical_outcome": "accepted"
+        }
+      }
+    ],
+    "accepted_value_sha256s": [
+      "622feeadd2d5c29c7eb8066e3f45797aa0bc60194ca2d05f66118c1ff66784dd"
+    ]
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "ок, G3 r4 принимается",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-13T22:18:58.781346+00:00"
+  }
+}

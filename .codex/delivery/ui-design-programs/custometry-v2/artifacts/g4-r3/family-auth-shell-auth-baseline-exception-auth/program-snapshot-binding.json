@@ -1,0 +1,28 @@
+{
+  "schema_id": "codex.ui-stage-program-snapshot-binding/v1",
+  "canonical_program": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "21810c42b847bfc591db9a7ad76cf3df64c6bb5ad0cb82dd80082bd0c7a124d2"
+  },
+  "snapshot": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/ui-design-program.snapshot.json",
+    "sha256": "4a16184af42db3b916591abe498ec4c0d3b722ba15e9c43651b1840cbf3155ae"
+  },
+  "projection": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/g1-admission-inventory.family-projection.json",
+    "sha256": "bd9fb7be5252653897a1c9e6adb9c8149e805f7e93cb18094ba4bd7e8ad35890"
+  },
+  "screen_index_snapshot": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/screens-index.snapshot.json",
+    "sha256": "0e5d64cf046ddb269254532352acd62d714cc0244b90033806c924853f0d6639"
+  },
+  "changed_pointers": [
+    "/source_contracts",
+    "/screens/*/screen_ref/path",
+    "/artifact_indexes/screens",
+    "/execution_artifacts/plan_doc"
+  ],
+  "reason": "The active family assembler resolves required_states from screen_ref; the accepted G1 admission inventory carries identity/classification only. This stage-owned full-inventory projection adds the exact six accepted UI-AUTH-001 states, rebinds the screen source/index mechanically, and self-links the snapshot without mutating accepted G0-G3 artifacts.",
+  "accepted_authority_changed": false,
+  "result": "passed"
+}

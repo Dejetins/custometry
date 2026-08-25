@@ -1,0 +1,28 @@
+{
+  "journey": {
+    "journey_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+      "json_pointer": "/journeys/8",
+      "expected_id": "adoption-and-performance-operations"
+    },
+    "entry_screen_ids": [
+      "UI-ADMIN-005"
+    ],
+    "intermediate_screen_ids": [
+      "UI-ADMIN-006"
+    ],
+    "alternate_screen_ids": [],
+    "failure_screen_ids": [],
+    "recovery_screen_ids": [],
+    "terminal_screen_ids": [
+      "UI-OPS-004"
+    ],
+    "external_boundary_ids": [],
+    "transitions": [],
+    "unresolved_fields": [
+      "criticality",
+      "criticality_origin",
+      "transitions"
+    ]
+  }
+}

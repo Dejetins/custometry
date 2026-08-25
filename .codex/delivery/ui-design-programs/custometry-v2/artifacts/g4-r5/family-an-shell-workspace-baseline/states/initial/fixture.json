@@ -1,0 +1,16 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-AN-013",
+  "state_id": "UI-AN-013.initial",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Аналитика · исследования",
+    "title": "Исследования готовы к первому обзору",
+    "summary": "Безопасный старт списка исследований без production-запросов и внешних изменений.",
+    "tone": "neutral",
+    "status": "Подготовка research workspace"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema_id": "custometry.ui-stage-file-manifest-outside-expected/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6",
+  "outside_expected_paths": [],
+  "observed_file_count": 0,
+  "reason": "All r6 successor writes remain inside the authorized program-owned touch zones.",
+  "historical_r5_evidence_mutated": false
+}

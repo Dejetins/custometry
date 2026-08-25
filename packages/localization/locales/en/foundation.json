@@ -45,5 +45,48 @@
   "searchPlanned": "Search is planned for a later vertical slice.",
   "statusChecking": "checking",
   "statusReady": "ready",
-  "statusUnavailable": "unavailable"
+  "statusUnavailable": "unavailable",
+  "skipToContent": "Skip to content",
+  "primaryNavigation": "Primary navigation",
+  "switchLanguage": "Switch language",
+  "system": {
+    "fixtureDisclosure": "Presentation contract fixture only. No backend authorization, session, runtime, or compatibility decision was made.",
+    "supportCode": "Support code",
+    "back": "Back",
+    "allowedOverview": "Open allowed Overview",
+    "signIn": "Sign in again",
+    "refreshStatus": "Refresh status",
+    "openRunbook": "Open safe guidance",
+    "forbidden": {
+      "eyebrow": "Access boundary",
+      "title": "This surface is not available",
+      "description": "The requested address is preserved, but this presentation does not reveal whether the resource exists. Return to an allowed location or follow your organization's access-request guidance."
+    },
+    "not-found": {
+      "eyebrow": "Route boundary",
+      "title": "Page not found",
+      "description": "This client cannot resolve the requested route. No recent-resource suggestion is shown because no authorized local reference is available."
+    },
+    "session-expired": {
+      "eyebrow": "Session boundary",
+      "title": "Your session has expired",
+      "description": "Protected presentation data was cleared. Sign in again; the server will re-check workspace and resource access before returning."
+    },
+    "maintenance": {
+      "eyebrow": "Runtime status",
+      "title": "Part of Custometry is under maintenance",
+      "description": "Affected operations are temporarily unavailable. Read-only guidance remains available and status refresh is manual and bounded.",
+      "scopeLabel": "Affected scope",
+      "scope": "Workspace mutations",
+      "lastUpdateLabel": "Last update",
+      "nextReviewLabel": "Next review"
+    },
+    "upgrade-required": {
+      "eyebrow": "Compatibility boundary",
+      "title": "A client upgrade is required",
+      "description": "Incompatible mutations are blocked. Installation administrators can follow the safe guidance; other users may continue only with explicitly available read-only surfaces.",
+      "currentLabel": "Current compatibility",
+      "requiredLabel": "Required compatibility"
+    }
+  }
 }

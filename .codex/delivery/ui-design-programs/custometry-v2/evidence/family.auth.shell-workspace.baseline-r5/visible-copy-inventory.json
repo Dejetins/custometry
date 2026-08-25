@@ -1,0 +1,394 @@
+{
+  "schema_id": "custometry.ui-visible-copy-inventory/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r5",
+  "screen_state_locale_pairs": [
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.initial",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Настройте рабочее пространство",
+        "lead": "Пять коротких шагов — прогресс сохраняется автоматически.",
+        "steps": [
+          "Аккаунт",
+          "Рабочее пространство",
+          "Язык и часовой пояс",
+          "Данные или демо",
+          "Готово"
+        ],
+        "check": [
+          "Профиль подтверждён",
+          "Рабочее пространство названо",
+          "Настройки времени выбраны",
+          "Источник данных можно подключить позже"
+        ],
+        "next": "Продолжить",
+        "resume": "Можно вернуться позже — начнём с этого шага.",
+        "state": "Начните с базовых настроек рабочего пространства."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.loading",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Настройте рабочее пространство",
+        "lead": "Пять коротких шагов — прогресс сохраняется автоматически.",
+        "steps": [
+          "Аккаунт",
+          "Рабочее пространство",
+          "Язык и часовой пояс",
+          "Данные или демо",
+          "Готово"
+        ],
+        "check": [
+          "Профиль подтверждён",
+          "Рабочее пространство названо",
+          "Настройки времени выбраны",
+          "Источник данных можно подключить позже"
+        ],
+        "next": "Продолжить",
+        "resume": "Можно вернуться позже — начнём с этого шага.",
+        "state": "Восстанавливаем сохранённый прогресс…"
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.populated",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Настройте рабочее пространство",
+        "lead": "Пять коротких шагов — прогресс сохраняется автоматически.",
+        "steps": [
+          "Аккаунт",
+          "Рабочее пространство",
+          "Язык и часовой пояс",
+          "Данные или демо",
+          "Готово"
+        ],
+        "check": [
+          "Профиль подтверждён",
+          "Рабочее пространство названо",
+          "Настройки времени выбраны",
+          "Источник данных можно подключить позже"
+        ],
+        "next": "Продолжить",
+        "resume": "Можно вернуться позже — начнём с этого шага.",
+        "state": "Черновик найден: 2 из 5 шагов уже готовы."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.error",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Настройте рабочее пространство",
+        "lead": "Пять коротких шагов — прогресс сохраняется автоматически.",
+        "steps": [
+          "Аккаунт",
+          "Рабочее пространство",
+          "Язык и часовой пояс",
+          "Данные или демо",
+          "Готово"
+        ],
+        "check": [
+          "Профиль подтверждён",
+          "Рабочее пространство названо",
+          "Настройки времени выбраны",
+          "Источник данных можно подключить позже"
+        ],
+        "next": "Продолжить",
+        "resume": "Можно вернуться позже — начнём с этого шага.",
+        "state": "Не удалось сохранить этот шаг. Данные остались в форме — повторите."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.permission_denied",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Настройте рабочее пространство",
+        "lead": "Пять коротких шагов — прогресс сохраняется автоматически.",
+        "steps": [
+          "Аккаунт",
+          "Рабочее пространство",
+          "Язык и часовой пояс",
+          "Данные или демо",
+          "Готово"
+        ],
+        "check": [
+          "Профиль подтверждён",
+          "Рабочее пространство названо",
+          "Настройки времени выбраны",
+          "Источник данных можно подключить позже"
+        ],
+        "next": "Продолжить",
+        "resume": "Можно вернуться позже — начнём с этого шага.",
+        "state": "Только администратор рабочего пространства может завершить настройку."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.recovery",
+      "locale": "ru",
+      "visible_copy": {
+        "title": "Настройте рабочее пространство",
+        "lead": "Пять коротких шагов — прогресс сохраняется автоматически.",
+        "steps": [
+          "Аккаунт",
+          "Рабочее пространство",
+          "Язык и часовой пояс",
+          "Данные или демо",
+          "Готово"
+        ],
+        "check": [
+          "Профиль подтверждён",
+          "Рабочее пространство названо",
+          "Настройки времени выбраны",
+          "Источник данных можно подключить позже"
+        ],
+        "next": "Продолжить",
+        "resume": "Можно вернуться позже — начнём с этого шага.",
+        "state": "Продолжите с шага «Язык и часовой пояс» — предыдущие ответы сохранены."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.initial",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Set up your workspace",
+        "lead": "Five short steps — progress is saved automatically.",
+        "steps": [
+          "Account",
+          "Workspace",
+          "Locale & timezone",
+          "Data or demo",
+          "Finish"
+        ],
+        "check": [
+          "Profile confirmed",
+          "Workspace named",
+          "Time preferences selected",
+          "A data source can be connected later"
+        ],
+        "next": "Continue",
+        "resume": "You can return later — we will resume from this step.",
+        "state": "Start with the essential workspace settings."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.loading",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Set up your workspace",
+        "lead": "Five short steps — progress is saved automatically.",
+        "steps": [
+          "Account",
+          "Workspace",
+          "Locale & timezone",
+          "Data or demo",
+          "Finish"
+        ],
+        "check": [
+          "Profile confirmed",
+          "Workspace named",
+          "Time preferences selected",
+          "A data source can be connected later"
+        ],
+        "next": "Continue",
+        "resume": "You can return later — we will resume from this step.",
+        "state": "Restoring saved progress…"
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.populated",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Set up your workspace",
+        "lead": "Five short steps — progress is saved automatically.",
+        "steps": [
+          "Account",
+          "Workspace",
+          "Locale & timezone",
+          "Data or demo",
+          "Finish"
+        ],
+        "check": [
+          "Profile confirmed",
+          "Workspace named",
+          "Time preferences selected",
+          "A data source can be connected later"
+        ],
+        "next": "Continue",
+        "resume": "You can return later — we will resume from this step.",
+        "state": "Draft found: 2 of 5 steps are already complete."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.error",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Set up your workspace",
+        "lead": "Five short steps — progress is saved automatically.",
+        "steps": [
+          "Account",
+          "Workspace",
+          "Locale & timezone",
+          "Data or demo",
+          "Finish"
+        ],
+        "check": [
+          "Profile confirmed",
+          "Workspace named",
+          "Time preferences selected",
+          "A data source can be connected later"
+        ],
+        "next": "Continue",
+        "resume": "You can return later — we will resume from this step.",
+        "state": "This step could not be saved. Your entries remain — try again."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.permission_denied",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Set up your workspace",
+        "lead": "Five short steps — progress is saved automatically.",
+        "steps": [
+          "Account",
+          "Workspace",
+          "Locale & timezone",
+          "Data or demo",
+          "Finish"
+        ],
+        "check": [
+          "Profile confirmed",
+          "Workspace named",
+          "Time preferences selected",
+          "A data source can be connected later"
+        ],
+        "next": "Continue",
+        "resume": "You can return later — we will resume from this step.",
+        "state": "Only a workspace administrator can complete setup."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "state_id": "UI-AUTH-005.recovery",
+      "locale": "en",
+      "visible_copy": {
+        "title": "Set up your workspace",
+        "lead": "Five short steps — progress is saved automatically.",
+        "steps": [
+          "Account",
+          "Workspace",
+          "Locale & timezone",
+          "Data or demo",
+          "Finish"
+        ],
+        "check": [
+          "Profile confirmed",
+          "Workspace named",
+          "Time preferences selected",
+          "A data source can be connected later"
+        ],
+        "next": "Continue",
+        "resume": "You can return later — we will resume from this step.",
+        "state": "Continue from Locale & timezone — your previous answers are saved."
+      },
+      "provenance": {
+        "product_semantics": [
+          "custometry-ui-blueprint-ru.md#9.1-authentication-и-onboarding-6-страниц"
+        ],
+        "route_contract": "packages/contracts/routes/ui-route-contracts.json#/routes/4",
+        "classification": "source_bound_product_copy_and_minimal_connective_copy"
+      }
+    }
+  ],
+  "expected_pairs": 12,
+  "observed_pairs": 12,
+  "result": "passed"
+}

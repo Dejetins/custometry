@@ -1,0 +1,98 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "1.2.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3",
+    "gate_id": "G4",
+    "target_id": "family.auth.shell-auth.baseline-exception-auth-r3",
+    "revision": 3,
+    "validation_profile": "family_review_ready",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/family-acceptance.json",
+    "artifact_sha256": "2280385167fca68290916e7dc9b9be3f892c2341a20761e2dd8047516bb4d590"
+  },
+  "to_stage": {
+    "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r2",
+    "gate_id": "G4",
+    "target_id": "family.auth.shell-workspace.baseline-r2",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-02-family-auth-shell-workspace-baseline-r2.md"
+  },
+  "readiness_status": "review_ready",
+  "next_stage_allowed": false,
+  "decision_inventory": [
+    {
+      "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3.finished-result",
+      "class": "owner_required",
+      "status": "pending",
+      "summary": "Accept the finished auth-family result or request bounded corrections.",
+      "resolution_ref": null
+    }
+  ],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/preflight/current_gate.json",
+      "evidence_sha256": "b0f6bc01e02211e0ff79faa9821282411a666cc4d9277466b17134ba335c0865"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/preflight/execution_route.json",
+      "evidence_sha256": "6dc9fe346e50e2529d8efa7566d33e5ac8b86eed662054e45dc6fdbcbf04172b"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/preflight/foreign_changes.json",
+      "evidence_sha256": "1c4d5f92a811437e395a9cc0a22a4ec4a5f69ee987313d118668b48f0f808242"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/preflight/handoff_artifact.json",
+      "evidence_sha256": "1b3cf72d58390c0bfc27f1ded9af5a2095c84a8c7cceedd47c591a0bac5c4734"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/preflight/next_stage_inputs.json",
+      "evidence_sha256": "33122740678b32d5152db2e464825ebd24069995430303f8fb5a6c2fbfd22bc2"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/preflight/source_freshness.json",
+      "evidence_sha256": "73d646acb06f934d4821c6df808186eb4ea829735d8057bad3360cacaa938db6"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/preflight/write_scope.json",
+      "evidence_sha256": "a9156bbfbaa81196237cf8d52412c68a3092fadcd4df5c4f326f5ae0e940fa12"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "The corrected /auth/sign-in family exact-covers all six UI-AUTH-001 states. The recovery state is now a structurally distinct flow with workspace email, recovery-link action, return-to-sign-in action, and a dedicated live result; it explicitly excludes the password field and ordinary sign-in controls. A state-distinction invariant and canonical browser inventory prevent a relabeled sign-in form from satisfying recovery again. The 420px compact surface, accepted Graphite/cyan inheritance, and self-contained interactive review board remain unchanged. The next family remains pending and execution-disabled until owner acceptance closes this checkpoint.",
+    "review_artifact_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/review-board.html",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/review-board-recovery-corrected-1440.png",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/review-board-recovery-corrected-768.png",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/recovery/web-1440/implementation.png"
+    ],
+    "questions": [
+      "Принять готовый результат семейства авторизации или запросить ограниченные исправления?"
+    ]
+  },
+  "owner_decision_ref": null,
+  "owner_decision_sha256": null,
+  "program_complete": false
+}

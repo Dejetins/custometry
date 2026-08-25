@@ -1,0 +1,22 @@
+{
+  "capability": {
+    "id": "UI-CAP-008",
+    "name": "Result Trust",
+    "delivery_form": "component_contract",
+    "requirement_ids": [
+      "REPORT-008",
+      "UX-JOURNEY-005"
+    ]
+  },
+  "promoted_binding_ids": [
+    "OWNER-REC-015"
+  ],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "source_freshness",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "gate_id": "G3",
+  "status": "passed",
+  "facts": {
+    "source_refs": [
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/platform-ui-baseline.json",
+        "sha256": "c0e6c547f61211c2ae7b21dde614a3dee1637667c156d03233f3138175f935a3"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json",
+        "sha256": "ead497ba8918b21b16ae2dac8ff5163eb968518938d016f40fc80900811f0b57"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/families-index.json",
+        "sha256": "a3d7a12929ea8f96ca6a01022130a03fc1f17240bf0c343e9f90ec31bf80d35e"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys-index.json",
+        "sha256": "8b61ac6e5ec843189a15208f09712d58874b2523b64dfb1b085527e5cf9d8463"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/adoption-and-performance-operations.json",
+        "sha256": "e573fdb143d13b0de50b7937943683ccae96d12be7afa9ea3d9e33fcfe84dbe7"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/compose-large-workbook.json",
+        "sha256": "76f9d8eb8acc33283a5a43a8841481a2652e8f90d8f01706b43b2cfb1d73eebb"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/data-to-trusted-result.json",
+        "sha256": "cbed05edbf92285515c2ce2768c3d560c1b82dc23adaca1deb94233eda8a287f"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/define-recalculate-reuse-segment.json",
+        "sha256": "3687a69b987174b7165c86a60f765c47ce74294c98c7e849c068db33262ae3e0"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/digital-to-offline-unit-economics.json",
+        "sha256": "5f0d6c82374989733b07eac8735bc8ffdd52ad0edf5395c6792164afb4e96162"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/open-100x30-document-without-duplicate-compute.json",
+        "sha256": "01983a6c874fc423cfff88f00fa804d97970133fcff7942f6fe3316d89836c77"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/product-category-assortment-inventory.json",
+        "sha256": "d686ca6d7c52bbc8337c362d422d5e9ff6bb6316b5e86d81a89ee4cf5b485a8c"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/publish-review-collaborate.json",
+        "sha256": "889f9784450e8f45112adddaeecc79bc667a98744099ec51d397df442f5c6e7a"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/refresh-with-stable-anchors.json",
+        "sha256": "a7b8009f747baf004796b891899105f33e4d506516b1d88f3370c10d516b083a"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/screens-index.json",
+        "sha256": "7bd0135295ca1a9c59c4b35671d72387659bb1f8083b7fa2dbaf43e2534445f4"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/waves-index.json",
+        "sha256": "7af266f201d64c7cf315d4d1883516b425196029bf4bc1d5a8e6ede8fe9d87e0"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/candidate-shell.html",
+        "sha256": "1400551cc91184366a13aedfc17b696654882030e83a54767d97e69cb405c8a4"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/inheritance-report.json",
+        "sha256": "ac6ab38ed816e2d689b1d718736b47ab25781f6b565e60ccd6b93c061fdf6e35"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/representative-shell-contract.json",
+        "sha256": "1b5f5f336621a859802fef1bcc555c78130bede878a26881a8a23e1100b25408"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r2/review-board.html",
+        "sha256": "c85d7102feb50e40a1165e89f96a734758625a96b9d8d456c695a20e31b3495f"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+        "sha256": "860abede176a5fa34675774ed9ca9c60a496b44d8fa3f303b3f9e69e70a41138"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+        "sha256": "b57b836e371df3726381d9cb54c39d0761150291831146514c8c45f5be849359"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1024.png",
+        "sha256": "d698e766d6553b503909df7d2dd9f7798b002984a1747ae9373afe67a41dbcb2"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1440.png",
+        "sha256": "104f599a4cb15de0a379c93de07d0ab4e0ea873415cf974da995f890eb3efc3f"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-1920.png",
+        "sha256": "9806e1db61fab0fcc028533bc65903bd72b240c72efc3e984cec41b42a2fb979"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/candidate-web-768.png",
+        "sha256": "305b6b459fda69ac182f9069de0ecca4359a2d511c61b9e79c4557c24b93af82"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1024.png",
+        "sha256": "8879dc44eefcebe30a0f88a10d6c725ac0ed25d38adedd51a97dca7ffc891023"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1440.png",
+        "sha256": "0b2e496591701399b89891f24aa927b3bf9067b4d03a6737a1a745574438dbe2"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-1920.png",
+        "sha256": "671d55afb8ab8d245a326d23f25b91e72458fdec066c55b4987fb9585c83b3fd"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/source-web-768.png",
+        "sha256": "4ad7a441b6fd84cbad721f97f4fed647ed5a35543df6f63a7ebcdaab26a8eae8"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+        "sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/screenshots/pass18/compact-rail-closed-1920x1080.png",
+        "sha256": "91d12f911d5dadf76558c7a93aa21a41a6a3be9233fb312cba366b99140fa4dd"
+      },
+      {
+        "path": "custometry-technical-blueprint-human-ru.md",
+        "sha256": "e6d2f180a7d736afcaa17a37016b2ed0dc90c491fe841f212e7fd4f0bcb4d2eb"
+      },
+      {
+        "path": "custometry-technical-blueprint-ru.md",
+        "sha256": "25bb555c3d4f2f7a425cee81d658f34b86c343be69efb18756cb0ded12308311"
+      },
+      {
+        "path": "custometry-ui-blueprint-ru.md",
+        "sha256": "cbf4cbcbb3068f1984c5c6c907ecd4d6f9a0639673cf6bd678e9c4280ced6fb6"
+      },
+      {
+        "path": "packages/contracts/routes/ui-route-contracts.json",
+        "sha256": "2e15e15e3626b3068e7e47d335ff923d854781004ba9c0e0687bbbd875517089"
+      },
+      {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "sha256": "c281a4a2cccf30f4e370998297b74a5df7b10ab47a13d4b16a984b38ce74fc87"
+      }
+    ],
+    "drift_classification": "owned_generated_change",
+    "stale_refs": []
+  }
+}

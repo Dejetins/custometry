@@ -1,0 +1,9 @@
+{
+  "program_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+  "target": "implementation",
+  "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-001:UI-AUTH-001.initial:r6",
+  "anchor_id": "web-1440",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r6/family-auth-shell-auth-baseline-exception-auth/screens/auth-family.html",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/captures/UI-AUTH-001.initial/web-1440/implementation.png",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/captures/UI-AUTH-001.initial/web-1440/implementation-geometry.json"
+}

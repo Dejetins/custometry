@@ -1,0 +1,80 @@
+{
+  "schema_id": "custometry.ui-g1-exact-cover-evidence/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "program_revision": 4,
+  "stage_instance_id": "G1@atlas-r3",
+  "status": "passed",
+  "counts": {
+    "screens": 175,
+    "journeys": 9,
+    "capabilities": 22,
+    "owner_recommendations": 68,
+    "reconciliation_additions": 13,
+    "promoted_bindings": 81,
+    "g2_owned_unresolved_screens": 151
+  },
+  "artifacts": {
+    "program_snapshot": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/ui-design-program.snapshot.json",
+      "sha256": "79c48c31c1999fb2fd251d478c675ce230376116aaa99e89ba4942e3c08a62a0"
+    },
+    "screens_index": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/screens-index.json",
+      "sha256": "c458067948374e332ce98321a0f87a12ffdff6864972bf3ff27926397cb95d73"
+    },
+    "journeys_index": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/journeys-index.json",
+      "sha256": "5376dd6dcd781c47a76c60a71ba8da3e67cde33b33157905bc95206a3b3051b6"
+    },
+    "capabilities_index": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/capabilities-index.json",
+      "sha256": "2de06e33df904b820e80f5f0a5f5b9819a670d8a5af053cf65b07b37e1ad7c68"
+    },
+    "promoted_requirement_bindings": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/promoted-requirement-bindings.json",
+      "sha256": "0b2e2643d8f895b80a82d468e8df1bc3a86650cb09668afbdd36f4ee5780ac90"
+    },
+    "rendered_atlas": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/screen-atlas.md",
+      "sha256": "9fae45c598a1b963faad86a606668675e55186a247350c30d9299f967c711e0c"
+    },
+    "resolved_atlas": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/screen-atlas.resolved.json",
+      "sha256": "86c220c472f481b046a6da854a3300c325d36cb4d311493d28ec093984557446"
+    },
+    "exact_cover_summary": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r3/exact-cover-summary.json",
+      "sha256": "4475e36beb2d7fcabfebff4ace6512c63825620105327dde2b0838601c246b37"
+    }
+  },
+  "checks": {
+    "authoritative_screens_exactly_once": true,
+    "authoritative_journeys_exactly_once": true,
+    "authoritative_capabilities_exactly_once": true,
+    "owner_recommendations_exactly_once": true,
+    "reconciliation_additions_exactly_once": true,
+    "deterministic_second_render_same_sha256": true,
+    "no_unknown_screen_or_capability_bindings": true,
+    "auth_sign_in_recovery_route_distinction": true
+  },
+  "g2_ownership": [
+    "journey criticality and transitions",
+    "family assignment and family exact cover",
+    "coverage profiles",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "exact baseline inheritance"
+  ],
+  "proof_boundary": "Static exact-cover atlas, capability binding, promoted-requirement reconciliation, deterministic rendering, and source/hash coherence only; no target-screen design, browser runtime, implementation, accessibility conformance, responsive behavior, performance, publication, deployment, or mobile-specific proof.",
+  "auth_route_invariant": {
+    "sign_in": {
+      "screen_id": "UI-AUTH-001",
+      "route": "/auth/sign-in"
+    },
+    "recovery": {
+      "screen_id": "UI-AUTH-004",
+      "route": "/auth/recovery"
+    },
+    "forbidden_state": "UI-AUTH-001.recovery"
+  }
+}

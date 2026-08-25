@@ -1,0 +1,31 @@
+{
+  "capability": {
+    "id": "UI-CAP-018",
+    "name": "Governed population and outlier treatment",
+    "delivery_form": "policy_contract",
+    "requirement_ids": [
+      "UC-025",
+      "OUTLIER-001",
+      "OUTLIER-002",
+      "OUTLIER-003",
+      "OUTLIER-004",
+      "OUTLIER-005",
+      "OUTLIER-006",
+      "OUTLIER-007",
+      "OUTLIER-008",
+      "OUTLIER-009",
+      "OUTLIER-010",
+      "OUTLIER-011",
+      "OUTLIER-012"
+    ]
+  },
+  "promoted_binding_ids": [],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

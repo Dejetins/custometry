@@ -1,0 +1,52 @@
+{
+  "journey": {
+    "entry_screen_ids": [
+      "UI-DATA-001"
+    ],
+    "journey_id": "data-to-trusted-result",
+    "outcomes": [
+      "complete data to trusted result with trust and stable context"
+    ],
+    "preconditions": [
+      "the user has a permitted workspace or installation context"
+    ],
+    "purpose": "data to trusted result",
+    "role_ids": [
+      "all"
+    ],
+    "source_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/0"
+    ],
+    "terminal_screen_ids": [
+      "UI-AN-012"
+    ],
+    "transitions": [
+      {
+        "action_id": "journey.data-to-trusted-result.1",
+        "external_boundary": null,
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "from_screen_id": "UI-DATA-001",
+        "outcome": "advance the accepted data-to-trusted-result journey",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/0"
+        ],
+        "to_screen_id": "UI-DQ-001",
+        "transition_id": "data-to-trusted-result.1"
+      },
+      {
+        "action_id": "journey.data-to-trusted-result.2",
+        "external_boundary": null,
+        "failure": "retain the source screen and show deterministic failure feedback",
+        "from_screen_id": "UI-DQ-001",
+        "outcome": "advance the accepted data-to-trusted-result journey",
+        "recovery": "retry or return without losing the stable source anchor",
+        "source_refs": [
+          ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/0"
+        ],
+        "to_screen_id": "UI-AN-012",
+        "transition_id": "data-to-trusted-result.2"
+      }
+    ]
+  }
+}

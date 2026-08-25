@@ -1,0 +1,120 @@
+{
+  "schema_id": "custometry.ui-g3-detailed-visual-inheritance-evidence/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "program_revision": 2,
+  "comparison_purpose": "visual_language_conformance",
+  "source_observation_ref": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/accepted-pilot-fixed-domain-browser-observation.json",
+    "sha256": "39478ca0aa7666df9eac5296f7991af3b640c58a29a30bddbf9812b3bd3ae254"
+  },
+  "candidate_observation_ref": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/fixed-domain-browser-observation.json",
+    "sha256": "c3878cf8075f335b2f3a4ba23403cdbec6eee5b29d4a0a62bf3860027f65b95f"
+  },
+  "checks": [
+    {
+      "domain": "graphite_surfaces",
+      "source_value": "rgb(17, 18, 20)",
+      "candidate_value": "rgb(17, 18, 20)",
+      "disposition": "inherited_exactly",
+      "status": "passed"
+    },
+    {
+      "domain": "workspace_radius_px",
+      "source_value": "15px",
+      "candidate_value": "15px",
+      "disposition": "inherited_exactly",
+      "status": "passed"
+    },
+    {
+      "domain": "workspace_chrome_height_px",
+      "source_value": 97,
+      "candidate_value": 97,
+      "disposition": "inherited_exactly",
+      "status": "passed"
+    },
+    {
+      "domain": "active_tab_geometry",
+      "source_value": {
+        "height": 31,
+        "radius": "16px",
+        "background": "rgb(34, 35, 39)"
+      },
+      "candidate_value": {
+        "height": 31,
+        "radius": "16px",
+        "background": "rgb(34, 35, 39)"
+      },
+      "disposition": "inherited_exactly",
+      "status": "passed"
+    },
+    {
+      "domain": "compact_rail_width_px",
+      "source_value": 62,
+      "candidate_value": 62,
+      "disposition": "inherited_exactly",
+      "status": "passed"
+    },
+    {
+      "domain": "shell_workspace_gap_px",
+      "source_value": 0,
+      "candidate_value": 12,
+      "baseline_value": 12,
+      "disposition": "adapted_within_fixed_contract",
+      "rationale": "The accepted baseline promotes a zero-tolerance 12 px shell/workspace gap over the pilot fixture's rendered zero gap.",
+      "status": "passed"
+    },
+    {
+      "domain": "profile_area_px",
+      "source_value": 25,
+      "candidate_value": 32,
+      "baseline_value": 32,
+      "disposition": "adapted_within_fixed_contract",
+      "rationale": "The accepted baseline promotes a zero-tolerance 32 px profile area over the pilot fixture's 25 px avatar.",
+      "status": "passed"
+    },
+    {
+      "domain": "analytical_language",
+      "source_value": "multi-series thin-line chart, right sibling series panel, compact KPI strip",
+      "candidate_value": "multi-series thin-line chart, right sibling series panel, compact KPI strip",
+      "disposition": "inherited_exactly",
+      "status": "passed"
+    },
+    {
+      "domain": "grouped_control_grammar",
+      "source_value": "shared rounded backing with grouped icon buttons",
+      "candidate_value": "shared rounded backing with grouped icon buttons",
+      "disposition": "inherited_exactly",
+      "rationale": "The candidate exposes four shared control surfaces containing ten icon buttons; the browser receipt records both counts.",
+      "status": "passed"
+    },
+    {
+      "domain": "table_grammar",
+      "source_value": "visible dense table with grouped rows, sticky headings and local overflow",
+      "candidate_value": "visible dense table with grouped rows, sticky headings and local overflow",
+      "disposition": "inherited_exactly",
+      "rationale": "The table is visible in the primary workspace without a mode switch; its 36 px rows, group rows, sticky headings and local overflow are browser-observed.",
+      "status": "passed"
+    },
+    {
+      "domain": "inspector_geometry",
+      "source_value": "full-height right sibling pane on wide Web; viewport-contained overlay on narrow Web",
+      "candidate_value": "full-height right sibling pane on wide Web; viewport-contained overlay on narrow Web",
+      "disposition": "inherited_exactly",
+      "rationale": "At 1920 px the inspector fills the workspace body as a sibling pane; at 768 px it becomes a viewport-contained overlay with deterministic focus and Escape return.",
+      "status": "passed"
+    },
+    {
+      "domain": "target_screen_semantics",
+      "source_value": "customer analytics pilot fixture",
+      "candidate_value": "program-owned neutral shell specimen; internal contract identity UI-SHELL-GLOBAL",
+      "disposition": "not_applicable_with_source",
+      "rationale": "The pilot is visual-language authority only. The specimen carries no target-screen product meaning, and UI-SHELL-GLOBAL is used only as the repository-authoritative internal machine representative.",
+      "status": "passed"
+    }
+  ],
+  "raster_threshold_max_ratio": 0.12,
+  "pixel_similarity_role": "bounded_supporting_signal; exact target-screen fidelity is not claimed because pilot semantics are not the target screen",
+  "owner_exceptions": [],
+  "result": "passed"
+}

@@ -1,0 +1,19 @@
+{
+  "schema_id": "codex.ui-family-reuse-decision/v2",
+  "family_id": "family.auth.shell-auth.baseline-exception-auth",
+  "representative_screen_ids": [
+    "UI-AUTH-001",
+    "UI-AUTH-004"
+  ],
+  "individually_designed_screen_ids": [
+    "UI-AUTH-001",
+    "UI-AUTH-004"
+  ],
+  "reuse_only_screen_ids": [
+    "UI-AUTH-002",
+    "UI-AUTH-003"
+  ],
+  "decision": "Reuse the full accepted auth-shell visual grammar while preserving distinct route-specific composition for sign-in and recovery.",
+  "scope_limit": "No individual design or acceptance claim is made for UI-AUTH-002 or UI-AUTH-003.",
+  "result": "recorded"
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "review-board-manifest.schema.json",
+  "schema_id": "codex.ui-review-board-manifest/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "artifact_id": "family.promo.shell-workspace.baseline-r5",
+  "revision": 5,
+  "validation_profile": "family_review_ready",
+  "entries": [
+    {
+      "entry_id": "initial.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/initial/screen-acceptance.json",
+      "sha256": "3171cf30f4d9fe247e233fa5a6382371e9c6f7e862574fa1f71aba9c41b33b57",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.initial"
+    },
+    {
+      "entry_id": "initial.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/initial/screen-acceptance.json",
+      "sha256": "3171cf30f4d9fe247e233fa5a6382371e9c6f7e862574fa1f71aba9c41b33b57",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.initial"
+    },
+    {
+      "entry_id": "loading.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/loading/screen-acceptance.json",
+      "sha256": "d450d9b22401c517bfd70bd7abf9051a0cc798b6106fe7a5dfb033631ae2ef07",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.loading"
+    },
+    {
+      "entry_id": "loading.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/loading/screen-acceptance.json",
+      "sha256": "d450d9b22401c517bfd70bd7abf9051a0cc798b6106fe7a5dfb033631ae2ef07",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.loading"
+    },
+    {
+      "entry_id": "populated.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/populated/screen-acceptance.json",
+      "sha256": "66b5fcb9153c7b3ebf42a787720b11fe5bef28a8f3b0a7f5b2825e878ce993e6",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.populated"
+    },
+    {
+      "entry_id": "populated.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/populated/screen-acceptance.json",
+      "sha256": "66b5fcb9153c7b3ebf42a787720b11fe5bef28a8f3b0a7f5b2825e878ce993e6",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.populated"
+    },
+    {
+      "entry_id": "error.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/error/screen-acceptance.json",
+      "sha256": "e9161bc7960975b08a980914f45bf45e16454b58922bb753dc9f5f887ffcc568",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.error"
+    },
+    {
+      "entry_id": "error.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/error/screen-acceptance.json",
+      "sha256": "e9161bc7960975b08a980914f45bf45e16454b58922bb753dc9f5f887ffcc568",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.error"
+    },
+    {
+      "entry_id": "permission_denied.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/permission_denied/screen-acceptance.json",
+      "sha256": "0b5ac7c256494ac532a1b7395d143101b4bdd991ad8274f236d515bbb5420d3c",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.permission_denied"
+    },
+    {
+      "entry_id": "permission_denied.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/permission_denied/screen-acceptance.json",
+      "sha256": "0b5ac7c256494ac532a1b7395d143101b4bdd991ad8274f236d515bbb5420d3c",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.permission_denied"
+    },
+    {
+      "entry_id": "recovery.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/recovery/screen-acceptance.json",
+      "sha256": "854b1cd8785eb7a0b77e4a7ca56511669a05086a3856d1f0afe9d2bef927fb38",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.recovery"
+    },
+    {
+      "entry_id": "recovery.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/recovery/screen-acceptance.json",
+      "sha256": "854b1cd8785eb7a0b77e4a7ca56511669a05086a3856d1f0afe9d2bef927fb38",
+      "anchor_id": null,
+      "state_id": "UI-PROMO-001.recovery"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "2.0.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G1@atlas-r4",
+    "gate_id": "G1",
+    "target_id": "atlas-r4",
+    "revision": 4,
+    "validation_profile": "atlas_gate",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r4/ui-design-program.snapshot.json",
+    "artifact_sha256": "5f474644e1ec768013b63a4c768ccd943f679d0e5f053bc8fb75f3b920da6498"
+  },
+  "to_stage": {
+    "stage_instance_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+    "gate_id": "G2",
+    "target_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/23-g2-structure-r4.md"
+  },
+  "readiness_status": "ready",
+  "next_stage_allowed": true,
+  "decision_inventory": [],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/current-gate.json",
+      "evidence_sha256": "e1f6bf41059d52cfd154ed5c9f9c3cdeff3b7b592ece36cee3fd14165459a4a8"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/execution-route.json",
+      "evidence_sha256": "374cea1fd91ce6f4a3f45cd228805783b71feaae820e4d227e2c6e5f4ac4cbba"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/foreign-changes.json",
+      "evidence_sha256": "45e386d2bd15feda33da5c1da3e8fdc14584181819c36435d20ece2d84bff9f8"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/handoff-artifact.json",
+      "evidence_sha256": "a694eed9e092a6735667f9955f6e49ec070617c2697d3d5f32d0e257162876a7"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/next-stage-inputs.json",
+      "evidence_sha256": "5ac690fc8acc34fcebbdc733fe83ce3de4b48e2508ced956b9451ef3fd388472"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/source-freshness.json",
+      "evidence_sha256": "ffc7f2a0bd1b0fc560175c845170b7e780a4e286d581404edf89cb9e9820d7b0"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/write-scope.json",
+      "evidence_sha256": "8badf25438f0ef1f382c15f23ab791e2edc0b5f2cdd045feab8eb8b833f6fd3d"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "G1 atlas r4 exact-covers 175 screens and 9 journeys from the rebound intake; G2 structure r4 is ready.",
+    "review_artifact_refs": [],
+    "questions": []
+  },
+  "owner_decision_ref": null,
+  "owner_decision_sha256": null,
+  "program_complete": false
+}

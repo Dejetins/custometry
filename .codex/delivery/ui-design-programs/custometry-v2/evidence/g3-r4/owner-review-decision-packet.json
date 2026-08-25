@@ -1,0 +1,51 @@
+{
+  "schema_id": "custometry.ui-owner-review-decision-packet/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+  "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4.finished-foundations-shell",
+  "decision_kind": "stage_acceptance",
+  "review_artifact": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r4/review-board.html",
+    "sha256": "c52463bef636d0fb69b116d93ee3bb8ddae47bbffa1b1ae3172658d649930c1d"
+  },
+  "standard_artifact": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/standard-board.html",
+    "sha256": "db8a16a06cd09da794716e32d635ac48e7bdd298356e6daab63c057c1a6a7c92"
+  },
+  "candidate_artifact": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r4/candidate-shell.html",
+    "sha256": "cfa864ccfece2dc74a6e8e51926bf2275d039fc1302387faefd91dbddcd90413"
+  },
+  "machine_gate": {
+    "profile": "program_ready",
+    "result": "passed",
+    "artifact": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "f50eccde7c2ab4e1415dc64aaa1ac29496530c14a0ecabf466cdeba37e3ed34f"
+  },
+  "prior_accepted_stage": {
+    "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+    "review_artifact": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/review-board.html",
+      "sha256": "b80fbcd335bb3b5e051a7c3735e05adaace14854512cd4060e5207461fcdce35"
+    },
+    "historical_outcome": "accepted"
+  },
+  "decision_scope": {
+    "changed": "Four demonstration action buttons bind to one exact accepted pilot pattern each.",
+    "unchanged": [
+      "shell architecture",
+      "palette",
+      "content",
+      "routes",
+      "responsive composition",
+      "accepted visual authority"
+    ]
+  },
+  "question": "Принять точное G3 r4 наследование оболочки или запросить ограниченные исправления?",
+  "allowed_responses": [
+    "accept",
+    "bounded_corrections"
+  ],
+  "resume_condition": "An unambiguous natural-language decision for this exact finished G3 r4 board is assembled through the canonical owner-response route.",
+  "next_stage_allowed": false
+}

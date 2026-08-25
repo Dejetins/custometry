@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r3.bounded-correction-01",
+  "decision_kind": "family_acceptance",
+  "status": "requested_changes",
+  "revision": 3,
+  "decision_text": "Make the local review board load its review surfaces under file://, make state selection genuinely interactive, and remove non-functional marketing copy from the auth screen.",
+  "owner_input": "что то он не грузится и совсем не интерактивный. + не надо добавлять никакой текст \"маркетинговый\" который я увидел твоем скриншоте",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.auth.shell-auth.baseline-exception-auth-r3",
+    "revision": 3,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/review-board.html"
+  }
+}

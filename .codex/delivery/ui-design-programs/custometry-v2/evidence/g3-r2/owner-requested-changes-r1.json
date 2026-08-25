@@ -1,0 +1,33 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2.requested-changes.1",
+  "decision_kind": "stage_acceptance",
+  "target": {
+    "artifact_kind": "program",
+    "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+    "revision": 2,
+    "validation_profile": "program_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "febd52bbc01efefb0297cd9e65c8357e9dfdd7ad7221bf9e5d0deb6efed34c47"
+  },
+  "decision": {
+    "status": "requested_changes",
+    "revision": 1,
+    "decision_text": "The owner rejected the current G3 review result because it inherits the accepted pilot only in broad outline and not in visual and interaction details. Rework the same G3 revision for detailed pilot inheritance without changing the accepted visual authority or opening G4.",
+    "accepted_values": [],
+    "accepted_value_sha256s": []
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "нет текущий вариант не наследует пилот, только в общих чертах но не в деталях.",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-11T22:05:02Z"
+  }
+}

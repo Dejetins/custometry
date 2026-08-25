@@ -1,0 +1,6 @@
+{
+  "schema_id": "custometry.asset-bundle/v1",
+  "assets": [],
+  "icons": "none_required_for_auth-family-r3",
+  "external_requests": "forbidden"
+}

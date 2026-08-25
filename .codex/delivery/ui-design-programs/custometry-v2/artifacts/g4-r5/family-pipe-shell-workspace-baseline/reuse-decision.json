@@ -1,0 +1,18 @@
+{
+  "schema_id": "codex.ui-family-reuse-decision/v2",
+  "family_id": "family.pipe.shell-workspace.baseline",
+  "representative_screen_ids": [
+    "UI-PIPE-001"
+  ],
+  "individually_designed_screen_ids": [
+    "UI-PIPE-001"
+  ],
+  "reuse_only_screen_ids": [
+    "UI-PIPE-002",
+    "UI-PIPE-003",
+    "UI-PIPE-004"
+  ],
+  "decision": "Use one exact pipeline-list representative while preserving later route semantics.",
+  "scope_limit": "No individual design or acceptance claim is made for UI-PIPE-002 through UI-PIPE-004.",
+  "result": "recorded"
+}

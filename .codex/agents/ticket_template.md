@@ -33,9 +33,10 @@ repair_policy:
   retest_invalidated_evidence: true
 validation:
   depth: tests
-# For a product-wide UI program, use ui-design-program artifacts rather than
-# treating a ticket-local route list or historical design source as visual
-# authority. Add browser-qa-evidence only when a browser surface is in scope.
+# For current Custometry Web implementation, use the repository-selected
+# implementation-source contract and treat frozen UI-program artifacts only as
+# scoped references. A newly authorized product-wide program may select
+# ui-design-program. Add browser-qa-evidence when a browser surface is in scope.
   proof_skills: []
   commands: [<focused-command>]
   proof_boundary: <exact-boundary>

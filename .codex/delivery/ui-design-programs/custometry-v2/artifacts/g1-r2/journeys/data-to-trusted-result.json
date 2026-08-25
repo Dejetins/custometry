@@ -1,0 +1,28 @@
+{
+  "journey": {
+    "journey_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+      "json_pointer": "/journeys/0",
+      "expected_id": "data-to-trusted-result"
+    },
+    "entry_screen_ids": [
+      "UI-DATA-001"
+    ],
+    "intermediate_screen_ids": [
+      "UI-DQ-001"
+    ],
+    "alternate_screen_ids": [],
+    "failure_screen_ids": [],
+    "recovery_screen_ids": [],
+    "terminal_screen_ids": [
+      "UI-AN-012"
+    ],
+    "external_boundary_ids": [],
+    "transitions": [],
+    "unresolved_fields": [
+      "criticality",
+      "criticality_origin",
+      "transitions"
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r5.UI-AUTH-004.initial.pilot-button-states",
+  "decision_kind": "standard_exception",
+  "target": {
+    "artifact_kind": "screen",
+    "artifact_id": "UI-AUTH-004.initial.all.ru-RU.graphite.r5",
+    "revision": 5,
+    "validation_profile": "screen_contract_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-auth-baseline-exception-auth/contracts/UI-AUTH-004.initial.r5.json",
+    "sha256": "6c29e1878b22a86fea5370c2219c1b5312870892c0f5b91f427d06317f28be63"
+  },
+  "decision": {
+    "status": "accepted",
+    "revision": 5,
+    "decision_text": "Apply the accepted pilot's explicit primary, hover and active button states instead of the incomplete generic static action.button observation.",
+    "accepted_values": [
+      {
+        "standard_exception": {
+          "baseline_id": "custometry.platform-baseline.v3.metadata.r4",
+          "standard_revision_id": "custometry.pilot-standard.v3.metadata.r4",
+          "screen_revision_id": "UI-AUTH-004.initial.all.ru-RU.graphite.r5",
+          "exception_id": "accepted-pilot-interactive-button-state-projection",
+          "clause_ids": [
+            "standard.color.background-color.54ba9843a31f",
+            "standard.color.color.c863c07a7c53",
+            "standard.typography.font-weight.a1ca90e332a6"
+          ],
+          "reason_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/button-interaction-lineage.json"
+        }
+      }
+    ],
+    "accepted_value_sha256s": [
+      "d75c59eaa5bdd4faff713e24c4173ed4bced8ef78f4a1c24eb734a5cebc798c1"
+    ]
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "в целом неплохо но почему нету кнопок/ховеров? только текстовая навигация, доработай в соответствии с тем как нажимаются кнопки в пилотной версии, есть базовое выделение у кнопки и ховер при наведении и клике",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-14T00:48:27.916955+00:00"
+  }
+}

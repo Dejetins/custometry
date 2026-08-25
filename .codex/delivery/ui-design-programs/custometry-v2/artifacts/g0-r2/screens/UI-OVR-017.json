@@ -1,0 +1,253 @@
+{
+  "screen": {
+    "screen_id": "UI-OVR-017",
+    "page_id": "UI-OVR-017",
+    "route_id": null,
+    "route": null,
+    "surface_kind": "overlay",
+    "visual_surface": true,
+    "shell_variant_id": "shell.workspace",
+    "purpose": "Theme switcher",
+    "user_outcomes": [
+      "Theme switcher"
+    ],
+    "entry_points": [
+      "source-defined product navigation or invocation"
+    ],
+    "exit_points": [
+      "return to the invoking or permitted destination"
+    ],
+    "source_refs": [
+      "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+    ],
+    "data": {
+      "reads": [],
+      "writes": [],
+      "computed": [],
+      "refresh_behavior": "source-defined refresh with stable object and result anchors",
+      "freshness_behavior": "show freshness and Result Trust metadata when applicable",
+      "empty_data_meaning": "the source-defined dataset or result has no permitted records"
+    },
+    "role_ids": [
+      "all"
+    ],
+    "permission_behavior": "apply source-defined route and action permissions",
+    "regions": [
+      {
+        "region_id": "UI-OVR-017.content",
+        "purpose": "Theme switcher",
+        "content": "source-backed content, controls, state, trust, and recovery information",
+        "data_refs": [],
+        "state_ids": [
+          "UI-OVR-017.initial",
+          "UI-OVR-017.loading",
+          "UI-OVR-017.populated",
+          "UI-OVR-017.error",
+          "UI-OVR-017.permission_denied",
+          "UI-OVR-017.recovery"
+        ],
+        "action_ids": [
+          "UI-OVR-017.inspect"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+        ]
+      }
+    ],
+    "states": [
+      {
+        "state_id": "UI-OVR-017.initial",
+        "kind": "initial",
+        "trigger": "the source-backed initial condition is active",
+        "visible_region_ids": [
+          "UI-OVR-017.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+        ]
+      },
+      {
+        "state_id": "UI-OVR-017.loading",
+        "kind": "loading",
+        "trigger": "the source-backed loading condition is active",
+        "visible_region_ids": [
+          "UI-OVR-017.content"
+        ],
+        "available_action_ids": [],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+        ]
+      },
+      {
+        "state_id": "UI-OVR-017.populated",
+        "kind": "populated",
+        "trigger": "the source-backed populated condition is active",
+        "visible_region_ids": [
+          "UI-OVR-017.content"
+        ],
+        "available_action_ids": [
+          "UI-OVR-017.inspect"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+        ]
+      },
+      {
+        "state_id": "UI-OVR-017.error",
+        "kind": "error",
+        "trigger": "the source-backed error condition is active",
+        "visible_region_ids": [
+          "UI-OVR-017.content"
+        ],
+        "available_action_ids": [
+          "UI-OVR-017.inspect"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+        ]
+      },
+      {
+        "state_id": "UI-OVR-017.permission_denied",
+        "kind": "permission_denied",
+        "trigger": "the source-backed permission_denied condition is active",
+        "visible_region_ids": [
+          "UI-OVR-017.content"
+        ],
+        "available_action_ids": [
+          "UI-OVR-017.inspect"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+        ]
+      },
+      {
+        "state_id": "UI-OVR-017.recovery",
+        "kind": "recovery",
+        "trigger": "the source-backed recovery condition is active",
+        "visible_region_ids": [
+          "UI-OVR-017.content"
+        ],
+        "available_action_ids": [
+          "UI-OVR-017.inspect"
+        ],
+        "exit_conditions": [
+          "a permitted action or authoritative state transition occurs"
+        ],
+        "source_refs": [
+          "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+        ]
+      }
+    ],
+    "state_applicability": [
+      {
+        "kind": "initial",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "loading",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "populated",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "empty",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-surface-contracts.json#/overlays/16: empty is not required by the G0 source contract"
+      },
+      {
+        "kind": "partial",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-surface-contracts.json#/overlays/16: partial is not required by the G0 source contract"
+      },
+      {
+        "kind": "error",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "permission_denied",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "offline",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-surface-contracts.json#/overlays/16: offline is not required by the G0 source contract"
+      },
+      {
+        "kind": "recovery",
+        "mode": "required",
+        "reason_ref": null
+      },
+      {
+        "kind": "terminal",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-surface-contracts.json#/overlays/16: terminal is not required by the G0 source contract"
+      },
+      {
+        "kind": "other",
+        "mode": "not_applicable",
+        "reason_ref": "packages/contracts/routes/ui-surface-contracts.json#/overlays/16: other is not required by the G0 source contract"
+      }
+    ],
+    "actions": [
+      {
+        "action_id": "UI-OVR-017.inspect",
+        "control_type": "button",
+        "component_id": "action.button",
+        "component_variant": "secondary",
+        "size_class": "sm",
+        "label": "Inspect current surface",
+        "icon_id": null,
+        "region_id": "UI-OVR-017.content",
+        "intent": "Inspect current surface",
+        "visibility": "when the source contract and permission profile allow it",
+        "enabled_when": "the surface is available and no conflicting operation is in progress",
+        "preconditions": [],
+        "trigger": "click, Enter, or Space",
+        "outcome": "Inspect current surface completes or the next contract-bound surface opens",
+        "feedback": "show deterministic pending, success, or destination feedback",
+        "failure": "show a source-backed error without inventing terminal domain state",
+        "recovery": "retain context and expose a safe retry or return path",
+        "confirmation": "required only when the source contract marks the action destructive or irreversible",
+        "side_effects": [],
+        "destructive": false,
+        "permission_refs": [],
+        "keyboard": "Enter or Space on the focused control",
+        "navigation_target": null,
+        "opens_surface_id": null,
+        "source_refs": [
+          "packages/contracts/routes/ui-surface-contracts.json#/overlays/16"
+        ]
+      }
+    ],
+    "context_menus": [],
+    "related_surface_ids": [],
+    "no_actions_reason": null,
+    "accessibility_contract": "semantic structure, complete keyboard operation, visible focus, named controls, and non-color-only state",
+    "responsive_content_priorities": [
+      "preserve task, trust, recovery, and primary action meaning across the supported Web range"
+    ]
+  }
+}

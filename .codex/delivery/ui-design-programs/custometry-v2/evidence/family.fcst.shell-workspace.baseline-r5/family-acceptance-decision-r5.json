@@ -1,0 +1,60 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.fcst.shell-workspace.baseline-r5.finished-result",
+  "decision_kind": "family_acceptance",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.fcst.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/review-board.html",
+    "sha256": "687ddbda6a5421aff91ced2a5013b10d4e938e6260babb5abd589bad15f55fce"
+  },
+  "decision": {
+    "status": "accepted",
+    "revision": 5,
+    "decision_text": "The owner explicitly accepted the complete HTML review board shown for the G4 Forecast family. Acceptance covers UI-FCST-001 in all six required states, the four responsive-Web anchors, both visible isolated actions, Result Trust, and applicable pilot visual-language inheritance. It does not authorize production implementation, publication, deployment, mobile-specific design, another G4 family, G5, G6, or full WCAG conformance.",
+    "accepted_values": [
+      {
+        "stage_instance_id": "G4@family.fcst.shell-workspace.baseline-r5",
+        "screen_ids": [
+          "UI-FCST-001"
+        ],
+        "required_states": [
+          "initial",
+          "loading",
+          "populated",
+          "error",
+          "permission_denied",
+          "recovery"
+        ],
+        "responsive_web_anchors": [
+          768,
+          1024,
+          1440,
+          1920
+        ],
+        "source_bound_fixture_action_count": 2,
+        "result_trust_visible": true,
+        "mobile_scope": "unauthorized",
+        "production_implementation": "not_accepted_by_this_decision"
+      }
+    ],
+    "accepted_value_sha256s": [
+      "e8345ab0b05e7039e6850db5b3f14b7d8862b9ac07b562af197ec77f81abf7b2"
+    ]
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "Окей, принимаю это.",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-23T06:42:45.594640+00:00"
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-SEG-001.permission_denied.AN.ru.graphite.r5",
+  "target": "implementation",
+  "capture_profile": "screen_implementation",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": false,
+    "region_gate_applied": true,
+    "element_gate_applied": true,
+    "document_identity_gate_applied": true,
+    "fixture_meta_gate_applied": true,
+    "accessibility_gate_applied": true,
+    "interaction_gate_applied": true,
+    "overflow_gate_applied": true,
+    "standard_clause_gate_applied": true
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "2.0.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract /Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-seg-shell-workspace-baseline/states/permission_denied/screen-contract.json --anchor-id web-768 --target implementation --source-artifact .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-seg-shell-workspace-baseline/states/permission_denied/screen.html --logical-artifact-id UI-SEG-001.permission_denied.AN.ru.graphite.r5-candidate --output /Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/states/permission_denied/captures/web-768/implementation-geometry.json --screenshot /Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/states/permission_denied/captures/web-768/implementation.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --project-root /Users/daniildegtyarev/Projects/Custometry"
+  },
+  "contract_sha256": "ebe6c33f5dc3149892a749f2fc0a84a63ccc9c7c0d18113163c8526f73773e98",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-seg-shell-workspace-baseline/states/permission_denied/screen.html",
+    "artifact_sha256": "046b58ec36ede21de2cf01b94c14c596d701dd3e078b796969a0b46bf35308ed",
+    "logical_artifact_id": "UI-SEG-001.permission_denied.AN.ru.graphite.r5-candidate",
+    "main_document_response_sha256": "046b58ec36ede21de2cf01b94c14c596d701dd3e078b796969a0b46bf35308ed"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "anchor_id": "web-768",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [
+    {
+      "region_id": "shell.workspace.header",
+      "locator": "[data-ui-region=\"shell.workspace.header\"]",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 76
+      },
+      "computed_styles": {
+        "display": "flex",
+        "position": "static",
+        "overflow-x": "visible"
+      }
+    },
+    {
+      "region_id": "shell.workspace.primary-nav",
+      "locator": "[data-ui-region=\"shell.workspace.primary-nav\"]",
+      "bounds": {
+        "x": 0,
+        "y": 76,
+        "width": 64,
+        "height": 948
+      },
+      "computed_styles": {
+        "display": "block",
+        "position": "static",
+        "overflow-x": "visible"
+      }
+    },
+    {
+      "region_id": "shell.workspace.workspace",
+      "locator": "[data-ui-region=\"shell.workspace.workspace\"]",
+      "bounds": {
+        "x": 64,
+        "y": 76,
+        "width": 704,
+        "height": 948
+      },
+      "computed_styles": {
+        "display": "block",
+        "position": "static",
+        "overflow-x": "auto"
+      }
+    }
+  ],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [],
+  "elements": [
+    {
+      "element_id": "header-root",
+      "locator": "[data-ui-element=\"header-root\"]",
+      "region_id": "shell.workspace.header",
+      "action_ids": [],
+      "bounds": {
+        "x": 24,
+        "y": 28.5,
+        "width": 288.734,
+        "height": 18
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "nav-root",
+      "locator": "[data-ui-element=\"nav-root\"]",
+      "region_id": "shell.workspace.primary-nav",
+      "action_ids": [],
+      "bounds": {
+        "x": 12,
+        "y": 98,
+        "width": 39,
+        "height": 206
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "workspace-root",
+      "locator": "[data-ui-element=\"workspace-root\"]",
+      "region_id": "shell.workspace.workspace",
+      "action_ids": [],
+      "bounds": {
+        "x": 82,
+        "y": 98,
+        "width": 668,
+        "height": 299
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "action-1",
+      "locator": "[data-ui-element=\"action-1\"]",
+      "region_id": "shell.workspace.workspace",
+      "action_ids": [
+        "UI-SEG-001.segment.manage"
+      ],
+      "bounds": {
+        "x": 82,
+        "y": 331,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "action-2",
+      "locator": "[data-ui-element=\"action-2\"]",
+      "region_id": "shell.workspace.workspace",
+      "action_ids": [
+        "UI-SEG-001.segment.export"
+      ],
+      "bounds": {
+        "x": 236,
+        "y": 331,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {}
+    },
+    {
+      "element_id": "action-3",
+      "locator": "[data-ui-element=\"action-3\"]",
+      "region_id": "shell.workspace.workspace",
+      "action_ids": [
+        "journey.define-recalculate-reuse-segment.1"
+      ],
+      "bounds": {
+        "x": 390,
+        "y": 331,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {}
+    }
+  ],
+  "standard_observations": [],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 768,
+    "client_width": 768,
+    "scroll_height": 1024,
+    "client_height": 1024
+  },
+  "environment_checks": [
+    {
+      "check": "document_locale",
+      "expected": "ru",
+      "observed": "ru",
+      "passed": true
+    },
+    {
+      "check": "document_theme",
+      "expected": "graphite",
+      "observed": "graphite",
+      "passed": true
+    },
+    {
+      "check": "fixture_sha256",
+      "expected": "d69eb471943217cbdb4b933d5a25a81220fb6043cfcd5943ffa63dbf0e4efc45",
+      "observed": "d69eb471943217cbdb4b933d5a25a81220fb6043cfcd5943ffa63dbf0e4efc45",
+      "passed": true
+    },
+    {
+      "check": "font_bundle_sha256",
+      "expected": "96b0fb539d353b8c586b37bf662fda909679d496aaba82213916cc29c8e13687",
+      "observed": "96b0fb539d353b8c586b37bf662fda909679d496aaba82213916cc29c8e13687",
+      "passed": true
+    },
+    {
+      "check": "asset_bundle_sha256",
+      "expected": "49936594e24f6b68101cdab981f02542c324091301d066205c639bd4a99ab8b8",
+      "observed": "49936594e24f6b68101cdab981f02542c324091301d066205c639bd4a99ab8b8",
+      "passed": true
+    },
+    {
+      "check": "fixed_clock",
+      "expected": 1787425200000,
+      "observed": 1787425200000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 3,
+    "keyboard_sequence": [
+      "button",
+      "button",
+      "button"
+    ],
+    "keyboard_issues": [],
+    "passed": true
+  },
+  "accessibility_claim": "accessibility_smoke",
+  "browser_interaction": {
+    "visible_action_ids": [
+      "UI-SEG-001.segment.manage",
+      "UI-SEG-001.segment.export",
+      "journey.define-recalculate-reuse-segment.1"
+    ],
+    "observed_outcomes": [
+      {
+        "action_id": "UI-SEG-001.segment.manage",
+        "outcome": "Управление сегментом доступно",
+        "expected_outcome": "Segment Manage completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      },
+      {
+        "action_id": "UI-SEG-001.segment.export",
+        "outcome": "Экспорт сегмента подготовлен",
+        "expected_outcome": "Segment Export completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      },
+      {
+        "action_id": "journey.define-recalculate-reuse-segment.1",
+        "outcome": "Переход к определению сегмента подготовлен",
+        "expected_outcome": "Continue define recalculate reuse segment completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [
+      {
+        "check_id": "keyboard_activation",
+        "passed": true
+      },
+      {
+        "check_id": "focus_visibility",
+        "passed": true
+      },
+      {
+        "check_id": "tab_radio_behavior",
+        "passed": true
+      },
+      {
+        "check_id": "menus",
+        "passed": true
+      },
+      {
+        "check_id": "toggles",
+        "passed": true
+      },
+      {
+        "check_id": "refresh_feedback",
+        "passed": true
+      },
+      {
+        "check_id": "state_transitions",
+        "passed": true
+      },
+      {
+        "check_id": "no_unresolved_file_navigation",
+        "passed": true
+      },
+      {
+        "check_id": "no_console_errors",
+        "passed": true
+      },
+      {
+        "check_id": "no_request_failures",
+        "passed": true
+      },
+      {
+        "check_id": "no_page_horizontal_overflow",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/states/permission_denied/captures/web-768/implementation.png",
+  "screenshot_sha256": "8057b75931dd9f8f8981c7acbc883c6915a91779524d04e4b3712f58f2c9b003",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']"
+    ],
+    "redaction_match_counts": [
+      0,
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

@@ -1,0 +1,83 @@
+{
+  "journey": {
+    "journey_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+      "json_pointer": "/journeys/1",
+      "expected_id": "compose-large-workbook"
+    },
+    "criticality": "critical",
+    "criticality_origin": {
+      "kind": "product_contract",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/journeys/1/source_refs/0"
+    },
+    "entry_screen_ids": [
+      "UI-RPT-001"
+    ],
+    "intermediate_screen_ids": [
+      "UI-RPT-002"
+    ],
+    "alternate_screen_ids": [],
+    "failure_screen_ids": [],
+    "recovery_screen_ids": [],
+    "terminal_screen_ids": [
+      "UI-RPT-003"
+    ],
+    "external_boundary_ids": [],
+    "transitions": [
+      {
+        "transition_ref": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/compose-large-workbook.json",
+          "json_pointer": "/normalized_transitions/0",
+          "expected_id": "compose-large-workbook.1"
+        },
+        "from_id": "UI-RPT-001",
+        "to_id": "UI-RPT-002",
+        "outcome": "forward"
+      },
+      {
+        "transition_ref": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/journeys/compose-large-workbook.json",
+          "json_pointer": "/normalized_transitions/1",
+          "expected_id": "compose-large-workbook.2"
+        },
+        "from_id": "UI-RPT-002",
+        "to_id": "UI-RPT-003",
+        "outcome": "terminal"
+      }
+    ],
+    "unresolved_fields": []
+  },
+  "normalized_transitions": [
+    {
+      "transition_id": "compose-large-workbook.1",
+      "from_id": "UI-RPT-001",
+      "to_id": "UI-RPT-002",
+      "outcome": "forward",
+      "action_id": "journey.compose-large-workbook.1",
+      "failure_semantics": "retain the source screen and show deterministic failure feedback",
+      "recovery_semantics": "retry or return without losing the stable source anchor",
+      "source_refs": [
+        ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/1"
+      ],
+      "source_pointer": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/journeys/1/transitions/0"
+    },
+    {
+      "transition_id": "compose-large-workbook.2",
+      "from_id": "UI-RPT-002",
+      "to_id": "UI-RPT-003",
+      "outcome": "terminal",
+      "action_id": "journey.compose-large-workbook.2",
+      "failure_semantics": "retain the source screen and show deterministic failure feedback",
+      "recovery_semantics": "retry or return without losing the stable source anchor",
+      "source_refs": [
+        ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/1"
+      ],
+      "source_pointer": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/journeys/1/transitions/1"
+    }
+  ],
+  "derivation": {
+    "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r2/ui-program-intake.json#/journeys/1",
+    "formula": "normalize accepted from_screen_id/to_screen_id edges; mark an edge terminal only when its target is an accepted terminal_screen_id",
+    "failure_and_recovery_semantics_preserved": true
+  }
+}

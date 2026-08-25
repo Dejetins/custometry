@@ -1,0 +1,167 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "source_freshness",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r3",
+  "gate_id": "G3",
+  "status": "passed",
+  "facts": {
+    "source_refs": [
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+        "sha256": "4a32b55fb28e4d07e271a0a37270cfb47255d55650746573c52584e6651e6642"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json",
+        "sha256": "cb358d4aac4b53a15bfb3bd6e3b1833ccda78a2e788db558eea837009d590ebe"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/families-index.json",
+        "sha256": "37702c3023ccdf11580958ad121044578b560cf05fbd38675452e3e8c2ff7e74"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys-index.json",
+        "sha256": "30dd7dcd8796b807aa2396074f392fa439b385ebe7ca1954c13f7f301985ac78"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/adoption-and-performance-operations.json",
+        "sha256": "34d5b4a264395857ec8d7a62df0d170ef345cbf3ba37dbbc8ea6774eef5a12d1"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/compose-large-workbook.json",
+        "sha256": "2cb750fa32760d3f74fc846e443b35c6155a85912d08cb1f75d3faaaf38dc896"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/data-to-trusted-result.json",
+        "sha256": "66e5d8fef16aeee37c1db75317da080cbe992ab06c460e743f598c4c72f1c983"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/define-recalculate-reuse-segment.json",
+        "sha256": "3fbe2a06dc82825b643b73c655f4c988c98e5c9862bad2c4d7fa759f83aa5d58"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/digital-to-offline-unit-economics.json",
+        "sha256": "ea84180934655038b788d40f62c7181c793e82adffa31da697f1019b2099fbd8"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/open-100x30-document-without-duplicate-compute.json",
+        "sha256": "42c5b02dcca6589dbd08af15115e50aecd754dab6a483a5d81ccd2b7e35de40c"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/product-category-assortment-inventory.json",
+        "sha256": "41615a59b360cc2f1bcfee750b2160ba6b08f65ad293d3c9d7257dafd38fd311"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/publish-review-collaborate.json",
+        "sha256": "d35be92c4016a85633660e8559b8b8d80b4e28acb463aa7684414f5c1b967f3e"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/journeys/refresh-with-stable-anchors.json",
+        "sha256": "1a6f7e111213b1c77005e34628e81ea5346f9b3c27d65af799f1434df56e2a73"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/screens-index.json",
+        "sha256": "788998fcf7edb2771a3bae7795c2c4c5539bf1b1e9ef6da91a3be7b530d7327c"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r3/waves-index.json",
+        "sha256": "e2e58383627a291de53176300689fa28504a2f09be5029583401b7d653ecdfff"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/candidate-shell.html",
+        "sha256": "a8db4d4554eb66e0a0f85ff382c3e95bdf25f6c55352d1f904c60e8084856f05"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/inheritance-report.json",
+        "sha256": "e0a8db9730abc12d300eef4c4f44fbf0468c1c751cf0151f89a9ac8dd840bb01"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/representative-shell-contract.json",
+        "sha256": "4bae37dab84283e75809e6ebefe75bb4ebb8aa001730a90b2678e61e8bca0c7a"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/review-board.html",
+        "sha256": "b80fbcd335bb3b5e051a7c3735e05adaace14854512cd4060e5207461fcdce35"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/standard-board.html",
+        "sha256": "db8a16a06cd09da794716e32d635ac48e7bdd298356e6daab63c057c1a6a7c92"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+        "sha256": "860abede176a5fa34675774ed9ca9c60a496b44d8fa3f303b3f9e69e70a41138"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+        "sha256": "b57b836e371df3726381d9cb54c39d0761150291831146514c8c45f5be849359"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r4/visual-authority-decision-r4.json",
+        "sha256": "f2e0557153b794b68ebba2633d3c7cca745467a3600791e1e555b9b3e41b26cf"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1024.png",
+        "sha256": "d698e766d6553b503909df7d2dd9f7798b002984a1747ae9373afe67a41dbcb2"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1440.png",
+        "sha256": "104f599a4cb15de0a379c93de07d0ab4e0ea873415cf974da995f890eb3efc3f"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-1920.png",
+        "sha256": "c38f33f689b20546cc224f3adf95bce72155842f0047c5bab822255ff037e82a"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-768.png",
+        "sha256": "305b6b459fda69ac182f9069de0ecca4359a2d511c61b9e79c4557c24b93af82"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/source-web-1024.png",
+        "sha256": "9db832f515832a94ed3cce6507e0a49f33487c773fa49dcfc2630b1462eee573"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/source-web-1440.png",
+        "sha256": "3986879a0d50e0977f03da6cbf6fb50aa7e1071941eae70d7286b8a32e66a07d"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/source-web-1920.png",
+        "sha256": "467121b8325162266029c42f6494911f25138240a74efef440f71f10b1e406b1"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/source-web-768.png",
+        "sha256": "8253d5928e092b35b4eb341383f62335f5f1c995db27958388625fd0153d0760"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/equivalence/candidate-web-1920-ru-default.png",
+        "sha256": "2df4490857cf08205562e6314c2680e59b7d73d50e0638d9c3ddccfe45354f97"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+        "sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700"
+      },
+      {
+        "path": "custometry-technical-blueprint-human-ru.md",
+        "sha256": "e6d2f180a7d736afcaa17a37016b2ed0dc90c491fe841f212e7fd4f0bcb4d2eb"
+      },
+      {
+        "path": "custometry-technical-blueprint-ru.md",
+        "sha256": "25bb555c3d4f2f7a425cee81d658f34b86c343be69efb18756cb0ded12308311"
+      },
+      {
+        "path": "custometry-ui-blueprint-ru.md",
+        "sha256": "cbf4cbcbb3068f1984c5c6c907ecd4d6f9a0639673cf6bd678e9c4280ced6fb6"
+      },
+      {
+        "path": "packages/contracts/routes/ui-route-contracts.json",
+        "sha256": "2e15e15e3626b3068e7e47d335ff923d854781004ba9c0e0687bbbd875517089"
+      },
+      {
+        "path": "packages/contracts/routes/ui-surface-contracts.json",
+        "sha256": "c281a4a2cccf30f4e370998297b74a5df7b10ab47a13d4b16a984b38ce74fc87"
+      }
+    ],
+    "drift_classification": "owned_generated_change",
+    "stale_refs": []
+  }
+}

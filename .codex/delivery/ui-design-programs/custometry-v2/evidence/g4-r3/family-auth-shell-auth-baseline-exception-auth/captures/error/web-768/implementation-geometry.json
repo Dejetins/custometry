@@ -1,0 +1,407 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-AUTH-001.error.all.ru-RU.graphite.r3",
+  "target": "implementation",
+  "capture_profile": "screen_implementation",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": false,
+    "region_gate_applied": true,
+    "element_gate_applied": true,
+    "document_identity_gate_applied": true,
+    "fixture_meta_gate_applied": true,
+    "accessibility_gate_applied": true,
+    "interaction_gate_applied": true,
+    "overflow_gate_applied": true
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "1.6.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/contracts/UI-AUTH-001.error.r3.json --anchor-id web-768 --target implementation --source-artifact .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/auth/sign-in/index.html --logical-artifact-id custometry-v2:UI-AUTH-001:error:r3 --output .codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/error/web-768/implementation-geometry.json --screenshot .codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/error/web-768/implementation.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "contract_sha256": "f0b6f7cb66803d13908567dee3ba0f33c6c65077f4612f95ea3b8c2fa68a8d66",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/auth/sign-in/index.html",
+    "artifact_sha256": "7df428461d4e936afd29f3708dcdc214f3f3ee3c073352635ba14e72dba997bb",
+    "logical_artifact_id": "custometry-v2:UI-AUTH-001:error:r3",
+    "main_document_response_sha256": "7df428461d4e936afd29f3708dcdc214f3f3ee3c073352635ba14e72dba997bb"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "anchor_id": "web-768",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [
+    {
+      "region_id": "UI-AUTH-001.content",
+      "locator": "[data-ui-region='UI-AUTH-001.content']",
+      "bounds": {
+        "x": 174,
+        "y": 237.25,
+        "width": 420,
+        "height": 549.5
+      },
+      "computed_styles": {
+        "display": "grid",
+        "grid-template-columns": "418px",
+        "background-color": "rgb(17, 18, 20)",
+        "border-radius": "15px"
+      }
+    }
+  ],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [],
+  "elements": [
+    {
+      "element_id": "brand-story",
+      "locator": "[data-ui-element='brand-story']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 175,
+        "y": 238.25,
+        "width": 418,
+        "height": 65
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "auth-panel",
+      "locator": "[data-ui-element='auth-panel']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 175,
+        "y": 303.25,
+        "width": 418,
+        "height": 482.5
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "route-label",
+      "locator": "[data-ui-element='route-label']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 331.25,
+        "width": 370,
+        "height": 12
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "form-title",
+      "locator": "[data-ui-element='form-title']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 351.25,
+        "width": 370,
+        "height": 26
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "form-subtitle",
+      "locator": "[data-ui-element='form-subtitle']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 384.25,
+        "width": 370,
+        "height": 18
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "auth-form",
+      "locator": "[data-ui-element='auth-form']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 424.25,
+        "width": 370,
+        "height": 183
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "email-field",
+      "locator": "[data-ui-element='email-field']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 443.25,
+        "width": 370,
+        "height": 40
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "password-field",
+      "locator": "[data-ui-element='password-field']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 515.25,
+        "width": 370,
+        "height": 40
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "continue-button",
+      "locator": "[data-ui-element='continue-button']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 569.25,
+        "width": 370,
+        "height": 38
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "state-panel",
+      "locator": "[data-ui-element='state-panel']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 623.25,
+        "width": 370,
+        "height": 62.5
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "inspect-action",
+      "locator": "[data-ui-element='inspect-action']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [
+        "UI-AUTH-001.inspect"
+      ],
+      "bounds": {
+        "x": 199,
+        "y": 695.75,
+        "width": 370,
+        "height": 38
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    },
+    {
+      "element_id": "inspect-result",
+      "locator": "[data-ui-element='inspect-result']",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 199,
+        "y": 743.75,
+        "width": 370,
+        "height": 18
+      },
+      "computed_styles": {
+        "visual_language": ""
+      }
+    }
+  ],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 768,
+    "client_width": 768,
+    "scroll_height": 1024,
+    "client_height": 1024
+  },
+  "environment_checks": [
+    {
+      "check": "document_locale",
+      "expected": "ru",
+      "observed": "ru",
+      "passed": true
+    },
+    {
+      "check": "document_theme",
+      "expected": "graphite",
+      "observed": "graphite",
+      "passed": true
+    },
+    {
+      "check": "fixture_sha256",
+      "expected": "19f5399903b4325ac16dad1aebc144d4ab745806d341b942e99721d4f00e2dbd",
+      "observed": "19f5399903b4325ac16dad1aebc144d4ab745806d341b942e99721d4f00e2dbd",
+      "passed": true
+    },
+    {
+      "check": "font_bundle_sha256",
+      "expected": "61fbde09be027a0a4948811eff8653bc0ac3161438f5ec9547a7ae2c0a6a263f",
+      "observed": "61fbde09be027a0a4948811eff8653bc0ac3161438f5ec9547a7ae2c0a6a263f",
+      "passed": true
+    },
+    {
+      "check": "asset_bundle_sha256",
+      "expected": "f2ecaabc9ce0627dc71a533ac298f674bbdfb28fb1d2c264a80c0fa0bee17c27",
+      "observed": "f2ecaabc9ce0627dc71a533ac298f674bbdfb28fb1d2c264a80c0fa0bee17c27",
+      "passed": true
+    },
+    {
+      "check": "fixed_clock",
+      "expected": 1786521600000,
+      "observed": 1786521600000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 3,
+    "keyboard_sequence": [
+      "input",
+      "input",
+      "button"
+    ],
+    "keyboard_issues": [],
+    "passed": true
+  },
+  "accessibility_claim": "accessibility_smoke",
+  "browser_interaction": {
+    "visible_action_ids": [
+      "UI-AUTH-001.inspect"
+    ],
+    "observed_outcomes": [
+      {
+        "action_id": "UI-AUTH-001.inspect",
+        "outcome": "Форма доступна",
+        "expected_outcome": "Inspect current surface completes or the next contract-bound surface opens",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [
+      {
+        "check_id": "keyboard_activation",
+        "passed": true
+      },
+      {
+        "check_id": "focus_visibility",
+        "passed": true
+      },
+      {
+        "check_id": "tab_radio_behavior",
+        "passed": true
+      },
+      {
+        "check_id": "menus",
+        "passed": true
+      },
+      {
+        "check_id": "toggles",
+        "passed": true
+      },
+      {
+        "check_id": "refresh_feedback",
+        "passed": true
+      },
+      {
+        "check_id": "state_transitions",
+        "passed": true
+      },
+      {
+        "check_id": "no_unresolved_file_navigation",
+        "passed": true
+      },
+      {
+        "check_id": "no_console_errors",
+        "passed": true
+      },
+      {
+        "check_id": "no_request_failures",
+        "passed": true
+      },
+      {
+        "check_id": "no_page_horizontal_overflow",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/error/web-768/implementation.png",
+  "screenshot_sha256": "13ce26817fcacfeeab05f0da424ce8808b07d35c2343ba69b9c0fb5c9acbf26d",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']"
+    ],
+    "redaction_match_counts": [
+      1,
+      1
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

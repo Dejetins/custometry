@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-input-response.schema.json",
+  "schema_id": "codex.ui-owner-input-response/v1",
+  "generated_by": {
+    "script": "assemble_owner_input_response.py",
+    "version": "1.1.0",
+    "command": "assemble_owner_input_response.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-review-decision-packet.json",
+  "decision_packet_sha256": "f70df8dd94ba26fd90336fbb26946a39c2122c6fab7ce39d4bc8add6b583b29f",
+  "response_kind": "visual_acceptance",
+  "owner_input": "да, вот этот вариант соответствует нужному формату и принимается полностью, завершай задачу",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-acceptance-r2.json",
+  "canonical_owner_decision_sha256": "9bae65aed9e786a007f6fad1510605b0debf26fefdfc33c667e28e3191fbb6ea"
+}

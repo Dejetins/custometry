@@ -1,0 +1,31 @@
+{
+  "$schema": "stage-transition-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "from_stage_id": "G1@atlas-r2",
+  "from_gate": "G1",
+  "from_target": "atlas-r2",
+  "from_revision": 2,
+  "artifact": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r2/ui-design-program.snapshot.json",
+  "to_gate": "G2",
+  "to_stage_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "to_target": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "to_task": ".codex/agents/generated/custometry-ui-design-g0-v2/21-g2-structure-r2.md",
+  "status": "ready",
+  "owner_decision": null,
+  "decision_inventory": null,
+  "blockers": null,
+  "checks": [
+    "current_gate=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/current_gate.json",
+    "source_freshness=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/source_freshness.json",
+    "next_stage_inputs=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/next_stage_inputs.json",
+    "write_scope=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/write_scope.json",
+    "foreign_changes=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/foreign_changes.json",
+    "execution_route=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/execution_route.json",
+    "handoff_artifact=.codex/delivery/ui-design-programs/custometry-v2/evidence/g1-r2/preflight/handoff_artifact.json"
+  ],
+  "summary": "G1 r2 exact-covers the authoritative screen, journey, capability, OWNER-REC, and RECON-ADD inventories; G2 r2 is ready and remains unclaimed.",
+  "review_artifacts": [
+    ".codex/delivery/evidence/custometry-ui-design-program-v2/g1-r2-atlas-report.md"
+  ],
+  "questions": []
+}

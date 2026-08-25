@@ -12,7 +12,7 @@ status: pre_g0_intent_baseline_accepted
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-08-05
+updated_at: 2026-08-07
 artifact_role: pre_g0_product_ui_requirements_and_current_inventory
 program_route: ui-design-program
 active_program: null
@@ -433,6 +433,7 @@ Header всегда разделяет:
 ### 8.5.1. Reporting density
 
 - когда surface использует primary KPI, они группируются в компактный strip, а не автоматически превращаются в ряд высоких декоративных cards; число KPI определяется metric group и задачей, а не universal `4`;
+- published presentation задаёт default KPI-набор, но пользователь может сохранить личный выбор и порядок разрешённых compatible metrics в versioned personal Saved View; личная настройка явно помечается, сбрасывается к default и не меняет shared publication либо вид других пользователей;
 - label, typed value, period/comparison и trust state читаются как одна compact group; full value остаётся доступным;
 - Context Bar, KPI group и primary content используют согласованные alignment lines, но exact geometry определяется screen contract;
 - primary visualization получает приоритет в первом рабочем viewport и не вытесняется декоративным whitespace;
@@ -443,6 +444,8 @@ Header всегда разделяет:
 ### 8.5.2. Metric groups, adaptive numbers и research narrative
 
 - один `MetricGroupVersion` определяет group heading, group order и metric order; UI не сортирует метрики автоматически по label или текущему значению;
+- KPI label, unit, aggregation и time basis берутся из MetricVersion и resolved period: годовая частота показывается как значение за выбранный год/период и не получает `/мес.`, если metric version не задаёт месячную нормализацию;
+- visibility/order уже разрешённых KPI projections остаются presentation state; выбор метрики, которой нет в resolved result, проходит backend preflight и меняет normalized request/cache identity;
 - compact display использует `NumberFormatSpec`: `75,44% → 75%`, `4,27% → 4,3%`, `0,234% → 0,23%`; non-zero value не отображается как `0%`;
 - compact suffix (`K/M/B`, `тыс./млн/млрд`) не заменяет full value: оно доступно в tooltip/detail, accessible description и Data table;
 - Research/Dashboard/Report используют ordered sections и heterogeneous blocks `narrative`, `metric_group`, `chart`, `table`, `finding`, `conclusion`, `methodology` и `result_trust`;
@@ -721,9 +724,9 @@ Empty state содержит причину, prerequisite и одну следу
 |---|---|---|---|
 | UI-OVR-001 | Workspace switcher | Global shell | ROUTE-010 |
 | UI-OVR-002 | Global command palette | Global shell | ROUTE-003, ROUTE-005, RBAC-006 |
-| UI-OVR-003 | Searchable Filter Explorer | Любой reportable result | FILTER-002, FILTER-005, FILTER-007, FILTER-008 |
-| UI-OVR-004 | Filter expression editor | Analytics/dashboard/report | FILTER-001, FILTER-003, FILTER-004, FILTER-009, FILTER-010 |
-| UI-OVR-005 | Previous-year comparison editor | Любой reportable result | UC-012, COMPARE-001…007 |
+| UI-OVR-003 | Searchable Filter Explorer | Любой reportable result | FILTER-002, FILTER-005, FILTER-007, FILTER-008, FILTER-011, FILTER-012 |
+| UI-OVR-004 | Filter expression editor | Analytics/dashboard/report | FILTER-001, FILTER-003, FILTER-004, FILTER-009…012 |
+| UI-OVR-005 | Period and comparison editor | Любой reportable result | UC-012, COMPARE-001…010 |
 | UI-OVR-006 | Result Trust drawer | Result/dashboard/report/quality/forecast | REPORT-008, UX-JOURNEY-005 |
 | UI-OVR-007 | Chart data table | Любой chart | CHART-015, A11Y-006, A11Y-007 |
 | UI-OVR-008 | Publish diff and impact modal | Versioned definition | OBJ-STATE-002, UX-JOURNEY-006 |
@@ -762,10 +765,10 @@ Empty state содержит причину, prerequisite и одну следу
 | ID | Capability | Применимость | Основные требования |
 |---|---|---|---|
 | UI-CAP-001 | Workspace routing, guards and return | Все protected routes | ROUTE-001…012, RBAC-002 |
-| UI-CAP-002 | Searchable typed filters | Все разрешённые reportable datasets/results | FILTER-001…010 |
-| UI-CAP-003 | Previous-year comparison | Любая аналитическая отчётность | UC-012, COMPARE-001…007 |
+| UI-CAP-002 | Searchable typed filters | Все разрешённые reportable datasets/results | FILTER-001…012 |
+| UI-CAP-003 | Shared and block-local period comparison | Любая аналитическая отчётность | UC-012, COMPARE-001…010 |
 | UI-CAP-004 | Metric groups and adaptive formats | Web/email/XLSX metric and table blocks | METRIC-009…016 |
-| UI-CAP-005 | ChartSpec visualization | Все reportable visual blocks | UC-017, CHART-001…019 |
+| UI-CAP-005 | ChartSpec visualization | Все reportable visual blocks | UC-017, CHART-001…020 |
 | UI-CAP-006 | Chart ↔ Data table | Каждый chart с accessible alternative | CHART-015, A11Y-006, A11Y-007 |
 | UI-CAP-007 | Focus / Explore | Chart, table и range timeline | UC-018, FOCUS-001…012 |
 | UI-CAP-008 | Result Trust | Analysis/research/dashboard/report/quality/forecast | REPORT-008, UX-JOURNEY-005 |
@@ -799,12 +802,17 @@ Context bar
   Search filters
   Saved view
 Compact KPI strip: один общий контейнер, четыре ячейки без отдельных крупных cards
+  Personal view: выбрать/упорядочить доступные KPI, сбросить к published default
 Primary chart area
 Secondary decomposition/chart
 Data table
 Compact Result Trust trigger; optional drawer on demand
 Actions: save, dashboard, report, export
 ```
+
+Если Result Inspector открыт как соседняя pane, его header MUST совпадать по высоте и baseline с Page header, а строка inspector tabs — со строкой report tabs/context bar. Inspector использует достаточную рабочую ширину для typed filter builder и адаптивно переходит в overlay на узком viewport; открытие/закрытие не должно создавать ложное перемещение основной области. Один toggle управляет обоими состояниями.
+
+Inspector разделяет `Контекст`, `Фильтры`, `Обсуждение`, `Доверие` и `Виды`: typed filter builder начинается сверху собственной вкладки, а не после длинного контекста. В `Поделиться снимком` постоянно видны только `Копировать ссылку` и `Email-preflight ссылки`; resolved state снимка раскрывается по запросу. `Виды` позволяют применить versioned visual template на уровне отчёта и local override блока; конструктор палитр/типографики является отдельной Settings surface. Заметки и методика показывают permission-safe автора отчёта, дату обновления и publication version.
 
 Это один screen pattern, а не форма каждого документа. Workbook page может быть narrative/table-first, comparison-first, scenario-first или mixed; Dashboard остаётся compact monitoring surface; Research использует outline/long-form evidence. Любая композиция сохраняет явные data bindings, filter scopes, Result Trust, accessible table alternatives и deterministic reading order.
 
@@ -816,6 +824,10 @@ Actions: save, dashboard, report, export
 - delta содержит абсолютное и относительное изменение;
 - неполный либо несовместимый период имеет warning/blocked state;
 - comparison style одинаков для KPI, charts и tables.
+- один report-level control задаёт shared grain/current period/comparison для всех вкладок;
+- каждый chart/table block явно показывает `inherit` либо local month/quarter/year и comparison override; effective period всегда попадает в snapshot/export;
+- `inherit` подписывается конкретно как «Как в отчёте · месяц/квартал/год», без несуществующего периода «общий»; смена grain меняет реальные bucket boundaries, число точек и строки таблицы, а chart/table/export читают один bucketed artifact;
+- segment size и полная migration matrix используют exact current/comparison snapshots, показывают дельты и не скрывают возможные переходы.
 
 ### 11.2. Filters
 
@@ -827,6 +839,9 @@ Actions: save, dashboard, report, export
 - sensitive facets/counts не раскрываются;
 - active filters отображаются chips с keyboard removal;
 - saved view pin-ит filter expression/version.
+- catalog группируется по business entity и поддерживает поиск по label/description/aliases;
+- AND/OR выражаются явными группами, а вложенные условия одного события/заказа сохраняют общий container scope;
+- system/inherited filters, draft expression, applied expression и предварительная оценка результата визуально разделены; Apply повторно валидирует expression на backend.
 
 ### 11.3. Data treatment и sensitivity
 

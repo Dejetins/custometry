@@ -1,0 +1,62 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5.finished-foundations-shell",
+  "decision_kind": "stage_acceptance",
+  "target": {
+    "artifact_kind": "program",
+    "artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+    "revision": 5,
+    "validation_profile": "program_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "a61517db5be687e2ee01986f79f6942259b3a1341790cc2b8546162f9219ce24"
+  },
+  "decision": {
+    "status": "accepted",
+    "revision": 5,
+    "decision_text": "The owner accepts the exact finished G3 r5 foundations and shell checkpoint as the mandatory visual foundation for the blueprint-rebound G4 families. The acceptance covers the rendered Graphite shell expression, personal KPI view, shared and block-local period/comparison, five-section Result Inspector, filter-state separation, visual-template binding and responsive Web behavior shown in the hash-bound review board. It does not accept any G4 family, exact target-screen composition, production implementation, publication, deployment, mobile-specific design or full WCAG conformance.",
+    "accepted_values": [
+      {
+        "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+        "review_board": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/review-board.html",
+          "sha256": "b4cc0a5aec8cd909008b0960268e9e83940b371e7e5067213acf6efb4a6b35e4"
+        },
+        "standard_board": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/standard-board.html",
+          "sha256": "ba5bcd2640610b2a503e435928c84fc418e7ded57229c6701112606db999a739"
+        },
+        "candidate_shell": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/candidate-shell.html",
+          "sha256": "257b1f9eebad9e362a2c941431a344c8a151ff0951952d026881726dc4400985"
+        },
+        "inheritance_report": {
+          "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/inheritance-report.json",
+          "sha256": "4d6c9e54e4b9554e8610bf0f046a3b28d079f1a71a46f01245cbd20d85cddd64"
+        },
+        "responsive_web_anchors": [
+          "web-768",
+          "web-1024",
+          "web-1440",
+          "web-1920"
+        ],
+        "mobile_scope": "unauthorized"
+      }
+    ],
+    "accepted_value_sha256s": [
+      "d1a99bee5779bdb5591c492d6718c0a81655d46d4222944e614fbe2c898e0ef6"
+    ]
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "ок принимаю G3",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-19T14:03:32.081389+00:00"
+  }
+}

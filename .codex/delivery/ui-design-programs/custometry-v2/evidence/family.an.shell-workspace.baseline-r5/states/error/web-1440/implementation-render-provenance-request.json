@@ -1,0 +1,9 @@
+{
+  "program_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+  "target": "implementation",
+  "logical_artifact_id": "UI-AN-013.error.all.ru.graphite@r5",
+  "anchor_id": "web-1440",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-an-shell-workspace-baseline/states/error/screen.html",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.an.shell-workspace.baseline-r5/states/error/web-1440/implementation.png",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.an.shell-workspace.baseline-r5/states/error/web-1440/implementation-geometry.json"
+}

@@ -4,7 +4,7 @@
   "title": "Reproducible UI design implementation handoff",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_id", "generated_by", "program_id", "program_revision", "program_input", "program_core_sha256", "expected_wave_ids", "expected_critical_journey_ids", "accepted_wave_receipts", "critical_journey_evidence", "implementation_inputs", "reproduction_commands", "proof_boundary", "result", "blockers"],
+  "required": ["schema_id", "generated_by", "program_id", "program_revision", "program_input", "program_core_sha256", "expected_wave_ids", "expected_critical_journey_ids", "accepted_wave_receipts", "critical_journey_evidence", "standard_lineage", "implementation_inputs", "reproduction_commands", "proof_boundary", "result", "blockers"],
   "properties": {
     "$schema": {"type": "string"},
     "schema_id": {"const": "codex.ui-implementation-handoff/v1"},
@@ -14,7 +14,7 @@
       "required": ["script", "version", "command"],
       "properties": {
         "script": {"const": "assemble_implementation_handoff.py"},
-        "version": {"const": "1.1.0"},
+        "version": {"const": "2.0.0"},
         "command": {"const": "assemble_implementation_handoff.py <paths-redacted>"}
       }
     },
@@ -51,6 +51,21 @@
           "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
           "result": {"const": "passed"}
         }
+      }
+    },
+    "standard_lineage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["standard_revision_id", "clause_inventory_sha256", "clause_inventory_size", "source_inventory", "applicability_manifest_sha256s", "expected_application_ids", "observed_application_ids", "accepted_exception_clause_ids", "result"],
+      "properties": {
+        "standard_revision_id": {"type": "string", "minLength": 1},
+        "clause_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "clause_inventory_size": {"type": "integer", "minimum": 1},
+        "source_inventory": {"$ref": "#/$defs/evidenceRef"},
+        "applicability_manifest_sha256s": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+        "expected_application_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "observed_application_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "accepted_exception_clause_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "result": {"const": "passed"}
       }
     },
     "implementation_inputs": {

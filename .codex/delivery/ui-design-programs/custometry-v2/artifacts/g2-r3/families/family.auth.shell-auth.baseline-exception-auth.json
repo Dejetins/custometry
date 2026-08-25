@@ -1,0 +1,26 @@
+{
+  "family": {
+    "family_id": "family.auth.shell-auth.baseline-exception-auth",
+    "title": "auth / shell-auth / baseline-exception-auth",
+    "representative_screen_ids": [
+      "UI-AUTH-001",
+      "UI-AUTH-004"
+    ],
+    "screen_ids": [
+      "UI-AUTH-001",
+      "UI-AUTH-002",
+      "UI-AUTH-003",
+      "UI-AUTH-004"
+    ],
+    "reuse_hypothesis_status": "hypothesis",
+    "decision_origin": {
+      "kind": "product_contract",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json#/screens"
+    },
+    "workload_budget": {
+      "max_screens": 4,
+      "max_screen_state_pairs": 24,
+      "rationale": "One auth-shell family with distinct sign-in and recovery representatives; shared grammar does not imply identical composition."
+    }
+  }
+}

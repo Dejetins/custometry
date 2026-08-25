@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru" data-theme="graphite">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="ui-fixture-sha256" content="19f5399903b4325ac16dad1aebc144d4ab745806d341b942e99721d4f00e2dbd">
+  <meta name="ui-font-bundle-sha256" content="61fbde09be027a0a4948811eff8653bc0ac3161438f5ec9547a7ae2c0a6a263f">
+  <meta name="ui-asset-bundle-sha256" content="f2ecaabc9ce0627dc71a533ac298f674bbdfb28fb1d2c264a80c0fa0bee17c27">
+  <link rel="icon" href="data:,">
+  <title>Custometry — sign in</title>
+  <style>
+    :root{--ink:#f0f0f2;--muted:#8b8c93;--paper:#070708;--sidebar:#090a0b;--panel:#111214;--panel2:#151619;--module:#1a1b1e;--line:#303136;--line-soft:#242529;--cyan:#66b9d3;--focus:#8bd2e8;--danger:#f07d87;--warning:#ddb064;--ok:#62c7aa;--shadow:0 22px 70px rgba(0,0,0,.48),0 0 0 1px rgba(255,255,255,.07)}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+    body{min-height:100vh;display:grid;place-items:center;padding:24px;overflow-x:hidden;background:var(--paper)}
+    button,input{font:inherit} button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+    .auth{width:min(100%,420px);display:grid;grid-template-columns:1fr;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow)}
+    .story{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 22px;border-bottom:1px solid var(--line-soft);background:var(--sidebar)}
+    .brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700} .mark{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;color:#071014;background:var(--cyan);font-weight:800}
+    h1{margin:0;font-size:18px;font-weight:680;letter-spacing:-.02em} .form-side{padding:28px 24px 24px} .form-wrap{width:100%;margin:auto}
+    .kicker{margin:0 0 8px;color:var(--muted);font-size:10px} h2{margin:0;font-size:22px;letter-spacing:-.025em} .sub{margin:7px 0 22px;color:#a7a7ad;font-size:12px;line-height:1.5}
+    form{display:grid;gap:13px} label{display:grid;gap:6px;color:#a7a7ad;font-size:11px;font-weight:650} input{width:100%;min-height:40px;border:1px solid var(--line);border-radius:7px;padding:0 11px;color:var(--ink);background:var(--panel2)} input::placeholder{color:var(--muted)} input:disabled{opacity:.52}
+    .primary,.secondary,.inspect{min-height:38px;border-radius:7px;border:1px solid transparent;padding:0 12px;font-weight:680;cursor:pointer;transition-property:background-color,color,scale;transition-duration:120ms} .primary{margin-top:1px;color:#071014;background:var(--cyan)} .primary:disabled{cursor:not-allowed;opacity:.42} .primary:not(:disabled):active,.secondary:active,.inspect:active{scale:.96}
+    .secondary,.inspect{width:100%;color:var(--text-secondary,#a7a7ad);background:var(--module);border-color:var(--line)} .secondary:hover,.inspect:hover{color:var(--ink);background:#222327} .inspect{margin-top:10px}
+    .state{margin-top:16px;padding:12px 13px;border:1px solid var(--line-soft);border-radius:10px;background:var(--panel2)} .state strong{display:block;font-size:12px} .state p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.5}
+    .state[data-state="loading"]{border-color:rgba(102,185,211,.42)} .state[data-state="error"]{border-color:rgba(240,125,135,.45)} .state[data-state="error"] strong{color:var(--danger)} .state[data-state="permission_denied"]{border-color:rgba(221,176,100,.45)} .state[data-state="permission_denied"] strong{color:var(--warning)} .state[data-state="recovery"] strong,.state[data-state="populated"] strong{color:var(--ok)}
+    .result{min-height:18px;margin:10px 0 0;color:var(--cyan);font-size:11px} .recovery-form{gap:12px} .recovery-form .secondary,.recovery-form .inspect{margin-top:0}
+    @media(max-width:452px){body{display:block;padding:16px}.story{align-items:flex-start;flex-direction:column;gap:14px;padding:22px}.form-side{padding:28px 22px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="auth" data-ui-region="UI-AUTH-001.content">
+    <section class="story" data-ui-element="brand-story">
+      <div class="brand"><span class="mark" aria-hidden="true">C</span><span>Custometry</span></div>
+      <h1 data-copy="storyTitle">Sign in</h1>
+    </section>
+    <section class="form-side" data-ui-element="auth-panel">
+      <div class="form-wrap" data-form-wrap>
+        <p class="kicker" data-ui-element="route-label">/auth/sign-in · shell.auth</p>
+        <h2 data-ui-element="form-title" data-copy="title">Workspace credentials</h2>
+        <p class="sub" data-ui-element="form-subtitle" data-copy="subtitle">Enter your email and password.</p>
+        <form data-ui-element="auth-form" onsubmit="event.preventDefault()">
+          <label>Email<input data-ui-element="email-field" aria-label="Workspace email" type="email" placeholder="name@company.test" autocomplete="username"></label>
+          <label>Password<input data-ui-element="password-field" aria-label="Workspace password" type="password" placeholder="Synthetic review value" autocomplete="current-password" data-sensitive></label>
+          <button data-ui-element="continue-button" class="primary" type="button" disabled>Continue</button>
+        </form>
+        <div class="state" data-ui-element="state-panel" aria-live="polite"><strong data-state-title></strong><p data-state-copy></p></div>
+        <button data-ui-element="inspect-action" class="inspect" type="button" data-prototype-action="UI-AUTH-001.inspect">Check form</button>
+        <p class="result" data-ui-element="inspect-result" data-inspect-result aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const stateCopy={"ru": {"initial": ["Введите данные", "Укажите рабочий email и пароль."], "loading": ["Проверка доступа", "Поля временно недоступны."], "populated": ["Данные заполнены", "Проверьте значения перед продолжением."], "error": ["Не удалось проверить данные", "Исправьте данные или повторите попытку."], "permission_denied": ["Доступ не разрешён", "Учётная запись распознана, но у неё нет доступа к этому рабочему пространству."], "recovery": ["Восстановить доступ", "Укажите рабочий email. Мы отправим ссылку для восстановления."]}, "en": {"initial": ["Enter your details", "Provide your workspace email and password."], "loading": ["Checking access", "The fields are temporarily unavailable."], "populated": ["Details are populated", "Review the values before continuing."], "error": ["Details could not be verified", "Correct the details or try again."], "permission_denied": ["Access is not permitted", "The account is recognized but cannot enter this workspace."], "recovery": ["Recover access", "Enter your workspace email. We will send a recovery link."]}};
+    const query=new URLSearchParams(location.search);
+    let state=["initial", "loading", "populated", "error", "permission_denied", "recovery"].includes(query.get("state"))?query.get("state"):"initial";
+    const locale=query.get("lang")==="en"?"en":"ru";
+    document.documentElement.lang=locale;
+    const wrap=document.querySelector("[data-form-wrap]");
+    const signInMarkup=wrap.innerHTML;
+    function renderCurrentState(){
+      const copy=stateCopy[locale][state];
+      if(state==="recovery"){
+        wrap.innerHTML=`
+          <p class="kicker" data-ui-element="route-label">/auth/sign-in · shell.auth</p>
+          <h2 data-ui-element="form-title">${copy[0]}</h2>
+          <p class="sub" data-ui-element="form-subtitle">${copy[1]}</p>
+          <form class="recovery-form" data-ui-element="recovery-form" onsubmit="event.preventDefault()">
+            <label>${locale==="ru"?"Рабочий email":"Workspace email"}<input data-ui-element="email-field" aria-label="${locale==="ru"?"Рабочий email":"Workspace email"}" type="email" placeholder="name@company.test" autocomplete="username"></label>
+            <button data-ui-element="recovery-submit" class="inspect" type="button" data-prototype-action="UI-AUTH-001.inspect">${locale==="ru"?"Отправить ссылку":"Send recovery link"}</button>
+            <button data-ui-element="back-to-sign-in" class="secondary" type="button">${locale==="ru"?"Вернуться ко входу":"Back to sign in"}</button>
+          </form>
+          <p class="result recovery-result" data-ui-element="recovery-result" data-inspect-result role="status" aria-live="polite"></p>`;
+        document.querySelector("[data-copy=storyTitle]").textContent=locale==="ru"?"Восстановление":"Recovery";
+        document.querySelector("[data-prototype-action]").addEventListener("click",()=>{
+          document.querySelector("[data-inspect-result]").textContent=locale==="ru"?"Ссылка для восстановления отправлена":"Recovery link sent";
+        });
+        document.querySelector("[data-ui-element=back-to-sign-in]").addEventListener("click",()=>{
+          state="initial";
+          renderCurrentState();
+          window.parent.postMessage({type:"custometry-auth-state",state},"*");
+        });
+        return;
+      }
+      wrap.innerHTML=signInMarkup;
+      const panel=document.querySelector(".state"); panel.dataset.state=state;
+      document.querySelector("[data-state-title]").textContent=copy[0];
+      document.querySelector("[data-state-copy]").textContent=copy[1];
+      const action=document.querySelector("[data-prototype-action]");
+      const result=document.querySelector("[data-inspect-result]");
+      action.addEventListener("click",()=>{result.textContent=locale==="ru"?"Форма доступна":"Form is available";});
+      const inputs=[...document.querySelectorAll("input")];
+      if(state==="loading") inputs.forEach(node=>node.disabled=true);
+      if(state==="populated"){document.querySelector("input[type=email]").value="reviewer@custometry.test";document.querySelector("input[type=password]").value="synthetic-proof";}
+      document.querySelector("[data-copy=storyTitle]").textContent=locale==="ru"?"Вход":"Sign in";
+      if(locale==="ru"){
+        document.querySelector("[data-copy=title]").textContent="Учётные данные";
+        document.querySelector("[data-copy=subtitle]").textContent="Введите email и пароль.";
+        document.querySelector("label").childNodes[0].textContent="Рабочий email";
+        document.querySelectorAll("label")[1].childNodes[0].textContent="Пароль";
+        document.querySelector(".primary").textContent="Продолжить";
+        action.textContent="Проверить форму";
+      }
+    }
+    renderCurrentState();
+  </script>
+</body>
+</html>

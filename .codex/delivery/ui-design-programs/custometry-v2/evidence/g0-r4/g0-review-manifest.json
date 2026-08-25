@@ -1,0 +1,59 @@
+{
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+  "candidate": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700"
+  },
+  "historical_source": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+    "sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15"
+  },
+  "baseline": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/platform-ui-baseline.json",
+    "sha256": "dbd037f1a69f31b7b90d06f615587293460d70e08ea8059b398e551ca91f5e13"
+  },
+  "intake": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-program-intake.json",
+    "sha256": "99e179e1ca7fc60f64dd61d5d0a433affd89df8c2f406cd4f0c7f21e93da1316"
+  },
+  "source_inventory": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r4/ui-standard-source-inventory.json",
+    "sha256": "b6cd8e2595e23633a9021305438e05a61067cc9a49a3ec56e59bb14fef56e48f"
+  },
+  "counts": {
+    "visible_nodes": 1238,
+    "observations": 42092,
+    "reusable_observations": 4862,
+    "source_dispositions": 37230,
+    "standard_clauses": 203
+  },
+  "auth_boundary": {
+    "sign_in": {
+      "screen_id": "UI-AUTH-001",
+      "route": "/auth/sign-in",
+      "state_ids": [
+        "UI-AUTH-001.initial",
+        "UI-AUTH-001.first_loading",
+        "UI-AUTH-001.ready",
+        "UI-AUTH-001.validation_error",
+        "UI-AUTH-001.failed",
+        "UI-AUTH-001.session_expired"
+      ]
+    },
+    "recovery": {
+      "screen_id": "UI-AUTH-004",
+      "route": "/auth/recovery",
+      "state_ids": [
+        "UI-AUTH-004.initial",
+        "UI-AUTH-004.first_loading",
+        "UI-AUTH-004.ready",
+        "UI-AUTH-004.validation_error",
+        "UI-AUTH-004.failed",
+        "UI-AUTH-004.session_expired"
+      ]
+    }
+  },
+  "equivalence": "six browser states/anchors exact; zero differing pixels; metadata-only DOM difference",
+  "owner_acceptance": "pending"
+}

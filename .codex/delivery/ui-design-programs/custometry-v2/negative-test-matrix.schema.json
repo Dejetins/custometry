@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex.local/skills/ui-design-program/negative-test-matrix.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "cases"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_id": {"const": "codex.ui-design-program-negative-tests/v1"},
+    "cases": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "executable", "expected_boundary"],
+        "properties": {
+          "case_id": {"type": "string", "minLength": 1},
+          "executable": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+          "expected_boundary": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

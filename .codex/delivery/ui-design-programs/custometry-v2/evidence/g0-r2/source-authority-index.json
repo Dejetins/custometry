@@ -1,0 +1,68 @@
+{
+  "schema_id": "custometry.ui-source-authority-index/v2",
+  "status": "complete",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "revision": 2,
+  "sources": [
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+      "sha256": "b57b836e371df3726381d9cb54c39d0761150291831146514c8c45f5be849359",
+      "declared_status": "accepted"
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/candidate-manifest.json",
+      "sha256": "39c52fd9f5ec4a7db250f229b736ee71986680c412796ef9a36566fcd7e6783f",
+      "declared_status": "awaiting_owner_review"
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v2/ru/source.html",
+      "sha256": "d5639f0e20a79581972853979cd643ca456b6235c1ce098f5adc98d89636ca15",
+      "declared_status": null
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/pilot-candidate-import-receipt.json",
+      "sha256": "01087bfaebe69dae244352e9fb957713d58ba1981887f079b7545f38cc8c5578",
+      "declared_status": "verified"
+    },
+    {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/requirement-reconciliation.json",
+      "sha256": "4a85d101983df5987264ef52d60c59e5d810908d22d2b200ed2a8c6c81bc841b",
+      "declared_status": "complete"
+    },
+    {
+      "path": "packages/contracts/routes/ui-route-contracts.json",
+      "sha256": "2e15e15e3626b3068e7e47d335ff923d854781004ba9c0e0687bbbd875517089",
+      "declared_status": null
+    },
+    {
+      "path": "packages/contracts/routes/ui-surface-contracts.json",
+      "sha256": "c281a4a2cccf30f4e370998297b74a5df7b10ab47a13d4b16a984b38ce74fc87",
+      "declared_status": null
+    },
+    {
+      "path": "custometry-technical-blueprint-ru.md",
+      "sha256": "25bb555c3d4f2f7a425cee81d658f34b86c343be69efb18756cb0ded12308311",
+      "declared_status": "draft"
+    },
+    {
+      "path": "custometry-technical-blueprint-human-ru.md",
+      "sha256": "e6d2f180a7d736afcaa17a37016b2ed0dc90c491fe841f212e7fd4f0bcb4d2eb",
+      "declared_status": "draft"
+    },
+    {
+      "path": "custometry-ui-blueprint-ru.md",
+      "sha256": "cbf4cbcbb3068f1984c5c6c907ecd4d6f9a0639673cf6bd678e9c4280ced6fb6",
+      "declared_status": "active_ui_program_r2"
+    },
+    {
+      "path": "docs/generated/requirement-index.json",
+      "sha256": "7fa4aa4b638c3532574e1d089c9195169d57bb2130ae8570707965020dd81b37",
+      "declared_status": null
+    },
+    {
+      "path": "docs/adr/0007-responsive-web-frontend-platform.md",
+      "sha256": "ff8792002da768e5b8c4a7a110aa8dc3fc132ba869885f3d1dcbc1986d5fc265",
+      "declared_status": "accepted"
+    }
+  ]
+}

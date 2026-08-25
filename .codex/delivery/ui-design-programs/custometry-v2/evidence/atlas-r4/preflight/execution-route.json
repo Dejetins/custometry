@@ -1,0 +1,13 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "execution_route",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G1@atlas-r4",
+  "gate_id": "G1",
+  "status": "passed",
+  "facts": {
+    "route": "staged_plan_runner_sequential_cas",
+    "available": true
+  }
+}

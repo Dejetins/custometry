@@ -1,0 +1,9 @@
+[
+  {
+    "decision_id": "G4@family.rpt.shell-workspace.baseline-r5.finished-result",
+    "class": "owner_required",
+    "status": "resolved",
+    "summary": "The owner explicitly accepted the complete Reports r5 HTML review board.",
+    "resolution_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.rpt.shell-workspace.baseline-r5/family-acceptance-decision-r5.json"
+  }
+]

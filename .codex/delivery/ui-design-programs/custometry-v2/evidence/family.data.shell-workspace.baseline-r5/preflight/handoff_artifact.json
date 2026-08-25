@@ -1,0 +1,14 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "handoff_artifact",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.data.shell-workspace.baseline-r5",
+  "gate_id": "G4",
+  "status": "passed",
+  "facts": {
+    "artifact_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-05-family-dq-shell-workspace-baseline-r5.md",
+    "artifact_sha256": "734755c46b9d81cd2fcf60efdcf2a4e1736728d6d7e9a5ccdb3d9407d447dcb8",
+    "known_stop_resolution": "none"
+  }
+}

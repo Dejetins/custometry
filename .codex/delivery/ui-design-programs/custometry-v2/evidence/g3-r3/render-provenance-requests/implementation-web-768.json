@@ -1,0 +1,9 @@
+{
+  "program_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+  "target": "implementation",
+  "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:g3-candidate:r3",
+  "anchor_id": "web-768",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r3/candidate-shell.html",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-768.png",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r3/candidate-web-768-geometry.json"
+}

@@ -1,0 +1,1725 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-AUTH-001.ready.all.ru-RU.graphite.r4",
+  "target": "implementation",
+  "capture_profile": "screen_implementation",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": false,
+    "region_gate_applied": true,
+    "element_gate_applied": true,
+    "document_identity_gate_applied": true,
+    "fixture_meta_gate_applied": true,
+    "accessibility_gate_applied": true,
+    "interaction_gate_applied": true,
+    "overflow_gate_applied": true,
+    "standard_clause_gate_applied": true
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "2.0.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r4/family-auth-shell-auth-baseline-exception-auth/contracts/UI-AUTH-001.ready.r4.json --anchor-id web-1440 --target implementation --source-artifact .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r4/family-auth-shell-auth-baseline-exception-auth/screens/auth-family.html --logical-artifact-id CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-001:UI-AUTH-001.ready:r4 --output .codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/captures/UI-AUTH-001.ready/web-1440/implementation-geometry.json --screenshot .codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/captures/UI-AUTH-001.ready/web-1440/implementation.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "contract_sha256": "090e73c4863417090a7be5ba3dcf105bbd05a6c7acba74fbfddfb05f5b88b0d9",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r4/family-auth-shell-auth-baseline-exception-auth/screens/auth-family.html",
+    "artifact_sha256": "460a433118f3bddd2f30039c68bfac6b391477bc84495c63e3cf43ded5ffa2f0",
+    "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-001:UI-AUTH-001.ready:r4",
+    "main_document_response_sha256": "460a433118f3bddd2f30039c68bfac6b391477bc84495c63e3cf43ded5ffa2f0"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "anchor_id": "web-1440",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [
+    {
+      "region_id": "UI-AUTH-001.content",
+      "locator": "[data-screen-id=\"UI-AUTH-001\"]:not([hidden])",
+      "bounds": {
+        "x": 513.719,
+        "y": 194.75,
+        "width": 412.563,
+        "height": 510.5
+      },
+      "computed_styles": {
+        "display": "block",
+        "position": "static",
+        "overflow": "hidden",
+        "background-color": "rgb(17, 18, 20)",
+        "border-radius": "15px"
+      }
+    },
+    {
+      "region_id": "UI-AUTH-001.brand",
+      "locator": "[data-ui-region=\"UI-AUTH-001.brand\"]",
+      "bounds": {
+        "x": 514.719,
+        "y": 195.75,
+        "width": 410.563,
+        "height": 59
+      },
+      "computed_styles": {
+        "display": "flex",
+        "position": "static",
+        "overflow": "visible",
+        "background-color": "rgb(9, 10, 11)",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "region_id": "UI-AUTH-001.form",
+      "locator": "[data-ui-region=\"UI-AUTH-001.form\"]",
+      "bounds": {
+        "x": 514.719,
+        "y": 254.75,
+        "width": 410.563,
+        "height": 449.5
+      },
+      "computed_styles": {
+        "display": "block",
+        "position": "static",
+        "overflow": "visible",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "border-radius": "0px"
+      }
+    }
+  ],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [],
+  "elements": [
+    {
+      "element_id": "signin-brand",
+      "locator": "[data-ui-element=\"signin-brand\"]",
+      "region_id": "UI-AUTH-001.brand",
+      "action_ids": [],
+      "bounds": {
+        "x": 532.719,
+        "y": 210.75,
+        "width": 108.75,
+        "height": 28
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-locale",
+      "locator": "[data-ui-element=\"signin-locale\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [
+        "UI-AUTH-001.change-language"
+      ],
+      "bounds": {
+        "x": 763.281,
+        "y": 209.75,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-surface",
+      "locator": "[data-ui-element=\"signin-surface\"]",
+      "region_id": "UI-AUTH-001.form",
+      "action_ids": [],
+      "bounds": {
+        "x": 514.719,
+        "y": 254.75,
+        "width": 410.563,
+        "height": 449.5
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-route",
+      "locator": "[data-ui-element=\"signin-route\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 538.719,
+        "y": 278.75,
+        "width": 362.563,
+        "height": 15
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-title",
+      "locator": "[data-ui-element=\"signin-title\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 538.719,
+        "y": 299.75,
+        "width": 362.563,
+        "height": 33
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-description",
+      "locator": "[data-ui-element=\"signin-description\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 538.719,
+        "y": 339.75,
+        "width": 362.563,
+        "height": 18
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-email",
+      "locator": "[data-ui-element=\"signin-email\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 538.719,
+        "y": 400.25,
+        "width": 362.563,
+        "height": 40
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "signin-password",
+      "locator": "[data-ui-element=\"signin-password\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 538.719,
+        "y": 474.75,
+        "width": 362.563,
+        "height": 40
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "signin-remember",
+      "locator": "[data-ui-element=\"signin-remember\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [
+        "UI-AUTH-001.toggle-remember"
+      ],
+      "bounds": {
+        "x": 538.719,
+        "y": 526.75,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-open-recovery",
+      "locator": "[data-ui-element=\"signin-open-recovery\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [
+        "UI-AUTH-001.open-recovery"
+      ],
+      "bounds": {
+        "x": 757.281,
+        "y": 526.75,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-submit",
+      "locator": "[data-ui-element=\"signin-submit\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [
+        "UI-AUTH-001.submit-credentials"
+      ],
+      "bounds": {
+        "x": 538.719,
+        "y": 568.75,
+        "width": 144,
+        "height": 30
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "signin-message",
+      "locator": "[data-ui-element=\"signin-message\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 538.719,
+        "y": 612.75,
+        "width": 362.563,
+        "height": 40.5
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "signin-result",
+      "locator": "[data-ui-element=\"signin-result\"]",
+      "region_id": "UI-AUTH-001.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 538.719,
+        "y": 662.25,
+        "width": 362.563,
+        "height": 18
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    }
+  ],
+  "standard_observations": [
+    {
+      "application_id": "standard.border.border-color.75a3b865617f::element::signin-locale::web-1440",
+      "clause_id": "standard.border.border-color.75a3b865617f",
+      "property": "border-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.75a3b865617f::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.border.border-color.75a3b865617f",
+      "property": "border-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.75a3b865617f::element::signin-remember::web-1440",
+      "clause_id": "standard.border.border-color.75a3b865617f",
+      "property": "border-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-color.75a3b865617f::element::signin-submit::web-1440",
+      "clause_id": "standard.border.border-color.75a3b865617f",
+      "property": "border-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::signin-locale::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::signin-remember::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.f2f52c7112bf::element::signin-submit::web-1440",
+      "clause_id": "standard.border.border-style.f2f52c7112bf",
+      "property": "border-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::signin-locale::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::signin-remember::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3a4c93b94679::element::signin-submit::web-1440",
+      "clause_id": "standard.border.border-width.3a4c93b94679",
+      "property": "border-width",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::signin-locale::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::signin-remember::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.54ba9843a31f::element::signin-submit::web-1440",
+      "clause_id": "standard.color.background-color.54ba9843a31f",
+      "property": "background-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.c863c07a7c53::element::signin-locale::web-1440",
+      "clause_id": "standard.color.color.c863c07a7c53",
+      "property": "color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.c863c07a7c53::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.color.color.c863c07a7c53",
+      "property": "color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.c863c07a7c53::element::signin-remember::web-1440",
+      "clause_id": "standard.color.color.c863c07a7c53",
+      "property": "color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.c863c07a7c53::element::signin-submit::web-1440",
+      "clause_id": "standard.color.color.c863c07a7c53",
+      "property": "color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::signin-locale::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::signin-remember::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::signin-submit::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.3f0aafaa6634::element::signin-locale::web-1440",
+      "clause_id": "standard.focus.outline-color.3f0aafaa6634",
+      "property": "outline-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.3f0aafaa6634::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.focus.outline-color.3f0aafaa6634",
+      "property": "outline-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.3f0aafaa6634::element::signin-remember::web-1440",
+      "clause_id": "standard.focus.outline-color.3f0aafaa6634",
+      "property": "outline-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.3f0aafaa6634::element::signin-submit::web-1440",
+      "clause_id": "standard.focus.outline-color.3f0aafaa6634",
+      "property": "outline-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::signin-locale::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::signin-remember::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::signin-submit::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::signin-locale::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::signin-remember::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::signin-submit::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.a4bee902fcee::element::signin-locale::web-1440",
+      "clause_id": "standard.layout.display.a4bee902fcee",
+      "property": "display",
+      "value": "flex",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.a4bee902fcee::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.layout.display.a4bee902fcee",
+      "property": "display",
+      "value": "flex",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.a4bee902fcee::element::signin-remember::web-1440",
+      "clause_id": "standard.layout.display.a4bee902fcee",
+      "property": "display",
+      "value": "flex",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.a4bee902fcee::element::signin-submit::web-1440",
+      "clause_id": "standard.layout.display.a4bee902fcee",
+      "property": "display",
+      "value": "flex",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::signin-locale::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::signin-remember::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::signin-submit::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::signin-locale::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::signin-remember::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::signin-submit::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::signin-locale::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::signin-remember::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.608dc2556646::element::signin-submit::web-1440",
+      "clause_id": "standard.motion.transition-property.608dc2556646",
+      "property": "transition-property",
+      "value": "all",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::signin-locale::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::signin-remember::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::signin-submit::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.23288213488d::element::signin-locale::web-1440",
+      "clause_id": "standard.radius.border-radius.23288213488d",
+      "property": "border-radius",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.23288213488d::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.radius.border-radius.23288213488d",
+      "property": "border-radius",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.23288213488d::element::signin-remember::web-1440",
+      "clause_id": "standard.radius.border-radius.23288213488d",
+      "property": "border-radius",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.23288213488d::element::signin-submit::web-1440",
+      "clause_id": "standard.radius.border-radius.23288213488d",
+      "property": "border-radius",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::signin-locale::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::signin-remember::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::signin-submit::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::signin-locale::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::signin-remember::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::signin-submit::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.da231839ebd1::element::signin-locale::web-1440",
+      "clause_id": "standard.sizing.height.da231839ebd1",
+      "property": "height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.da231839ebd1::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.sizing.height.da231839ebd1",
+      "property": "height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.da231839ebd1::element::signin-remember::web-1440",
+      "clause_id": "standard.sizing.height.da231839ebd1",
+      "property": "height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.da231839ebd1::element::signin-submit::web-1440",
+      "clause_id": "standard.sizing.height.da231839ebd1",
+      "property": "height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::signin-locale::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::signin-remember::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::signin-submit::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::signin-locale::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::signin-remember::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::signin-submit::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.8ec53f8779d5::element::signin-locale::web-1440",
+      "clause_id": "standard.sizing.min-height.8ec53f8779d5",
+      "property": "min-height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.8ec53f8779d5::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.sizing.min-height.8ec53f8779d5",
+      "property": "min-height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.8ec53f8779d5::element::signin-remember::web-1440",
+      "clause_id": "standard.sizing.min-height.8ec53f8779d5",
+      "property": "min-height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.8ec53f8779d5::element::signin-submit::web-1440",
+      "clause_id": "standard.sizing.min-height.8ec53f8779d5",
+      "property": "min-height",
+      "value": "30px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fa82aaa5ae1::element::signin-locale::web-1440",
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "property": "min-width",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fa82aaa5ae1::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "property": "min-width",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fa82aaa5ae1::element::signin-remember::web-1440",
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "property": "min-width",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fa82aaa5ae1::element::signin-submit::web-1440",
+      "clause_id": "standard.sizing.min-width.0fa82aaa5ae1",
+      "property": "min-width",
+      "value": "auto",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.bae08826a54c::element::signin-locale::web-1440",
+      "clause_id": "standard.sizing.width.bae08826a54c",
+      "property": "width",
+      "value": "144px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.bae08826a54c::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.sizing.width.bae08826a54c",
+      "property": "width",
+      "value": "144px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.bae08826a54c::element::signin-remember::web-1440",
+      "clause_id": "standard.sizing.width.bae08826a54c",
+      "property": "width",
+      "value": "144px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.bae08826a54c::element::signin-submit::web-1440",
+      "clause_id": "standard.sizing.width.bae08826a54c",
+      "property": "width",
+      "value": "144px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.869769522516::element::signin-locale::web-1440",
+      "clause_id": "standard.spacing.column-gap.869769522516",
+      "property": "column-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.869769522516::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.spacing.column-gap.869769522516",
+      "property": "column-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.869769522516::element::signin-remember::web-1440",
+      "clause_id": "standard.spacing.column-gap.869769522516",
+      "property": "column-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.869769522516::element::signin-submit::web-1440",
+      "clause_id": "standard.spacing.column-gap.869769522516",
+      "property": "column-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.69827837cc1c::element::signin-locale::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.69827837cc1c",
+      "property": "padding-bottom",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.69827837cc1c::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.69827837cc1c",
+      "property": "padding-bottom",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.69827837cc1c::element::signin-remember::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.69827837cc1c",
+      "property": "padding-bottom",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.69827837cc1c::element::signin-submit::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.69827837cc1c",
+      "property": "padding-bottom",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.7f022a4db558::element::signin-locale::web-1440",
+      "clause_id": "standard.spacing.padding-left.7f022a4db558",
+      "property": "padding-left",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.7f022a4db558::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.spacing.padding-left.7f022a4db558",
+      "property": "padding-left",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.7f022a4db558::element::signin-remember::web-1440",
+      "clause_id": "standard.spacing.padding-left.7f022a4db558",
+      "property": "padding-left",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.7f022a4db558::element::signin-submit::web-1440",
+      "clause_id": "standard.spacing.padding-left.7f022a4db558",
+      "property": "padding-left",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.cd7f4bdb3adc::element::signin-locale::web-1440",
+      "clause_id": "standard.spacing.padding-right.cd7f4bdb3adc",
+      "property": "padding-right",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.cd7f4bdb3adc::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.spacing.padding-right.cd7f4bdb3adc",
+      "property": "padding-right",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.cd7f4bdb3adc::element::signin-remember::web-1440",
+      "clause_id": "standard.spacing.padding-right.cd7f4bdb3adc",
+      "property": "padding-right",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.cd7f4bdb3adc::element::signin-submit::web-1440",
+      "clause_id": "standard.spacing.padding-right.cd7f4bdb3adc",
+      "property": "padding-right",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3fd92d0347cf::element::signin-locale::web-1440",
+      "clause_id": "standard.spacing.padding-top.3fd92d0347cf",
+      "property": "padding-top",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3fd92d0347cf::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.spacing.padding-top.3fd92d0347cf",
+      "property": "padding-top",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3fd92d0347cf::element::signin-remember::web-1440",
+      "clause_id": "standard.spacing.padding-top.3fd92d0347cf",
+      "property": "padding-top",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3fd92d0347cf::element::signin-submit::web-1440",
+      "clause_id": "standard.spacing.padding-top.3fd92d0347cf",
+      "property": "padding-top",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.bf24d3cc5c3d::element::signin-locale::web-1440",
+      "clause_id": "standard.spacing.row-gap.bf24d3cc5c3d",
+      "property": "row-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.bf24d3cc5c3d::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.spacing.row-gap.bf24d3cc5c3d",
+      "property": "row-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.bf24d3cc5c3d::element::signin-remember::web-1440",
+      "clause_id": "standard.spacing.row-gap.bf24d3cc5c3d",
+      "property": "row-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.bf24d3cc5c3d::element::signin-submit::web-1440",
+      "clause_id": "standard.spacing.row-gap.bf24d3cc5c3d",
+      "property": "row-gap",
+      "value": "5px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::signin-locale::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::signin-remember::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::signin-submit::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.441863c97538::element::signin-locale::web-1440",
+      "clause_id": "standard.typography.font-size.441863c97538",
+      "property": "font-size",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.441863c97538::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.typography.font-size.441863c97538",
+      "property": "font-size",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.441863c97538::element::signin-remember::web-1440",
+      "clause_id": "standard.typography.font-size.441863c97538",
+      "property": "font-size",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.441863c97538::element::signin-submit::web-1440",
+      "clause_id": "standard.typography.font-size.441863c97538",
+      "property": "font-size",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::signin-locale::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::signin-remember::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::signin-submit::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::signin-locale::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::signin-remember::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::signin-submit::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.487374697d95::element::signin-locale::web-1440",
+      "clause_id": "standard.typography.line-height.487374697d95",
+      "property": "line-height",
+      "value": "13.5px",
+      "target_kind": "element",
+      "target_id": "signin-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.487374697d95::element::signin-open-recovery::web-1440",
+      "clause_id": "standard.typography.line-height.487374697d95",
+      "property": "line-height",
+      "value": "13.5px",
+      "target_kind": "element",
+      "target_id": "signin-open-recovery",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.487374697d95::element::signin-remember::web-1440",
+      "clause_id": "standard.typography.line-height.487374697d95",
+      "property": "line-height",
+      "value": "13.5px",
+      "target_kind": "element",
+      "target_id": "signin-remember",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.487374697d95::element::signin-submit::web-1440",
+      "clause_id": "standard.typography.line-height.487374697d95",
+      "property": "line-height",
+      "value": "13.5px",
+      "target_kind": "element",
+      "target_id": "signin-submit",
+      "anchor_id": "web-1440"
+    }
+  ],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "scroll_height": 900,
+    "client_height": 900
+  },
+  "environment_checks": [
+    {
+      "check": "document_locale",
+      "expected": "ru",
+      "observed": "ru",
+      "passed": true
+    },
+    {
+      "check": "document_theme",
+      "expected": "graphite",
+      "observed": "graphite",
+      "passed": true
+    },
+    {
+      "check": "fixture_sha256",
+      "expected": "e1f988ce1157e94d43f77c615171fd92a545ad4d8c53df1fb8225bae8129fc84",
+      "observed": "e1f988ce1157e94d43f77c615171fd92a545ad4d8c53df1fb8225bae8129fc84",
+      "passed": true
+    },
+    {
+      "check": "font_bundle_sha256",
+      "expected": "3b8993a3bbd287c797c3f5c66323d7202316fb4fb4f7f1accc2f898ca1a7a0c5",
+      "observed": "3b8993a3bbd287c797c3f5c66323d7202316fb4fb4f7f1accc2f898ca1a7a0c5",
+      "passed": true
+    },
+    {
+      "check": "asset_bundle_sha256",
+      "expected": "fbcfc25fdec97cebe22549822ba7742cfed164bc21ab922e6121837247f746ad",
+      "observed": "fbcfc25fdec97cebe22549822ba7742cfed164bc21ab922e6121837247f746ad",
+      "passed": true
+    },
+    {
+      "check": "fixed_clock",
+      "expected": 1786651658000,
+      "observed": 1786651658000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 6,
+    "keyboard_sequence": [
+      "button",
+      "input",
+      "input",
+      "button",
+      "button",
+      "button"
+    ],
+    "keyboard_issues": [],
+    "passed": true
+  },
+  "accessibility_claim": "accessibility_smoke",
+  "browser_interaction": {
+    "visible_action_ids": [
+      "UI-AUTH-001.submit-credentials",
+      "UI-AUTH-001.open-recovery",
+      "UI-AUTH-001.toggle-remember",
+      "UI-AUTH-001.change-language"
+    ],
+    "observed_outcomes": [
+      {
+        "action_id": "UI-AUTH-001.submit-credentials",
+        "outcome": "Вход проверен. Результат не раскрывает лишних сведений.",
+        "expected_outcome": "A valid session opens the permitted destination; failure stays generic and retryable",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      },
+      {
+        "action_id": "UI-AUTH-001.open-recovery",
+        "outcome": "Открыт отдельный маршрут /auth/recovery",
+        "expected_outcome": "The recovery wizard opens as UI-AUTH-004, never as a sign-in state",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      },
+      {
+        "action_id": "UI-AUTH-001.toggle-remember",
+        "outcome": "Настройка сохранена локально.",
+        "expected_outcome": "The local preference changes without authenticating the user",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      },
+      {
+        "action_id": "UI-AUTH-001.change-language",
+        "outcome": "Язык изменён без смены маршрута.",
+        "expected_outcome": "RU/EN content changes without altering route or product meaning",
+        "assertion_kind": "dom",
+        "activation": "keyboard_or_native_form",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [
+      {
+        "check_id": "focus_visibility",
+        "passed": true
+      },
+      {
+        "check_id": "keyboard_activation",
+        "passed": true
+      },
+      {
+        "check_id": "menus",
+        "passed": true
+      },
+      {
+        "check_id": "no_console_errors",
+        "passed": true
+      },
+      {
+        "check_id": "no_page_horizontal_overflow",
+        "passed": true
+      },
+      {
+        "check_id": "no_request_failures",
+        "passed": true
+      },
+      {
+        "check_id": "no_unresolved_file_navigation",
+        "passed": true
+      },
+      {
+        "check_id": "refresh_feedback",
+        "passed": true
+      },
+      {
+        "check_id": "state_transitions",
+        "passed": true
+      },
+      {
+        "check_id": "tab_radio_behavior",
+        "passed": true
+      },
+      {
+        "check_id": "toggles",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": "/Users/daniildegtyarev/.codex/worktrees/e0a0/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r4/family-auth-shell-auth-baseline-exception-auth/captures/UI-AUTH-001.ready/web-1440/implementation.png",
+  "screenshot_sha256": "bbacf88002330281e0ef9c4f12b226bc8a73d82d325d1797ebc18a96fe331849",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']",
+      "input[autocomplete='one-time-code']"
+    ],
+    "redaction_match_counts": [
+      1,
+      1,
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

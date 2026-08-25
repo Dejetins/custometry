@@ -1,0 +1,202 @@
+{
+  "$schema": "review-board-manifest.schema.json",
+  "schema_id": "codex.ui-review-board-manifest/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "artifact_id": "family.auth.shell-auth.baseline-exception-auth-r6",
+  "revision": 6,
+  "validation_profile": "family_review_ready",
+  "entries": [
+    {
+      "entry_id": "review-01",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.failed.r6.json",
+      "sha256": "3e43da6672ff785e254a04afebc7b010dbf56758d62496b6a663a1398788284a",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.failed"
+    },
+    {
+      "entry_id": "review-02",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.failed.r6.json",
+      "sha256": "3e43da6672ff785e254a04afebc7b010dbf56758d62496b6a663a1398788284a",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.failed"
+    },
+    {
+      "entry_id": "review-03",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.first_loading.r6.json",
+      "sha256": "f81e56465443d0f7be8fadb544badf10e385276ab13eab417e792574de657888",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.first_loading"
+    },
+    {
+      "entry_id": "review-04",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.first_loading.r6.json",
+      "sha256": "f81e56465443d0f7be8fadb544badf10e385276ab13eab417e792574de657888",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.first_loading"
+    },
+    {
+      "entry_id": "review-05",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.initial.r6.json",
+      "sha256": "5960f2dd832e4cfc4a39dfc71f00ba72a404194a8637a2f59b71d6b82ede9308",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.initial"
+    },
+    {
+      "entry_id": "review-06",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.initial.r6.json",
+      "sha256": "5960f2dd832e4cfc4a39dfc71f00ba72a404194a8637a2f59b71d6b82ede9308",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.initial"
+    },
+    {
+      "entry_id": "review-07",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.ready.r6.json",
+      "sha256": "518cb25abb9ddb729b1a0fe954bab03d846d8374d667bb06ed077a6130aa17f8",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.ready"
+    },
+    {
+      "entry_id": "review-08",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.ready.r6.json",
+      "sha256": "518cb25abb9ddb729b1a0fe954bab03d846d8374d667bb06ed077a6130aa17f8",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.ready"
+    },
+    {
+      "entry_id": "review-09",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.session_expired.r6.json",
+      "sha256": "d5ac20acdaf262f0ed1ed33ff5ddde05cf7e72bc15655e646a049b11116a34f5",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.session_expired"
+    },
+    {
+      "entry_id": "review-10",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.session_expired.r6.json",
+      "sha256": "d5ac20acdaf262f0ed1ed33ff5ddde05cf7e72bc15655e646a049b11116a34f5",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.session_expired"
+    },
+    {
+      "entry_id": "review-11",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.validation_error.r6.json",
+      "sha256": "6bdb83f3b6730a32b1400705345c6146dc90818bd3b50104bc5ac2e64721264f",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.validation_error"
+    },
+    {
+      "entry_id": "review-12",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-001.validation_error.r6.json",
+      "sha256": "6bdb83f3b6730a32b1400705345c6146dc90818bd3b50104bc5ac2e64721264f",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-001.validation_error"
+    },
+    {
+      "entry_id": "review-13",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.failed.r6.json",
+      "sha256": "d9b5917f041b760ed81a0030c3dab7d0257679b3c3d071861f5549c174d369ca",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.failed"
+    },
+    {
+      "entry_id": "review-14",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.failed.r6.json",
+      "sha256": "d9b5917f041b760ed81a0030c3dab7d0257679b3c3d071861f5549c174d369ca",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.failed"
+    },
+    {
+      "entry_id": "review-15",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.first_loading.r6.json",
+      "sha256": "75f1014ba5678cde88df0eb1c2f9c1343d8abdee8fdaf9f4848a6771c6deb201",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.first_loading"
+    },
+    {
+      "entry_id": "review-16",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.first_loading.r6.json",
+      "sha256": "75f1014ba5678cde88df0eb1c2f9c1343d8abdee8fdaf9f4848a6771c6deb201",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.first_loading"
+    },
+    {
+      "entry_id": "review-17",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.initial.r6.json",
+      "sha256": "129c8d93f91f9f153ff2115af8c369150023aa26be55191bf1089c83e854b927",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.initial"
+    },
+    {
+      "entry_id": "review-18",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.initial.r6.json",
+      "sha256": "129c8d93f91f9f153ff2115af8c369150023aa26be55191bf1089c83e854b927",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.initial"
+    },
+    {
+      "entry_id": "review-19",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.ready.r6.json",
+      "sha256": "065bae94079925279e157b19b21b99c4e8f8f82c831245606c6d2edd1e843739",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.ready"
+    },
+    {
+      "entry_id": "review-20",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.ready.r6.json",
+      "sha256": "065bae94079925279e157b19b21b99c4e8f8f82c831245606c6d2edd1e843739",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.ready"
+    },
+    {
+      "entry_id": "review-21",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.session_expired.r6.json",
+      "sha256": "eb33e9ca2f11d87c5a58070a72cf4fd6a17ca473a10d724ad1a7a113de3dded8",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.session_expired"
+    },
+    {
+      "entry_id": "review-22",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.session_expired.r6.json",
+      "sha256": "eb33e9ca2f11d87c5a58070a72cf4fd6a17ca473a10d724ad1a7a113de3dded8",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.session_expired"
+    },
+    {
+      "entry_id": "review-23",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.validation_error.r6.json",
+      "sha256": "84a91bbda5b597ed6168f7a6cd9f6b2c00de1b41af6a9dea4f8cf2767f4e159e",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.validation_error"
+    },
+    {
+      "entry_id": "review-24",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/screen-acceptance/UI-AUTH-004.validation_error.r6.json",
+      "sha256": "84a91bbda5b597ed6168f7a6cd9f6b2c00de1b41af6a9dea4f8cf2767f4e159e",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-004.validation_error"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 13
+doc_version: 14
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -35,12 +35,13 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Executable UI route contract](../contracts/ui-route-contract.md) | Identity/execution manifest split, guard/permission/state/history semantics, agent resolution, and validation rules |
 | [UI surface coverage contract](../contracts/ui-surface-contract.md) | Requirement-to-surface coverage, route decision policy, historical design provenance, and complete agent load order |
-| [UI design program governance ADR](../adr/0004-ui-design-program-governance.md) | Retires the previous Linear/Penpot target, defines the pre-G0 boundary, and routes future product-wide UI work through `ui-design-program` |
+| [UI design program governance ADR](../adr/0004-ui-design-program-governance.md) | Historical governance decision for the now-frozen `custometry-v2` program; it does not override the current implementation route |
 | [Collaboration, digital measurement, and compute reuse ADR](../adr/0005-collaboration-measurement-and-compute-reuse.md) | Audits comparable products and accepts the new collaboration/adoption, retail digital-measurement, and materialization/reuse boundaries |
 | [Analytical documents, segments, and product analytics ADR](../adr/0006-analytical-document-retail-product-and-time-aware-segmentation.md) | Accepts one analytical-document composition/snapshot path, time-aware segment identity, retail product/category/inventory boundaries, compatibility, and migration direction |
 | [Responsive Web frontend platform ADR](../adr/0007-responsive-web-frontend-platform.md) | Selects the version-pinned browser platform and fixes dependency direction, state/adapter/design-system ownership, responsive anchors, rollout, rollback, and later proof boundaries |
 | [Comparable analytics platform capability audit](./ui/comparable-analytics-platform-capability-audit-v1.md) | Official-documentation audit of established multi-page authoring, collaboration, segments, digital/product analysis, adoption, and compute-reuse patterns plus Custometry's accepted response and deliberate non-copy boundary |
 | [Pre-G0 pilot manifest](./ui/custometry-pre-g0-pilot-manifest-v1.json) | Hash-pins the accepted RU/EN `renderable_html` visual-language/density anchor and its explicit exclusions |
+| [Web implementation source contract](./ui/custometry-web-implementation-source-contract-v1.md) | Current ticket-first Web execution route, frozen UI-program frontier, reference precedence, review policy, and browser proof boundary |
 | [Development operating model](./development-operating-model.md) | UI-first vertical slices, ticket-first execution, optional coordination artifacts, Git, and CI/CD |
 | [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Ticket-first execution and removal of the obsolete staged planning system |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |
@@ -49,7 +50,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [Quality tooling](./tooling-gates.md) | Canonical commands, hook profiles, and mandatory execution points |
 | [Repository architecture](./repository-layout.md) | Physical tree and ownership boundaries |
 
-The overall Foundation operating model is recorded in [ADR-0001](../adr/0001-foundation-operating-model.md). The Edge role, separate `edge_to_web` and `web_to_api` networks, and independent production firewall/CNI hardening are recorded in [ADR-0002](../adr/0002-edge-ingress-network-segmentation.md). The runtime/data graph W11-W17 remains independent of the retired UI route. No frontend implementation graph is currently ready; the next product-wide UI path begins only after `ui-design-program` admission. Templates for new architecture and module documents are in [docs/contracts](../contracts/README.md).
+The overall Foundation operating model is recorded in [ADR-0001](../adr/0001-foundation-operating-model.md). The Edge role, separate `edge_to_web` and `web_to_api` networks, and independent production firewall/CNI hardening are recorded in [ADR-0002](../adr/0002-edge-ingress-network-segmentation.md). The runtime/data graph W11-W17 remains independent of Web implementation. The current Web frontier is the bounded [ticket graph](../../.codex/delivery/graphs/custometry-web-implementation-frontier-v1.json); ticket frontmatter, not the graph or the frozen UI ledger, is status authority. Templates for new architecture and module documents are in [docs/contracts](../contracts/README.md).
 
 ## Status
 

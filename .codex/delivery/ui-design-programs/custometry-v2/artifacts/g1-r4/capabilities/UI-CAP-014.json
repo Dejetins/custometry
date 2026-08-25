@@ -1,0 +1,36 @@
+{
+  "capability": {
+    "id": "UI-CAP-014",
+    "name": "Progress, ETA and cancellation",
+    "delivery_form": "component_contract",
+    "requirement_ids": [
+      "PROGRESS-001",
+      "PROGRESS-002",
+      "PROGRESS-003",
+      "PROGRESS-004",
+      "PROGRESS-005",
+      "PROGRESS-006",
+      "PROGRESS-007",
+      "PROGRESS-008",
+      "COMPUTE-001",
+      "COMPUTE-002",
+      "COMPUTE-003",
+      "COMPUTE-004",
+      "COMPUTE-005",
+      "COMPUTE-006",
+      "COMPUTE-007",
+      "COMPUTE-008",
+      "COMPUTE-009",
+      "COMPUTE-010"
+    ]
+  },
+  "promoted_binding_ids": [],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

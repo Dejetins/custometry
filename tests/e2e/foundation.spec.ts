@@ -49,10 +49,14 @@ test("Foundation home, API, language round-trip and local docs CSP/search", asyn
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect(page.getByText(/API readiness: ready/i)).toBeVisible();
-  await page.getByRole("button", { name: "RU" }).click();
+  const languageButton = page.getByRole("button", { name: "Switch language" });
+  await expect(languageButton).toHaveText("RU");
+  await languageButton.click();
   await expect(page.getByText("Локальная работа")).toBeVisible();
   await expect(page.getByRole("link", { name: "Аналитика" })).toBeVisible();
-  await page.getByRole("button", { name: "EN" }).click();
+  const russianLanguageButton = page.getByRole("button", { name: "Переключить язык" });
+  await expect(russianLanguageButton).toHaveText("EN");
+  await russianLanguageButton.click();
   await expect(page.getByText("Local first")).toBeVisible();
 
   const readiness = await request.get("/api/health/ready");
@@ -102,7 +106,7 @@ test("planned route, 404 and shell return keep honest route state", async ({ pag
   await page.goto("/w/northwind-retail/analytics/sales");
   await expect(page.getByText("UI-AN-003 · MVP")).toBeVisible();
   await expect(page.getByText("Planned surface")).toBeVisible();
-  await page.getByRole("link", { name: "Custometry Foundation" }).click();
+  await page.getByRole("link", { name: "Custometry" }).click();
   await expect(page).toHaveURL(/\/$/);
   await page.goBack();
   await expect(page.getByText("UI-AN-003 · MVP")).toBeVisible();
@@ -111,8 +115,8 @@ test("planned route, 404 and shell return keep honest route state", async ({ pag
 
   await page.goto("/not-a-registered-surface");
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
-  await page.getByRole("link", { name: "Return to Foundation" }).click();
-  await expect(page).toHaveURL(/\/$/);
+  await page.getByRole("link", { name: "Open allowed Overview" }).click();
+  await expect(page).toHaveURL(/\/w\/northwind-retail\/overview$/);
   expectCleanBrowser(evidence);
 });
 

@@ -19,7 +19,7 @@ import { useEffect, useRef, useState, type PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, NavLink, useLocation, useNavigationType } from "react-router-dom";
 
-import { defaultUiThemeId, SemanticThemeBoundary } from "@custometry/ui-foundation";
+import { defaultUiThemeId } from "@custometry/ui-foundation";
 
 import type { ApplicationShellProfile } from "../router/route-resolution";
 
@@ -144,7 +144,7 @@ export function ApplicationShell({
   };
 
   return (
-    <SemanticThemeBoundary themeId={defaultUiThemeId}>
+    <div className="custometry-theme-boundary" data-theme={defaultUiThemeId}>
       <a className="skip-link" href="#main-content">{t("skipToContent")}</a>
       <div className={`app-shell ${sidebarOpen ? "sidebar-expanded" : "sidebar-collapsed"}`} data-shell-profile={profile}>
         {showWorkspaceChrome && (
@@ -181,7 +181,7 @@ export function ApplicationShell({
           <header><h2 id="all-sections-title">{t("allSections")}</h2><button type="button" onClick={closeAllSections} aria-label={t("closeMenu")}><X aria-hidden="true" size={20} /></button></header>
           <nav aria-label={t("allSections")}>
             {[...navigation.map((item) => ({ ...item, path: `/w/${workspaceKey}/${item.suffix}` })), { labelKey: "navAdministration", path: "/admin", icon: Settings }].map(({ labelKey, path, icon: Icon }) => (
-              <Link key={path} to={path} onClick={closeAllSections}><Icon aria-hidden="true" size={18} />{t(labelKey)}</Link>
+              <NavLink key={path} to={path} className={({ isActive }) => isActive ? "active" : undefined} onClick={closeAllSections}><Icon aria-hidden="true" size={18} />{t(labelKey)}</NavLink>
             ))}
           </nav>
         </dialog>
@@ -199,6 +199,6 @@ export function ApplicationShell({
 
         <main className="main-content" id="main-content" tabIndex={-1}>{children}</main>
       </div>
-    </SemanticThemeBoundary>
+    </div>
   );
 }

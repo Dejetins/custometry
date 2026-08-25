@@ -1,0 +1,488 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-AUTH-005.permission_denied.IA-WA.ru-RU.graphite.r5",
+  "target": "implementation",
+  "capture_profile": "screen_implementation",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": false,
+    "region_gate_applied": true,
+    "element_gate_applied": true,
+    "document_identity_gate_applied": true,
+    "fixture_meta_gate_applied": true,
+    "accessibility_gate_applied": true,
+    "interaction_gate_applied": true,
+    "overflow_gate_applied": true,
+    "standard_clause_gate_applied": true
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "2.0.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/contracts/UI-AUTH-005.permission_denied.r5.json --anchor-id web-1920 --target implementation --source-artifact .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html --logical-artifact-id CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-005:UI-AUTH-005.permission_denied:r5 --output .codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/captures/UI-AUTH-005.permission_denied/web-1920/implementation-geometry.json --screenshot .codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/captures/UI-AUTH-005.permission_denied/web-1920/implementation.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "contract_sha256": "3ac8d329dead99d1a66a9a37ae959118d75e051cdc027d9545839fe655811941",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html",
+    "artifact_sha256": "8742fe354c36a370ebc340e98d50fdf35e2891d84718628092d59f87e4929ea5",
+    "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-005:UI-AUTH-005.permission_denied:r5",
+    "main_document_response_sha256": "8742fe354c36a370ebc340e98d50fdf35e2891d84718628092d59f87e4929ea5"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "anchor_id": "web-1920",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [
+    {
+      "region_id": "UI-AUTH-005.content",
+      "locator": "[data-ui-region=\"UI-AUTH-005.content\"]",
+      "bounds": {
+        "x": 580,
+        "y": 64,
+        "width": 980,
+        "height": 621.797
+      },
+      "computed_styles": {
+        "display": "block",
+        "position": "static",
+        "overflow": "visible",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "region_id": "UI-AUTH-005.navigation",
+      "locator": "[data-ui-region=\"UI-AUTH-005.navigation\"]",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 220,
+        "height": 1080
+      },
+      "computed_styles": {
+        "display": "block",
+        "position": "static",
+        "overflow": "visible",
+        "background-color": "rgb(9, 10, 11)",
+        "border-radius": "0px"
+      }
+    }
+  ],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [],
+  "elements": [
+    {
+      "element_id": "onboarding-shell",
+      "locator": "[data-ui-element=\"onboarding-shell\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-brand",
+      "locator": "[data-ui-element=\"onboarding-brand\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 14,
+        "y": 20,
+        "width": 191,
+        "height": 30
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-context",
+      "locator": "[data-ui-element=\"onboarding-context\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 248,
+        "y": 22.5,
+        "width": 119.906,
+        "height": 18
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-locale",
+      "locator": "[data-ui-element=\"onboarding-locale\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 1773,
+        "y": 17.5,
+        "width": 119,
+        "height": 28
+      },
+      "computed_styles": {
+        "background-color": "rgb(26, 27, 30)"
+      }
+    },
+    {
+      "element_id": "onboarding-title",
+      "locator": "[data-ui-element=\"onboarding-title\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 580,
+        "y": 129.5,
+        "width": 980,
+        "height": 36.797
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-lead",
+      "locator": "[data-ui-element=\"onboarding-lead\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 580,
+        "y": 176.297,
+        "width": 980,
+        "height": 21
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-wizard",
+      "locator": "[data-ui-element=\"onboarding-wizard\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 580,
+        "y": 225.297,
+        "width": 635.359,
+        "height": 396.5
+      },
+      "computed_styles": {
+        "background-color": "rgb(17, 18, 20)"
+      }
+    },
+    {
+      "element_id": "onboarding-steps",
+      "locator": "[data-ui-element=\"onboarding-steps\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 603,
+        "y": 248.297,
+        "width": 589.359,
+        "height": 58
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-step-title",
+      "locator": "[data-ui-element=\"onboarding-step-title\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 603,
+        "y": 334.297,
+        "width": 589.359,
+        "height": 27
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-step-copy",
+      "locator": "[data-ui-element=\"onboarding-step-copy\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 603,
+        "y": 367.297,
+        "width": 589.359,
+        "height": 18
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-workspace",
+      "locator": "[data-ui-element=\"onboarding-workspace\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 603,
+        "y": 425.797,
+        "width": 288.672,
+        "height": 40
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "onboarding-timezone",
+      "locator": "[data-ui-element=\"onboarding-timezone\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 903.672,
+        "y": 425.797,
+        "width": 288.688,
+        "height": 40
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "onboarding-state",
+      "locator": "[data-ui-element=\"onboarding-state\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 603,
+        "y": 482.797,
+        "width": 589.359,
+        "height": 56
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "onboarding-resume",
+      "locator": "[data-ui-element=\"onboarding-resume\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 603,
+        "y": 555.797,
+        "width": 178.063,
+        "height": 33
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-continue",
+      "locator": "[data-ui-element=\"onboarding-continue\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [
+        "UI-AUTH-005.inspect"
+      ],
+      "bounds": {
+        "x": 793.063,
+        "y": 557.297,
+        "width": 399.297,
+        "height": 30
+      },
+      "computed_styles": {
+        "background-color": "rgb(140, 207, 227)"
+      }
+    },
+    {
+      "element_id": "onboarding-checklist",
+      "locator": "[data-ui-element=\"onboarding-checklist\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 1231.359,
+        "y": 225.297,
+        "width": 328.641,
+        "height": 396.5
+      },
+      "computed_styles": {
+        "background-color": "rgb(17, 18, 20)"
+      }
+    }
+  ],
+  "standard_observations": [],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 1920,
+    "client_width": 1920,
+    "scroll_height": 1080,
+    "client_height": 1080
+  },
+  "environment_checks": [
+    {
+      "check": "document_locale",
+      "expected": "ru",
+      "observed": "ru",
+      "passed": true
+    },
+    {
+      "check": "document_theme",
+      "expected": "graphite",
+      "observed": "graphite",
+      "passed": true
+    },
+    {
+      "check": "fixture_sha256",
+      "expected": "dd38c42c3e4f40a99e8f383bc4a32a4d9762adc3eb8b18a3be823bfaface4872",
+      "observed": "dd38c42c3e4f40a99e8f383bc4a32a4d9762adc3eb8b18a3be823bfaface4872",
+      "passed": true
+    },
+    {
+      "check": "font_bundle_sha256",
+      "expected": "3b8993a3bbd287c797c3f5c66323d7202316fb4fb4f7f1accc2f898ca1a7a0c5",
+      "observed": "3b8993a3bbd287c797c3f5c66323d7202316fb4fb4f7f1accc2f898ca1a7a0c5",
+      "passed": true
+    },
+    {
+      "check": "asset_bundle_sha256",
+      "expected": "fbcfc25fdec97cebe22549822ba7742cfed164bc21ab922e6121837247f746ad",
+      "observed": "fbcfc25fdec97cebe22549822ba7742cfed164bc21ab922e6121837247f746ad",
+      "passed": true
+    },
+    {
+      "check": "fixed_clock",
+      "expected": 1787140800000,
+      "observed": 1787140800000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 3,
+    "keyboard_sequence": [
+      "select",
+      "input",
+      "select"
+    ],
+    "keyboard_issues": [],
+    "passed": true
+  },
+  "accessibility_claim": "accessibility_smoke",
+  "browser_interaction": {
+    "visible_action_ids": [
+      "UI-AUTH-005.inspect"
+    ],
+    "observed_outcomes": [
+      {
+        "action_id": "UI-AUTH-005.inspect",
+        "outcome": {
+          "kind": "not_executed",
+          "visible": true
+        },
+        "expected_outcome": "Continue completes or the next contract-bound surface opens",
+        "assertion_kind": "not_executed",
+        "activation": "affordance_only",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [
+      {
+        "check_id": "focus_visibility",
+        "passed": true
+      },
+      {
+        "check_id": "keyboard_activation",
+        "passed": true
+      },
+      {
+        "check_id": "menus",
+        "passed": true
+      },
+      {
+        "check_id": "no_console_errors",
+        "passed": true
+      },
+      {
+        "check_id": "no_page_horizontal_overflow",
+        "passed": true
+      },
+      {
+        "check_id": "no_request_failures",
+        "passed": true
+      },
+      {
+        "check_id": "no_unresolved_file_navigation",
+        "passed": true
+      },
+      {
+        "check_id": "refresh_feedback",
+        "passed": true
+      },
+      {
+        "check_id": "state_transitions",
+        "passed": true
+      },
+      {
+        "check_id": "tab_radio_behavior",
+        "passed": true
+      },
+      {
+        "check_id": "toggles",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/captures/UI-AUTH-005.permission_denied/web-1920/implementation.png",
+  "screenshot_sha256": "1bf985bfb6d706007d612cf273596c9480e86ed3a876813aa2e128321f90d880",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]"
+    ],
+    "redaction_match_counts": [
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

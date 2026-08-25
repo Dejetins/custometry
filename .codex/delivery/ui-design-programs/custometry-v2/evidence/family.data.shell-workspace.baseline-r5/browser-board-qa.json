@@ -1,0 +1,830 @@
+{
+  "schema_id": "custometry.ui-g4-browser-board-qa/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.data.shell-workspace.baseline-r5",
+  "generated_by": {
+    "script": "run_g4_data_r5_board_qa.py",
+    "browser_mechanic": "playwright-cli / Chrome"
+  },
+  "artifacts": {
+    "review_board": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-board.html",
+      "sha256": "0bf871136a777c1fcfaa6f8e772b9282848485e5df7be2c7ea67a5b69fb0a7d5"
+    },
+    "populated_screen": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/states/populated/screen.html",
+      "sha256": "8eda092cdf084069599cfe23506c0ea7a0a917b7b1a52eac35f6cde70996c86e"
+    },
+    "accepted_pilot": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+      "sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700"
+    },
+    "review_assets": [
+      {
+        "state": "initial",
+        "bundle_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/initial.png",
+        "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/initial/web-1440/implementation.png",
+        "sha256": "a4df7f32c9f2b272aa133845c3ab1b398fe0a56b3ac3729d1cb7bdaeea14ddfa",
+        "matches_source": true
+      },
+      {
+        "state": "loading",
+        "bundle_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/loading.png",
+        "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/loading/web-1440/implementation.png",
+        "sha256": "3c1bb4bd47d0ef21d1cb7585ef28eccc8e096a16067b6dd9180402e0d6410a1c",
+        "matches_source": true
+      },
+      {
+        "state": "populated",
+        "bundle_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/populated.png",
+        "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/populated/web-1440/implementation.png",
+        "sha256": "d194b3e0e5c5ad093aa5374208f3ff1b2ae959bb05801c3611069fddc0c7ced2",
+        "matches_source": true
+      },
+      {
+        "state": "error",
+        "bundle_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/error.png",
+        "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/error/web-1440/implementation.png",
+        "sha256": "8b96de3cd58b9d0b869d4d5d2f2339b990dce21d96fd3c1f25ff596d34cf88e3",
+        "matches_source": true
+      },
+      {
+        "state": "permission_denied",
+        "bundle_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/permission_denied.png",
+        "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/permission_denied/web-1440/implementation.png",
+        "sha256": "6c03ec16e122bebf878c0cdde7a518329dec0a60ca5477a65e185b5ef9981756",
+        "matches_source": true
+      },
+      {
+        "state": "recovery",
+        "bundle_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/recovery.png",
+        "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/recovery/web-1440/implementation.png",
+        "sha256": "155fcb9871910b645e416ab54a91ec3f9c07a2e6f03ced7368e9ecad86bc0eef",
+        "matches_source": true
+      }
+    ],
+    "screenshot": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/review-board-1440.png",
+      "sha256": "670d950043fe1ec26f561c9cdc89fd9f3f9cf789bae2667f75852fc60f358904"
+    }
+  },
+  "checks": [
+    {
+      "check_id": "local_file_images_visible",
+      "status": "passed"
+    },
+    {
+      "check_id": "bundle_root_http_images_visible",
+      "status": "passed"
+    },
+    {
+      "check_id": "review_assets_hash_bound",
+      "status": "passed"
+    },
+    {
+      "check_id": "populated_kpi_matches_accepted_pilot",
+      "status": "passed"
+    },
+    {
+      "check_id": "console_network_clean",
+      "status": "passed"
+    }
+  ],
+  "observed": {
+    "localFile": {
+      "mode": "local_file",
+      "url": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-board.html",
+      "responsive": [
+        {
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "width": 1440,
+          "overflow": false
+        },
+        {
+          "width": 1920,
+          "overflow": false
+        }
+      ],
+      "cards": 6,
+      "entries": 12,
+      "manifest": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/review-board-manifest.json",
+      "images": [
+        {
+          "src": "review-assets/initial.png",
+          "resolved": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/initial.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "a4df7f32c9f2b272aa133845c3ab1b398fe0a56b3ac3729d1cb7bdaeea14ddfa"
+        },
+        {
+          "src": "review-assets/loading.png",
+          "resolved": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/loading.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "3c1bb4bd47d0ef21d1cb7585ef28eccc8e096a16067b6dd9180402e0d6410a1c"
+        },
+        {
+          "src": "review-assets/populated.png",
+          "resolved": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/populated.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "d194b3e0e5c5ad093aa5374208f3ff1b2ae959bb05801c3611069fddc0c7ced2"
+        },
+        {
+          "src": "review-assets/error.png",
+          "resolved": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/error.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "8b96de3cd58b9d0b869d4d5d2f2339b990dce21d96fd3c1f25ff596d34cf88e3"
+        },
+        {
+          "src": "review-assets/permission_denied.png",
+          "resolved": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/permission_denied.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "6c03ec16e122bebf878c0cdde7a518329dec0a60ca5477a65e185b5ef9981756"
+        },
+        {
+          "src": "review-assets/recovery.png",
+          "resolved": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-assets/recovery.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "155fcb9871910b645e416ab54a91ec3f9c07a2e6f03ced7368e9ecad86bc0eef"
+        }
+      ]
+    },
+    "bundleHttp": {
+      "mode": "bundle_root_http",
+      "url": "http://127.0.0.1:41737/review-board.html",
+      "responsive": [
+        {
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "width": 1440,
+          "overflow": false
+        },
+        {
+          "width": 1920,
+          "overflow": false
+        }
+      ],
+      "cards": 6,
+      "entries": 12,
+      "manifest": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/review-board-manifest.json",
+      "images": [
+        {
+          "src": "review-assets/initial.png",
+          "resolved": "http://127.0.0.1:41737/review-assets/initial.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "a4df7f32c9f2b272aa133845c3ab1b398fe0a56b3ac3729d1cb7bdaeea14ddfa"
+        },
+        {
+          "src": "review-assets/loading.png",
+          "resolved": "http://127.0.0.1:41737/review-assets/loading.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "3c1bb4bd47d0ef21d1cb7585ef28eccc8e096a16067b6dd9180402e0d6410a1c"
+        },
+        {
+          "src": "review-assets/populated.png",
+          "resolved": "http://127.0.0.1:41737/review-assets/populated.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "d194b3e0e5c5ad093aa5374208f3ff1b2ae959bb05801c3611069fddc0c7ced2"
+        },
+        {
+          "src": "review-assets/error.png",
+          "resolved": "http://127.0.0.1:41737/review-assets/error.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "8b96de3cd58b9d0b869d4d5d2f2339b990dce21d96fd3c1f25ff596d34cf88e3"
+        },
+        {
+          "src": "review-assets/permission_denied.png",
+          "resolved": "http://127.0.0.1:41737/review-assets/permission_denied.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "6c03ec16e122bebf878c0cdde7a518329dec0a60ca5477a65e185b5ef9981756"
+        },
+        {
+          "src": "review-assets/recovery.png",
+          "resolved": "http://127.0.0.1:41737/review-assets/recovery.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 900,
+          "assetSha256": "155fcb9871910b645e416ab54a91ec3f9c07a2e6f03ced7368e9ecad86bc0eef"
+        }
+      ]
+    },
+    "pilotKpi": {
+      "mode": "accepted_pilot",
+      "url": "file:///Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+      "anchors": [
+        {
+          "width": 768,
+          "found": true,
+          "pageOverflow": false,
+          "cellCount": 8,
+          "module": {
+            "rect": {
+              "x": 75,
+              "y": 165.09375,
+              "width": 675,
+              "height": 54
+            },
+            "display": "grid",
+            "gridTemplateColumns": "104px 571px",
+            "minHeight": "54px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderTop": "1px solid",
+            "borderBottom": "1px solid",
+            "borderRadius": "0px",
+            "boxShadow": "none",
+            "overflow": "visible"
+          },
+          "header": {
+            "rect": {
+              "x": 75,
+              "y": 166.09375,
+              "width": 104,
+              "height": 52
+            },
+            "padding": "7px 6px 7px 0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+          },
+          "strip": {
+            "rect": {
+              "x": 179,
+              "y": 166.09375,
+              "width": 571,
+              "height": 52
+            },
+            "display": "flex",
+            "overflowX": "auto"
+          },
+          "cell": {
+            "rect": {
+              "x": 179,
+              "y": 166.09375,
+              "width": 132,
+              "height": 52
+            },
+            "padding": "7px 11px",
+            "minWidth": "132px",
+            "flexBasis": "132px",
+            "gap": "2px"
+          },
+          "label": {
+            "fontSize": "9px",
+            "color": "rgb(139, 140, 147)"
+          },
+          "value": {
+            "fontSize": "16px",
+            "fontWeight": "640"
+          },
+          "delta": {
+            "fontSize": "9px"
+          },
+          "separator": {
+            "content": "\"\"",
+            "width": "1px",
+            "insetBlockStart": "10px",
+            "insetBlockEnd": "10px"
+          }
+        },
+        {
+          "width": 1024,
+          "found": true,
+          "pageOverflow": false,
+          "cellCount": 8,
+          "module": {
+            "rect": {
+              "x": 83,
+              "y": 171.09375,
+              "width": 912,
+              "height": 54
+            },
+            "display": "grid",
+            "gridTemplateColumns": "116px 796px",
+            "minHeight": "54px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderTop": "1px solid",
+            "borderBottom": "1px solid",
+            "borderRadius": "0px",
+            "boxShadow": "none",
+            "overflow": "visible"
+          },
+          "header": {
+            "rect": {
+              "x": 83,
+              "y": 172.09375,
+              "width": 116,
+              "height": 52
+            },
+            "padding": "7px 6px 7px 0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+          },
+          "strip": {
+            "rect": {
+              "x": 199,
+              "y": 172.09375,
+              "width": 796,
+              "height": 52
+            },
+            "display": "flex",
+            "overflowX": "auto"
+          },
+          "cell": {
+            "rect": {
+              "x": 199,
+              "y": 172.09375,
+              "width": 140,
+              "height": 52
+            },
+            "padding": "7px 11px",
+            "minWidth": "140px",
+            "flexBasis": "140px",
+            "gap": "2px"
+          },
+          "label": {
+            "fontSize": "9px",
+            "color": "rgb(139, 140, 147)"
+          },
+          "value": {
+            "fontSize": "16px",
+            "fontWeight": "640"
+          },
+          "delta": {
+            "fontSize": "9px"
+          },
+          "separator": {
+            "content": "\"\"",
+            "width": "1px",
+            "insetBlockStart": "10px",
+            "insetBlockEnd": "10px"
+          }
+        },
+        {
+          "width": 1440,
+          "found": true,
+          "pageOverflow": false,
+          "cellCount": 8,
+          "module": {
+            "rect": {
+              "x": 83,
+              "y": 171.09375,
+              "width": 1328,
+              "height": 54
+            },
+            "display": "grid",
+            "gridTemplateColumns": "116px 1212px",
+            "minHeight": "54px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderTop": "1px solid",
+            "borderBottom": "1px solid",
+            "borderRadius": "0px",
+            "boxShadow": "none",
+            "overflow": "visible"
+          },
+          "header": {
+            "rect": {
+              "x": 83,
+              "y": 172.09375,
+              "width": 116,
+              "height": 52
+            },
+            "padding": "7px 6px 7px 0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+          },
+          "strip": {
+            "rect": {
+              "x": 199,
+              "y": 172.09375,
+              "width": 1212,
+              "height": 52
+            },
+            "display": "flex",
+            "overflowX": "auto"
+          },
+          "cell": {
+            "rect": {
+              "x": 199,
+              "y": 172.09375,
+              "width": 151.5,
+              "height": 52
+            },
+            "padding": "7px 11px",
+            "minWidth": "140px",
+            "flexBasis": "140px",
+            "gap": "2px"
+          },
+          "label": {
+            "fontSize": "9px",
+            "color": "rgb(139, 140, 147)"
+          },
+          "value": {
+            "fontSize": "16px",
+            "fontWeight": "640"
+          },
+          "delta": {
+            "fontSize": "9px"
+          },
+          "separator": {
+            "content": "\"\"",
+            "width": "1px",
+            "insetBlockStart": "10px",
+            "insetBlockEnd": "10px"
+          }
+        },
+        {
+          "width": 1920,
+          "found": true,
+          "pageOverflow": false,
+          "cellCount": 8,
+          "module": {
+            "rect": {
+              "x": 83,
+              "y": 171.09375,
+              "width": 1808,
+              "height": 54
+            },
+            "display": "grid",
+            "gridTemplateColumns": "116px 1692px",
+            "minHeight": "54px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderTop": "1px solid",
+            "borderBottom": "1px solid",
+            "borderRadius": "0px",
+            "boxShadow": "none",
+            "overflow": "visible"
+          },
+          "header": {
+            "rect": {
+              "x": 83,
+              "y": 172.09375,
+              "width": 116,
+              "height": 52
+            },
+            "padding": "7px 6px 7px 0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+          },
+          "strip": {
+            "rect": {
+              "x": 199,
+              "y": 172.09375,
+              "width": 1692,
+              "height": 52
+            },
+            "display": "flex",
+            "overflowX": "auto"
+          },
+          "cell": {
+            "rect": {
+              "x": 199,
+              "y": 172.09375,
+              "width": 211.5,
+              "height": 52
+            },
+            "padding": "7px 11px",
+            "minWidth": "140px",
+            "flexBasis": "140px",
+            "gap": "2px"
+          },
+          "label": {
+            "fontSize": "9px",
+            "color": "rgb(139, 140, 147)"
+          },
+          "value": {
+            "fontSize": "16px",
+            "fontWeight": "640"
+          },
+          "delta": {
+            "fontSize": "9px"
+          },
+          "separator": {
+            "content": "\"\"",
+            "width": "1px",
+            "insetBlockStart": "10px",
+            "insetBlockEnd": "10px"
+          }
+        }
+      ]
+    },
+    "candidateKpi": {
+      "mode": "populated_candidate",
+      "url": "http://127.0.0.1:41737/states/populated/screen.html",
+      "anchors": [
+        {
+          "width": 768,
+          "found": true,
+          "pageOverflow": false,
+          "cellCount": 4,
+          "module": {
+            "rect": {
+              "x": 66,
+              "y": 322.03125,
+              "width": 690,
+              "height": 54
+            },
+            "display": "grid",
+            "gridTemplateColumns": "104px 586px",
+            "minHeight": "54px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderTop": "1px solid",
+            "borderBottom": "1px solid",
+            "borderRadius": "0px",
+            "boxShadow": "none",
+            "overflow": "visible"
+          },
+          "header": {
+            "rect": {
+              "x": 66,
+              "y": 323.03125,
+              "width": 104,
+              "height": 52
+            },
+            "padding": "7px 6px 7px 0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+          },
+          "strip": {
+            "rect": {
+              "x": 170,
+              "y": 323.03125,
+              "width": 586,
+              "height": 52
+            },
+            "display": "flex",
+            "overflowX": "auto"
+          },
+          "cell": {
+            "rect": {
+              "x": 170,
+              "y": 323.03125,
+              "width": 146.5,
+              "height": 52
+            },
+            "padding": "7px 11px",
+            "minWidth": "132px",
+            "flexBasis": "132px",
+            "gap": "2px"
+          },
+          "label": {
+            "fontSize": "9px",
+            "color": "rgb(139, 140, 147)"
+          },
+          "value": {
+            "fontSize": "16px",
+            "fontWeight": "640"
+          },
+          "delta": {
+            "fontSize": "9px"
+          },
+          "separator": {
+            "content": "\"\"",
+            "width": "1px",
+            "insetBlockStart": "10px",
+            "insetBlockEnd": "10px"
+          }
+        },
+        {
+          "width": 1024,
+          "found": true,
+          "pageOverflow": false,
+          "cellCount": 4,
+          "module": {
+            "rect": {
+              "x": 64,
+              "y": 199.3125,
+              "width": 960,
+              "height": 54
+            },
+            "display": "grid",
+            "gridTemplateColumns": "116px 844px",
+            "minHeight": "54px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderTop": "1px solid",
+            "borderBottom": "1px solid",
+            "borderRadius": "0px",
+            "boxShadow": "none",
+            "overflow": "visible"
+          },
+          "header": {
+            "rect": {
+              "x": 64,
+              "y": 200.3125,
+              "width": 116,
+              "height": 52
+            },
+            "padding": "7px 6px 7px 0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+          },
+          "strip": {
+            "rect": {
+              "x": 180,
+              "y": 200.3125,
+              "width": 844,
+              "height": 52
+            },
+            "display": "flex",
+            "overflowX": "auto"
+          },
+          "cell": {
+            "rect": {
+              "x": 180,
+              "y": 200.3125,
+              "width": 211,
+              "height": 52
+            },
+            "padding": "7px 11px",
+            "minWidth": "140px",
+            "flexBasis": "140px",
+            "gap": "2px"
+          },
+          "label": {
+            "fontSize": "9px",
+            "color": "rgb(139, 140, 147)"
+          },
+          "value": {
+            "fontSize": "16px",
+            "fontWeight": "640"
+          },
+          "delta": {
+            "fontSize": "9px"
+          },
+          "separator": {
+            "content": "\"\"",
+            "width": "1px",
+            "insetBlockStart": "10px",
+            "insetBlockEnd": "10px"
+          }
+        },
+        {
+          "width": 1440,
+          "found": true,
+          "pageOverflow": false,
+          "cellCount": 4,
+          "module": {
+            "rect": {
+              "x": 88,
+              "y": 215.3125,
+              "width": 1320,
+              "height": 54
+            },
+            "display": "grid",
+            "gridTemplateColumns": "116px 1204px",
+            "minHeight": "54px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderTop": "1px solid",
+            "borderBottom": "1px solid",
+            "borderRadius": "0px",
+            "boxShadow": "none",
+            "overflow": "visible"
+          },
+          "header": {
+            "rect": {
+              "x": 88,
+              "y": 216.3125,
+              "width": 116,
+              "height": 52.8125
+            },
+            "padding": "7px 6px 7px 0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+          },
+          "strip": {
+            "rect": {
+              "x": 204,
+              "y": 216.3125,
+              "width": 1204,
+              "height": 52.8125
+            },
+            "display": "flex",
+            "overflowX": "auto"
+          },
+          "cell": {
+            "rect": {
+              "x": 204,
+              "y": 216.3125,
+              "width": 301,
+              "height": 52.8125
+            },
+            "padding": "7px 11px",
+            "minWidth": "140px",
+            "flexBasis": "140px",
+            "gap": "2px"
+          },
+          "label": {
+            "fontSize": "9px",
+            "color": "rgb(139, 140, 147)"
+          },
+          "value": {
+            "fontSize": "16px",
+            "fontWeight": "640"
+          },
+          "delta": {
+            "fontSize": "9px"
+          },
+          "separator": {
+            "content": "\"\"",
+            "width": "1px",
+            "insetBlockStart": "10px",
+            "insetBlockEnd": "10px"
+          }
+        },
+        {
+          "width": 1920,
+          "found": true,
+          "pageOverflow": false,
+          "cellCount": 4,
+          "module": {
+            "rect": {
+              "x": 332,
+              "y": 204.609375,
+              "width": 1320,
+              "height": 54
+            },
+            "display": "grid",
+            "gridTemplateColumns": "116px 1204px",
+            "minHeight": "54px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderTop": "1px solid",
+            "borderBottom": "1px solid",
+            "borderRadius": "0px",
+            "boxShadow": "none",
+            "overflow": "visible"
+          },
+          "header": {
+            "rect": {
+              "x": 332,
+              "y": 205.609375,
+              "width": 116,
+              "height": 52
+            },
+            "padding": "7px 6px 7px 0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+          },
+          "strip": {
+            "rect": {
+              "x": 448,
+              "y": 205.609375,
+              "width": 1204,
+              "height": 52
+            },
+            "display": "flex",
+            "overflowX": "auto"
+          },
+          "cell": {
+            "rect": {
+              "x": 448,
+              "y": 205.609375,
+              "width": 301,
+              "height": 52
+            },
+            "padding": "7px 11px",
+            "minWidth": "140px",
+            "flexBasis": "140px",
+            "gap": "2px"
+          },
+          "label": {
+            "fontSize": "9px",
+            "color": "rgb(139, 140, 147)"
+          },
+          "value": {
+            "fontSize": "16px",
+            "fontWeight": "640"
+          },
+          "delta": {
+            "fontSize": "9px"
+          },
+          "separator": {
+            "content": "\"\"",
+            "width": "1px",
+            "insetBlockStart": "10px",
+            "insetBlockEnd": "10px"
+          }
+        }
+      ]
+    },
+    "consoleErrors": [],
+    "failedRequests": [],
+    "badResponses": []
+  },
+  "proof_boundary": "Local-file and bundle-root loopback browser proof for the portable finished family review board, six visible PNGs, review closure, responsive-Web board overflow, and direct computed-style/geometry conformance of the populated KPI module to the hash-pinned accepted pilot at all four Web anchors; not production runtime, mobile-specific design, or full WCAG conformance.",
+  "result": "passed"
+}

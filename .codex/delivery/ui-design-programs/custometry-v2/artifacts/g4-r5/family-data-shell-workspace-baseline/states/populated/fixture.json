@@ -1,0 +1,16 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-DATA-001",
+  "state_id": "UI-DATA-001.populated",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Данные · подключения",
+    "title": "Контуры данных под контролем",
+    "summary": "Список связывает статус, freshness, владельца и следующее безопасное действие для каждого подключения.",
+    "tone": "success",
+    "status": "3 подключения · 2 в норме · 1 требует внимания"
+  }
+}

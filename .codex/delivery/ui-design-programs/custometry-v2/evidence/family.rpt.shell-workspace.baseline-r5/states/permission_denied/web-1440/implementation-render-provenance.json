@@ -1,0 +1,21 @@
+{
+  "$schema": "render-provenance-receipt.schema.json",
+  "schema_id": "codex.ui-render-provenance/v1",
+  "generated_by": {
+    "script": "assemble_render_provenance.py",
+    "version": "1.0.0",
+    "command": "assemble_render_provenance.py <paths-redacted>"
+  },
+  "target": "implementation",
+  "logical_artifact_id": "UI-RPT-001.permission_denied.all.ru.graphite@r5",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "validation_profile": "program_ready",
+  "anchor_id": "web-1440",
+  "visual_authority_sha256": "689a51ab272c156f7848b94c2e8a1c45bc4a38b52e6eed6a922974a7314be3ef",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/states/permission_denied/screen.html",
+  "source_artifact_sha256": "de93acd3113ec4a41e1af93c1a87f4f5a2f3f8ca841611b4ebbfe9ce2bed835f",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.rpt.shell-workspace.baseline-r5/states/permission_denied/web-1440/implementation.png",
+  "capture_sha256": "5c8ed82060670054feddcc1fbaa204e0324661f7feb0744eeb83761031822ab1",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.rpt.shell-workspace.baseline-r5/states/permission_denied/web-1440/implementation-geometry.json",
+  "geometry_receipt_sha256": "0e072547ab508857b1490a5a0ff49c0c2349c346efe0c3e01d20a7697d867db9"
+}

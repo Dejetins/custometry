@@ -343,7 +343,7 @@
       "required": ["kind", "html_path", "image_path", "html_sha256", "image_sha256", "owner_decision_ref"],
       "properties": {
         "kind": {"enum": ["accepted_visual", "baseline_reference", "delegated_design_output"]},
-        "evidence_mode": {"description": "figma_adapter is retained only for historical readability and is rejected by active validation.", "enum": ["exact_screen_html", "native_image", "visual_language_only", "figma_adapter"]},
+        "evidence_mode": {"enum": ["exact_screen_html", "native_image", "visual_language_only"]},
         "html_path": {"type": ["string", "null"]},
         "image_path": {"type": ["string", "null"]},
         "html_sha256": {"type": ["string", "null"]},

@@ -1,0 +1,47 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "source_freshness",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.data.shell-workspace.baseline-r5",
+  "gate_id": "G4",
+  "status": "passed",
+  "facts": {
+    "source_refs": [
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/review-board.html",
+        "sha256": "0bf871136a777c1fcfaa6f8e772b9282848485e5df7be2c7ea67a5b69fb0a7d5"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-data-shell-workspace-baseline/ui-design-program.snapshot.json",
+        "sha256": "6243df65dee8f16249f44cc7655f25a8018b3a160d510b70badb9cf76d9033d9"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/error/screen-acceptance.json",
+        "sha256": "c7d527bea91861ee0217359322fc0f75fb18855c82aa1c4fc30a9daaebac1ba4"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/initial/screen-acceptance.json",
+        "sha256": "297a25048ea96a7c715cbab378de802bb755b417226b33ed54231abbe2af5fa5"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/loading/screen-acceptance.json",
+        "sha256": "acba3512ec6dfa2bf1060a444984002bdb3d01a49f35da13abe42ed30c6b48fd"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/permission_denied/screen-acceptance.json",
+        "sha256": "fcc0d550f6bba43d78d6dc0f33ccfba565c729c94ede116d147fbd44470615d3"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/populated/screen-acceptance.json",
+        "sha256": "80f642869c849aada0a66a9ceee1d13d042c5664d10dd4523141d7ddadbf3a4a"
+      },
+      {
+        "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/states/recovery/screen-acceptance.json",
+        "sha256": "766f61511bc881170484b9aeb4945c8a12538179dd8807b7e337772289b3c13b"
+      }
+    ],
+    "drift_classification": "owned_generated_change",
+    "stale_refs": []
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "program-artifact-index.schema.json",
+  "schema_id": "codex.ui-program-artifact-index/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "program_revision": 5,
+  "index_kind": "journeys",
+  "entries": [
+    {
+      "id": "data-to-trusted-result",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/data-to-trusted-result.json",
+      "sha256": "6fccac6a35aa879eeabdc6dbbfafb6cb74f3b461fb06c5e06f37a12dc5e02f69",
+      "json_pointer": "/journey"
+    },
+    {
+      "id": "compose-large-workbook",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/compose-large-workbook.json",
+      "sha256": "abf4a33403aac64417e67cdace53ce2fa4053b48990be3e0d6abceb3e5363646",
+      "json_pointer": "/journey"
+    },
+    {
+      "id": "publish-review-collaborate",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/publish-review-collaborate.json",
+      "sha256": "704e4ce3323f94da609c9f793b1fd26de69becb0ee0c3debc92290c81f0fd05c",
+      "json_pointer": "/journey"
+    },
+    {
+      "id": "refresh-with-stable-anchors",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/refresh-with-stable-anchors.json",
+      "sha256": "254f33caa71d44870f67a2e7e88a72820fd1d124616e0261b01fe66ad253c03d",
+      "json_pointer": "/journey"
+    },
+    {
+      "id": "define-recalculate-reuse-segment",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/define-recalculate-reuse-segment.json",
+      "sha256": "212d50481ea89bae3a0524364ebb818e09afab6b4c504088367809ce5210e5df",
+      "json_pointer": "/journey"
+    },
+    {
+      "id": "digital-to-offline-unit-economics",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/digital-to-offline-unit-economics.json",
+      "sha256": "dabd2051c3e4f43847ab11cb948c6885a595f0f35a66a698279692d540a80753",
+      "json_pointer": "/journey"
+    },
+    {
+      "id": "product-category-assortment-inventory",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/product-category-assortment-inventory.json",
+      "sha256": "039400b959e031517f69cf7bae33a70ff1521b25b2e9ecaf56ee2720d7cac04a",
+      "json_pointer": "/journey"
+    },
+    {
+      "id": "open-100x30-document-without-duplicate-compute",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/open-100x30-document-without-duplicate-compute.json",
+      "sha256": "090a327e9114947327d31aaeab9271ccb1d5449bacec229a5d0f44f49265326f",
+      "json_pointer": "/journey"
+    },
+    {
+      "id": "adoption-and-performance-operations",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/journeys/adoption-and-performance-operations.json",
+      "sha256": "61bf6e87a0215ae435b24ca839f150c5303bcd3b48c2d78cb63486ec4ade46a9",
+      "json_pointer": "/journey"
+    }
+  ]
+}

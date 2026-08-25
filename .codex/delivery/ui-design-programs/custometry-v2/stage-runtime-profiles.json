@@ -118,7 +118,7 @@
       "title": "Foundations, shell, and responsive Web",
       "artifact_kind": "program",
       "validation_profile": "program_ready",
-      "objective": "Realize and prove the fixed foundations, complete typography, reusable components/states, shell/layout and responsive clauses using the declared evidence mode.",
+      "objective": "Realize and prove the fixed foundations, complete typography, reusable components/states, shell/layout and responsive clauses using the declared HTML or native-image evidence mode.",
       "owns": ["baseline realization", "representative shell screen contract", "responsive-Web evidence", "anchor binding", "reversible implementation decisions"],
       "required_outputs": ["program-ready manifest", "candidate artifact", "active representative shell screen contract created and validated before capture", "mode-correct source evidence", "candidate captures", "compact standard board covering foundations, typography, components/states, shell/layout and responsive behavior", "review board", "clause-exact inheritance report"],
       "allowed_unresolved": [],

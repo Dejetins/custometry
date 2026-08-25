@@ -1,0 +1,95 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "2.0.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G4@family.fcst.shell-workspace.baseline-r5",
+    "gate_id": "G4",
+    "target_id": "family.fcst.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_gate",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/family-acceptance.json",
+    "artifact_sha256": "a921802fa62f864ee83b0b71fc815640203e4e203195e7598d6311bab0e2d25c"
+  },
+  "to_stage": {
+    "stage_instance_id": "G4@family.promo.shell-workspace.baseline-r5",
+    "gate_id": "G4",
+    "target_id": "family.promo.shell-workspace.baseline-r5",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-09-family-promo-shell-workspace-baseline-r5.md"
+  },
+  "readiness_status": "ready",
+  "next_stage_allowed": true,
+  "decision_inventory": [
+    {
+      "decision_id": "G4@family.fcst.shell-workspace.baseline-r5.finished-result",
+      "class": "owner_required",
+      "status": "resolved",
+      "summary": "The owner explicitly accepted the complete Forecast r5 HTML review board.",
+      "resolution_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/family-acceptance-decision-r5.json"
+    }
+  ],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/preflight/current_gate.json",
+      "evidence_sha256": "b23c54d5f62f4d63ec621dd18059d822ad76bbc6805e33cc0c479b60474c0252"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/preflight/execution_route.json",
+      "evidence_sha256": "c87d31536dd52155328e36d605b4d7b0db31a772eac9f8cb8826e76603f08829"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/preflight/foreign_changes.json",
+      "evidence_sha256": "a0b0844113fc5197d57e2c72522981b8f579bea4b41d5b7868f43e30f99ad87e"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/preflight/handoff_artifact.json",
+      "evidence_sha256": "a40a85d29917b6b3c3bfa07183bf3aa7404768220f8a8a7def3d5f2c953790ac"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/preflight/next_stage_inputs.json",
+      "evidence_sha256": "b53c92e729b02df2725f08a67d1cb965fba44a01fbbf3956793f99e605fa9032"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/preflight/source_freshness.json",
+      "evidence_sha256": "087d2d2caba39460ad938700ce222caed27062efe59545e65c833476f2fc2cc9"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/preflight/write_scope.json",
+      "evidence_sha256": "d2e4d8cb7a6e4250ead4f2cbba373aba1cba5ed08ceca0b48de588ae333b566b"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "The owner accepted the complete Forecast HTML review board; the strict family gate and adjacent-stage preflight pass.",
+    "review_artifact_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/review-board.html",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/review-board-1440.png",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/browser-board-qa.json"
+    ],
+    "questions": []
+  },
+  "owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/family-acceptance-decision-r5.json",
+  "owner_decision_sha256": "1e45ba6175dbd2290e2792d142c5ec034719acb01437696ca67a74f8c1cf3474",
+  "program_complete": false
+}

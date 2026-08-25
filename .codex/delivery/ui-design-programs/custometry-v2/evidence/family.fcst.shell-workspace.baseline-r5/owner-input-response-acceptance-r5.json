@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-input-response.schema.json",
+  "schema_id": "codex.ui-owner-input-response/v1",
+  "generated_by": {
+    "script": "assemble_owner_input_response.py",
+    "version": "1.1.0",
+    "command": "assemble_owner_input_response.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.fcst.shell-workspace.baseline-r5",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/owner-review-decision-packet.md",
+  "decision_packet_sha256": "16593d36db4433a71ff5487a97ae11c28ca6bd261062cb8223dc9ab6d6c7a64d",
+  "response_kind": "visual_acceptance",
+  "owner_input": "Окей, принимаю это.",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/family-acceptance-decision-r5.json",
+  "canonical_owner_decision_sha256": "1e45ba6175dbd2290e2792d142c5ec034719acb01437696ca67a74f8c1cf3474"
+}

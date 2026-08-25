@@ -1,0 +1,16 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-CORE-001",
+  "state_id": "UI-CORE-001.populated",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Рабочее пространство · обзор",
+    "title": "Состояние workspace",
+    "summary": "Один спокойный обзор свежести, качества, запусков и прогнозных сигналов.",
+    "tone": "success",
+    "status": "Данные актуальны · 14 фев 2026, 10:00"
+  }
+}

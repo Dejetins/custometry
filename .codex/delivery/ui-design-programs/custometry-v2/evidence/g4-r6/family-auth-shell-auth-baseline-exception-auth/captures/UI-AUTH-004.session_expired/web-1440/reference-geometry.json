@@ -1,0 +1,195 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-AUTH-004.session_expired.all.ru-RU.graphite.r6",
+  "target": "reference",
+  "capture_profile": "visual_authority_reference",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": true,
+    "region_gate_applied": false,
+    "element_gate_applied": false,
+    "document_identity_gate_applied": false,
+    "fixture_meta_gate_applied": false,
+    "accessibility_gate_applied": false,
+    "interaction_gate_applied": false,
+    "overflow_gate_applied": false,
+    "standard_clause_gate_applied": false
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "2.0.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r6/family-auth-shell-auth-baseline-exception-auth/contracts/UI-AUTH-004.session_expired.r6.json --anchor-id web-1440 --target reference --source-artifact .codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html --logical-artifact-id CUSTOMETRY-UI-DESIGN-PROGRAM-V2:accepted-pilot:ru:r6 --output .codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/captures/UI-AUTH-004.session_expired/web-1440/reference-geometry.json --screenshot .codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/captures/UI-AUTH-004.session_expired/web-1440/reference.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "contract_sha256": "feea32117ca63ae07776786c55ce3225d05353fcee35c09e44580ca74b66bc5b",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "artifact_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:accepted-pilot:ru:r6",
+    "main_document_response_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "anchor_id": "web-1440",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [
+    "shell.application",
+    "shell.page-header",
+    "shell.route-tabs",
+    "shell.main-content"
+  ],
+  "elements": [],
+  "standard_observations": [],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "scroll_height": 900,
+    "client_height": 900
+  },
+  "environment_checks": [
+    {
+      "check": "fixed_clock",
+      "expected": 1786651658000,
+      "observed": 1786651658000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 68,
+    "keyboard_sequence": [
+      "a",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "comments-open",
+      "trust-open",
+      "context-open",
+      "tab-overview",
+      "period-menu-open",
+      "comparison-menu-open",
+      "stores-menu-open",
+      "filters-menu-open",
+      "groupby-menu-open",
+      "appearance-menu-open",
+      "view-menu-open",
+      "kpi-open",
+      "summary",
+      "summary",
+      "summary",
+      "button",
+      "button",
+      "chart-settings-open",
+      "summary",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "lifecycle-metric",
+      "summary",
+      "summary",
+      "summary",
+      "summary",
+      "button",
+      "div",
+      "a",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "button",
+      "comments-open",
+      "trust-open",
+      "context-open",
+      "tab-overview",
+      "period-menu-open",
+      "comparison-menu-open",
+      "stores-menu-open",
+      "filters-menu-open",
+      "groupby-menu-open",
+      "appearance-menu-open",
+      "view-menu-open",
+      "kpi-open",
+      "summary",
+      "summary"
+    ],
+    "keyboard_issues": [
+      "tab_did_not_focus_element:43"
+    ],
+    "passed": false
+  },
+  "accessibility_claim": "observed_not_acceptance_gating",
+  "browser_interaction": {
+    "visible_action_ids": [],
+    "observed_outcomes": [],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/captures/UI-AUTH-004.session_expired/web-1440/reference.png",
+  "screenshot_sha256": "f83b7404610b2469ff2bd85d1b57fd491eed37e1a38a3346252141ba2ffdce91",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]",
+      "input[type='password']",
+      "input[autocomplete='one-time-code']"
+    ],
+    "redaction_match_counts": [
+      0,
+      0,
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

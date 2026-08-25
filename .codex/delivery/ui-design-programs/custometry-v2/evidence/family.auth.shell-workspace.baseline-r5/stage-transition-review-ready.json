@@ -1,0 +1,97 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "2.0.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r5",
+    "gate_id": "G4",
+    "target_id": "family.auth.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/family-acceptance.json",
+    "artifact_sha256": "8d7420b7fb09f632d68f63cf85f3838805d63492338372c1fe1dc19cfbd52e91"
+  },
+  "to_stage": {
+    "stage_instance_id": "G4@family.core.shell-workspace.baseline-r5",
+    "gate_id": "G4",
+    "target_id": "family.core.shell-workspace.baseline-r5",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-03-family-core-shell-workspace-baseline-r5.md"
+  },
+  "readiness_status": "review_ready",
+  "next_stage_allowed": false,
+  "decision_inventory": [
+    {
+      "decision_id": "G4@family.auth.shell-workspace.baseline-r5.finished-result",
+      "class": "owner_required",
+      "status": "pending",
+      "summary": "Accept the finished workspace onboarding family or request bounded corrections.",
+      "resolution_ref": null
+    }
+  ],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/preflight/current_gate.json",
+      "evidence_sha256": "8378429b40771f6580718b81b955c1dc8b69c84b2fe7da27e35508fffbc25270"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/preflight/execution_route.json",
+      "evidence_sha256": "8b53858d5b814dc2c75398a5b1837608302585b4a13dfad956a12e8045c93e02"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/preflight/foreign_changes.json",
+      "evidence_sha256": "9ef040c4d2146d963c5ff2018029254020a6bcc3d2c0c26c4acf57e16122d664"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/preflight/handoff_artifact.json",
+      "evidence_sha256": "41f39953430082c18993432bd367976b5acb7fe139b8c1587781b2e9b7dff074"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/preflight/next_stage_inputs.json",
+      "evidence_sha256": "8e658b060189c91a9ca493834c2d00cb0815ebd46b6dd97d3f7cd034171502b8"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/preflight/source_freshness.json",
+      "evidence_sha256": "a1898b9659c4690e42f14500b97139fe8323d4fe15b52550898b130ae8ea35d0"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/preflight/write_scope.json",
+      "evidence_sha256": "058ab83439758fda905ae3b4ff1c8e87c54f09a469244cdad62a9f2ee6f01e55"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "The workspace onboarding family exact-covers UI-AUTH-005 across all required states and responsive Web anchors. The machine gate passes; owner acceptance remains pending.",
+    "review_artifact_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/review-board.html",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/review-board-1440.png",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/browser-board-qa.json"
+    ],
+    "questions": [
+      "Принять готовое семейство настройки рабочего пространства или запросить ограниченные исправления?"
+    ]
+  },
+  "owner_decision_ref": null,
+  "owner_decision_sha256": null,
+  "program_complete": false
+}

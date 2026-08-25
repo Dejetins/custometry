@@ -21,6 +21,8 @@ SESSION = "g4-auth-r5-board-qa"
 SCREENSHOT_DEFAULT = EVID / "review-board-1440.png"
 SCREENSHOT_RECOVERY = EVID / "review-board-recovery-validation-error-1440.png"
 SCREENSHOT_EN = EVID / "review-board-sign-in-en-1440.png"
+REVISION_TAG = "r5"
+STAGE_ID = "G4@family.auth.shell-auth.baseline-exception-auth-r5"
 
 
 def sha(path: Path) -> str:
@@ -170,12 +172,12 @@ def main() -> int:
             "recovery_reading_state": observed["recoverySemantics"]["screen"] == "UI-AUTH-004" and observed["recoverySemantics"]["state"] == "UI-AUTH-004.validation_error" and observed["recoverySemantics"]["stepCount"] == 3 and observed["recoverySemantics"]["statusVisible"],
             "review_nested_closure": observed["entries"] == 24 and bool(observed["manifest"]),
             "console_network_isolated": not observed["consoleErrors"] and not observed["failedRequests"] and not observed["externalRequests"],
-            "deterministic_repeat": observed["repeatTitle"] == observed["title"] == "Custometry · auth family r5",
+            "deterministic_repeat": observed["repeatTitle"] == observed["title"] == f"Custometry · auth family {REVISION_TAG}",
         }
         document = {
             "schema_id": "custometry.ui-g4-browser-board-qa/v2",
             "generated_by": {"script": Path(__file__).name, "version": "2.0.0", "browser_mechanic": "playwright-cli / Chrome"},
-            "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2", "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r5",
+            "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2", "stage_instance_id": STAGE_ID,
             "artifacts": {"review_board": {"path": rel(BOARD), "sha256": sha(BOARD)}, "target_surface": {"path": rel(TARGET), "sha256": sha(TARGET)}, "window_geometry_baseline": {"path": rel(WINDOW_BASELINE), "sha256": sha(WINDOW_BASELINE)}, "default_screenshot": {"path": rel(SCREENSHOT_DEFAULT), "sha256": sha(SCREENSHOT_DEFAULT)}, "recovery_screenshot": {"path": rel(SCREENSHOT_RECOVERY), "sha256": sha(SCREENSHOT_RECOVERY)}, "english_screenshot": {"path": rel(SCREENSHOT_EN), "sha256": sha(SCREENSHOT_EN)}},
             "checks": [{"check_id": key, "status": "passed" if value else "failed"} for key, value in checks.items()], "focused_regression": focused_regression, "observed": observed,
             "proof_boundary": "Isolated local file Playwright CLI proof for all 12 states, responsive Web, RU/EN, semantic controls, pointer/keyboard, physical active state, 200% zoom, reduced motion, focus order, console/network and review closure; not production runtime, mobile-specific design or full WCAG conformance.",

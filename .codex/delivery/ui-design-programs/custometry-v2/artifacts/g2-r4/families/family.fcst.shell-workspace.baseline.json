@@ -1,0 +1,29 @@
+{
+  "family": {
+    "family_id": "family.fcst.shell-workspace.baseline",
+    "title": "fcst / shell-workspace / baseline",
+    "representative_screen_ids": [
+      "UI-FCST-001"
+    ],
+    "screen_ids": [
+      "UI-FCST-001",
+      "UI-FCST-002",
+      "UI-FCST-003",
+      "UI-FCST-004",
+      "UI-FCST-005",
+      "UI-FCST-006",
+      "UI-FCST-007"
+    ],
+    "reuse_hypothesis_status": "hypothesis",
+    "decision_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/61",
+      "formula": "group in-scope screens by stable screen namespace, exact shell_variant_id, exact baseline_exception_ref, and deterministic workload partition; select the highest state/action complexity as representative with screen_id tie-break"
+    },
+    "workload_budget": {
+      "max_screens": 7,
+      "max_screen_state_pairs": 42,
+      "rationale": "Exact family membership and accepted intake state cardinality; any expansion requires a separate family row."
+    }
+  }
+}

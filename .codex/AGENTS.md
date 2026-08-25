@@ -46,6 +46,12 @@ the exact pilot sources into durable evidence before a source-fidelity claim.
 Current visual proof must come from the new program-selected evidence mode and
 real browser evidence required by its active gate.
 
+Live Figma inspection, mutation, creation, and design-to-code are not active
+Custometry routes and must not be installed or suggested. A supplied Figma
+export or screenshot is ordinary native-image evidence; request an export when
+the only source is a live target. Historical Figma references, if encountered,
+are evidence only and never execution authority.
+
 ## Custometry representation
 
 - Specs live under `.codex/delivery/specs/` when needed and use
@@ -97,8 +103,31 @@ The global skill router selects technical skills. Custometry-specific routes:
 | Trigger | Primary skill |
 |---|---|
 | Reusable procedure prompt or explicitly justified prompt pack | `prompt-manager` after `delivery-orchestrator` |
-| Product-wide multi-screen Web UI program | `ui-design-program` when the user authorizes complete all-screen/journey/family/wave work rather than one ticket-local screen; use its pre-G0 intake, stage-specific read sets, exact family/wave aggregates, and HTML/browser evidence route |
+| New product-wide multi-screen Web UI program | `ui-design-program` only when the owner explicitly authorizes a new complete all-screen/journey/family/wave program; the frozen `custometry-v2` program is not an executable route |
+| Current Custometry Web implementation | Execute exactly one `ready` ticket under `.codex/delivery/tickets/`, using the active implementation-source contract and boundary-matched browser proof |
+| One unresolved visual or interaction direction | `ui-ux-pro-max` for one advisory direction expressed as principles and semantic tokens; use `product-design:ideate` instead only when visible image-based alternatives are requested |
+| Faithful local Product Design prototype | `product-design:image-to-code` for an inspectable image/export or `product-design:url-to-code` for an authorized live URL; do not substitute these for ordinary ticket-governed production implementation |
+| UX/product-flow critique | `product-design:audit`; keep its verdict separate from fidelity and runtime readiness |
+| Source-to-prototype fidelity | `product-design:design-qa`; normalize source and implementation viewport/state and keep runtime readiness with `browser-qa-evidence` |
 | Browser-depth ticket | `browser-qa-evidence`; declare it in `validation.proof_skills`, and add `playwright-cli` when terminal automation is needed |
+
+Load a `better-*` craft skill only when the ticket decision, changed surface,
+observed defect, or required proof materially crosses that domain. Do not load
+the whole craft set merely because a screen contains text, spacing, color, and
+controls. Mixed UX, fidelity, and runtime work may reuse one safe browser
+mechanic and redacted evidence set, but each skill returns its own verdict.
+Outside an authorized staged UI program, the selected Browser, Chrome, or
+`playwright-cli` mechanic wins. Canonical UI-program gate receipts require
+`playwright-cli`; other surfaces are supplemental and cannot close the gate.
+
+The owner retired `CUSTOMETRY-UI-DESIGN-PROGRAM-V2` from current execution on
+2026-08-24. Its prompt pack, ledger, artifacts, receipts, and accepted decisions
+remain immutable historical evidence, but they are not current execution or
+certification authority. Do not run `staged-plan-runner` against that triad,
+claim pending G4/G5/G6 rows, or infer completion from its accepted frontier.
+Current Web work follows
+[`docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`](../docs/architecture/ui/custometry-web-implementation-source-contract-v1.md)
+and one ticket whose frontmatter status is `ready`.
 
 For an authorized UI program, the user supplies the initial detailed product
 path and later reviews finished visual checkpoints. The agent owns hashes,

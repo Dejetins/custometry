@@ -1,0 +1,63 @@
+{
+  "schema_id": "codex.ui-raster-diff/v1",
+  "screen_revision_id": "UI-PROMO-001.error.all.ru.graphite@r5",
+  "anchor_id": "web-1024",
+  "generated_by": {
+    "script": "compare_visual_revision.py",
+    "version": "1.4.0",
+    "command": "compare_visual_revision.py <paths-redacted>"
+  },
+  "reference": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/error/web-1024/reference.png",
+    "sha256": "8879dc44eefcebe30a0f88a10d6c725ac0ed25d38adedd51a97dca7ffc891023"
+  },
+  "implementation": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/error/web-1024/implementation.png",
+    "sha256": "a8ccbeb9084c05f8a87db1f8f52efe99032e68a1d393c3730edefc4191750db5"
+  },
+  "render_provenance": {
+    "reference": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/error/web-1024/reference-render-provenance.json",
+      "sha256": "c9470e002a9258c4f6fd89eec1c96994ec98c630f4acb107ab8e747864840902"
+    },
+    "implementation": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/error/web-1024/implementation-render-provenance.json",
+      "sha256": "977f402083eaa9eec6d1aa23b1e7dd263a9f205927ceb09f4fd82444c242f9cb"
+    }
+  },
+  "comparison": {
+    "purpose": "visual_language_conformance",
+    "reference_logical_artifact_id": "custometry-pilot-v3-metadata-ru",
+    "implementation_logical_artifact_id": "UI-PROMO-001.error.all.ru.graphite@r5",
+    "visual_authority_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "visual_authority_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "reference_render_provenance_sha256": "c9470e002a9258c4f6fd89eec1c96994ec98c630f4acb107ab8e747864840902",
+    "implementation_render_provenance_sha256": "977f402083eaa9eec6d1aa23b1e7dd263a9f205927ceb09f4fd82444c242f9cb",
+    "reference_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "reference_source_artifact_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "implementation_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-promo-shell-workspace-baseline/states/error/screen.html",
+    "implementation_source_artifact_sha256": "e8c9358b5a9d296d13297813c4f0553572b020e224a8fdf181056a26375e4919",
+    "provenance_passed": true,
+    "proves_fidelity": false,
+    "blockers": []
+  },
+  "diff_image": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.promo.shell-workspace.baseline-r5/states/error/web-1024/diff.png",
+  "pixel_diff": {
+    "dimensions_match": true,
+    "reference_size": [
+      1024,
+      768
+    ],
+    "implementation_size": [
+      1024,
+      768
+    ],
+    "different_pixels": 543338,
+    "different_ratio": 0.6908899943033854,
+    "maximum_channel_delta": 246,
+    "channel_threshold": 0,
+    "approved_max_different_pixels": 0,
+    "passed": false
+  },
+  "result": "blocked"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "stage-transition-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "from_stage_id": "G1@atlas-r4",
+  "from_gate": "G1",
+  "from_target": "atlas-r4",
+  "from_revision": 4,
+  "artifact": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g1-r4/ui-design-program.snapshot.json",
+  "to_gate": "G2",
+  "to_stage_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+  "to_target": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+  "to_task": ".codex/agents/generated/custometry-ui-design-g0-v2/23-g2-structure-r4.md",
+  "status": "ready",
+  "owner_decision": null,
+  "decision_inventory": null,
+  "blockers": null,
+  "checks": [
+    "current_gate=.codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/current-gate.json",
+    "source_freshness=.codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/source-freshness.json",
+    "next_stage_inputs=.codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/next-stage-inputs.json",
+    "write_scope=.codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/write-scope.json",
+    "foreign_changes=.codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/foreign-changes.json",
+    "execution_route=.codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/execution-route.json",
+    "handoff_artifact=.codex/delivery/ui-design-programs/custometry-v2/evidence/atlas-r4/preflight/handoff-artifact.json"
+  ],
+  "summary": "G1 atlas r4 exact-covers 175 screens and 9 journeys from the rebound intake; G2 structure r4 is ready.",
+  "review_artifacts": [],
+  "questions": []
+}

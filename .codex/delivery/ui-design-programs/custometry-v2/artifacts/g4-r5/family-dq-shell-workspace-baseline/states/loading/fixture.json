@@ -1,0 +1,16 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-DQ-001",
+  "state_id": "UI-DQ-001.loading",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Данные · качество",
+    "title": "Загружаем профиль качества",
+    "summary": "Shell, Result Trust и recovery controls сохранены, пока fixture собирает сигналы.",
+    "tone": "neutral",
+    "status": "Загрузка · без внешних запросов"
+  }
+}

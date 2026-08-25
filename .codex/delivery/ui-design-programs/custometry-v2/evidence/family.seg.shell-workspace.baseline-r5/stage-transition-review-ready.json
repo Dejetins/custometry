@@ -1,0 +1,97 @@
+{
+  "$schema": "stage-transition-readiness.schema.json",
+  "schema_id": "codex.ui-stage-transition-readiness/v1",
+  "generated_by": {
+    "script": "assemble_stage_transition.py",
+    "version": "2.0.0",
+    "command": "assemble_stage_transition.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "transition_kind": "advance",
+  "from_stage": {
+    "stage_instance_id": "G4@family.seg.shell-workspace.baseline-r5",
+    "gate_id": "G4",
+    "target_id": "family.seg.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "gate_result": "passed",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/family-acceptance.json",
+    "artifact_sha256": "f86e3aa58becd4c4ed5958bfe0ee11dead4a7a6be7dd418cb39ed141cbfa0d96"
+  },
+  "to_stage": {
+    "stage_instance_id": "G4@family.fcst.shell-workspace.baseline-r5",
+    "gate_id": "G4",
+    "target_id": "family.fcst.shell-workspace.baseline-r5",
+    "task_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-08-family-fcst-shell-workspace-baseline-r5.md"
+  },
+  "readiness_status": "review_ready",
+  "next_stage_allowed": false,
+  "decision_inventory": [
+    {
+      "decision_id": "G4@family.seg.shell-workspace.baseline-r5.finished-result",
+      "class": "owner_required",
+      "status": "pending",
+      "summary": "Accept the finished visual result or request bounded corrections.",
+      "resolution_ref": null
+    }
+  ],
+  "preflight_checks": [
+    {
+      "check_id": "current_gate",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/preflight/current_gate.json",
+      "evidence_sha256": "1b0697cdfbce550297563b8305aaae264bf6db0efa23032dbca3e24dedfc66c9"
+    },
+    {
+      "check_id": "execution_route",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/preflight/execution_route.json",
+      "evidence_sha256": "f033e3ba15e6656d6c2524816c1bb7899867e4b44ad757192fd23ce20c642fa1"
+    },
+    {
+      "check_id": "foreign_changes",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/preflight/foreign_changes.json",
+      "evidence_sha256": "c91e70f9190c6246eb3c9d1d416f1a7eb60a660cb6e77e2ba6f299cb517ced07"
+    },
+    {
+      "check_id": "handoff_artifact",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/preflight/handoff_artifact.json",
+      "evidence_sha256": "4e5dfa56ea5595aa329679e58d772cf16aec3026ae583d061de9507fe79aeb67"
+    },
+    {
+      "check_id": "next_stage_inputs",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/preflight/next_stage_inputs.json",
+      "evidence_sha256": "2a399f4edacf0682b6427aea848940913e4f4aefd52c3882680c88e5fad75081"
+    },
+    {
+      "check_id": "source_freshness",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/preflight/source_freshness.json",
+      "evidence_sha256": "a1838fc254adebb3d50e74e75efa09c0ffcad40990a0013950100553f3339a2d"
+    },
+    {
+      "check_id": "write_scope",
+      "status": "passed",
+      "evidence_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/preflight/write_scope.json",
+      "evidence_sha256": "fbd9c6d0c45dff4dac884658981f8445f9e6f9ed24a80da7351fbc7c85dac3db"
+    }
+  ],
+  "known_blockers": [],
+  "owner_summary": {
+    "result_summary": "Segmentation exact-covers six required states and three responsive-Web anchors; machine proof is ready for owner review.",
+    "review_artifact_refs": [
+      ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-seg-shell-workspace-baseline/review-board.html",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/review-board-1440.png",
+      ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.seg.shell-workspace.baseline-r5/browser-board-qa.json"
+    ],
+    "questions": [
+      "Принимаете готовую family review board или хотите небольшие правки?"
+    ]
+  },
+  "owner_decision_ref": null,
+  "owner_decision_sha256": null,
+  "program_complete": false
+}

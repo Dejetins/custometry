@@ -1,0 +1,21 @@
+{
+  "schema_id": "custometry.ui-owner-review-decision-packet/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6",
+  "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6.finished-result",
+  "decision_kind": "family_acceptance",
+  "question": "Принять готовое семейство входа и восстановления или запросить ограниченные исправления?",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.auth.shell-auth.baseline-exception-auth-r6",
+    "revision": 6,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r6/family-auth-shell-auth-baseline-exception-auth/review-board.html",
+    "sha256": "c9f7c18a91cf34702846e603156a69dd803a48a38b6e14cdefbb58e669e01a53"
+  },
+  "allowed_responses": [
+    "accept",
+    "bounded_corrections"
+  ],
+  "status": "pending"
+}

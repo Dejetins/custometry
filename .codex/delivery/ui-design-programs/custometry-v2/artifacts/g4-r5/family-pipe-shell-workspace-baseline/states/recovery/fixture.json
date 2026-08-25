@@ -1,0 +1,17 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-PIPE-001",
+  "state_id": "UI-PIPE-001.recovery",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Прогнозирование · модели",
+    "status": "Восстановление доступно",
+    "title": "Можно безопасно продолжить работу",
+    "summary": "Контекст pipelines сохранён; повторные действия выполняются только в изолированном fixture.",
+    "panel": "Продолжите управление или публикацию. Производственные данные не изменяются.",
+    "tone": "neutral"
+  }
+}

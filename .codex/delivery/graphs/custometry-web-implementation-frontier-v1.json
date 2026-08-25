@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "graph_id": "CUSTOMETRY-WEB-IMPLEMENTATION-FRONTIER-V1",
+  "stream_id": "S03-WEB-IMPLEMENTATION",
+  "title": "Custometry production Web implementation frontier",
+  "status_source": "ticket_frontmatter_only",
+  "coordination_model": "one_ready_ticket_one_execution_unit",
+  "scope": [
+    "production application shell and route registration seam",
+    "Sales Overview production route",
+    "connection list and editor production routes",
+    "operator runs production route",
+    "notification inbox production route"
+  ],
+  "excluded_scope": [
+    "complete atlas status inventory",
+    "frozen ui-design-program execution or certification",
+    "design-only evidence",
+    "mobile-specific design",
+    "publication, deployment, or production mutation"
+  ],
+  "nodes": [
+    {
+      "ticket_id": "W31-WEB-PRODUCTION-SHELL-ROUTING",
+      "ticket": ".codex/delivery/tickets/W31-WEB-PRODUCTION-SHELL-ROUTING.md",
+      "depends_on": [],
+      "initial_status": "ready",
+      "parallel_group": "web_foundation"
+    },
+    {
+      "ticket_id": "W32-WEB-SALES-OVERVIEW",
+      "ticket": ".codex/delivery/tickets/W32-WEB-SALES-OVERVIEW.md",
+      "depends_on": ["W31-WEB-PRODUCTION-SHELL-ROUTING"],
+      "initial_status": "blocked",
+      "parallel_group": "web_features_after_w31"
+    },
+    {
+      "ticket_id": "W33-WEB-CONNECTIONS",
+      "ticket": ".codex/delivery/tickets/W33-WEB-CONNECTIONS.md",
+      "depends_on": ["W31-WEB-PRODUCTION-SHELL-ROUTING"],
+      "initial_status": "blocked",
+      "parallel_group": "web_features_after_w31"
+    },
+    {
+      "ticket_id": "W34-WEB-OPERATOR-RUNS",
+      "ticket": ".codex/delivery/tickets/W34-WEB-OPERATOR-RUNS.md",
+      "depends_on": ["W31-WEB-PRODUCTION-SHELL-ROUTING"],
+      "initial_status": "blocked",
+      "parallel_group": "web_features_after_w31"
+    },
+    {
+      "ticket_id": "W35-WEB-NOTIFICATION-INBOX",
+      "ticket": ".codex/delivery/tickets/W35-WEB-NOTIFICATION-INBOX.md",
+      "depends_on": ["W31-WEB-PRODUCTION-SHELL-ROUTING"],
+      "initial_status": "blocked",
+      "parallel_group": "web_features_after_w31"
+    }
+  ],
+  "path_ownership_contract": {
+    "W31-WEB-PRODUCTION-SHELL-ROUTING": [
+      "apps/web/src/app/shell/**",
+      "apps/web/src/app/router/**",
+      "apps/web/src/app/system-surfaces/**",
+      "apps/web/src/app/routes/feature-route-contract.ts",
+      "apps/web/src/app/routes/feature-route-loader.ts",
+      "apps/web/src/app/index.ts",
+      "apps/web/src/App.tsx",
+      "apps/web/src/styles.css",
+      "apps/web/tests/app-shell/**",
+      "packages/ui-foundation/**",
+      "packages/localization/locales/{en,ru}/{foundation,route-titles}.json",
+      "tests/e2e/web-shell/**",
+      "tests/accessibility/web-shell/**"
+    ],
+    "W32-WEB-SALES-OVERVIEW": [
+      "apps/web/src/features/analytics-sales/**",
+      "apps/web/src/app/routes/features/analytics-sales.tsx",
+      "apps/web/tests/analytics-sales/**",
+      "tests/e2e/web-analytics-sales/**",
+      "tests/accessibility/web-analytics-sales/**"
+    ],
+    "W33-WEB-CONNECTIONS": [
+      "apps/web/src/features/connections/**",
+      "apps/web/src/app/routes/features/connections.tsx",
+      "apps/web/tests/connections/**",
+      "tests/e2e/web-connections/**",
+      "tests/accessibility/web-connections/**"
+    ],
+    "W34-WEB-OPERATOR-RUNS": [
+      "apps/web/src/features/operator-runs/**",
+      "apps/web/src/app/routes/features/operator-runs.tsx",
+      "apps/web/tests/operator-runs/**",
+      "tests/e2e/web-operator-runs/**",
+      "tests/accessibility/web-operator-runs/**"
+    ],
+    "W35-WEB-NOTIFICATION-INBOX": [
+      "apps/web/src/features/notifications/**",
+      "apps/web/src/app/routes/features/notifications.tsx",
+      "apps/web/tests/notifications/**",
+      "tests/e2e/web-notifications/**",
+      "tests/accessibility/web-notifications/**"
+    ]
+  },
+  "transition_rules": [
+    "Ticket frontmatter is the only status authority.",
+    "W31 is the sole initial ready frontier.",
+    "W32-W35 may change from blocked to ready only after W31 is accepted and each ticket is revalidated.",
+    "After W31 acceptance, W32-W35 may execute in parallel only in their disjoint owned paths.",
+    "No transition may claim or mutate the frozen custometry-v2 UI program ledger."
+  ]
+}

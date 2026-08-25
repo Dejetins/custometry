@@ -1,0 +1,9 @@
+[
+  {
+    "decision_id": "G4@family.auth.shell-workspace.baseline-r5.finished-result",
+    "class": "owner_required",
+    "status": "pending",
+    "summary": "Accept the finished workspace onboarding family or request bounded corrections.",
+    "resolution_ref": null
+  }
+]

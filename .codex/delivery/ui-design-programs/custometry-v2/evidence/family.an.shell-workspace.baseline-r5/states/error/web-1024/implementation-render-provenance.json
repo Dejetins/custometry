@@ -1,0 +1,21 @@
+{
+  "$schema": "render-provenance-receipt.schema.json",
+  "schema_id": "codex.ui-render-provenance/v1",
+  "generated_by": {
+    "script": "assemble_render_provenance.py",
+    "version": "1.0.0",
+    "command": "assemble_render_provenance.py <paths-redacted>"
+  },
+  "target": "implementation",
+  "logical_artifact_id": "UI-AN-013.error.all.ru.graphite@r5",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "validation_profile": "program_ready",
+  "anchor_id": "web-1024",
+  "visual_authority_sha256": "689a51ab272c156f7848b94c2e8a1c45bc4a38b52e6eed6a922974a7314be3ef",
+  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-an-shell-workspace-baseline/states/error/screen.html",
+  "source_artifact_sha256": "415e9ec1078630f4c769bd6e9e58395f35860b4baf17fdad8f3ecf202bdc7514",
+  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.an.shell-workspace.baseline-r5/states/error/web-1024/implementation.png",
+  "capture_sha256": "59a558bcfadd15c0afd7f3662b6461a706e38c826127e77ab14f42a62c314d87",
+  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.an.shell-workspace.baseline-r5/states/error/web-1024/implementation-geometry.json",
+  "geometry_receipt_sha256": "c9799d4442f501d97e26e5d58d73059ac6548d6061b0f687d82770e18fbe45a4"
+}

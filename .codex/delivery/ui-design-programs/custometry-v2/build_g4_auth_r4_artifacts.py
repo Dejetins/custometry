@@ -30,7 +30,9 @@ REVISION = 4
 REVISION_TAG = f"r{REVISION}"
 FAMILY_REVISION_ID = f"{FAMILY_ID}-{REVISION_TAG}"
 PROGRAM_ID = "CUSTOMETRY-UI-DESIGN-PROGRAM-V2"
+PROGRAM_REVISION = 4
 STAGE_ID = f"G4@{FAMILY_REVISION_ID}"
+HISTORICAL_PREDECESSOR_DECISION: Path | None = None
 BUTTON_STATE_EXCEPTION_ID = "accepted-pilot-interactive-button-state-projection"
 BUTTON_STATE_EXCEPTION_CLAUSES = [
     "standard.color.background-color.54ba9843a31f",
@@ -374,7 +376,7 @@ const outcomes={ru:{'UI-AUTH-001.open-recovery':'Открыт экран вос�
 function recordAction(control,event){if(control.matches('a'))event.preventDefault();if(control.getAttribute('aria-disabled')==='true'||control.disabled)return;if(control.dataset.action==='UI-AUTH-001.change-language'){lang=control.value==='en'?'en':'ru';document.documentElement.lang=lang;applyCopy()}const result=active.querySelector('[data-result]');result.textContent=outcomes[lang][control.dataset.action];result.hidden=false;result.dataset.actionResult=control.dataset.action}
 active.querySelectorAll('[data-action]').forEach(control=>{const eventName=control.matches('select,input[type=checkbox]')?'change':'click';control.addEventListener(eventName,event=>recordAction(control,event));if(control.matches('input[type=checkbox]'))control.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();control.checked=!control.checked;recordAction(control,event)}})});
 </script></body></html>'''
-    if REVISION == 5:
+    if REVISION >= 5:
         document = stabilize_auth_state_geometry(document)
     product_binding_replacements = {
         '<label class="locale-wrap"><span data-copy="locale_label">Язык</span><select class="locale" data-locale data-ui-element="signin-locale"': '<label class="locale-wrap" data-ui-element="signin-locale-field"><span data-copy="locale_label">Язык</span><select class="locale" data-locale data-ui-element="signin-locale"',
@@ -429,7 +431,7 @@ def make_element(base: dict[str, Any], screen_id: str, state_id: str, spec: tupl
         "signin-result": False,
         "recovery-result": False,
     }
-    if REVISION == 5:
+    if REVISION >= 5:
         # The fixed feedback slot alternates between durable trust guidance and
         # state feedback. Keep the state contract aligned with what the user can
         # actually see instead of requiring both layers to overlap.
@@ -515,7 +517,7 @@ def build_program_snapshot(states: dict[str, list[dict[str, Any]]]) -> None:
     screen_entries = ART / "program-screen-entries.snapshot.json"
     write_json(screen_entries, {"screens": snapshot["screens"]})
     screen_index = ART / "screens-index.snapshot.json"
-    write_json(screen_index, {"$schema": "program-artifact-index.schema.json", "schema_id": "codex.ui-program-artifact-index/v1", "program_id": PROGRAM_ID, "program_revision": 4, "index_kind": "screens", "entries": [{"id": entry["screen_ref"]["expected_id"], "path": rel(screen_entries), "sha256": sha(screen_entries), "json_pointer": f"/screens/{index}"} for index, entry in enumerate(snapshot["screens"])]})
+    write_json(screen_index, {"$schema": "program-artifact-index.schema.json", "schema_id": "codex.ui-program-artifact-index/v1", "program_id": PROGRAM_ID, "program_revision": PROGRAM_REVISION, "index_kind": "screens", "entries": [{"id": entry["screen_ref"]["expected_id"], "path": rel(screen_entries), "sha256": sha(screen_entries), "json_pointer": f"/screens/{index}"} for index, entry in enumerate(snapshot["screens"])]})
     snapshot["artifact_indexes"]["screens"] = {"path": rel(screen_index), "sha256": sha(screen_index)}
     snapshot["execution_artifacts"]["plan_doc"] = rel(SNAPSHOT)
     write_json(SNAPSHOT, snapshot)
@@ -527,7 +529,7 @@ def build_contract(screen_id: str, state: dict[str, Any], screens: dict[str, dic
     state_id = state["state_id"]
     manifest = ART / f"applicability/{state_id}.{REVISION_TAG}.json"
     base.update({
-        "contract_profile": "codex.ui-screen-design-contract/v1@2.0.0", "screen_revision_id": f"{state_id}.all.ru-RU.graphite.{REVISION_TAG}", "program_revision_ref": f"{PROGRAM_ID}@4", "status": "review",
+        "contract_profile": "codex.ui-screen-design-contract/v1@2.0.0", "screen_revision_id": f"{state_id}.all.ru-RU.graphite.{REVISION_TAG}", "program_revision_ref": f"{PROGRAM_ID}@{PROGRAM_REVISION}", "status": "review",
         "functional_contract_ref": {"path": rel(INTAKE), "sha256": sha(INTAKE), "json_pointer": f"/screens/{SCREEN_INDEXES[screen_id]}", "screen_id": screen_id},
         "baseline_binding": {"baseline_id": baseline["baseline_id"], "path": rel(BASELINE), "sha256": sha(BASELINE), "shell_variant_id": "shell.auth", "exception_id": "baseline-exception-auth"},
         "standard_binding": {"standard_revision_id": baseline["standard_contract"]["standard_revision_id"], "clause_inventory_sha256": baseline["standard_contract"]["clause_inventory_sha256"], "applicability_manifest": {"path": rel(manifest), "sha256": "0" * 64}},
@@ -695,6 +697,15 @@ def review() -> None:
         if current_document.get("decision", {}).get("status") != "requested_changes":
             raise ValueError("current owner rejection is not canonical requested_changes evidence")
         correction_rows.append({"path": rel(current_rejection), "sha256": sha(current_rejection), "disposition": "binding_structural_correction_not_acceptance"})
+    if HISTORICAL_PREDECESSOR_DECISION is not None:
+        predecessor = json.loads(HISTORICAL_PREDECESSOR_DECISION.read_text(encoding="utf-8"))
+        if predecessor.get("decision", {}).get("status") != "accepted":
+            raise ValueError("historical predecessor decision is not canonical accepted evidence")
+        correction_rows.append({
+            "path": rel(HISTORICAL_PREDECESSOR_DECISION),
+            "sha256": sha(HISTORICAL_PREDECESSOR_DECISION),
+            "disposition": "read_only_visual_predecessor_not_successor_acceptance",
+        })
     write_json(EVID / "carried-owner-corrections.json", {
         "schema_id": "custometry.ui-carried-owner-corrections/v1",
         "source_stage": "G4@family.auth.shell-auth.baseline-exception-auth-r3",

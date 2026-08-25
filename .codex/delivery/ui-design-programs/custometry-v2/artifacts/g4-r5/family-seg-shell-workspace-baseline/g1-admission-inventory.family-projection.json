@@ -1,0 +1,2386 @@
+{
+  "schema_id": "custometry.ui-g1-admission-inventory/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "revision": 2,
+  "status": "complete",
+  "authority_boundary": "Exact current route/surface floor plus promoted r2 requirements; pilot-candidate-v2 is visual-language/platform-baseline authority only.",
+  "screens": [
+    {
+      "screen_id": "UI-AUTH-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/0",
+      "required_states": [
+        "UI-AUTH-001.initial",
+        "UI-AUTH-001.first_loading",
+        "UI-AUTH-001.ready",
+        "UI-AUTH-001.validation_error",
+        "UI-AUTH-001.failed",
+        "UI-AUTH-001.session_expired"
+      ]
+    },
+    {
+      "screen_id": "UI-AUTH-002",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/1",
+      "required_states": [
+        "UI-AUTH-002.initial",
+        "UI-AUTH-002.loading",
+        "UI-AUTH-002.populated",
+        "UI-AUTH-002.error",
+        "UI-AUTH-002.permission_denied",
+        "UI-AUTH-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AUTH-003",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/2",
+      "required_states": [
+        "UI-AUTH-003.initial",
+        "UI-AUTH-003.loading",
+        "UI-AUTH-003.populated",
+        "UI-AUTH-003.error",
+        "UI-AUTH-003.permission_denied",
+        "UI-AUTH-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/3",
+      "required_states": [
+        "UI-AUTH-004.initial",
+        "UI-AUTH-004.first_loading",
+        "UI-AUTH-004.ready",
+        "UI-AUTH-004.validation_error",
+        "UI-AUTH-004.failed",
+        "UI-AUTH-004.session_expired"
+      ]
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/4",
+      "required_states": [
+        "UI-AUTH-005.initial",
+        "UI-AUTH-005.loading",
+        "UI-AUTH-005.populated",
+        "UI-AUTH-005.error",
+        "UI-AUTH-005.permission_denied",
+        "UI-AUTH-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AUTH-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/5",
+      "required_states": [
+        "UI-AUTH-006.initial",
+        "UI-AUTH-006.loading",
+        "UI-AUTH-006.populated",
+        "UI-AUTH-006.error",
+        "UI-AUTH-006.permission_denied",
+        "UI-AUTH-006.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-CORE-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/6",
+      "required_states": [
+        "UI-CORE-001.initial",
+        "UI-CORE-001.loading",
+        "UI-CORE-001.populated",
+        "UI-CORE-001.error",
+        "UI-CORE-001.permission_denied",
+        "UI-CORE-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/7",
+      "required_states": [
+        "UI-DATA-001.initial",
+        "UI-DATA-001.loading",
+        "UI-DATA-001.populated",
+        "UI-DATA-001.error",
+        "UI-DATA-001.permission_denied",
+        "UI-DATA-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/8",
+      "required_states": [
+        "UI-DATA-002.initial",
+        "UI-DATA-002.loading",
+        "UI-DATA-002.populated",
+        "UI-DATA-002.error",
+        "UI-DATA-002.permission_denied",
+        "UI-DATA-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/9",
+      "required_states": [
+        "UI-DATA-003.initial",
+        "UI-DATA-003.loading",
+        "UI-DATA-003.populated",
+        "UI-DATA-003.error",
+        "UI-DATA-003.permission_denied",
+        "UI-DATA-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/10",
+      "required_states": [
+        "UI-DATA-004.initial",
+        "UI-DATA-004.loading",
+        "UI-DATA-004.populated",
+        "UI-DATA-004.error",
+        "UI-DATA-004.permission_denied",
+        "UI-DATA-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/11",
+      "required_states": [
+        "UI-DATA-005.initial",
+        "UI-DATA-005.loading",
+        "UI-DATA-005.populated",
+        "UI-DATA-005.error",
+        "UI-DATA-005.permission_denied",
+        "UI-DATA-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/12",
+      "required_states": [
+        "UI-DATA-006.initial",
+        "UI-DATA-006.loading",
+        "UI-DATA-006.populated",
+        "UI-DATA-006.error",
+        "UI-DATA-006.permission_denied",
+        "UI-DATA-006.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/13",
+      "required_states": [
+        "UI-DATA-007.initial",
+        "UI-DATA-007.loading",
+        "UI-DATA-007.populated",
+        "UI-DATA-007.error",
+        "UI-DATA-007.permission_denied",
+        "UI-DATA-007.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-008",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/14",
+      "required_states": [
+        "UI-DATA-008.initial",
+        "UI-DATA-008.loading",
+        "UI-DATA-008.populated",
+        "UI-DATA-008.error",
+        "UI-DATA-008.permission_denied",
+        "UI-DATA-008.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-009",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/15",
+      "required_states": [
+        "UI-DATA-009.initial",
+        "UI-DATA-009.loading",
+        "UI-DATA-009.populated",
+        "UI-DATA-009.error",
+        "UI-DATA-009.permission_denied",
+        "UI-DATA-009.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-010",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/16",
+      "required_states": [
+        "UI-DATA-010.initial",
+        "UI-DATA-010.loading",
+        "UI-DATA-010.populated",
+        "UI-DATA-010.error",
+        "UI-DATA-010.permission_denied",
+        "UI-DATA-010.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-011",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/17",
+      "required_states": [
+        "UI-DATA-011.initial",
+        "UI-DATA-011.loading",
+        "UI-DATA-011.populated",
+        "UI-DATA-011.error",
+        "UI-DATA-011.permission_denied",
+        "UI-DATA-011.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-012",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/18",
+      "required_states": [
+        "UI-DATA-012.initial",
+        "UI-DATA-012.loading",
+        "UI-DATA-012.populated",
+        "UI-DATA-012.error",
+        "UI-DATA-012.permission_denied",
+        "UI-DATA-012.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-013",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/19",
+      "required_states": [
+        "UI-DATA-013.initial",
+        "UI-DATA-013.loading",
+        "UI-DATA-013.populated",
+        "UI-DATA-013.error",
+        "UI-DATA-013.permission_denied",
+        "UI-DATA-013.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-014",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/20",
+      "required_states": [
+        "UI-DATA-014.initial",
+        "UI-DATA-014.loading",
+        "UI-DATA-014.populated",
+        "UI-DATA-014.error",
+        "UI-DATA-014.permission_denied",
+        "UI-DATA-014.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-015",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/21",
+      "required_states": [
+        "UI-DATA-015.initial",
+        "UI-DATA-015.loading",
+        "UI-DATA-015.populated",
+        "UI-DATA-015.error",
+        "UI-DATA-015.permission_denied",
+        "UI-DATA-015.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-016",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/22",
+      "required_states": [
+        "UI-DATA-016.initial",
+        "UI-DATA-016.loading",
+        "UI-DATA-016.populated",
+        "UI-DATA-016.error",
+        "UI-DATA-016.permission_denied",
+        "UI-DATA-016.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-017",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/23",
+      "required_states": [
+        "UI-DATA-017.initial",
+        "UI-DATA-017.loading",
+        "UI-DATA-017.populated",
+        "UI-DATA-017.error",
+        "UI-DATA-017.permission_denied",
+        "UI-DATA-017.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-018",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/24",
+      "required_states": [
+        "UI-DATA-018.initial",
+        "UI-DATA-018.loading",
+        "UI-DATA-018.populated",
+        "UI-DATA-018.error",
+        "UI-DATA-018.permission_denied",
+        "UI-DATA-018.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-019",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/25",
+      "required_states": [
+        "UI-DATA-019.initial",
+        "UI-DATA-019.loading",
+        "UI-DATA-019.populated",
+        "UI-DATA-019.error",
+        "UI-DATA-019.permission_denied",
+        "UI-DATA-019.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-020",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/26",
+      "required_states": [
+        "UI-DATA-020.initial",
+        "UI-DATA-020.loading",
+        "UI-DATA-020.populated",
+        "UI-DATA-020.error",
+        "UI-DATA-020.permission_denied",
+        "UI-DATA-020.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-021",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/27",
+      "required_states": [
+        "UI-DATA-021.initial",
+        "UI-DATA-021.loading",
+        "UI-DATA-021.populated",
+        "UI-DATA-021.error",
+        "UI-DATA-021.permission_denied",
+        "UI-DATA-021.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-022",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/28",
+      "required_states": [
+        "UI-DATA-022.initial",
+        "UI-DATA-022.loading",
+        "UI-DATA-022.populated",
+        "UI-DATA-022.error",
+        "UI-DATA-022.permission_denied",
+        "UI-DATA-022.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-023",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/29",
+      "required_states": [
+        "UI-DATA-023.initial",
+        "UI-DATA-023.loading",
+        "UI-DATA-023.populated",
+        "UI-DATA-023.error",
+        "UI-DATA-023.permission_denied",
+        "UI-DATA-023.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-024",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/30",
+      "required_states": [
+        "UI-DATA-024.initial",
+        "UI-DATA-024.loading",
+        "UI-DATA-024.populated",
+        "UI-DATA-024.error",
+        "UI-DATA-024.permission_denied",
+        "UI-DATA-024.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-025",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/31",
+      "required_states": [
+        "UI-DATA-025.initial",
+        "UI-DATA-025.loading",
+        "UI-DATA-025.populated",
+        "UI-DATA-025.error",
+        "UI-DATA-025.permission_denied",
+        "UI-DATA-025.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-026",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/32",
+      "required_states": [
+        "UI-DATA-026.initial",
+        "UI-DATA-026.loading",
+        "UI-DATA-026.populated",
+        "UI-DATA-026.error",
+        "UI-DATA-026.permission_denied",
+        "UI-DATA-026.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-027",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/33",
+      "required_states": [
+        "UI-DATA-027.initial",
+        "UI-DATA-027.loading",
+        "UI-DATA-027.populated",
+        "UI-DATA-027.error",
+        "UI-DATA-027.permission_denied",
+        "UI-DATA-027.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-028",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/34",
+      "required_states": [
+        "UI-DATA-028.initial",
+        "UI-DATA-028.loading",
+        "UI-DATA-028.populated",
+        "UI-DATA-028.error",
+        "UI-DATA-028.permission_denied",
+        "UI-DATA-028.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-029",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/35",
+      "required_states": [
+        "UI-DATA-029.initial",
+        "UI-DATA-029.loading",
+        "UI-DATA-029.populated",
+        "UI-DATA-029.error",
+        "UI-DATA-029.permission_denied",
+        "UI-DATA-029.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-030",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/36",
+      "required_states": [
+        "UI-DATA-030.initial",
+        "UI-DATA-030.loading",
+        "UI-DATA-030.populated",
+        "UI-DATA-030.error",
+        "UI-DATA-030.permission_denied",
+        "UI-DATA-030.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DATA-031",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/37",
+      "required_states": [
+        "UI-DATA-031.initial",
+        "UI-DATA-031.loading",
+        "UI-DATA-031.populated",
+        "UI-DATA-031.error",
+        "UI-DATA-031.permission_denied",
+        "UI-DATA-031.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DQ-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/38",
+      "required_states": [
+        "UI-DQ-001.initial",
+        "UI-DQ-001.loading",
+        "UI-DQ-001.populated",
+        "UI-DQ-001.error",
+        "UI-DQ-001.permission_denied",
+        "UI-DQ-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DQ-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/39",
+      "required_states": [
+        "UI-DQ-002.initial",
+        "UI-DQ-002.loading",
+        "UI-DQ-002.populated",
+        "UI-DQ-002.error",
+        "UI-DQ-002.permission_denied",
+        "UI-DQ-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DQ-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/40",
+      "required_states": [
+        "UI-DQ-003.initial",
+        "UI-DQ-003.loading",
+        "UI-DQ-003.populated",
+        "UI-DQ-003.error",
+        "UI-DQ-003.permission_denied",
+        "UI-DQ-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DQ-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/41",
+      "required_states": [
+        "UI-DQ-004.initial",
+        "UI-DQ-004.loading",
+        "UI-DQ-004.populated",
+        "UI-DQ-004.error",
+        "UI-DQ-004.permission_denied",
+        "UI-DQ-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DQ-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/42",
+      "required_states": [
+        "UI-DQ-005.initial",
+        "UI-DQ-005.loading",
+        "UI-DQ-005.populated",
+        "UI-DQ-005.error",
+        "UI-DQ-005.permission_denied",
+        "UI-DQ-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/43",
+      "required_states": [
+        "UI-AN-001.initial",
+        "UI-AN-001.loading",
+        "UI-AN-001.populated",
+        "UI-AN-001.error",
+        "UI-AN-001.permission_denied",
+        "UI-AN-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/44",
+      "required_states": [
+        "UI-AN-002.initial",
+        "UI-AN-002.loading",
+        "UI-AN-002.populated",
+        "UI-AN-002.error",
+        "UI-AN-002.permission_denied",
+        "UI-AN-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/45",
+      "required_states": [
+        "UI-AN-003.initial",
+        "UI-AN-003.loading",
+        "UI-AN-003.populated",
+        "UI-AN-003.error",
+        "UI-AN-003.permission_denied",
+        "UI-AN-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/46",
+      "required_states": [
+        "UI-AN-004.initial",
+        "UI-AN-004.loading",
+        "UI-AN-004.populated",
+        "UI-AN-004.error",
+        "UI-AN-004.permission_denied",
+        "UI-AN-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/47",
+      "required_states": [
+        "UI-AN-005.initial",
+        "UI-AN-005.loading",
+        "UI-AN-005.populated",
+        "UI-AN-005.error",
+        "UI-AN-005.permission_denied",
+        "UI-AN-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/48",
+      "required_states": [
+        "UI-AN-006.initial",
+        "UI-AN-006.loading",
+        "UI-AN-006.populated",
+        "UI-AN-006.error",
+        "UI-AN-006.permission_denied",
+        "UI-AN-006.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/49",
+      "required_states": [
+        "UI-AN-007.initial",
+        "UI-AN-007.loading",
+        "UI-AN-007.populated",
+        "UI-AN-007.error",
+        "UI-AN-007.permission_denied",
+        "UI-AN-007.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-008",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/50",
+      "required_states": [
+        "UI-AN-008.initial",
+        "UI-AN-008.loading",
+        "UI-AN-008.populated",
+        "UI-AN-008.error",
+        "UI-AN-008.permission_denied",
+        "UI-AN-008.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-009",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/51",
+      "required_states": [
+        "UI-AN-009.initial",
+        "UI-AN-009.loading",
+        "UI-AN-009.populated",
+        "UI-AN-009.error",
+        "UI-AN-009.permission_denied",
+        "UI-AN-009.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-010",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/52",
+      "required_states": [
+        "UI-AN-010.initial",
+        "UI-AN-010.loading",
+        "UI-AN-010.populated",
+        "UI-AN-010.error",
+        "UI-AN-010.permission_denied",
+        "UI-AN-010.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-011",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/53",
+      "required_states": [
+        "UI-AN-011.initial",
+        "UI-AN-011.loading",
+        "UI-AN-011.populated",
+        "UI-AN-011.error",
+        "UI-AN-011.permission_denied",
+        "UI-AN-011.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-012",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/54",
+      "required_states": [
+        "UI-AN-012.initial",
+        "UI-AN-012.loading",
+        "UI-AN-012.populated",
+        "UI-AN-012.error",
+        "UI-AN-012.permission_denied",
+        "UI-AN-012.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-013",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/55",
+      "required_states": [
+        "UI-AN-013.initial",
+        "UI-AN-013.loading",
+        "UI-AN-013.populated",
+        "UI-AN-013.error",
+        "UI-AN-013.permission_denied",
+        "UI-AN-013.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-014",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/56",
+      "required_states": [
+        "UI-AN-014.initial",
+        "UI-AN-014.loading",
+        "UI-AN-014.populated",
+        "UI-AN-014.error",
+        "UI-AN-014.permission_denied",
+        "UI-AN-014.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AN-015",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/57",
+      "required_states": [
+        "UI-AN-015.initial",
+        "UI-AN-015.loading",
+        "UI-AN-015.populated",
+        "UI-AN-015.error",
+        "UI-AN-015.permission_denied",
+        "UI-AN-015.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SEG-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/58",
+      "required_states": [
+        "UI-SEG-001.initial",
+        "UI-SEG-001.loading",
+        "UI-SEG-001.populated",
+        "UI-SEG-001.error",
+        "UI-SEG-001.permission_denied",
+        "UI-SEG-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SEG-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/59",
+      "required_states": [
+        "UI-SEG-002.initial",
+        "UI-SEG-002.loading",
+        "UI-SEG-002.populated",
+        "UI-SEG-002.error",
+        "UI-SEG-002.permission_denied",
+        "UI-SEG-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SEG-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/60",
+      "required_states": [
+        "UI-SEG-003.initial",
+        "UI-SEG-003.loading",
+        "UI-SEG-003.populated",
+        "UI-SEG-003.error",
+        "UI-SEG-003.permission_denied",
+        "UI-SEG-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-FCST-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/61",
+      "required_states": [
+        "UI-FCST-001.initial",
+        "UI-FCST-001.loading",
+        "UI-FCST-001.populated",
+        "UI-FCST-001.error",
+        "UI-FCST-001.permission_denied",
+        "UI-FCST-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-FCST-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/62",
+      "required_states": [
+        "UI-FCST-002.initial",
+        "UI-FCST-002.loading",
+        "UI-FCST-002.populated",
+        "UI-FCST-002.error",
+        "UI-FCST-002.permission_denied",
+        "UI-FCST-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-FCST-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/63",
+      "required_states": [
+        "UI-FCST-003.initial",
+        "UI-FCST-003.loading",
+        "UI-FCST-003.populated",
+        "UI-FCST-003.error",
+        "UI-FCST-003.permission_denied",
+        "UI-FCST-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-FCST-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/64",
+      "required_states": [
+        "UI-FCST-004.initial",
+        "UI-FCST-004.loading",
+        "UI-FCST-004.populated",
+        "UI-FCST-004.error",
+        "UI-FCST-004.permission_denied",
+        "UI-FCST-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-FCST-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/65",
+      "required_states": [
+        "UI-FCST-005.initial",
+        "UI-FCST-005.loading",
+        "UI-FCST-005.populated",
+        "UI-FCST-005.error",
+        "UI-FCST-005.permission_denied",
+        "UI-FCST-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-FCST-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/66",
+      "required_states": [
+        "UI-FCST-006.initial",
+        "UI-FCST-006.loading",
+        "UI-FCST-006.populated",
+        "UI-FCST-006.error",
+        "UI-FCST-006.permission_denied",
+        "UI-FCST-006.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-FCST-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/67",
+      "required_states": [
+        "UI-FCST-007.initial",
+        "UI-FCST-007.loading",
+        "UI-FCST-007.populated",
+        "UI-FCST-007.error",
+        "UI-FCST-007.permission_denied",
+        "UI-FCST-007.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PROMO-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/68",
+      "required_states": [
+        "UI-PROMO-001.initial",
+        "UI-PROMO-001.loading",
+        "UI-PROMO-001.populated",
+        "UI-PROMO-001.error",
+        "UI-PROMO-001.permission_denied",
+        "UI-PROMO-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PROMO-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/69",
+      "required_states": [
+        "UI-PROMO-002.initial",
+        "UI-PROMO-002.loading",
+        "UI-PROMO-002.populated",
+        "UI-PROMO-002.error",
+        "UI-PROMO-002.permission_denied",
+        "UI-PROMO-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PROMO-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/70",
+      "required_states": [
+        "UI-PROMO-003.initial",
+        "UI-PROMO-003.loading",
+        "UI-PROMO-003.populated",
+        "UI-PROMO-003.error",
+        "UI-PROMO-003.permission_denied",
+        "UI-PROMO-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DASH-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/71",
+      "required_states": [
+        "UI-DASH-001.initial",
+        "UI-DASH-001.loading",
+        "UI-DASH-001.populated",
+        "UI-DASH-001.error",
+        "UI-DASH-001.permission_denied",
+        "UI-DASH-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DASH-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/72",
+      "required_states": [
+        "UI-DASH-002.initial",
+        "UI-DASH-002.loading",
+        "UI-DASH-002.populated",
+        "UI-DASH-002.error",
+        "UI-DASH-002.permission_denied",
+        "UI-DASH-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-DASH-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/73",
+      "required_states": [
+        "UI-DASH-003.initial",
+        "UI-DASH-003.loading",
+        "UI-DASH-003.populated",
+        "UI-DASH-003.error",
+        "UI-DASH-003.permission_denied",
+        "UI-DASH-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-RPT-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/74",
+      "required_states": [
+        "UI-RPT-001.initial",
+        "UI-RPT-001.loading",
+        "UI-RPT-001.populated",
+        "UI-RPT-001.error",
+        "UI-RPT-001.permission_denied",
+        "UI-RPT-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-RPT-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/75",
+      "required_states": [
+        "UI-RPT-002.initial",
+        "UI-RPT-002.loading",
+        "UI-RPT-002.populated",
+        "UI-RPT-002.error",
+        "UI-RPT-002.permission_denied",
+        "UI-RPT-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-RPT-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/76",
+      "required_states": [
+        "UI-RPT-003.initial",
+        "UI-RPT-003.loading",
+        "UI-RPT-003.populated",
+        "UI-RPT-003.error",
+        "UI-RPT-003.permission_denied",
+        "UI-RPT-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-RPT-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/77",
+      "required_states": [
+        "UI-RPT-004.initial",
+        "UI-RPT-004.loading",
+        "UI-RPT-004.populated",
+        "UI-RPT-004.error",
+        "UI-RPT-004.permission_denied",
+        "UI-RPT-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-RPT-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/78",
+      "required_states": [
+        "UI-RPT-005.initial",
+        "UI-RPT-005.loading",
+        "UI-RPT-005.populated",
+        "UI-RPT-005.error",
+        "UI-RPT-005.permission_denied",
+        "UI-RPT-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-RPT-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/79",
+      "required_states": [
+        "UI-RPT-006.initial",
+        "UI-RPT-006.loading",
+        "UI-RPT-006.populated",
+        "UI-RPT-006.error",
+        "UI-RPT-006.permission_denied",
+        "UI-RPT-006.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-RPT-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/80",
+      "required_states": [
+        "UI-RPT-007.initial",
+        "UI-RPT-007.loading",
+        "UI-RPT-007.populated",
+        "UI-RPT-007.error",
+        "UI-RPT-007.permission_denied",
+        "UI-RPT-007.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PIPE-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/81",
+      "required_states": [
+        "UI-PIPE-001.initial",
+        "UI-PIPE-001.loading",
+        "UI-PIPE-001.populated",
+        "UI-PIPE-001.error",
+        "UI-PIPE-001.permission_denied",
+        "UI-PIPE-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PIPE-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/82",
+      "required_states": [
+        "UI-PIPE-002.initial",
+        "UI-PIPE-002.loading",
+        "UI-PIPE-002.populated",
+        "UI-PIPE-002.error",
+        "UI-PIPE-002.permission_denied",
+        "UI-PIPE-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PIPE-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/83",
+      "required_states": [
+        "UI-PIPE-003.initial",
+        "UI-PIPE-003.loading",
+        "UI-PIPE-003.populated",
+        "UI-PIPE-003.error",
+        "UI-PIPE-003.permission_denied",
+        "UI-PIPE-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PIPE-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/84",
+      "required_states": [
+        "UI-PIPE-004.initial",
+        "UI-PIPE-004.loading",
+        "UI-PIPE-004.populated",
+        "UI-PIPE-004.error",
+        "UI-PIPE-004.permission_denied",
+        "UI-PIPE-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OPS-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/85",
+      "required_states": [
+        "UI-OPS-001.initial",
+        "UI-OPS-001.loading",
+        "UI-OPS-001.populated",
+        "UI-OPS-001.error",
+        "UI-OPS-001.permission_denied",
+        "UI-OPS-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OPS-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/86",
+      "required_states": [
+        "UI-OPS-002.initial",
+        "UI-OPS-002.loading",
+        "UI-OPS-002.populated",
+        "UI-OPS-002.error",
+        "UI-OPS-002.permission_denied",
+        "UI-OPS-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OPS-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/87",
+      "required_states": [
+        "UI-OPS-003.initial",
+        "UI-OPS-003.loading",
+        "UI-OPS-003.populated",
+        "UI-OPS-003.error",
+        "UI-OPS-003.permission_denied",
+        "UI-OPS-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OPS-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/88",
+      "required_states": [
+        "UI-OPS-004.initial",
+        "UI-OPS-004.loading",
+        "UI-OPS-004.populated",
+        "UI-OPS-004.error",
+        "UI-OPS-004.permission_denied",
+        "UI-OPS-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-NOTIFY-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/89",
+      "required_states": [
+        "UI-NOTIFY-001.initial",
+        "UI-NOTIFY-001.loading",
+        "UI-NOTIFY-001.populated",
+        "UI-NOTIFY-001.error",
+        "UI-NOTIFY-001.permission_denied",
+        "UI-NOTIFY-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-NOTIFY-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/90",
+      "required_states": [
+        "UI-NOTIFY-002.initial",
+        "UI-NOTIFY-002.loading",
+        "UI-NOTIFY-002.populated",
+        "UI-NOTIFY-002.error",
+        "UI-NOTIFY-002.permission_denied",
+        "UI-NOTIFY-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-NOTIFY-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/91",
+      "required_states": [
+        "UI-NOTIFY-003.initial",
+        "UI-NOTIFY-003.loading",
+        "UI-NOTIFY-003.populated",
+        "UI-NOTIFY-003.error",
+        "UI-NOTIFY-003.permission_denied",
+        "UI-NOTIFY-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/92",
+      "required_states": [
+        "UI-ADMIN-001.initial",
+        "UI-ADMIN-001.loading",
+        "UI-ADMIN-001.populated",
+        "UI-ADMIN-001.error",
+        "UI-ADMIN-001.permission_denied",
+        "UI-ADMIN-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/93",
+      "required_states": [
+        "UI-ADMIN-002.initial",
+        "UI-ADMIN-002.loading",
+        "UI-ADMIN-002.populated",
+        "UI-ADMIN-002.error",
+        "UI-ADMIN-002.permission_denied",
+        "UI-ADMIN-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/94",
+      "required_states": [
+        "UI-ADMIN-003.initial",
+        "UI-ADMIN-003.loading",
+        "UI-ADMIN-003.populated",
+        "UI-ADMIN-003.error",
+        "UI-ADMIN-003.permission_denied",
+        "UI-ADMIN-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/95",
+      "required_states": [
+        "UI-ADMIN-004.initial",
+        "UI-ADMIN-004.loading",
+        "UI-ADMIN-004.populated",
+        "UI-ADMIN-004.error",
+        "UI-ADMIN-004.permission_denied",
+        "UI-ADMIN-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/96",
+      "required_states": [
+        "UI-ADMIN-005.initial",
+        "UI-ADMIN-005.loading",
+        "UI-ADMIN-005.populated",
+        "UI-ADMIN-005.error",
+        "UI-ADMIN-005.permission_denied",
+        "UI-ADMIN-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/97",
+      "required_states": [
+        "UI-ADMIN-006.initial",
+        "UI-ADMIN-006.loading",
+        "UI-ADMIN-006.populated",
+        "UI-ADMIN-006.error",
+        "UI-ADMIN-006.permission_denied",
+        "UI-ADMIN-006.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/98",
+      "required_states": [
+        "UI-ADMIN-007.initial",
+        "UI-ADMIN-007.loading",
+        "UI-ADMIN-007.populated",
+        "UI-ADMIN-007.error",
+        "UI-ADMIN-007.permission_denied",
+        "UI-ADMIN-007.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-008",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/99",
+      "required_states": [
+        "UI-ADMIN-008.initial",
+        "UI-ADMIN-008.loading",
+        "UI-ADMIN-008.populated",
+        "UI-ADMIN-008.error",
+        "UI-ADMIN-008.permission_denied",
+        "UI-ADMIN-008.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-009",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/100",
+      "required_states": [
+        "UI-ADMIN-009.initial",
+        "UI-ADMIN-009.loading",
+        "UI-ADMIN-009.populated",
+        "UI-ADMIN-009.error",
+        "UI-ADMIN-009.permission_denied",
+        "UI-ADMIN-009.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-010",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/101",
+      "required_states": [
+        "UI-ADMIN-010.initial",
+        "UI-ADMIN-010.loading",
+        "UI-ADMIN-010.populated",
+        "UI-ADMIN-010.error",
+        "UI-ADMIN-010.permission_denied",
+        "UI-ADMIN-010.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-011",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/102",
+      "required_states": [
+        "UI-ADMIN-011.initial",
+        "UI-ADMIN-011.loading",
+        "UI-ADMIN-011.populated",
+        "UI-ADMIN-011.error",
+        "UI-ADMIN-011.permission_denied",
+        "UI-ADMIN-011.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-012",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/103",
+      "required_states": [
+        "UI-ADMIN-012.initial",
+        "UI-ADMIN-012.loading",
+        "UI-ADMIN-012.populated",
+        "UI-ADMIN-012.error",
+        "UI-ADMIN-012.permission_denied",
+        "UI-ADMIN-012.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-013",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/104",
+      "required_states": [
+        "UI-ADMIN-013.initial",
+        "UI-ADMIN-013.loading",
+        "UI-ADMIN-013.populated",
+        "UI-ADMIN-013.error",
+        "UI-ADMIN-013.permission_denied",
+        "UI-ADMIN-013.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-014",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/105",
+      "required_states": [
+        "UI-ADMIN-014.initial",
+        "UI-ADMIN-014.loading",
+        "UI-ADMIN-014.populated",
+        "UI-ADMIN-014.error",
+        "UI-ADMIN-014.permission_denied",
+        "UI-ADMIN-014.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-015",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/106",
+      "required_states": [
+        "UI-ADMIN-015.initial",
+        "UI-ADMIN-015.loading",
+        "UI-ADMIN-015.populated",
+        "UI-ADMIN-015.error",
+        "UI-ADMIN-015.permission_denied",
+        "UI-ADMIN-015.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-016",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/107",
+      "required_states": [
+        "UI-ADMIN-016.initial",
+        "UI-ADMIN-016.loading",
+        "UI-ADMIN-016.populated",
+        "UI-ADMIN-016.error",
+        "UI-ADMIN-016.permission_denied",
+        "UI-ADMIN-016.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-017",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/108",
+      "required_states": [
+        "UI-ADMIN-017.initial",
+        "UI-ADMIN-017.loading",
+        "UI-ADMIN-017.populated",
+        "UI-ADMIN-017.error",
+        "UI-ADMIN-017.permission_denied",
+        "UI-ADMIN-017.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-018",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/109",
+      "required_states": [
+        "UI-ADMIN-018.initial",
+        "UI-ADMIN-018.loading",
+        "UI-ADMIN-018.populated",
+        "UI-ADMIN-018.error",
+        "UI-ADMIN-018.permission_denied",
+        "UI-ADMIN-018.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ORG-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/110",
+      "required_states": [
+        "UI-ORG-001.initial",
+        "UI-ORG-001.loading",
+        "UI-ORG-001.populated",
+        "UI-ORG-001.error",
+        "UI-ORG-001.permission_denied",
+        "UI-ORG-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ORG-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/111",
+      "required_states": [
+        "UI-ORG-002.initial",
+        "UI-ORG-002.loading",
+        "UI-ORG-002.populated",
+        "UI-ORG-002.error",
+        "UI-ORG-002.permission_denied",
+        "UI-ORG-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PEOPLE-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/112",
+      "required_states": [
+        "UI-PEOPLE-001.initial",
+        "UI-PEOPLE-001.loading",
+        "UI-PEOPLE-001.populated",
+        "UI-PEOPLE-001.error",
+        "UI-PEOPLE-001.permission_denied",
+        "UI-PEOPLE-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-PEOPLE-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/113",
+      "required_states": [
+        "UI-PEOPLE-002.initial",
+        "UI-PEOPLE-002.loading",
+        "UI-PEOPLE-002.populated",
+        "UI-PEOPLE-002.error",
+        "UI-PEOPLE-002.permission_denied",
+        "UI-PEOPLE-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-019",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/114",
+      "required_states": [
+        "UI-ADMIN-019.initial",
+        "UI-ADMIN-019.loading",
+        "UI-ADMIN-019.populated",
+        "UI-ADMIN-019.error",
+        "UI-ADMIN-019.permission_denied",
+        "UI-ADMIN-019.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-ADMIN-020",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/115",
+      "required_states": [
+        "UI-ADMIN-020.initial",
+        "UI-ADMIN-020.loading",
+        "UI-ADMIN-020.populated",
+        "UI-ADMIN-020.error",
+        "UI-ADMIN-020.permission_denied",
+        "UI-ADMIN-020.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-HELP-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/116",
+      "required_states": [
+        "UI-HELP-001.initial",
+        "UI-HELP-001.loading",
+        "UI-HELP-001.populated",
+        "UI-HELP-001.error",
+        "UI-HELP-001.permission_denied",
+        "UI-HELP-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SHELL-AUTH",
+      "classification": "persistent_shell",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/profiles/navigation/auth",
+      "required_states": [
+        "UI-SHELL-AUTH.initial",
+        "UI-SHELL-AUTH.loading",
+        "UI-SHELL-AUTH.populated",
+        "UI-SHELL-AUTH.error",
+        "UI-SHELL-AUTH.permission_denied",
+        "UI-SHELL-AUTH.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SHELL-GLOBAL",
+      "classification": "persistent_shell",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/profiles/navigation/global",
+      "required_states": [
+        "UI-SHELL-GLOBAL.initial",
+        "UI-SHELL-GLOBAL.loading",
+        "UI-SHELL-GLOBAL.populated",
+        "UI-SHELL-GLOBAL.error",
+        "UI-SHELL-GLOBAL.permission_denied",
+        "UI-SHELL-GLOBAL.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SHELL-WORKSPACE",
+      "classification": "persistent_shell",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/profiles/navigation/workspace",
+      "required_states": [
+        "UI-SHELL-WORKSPACE.initial",
+        "UI-SHELL-WORKSPACE.loading",
+        "UI-SHELL-WORKSPACE.populated",
+        "UI-SHELL-WORKSPACE.error",
+        "UI-SHELL-WORKSPACE.permission_denied",
+        "UI-SHELL-WORKSPACE.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SHELL-INSTALLATION",
+      "classification": "persistent_shell",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/profiles/navigation/installation",
+      "required_states": [
+        "UI-SHELL-INSTALLATION.initial",
+        "UI-SHELL-INSTALLATION.loading",
+        "UI-SHELL-INSTALLATION.populated",
+        "UI-SHELL-INSTALLATION.error",
+        "UI-SHELL-INSTALLATION.permission_denied",
+        "UI-SHELL-INSTALLATION.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-001",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/0",
+      "required_states": [
+        "UI-OVR-001.initial",
+        "UI-OVR-001.loading",
+        "UI-OVR-001.populated",
+        "UI-OVR-001.error",
+        "UI-OVR-001.permission_denied",
+        "UI-OVR-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-002",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/1",
+      "required_states": [
+        "UI-OVR-002.initial",
+        "UI-OVR-002.loading",
+        "UI-OVR-002.populated",
+        "UI-OVR-002.error",
+        "UI-OVR-002.permission_denied",
+        "UI-OVR-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-003",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/2",
+      "required_states": [
+        "UI-OVR-003.initial",
+        "UI-OVR-003.loading",
+        "UI-OVR-003.populated",
+        "UI-OVR-003.error",
+        "UI-OVR-003.permission_denied",
+        "UI-OVR-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-004",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/3",
+      "required_states": [
+        "UI-OVR-004.initial",
+        "UI-OVR-004.loading",
+        "UI-OVR-004.populated",
+        "UI-OVR-004.error",
+        "UI-OVR-004.permission_denied",
+        "UI-OVR-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-005",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/4",
+      "required_states": [
+        "UI-OVR-005.initial",
+        "UI-OVR-005.loading",
+        "UI-OVR-005.populated",
+        "UI-OVR-005.error",
+        "UI-OVR-005.permission_denied",
+        "UI-OVR-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-006",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/5",
+      "required_states": [
+        "UI-OVR-006.initial",
+        "UI-OVR-006.loading",
+        "UI-OVR-006.populated",
+        "UI-OVR-006.error",
+        "UI-OVR-006.permission_denied",
+        "UI-OVR-006.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-007",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/6",
+      "required_states": [
+        "UI-OVR-007.initial",
+        "UI-OVR-007.loading",
+        "UI-OVR-007.populated",
+        "UI-OVR-007.error",
+        "UI-OVR-007.permission_denied",
+        "UI-OVR-007.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-008",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/7",
+      "required_states": [
+        "UI-OVR-008.initial",
+        "UI-OVR-008.loading",
+        "UI-OVR-008.populated",
+        "UI-OVR-008.error",
+        "UI-OVR-008.permission_denied",
+        "UI-OVR-008.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-009",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/8",
+      "required_states": [
+        "UI-OVR-009.initial",
+        "UI-OVR-009.loading",
+        "UI-OVR-009.populated",
+        "UI-OVR-009.error",
+        "UI-OVR-009.permission_denied",
+        "UI-OVR-009.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-010",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/9",
+      "required_states": [
+        "UI-OVR-010.initial",
+        "UI-OVR-010.loading",
+        "UI-OVR-010.populated",
+        "UI-OVR-010.error",
+        "UI-OVR-010.permission_denied",
+        "UI-OVR-010.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-011",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/10",
+      "required_states": [
+        "UI-OVR-011.initial",
+        "UI-OVR-011.loading",
+        "UI-OVR-011.populated",
+        "UI-OVR-011.error",
+        "UI-OVR-011.permission_denied",
+        "UI-OVR-011.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-012",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/11",
+      "required_states": [
+        "UI-OVR-012.initial",
+        "UI-OVR-012.loading",
+        "UI-OVR-012.populated",
+        "UI-OVR-012.error",
+        "UI-OVR-012.permission_denied",
+        "UI-OVR-012.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-013",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/12",
+      "required_states": [
+        "UI-OVR-013.initial",
+        "UI-OVR-013.loading",
+        "UI-OVR-013.populated",
+        "UI-OVR-013.error",
+        "UI-OVR-013.permission_denied",
+        "UI-OVR-013.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-014",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/13",
+      "required_states": [
+        "UI-OVR-014.initial",
+        "UI-OVR-014.loading",
+        "UI-OVR-014.populated",
+        "UI-OVR-014.error",
+        "UI-OVR-014.permission_denied",
+        "UI-OVR-014.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-015",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/14",
+      "required_states": [
+        "UI-OVR-015.initial",
+        "UI-OVR-015.loading",
+        "UI-OVR-015.populated",
+        "UI-OVR-015.error",
+        "UI-OVR-015.permission_denied",
+        "UI-OVR-015.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-016",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/15",
+      "required_states": [
+        "UI-OVR-016.initial",
+        "UI-OVR-016.loading",
+        "UI-OVR-016.populated",
+        "UI-OVR-016.error",
+        "UI-OVR-016.permission_denied",
+        "UI-OVR-016.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-017",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/16",
+      "required_states": [
+        "UI-OVR-017.initial",
+        "UI-OVR-017.loading",
+        "UI-OVR-017.populated",
+        "UI-OVR-017.error",
+        "UI-OVR-017.permission_denied",
+        "UI-OVR-017.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-018",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/17",
+      "required_states": [
+        "UI-OVR-018.initial",
+        "UI-OVR-018.loading",
+        "UI-OVR-018.populated",
+        "UI-OVR-018.error",
+        "UI-OVR-018.permission_denied",
+        "UI-OVR-018.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-019",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/18",
+      "required_states": [
+        "UI-OVR-019.initial",
+        "UI-OVR-019.loading",
+        "UI-OVR-019.populated",
+        "UI-OVR-019.error",
+        "UI-OVR-019.permission_denied",
+        "UI-OVR-019.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-020",
+      "classification": "route_backed_transient",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/19",
+      "required_states": [
+        "UI-OVR-020.initial",
+        "UI-OVR-020.loading",
+        "UI-OVR-020.populated",
+        "UI-OVR-020.error",
+        "UI-OVR-020.permission_denied",
+        "UI-OVR-020.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-021",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/20",
+      "required_states": [
+        "UI-OVR-021.initial",
+        "UI-OVR-021.loading",
+        "UI-OVR-021.populated",
+        "UI-OVR-021.error",
+        "UI-OVR-021.permission_denied",
+        "UI-OVR-021.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-022",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/21",
+      "required_states": [
+        "UI-OVR-022.initial",
+        "UI-OVR-022.loading",
+        "UI-OVR-022.populated",
+        "UI-OVR-022.error",
+        "UI-OVR-022.permission_denied",
+        "UI-OVR-022.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-023",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/22",
+      "required_states": [
+        "UI-OVR-023.initial",
+        "UI-OVR-023.loading",
+        "UI-OVR-023.populated",
+        "UI-OVR-023.error",
+        "UI-OVR-023.permission_denied",
+        "UI-OVR-023.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-024",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/23",
+      "required_states": [
+        "UI-OVR-024.initial",
+        "UI-OVR-024.loading",
+        "UI-OVR-024.populated",
+        "UI-OVR-024.error",
+        "UI-OVR-024.permission_denied",
+        "UI-OVR-024.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-OVR-025",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/24",
+      "required_states": [
+        "UI-OVR-025.initial",
+        "UI-OVR-025.loading",
+        "UI-OVR-025.populated",
+        "UI-OVR-025.error",
+        "UI-OVR-025.permission_denied",
+        "UI-OVR-025.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SYS-001",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/0",
+      "required_states": [
+        "UI-SYS-001.initial",
+        "UI-SYS-001.loading",
+        "UI-SYS-001.populated",
+        "UI-SYS-001.error",
+        "UI-SYS-001.permission_denied",
+        "UI-SYS-001.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SYS-002",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/1",
+      "required_states": [
+        "UI-SYS-002.initial",
+        "UI-SYS-002.loading",
+        "UI-SYS-002.populated",
+        "UI-SYS-002.error",
+        "UI-SYS-002.permission_denied",
+        "UI-SYS-002.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SYS-003",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/2",
+      "required_states": [
+        "UI-SYS-003.initial",
+        "UI-SYS-003.loading",
+        "UI-SYS-003.populated",
+        "UI-SYS-003.error",
+        "UI-SYS-003.permission_denied",
+        "UI-SYS-003.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SYS-004",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/3",
+      "required_states": [
+        "UI-SYS-004.initial",
+        "UI-SYS-004.loading",
+        "UI-SYS-004.populated",
+        "UI-SYS-004.error",
+        "UI-SYS-004.permission_denied",
+        "UI-SYS-004.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-SYS-005",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/4",
+      "required_states": [
+        "UI-SYS-005.initial",
+        "UI-SYS-005.loading",
+        "UI-SYS-005.populated",
+        "UI-SYS-005.error",
+        "UI-SYS-005.permission_denied",
+        "UI-SYS-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-CAP-001",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/0",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-002",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/1",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-003",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/2",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-004",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/3",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-005",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/4",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-006",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/5",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-007",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/6",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-008",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/7",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-009",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/8",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-010",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/9",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-011",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/10",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-012",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/11",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-013",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/12",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-014",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/13",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-015",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/14",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-016",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/15",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-017",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/16",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-018",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/17",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-019",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/18",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-020",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/19",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-021",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/20",
+      "required_states": []
+    },
+    {
+      "screen_id": "UI-CAP-022",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/21",
+      "required_states": []
+    },
+    {
+      "screen_id": "HISTORICAL-CUSTOMETRY-UI-V1",
+      "classification": "historical_exclusion",
+      "source_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+      "source_pointer": "/execution_limits/0",
+      "required_states": []
+    },
+    {
+      "screen_id": "HISTORICAL-PENPOT",
+      "classification": "historical_exclusion",
+      "source_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+      "source_pointer": "/execution_limits/1",
+      "required_states": []
+    }
+  ],
+  "journeys": [
+    {
+      "journey_id": "data-to-trusted-result",
+      "screen_ids": [
+        "UI-DATA-001",
+        "UI-DQ-001",
+        "UI-AN-012"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/0"
+    },
+    {
+      "journey_id": "compose-large-workbook",
+      "screen_ids": [
+        "UI-RPT-001",
+        "UI-RPT-002",
+        "UI-RPT-003"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/1"
+    },
+    {
+      "journey_id": "publish-review-collaborate",
+      "screen_ids": [
+        "UI-AN-013",
+        "UI-AN-014",
+        "UI-OVR-024"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/2"
+    },
+    {
+      "journey_id": "refresh-with-stable-anchors",
+      "screen_ids": [
+        "UI-DASH-001",
+        "UI-DASH-002"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/3"
+    },
+    {
+      "journey_id": "define-recalculate-reuse-segment",
+      "screen_ids": [
+        "UI-SEG-001",
+        "UI-SEG-002",
+        "UI-SEG-003"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/4"
+    },
+    {
+      "journey_id": "digital-to-offline-unit-economics",
+      "screen_ids": [
+        "UI-AN-009",
+        "UI-PROMO-001",
+        "UI-PROMO-003"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/5"
+    },
+    {
+      "journey_id": "product-category-assortment-inventory",
+      "screen_ids": [
+        "UI-AN-015",
+        "UI-DATA-004",
+        "UI-DATA-005"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/6"
+    },
+    {
+      "journey_id": "open-100x30-document-without-duplicate-compute",
+      "screen_ids": [
+        "UI-RPT-001",
+        "UI-RPT-002"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/7"
+    },
+    {
+      "journey_id": "adoption-and-performance-operations",
+      "screen_ids": [
+        "UI-ADMIN-005",
+        "UI-ADMIN-006",
+        "UI-OPS-004"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/8"
+    }
+  ],
+  "target_family_requirements": {
+    "family_id": "family.seg.shell-workspace.baseline",
+    "representative_screen_ids": [
+      "UI-SEG-001"
+    ],
+    "required_screen_state_ids": [
+      "UI-SEG-001::UI-SEG-001.initial",
+      "UI-SEG-001::UI-SEG-001.loading",
+      "UI-SEG-001::UI-SEG-001.populated",
+      "UI-SEG-001::UI-SEG-001.error",
+      "UI-SEG-001::UI-SEG-001.permission_denied",
+      "UI-SEG-001::UI-SEG-001.recovery"
+    ]
+  }
+}

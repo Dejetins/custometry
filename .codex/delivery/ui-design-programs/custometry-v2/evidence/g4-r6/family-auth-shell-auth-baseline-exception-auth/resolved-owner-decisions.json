@@ -1,0 +1,9 @@
+[
+  {
+    "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6.finished-result",
+    "class": "owner_required",
+    "status": "resolved",
+    "summary": "The owner carried the prior acceptance forward to the exact visually unchanged r6 review board.",
+    "resolution_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/family-acceptance-decision-r6.json"
+  }
+]

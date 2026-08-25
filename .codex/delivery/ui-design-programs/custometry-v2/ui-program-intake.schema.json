@@ -322,7 +322,7 @@
       "properties": {
         "source_visual_ref": {"type": "string", "minLength": 1},
         "source_visual_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "source_evidence_mode": {"description": "Active values are renderable_html and native_image; figma_adapter is retained only for historical readability and is rejected by active validation.", "enum": ["renderable_html", "native_image", "figma_adapter"]},
+        "source_evidence_mode": {"enum": ["renderable_html", "native_image"]},
         "owner_decision_ref": {"type": "string", "minLength": 1},
         "native_viewport": {
           "type": "object",

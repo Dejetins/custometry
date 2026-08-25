@@ -1,0 +1,43 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.dash.shell-workspace.baseline-r5.finished-result",
+  "decision_kind": "family_acceptance",
+  "status": "accepted",
+  "revision": 5,
+  "decision_text": "The owner explicitly accepted the complete HTML review board shown for the G4 Dashboards family. Acceptance covers UI-DASH-001 in all six required states, the four responsive-Web anchors, all six visible isolated actions, Result Trust, and applicable pilot visual-language inheritance. It does not authorize production implementation, publication, deployment, mobile-specific design, another G4 family, G5, G6, or full WCAG conformance.",
+  "owner_input": "ок это принимается",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.dash.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-dash-shell-workspace-baseline/review-board.html"
+  },
+  "accepted_values": [
+    {
+      "stage_instance_id": "G4@family.dash.shell-workspace.baseline-r5",
+      "screen_ids": [
+        "UI-DASH-001"
+      ],
+      "required_states": [
+        "initial",
+        "loading",
+        "populated",
+        "error",
+        "permission_denied",
+        "recovery"
+      ],
+      "responsive_web_anchors": [
+        768,
+        1024,
+        1440,
+        1920
+      ],
+      "source_bound_fixture_action_count": 6,
+      "result_trust_visible": true,
+      "mobile_scope": "unauthorized",
+      "production_implementation": "not_accepted_by_this_decision"
+    }
+  ]
+}

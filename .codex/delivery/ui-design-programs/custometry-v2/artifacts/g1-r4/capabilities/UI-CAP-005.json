@@ -1,0 +1,51 @@
+{
+  "capability": {
+    "id": "UI-CAP-005",
+    "name": "ChartSpec visualization",
+    "delivery_form": "component_contract",
+    "requirement_ids": [
+      "UC-017",
+      "CHART-001",
+      "CHART-002",
+      "CHART-003",
+      "CHART-004",
+      "CHART-005",
+      "CHART-006",
+      "CHART-007",
+      "CHART-008",
+      "CHART-009",
+      "CHART-010",
+      "CHART-011",
+      "CHART-012",
+      "CHART-013",
+      "CHART-014",
+      "CHART-015",
+      "CHART-016",
+      "CHART-017",
+      "CHART-018",
+      "CHART-019",
+      "CHART-020"
+    ]
+  },
+  "promoted_binding_ids": [
+    "OWNER-REC-011",
+    "OWNER-REC-018",
+    "OWNER-REC-021",
+    "OWNER-REC-040",
+    "OWNER-REC-044",
+    "OWNER-REC-045",
+    "OWNER-REC-050",
+    "OWNER-REC-054",
+    "OWNER-REC-062",
+    "OWNER-REC-063",
+    "RECON-ADD-013"
+  ],
+  "g2_ownership": [
+    "journey criticality",
+    "family assignment",
+    "coverage profile",
+    "representative selection",
+    "workload-bounded wave assignment",
+    "baseline inheritance"
+  ]
+}

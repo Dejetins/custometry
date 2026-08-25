@@ -23,6 +23,8 @@ TOOL = SKILL / "ui_design_tool.py"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 BASE_URL = "http://127.0.0.1:4173"
 ANCHORS = ("web-768", "web-1024", "web-1440", "web-1920")
+REVISION_TAG = "r5"
+EXPECTED_CONTRACTS = 12
 
 
 def rel(path: Path) -> str:
@@ -41,8 +43,8 @@ def run(command: list[str]) -> None:
 
 def contracts() -> list[Path]:
     rows = sorted((ART / "contracts").glob("*.json"))
-    if len(rows) != 12:
-        raise ValueError(f"expected 12 contracts, observed {len(rows)}")
+    if len(rows) != EXPECTED_CONTRACTS:
+        raise ValueError(f"expected {EXPECTED_CONTRACTS} contracts, observed {len(rows)}")
     return rows
 
 
@@ -135,9 +137,9 @@ def assemble() -> None:
         command = ["python3", str(SKILL / "assemble_screen_acceptance.py"), "--contract", rel(contract_path)]
         for anchor in ANCHORS:
             command.extend(["--anchor-receipt", rel(EVID / "captures" / state_id / anchor / "visual-qa.json")])
-        command.extend(["--output", rel(output_dir / f"{state_id}.r5.json")])
+        command.extend(["--output", rel(output_dir / f"{state_id}.{REVISION_TAG}.json")])
         run(command)
-    print(json.dumps({"status": "passed", "visual_qa_receipts": len(jobs), "screen_acceptance_receipts": 12}, indent=2))
+    print(json.dumps({"status": "passed", "visual_qa_receipts": len(jobs), "screen_acceptance_receipts": EXPECTED_CONTRACTS}, indent=2))
 
 
 def main() -> int:

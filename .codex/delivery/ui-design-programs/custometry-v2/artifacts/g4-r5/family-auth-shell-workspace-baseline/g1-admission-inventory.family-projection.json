@@ -1,0 +1,1156 @@
+{
+  "schema_id": "custometry.ui-g1-admission-inventory/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "revision": 2,
+  "status": "complete",
+  "authority_boundary": "Exact current route/surface floor plus promoted r2 requirements; pilot-candidate-v2 is visual-language/platform-baseline authority only.",
+  "screens": [
+    {
+      "screen_id": "UI-AUTH-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/0"
+    },
+    {
+      "screen_id": "UI-AUTH-002",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/1"
+    },
+    {
+      "screen_id": "UI-AUTH-003",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/2"
+    },
+    {
+      "screen_id": "UI-AUTH-004",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/3"
+    },
+    {
+      "screen_id": "UI-AUTH-005",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/4",
+      "required_states": [
+        "UI-AUTH-005.initial",
+        "UI-AUTH-005.loading",
+        "UI-AUTH-005.populated",
+        "UI-AUTH-005.error",
+        "UI-AUTH-005.permission_denied",
+        "UI-AUTH-005.recovery"
+      ]
+    },
+    {
+      "screen_id": "UI-AUTH-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/5"
+    },
+    {
+      "screen_id": "UI-CORE-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/6"
+    },
+    {
+      "screen_id": "UI-DATA-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/7"
+    },
+    {
+      "screen_id": "UI-DATA-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/8"
+    },
+    {
+      "screen_id": "UI-DATA-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/9"
+    },
+    {
+      "screen_id": "UI-DATA-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/10"
+    },
+    {
+      "screen_id": "UI-DATA-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/11"
+    },
+    {
+      "screen_id": "UI-DATA-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/12"
+    },
+    {
+      "screen_id": "UI-DATA-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/13"
+    },
+    {
+      "screen_id": "UI-DATA-008",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/14"
+    },
+    {
+      "screen_id": "UI-DATA-009",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/15"
+    },
+    {
+      "screen_id": "UI-DATA-010",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/16"
+    },
+    {
+      "screen_id": "UI-DATA-011",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/17"
+    },
+    {
+      "screen_id": "UI-DATA-012",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/18"
+    },
+    {
+      "screen_id": "UI-DATA-013",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/19"
+    },
+    {
+      "screen_id": "UI-DATA-014",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/20"
+    },
+    {
+      "screen_id": "UI-DATA-015",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/21"
+    },
+    {
+      "screen_id": "UI-DATA-016",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/22"
+    },
+    {
+      "screen_id": "UI-DATA-017",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/23"
+    },
+    {
+      "screen_id": "UI-DATA-018",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/24"
+    },
+    {
+      "screen_id": "UI-DATA-019",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/25"
+    },
+    {
+      "screen_id": "UI-DATA-020",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/26"
+    },
+    {
+      "screen_id": "UI-DATA-021",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/27"
+    },
+    {
+      "screen_id": "UI-DATA-022",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/28"
+    },
+    {
+      "screen_id": "UI-DATA-023",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/29"
+    },
+    {
+      "screen_id": "UI-DATA-024",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/30"
+    },
+    {
+      "screen_id": "UI-DATA-025",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/31"
+    },
+    {
+      "screen_id": "UI-DATA-026",
+      "classification": "route_flow",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/32"
+    },
+    {
+      "screen_id": "UI-DATA-027",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/33"
+    },
+    {
+      "screen_id": "UI-DATA-028",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/34"
+    },
+    {
+      "screen_id": "UI-DATA-029",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/35"
+    },
+    {
+      "screen_id": "UI-DATA-030",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/36"
+    },
+    {
+      "screen_id": "UI-DATA-031",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/37"
+    },
+    {
+      "screen_id": "UI-DQ-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/38"
+    },
+    {
+      "screen_id": "UI-DQ-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/39"
+    },
+    {
+      "screen_id": "UI-DQ-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/40"
+    },
+    {
+      "screen_id": "UI-DQ-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/41"
+    },
+    {
+      "screen_id": "UI-DQ-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/42"
+    },
+    {
+      "screen_id": "UI-AN-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/43"
+    },
+    {
+      "screen_id": "UI-AN-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/44"
+    },
+    {
+      "screen_id": "UI-AN-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/45"
+    },
+    {
+      "screen_id": "UI-AN-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/46"
+    },
+    {
+      "screen_id": "UI-AN-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/47"
+    },
+    {
+      "screen_id": "UI-AN-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/48"
+    },
+    {
+      "screen_id": "UI-AN-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/49"
+    },
+    {
+      "screen_id": "UI-AN-008",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/50"
+    },
+    {
+      "screen_id": "UI-AN-009",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/51"
+    },
+    {
+      "screen_id": "UI-AN-010",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/52"
+    },
+    {
+      "screen_id": "UI-AN-011",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/53"
+    },
+    {
+      "screen_id": "UI-AN-012",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/54"
+    },
+    {
+      "screen_id": "UI-AN-013",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/55"
+    },
+    {
+      "screen_id": "UI-AN-014",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/56"
+    },
+    {
+      "screen_id": "UI-AN-015",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/57"
+    },
+    {
+      "screen_id": "UI-SEG-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/58"
+    },
+    {
+      "screen_id": "UI-SEG-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/59"
+    },
+    {
+      "screen_id": "UI-SEG-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/60"
+    },
+    {
+      "screen_id": "UI-FCST-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/61"
+    },
+    {
+      "screen_id": "UI-FCST-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/62"
+    },
+    {
+      "screen_id": "UI-FCST-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/63"
+    },
+    {
+      "screen_id": "UI-FCST-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/64"
+    },
+    {
+      "screen_id": "UI-FCST-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/65"
+    },
+    {
+      "screen_id": "UI-FCST-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/66"
+    },
+    {
+      "screen_id": "UI-FCST-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/67"
+    },
+    {
+      "screen_id": "UI-PROMO-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/68"
+    },
+    {
+      "screen_id": "UI-PROMO-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/69"
+    },
+    {
+      "screen_id": "UI-PROMO-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/70"
+    },
+    {
+      "screen_id": "UI-DASH-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/71"
+    },
+    {
+      "screen_id": "UI-DASH-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/72"
+    },
+    {
+      "screen_id": "UI-DASH-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/73"
+    },
+    {
+      "screen_id": "UI-RPT-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/74"
+    },
+    {
+      "screen_id": "UI-RPT-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/75"
+    },
+    {
+      "screen_id": "UI-RPT-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/76"
+    },
+    {
+      "screen_id": "UI-RPT-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/77"
+    },
+    {
+      "screen_id": "UI-RPT-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/78"
+    },
+    {
+      "screen_id": "UI-RPT-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/79"
+    },
+    {
+      "screen_id": "UI-RPT-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/80"
+    },
+    {
+      "screen_id": "UI-PIPE-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/81"
+    },
+    {
+      "screen_id": "UI-PIPE-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/82"
+    },
+    {
+      "screen_id": "UI-PIPE-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/83"
+    },
+    {
+      "screen_id": "UI-PIPE-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/84"
+    },
+    {
+      "screen_id": "UI-OPS-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/85"
+    },
+    {
+      "screen_id": "UI-OPS-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/86"
+    },
+    {
+      "screen_id": "UI-OPS-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/87"
+    },
+    {
+      "screen_id": "UI-OPS-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/88"
+    },
+    {
+      "screen_id": "UI-NOTIFY-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/89"
+    },
+    {
+      "screen_id": "UI-NOTIFY-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/90"
+    },
+    {
+      "screen_id": "UI-NOTIFY-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/91"
+    },
+    {
+      "screen_id": "UI-ADMIN-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/92"
+    },
+    {
+      "screen_id": "UI-ADMIN-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/93"
+    },
+    {
+      "screen_id": "UI-ADMIN-003",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/94"
+    },
+    {
+      "screen_id": "UI-ADMIN-004",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/95"
+    },
+    {
+      "screen_id": "UI-ADMIN-005",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/96"
+    },
+    {
+      "screen_id": "UI-ADMIN-006",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/97"
+    },
+    {
+      "screen_id": "UI-ADMIN-007",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/98"
+    },
+    {
+      "screen_id": "UI-ADMIN-008",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/99"
+    },
+    {
+      "screen_id": "UI-ADMIN-009",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/100"
+    },
+    {
+      "screen_id": "UI-ADMIN-010",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/101"
+    },
+    {
+      "screen_id": "UI-ADMIN-011",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/102"
+    },
+    {
+      "screen_id": "UI-ADMIN-012",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/103"
+    },
+    {
+      "screen_id": "UI-ADMIN-013",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/104"
+    },
+    {
+      "screen_id": "UI-ADMIN-014",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/105"
+    },
+    {
+      "screen_id": "UI-ADMIN-015",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/106"
+    },
+    {
+      "screen_id": "UI-ADMIN-016",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/107"
+    },
+    {
+      "screen_id": "UI-ADMIN-017",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/108"
+    },
+    {
+      "screen_id": "UI-ADMIN-018",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/109"
+    },
+    {
+      "screen_id": "UI-ORG-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/110"
+    },
+    {
+      "screen_id": "UI-ORG-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/111"
+    },
+    {
+      "screen_id": "UI-PEOPLE-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/112"
+    },
+    {
+      "screen_id": "UI-PEOPLE-002",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/113"
+    },
+    {
+      "screen_id": "UI-ADMIN-019",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/114"
+    },
+    {
+      "screen_id": "UI-ADMIN-020",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/115"
+    },
+    {
+      "screen_id": "UI-HELP-001",
+      "classification": "route_screen",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/routes/116"
+    },
+    {
+      "screen_id": "UI-SHELL-AUTH",
+      "classification": "persistent_shell",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/profiles/navigation/auth"
+    },
+    {
+      "screen_id": "UI-SHELL-GLOBAL",
+      "classification": "persistent_shell",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/profiles/navigation/global"
+    },
+    {
+      "screen_id": "UI-SHELL-WORKSPACE",
+      "classification": "persistent_shell",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/profiles/navigation/workspace"
+    },
+    {
+      "screen_id": "UI-SHELL-INSTALLATION",
+      "classification": "persistent_shell",
+      "source_path": "packages/contracts/routes/ui-route-contracts.json",
+      "source_pointer": "/profiles/navigation/installation"
+    },
+    {
+      "screen_id": "UI-OVR-001",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/0"
+    },
+    {
+      "screen_id": "UI-OVR-002",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/1"
+    },
+    {
+      "screen_id": "UI-OVR-003",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/2"
+    },
+    {
+      "screen_id": "UI-OVR-004",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/3"
+    },
+    {
+      "screen_id": "UI-OVR-005",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/4"
+    },
+    {
+      "screen_id": "UI-OVR-006",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/5"
+    },
+    {
+      "screen_id": "UI-OVR-007",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/6"
+    },
+    {
+      "screen_id": "UI-OVR-008",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/7"
+    },
+    {
+      "screen_id": "UI-OVR-009",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/8"
+    },
+    {
+      "screen_id": "UI-OVR-010",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/9"
+    },
+    {
+      "screen_id": "UI-OVR-011",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/10"
+    },
+    {
+      "screen_id": "UI-OVR-012",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/11"
+    },
+    {
+      "screen_id": "UI-OVR-013",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/12"
+    },
+    {
+      "screen_id": "UI-OVR-014",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/13"
+    },
+    {
+      "screen_id": "UI-OVR-015",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/14"
+    },
+    {
+      "screen_id": "UI-OVR-016",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/15"
+    },
+    {
+      "screen_id": "UI-OVR-017",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/16"
+    },
+    {
+      "screen_id": "UI-OVR-018",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/17"
+    },
+    {
+      "screen_id": "UI-OVR-019",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/18"
+    },
+    {
+      "screen_id": "UI-OVR-020",
+      "classification": "route_backed_transient",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/19"
+    },
+    {
+      "screen_id": "UI-OVR-021",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/20"
+    },
+    {
+      "screen_id": "UI-OVR-022",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/21"
+    },
+    {
+      "screen_id": "UI-OVR-023",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/22"
+    },
+    {
+      "screen_id": "UI-OVR-024",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/23"
+    },
+    {
+      "screen_id": "UI-OVR-025",
+      "classification": "overlay",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/overlays/24"
+    },
+    {
+      "screen_id": "UI-SYS-001",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/0"
+    },
+    {
+      "screen_id": "UI-SYS-002",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/1"
+    },
+    {
+      "screen_id": "UI-SYS-003",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/2"
+    },
+    {
+      "screen_id": "UI-SYS-004",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/3"
+    },
+    {
+      "screen_id": "UI-SYS-005",
+      "classification": "system_state_family",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/system_surfaces/4"
+    },
+    {
+      "screen_id": "UI-CAP-001",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/0"
+    },
+    {
+      "screen_id": "UI-CAP-002",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/1"
+    },
+    {
+      "screen_id": "UI-CAP-003",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/2"
+    },
+    {
+      "screen_id": "UI-CAP-004",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/3"
+    },
+    {
+      "screen_id": "UI-CAP-005",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/4"
+    },
+    {
+      "screen_id": "UI-CAP-006",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/5"
+    },
+    {
+      "screen_id": "UI-CAP-007",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/6"
+    },
+    {
+      "screen_id": "UI-CAP-008",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/7"
+    },
+    {
+      "screen_id": "UI-CAP-009",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/8"
+    },
+    {
+      "screen_id": "UI-CAP-010",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/9"
+    },
+    {
+      "screen_id": "UI-CAP-011",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/10"
+    },
+    {
+      "screen_id": "UI-CAP-012",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/11"
+    },
+    {
+      "screen_id": "UI-CAP-013",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/12"
+    },
+    {
+      "screen_id": "UI-CAP-014",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/13"
+    },
+    {
+      "screen_id": "UI-CAP-015",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/14"
+    },
+    {
+      "screen_id": "UI-CAP-016",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/15"
+    },
+    {
+      "screen_id": "UI-CAP-017",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/16"
+    },
+    {
+      "screen_id": "UI-CAP-018",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/17"
+    },
+    {
+      "screen_id": "UI-CAP-019",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/18"
+    },
+    {
+      "screen_id": "UI-CAP-020",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/19"
+    },
+    {
+      "screen_id": "UI-CAP-021",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/20"
+    },
+    {
+      "screen_id": "UI-CAP-022",
+      "classification": "internal_or_non_visual",
+      "source_path": "packages/contracts/routes/ui-surface-contracts.json",
+      "source_pointer": "/cross_surface_capabilities/21"
+    },
+    {
+      "screen_id": "HISTORICAL-CUSTOMETRY-UI-V1",
+      "classification": "historical_exclusion",
+      "source_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+      "source_pointer": "/execution_limits/0"
+    },
+    {
+      "screen_id": "HISTORICAL-PENPOT",
+      "classification": "historical_exclusion",
+      "source_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json",
+      "source_pointer": "/execution_limits/1"
+    }
+  ],
+  "journeys": [
+    {
+      "journey_id": "data-to-trusted-result",
+      "screen_ids": [
+        "UI-DATA-001",
+        "UI-DQ-001",
+        "UI-AN-012"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/0"
+    },
+    {
+      "journey_id": "compose-large-workbook",
+      "screen_ids": [
+        "UI-RPT-001",
+        "UI-RPT-002",
+        "UI-RPT-003"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/1"
+    },
+    {
+      "journey_id": "publish-review-collaborate",
+      "screen_ids": [
+        "UI-AN-013",
+        "UI-AN-014",
+        "UI-OVR-024"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/2"
+    },
+    {
+      "journey_id": "refresh-with-stable-anchors",
+      "screen_ids": [
+        "UI-DASH-001",
+        "UI-DASH-002"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/3"
+    },
+    {
+      "journey_id": "define-recalculate-reuse-segment",
+      "screen_ids": [
+        "UI-SEG-001",
+        "UI-SEG-002",
+        "UI-SEG-003"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/4"
+    },
+    {
+      "journey_id": "digital-to-offline-unit-economics",
+      "screen_ids": [
+        "UI-AN-009",
+        "UI-PROMO-001",
+        "UI-PROMO-003"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/5"
+    },
+    {
+      "journey_id": "product-category-assortment-inventory",
+      "screen_ids": [
+        "UI-AN-015",
+        "UI-DATA-004",
+        "UI-DATA-005"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/6"
+    },
+    {
+      "journey_id": "open-100x30-document-without-duplicate-compute",
+      "screen_ids": [
+        "UI-RPT-001",
+        "UI-RPT-002"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/7"
+    },
+    {
+      "journey_id": "adoption-and-performance-operations",
+      "screen_ids": [
+        "UI-ADMIN-005",
+        "UI-ADMIN-006",
+        "UI-OPS-004"
+      ],
+      "source_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/visual-authority-decision-v2.json#critical_journeys/8"
+    }
+  ],
+  "target_family_requirements": [
+    "analytical documents and large workbook composition",
+    "collaboration, comments, review, publishing, and stable anchors",
+    "segments and reusable recalculation",
+    "digital acquisition, offline, and unit economics",
+    "product, category, assortment, and inventory",
+    "adoption, capacity, and performance operations"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_id": "custometry.ui-pilot-button-interaction-lineage/v1",
+  "visual_authority": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700"
+  },
+  "target": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r6/family-auth-shell-auth-baseline-exception-auth/screens/auth-family.html",
+    "sha256": "f449d0b65dce676ec952801df6d01077e51fbc832f2a40d16c4d28314dce8863"
+  },
+  "static_inventory_limit": "The accepted canonical inventory observes the generic action.button default identity, while the same accepted source contains distinct primary, hover and active CSS states that are not visible in that default observation.",
+  "source_backed_states": {
+    "default_primary": {
+      "color": "#071014",
+      "background": "#8ccfe3",
+      "font_weight": 650
+    },
+    "hover_primary": {
+      "color": "#071014",
+      "background": "#a5dcec"
+    },
+    "default_secondary": {
+      "color": "#a7a7ad",
+      "background": "#1a1b1e"
+    },
+    "hover_secondary": {
+      "color": "#f0f0f2",
+      "background": "#222327"
+    },
+    "active": {
+      "transform": "scale(.96)"
+    },
+    "disabled": {
+      "opacity": 0.48,
+      "transform": "none"
+    }
+  },
+  "standard_exception": null,
+  "superseded_unaccepted_exception_id": "accepted-pilot-interactive-button-state-projection",
+  "projection_scope": [
+    "semantic submit buttons",
+    "semantic secondary buttons"
+  ],
+  "derivation": "Exact dark-theme values and interaction states are asserted against and projected from the accepted pilot source by build_g4_auth_r4_artifacts.py; no target-authored palette or motion value is introduced.",
+  "result": "passed"
+}

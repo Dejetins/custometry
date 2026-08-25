@@ -1,0 +1,15 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "current_gate",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G2@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
+  "gate_id": "G2",
+  "status": "passed",
+  "facts": {
+    "validation_profile": "structure_gate",
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/ui-design-program.snapshot.json",
+    "artifact_sha256": "0494815d36dffaef2226b3308ac3bb4b35bab70ddbdbb35af9d64c656322cf76",
+    "result": "passed"
+  }
+}

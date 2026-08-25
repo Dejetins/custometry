@@ -1,0 +1,63 @@
+{
+  "schema_id": "codex.ui-raster-diff/v1",
+  "screen_revision_id": "UI-FCST-001.populated.all.ru.graphite@r5",
+  "anchor_id": "web-1024",
+  "generated_by": {
+    "script": "compare_visual_revision.py",
+    "version": "1.4.0",
+    "command": "compare_visual_revision.py <paths-redacted>"
+  },
+  "reference": {
+    "path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/populated/web-1024/reference.png",
+    "sha256": "8879dc44eefcebe30a0f88a10d6c725ac0ed25d38adedd51a97dca7ffc891023"
+  },
+  "implementation": {
+    "path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/populated/web-1024/implementation.png",
+    "sha256": "f7060fed3bb86b6cd779df31384f1ab162ec9e1e3e17fc4d8794164c72ef1490"
+  },
+  "render_provenance": {
+    "reference": {
+      "path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/populated/web-1024/reference-render-provenance.json",
+      "sha256": "57a8c294ada72bf0e0eabab50237bcb1fb49f24a967380ceac78dc59afca6726"
+    },
+    "implementation": {
+      "path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/populated/web-1024/implementation-render-provenance.json",
+      "sha256": "9b4a7d98185388fe6f5098195fffeed275699b54555b3c5b95e45ec73fe24131"
+    }
+  },
+  "comparison": {
+    "purpose": "visual_language_conformance",
+    "reference_logical_artifact_id": "custometry-pilot-v3-metadata-ru",
+    "implementation_logical_artifact_id": "UI-FCST-001.populated.all.ru.graphite@r5",
+    "visual_authority_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "visual_authority_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "reference_render_provenance_sha256": "57a8c294ada72bf0e0eabab50237bcb1fb49f24a967380ceac78dc59afca6726",
+    "implementation_render_provenance_sha256": "9b4a7d98185388fe6f5098195fffeed275699b54555b3c5b95e45ec73fe24131",
+    "reference_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+    "reference_source_artifact_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "implementation_source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-fcst-shell-workspace-baseline/states/populated/screen.html",
+    "implementation_source_artifact_sha256": "48e6c7d61e8555e2c84874044fb4ba9b5fca01ed57893702e19ed4095803cf51",
+    "provenance_passed": true,
+    "proves_fidelity": false,
+    "blockers": []
+  },
+  "diff_image": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/populated/web-1024/diff.png",
+  "pixel_diff": {
+    "dimensions_match": true,
+    "reference_size": [
+      1024,
+      768
+    ],
+    "implementation_size": [
+      1024,
+      768
+    ],
+    "different_pixels": 442061,
+    "different_ratio": 0.562109629313151,
+    "maximum_channel_delta": 246,
+    "channel_threshold": 0,
+    "approved_max_different_pixels": 0,
+    "passed": false
+  },
+  "result": "blocked"
+}

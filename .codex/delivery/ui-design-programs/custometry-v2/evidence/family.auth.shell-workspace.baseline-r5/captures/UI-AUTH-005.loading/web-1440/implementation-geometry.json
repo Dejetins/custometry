@@ -1,0 +1,795 @@
+{
+  "schema_id": "codex.ui-geometry-capture/v1",
+  "screen_revision_id": "UI-AUTH-005.loading.IA-WA.ru-RU.graphite.r5",
+  "target": "implementation",
+  "capture_profile": "screen_implementation",
+  "proof_scope": {
+    "comparison_purpose": "visual_language_conformance",
+    "reference_source_integrity_applied": false,
+    "region_gate_applied": true,
+    "element_gate_applied": true,
+    "document_identity_gate_applied": true,
+    "fixture_meta_gate_applied": true,
+    "accessibility_gate_applied": true,
+    "interaction_gate_applied": true,
+    "overflow_gate_applied": true,
+    "standard_clause_gate_applied": true
+  },
+  "generated_by": {
+    "script": "capture_geometry.cjs",
+    "version": "2.0.0",
+    "command": "capture_geometry.cjs --url <redacted-url> --contract .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/contracts/UI-AUTH-005.loading.r5.json --anchor-id web-1440 --target implementation --source-artifact .codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html --logical-artifact-id CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-005:UI-AUTH-005.loading:r5 --output .codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/captures/UI-AUTH-005.loading/web-1440/implementation-geometry.json --screenshot .codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/captures/UI-AUTH-005.loading/web-1440/implementation.png --executable-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "contract_sha256": "545b7a27ef0853fa1a9fc92ee7bad3a6a342e13067b3f1ecfbe432434bf86403",
+  "render_source": {
+    "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens/onboarding.html",
+    "artifact_sha256": "8742fe354c36a370ebc340e98d50fdf35e2891d84718628092d59f87e4929ea5",
+    "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:UI-AUTH-005:UI-AUTH-005.loading:r5",
+    "main_document_response_sha256": "8742fe354c36a370ebc340e98d50fdf35e2891d84718628092d59f87e4929ea5"
+  },
+  "environment": {
+    "browser": "chromium/150.0.7871.187",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "anchor_id": "web-1440",
+    "device_scale_factor": 1,
+    "locale": "ru",
+    "theme": "graphite",
+    "mobile_scope": "unauthorized"
+  },
+  "regions": [
+    {
+      "region_id": "UI-AUTH-005.content",
+      "locator": "[data-ui-region=\"UI-AUTH-005.content\"]",
+      "bounds": {
+        "x": 340,
+        "y": 64,
+        "width": 980,
+        "height": 621.797
+      },
+      "computed_styles": {
+        "display": "block",
+        "position": "static",
+        "overflow": "visible",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "region_id": "UI-AUTH-005.navigation",
+      "locator": "[data-ui-region=\"UI-AUTH-005.navigation\"]",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 220,
+        "height": 900
+      },
+      "computed_styles": {
+        "display": "block",
+        "position": "static",
+        "overflow": "visible",
+        "background-color": "rgb(9, 10, 11)",
+        "border-radius": "0px"
+      }
+    }
+  ],
+  "missing_required_regions": [],
+  "duplicate_required_regions": [],
+  "forbidden_visible_regions": [],
+  "unexpected_visible_regions": [],
+  "elements": [
+    {
+      "element_id": "onboarding-shell",
+      "locator": "[data-ui-element=\"onboarding-shell\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-brand",
+      "locator": "[data-ui-element=\"onboarding-brand\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 14,
+        "y": 20,
+        "width": 191,
+        "height": 30
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-context",
+      "locator": "[data-ui-element=\"onboarding-context\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 248,
+        "y": 22.5,
+        "width": 119.906,
+        "height": 18
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-locale",
+      "locator": "[data-ui-element=\"onboarding-locale\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 1293,
+        "y": 17.5,
+        "width": 119,
+        "height": 28
+      },
+      "computed_styles": {
+        "background-color": "rgb(26, 27, 30)"
+      }
+    },
+    {
+      "element_id": "onboarding-title",
+      "locator": "[data-ui-element=\"onboarding-title\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 340,
+        "y": 129.5,
+        "width": 980,
+        "height": 36.797
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-lead",
+      "locator": "[data-ui-element=\"onboarding-lead\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 340,
+        "y": 176.297,
+        "width": 980,
+        "height": 21
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-wizard",
+      "locator": "[data-ui-element=\"onboarding-wizard\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 340,
+        "y": 225.297,
+        "width": 635.359,
+        "height": 396.5
+      },
+      "computed_styles": {
+        "background-color": "rgb(17, 18, 20)"
+      }
+    },
+    {
+      "element_id": "onboarding-steps",
+      "locator": "[data-ui-element=\"onboarding-steps\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 363,
+        "y": 248.297,
+        "width": 589.359,
+        "height": 58
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-step-title",
+      "locator": "[data-ui-element=\"onboarding-step-title\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 363,
+        "y": 334.297,
+        "width": 589.359,
+        "height": 27
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-step-copy",
+      "locator": "[data-ui-element=\"onboarding-step-copy\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 363,
+        "y": 367.297,
+        "width": 589.359,
+        "height": 18
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-workspace",
+      "locator": "[data-ui-element=\"onboarding-workspace\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 363,
+        "y": 425.797,
+        "width": 288.672,
+        "height": 40
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "onboarding-timezone",
+      "locator": "[data-ui-element=\"onboarding-timezone\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 663.672,
+        "y": 425.797,
+        "width": 288.688,
+        "height": 40
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "onboarding-state",
+      "locator": "[data-ui-element=\"onboarding-state\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 363,
+        "y": 482.797,
+        "width": 589.359,
+        "height": 56
+      },
+      "computed_styles": {
+        "background-color": "rgb(21, 22, 25)"
+      }
+    },
+    {
+      "element_id": "onboarding-resume",
+      "locator": "[data-ui-element=\"onboarding-resume\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 363,
+        "y": 555.797,
+        "width": 178.063,
+        "height": 33
+      },
+      "computed_styles": {
+        "background-color": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "element_id": "onboarding-continue",
+      "locator": "[data-ui-element=\"onboarding-continue\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [
+        "UI-AUTH-005.inspect"
+      ],
+      "bounds": {
+        "x": 553.063,
+        "y": 557.297,
+        "width": 399.297,
+        "height": 30
+      },
+      "computed_styles": {
+        "background-color": "rgb(140, 207, 227)"
+      }
+    },
+    {
+      "element_id": "onboarding-checklist",
+      "locator": "[data-ui-element=\"onboarding-checklist\"]",
+      "region_id": "UI-AUTH-005.content",
+      "action_ids": [],
+      "bounds": {
+        "x": 991.359,
+        "y": 225.297,
+        "width": 328.641,
+        "height": 396.5
+      },
+      "computed_styles": {
+        "background-color": "rgb(17, 18, 20)"
+      }
+    }
+  ],
+  "standard_observations": [
+    {
+      "application_id": "standard.border.border-color.6eeb36a193a0::element::onboarding-locale::web-1440",
+      "clause_id": "standard.border.border-color.6eeb36a193a0",
+      "property": "border-color",
+      "value": "rgba(0, 0, 0, 0)",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-style.5a19575b3c18::element::onboarding-locale::web-1440",
+      "clause_id": "standard.border.border-style.5a19575b3c18",
+      "property": "border-style",
+      "value": "solid",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.border.border-width.3474aa875405::element::onboarding-locale::web-1440",
+      "clause_id": "standard.border.border-width.3474aa875405",
+      "property": "border-width",
+      "value": "1px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.background-color.0b3382443268::element::onboarding-locale::web-1440",
+      "clause_id": "standard.color.background-color.0b3382443268",
+      "property": "background-color",
+      "value": "rgb(26, 27, 30)",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.color.color.c863c07a7c53::element::onboarding-locale::web-1440",
+      "clause_id": "standard.color.color.c863c07a7c53",
+      "property": "color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.elevation.box-shadow.846dd608356a::element::onboarding-locale::web-1440",
+      "clause_id": "standard.elevation.box-shadow.846dd608356a",
+      "property": "box-shadow",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-color.3f0aafaa6634::element::onboarding-locale::web-1440",
+      "clause_id": "standard.focus.outline-color.3f0aafaa6634",
+      "property": "outline-color",
+      "value": "rgb(167, 167, 173)",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-style.5f4017179266::element::onboarding-locale::web-1440",
+      "clause_id": "standard.focus.outline-style.5f4017179266",
+      "property": "outline-style",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.focus.outline-width.fb16926059df::element::onboarding-locale::web-1440",
+      "clause_id": "standard.focus.outline-width.fb16926059df",
+      "property": "outline-width",
+      "value": "3px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.display.a4bee902fcee::element::onboarding-locale::web-1440",
+      "clause_id": "standard.layout.display.a4bee902fcee",
+      "property": "display",
+      "value": "flex",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.layout.position.d54cf8c43cc2::element::onboarding-locale::web-1440",
+      "clause_id": "standard.layout.position.d54cf8c43cc2",
+      "property": "position",
+      "value": "static",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-duration.aa523ffbc72d::element::onboarding-locale::web-1440",
+      "clause_id": "standard.motion.transition-duration.aa523ffbc72d",
+      "property": "transition-duration",
+      "value": "0s",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.motion.transition-property.7cb49513c248::element::onboarding-locale::web-1440",
+      "clause_id": "standard.motion.transition-property.7cb49513c248",
+      "property": "transition-property",
+      "value": "background-color, color, transform, box-shadow",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.opacity.opacity.3f43cc20e0ec::element::onboarding-locale::web-1440",
+      "clause_id": "standard.opacity.opacity.3f43cc20e0ec",
+      "property": "opacity",
+      "value": "1",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.radius.border-radius.e205a326be00::element::onboarding-locale::web-1440",
+      "clause_id": "standard.radius.border-radius.e205a326be00",
+      "property": "border-radius",
+      "value": "16px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-x.67f70c28374d::element::onboarding-locale::web-1440",
+      "clause_id": "standard.responsive.overflow-x.67f70c28374d",
+      "property": "overflow-x",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.responsive.overflow-y.e2f12b4e45c3::element::onboarding-locale::web-1440",
+      "clause_id": "standard.responsive.overflow-y.e2f12b4e45c3",
+      "property": "overflow-y",
+      "value": "visible",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.height.4dd7e57e8fd3::element::onboarding-locale::web-1440",
+      "clause_id": "standard.sizing.height.4dd7e57e8fd3",
+      "property": "height",
+      "value": "28px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-height.6de12e13956d::element::onboarding-locale::web-1440",
+      "clause_id": "standard.sizing.max-height.6de12e13956d",
+      "property": "max-height",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.max-width.b17c4b251e6e::element::onboarding-locale::web-1440",
+      "clause_id": "standard.sizing.max-width.b17c4b251e6e",
+      "property": "max-width",
+      "value": "none",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-height.a5b34efb2d57::element::onboarding-locale::web-1440",
+      "clause_id": "standard.sizing.min-height.a5b34efb2d57",
+      "property": "min-height",
+      "value": "28px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.min-width.0fd90b874a80::element::onboarding-locale::web-1440",
+      "clause_id": "standard.sizing.min-width.0fd90b874a80",
+      "property": "min-width",
+      "value": "104px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.sizing.width.32eccbdcd6d6::element::onboarding-locale::web-1440",
+      "clause_id": "standard.sizing.width.32eccbdcd6d6",
+      "property": "width",
+      "value": "119px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.column-gap.3b86f6320e30::element::onboarding-locale::web-1440",
+      "clause_id": "standard.spacing.column-gap.3b86f6320e30",
+      "property": "column-gap",
+      "value": "6px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-bottom.86aa83d3d465::element::onboarding-locale::web-1440",
+      "clause_id": "standard.spacing.padding-bottom.86aa83d3d465",
+      "property": "padding-bottom",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-left.7f022a4db558::element::onboarding-locale::web-1440",
+      "clause_id": "standard.spacing.padding-left.7f022a4db558",
+      "property": "padding-left",
+      "value": "7px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-right.f3f06834d995::element::onboarding-locale::web-1440",
+      "clause_id": "standard.spacing.padding-right.f3f06834d995",
+      "property": "padding-right",
+      "value": "25px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.padding-top.3a8487232894::element::onboarding-locale::web-1440",
+      "clause_id": "standard.spacing.padding-top.3a8487232894",
+      "property": "padding-top",
+      "value": "0px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.spacing.row-gap.d9a3728eacba::element::onboarding-locale::web-1440",
+      "clause_id": "standard.spacing.row-gap.d9a3728eacba",
+      "property": "row-gap",
+      "value": "6px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-family.0bf0d20098a5::element::onboarding-locale::web-1440",
+      "clause_id": "standard.typography.font-family.0bf0d20098a5",
+      "property": "font-family",
+      "value": "Inter, ui-sans-serif, system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-size.441863c97538::element::onboarding-locale::web-1440",
+      "clause_id": "standard.typography.font-size.441863c97538",
+      "property": "font-size",
+      "value": "10px",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.font-weight.a1ca90e332a6::element::onboarding-locale::web-1440",
+      "clause_id": "standard.typography.font-weight.a1ca90e332a6",
+      "property": "font-weight",
+      "value": "400",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.letter-spacing.bcd814a45abf::element::onboarding-locale::web-1440",
+      "clause_id": "standard.typography.letter-spacing.bcd814a45abf",
+      "property": "letter-spacing",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    },
+    {
+      "application_id": "standard.typography.line-height.1c65a5e6ac7b::element::onboarding-locale::web-1440",
+      "clause_id": "standard.typography.line-height.1c65a5e6ac7b",
+      "property": "line-height",
+      "value": "normal",
+      "target_kind": "element",
+      "target_id": "onboarding-locale",
+      "anchor_id": "web-1440"
+    }
+  ],
+  "missing_required_elements": [],
+  "duplicate_required_elements": [],
+  "forbidden_visible_elements": [],
+  "unregistered_contract_elements": [],
+  "unexpected_visible_elements": [],
+  "duplicate_registered_elements": [],
+  "unregistered_visible_roots": [],
+  "document_geometry": {
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "scroll_height": 900,
+    "client_height": 900
+  },
+  "environment_checks": [
+    {
+      "check": "document_locale",
+      "expected": "ru",
+      "observed": "ru",
+      "passed": true
+    },
+    {
+      "check": "document_theme",
+      "expected": "graphite",
+      "observed": "graphite",
+      "passed": true
+    },
+    {
+      "check": "fixture_sha256",
+      "expected": "dd38c42c3e4f40a99e8f383bc4a32a4d9762adc3eb8b18a3be823bfaface4872",
+      "observed": "dd38c42c3e4f40a99e8f383bc4a32a4d9762adc3eb8b18a3be823bfaface4872",
+      "passed": true
+    },
+    {
+      "check": "font_bundle_sha256",
+      "expected": "3b8993a3bbd287c797c3f5c66323d7202316fb4fb4f7f1accc2f898ca1a7a0c5",
+      "observed": "3b8993a3bbd287c797c3f5c66323d7202316fb4fb4f7f1accc2f898ca1a7a0c5",
+      "passed": true
+    },
+    {
+      "check": "asset_bundle_sha256",
+      "expected": "fbcfc25fdec97cebe22549822ba7742cfed164bc21ab922e6121837247f746ad",
+      "observed": "fbcfc25fdec97cebe22549822ba7742cfed164bc21ab922e6121837247f746ad",
+      "passed": true
+    },
+    {
+      "check": "fixed_clock",
+      "expected": 1787140800000,
+      "observed": 1787140800000,
+      "passed": true
+    },
+    {
+      "check": "browser_revision",
+      "expected": "chromium/150.0.7871.187",
+      "observed": "chromium/150.0.7871.187",
+      "passed": true
+    }
+  ],
+  "accessibility": {
+    "automated_violations": [],
+    "focusable_count": 3,
+    "keyboard_sequence": [
+      "select",
+      "input",
+      "select"
+    ],
+    "keyboard_issues": [],
+    "passed": true
+  },
+  "accessibility_claim": "accessibility_smoke",
+  "browser_interaction": {
+    "visible_action_ids": [
+      "UI-AUTH-005.inspect"
+    ],
+    "observed_outcomes": [
+      {
+        "action_id": "UI-AUTH-005.inspect",
+        "outcome": {
+          "kind": "not_executed",
+          "visible": true
+        },
+        "expected_outcome": "Continue completes or the next contract-bound surface opens",
+        "assertion_kind": "not_executed",
+        "activation": "affordance_only",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "unresolved_visible_actions": [],
+    "unexpected_file_urls": [],
+    "required_checks": [
+      {
+        "check_id": "focus_visibility",
+        "passed": true
+      },
+      {
+        "check_id": "keyboard_activation",
+        "passed": true
+      },
+      {
+        "check_id": "menus",
+        "passed": true
+      },
+      {
+        "check_id": "no_console_errors",
+        "passed": true
+      },
+      {
+        "check_id": "no_page_horizontal_overflow",
+        "passed": true
+      },
+      {
+        "check_id": "no_request_failures",
+        "passed": true
+      },
+      {
+        "check_id": "no_unresolved_file_navigation",
+        "passed": true
+      },
+      {
+        "check_id": "refresh_feedback",
+        "passed": true
+      },
+      {
+        "check_id": "state_transitions",
+        "passed": true
+      },
+      {
+        "check_id": "tab_radio_behavior",
+        "passed": true
+      },
+      {
+        "check_id": "toggles",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "console_errors": [],
+  "request_failures": [],
+  "screenshot_path": "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/captures/UI-AUTH-005.loading/web-1440/implementation.png",
+  "screenshot_sha256": "de76d7d218f99691e40e2f857ecbde10600dfbb3812940f6dc2eff979c7d1d64",
+  "evidence_safety": {
+    "fixture_mode": "isolated_local",
+    "redaction_required": true,
+    "redaction_applied": true,
+    "redaction_selectors": [
+      "[data-sensitive]"
+    ],
+    "redaction_match_counts": [
+      0
+    ],
+    "uncovered_sensitive_elements": 0,
+    "loopback_only": true,
+    "network_isolated": true,
+    "allowed_origins": [
+      "http://127.0.0.1:4173"
+    ],
+    "blocked_external_requests": []
+  },
+  "result": "passed",
+  "blockers": []
+}

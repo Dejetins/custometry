@@ -1,0 +1,21 @@
+{
+  "schema_id": "custometry.ui-onboarding-semantics/v1",
+  "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r5",
+  "steps": [
+    "account",
+    "workspace",
+    "locale_timezone",
+    "data_or_demo",
+    "finish"
+  ],
+  "resumable": true,
+  "roles": [
+    "IA",
+    "WA"
+  ],
+  "representative": "UI-AUTH-005",
+  "reuse_only": [
+    "UI-AUTH-006"
+  ],
+  "result": "passed"
+}

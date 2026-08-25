@@ -1,0 +1,37 @@
+{
+  "$schema": "stage-transition-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "from_stage_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6",
+  "from_gate": "G4",
+  "from_target": "family.auth.shell-auth.baseline-exception-auth-r6",
+  "from_revision": 6,
+  "artifact": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/family-acceptance.json",
+  "to_gate": "G4",
+  "to_stage_id": "G4@family.auth.shell-workspace.baseline-r5",
+  "to_target": "family.auth.shell-workspace.baseline-r5",
+  "to_task": ".codex/agents/generated/custometry-ui-design-g0-v2/40-g4-02-family-auth-shell-workspace-baseline-r5.md",
+  "status": "review_ready",
+  "owner_decision": null,
+  "decision_inventory": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/pending-owner-decisions.json",
+  "blockers": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/known-blockers.json",
+  "checks": [
+    "current_gate=.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/preflight/current_gate.json",
+    "source_freshness=.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/preflight/source_freshness.json",
+    "next_stage_inputs=.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/preflight/next_stage_inputs.json",
+    "write_scope=.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/preflight/write_scope.json",
+    "foreign_changes=.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/preflight/foreign_changes.json",
+    "execution_route=.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/preflight/execution_route.json",
+    "handoff_artifact=.codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/preflight/handoff_artifact.json"
+  ],
+  "summary": "The current-program auth family exact-covers sign-in and recovery across all required states and responsive-Web anchors. The machine gate passes; owner acceptance remains pending.",
+  "review_artifacts": [
+    ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r6/family-auth-shell-auth-baseline-exception-auth/review-board.html",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/review-board-1440.png",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/review-board-recovery-validation-error-1440.png",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/review-board-sign-in-en-1440.png",
+    ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/browser-board-qa.json"
+  ],
+  "questions": [
+    "Принять готовое семейство входа и восстановления или запросить ограниченные исправления?"
+  ]
+}

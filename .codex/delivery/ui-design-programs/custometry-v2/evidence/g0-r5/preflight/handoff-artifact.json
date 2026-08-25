@@ -1,0 +1,14 @@
+{
+  "$schema": "stage-preflight-evidence.schema.json",
+  "schema_id": "codex.ui-stage-preflight-evidence/v1",
+  "check_id": "handoff_artifact",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r5",
+  "gate_id": "G0",
+  "status": "passed",
+  "facts": {
+    "artifact_ref": ".codex/agents/generated/custometry-ui-design-g0-v2/13-g1-complete-screen-atlas-r4.md",
+    "artifact_sha256": "ea54c75da88f8d23bfcb8f5cd4784d694344b60d14995dd7f871a58a385cefbf",
+    "known_stop_resolution": "none"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_id": "custometry.ui-g3-rendered-proof-input-seed/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "program_revision": 5,
+  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
+  "status": "pending_g3_execution",
+  "ownership": "G3",
+  "source_capture_role": "historical visual-language reference only; not active G3 gate proof",
+  "required_replacement_fields": [
+    "shell_capture_contract",
+    "source_native_capture",
+    "source_anchor_observations",
+    "candidate_artifact",
+    "candidate_anchor_captures",
+    "review_board",
+    "inheritance_report"
+  ],
+  "proof_boundary": "This seed makes the bounded G3 context executable but proves no G3 visual, browser, responsive-Web, or accessibility outcome."
+}

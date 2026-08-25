@@ -1,0 +1,106 @@
+{
+  "$schema": "review-board-manifest.schema.json",
+  "schema_id": "codex.ui-review-board-manifest/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "artifact_id": "family.fcst.shell-workspace.baseline-r5",
+  "revision": 5,
+  "validation_profile": "family_review_ready",
+  "entries": [
+    {
+      "entry_id": "initial.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/initial/screen-acceptance.json",
+      "sha256": "50a8bb2d3c93e4384ad1e683ca33a0192bc26e16311f009b4140c723f2910cea",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.initial"
+    },
+    {
+      "entry_id": "initial.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/initial/screen-acceptance.json",
+      "sha256": "50a8bb2d3c93e4384ad1e683ca33a0192bc26e16311f009b4140c723f2910cea",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.initial"
+    },
+    {
+      "entry_id": "loading.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/loading/screen-acceptance.json",
+      "sha256": "c6326b2ee554d37fec97007e93c1892501f4fb47b85ccb921a024ef70650709d",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.loading"
+    },
+    {
+      "entry_id": "loading.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/loading/screen-acceptance.json",
+      "sha256": "c6326b2ee554d37fec97007e93c1892501f4fb47b85ccb921a024ef70650709d",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.loading"
+    },
+    {
+      "entry_id": "populated.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/populated/screen-acceptance.json",
+      "sha256": "5fed23852c374c738f44674cdf224510795bdc48cf2d2f82c3fe94930e052e19",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.populated"
+    },
+    {
+      "entry_id": "populated.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/populated/screen-acceptance.json",
+      "sha256": "5fed23852c374c738f44674cdf224510795bdc48cf2d2f82c3fe94930e052e19",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.populated"
+    },
+    {
+      "entry_id": "error.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/error/screen-acceptance.json",
+      "sha256": "66494613bcc762298baafab3c2d3d2f37472e6f2b7de15170d9f2cae0cf09b5f",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.error"
+    },
+    {
+      "entry_id": "error.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/error/screen-acceptance.json",
+      "sha256": "66494613bcc762298baafab3c2d3d2f37472e6f2b7de15170d9f2cae0cf09b5f",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.error"
+    },
+    {
+      "entry_id": "permission_denied.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/permission_denied/screen-acceptance.json",
+      "sha256": "dfeadfde48b1bc0fffc7b0ef75c569473264f1f13247c8e22a27c505584af984",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.permission_denied"
+    },
+    {
+      "entry_id": "permission_denied.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/permission_denied/screen-acceptance.json",
+      "sha256": "dfeadfde48b1bc0fffc7b0ef75c569473264f1f13247c8e22a27c505584af984",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.permission_denied"
+    },
+    {
+      "entry_id": "recovery.screen_acceptance",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/recovery/screen-acceptance.json",
+      "sha256": "07d6bbcbcf0b5146200ce74a1a67fe2daa8e9211bb2734dba180cacfef7930ad",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.recovery"
+    },
+    {
+      "entry_id": "recovery.standard_conformance",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.fcst.shell-workspace.baseline-r5/states/recovery/screen-acceptance.json",
+      "sha256": "07d6bbcbcf0b5146200ce74a1a67fe2daa8e9211bb2734dba180cacfef7930ad",
+      "anchor_id": null,
+      "state_id": "UI-FCST-001.recovery"
+    }
+  ]
+}

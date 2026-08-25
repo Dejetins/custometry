@@ -1,0 +1,45 @@
+{
+  "$schema": "owner-decision-request.schema.json",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.auth.shell-workspace.baseline-r5.finished-result",
+  "decision_kind": "family_acceptance",
+  "status": "accepted",
+  "revision": 5,
+  "decision_text": "The owner explicitly accepted the exact finished G4 workspace-onboarding family shown in the hash-bound r5 review board. Acceptance covers the compact Graphite workspace shell, the resumable five-step account/workspace/locale-timezone/data-or-demo/finish flow, visible readiness context, all six represented UI-AUTH-005 states, RU/EN equivalence, responsive Web anchors and applicable pilot inheritance. It does not authorize production implementation, publication, deployment, mobile-specific design, another G4 family, G5, G6 or full WCAG conformance.",
+  "owner_input": "ок [Открыть review board](/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/review-board.html) принято",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.auth.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/review-board.html"
+  },
+  "accepted_values": [
+    {
+      "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r5",
+      "screen_ids": [
+        "UI-AUTH-005"
+      ],
+      "reuse_only_screen_ids": [
+        "UI-AUTH-006"
+      ],
+      "state_count": 6,
+      "responsive_web_anchors": [
+        768,
+        1024,
+        1440,
+        1920
+      ],
+      "flow_steps": [
+        "account",
+        "workspace",
+        "locale_timezone",
+        "data_or_demo",
+        "finish"
+      ],
+      "resumable": true,
+      "mobile_scope": "unauthorized",
+      "production_implementation": "not_accepted_by_this_decision"
+    }
+  ]
+}

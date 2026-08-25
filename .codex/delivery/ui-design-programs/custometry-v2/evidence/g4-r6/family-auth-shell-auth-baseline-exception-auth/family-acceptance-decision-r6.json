@@ -1,0 +1,58 @@
+{
+  "$schema": "owner-decision.schema.json",
+  "schema_id": "codex.ui-owner-decision/v1",
+  "generated_by": {
+    "script": "assemble_owner_decision.py",
+    "version": "1.0.0",
+    "command": "assemble_owner_decision.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6.finished-result",
+  "decision_kind": "family_acceptance",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.auth.shell-auth.baseline-exception-auth-r6",
+    "revision": 6,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r6/family-auth-shell-auth-baseline-exception-auth/review-board.html",
+    "sha256": "c9f7c18a91cf34702846e603156a69dd803a48a38b6e14cdefbb58e669e01a53"
+  },
+  "decision": {
+    "status": "accepted",
+    "revision": 6,
+    "decision_text": "The owner explicitly carries the prior accepted G4 auth-family visual decision forward to the exact finished r6 successor after being informed that its visible result is unchanged. This acceptance covers the represented sign-in and recovery states, stable per-screen geometry, semantic controls, copy boundary, layout grammar, responsive Web anchors and applicable pilot inheritance shown in the hash-bound r6 review board. It does not authorize production implementation, publication, deployment, mobile-specific design, another G4 family, G5, G6 or full WCAG conformance.",
+    "accepted_values": [
+      {
+        "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6",
+        "screen_ids": [
+          "UI-AUTH-001",
+          "UI-AUTH-004"
+        ],
+        "state_count": 12,
+        "responsive_web_anchors": [
+          768,
+          1024,
+          1440,
+          1920
+        ],
+        "acceptance_basis": {
+          "kind": "explicit_owner_carry_forward_after_no-visible-change_confirmation",
+          "prior_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/family-acceptance-decision-r5-03.json",
+          "prior_decision_sha256": "3237f9770e2c9e472a7e9c985e06da969593f385f4ff0c0f8f40660fdfa87246"
+        },
+        "stable_window_geometry": "each screen preserves its exact initial-state dimensions across every represented state",
+        "mobile_scope": "unauthorized",
+        "production_implementation": "not_accepted_by_this_decision"
+      }
+    ],
+    "accepted_value_sha256s": [
+      "960f3c4e09b38dfb008ef24588906d7edd82f13be21be7443ba857fa01660f55"
+    ]
+  },
+  "recording": {
+    "source": "natural_language_owner_input",
+    "owner_input": "да, перенеси принятие",
+    "recorded_by": "agent",
+    "recorded_at": "2026-08-19T15:29:24.202579+00:00"
+  }
+}

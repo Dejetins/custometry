@@ -1,0 +1,1059 @@
+{
+  "$schema": "program-artifact-index.schema.json",
+  "schema_id": "codex.ui-program-artifact-index/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "program_revision": 5,
+  "index_kind": "screens",
+  "entries": [
+    {
+      "id": "UI-AUTH-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AUTH-001.json",
+      "sha256": "ddf0de654523c762cc3e263c99b8061e7c12598e22eff61b956c31fe09f94daf",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AUTH-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AUTH-002.json",
+      "sha256": "7767890ce69affd0f2f1ce999790125e8692711c7df9ee0078af8eabddb19008",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AUTH-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AUTH-003.json",
+      "sha256": "d30f48125614d6132b269086ce60782603779274b488c4fd919d014af4c2cde2",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AUTH-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AUTH-004.json",
+      "sha256": "fbc7f3cb9e0e595261989ac310d4a9d300fa87dd52ae6ab37842dcdaffd4aed7",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AUTH-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AUTH-005.json",
+      "sha256": "5c1e371ed169a77a1872b2cfb5078977982ae63d2c9cf533b73d5e58f5970e75",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AUTH-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AUTH-006.json",
+      "sha256": "487487435520101bc9abfd4a414f7be7cbfa78009b1e8bf536d51c56194b4b5f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CORE-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CORE-001.json",
+      "sha256": "e2b0aca51fa1054ace895811c62ff1d269e481af9b63b2e25bd225052c94b4ba",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-001.json",
+      "sha256": "7646847eefae1251b3f83847414e6ac4b79b66411c5fcd06575eac2a745978c5",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-002.json",
+      "sha256": "dfa0fd0ec0131e2a00f3386c5b9809c5bf018693ba9187fd34a9051f85bd2363",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-003.json",
+      "sha256": "fcf22ffa2f24be2381680c8c33df31422359a71b2612072b38aad605287754b9",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-004.json",
+      "sha256": "7b9b881298d0e0d00072abcbba0c3e3fabe858c6d99b562c8a301041b9557292",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-005.json",
+      "sha256": "0689fae711322263bb391d8c825af57e461580fdb0552a65f5fd7e96ca80a633",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-006.json",
+      "sha256": "a762e6ce903c5aebc91d7bf1b5dd069e82567511ddce7e430df06d048f54ce25",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-007.json",
+      "sha256": "f93c13b884d774c77100fa51c4ff7ad86c5a36af0b9cb997f9d5fee191f5b77c",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-008.json",
+      "sha256": "38c88845aae2d5da3c48720babd4c2eac5c2817b6873f2a69265cba03f58e50a",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-009.json",
+      "sha256": "28c75f05f54b71d1218d5f343055e4ee9533e9d5d1c40dcd2ca5827ff358d0ab",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-010.json",
+      "sha256": "4bab952a48690c7e9af001bb5c68dde4362b3b141bbd6af34f0d750c1d7587cf",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-011.json",
+      "sha256": "c9485dac17b1ba1ba6824916f04c87d0e407173998b6ace3c38ced845c62bf52",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-012.json",
+      "sha256": "740806527e02b36816fa35c148d8679fb48f8afa6c9281c6db58d94f0e164ff5",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-013.json",
+      "sha256": "27d5001278d2e9d9dc2355d695984c255ff192fb133de5a7951da15a1218ca74",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-014.json",
+      "sha256": "352fbf567dd8483a10af396ea8edc0b57a7e9bc995a2a6c010ac981fef2523c9",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-015.json",
+      "sha256": "0dfb08fde36f0ebd48537c8401dcad7bf8a005b07fce0a1866a7b1e007f77a04",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-016",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-016.json",
+      "sha256": "170dcb2800c1a5ed461a150edf375b7bca894b10b85fab253c26889d367e8c6b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-017",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-017.json",
+      "sha256": "9bd11c7f84bfe431457359e0dca2a3587d603f605f94dfc7c6b0070c42482f0b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-018",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-018.json",
+      "sha256": "a0decc873bdf42439dc2b55b425c97f7a86a6d87152f3d88941406d0bbc37c30",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-019",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-019.json",
+      "sha256": "3a4b39543e7482e8f7a84e0cd8649e2b82ac4452e54afdf5f32cb5a61437e052",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-020",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-020.json",
+      "sha256": "cb66ba79b9f2af817e2248c19c6867f2cf9bcabbe5d30c7316225aa65b5cf35f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-021",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-021.json",
+      "sha256": "a221d4bd23cce29f35356c7e60a4467bc3774d66faf979c6be55a171547e8372",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-022",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-022.json",
+      "sha256": "708dd1651152db7dca6f1e12a9e8fdc67184f814f2e28471712bd4e1d74357d1",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-023",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-023.json",
+      "sha256": "6b78f1666c14b7c39b8b93569bfad574007fb39b52e932cbf9ad37cd22bf319f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-024",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-024.json",
+      "sha256": "7565a60a9041679118df8fba2d41f27981275a4a7ef7b22c89b53d96974cf4c2",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-025",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-025.json",
+      "sha256": "066b935e79a38156208e5842f812968325e46639125af819f616f0e36bbf6d4d",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-026",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-026.json",
+      "sha256": "086788a3a00111c99008fb66f6be7703af3e78fcfbad9ed2e823e3f888c57eef",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-027",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-027.json",
+      "sha256": "27dd0abf734438e4421791ead497cd0c6e4b1b32d5057cc0265e26aa28569f65",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-028",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-028.json",
+      "sha256": "1d9fda365af78a0e5f7ea12ca5bcc64b0af91fc2eeb816ec27cefea9511db9e1",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-029",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-029.json",
+      "sha256": "19dfebf69a8247593a19b66c0ba337c7999502ee37d0493c6b886347c6f37970",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-030",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-030.json",
+      "sha256": "a3db3fa515ab9e58de6278fa3639e7ee37766fb8df75cce5ec6e1428064c436b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DATA-031",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DATA-031.json",
+      "sha256": "2aef13ab528b3022c5d11e3274e4bda9b4c35a449ff6301e109b14b16e7b419a",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DQ-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DQ-001.json",
+      "sha256": "3c1683bb579447f970db98f33866dc173b4df7ecb848a2c24c509358e134e411",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DQ-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DQ-002.json",
+      "sha256": "5f3e51d0c94decbd83a001bd8b34e3857441354483990b2cb616b49184f539c9",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DQ-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DQ-003.json",
+      "sha256": "5b9064eb1a5e98ca86722d15e7de0bfabb475a63bb4c693149f98a081a1d1771",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DQ-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DQ-004.json",
+      "sha256": "68673028cae6ce91cf18342106480fb43078970b0d0075e6413f810184358ef8",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DQ-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DQ-005.json",
+      "sha256": "f5c37b114ea1619408fb74ec1e62cf0b9ef873346d45a8dd8f0acb23b5af86f5",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-001.json",
+      "sha256": "dfa9c5a8485c3c131879c21e28e18236be3bb0ee9f42fdc81261d9d2f9a51be5",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-002.json",
+      "sha256": "fe77b93571b9bf5c748917dd43c36221141721ad5e12cc755cd35366ce2937c5",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-003.json",
+      "sha256": "821d5c9eedc0d2fc8301aa3a3ae12d4e6ca7eb2c23b7b4e09f32df7605cf3f33",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-004.json",
+      "sha256": "5d5792782267b75937ca8779fca89181a78d35b8eb6df5a9dc71fe58d637e526",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-005.json",
+      "sha256": "778737ec869957ac911ccd9edf387448d9ea1099884e569a820e0cb97ffe9f22",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-006.json",
+      "sha256": "1cae5e00aae6285b7068b7c74c279607d3d9ada67ba27791669ba1f79f75f0b9",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-007.json",
+      "sha256": "ae3f46b0d27e617fee15f08204fdd26cefd8d2a47d6f2bce6a125a26b5ad455d",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-008.json",
+      "sha256": "185934cbbf0c5541a7fdafb79b2bd3200b8452a5809ee03d3c925aabf9a2ca22",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-009.json",
+      "sha256": "2856971ccee516271e8b3c5953034b38ee0eb81fb8685f1e9bce28b4c0259f01",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-010.json",
+      "sha256": "b6d1380f0513506c6ad19b53567dd459833148e597bd208274919979c33bc99b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-011.json",
+      "sha256": "7b6303f27bebba8119c6f5b82fb6184b6d6406d153e4b537cc4ba87783506597",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-012.json",
+      "sha256": "c67da419c4fe9bca53e5667f3b1bc1a4e100c4f838c2d55e652ed4deda0445a8",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-013.json",
+      "sha256": "8a4a20c1d067e92157e1e2bf7fdc9b0eb57ba65cf93ad17b9fe70c488f73566b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-014.json",
+      "sha256": "296e42c7f40a24531432d8a2b03adeef5da919c123cc9dd8aa700b3d09046d76",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-AN-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-AN-015.json",
+      "sha256": "0498b9de3463708348e82ae1e9914b81b0d722dfbb0a8b699b2c72af4c602683",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SEG-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SEG-001.json",
+      "sha256": "1ab4856cce1a48db039b93599498e1d935574bc04952b3b704feedb7b27e4f87",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SEG-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SEG-002.json",
+      "sha256": "0bac565d4d61b500b09ace703c6c974a997bd12215e710d75398ac9f0f2bbb3a",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SEG-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SEG-003.json",
+      "sha256": "036bb537edee008ce897bb3282ca4cc5082f1a546f09e1e580166ec4410dc503",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-FCST-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-FCST-001.json",
+      "sha256": "5ef5ddcc576652d9cbb3a972c95b104aba62d7f10e5e3761e4b7828504970e7e",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-FCST-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-FCST-002.json",
+      "sha256": "4beca478570b5c7ead2580bf1970798a2734c92ec706f54903547bc7b13dc754",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-FCST-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-FCST-003.json",
+      "sha256": "c0e2153b76aa244e24c00b73fa2811a580e6a9a453d2aff4358d86d8a31d7102",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-FCST-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-FCST-004.json",
+      "sha256": "95fb8d75543a10a6a2fc276f2bbe705e321508a7f4605e590e7da769b593d204",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-FCST-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-FCST-005.json",
+      "sha256": "2980effc64466c7c9afe8d4402c94f17ed85ed776d130113a68be4192d2603f0",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-FCST-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-FCST-006.json",
+      "sha256": "3536b0782585673a3937baffb5763e3645184834c54244d68491d5f28f66f33d",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-FCST-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-FCST-007.json",
+      "sha256": "fc2f6dfc3a82463e71d9307856b5a712e99be7cbf301a0ea3d98a7ea09d8289f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PROMO-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PROMO-001.json",
+      "sha256": "e7f74c17e7f4d558532ae2758ca4ba05cc6a28ea2acbd9ac64e7938353e3d8a0",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PROMO-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PROMO-002.json",
+      "sha256": "d75f59c9615e8d4a9f5b24754db6b7ff14d9f90764c002424dda8a6d86807aa6",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PROMO-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PROMO-003.json",
+      "sha256": "936fbfb7a8b85cd50f8d834896964d68e4c0ec34ad49d1e876c70b79ebabbda1",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DASH-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DASH-001.json",
+      "sha256": "2ad8ca2d226a2e87d067213365d80f029906cb073f9a52b97a7344809368e57d",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DASH-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DASH-002.json",
+      "sha256": "c2363418a492e01dbc8fb1bf04d1639b318217bc634ee56d98ed0b52e0a022c5",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-DASH-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-DASH-003.json",
+      "sha256": "336c63eac8436d0ed30381edf0b92523387cc84ec1f6627f8f2574720236461b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-RPT-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-RPT-001.json",
+      "sha256": "0208489b39e6550a12349841f53e402fb6ee19f7303d4631f09e3cff8695a745",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-RPT-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-RPT-002.json",
+      "sha256": "9ddaf347e8a33985d9f4954b5f68a6a20674fe831f0eee70d10ae1029188280f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-RPT-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-RPT-003.json",
+      "sha256": "163c5a21962355ab900487778d2e8828a505fcbbca966042dfbe2861072f73eb",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-RPT-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-RPT-004.json",
+      "sha256": "837095d04fa870ea7b978ea2f395f4cc9eef5d9353e2eca5293f94552b5a6a32",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-RPT-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-RPT-005.json",
+      "sha256": "da197e7a0b60310d5c326e2a637e04219780f84b71dfa1a4a9162264444ede48",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-RPT-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-RPT-006.json",
+      "sha256": "0ab174b1f88d3ce834875376533213be387d356eb7f70af13c74ce9aae9bd90a",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-RPT-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-RPT-007.json",
+      "sha256": "780c8a9ca5663eb8043359c24f383b79b8c7fecc0a61914d3581baf0f1991786",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PIPE-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PIPE-001.json",
+      "sha256": "820cf23fa839ae68630426b2ae18760c584d649e53aef5230d639db8529909dd",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PIPE-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PIPE-002.json",
+      "sha256": "1ad01f2c2a76baebb572d7e101d5fb9c4f59e947d5ffd05a0c38e117b834a399",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PIPE-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PIPE-003.json",
+      "sha256": "8d8a49a53f5e16c2f2d2415a609f9a2a26c8223dfe38c40fc8d01ade1055ac11",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PIPE-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PIPE-004.json",
+      "sha256": "73fb972f2c17a656492966e88008477005eef3b184f2747276c7959a3c0e2f90",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OPS-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OPS-001.json",
+      "sha256": "7f40b5514eb2e3b2eb56047eef34973e03bde1315efda41a7ce981a04598a1dd",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OPS-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OPS-002.json",
+      "sha256": "53e67a01348ab25eb998355284de28aadf8702c87936387436b44d1766397d01",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OPS-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OPS-003.json",
+      "sha256": "440e786b1983c7385d48ceb4284883646a4c226378b1e25764808b7c9d622056",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OPS-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OPS-004.json",
+      "sha256": "b0d1070d41bc2447253e5360acfee67aee1f539eb64469e63720d72d5a119e57",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-NOTIFY-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-NOTIFY-001.json",
+      "sha256": "db8cee67a5bc27d7737759c6e67ea00c7b9272ddd132d00c9d77751e8df43bb3",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-NOTIFY-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-NOTIFY-002.json",
+      "sha256": "53e027144cba74c0c2944db7d873c2eca1572d9d3d06e6bb083bdb03b866bd96",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-NOTIFY-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-NOTIFY-003.json",
+      "sha256": "f39f3fd1060df36cf3922601894067922f7059ebf9b2d5885493ecd54fe44987",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-001.json",
+      "sha256": "868388e6506a86644062c369e7a062dd69d4b70303cc695ab1e3622a5a394890",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-002.json",
+      "sha256": "2782b74cfc814515ea35d418968fda8978e17c042783292dad06c207f58c7576",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-003.json",
+      "sha256": "576a69b88eea1f2070272050c49e015272f8feb3817f4702c9e08feed942335b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-004.json",
+      "sha256": "fae4650276ab1f8c538a2283eea92d1f1110aa14a506dff9f38fa65234c9094e",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-005.json",
+      "sha256": "084f5a56d8343fa94e56274a35e24e73e5119246a65bd91358c4184da41e216e",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-006.json",
+      "sha256": "d00d5ee72ad277d04992e99592f41d3bae47e7420de42169aade9a3e32ca0cec",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-007.json",
+      "sha256": "990e6a17fa50b3bba0a4f822c1848f12f90cef5567960184153aa3c2dff87adf",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-008.json",
+      "sha256": "dcbc5089ef8c3aa77043da95f61cc19da377ce3f2380247a9932cb6e1806b2c5",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-009.json",
+      "sha256": "5471727c70d410ee0d71971b8f8c6b70517eb08b287d50ed7f9c87f895bfd109",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-010.json",
+      "sha256": "c784af9c9ebcaf02d4dd9c7eef4bd40446154e34d5e19ce99f0d7684530f5ccc",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-011.json",
+      "sha256": "ec1af9abc0a1c555befde65645002f52ee81d41dff7d12bc088865d4ef61f167",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-012.json",
+      "sha256": "96c2189528ccb417b0c39b3657b4fa13215cd852a2299f23d9119430d167e8f8",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-013.json",
+      "sha256": "81194295532714ed7775e54115a2da53e9229814897162b8ced328dbc3baf51f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-014.json",
+      "sha256": "f366e5c9727c8c6e9e73379461259c3509103e7c34ce8aab5505e78cb25a408b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-015.json",
+      "sha256": "c1be0be00a596e895c8bc3674016e7ef0a49cdd2e62b8ca51396223b8bd50b24",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-016",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-016.json",
+      "sha256": "c555b1c9343e73eee1ed63107b2eb4984257c4bd17998a39693f504604fc80a1",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-017",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-017.json",
+      "sha256": "a6f5f4f0ed049cb7c97f055b73baa21df35ac055c3250a0e28b1fed429c038e1",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-018",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-018.json",
+      "sha256": "bd16172ed35066f27140a6da28232390c5c20f307b18846df8819117f583c283",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ORG-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ORG-001.json",
+      "sha256": "2fc6f9e2fb8116ed4a62b6597956f5e6ed320ce9bbc0c0580ea65e171d6f4b0c",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ORG-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ORG-002.json",
+      "sha256": "4c0e4b64a8d57ac77d77eb2f7333b12bcf58fda0246d5760763ee895ae3263cc",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PEOPLE-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PEOPLE-001.json",
+      "sha256": "79b5e9d22b76a4883cdbecd85537f39c0e09beb4acf2f6619cdb247cc6930aa6",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-PEOPLE-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-PEOPLE-002.json",
+      "sha256": "70c814613dcd9acc3444e2cbe109b6cc8023580dfc86089f933208b6125af564",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-019",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-019.json",
+      "sha256": "bfd1abf24d5e7dce12a1c436244a66c4d768c0a9fb14b2cd282f467551e5e7df",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-ADMIN-020",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-ADMIN-020.json",
+      "sha256": "e84ae448d59aa0c481f07000fbaa504fd3ac92c359f97056671495ea9559c262",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-HELP-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-HELP-001.json",
+      "sha256": "f881d16a65c9bd93e930b21f9056f33003a31513adb8ab6894064d244aa8f1ed",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SHELL-AUTH",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SHELL-AUTH.json",
+      "sha256": "36d0714f822500266faec84931ac69767112999047f75f05cfcea13f8a3758ab",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SHELL-GLOBAL",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SHELL-GLOBAL.json",
+      "sha256": "13f66769aff4fa30bb1bd4c258af931b178abe81b074b45f9a45ce671477b826",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SHELL-WORKSPACE",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SHELL-WORKSPACE.json",
+      "sha256": "dbe67c26089bd55bd1bd2ef13594d4db13f5e46819e26c7eae9d60cb596df6d8",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SHELL-INSTALLATION",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SHELL-INSTALLATION.json",
+      "sha256": "784a15ca1ed11a1147493fe867da900c723cbf5dedb6c930eeb15d3bbdf4fad6",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-001.json",
+      "sha256": "fad1f6ccec0fda0b6e023d3fba24dfa7f2484965d83295faaf398dac9a1fa6da",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-002.json",
+      "sha256": "976f39b9ab177ecb3e0c8b0258eef9eb6383696a69a519e6bdbfc51a5df77c4f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-003.json",
+      "sha256": "ad5924ad9d45b3561b2e2f9bc52408311f334743316123f8b5e5d2b5c6cb5815",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-004.json",
+      "sha256": "c3c812a98c12d477ac034b02be3c2c2e43ce2870edad0abb3fb11e6a2b7da18c",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-005.json",
+      "sha256": "4365c88f08f6b5f801810cd6a9c4ef67be4dfcafd88f96a16e7e18c5dcedc555",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-006.json",
+      "sha256": "2046344e1d320ffd14193210436265ae14ca2304fdddd8eb9b91bab6b6166689",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-007.json",
+      "sha256": "5c0c1eb1c777874e8344b6ede6f8b909b53f628b6f5456b3ba2c7f298b2e779e",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-008.json",
+      "sha256": "63186d96fa990d32be41aa51dd89a9c3889f4d4cfbe305629ed73cf0aa8d0822",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-009.json",
+      "sha256": "5e5e23e774f1c1bb77bb966ca61c8c0ad693b39797815b4e9c1c2b7cfe4a3c4f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-010.json",
+      "sha256": "0b71ab97ca592ffda9283743c9a2b80650382bb53516f25a5a40c3259f7494c4",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-011.json",
+      "sha256": "868ac71f40d693c9e12f28030dc07ec7616cea31998dc3dbd0c58f5b83b5ba1f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-012.json",
+      "sha256": "72100c0b3cbbdd8a2fe1a2dff9081ca5dc513f9a19017d12d8a0a045f2d7ce45",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-013.json",
+      "sha256": "4da06a4da9b2fece1dc7f17a88ce1ac34e68ad35c73249fd3429de491dcc0474",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-014.json",
+      "sha256": "9700a249574c89d048e3c0dd510936c9812be7f3a466ea5177287b8e6c1c39d4",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-015.json",
+      "sha256": "95f16c350143663b9b5cf8c45664ddec9e4766e783196b2dd930251b4343432c",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-016",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-016.json",
+      "sha256": "a754d8ad11ea767067b5fe15902d9eae443cb29d1a5d719e10fd642f5f2d8abc",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-017",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-017.json",
+      "sha256": "f046a04536bbb81b49989db65fc5d3612177e2b4c12d5851d308326452ceda31",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-018",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-018.json",
+      "sha256": "564d419237a28d6c9efbf506ef0154d66d02749a860c3dbf3416d17d6bb9e762",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-019",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-019.json",
+      "sha256": "9635c906c8e5a5daa98e518adc028470e070a6c09e2312ed0968c163be378bac",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-020",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-020.json",
+      "sha256": "692b0a245ff321c6512389877bbbc27ec851f92e32b2ec43c5b7b9845535aede",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-021",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-021.json",
+      "sha256": "8a7eea797af68c14fff31848edf73f416630d628c56d8b0e0a2abfe424a345fe",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-022",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-022.json",
+      "sha256": "87d4d2be17f2d542fdf30a87b0a66fed2043fb55c913672e4a572455965d84ab",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-023",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-023.json",
+      "sha256": "e75f4aeb820836bfb5e89c689d4a054fb634161f3cb64f7832a0782dd8c1a9c6",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-024",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-024.json",
+      "sha256": "2e46023e8363b9c8f79fae75b673c891b85c3a447ded3415b424cd12795f548a",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-OVR-025",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-OVR-025.json",
+      "sha256": "5fae89c60c13adcced535ba26532f36da3914781c1c82a40d77d843ff8cbcf9d",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SYS-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SYS-001.json",
+      "sha256": "0a5f518974c2f817a3ffdf52cecfae0bfb89aacd15da8acc7de856a15ca41292",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SYS-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SYS-002.json",
+      "sha256": "3ec80503058301815a8b7ff3bec37f2480be9233f40d25be9dd7ccbf481b8349",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SYS-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SYS-003.json",
+      "sha256": "3b0a45f63bf9465778d260a26a79bbe55044a2532ac83f8389bdfa5e0bdecc8d",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SYS-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SYS-004.json",
+      "sha256": "89cd4795c0d5eee3552cc172178c031a3176d1adb61a9b64d3c4499029d3f59b",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-SYS-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-SYS-005.json",
+      "sha256": "bbcfa5333de42d50a666b4e2f357dc50d60b14d68921045fa84d30d89e22cdb6",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-001.json",
+      "sha256": "7e04aa8f08bfb251c836fc4c6191496a4cf3cdfa5dd9e4c2235879257fe71e59",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-002.json",
+      "sha256": "b0e2e0924620269ab460ca66c6a4bc085902ed2118d9ec37fee008b8ff34f9b0",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-003.json",
+      "sha256": "f1839c97f6ec1996ab33c7c2444dbf0cd35fe410b1122507f3ba0b8ffa962cbe",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-004.json",
+      "sha256": "c1c29aef6f782b035522e6183264a8edd63ddb43055f1447b410903412087b57",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-005.json",
+      "sha256": "0a4ed8211c40aea741064ca3a28e719dcb3dc779caaa2198a1cf83ef2b20ed80",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-006.json",
+      "sha256": "f5f27a7d70903cd4440fe44093522068e3447954023bcf4a61c153d8f385b7c6",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-007.json",
+      "sha256": "321aa601d6d01b0b46aaf2ef82ceed849a790565b0fa820f542543eaa8fd0968",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-008.json",
+      "sha256": "eb28e1b7f54887d32b2e4bba98a547ff5783e0cf6ef598a1560ec21e11b2100e",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-009.json",
+      "sha256": "4d2e3a2e669c487d2b77b25f7a14627b144d2d55afc9d753e067c097e2f18af1",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-010.json",
+      "sha256": "2312651a07d525d5889db310828d0527bcc75e87a8bc50f8cf03b8928c383b99",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-011.json",
+      "sha256": "73ae9c35d5c9a23f1100aeba0a0f0414605d423dd18c6f7ad425a9d2bf496e92",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-012.json",
+      "sha256": "cb39206650b13a8800797b810b21c601cea216efd67c504ec00e52563d433e2a",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-013.json",
+      "sha256": "bdb6bd44c381a06f1de7a1c6047d753157bb24c58b66bbd3e8d692aca5a2be3f",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-014.json",
+      "sha256": "21f508c96cd788140415ea157e7362ec57b70dcb6758923225b05ebc633fd581",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-015.json",
+      "sha256": "ea981bc5223313278a67aa54e423197d81d7a74ee7ee2f81bc477c9dbdafaeb1",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-016",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-016.json",
+      "sha256": "fae4978c6da0c26e623ca7e9e5df1f3e3da837fbe1ac332b6bf6b92583be4526",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-017",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-017.json",
+      "sha256": "5b157108fb47274f53fce0154c032c38207fc785d7da7aaf78e6b0dc9bd67ced",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-018",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-018.json",
+      "sha256": "1db5ae92a3d741aceedfc599e2ed90f58a0ba675c44c553d13a43e35a5fbc048",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-019",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-019.json",
+      "sha256": "2aa0d6b87637ebcaf273b6d1a34ec11cb867c7004ff6ef7306e052db2f9ed9f7",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-020",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-020.json",
+      "sha256": "4026395465719f8343fd1b42e81c778a9ce50fd1aafd7f6be828fb207dada547",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-021",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-021.json",
+      "sha256": "12e4589e7b393dd1c78f69b2e494a2290f2472819f2eb12fa9c3c495010c3f4d",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "UI-CAP-022",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/UI-CAP-022.json",
+      "sha256": "b9fd2bd854136af6264f3c67eb064bf98c46057fc82aa1d718d0447035df12e6",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "HISTORICAL-CUSTOMETRY-UI-V1",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/HISTORICAL-CUSTOMETRY-UI-V1.json",
+      "sha256": "31dbe6bdf664ef2ecb3fc937e33d4619c51092cb8ee02ed18c57c524596d6141",
+      "json_pointer": "/screen"
+    },
+    {
+      "id": "HISTORICAL-PENPOT",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r4/screens/HISTORICAL-PENPOT.json",
+      "sha256": "fdbd5d70664175dec06a0fa149d1d914cfb2b53119856cba3cafed6ae055bdc6",
+      "json_pointer": "/screen"
+    }
+  ]
+}

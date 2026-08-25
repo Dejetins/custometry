@@ -1,0 +1,17 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-PROMO-001",
+  "state_id": "UI-PROMO-001.permission_denied",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Прогнозирование · модели",
+    "status": "Требуется promotion.manage",
+    "title": "Доступ к управлению промо ограничен",
+    "summary": "Поверхность сохраняет маршрут, Result Trust и точные permission-bound действия.",
+    "panel": "Для управления требуется permission promotion.manage; переход по journey остаётся без production side effects.",
+    "tone": "neutral"
+  }
+}

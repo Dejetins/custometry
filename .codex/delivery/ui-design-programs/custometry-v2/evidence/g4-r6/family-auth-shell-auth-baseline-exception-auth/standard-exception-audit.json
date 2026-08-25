@@ -1,0 +1,18 @@
+{
+  "schema_id": "custometry.ui-standard-exception-audit/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6",
+  "removed_generic_mappings": [
+    "remember-as-button",
+    "recovery-navigation-as-button",
+    "language-select-as-button",
+    "wizard-navigation-as-button"
+  ],
+  "superseded_exception": {
+    "exception_id": "accepted-pilot-interactive-button-state-projection",
+    "reason": "The unaccepted r5 exception encoded the generic-button shortcut and is no longer referenced by any corrected screen contract."
+  },
+  "retained_exception": null,
+  "broader_exception_created": false,
+  "result": "passed"
+}

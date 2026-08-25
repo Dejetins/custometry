@@ -1,0 +1,1059 @@
+{
+  "$schema": "program-artifact-index.schema.json",
+  "schema_id": "codex.ui-program-artifact-index/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "program_revision": 5,
+  "index_kind": "screens",
+  "entries": [
+    {
+      "id": "UI-AUTH-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/0"
+    },
+    {
+      "id": "UI-AUTH-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/1"
+    },
+    {
+      "id": "UI-AUTH-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/2"
+    },
+    {
+      "id": "UI-AUTH-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/3"
+    },
+    {
+      "id": "UI-AUTH-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/4"
+    },
+    {
+      "id": "UI-AUTH-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/5"
+    },
+    {
+      "id": "UI-CORE-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/6"
+    },
+    {
+      "id": "UI-DATA-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/7"
+    },
+    {
+      "id": "UI-DATA-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/8"
+    },
+    {
+      "id": "UI-DATA-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/9"
+    },
+    {
+      "id": "UI-DATA-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/10"
+    },
+    {
+      "id": "UI-DATA-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/11"
+    },
+    {
+      "id": "UI-DATA-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/12"
+    },
+    {
+      "id": "UI-DATA-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/13"
+    },
+    {
+      "id": "UI-DATA-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/14"
+    },
+    {
+      "id": "UI-DATA-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/15"
+    },
+    {
+      "id": "UI-DATA-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/16"
+    },
+    {
+      "id": "UI-DATA-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/17"
+    },
+    {
+      "id": "UI-DATA-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/18"
+    },
+    {
+      "id": "UI-DATA-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/19"
+    },
+    {
+      "id": "UI-DATA-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/20"
+    },
+    {
+      "id": "UI-DATA-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/21"
+    },
+    {
+      "id": "UI-DATA-016",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/22"
+    },
+    {
+      "id": "UI-DATA-017",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/23"
+    },
+    {
+      "id": "UI-DATA-018",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/24"
+    },
+    {
+      "id": "UI-DATA-019",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/25"
+    },
+    {
+      "id": "UI-DATA-020",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/26"
+    },
+    {
+      "id": "UI-DATA-021",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/27"
+    },
+    {
+      "id": "UI-DATA-022",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/28"
+    },
+    {
+      "id": "UI-DATA-023",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/29"
+    },
+    {
+      "id": "UI-DATA-024",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/30"
+    },
+    {
+      "id": "UI-DATA-025",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/31"
+    },
+    {
+      "id": "UI-DATA-026",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/32"
+    },
+    {
+      "id": "UI-DATA-027",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/33"
+    },
+    {
+      "id": "UI-DATA-028",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/34"
+    },
+    {
+      "id": "UI-DATA-029",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/35"
+    },
+    {
+      "id": "UI-DATA-030",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/36"
+    },
+    {
+      "id": "UI-DATA-031",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/37"
+    },
+    {
+      "id": "UI-DQ-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/38"
+    },
+    {
+      "id": "UI-DQ-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/39"
+    },
+    {
+      "id": "UI-DQ-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/40"
+    },
+    {
+      "id": "UI-DQ-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/41"
+    },
+    {
+      "id": "UI-DQ-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/42"
+    },
+    {
+      "id": "UI-AN-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/43"
+    },
+    {
+      "id": "UI-AN-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/44"
+    },
+    {
+      "id": "UI-AN-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/45"
+    },
+    {
+      "id": "UI-AN-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/46"
+    },
+    {
+      "id": "UI-AN-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/47"
+    },
+    {
+      "id": "UI-AN-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/48"
+    },
+    {
+      "id": "UI-AN-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/49"
+    },
+    {
+      "id": "UI-AN-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/50"
+    },
+    {
+      "id": "UI-AN-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/51"
+    },
+    {
+      "id": "UI-AN-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/52"
+    },
+    {
+      "id": "UI-AN-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/53"
+    },
+    {
+      "id": "UI-AN-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/54"
+    },
+    {
+      "id": "UI-AN-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/55"
+    },
+    {
+      "id": "UI-AN-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/56"
+    },
+    {
+      "id": "UI-AN-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/57"
+    },
+    {
+      "id": "UI-SEG-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/58"
+    },
+    {
+      "id": "UI-SEG-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/59"
+    },
+    {
+      "id": "UI-SEG-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/60"
+    },
+    {
+      "id": "UI-FCST-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/61"
+    },
+    {
+      "id": "UI-FCST-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/62"
+    },
+    {
+      "id": "UI-FCST-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/63"
+    },
+    {
+      "id": "UI-FCST-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/64"
+    },
+    {
+      "id": "UI-FCST-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/65"
+    },
+    {
+      "id": "UI-FCST-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/66"
+    },
+    {
+      "id": "UI-FCST-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/67"
+    },
+    {
+      "id": "UI-PROMO-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/68"
+    },
+    {
+      "id": "UI-PROMO-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/69"
+    },
+    {
+      "id": "UI-PROMO-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/70"
+    },
+    {
+      "id": "UI-DASH-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/71"
+    },
+    {
+      "id": "UI-DASH-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/72"
+    },
+    {
+      "id": "UI-DASH-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/73"
+    },
+    {
+      "id": "UI-RPT-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/74"
+    },
+    {
+      "id": "UI-RPT-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/75"
+    },
+    {
+      "id": "UI-RPT-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/76"
+    },
+    {
+      "id": "UI-RPT-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/77"
+    },
+    {
+      "id": "UI-RPT-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/78"
+    },
+    {
+      "id": "UI-RPT-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/79"
+    },
+    {
+      "id": "UI-RPT-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/80"
+    },
+    {
+      "id": "UI-PIPE-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/81"
+    },
+    {
+      "id": "UI-PIPE-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/82"
+    },
+    {
+      "id": "UI-PIPE-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/83"
+    },
+    {
+      "id": "UI-PIPE-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/84"
+    },
+    {
+      "id": "UI-OPS-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/85"
+    },
+    {
+      "id": "UI-OPS-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/86"
+    },
+    {
+      "id": "UI-OPS-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/87"
+    },
+    {
+      "id": "UI-OPS-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/88"
+    },
+    {
+      "id": "UI-NOTIFY-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/89"
+    },
+    {
+      "id": "UI-NOTIFY-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/90"
+    },
+    {
+      "id": "UI-NOTIFY-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/91"
+    },
+    {
+      "id": "UI-ADMIN-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/92"
+    },
+    {
+      "id": "UI-ADMIN-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/93"
+    },
+    {
+      "id": "UI-ADMIN-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/94"
+    },
+    {
+      "id": "UI-ADMIN-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/95"
+    },
+    {
+      "id": "UI-ADMIN-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/96"
+    },
+    {
+      "id": "UI-ADMIN-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/97"
+    },
+    {
+      "id": "UI-ADMIN-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/98"
+    },
+    {
+      "id": "UI-ADMIN-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/99"
+    },
+    {
+      "id": "UI-ADMIN-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/100"
+    },
+    {
+      "id": "UI-ADMIN-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/101"
+    },
+    {
+      "id": "UI-ADMIN-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/102"
+    },
+    {
+      "id": "UI-ADMIN-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/103"
+    },
+    {
+      "id": "UI-ADMIN-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/104"
+    },
+    {
+      "id": "UI-ADMIN-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/105"
+    },
+    {
+      "id": "UI-ADMIN-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/106"
+    },
+    {
+      "id": "UI-ADMIN-016",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/107"
+    },
+    {
+      "id": "UI-ADMIN-017",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/108"
+    },
+    {
+      "id": "UI-ADMIN-018",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/109"
+    },
+    {
+      "id": "UI-ORG-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/110"
+    },
+    {
+      "id": "UI-ORG-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/111"
+    },
+    {
+      "id": "UI-PEOPLE-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/112"
+    },
+    {
+      "id": "UI-PEOPLE-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/113"
+    },
+    {
+      "id": "UI-ADMIN-019",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/114"
+    },
+    {
+      "id": "UI-ADMIN-020",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/115"
+    },
+    {
+      "id": "UI-HELP-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/116"
+    },
+    {
+      "id": "UI-SHELL-AUTH",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/117"
+    },
+    {
+      "id": "UI-SHELL-GLOBAL",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/118"
+    },
+    {
+      "id": "UI-SHELL-WORKSPACE",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/119"
+    },
+    {
+      "id": "UI-SHELL-INSTALLATION",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/120"
+    },
+    {
+      "id": "UI-OVR-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/121"
+    },
+    {
+      "id": "UI-OVR-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/122"
+    },
+    {
+      "id": "UI-OVR-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/123"
+    },
+    {
+      "id": "UI-OVR-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/124"
+    },
+    {
+      "id": "UI-OVR-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/125"
+    },
+    {
+      "id": "UI-OVR-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/126"
+    },
+    {
+      "id": "UI-OVR-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/127"
+    },
+    {
+      "id": "UI-OVR-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/128"
+    },
+    {
+      "id": "UI-OVR-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/129"
+    },
+    {
+      "id": "UI-OVR-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/130"
+    },
+    {
+      "id": "UI-OVR-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/131"
+    },
+    {
+      "id": "UI-OVR-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/132"
+    },
+    {
+      "id": "UI-OVR-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/133"
+    },
+    {
+      "id": "UI-OVR-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/134"
+    },
+    {
+      "id": "UI-OVR-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/135"
+    },
+    {
+      "id": "UI-OVR-016",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/136"
+    },
+    {
+      "id": "UI-OVR-017",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/137"
+    },
+    {
+      "id": "UI-OVR-018",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/138"
+    },
+    {
+      "id": "UI-OVR-019",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/139"
+    },
+    {
+      "id": "UI-OVR-020",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/140"
+    },
+    {
+      "id": "UI-OVR-021",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/141"
+    },
+    {
+      "id": "UI-OVR-022",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/142"
+    },
+    {
+      "id": "UI-OVR-023",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/143"
+    },
+    {
+      "id": "UI-OVR-024",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/144"
+    },
+    {
+      "id": "UI-OVR-025",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/145"
+    },
+    {
+      "id": "UI-SYS-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/146"
+    },
+    {
+      "id": "UI-SYS-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/147"
+    },
+    {
+      "id": "UI-SYS-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/148"
+    },
+    {
+      "id": "UI-SYS-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/149"
+    },
+    {
+      "id": "UI-SYS-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/150"
+    },
+    {
+      "id": "UI-CAP-001",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/151"
+    },
+    {
+      "id": "UI-CAP-002",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/152"
+    },
+    {
+      "id": "UI-CAP-003",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/153"
+    },
+    {
+      "id": "UI-CAP-004",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/154"
+    },
+    {
+      "id": "UI-CAP-005",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/155"
+    },
+    {
+      "id": "UI-CAP-006",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/156"
+    },
+    {
+      "id": "UI-CAP-007",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/157"
+    },
+    {
+      "id": "UI-CAP-008",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/158"
+    },
+    {
+      "id": "UI-CAP-009",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/159"
+    },
+    {
+      "id": "UI-CAP-010",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/160"
+    },
+    {
+      "id": "UI-CAP-011",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/161"
+    },
+    {
+      "id": "UI-CAP-012",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/162"
+    },
+    {
+      "id": "UI-CAP-013",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/163"
+    },
+    {
+      "id": "UI-CAP-014",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/164"
+    },
+    {
+      "id": "UI-CAP-015",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/165"
+    },
+    {
+      "id": "UI-CAP-016",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/166"
+    },
+    {
+      "id": "UI-CAP-017",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/167"
+    },
+    {
+      "id": "UI-CAP-018",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/168"
+    },
+    {
+      "id": "UI-CAP-019",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/169"
+    },
+    {
+      "id": "UI-CAP-020",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/170"
+    },
+    {
+      "id": "UI-CAP-021",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/171"
+    },
+    {
+      "id": "UI-CAP-022",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/172"
+    },
+    {
+      "id": "HISTORICAL-CUSTOMETRY-UI-V1",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/173"
+    },
+    {
+      "id": "HISTORICAL-PENPOT",
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-rpt-shell-workspace-baseline/program-screen-entries.snapshot.json",
+      "sha256": "a79ebd1aeaaa6a78a7c4af9e8a46ae228963e4808e6f77e03f3e18bf2b049490",
+      "json_pointer": "/screens/174"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_id": "custometry.ui-owner-review-decision-packet/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-workspace.baseline-r5",
+  "decision_id": "G4@family.auth.shell-workspace.baseline-r5.finished-result",
+  "decision_kind": "family_acceptance",
+  "question": "Принять готовое семейство настройки рабочего пространства или запросить ограниченные исправления?",
+  "target": {
+    "artifact_kind": "review_board",
+    "artifact_id": "family.auth.shell-workspace.baseline-r5",
+    "revision": 5,
+    "validation_profile": "family_review_ready",
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/review-board.html",
+    "sha256": "2898f951534979925558ce800c3fa92be34721e28aa744f107a70d10b10806c3"
+  },
+  "allowed_responses": [
+    "accept",
+    "bounded_corrections"
+  ],
+  "status": "pending"
+}

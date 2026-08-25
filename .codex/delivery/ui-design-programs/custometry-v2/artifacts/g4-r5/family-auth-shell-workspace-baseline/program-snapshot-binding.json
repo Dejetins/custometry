@@ -1,0 +1,28 @@
+{
+  "schema_id": "codex.ui-stage-program-snapshot-binding/v1",
+  "canonical_program": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
+    "sha256": "a61517db5be687e2ee01986f79f6942259b3a1341790cc2b8546162f9219ce24"
+  },
+  "snapshot": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/ui-design-program.snapshot.json",
+    "sha256": "38f6b5bc93fa93625a7a96b8f67e61201b68cd43b654a42bdb815e9f626d61c5"
+  },
+  "projection": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/g1-admission-inventory.family-projection.json",
+    "sha256": "c2f6556ff9832712c19b12adb52a6125635740b14dd923337c60cfaa8a07d59e"
+  },
+  "screen_index_snapshot": {
+    "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r5/family-auth-shell-workspace-baseline/screens-index.snapshot.json",
+    "sha256": "ca4bc48b2a6dac8ffb253619c62aa1cb3e59d512c222e591e74debe9c3206128"
+  },
+  "changed_pointers": [
+    "/source_contracts",
+    "/screens/*/screen_ref/path",
+    "/artifact_indexes/screens",
+    "/execution_artifacts/plan_doc"
+  ],
+  "reason": "Family aggregation adds exact accepted required_states only for the current UI-AUTH-005 representative; no other inventory meaning changes.",
+  "accepted_authority_changed": false,
+  "result": "passed"
+}

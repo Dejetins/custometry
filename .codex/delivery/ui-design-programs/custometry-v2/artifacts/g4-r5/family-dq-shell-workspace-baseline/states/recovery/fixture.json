@@ -1,0 +1,16 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-DQ-001",
+  "state_id": "UI-DQ-001.recovery",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Данные · качество",
+    "title": "Восстанавливаем quality overview",
+    "summary": "Последний доверенный run и явный путь к безопасной повторной проверке.",
+    "tone": "warning",
+    "status": "Quality run q-184 · частично восстановлен"
+  }
+}

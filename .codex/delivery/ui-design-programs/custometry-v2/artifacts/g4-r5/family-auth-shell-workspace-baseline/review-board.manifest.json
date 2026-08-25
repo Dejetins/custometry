@@ -1,0 +1,106 @@
+{
+  "$schema": "review-board-manifest.schema.json",
+  "schema_id": "codex.ui-review-board-manifest/v1",
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "artifact_id": "family.auth.shell-workspace.baseline-r5",
+  "revision": 5,
+  "validation_profile": "family_review_ready",
+  "entries": [
+    {
+      "entry_id": "review-01",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.error.r5.json",
+      "sha256": "b6459406ba031a807668d6ad67d69fbf8d62570fc315cde7f8bd356233e37eb6",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.error"
+    },
+    {
+      "entry_id": "review-02",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.error.r5.json",
+      "sha256": "b6459406ba031a807668d6ad67d69fbf8d62570fc315cde7f8bd356233e37eb6",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.error"
+    },
+    {
+      "entry_id": "review-03",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.initial.r5.json",
+      "sha256": "25206f004c5ac00e344e078b9004604e4e6c27681272583134cbc3e05d2a9cae",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.initial"
+    },
+    {
+      "entry_id": "review-04",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.initial.r5.json",
+      "sha256": "25206f004c5ac00e344e078b9004604e4e6c27681272583134cbc3e05d2a9cae",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.initial"
+    },
+    {
+      "entry_id": "review-05",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.loading.r5.json",
+      "sha256": "221ad350c663ad78ec6ffa5494379dba46b11082d14322fdf60b54d49e7cd2dc",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.loading"
+    },
+    {
+      "entry_id": "review-06",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.loading.r5.json",
+      "sha256": "221ad350c663ad78ec6ffa5494379dba46b11082d14322fdf60b54d49e7cd2dc",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.loading"
+    },
+    {
+      "entry_id": "review-07",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.permission_denied.r5.json",
+      "sha256": "8416aa11fde62821284720a242e92d87bc123d16ebbb0bc5c6689b360a8daebf",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.permission_denied"
+    },
+    {
+      "entry_id": "review-08",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.permission_denied.r5.json",
+      "sha256": "8416aa11fde62821284720a242e92d87bc123d16ebbb0bc5c6689b360a8daebf",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.permission_denied"
+    },
+    {
+      "entry_id": "review-09",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.populated.r5.json",
+      "sha256": "5a5a3513e9aae5574b82a096cae7174a2deaec78f6568e6c9e0caf5decfe3c7e",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.populated"
+    },
+    {
+      "entry_id": "review-10",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.populated.r5.json",
+      "sha256": "5a5a3513e9aae5574b82a096cae7174a2deaec78f6568e6c9e0caf5decfe3c7e",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.populated"
+    },
+    {
+      "entry_id": "review-11",
+      "role": "screen_acceptance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.recovery.r5.json",
+      "sha256": "1296e1a3e39d975f61e61a8e56d179e36f5dffc562c2befb511b43fe96b6b87f",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.recovery"
+    },
+    {
+      "entry_id": "review-12",
+      "role": "standard_conformance",
+      "artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.auth.shell-workspace.baseline-r5/screen-acceptance/UI-AUTH-005.recovery.r5.json",
+      "sha256": "1296e1a3e39d975f61e61a8e56d179e36f5dffc562c2befb511b43fe96b6b87f",
+      "anchor_id": null,
+      "state_id": "UI-AUTH-005.recovery"
+    }
+  ]
+}

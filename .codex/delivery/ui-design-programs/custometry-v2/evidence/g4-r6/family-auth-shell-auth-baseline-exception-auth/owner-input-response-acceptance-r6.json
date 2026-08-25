@@ -1,0 +1,17 @@
+{
+  "$schema": "owner-input-response.schema.json",
+  "schema_id": "codex.ui-owner-input-response/v1",
+  "generated_by": {
+    "script": "assemble_owner_input_response.py",
+    "version": "1.1.0",
+    "command": "assemble_owner_input_response.py <paths-redacted>"
+  },
+  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
+  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6",
+  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet.json",
+  "decision_packet_sha256": "e471a025fa86decd1f79ff9504d8a0da8de7bb366be1801aaa00075071cf5f67",
+  "response_kind": "visual_acceptance",
+  "owner_input": "да, перенеси принятие",
+  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r6/family-auth-shell-auth-baseline-exception-auth/family-acceptance-decision-r6.json",
+  "canonical_owner_decision_sha256": "bc6daa1acecb321ae8a14b878f13f3a9a3841b6f4ba087675412c0ad42903b8b"
+}

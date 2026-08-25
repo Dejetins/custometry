@@ -1,0 +1,16 @@
+{
+  "schema_id": "custometry.ui-review-fixture/v1",
+  "screen_id": "UI-AN-013",
+  "state_id": "UI-AN-013.populated",
+  "clock": "2026-02-14T10:00:00+03:00",
+  "locale": "ru",
+  "theme": "graphite",
+  "safety": "isolated_local_no_real_data",
+  "content": {
+    "eyebrow": "Аналитика · исследования",
+    "title": "Исследования и находки собраны",
+    "summary": "Список связывает исследование, находки, комментарии и Result Trust в одной проверяемой поверхности.",
+    "tone": "success",
+    "status": "12 исследований · 4 на проверке · 7 находок"
+  }
+}

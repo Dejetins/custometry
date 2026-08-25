@@ -1,0 +1,56 @@
+{
+  "screen": {
+    "screen_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json",
+      "json_pointer": "/screens/43",
+      "expected_id": "UI-AN-001"
+    },
+    "classification": "route_screen",
+    "classification_origin": {
+      "kind": "product_contract",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json#/screens/43/classification"
+    },
+    "disposition": "in_scope",
+    "disposition_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g0-r2/g1-admission-inventory.json#/screens/43/classification",
+      "formula": "historical_exclusion -> excluded; internal_or_non_visual -> internal; every other admitted classification -> in_scope"
+    },
+    "disposition_reason_ref": null,
+    "review_consequence": null,
+    "design_family_id": "family.an.shell-workspace.baseline",
+    "family_assignment_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/43",
+      "formula": "family assignment equals the deterministic namespace + exact shell variant + exact baseline exception + workload partition family produced by G2"
+    },
+    "wave_id": "wave.g5.02",
+    "wave_assignment_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g2-r2/waves-index.json",
+      "formula": "wave assignment equals the unique workload-bounded wave containing the assigned family"
+    },
+    "representative": false,
+    "coverage_profile": "coverage.ui-an-001",
+    "coverage_assignment_origin": {
+      "kind": "derived_formula",
+      "ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json#/screens/43",
+      "formula": "coverage profile exact-binds accepted states and roles plus accepted program locales/themes; viewport anchors remain the sole normative G2 deferral"
+    },
+    "visual_baseline_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/platform-ui-baseline.json#/custometry.platform-baseline.v3.metadata.r5",
+    "functional_contract_ref": {
+      "path": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g0-r5/ui-program-intake.json",
+      "sha256": "1bde5b03571efe80145622d18bea1e8ec40d461e5df897e6b604f385f3c09ba5",
+      "json_pointer": "/screens/43",
+      "expected_id": "UI-AN-001"
+    },
+    "shell_variant_id": "shell.workspace",
+    "baseline_exception_ref": null,
+    "expected_action_ids": [
+      "UI-AN-001.analysis.run",
+      "UI-AN-001.analysis.manage",
+      "UI-AN-001.export.create"
+    ],
+    "unresolved_fields": []
+  }
+}

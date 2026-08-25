@@ -1,0 +1,1 @@
+"""Connection Catalog domain contracts."""

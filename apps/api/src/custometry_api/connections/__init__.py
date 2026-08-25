@@ -1,0 +1,1 @@
+"""Source connection API adapter."""

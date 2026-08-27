@@ -2,13 +2,13 @@
 artifact_kind: delivery_ticket
 delivery_contract: global/v1
 delivery_schema_version: 1
-spec_version: 0.9.3-draft
+spec_version: 0.10.0-draft
 ticket_id: W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE
-status: draft
+status: accepted
 workstream_id: W15
 summary: Deliver one restart-safe retail extraction through immutable artifacts, required data-quality evidence, and a published Customer/Receipt/ReceiptItem/Product semantic dataset.
 requirement_ids: [UC-002, UC-003, INGEST-001, INGEST-002, INGEST-003, INGEST-004, INGEST-005, INGEST-006, INGEST-007]
-blockers: [W14-SOURCE-CONNECTION-FILE-IMPORT-KERNEL]
+blockers: []
 context_sources: [AGENTS.md, .codex/AGENTS.md, custometry-technical-blueprint-ru.md, custometry-technical-blueprint-human-ru.md, docs/architecture/system-design.md, docs/architecture/bounded-context-map.md, tests/golden/retail-demo-manifest.json]
 change_scope:
   allowed_write_paths: [.codex/delivery/tickets/W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE.md, .codex/delivery/evidence/W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE.md, packages/artifacts/**, packages/execution/**, packages/ingestion/**, packages/data_quality/**, packages/semantic_model/**, apps/worker_data/**, packages/contracts/data_pipeline/**, pyproject.toml, uv.lock, migrations/versions/*_data_pipeline.py, tests/unit/data_pipeline/**, tests/contract/data_pipeline/**, tests/integration/data_pipeline/**]
@@ -22,7 +22,7 @@ validation:
   proof_boundary: retail-source-to-immutable-artifact-dq-and-semantic-publication
   evidence_target: .codex/delivery/evidence/W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE.md]
 ---
 
 # Outcome

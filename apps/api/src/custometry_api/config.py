@@ -39,6 +39,7 @@ class Settings(BaseSettings):
     source_postgresql_password_file: Path = Path("/run/secrets/demo_source_reader_password")
     source_postgresql_connect_timeout_seconds: int = Field(default=3, ge=1, le=10)
     source_postgresql_statement_timeout_ms: int = Field(default=5_000, ge=100, le=60_000)
+    analytics_artifact_root: Path = Path("/var/lib/custometry/artifacts")
 
     @field_validator("cors_allowed_origins")
     @classmethod

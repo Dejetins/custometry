@@ -9,6 +9,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from custometry_api.config import Settings
+from custometry_api.analytics.router import create_analytics_app
 from custometry_api.connections.router import create_connection_app
 from custometry_api.health import PostgreSQLReadinessProbe, ReadinessProbe
 from custometry_api.identity.router import create_identity_app
@@ -106,6 +107,7 @@ def create_app(
     )
     app.mount("/connections", create_connection_app(runtime_settings), name="connections")
     app.mount("/imports", create_import_app(runtime_settings), name="imports")
+    app.mount("/analytics", create_analytics_app(runtime_settings), name="analytics")
 
     _ = (no_store_health_responses, live, ready, version)
     return app

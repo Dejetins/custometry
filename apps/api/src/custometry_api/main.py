@@ -15,6 +15,7 @@ from custometry_api.health import PostgreSQLReadinessProbe, ReadinessProbe
 from custometry_api.identity.router import create_identity_app
 from custometry_api.imports.router import create_import_app
 from custometry_api.organization.router import create_organization_app
+from custometry_api.people.router import create_people_app
 
 
 class HealthResponse(BaseModel):
@@ -108,6 +109,7 @@ def create_app(
     app.mount("/connections", create_connection_app(runtime_settings), name="connections")
     app.mount("/imports", create_import_app(runtime_settings), name="imports")
     app.mount("/analytics", create_analytics_app(runtime_settings), name="analytics")
+    app.mount("/people", create_people_app(runtime_settings), name="people")
 
     _ = (no_store_health_responses, live, ready, version)
     return app

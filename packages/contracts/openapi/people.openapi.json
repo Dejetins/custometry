@@ -1,0 +1,472 @@
+{
+  "components": {
+    "schemas": {
+      "ActivityProjection": {
+        "additionalProperties": false,
+        "properties": {
+          "windows": {
+            "items": {
+              "$ref": "#/components/schemas/ActivityWindowProjection"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "title": "Windows",
+            "type": "array"
+          }
+        },
+        "required": [
+          "windows"
+        ],
+        "title": "ActivityProjection",
+        "type": "object"
+      },
+      "ActivityWindowProjection": {
+        "additionalProperties": false,
+        "properties": {
+          "coauthored_count": {
+            "minimum": 0.0,
+            "title": "Coauthored Count",
+            "type": "integer"
+          },
+          "created_count": {
+            "minimum": 0.0,
+            "title": "Created Count",
+            "type": "integer"
+          },
+          "last_activity_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Activity At"
+          },
+          "maintained_count": {
+            "minimum": 0.0,
+            "title": "Maintained Count",
+            "type": "integer"
+          },
+          "materially_updated_count": {
+            "minimum": 0.0,
+            "title": "Materially Updated Count",
+            "type": "integer"
+          },
+          "published_count": {
+            "minimum": 0.0,
+            "title": "Published Count",
+            "type": "integer"
+          },
+          "resolved_count": {
+            "minimum": 0.0,
+            "title": "Resolved Count",
+            "type": "integer"
+          },
+          "reviewed_count": {
+            "minimum": 0.0,
+            "title": "Reviewed Count",
+            "type": "integer"
+          },
+          "window_days": {
+            "enum": [
+              30,
+              90
+            ],
+            "title": "Window Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "window_days",
+          "created_count",
+          "published_count",
+          "materially_updated_count",
+          "maintained_count",
+          "coauthored_count",
+          "reviewed_count",
+          "resolved_count",
+          "last_activity_at"
+        ],
+        "title": "ActivityWindowProjection",
+        "type": "object"
+      },
+      "ContributorListResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "people": {
+            "items": {
+              "$ref": "#/components/schemas/ContributorProfileResponse"
+            },
+            "title": "People",
+            "type": "array"
+          },
+          "visible_count": {
+            "minimum": 0.0,
+            "title": "Visible Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "people",
+          "visible_count"
+        ],
+        "title": "ContributorListResponse",
+        "type": "object"
+      },
+      "ContributorProfileResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "activity": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActivityProjection"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contribution_labels": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Contribution Labels",
+            "type": "array"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "expertise_domains": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Expertise Domains",
+            "type": "array"
+          },
+          "primary_org_unit": {
+            "$ref": "#/components/schemas/OrgUnitProjection"
+          },
+          "principal_id": {
+            "format": "uuid",
+            "title": "Principal Id",
+            "type": "string"
+          },
+          "projection_updated_at": {
+            "format": "date-time",
+            "title": "Projection Updated At",
+            "type": "string"
+          },
+          "projection_version": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Projection Version",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "view_variant": {
+            "enum": [
+              "public",
+              "self",
+              "leader",
+              "grantee"
+            ],
+            "title": "View Variant",
+            "type": "string"
+          },
+          "visible_resource_count": {
+            "minimum": 0.0,
+            "title": "Visible Resource Count",
+            "type": "integer"
+          },
+          "visible_resources": {
+            "items": {
+              "$ref": "#/components/schemas/VisibleResourceProjection"
+            },
+            "title": "Visible Resources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "principal_id",
+          "display_name",
+          "title",
+          "primary_org_unit",
+          "contribution_labels",
+          "expertise_domains",
+          "view_variant",
+          "visible_resources",
+          "visible_resource_count",
+          "activity",
+          "projection_version",
+          "projection_updated_at"
+        ],
+        "title": "ContributorProfileResponse",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "OrgUnitProjection": {
+        "additionalProperties": false,
+        "properties": {
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "org_unit_id": {
+            "format": "uuid",
+            "title": "Org Unit Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "org_unit_id",
+          "display_name"
+        ],
+        "title": "OrgUnitProjection",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      },
+      "VisibleResourceProjection": {
+        "additionalProperties": false,
+        "properties": {
+          "last_activity_at": {
+            "format": "date-time",
+            "title": "Last Activity At",
+            "type": "string"
+          },
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "resource_type": {
+            "enum": [
+              "dashboard",
+              "report",
+              "research"
+            ],
+            "title": "Resource Type",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_type",
+          "resource_id",
+          "title",
+          "last_activity_at"
+        ],
+        "title": "VisibleResourceProjection",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "Custometry People & Creators API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/contributors": {
+      "get": {
+        "operationId": "list_people_contributors",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Search"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContributorListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List People"
+      }
+    },
+    "/contributors/{principal_id}": {
+      "get": {
+        "operationId": "get_people_contributor",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "principal_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Principal Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContributorProfileResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Person"
+      }
+    }
+  }
+}

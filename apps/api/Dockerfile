@@ -32,12 +32,14 @@ RUN groupadd --system --gid 10001 custometry \
 WORKDIR /app
 COPY --from=build --chown=10001:10001 /app/.venv /app/.venv
 COPY --chown=10001:10001 packages/identity_access /app/.venv/lib/python3.12/site-packages/packages/identity_access
+COPY --chown=10001:10001 packages/presentation /app/.venv/lib/python3.12/site-packages/packages/presentation
 COPY --chown=10001:10001 packages/connection_catalog /app/.venv/lib/python3.12/site-packages/packages/connection_catalog
 COPY --chown=10001:10001 packages/data_documentation /app/.venv/lib/python3.12/site-packages/packages/data_documentation
 COPY --chown=10001:10001 packages/analytics_core /app/.venv/lib/python3.12/site-packages/packages/analytics_core
 COPY --chown=10001:10001 packages/contracts/analytics /app/.venv/lib/python3.12/site-packages/packages/contracts/analytics
 COPY --chown=10001:10001 packages/contracts/identity /app/.venv/lib/python3.12/site-packages/packages/contracts/identity
 COPY --chown=10001:10001 packages/contracts/organization /app/.venv/lib/python3.12/site-packages/packages/contracts/organization
+COPY --chown=10001:10001 packages/contracts/people /app/.venv/lib/python3.12/site-packages/packages/contracts/people
 COPY --chown=10001:10001 packages/contracts/source_intake /app/.venv/lib/python3.12/site-packages/packages/contracts/source_intake
 COPY --chown=10001:10001 plugins/connector_files /app/.venv/lib/python3.12/site-packages/plugins/connector_files
 COPY --chown=10001:10001 plugins/connector_postgresql /app/.venv/lib/python3.12/site-packages/plugins/connector_postgresql

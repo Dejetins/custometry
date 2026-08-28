@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W35-WEB-NOTIFICATION-INBOX
-status: ready
+status: accepted
 workstream_id: W35
 summary: Implement the global UI-NOTIFY-001 Notification Inbox production route with truthful acknowledgement, deep links, and browser proof.
 requirement_ids: [NOTIFY-001, NOTIFY-003, NOTIFY-004, NOTIFY-005, NOTIFY-007, RBAC-002, A11Y-001, I18N-001]
@@ -22,7 +22,7 @@ validation:
   proof_boundary: production-ui-notify-001-with-real-adapter-or-explicit-unavailable-boundary-and-real-browser-observation
   evidence_target: .codex/delivery/evidence/W35-WEB-NOTIFICATION-INBOX.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W35-WEB-NOTIFICATION-INBOX.md]
 ---
 
 # Outcome

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from datetime import UTC, datetime
-from typing import Any
-from uuid import UUID, uuid4
+from typing import Any, Literal, cast
+from uuid import UUID, uuid4, uuid5
 
 from psycopg import Connection
 from psycopg.rows import dict_row
@@ -14,6 +14,10 @@ from psycopg.types.json import Jsonb
 from packages.contracts.execution import (
     ExecutionActor,
     ExecutionControlFailure,
+    ExecutionTerminalEvent,
+    ExecutionTerminalEventType,
+    ExecutionTerminalSeverity,
+    ExecutionTerminalStatus,
     VisibilityScope,
 )
 from packages.execution.domain.model import (
@@ -28,6 +32,14 @@ from packages.execution.domain.model import (
 
 
 Connect = Callable[[], Connection[Any]]
+TERMINAL_EVENT_NAMESPACE = UUID("94d68fc8-568a-4c76-9682-e12eb459d861")
+TERMINAL_EVENT_COMMANDS = frozenset(
+    {
+        "event.execution.failed.v1",
+        "event.execution.stuck.v1",
+        "event.execution.recovered.v1",
+    }
+)
 
 
 class PostgresExecutionControlStore:
@@ -74,6 +86,55 @@ class PostgresExecutionControlStore:
             safe_remediation=(
                 None if row["safe_remediation"] is None else str(row["safe_remediation"])
             ),
+        )
+
+    @staticmethod
+    def _terminal_event_from_row(row: Any) -> ExecutionTerminalEvent:
+        payload = dict(row["payload"])
+        return ExecutionTerminalEvent(
+            event_id=UUID(str(row["id"])),
+            event_type=cast(ExecutionTerminalEventType, str(payload["event_type"])),
+            event_version="1.0.0",
+            source_owner="execution",
+            workspace_id=UUID(str(row["workspace_id"])),
+            resource_type="run",
+            resource_id=UUID(str(payload["resource_id"])),
+            run_id=UUID(str(row["run_id"])),
+            attempt_id=UUID(str(row["attempt_id"])),
+            retry_of_run_id=(
+                None
+                if payload.get("retry_of_run_id") is None
+                else UUID(str(payload["retry_of_run_id"]))
+            ),
+            retry_of_attempt_id=(
+                None
+                if payload.get("retry_of_attempt_id") is None
+                else UUID(str(payload["retry_of_attempt_id"]))
+            ),
+            status_code=cast(ExecutionTerminalStatus, str(payload["status_code"])),
+            reason_code=str(payload["reason_code"]),
+            severity=cast(ExecutionTerminalSeverity, str(payload["severity"])),
+            category="execution",
+            occurred_at=datetime.fromisoformat(str(payload["occurred_at"])),
+            message_code=cast(
+                Literal["RUN_FAILED", "RUN_STUCK", "RUN_RECOVERED"],
+                str(payload["message_code"]),
+            ),
+            message_parameters=tuple(
+                sorted(
+                    (str(key), str(value))
+                    for key, value in dict(payload["message_parameters"]).items()
+                )
+            ),
+            group_key=str(payload["group_key"]),
+            route_id="UI-OPS-002",
+            route_parameters=tuple(
+                sorted(
+                    (str(key), str(value))
+                    for key, value in dict(payload["route_parameters"]).items()
+                )
+            ),
+            trace_id=None if payload.get("trace_id") is None else str(payload["trace_id"]),
         )
 
     @staticmethod
@@ -137,6 +198,83 @@ class PostgresExecutionControlStore:
               updated_at = CURRENT_TIMESTAMP, last_error_code = NULL
             """,
             (uuid4(), workspace_id, run_id, attempt_id, command_type, Jsonb(payload)),
+        )
+
+    @staticmethod
+    def _terminal_event(
+        cursor: Any,
+        *,
+        event_type: ExecutionTerminalEventType,
+        workspace_id: UUID,
+        run_id: UUID,
+        attempt_id: UUID,
+        retry_of_run_id: UUID | None,
+        retry_of_attempt_id: UUID | None,
+        status_code: ExecutionTerminalStatus,
+        reason_code: str,
+        severity: ExecutionTerminalSeverity,
+        occurred_at: datetime,
+        trace_id: str | None,
+    ) -> None:
+        suffix = event_type.rsplit(".", maxsplit=1)[-1]
+        command_type = f"event.execution.{suffix}.v1"
+        event_id = uuid5(
+            TERMINAL_EVENT_NAMESPACE,
+            f"1.0.0:{workspace_id}:{run_id}:{attempt_id}:{event_type}",
+        )
+        cursor.execute(
+            """
+            WITH RECURSIVE lineage AS (
+              SELECT id, retry_of_id FROM execution_runs WHERE id = %s
+              UNION ALL
+              SELECT parent.id, parent.retry_of_id
+              FROM execution_runs AS parent
+              JOIN lineage AS child ON child.retry_of_id = parent.id
+            )
+            SELECT id FROM lineage WHERE retry_of_id IS NULL LIMIT 1
+            """,
+            (run_id,),
+        )
+        root = cursor.fetchone()
+        group_run_id = UUID(str(root["id"])) if root is not None else (retry_of_run_id or run_id)
+        message_code = cast(
+            Literal["RUN_FAILED", "RUN_STUCK", "RUN_RECOVERED"],
+            f"RUN_{status_code}",
+        )
+        payload: dict[str, object] = {
+            "event_id": str(event_id),
+            "event_type": event_type,
+            "event_version": "1.0.0",
+            "source_owner": "execution",
+            "workspace_id": str(workspace_id),
+            "resource_type": "run",
+            "resource_id": str(run_id),
+            "run_id": str(run_id),
+            "attempt_id": str(attempt_id),
+            "retry_of_run_id": None if retry_of_run_id is None else str(retry_of_run_id),
+            "retry_of_attempt_id": (
+                None if retry_of_attempt_id is None else str(retry_of_attempt_id)
+            ),
+            "status_code": status_code,
+            "reason_code": reason_code,
+            "severity": severity,
+            "category": "execution",
+            "occurred_at": occurred_at.astimezone(UTC).isoformat(),
+            "message_code": message_code,
+            "message_parameters": {"status_code": status_code, "reason_code": reason_code},
+            "group_key": f"execution-run:{group_run_id}",
+            "route_id": "UI-OPS-002",
+            "route_parameters": {"run_id": str(run_id)},
+            "trace_id": trace_id,
+        }
+        cursor.execute(
+            """
+            INSERT INTO execution_outbox
+              (id, workspace_id, run_id, attempt_id, command_type, payload, state, available_at)
+            VALUES (%s, %s, %s, %s, %s, %s, 'pending', CURRENT_TIMESTAMP)
+            ON CONFLICT (run_id, attempt_id, command_type) DO NOTHING
+            """,
+            (event_id, workspace_id, run_id, attempt_id, command_type, Jsonb(payload)),
         )
 
     def create_run(
@@ -618,7 +756,8 @@ class PostgresExecutionControlStore:
             cursor.execute(
                 """
                 SELECT * FROM execution_outbox
-                WHERE state = 'pending' AND available_at <= CURRENT_TIMESTAMP
+                WHERE command_type IN ('execute', 'cancel')
+                  AND state = 'pending' AND available_at <= CURRENT_TIMESTAMP
                 ORDER BY created_at FOR UPDATE SKIP LOCKED LIMIT %s
                 """,
                 (limit,),
@@ -636,12 +775,68 @@ class PostgresExecutionControlStore:
                 )
         return tuple(dict(row) for row in rows)
 
+    def claim_terminal_events(self, *, limit: int = 100) -> tuple[ExecutionTerminalEvent, ...]:
+        with (
+            self._connect() as connection,
+            connection.transaction(),
+            connection.cursor(row_factory=dict_row) as cursor,
+        ):
+            cursor.execute(
+                """
+                SELECT * FROM execution_outbox
+                WHERE command_type = ANY(%s)
+                  AND state = 'pending' AND available_at <= CURRENT_TIMESTAMP
+                ORDER BY created_at FOR UPDATE SKIP LOCKED LIMIT %s
+                """,
+                (list(sorted(TERMINAL_EVENT_COMMANDS)), limit),
+            )
+            rows = cursor.fetchall()
+            ids = [row["id"] for row in rows]
+            if ids:
+                cursor.execute(
+                    """
+                    UPDATE execution_outbox SET state = 'publishing',
+                      delivery_attempts = delivery_attempts + 1, updated_at = CURRENT_TIMESTAMP
+                    WHERE id = ANY(%s)
+                    """,
+                    (ids,),
+                )
+        return tuple(self._terminal_event_from_row(row) for row in rows)
+
+    def mark_terminal_event_published(self, event_id: UUID) -> None:
+        with self._connect() as connection, connection.transaction(), connection.cursor() as cursor:
+            cursor.execute(
+                """
+                UPDATE execution_outbox SET state = 'published', published_at = CURRENT_TIMESTAMP,
+                  updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s AND command_type = ANY(%s) AND state = 'publishing'
+                """,
+                (event_id, list(sorted(TERMINAL_EVENT_COMMANDS))),
+            )
+            if cursor.rowcount != 1:
+                raise ExecutionControlFailure("EVENT_OUTBOX_STATE_CONFLICT")
+
+    def release_terminal_event(self, event_id: UUID, error_code: str) -> None:
+        with self._connect() as connection, connection.transaction(), connection.cursor() as cursor:
+            cursor.execute(
+                """
+                UPDATE execution_outbox SET state = 'pending', last_error_code = %s,
+                  available_at = CURRENT_TIMESTAMP + interval '1 second',
+                  updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s AND command_type = ANY(%s) AND state = 'publishing'
+                """,
+                (error_code, event_id, list(sorted(TERMINAL_EVENT_COMMANDS))),
+            )
+            if cursor.rowcount != 1:
+                raise ExecutionControlFailure("EVENT_OUTBOX_STATE_CONFLICT")
+
     def mark_outbox_published(self, outbox_id: UUID) -> None:
         with self._connect() as connection, connection.transaction(), connection.cursor() as cursor:
             cursor.execute(
                 """
                 UPDATE execution_outbox SET state = 'published', published_at = CURRENT_TIMESTAMP,
-                  updated_at = CURRENT_TIMESTAMP WHERE id = %s AND state = 'publishing'
+                  updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s AND command_type IN ('execute', 'cancel') AND state = 'publishing'
                 """,
                 (outbox_id,),
             )
@@ -654,7 +849,8 @@ class PostgresExecutionControlStore:
                 """
                 UPDATE execution_outbox SET state = 'pending', last_error_code = %s,
                   available_at = CURRENT_TIMESTAMP + interval '1 second',
-                  updated_at = CURRENT_TIMESTAMP WHERE id = %s AND state = 'publishing'
+                  updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s AND command_type IN ('execute', 'cancel') AND state = 'publishing'
                 """,
                 (error_code, outbox_id),
             )
@@ -853,6 +1049,58 @@ class PostgresExecutionControlStore:
                     request_id=request_id,
                 )
                 run = updated
+                if target == "FAILED":
+                    self._terminal_event(
+                        cursor,
+                        event_type="execution.run.failed",
+                        workspace_id=UUID(str(run["workspace_id"])),
+                        run_id=UUID(str(run["id"])),
+                        attempt_id=attempt_id,
+                        retry_of_run_id=(
+                            None if run["retry_of_id"] is None else UUID(str(run["retry_of_id"]))
+                        ),
+                        retry_of_attempt_id=(
+                            None
+                            if attempt["retry_of_id"] is None
+                            else UUID(str(attempt["retry_of_id"]))
+                        ),
+                        status_code="FAILED",
+                        reason_code=(
+                            "RESOURCE_LIMIT_EXCEEDED"
+                            if failure_code == "RESOURCE_LIMIT_EXCEEDED"
+                            else "EXECUTION_FAILED"
+                        ),
+                        severity="critical",
+                        occurred_at=datetime.now(UTC),
+                        trace_id=(
+                            None if run["safe_trace_id"] is None else str(run["safe_trace_id"])
+                        ),
+                    )
+                elif target == "SUCCEEDED" and (
+                    run["retry_of_id"] is not None or attempt["retry_of_id"] is not None
+                ):
+                    self._terminal_event(
+                        cursor,
+                        event_type="execution.run.recovered",
+                        workspace_id=UUID(str(run["workspace_id"])),
+                        run_id=UUID(str(run["id"])),
+                        attempt_id=attempt_id,
+                        retry_of_run_id=(
+                            None if run["retry_of_id"] is None else UUID(str(run["retry_of_id"]))
+                        ),
+                        retry_of_attempt_id=(
+                            None
+                            if attempt["retry_of_id"] is None
+                            else UUID(str(attempt["retry_of_id"]))
+                        ),
+                        status_code="RECOVERED",
+                        reason_code="RETRY_SUCCEEDED",
+                        severity="info",
+                        occurred_at=datetime.now(UTC),
+                        trace_id=(
+                            None if run["safe_trace_id"] is None else str(run["safe_trace_id"])
+                        ),
+                    )
         return self._run(run)
 
     def apply_cancel(
@@ -966,7 +1214,9 @@ class PostgresExecutionControlStore:
 
             cursor.execute(
                 """
-                SELECT a.*, r.state AS run_state FROM execution_attempts AS a
+                SELECT a.*, r.state AS run_state, r.retry_of_id AS retry_of_run_id,
+                       r.safe_trace_id AS run_safe_trace_id
+                FROM execution_attempts AS a
                 JOIN execution_runs AS r ON r.id = a.run_id
                 WHERE a.state = 'RUNNING' AND a.lease_expires_at < %s
                 FOR UPDATE OF a, r
@@ -1041,6 +1291,32 @@ class PostgresExecutionControlStore:
                         "retry_of_id": str(expired["id"]),
                     },
                 )
+                self._terminal_event(
+                    cursor,
+                    event_type="execution.run.stuck",
+                    workspace_id=UUID(str(expired["workspace_id"])),
+                    run_id=UUID(str(expired["run_id"])),
+                    attempt_id=UUID(str(expired["id"])),
+                    retry_of_run_id=(
+                        None
+                        if expired["retry_of_run_id"] is None
+                        else UUID(str(expired["retry_of_run_id"]))
+                    ),
+                    retry_of_attempt_id=(
+                        None
+                        if expired["retry_of_id"] is None
+                        else UUID(str(expired["retry_of_id"]))
+                    ),
+                    status_code="STUCK",
+                    reason_code="LEASE_EXPIRED",
+                    severity="warning",
+                    occurred_at=observed_at,
+                    trace_id=(
+                        None
+                        if expired["run_safe_trace_id"] is None
+                        else str(expired["run_safe_trace_id"])
+                    ),
+                )
                 findings.append("EXPIRED_LEASE_FENCED_AND_RETRIED")
                 self._finding(cursor, expired, "EXPIRED_LEASE", "FENCE_AND_RETRY", request_id, observed_at)
 
@@ -1110,6 +1386,78 @@ class PostgresExecutionControlStore:
                     request_id,
                     observed_at,
                 )
+                if target in {"FAILED", "SUCCEEDED"}:
+                    cursor.execute(
+                        """
+                        SELECT id, retry_of_id, failure_code
+                        FROM execution_attempts
+                        WHERE run_id = %s AND state = %s
+                        ORDER BY attempt_number DESC LIMIT 1
+                        """,
+                        (unfinished["id"], target),
+                    )
+                    terminal_attempt = cursor.fetchone()
+                    if terminal_attempt is not None and target == "FAILED":
+                        self._terminal_event(
+                            cursor,
+                            event_type="execution.run.failed",
+                            workspace_id=UUID(str(unfinished["workspace_id"])),
+                            run_id=UUID(str(unfinished["id"])),
+                            attempt_id=UUID(str(terminal_attempt["id"])),
+                            retry_of_run_id=(
+                                None
+                                if unfinished["retry_of_id"] is None
+                                else UUID(str(unfinished["retry_of_id"]))
+                            ),
+                            retry_of_attempt_id=(
+                                None
+                                if terminal_attempt["retry_of_id"] is None
+                                else UUID(str(terminal_attempt["retry_of_id"]))
+                            ),
+                            status_code="FAILED",
+                            reason_code=(
+                                "RESOURCE_LIMIT_EXCEEDED"
+                                if terminal_attempt["failure_code"] == "RESOURCE_LIMIT_EXCEEDED"
+                                else "EXECUTION_FAILED"
+                            ),
+                            severity="critical",
+                            occurred_at=observed_at,
+                            trace_id=(
+                                None
+                                if unfinished["safe_trace_id"] is None
+                                else str(unfinished["safe_trace_id"])
+                            ),
+                        )
+                    elif terminal_attempt is not None and (
+                        unfinished["retry_of_id"] is not None
+                        or terminal_attempt["retry_of_id"] is not None
+                    ):
+                        self._terminal_event(
+                            cursor,
+                            event_type="execution.run.recovered",
+                            workspace_id=UUID(str(unfinished["workspace_id"])),
+                            run_id=UUID(str(unfinished["id"])),
+                            attempt_id=UUID(str(terminal_attempt["id"])),
+                            retry_of_run_id=(
+                                None
+                                if unfinished["retry_of_id"] is None
+                                else UUID(str(unfinished["retry_of_id"]))
+                            ),
+                            retry_of_attempt_id=(
+                                None
+                                if terminal_attempt["retry_of_id"] is None
+                                else UUID(str(terminal_attempt["retry_of_id"]))
+                            ),
+                            status_code="RECOVERED",
+                            reason_code="RETRY_SUCCEEDED",
+                            severity="info",
+                            occurred_at=observed_at,
+                            trace_id=(
+                                None
+                                if unfinished["safe_trace_id"] is None
+                                else str(unfinished["safe_trace_id"])
+                            ),
+                        )
         return tuple(findings)
 
     @staticmethod

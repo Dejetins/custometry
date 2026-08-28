@@ -4,15 +4,11 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W35-WEB-NOTIFICATION-INBOX
-status: blocked
+status: ready
 workstream_id: W35
 summary: Implement the global UI-NOTIFY-001 Notification Inbox production route with truthful acknowledgement, deep links, and browser proof.
 requirement_ids: [NOTIFY-001, NOTIFY-003, NOTIFY-004, NOTIFY-005, NOTIFY-007, RBAC-002, A11Y-001, I18N-001]
-blockers: [W37-INAPP-NOTIFICATION-INBOX-API]
-blocker_record:
-  technical_blocker: W31 is accepted, but UI-NOTIFY-001 has no accepted permission-filtered inbox projection, acknowledgement persistence, locale-neutral event API, or duplicate/revocation runtime proof; W37 is not accepted.
-  evidence: [.codex/delivery/tickets/W37-INAPP-NOTIFICATION-INBOX-API.md]
-  next_safe_action: Accept W37 at its declared API, PostgreSQL, outbox-projection, authorization-recheck, and audit boundary, then revalidate this ticket and perform a separate blocked-to-ready frontmatter transition.
+blockers: []
 context_sources: [AGENTS.md, .codex/AGENTS.md, docs/architecture/ui/custometry-web-implementation-source-contract-v1.md, custometry-technical-blueprint-ru.md, custometry-ui-blueprint-ru.md, packages/contracts/routes/ui-route-contracts.json, packages/contracts/routes/ui-surface-contracts.json, .codex/delivery/tickets/W31-WEB-PRODUCTION-SHELL-ROUTING.md, .codex/delivery/specs/in-app-notification-inbox.md, .codex/delivery/tickets/W37-INAPP-NOTIFICATION-INBOX-API.md]
 change_scope:
   allowed_write_paths: [.codex/delivery/tickets/W35-WEB-NOTIFICATION-INBOX.md, .codex/delivery/evidence/W35-WEB-NOTIFICATION-INBOX.md, apps/web/src/features/notifications/**, apps/web/src/app/routes/features/notifications.tsx, apps/web/tests/notifications/**, tests/e2e/web-notifications/**, tests/accessibility/web-notifications/**]

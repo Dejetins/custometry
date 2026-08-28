@@ -4,15 +4,11 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W37-INAPP-NOTIFICATION-INBOX-API
-status: blocked
+status: ready
 workstream_id: W37
 summary: Publish and prove the permission-filtered in-app inbox API with duplicate-safe event projection, locale-neutral content, acknowledgement persistence, safe deep links, and audit.
 requirement_ids: [NOTIFY-001, NOTIFY-002, NOTIFY-003, NOTIFY-004, NOTIFY-005, NOTIFY-007, NOTIFY-008, RBAC-002]
-blockers: [W36-EXECUTION-CONTROL-OPERATOR-API]
-blocker_record:
-  technical_blocker: The inbox unit requires at least one accepted source event and durable outbox producer for failed, stuck, or recovered execution; W36 is not accepted.
-  evidence: [.codex/delivery/tickets/W36-EXECUTION-CONTROL-OPERATOR-API.md]
-  next_safe_action: Accept W36 at its declared execution API and disposable-worker boundary, then revalidate W37 and perform a separate blocked-to-ready frontmatter transition.
+blockers: []
 context_sources: [AGENTS.md, .codex/AGENTS.md, .codex/delivery/specs/in-app-notification-inbox.md, custometry-technical-blueprint-ru.md, custometry-technical-blueprint-human-ru.md, custometry-ui-blueprint-ru.md, docs/architecture/system-design.md, docs/architecture/bounded-context-map.md, packages/contracts/routes/ui-route-contracts.json, .codex/delivery/tickets/W36-EXECUTION-CONTROL-OPERATOR-API.md]
 change_scope:
   allowed_write_paths: [.codex/delivery/tickets/W37-INAPP-NOTIFICATION-INBOX-API.md, .codex/delivery/evidence/W37-INAPP-NOTIFICATION-INBOX-API.md, packages/notifications/**, apps/api/src/custometry_api/notifications/**, apps/api/src/custometry_api/main.py, apps/api/src/custometry_api/config.py, apps/api/pyproject.toml, packages/contracts/notifications/**, packages/contracts/openapi/**, packages/contracts/schemas/**, packages/contracts/src/**, docs/contracts/contract-drift.json, pyproject.toml, uv.lock, migrations/versions/*_notifications.py, tests/unit/notifications/**, tests/contract/notifications/**, tests/integration/notifications/**]

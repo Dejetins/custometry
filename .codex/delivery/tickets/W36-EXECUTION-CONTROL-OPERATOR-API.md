@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W36-EXECUTION-CONTROL-OPERATOR-API
-status: ready
+status: accepted
 workstream_id: W36
 summary: Publish and prove the policy-filtered operator run query and command API over durable execution-control transitions, cancellation, retry, fencing, and reconciliation.
 requirement_ids: [UC-010, EXEC-STATE-001, EXEC-STATE-002, EXEC-STATE-003, EXEC-STATE-004, EXEC-STATE-006, EXEC-STATE-007, EXEC-CANCEL-001, EXEC-CANCEL-003, EXEC-CANCEL-004, EXEC-CANCEL-005, EXEC-CANCEL-006, ADMIN-003, ADMIN-005, RBAC-002]
@@ -22,7 +22,7 @@ validation:
   proof_boundary: policy-filtered-operator-run-api-postgresql-state-outbox-and-disposable-worker-cancel-retry-reconciliation
   evidence_target: .codex/delivery/evidence/W36-EXECUTION-CONTROL-OPERATOR-API.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W36-EXECUTION-CONTROL-OPERATOR-API.md]
 ---
 
 # Outcome

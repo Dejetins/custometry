@@ -16,6 +16,7 @@ from custometry_api.identity.router import create_identity_app
 from custometry_api.imports.router import create_import_app
 from custometry_api.organization.router import create_organization_app
 from custometry_api.people.router import create_people_app
+from custometry_api.runs.router import create_runs_app
 
 
 class HealthResponse(BaseModel):
@@ -59,7 +60,15 @@ def create_app(
         allow_origins=runtime_settings.cors_allowed_origins,
         allow_credentials=True,
         allow_methods=["GET", "POST", "DELETE"],
-        allow_headers=["Authorization", "Content-Type", "X-Bootstrap-Token", "X-CSRF-Token"],
+        allow_headers=[
+            "Authorization",
+            "Content-Type",
+            "Idempotency-Key",
+            "X-Bootstrap-Token",
+            "X-Contract-Version",
+            "X-CSRF-Token",
+            "X-Request-ID",
+        ],
     )
 
     @app.middleware("http")
@@ -110,6 +119,7 @@ def create_app(
     app.mount("/imports", create_import_app(runtime_settings), name="imports")
     app.mount("/analytics", create_analytics_app(runtime_settings), name="analytics")
     app.mount("/people", create_people_app(runtime_settings), name="people")
+    app.mount("/execution", create_runs_app(runtime_settings), name="execution")
 
     _ = (no_store_health_responses, live, ready, version)
     return app

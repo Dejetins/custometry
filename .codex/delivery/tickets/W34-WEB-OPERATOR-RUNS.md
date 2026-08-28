@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W34-WEB-OPERATOR-RUNS
-status: ready
+status: accepted
 workstream_id: W34
 summary: Implement the UI-OPS-001 Operator Center production route with truthful run lifecycle actions, queue state, and boundary-matched browser proof.
 requirement_ids: [UC-010, OPS-001, EXEC-STATE-001, EXEC-STATE-002, EXEC-STATE-006, EXEC-STATE-007, EXEC-CANCEL-005, ADMIN-003, ADMIN-005, A11Y-001, I18N-001]
@@ -22,7 +22,7 @@ validation:
   proof_boundary: production-ui-ops-001-with-real-adapter-or-explicit-unavailable-boundary-and-real-browser-observation
   evidence_target: .codex/delivery/evidence/W34-WEB-OPERATOR-RUNS.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W34-WEB-OPERATOR-RUNS.md]
 ---
 
 # Outcome

@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W37-INAPP-NOTIFICATION-INBOX-API
-status: ready
+status: accepted
 workstream_id: W37
 summary: Publish and prove the permission-filtered in-app inbox API with duplicate-safe event projection, locale-neutral content, acknowledgement persistence, safe deep links, and audit.
 requirement_ids: [NOTIFY-001, NOTIFY-002, NOTIFY-003, NOTIFY-004, NOTIFY-005, NOTIFY-007, NOTIFY-008, RBAC-002]
@@ -22,7 +22,7 @@ validation:
   proof_boundary: permission-filtered-inapp-inbox-api-postgresql-outbox-projection-revocation-and-audit
   evidence_target: .codex/delivery/evidence/W37-INAPP-NOTIFICATION-INBOX-API.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W37-INAPP-NOTIFICATION-INBOX-API.md]
 ---
 
 # Outcome

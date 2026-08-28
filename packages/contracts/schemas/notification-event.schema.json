@@ -1,0 +1,135 @@
+{
+  "$id": "https://contracts.custometry.local/notifications/event-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "category": {
+      "enum": [
+        "run",
+        "data_quality",
+        "data_freshness",
+        "forecast",
+        "schedule",
+        "system",
+        "security",
+        "admin"
+      ]
+    },
+    "deep_link": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "parameters": {
+              "additionalProperties": {
+                "maxLength": 128,
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "route_id": {
+              "maxLength": 64,
+              "type": "string"
+            }
+          },
+          "required": [
+            "route_id",
+            "parameters"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "event_id": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "group_key": {
+      "maxLength": 128,
+      "type": "string"
+    },
+    "message_code": {
+      "pattern": "^[A-Z][A-Z0-9_]{2,79}$",
+      "type": "string"
+    },
+    "message_parameters": {
+      "additionalProperties": {
+        "type": [
+          "string",
+          "integer",
+          "boolean"
+        ]
+      },
+      "maxProperties": 16,
+      "type": "object"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "resolved": {
+      "type": "boolean"
+    },
+    "resource_id": {
+      "maxLength": 128,
+      "type": "string"
+    },
+    "resource_type": {
+      "maxLength": 128,
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "info",
+        "warning",
+        "critical"
+      ]
+    },
+    "source_owner": {
+      "maxLength": 128,
+      "type": "string"
+    },
+    "source_type": {
+      "maxLength": 128,
+      "type": "string"
+    },
+    "source_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "trace_id": {
+      "maxLength": 128,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "workspace_id": {
+      "format": "uuid",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "source_owner",
+    "source_type",
+    "source_version",
+    "workspace_id",
+    "resource_type",
+    "resource_id",
+    "severity",
+    "category",
+    "occurred_at",
+    "message_code",
+    "message_parameters",
+    "group_key",
+    "deep_link",
+    "trace_id",
+    "resolved"
+  ],
+  "title": "NotificationEventV1",
+  "type": "object"
+}

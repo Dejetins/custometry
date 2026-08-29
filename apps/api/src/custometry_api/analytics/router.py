@@ -88,11 +88,17 @@ class TypedFilterRequest(StrictModel):
         return FilterPredicate(field=self.field, operator=self.operator, value=value)
 
 
+def _empty_typed_filters() -> list[TypedFilterRequest]:
+    return []
+
+
 class AnalyticsRunRequest(StrictModel):
     result_type: Literal["sales", "customer", "rfm"]
     semantic_dataset_version_id: UUID
     comparison: TimeComparisonRequest
-    filters: list[TypedFilterRequest] = Field(default_factory=list, max_length=12)
+    filters: list[TypedFilterRequest] = Field(
+        default_factory=_empty_typed_filters, max_length=12
+    )
     rfm_score_bins: int = Field(default=5, ge=2, le=10)
     rfm_frequency_measure: Literal["receipt_count", "purchase_day_count"] = "receipt_count"
     rfm_segment_rule_set_version: Literal["rfm-retail-v1"] = "rfm-retail-v1"

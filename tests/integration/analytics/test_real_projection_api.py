@@ -5,6 +5,7 @@ from decimal import Decimal
 import hashlib
 import json
 from pathlib import Path
+from typing import cast
 from uuid import uuid4
 
 from fastapi.testclient import TestClient
@@ -58,8 +59,10 @@ def _request(semantic_version_id: str, result_type: str) -> dict[str, object]:
 
 
 def _metric(payload: dict[str, object], metric_id: str) -> dict[str, object]:
-    for group in payload["metric_groups"]:  # type: ignore[union-attr]
-        for metric in group["metrics"]:
+    groups = cast(list[dict[str, object]], payload["metric_groups"])
+    for group in groups:
+        metrics = cast(list[dict[str, object]], group["metrics"])
+        for metric in metrics:
             if metric["metric_id"] == metric_id:
                 return metric
     raise AssertionError(metric_id)
@@ -137,7 +140,7 @@ def test_real_postgresql_filesystem_and_authenticated_projection_boundary(
                 json=requests[result_type],
             )
             assert response.status_code == 200, response.text
-            created[result_type] = response.json()
+            created[result_type] = cast(dict[str, object], response.json())
 
         sales = created["sales"]
         revenue = _metric(sales, "net_revenue")
@@ -147,7 +150,8 @@ def test_real_postgresql_filesystem_and_authenticated_projection_boundary(
         assert Decimal(str(revenue["current_value"])) + Decimal(
             str(revenue["comparison_value"])
         ) == Decimal(expected)
-        assert [group["group_order"] for group in sales["metric_groups"]] == [10, 20]
+        metric_groups = cast(list[dict[str, object]], sales["metric_groups"])
+        assert [group["group_order"] for group in metric_groups] == [10, 20]
         assert created["rfm"]["rfm_profiles"]
 
         exact_second = client.post(
@@ -165,7 +169,7 @@ def test_real_postgresql_filesystem_and_authenticated_projection_boundary(
         assert hidden_list.status_code == 200
         assert hidden_list.json() == {"results": [], "visible_count": 0}
 
-    manifest = sales["manifest"]
+    manifest = cast(dict[str, object], sales["manifest"])
     result_path = artifact_root / str(manifest["relative_uri"])
     assert result_path.is_file()
     assert hashlib.sha256(result_path.read_bytes()).hexdigest() == manifest["content_hash"]
@@ -174,6 +178,8 @@ def test_real_postgresql_filesystem_and_authenticated_projection_boundary(
             "SELECT count(*), count(DISTINCT request_hash), count(DISTINCT storage_uri) FROM analytics_results WHERE workspace_id = %s",
             (data_pipeline_runtime.workspace_id,),
         )
-        total, identities, storage_paths = cursor.fetchone()
+        row = cursor.fetchone()
+        assert row is not None
+        total, identities, storage_paths = cast(tuple[int, int, int], row)
         assert total == identities == storage_paths
         assert total == 3

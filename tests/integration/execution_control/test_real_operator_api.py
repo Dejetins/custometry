@@ -6,6 +6,7 @@ from datetime import UTC, datetime, timedelta
 from multiprocessing import get_context
 from pathlib import Path
 import time
+from typing import TypedDict
 from uuid import UUID, uuid4
 
 import pytest
@@ -27,6 +28,14 @@ from tests.integration.execution_control.conftest import (
     ExecutionRuntime,
     migrate,
 )
+
+
+class MigrationArguments(TypedDict):
+    host: str
+    port: int
+    database: str
+    user: str
+    password_file: Path
 
 
 class TokenIdentity:
@@ -514,7 +523,7 @@ def test_resource_breach_envelope_and_driver_cancel_plus_hard_process_stop(
 def test_z_real_postgresql_migration_repeat_downgrade_and_reupgrade(
     execution_boundaries: ExecutionBoundaries,
 ) -> None:
-    arguments = {
+    arguments: MigrationArguments = {
         "host": execution_boundaries.database_host,
         "port": execution_boundaries.database_port,
         "database": "custometry",
@@ -529,4 +538,4 @@ def test_z_real_postgresql_migration_repeat_downgrade_and_reupgrade(
     migrate(**arguments, revision="head")
     with execution_boundaries.connect() as connection, connection.cursor() as cursor:
         cursor.execute("SELECT version_num FROM alembic_version")
-        assert cursor.fetchone() == ("0008_execution_control",)
+        assert cursor.fetchone() == ("0009_notifications",)

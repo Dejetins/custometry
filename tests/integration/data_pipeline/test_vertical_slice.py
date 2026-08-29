@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import UTC, datetime, timedelta
+from collections.abc import Callable
+from datetime import UTC, datetime, timedelta, tzinfo
 from pathlib import Path
-from uuid import uuid4
+from typing import Protocol, cast
+from uuid import UUID, uuid4
 
-import pyarrow.parquet as pq
+import pyarrow.parquet as pq  # pyright: ignore[reportMissingTypeStubs]
 import pytest
 import plugins.connector_postgresql.adapter as connector_adapter
 
@@ -20,10 +22,23 @@ from packages.data_quality.infrastructure.postgres import PostgresQualityReposit
 from packages.execution.infrastructure.postgres import PostgresExecutionRepository
 from packages.ingestion.domain.model import ExtractionBatchRequest
 from packages.ingestion.infrastructure.postgres import PostgresIngestionRepository
+from packages.connection_catalog.domain.model import ExtractionSession
+from plugins.connector_postgresql.adapter import PostgreSQLConnector
 from tests.integration.data_pipeline.conftest import DataPipelineRuntime
 
 
-def request(runtime: DataPipelineRuntime, *, source_system_id=None) -> ExtractionBatchRequest:
+class ParquetMetadata(Protocol):
+    num_rows: int
+
+
+read_parquet_metadata = cast(
+    Callable[[Path], ParquetMetadata], getattr(pq, "read_metadata")
+)
+
+
+def request(
+    runtime: DataPipelineRuntime, *, source_system_id: UUID | None = None
+) -> ExtractionBatchRequest:
     source_id = source_system_id or uuid4()
     return ExtractionBatchRequest(
         batch_id=uuid4(),
@@ -54,21 +69,41 @@ def file_sha256(path: Path) -> str:
 
 
 class RecordingConnector:
-    def __init__(self, delegate) -> None:
+    def __init__(self, delegate: PostgreSQLConnector) -> None:
         self.delegate = delegate
         self.begin_count = 0
         self.extracted_objects: list[str] = []
         self.outcomes: list[str] = []
 
-    def begin_extraction_session(self, **kwargs):
+    def begin_extraction_session(
+        self, *, workspace_id: UUID, source_system_id: UUID
+    ) -> ExtractionSession:
         self.begin_count += 1
-        return self.delegate.begin_extraction_session(**kwargs)
+        return self.delegate.begin_extraction_session(
+            workspace_id=workspace_id, source_system_id=source_system_id
+        )
 
-    def extract(self, **kwargs):
-        self.extracted_objects.append(str(kwargs["object_name"]))
-        return self.delegate.extract(**kwargs)
+    def extract(
+        self,
+        *,
+        session: ExtractionSession,
+        schema_name: str,
+        object_name: str,
+        columns: tuple[str, ...],
+        limit: int,
+    ) -> tuple[dict[str, object], ...]:
+        self.extracted_objects.append(object_name)
+        return self.delegate.extract(
+            session=session,
+            schema_name=schema_name,
+            object_name=object_name,
+            columns=columns,
+            limit=limit,
+        )
 
-    def close_extraction_session(self, session, outcome: str):
+    def close_extraction_session(
+        self, session: ExtractionSession, outcome: str
+    ) -> ExtractionSession:
         self.outcomes.append(outcome)
         return self.delegate.close_extraction_session(session, outcome)
 
@@ -106,7 +141,8 @@ def test_real_postgresql_to_filesystem_dq_semantic_publication_is_idempotent(
         path = store.resolve(artifact.relative_uri)
         assert path.is_file()
         assert file_sha256(path) == artifact.content_hash
-        assert pq.read_metadata(path).num_rows == artifact.row_count
+        metadata = read_parquet_metadata(path)
+        assert metadata.num_rows == artifact.row_count
 
     replay = runner.run(batch_request)
     assert replay.state == "committed"
@@ -151,7 +187,9 @@ def test_forced_crash_does_not_advance_watermark_and_retry_reuses_artifacts(
             "SELECT state, error_code, candidate_upper_watermark FROM ingestion_batches WHERE id = %s",
             (batch_request.batch_id,),
         )
-        state, error_code, candidate = cursor.fetchone()
+        row = cursor.fetchone()
+        assert row is not None
+        state, error_code, candidate = cast(tuple[str, str, datetime | None], row)
         assert state == "failed"
         assert error_code == "INJECTED_CRASH_AFTER_ARTIFACT_COMMIT"
         assert candidate is not None
@@ -224,7 +262,9 @@ def test_required_dq_failure_blocks_watermark_until_active_waiver(
             "WHERE batch_id = %s ORDER BY created_at DESC LIMIT 1",
             (batch_request.batch_id,),
         )
-        violations, waiver_ids = cursor.fetchone()
+        report_row = cursor.fetchone()
+        assert report_row is not None
+        violations, waiver_ids = cast(tuple[list[dict[str, object]], list[str]], report_row)
         product = next(
             item for item in violations if item["rule_id"] == "receipt_item.product.reference"
         )
@@ -235,7 +275,9 @@ def test_required_dq_failure_blocks_watermark_until_active_waiver(
             "SELECT capability_matrix, impact_summary FROM semantic_dataset_versions WHERE id = %s",
             (recovered.semantic_dataset_version_id,),
         )
-        capabilities, impact = cursor.fetchone()
+        publication_row = cursor.fetchone()
+        assert publication_row is not None
+        capabilities, impact = cast(tuple[dict[str, str], dict[str, int]], publication_row)
         assert capabilities["products"] == "degraded"
         assert impact["product_reference_misses"] == 5
 
@@ -278,7 +320,7 @@ def test_expired_shared_session_cannot_publish(
         calls = 0
 
         @classmethod
-        def now(cls, tz=None):
+        def now(cls, tz: tzinfo | None = None) -> datetime:
             cls.calls += 1
             observed = real_datetime.now(tz)
             return observed if cls.calls == 1 else observed + timedelta(minutes=10)

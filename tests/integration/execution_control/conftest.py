@@ -4,7 +4,7 @@ import os
 from collections.abc import Callable, Iterator
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol, cast
 from uuid import UUID, uuid4
 
 import psycopg
@@ -13,9 +13,11 @@ from alembic import command
 from alembic.config import Config
 from psycopg import Connection
 from redis import Redis
-from testcontainers.core.container import DockerContainer
-from testcontainers.core.wait_strategies import LogMessageWaitStrategy
-from testcontainers.postgres import PostgresContainer
+from testcontainers.core.container import DockerContainer  # pyright: ignore[reportMissingTypeStubs]
+from testcontainers.core.wait_strategies import (  # pyright: ignore[reportMissingTypeStubs]
+    LogMessageWaitStrategy,
+)
+from testcontainers.postgres import PostgresContainer  # pyright: ignore[reportMissingTypeStubs]
 
 from packages.identity_access.domain.policy import Actor
 
@@ -72,6 +74,12 @@ class ExecutionBoundaries:
     database_password_file: Path
 
 
+class RedisMaintenance(Protocol):
+    def ping(self) -> bool: ...
+
+    def flushdb(self) -> bool: ...
+
+
 @pytest.fixture(scope="session")
 def execution_boundaries(
     tmp_path_factory: pytest.TempPathFactory,
@@ -118,7 +126,7 @@ def execution_boundaries(
                 decode_responses=False,
                 socket_timeout=3,
             )
-            assert valkey.ping()
+            assert cast(RedisMaintenance, valkey).ping()
             yield ExecutionBoundaries(connect, valkey, host, port, secret_file)
 
 
@@ -127,7 +135,7 @@ def execution_runtime(
     execution_boundaries: ExecutionBoundaries,
 ) -> Iterator[ExecutionRuntime]:
     connect, valkey = execution_boundaries.connect, execution_boundaries.valkey
-    valkey.flushdb()
+    cast(RedisMaintenance, valkey).flushdb()
     workspace_id = uuid4()
     owner_id = uuid4()
     operator_id = uuid4()

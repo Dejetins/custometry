@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W33-WEB-CONNECTIONS
-status: ready
+status: accepted
 workstream_id: W33
 summary: Implement the cohesive UI-DATA-001 connection list and UI-DATA-002 connection editor production slice with governed connector states and browser proof.
 requirement_ids: [UC-001, CONNECTOR-001, CONNECTOR-004, A11Y-001, I18N-001]
@@ -22,7 +22,7 @@ validation:
   proof_boundary: production-ui-data-001-and-ui-data-002-with-real-adapter-or-explicit-unavailable-boundary-and-real-browser-observation
   evidence_target: .codex/delivery/evidence/W33-WEB-CONNECTIONS.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W33-WEB-CONNECTIONS.md]
 ---
 
 # Outcome

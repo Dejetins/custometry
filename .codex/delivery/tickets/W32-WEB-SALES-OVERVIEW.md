@@ -4,7 +4,7 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W32-WEB-SALES-OVERVIEW
-status: ready
+status: accepted
 workstream_id: W32
 summary: Implement the production UI-AN-003 Sales Overview route with real analytics adapters, truthful result states, and boundary-matched browser proof.
 requirement_ids: [UC-004, UC-012, UC-027, DISCOUNT-001, DISCOUNT-004, DISCOUNT-005, DISCOUNT-008, DISCOUNT-009, DISCOUNT-010, DISCOUNT-011, DISCOUNT-012, DISCOUNT-013, DISCOUNT-014, DISCOUNT-015, DISCOUNT-016, DISCOUNT-017, DISCOUNT-018, DISCOUNT-019, PVM-001, PVM-002, PVM-003, PVM-004, PVM-005, PVM-006, METRIC-017, METRIC-019, METHOD-010, METHOD-011, METHOD-012, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, A11Y-001]
@@ -22,7 +22,7 @@ validation:
   proof_boundary: production-ui-an-003-with-real-adapter-or-explicit-unavailable-boundary-and-real-browser-observation
   evidence_target: .codex/delivery/evidence/W32-WEB-SALES-OVERVIEW.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W32-WEB-SALES-OVERVIEW.md]
 ---
 
 # Outcome

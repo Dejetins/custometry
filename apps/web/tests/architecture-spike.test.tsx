@@ -119,6 +119,7 @@ describe("W20 route-bounded architecture spike", () => {
     );
     await screen.findByTestId("server-revision");
     fireEvent.click(screen.getByTestId("rollback-link"));
-    expect(await screen.findByText("Planned surface")).toBeInTheDocument();
+    expect(await screen.findByText("Sales result could not be loaded")).toBeInTheDocument();
+    expect(screen.queryByText("Planned surface")).not.toBeInTheDocument();
   });
 });

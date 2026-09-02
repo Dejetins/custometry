@@ -1,0 +1,158 @@
+{
+  "$id": "https://contracts.custometry.local/execution/terminal-event/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "attempt_id": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "category": {
+      "const": "execution"
+    },
+    "event_id": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "event_type": {
+      "enum": [
+        "execution.run.failed",
+        "execution.run.recovered",
+        "execution.run.stuck"
+      ]
+    },
+    "event_version": {
+      "const": "1.0.0"
+    },
+    "group_key": {
+      "maxLength": 128,
+      "type": "string"
+    },
+    "message_code": {
+      "enum": [
+        "RUN_FAILED",
+        "RUN_RECOVERED",
+        "RUN_STUCK"
+      ]
+    },
+    "message_parameters": {
+      "additionalProperties": {
+        "maxLength": 128,
+        "type": "string"
+      },
+      "maxProperties": 8,
+      "type": "object"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "reason_code": {
+      "maxLength": 80,
+      "pattern": "^[A-Z][A-Z0-9_]{2,79}$",
+      "type": "string"
+    },
+    "resource_id": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "resource_type": {
+      "const": "run"
+    },
+    "retry_of_attempt_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "retry_of_run_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "route_id": {
+      "const": "UI-OPS-002"
+    },
+    "route_parameters": {
+      "additionalProperties": {
+        "maxLength": 128,
+        "type": "string"
+      },
+      "maxProperties": 4,
+      "type": "object"
+    },
+    "run_id": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "critical",
+        "info",
+        "warning"
+      ]
+    },
+    "source_owner": {
+      "const": "execution"
+    },
+    "status_code": {
+      "enum": [
+        "FAILED",
+        "RECOVERED",
+        "STUCK"
+      ]
+    },
+    "trace_id": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "workspace_id": {
+      "format": "uuid",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "event_type",
+    "event_version",
+    "source_owner",
+    "workspace_id",
+    "resource_type",
+    "resource_id",
+    "run_id",
+    "attempt_id",
+    "retry_of_run_id",
+    "retry_of_attempt_id",
+    "status_code",
+    "reason_code",
+    "severity",
+    "category",
+    "occurred_at",
+    "message_code",
+    "message_parameters",
+    "group_key",
+    "route_id",
+    "route_parameters",
+    "trace_id"
+  ],
+  "title": "ExecutionTerminalEventV1",
+  "type": "object"
+}

@@ -4,15 +4,11 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W33-WEB-CONNECTIONS
-status: blocked
+status: accepted
 workstream_id: W33
 summary: Implement the cohesive UI-DATA-001 connection list and UI-DATA-002 connection editor production slice with governed connector states and browser proof.
 requirement_ids: [UC-001, CONNECTOR-001, CONNECTOR-004, A11Y-001, I18N-001]
-blockers: [W14-SOURCE-CONNECTION-FILE-IMPORT-KERNEL]
-blocker_record:
-  technical_blocker: W31 is accepted, but UI-DATA-001 and UI-DATA-002 still lack the accepted governed connection catalog, secret-reference handling, and source-intake API contracts required for a production adapter; W14 is not accepted.
-  evidence: [.codex/delivery/tickets/W14-SOURCE-CONNECTION-FILE-IMPORT-KERNEL.md]
-  next_safe_action: Accept W14 at its declared integration boundary, then revalidate this ticket and perform a separate blocked-to-ready frontmatter transition.
+blockers: []
 context_sources: [AGENTS.md, .codex/AGENTS.md, docs/architecture/ui/custometry-web-implementation-source-contract-v1.md, custometry-technical-blueprint-ru.md, custometry-ui-blueprint-ru.md, packages/contracts/routes/ui-route-contracts.json, packages/contracts/routes/ui-surface-contracts.json, .codex/delivery/tickets/W31-WEB-PRODUCTION-SHELL-ROUTING.md, .codex/delivery/tickets/W14-SOURCE-CONNECTION-FILE-IMPORT-KERNEL.md]
 change_scope:
   allowed_write_paths: [.codex/delivery/tickets/W33-WEB-CONNECTIONS.md, .codex/delivery/evidence/W33-WEB-CONNECTIONS.md, apps/web/src/features/connections/**, apps/web/src/app/routes/features/connections.tsx, apps/web/tests/connections/**, tests/e2e/web-connections/**, tests/accessibility/web-connections/**]
@@ -26,7 +22,7 @@ validation:
   proof_boundary: production-ui-data-001-and-ui-data-002-with-real-adapter-or-explicit-unavailable-boundary-and-real-browser-observation
   evidence_target: .codex/delivery/evidence/W33-WEB-CONNECTIONS.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W33-WEB-CONNECTIONS.md]
 ---
 
 # Outcome

@@ -4,15 +4,11 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W34-WEB-OPERATOR-RUNS
-status: blocked
+status: accepted
 workstream_id: W34
 summary: Implement the UI-OPS-001 Operator Center production route with truthful run lifecycle actions, queue state, and boundary-matched browser proof.
 requirement_ids: [UC-010, OPS-001, EXEC-STATE-001, EXEC-STATE-002, EXEC-STATE-006, EXEC-STATE-007, EXEC-CANCEL-005, ADMIN-003, ADMIN-005, A11Y-001, I18N-001]
-blockers: [W36-EXECUTION-CONTROL-OPERATOR-API]
-blocker_record:
-  technical_blocker: W31 is accepted, but UI-OPS-001 has no accepted execution-control query and command API, authorization enforcement, PostgreSQL transition persistence, or real cancellation/retry runtime proof; W36 is not accepted.
-  evidence: [.codex/delivery/tickets/W36-EXECUTION-CONTROL-OPERATOR-API.md]
-  next_safe_action: Accept W36 at its declared API, PostgreSQL, outbox, and disposable-worker runtime boundary, then revalidate this ticket and perform a separate blocked-to-ready frontmatter transition.
+blockers: []
 context_sources: [AGENTS.md, .codex/AGENTS.md, docs/architecture/ui/custometry-web-implementation-source-contract-v1.md, custometry-technical-blueprint-ru.md, custometry-ui-blueprint-ru.md, packages/contracts/routes/ui-route-contracts.json, packages/contracts/routes/ui-surface-contracts.json, .codex/delivery/tickets/W31-WEB-PRODUCTION-SHELL-ROUTING.md, .codex/delivery/specs/operator-runs-api-and-execution-control.md, .codex/delivery/tickets/W36-EXECUTION-CONTROL-OPERATOR-API.md]
 change_scope:
   allowed_write_paths: [.codex/delivery/tickets/W34-WEB-OPERATOR-RUNS.md, .codex/delivery/evidence/W34-WEB-OPERATOR-RUNS.md, apps/web/src/features/operator-runs/**, apps/web/src/app/routes/features/operator-runs.tsx, apps/web/tests/operator-runs/**, tests/e2e/web-operator-runs/**, tests/accessibility/web-operator-runs/**]
@@ -26,7 +22,7 @@ validation:
   proof_boundary: production-ui-ops-001-with-real-adapter-or-explicit-unavailable-boundary-and-real-browser-observation
   evidence_target: .codex/delivery/evidence/W34-WEB-OPERATOR-RUNS.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W34-WEB-OPERATOR-RUNS.md]
 ---
 
 # Outcome

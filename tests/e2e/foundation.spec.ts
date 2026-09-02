@@ -4,6 +4,7 @@ interface BrowserEvidence {
   readonly consoleErrors: string[];
   readonly pageErrors: string[];
   readonly failedSameOriginRequests: string[];
+  readonly sameOriginErrorResponses: string[];
 }
 
 function observeBrowser(page: Page): BrowserEvidence {
@@ -11,6 +12,7 @@ function observeBrowser(page: Page): BrowserEvidence {
     consoleErrors: [],
     pageErrors: [],
     failedSameOriginRequests: [],
+    sameOriginErrorResponses: [],
   };
   const origin = new URL(process.env.CUSTOMETRY_BASE_URL ?? "http://invalid.local").origin;
   page.on("console", (message) => {
@@ -24,6 +26,14 @@ function observeBrowser(page: Page): BrowserEvidence {
       );
     }
   });
+  page.on("response", (response) => {
+    if (response.url().startsWith(origin) && response.status() >= 400) {
+      const url = new URL(response.url());
+      evidence.sameOriginErrorResponses.push(
+        `${response.request().method()} ${response.status()} ${url.pathname}${url.search}`,
+      );
+    }
+  });
   return evidence;
 }
 
@@ -31,6 +41,22 @@ function expectCleanBrowser(evidence: BrowserEvidence): void {
   expect(evidence.consoleErrors).toEqual([]);
   expect(evidence.pageErrors).toEqual([]);
   expect(evidence.failedSameOriginRequests).toEqual([]);
+  expect(evidence.sameOriginErrorResponses).toEqual([]);
+}
+
+async function expectUnauthenticatedSalesBoundary(evidence: BrowserEvidence): Promise<void> {
+  await expect.poll(() => [...evidence.sameOriginErrorResponses].sort()).toEqual([
+    "GET 401 /api/analytics/results?offset=0&limit=50",
+    "GET 401 /api/identity/me",
+  ]);
+  expect(evidence.consoleErrors).toEqual([
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+  ]);
+  expect(evidence.pageErrors).toEqual([]);
+  expect(evidence.failedSameOriginRequests).toEqual([]);
+  evidence.consoleErrors.splice(0);
+  evidence.sameOriginErrorResponses.splice(0);
 }
 
 async function expectDocsReady(page: Page): Promise<void> {
@@ -100,16 +126,23 @@ test("generated Help links and browser history preserve return-to-origin", async
   expectCleanBrowser(evidence);
 });
 
-test("planned route, 404 and shell return keep honest route state", async ({ page }) => {
+test("production sales route, 404 and shell return keep honest route state", async ({ page }) => {
   const evidence = observeBrowser(page);
 
   await page.goto("/w/northwind-retail/analytics/sales");
-  await expect(page.getByText("UI-AN-003 · MVP")).toBeVisible();
-  await expect(page.getByText("Planned surface")).toBeVisible();
+  await expect(page).toHaveURL(/\/w\/northwind-retail\/analytics\/sales$/);
+  await expect(page.getByRole("heading", { level: 1, name: "Sales Overview" })).toBeVisible();
+  await expect(page.getByText("Sales Overview is unavailable")).toBeVisible();
+  await expect(page.getByText("Planned surface", { exact: true })).toHaveCount(0);
+  await expectUnauthenticatedSalesBoundary(evidence);
   await page.getByRole("link", { name: "Custometry" }).click();
   await expect(page).toHaveURL(/\/$/);
   await page.goBack();
-  await expect(page.getByText("UI-AN-003 · MVP")).toBeVisible();
+  await expect(page).toHaveURL(/\/w\/northwind-retail\/analytics\/sales$/);
+  await expect(page.getByRole("heading", { level: 1, name: "Sales Overview" })).toBeVisible();
+  await expect(page.getByText("Sales Overview is unavailable")).toBeVisible();
+  await expect(page.getByText("Planned surface", { exact: true })).toHaveCount(0);
+  await expectUnauthenticatedSalesBoundary(evidence);
   await page.goForward();
   await expect(page).toHaveURL(/\/$/);
 

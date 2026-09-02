@@ -39,6 +39,10 @@ class Settings(BaseSettings):
     source_postgresql_password_file: Path = Path("/run/secrets/demo_source_reader_password")
     source_postgresql_connect_timeout_seconds: int = Field(default=3, ge=1, le=10)
     source_postgresql_statement_timeout_ms: int = Field(default=5_000, ge=100, le=60_000)
+    analytics_artifact_root: Path = Path("/var/lib/custometry/artifacts")
+    valkey_host: str = "valkey"
+    valkey_port: int = Field(default=6379, ge=1, le=65535)
+    valkey_database: int = Field(default=0, ge=0, le=15)
 
     @field_validator("cors_allowed_origins")
     @classmethod

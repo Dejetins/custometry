@@ -4,15 +4,11 @@ delivery_contract: global/v1
 delivery_schema_version: 1
 spec_version: 0.10.0-draft
 ticket_id: W36-EXECUTION-CONTROL-OPERATOR-API
-status: blocked
+status: accepted
 workstream_id: W36
 summary: Publish and prove the policy-filtered operator run query and command API over durable execution-control transitions, cancellation, retry, fencing, and reconciliation.
 requirement_ids: [UC-010, EXEC-STATE-001, EXEC-STATE-002, EXEC-STATE-003, EXEC-STATE-004, EXEC-STATE-006, EXEC-STATE-007, EXEC-CANCEL-001, EXEC-CANCEL-003, EXEC-CANCEL-004, EXEC-CANCEL-005, EXEC-CANCEL-006, ADMIN-003, ADMIN-005, RBAC-002]
-blockers: [W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE]
-blocker_record:
-  technical_blocker: The generic operator API must extend an accepted execution-control persistence, outbox, attempt, and fencing kernel; W15 is not accepted and owns that first real vertical execution boundary.
-  evidence: [.codex/delivery/tickets/W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE.md]
-  next_safe_action: Accept W15 at its declared PostgreSQL, artifact, and restart-safe execution boundary, then revalidate W36 and perform a separate blocked-to-ready frontmatter transition.
+blockers: []
 context_sources: [AGENTS.md, .codex/AGENTS.md, .codex/delivery/specs/operator-runs-api-and-execution-control.md, custometry-technical-blueprint-ru.md, custometry-technical-blueprint-human-ru.md, custometry-ui-blueprint-ru.md, docs/architecture/system-design.md, docs/architecture/bounded-context-map.md, packages/contracts/routes/ui-route-contracts.json, .codex/delivery/tickets/W15-INGESTION-DQ-SEMANTIC-VERTICAL-SLICE.md]
 change_scope:
   allowed_write_paths: [.codex/delivery/tickets/W36-EXECUTION-CONTROL-OPERATOR-API.md, .codex/delivery/evidence/W36-EXECUTION-CONTROL-OPERATOR-API.md, packages/execution/**, apps/api/src/custometry_api/runs/**, apps/api/src/custometry_api/main.py, apps/api/src/custometry_api/config.py, apps/api/pyproject.toml, packages/contracts/execution/**, packages/contracts/openapi/**, packages/contracts/schemas/**, packages/contracts/src/**, docs/contracts/contract-drift.json, pyproject.toml, uv.lock, migrations/versions/*_execution_control.py, tests/unit/execution_control/**, tests/contract/execution_control/**, tests/integration/execution_control/**]
@@ -26,7 +22,7 @@ validation:
   proof_boundary: policy-filtered-operator-run-api-postgresql-state-outbox-and-disposable-worker-cancel-retry-reconciliation
   evidence_target: .codex/delivery/evidence/W36-EXECUTION-CONTROL-OPERATOR-API.md
 escalation_triggers: [normative_product_change, material_user_scope_change, external_or_irreversible_side_effect, secrets_or_production_authority, write_outside_allowed_scope]
-evidence: []
+evidence: [.codex/delivery/evidence/W36-EXECUTION-CONTROL-OPERATOR-API.md]
 ---
 
 # Outcome

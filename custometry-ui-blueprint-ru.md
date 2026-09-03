@@ -12,10 +12,11 @@ status: pre_g0_intent_baseline_accepted
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-08-07
+updated_at: 2026-09-02
 artifact_role: pre_g0_product_ui_requirements_and_current_inventory
 program_route: ui-design-program
 active_program: null
+current_execution_route: docs/architecture/ui/custometry-web-implementation-source-contract-v1.md
 visual_authority:
   status: accepted_pre_g0_visual_language_anchor
   source_evidence_mode: renderable_html
@@ -1129,7 +1130,16 @@ People & Creators:
 
 ### 16.1. Текущее состояние admission
 
-Активная UI-программа отсутствует. `active_program: null` является намеренным: прежняя program revision и её G4 triad superseded после изменения product semantics и visual authority. Новый product path записан, а hash-pinned RU/EN pilot принят как ограниченный visual-language anchor. Эта requirements-задача не создаёт G0, prompt pack или ledger.
+Активная UI-программа отсутствует. `active_program: null` является намеренным:
+прежняя program revision и её G4 triad superseded после изменения product
+semantics и visual authority. Новый product path записан, а hash-pinned RU/EN
+pilot принят как ограниченный visual-language anchor. Эта requirements-задача
+не создаёт G0, prompt pack или ledger.
+
+Текущий путь исполнения Web — ticket-first route из
+`docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`.
+Он использует этот документ как product/UI intent и current inventory, но не
+возобновляет прежнюю программу и не сертифицирует G4/G5/G6.
 
 ### 16.2. Что должно войти в durable intake
 
@@ -1238,13 +1248,20 @@ G3-G6 требуют finished review board и отдельного natural-langu
 | Documentation/design authority | `breaking-change` | Linear/Penpot standard, прежняя accepted UI program revision и её ready G4 triad retired/superseded; новый baseline начинается pre-G0 |
 | Current route/surface identity | `compatible current-state evidence` | 117/25/5/22 сохраняются для traceability, но не являются target ceiling или G1 acceptance |
 | Browser-visible target | `unknown until G3` | Новый shell, foundations и representative screen ещё не приняты |
-| Frontend architecture | `unknown until architecture decision` | Текущий implementation stack не становится target автоматически |
+| Frontend architecture | `accepted for current Web implementation` | ADR-0007 фиксирует текущий responsive-Web stack и ownership; future UI-program target может заменить его только через новую принятую authority |
 | Request hash/cache identity | `new compatible namespace required` | Document/page/filter/segment/materialization versions входят в future normalized identity; zoom/legend/tab chrome остаются presentation-only |
 | Mobile scope | `unauthorized` | Адаптивный Web обязателен; mobile-specific IA/composition не добавлены |
 | Rollback | `documentation recovery only` | Возврат старого target требует нового owner decision; Git history сама по себе не создаёт authority |
 
 ## 20. Pre-G0 readiness
 
-Документ является принятым pre-G0 intent baseline: product path, included/excluded scope, critical journeys и visual-language anchor зафиксированы. Он не открывает G0 автоматически. Следующий безопасный шаг после отдельной авторизации полного UI-программы — импортировать pilot evidence, собрать durable intake/platform baseline и создать новую draft triad по текущему `ui-design-program`; прежняя программа не возобновляется.
+Документ является принятым pre-G0 intent baseline: product path,
+included/excluded scope, critical journeys и visual-language anchor
+зафиксированы. Он не открывает G0 автоматически и не является текущим
+execution plan. Текущая Web-реализация идёт через implementation source
+contract и один ready ticket. Следующий безопасный шаг после отдельной
+авторизации полной UI-программы — импортировать pilot evidence, собрать durable
+intake/platform baseline и создать новую draft triad по текущему
+`ui-design-program`; прежняя программа не возобновляется.
 
 Observed proof boundary этой редакции ограничен documentation authority, blueprint synchronization и current-inventory consistency. Он не доказывает новый дизайн, frontend architecture, responsive behavior, accessibility, browser runtime, performance или implementation readiness.

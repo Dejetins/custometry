@@ -59,7 +59,7 @@ afterEach(() => {
 });
 
 describe("W20 route-bounded architecture spike", () => {
-  it("keeps the legacy planned surface as the default rollback path", () => {
+  it("keeps the legacy spike link available during default route fallback", () => {
     render(<MemoryRouter initialEntries={["/w/northwind-retail/analytics/sales"]}><App /></MemoryRouter>);
     expect(screen.getByText("Planned surface")).toBeInTheDocument();
     expect(screen.getByTestId("open-architecture-spike")).toHaveAttribute(

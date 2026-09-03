@@ -572,7 +572,7 @@
       "navigation_group": "data_foundation",
       "surface_kind": "list",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "WA"
       ],
@@ -614,7 +614,7 @@
       "navigation_group": "data_foundation",
       "surface_kind": "editor",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "WA"
       ],
@@ -2244,7 +2244,7 @@
       "navigation_group": "analytics_research",
       "surface_kind": "overview",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "AN",
         "VW"
@@ -4092,7 +4092,7 @@
       "navigation_group": "operations",
       "surface_kind": "operator",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "OP",
         "owners"
@@ -4263,7 +4263,7 @@
       "navigation_group": "notifications",
       "surface_kind": "list",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "all"
       ],

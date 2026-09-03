@@ -125,6 +125,10 @@ The owner retired `CUSTOMETRY-UI-DESIGN-PROGRAM-V2` from current execution on
 remain immutable historical evidence, but they are not current execution or
 certification authority. Do not run `staged-plan-runner` against that triad,
 claim pending G4/G5/G6 rows, or infer completion from its accepted frontier.
+The suspension marker at
+`.codex/delivery/ui-design-programs/custometry-v2/.ui-design-program-suspended.json`
+is the canonical local guard for that frozen triad; if it conflicts with
+historical ledger or generated-prompt metadata, the marker and this adapter win.
 Current Web work follows
 [`docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`](../docs/architecture/ui/custometry-web-implementation-source-contract-v1.md)
 and one ticket whose frontmatter status is `ready`.

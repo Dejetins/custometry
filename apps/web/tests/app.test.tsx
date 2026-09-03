@@ -36,10 +36,10 @@ describe("Foundation shell", () => {
     expect(await screen.findByText(/API readiness: ready/i)).toBeInTheDocument();
   });
 
-  it("labels product routes as planned", () => {
-    render(<MemoryRouter initialEntries={["/w/northwind-retail/analytics/sales"]}><App /></MemoryRouter>);
-    expect(screen.getByText("UI-AN-003 · MVP")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Sales Overview");
+  it("labels unimplemented product routes as planned", () => {
+    render(<MemoryRouter initialEntries={["/w/northwind-retail/overview"]}><App /></MemoryRouter>);
+    expect(screen.getByText("UI-CORE-001 · MVP")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Workspace Overview");
     expect(screen.getByText("Planned surface")).toBeInTheDocument();
   });
 
@@ -59,11 +59,11 @@ describe("Foundation shell", () => {
 
   it("does not expose an English route title on a Russian planned surface", async () => {
     await i18n.changeLanguage("ru");
-    render(<MemoryRouter initialEntries={["/w/northwind-retail/analytics/sales"]}><App /></MemoryRouter>);
+    render(<MemoryRouter initialEntries={["/w/northwind-retail/overview"]}><App /></MemoryRouter>);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Обзор продаж",
+      "Обзор рабочего пространства",
     );
-    expect(screen.queryByText("Sales Overview")).not.toBeInTheDocument();
+    expect(screen.queryByText("Workspace Overview")).not.toBeInTheDocument();
   });
 
   it("exposes every route through the mobile More menu", () => {

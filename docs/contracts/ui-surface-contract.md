@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-UI-SURFACE-001
 title: UI surface coverage contract
-doc_version: 5
+doc_version: 6
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -24,13 +24,15 @@ UI-visible product use case to one or more canonical routes, overlays, system
 surfaces, or cross-surface capability contracts. Its JSON Schema is stored next
 to it.
 
-The current-state inventory contains 116 route-level pages, 25 overlays, 5 system
+The current-state inventory contains 117 route-level pages, 25 overlays, 5 system
 surfaces, and 22 cross-surface capabilities. W08 accepted historical Penpot revision 181
 with the first 110 route frames, all overlays/system surfaces, C24, and flow 09.
 The controlled W10 baseline recovery established revision 197; W10 then
 accepted all six Organization/People routes, C25, and flow 10 at terminal
 revision 213 with inventory `116/25/5`. These are observed identity/domain
-counts, not a permanent route ceiling, future G1 atlas, or proof of the new Web target.
+counts; the current route registry has since expanded to 117 rows. Neither
+count is a permanent route ceiling, future G1 atlas, or proof of the new Web
+target.
 
 ## Authority and agent load order
 
@@ -83,7 +85,7 @@ Static acceptance requires all of the following:
 - overlay, system-surface, and cross-surface capability IDs, names, and complete
   requirement-reference sets match the UI blueprint exactly;
 - every surface requirement ID exists in the product blueprint;
-- all 116 routes have English/Russian title parity and executable route policy;
+- all 117 routes have English/Russian title parity and executable route policy;
 - legacy Penpot identity metadata remains internally consistent while it is
   retained for historical traceability.
 
@@ -105,7 +107,7 @@ authorization enforcement, accessibility, or runtime readiness.
 - structurally stable and visually reviewed route frames: `116`;
 - structurally stable and visually reviewed overlays: `25`;
 - structurally stable and visually reviewed system surfaces: `5`;
-- current known route rows for UI requirements `0.8.0-draft`: `116`;
+- current known route rows for UI requirements `0.8.0-draft`: `117`;
 - current known overlays for UI requirements `0.8.0-draft`: `25`;
 - target cross-surface capabilities: `22`.
 

@@ -109,9 +109,9 @@ The following are outside the public `v1_target`:
 | Product form | Self-hosted multi-workspace B2C retail platform | Tenant and policy scope are installation/workspace/object, not SaaS account hierarchy |
 | Application form | Modular monolith through `v1_target` | Contexts share deployment and PostgreSQL but own code, tables, write paths, and public contracts |
 | UI delivery | UI-first, contract-backed vertical slices | A visible route is not accepted until the same contract reaches real API/data or artifact evidence |
-| Authenticated frontend | Target stack is intentionally open until the product-wide UI program establishes its platform baseline and a follow-up architecture decision pins the implementation | Any selected client must keep presentation state separate from authoritative API/event state |
-| UI program | `ui-design-program` after a detailed owner product path and accepted visual authority | Current code and historical design evidence cannot become the target silently |
-| Presentation system | Semantic, accessible, brand-aware tokens accepted with the future platform baseline | Exact themes, typography, icons, geometry, and motion remain open before G0 |
+| Authenticated frontend | ADR-0007 pins the responsive-Web frontend stack and ownership boundaries for current Web implementation | Client presentation state stays separate from authoritative API/event state |
+| UI execution route | Current Web implementation follows the ticket-first source contract; a new product-wide `ui-design-program` requires explicit future authorization | Current code and historical design evidence cannot become the target silently |
+| Presentation system | Semantic, accessible, brand-aware tokens are owned by the accepted Web frontend platform and `packages/ui-foundation` | Exact future UI-program themes, typography, icons, geometry, and motion remain open unless accepted by a current source |
 | Data truth | PostgreSQL control state plus immutable Parquet/other artifacts | Valkey, browser state, and task delivery cannot determine terminal truth |
 | Data compute | Polars/DuckDB/NumPy-first CPU execution; Numba only for measured kernels | Browser, chart library, and XLSX renderer do not perform analytical reduction |
 | Compute reuse | Content-addressed materializations with aggregate-aware planning and single-flight | Equivalent work is reused; invalidation is partition-scoped and precompute cannot starve interactive work |
@@ -570,7 +570,7 @@ numeric with native formats and an accessible path to full precision.
 | Boundary | Owner and rule |
 |---|---|
 | Browser to API | OpenAPI, stable error envelope, generated TypeScript client, bounded pagination/sort/filter allowlists |
-| UI route identity | `ui-routes.json` owns ID, canonical path, title key, release, and implementation status |
+| UI route identity | `ui-routes.json` owns ID, canonical path, title key, release, and route implementation lifecycle metadata |
 | UI route execution | `ui-route-contracts.json` owns family, shell, guards, roles/permissions, state and history profiles, dirty/focus behavior, source requirements, and design synchronization |
 | UI surface coverage | `ui-surface-contracts.json` owns the current route/overlay/system/capability inventory, route-decision policy, legacy design provenance, and exact `UC-001...UC-029` bindings; it is not the future all-screen atlas |
 | Analytical-document composition | Presentation-owned schema-v2 hierarchy, filter scopes, normalized block references, root/page manifests, and active-page projection; no generic shared kernel or dual-write |
@@ -612,10 +612,11 @@ navigation and coverage graph without directory traversal.
 
 ## 9. Route and Web execution model
 
-The current inventory contains 116 route-level pages, 25 typed overlays, and 5
-system surfaces. W03-W10 evidence records how that inventory was assembled and
-is preserved as historical provenance. It is not an accepted target, a complete
-future atlas, a visual authority, or browser/authorization runtime proof.
+The current inventory contains 117 route-level pages, 25 typed overlays, and 5
+system surfaces. W03-W10 evidence records the earlier 116-route historical
+inventory and is preserved as provenance. Neither count is an accepted target,
+a complete future atlas, a visual authority, or browser/authorization runtime
+proof.
 A standalone route is required for a durable/versioned lifecycle, deterministic
 deep link, independent Back/refresh/dirty/recovery semantics, or sufficiently
 complex permission boundary. Transient confirmations and inspectors remain
@@ -637,7 +638,7 @@ The route contract resolves each page to:
   stale, and dependency-unavailable states as applicable;
 - dirty-draft navigation guard and Focus/Explore return-to-origin behavior;
 - source requirement IDs and the authoritative UI blueprint row;
-- implementation status and legacy design-provenance status.
+- route implementation lifecycle metadata and legacy design-provenance status.
 
 Role hints control discoverability but never authorize data. The API repeats
 policy checks before fetch/action. Forbidden functions are hidden or explained
@@ -653,18 +654,17 @@ reload, and close with Stay/Discard/Save Draft where supported.
 
 ### 9.1. Product-wide Web UI target boundary
 
-No frontend framework, state/query library, component/styling system, theme
-set, typography, icon set, shell geometry, motion language, visual reference,
-or rollout graph is currently accepted as the target. The implementation under
-`apps/web` and historical W03-W10 design evidence describe current or past
-state only.
+ADR-0007 pins the current responsive-Web frontend stack, package ownership,
+state/query boundaries, styling system, and browser evidence expectations for
+ticketed production implementation. Current implementation work follows
+`docs/architecture/ui/custometry-web-implementation-source-contract-v1.md` and
+one ready ticket at a time.
 
-The next target is established through `ui-design-program` after a detailed
-owner product path and accepted pilot or bounded pre-G0 visual proposal exist.
-The program must create a complete screen atlas, journeys, families, waves,
-one hash-pinned platform baseline, responsive-Web contracts, finished review
-boards, and an implementation handoff before target implementation is treated
-as ready.
+A future product-wide UI program is separate from the current ticket-first Web
+route. It requires explicit owner authorization, a detailed product path, and a
+current accepted visual authority. Historical W03-W10 evidence and the frozen
+`CUSTOMETRY-UI-DESIGN-PROGRAM-V2` triad remain reference evidence only; they do
+not create an executable certified G0-G6 route.
 
 The technology-neutral browser dependency direction remains:
 
@@ -843,8 +843,8 @@ prompts are exceptional rather than standing inventory.
 | Surface | Classification | Migration and rollback |
 |---|---|---|
 | Product specification projection | compatible before first stable consumer | architecture docs can roll back together only if normative requirements remain represented elsewhere |
-| Authenticated frontend target | unresolved before UI-program platform baseline | select and pin the stack in a later architecture decision; rollback preserves backend contracts and restores only the last accepted browser boundary |
-| Presentation registry | unresolved before UI-program platform baseline | migrate theme, typography, icon, geometry, and motion identities only from an accepted versioned baseline; reject unknown persisted identities once consumers exist |
+| Authenticated frontend target | accepted responsive-Web platform | ADR-0007 pins the current stack; rollback requires a replacement ADR while preserving backend contracts and the last accepted browser boundary |
+| Presentation registry | accepted current platform ownership | `packages/ui-foundation` owns current tokens, primitives, components, and responsive behavior; future UI-program identities migrate only from a newly accepted versioned baseline |
 | Dashboard/research/report composition shapes | breaking target schema-v2 change | add common composition DTO and legacy read adapters, backfill stable hierarchy IDs, move new drafts to v2, and prohibit dual-write or lossy rollback |
 | Report snapshot | compatible first migration step | add root/page manifests while preserving legacy reads; all channels switch together before retiring the old resolved-block projection |
 | Organization/access persistence | compatible target addition before stable consumers | create versioned units/assignments/policies/grants/ownership/projection tables, backfill one primary department, migrate legacy publications to `workspace_legacy`, and fail closed until invariants pass |
@@ -873,12 +873,12 @@ Every implementing ticket must classify API, schema, configuration, identity,
 cache, side effect, browser, migration, rollback, and performance impact against
 the then-current consumers.
 
-The retired Linear/Penpot direction is not an alternative implementation path.
-The next target must originate in the owner product path and one accepted
-visual authority, then pass the `ui-design-program` atlas, journey, family,
-wave, platform-baseline, review, and browser-proof boundaries. Technology and
-presentation choices remain reversible until the corresponding program and
-architecture decisions are accepted.
+The retired Linear/Penpot direction and the frozen `CUSTOMETRY-UI-DESIGN-PROGRAM-V2`
+triad are not alternative implementation paths. Current Web execution is
+ticket-first. Any future product-wide certified target must originate in the
+owner product path and one current accepted visual authority, then pass the
+selected `ui-design-program` boundaries before it can replace the ticketed Web
+route.
 
 ## 16. Proof boundaries and acceptance
 

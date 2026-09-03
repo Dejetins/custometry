@@ -55,14 +55,14 @@
       "id": "UI-DATA-001",
       "path": "/w/:workspaceKey/connections",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-DATA-001"
     },
     {
       "id": "UI-DATA-002",
       "path": "/w/:workspaceKey/connections/new",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-DATA-002"
     },
     {
@@ -321,7 +321,7 @@
       "id": "UI-AN-003",
       "path": "/w/:workspaceKey/analytics/sales",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-AN-003"
     },
     {
@@ -601,7 +601,7 @@
       "id": "UI-OPS-001",
       "path": "/w/:workspaceKey/runs",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-OPS-001"
     },
     {
@@ -629,7 +629,7 @@
       "id": "UI-NOTIFY-001",
       "path": "/notifications",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-NOTIFY-001"
     },
     {

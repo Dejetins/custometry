@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-UI-ROUTE-001
 title: Executable UI route contract
-doc_version: 6
+doc_version: 7
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -33,8 +33,9 @@ Custometry separates stable route identity from executable page policy:
 
 The split is intentional. URL identity, localization, generated navigation, and
 redirect consumers should not change merely because a page gains a state,
-permission, or historical design-provenance status. Conversely, agents must not reconstruct route
-security and history behavior from prose or role names.
+permission, implementation lifecycle update, or historical design-provenance
+status. Conversely, agents must not reconstruct route security and history
+behavior from prose or role names.
 
 ## Authority and precedence
 
@@ -43,7 +44,7 @@ security and history behavior from prose or role names.
 2. The UI blueprint owns the page inventory, role hints, interaction, and design
    contract.
 3. The identity registry owns canonical route IDs, paths, title keys, release,
-   and implementation status.
+   and route implementation lifecycle metadata.
 4. The executable manifest owns machine-readable route execution metadata.
 5. The UI surface manifest owns requirement-to-surface coverage and the
    route-versus-overlay-versus-component decision boundary.
@@ -62,13 +63,20 @@ The identity registry remains schema `2.0.0` and contains only:
 - target `release`;
 - `status` (`planned`, `foundation`, or `implemented`).
 
-Foundation utility routes remain separate from the 116 product route-level
-pages. A stable path rename later requires deterministic redirects, deprecation,
-telemetry, bookmark migration, and rollback.
+`status` is contract metadata, not a runtime dispatch switch. `planned` means
+the canonical route exists but has no accepted production implementation.
+`implemented` means an accepted ticket and matching evidence have delivered a
+production implementation for that route. `foundation` is reserved for
+foundation/help/utility surfaces that are shipped through the foundation shell.
+Feature-module discovery and route guards still determine runtime rendering.
+
+Foundation utility routes remain separate from the 117 product route-level
+pages. A stable path rename later requires deterministic redirects,
+deprecation, telemetry, bookmark migration, and rollback.
 
 ## Executable manifest contract
 
-The manifest is one atomically versioned file. Each of the 116 identity routes
+The manifest is one atomically versioned file. Each of the 117 identity routes
 has exactly one record with:
 
 - route family and shell profile;
@@ -79,7 +87,7 @@ has exactly one record with:
 - named guard, state, navigation, and safe-query profiles;
 - Focus/Explore applicability;
 - normative requirement references and UI blueprint ID;
-- implementation status and legacy historical design-provenance status. The
+- route implementation lifecycle metadata and legacy historical design-provenance status. The
   `penpot_status` field name is retained for schema compatibility only and is
   not current visual authority.
 

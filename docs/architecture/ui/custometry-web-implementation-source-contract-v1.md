@@ -24,6 +24,11 @@ The owner retired `CUSTOMETRY-UI-DESIGN-PROGRAM-V2` from current execution on
 `.codex/agents/generated/custometry-ui-design-g0-v2/` is frozen read-only
 historical evidence. It must not be selected by `staged-plan-runner`, resumed,
 claimed, or used to certify G4, G5, G6, or program completion.
+The local suspension marker
+`.codex/delivery/ui-design-programs/custometry-v2/.ui-design-program-suspended.json`
+is the canonical guard for this frozen triad. When historical ledger or
+generated-prompt metadata still says `active`, `current_stage`, or `Execute
+only`, this contract and the marker take precedence.
 
 Current Web implementation executes one bounded delivery ticket at a time.
 Ticket frontmatter is the status authority. A coordination graph may record
@@ -37,6 +42,8 @@ This compact snapshot records the last safe boundary without copying the
 program's thousands of inventory entries:
 
 - ledger: `.codex/delivery/ui-design-programs/custometry-v2/stage-ledger.md`;
+- suspension marker:
+  `.codex/delivery/ui-design-programs/custometry-v2/.ui-design-program-suspended.json`;
 - observed SHA-256: `81961ed673f50a43a5cb4225da99b25ce6d4a23ba0aea58a20bcd6a0bc802158`;
 - observed header: `ledger_status: active`,
   `current_stage: G4@family.ops.shell-workspace.baseline-r5`, and

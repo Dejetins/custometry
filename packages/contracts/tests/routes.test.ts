@@ -15,6 +15,22 @@ describe("canonical route registry", () => {
     expect(["foundation", "planned", "implemented"]).toContain(sales?.status);
   });
 
+  it("marks accepted production Web routes as implemented", () => {
+    const implementedRouteIds = new Set(
+      routeRegistry.routes
+        .filter((route) => route.status === "implemented")
+        .map((route) => route.id),
+    );
+
+    expect(implementedRouteIds).toEqual(new Set([
+      "UI-AN-003",
+      "UI-DATA-001",
+      "UI-DATA-002",
+      "UI-NOTIFY-001",
+      "UI-OPS-001",
+    ]));
+  });
+
   it("uses one locale-neutral title key per registered route", () => {
     const registeredRoutes = [
       ...routeRegistry.routes,

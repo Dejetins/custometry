@@ -9,7 +9,7 @@ For every task in this repository:
 1. read this file and `.codex/AGENTS.md` before task actions;
 2. treat `custometry-technical-blueprint-ru.md` as the normative product specification;
 3. use `custometry-technical-blueprint-human-ru.md` as its required explanatory mirror;
-4. use `custometry-ui-blueprint-ru.md` as the pre-G0 UI/UX requirement and current-inventory source; it is not accepted visual or frontend architecture authority;
+4. use `custometry-ui-blueprint-ru.md` for UI/UX requirements and current inventory, `docs/architecture/ui/target-pilot/README.md` for the accepted target UI concept, and ADR-0007 for frontend architecture;
 5. for executable work governed by a ready delivery ticket, take scope and execution truth from that ticket.
 
 Repository-authored engineering artifacts are written in English by default:

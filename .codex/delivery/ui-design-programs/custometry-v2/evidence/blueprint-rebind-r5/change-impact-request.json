@@ -1,9 +1,0 @@
-{
-  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
-  "change_id": "custometry-v2-blueprint-product-authority-rebind-r5",
-  "change_kind": "product_semantics_scope_or_mobile",
-  "current_stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r4",
-  "changed_refs": [
-    ".codex/delivery/ui-design-programs/custometry-v2/evidence/blueprint-rebind-r5/change-record.json"
-  ]
-}

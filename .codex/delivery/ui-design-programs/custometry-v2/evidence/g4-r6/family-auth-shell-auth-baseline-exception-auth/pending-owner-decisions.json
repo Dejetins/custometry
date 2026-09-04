@@ -1,9 +1,0 @@
-[
-  {
-    "decision_id": "G4@family.auth.shell-auth.baseline-exception-auth-r6.finished-result",
-    "class": "owner_required",
-    "status": "pending",
-    "summary": "Accept the finished auth-family r6 result or request bounded corrections.",
-    "resolution_ref": null
-  }
-]

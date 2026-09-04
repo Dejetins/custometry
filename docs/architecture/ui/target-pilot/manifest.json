@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "CUSTOMETRY-TARGET-UI-CONCEPT",
+  "status": "accepted_target_ui_concept",
+  "owner_decision_date": "2026-09-04",
+  "authority": [
+    "layout_and_composition_shown_in_pilot",
+    "navigation_and_context_panels",
+    "analytical_controls_and_interactions",
+    "charts_tables_focus_and_exports",
+    "visual_language_density_and_ru_en_behavior"
+  ],
+  "source_commit": "d5f8aa29f83be90a0b3871ff2c886d48fc020901",
+  "source_path": ".codex/delivery/ui-design-programs/custometry-v2/evidence/pilot-candidate-v3-metadata/ru/source.html",
+  "entrypoint": "ru/source.html",
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "files": [
+    {
+      "path": "ru/source.html",
+      "sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+      "size_bytes": 440953
+    },
+    {
+      "path": "assets/echarts.min.js",
+      "sha256": "b66b25aeb4df84e33199dc21694014d336d222cbd9deb0e5a7c14bd6aa0d0fd0",
+      "size_bytes": 1121883
+    },
+    {
+      "path": "assets/LICENSE.echarts.txt",
+      "sha256": "634293835b43a6dd2094fa39182a3d9a6b9ca43b7fdb9ac354e8037af2a3093a",
+      "size_bytes": 11990
+    }
+  ],
+  "proof_limits": [
+    "fixture_values_and_calculations_are_not_backend_truth",
+    "demonstrated_controls_are_not_proof_of_production_API_or_persistence",
+    "unrepresented_screens_require_product_requirements_and_bounded_design",
+    "responsive_runtime_must_be_verified_in_implementation"
+  ],
+  "decision_notes": "concept-notes.json"
+}

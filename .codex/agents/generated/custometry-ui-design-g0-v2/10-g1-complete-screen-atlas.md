@@ -1,1 +1,0 @@
-archive/10-g1-complete-screen-atlas.md

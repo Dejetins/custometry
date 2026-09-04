@@ -1542,7 +1542,7 @@ NumPy/SciPy обязательны, statsmodels желателен, scikit-learn
 | ID | Perceived-performance invariant |
 |---|---|
 | WEB-PERF-001 | Evidence фиксирует hardware/browser/viewport/CPU/RAM/data/sample/cold-warm-cache и p50/p75/p95, разделяя client/network/API/render |
-| WEB-PERF-002 | Critical journeys получают accepted input-feedback budget до G3; recurring blocking tasks не нарушают его |
+| WEB-PERF-002 | Critical journeys получают accepted input-feedback budget до приёмки соответствующей UI-реализации; recurring blocking tasks не нарушают его |
 | WEB-PERF-003 | Warm и uncached navigation имеют отдельные accepted acknowledgement budgets и truthful loading/freshness |
 | WEB-PERF-004 | Dispatch, response-to-paint и event-to-visible-state имеют отдельные measurable budgets до handoff |
 | WEB-PERF-005 | Representative journeys имеют accepted INP и motion/render budgets на declared hardware без recurring jank |

@@ -1,9 +1,0 @@
-{
-  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
-  "change_id": "custometry-v2-g0-r2-source-and-visual-reconciliation",
-  "change_kind": "baseline_or_visual_authority_replacement",
-  "current_stage_instance_id": "G0@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r1",
-  "changed_refs": [
-    ".codex/delivery/ui-design-programs/custometry-v2/evidence/reconciliation-r2/change-record.json"
-  ]
-}

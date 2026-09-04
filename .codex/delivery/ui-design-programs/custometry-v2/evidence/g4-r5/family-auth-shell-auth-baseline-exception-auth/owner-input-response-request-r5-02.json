@@ -1,9 +1,0 @@
-{
-  "$schema": "owner-input-response-request.schema.json",
-  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
-  "stage_instance_id": "G4@family.auth.shell-auth.baseline-exception-auth-r5",
-  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/owner-review-decision-packet-correction-r5-01.json",
-  "response_kind": "requested_changes",
-  "owner_input": "Requested changes. The sign-in and recovery compositions are visually unacceptable. The visible phrase ‘Помощь с паролем’ is unacceptable and must not return. Buttons have incoherent geometry, hierarchy, alignment, and grouping. Text hierarchy, wording, and alignment are visibly poor. The correction must be systemic and reusable, not a one-off patch.",
-  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r5/family-auth-shell-auth-baseline-exception-auth/owner-requested-changes-r5-02.json"
-}

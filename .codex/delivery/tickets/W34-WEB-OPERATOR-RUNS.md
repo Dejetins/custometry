@@ -25,6 +25,11 @@ escalation_triggers: [normative_product_change, material_user_scope_change, exte
 evidence: [.codex/delivery/evidence/W34-WEB-OPERATOR-RUNS.md]
 ---
 
+> Source update, 2026-09-04: the G-program was removed. Historical acceptance
+> and evidence remain unchanged; they do not prove conformance to the final
+> target pilot. Any new work requires its own ready ticket and the current
+> Web implementation source contract. Forbidden historical paths remain guards.
+
 # Outcome
 
 `UI-OPS-001` at `/w/:workspaceKey/runs` renders an operator-grade list for
@@ -40,9 +45,9 @@ human-readable failure, and trace identity through typed adapters.
 
 # Work and repair boundary
 
-Own only the operator-runs feature and its route module. Because OPS G4 was
-unaccepted at cutover, inherit G3 and normative route semantics. Request owner
-review only for a material visual direction, baseline exception, or new product
+Own only the operator-runs feature and its route module. Future conformance
+work uses the target pilot's applicable patterns and normative route semantics.
+Request owner review for a material new direction or non-derivable product
 meaning; ordinary implementation decisions remain agent-decidable.
 
 # Acceptance evidence

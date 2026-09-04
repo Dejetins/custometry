@@ -60,6 +60,13 @@ secrets/
 .codex/sessions/
 .codex/**/*.local.*
 
+# Retired G-program output is recoverable from Git, not an active artifact route.
+/.codex/delivery/ui-design-programs/custometry-v1/
+/.codex/delivery/ui-design-programs/custometry-v2/
+/.codex/agents/generated/custometry-ui-design-g0-v2/
+/.codex/agents/generated/custometry-ui-design-g4-v1/
+/.codex/delivery/evidence/custometry-ui-design-program-v2/
+
 # Editors / OS
 .DS_Store
 .idea/

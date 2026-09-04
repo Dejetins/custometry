@@ -1,9 +1,0 @@
-{
-  "$schema": "owner-input-response-request.schema.json",
-  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
-  "stage_instance_id": "G4@family.dash.shell-workspace.baseline-r5",
-  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/owner-review-decision-packet.md",
-  "response_kind": "visual_acceptance",
-  "owner_input": "ок это принимается",
-  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.dash.shell-workspace.baseline-r5/family-acceptance-decision-r5.json"
-}

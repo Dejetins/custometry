@@ -34,9 +34,8 @@ repair_policy:
 validation:
   depth: tests
 # For current Custometry Web implementation, use the repository-selected
-# implementation-source contract and treat frozen UI-program artifacts only as
-# scoped references. A newly authorized product-wide program may select
-# ui-design-program. Add browser-qa-evidence when a browser surface is in scope.
+# implementation-source contract and preserved target pilot. Do not restore
+# retired G-program artifacts. Add browser-qa-evidence for a browser boundary.
   proof_skills: []
   commands: [<focused-command>]
   proof_boundary: <exact-boundary>

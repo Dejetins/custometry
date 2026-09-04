@@ -1,9 +1,0 @@
-{
-  "$schema": "owner-input-response-request.schema.json",
-  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
-  "stage_instance_id": "G4@family.core.shell-workspace.baseline-r5",
-  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.core.shell-workspace.baseline-r5/owner-review-decision-packet.md",
-  "response_kind": "requested_changes",
-  "owner_input": "вот здесь надо kpi строку сделать как в пилотной версии принятой",
-  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.core.shell-workspace.baseline-r5/family-review-requested-changes-kpi-pilot-row-r5.json"
-}

@@ -1,9 +1,0 @@
-{
-  "$schema": "owner-input-response-request.schema.json",
-  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
-  "stage_instance_id": "G3@CUSTOMETRY-UI-DESIGN-PROGRAM-V2-r2",
-  "decision_packet_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-review-decision-packet.json",
-  "response_kind": "requested_changes",
-  "owner_input": "инспектор открывается только в ограниченном экранном пространстве ин е соответвует пилоту.\nне вижу ни одного табличного элемента, не вижу иконок управлений сгруппированных под одной подложкой. я не могу проверить соответствие каждого элемента пилоту",
-  "canonical_owner_decision_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r2/owner-requested-changes-r3.json"
-}

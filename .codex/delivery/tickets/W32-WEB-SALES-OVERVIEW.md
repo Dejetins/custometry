@@ -25,6 +25,11 @@ escalation_triggers: [normative_product_change, material_user_scope_change, exte
 evidence: [.codex/delivery/evidence/W32-WEB-SALES-OVERVIEW.md]
 ---
 
+> Source update, 2026-09-04: the G-program was removed. Historical acceptance
+> and evidence remain unchanged; they do not prove conformance to the final
+> target pilot. Any new work requires its own ready ticket and the current
+> Web implementation source contract. Forbidden historical paths remain guards.
+
 # Outcome
 
 `UI-AN-003` at `/w/:workspaceKey/analytics/sales` renders production revenue,
@@ -42,9 +47,9 @@ ready, stale/degraded, forbidden, and failed states remain truthful.
 
 # Work and repair boundary
 
-Implement only the sales feature and its self-registering route module. Reuse
-the accepted analytics G4 family as a visual reference where applicable; do
-not copy receipts or treat mocked data as a production result. Compatible
+Implement only the sales feature and its self-registering route module. Future
+conformance work follows the preserved target pilot and product semantics;
+mocked data is not a production result. Compatible
 adapter/test repairs inside owned paths are allowed and invalidate their tests.
 
 # Acceptance evidence

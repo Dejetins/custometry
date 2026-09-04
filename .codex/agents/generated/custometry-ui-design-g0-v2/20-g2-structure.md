@@ -1,1 +1,0 @@
-archive/20-g2-structure.md

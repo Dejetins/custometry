@@ -1,8 +1,0 @@
-{
-  "$schema": "program-artifact-index.schema.json",
-  "schema_id": "codex.ui-program-artifact-index/v1",
-  "program_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2",
-  "program_revision": 4,
-  "index_kind": "waves",
-  "entries": []
-}

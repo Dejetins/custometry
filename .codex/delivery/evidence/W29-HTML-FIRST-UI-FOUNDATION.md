@@ -12,6 +12,12 @@ executed_checks: [reviewed the accepted owner scope against the historical W29 a
 observations: [W29 was not executed, its exact HTML-first scaling authority was withdrawn, the pilot remains only a hash-pinned visual-language and density anchor]
 ---
 
+> Historical record. The authority statements below describe the original
+> supersession, not the current target. The owner selected the final pilot
+> as the target UI concept on 2026-09-04 and removed the G-program materials.
+> Old paths resolve in commit `d5f8aa29f83be90a0b3871ff2c886d48fc020901`;
+> see `docs/architecture/ui/ui-program-retirement.md`. Status is unchanged.
+
 # Outcome and scope
 
 W29 is `superseded` without implementation. Its historical source and review

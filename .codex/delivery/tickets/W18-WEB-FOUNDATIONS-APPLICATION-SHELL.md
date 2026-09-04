@@ -9,7 +9,7 @@ workstream_id: W18
 summary: Replace the provisional Foundation shell with the reusable Frost Web foundation and production-shaped application shell that resolves the accepted route registry honestly, renders required system presentation states, and is proven in a real browser without claiming domain or authorization runtime.
 requirement_ids: [THEME-002, I18N-001, I18N-002, I18N-005, I18N-009, I18N-010, A11Y-001, A11Y-003, A11Y-008, A11Y-009, A11Y-010, ROUTE-001, ROUTE-004, ROUTE-009, ROUTE-012, MOTION-001, MOTION-002, MOTION-003, MOTION-011, MOTION-012, SYS-UI-001, SYS-UI-002, SYS-UI-003, SYS-UI-004, SYS-UI-005, HELP-001, HELP-002, HELP-003, HELP-004]
 blockers: [W10-PENPOT-093-ORGANIZATION-PEOPLE-DELTA-IMPLEMENTATION]
-supersession_reason: The Frost-only shell is an unexecuted historical target. The product owner later withdrew both it and the unexecuted Linear/Penpot successor route; future product-wide UI work must restart from ui-design-program pre-G0 intake and a new accepted visual authority.
+supersession_reason: The Frost-only shell is an unexecuted historical target. The product owner later withdrew both it and the unexecuted Linear/Penpot successor route; future UI work requires current scope and accepted visual authority.
 context_sources:
   - AGENTS.md
   - .codex/AGENTS.md

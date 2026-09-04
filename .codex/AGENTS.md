@@ -109,7 +109,6 @@ The global skill router selects technical skills. Custometry-specific routes:
 | Reusable procedure prompt or explicitly justified prompt pack | `prompt-manager` after `delivery-orchestrator` |
 | Product-wide Web UI coverage | Use the existing requirements, target pilot, and surface inventory to scope ordinary implementation tickets; do not recreate the retired G0-G6 program |
 | Current Custometry Web implementation | Execute exactly one `ready` ticket under `.codex/delivery/tickets/`, using the active implementation-source contract and boundary-matched browser proof |
-| One unresolved visual or interaction direction | `ui-ux-pro-max` for one advisory direction expressed as principles and semantic tokens; use `product-design:ideate` instead only when visible image-based alternatives are requested |
 | Faithful local Product Design prototype | `product-design:image-to-code` for an inspectable image/export or `product-design:url-to-code` for an authorized live URL; do not substitute these for ordinary ticket-governed production implementation |
 | UX/product-flow critique | `product-design:audit`; keep its verdict separate from fidelity and runtime readiness |
 | Source-to-prototype fidelity | `product-design:design-qa`; normalize source and implementation viewport/state and keep runtime readiness with `browser-qa-evidence` |

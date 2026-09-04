@@ -133,9 +133,8 @@ separate decision; it is never resolved by silently changing Penpot semantics.
 
 # Work and repair boundary
 
-Use `ui-ux-pro-max` as the primary execution skill and the Penpot MCP as the
-design writer. Add `product-design:audit` only for the declared final visual
-proof boundary. Work in the canonical file and preserve all compatible
+The original design execution tooling is retired; this historical ticket does
+not authorize new design writes. Work in the canonical file and preserve all compatible
 foundations, components, stable route IDs, page ownership, and the single Frost
 theme. In-scope visual repairs may correct density, alignment, button-label
 centering, collisions, clipping, navigation-icon behavior, and component-state

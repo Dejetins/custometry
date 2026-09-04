@@ -125,8 +125,7 @@ Repeat the identical fingerprint immediately before the terminal verdict.
 # Work and repair boundary
 
 Use `penpot-design-delivery` for Penpot inspection, writes, and artifact-level
-visual proof. Use `ui-ux-pro-max` only if an unresolved design-direction
-decision is within scope. Preserve the Frost tokens, W06 compact density,
+visual proof. Preserve the Frost tokens, W06 compact density,
 icon-and-label expanded sidebar, icon-only collapsed sidebar, centered
 controls, stable shell geometry, keyboard-visible focus, non-color-only states,
 and existing route identities.

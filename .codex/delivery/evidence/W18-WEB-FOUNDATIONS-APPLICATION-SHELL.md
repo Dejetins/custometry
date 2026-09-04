@@ -12,6 +12,10 @@ executed_checks: [reviewed the unexecuted W18 scope against the current owner au
 observations: [W18 was ready but unexecuted, its Frost-only foundation is historical, the later unexecuted Linear/Penpot route was also withdrawn, no frontend implementation ticket is currently ready]
 ---
 
+> Publication reconciliation, 2026-09-04: unavailable tooling references were
+> removed or redirected. The original checks and superseded verdict remain
+> historical; current authority is the accepted target pilot and Web source contract.
+
 > Historical supersession record. Statements below about a future pre-G0
 > program describe the original reset, not current execution authority.
 > The owner selected the final target pilot and removed the G-program on
@@ -32,11 +36,11 @@ observations: [W18 was ready but unexecuted, its Frost-only foundation is histor
 
 | Command or action | Result | Redacted observation / durable reference |
 |---|---|---|
-| Review W18 against `docs/adr/0004-ui-design-program-governance.md` | superseded | W18 and the later unexecuted successor route have no current target or execution authority. |
+| Review W18 against `docs/adr/0004-ui-delivery-governance.md` | superseded | W18 and the later unexecuted successor route have no current target or execution authority. |
 | Inspect current `custometry-ui-blueprint-ru.md` admission state | superseded | `active_program: null` and `visual_authority: null`; future UI work starts from pre-G0 intake. |
 
 ## Verdict
 
 `superseded`. W18 was never accepted or implemented. The next safe action is
 to record the owner's expanded product path and accepted pre-G0 visual direction
-before initializing `ui-design-program` G0.
+before selecting a new UI implementation task.

@@ -20,9 +20,8 @@ Authoritative inputs:
 - Require actor/problem/journey, release stage, authority over open decisions, current product behavior or evidence, affected consumers, success criteria, proof boundary, and the ready ticket/specification when applicable.
 
 Skill routing:
-- .codex/AGENTS.md section 7 is the complete router; these are conditional role-local routes, not a whitelist or preload list.
+- .codex/AGENTS.md section “Local routing and verification” is the complete router; these are conditional role-local routes, not a whitelist or preload list.
 - Explicit Product Design request -> product-design:index; screenshot-led UX audit -> product-design:audit.
-- UI/UX hierarchy/accessibility guidance without Product Design workflow -> ui-ux-pro-max.
 - Business-facing analytical methodology or claim -> data-analytics-methodology.
 - Browser-visible default or compatibility change -> contract-impact-analysis.
 - Readiness-only ship decision -> pre-ship-gate; it does not authorize publication.

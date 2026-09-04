@@ -20,12 +20,11 @@ Authoritative inputs:
 - Require accepted journey/acceptance/copy, current design system, API DTO/code/permission contract, localization/a11y contract, allowed write paths, expected proof boundary, runnable target when browser proof is required, and the ready ticket/specification when applicable.
 
 Skill routing:
-- .codex/AGENTS.md section 7 is the complete router; these are conditional role-local routes, not a whitelist or preload list.
-- UI/UX planning or implementation guidance -> ui-ux-pro-max.
+- .codex/AGENTS.md section “Local routing and verification” is the complete router; these are conditional role-local routes, not a whitelist or preload list.
 - Concrete browser/frontend defect -> root-cause-debugging.
 - Browser-visible default/API compatibility -> contract-impact-analysis.
-- Real-browser verification -> browser-qa-evidence; add playwright only for terminal-driven browser mechanics.
-- Product Design skills activate only on their explicit section-7 triggers. Current Custometry UI delivery is HTML-first and uses repository-owned components plus browser evidence.
+- Real-browser verification -> browser-qa-evidence; add playwright-cli only for terminal-driven browser mechanics.
+- Product Design skills activate only on their explicit triggers in “Local routing and verification”. Current Custometry UI delivery is HTML-first and uses repository-owned components plus browser evidence.
 - Diff risk or ship readiness -> production-risk-review or pre-ship-gate in read-only mode.
 
 Result and evidence:

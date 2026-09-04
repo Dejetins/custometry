@@ -7,7 +7,7 @@
 - [ADR-0001: Foundation operating model](adr/0001-foundation-operating-model.md)
 - [ADR-0002: Edge ingress adapter and network segmentation](adr/0002-edge-ingress-network-segmentation.md)
 - [ADR-0003: Custometry Adapter to Global Ticket-First Delivery](adr/0003-agent-delivery-model.md)
-- [ADR-0004: Historical UI design program governance and target reset](adr/0004-ui-design-program-governance.md)
+- [ADR-0004: Historical UI delivery governance and target reset](adr/0004-ui-delivery-governance.md)
 - [ADR-0005: Collaboration, digital measurement, and content-addressed compute reuse](adr/0005-collaboration-measurement-and-compute-reuse.md)
 - [ADR-0006: Common analytical documents, time-aware segments, and retail product analytics](adr/0006-analytical-document-retail-product-and-time-aware-segmentation.md)
 - [ADR-0007: Responsive Web frontend platform and ownership boundaries](adr/0007-responsive-web-frontend-platform.md)
@@ -28,6 +28,8 @@
 - [Comparable analytics platform capability audit](architecture/ui/comparable-analytics-platform-capability-audit-v1.md)
 - [Custometry HTML-first UI prototyping and reuse plan v1](architecture/ui/custometry-contract-compiled-ui-prototyping-plan-v1.md)
 - [Custometry Web implementation source contract](architecture/ui/custometry-web-implementation-source-contract-v1.md)
+- [Historical August 5 visual pilots](architecture/ui/pilots/README.md)
+- [Source checkout publication reconciliation, 2026-09-04](architecture/ui/publication-reconciliation-2026-09-04.md)
 - [Target UI concept](architecture/ui/target-pilot/README.md)
 - [UI-program retirement and retained sources](architecture/ui/ui-program-retirement.md)
 

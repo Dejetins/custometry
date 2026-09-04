@@ -152,3 +152,40 @@ Hosted checks, the PR, squash-merge SHA, and remote-main verification are
 reported by the publication task after they are observed. No deployment is
 requested or performed. The repository may run its existing immutable-candidate
 workflow on main; that is not a deployed application or release acceptance.
+
+## Post-merge bootstrap repair
+
+PR #48 merged as `de8d68d9cb598cdeb4b5f8c4d2413dc4ad2d7692` after all
+required PR checks passed. Main workflow `33919251301` then failed twice before
+migration/browser startup, immediately after starting `control-db`. The same
+SHA passed the parallel candidate workflow's Foundation runtime. This exposed
+an existing intermittent readiness defect, rather than a product-source diff.
+
+The readiness commands omitted a host and therefore observed the local Unix
+socket. The [official PostgreSQL entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh)
+starts a socket-only initialization server, stops it, and then starts the final
+server. The bootstrap could leave its loop on that temporary server and fail
+its next probe during restart. The logs locate the failing phase; they do not
+contain PostgreSQL's internal startup trace. A deterministic executable-shell
+regression reproduced that early-success/next-probe-failure sequence on the
+unmodified bootstrap.
+
+The bounded follow-up changes only database readiness probes in
+`deploy/compose/bootstrap.sh`, `deploy/compose/ci-smoke.sh`, and `compose.yaml`
+to use container-local TCP at `127.0.0.1`. This also prevents Compose health
+admission and demo-data verification from using the temporary server. Retry
+budgets, image pins, ports, secrets, data and migrations are unchanged.
+
+`tests/integration/test_bootstrap_lifecycle.py` now simulates initialization,
+restart and final TCP readiness through the existing subprocess test seam. The
+new regression failed before the repair and passes afterward; the complete
+bootstrap file has five passing tests. Focused Ruff/Pyright and the grouped
+`pre-push` profile passed. Hosted PR/main CI supplies the real container/browser
+proof; the fake-command regression alone does not establish it.
+
+Risk review: readiness semantics are `compatible-change`, implementing the
+existing requirement that databases be ready before dependents start. API,
+persistence, identity, authorization, external side effects and publication
+policy are `none`. Rollback is a normal Git revert of this narrow change, with
+the known readiness race returning. The separate planning-task exclusion and
+source-checkout preservation remain in force for this repair.

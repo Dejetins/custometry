@@ -57,13 +57,13 @@ compose=(docker compose "${compose_files[@]}" "${compose_env_files[@]}")
 
 for _ in {1..60}; do
   if "${compose[@]}" --profile demo exec -T demo-source-db \
-    pg_isready -U demo_source_admin -d northwind_retail >/dev/null 2>&1; then
+    pg_isready -h 127.0.0.1 -U demo_source_admin -d northwind_retail >/dev/null 2>&1; then
     break
   fi
   sleep 1
 done
 "${compose[@]}" --profile demo exec -T demo-source-db \
-  pg_isready -U demo_source_admin -d northwind_retail >/dev/null
+  pg_isready -h 127.0.0.1 -U demo_source_admin -d northwind_retail >/dev/null
 
 evidence="$("${compose[@]}" --profile demo exec -T demo-source-db \
   psql -U demo_source_admin -d northwind_retail -At \

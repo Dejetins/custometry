@@ -124,3 +124,51 @@ def test_seeded_profile_or_allow_change_fails_before_state_mutation(
     assert "differs from persisted data" in completed.stderr
     assert "--reset-demo-data" in completed.stderr
     assert not secrets.exists()
+
+
+def test_bootstrap_waits_for_tcp_after_temporary_socket_server(tmp_path: Path) -> None:
+    """A transient init server must not admit migrations before final startup."""
+    fake_bin = tmp_path / "bin"
+    fake_bin.mkdir()
+    fake_docker = fake_bin / "docker"
+    fake_docker.write_text(
+        """#!/usr/bin/env python3
+import os
+import sys
+from pathlib import Path
+
+args = sys.argv[1:]
+state = Path(os.environ["CUSTOMETRY_RUNTIME_ENV_FILE"]).parent
+if "pg_isready" in args:
+    count_file = state / "probes"
+    count = int(count_file.read_text()) + 1 if count_file.exists() else 1
+    count_file.write_text(str(count))
+    tcp = "-h" in args and args[args.index("-h") + 1] == "127.0.0.1"
+    # During initialization only the socket is ready; it disappears on restart.
+    ready = (tcp and count >= 3) or (not tcp and count == 1)
+    if ready and tcp:
+        (state / "tcp-ready").touch()
+    sys.exit(0 if ready else 1)
+if "migrate" in args:
+    if not (state / "tcp-ready").exists():
+        sys.exit(42)
+    (state / "migrated").touch()
+if "port" in args:
+    print("127.0.0.1:42319")
+sys.exit(0)
+""",
+        encoding="utf-8",
+    )
+    fake_docker.chmod(0o755)
+    for command in ("sleep", "curl"):
+        stub = fake_bin / command
+        stub.write_text("#!/usr/bin/env bash\nexit 0\n", encoding="utf-8")
+        stub.chmod(0o755)
+
+    completed = run_bootstrap(
+        tmp_path, "--build", path=f"{fake_bin}:{os.environ['PATH']}"
+    )
+
+    assert completed.returncode == 0, completed.stderr
+    assert (tmp_path / "migrated").exists()
+    assert int((tmp_path / "probes").read_text()) >= 3

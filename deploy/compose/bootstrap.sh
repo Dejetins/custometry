@@ -272,11 +272,13 @@ else
 fi
 
 compose up -d control-db
+# The image starts a socket-only temporary server during first initialization.
+# Wait for the final TCP server before admitting migrations.
 for _ in {1..40}; do
-  if compose exec -T control-db pg_isready -U custometry -d custometry >/dev/null 2>&1; then break; fi
+  if compose exec -T control-db pg_isready -h 127.0.0.1 -U custometry -d custometry >/dev/null 2>&1; then break; fi
   sleep 1
 done
-compose exec -T control-db pg_isready -U custometry -d custometry >/dev/null
+compose exec -T control-db pg_isready -h 127.0.0.1 -U custometry -d custometry >/dev/null
 
 if [[ "${mode}" == "release" ]]; then
   compose_config="$(compose config --format json)"

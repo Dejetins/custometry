@@ -17,7 +17,7 @@ proof_boundary:
 
 - status: `accepted`;
 - date: `2026-08-06`;
-- decision owner: product-owner delegation in `CUSTOMETRY-UI-DESIGN-PROGRAM-V2` G0;
+- decision owner: product-owner delegation in the retired UI workflow (historical provenance);
 - supersedes/superseded by: resolves the target-stack decision deferred by ADR-0004; no successor.
 
 ## Context

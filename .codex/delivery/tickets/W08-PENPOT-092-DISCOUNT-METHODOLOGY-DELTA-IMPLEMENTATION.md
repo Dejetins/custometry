@@ -112,8 +112,8 @@ Repeat the identical fingerprint immediately before verdict.
 
 # Work and repair boundary
 
-Use `ui-ux-pro-max` as the primary execution skill, the Penpot MCP for design
-writes, and `product-design:audit` for final visual proof. Preserve the Frost
+The original design execution tooling is retired; this historical ticket does
+not authorize new design writes. Preserve the Frost
 tokens, Lucide mapping, compact 64 px KPI strip, W06 ordered MetricGroup tables,
 on-demand Result Trust, aligned context/KPI boundaries, centered controls,
 icon-only collapsed sidebar, and current route geometry.

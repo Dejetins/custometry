@@ -9,7 +9,7 @@ workstream_id: W30
 summary: Prove the UI-AN-003 G4 representative family across all required states, roles, locales, themes, and responsive-Web anchors using real Apache ECharts through ChartSpec and the shared compiler, a source-backed chart-type selector, and a separate accessible Data Grid.
 requirement_ids: [ROUTE-004, THEME-001, THEME-005, THEME-008, UI-SHELL-001, UI-SHELL-002, UI-SHELL-003, UI-DENSITY-001, UI-DENSITY-002, UI-DENSITY-003, CHART-004, FOCUS-001, FOCUS-002, FOCUS-003, FOCUS-004, FOCUS-005, FOCUS-006, FOCUS-007, FOCUS-008, FOCUS-009, FOCUS-010, A11Y-001, A11Y-003, A11Y-008]
 blockers: []
-supersession_reason: CUSTOMETRY-UI-DESIGN-PROGRAM-V1 revision 5 and its G4 family hypothesis were replaced by the owner's expanded pre-G0 product/UI baseline and accepted pilot-as-language-only authority. The old family proof is historical and must not execute or advance G5.
+supersession_reason: The previous revision 5 design workflow and its G4 family hypothesis are retired. Current UI work follows the accepted target pilot and ordinary implementation tickets; this historical unit must not execute.
 iteration_report_template: .codex/agents/iteration_report_template.md
 context_sources:
   - docs/architecture/ui/ui-program-retirement.md
@@ -52,12 +52,8 @@ repair_policy:
   retest_invalidated_evidence: true
 validation:
   depth: browser
-  proof_skills: [staged-plan-runner, ui-design-program, contract-impact-analysis, better-ui, better-layout, better-accessibility, browser-qa-evidence, playwright-cli]
+  proof_skills: [contract-impact-analysis, better-ui, better-layout, better-accessibility, browser-qa-evidence, playwright-cli]
   commands:
-    - verify accepted CUSTOMETRY-UI-DESIGN-PROGRAM-V1 revision 5 source hashes exact triad links and the pending unclaimed ledger instance before writes
-    - test the exact count of JSON screen contracts under .codex/delivery/ui-design-programs/custometry-v1/screen-contracts/ui-an-003 is 144
-    - pass the deterministic sorted list of all 144 JSON screen-contract files to validate_ui_design_program.py under screen_contract_ready
-    - python3 /Users/daniildegtyarev/.codex/skills/ui-design-program/scripts/ui_design_tool.py preflight
     - source scripts/activate-toolchain.sh
     - pnpm --filter @custometry/web lint
     - pnpm --filter @custometry/web typecheck
@@ -80,10 +76,12 @@ evidence: [.codex/delivery/evidence/W30-UI-AN-003-G4-ECHARTS-FAMILY-PROOF.md]
 # Outcome
 
 This ticket remains `superseded` and must not execute. The G4 proof was never
-performed. Its original scope, commands, and evidence metadata above describe
+performed. Its retained scope, commands, and evidence metadata above describe
 the abandoned execution unit, not current permission to write or run a stage.
 
 On 2026-09-04 the owner authorized removal of the G-program materials.
+Unavailable skill routes and stage-validator commands were removed during
+publication reconciliation; this does not change the historical verdict.
 The historical plan, prompt, ledger, and screen-contract paths are recoverable
 from commit `d5f8aa29f83be90a0b3871ff2c886d48fc020901`; see
 [the retirement record](../../../docs/architecture/ui/ui-program-retirement.md).

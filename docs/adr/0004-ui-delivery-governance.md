@@ -1,6 +1,6 @@
 ---
 doc_id: ADR-0004
-title: Historical UI design program governance and target reset
+title: Historical UI delivery governance and target reset
 doc_version: 2
 product_spec_version: 0.10.0-draft
 visibility: internal
@@ -13,7 +13,7 @@ proof_boundary:
   exclusions: [browser-runtime, frontend-conformance, release-readiness]
 ---
 
-# ADR-0004: Historical UI design program governance and target reset
+# ADR-0004: Historical UI delivery governance and target reset
 
 - original decision: 2026-08-05;
 - superseded: 2026-09-04, by explicit product-owner decision;

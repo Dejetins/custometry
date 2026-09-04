@@ -1,38 +1,38 @@
 ---
 document_family_id: CUSTOMETRY-UI-BLUEPRINT
 document_id: CUSTOMETRY-UI-BLUEPRINT-RU
-title: Custometry — требования к Web UI и pre-G0 baseline
+title: Custometry — требования к Web UI и целевая концепция
 ui_spec_version: 0.8.0-draft
 source_product_spec: 0.10.0-draft
 source_documents:
   - ./custometry-technical-blueprint-ru.md
   - ./custometry-technical-blueprint-human-ru.md
-  - ./docs/architecture/ui/custometry-pre-g0-pilot-manifest-v1.json
-status: pre_g0_intent_baseline_accepted
+  - ./docs/architecture/ui/target-pilot/manifest.json
+status: accepted_ui_requirements
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-09-02
-artifact_role: pre_g0_product_ui_requirements_and_current_inventory
-program_route: ui-design-program
+updated_at: 2026-09-04
+artifact_role: product_ui_requirements_and_current_inventory
+program_route: ticket_first
 active_program: null
 current_execution_route: docs/architecture/ui/custometry-web-implementation-source-contract-v1.md
 visual_authority:
-  status: accepted_pre_g0_visual_language_anchor
+  status: accepted_target_ui_concept
   source_evidence_mode: renderable_html
-  scope: platform_visual_language_and_analytics_density
-  manifest: ./docs/architecture/ui/custometry-pre-g0-pilot-manifest-v1.json
+  scope: demonstrated_composition_behavior_and_visual_language
+  manifest: ./docs/architecture/ui/target-pilot/manifest.json
 target: adaptive_responsive_web_application
 mobile_scope: unauthorized
 ---
 
-# Custometry — требования к Web UI и pre-G0 baseline
+# Custometry — требования к Web UI и целевая концепция
 
 ## 0. Статус и назначение
 
 Этот документ переводит продуктовый blueprint Custometry `0.10.0-draft` в исходные требования к Web UI: пользовательские результаты, роли, journeys, данные, текущие поверхности, состояния, действия, permissions, accessibility, localization и responsive-приоритеты.
 
-Документ является производным pre-G0 источником и не изменяет нормативную продуктовую спецификацию. Если UI-требование противоречит `custometry-technical-blueprint-ru.md`, действует machine blueprint. Новая бизнес-функция сначала появляется в machine blueprint и его human mirror, затем получает UI-представление здесь.
+Документ является производным источником UI-требований и не изменяет нормативную продуктовую спецификацию. Если UI-требование противоречит `custometry-technical-blueprint-ru.md`, действует machine blueprint. Новая бизнес-функция сначала появляется в machine blueprint и его human mirror, затем получает UI-представление здесь.
 
 В этом документе сейчас зафиксированы:
 
@@ -42,9 +42,9 @@ mobile_scope: unauthorized
 - сквозные требования к аналитике, исследованиям, прогнозам, отчётам, операциям, администрированию, accessibility и localization;
 - историческое evidence W03-W10 как свидетельство прежнего покрытия, но не как текущая визуальная власть;
 - принятая capability expansion: общий multi-page Analytical Document, universal block builder, точные notes/annotations/discussions, time-aware segmentation, Products/Categories/Assortment/Inventory, digital acquisition/retail journeys, unit economics, adoption и analytical-performance administration;
-- два hash-pinned RU/EN HTML-пилота как принятый visual-language/density anchor, но не exact composition authority.
+- финальный интерактивный RU/EN пилот как целевая UI-концепция, включая показанную композицию, навигацию, аналитические взаимодействия и визуальный язык.
 
-В этом документе намеренно **не выбраны** frontend framework, state/query library, component system, окончательные theme/token/typography/icon contracts, shell geometry, motion implementation или rollout. Визуальный характер пилота принят только в границах §2.2 и manifest; он не фиксирует layout всех экранов. Предыдущий Linear/Penpot target, его поздняя UI-программа и исполнимые tickets выведены из действия; их артефакты сохраняются только как historical evidence.
+Frontend architecture определяется ADR-0007. Финальный пилот сохранён в `docs/architecture/ui/target-pilot/` и является целевой концепцией, а не только визуальным ориентиром. Он не показывает все экраны и не доказывает готовность production-кода. G0–G6 программа и её материалы удалены по решению владельца 2026-09-04; восстановление из Git описано в `docs/architecture/ui/ui-program-retirement.md`. Продуктовые требования и рабочий код сохранены, дальнейшее приведение UI к концепции выполняется обычными implementation tickets.
 
 ## 1. Design brief
 
@@ -92,11 +92,11 @@ Custometry — self-hosted операционная система B2C retail-а
 
 Один пользователь может иметь несколько ролей. Навигация и действия формируются из effective permissions, но расположение разрешённых функций остаётся стабильным.
 
-## 2. Pre-G0 intent baseline
+## 2. Принятые требования и целевая концепция
 
 ### 2.1. Принятое направление
 
-- строится одна цельная продуктовая программа для полного responsive Web;
+- строится цельный продукт с максимальным покрытием responsive Web;
 - текущий функциональный baseline используется как исходное evidence, а не как потолок;
 - Dashboard, Workbook/Report и Research обязаны использовать один document/page/section/block composer, но разные presentation profiles и reading journeys;
 - Workbook/Report поддерживает большое число страниц-вкладок, chapter groups, overview/search/overflow, reorder/duplicate/hide/lock/group и deep links до page/block;
@@ -104,30 +104,30 @@ Custometry — self-hosted операционная система B2C retail-а
 - analyst note, data annotation, discussion comment и reviewed finding являются разными объектами; refresh не переносит anchor на новые данные автоматически;
 - сегменты создаются и пересчитываются в отдельной части платформы, имеют definition/run/schedule/snapshot history и explicit pinned/latest-successful bindings для повторного использования;
 - foundation включает Digital Acquisition & App, Products/Categories/Assortment/Inventory, governed unit economics, adoption и analytical-performance administration;
-- новый all-screen atlas обязан покрыть routes, route flows, persistent shells, route-backed transients, overlays, system-state families, internal/non-visual surfaces и обоснованные historical exclusions;
+- целевое покрытие обязано включать routes, route flows, persistent shells, route-backed transients, overlays, system-state families, internal/non-visual surfaces и обоснованные historical exclusions;
 - каждая поверхность получает source-backed purpose, data meaning, roles, permissions, regions, states, actions, outcomes, failure и recovery;
 - mobile-specific information architecture и composition не входят в scope без отдельной текущей авторизации.
 
 ### 2.2. Текущие источники
 
-| Область | Источник | Статус в будущей программе |
+| Область | Источник | Роль |
 |---|---|---|
 | Product meaning и обязательства | `custometry-technical-blueprint-ru.md` | Нормативный источник |
 | Объясняющее представление | `custometry-technical-blueprint-human-ru.md` | Синхронизированное зеркало |
-| Текущие UI requirements и inventory | Этот документ | Pre-G0 input, подлежит расширению |
-| Route identity и execution policy | `packages/contracts/routes/ui-routes.json`, `ui-route-contracts.json` | Current-state evidence, не G1 atlas |
+| Текущие UI requirements и inventory | Этот документ | Принятые требования, подлежат расширению |
+| Route identity и execution policy | `packages/contracts/routes/ui-routes.json`, `ui-route-contracts.json` | Текущий исполняемый inventory, не доказательство полного target coverage |
 | Surface coverage | `packages/contracts/routes/ui-surface-contracts.json` | Current-state evidence, не permanent ceiling |
 | Исторический дизайн W03-W10 | `.codex/delivery/evidence/` | Historical-only, не visual authority |
-| Принятый RU/EN HTML-пилот | `docs/architecture/ui/custometry-pre-g0-pilot-manifest-v1.json` | Visual-language/density anchor; не exact composition и не frontend authority |
+| Принятый RU/EN HTML-пилот | `docs/architecture/ui/target-pilot/manifest.json` | Целевая композиция, поведение и визуальный язык показанного UI; не backend/architecture proof |
 | Текущий Web-код | `apps/web/**` | Implementation evidence, не target baseline |
 
 ### 2.3. Зафиксированный scope и critical journeys
 
-Материально необходимых owner inputs для этой requirements-итерации не осталось: продуктовый смысл, новый capability scope и visual-language anchor приняты. В included scope входят adaptive Web, все текущие surfaces, document profiles/composer, segment lifecycle/reuse, collaboration, digital acquisition/unit economics, product/category/assortment/inventory, adoption и analytical performance. Excluded: mobile-specific IA, presentation/story profile, B2B ontology, activation/reverse ETL, arbitrary browser code/notebooks и автоматические causal claims.
+Материально необходимых owner inputs для этой requirements-итерации не осталось: продуктовый смысл, capability scope и целевая UI-концепция приняты. В included scope входят adaptive Web, все текущие surfaces, document profiles/composer, segment lifecycle/reuse, collaboration, digital acquisition/unit economics, product/category/assortment/inventory, adoption и analytical performance. Excluded: mobile-specific IA, presentation/story profile, B2B ontology, activation/reverse ETL, arbitrary browser code/notebooks и автоматические causal claims.
 
-Приоритетные journeys будущего G2: `data-to-trusted-result`, `compose-large-workbook`, `publish-review-collaborate`, `refresh-with-stable-anchors`, `define-recalculate-reuse-segment`, `digital-to-offline-unit-economics`, `product-category-assortment-inventory`, `open-100x30-document-without-duplicate-compute`, `adoption-and-performance-operations`. Это требования, а не готовые G2 IDs или wave plan.
+Приоритетные продуктовые journeys: `data-to-trusted-result`, `compose-large-workbook`, `publish-review-collaborate`, `refresh-with-stable-anchors`, `define-recalculate-reuse-segment`, `digital-to-offline-unit-economics`, `product-category-assortment-inventory`, `open-100x30-document-without-duplicate-compute`, `adoption-and-performance-operations`. Это требования, а не утверждение об их реализации.
 
-G0 намеренно не создаётся этой задачей. Технические решения, repository-owned source import, responsive anchors, exact families/waves, hashes и validator mechanics ведутся агентом при следующем авторизованном запуске программы; владельцу не нужно повторять принятый scope.
+Повторный intake и новая G-программа не требуются. Агент использует принятые требования, ADR-0007, целевой пилот и конкретный ready ticket. Нельзя требовать от владельца повторного описания уже принятого scope.
 
 ## 3. Основные UX-принципы
 
@@ -146,7 +146,7 @@ G0 намеренно не создаётся этой задачей. Техн�
 
 Внешний продукт, design system или platform guideline может стать только source-backed visual-language reference либо craft-check после явного выбора. Он не переносит в Custometry чужие сущности, тексты, assets, branding, source code, скрытые permission rules или platform-specific interaction без Web semantics. Один референсный экран не заменяет platform baseline и полный atlas.
 
-Принятый пилот наследует calm professional tone, компактную аналитическую плотность, короткий KPI/context chrome, явно видимый Result Trust и характер Focus/Explore. Не наследуются фиксированная композиция `KPI → chart → table`, конкретная сетка, обязательное расположение controls, полный component set или screen inventory. Existing-screen families используют source fidelity только там, где будущий contract явно ссылается на pilot; новые families доказывают visual-language conformance, а не pixel fidelity к несуществующему source screen.
+Принятый финальный пилот задаёт показанные композицию, сетку, навигацию, панели, controls, Focus/Explore, charts/tables и визуальный язык. Для соответствующих поверхностей это целевая концепция, а не набор необязательных stylistic hints. Для отсутствующих экранов сохраняются продуктовые требования и применяются согласованные паттерны пилота; одинаковая композиция для всех экранов не навязывается. Fixture-данные и прототипные действия не заменяют production-контракты и browser evidence реализации.
 
 ## 4. Информационная архитектура
 
@@ -214,13 +214,13 @@ Administration
   Analytical Performance
 ```
 
-Навигация показывает только разрешённые группы, но не используется как источник authorization. Порядок, labels, destinations, active-state semantics, focus behavior, workspace switching и safe recovery фиксируются в будущем platform baseline. Если выбранный baseline использует icon-only состояние, оно обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Способ collapse/hide, icon library, размеры и геометрия сейчас не выбраны.
+Навигация показывает только разрешённые группы, но не используется как источник authorization. Показанные в пилоте композиция, navigation/context panels и collapse behavior являются целевыми. Для полного набора destinations, effective permissions, focus behavior, workspace switching и safe recovery действуют продуктовые контракты. Icon-only состояние обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Отсутствующие в пилоте состояния уточняются в соответствующем implementation ticket.
 
 ### 4.2. Глобальный application shell
 
 | Область | Содержимое |
 |---|---|
-| Product/global controls | Product identity, workspace switch, global search/command access, help, notifications и user menu; точная композиция определяется baseline |
+| Product/global controls | Product identity, workspace switch, global search/command access, help, notifications и user menu; показанная композиция определяется целевым пилотом |
 | Primary navigation | Permission-aware destinations, current location и доступный способ перехода/возврата |
 | Page header | Breadcrumb, title, description/status, primary action и secondary actions |
 | Context bar | Dataset/version, date range, comparison, filters, timezone/currency, saved view |
@@ -251,7 +251,7 @@ Route registry имеет четыре области:
 | Installation | `/admin/*` либо `/audit` | `/admin/system`, `/admin/services`, `/audit` |
 | Workspace | `/w/:workspaceKey/*` | `/w/:workspaceKey/overview`, `/w/:workspaceKey/analytics/sales` |
 
-Машиночитаемый route contract разделён на три слоя. `packages/contracts/routes/ui-routes.json` остаётся компактным реестром identity/URL/title/release/status, `packages/contracts/routes/ui-route-contracts.json` хранит текущую исполняемую политику family/shell, role hints, permissions, guards, states, history/query и Focus для 117 известных страниц, а `packages/contracts/routes/ui-surface-contracts.json` хранит текущее покрытие routes, overlays, system surfaces и cross-surface capabilities. Portable schemas находятся рядом; семантический валидатор проверяет паритет с этим документом, все `UC-001…029`, product permission catalog и en/ru titles. Эти manifests являются current-state inventory и не заменяют будущий G1 atlas. Role hints используются только для discoverability и не заменяют API authorization.
+Машиночитаемый route contract разделён на три слоя. `packages/contracts/routes/ui-routes.json` остаётся компактным реестром identity/URL/title/release/status, `packages/contracts/routes/ui-route-contracts.json` хранит текущую исполняемую политику family/shell, role hints, permissions, guards, states, history/query и Focus для 117 известных страниц, а `packages/contracts/routes/ui-surface-contracts.json` хранит текущее покрытие routes, overlays, system surfaces и cross-surface capabilities. Portable schemas находятся рядом; семантический валидатор проверяет паритет с этим документом, все `UC-001…029`, product permission catalog и en/ru titles. Эти manifests являются current-state inventory и не доказывают полноту целевого покрытия. Role hints используются только для discoverability и не заменяют API authorization.
 
 `workspaceKey` — неизменяемый opaque public identifier. Display name может меняться и не участвует в URL. Наличие ключа в URL не даёт доступ: guard до data fetch проверяет authenticated membership, effective permission и resource scope. Таблицы §9 показывают route suffix для читаемости; если строка не относится к public/global/installation scopes, её канонический URL строится как `/w/:workspaceKey` + указанный suffix.
 
@@ -271,9 +271,9 @@ History policy:
 
 ## 5. Adaptive Web и responsive requirements
 
-Responsive Web обязателен, но точный supported width range, anchor viewports, shell transformations, component queries и density modes фиксируются только в G0/G2 после принятого product path и platform baseline. Mobile-specific information architecture остаётся `unauthorized`.
+Responsive Web обязателен. ADR-0007 задаёт диапазон 768–1920 CSS px и endpoint anchors; shell transformations, component queries и density behaviors проверяются для изменяемой реализации. Mobile-specific information architecture остаётся `unauthorized`.
 
-До выбора baseline действуют следующие инварианты:
+Для реализации действуют следующие инварианты:
 
 - reading order, user outcomes, primary actions, permission boundaries и data meaning сохраняются на всём принятом Web-диапазоне;
 - сложные editors могут переходить к последовательным regions, если это не удаляет capability и не выдаёт новый mobile scope;
@@ -282,13 +282,13 @@ Responsive Web обязателен, но точный supported width range, an
 - keyboard, zoom/reflow, focus order, reduced motion и accessible alternatives проверяются на anchor viewports;
 - фиксированные widths/heights допускаются только с source-backed причиной и responsive exception.
 
-## 6. Platform UI baseline — требования до выбора реализации
+## 6. Platform UI — концепция и требования к реализации
 
-Сейчас отсутствует принятый `platform-ui-baseline`. G0 не может закрыться, пока один baseline не определит source-backed shell variants, navigation, foundation tokens, fonts, assets, icons, component states, interaction patterns, layouts, responsive transformations, accessibility и copy policies.
+Целевая концепция — сохранённый финальный пилот; архитектура — ADR-0007. Показанные shell, navigation, layout, controls и interactions приняты как target. Production tokens/components, отсутствующие состояния, responsive transformations, accessibility и copy policies реализуются и проверяются в bounded tickets без G0–G6.
 
 ### 6.1. Themes и semantic tokens
 
-- точный theme set, identifiers и defaults не выбраны;
+- показанная палитра пилота является целевой; runtime theme identifiers/defaults не меняются этой редакцией и приводятся к концепции отдельной реализацией;
 - компоненты и ChartSpec используют semantic roles, а не hardcoded product colors;
 - каждый принятый theme покрывает canvas/surface/text/border/accent/focus/status/positive-negative/chart roles и проверяется на contrast и color-blind-safe alternatives;
 - theme preference не меняет domain values, run/artifact identity или cache identity;
@@ -297,7 +297,7 @@ Responsive Web обязателен, но точный supported width range, an
 
 ### 6.2. Typography, icons и assets
 
-- font families, weights, scale, line heights, bundled files и fallback policy выбираются и hash-pin-ятся в baseline;
+- typography наследует показанный пилотом характер; production font files, лицензии, fallback и en/ru metrics фиксируются при реализации;
 - en/ru coverage, 200% zoom/reflow, dense-table readability и deterministic report rendering обязательны;
 - одна согласованная icon system получает version/commit, semantic mapping, sizes, optical rules и license provenance;
 - незнакомое действие не обозначается только icon, а status не кодируется только цветом или движением;
@@ -305,11 +305,11 @@ Responsive Web обязателен, но точный supported width range, an
 
 ### 6.3. Layout, components и interaction patterns
 
-- baseline определяет shell regions и variants, grid/content-width/scroll policy, spacing relationships, layering и responsive transformations;
+- пилот определяет показанные shell regions, grid, spacing и layering; непоказанные variants и responsive transformations реализуются согласно продуктовым constraints;
 - каждый reusable component определяет variants, size classes, internal elements, required interaction states, content rules и accessibility behavior;
 - overlays, menus, dialogs, drawers, tooltips, tables, forms, charts, tabs и splitters получают placement, dismissal, focus, keyboard и state contracts;
 - exact geometry и visual properties наблюдаются из принятого source evidence, а не изобретаются вручную;
-- raw palette, radius, shadow, duration и easing values не становятся требованиями до принятия baseline.
+- показанные palette, radius и shadow сверяются с пилотом; непоказанные motion states уточняются в implementation ticket.
 
 ### 6.4. Motion и perceived performance
 
@@ -700,11 +700,11 @@ Empty state содержит причину, prerequisite и одну следу
 |---|---|---|---|---|---|
 | UI-HELP-001 | `/help` | Help Center and keyboard shortcuts | MVP/V1 | all | Permission-aware search по shipped docs/Data Guides/codes, contextual help, shortcut reference, version/support and deterministic deep links |
 
-**Итого: 117 основных route-level страниц.** Исторический W10 зафиксировал прежний inventory `116/25/5`; позднее current route registry добавил planned `UI-AN-015 Products`, поэтому фактический current inventory теперь `117/25/5`. Это не новый G1 atlas и не означает, что остальные принятые target families уже имеют exact route identities.
+**Итого: 117 основных route-level страниц.** Исторический W10 зафиксировал прежний inventory `116/25/5`; позднее current route registry добавил planned `UI-AN-015 Products`, поэтому фактический current inventory теперь `117/25/5`. Это не доказательство полноты целевого inventory и не означает, что остальные принятые target families уже имеют exact route identities.
 
-### 9.16. Обязательный target family delta до G1
+### 9.16. Обязательное дополнительное продуктовое покрытие
 
-Новый G1 обязан решить route/embedded/overlay identity, но не может исключить следующие результаты:
+Implementation tickets должны определить route/embedded/overlay identity и не могут исключить следующие результаты:
 
 | Target family | Минимальное покрытие |
 |---|---|
@@ -719,7 +719,7 @@ Empty state содержит причину, prerequisite и одну следу
 
 ## 10. Overlays, drawers и modals
 
-Они не считаются отдельными route-level страницами, но получают собственные screen/state contracts и review entries в будущей программе. `UI-OVR-020` исторически сохраняет prefix `OVR`, однако реализуется как route-backed surface, а не modal/overlay в DOM.
+Они не считаются отдельными route-level страницами, но получают собственные screen/state contracts и проверку в implementation tickets. `UI-OVR-020` исторически сохраняет prefix `OVR`, однако реализуется как route-backed surface, а не modal/overlay в DOM.
 
 | ID | Surface | Вызывается из | Основные требования |
 |---|---|---|---|
@@ -788,7 +788,7 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-CAP-021 | Organization-scoped effective access and ownership | Shell/navigation, organization/admin/access, libraries, report/dashboard/detail/actions | UC-028, RBAC-019…028, TEST-INV-076…084 |
 | UI-CAP-022 | Privacy-safe People & Creators | Organization/People, report/dashboard libraries, contributor cards/profile | UC-029, RBAC-022, RBAC-027, TEST-INV-078…088 |
 
-Принятый target delta пока не получает новые стабильные `UI-*` IDs: exact identities создаст новый G1 atlas. Он MUST exact-cover минимум девять surface families: analytical-document profiles/hierarchy; workbook pages/tabs/chapters; universal block builder; notes/annotations/discussions; segment runs/snapshots/bindings; digital journey/acquisition/unit economics; products/categories/assortment/inventory; materialization/reuse preflight; adoption и analytical-performance administration. Current manifests не расширяются фиктивными screen contracts до G1.
+Принятый target delta пока не имеет новых стабильных `UI-*` IDs: exact identities определяются при проектировании соответствующих implementation tickets. Необходимо покрыть минимум девять surface families: analytical-document profiles/hierarchy; workbook pages/tabs/chapters; universal block builder; notes/annotations/discussions; segment runs/snapshots/bindings; digital journey/acquisition/unit economics; products/categories/assortment/inventory; materialization/reuse preflight; adoption и analytical-performance administration. Current manifests расширяются одновременно с реальными surface contracts, а не фиктивными свидетельствами готовности.
 
 ## 11. Страница аналитического результата
 
@@ -1126,55 +1126,37 @@ People & Creators:
 | Session expired | Protected cache cleared, safe sign-in/return reference и re-authorization |
 | Upgrade required | Read-only/degraded boundary, required version и admin/runbook action |
 
-## 16. Вход в `ui-design-program`
+## 16. Реализация и проверка
 
-### 16.1. Текущее состояние admission
+Активной G-программы нет. Она удалена по текущему решению владельца.
+`active_program: null` не означает отсутствие принятого дизайна: финальный
+пилот — целевая UI-концепция. Текущий execution route определён в
+`docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`;
+статус исполнения берётся только из frontmatter конкретного тикета.
 
-Активная UI-программа отсутствует. `active_program: null` является намеренным:
-прежняя program revision и её G4 triad superseded после изменения product
-semantics и visual authority. Новый product path записан, а hash-pinned RU/EN
-pilot принят как ограниченный visual-language anchor. Эта requirements-задача
-не создаёт G0, prompt pack или ledger.
+Каждый implementation ticket использует минимальный релевантный контекст:
 
-Текущий путь исполнения Web — ticket-first route из
-`docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`.
-Он использует этот документ как product/UI intent и current inventory, но не
-возобновляет прежнюю программу и не сертифицирует G4/G5/G6.
+- purpose, user outcomes, domain entities и included/excluded scope;
+- затронутые routes/screens, роли, permissions, data reads/writes/computed values;
+- entry/exit, transitions, states, actions, outcomes, failures и recovery;
+- показанные в пилоте regions, controls и interactions;
+- accessibility, locales, responsive priorities и performance constraints;
+- материальные unresolved inputs, которые нельзя вывести из принятых источников.
 
-### 16.2. Что должно войти в durable intake
+Текущие manifests фиксируют `117` routes, `25` overlays, `5` system surfaces,
+`22` cross-surface capabilities и `29` use-case bindings. Это нижняя граница
+известного coverage, не permanent ceiling и не свидетельство полной реализации.
+Нельзя терять persistent shells, route flows, route-backed transients,
+internal/non-visual surfaces и обоснованные historical exclusions.
+Исторические W03-W10 и revision `213` сохраняют evidence прежнего покрытия,
+но не подтверждают соответствие нынешней концепции.
 
-Будущий `ui-program-intake` exact-cover фиксирует:
-
-- purpose, operating model, primary user outcomes, domain entities и terms;
-- included/excluded release slices, public-site boundary и `mobile_scope`;
-- source contracts для product, routes, screens, journeys, roles, permissions, states, data, copy, locales, themes, assets и runtime;
-- roles, permission profiles, locales, themes и global data contracts;
-- journeys с entry/terminal screens, transitions, outcomes, failures и recovery;
-- каждый screen с purpose, user outcomes, entry/exit, data reads/writes/computed values, regions, states, actions, context menus, permissions, accessibility и responsive priorities;
-- exact hash-pinned pilot с `renderable_html` mode, импортированный в program-owned/repository-owned evidence из manifest до source-fidelity claim;
-- unresolved inputs только для материального product meaning, которое нельзя вывести из источников.
-
-### 16.3. Current inventory как исходное evidence
-
-Текущие manifests фиксируют `117` routes, `25` overlays, `5` system surfaces, `22` cross-surface capabilities и `29` use-case bindings. Это нижняя граница известного current-state coverage, но не authoritative G1 inventory и не permanent ceiling. В G1 каждый authoritative surface должен быть представлен ровно один раз, включая persistent shell, route flows, route-backed transients, internal/non-visual surfaces и обоснованные historical exclusions.
-
-Исторические W03-W10 и terminal revision `213` сохраняют правдивое evidence прежней route/domain coverage. Они не задают новый visual language, frontend architecture, responsive baseline или browser acceptance.
-
-### 16.4. Gate boundary
-
-- G0 закрывает source authority, полный intake, platform baseline и runnable control plane;
-- G1 создаёт полный rendered atlas;
-- G2 связывает journeys, criticality, families, coverage и bounded waves;
-- G3 принимает foundations и application shell;
-- G4 принимает каждую family по exact representative screen/state coverage;
-- G5 принимает каждую bounded wave только после всех G4 families;
-- G6 закрывает critical journeys и implementation handoff.
-
-G3-G6 требуют finished review board и отдельного natural-language owner acceptance. Machine validation не является owner acceptance, а историческое evidence не закрывает текущий gate.
-
-### 16.5. Visual и browser proof
-
-Каждый screen contract exact-cover связывает anchors, regions, elements, states, actions, responsive priorities и exceptions. Render provenance связывает program authority, source, candidate, geometry, viewport и artifact hash. Browser proof использует loopback fixtures, redaction, executable outcomes, console/network checks, responsive anchors и accessibility smoke. Оно не доказывает полное WCAG conformance, production authorization, performance или deployment без отдельного evidence boundary.
+Browser proof создаётся один раз в изменяемом implementation boundary:
+критические состояния и действия, RU/EN, console/network, keyboard/focus,
+accessibility smoke и применимые anchors 768/1920 CSS px. Это не полная
+WCAG-сертификация, не доказательство backend authorization, performance или
+deployment. Не требуются family review boards, G-stage receipts и
+every-state-by-every-viewport screenshots.
 
 ## 17. Traceability к product blueprint
 
@@ -1204,7 +1186,7 @@ G3-G6 требуют finished review board и отдельного natural-langu
 | Compute reuse/materialization | GOAL-015, MATERIALIZE-001…019, AC-048 |
 | Digital journey/marketing/unit economics | GOAL-016, DIGITAL-001…015, ATTRIBUTION-001…010, UNIT-ECON-001…014, ASSUMPTION-001…006, V1-AC-044…047 |
 
-## 18. Pre-G0 gap analysis
+## 18. Оставшиеся вопросы реализации
 
 ### 18.1. Что уже известно
 
@@ -1214,19 +1196,18 @@ G3-G6 требуют finished review board и отдельного natural-langu
 - широкий функциональный baseline аналитики, data foundation, quality, forecasting, research, reporting, operations и administration;
 - принятые базовые contracts для collaboration/adoption/watches, compute reuse/materialization и digital-to-offline attribution/unit economics;
 - историческое route/domain coverage W03-W10;
-- принятый product path и pilot manifest с RU/EN hash-pinned `renderable_html` visual-language anchor;
+- принятый product path и hash-pinned финальный интерактивный RU/EN пилот как целевая концепция;
 - responsive Web как единственная сейчас авторизованная UI-платформа.
 
-### 18.2. Что должен создать новый G0
+### 18.2. Что ещё предстоит реализовать и проверить
 
-- repository/program-owned копию либо другой durable import точных pilot sources из hash manifest;
-- accepted platform baseline, расширяющий принятый visual-language anchor до foundations, shell, components и states;
-- complete authoritative inventory, который exact-cover включает не только routes, но также flows, shells, transients, overlays, system families и non-visual surfaces;
-- target frontend architecture, design system, assets и implementation rollout;
-- accepted Web width range и anchor viewports;
-- browser, accessibility, responsive и perceived-performance evidence нового target.
+Пилот уже сохранён в репозитории, frontend architecture и диапазон Web
+определены ADR-0007. Нужны проверка расхождений рабочего UI с концепцией и
+bounded implementation tickets. Реальные состояния, permissions, API,
+responsive, accessibility и performance проверяются на работающем продукте.
 
-Текущие `117/25/5/22` manifests ещё не покрывают новые target-capability families и не должны расширяться ad hoc до G1. Будущий atlas обязан exact-cover определить поверхности, journeys и responsive states минимум для:
+Текущие `117/25/5/22` manifests не являются полным покрытием новых capabilities.
+Проектирование и реализация должны учесть как минимум:
 
 - chapter/page/tab document composition, universal block builder, Custom Views и 100x30 open/publish path;
 - requester/executor, analyst notes, data annotations, anchored discussions/replies/re-anchor, mentions/likes/follows и permission-filtered activity feed;
@@ -1238,30 +1219,29 @@ G3-G6 требуют finished review board и отдельного natural-langu
 
 ### 18.3. Решения, которые не переносятся автоматически
 
-Предыдущие choices темы, typography, icons, shell, panels, exact geometry, motion, frontend libraries и one-golden-slice rollout не имеют текущего target status. Исключение — явно принятый visual-language scope пилота: calm professional density, compact context/KPI language, visible Result Trust и Focus/Explore character. Он не восстанавливает старую программу и не фиксирует exact composition.
+Показанные в финальном пилоте композиция, панели, controls и visual choices имеют текущий target status. ADR-0007 сохраняет frontend technology decisions. G-boards, старые themes и historical design receipts не являются дополнительной authority. Рабочий код не откатывается; его соответствие концепции и полнота покрытия проверяются последующими tickets.
 
 ## 19. Contract impact текущей редакции
 
 | Поверхность | Классификация | Пояснение |
 |---|---|---|
 | Product/API/ports/persistence | `additive plus planned schema-v2 breaking targets` | Новые product/category/digital/collaboration поля additive; common composition и SegmentSnapshot identity требуют future versioned migration, legacy read adapters и отдельного implementation evidence |
-| Documentation/design authority | `breaking-change` | Linear/Penpot standard, прежняя accepted UI program revision и её ready G4 triad retired/superseded; новый baseline начинается pre-G0 |
-| Current route/surface identity | `compatible current-state evidence` | 117/25/5/22 сохраняются для traceability, но не являются target ceiling или G1 acceptance |
-| Browser-visible target | `unknown until G3` | Новый shell, foundations и representative screen ещё не приняты |
-| Frontend architecture | `accepted for current Web implementation` | ADR-0007 фиксирует текущий responsive-Web stack и ownership; future UI-program target может заменить его только через новую принятую authority |
+| Documentation/design authority | `breaking-change` | G-программа и её материалы удалены; финальный пилот принят как target concept, продуктовые требования и рабочий код сохранены |
+| Current route/surface identity | `compatible current-state evidence` | 117/25/5/22 сохраняются для traceability, но не являются target ceiling или доказательством реализации |
+| Browser-visible target | `accepted_target_ui_concept` | Финальный пилот принят как концепция; conformance production-кода пока не доказан |
+| Frontend architecture | `accepted for current Web implementation` | ADR-0007 фиксирует текущий responsive-Web stack и ownership; изменение этих решений требует отдельного source-backed architecture decision |
 | Request hash/cache identity | `new compatible namespace required` | Document/page/filter/segment/materialization versions входят в future normalized identity; zoom/legend/tab chrome остаются presentation-only |
 | Mobile scope | `unauthorized` | Адаптивный Web обязателен; mobile-specific IA/composition не добавлены |
 | Rollback | `documentation recovery only` | Возврат старого target требует нового owner decision; Git history сама по себе не создаёт authority |
 
-## 20. Pre-G0 readiness
+## 20. Следующий шаг
 
-Документ является принятым pre-G0 intent baseline: product path,
-included/excluded scope, critical journeys и visual-language anchor
-зафиксированы. Он не открывает G0 автоматически и не является текущим
-execution plan. Текущая Web-реализация идёт через implementation source
-contract и один ready ticket. Следующий безопасный шаг после отдельной
-авторизации полной UI-программы — импортировать pilot evidence, собрать durable
-intake/platform baseline и создать новую draft triad по текущему
-`ui-design-program`; прежняя программа не возобновляется.
+Принятые product/UI requirements и целевая концепция не требуют повторного
+проектирования через G0–G6. Следующий шаг — узкая оценка расхождений
+рабочего frontend с пилотом и обычные implementation tickets для приведения
+к концепции и полного продуктового покрытия. Эта редакция не создаёт W39,
+prompt pack, ledger или новую UI-программу.
 
-Observed proof boundary этой редакции ограничен documentation authority, blueprint synchronization и current-inventory consistency. Он не доказывает новый дизайн, frontend architecture, responsive behavior, accessibility, browser runtime, performance или implementation readiness.
+Observed proof этой редакции ограничен согласованностью источников,
+сохранением требований и переносом пилота. Он не подтверждает полную готовность
+UI, production conformance, accessibility, performance или deployment.

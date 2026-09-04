@@ -1,9 +1,0 @@
-{
-  "program_ref": ".codex/delivery/ui-design-programs/custometry-v2/ui-design-program.json",
-  "target": "implementation",
-  "logical_artifact_id": "custometry-v2:UI-AUTH-001:error:r3",
-  "anchor_id": "web-1920",
-  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g4-r3/family-auth-shell-auth-baseline-exception-auth/auth/sign-in/index.html",
-  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/error/web-1920/implementation.png",
-  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g4-r3/family-auth-shell-auth-baseline-exception-auth/captures/error/web-1920/implementation-geometry.json"
-}

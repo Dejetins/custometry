@@ -31,13 +31,12 @@ The controlled W10 baseline recovery established revision 197; W10 then
 accepted all six Organization/People routes, C25, and flow 10 at terminal
 revision 213 with inventory `116/25/5`. These are observed identity/domain
 counts; the current route registry has since expanded to 117 rows. Neither
-count is a permanent route ceiling, future G1 atlas, or proof of the new Web
-target.
+count is a permanent route ceiling or proof of complete target UI coverage.
 
 ## Authority and agent load order
 
-An agent performing UI architecture, `ui-design-program`, or Web work loads sources in this
-order:
+An agent performing UI architecture or Web implementation loads the relevant
+sources in this order:
 
 1. `AGENTS.md` and `.codex/AGENTS.md` for authority and delivery rules.
 2. `custometry-technical-blueprint-ru.md` for normative product behavior.
@@ -50,11 +49,13 @@ order:
    guards, permissions, states, history, and design status.
 7. `packages/contracts/routes/ui-surface-contracts.json` for complete
    requirement-to-surface coverage and route-decision rationale.
-8. The applicable ready delivery ticket for exact write scope and evidence.
+8. `docs/architecture/ui/target-pilot/README.md` for the target UI concept and
+   the Web implementation source contract for routing and proof boundaries.
+9. The applicable ready delivery ticket for exact write scope and evidence.
 
 Historical Penpot is evidence only. It may reveal a current-inventory delta,
 but it does not override the product blueprint, executable contracts, accepted
-UI-program visual authority, or current gate evidence.
+target pilot, or current implementation evidence.
 
 ## Surface decision policy
 
@@ -150,20 +151,20 @@ are bookmarkable privacy-scoped views. No new overlay is required.
 `UI-CAP-022` owns privacy-safe contributor cards/activity projection. W10
 accepted the six frames, C25, and flow 10 at terminal revision 213.
 
-## `ui-design-program` successor boundary
+## Target concept and current inventory
 
-The accepted W10 file remains historical route, domain, and composition
-evidence. UI requirements `0.8.0-draft` do not select a new visual or frontend
-target. Stable current route IDs, overlays, systems, and capability bindings are
-inputs to pre-G0 intake, but the future G1 atlas may expand them from product
-requirements and owner intent. No W10 frame or legacy `penpot_status` is
-relabeled as current design, browser, or program acceptance.
+The accepted W10 file remains historical route/domain evidence. The final
+interactive pilot is the current target UI concept; ADR-0007 owns frontend
+technology. Stable route IDs, overlays, systems, and capability bindings are
+preserved. Ordinary implementation tickets expand them when product scope
+requires it. No W10 frame or legacy `penpot_status` is relabeled as current
+browser proof or acceptance against the target concept.
 
 ## Change and proof rules
 
 Adding or removing a current route updates the UI blueprint, identity registry,
 executable manifest, localization catalogs, surface bindings, schemas when
-their shape changes, validators, and current program inventory when one exists.
+their shape changes, validators, and the owning implementation ticket.
 Legacy historical metadata changes only when its factual provenance changes.
 Adding an overlay, system surface, or cross-surface capability updates
 the UI blueprint and surface manifest together.
@@ -171,4 +172,4 @@ the UI blueprint and surface manifest together.
 An audit may recommend a new route only by applying the decision policy and
 showing why an existing route, tab, query state, drawer, modal, or reusable
 component is insufficient. It may not change normative product behavior or
-mutate a design source without current program authority.
+mutate a design source without current task authority.

@@ -12,6 +12,12 @@ executed_checks: [compared accepted owner product intent with revision 5 program
 observations: [revision 5 depended on retired or stale sources and predates the current transition contract, the owner expanded product semantics and narrowed pilot authority to visual language, no new G0 was initialized]
 ---
 
+> Historical record. The authority statements below describe the original
+> supersession, not the current target. The owner selected the final pilot
+> as the target UI concept on 2026-09-04 and removed the G-program materials.
+> Old paths resolve in commit `d5f8aa29f83be90a0b3871ff2c886d48fc020901`;
+> see `docs/architecture/ui/ui-program-retirement.md`. Status is unchanged.
+
 # CUSTOMETRY-UI-DESIGN-PROGRAM-V1 retirement
 
 Program `CUSTOMETRY-UI-DESIGN-PROGRAM-V1` revision `5`, sourced from repository

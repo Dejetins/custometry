@@ -14,7 +14,7 @@
   ],
   "excluded_scope": [
     "complete atlas status inventory",
-    "frozen ui-design-program execution or certification",
+    "retired G-program execution or certification",
     "design-only evidence",
     "mobile-specific design",
     "publication, deployment, or production mutation"
@@ -106,6 +106,6 @@
     "W31 is the sole initial ready frontier.",
     "W32-W35 may change from blocked to ready only after W31 is accepted and each ticket is revalidated.",
     "After W31 acceptance, W32-W35 may execute in parallel only in their disjoint owned paths.",
-    "No transition may claim or mutate the frozen custometry-v2 UI program ledger."
+    "No transition may restore or claim the removed custometry-v2 G-program ledger."
   ]
 }

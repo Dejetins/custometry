@@ -1,7 +1,7 @@
 ---
 doc_id: ADR-0007
 title: Responsive Web frontend platform and ownership boundaries
-doc_version: 1
+doc_version: 2
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -22,7 +22,7 @@ proof_boundary:
 
 ## Context
 
-The V2 UI-program brief authorizes G0 to establish the target Web platform,
+The original V2 UI-program brief authorized this ADR to establish the target Web platform,
 frontend dependency direction, design-system ownership, route/permission/
 localization/state/data ownership, responsive anchors, visual inheritance,
 rollout boundary, and proof obligations. The complete product scope is a
@@ -30,12 +30,12 @@ self-hosted B2C retail analytics and forecasting platform with governed data,
 analytical documents, collaboration, segmentation, digital measurement,
 product and inventory analytics, operations, and administration.
 
-The accepted RU/EN HTML pilot is a hash-pinned visual-language and analytical-
-density anchor only. It does not select frontend technology or exact screen
-composition. The current `apps/web` stack and `packages/ui-foundation` are
-implementation evidence, not automatic target authority. This decision selects
-their useful, version-pinned seams deliberately after comparing them with the
-accepted product and platform-baseline requirements.
+The owner selected the final interactive pilot as the target UI concept on
+2026-09-04, including demonstrated composition and interactions. See
+[the preserved target](../architecture/ui/target-pilot/README.md). This
+supersedes the former visual-language-only limitation, not this ADR's technology
+choices. `apps/web` and `packages/ui-foundation` remain current implementation
+evidence; conformance to the concept requires subsequent ticket-level proof.
 
 ## Decision criteria
 
@@ -56,7 +56,7 @@ accepted product and platform-baseline requirements.
 
 | Option | Benefits | Costs and risks | Fit |
 |---|---|---|---|
-| Keep the frontend target technology-neutral through G6 | defers commitment | blocks reproducible component, adapter, build, testing, and implementation handoff contracts | rejected |
+| Keep the frontend target technology-neutral indefinitely | defers commitment | blocks reproducible component, adapter, build, testing, and implementation handoff contracts | rejected |
 | Adopt the current stack implicitly | lowest document churn | violates `WEB-ARCH-001` and silently treats implementation evidence as authority | rejected |
 | Select the current compatible seams explicitly, narrow their ownership, and preserve a compatibility boundary | reuses pinned repository capabilities while making authority, dependency direction, rollback, and proof explicit | requires removal or isolation of code that violates the new boundaries | accepted |
 
@@ -144,20 +144,21 @@ accessibility primitives, and responsive component behavior. `apps/web` may
 compose these primitives and define screen-local layouts but may not fork token
 semantics or introduce unversioned customer CSS/HTML/JavaScript.
 
-The V2 platform baseline is the inheritance target. Its current `paper` visual
-authority inherits only the accepted pilot scope: calm professional character,
-compact analytical density, concise KPI/context chrome, visible Result Trust,
-Focus/Explore character, and RU/EN content stress. Exact pilot composition,
-fixed KPI-chart-table order, full IA, source code, private assets, and historical
-Penpot decisions remain excluded.
+The preserved target pilot owns its demonstrated composition, navigation,
+analytical controls, Focus/Explore behavior, RU/EN presentation, and visual
+language. Existing runtime theme defaults and tokens remain unchanged by the
+2026-09-04 cleanup; subsequent implementation tickets align them with the
+concept. Prototype source is a design reference, not a replacement production
+architecture or proof of backend behavior. Missing screens follow product
+requirements and consistent pilot patterns, not historical G-family boards.
 
 ### Route, localization, permission, state, and data ownership
 
 - `packages/contracts/routes/ui-routes.json` owns stable route identity and URL;
 - `ui-route-contracts.json` owns current executable route policy and guards;
 - `ui-surface-contracts.json` owns current coverage evidence;
-- the UI-program intake and later G1 atlas own complete target surface
-  inventory without mutating the current manifests as a shortcut;
+- product/UI requirements define full target coverage; ordinary tickets update
+  executable surface inventory only when their actual contracts change;
 - `packages/localization` owns RU/EN catalogs and locale-neutral message keys;
 - backend/application policy owns effective authorization and denial reasons;
 - product bounded contexts own definitions, snapshots, results, lifecycles, and
@@ -175,7 +176,7 @@ outcomes, permission boundaries, data meaning, keyboard access, Result Trust,
 and safe recovery at every anchor. Bounded tables, timelines, and canvases may
 scroll locally; whole-page horizontal scrolling is not the primary strategy.
 
-Widths below `768` are outside the accepted G0 Web range. This does not create
+Widths below `768` are outside the accepted Web range. This does not create
 mobile-specific information architecture, mobile application scope, or a
 device-class product promise. Widths above `1920` use a maximum content-width
 policy while the shell remains stable.
@@ -191,8 +192,9 @@ measured-performance evidence required by the later handoff.
 
 The migration does not dual-write domain state. A rollback selects the last
 accepted browser composition and adapter set while preserving server contracts,
-new immutable artifacts, audit, and published versions. A baseline or visual-
-authority replacement restarts at G0 under UI-program change control.
+new immutable artifacts, audit, and published versions. A material visual-authority
+replacement requires explicit owner acceptance and a bounded compatibility
+assessment; it does not restart a G-stage program.
 
 ## Consequences
 
@@ -200,12 +202,13 @@ authority replacement restarts at G0 under UI-program change control.
   because code already exists.
 - `@custometry/ui-foundation` must evolve from a small current implementation
   into the versioned baseline adapter without treating its four historical
-  theme IDs as accepted target themes. The G0 baseline selects only its declared
-  current theme identity; other themes require source-backed baseline revision.
+  theme IDs as accepted target themes. The target pilot defines demonstrated
+  visual choices; runtime theme changes require source-backed implementation
+  and browser evidence.
 - Any current code that mixes query/server state with MobX presentation state,
   performs authorization in the browser, or bypasses typed adapters must be
   isolated or migrated before handoff.
-- No production UI is implemented by this ADR or G0.
+- No production UI is implemented by this ADR or the program cleanup.
 
 ## Contract impact and migration
 
@@ -213,9 +216,9 @@ authority replacement restarts at G0 under UI-program change control.
 |---|---|---|
 | Browser build/runtime dependencies | compatible target selection before stable target consumer | pin lockfile identity; upgrades require normal dependency evidence |
 | Route identity and URLs | no change | preserve existing IDs and canonical URLs; later additions are versioned |
-| API, DTO, event, domain, and persistence | none for G0 | implementation tickets classify each later change independently |
+| API, DTO, event, domain, and persistence | none for this architecture decision | implementation tickets classify each later change independently |
 | Client state ownership | breaking for any code that duplicates server truth | migrate per wave; keep compatibility adapters until proof closes |
-| Design tokens/components/themes | breaking target authority reset | bind to V2 baseline; historical theme IDs are not accepted automatically |
+| Design tokens/components/themes | breaking target authority reset | bind to the target pilot; historical theme IDs are not accepted automatically |
 | Permission behavior | compatible with stricter boundary | browser hints remain non-authoritative; server denial wins |
 | Responsive range | new compatible target contract | prove all anchors later; no mobile-specific IA |
 | Rollback | additive recovery contract | preserve previous browser composition and typed server seams per wave |
@@ -235,15 +238,15 @@ authority replacement restarts at G0 under UI-program change control.
 - measured client/network/API/render and cold/warm/cache performance evidence
   on declared hardware before implementation handoff.
 
-G0 static and schema validation proves only that these ownership and rollout
+Static and schema validation proves only that these ownership and rollout
 boundaries are explicit and internally consistent. It does not prove browser
 behavior, WCAG conformance, API enforcement, performance, runtime, security
 hardening, release, or production readiness.
 
 ## Re-evaluation triggers
 
-- accepted G3 foundations or G4 family work demonstrates that the selected
-  component/styling or state boundary cannot satisfy the baseline;
+- target-pilot conformance or product implementation demonstrates that the
+  selected component/styling or state boundary cannot satisfy the concept;
 - measured large-document or chart behavior requires a new renderer boundary;
 - a stable API/generated-client contract makes the current adapter shape
   incompatible;

@@ -90,6 +90,12 @@ escalation_triggers: [normative_product_change, material_user_scope_change, exte
 evidence: [.codex/delivery/evidence/W29-HTML-FIRST-UI-FOUNDATION.md]
 ---
 
+> Historical record. The authority statements below describe the original
+> supersession, not the current target. The owner selected the final pilot
+> as the target UI concept on 2026-09-04 and removed the G-program materials.
+> Old paths resolve in commit `d5f8aa29f83be90a0b3871ff2c886d48fc020901`;
+> see `docs/architecture/ui/ui-program-retirement.md`. Status is unchanged.
+
 # Outcome
 
 The accepted `UI-AN-003` HTML source is promoted into the repository's reusable

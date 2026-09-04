@@ -34,17 +34,21 @@ select Penpot as an active design source, mutation route, or delivery target.
    context. A trivial explicit repair may execute directly. Create a platform
    Goal only when the user or platform explicitly authorizes it.
 
-For product-wide Web UI work, use `custometry-ui-blueprint-ru.md` as the accepted
-pre-G0 product/UI intent and current-inventory source. The previous
-Linear/Penpot target, W19-W23 route, `CUSTOMETRY-UI-DESIGN-PROGRAM-V1` revision
-5, and W29/W30 execution units are retired or superseded. W03-W10 and the later
-program atlas/receipts remain historical evidence; none is an execution route.
-The hash-pinned RU/EN pilot manifest is visual-language/density authority only,
-not exact composition or frontend architecture authority. Initialize a new
-`ui-design-program` at pre-G0 only under current user authorization, importing
-the exact pilot sources into durable evidence before a source-fidelity claim.
-Current visual proof must come from the new program-selected evidence mode and
-real browser evidence required by its active gate.
+For Web UI work, preserve the requirements and current inventory in
+`custometry-ui-blueprint-ru.md` and the product blueprints. The final interactive
+pilot in `docs/architecture/ui/target-pilot/` is the accepted target UI concept:
+its shown composition, navigation, analytical interactions, and visual language
+are authority, not merely inspiration. ADR-0007 owns frontend technology.
+Existing production code is current-state evidence; it is not automatically
+conformant with the pilot. Complete product coverage remains the goal, with
+ordinary bounded implementation tickets for remaining gaps.
+
+The owner authorized removal of the G0-G6 program and its generated materials
+on 2026-09-04. Their historical record remains in Git, as explained in
+`docs/architecture/ui/ui-program-retirement.md`. Do not restore a G-stage
+workflow, family boards, certification receipts, or a prompt-pack/ledger route.
+The previous Linear/Penpot direction and W19-W23, W29/W30 execution routes
+remain retired or superseded. Historical evidence never makes them executable.
 
 Live Figma inspection, mutation, creation, and design-to-code are not active
 Custometry routes and must not be installed or suggested. A supplied Figma
@@ -103,7 +107,7 @@ The global skill router selects technical skills. Custometry-specific routes:
 | Trigger | Primary skill |
 |---|---|
 | Reusable procedure prompt or explicitly justified prompt pack | `prompt-manager` after `delivery-orchestrator` |
-| New product-wide multi-screen Web UI program | `ui-design-program` only when the owner explicitly authorizes a new complete all-screen/journey/family/wave program; the frozen `custometry-v2` program is not an executable route |
+| Product-wide Web UI coverage | Use the existing requirements, target pilot, and surface inventory to scope ordinary implementation tickets; do not recreate the retired G0-G6 program |
 | Current Custometry Web implementation | Execute exactly one `ready` ticket under `.codex/delivery/tickets/`, using the active implementation-source contract and boundary-matched browser proof |
 | One unresolved visual or interaction direction | `ui-ux-pro-max` for one advisory direction expressed as principles and semantic tokens; use `product-design:ideate` instead only when visible image-based alternatives are requested |
 | Faithful local Product Design prototype | `product-design:image-to-code` for an inspectable image/export or `product-design:url-to-code` for an authorized live URL; do not substitute these for ordinary ticket-governed production implementation |
@@ -116,33 +120,17 @@ observed defect, or required proof materially crosses that domain. Do not load
 the whole craft set merely because a screen contains text, spacing, color, and
 controls. Mixed UX, fidelity, and runtime work may reuse one safe browser
 mechanic and redacted evidence set, but each skill returns its own verdict.
-Outside an authorized staged UI program, the selected Browser, Chrome, or
-`playwright-cli` mechanic wins. Canonical UI-program gate receipts require
-`playwright-cli`; other surfaces are supplemental and cannot close the gate.
-
-The owner retired `CUSTOMETRY-UI-DESIGN-PROGRAM-V2` from current execution on
-2026-08-24. Its prompt pack, ledger, artifacts, receipts, and accepted decisions
-remain immutable historical evidence, but they are not current execution or
-certification authority. Do not run `staged-plan-runner` against that triad,
-claim pending G4/G5/G6 rows, or infer completion from its accepted frontier.
-The suspension marker at
-`.codex/delivery/ui-design-programs/custometry-v2/.ui-design-program-suspended.json`
-is the canonical local guard for that frozen triad; if it conflicts with
-historical ledger or generated-prompt metadata, the marker and this adapter win.
+The user's selected Browser, Chrome, or `playwright-cli` mechanic wins.
 Current Web work follows
 [`docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`](../docs/architecture/ui/custometry-web-implementation-source-contract-v1.md)
 and one ticket whose frontmatter status is `ready`.
 
-For an authorized UI program, the user supplies the initial detailed product
-path and later reviews finished visual checkpoints. The agent owns hashes,
-artifact identities, routine program-owned writes, prompt/ledger mechanics,
-and technical confirmation. G1/G2 have no routine owner acceptance gate;
-G3-G6 use `review_ready` before natural-language acceptance. This exception
-permits the UI program's draft triad during G0 bootstrap but does not create a
-standing repository-wide plan outside the authorized program paths.
-The initial brief and later corrections remain the sole authority for desired
-product meaning; repository sources constrain current-state compatibility but
-do not silently redefine the user's intent or create repeated scope questions.
+The initial brief and later corrections remain the authority for desired
+product meaning. Repository sources constrain current-state compatibility but
+must not silently downgrade the accepted pilot to a visual-only reference.
+Ask the owner only about material, non-derivable product or design changes;
+routine implementation and boundary-matched proof do not need repeated
+program-stage acceptance.
 
 Role TOMLs select expertise boundaries and handoffs; they do not create
 authority or repeat product specifications. Before a grouped profile outside a

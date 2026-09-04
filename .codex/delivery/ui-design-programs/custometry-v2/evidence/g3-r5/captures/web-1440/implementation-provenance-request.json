@@ -1,9 +1,0 @@
-{
-  "program_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/render-program-context.json",
-  "target": "implementation",
-  "logical_artifact_id": "CUSTOMETRY-UI-DESIGN-PROGRAM-V2:g3-candidate:r5",
-  "anchor_id": "web-1440",
-  "source_artifact_ref": ".codex/delivery/ui-design-programs/custometry-v2/artifacts/g3-r5/candidate-shell.html",
-  "capture_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/captures/web-1440/implementation.png",
-  "geometry_receipt_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/g3-r5/captures/web-1440/implementation-geometry.json"
-}

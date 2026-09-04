@@ -1,9 +1,0 @@
-[
-  {
-    "decision_id": "G4@family.data.shell-workspace.baseline-r5.finished-result",
-    "class": "owner_required",
-    "status": "resolved",
-    "summary": "The owner explicitly accepted the exact corrected Data Connections r5 review board.",
-    "resolution_ref": ".codex/delivery/ui-design-programs/custometry-v2/evidence/family.data.shell-workspace.baseline-r5/family-acceptance-decision-r5.json"
-  }
-]

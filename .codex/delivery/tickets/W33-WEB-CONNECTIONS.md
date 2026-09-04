@@ -25,6 +25,11 @@ escalation_triggers: [normative_product_change, material_user_scope_change, exte
 evidence: [.codex/delivery/evidence/W33-WEB-CONNECTIONS.md]
 ---
 
+> Source update, 2026-09-04: the G-program was removed. Historical acceptance
+> and evidence remain unchanged; they do not prove conformance to the final
+> target pilot. Any new work requires its own ready ticket and the current
+> Web implementation source contract. Forbidden historical paths remain guards.
+
 # Outcome
 
 `UI-DATA-001` and `UI-DATA-002` provide one production connection-management
@@ -41,10 +46,9 @@ and save-draft behavior through typed application adapters.
 
 # Work and repair boundary
 
-Own only the connections feature and its route module. Inherit the accepted
-data-family reference when applicable; unresolved states use the accepted G3
-baseline and normative semantics. A new baseline exception requires owner
-review, while routine inheritance does not.
+Own only the connections feature and its route module. Future conformance
+work follows the preserved target pilot and normative semantics. Material,
+non-derivable design changes require owner review; routine inheritance does not.
 
 # Acceptance evidence
 

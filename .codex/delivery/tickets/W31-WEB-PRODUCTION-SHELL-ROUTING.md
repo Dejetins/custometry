@@ -76,6 +76,11 @@ escalation_triggers: [normative_product_change, material_user_scope_change, exte
 evidence: [.codex/delivery/evidence/W31-WEB-PRODUCTION-SHELL-ROUTING.md]
 ---
 
+> Source update, 2026-09-04: the G-program was removed. Historical acceptance
+> and evidence remain unchanged; they do not prove conformance to the final
+> target pilot. Any new work requires its own ready ticket and the current
+> Web implementation source contract. Forbidden historical paths remain guards.
+
 # Outcome
 
 `UI-CAP-001` and `UI-SYS-001` through `UI-SYS-005` have a production React
@@ -88,7 +93,7 @@ frontend fixtures as backend authorization.
 
 - Do not implement a domain feature page, API, authentication decision,
   persistence, analytics computation, or production deployment.
-- Do not revive the frozen UI design program or certify its pending stages.
+- Do not restore the removed G-program or certify its historical stages.
 - Do not add mobile-specific navigation or claim full WCAG conformance.
 
 # Work and repair boundary

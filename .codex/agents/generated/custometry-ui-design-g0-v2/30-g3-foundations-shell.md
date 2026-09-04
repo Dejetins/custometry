@@ -1,1 +1,0 @@
-archive/30-g3-foundations-shell.md

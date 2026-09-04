@@ -25,6 +25,11 @@ escalation_triggers: [normative_product_change, material_user_scope_change, exte
 evidence: [.codex/delivery/evidence/W35-WEB-NOTIFICATION-INBOX.md]
 ---
 
+> Source update, 2026-09-04: the G-program was removed. Historical acceptance
+> and evidence remain unchanged; they do not prove conformance to the final
+> target pilot. Any new work requires its own ready ticket and the current
+> Web implementation source contract. Forbidden historical paths remain guards.
+
 # Outcome
 
 `UI-NOTIFY-001` at `/notifications` renders a production global inbox with
@@ -40,10 +45,9 @@ application adapters.
 
 # Work and repair boundary
 
-Own only the notifications feature and its route module. The notify G4 family
-was unaccepted at cutover, so inherit G3 and normative semantics. Owner review
-is required only for a material new direction, baseline exception, or
-non-derivable product meaning.
+Own only the notifications feature and its route module. Future conformance
+work follows the preserved target pilot and normative semantics. Owner review
+is required for a material new direction or non-derivable product meaning.
 
 # Acceptance evidence
 

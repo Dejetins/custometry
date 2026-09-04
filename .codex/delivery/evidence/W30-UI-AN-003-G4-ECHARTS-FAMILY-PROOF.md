@@ -12,6 +12,12 @@ executed_checks: [reviewed the owner baseline replacement against revision 5, ma
 observations: [no G4 executor claim occurred, no 144-screen family proof was accepted, G5 remains disallowed, historical program evidence is preserved]
 ---
 
+> Historical record. The authority statements below describe the original
+> supersession, not the current target. The owner selected the final pilot
+> as the target UI concept on 2026-09-04 and removed the G-program materials.
+> Old paths resolve in commit `d5f8aa29f83be90a0b3871ff2c886d48fc020901`;
+> see `docs/architecture/ui/ui-program-retirement.md`. Status is unchanged.
+
 # Outcome and scope
 
 W30 is `superseded` before execution because the owner replaced the product

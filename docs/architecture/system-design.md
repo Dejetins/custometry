@@ -110,8 +110,8 @@ The following are outside the public `v1_target`:
 | Application form | Modular monolith through `v1_target` | Contexts share deployment and PostgreSQL but own code, tables, write paths, and public contracts |
 | UI delivery | UI-first, contract-backed vertical slices | A visible route is not accepted until the same contract reaches real API/data or artifact evidence |
 | Authenticated frontend | ADR-0007 pins the responsive-Web frontend stack and ownership boundaries for current Web implementation | Client presentation state stays separate from authoritative API/event state |
-| UI execution route | Current Web implementation follows the ticket-first source contract; a new product-wide `ui-design-program` requires explicit future authorization | Current code and historical design evidence cannot become the target silently |
-| Presentation system | Semantic, accessible, brand-aware tokens are owned by the accepted Web frontend platform and `packages/ui-foundation` | Exact future UI-program themes, typography, icons, geometry, and motion remain open unless accepted by a current source |
+| UI execution route | Current Web implementation follows the ticket-first source contract and accepted target pilot | Current code is not automatically conformant; the removed G-program is not an execution route |
+| Presentation system | Semantic, accessible, brand-aware tokens are owned by the accepted Web frontend platform and `packages/ui-foundation` | The target pilot owns demonstrated visual and interaction choices; production conformance remains ticketed work |
 | Data truth | PostgreSQL control state plus immutable Parquet/other artifacts | Valkey, browser state, and task delivery cannot determine terminal truth |
 | Data compute | Polars/DuckDB/NumPy-first CPU execution; Numba only for measured kernels | Browser, chart library, and XLSX renderer do not perform analytical reduction |
 | Compute reuse | Content-addressed materializations with aggregate-aware planning and single-flight | Equivalent work is reused; invalidation is partition-scoped and precompute cannot starve interactive work |
@@ -660,11 +660,12 @@ ticketed production implementation. Current implementation work follows
 `docs/architecture/ui/custometry-web-implementation-source-contract-v1.md` and
 one ready ticket at a time.
 
-A future product-wide UI program is separate from the current ticket-first Web
-route. It requires explicit owner authorization, a detailed product path, and a
-current accepted visual authority. Historical W03-W10 evidence and the frozen
-`CUSTOMETRY-UI-DESIGN-PROGRAM-V2` triad remain reference evidence only; they do
-not create an executable certified G0-G6 route.
+The final interactive pilot in `docs/architecture/ui/target-pilot/` is the
+accepted target UI concept, including its demonstrated composition and
+behavior. The G-program was removed by owner decision on 2026-09-04; its
+historical record remains recoverable through `ui-program-retirement.md`.
+Existing production UI and backend contracts are preserved. Conformance and
+remaining product coverage are subsequent ordinary implementation tickets.
 
 The technology-neutral browser dependency direction remains:
 
@@ -844,7 +845,7 @@ prompts are exceptional rather than standing inventory.
 |---|---|---|
 | Product specification projection | compatible before first stable consumer | architecture docs can roll back together only if normative requirements remain represented elsewhere |
 | Authenticated frontend target | accepted responsive-Web platform | ADR-0007 pins the current stack; rollback requires a replacement ADR while preserving backend contracts and the last accepted browser boundary |
-| Presentation registry | accepted current platform ownership | `packages/ui-foundation` owns current tokens, primitives, components, and responsive behavior; future UI-program identities migrate only from a newly accepted versioned baseline |
+| Presentation registry | accepted current platform ownership | `packages/ui-foundation` owns current tokens, primitives, components, and responsive behavior; target-pilot conformance changes migrate through versioned implementation tickets |
 | Dashboard/research/report composition shapes | breaking target schema-v2 change | add common composition DTO and legacy read adapters, backfill stable hierarchy IDs, move new drafts to v2, and prohibit dual-write or lossy rollback |
 | Report snapshot | compatible first migration step | add root/page manifests while preserving legacy reads; all channels switch together before retiring the old resolved-block projection |
 | Organization/access persistence | compatible target addition before stable consumers | create versioned units/assignments/policies/grants/ownership/projection tables, backfill one primary department, migrate legacy publications to `workspace_legacy`, and fail closed until invariants pass |
@@ -873,12 +874,10 @@ Every implementing ticket must classify API, schema, configuration, identity,
 cache, side effect, browser, migration, rollback, and performance impact against
 the then-current consumers.
 
-The retired Linear/Penpot direction and the frozen `CUSTOMETRY-UI-DESIGN-PROGRAM-V2`
-triad are not alternative implementation paths. Current Web execution is
-ticket-first. Any future product-wide certified target must originate in the
-owner product path and one current accepted visual authority, then pass the
-selected `ui-design-program` boundaries before it can replace the ticketed Web
-route.
+The retired Linear/Penpot direction and removed G-program are not alternative
+implementation paths. Current Web execution is ticket-first, using the accepted
+target pilot, product/UI requirements, and ADR-0007. The cleanup does not claim
+that the working frontend already matches the concept or implements all screens.
 
 ## 16. Proof boundaries and acceptance
 

@@ -6221,7 +6221,7 @@ web_performance_requirements:
   - id: WEB-PERF-001
     requirement: Performance evidence MUST объявлять hardware, browser build, viewport, CPU/RAM, data volume, sample count, cold/warm/cache state и p50/p75/p95, отдельно измеряя client, network, REST/SSE и render boundaries.
   - id: WEB-PERF-002
-    requirement: Critical journeys MUST получить accepted input-feedback budget до G3; recurring interaction-blocking main-thread tasks, нарушающие этот budget, запрещены в accepted steady-state journeys.
+    requirement: Critical journeys MUST получить accepted input-feedback budget до приёмки соответствующей UI-реализации; recurring interaction-blocking main-thread tasks, нарушающие этот budget, запрещены в accepted steady-state journeys.
   - id: WEB-PERF-003
     requirement: Warm и uncached navigation MUST иметь отдельные accepted acknowledgement budgets и truthful loading/freshness state без скрытия backend latency.
   - id: WEB-PERF-004

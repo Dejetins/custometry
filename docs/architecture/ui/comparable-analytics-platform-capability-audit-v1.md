@@ -19,7 +19,7 @@ proof_boundary:
 ## Purpose and method
 
 This audit records product and interface patterns that should inform the next
-Custometry UI program. It uses official vendor documentation as evidence that a
+Custometry implementation. It uses official vendor documentation as evidence that a
 pattern is established and useful; it does not treat another product's feature
 list, navigation, composition, or visual language as target authority.
 
@@ -29,10 +29,10 @@ authoring, comments and findings, reusable time-aware segments, offline and
 digital journeys, unit economics, product/category/inventory analysis, and
 administrative adoption and performance controls.
 
-The accepted pre-G0 pilot remains the visual-language and analytical-density
-anchor. This audit influences capability coverage and interaction contracts
-only. Exact screens, routes, responsive compositions, and waves remain G1-G5
-outputs of a future `ui-design-program`.
+The final interactive target pilot now owns demonstrated composition,
+interaction, and visual language. This audit preserves capability requirements
+and comparative rationale, not a separate visual authority. Ordinary
+implementation tickets resolve missing screens, routes, and responsive states.
 
 ## Pattern audit and Custometry response
 
@@ -97,10 +97,10 @@ already represented in the synchronized normative blueprints.
 - claims that requirements, static gates, or an HTML pilot prove runtime,
   browser, accessibility, export, recovery, or performance readiness.
 
-## UI-program handoff
+## Implementation handoff
 
-A future G0 admission must use the normative machine, human, and UI blueprints;
-the accepted pilot manifest; ADR-0005 and ADR-0006; and this audit. G1 must turn
-the accepted capability package into an exhaustive screen/state/journey atlas.
-It must not infer that the table above authorizes route names, a frontend stack,
-or a direct visual copy of any comparable platform.
+Use the normative machine/human and UI blueprints, the preserved target pilot,
+ADR-0005, ADR-0006, ADR-0007, and the relevant capability rationale here when
+scoping ordinary implementation tickets. The table above does not authorize
+arbitrary route names, a new frontend stack, or a direct copy of a comparable
+platform. No G-program or exhaustive design-evidence layer is required.

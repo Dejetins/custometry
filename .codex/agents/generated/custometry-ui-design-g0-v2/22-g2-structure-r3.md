@@ -1,1 +1,0 @@
-archive/22-g2-structure-r3.md

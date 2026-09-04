@@ -172,8 +172,8 @@ The repository validator checks:
 - overlay, system-surface, and cross-surface capability parity with the UI
   blueprint;
 - the accepted historical W10 `116/25/5` identity/domain baseline at terminal
-  revision 213 as history only; the future UI-program atlas and browser
-  implementation require independent current evidence.
+  revision 213 as history only; current target coverage and browser
+  implementation require their own boundary-matched evidence.
 
 Product specification `0.10.0-draft` retains governed treatment, segmentation,
 discount/PVM, and methodology trust and adds versioned organization structure,
@@ -185,8 +185,8 @@ decision criteria rather than count-driven expansion.
 
 The current route count is current-state evidence, not a future ceiling. The
 retired W19-W23 transition creates no implementation authority. W10 remains
-historical coverage evidence; it cannot be used as proof of the next UI-program
-atlas, platform baseline, design, or browser behavior.
+historical coverage evidence; it cannot prove complete target coverage,
+conformance to the preserved pilot, or current browser behavior.
 
 Changing an identity path or field after a stable consumer exists is a route
 compatibility change. Adding a profile/permission/state under the executable

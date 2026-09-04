@@ -12,6 +12,12 @@ executed_checks: [reviewed the unexecuted W18 scope against the current owner au
 observations: [W18 was ready but unexecuted, its Frost-only foundation is historical, the later unexecuted Linear/Penpot route was also withdrawn, no frontend implementation ticket is currently ready]
 ---
 
+> Historical supersession record. Statements below about a future pre-G0
+> program describe the original reset, not current execution authority.
+> The owner selected the final target pilot and removed the G-program on
+> 2026-09-04; see `docs/architecture/ui/ui-program-retirement.md` and the
+> current Web implementation source contract. W18 remains `superseded`.
+
 # W18 Web Foundations Application Shell Evidence
 
 ## Outcome and scope

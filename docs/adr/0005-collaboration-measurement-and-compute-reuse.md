@@ -1,7 +1,7 @@
 ---
 doc_id: ADR-0005
 title: Collaboration, digital measurement, and content-addressed compute reuse
-doc_version: 1
+doc_version: 2
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -120,9 +120,9 @@ Web, email, XLSX and API consumers.
 - Unit economics can be compared and certified without claiming one universal
   definition. Cost ladders, cohort maturity, refunds and allocation residuals
   stay visible.
-- Current UI inventory is incomplete for these capabilities. The future G1
-  atlas must add their screen families; no routes or visual design are invented
-  by this ADR.
+- Current UI inventory is incomplete for these capabilities. Ordinary
+  implementation tickets must cover their surfaces using the accepted target
+  pilot and product requirements; this ADR invents no routes or visual design.
 
 ## Contract impact and migration
 
@@ -145,7 +145,7 @@ materialization consumers or runtime provider adapters to migrate today.
 | Logs/metrics/audit/redaction | `compatible-change` additions | add minimized adoption/reuse/coverage telemetry and redacted lifecycle events without content/PII leakage |
 | Alerts/runbooks | `compatible-change` target addition | add materialization freshness/waste/lane and watch-delivery triggers/runbooks before release |
 | Benchmark/rollout gates | `compatible-change` but mandatory evidence expansion | cold/warm/hot/concurrent/invalidation/lanes and digital reconciliation become release evidence |
-| Browser-visible behavior | `unknown` until `ui-design-program` | pre-G0 delta only; routes, frontend stack and visuals remain unresolved under ADR-0004 |
+| Browser-visible behavior | `unknown` until implementation evidence | capability routes/states need ticket-level proof; the final target pilot owns demonstrated UI concepts and ADR-0007 owns frontend technology |
 
 Rollback stops new publication and planner selection, preserves immutable
 facts/results/discussions/audit, and never reactivates policy-incompatible cached
@@ -184,5 +184,5 @@ is claimed by this ADR.
 - algorithmic attribution, incrementality experiments or external activation
   enter product scope;
 - adoption privacy regulation or customer policy requires a stricter default;
-- the UI program G1 atlas changes the capability boundary rather than only its
-  presentation.
+- a product implementation proposal changes the capability boundary rather
+  than only its presentation.

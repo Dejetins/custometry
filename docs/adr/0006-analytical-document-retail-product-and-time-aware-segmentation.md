@@ -1,7 +1,7 @@
 ---
 doc_id: ADR-0006
 title: Common analytical documents, time-aware segments, and retail product analytics
-doc_version: 1
+doc_version: 2
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -134,7 +134,7 @@ measures and views.
 | Segment membership identity | breaking persistence/key change | backfill stable snapshot IDs, preserve immutable history, maintain legacy-reference map |
 | Digital identity resolution | compatible artifact addition | do not reinterpret or rewrite raw event claims; publish schema-v2 result DTO |
 | Product/category/inventory facts | additive | add source/canonical contracts and capability blockers |
-| Browser document navigation | breaking target behavior | accept only through a new UI design program and browser evidence |
+| Browser document navigation | breaking target behavior | accept through a bounded implementation ticket with target-concept review and browser evidence |
 
 New drafts write only schema v2 after migration. Published legacy versions
 remain readable. Dual-writing two composition formats is prohibited. Rollback

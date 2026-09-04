@@ -10,7 +10,8 @@ The repository is permanently public. Never commit credentials, customer data, p
 
 - [Machine-readable technical blueprint](./custometry-technical-blueprint-ru.md) — normative source of truth, version `0.10.0-draft`.
 - [Human-readable technical blueprint](./custometry-technical-blueprint-human-ru.md) — synchronized explanatory representation.
-- [UI/UX requirements baseline](./custometry-ui-blueprint-ru.md) — pre-G0 product UI requirements and current surface inventory for the next product-wide UI design program.
+- [UI/UX requirements](./custometry-ui-blueprint-ru.md) — product UI requirements and current surface inventory.
+- [Target UI concept](./docs/architecture/ui/target-pilot/README.md) — the preserved final interactive pilot, including demonstrated composition and behavior.
 
 If the documents diverge, the machine-readable blueprint wins. New normative requirements must first be added there and mirrored into the human-readable document.
 
@@ -27,11 +28,11 @@ If the documents diverge, the machine-readable blueprint wins. New normative req
 - single-server Docker Compose topology through `v1_target`.
 
 Development is contract-backed and UI-first. The previous Linear/Penpot target
-has been retired. Product-wide UI work starts with `ui-design-program` pre-G0
-intake, then establishes a complete screen atlas, journeys, families, waves,
-an accepted platform baseline, and responsive-Web evidence before implementation
-handoff. The current frontend implementation and historical design artifacts
-are evidence, not target authority. Each bounded context still replaces
+and G0-G6 design program have been retired. Web work uses product requirements,
+the accepted target pilot, ADR-0007, and ordinary bounded implementation tickets
+under the Web implementation source contract. Current frontend code is working
+implementation evidence, not automatic proof of target-concept conformance.
+Each bounded context still replaces
 contract-generated mocks with a real vertical slice through API,
 domain/application, PostgreSQL or artifacts, and browser/runtime proof. Static
 disconnected screens are not accepted as a product increment.

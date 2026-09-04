@@ -101,6 +101,12 @@ escalation_triggers: [normative_product_change, material_user_scope_change, exte
 evidence: [.codex/delivery/evidence/W18-WEB-FOUNDATIONS-APPLICATION-SHELL.md]
 ---
 
+> Historical supersession record. Statements below about a future pre-G0
+> program describe the original reset, not current execution authority.
+> The owner selected the final target pilot and removed the G-program on
+> 2026-09-04; see `docs/architecture/ui/ui-program-retirement.md` and the
+> current Web implementation source contract. W18 remains `superseded`.
+
 # Outcome
 
 The Web has one reusable Frost foundation and application shell rather than a

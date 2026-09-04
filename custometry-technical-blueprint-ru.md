@@ -6189,9 +6189,9 @@ Polars является основным dataframe engine. Pandas MAY испол
 
 ## 18.6. Frontend
 
-Текущий browser stack в `apps/web` является implementation evidence, но не целевой архитектурой. Framework, language/build tool, client-state и server-state libraries, component/styling system, table/form/canvas libraries, icon family, font pack и browser-test implementation MUST быть выбраны и version-pinned отдельным accepted architecture decision после того, как product-wide UI program зафиксирует complete intake и platform baseline.
+Текущий browser stack в `apps/web` является implementation evidence, а целевую архитектуру определяет accepted ADR-0007. Framework, language/build tool, client-state и server-state libraries, component/styling system, table/form/canvas libraries, icon family, font pack и browser-test implementation MUST быть source-backed и version-pinned в принятом architecture/implementation contract. Продуктовые требования и целевой пилот задают входные ограничения; повторная UI-программа не требуется.
 
-До этого выбора действуют technology-neutral границы:
+Независимо от этого выбора действуют technology-neutral границы:
 
 - browser client использует typed versioned API/event adapters и не дублирует authoritative backend validation;
 - presentation/client state отделён от server-authoritative snapshots, invalidation, cancellation, authorization и terminal domain state;
@@ -6203,7 +6203,7 @@ Polars является основным dataframe engine. Pandas MAY испол
 ```yaml
 web_architecture_requirements:
   - id: WEB-ARCH-001
-    requirement: Target browser stack MUST быть выбран и version-pinned accepted architecture decision после complete UI-program intake и platform baseline; current implementation или historical reference не становится target автоматически, а изменение backend/domain/API требует отдельного compatibility decision.
+    requirement: Target browser stack MUST быть выбран и version-pinned accepted architecture decision на основе продуктовых требований и принятой UI-концепции; current implementation или historical reference не становится target автоматически, а изменение backend/domain/API требует отдельного compatibility decision.
   - id: WEB-ARCH-002
     requirement: Presentation/client state MUST быть отделён от authoritative server snapshots, invalidation и cancellation; frontend не принимает authorization, persistence, delivery или terminal domain decisions и не заменяет reconciliation.
   - id: WEB-ARCH-003
@@ -6211,7 +6211,7 @@ web_architecture_requirements:
   - id: WEB-ARCH-004
     requirement: Frontend rollout MUST быть recoverable, сохранять accepted deep links/history/Back/refresh и не удалять current fallback либо compatibility seam до browser, accessibility, real-API и performance evidence соответствующей wave.
   - id: WEB-ARCH-005
-    requirement: Одна accepted visual authority MUST быть hash-pinned через UI program; внешние references MAY задавать только объявленный screen либо visual-language scope и не переносят branding, entities, private assets, text, source code или undocumented authorization behavior.
+    requirement: Одна accepted visual authority MUST быть hash-pinned в repository-owned source manifest с явно принятым scope; финальный пилот задаёт показанную UI-концепцию, а внешние references MAY задавать только объявленный screen либо visual-language scope и не переносят branding, entities, private assets, text, source code или undocumented authorization behavior.
   - id: WEB-ARCH-006
     requirement: Shell, navigation, context/detail surfaces и responsive transformations MUST быть описаны source-backed platform baseline и screen contracts с keyboard/focus behavior, persistence semantics и content priorities; presentation mechanics не меняют permissions, routes или domain identity.
 ```
@@ -6300,7 +6300,7 @@ CI SHOULD создавать SBOM и license report. Список лицензи
 | ADR-003 | Parquet artifacts | Открытый columnar format | Хранить всё в PostgreSQL нельзя |
 | ADR-004 | Polars + DuckDB | Python ergonomics + columnar OLAP | Pandas не core engine |
 | ADR-005 | Celery + Valkey | Простой Python task stack | Temporal post-MVP при необходимости |
-| ADR-006 | Pipeline canvas adapter | UI-program/architecture decision выбирает совместимую библиотеку за product-owned pipeline contract | Собственный canvas без доказанной необходимости дороже |
+| ADR-006 | Pipeline canvas adapter | Accepted architecture decision выбирает совместимую библиотеку за product-owned pipeline contract | Собственный canvas без доказанной необходимости дороже |
 | ADR-007 | Own metric/semantic core | Это основная ценность продукта | dbt Semantic Layer как обязательная зависимость не выбран |
 | ADR-008 | Own lightweight model registry | Меньше сервисов до v1 target | MLflow optional later |
 | ADR-009 | Guided mode before canvas | Соответствует аналитическим сценариям | Canvas-first создаёт generic ETL tool |
@@ -8084,7 +8084,7 @@ v1_acceptance_criteria:
   - id: V1-AC-042
     criterion: People & Creators показывает privacy-safe cards/profile, разрешённые authored/owned assets и агрегированную activity только self/leader/explicit scope без ranking, score или raw audit.
   - id: V1-AC-043
-    criterion: Organization/People UI имеет шесть route-backed surfaces, effective-access preview и empty/partial/forbidden/transfer states, а соответствующая UI-program family/wave проходит accepted visual board и последующую browser/accessibility verification.
+    criterion: Organization/People UI имеет шесть route-backed surfaces, effective-access preview и empty/partial/forbidden/transfer states; соответствующая реализация проходит проверку целевой UI-концепции и browser/accessibility verification в своём implementation ticket.
   - id: V1-AC-044
     criterion: Canonical web/app taxonomy, sessions, touches, spend/cost и offline retail facts проходят dedupe/grain/cardinality/time/currency/consent/reconciliation gates с явной identity/unattributed coverage.
   - id: V1-AC-045

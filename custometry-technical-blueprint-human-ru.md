@@ -1526,17 +1526,17 @@ NumPy/SciPy обязательны, statsmodels желателен, scikit-learn
 
 ### 18.3. Frontend и localization
 
-Текущий stack в `apps/web` остаётся implementation evidence, но не является target authority. Framework, build tool, state/query libraries, component/styling system, table/form/canvas libraries, icons, fonts и browser-test implementation выбираются и version-pin-ятся отдельным architecture decision после complete UI-program intake и принятого platform baseline.
+Текущий stack в `apps/web` остаётся implementation evidence; целевую архитектуру определяет accepted ADR-0007. Framework, build tool, state/query libraries, component/styling system, table/form/canvas libraries, icons, fonts и browser-test implementation получают source-backed version pins в принятом architecture/implementation contract на основе продуктовых требований и целевой UI-концепции. Повторная UI-программа не требуется.
 
 Независимо от технологии browser client использует typed API/event adapters, отделяет presentation state от server-authoritative snapshots и не может сам выдать право, подтвердить persistence/run/delivery/terminal result либо заменить reconciliation. Route/history, workspace isolation, localization, accessibility и semantic theme/white-label contracts не зависят от UI library. ChartSpec остаётся product-owned contract; backend выполняет authoritative analytics и reduction.
 
 | ID | Frontend architecture invariant |
 |---|---|
-| WEB-ARCH-001 | Target browser stack выбирается и pin-ится после complete UI-program intake/baseline; current implementation/reference не становится target автоматически, backend/domain/API change требует отдельного decision |
+| WEB-ARCH-001 | Target browser stack выбирается и pin-ится accepted architecture decision на основе продуктовых требований и принятой UI-концепции; current implementation/reference не становится target автоматически, backend/domain/API change требует отдельного decision |
 | WEB-ARCH-002 | Presentation/client state отделён от authoritative server snapshots; frontend не принимает authorization/persistence/delivery/terminal decisions |
 | WEB-ARCH-003 | Themes/white-label используют versioned semantic tokens и validated assets; arbitrary CSS/HTML/JS, remote fonts и untrusted styles запрещены |
 | WEB-ARCH-004 | Frontend rollout recoverable, сохраняет accepted deep links/history/Back/refresh и compatibility seam до полного evidence соответствующей wave |
-| WEB-ARCH-005 | Одна accepted visual authority hash-pinned через UI program; внешняя reference имеет только объявленный scope и не переносит чужие product/assets/policy |
+| WEB-ARCH-005 | Одна accepted visual authority hash-pinned в repository-owned manifest с принятым scope; финальный пилот задаёт показанную UI-концепцию, внешняя reference не переносит чужие product/assets/policy |
 | WEB-ARCH-006 | Shell/navigation/detail/responsive transformations source-backed baseline и screen contracts; presentation не меняет permissions/routes/domain identity |
 
 | ID | Perceived-performance invariant |
@@ -1563,7 +1563,7 @@ Python packages/lock — `uv`/`uv.lock`; frontend — `pnpm`/`pnpm-lock.yaml`; R
 | ADR-003 | Parquet artifacts | Открытый columnar format; массовые данные не складываются в PostgreSQL |
 | ADR-004 | Polars + DuckDB | Lazy Python transforms и local OLAP; Pandas не core engine |
 | ADR-005 | Celery + Valkey | Понятный task stack; authoritative state остаётся в PostgreSQL |
-| ADR-006 | Pipeline canvas adapter | Совместимая library выбирается после UI-program/architecture decision за product-owned pipeline contract; собственный canvas без необходимости дороже |
+| ADR-006 | Pipeline canvas adapter | Совместимая library выбирается accepted architecture decision за product-owned pipeline contract; собственный canvas без необходимости дороже |
 | ADR-007 | Собственное semantic/metric core | Главная ценность Custometry, не обязательная dbt-зависимость |
 | ADR-008 | Lightweight model registry | Меньше обязательных services; MLflow позже |
 | ADR-009 | Guided before canvas | Сначала аналитические journeys, а не generic ETL clone |
@@ -2017,7 +2017,7 @@ Versioned web/app taxonomy и sessions → impressions/clicks/installs/opens/eco
 | V1-AC-040 | Cross-department grant bounded/reasoned/expiring, не меняет primary department и ceilings |
 | V1-AC-041 | Ownership/creator/transfer/legacy migration deterministic и сохраняют историю |
 | V1-AC-042 | People & Creators показывает privacy-safe assets/activity без ranking, score или raw audit |
-| V1-AC-043 | Шесть Organization/People routes, effective-access states, C25 и flow 10 проходят design/runtime gates |
+| V1-AC-043 | Шесть Organization/People routes, effective-access states, C25 и flow 10 проходят проверку целевой UI-концепции и browser/accessibility verification в implementation ticket |
 | V1-AC-044 | Web/app taxonomy/sessions/touches/spend/cost/offline facts проходят dedupe/grain/time/currency/consent/reconciliation с identity/unattributed coverage |
 | V1-AC-045 | Deterministic attribution сравнивает models на одном scope, разделяет provider/observed и не называется causal/incremental |
 | V1-AC-046 | CAC/CPI/CPA, ROAS/ROI, LTV/margin/payback pin-ят cohort/cost/refund/FX/identity/attribution/assumptions, residuals и certification |

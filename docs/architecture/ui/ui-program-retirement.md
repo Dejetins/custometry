@@ -82,8 +82,8 @@ match the target pilot or that demo calculations meet backend requirements.
 - A Git/Node byte audit compared each relocated resource with `git show`
   from the base commit and checked the manifest hash/size: passed.
 - The unique requirement-ID sets are unchanged: 1,141 in each product
-  blueprint and 307 referenced IDs in the UI blueprint. The only machine/human
-  requirement wording edit replaces the removed G3 timing in `WEB-PERF-002`
+  blueprint and 307 referenced IDs in the UI blueprint. In PR #46 the only
+  machine/human requirement wording edit replaces the G3 timing in `WEB-PERF-002`
   with acceptance of the corresponding UI implementation.
 - `git diff --name-only HEAD -- apps packages tests migrations deploy pnpm-lock.yaml uv.lock`:
   empty. Executable route/surface manifests and ticket statuses are unchanged.
@@ -127,3 +127,16 @@ Verdict: Release. One W30 YAML indentation issue was fixed; subsequent local,
 pre-push, and CI-profile checks passed. No unresolved Blocker/High findings.
 This review does not replace the protected PR's required remote
 `Foundation gate`, including disposable Compose/browser proof, before merge.
+
+The main cleanup was published through PR #46 after Foundation CI run
+`33914098501` passed all jobs, including
+`CUSTOMETRY_RUN_BROWSER=1 ./deploy/compose/ci-smoke.sh`. Its squash commit is
+`a59104806949543673a7a7b0cca2832957c9a3a1`.
+A final repository-wide reference scan then found remaining program wording
+in the root README, ADR index, ADR-0005/0006, route contract, technical
+blueprints, and historical W18 guidance. The narrow follow-up synchronizes
+those references and labels W18's old statements as history. `WEB-ARCH-001`,
+`WEB-ARCH-005`, and `V1-AC-043` retain technology selection, pinned design
+authority, complete Organization/People states, and real browser/accessibility
+proof, but no longer require the deleted program as their delivery mechanism.
+No business capability, ticket status, code, or preserved pilot bytes change.

@@ -8,7 +8,7 @@ normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-08-07
+updated_at: 2026-09-06
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -86,6 +86,14 @@ interpretation_rules:
     rule: Новое нормативное требование MUST сначала появляться в machine-версии; human-версия не может вводить отдельные обязательства.
 ```
 
+## 0.2. Принятое уточнение требований — 2026-09-05
+
+Владелец согласовал расширение требований к сегментам и отчётам после [исследования аналогов](./docs/architecture/planning/product-capability-discovery-2026-09-05.md). Нормативные изменения находятся в §6.5, §12.1.1, §12.10, §12.14, §12.15 и §14; проверяемые инварианты и критерии — в §22 и §28.1. [Контракт аналитического authoring](./docs/contracts/analytical-authoring-contract.md) связывает эти требования с backend/frontend boundaries и совместимостью. Это согласование требований целевого продукта, не свидетельство реализации или готовности всех interfaces.
+
+Forecasting находится в **hold** по решению владельца: forecast-specific разработка, модели, backtesting и новый forecast UI возобновляются только по его явному решению. Существующие требования сохраняются; общие analytics/segments/reports могут развиваться независимо. Первый внешний release scenario пока не выбран; старые alpha/MVP/v1 критерии с forecasting не считаются выполненными благодаря одному report-and-segment preview.
+
+Manual plan-versus-actual targets, новые PDF/standalone HTML exports и дополнительные Product/Store membership types остаются отдельно оцениваемыми расширениями; related Product/Store conditions и существующие Web/email/XLSX semantics входят в текущие требования. B2B, activation и SaaS exclusions сохраняются. Последовательность поставки новых возможностей описана в §26 и [плане продолжения](./docs/architecture/planning/development-roadmap-v1.md).
+
 # 1. Резюме продукта
 
 ## 1.1. Определение
@@ -153,7 +161,7 @@ product_goals:
   - id: GOAL-017
     goal: Дать dashboard, workbook-report и narrative research один масштабируемый Analytical Document contract с главами, страницами-вкладками, секциями, блоками, фильтрами, заметками, annotations, discussions и единым snapshot path для Web, email и XLSX.
   - id: GOAL-018
-    goal: Заложить полноценную товарно-категорийную аналитику B2C retail: versioned hierarchy, assortment, inventory/availability, pricing/markdown, lifecycle, ABC/XYZ, affinity и descriptive substitution с честным missing-data behavior.
+    goal: "Заложить полноценную товарно-категорийную аналитику B2C retail: versioned hierarchy, assortment, inventory/availability, pricing/markdown, lifecycle, ABC/XYZ, affinity и descriptive substitution с честным missing-data behavior."
 ```
 
 ## 1.3. Не входит в текущий scope
@@ -293,7 +301,7 @@ use_cases:
     output: Единый workbook с данными, графиками, metadata, lineage и Data Guide
   - id: UC-016
     name: Публикация Data Guide
-    actor: Workspace Administrator
+    actor: Workspace member с explicit data_guide.publish
     input: Markdown по утверждённому шаблону
     output: Безопасная immutable DataGuideVersion, связанная с workspace или semantic dataset
   - id: UC-017
@@ -595,7 +603,7 @@ flowchart TB
 
 | Слой | Назначение | Формат | Изменяемость |
 |---|---|---|---|
-| Source | Исходные БД и файлы | SQL tables, CSV, Parquet, XLSX | Внешняя |
+| Source | Исходные БД и файлы | SQL tables, CSV/XLSX по published import templates | Внешняя |
 | Landing | Снимок извлечённых данных | Partitioned Parquet | Append/replace по manifest |
 | Semantic | Mapping ролей, связей и правил | PostgreSQL metadata + JSON | Версионируется |
 | Mart | Предметные расчётные витрины | Partitioned Parquet | Immutable per run |
@@ -616,7 +624,7 @@ artifact_manifest:
   attempt_id: uuid|null
   created_at: timestamp_utc
   storage_uri: local_relative_uri
-  format: parquet|json|csv|cbm|html
+  format: parquet|json|csv|cbm|html|svg|png|xlsx|markdown
   row_count: integer|null
   byte_size: integer
   partition_columns: []
@@ -637,7 +645,7 @@ artifact_manifest:
   retention_policy: string
 ```
 
-`artifact_category` задаёт широкую политику хранения и доступа, а `artifact_schema_id` — конкретный тип данных, совместимый с pipeline ports. `node_run_id` равен `null` для импортированного, системного или сформированного вне node результата. Обобщённое поле `artifact_type`, смешивающее эти два уровня, запрещено в persistent manifest.
+`artifact_category` задаёт широкую политику хранения и доступа, а `artifact_schema_id` — конкретный тип данных, совместимый с pipeline ports. Canonical format tokens, MIME/container mapping и совместимость readers/writers определяет [artifact format contract](./docs/contracts/artifact-format-contract.md). Форматы SVG, PNG, XLSX и Markdown уже требуются chart/report/Data Guide outputs; их перечисление не добавляет новые каналы доставки. Расширенный registry не означает, что старый reader понимает новый token: capability и version compatibility проверяются до публикации для соответствующего consumer. `node_run_id` равен `null` для импортированного, системного или сформированного вне node результата. Обобщённое поле `artifact_type`, смешивающее эти два уровня, запрещено в persistent manifest.
 
 ```yaml
 partition_manifest:
@@ -694,7 +702,7 @@ canonical_rules:
   - id: DATA-RULE-009
     rule: SCD-сущность MUST иметь отдельный version key либо составной ключ с valid_from; business ID без версии не может быть primary key строки истории.
   - id: DATA-RULE-010
-    rule: Temporal joins MUST выбирать ровно одну допустимую версию dimension на event time и блокировать пересекающиеся интервалы validity.
+    rule: Temporal joins по подтверждённой истории dimension MUST выбирать ровно одну допустимую версию на event time и блокировать пересекающиеся интервалы validity. Разрешённый current-only snapshot binding не является историческим temporal join и MUST следовать явно объявленной политике §5.2; отсутствие исторической версии не разрешает неявный fallback к текущему атрибуту.
   - id: DATA-RULE-011
     rule: Foreign key к source entity MUST включать source_system_id, если не опубликован отдельный versioned crosswalk в canonical ID.
 ```
@@ -734,7 +742,7 @@ entity:
 ```
 
 `Customer` MAY быть snapshot-таблицей или slowly changing dimension. Если исторические изменения атрибутов отсутствуют, аналитика использует текущие значения и MUST помечать это ограничение.
-Для current snapshot без source validity платформа присваивает `valid_from` из extraction batch boundary и `valid_to = null`; такой synthetic interval MUST быть отмечен в lineage.
+Для current snapshot без source validity платформа присваивает `valid_from` из extraction batch boundary и `valid_to = null`; такой synthetic interval MUST быть отмечен в lineage. Этот synthetic interval описывает наблюдение платформой, а не доказанную source-effective историю. Если аналитика использует разрешённые текущие атрибуты, versioned relationship policy MUST явно выбрать и pin-ить current snapshot, раскрыть observed-as-of и ограничение current-only; для Customer, Product и Store одинаково запрещены неявное backdating и выдача текущего атрибута за исторический. Запросу, требующему исторического атрибута, недостающая история даёт unknown/ограничение либо blocker согласно FILTER-016 и capability policy.
 
 ## 5.3. CustomerIdentity
 
@@ -788,6 +796,12 @@ identity_requirements:
     requirement: UI MUST показывать unmatched, conflicted и remapped identity counts до публикации.
   - id: IDENTITY-005
     requirement: В одной identity mapping version validity intervals для одного source_system_id и source_customer_id MUST не пересекаться и давать не более одного effective canonical_customer_id в момент времени.
+  - id: IDENTITY-006
+    requirement: "Изменение email, phone или производного от них source_customer_id MUST поддерживаться через versioned deterministic crosswalk при наличии доказанного стабильного идентификатора или явного соответствия; canonical_customer_id не вычисляется из изменяемого контакта, provenance перехода сохраняется."
+  - id: IDENTITY-007
+    requirement: "Без достаточного evidence смена source ID MUST оставаться unresolved identity change с явной политикой unmatched и ограничением клиентской аналитики; сходство контактов, редкость случая и перенос покупки не доказывают тождество людей и не разрешают автоматический merge. Подтверждённые mapping corrections создают новую версию и impact report."
+  - id: IDENTITY-008
+    requirement: "Изменение customer_id у покупки со стабильным ключом MUST фиксироваться как reassignment этой покупки, независимо от решения о merge профилей; прежние и новые customer projections пересчитываются. Время обнаружения изменения не выдаётся за неизвестное время изменения в источнике; исторические опубликованные snapshots не переписываются."
 ```
 
 ## 5.4. Receipt
@@ -1013,8 +1027,6 @@ promotion_version:
   workspace_id: uuid
   version: integer
   status: draft|validating|published|deprecated|archived
-  availability_class: native_v1|template_v1|future_extension|unsupported
-  method_family: descriptive|diagnostic|segmentation|forecasting|experimental|causal|decision
   revision: integer
   external_campaign_id: string|null
   title: localized_text
@@ -1258,6 +1270,28 @@ semantic_dataset_version:
   schema_fingerprint: sha256
   created_by: uuid
   created_at: timestamp
+```
+
+### 6.1.1. Настраиваемое приведение source data
+
+Ниже закреплены требования к смыслу настройки; точные DTO, adapters и physical storage выбираются в implementing tickets. Общая модель остаётся единой и расширяемой.
+
+```yaml
+data_mapping_requirements:
+  - id: DATA-MAP-001
+    requirement: "Сопоставление MUST быть versioned declarative частью SemanticDatasetVersion: source bindings, grain/keys, поля, typed expressions, value dictionaries, связи и бизнес-правила; простая форма, табличный редактор и advanced representation используют один normalized plan и общий backend validator."
+  - id: DATA-MAP-002
+    requirement: "Преобразование строковых флагов в boolean MUST задавать явный словарь, например «да» → true и «нет» → false, с отдельной политикой пробелов/регистра/локали, null и неизвестных значений; непустая строка «нет» не становится true, неизвестное не становится false. Исходное значение остаётся прослеживаемым в защищённом landing artifact."
+  - id: DATA-MAP-003
+    requirement: "Sale/return semantics MUST настраиваться по полю-флагу, словарю статусов, signed measure либо явной связи документов согласно реальному источнику; отдельный документ возврата не обязателен. Значения, направление флага, отмены, знак суммы/количества и already-signed inputs определяются явно; «не продажа» не означает возврат без такого source contract, повторное изменение знака запрещено."
+  - id: DATA-MAP-004
+    requirement: "Каналы продаж и другие dimensions MUST поддерживать вычисление из нескольких typed source fields, собственные stable IDs и иерархии. Для принятого примера source_channel = SP и is_lk = false определяют дочерний канал прямой продажи через менеджера, is_lk = true — личный кабинет; оба относятся к родителю SP."
+  - id: DATA-MAP-005
+    requirement: "Derived-dimension rules MUST объявлять порядок/приоритет или взаимоисключаемость, обработку пересечений, fallback и unknown. При SP с null/неизвестным is_lk дочерний канал остаётся unknown по политике, не становится прямой продажей; одна покупка учитывается ровно один раз в rollup SP, с раскрытием неклассифицированной доли."
+  - id: DATA-MAP-006
+    requirement: "Версии преобразований и channel hierarchy MUST участвовать в lineage, result/cache identity и impact preview; изменение правила создаёт новую версию и пересчёт затронутых результатов. Отчёты и сегменты используют общую опубликованную dimension, не реализуют локальные копии channel logic."
+  - id: DATA-MAP-007
+    requirement: "Mapping UI MUST предоставлять выбор source/target fields, редактирование словарей и условий, объяснимые подсказки и bounded preview «до → после» с размерами выборки, unknown/failed counts и связями. Вопросы из проектных примеров описывают необходимые настройки, а не обязательную анкету; табличная форма и доступные команды покрывают операции drag-and-drop."
 ```
 
 ## 6.2. Связи и cardinality
@@ -1697,6 +1731,37 @@ filter_expression:
     value: typed_value|typed_hierarchy_value|typed_relative_date_window|null
 ```
 
+Schema v1 выше остаётся читаемым legacy subset. Новые relational/temporal expressions используют v2; producer не отправляет их потребителю без заявленной поддержки версии.
+
+```yaml
+filter_expression_v2:
+  schema_version: 2
+  root_entity_id: published_entity_id
+  semantic_dataset_version_id: uuid
+  root_node_id: stable_node_id
+  nodes:
+    - node_id: stable_node_id
+      scope_id: declared_scope_id
+      kind: and|or|not|predicate|exists|not_exists|aggregate_compare|sequence|population_ref
+      payload: discriminated_payload_by_kind
+  scopes:
+    - scope_id: stable_scope_id
+      parent_scope_id: stable_scope_id_or_null
+      relationship_version_id: uuid_or_null
+      entity_id: published_entity_id
+```
+
+| Node kind | Обязательный payload и смысл |
+|---|---|
+| and/or/not | Ссылки на children того же scope; у not ровно один child, у and/or не менее одного; graph ацикличен, все referenced nodes/scopes объявлены |
+| predicate | Versioned field, typed operator/value; field принадлежит текущему scope, outer binding разрешён только по typed correlation mapping |
+| exists/not_exists | Published relationship version, child scope, nested root и explicit observation window; existential set semantics не добавляет строки в root population |
+| aggregate_compare | Child scope/predicate, metric version либо typed count/count_distinct, distinct grain, window, typed comparator и scalar либо compatible scoped operand; null/returns/empty/units следуют pinned semantic rules |
+| sequence | Ordered steps с positive/negative kind, event definition/predicate и scope; event-time field, absolute/relative window, gaps, property bindings и strict-time tie policy. Negative step — отсутствие после positive anchor в полном заданном interval |
+| population_ref | Customer definition-version/snapshot/collection-revision reference, snapshot resolution policy и membership-time basis; set operations используют and/or/not над compatible explicitly declared universe |
+
+Resolved plan дополнительно pin-ит все relationship/field/metric/event/identity/calendar versions, absolute windows с half-open interval `[start, end)`, timezone, observation/knowledge-as-of, completeness evidence, resolved population refs и effective policy. Relative definitions сохраняют anchor policy, а запуск — фактически разрешённые границы. Reordering Boolean children не меняет meaning; перенос predicate между scopes меняет meaning и требует нового validated result. Field NULL обрабатывается registry null policy; `unknown` из неполноты observations — отдельное evaluator state.
+
 ```yaml
 filter_requirements:
   - id: FILTER-001
@@ -1723,6 +1788,18 @@ filter_requirements:
     requirement: Filter builder MUST предоставлять searchable catalog, сгруппированный по business entity, явные AND/OR groups и nested refinements, сохраняющие область одного события, заказа либо другого versioned container; UI MUST показывать читаемое итоговое выражение до Apply.
   - id: FILTER-012
     requirement: Draft expression, applied expression и permission-filtered preview estimate MUST быть различимы; estimate является необязательной оценкой, не заменяет backend validation, а Apply MUST материализовать только повторно авторизованное normalized expression tree.
+  - id: FILTER-013
+    requirement: Expression schema v2 MUST поддерживать correlated exists/not_exists по опубликованным versioned semantic relationships с explicit parent scope, child entity и nested predicate; условия внутри одного Receipt/ReceiptItem/event проверяются на одном объекте, независимые exists могут совпасть на разных объектах. Arbitrary joins и размножение root members запрещены.
+  - id: FILTER-014
+    requirement: Scoped aggregate condition MUST pin-ить relationship/scope, row predicate, observation window, registered metric либо typed count/count_distinct expression, distinct grain, unit, null/empty/returns policy и comparison operator; ratios и window-to-window comparisons фиксируют оба operands и denominator. COUNT пустого полного набора равен нулю; неизвестные значения и неполные входы не становятся нулём.
+  - id: FILTER-015
+    requirement: Behavioral sequence MUST задавать ordered positive/negative steps, event-definition versions, event-time field, relative/fixed windows, minimum/maximum gaps, same-property/session bindings и deterministic tie policy; default strict event-time order не выводит последовательность из одинаковых timestamps. Отсутствие события после шага подтверждается только по полному observation interval.
+  - id: FILTER-016
+    requirement: Evaluator MUST различать matched, not_matched и unknown для неполной истории, unavailable relationship, property-history gaps и late data; NOT unknown остаётся unknown, AND/OR используют трёхзначную логику. Certified absence требует completeness evidence в разрешённом scope. Unknown не входит в confirmed membership и раскрывается как limitation/coverage либо blocker по explicit policy.
+  - id: FILTER-017
+    requirement: Backend MUST валидировать schema, typed operands, correlation scopes, relationship cardinality и capabilities, затем компилировать один normalized versioned plan через safe pushdown/Polars/DuckDB; flat-feature evaluation остаётся supported subset. Schema-v1 reads сохраняют прежний смысл; v2 nodes не отбрасываются при downgrade, versions и resolved dependencies входят в request/result/cache identity.
+  - id: FILTER-018
+    requirement: Query preflight MUST ограничивать depth, step count, fan-out, cardinality, estimated work и preview resource use через versioned workspace policy; unsupported/too-costly expressions получают actionable blocker до Run. Exact и sampled/estimated previews различаются, cancellation/stale-preview protection обязательны, а browser и row-wise Python не становятся обходным вычислительным движком.
 ```
 
 ## 6.6. Methodology Registry и аналитические knowledge objects
@@ -1736,6 +1813,8 @@ analysis_method_version:
   workspace_id: uuid
   version: integer
   status: draft|validating|published|deprecated|archived
+  availability_class: native_v1|template_v1|future_extension|unsupported
+  method_family: descriptive|diagnostic|segmentation|forecasting|experimental|causal|decision
   revision: integer
   localized_title: localized_text
   business_question_types: []
@@ -1968,7 +2047,7 @@ unit_economics_requirements:
   - id: UNIT-ECON-011
     requirement: Scenario/sensitivity result MUST хранить baseline, changed assumptions, range и result delta отдельно от observed actuals.
   - id: UNIT-ECON-012
-    requirement: Unit-economics metric MUST иметь certification status canonical|candidate|proxy; proxy MUST показывать limitation и не заменять canonical measure без review.
+    requirement: Unit-economics metric MUST использовать общий certification_status candidate|verified|canonical|deprecated из MetricRegistry и независимо объявлять value_origin/quality согласно METRIC-019 и METRIC-020. Proxy MUST явно показывать origin и limitation, не получать trust label прямого source component и не заменять canonical measure без review; certification не скрывает proxy nature.
   - id: UNIT-ECON-013
     requirement: Governed unit-economics result MUST предоставлять CAC, CPI/eCPI, CPA, ROAS, ROI, LTV, configurable contribution-margin ladder и payback по разрешённым cohort, channel, campaign, product, category и store scopes.
   - id: UNIT-ECON-014
@@ -2090,11 +2169,11 @@ extraction_session:
 
 | Режим | Назначение | Требования |
 |---|---|---|
-| Full snapshot | Небольшие таблицы и первый запуск | Полная замена partition set |
+| Full snapshot | Первый запуск и полный rebuild, включая источники без change markers | Проверенная область snapshot, absence policy и атомарная замена partition set |
 | Append | Неизменяемый event log | Стабильный event ID или watermark |
 | Incremental watermark | Таблицы с `updated_at` или растущим ID | Lookback window обязателен |
 | Partition refresh | Продажи по дням/месяцам | Пересчёт затронутых partitions |
-| Upsert | Исправляемые строки | Стабильный ключ и source_updated_at |
+| Upsert | Исправляемые строки | Стабильный ключ и надёжный ordering evidence; без него используется проверенный snapshot refresh |
 | CDC | Поток изменений | Не входит в v1 target |
 
 ## 7.4. Watermark и late-arriving data
@@ -2147,6 +2226,40 @@ extraction_requirements:
     requirement: Source snapshot token и connection secret MUST быть недоступны в UI, logs и artifact content.
   - id: INGEST-007
     requirement: Multi-table extraction MUST читать связанные объекты через одну явно открытую ExtractionSession и завершать её commit либо abort; expired session не может публиковать artifact или watermark.
+```
+
+### 7.4.2. Инициатор, готовность и исправляемые полные снимки
+
+Эти требования покрывают источник, ежедневно пересоздающий витрины без row-level change history. Принятый сценарий является adversarial acceptance case; он не доказывает полноту поддержки всех иных источников.
+
+```yaml
+source_refresh_requirements:
+  - id: INGEST-008
+    requirement: "Платформа MUST поддерживать инициируемый платформой pull и инициируемую источником передачу данных push, а также сигнал источника, запускающий pull. Transport, trigger, readiness evidence и refresh mode задаются независимо в versioned ingestion policy; push использует governed admission и не расширяет автоматически список source formats/connectors v1."
+  - id: INGEST-009
+    requirement: "Pull MUST поддерживать расписание, ручной запуск, readiness polling и source completion notification; политика задаёт необходимые объекты и consistency group, timezone, polling interval, bounded retry/backoff, timeout, нагрузку на источник и действие при отсутствии готовности. Расписание определяет попытку проверки, не доказывает завершение обновления."
+  - id: INGEST-010
+    requirement: "Readiness adapter MUST уметь читать настраиваемую read-only control table/view типа log update: mapping имени объекта, отметки обновления, optional generation/status/completion и predicate готовности; имя таблицы и полей не hard-coded. Отметка обновления таблицы не является row-level watermark."
+  - id: INGEST-011
+    requirement: "Связанные объекты MUST проверяться как declared consistency group с общей source generation либо явно проверяемыми совместимыми per-object markers. Новая готовность одной таблицы не разрешает смешивать несогласованные поколения остальных; skipped/waiting/incompatible dependencies остаются видимыми."
+  - id: INGEST-012
+    requirement: "Readiness evidence MUST фиксировать, что именно гарантирует marker источника: начало, завершение, успешную загрузку и/или стабильность опубликованного поколения. Timestamp alone и неизменность marker до/после чтения не доказывают консистентность при in-place rebuild; нужны source snapshot/publication guarantee либо best_effort_validated с проверками, раскрытым ограничением и запретом неподтверждённых удалений."
+  - id: INGEST-013
+    requirement: "Push admission MUST аутентифицировать и авторизовать workspace/source binding, ограничивать schema/size/rate и собирать batch до явного completion envelope с inventory частей, scope, counts/hash evidence и обязательными validations. Успешный приём части, webhook или timeout не означают полный опубликованный dataset; notification-only path запускает тот же pull pipeline."
+  - id: INGEST-014
+    requirement: "Trigger events, polling и retry MUST coalesce по зафиксированным source generation/области и execution identity; seen marker и successful committed checkpoint различаются. Повторные/устаревшие события не регрессируют generation; неизменившийся coarse timestamp не гарантирует отсутствие нового поколения и требует заявленной fallback проверки."
+  - id: INGEST-015
+    requirement: "Источник с ежедневной полной перезаписью и без надёжного row change marker MUST поддерживаться полным snapshot refresh и сравнением с предыдущим проверенным снимком в объявленной области истории. Проверяются и старые записи; occurred_at, максимум даты продажи и фиксированный lookback не подменяют discovery изменений за пределами окна."
+  - id: INGEST-016
+    requirement: "Snapshot comparison MUST различать added/changed/absent/reappeared записи по объявленным стабильным ключам и versioned typed content comparison, независимо от порядка строк и размеров chunks. Дубли учитываются до сравнения канонических записей; hashes для pruning не заменяют evidence полноты и проверки конфликтов."
+  - id: INGEST-017
+    requirement: "Отсутствие записи MUST считаться withdrawal из текущей проекции только внутри явно подтверждённой authoritative complete snapshot scope и по опубликованной absence policy; это не доказательство бизнес-отмены. Partial/failed/in-progress/sampled выгрузка, смена фильтра/области/прав, потеря join и quarantine не удаляют ранее опубликованные записи молча. Пустой снимок требует явного evidence завершения и проверки политики; tombstone/reappearance сохраняют историю."
+  - id: INGEST-018
+    requirement: "Изменения старых продаж, withdrawal/reappearance, customer reassignment и подтверждённые identity corrections MUST пересчитывать все затронутые старые и новые partitions, customer/channel aggregates и зависимые сегменты; новые manifest/result versions публикуются атомарно для согласованного consumer snapshot, предыдущие отчёты сохраняют свои версии."
+  - id: INGEST-019
+    requirement: "Без стабильного ключа изменяемой записи MUST поддерживаться полная замена проверенной области как набора с заявленными grain/duplicate правилами, если канонический контракт можно удовлетворить; source rekey не выдаётся за доказанное обновление той же записи. Batch-local provenance/row number не является стабильным business ID; недоказуемый record-level diff и history linkage помечаются unsupported."
+  - id: INGEST-020
+    requirement: "Refresh MUST оценивать и измерять source rows/bytes, scan duration, memory/temp disk и downstream reuse; полный просмотр заявленной истории неизбежен для гарантии обнаружения произвольного старого изменения без надёжного change feed или подтверждённых source digests. Partial scan не выдаётся за полную сверку; partition/hash reuse сокращает повторные вычисления в пределах доказанной coverage."
 ```
 
 ## 7.5. Schema drift
@@ -2545,7 +2658,7 @@ materialization_requirements:
   - id: MATERIALIZE-018
     requirement: Workspace operational UI MUST показывать cache/materialization hit rate, avoided scans/bytes/CPU, slow documents/blocks, wasted precompute, staleness и high-cost requests без customer-data leakage и без смешения с adoption quality.
   - id: MATERIALIZE-019
-    requirement: Benchmark MUST включать document envelope 100 pages x 30 blocks: initial open, cold/warm tab switch, mounted block count, network requests, duplicate compute, memory, RU/EN overflow, keyboard path и 200% zoom; hard limits задаются versioned policy только после baseline evidence.
+    requirement: "Benchmark MUST включать document envelope 100 pages x 30 blocks: initial open, cold/warm tab switch, mounted block count, network requests, duplicate compute, memory, RU/EN overflow, keyboard path и 200% zoom; hard limits задаются versioned policy только после baseline evidence."
 ```
 
 ## 9.8. Retry
@@ -2811,6 +2924,30 @@ quality_remediation_requirements:
     requirement: Pending waiver MUST иметь null approval/rejection fields; active требует approved_by и approved_at, rejected требует rejected_by, rejected_at и reason; решения immutable и auditable.
 ```
 
+## 10.8. Неполные и противоречивые входные данные
+
+Качество управляет доказанной областью использования данных; идеальная чистота источника не является условием подключения. Mandatory canonical invariants проверяются после declared remediation; скрытое исправление и скрытая потеря данных запрещены.
+
+```yaml
+imperfect_input_requirements:
+  - id: DQ-INPUT-001
+    requirement: "Неполные и загрязнённые source data MUST быть поддерживаемым входом: missing optional fields, дубли, orphan links и неизвестные значения диагностируются, преобразуются или изолируются по versioned policy. Доступность определяется отдельно для каждой capability и области; корректные sales totals могут быть доступны при ограничении customer attribution."
+  - id: DQ-INPUT-002
+    requirement: "Duplicate policy MUST различать точные повторы объявленного бизнес-ключа и конфликтующие версии. Exact dedup разрешён явно и сохраняет multiplicity/provenance; выбор конфликтующей версии требует доказанного ordering/priority либо группа ключа изолируется. Без row update evidence нельзя выбрать случайную/последнюю строку файла, а одинаковые значения без общего ключа не доказывают дубль."
+  - id: DQ-INPUT-003
+    requirement: "Raw landing data и защищённые diagnostics MUST сохранять provenance исправлений, исключений, duplicate collapse и quarantine в пределах retention policy. Исправление создаёт новую derived version, не изменяет источник или прошлые результаты; sensitive samples подчиняются отдельному доступу."
+  - id: DQ-INPUT-004
+    requirement: "QualityReport MUST различать transport/extraction completeness, доступную бизнес-историю источника, coverage полей/связей и полноту классификации. Полностью переданный снимок может содержать неполные бизнес-данные; отсутствие source ground truth отмечается unknown, а не 100% completeness."
+  - id: DQ-INPUT-005
+    requirement: "Tolerance policy MUST задавать severity, affected scope/capabilities, абсолютные counts, доли с явным denominator и доступный monetary impact по relevant slices. Малый процент ошибок не разрешает нарушение критичного инварианта; универсальный порог из слов «доли процента» не выводится. Неизвестный денежный ущерб не принимается за ноль."
+  - id: DQ-INPUT-006
+    requirement: "Published canonical output MUST сохранять обязательные grain/key/cardinality/security/artifact invariants. Quarantine или deterministic remediation создают проверяемый eligible subset и allow_degraded с объяснением; raw null/duplicate key не означает разрешение невалидного canonical key, а waiver не обходит DQ-REMEDIATE-005."
+  - id: DQ-INPUT-007
+    requirement: "Каждый refresh MUST выпускать accounting входных строк и outcomes: retained, collapsed duplicates, rejected/quarantined, policy-excluded и выведенные строки с объяснением join/expansion; changed/withdrawn/reassigned counts учитываются отдельно. Report/segment/export MUST переносить QualityReport, eligible denominator, coverage и limitations; неполнота не доказывает отсутствие покупок и не превращается в ноль."
+  - id: DQ-INPUT-008
+    requirement: "При конфликте новой версии со старой валидной записью политика MUST явно выбирать блокирование затронутой публикации, исключение или disclosed last-good serving; quarantine не означает удаление и не маскирует старую запись как свежую. До публикации UI показывает влияние на записи, суммы, периоды и downstream capabilities; thresholds и исключения имеют owner/version/audit."
+```
+
 # 11. Аналитические витрины
 
 ## 11.1. Общие требования
@@ -3005,7 +3142,7 @@ mart:
     - margin
 ```
 
-Одна materialization MUST использовать один явный `fact_scope`. Product/category dimensions требуют `receipt_item`; receipt-level metrics в таком запросе вычисляются отдельным receipt aggregate и присоединяются после группировки без размножения header measures.
+Одна materialization MUST использовать один явный `fact_scope`. Product/category dimensions требуют `receipt_item` и отдельно зарегистрированных совместимых item-grain metrics согласно METRIC-008. Receipt-level metrics вычисляются отдельным receipt aggregate только по разрешённым для них dimensions; совместное представление сохраняет его собственный grain и не размножает header total по product/category rows. Aggregation или allocation не меняет source_grain/allowed dimensions существующей MetricVersion молча; несовместимый binding блокируется согласно MART-GRAIN-005.
 
 ## 11.8. segment_membership_snapshot
 
@@ -3071,8 +3208,8 @@ analysis_contract:
 
 ```yaml
 time_comparison_spec:
-  schema_version: 1
-  mode: none|previous_year_same_dates|previous_year_calendar_aligned|previous_year_iso_week_aligned|previous_year_fiscal_period|previous_year_comparable_elapsed_days
+  schema_version: 2
+  mode: none|previous_period|custom_period|previous_year_same_dates|previous_year_calendar_aligned|previous_year_iso_week_aligned|previous_year_fiscal_period|previous_year_comparable_elapsed_days
   current_period:
     starts_on: date
     ends_on: date
@@ -3084,6 +3221,8 @@ time_comparison_spec:
   leap_day_policy: calendar_map|exclude|merge_with_feb_28
   iso_week_53_policy: calendar_map|exclude|explicit_partial
   definition_compatibility_policy: require_same_versions|allow_explicit_rebase
+  previous_period_basis: calendar_bucket_count|local_date_duration|null
+  duration_normalization: none|explicit_metric_policy
 ```
 
 ```yaml
@@ -3091,7 +3230,9 @@ comparison_artifact:
   comparison_artifact_id: uuid
   workspace_id: uuid
   normalized_time_comparison_spec: object
-  applied_mode: none|previous_year_same_dates|previous_year_calendar_aligned|previous_year_iso_week_aligned|previous_year_fiscal_period|previous_year_comparable_elapsed_days
+  normalized_population_comparison_spec: object|null
+  resolved_population_bindings: []
+  applied_mode: none|previous_period|custom_period|previous_year_same_dates|previous_year_calendar_aligned|previous_year_iso_week_aligned|previous_year_fiscal_period|previous_year_comparable_elapsed_days
   resolved_current_period: {starts_at: timestamp_utc, ends_at: timestamp_utc}
   resolved_comparison_period: {starts_at: timestamp_utc, ends_at: timestamp_utc}
   timezone: IANA_timezone
@@ -3109,6 +3250,8 @@ comparison_artifact:
       comparison_value: scalar|null
       absolute_change: scalar|null
       percent_change: scalar|null
+      percentage_point_change: scalar|null
+      delta_unavailable_reason: string|null
       current_coverage: object
       comparison_coverage: object
       comparability_status: comparable|partial|not_comparable
@@ -3116,6 +3259,20 @@ comparison_artifact:
   manifest_artifact_id: uuid
   created_at: timestamp_utc
 ```
+
+TimeComparisonSpec v1 сохраняет свои original modes и их значения. V2 расширяет enum; новый mode не маскируется под `vs LY` и не downconvert-ится. Resolved date ranges переводятся в half-open timestamps по business timezone. Previous-period mode для month/quarter/year берёт непосредственно предшествующее количество таких calendar buckets; custom range — столько же local dates до начала current range. DST может менять число elapsed hours, что раскрывается вместе с duration basis. Default normalization — `none`; per-day/exposure normalization доступна только как explicit registered metric policy.
+
+```yaml
+population_comparison_spec:
+  schema_version: 1
+  mode: same_population|explicit_population_pair
+  current_binding: typed_population_report_binding
+  comparison_binding: typed_population_report_binding
+  eligible_universe_ref: immutable_ref
+  overlap_policy: disclose_union_and_overlap
+```
+
+Population comparison фиксируется вместе с time comparison в ComparisonArtifact, включая resolved bindings/history refs и knowledge-as-of. `same_population` переиспользует одну selection/fixed-cohort membership; event-time mode явно показывает одну membership-history policy с возможным изменением фактического состава между периодами. Для неизменного состава пользователь выбирает fixed_cohort. Side-by-side population-only comparison использует одинаковый time period и time mode `none`.
 
 ```yaml
 comparison_requirements:
@@ -3139,6 +3296,12 @@ comparison_requirements:
     requirement: Month, quarter и year comparisons MUST использовать calendar-aligned resolved periods на всех поддерживаемых report tabs, включая segment size и migration; current/comparison snapshot pair, coverage и definition compatibility MUST разрешаться для каждого effective block period.
   - id: COMPARE-010
     requirement: Переключение effective grain между month, quarter и year MUST менять resolved bucket boundaries, aggregation/reduction и число точек данных; chart, accessible table и export MUST использовать один и тот же bucketed artifact, а production-size reduction MUST выполняться backend CPU, не браузером.
+  - id: COMPARE-011
+    requirement: TimeComparisonSpec v2 MUST добавлять previous_period и custom_period к существующим previous-year modes; previous_period разрешается как непосредственно предшествующее число выбранных calendar buckets либо равная local-date duration для custom range, custom_period хранит оба явных интервала. Timezone, границы, DST, длина, overlap и incomplete-period policy видимы; старые v1 modes не переинтерпретируются.
+  - id: COMPARE-012
+    requirement: PopulationComparisonSpec MUST различать same_population и explicit_population_pair, pin-ить обе population bindings и membership-time policies; time-only, population-only и combined comparisons показывают, какие оси изменены. Overlap и eligible universe раскрываются, суммы overlapping populations не выдаются за disjoint total, а сравнение не является causal effect.
+  - id: COMPARE-013
+    requirement: ComparisonArtifact MUST хранить comparable typed values, absolute delta и applicable relative delta; rate difference выражается в percentage points отдельно от relative percent change. Нулевой/unknown denominator даёт explicit unavailable reason вместо infinity или выдуманного процента; разные maturity/coverage/definition basis не скрываются нормализацией.
 ```
 
 ## 12.2. Обзор продаж
@@ -3448,7 +3611,11 @@ Time-series residual anomaly detection остаётся отдельной Forec
 
 ```yaml
 segmentation_definition_version:
-  method: rule|rfm|bucket|kmeans
+  method: rule|rfm|bucket|kmeans|curated|composition
+  member_entity_type: Customer
+  member_key_schema: canonical_customer_id
+  expression_schema_version: integer_or_null
+  curated_collection_revision_ref: immutable_ref_or_null
   population_ref: immutable_ref
   feature_refs: [stable_feature_or_metric_ids]
   treatment_spec_version_id: optional
@@ -3462,7 +3629,9 @@ segmentation_definition_version:
 module:
   id: ANALYTICS-SEGMENT-RULES
   inputs:
-    required: [MART-CUSTOMER-FEATURES]
+    required: [published_semantic_dataset, authorized_customer_universe]
+    resolved_from_expression: [typed_marts, relationship_versions, event_projections, population_refs]
+    optional_flat_feature_subset: [MART-CUSTOMER-FEATURES]
   parameters:
     - expression_tree
     - priority
@@ -3475,7 +3644,7 @@ module:
     - overlap_report
 ```
 
-Expression tree MUST быть сериализуемым и исполнимым как Polars expression. Пользовательский SQL MAY быть отдельным advanced mode.
+Expression tree сериализуется по §6.5 и исполняется одним normalized relational/temporal plan через declared semantic relationships. Polars expression над customer-feature row — частный supported subset. Advanced authoring компилируется в тот же typed contract; произвольный SQL не считается эквивалентным reusable segment rule и требует отдельного trusted extension contract.
 
 ```yaml
 bucket_spec_version:
@@ -3691,13 +3860,33 @@ segment_snapshot:
   member_grain: string
   member_key_schema: object
 segment_binding:
-  mode: pinned_snapshot|latest_successful_by_definition
+  mode: pinned_snapshot|latest_successful_by_definition_version
   segment_definition_version_id: uuid
   segment_snapshot_id: uuid|null
   freshness_policy_version_id: uuid|null
 ```
 
 Новая target identity membership — `[segment_snapshot_id, canonical_customer_id]`. Текущие schema-v1 references мигрируют через schema v2, legacy-reference map и backfill stable snapshot IDs; historical immutable memberships не удаляются и не downconvert-ятся.
+
+`latest_successful_by_definition_version` — canonical spelling из SEGMENT-021; старое укороченное `latest_successful_by_definition` в shape означало ту же fixed-definition-version policy, а не автоматическое принятие новой definition. Compatibility adapter обязан распознать документированный legacy spelling без изменения исторической result identity.
+
+```yaml
+population_report_binding:
+  schema_version: 1
+  entity_type: Customer
+  member_key_schema: canonical_customer_id
+  membership_time_basis: selection_time|event_time|fixed_cohort
+  snapshot_resolution: typed_segment_binding
+  selection_snapshot_id: uuid_or_null
+  cohort_origin_snapshot_id: uuid_or_null
+  membership_history_revision_id: uuid_or_null
+  event_time_field_version_id: uuid_or_null
+  property_history_policy_version_id: uuid_or_null
+  knowledge_as_of: timestamp_utc
+  resolved_observation_window: half_open_interval
+```
+
+Selection-time требует selection snapshot, fixed cohort — origin snapshot, event-time — immutable membership history, event-time field и history policy; несовместимые комбинации отклоняются. History интервалы не заменяют snapshot primary key: текущая customer membership сохраняет `[segment_snapshot_id, canonical_customer_id]`. Entity discriminator появляется на envelope без переписывания historical keys. Selection artifacts и curated collections живут в Analytics и используют existing governed import, identity и artifact ports.
 
 ```yaml
 segment_temporal_requirements:
@@ -3712,7 +3901,7 @@ segment_temporal_requirements:
   - id: SEGMENT-023
     requirement: Segment detail MUST показывать size/value trend, entrants, exits, migration, overlap, drift, quality, limitations и treatment sensitivity при соблюдении minimum-cell и PII policy.
   - id: SEGMENT-024
-    requirement: `Used by` MUST строиться по permission-filtered dependency graph и включать dashboards, reports, research, forecasts и promotions без раскрытия запрещённых assets.
+    requirement: "`Used by` MUST строиться по permission-filtered dependency graph и включать dashboards, reports, research, forecasts и promotions без раскрытия запрещённых assets."
   - id: SEGMENT-025
     requirement: Historical comparison MUST использовать immutable historical memberships и explicit pair of snapshots; пересчёт прошлого новой definition version запрещён.
   - id: SEGMENT-026
@@ -3721,6 +3910,24 @@ segment_temporal_requirements:
     requirement: Segment migration result MUST представлять полную направленную transition matrix для каждого разрешённого origin/destination pair, включая zero cells и диагональ stayed; top-N либо выборочные переходы MAY быть производным view, но MUST NOT заменять canonical matrix artifact.
   - id: SEGMENT-028
     requirement: Segment size и migration comparison MUST использовать exact immutable current/comparison SegmentSnapshot pair для month, quarter либо year grain и показывать count/rate delta, coverage, definition compatibility и limitation codes без пересчёта истории новой definition.
+  - id: SEGMENT-029
+    requirement: Population contract MUST явно хранить entity_type и member_key_schema; текущий supported member type — Customer с canonical_customer_id, а Receipt/Product/Store в условиях являются related entities. Дополнительные типы membership требуют additive contract и отдельного scope decision; B2B entities не добавляются. Несовместимая population/block binding отклоняется до compute.
+  - id: SEGMENT-030
+    requirement: Curated customer collection MUST поддерживать authorized identifier import и ручные add/remove, append/replace, rename/archive через versioned revisions с optimistic concurrency, idempotency и audit. Match preflight фиксирует namespace/identity version, matched/unmatched/ambiguous/duplicate outcomes и explicit handling до commit, не создаёт клиентов и не раскрывает чужие identities; raw import имеет existing governed file/PII lifecycle. Каждая membership mutation создаёт новую immutable revision/snapshot, старые consumers не меняются.
+  - id: SEGMENT-031
+    requirement: Segment composition MUST поддерживать union/intersection/difference над population refs одного member type и compatible eligible universe; operands pin-ят definition version, snapshot или curated revision. Допускается explicit following evaluations of a fixed definition version, но переход на новую definition version требует impact review; dependency cycles/self-reference отклоняются, dependencies разрешаются topologically и сохраняются exact IDs.
+  - id: SEGMENT-032
+    requirement: Dependent segment MUST проверять authorization, upstream success, observation coverage и freshness каждого resolved operand; downstream freshness ограничена самым старым необходимым input. Failed/stale/denied dependency блокирует публикацию либо допускает только явно разрешённый last-good result с limitations; изменение input создаёт новый result, не переписывает старый.
+  - id: SEGMENT-033
+    requirement: Segment preview/detail MUST объяснять inclusion/exclusion/unknown через stable rule-node IDs, evaluated window и разрешённое evidence из того же evaluator; aggregate branch counts, обнаруживаемые contradictions и before/after impact используют тот же scope и minimum-cell policy. Причины для конкретного человека доступны только с отдельным member/field grant; diff и repeated previews не обходят suppression. Sequential narrowing labels не выдаются за независимый вклад условия; отсутствие найденного contradiction не доказывает непустоту segment.
+  - id: SEGMENT-034
+    requirement: Population report binding MUST различать selection_time, event_time и fixed_cohort независимо от pinned/latest snapshot resolution. Selection_time применяет одну выбранную membership ко всему report period; fixed_cohort pin-ит origin snapshot и последующее observation window; event_time связывает каждый факт с membership interval в момент его события. UI и result manifest показывают basis и exact references, смена basis меняет result identity.
+  - id: SEGMENT-035
+    requirement: Event-time membership MUST pin-ить versioned effective intervals, observation coverage, event/property-history policy и knowledge-as-of cutoff; интервалы одного member/segment не пересекаются. Между scheduled snapshots MUST быть explicit effective-from-evaluation policy, без выдуманной непрерывной истории; unknown gaps сохраняются. Late corrections создают новую history revision; старые отчёты воспроизводят старую revision, отсутствие истории блокирует event_time, а не подменяет его selection_time.
+  - id: SEGMENT-036
+    requirement: Из chart/table/cohort/funnel selection MUST быть доступно явное сохранение exact observed customer set либо reusable rule, когда provider поддерживает точное преобразование. SelectionArtifact pin-ит source result/snapshot, semantic cell key, filters, metric/window/population basis, member grain и effective policy; exact set берётся из полного authorized result, не из sample/visible page. Невозможный lossless rule conversion объясняется, approximation не сохраняется под видом эквивалентного правила. Изменившаяся authorization либо недоступный source artifact требуют явного нового разрешённого context или blocker, без ложного обещания совпадения с исходной выборкой.
+  - id: SEGMENT-037
+    requirement: Segment health/comparison MUST связывать size/value/profile/entrants/exits/overlap с exact inputs и semantic revision diff; data refresh, definition change, identity correction и policy change различимы. Для overlapping segments общий customer count считается как union, membership occurrences показываются только как отдельная explicit measure; неаддитивность и ограничения объясняются.
 ```
 
 ## 12.15. Custom Analysis Builder
@@ -3754,7 +3961,7 @@ block_builder_requirements:
   - id: BLOCK-BUILDER-001
     requirement: Любой metric, metric-group, chart, table или pivot block MUST создаваться через один normalized builder contract независимо от dashboard, workbook или research profile.
   - id: BLOCK-BUILDER-002
-    requirement: Первые три stages MUST быть обязательны и идти в одном порядке: subject/data product; metric(s) и grain; dimensions и period. Preview и Run до их валидного завершения запрещены.
+    requirement: "Первые три stages MUST быть обязательны и идти в одном порядке: subject/data product; metric(s) и grain; dimensions и period. Preview и Run до их валидного завершения запрещены."
   - id: BLOCK-BUILDER-003
     requirement: Population/Segment stage MUST становиться required только когда выбранная method, metric или grain требует population binding; UI и preflight объясняют причину, definition version, snapshot и binding policy.
   - id: BLOCK-BUILDER-004
@@ -3767,6 +3974,8 @@ block_builder_requirements:
     requirement: Draft builder state MUST быть resumable и не входить в result/cache identity до validated commit; autosave не публикует и не запускает compute.
   - id: BLOCK-BUILDER-008
     requirement: Add MUST вставлять block в явно выбранные page/section, сохранять stable block ID и не запускать duplicate compute при fresh compatible artifact.
+  - id: BLOCK-BUILDER-009
+    requirement: Guided metric authoring MUST позволять draft filtered measure и ratio через существующий MetricRegistry lifecycle; editor показывает typed operands, unit, aggregation/grain, denominator/null policy, allowed dimensions и backend validation/test result. Report-local trial не переписывает canonical metric, publication reusable metric проходит существующую certification/review policy.
 ```
 
 Ограничения:
@@ -3776,6 +3985,83 @@ block_builder_requirements:
 - Join выполняется только по опубликованным semantic relationships.
 - UI показывает итоговый grain и estimated row count до запуска.
 - Analysis specification MAY быть преобразована в pipeline template.
+
+### 12.15.1. Матрицы и переиспользуемые параметры
+
+Эти target contracts принадлежат существующим Analytics и Presentation boundaries. Они уточняют требования, а не заявляют наличие API или работающего editor.
+
+```yaml
+pivot_spec:
+  schema_version: 1
+  row_levels: [{dimension_version_id: uuid, hierarchy_level_id: string_or_null}]
+  column_levels: [{dimension_version_id: uuid, hierarchy_level_id: string_or_null}]
+  metric_version_ids: []
+  subtotal_levels: []
+  grand_total: {enabled: boolean, basis: full_authorized_population}
+  sort_and_top_n: typed_policy
+  cohort_basis: typed_origin_age_observation_policy_or_null
+pivot_result:
+  result_artifact_id: uuid
+  pivot_spec_hash: sha256
+  cell_key_schema: object
+  cells_artifact_id: uuid
+  totals_artifact_id: uuid
+  coverage_and_limitations: object
+parameter_definition:
+  parameter_id: stable_id
+  type: period|dimension_value|metric_ref|population_ref
+  required: boolean
+  default_policy: explicit_value_or_required_input
+  allowed_domain: registry_ref_or_typed_constraint
+parameter_binding:
+  parameter_id: stable_id
+  target_resource_id: uuid
+  target_input_path: allowlisted_path
+  mapping: typed_mapping
+  override_policy: inherited|explicit_allowed_override
+analytical_template_version:
+  template_version_id: uuid
+  owner_context: presentation|methodology_research
+  source_definition_version_id: uuid
+  parameter_definitions: []
+  parameter_bindings: []
+resolved_parameter_set:
+  template_version_id: uuid
+  parameter_definition_hash: sha256
+  resolved_values_and_targets_artifact_id: uuid
+  effective_policy_version: string
+  semantic_hash: sha256
+```
+
+```yaml
+pivot_requirements:
+  - id: PIVOT-001
+    requirement: "PivotSpec MUST быть versioned частью Analytics BlockDefinition: ordered row/column dimension levels, metric versions, per-level subtotal/grand-total policy, sorting/top-N policy, calendar/cohort-age basis и allowed cell-state semantics; PivotResult хранит stable semantic row/column/cell keys, grain, totals provenance и coverage. Renderer не получает произвольные formulas или SQL."
+  - id: PIVOT-002
+    requirement: Totals MUST вычисляться backend по полному authorized population на target grain через MetricRegistry aggregation rules; distinct counts пересчитываются, ratios используют numerator/denominator totals, semi-additive metrics соблюдают time policy. Sum rendered rows, average percentages и повторное суммирование receipt headers после item join запрещены; top-N раскрывает all-population total и displayed subset basis.
+  - id: PIVOT-003
+    requirement: Cohort/matrix cells MUST различать observed_value, observed_zero, not_yet_observable, missing_source, suppressed, not_applicable и unknown; state, observation age, denominator, completeness и limitation codes сохраняются в result и поддерживаемых exports. Suppressed cell не раскрывается через totals/differences, missing/immature не форматируется как zero.
+  - id: PIVOT-004
+    requirement: Matrix authoring MUST поддерживать hierarchy expand/collapse, несколько measures, row/column shelves, transpose, pinned headers/columns и metric-aware conditional formatting; formatting rules типизированы, не меняют значения и используют общую accessible scale/legend. Display-only reorder/width/density не меняют business identity; новые groupings/aggregations проходят backend validation и новый result.
+  - id: PIVOT-005
+    requirement: Matrix MUST применять bounded server-side projection/pagination или virtualization и preflight на cardinality/cells/bytes/compute; видимый viewport не ограничивает canonical result или totals. Loading/empty/partial/failed/last-good состояния, отмена и large-result fallback явны; Web/email/XLSX используют один snapshot, channel-specific overflow не обрезает данные молча.
+  - id: PIVOT-006
+    requirement: PivotResult MUST сохранять абсолютные measures и registry-defined rate/cumulative views с exact denominator и cohort origin/age; переключение на comparable-age view требует explicit observation basis. Source rows, total/subtotal cells и hidden/collapsed levels имеют разные semantic keys, пригодные для drill-through, annotations и воспроизводимой selection.
+```
+
+```yaml
+parameter_requirements:
+  - id: PARAM-001
+    requirement: AnalyticalTemplateVersion MUST задавать stable typed ParameterDefinition IDs, label, type, required/default policy, allowed values/ranges, source capability и explicit targets. Поддерживаются period, dimension/filter value, compatible metric и population refs; только опубликованные registry refs разрешены, access проверяется при каждом resolution без раскрытия denied choices.
+  - id: PARAM-002
+    requirement: ParameterBinding MUST отображать parameter на конкретный document/page/section/block input с type-compatible mapping, inheritance и visible override; security/system/locked constraints не ослабляются. Resolution выполняется в одном deterministic pass, missing/invalid/unused targets блокируют affected run/publication; hidden ignored parameters и циклы binding запрещены.
+  - id: PARAM-003
+    requirement: ResolvedParameterSet MUST pin-ить template/parameter-definition versions, explicit/default origins, exact typed values либо protected refs, resolved relative windows, targets и policy в request/result/snapshot identity. Presentation-only preferences хранятся отдельно; один template питает несколько страниц без копирования metric formulas или independent compute при compatible reuse.
+  - id: PARAM-004
+    requirement: Template lifecycle MUST поддерживать draft, validated immutable publication и linked instance, pinned к template version; новая версия не меняет существующие publications, explicit upgrade показывает diff/impact и создаёт draft revision. Copy creates independent definition с origin lineage и новыми object IDs; сохранение personal values не меняет shared defaults.
+  - id: PARAM-005
+    requirement: Block interaction MUST декларировать action highlight, filter_targets, drill_through либо navigate с allowlisted source semantic keys, target IDs и typed parameter mappings; UI показывает affected/unaffected targets и effective filters. Highlight не запускает аналитический compute, filter/navigation сохраняют history/return context, не создают feedback loops и не обходят locks или destination authorization.
+```
 
 ## 12.16. Research Workspace и переход от ad hoc к reusable product
 
@@ -3935,6 +4221,8 @@ product_analytics_requirements:
 ```
 
 # 13. Прогнозирование
+
+**Execution hold (2026-09-05):** требования этого раздела сохранены как target; разработка возобновляется только по явному решению владельца (§0.2).
 
 ## 13.1. Граница модуля
 
@@ -4306,6 +4594,10 @@ analytical_document_requirements:
     requirement: Responsive Web MUST сохранять hierarchy, reading order, data meaning и primary outcomes для RU/EN, tab overflow, keyboard и 200% zoom; mobile-specific IA остаётся unauthorized.
   - id: ANALYTICAL-DOC-013
     requirement: Published document и immutable snapshot MUST показывать permission-safe author identity, updated_at и publication/version metadata; author binding MUST быть pin-нут в snapshot manifest и одинаково отображаться в Web и exports.
+  - id: ANALYTICAL-DOC-014
+    requirement: Common composer MUST поддерживать compact table-first page в existing flow layout наряду с dashboard_grid и narrative; page composition, density и reader/explorer/author modes независимы от analytical semantics. Drag-and-drop размещает/reorders blocks и matrix shelves с эквивалентными keyboard/menu commands, undo и valid drop feedback; просмотр скрывает palette/handles/inspector, а таблица не требует предшествующего chart или фиксированного числа KPI.
+  - id: ANALYTICAL-DOC-015
+    requirement: Reader MUST читать authorized published snapshot, Explorer — менять разрешённый personal draft/view, Author — сохранять draft document по edit permission; переключение режима само по себе не публикует, не запускает compute и не меняет filters/metrics/result identity. Unsaved changes, personal overrides, Save view, Apply to draft и Publish имеют разные observable outcomes; narrow-screen/zoom layout сохраняет reading order и table access.
 ```
 
 ## 14.1. Chart specification
@@ -4546,6 +4838,8 @@ focus_explore_view_state:
     saved_view_id: uuid|null
 ```
 
+`compact_label` в `schema_version: 1` — legacy presentation hint только для previous-year (`vs_LY`) либо `null`; это не полный enum comparison modes и не источник analytical semantics. Видимая локализованная подпись вычисляется из effective `TimeComparisonSpec` и `PopulationComparisonSpec`, отражает все изменённые time/population axes и отсутствует, когда сравнение выключено. Для других modes legacy hint остаётся `null`; reader игнорирует сохранённый `vs_LY`, если effective spec не является previous-year, и никогда не переинтерпретирует его как другой mode. Запись новых label tokens или localization keys в это v1 поле требует отдельной versioned schema migration и reader-before-writer compatibility.
+
 Граница состояния обязательна: applied filters и другие параметры, меняющие набор либо смысл результата, проходят общий backend filter contract и входят в normalized specification, manifest, `request_hash` и cache key. Legend selection, zoom, brush, visible columns, density, pinning, pagination и текущая representation являются presentation state и не меняют аналитическую identity. По умолчанию этот state временный; устойчивое сохранение допускается только через versioned Saved View. Drill-down создаёт отдельный разрешённый запрос только после явного действия пользователя.
 
 ```yaml
@@ -4553,7 +4847,7 @@ focus_explore_requirements:
   - id: FOCUS-001
     requirement: Каждый разрешённый reportable chart, table и range_timeline MUST иметь действие открытия Focus / Explore mode во всём application viewport; режим MUST сохранять source binding, comparison, permissions и исходный block context.
   - id: FOCUS-002
-    requirement: Header режима MUST показывать title, current period и компактный label `vs LY`, все applied, system и locked filters, Result Trust, export action и close action.
+    requirement: Header режима MUST показывать title, current period и компактную локализованную подпись применённого comparison mode и изменённых time/population axes (`vs LY` только для previous-year; без подписи при отключённом сравнении), все applied, system и locked filters, Result Trust, export action и close action.
   - id: FOCUS-003
     requirement: Filter search MUST находить любое разрешённое effective policy поле из FilterFieldRegistry; forbidden fields, facets, counts и их существование не раскрываются.
   - id: FOCUS-004
@@ -4650,7 +4944,7 @@ dashboard_requirements:
   - id: DASHBOARD-009
     requirement: Finding/conclusion на dashboard MUST быть evidence-linked versioned content; viewer comment отображается отдельным discussion layer и не становится частью published dashboard version.
   - id: DASHBOARD-010
-    requirement: Только actor с report_access.manage MAY grant/revoke доступ пользователей и групп к published dashboard/report; authoring или publish permission само по себе не расширяет ACL.
+    requirement: Только actor с report_access.manage для report либо dashboard_access.manage для dashboard MAY grant/revoke доступ пользователей и групп к соответствующему published объекту; authoring или publish permission само по себе не расширяет ACL.
   - id: DASHBOARD-011
     requirement: Effective viewer rendering MUST удалять или заменять permission-state blocks, недоступные по row/object/PII policy, не раскрывая их existence, values или labels через layout gaps, comments, counts или export.
   - id: DASHBOARD-012
@@ -4838,7 +5132,7 @@ private_future_requirements:
   - id: PRIVATE-FUTURE-002
     requirement: Public repository MUST содержать только activation boundary/non-goals, но не destination implementation, commercial entitlement logic, private roadmap, credentials или private delivery artifacts.
   - id: PRIVATE-FUTURE-003
-    requirement: `.private/` MUST быть исключён из Git как defense-in-depth; confidentiality MUST обеспечиваться отдельным access-controlled private repository/storage, потому что `.gitignore` не является security control.
+    requirement: "`.private/` MUST быть исключён из Git как defense-in-depth; confidentiality MUST обеспечиваться отдельным access-controlled private repository/storage, потому что `.gitignore` не является security control."
   - id: PRIVATE-FUTURE-004
     requirement: Future activation MUST начинаться только с immutable SegmentSnapshot и предусматривать identity/destination mapping, dry-run, add/remove/skip diff, explicit approval, idempotency, per-record skip reason и reconciliation; HTTP success сам по себе не является доказательством приёма.
   - id: PRIVATE-FUTURE-005
@@ -4963,6 +5257,12 @@ report_requirements:
     requirement: Comment threads являются collaboration metadata и не входят в immutable rendered report по умолчанию; включение approved discussion summary требует отдельного versioned report block.
   - id: REPORT-014
     requirement: Access grant, report authoring, report sending и PII visibility MUST быть независимыми permissions; наличие одного не подразумевает остальные.
+  - id: REPORT-015
+    requirement: Cell-to-evidence drill-through MUST pin-ить source snapshot/result и semantic cell key, сохранять applied filters, period, metric definition, population basis и independently authorized record grain; он показывает metric explanation и reconciliation, включая distinct/ratio numerator-denominator semantics. Separate row/PII grants проверяются до query/count/export; при недоступной детализации aggregate explanation остаётся разрешённым fallback без утечки. Return восстанавливает исходный context/scroll/focus.
+  - id: REPORT-016
+    requirement: Semantic revision diff MUST сравнивать exact authorized document/result versions, отдельно показывая изменения data artifacts/late corrections, metric/filter/parameter/segment definitions, population-time basis и policy, а также presentation-only edits. Где причины неразделимы без отдельного controlled recomputation, показывается mixed/unknown explanation, а не выдуманная причинная декомпозиция; недоступная версия не раскрывает metadata/counts.
+  - id: REPORT-017
+    requirement: Draft-to-published comparison MUST показывать affected blocks, normalized semantic changes, comparable values и stale/unavailable dependencies до publication; одинаковые входы не дают выдуманной business delta. Diff с новыми расчётами проходит обычный preflight/Execution/authorization, immutable publications не переписываются, comments/findings не re-anchor-ятся автоматически.
 ```
 
 ## 14.5. Пользовательская отправка отчёта по email
@@ -5153,7 +5453,7 @@ Advanced режим для повторяемых процессов. Canvas о�
 
 ### 15.2.1. Data Guide
 
-Workspace Administrator публикует Markdown по единому template. Data Steward MAY получить отдельное permission `data_guide.publish`; это не следует автоматически из права редактировать dataset.
+Workspace member с explicit permission `data_guide.publish` публикует Markdown по единому template. Роль Workspace Administrator сама по себе даёт управление access policy, а не publication; Data Steward MAY получить publishing grant отдельно от dataset edit. Default publishing permission ни одной роли этим workflow не назначается; доступ ограничен scope и effective policy.
 
 ```yaml
 data_guide_version:
@@ -5224,7 +5524,7 @@ web_ui_shell_and_density_requirements:
   - id: UI-DENSITY-001
     requirement: Reportable result и каждый UI-AN route MUST использовать compact vertical hierarchy page-header/context и KPI, когда применимо, чтобы primary visualization, table или editor начинались в первом desktop viewport; декоративный пустой space не может вытеснять рабочие данные.
   - id: UI-DENSITY-002
-    requirement: Когда поверхность показывает четыре primary KPI, default presentation MUST быть одним Compact KPI Strip с общей baseline, согласованными column boundaries/dividers и коротким vs LY; четыре высокие самостоятельные KPI cards запрещены как default report header.
+    requirement: Когда поверхность показывает четыре primary KPI, default presentation MUST быть одним Compact KPI Strip с общей baseline, согласованными column boundaries/dividers и короткой локализованной подписью применённого comparison mode; `vs LY` используется только для previous-year, без сравнения подпись отсутствует. Четыре высокие самостоятельные KPI cards запрещены как default report header.
   - id: UI-DENSITY-003
     requirement: Report surfaces MUST использовать общие versioned geometry/spacing tokens; несовпадающие context/KPI separator coordinates, разные внутренние baselines и per-page ad hoc spacing запрещены; правило обязательно для UI-DQ-001 и UI-AN-001...012, включая compact header/context на screens без KPI.
 ```
@@ -5284,7 +5584,7 @@ progress_requirements:
 
 ### 15.4.1. Theme и presentation identity contracts
 
-Точный набор shipped themes, их identifiers, palette values и UI/report defaults повторно открыты для следующей product-wide UI design program. Компоненты и ChartSpec не содержат theme-specific hardcoded colors. Палитры отвергнутого UI target не являются input, shipped registry либо accepted visual authority; при необходимости их можно восстановить только как историческое evidence из Git, а не из нормативной спецификации.
+Точный набор shipped themes, их identifiers, palette values и UI/report defaults требует принятия по THEME-001…008 до затронутой frontend implementation; отменённая product-wide UI design program не является prerequisite. Финальный hash-pinned пилот задаёт показанную UI-концепцию и её visual language; полный production theme registry уточняется в соответствующем contract. Компоненты и ChartSpec не содержат theme-specific hardcoded colors. Палитры отвергнутого UI target не являются input, shipped registry либо accepted visual authority; при необходимости их можно восстановить только как историческое evidence из Git, а не из нормативной спецификации.
 
 ```yaml
 theme_requirements:
@@ -5671,7 +5971,7 @@ admin_requirements:
 
 ## 15.9. URL, workspace routing и browser history
 
-Web UI использует три явных семейства route. Auth/bootstrap/invitation, profile, global notification inbox/preferences и Help не зависят от выбранного workspace. Installation administration использует `/admin/*` и `/audit`. Все workspace resources имеют канонический префикс `/w/:workspaceKey/*`, где `workspaceKey` — неизменяемый публичный opaque identifier, не display name и не источник авторизации.
+Web UI использует четыре явных семейства route. Auth/bootstrap/invitation, profile, global notification inbox/preferences и Help не зависят от выбранного workspace. Installation administration использует `/admin/*` и `/audit`. Все workspace resources имеют канонический префикс `/w/:workspaceKey/*`, где `workspaceKey` — неизменяемый публичный opaque identifier, не display name и не источник авторизации.
 
 ```yaml
 web_route_contract:
@@ -5976,9 +6276,13 @@ backend_modules:
   data_quality:
     owns: [quality_rules, reports, drift]
   analytics:
-    owns: [analysis_specs, population_treatment_specs, outlier_diagnostics, results, segmentation_definitions, bucket_specs, stratification_specs, segment_snapshots, cluster_models]
+    owns: [analysis_specs, normalized_analytical_block_definitions, result_identity_manifests, population_treatment_specs, outlier_diagnostics, results, segmentation_definitions_runs_snapshots_bindings, bucket_specs, stratification_specs, cluster_models, discount_attribution_reconciliation, pvm_specs_results, customer_sales_product_category_assortment_inventory_analytics, comparisons, migrations]
   methodology_research:
-    owns: [analysis_methods, analysis_cases, research_documents, findings, decision_records, analytical_products, comments]
+    owns: [analysis_methods, methodology_packs, analysis_cases, research_documents, findings, decision_records, analytical_products]
+  collaboration_adoption:
+    owns: [participant_bindings, discussion_threads, comments, replies, mentions, resolve_reopen, reanchor_provenance, reactions, asset_subscriptions, meaningful_view_events, permission_filtered_activity_feed, privacy_safe_adoption_aggregates, metric_watches]
+  digital_marketing_analytics:
+    owns: [digital_event_taxonomy, sessions, marketing_touchpoints, spend_cost_facts, identity_link_observations, identity_resolution_artifacts, campaign_normalization, journey_conversion_definitions, cost_reconciliation, attribution_specs_results, unit_economics_specs_results, governed_assumptions, journey_funnel_projections]
   promotion_journal:
     owns: [promotion_definitions, promotion_versions, windows, channel_scope, immutable_audience_bindings]
   forecasting:
@@ -5995,7 +6299,9 @@ backend_modules:
     owns: [audit_events]
 ```
 
-Домен не должен читать таблицы другого домена напрямую из application code. Доступ выполняется через contract/repository, даже если физически используется один PostgreSQL.
+Эта сводка описывает логическое владение по [bounded context map](./docs/architecture/bounded-context-map.md), а не наличие созданных packages или таблиц. Product/category/assortment/inventory analytics остаётся внутри Analytics.
+
+Домен не должен читать таблицы или private repository другого домена напрямую из application code. Cross-context доступ выполняется через публичный port/DTO либо versioned projection contract владельца; repository adapter остаётся приватной реализацией своего context, даже если физически используется один PostgreSQL.
 
 ## 17.3. Control-plane PostgreSQL tables
 
@@ -6191,7 +6497,9 @@ Polars является основным dataframe engine. Pandas MAY испол
 
 Текущий browser stack в `apps/web` является implementation evidence, а целевую архитектуру определяет accepted ADR-0007. Framework, language/build tool, client-state и server-state libraries, component/styling system, table/form/canvas libraries, icon family, font pack и browser-test implementation MUST быть source-backed и version-pinned в принятом architecture/implementation contract. Продуктовые требования и целевой пилот задают входные ограничения; повторная UI-программа не требуется.
 
-Независимо от этого выбора действуют technology-neutral границы:
+Browser proof определяется действующим [implementation-source contract](./docs/architecture/ui/custometry-web-implementation-source-contract-v1.md): проверяются затронутые границы и применимые endpoints `768` и `1920 CSS px`; промежуточные ширины добавляются при layout risk или объявленном breakpoint. Принятый recoverable rollout и compatibility seams ADR-0007 сохраняются.
+
+Независимо от выбранного стека действуют следующие границы:
 
 - browser client использует typed versioned API/event adapters и не дублирует authoritative backend validation;
 - presentation/client state отделён от server-authoritative snapshots, invalidation, cancellation, authorization и terminal domain state;
@@ -6227,7 +6535,7 @@ web_performance_requirements:
   - id: WEB-PERF-004
     requirement: Interaction-to-request dispatch, response-end-to-stable-paint и event-receipt-to-visible-state MUST иметь отдельные measurable budgets, принятые для representative journeys до implementation handoff.
   - id: WEB-PERF-005
-    requirement: Representative journeys MUST иметь accepted INP и motion/render budgets на declared reference hardware без recurring dropped-frame clusters; exact thresholds принадлежат принятому program baseline, а не historical reference.
+    requirement: Representative journeys MUST иметь accepted INP и motion/render budgets на declared reference hardware без recurring dropped-frame clusters; exact thresholds принадлежат accepted performance contract затронутой implementation, а не historical reference или отменённой программе.
   - id: WEB-PERF-006
     requirement: UI MUST сохранять предыдущие authorized data либо reserved layout при refresh, отделять client overhead от backend wait и не выдавать optimistic/stale presentation за persisted, authorized или terminal result.
 ```
@@ -6458,7 +6766,7 @@ permissions:
 | Run cancel/retry | По отдельному operational grant | Нет по умолчанию | Own/allowed | Own/allowed | Own/allowed | Да | Нет |
 | PII preview/download/export | Только explicit time-bounded grant | Только explicit grant | Только explicit grant | Только explicit grant | Только explicit grant | Нет | Никогда |
 | Report email/XLSX | Только при membership и grant | Нет по умолчанию | По grant | Own/allowed | Own/allowed | Нет | Download non-PII allowed |
-| Data Guide publish | Только при membership и grant | Access policy only | По отдельному grant | По grant | По grant | Нет | Read allowed |
+| Data Guide publish | Только при membership и explicit grant | Access policy по умолчанию; publish только по explicit grant | По отдельному grant | По grant | По grant | Нет | Read allowed |
 | Dashboard/report authoring и publish | По отдельной analytical role | Нет | По grant | Да | Да | Нет | Нет |
 | Comments на разрешённом результате | По membership | По access | Да | Да | Да | Read/create по access | Read/create по access |
 | BrandProfile/CompanyPack manage/publish | Да | Нет | Нет | Нет | Нет | Нет | Read resolved brand |
@@ -6476,7 +6784,7 @@ rbac_requirements:
   - id: RBAC-003
     requirement: Installation role не подразумевает workspace membership; cross-workspace support access требует time-bounded explicit grant и audit reason.
   - id: RBAC-004
-    requirement: Role assignment не может выдавать permission, отсутствующий у назначающего actor в данном scope, кроме installation bootstrap policy.
+    requirement: Role assignment не может выдавать permission, отсутствующий у назначающего actor в данном scope, кроме installation bootstrap policy. Проверяется совокупность его разрешений по RBAC-015; ограниченный Workspace Administrator не получает delegation выше собственного ceiling, а actor с нужной совокупностью administrative и analytical grants MAY назначать роли внутри этого ceiling.
   - id: RBAC-005
     requirement: PII preview, PII artifact download, segment export, report send, XLSX export, Data Guide publish, email-policy management, waiver approval, token management и admin diagnostics MUST быть отдельными permissions.
   - id: RBAC-006
@@ -6514,7 +6822,7 @@ rbac_requirements:
   - id: RBAC-022
     requirement: Department Leader MUST быть scoped assignment с `org_unit_id`, `include_descendants`, effective dates и audit reason; он может читать ContributorActivityProjection только своего разрешённого scope.
   - id: RBAC-023
-    requirement: CrossDepartmentGrant MUST быть allow-only, bounded по subject/resource/data scope, иметь reason, issuer, effective dates и optional expiry и никогда не превышать role/PII ceiling.
+    requirement: CrossDepartmentGrant MUST быть allow-only, bounded по subject/resource/data scope, иметь reason, issuer, effective dates и конечный expiry и никогда не превышать role/PII ceiling.
   - id: RBAC-024
     requirement: Published reports/dashboards по умолчанию получают department ownership автора; personal drafts остаются личными, а explicit owner transfer MUST быть auditable и не меняет creator attribution.
   - id: RBAC-025
@@ -6550,6 +6858,8 @@ organization_model:
   ContributorActivitySummary:
     fields: [principal_id, org_scope_id, window, created_counts, published_counts, collaboration_counts, last_activity_at, visible_resource_refs, projection_version]
 ```
+
+Target finite-expiry policy согласована с RESOLVED-040 и V1-AC-040; численный TTL здесь не задаётся. Существующие API/persistence contracts с optional expiry требуют отдельной compatibility/migration проверки и политики обработки ранее сохранённых grants без срока до изменения реализации; эта документационная редакция не мигрирует grants и не доказывает runtime enforcement.
 
 OrganizationStructureVersion MUST быть workspace-scoped immutable snapshot с optimistic concurrency. Неактивные/объединённые подразделения не удаляются: сохраняется successor mapping и историческая атрибуция. Иерархия v1 — дерево; matrix/project organization, HRIS/SCIM/OIDC group synchronization являются future extensions.
 
@@ -6645,7 +6955,7 @@ Artifacts наследуют максимальную PII classification вхо�
 
 - Upload size limit.
 - Content sniffing, а не доверие расширению.
-- CSV export SHOULD защищаться от formula injection.
+- CSV export MUST нейтрализовать formula prefixes в пользовательских string cells и документировать reversible escaping согласно SEC-004.
 - XLSX import ограничен размером и листами.
 - Архивы не принимаются до v1 target включительно.
 - Имя пользователя не используется как filesystem path.
@@ -6902,7 +7212,7 @@ test_invariants:
   - id: TEST-INV-010
     invariant: Source-local одинаковые IDs из двух source_system_id не объединяются без identity mapping.
   - id: TEST-INV-011
-    invariant: Temporal join выбирает одну SCD version на event time и отклоняет overlapping validity intervals.
+    invariant: Исторический temporal join выбирает одну подтверждённую SCD version на event time и отклоняет overlapping validity intervals; явно выбранный current-only binding фиксирует snapshot/observed-as-of и limitation, не backdate-ит synthetic validity и не подменяет отсутствующую историю скрытым fallback.
   - id: TEST-INV-012
     invariant: Distinct count и semi-additive metrics не суммируются, а derived ratio пересчитывается из numerator/denominator.
   - id: TEST-INV-013
@@ -6920,7 +7230,7 @@ test_invariants:
   - id: TEST-INV-019
     invariant: Refresh-token reuse отзывает token family; CSRF-less cookie mutation отклоняется; revoked API token не авторизуется.
   - id: TEST-INV-020
-    invariant: Hard-cancelled child process не оставляет committed output и не завершает long-lived worker.
+    invariant: Hard-cancelled child process не завершает long-lived worker; после cancellation/fencing attempt не публикует новые manifests. Его ранее committed immutable artifacts становятся orphan candidates и обрабатываются retention/lineage policy без потери защищённых dependencies; ранее успешные publishable branches сохраняются только по declared partial policy согласно EXEC-CANCEL-004.
   - id: TEST-INV-021
     invariant: Dashboard не расширяет permission underlying artifact и корректно различает pinned/latest binding.
   - id: TEST-INV-022
@@ -7083,6 +7393,48 @@ test_invariants:
     invariant: First-user acquisition, session acquisition, provider claim, platform attribution, observed actual и scenario остаются разными measures/views с одним reconciled purchase/refund identity.
   - id: TEST-INV-101
     invariant: Document 100 pages x 30 blocks mount-ит только active page, не раскрывает denied metadata, не считает prefetch как view и не запускает duplicate compute при navigation/reopen/render.
+  - id: TEST-INV-102
+    invariant: Synthetic fixture с A в online order и B в offline order MUST различать same-order predicate и independent exists; дубли child rows не размножают members или revenue, пустая полная collection и missing history дают разные outcomes.
+  - id: TEST-INV-103
+    invariant: Sequence fixtures MUST проверять reversed steps, equal timestamps, interval endpoints, DST, incomplete negative window и late corrections; unknown остаётся unknown под NOT, canonical node reorder не меняет итоговый set.
+  - id: TEST-INV-104
+    invariant: Curated append/replace/remove при concurrent stale revision MUST не терять membership, duplicate import retry не создаёт вторую revision, unmatched/ambiguous/denied identities не создают Customer и не попадают в чужие diagnostics.
+  - id: TEST-INV-105
+    invariant: Union/intersection/difference MUST сохранять member grain, reject cycles и pin resolved operands; failed upstream refresh не становится current downstream result, revoked operand блокирует доступ даже при сохранённом cache.
+  - id: TEST-INV-106
+    invariant: Synthetic member entering midmonth MUST давать разные explainable selection_time/event_time/fixed_cohort результаты; interval gaps не заполняются текущей membership, late correction не меняет старый report.
+  - id: TEST-INV-107
+    invariant: Pivot distinct/ratio/semi-additive totals MUST совпадать с независимым target-grain calculation при pagination/collapse/transpose/top-N; immature/missing/suppressed/not-applicable cells отличаются от observed zero и не раскрываются через totals.
+  - id: TEST-INV-108
+    invariant: Typed template parameters MUST разрешаться одинаково для всех explicit targets, сохранить locked scope, reject invalid metric/entity и cyclic mappings; density/reorder/highlight не меняют business hash, semantic parameter change меняет.
+  - id: TEST-INV-109
+    invariant: Previous/custom-period и population-pair fixtures MUST раскрывать exact windows, DST/overlap/maturity и percent versus percentage-point delta; zero denominator не создаёт infinity, overlapping populations не суммируются как disjoint.
+  - id: TEST-INV-110
+    invariant: Drill-through и saved selection MUST сохранять parent cell/snapshot context, выбирать полный authorized set независимо от viewport и повторно проверять member access; unsupported rule conversion не даёт approximate saved rule.
+  - id: TEST-INV-111
+    invariant: Semantic diff MUST возвращать no business change для presentation-only/identical inputs, distinct change categories для data/metric/segment/policy и mixed/unknown при невозможной attribution; inaccessible old version не раскрывается.
+  - id: TEST-INV-112
+    invariant: Compact report MUST читаться и редактироваться через один result/document path, поддерживать keyboard alternatives drag-and-drop, explicit save/apply/publish и return-to-origin при responsive/zoom; mode switch не создаёт compute или publication.
+  - id: TEST-INV-113
+    invariant: "Последовательность полных снимков без updated_at MUST обнаруживать старое исправление суммы, withdrawal/reappearance и перенос стабильной покупки между клиентами; итоговая текущая проекция совпадает с полным эталонным пересчётом, старый опубликованный отчёт не меняется."
+  - id: TEST-INV-114
+    invariant: "Перемешивание строк/chunks и повторное получение одного source generation MUST сохранять результат; exact duplicate collapse и conflicting-key quarantine имеют точный accounting, конфликт без ordering evidence не выбирает произвольную версию."
+  - id: TEST-INV-115
+    invariant: "Partial/пустая незавершённая выгрузка, in-place rebuild, изменение source scope и quarantine ключа MUST не порождать молчаливые withdrawals; отдельно проверяется допустимый действительно пустой complete snapshot и последующее reappearance."
+  - id: TEST-INV-116
+    invariant: "Readiness tests MUST покрывать control-table field mapping, start-versus-complete marker, разные поколения связанных таблиц, coarse timestamp collision, отсутствующий marker, timeout и изменение поколения во время чтения; никакой schedule tick не выдаётся за readiness evidence."
+  - id: TEST-INV-117
+    invariant: "Pull, push и notification-triggered pull MUST проходить единые validation/commit правила; replay/out-of-order trigger, незавершённый push, failed batch и crash до/после commit не двигают checkpoint ошибочно, не регрессируют current generation и не дублируют эффект."
+  - id: TEST-INV-118
+    invariant: "Source customer rekey при смене email/phone MUST проверяться отдельно с доказанным crosswalk и без него; unresolved вариант не merge-ится по сходству, reassignment покупки не доказывает identity merge, observed time не выдаётся за source effective time."
+  - id: TEST-INV-119
+    invariant: "Typed normalization MUST проверять «да», «нет», true/false, регистр/пробелы согласно policy, null и неизвестный token; sale/return flag и already-signed sums не инвертируются дважды, отсутствие return document не блокирует корректный flag-based источник."
+  - id: TEST-INV-120
+    invariant: "SP/is_lk fixture MUST проверять оба дочерних канала, unknown/null, overlapping rules и остальные каналы; SP rollup не удваивает продажи, отчёты/сегменты используют одну dimension version, изменение правила инвалидирует соответствующий reuse."
+  - id: TEST-INV-121
+    invariant: "Degraded input fixture MUST различать полную доставку и неполную историю/атрибуты, сохранять source-row accounting и monetary impact, разрешать независимые capabilities и блокировать необоснованные negative segment conditions; редкий критичный дефект не скрывается общей долей ошибок."
+  - id: TEST-INV-122
+    invariant: "Snapshot refresh benchmark MUST включать полный scan, sparse old corrections, unchanged snapshot, skew/duplicates, cold/warm reuse, bounded memory/temp disk и concurrent source-read budget; результаты сравниваются с эталонным full refresh без ложного обещания incremental source I/O."
 ```
 
 ## 22.3. Golden datasets
@@ -7090,6 +7442,11 @@ test_invariants:
 Нужны синтетические наборы:
 
 - простой идеальный dataset;
+
+- successive daily full rebuilds without row update markers, sparse ancient corrections, withdrawals/reappearances and customer reassignment;
+- customer rekey with and without stable crosswalk, incomplete business history and complete transport;
+- readiness control table, in-progress publication, incompatible generations, coarse markers, partial push and replay;
+- string boolean dictionaries, flag-only returns, SP parent/derived child channels with unknowns and conflicts.
 - anonymous receipts;
 - возвраты и отмены;
 - multi-currency;
@@ -7395,7 +7752,7 @@ Compose release MUST дополнительно определять healthcheck
 
 Edge является инфраструктурным адаптером входа, а не новым bounded context или независимо развиваемым продуктовым микросервисом. Он не хранит secrets или состояние, не содержит бизнес-логики и проксирует только на зафиксированный в immutable configuration Web upstream. Сети `edge_to_web` и `web_to_api` разделяют путь `Edge → Web → API`: Edge не разделяет сеть с API, control-plane или data services, а Web является единственным сетевым мостом между двумя adjacency.
 
-Docker Compose не предоставляет portable primitive, который одновременно публикует host ingress и доказывает отсутствие outbound route у публикующего контейнера на всех поддерживаемых engines, включая Docker Desktop. Поэтому невнутренняя transport network Edge MAY давать ему ambient transport egress; fixed upstream ограничивает proxy routing, но сам по себе не является firewall и не доказывает egress denial. Это не разрешение business egress: Web, API и core services остаются во внутренних сетях и проходят negative outbound probes, а connector/mail/update paths получают отдельные allowlisted adapters.
+Docker Compose не предоставляет portable primitive, который одновременно публикует host ingress и доказывает отсутствие outbound route у публикующего контейнера на всех поддерживаемых engines, включая Docker Desktop. Поэтому невнутренняя transport network Edge MAY давать ему ambient transport egress; fixed upstream ограничивает proxy routing, но сам по себе не является firewall и не доказывает egress denial. Это не разрешение business egress: Web, API и core services остаются во внутренних сетях и проходят negative outbound probes, а connector, report-mail, operational-notification email/HTTPS-webhook и update paths получают отдельные allowlisted adapters. Operational notification adapters принадлежат Notifications и включаются для v1_target по NOTIFY-008…011 с endpoint-version pinning, verified email destination и SEC-006 controls; public MVP сохраняет только in_app. Это не передаёт operational delivery в Report Delivery и не разрешает arbitrary egress core services.
 
 Строгий production-контракт Edge вводится отдельным hardening этапом. На конкретной target environment он MUST применить host firewall, CNI или эквивалентную policy, разрешить Edge только утверждённый host ingress и `Edge → Web`, запретить `Edge → API/control/data/Internet/private/link-local/metadata` и подтвердить это positive и negative runtime probes. До такого наблюдаемого evidence документация и release tooling MUST не утверждать, что Edge полностью лишён egress.
 
@@ -7418,6 +7775,8 @@ Non-secret configuration MUST включать CPU detection/cap behavior, repor
 - Artifact schema versioning отделяется от PostgreSQL schema versioning.
 
 # 25. Структура репозитория
+
+Дерево показывает целевую логическую раскладку по принятой bounded context map, а не текущий implementation inventory. `analytics_core`, `analytics_customer`, `analytics_sales` и `analytics_product` принадлежат одному Analytics context; перечисление packages не создаёт новых bounded contexts или runtime services.
 
 ```text
 custometry/
@@ -7444,6 +7803,10 @@ custometry/
 │   ├── analytics_core/
 │   ├── analytics_customer/
 │   ├── analytics_sales/
+│   ├── analytics_product/
+│   ├── methodology_research/
+│   ├── collaboration_adoption/
+│   ├── digital_marketing_analytics/
 │   ├── forecasting/
 │   ├── presentation/
 │   ├── chart_compiler_ts/
@@ -7493,6 +7856,14 @@ custometry/
 # 26. Roadmap: vertical alpha, public MVP и v1 target
 
 Прежний широкий список под названием MVP является целевым объёмом `v1_target`. `vertical_alpha` и `public_mvp` определены отдельно, чтобы первый production-shaped путь был проверен до расширения модулей.
+
+### Текущая последовательность и принятая capability delta
+
+Forecasting остаётся в hold; перечисление моделей в исторически определённых stages не является разрешением возобновить работу. Internal integrated preview с reports/segments может поставляться раньше полной vertical alpha. Первый внешний сценарий и release label пока не выбраны.
+
+Принятые новые capabilities относятся к v1 target: FILTER-013…018, SEGMENT-029…037, PIVOT-001…006, PARAM-001…005, COMPARE-011…013, BLOCK-BUILDER-009, ANALYTICAL-DOC-014…015 и REPORT-015…017. Их observable acceptance задано V1-AC-055…062 и TEST-INV-102…112. До dependent implementation фиксируются versioned schemas, semantics, compatibility и resource-policy seams; не требуется реализовать весь язык в первом ticket.
+
+Рекомендуемый порядок: correlated customer rule/preview/snapshot/explanation → compact report с bounded matrix, parameters и population binding → collections/composition/comparisons/drill-through/diff → temporal sequences/event-time reporting при готовых event/history providers. Каждый шаг поставляет реальный UI/API/data outcome и свои failure/permission proofs. Дополнительные membership entities, manual targets и новые output formats не становятся prerequisites. Stage qualification не исключает непоставленные обязательства; полный v1 требует всех criteria, включая ранее определённые forecasting obligations после снятия hold.
 
 ## 26.1. Vertical alpha
 
@@ -7812,7 +8183,9 @@ PostgreSQL / MS SQL / MySQL / ClickHouse / governed CSV-XLSX template
 Schedule due
 → claim schedule
 → commit run + task outbox in PostgreSQL
-→ extract updated rows with lookback
+→ resolve readiness and source generation
+→ extract updated rows with reliable marker + lookback OR complete declared snapshot
+→ reconcile duplicate/conflict/absence/reassignment outcomes
 → rebuild affected partitions
 → quality checks
 → invalidate dependent cache keys
@@ -7892,6 +8265,24 @@ Versioned web/app taxonomy + sessions + campaign touches
 → funnel/journey/cohort dashboard and metric watch
 → no causal label or campaign activation without a separate contract
 ```
+
+## 27.9. Сегмент → компактный отчёт → объяснение
+
+```text
+Authorized Customer + Receipt + ReceiptItem data and completeness evidence
+→ same-order / related-item rule with explicit time window
+→ preview: readable rule, authorized count, inclusion explanation, limitations
+→ immutable SegmentDefinitionVersion and SegmentSnapshot
+→ compact table-first document with typed period/category/population controls
+→ backend matrix with full-population totals and explicit cell states
+→ previous/custom-period or population comparison where supported
+→ cell-to-evidence with separate member permission
+→ exact customer selection or lossless reusable rule
+→ save draft / personal view / publish as distinct actions
+→ later data refresh: semantic diff against the pinned old snapshot
+```
+
+Сценарий выполняется на synthetic fixtures, не требует Forecasting и не объявляет готовность всего release stage. Недоступные history, relationships, raw details или conversion дают explicit blocker/fallback, не выдуманные данные.
 
 # 28. Критерии приёмки public MVP
 
@@ -8030,7 +8421,7 @@ v1_acceptance_criteria:
   - id: V1-AC-015
     criterion: Bounded static renderer создаёт deterministic SSR SVG и email/XLSX PNG без network/remote assets, соблюдает resource limits/cancellation и не публикует partial artifacts после failure/crash.
   - id: V1-AC-016
-    criterion: Каждый reportable chart/table/range_timeline имеет accessible Focus / Explore с title/period/vs LY, полным filter context, searchable permitted fields, draft Apply/Reset/Undo, chart/table controls, Result Trust/export и проверенным return-to-origin; result filters и presentation state соблюдают разные identity boundaries.
+    criterion: Каждый reportable chart/table/range_timeline имеет accessible Focus / Explore с title/period и mode-specific comparison label (без подписи при отключённом сравнении), полным filter context, searchable permitted fields, draft Apply/Reset/Undo, chart/table controls, Result Trust/export и проверенным return-to-origin; result filters и presentation state соблюдают разные identity boundaries.
   - id: V1-AC-017
     criterion: Canonical global/installation/workspace route registry, immutable workspaceKey, route guards, safe query policy, deep links, Back/Forward, workspace switch, unsaved-change guard и route-backed Focus проходят en/ru browser E2E без утечки denied metadata.
   - id: V1-AC-018
@@ -8106,7 +8497,33 @@ v1_acceptance_criteria:
   - id: V1-AC-053
     criterion: Products/Categories surface pin-ит hierarchy version и доказывает category/SKU, assortment, inventory/availability, sell-through/DOI/turnover, ABC/XYZ, pricing/markdown, lifecycle, affinity/substitution и promo overlays; missing inputs объясняют blocker.
   - id: V1-AC-054
-    criterion: Workspace administration раздельно показывает adoption и analytical performance: meaningful/unique/repeat usage без ratings и hit/reuse/avoided work/slow blocks/staleness/wasted precompute без customer-data leakage.
+    criterion: "Workspace administration раздельно показывает adoption и analytical performance: meaningful/unique/repeat usage без ratings и hit/reuse/avoided work/slow blocks/staleness/wasted precompute без customer-data leakage."
+  - id: V1-AC-055
+    criterion: Customer segment builder реализует correlated exists/not_exists, scoped aggregates и declared temporal sequences поверх published relationships; readable expression, exact/estimated preview, completeness/unknown, bounded compute и synthetic semantic invariants проверены на реальном provider/UI boundary.
+  - id: V1-AC-056
+    criterion: Curated collections и composed segments проходят versioned import/manual lifecycle, identity matching, dependency-cycle/freshness checks, safe inclusion explanation и separate member authorization без изменения старых snapshots.
+  - id: V1-AC-057
+    criterion: Selection-time, event-time и fixed-cohort reporting дают воспроизводимые различающиеся результаты на synthetic history; inputs/interval policy/knowledge-as-of и late-correction revisions раскрыты, missing history блокирует unsupported attribution.
+  - id: V1-AC-058
+    criterion: Compact table-first report собирается общим composer, поддерживает multi-measure hierarchical matrix и keyboard/DnD controls; full-result distinct/ratio totals, cohort cell states, bounded projection и shared Web/export semantics доказаны.
+  - id: V1-AC-059
+    criterion: Versioned analytical template имеет typed controls, explicit target wiring, validated defaults/overrides и linked version lifecycle; reader/explorer/author outcomes различимы, personal changes не меняют publication.
+  - id: V1-AC-060
+    criterion: Previous-period/custom-period и population comparisons используют один resolved artifact, раскрывают overlap/coverage/maturity и percent/percentage-point semantics без forecast dependency или causal claims.
+  - id: V1-AC-061
+    criterion: От cell-to-evidence пользователь проходит authorized drill-through и сохраняет exact customer set либо lossless reusable rule, возвращается к исходному snapshot/context и получает explicit fallback при denied/unsupported action.
+  - id: V1-AC-062
+    criterion: Before-publication и historical semantic diff объясняют data/definition/filter/parameter/population/policy/presentation changes без выдуманной causal decomposition, immutable history rewrite или leakage denied versions.
+  - id: V1-AC-063
+    criterion: "Подключение источника с ежедневным полным rebuild без row updated_at проходит последовательные refresh с old edits, пропажей/возвратом и переносом покупок, сохраняет корректную текущую проекцию и immutable историю отчётов; identity uncertainty раскрыта."
+  - id: V1-AC-064
+    criterion: "Пользователь настраивает pull по расписанию/ручному запуску/readiness control table и source-initiated push/notification; несовместимые поколения, отсутствие readiness, незавершённый batch и повторы безопасно обработаны с видимым состоянием и checkpoint evidence."
+  - id: V1-AC-065
+    criterion: "Платформа принимает неполные данные с допустимыми дублями/ошибками по опубликованной политике, показывает retained/quarantined/excluded coverage и финансовый эффект, предоставляет обоснованные degraded capabilities и не нарушает обязательные canonical invariants."
+  - id: V1-AC-066
+    criterion: "В mapping editor настраиваются string-to-bool словари, flag-based sale/return semantics и derived child channels SP по is_lk, включая unknown и conflicts; предпросмотр, публикация, отчёт и сегмент используют одинаковую версию правил."
+  - id: V1-AC-067
+    criterion: "Приёмка первого реального подключения использует обезличенный согласованный source contract и synthetic adversarial snapshot corpus с ожидаемыми результатами, readiness/coverage evidence и согласованным workload budget; редкость ошибок и успешный sample не заменяют full-scope proof."
 ```
 
 # 29. Пробелы исходного плана и решения
@@ -8269,7 +8686,7 @@ risks:
     risk: Administrative role станет обходом analytical/PII access policy
     mitigation: Separate role bundles, no implicit workspace membership, explicit expiring PII grant и access audit
   - id: RISK-026
-    risk: `.gitignore` будет ошибочно воспринят как защита private activation материалов
+    risk: "`.gitignore` будет ошибочно воспринят как защита private activation материалов"
     mitigation: Private authoritative artifacts только в access-controlled repository/storage; ignored local root — defense-in-depth
   - id: RISK-027
     risk: Outlier policy удалит реальных VIP либо сделает current и prior-year populations несопоставимыми
@@ -8303,7 +8720,7 @@ risks:
     mitigation: Отдельная authorization каждого action и явное различие snapshot/object/data permissions
   - id: RISK-037
     risk: Admin configuration authority станет обходом activity/business-data privacy
-    mitigation: `organization.manage` отделён от `organization.activity.read`, business content и PII grants
+    mitigation: "`organization.manage` отделён от `organization.activity.read`, business content и PII grants"
   - id: RISK-038
     risk: Likes/views/adoption превратятся в employee ranking или раскроют hidden activity
     mitigation: No ratings/leaderboards, aggregate-first policy, minimum-group suppression, access filtering и retention/minimization

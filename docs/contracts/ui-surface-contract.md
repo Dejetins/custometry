@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-UI-SURFACE-001
 title: UI surface coverage contract
-doc_version: 6
+doc_version: 7
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -10,7 +10,7 @@ requirement_ids: [UC-001, UC-002, UC-003, UC-004, UC-005, UC-006, UC-007, UC-008
 status: accepted
 proof_boundary:
   label: static-ui-surface-coverage
-  exclusions: [ui-program-visual-conformance, browser-behavior, api-authorization, runtime-implementation]
+  exclusions: [visual-conformance, browser-behavior, api-authorization, runtime-implementation]
 ---
 
 # UI Surface Coverage Contract
@@ -69,7 +69,8 @@ A capability receives a standalone route when at least one condition applies:
 
 A transient confirmation or contextual inspector remains an overlay when it
 has no independent lifecycle and always returns to an owning route. Reused
-governed behavior such as `vs LY`, filters, Chart-to-Data, Result Trust,
+governed behavior such as applied comparison modes including previous year,
+filters, Chart-to-Data, Result Trust,
 formatting, comments, PII-safe rendering, population treatment, segmentation
 previews, and progress becomes a cross-surface capability contract.
 
@@ -113,7 +114,7 @@ authorization enforcement, accessibility, or runtime readiness.
 - target cross-surface capabilities: `22`.
 
 The file ID and revisions describe historical identity only. W03/W05/W06/W08
-evidence and ticket state remain immutable. Future program work does not write
+evidence and ticket state remain immutable. Current UI work does not write
 this file or use it as a current start guard.
 
 ## Population treatment and segmentation surface decision
@@ -173,3 +174,31 @@ An audit may recommend a new route only by applying the decision policy and
 showing why an existing route, tab, query state, drawer, modal, or reusable
 component is insufficient. It may not change normative product behavior or
 mutate a design source without current task authority.
+
+## Accepted authoring capability extension — 2026-09-05
+
+The [analytical authoring contract](./analytical-authoring-contract.md) maps the
+owner-approved requirements to existing stable surfaces. UI-CAP-002 adds
+relational/temporal filter semantics; UI-CAP-003 expands comparisons;
+UI-CAP-006 adds matrix/evidence/selection; UI-CAP-009 adds compact composition
+and typed parameters; UI-CAP-012 adds report revision evidence; UI-CAP-019
+covers governed customer populations, including curated/composed sets and time.
+The UI blueprint and JSON capability manifest carry identical requirement sets.
+Route identity, paths and guards are unchanged. Collection revisions live in
+the existing segment lifecycle; contextual matching/explanation stays within
+that owner. This coverage delta does not claim browser or provider readiness.
+The existing target-family gaps elsewhere remain separate; no retired UI
+program or new certification gate is activated by this documentation change.
+
+## Imperfect-source adaptation allocation
+
+The [source data adaptation contract](./source-data-adaptation-contract.md) and
+UI blueprint section 13.6 allocate the accepted requirements to existing routes.
+UC-001 covers trigger/readiness and source-generation observations through
+connection and schedule/run surfaces. UC-002 covers DATA-MAP-001 through
+DATA-MAP-007, source rekey, snapshot absence policy and version impact through
+mapping/relationship/policy/readiness/version views. UC-003 covers DQ-INPUT-001
+through DQ-INPUT-008 through quality rules/reports/remediation. UI-CAP-008 carries
+degraded coverage and correction trust into consumers; UI-CAP-002 consumes common
+derived channel dimensions. No new route or capability count is introduced.
+Static coverage does not establish working push admission or refresh mechanics.

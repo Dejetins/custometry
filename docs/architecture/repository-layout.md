@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-REPOSITORY-LAYOUT-001
 title: Custometry repository and agent infrastructure layout
-doc_version: 7
+doc_version: 8
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -17,20 +17,24 @@ proof_boundary:
 
 ## Status
 
-- decision status: `active Foundation scaffold and minimal local runtime`;
-- normative specification: `custometry-technical-blueprint-ru.md`, `0.9.0-draft`;
+- document scope: current repository-layout conventions with a recorded
+  Foundation scaffold/minimal-runtime baseline;
+- normative specification: `custometry-technical-blueprint-ru.md`, `0.10.0-draft`;
 - human-readable mirror: `custometry-technical-blueprint-human-ru.md`;
-- proof boundary: structure, governance, quality-tool ownership, and the minimal Web/API/PostgreSQL Foundation runtime; no claim of ready product contexts, vertical alpha, or release.
+- historical baseline: the Foundation tree and original impact/validation
+  observations below refer to `0.9.0-draft`, not a current implementation census;
+- proof boundary: repository structure and declared ownership. Recorded
+  Foundation observations do not establish current product/runtime readiness.
 
 ## Goal
 
-Establish the minimal monorepo for Phase 0 (Foundation), retaining the complete target-module map from blueprint section 25 and a runnable local health/documentation skeleton without creating the false impression that `vertical_alpha`, `public_mvp`, or `v1_target` is already implemented.
+Establish the minimal monorepo for Phase 0 (Foundation), recording the then-current target-module map from blueprint section 25 and a runnable local health/documentation skeleton without creating the false impression that `vertical_alpha`, `public_mvp`, or `v1_target` is already implemented.
 
 ## Established decisions
 
 1. Both blueprints remain at the repository root. Their mutual relative links do not change.
 2. The literal names `apps/`, `packages/`, `plugins/`, `deploy/`, `docs/`, and `tests/` follow section 25 of the machine blueprint.
-3. The literal tree is synchronized with the current section 25 in `0.9.0-draft`: `apps/worker_report/`, `packages/promotion_journal/`, `packages/chart_compiler_ts/`, `packages/report_delivery/`, and `packages/data_documentation/` are present.
+3. The recorded Foundation tree was aligned with section 25 in `0.9.0-draft`: `apps/worker_report/`, `packages/promotion_journal/`, `packages/chart_compiler_ts/`, `packages/report_delivery/`, and `packages/data_documentation/` are present.
 4. `packages/audit/` is added as a compatible clarification: `audit` has a separate owner and owns `audit_events` in sections 17.2–17.3, although the package is omitted from the literal tree in section 25.
 5. `.github/workflows/`, `tools/custometry_quality/`, `docs/runbooks/`, `docs-site/docs/`, and additional test surfaces are added as compatible clarifications required by CI, validation, operations, fail-closed public documentation, and test-pyramid requirements.
 6. Frontend workspace manifests are added because the toolchain requires `pnpm` and a pinned `pnpm-lock.yaml`; `packages/chart_compiler_ts/` is included in `pnpm-workspace.yaml` and remains the shared Web/static compiler boundary.
@@ -57,10 +61,16 @@ The second alternative is selected: every addition has a source rationale but is
 - `packages/*` contains domain/application boundaries and their owned ports;
 - adapters implement ports and are wired in a composition root;
 - domain/application code does not import FastAPI, Celery, a concrete database driver, or filesystem implementation details;
-- cross-domain reads of private tables are prohibited; interaction uses an explicit contract or repository;
+- cross-domain reads of private tables are prohibited; interaction uses a public owner-provided port/DTO or projection contract, never another context’s private repository or table;
 - `plugins/*` is trusted server-side code with a versioned compatibility contract.
 
 ## Product structure
+
+The following tree records the Foundation baseline. Later accepted logical
+ownership, including `analytics_product`, `methodology_research`,
+`collaboration_adoption`, and `digital_marketing_analytics`, is defined in the
+current blueprint and context map. A logical target name does not assert that
+its physical module or runtime implementation already exists.
 
 ```text
 apps/
@@ -133,6 +143,12 @@ handoff boundaries; it does not create delivery authority.
 
 ## Contract impact
 
+The table records the original Foundation change plus the named governance
+amendments. Its absent/not-implemented statements describe those boundaries,
+not the current product. Later accepted architecture and current implementing
+ticket evidence govern subsequent changes; the table is not a live API or
+persistence inventory.
+
 | Surface | Previous contract | New contract | Consumers/evidence | Classification | Migration/rollback | Verification | Unknowns |
 |---|---|---|---|---|---|---|---|
 | Public API / errors | absent | Foundation `/health/live`, `/health/ready`, `/version`, OpenAPI only | FastAPI composition root | `compatible-change` | version before external consumer | focused API tests + runtime smoke required | not a product API |
@@ -157,6 +173,10 @@ documented migration-, image-, and volume-aware procedure; deleting a
 directory is no longer sufficient rollback.
 
 ## Scaffold validation
+
+These are recorded Foundation observations, including the then-current template
+version. Current checks use the current checkout and the tooling contract; the
+historical record is not evidence that those checks were rerun today.
 
 - Git tracks `origin/main`, and the existing remote `LICENSE` is preserved.
 - The section 25 tree and explicitly documented implied paths are present.

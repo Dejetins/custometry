@@ -21,6 +21,11 @@
 - [Custometry Development and Acceptance Model](architecture/development-operating-model.md)
 - [Custometry Development Runtime Contract](architecture/development-runtime-contract.md)
 - [Custometry Documentation Platform](architecture/documentation-platform.md)
+- [Remaining documentation audit contract proposals](architecture/planning/audit-contract-decisions-2026-09-06.md)
+- [Custometry development audit, 2026-09-04](architecture/planning/development-audit-2026-09-04.md)
+- [Custometry development roadmap and integration decisions](architecture/planning/development-roadmap-v1.md)
+- [Documentation audit reconciliation](architecture/planning/documentation-audit-reconciliation-2026-09-06.md)
+- [Product capability discovery for segmentation and analytical authoring](architecture/planning/product-capability-discovery-2026-09-05.md)
 - [Custometry Repository and Agent Infrastructure Layout](architecture/repository-layout.md)
 - [Custometry Runtime, Network, and Installation](architecture/runtime-network-installation.md)
 - [Custometry - Target System Design](architecture/system-design.md)
@@ -36,8 +41,11 @@
 ## contracts
 
 - [Documentation and boundary contracts](contracts/README.md)
+- [Governed population and analytical authoring contract](contracts/analytical-authoring-contract.md)
 - [<Architecture document title>](contracts/architecture-document-template.md)
+- [Artifact format registry and reader compatibility](contracts/artifact-format-contract.md)
 - [<Contract name>](contracts/contract-document-template.md)
+- [Source data adaptation and imperfect snapshot refresh](contracts/source-data-adaptation-contract.md)
 - [Executable UI Route Contract](contracts/ui-route-contract.md)
 - [UI Surface Coverage Contract](contracts/ui-surface-contract.md)
 

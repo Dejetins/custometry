@@ -1,12 +1,12 @@
 ---
 doc_id: ARCH-BOUNDED-CONTEXT-MAP-001
 title: Custometry bounded context map
-doc_version: 10
+doc_version: 13
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [ARCH-PRINCIPLE-001, GOAL-014, GOAL-015, GOAL-016, GOAL-017, GOAL-018, ANALYTICAL-DOC-001, BLOCK-BUILDER-001, PRODUCT-ANALYTICS-001, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, DIGITAL-001, ATTRIBUTION-001, UNIT-ECON-001, MATERIALIZE-001, COLLAB-001, WATCH-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-002, RBAC-013, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, OUTLIER-001, SEGMENT-001, SEGMENT-019]
+requirement_ids: [ARCH-PRINCIPLE-001, GOAL-014, GOAL-015, GOAL-016, GOAL-017, GOAL-018, ANALYTICAL-DOC-001, BLOCK-BUILDER-001, PRODUCT-ANALYTICS-001, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, DIGITAL-001, ATTRIBUTION-001, UNIT-ECON-001, MATERIALIZE-001, COLLAB-001, WATCH-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-002, RBAC-013, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, OUTLIER-001, SEGMENT-001, SEGMENT-019, FILTER-013, PIVOT-001, PARAM-001, REPORT-016]
 status: accepted
 proof_boundary:
   label: target-ownership-dependency-and-integration-policy
@@ -125,7 +125,7 @@ share private domain objects, repositories, tables, or write paths.
 | Data Quality | pinned QualityReport/readiness projection | Semantic Model, Analytics, Forecasting, Presentation | missing/failed evidence is visible, never silently skipped |
 | Analytics | reportable result, normalized block definition, SegmentRun/Snapshot/binding, and product/category result ports | Research, Presentation, Forecasting inputs where declared | result identity pins inputs/spec/code/filter/segment/hierarchy/policy; member access remains separate |
 | Analytics | population-treatment specification/diagnostic ports | analytical routes, segment builder, Research, Presentation | method/action/fitted parameters/reference population/sensitivity and affected-row artifact identity are explicit |
-| Analytics | segmentation definition/model/assignment ports | analytical routes, Research, Presentation, Execution Control | rule/bucket/strata/KMeans specs and immutable membership identity are versioned; fit and assignment are distinct |
+| Analytics | segmentation definition/model/assignment ports | analytical routes, Research, Presentation, Execution Control | rule/RFM/bucket/KMeans/curated/composition definitions and immutable membership identity are versioned; stratified DistributionArtifact is separate unless explicitly saved as a segment; fit and assignment are distinct |
 | Analytics | discount component/reconciliation/cap diagnostic ports | analytical routes, Research, Presentation | line/component grain, policy, attribution mode, coverage, breach and result identity are pinned |
 | Analytics | PVM specification/result port | analytical routes, Research, Presentation | formula order and price/volume/mix/assortment/residual reconcile to observed delta |
 | Methodology & Research | published method/finding/research/product projections | Analytics orchestration, Presentation, search/help | discussion cannot become a finding; evidence/limitations are pinned |
@@ -194,6 +194,29 @@ share private domain objects, repositories, tables, or write paths.
 | Report Delivery | Audit | redacted outcome event | recipient/sender policy versions and hashes only; no full body/list |
 | Notifications | domain events + Identity & Workspace | outbox/event projection | permission rechecked before inbox/channel delivery |
 | All mutating use cases | Audit | append command/outbox | audit failure policy determined before business side effect |
+
+## 5.1. Imperfect-source adaptation and refresh ownership
+
+The [source data adaptation contract](../contracts/source-data-adaptation-contract.md)
+binds the owner-approved daily-rebuild and imperfect-input requirements to these
+existing contexts. Connection Catalog exposes safe source/control-table metadata;
+Ingestion owns trigger/readiness policy, generation/coverage observations,
+snapshot comparison and committed checkpoints. Data Documentation retains file
+template admission. Push and pull share Execution and Artifact lifecycle ports.
+
+Semantic Model owns typed value mappings, key/grain and deterministic business
+customer crosswalk rules, flag-based returns and derived channel hierarchies.
+Identity & Workspace owns authorization, not business-customer matching. DQ owns
+conflict/duplicate diagnostics, tolerance and remediation validation plus coverage
+decisions. Analytics consumes pinned corrected inputs and rebuilds affected
+old/new customer/channel/period projections; Presentation retains prior snapshots
+and displays limitations. No context silently interprets a partial read or
+quarantine as deletion, and no consumer duplicates channel rules in its own SQL.
+
+Existing Ingestion→DQ artifact events and DQ→Semantic readiness projections carry
+separate extraction, history, attribute/link and classification coverage. Exact
+provider/consumer schemas and migration compatibility remain implementing-ticket
+work. Raw defects are admissible; canonical output invariants remain mandatory.
 
 ## 6. Population treatment and segmentation dependency rules
 
@@ -288,7 +311,7 @@ new Organization bounded context or deployable microservice is introduced.
 Functional roles, one primary OrgUnit assignment, and scoped leadership remain
 separate aggregates. `DepartmentDataPolicyVersion` constrains dataset, row,
 column, and PII scope. `CrossDepartmentGrant` adds only a bounded, reasoned,
-effective-dated allow within the existing role/PII ceilings. The authorization
+effective-dated and expiring allow within the existing role/PII ceilings. The authorization
 port intersects these layers with the resource policy and applies deny before
 fetch, count, search, aggregation, pagination, caching, or action.
 
@@ -379,6 +402,35 @@ Published workbook/research documents pin a snapshot. A live dashboard may
 request latest-successful only through an explicit policy, and each document
 snapshot records the resolved exact ID. The binding never expands member-row
 authorization.
+
+### 8.4. Population queries, matrices and parameterized documents
+
+The accepted [analytical authoring contract](../contracts/analytical-authoring-contract.md)
+elaborates FILTER-013 through FILTER-018, SEGMENT-029 through SEGMENT-037,
+PIVOT-001 through PIVOT-006, PARAM-001 through PARAM-005 and REPORT-015 through
+REPORT-017 without changing the modular-monolith boundaries.
+
+Semantic Model owns relation/type/metric meaning and compatibility. Analytics
+owns normalized relational/temporal population plans, curated collection
+revisions, set dependencies, membership history, SelectionArtifact, PivotSpec,
+PivotResult, comparison and inclusion/drill/diff evidence. Digital Measurement
+provides versioned event projections through its public boundary. Data Quality
+provides completeness evidence; absence is not inferred from missing input.
+
+Presentation owns document templates/instances, parameter-to-block bindings,
+compact layout, reading/editing modes and user-facing revision comparison.
+Methodology & Research retains its method-template lifecycle while sharing
+parameter representation. Neither reads producer-private tables or computes
+business totals in the browser. Identity rechecks all object/member/field
+boundaries. Curated imports reuse governed admission and identity projections;
+they cannot create customers as an import side effect. Execution schedules
+versioned owner plans and dependency refreshes under existing resource policies.
+
+Snapshot resolution and membership-time basis remain separate. Current
+customer keys are unchanged; additional member entities need their own scope
+decision. New persisted schemas require reader compatibility and migration
+proof in the implementing ticket. The requirements do not authorize a new
+service, forecast resumption or a second report/segmentation engine.
 
 ## 9. Import-template and connector dependency rules
 

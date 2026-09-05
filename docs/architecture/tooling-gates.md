@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 7
+doc_version: 8
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -155,6 +155,10 @@ The canonical manifest includes repository-local disposable state only. In parti
 `.pnpm-store/` and `.playwright-cli/` count against the owned-disk budget, are excluded from Git
 and the Docker context, and may be deleted only with this exact-confirmation command. Global or
 shared caches and every path outside the repository root are never cleanup candidates.
+This is the repository cleanup CLI boundary. The runtime installation document
+describes a separate target ownership boundary for installed resources; its
+acceptance requires installer-specific implementation and synthetic evidence
+and does not widen this CLI allowlist.
 
 Browser runtime proof does not use an arbitrary host Node version. `tests/e2e/Dockerfile` builds
 a test-only multi-architecture runner from digest-pinned Node `24.18.0` and Playwright `1.52.0`;

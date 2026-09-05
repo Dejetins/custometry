@@ -12,7 +12,7 @@ status: accepted_ui_requirements
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-09-04
+updated_at: 2026-09-06
 artifact_role: product_ui_requirements_and_current_inventory
 program_route: ticket_first
 active_program: null
@@ -119,6 +119,7 @@ Custometry — self-hosted операционная система B2C retail-а
 | Surface coverage | `packages/contracts/routes/ui-surface-contracts.json` | Current-state evidence, не permanent ceiling |
 | Исторический дизайн W03-W10 | `.codex/delivery/evidence/` | Historical-only, не visual authority |
 | Принятый RU/EN HTML-пилот | `docs/architecture/ui/target-pilot/manifest.json` | Целевая композиция, поведение и визуальный язык показанного UI; не backend/architecture proof |
+| Frontend platform, dependency/state ownership, responsive range и rollout | `docs/adr/0007-responsive-web-frontend-platform.md` | Accepted architecture; не implementation/browser proof |
 | Текущий Web-код | `apps/web/**` | Implementation evidence, не target baseline |
 
 ### 2.3. Зафиксированный scope и critical journeys
@@ -144,7 +145,7 @@ Custometry — self-hosted операционная система B2C retail-а
 
 ### 3.1. Политика внешних визуальных референсов
 
-Внешний продукт, design system или platform guideline может стать только source-backed visual-language reference либо craft-check после явного выбора. Он не переносит в Custometry чужие сущности, тексты, assets, branding, source code, скрытые permission rules или platform-specific interaction без Web semantics. Один референсный экран не заменяет platform baseline и полный atlas.
+Внешний продукт, design system или platform guideline может стать только source-backed visual-language reference либо craft-check после явного выбора. Он не переносит в Custometry чужие сущности, тексты, assets, branding, source code, скрытые permission rules или platform-specific interaction без Web semantics. Один референсный экран не заменяет platform baseline и полное продуктовое покрытие.
 
 Принятый финальный пилот задаёт показанные композицию, сетку, навигацию, панели, controls, Focus/Explore, charts/tables и визуальный язык. Для соответствующих поверхностей это целевая концепция, а не набор необязательных stylistic hints. Для отсутствующих экранов сохраняются продуктовые требования и применяются согласованные паттерны пилота; одинаковая композиция для всех экранов не навязывается. Fixture-данные и прототипные действия не заменяют production-контракты и browser evidence реализации.
 
@@ -214,7 +215,7 @@ Administration
   Analytical Performance
 ```
 
-Навигация показывает только разрешённые группы, но не используется как источник authorization. Показанные в пилоте композиция, navigation/context panels и collapse behavior являются целевыми. Для полного набора destinations, effective permissions, focus behavior, workspace switching и safe recovery действуют продуктовые контракты. Icon-only состояние обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Отсутствующие в пилоте состояния уточняются в соответствующем implementation ticket.
+Навигация показывает только разрешённые группы, но не используется как источник authorization. Показанные в пилоте композиция, navigation/context panels и collapse behavior являются целевыми. Для полного набора destinations, effective permissions, focus behavior, workspace switching и safe recovery действуют продуктовые контракты. Icon-only состояние обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Отсутствующие в пилоте состояния уточняются в соответствующем implementation ticket. ADR-0007 выбирает Lucide React как general icon adapter; semantic mapping, accessible names и непоказанные состояния проверяются в соответствующем контракте.
 
 ### 4.2. Глобальный application shell
 
@@ -269,9 +270,13 @@ History policy:
 
 Все редакторы с dirty draft регистрируют navigation guard для sidebar route, workspace switch, Back, reload и close. Confirmation предлагает `Stay`, `Discard` и `Save draft`, если сохранение поддерживается. После route change обновляются document title, breadcrumb/current-location semantics и focus; shell/sidebar/topbar не remount-ятся.
 
+### 4.5. Критерий route-backed surface
+
+Количество известных routes не является потолком продукта. Самостоятельный route обязателен, когда surface имеет durable entity/version lifecycle, должен открываться из notification/audit/deep link, требует собственных Back/refresh/unsaved semantics либо имеет независимую permission boundary и достаточно сложное состояние для bookmark/recovery. Transient подтверждение или inspector остаётся modal/drawer; повторяемое поведение таблиц, графиков и отчётов становится cross-surface capability. Каждый UI-visible use case обязан иметь binding хотя бы к одному из этих типов поверхности; совпадение количества строк между двумя JSON не является доказательством полноты.
+
 ## 5. Adaptive Web и responsive requirements
 
-Responsive Web обязателен. ADR-0007 задаёт диапазон 768–1920 CSS px и endpoint anchors; shell transformations, component queries и density behaviors проверяются для изменяемой реализации. Mobile-specific information architecture остаётся `unauthorized`.
+Responsive Web обязателен. ADR-0007 задаёт диапазон `768..1920` CSS px и четыре design anchors: `768x1024`, `1024x768`, `1440x900`, `1920x1080`. Для browser proof конкретного implementation ticket действует [Web implementation source contract](./docs/architecture/ui/custometry-web-implementation-source-contract-v1.md): применимые endpoint anchors `768x1024` и `1920x1080` обязательны, промежуточные widths добавляются при layout risk или declared breakpoint. Это не требует every-state-by-every-viewport matrix. Shell transformations, component queries и density behaviors проверяются для изменяемой реализации. Mobile-specific information architecture остаётся `unauthorized`.
 
 Для реализации действуют следующие инварианты:
 
@@ -299,7 +304,7 @@ Responsive Web обязателен. ADR-0007 задаёт диапазон 768�
 
 - typography наследует показанный пилотом характер; production font files, лицензии, fallback и en/ru metrics фиксируются при реализации;
 - en/ru coverage, 200% zoom/reflow, dense-table readability и deterministic report rendering обязательны;
-- одна согласованная icon system получает version/commit, semantic mapping, sizes, optical rules и license provenance;
+- ADR-0007 выбирает Lucide React `0.515.0` как general icon adapter; semantic mapping, product-owned assets, sizes, optical rules и license provenance фиксируются в соответствующем source-backed контракте;
 - незнакомое действие не обозначается только icon, а status не кодируется только цветом или движением;
 - official brand assets либо явно принятый temporary identity проходят sanitization, provenance и Web/email/XLSX/docs parity.
 
@@ -309,11 +314,11 @@ Responsive Web обязателен. ADR-0007 задаёт диапазон 768�
 - каждый reusable component определяет variants, size classes, internal elements, required interaction states, content rules и accessibility behavior;
 - overlays, menus, dialogs, drawers, tooltips, tables, forms, charts, tabs и splitters получают placement, dismissal, focus, keyboard и state contracts;
 - exact geometry и visual properties наблюдаются из принятого source evidence, а не изобретаются вручную;
-- показанные palette, radius и shadow сверяются с пилотом; непоказанные motion states уточняются в implementation ticket.
+- показанные palette, radius и shadow сверяются с пилотом; motion tokens, durations и easing определены §15.10 machine blueprint и MOTION-001…012. Непоказанные motion states уточняются в implementation ticket.
 
 ### 6.4. Motion и perceived performance
 
-- motion language, duration и easing сейчас не выбраны;
+- motion tokens, durations/easing и reduced-motion constraints заданы §15.10 machine blueprint и MOTION-001…012; implementation и measured performance требуют самостоятельного evidence;
 - feedback не задерживает action outcome, focus или live-region update;
 - reduced-motion variant обязателен для каждого meaningful transition;
 - charts не интерполируют изменение domain/axis или плотные/live data так, чтобы промежуточный кадр выглядел достоверным значением;
@@ -425,9 +430,9 @@ Header всегда разделяет:
 
 - explicit date range;
 - searchable filters;
-- comparison to previous year либо понятный blocker;
-- ChartSpec-backed charts;
-- table alternative;
+- comparison controls с разрешёнными modes, включая previous year, либо понятный blocker; подпись соответствует applied mode и отсутствует при `none`;
+- ChartSpec-backed charts, когда они нужны выбранному profile/method; table-first и pivot-first страницы не обязаны начинаться с chart или KPI;
+- table/pivot как primary content либо доступная table alternative для chart;
 - compact Result Trust trigger; полный panel открывается по запросу и не занимает постоянную колонку layout;
 - save/share/report/export actions по permissions.
 
@@ -437,9 +442,9 @@ Header всегда разделяет:
 - published presentation задаёт default KPI-набор, но пользователь может сохранить личный выбор и порядок разрешённых compatible metrics в versioned personal Saved View; личная настройка явно помечается, сбрасывается к default и не меняет shared publication либо вид других пользователей;
 - label, typed value, period/comparison и trust state читаются как одна compact group; full value остаётся доступным;
 - Context Bar, KPI group и primary content используют согласованные alignment lines, но exact geometry определяется screen contract;
-- primary visualization получает приоритет в первом рабочем viewport и не вытесняется декоративным whitespace;
+- primary analytical content — table, pivot, chart либо narrative/evidence по document profile — получает приоритет в первом рабочем viewport и не вытесняется декоративным whitespace;
 - sample table показывает data rows и range/pagination status в pilot-compatible view; production placement зависит от document profile/page composition;
-- Result Trust остаётся optional compact trigger и не резервирует постоянную широкую колонку;
+- Result Trust имеет compact trigger на каждом result view; полный drawer/panel открывается по запросу и не резервирует постоянную широкую колонку;
 - calm density является общим visual-language anchor, но fixed `KPI → chart → table` не является универсальным layout contract.
 
 ### 8.5.2. Metric groups, adaptive numbers и research narrative
@@ -464,6 +469,21 @@ Header всегда разделяет:
 - analyst note публикуется с document version; data annotation pin-ит artifact/semantic data key; discussion остаётся отдельно; finding/conclusion проходит review;
 - refresh показывает old/new context и не перемещает comments/annotations автоматически; explicit re-anchor имеет diff и audit;
 - like доступен только в header published document version; rating, dislike, block/comment/cell reaction и employee score отсутствуют.
+
+### 8.5.4. Компактный authoring и аналитические шаблоны
+
+Принятое уточнение 2026-09-05 следует ANALYTICAL-DOC-014…015, PIVOT-001…006, PARAM-001…005 и REPORT-015…017. Оно применяется к существующим `UI-DASH-003`, `UI-RPT-002`, `UI-AN-012`, `UI-AN-014` и их result/Focus surfaces. Новая бизнес-семантика сначала определяется machine blueprint; подробности совместимости — в [authoring contract](./docs/contracts/analytical-authoring-contract.md).
+
+- Автор выбирает композицию страницы: dashboard grid, table-first flow или narrative. Compact/comfortable/spacious регулируют плотность независимо от профиля документа и calculations. Table-first страница может начинаться с filters, небольшой summary line и основной матрицы без chart; число KPI определяется задачей.
+- `Читать`, `Исследовать` и `Редактировать` — разные режимы одного document/result. Reader не видит palette/drag handles; Explorer работает с разрешённым личным view; Author меняет draft при наличии edit permission. `Сохранить вид`, `Применить к черновику` и `Опубликовать` не подменяют друг друга.
+- В author mode blocks перемещаются drag-and-drop или командами «Выше/Ниже/В секцию» с keyboard support и Undo. Drop target показывает допустимость и место вставки. Нельзя потерять block ID, reading order, filters либо результат из-за перемещения.
+- Rows, Columns и Measures матрицы задаются searchable shelves/lists, где dragging дополняется add/remove/move commands. Layout inspector закрывается; изменение ширины, density и уже вычисленного order не запускает новую аналитику.
+- Template editor задаёт named typed controls: период, category/dimension value, совместимую метрику, population. Автор видит defaults, allowed values, required inputs и конкретные affected blocks. Запрещённые options не раскрываются; invalid/missing/unused mapping имеет actionable error.
+- Linked template instance pin-ит version. Upgrade показывает diff и создаёт draft; copy — независимый объект с origin lineage. Saved personal parameters не меняют template defaults.
+- Interaction inspector явно выбирает highlight, filter selected blocks, drill-through или navigation с typed parameters. Он показывает affected/unaffected targets, inherited/locked filters; изменение результата создаёт обычный backend request. Back возвращает context, scroll и focus.
+- В новой версии отчёта action «Что изменилось?» показывает data/definition/parameter/population/policy changes отдельно от оформления, affected blocks и comparable values. Если эффекты нельзя разделить, UI пишет «Несколько изменений»/«Недостаточно данных для объяснения», не приписывает delta одному фактору.
+
+Пример композиции, уже показанный пользовательским HTML reference: controls → compact summary → большая cohort matrix → пояснение. Данные работодателя, конкретные размеры шрифта, число KPI и forecast views не копируются в fixtures или универсальные требования. Проверка реализации использует synthetic retail fixtures.
 
 ### 8.6. Empty и blocked states
 
@@ -491,17 +511,13 @@ Empty state содержит причину, prerequisite и одну следу
 - `G`, затем allowlisted domain key — опциональная sequence navigation, отключаемая в profile;
 - table/chart-specific shortcuts показываются только при focus внутри соответствующего block.
 
-### 4.5. Критерий route-backed surface
-
-Количество известных routes не является потолком будущего atlas. Самостоятельный route обязателен, когда surface имеет durable entity/version lifecycle, должен открываться из notification/audit/deep link, требует собственных Back/refresh/unsaved semantics либо имеет независимую permission boundary и достаточно сложное состояние для bookmark/recovery. Transient подтверждение или inspector остаётся modal/drawer; повторяемое поведение таблиц, графиков и отчётов становится cross-surface capability. Каждый UI-visible use case обязан иметь binding хотя бы к одному из этих типов поверхности; совпадение количества строк между двумя JSON не является доказательством полноты.
-
 ### 8.9. System и lifecycle surfaces
 
 403, 404, session expired, maintenance и upgrade required имеют отдельные layouts и stable codes. Они не показывают пустой normal page, stack trace, raw path, migration SQL, denied resource title или cached protected content. Admin system lifecycle отдельно показывает release/schema versions, compatibility, migrations, licenses/SBOM/provenance, runbook и безопасный preflight; operational channel management — endpoint versions, health, categories, test, rotate/revoke и audit links без destination/secret.
 
 ## 9. Полный реестр страниц
 
-Фаза `MVP` означает public MVP, `V1` — расширение до v1 target. Все изображения создаются как master desktop frames; multi-step steps и drawer states добавляются отдельными state frames.
+Фаза `MVP` означает allocation к требованиям public MVP, `V1` — расширение до v1 target; эти labels не выбирают первый внешний release scenario. Forecasting остаётся в hold. Исторические master desktop/state frames сохраняют роль evidence своего review; текущая задача проверяет затронутые responsive anchors, steps и drawer states без обязательного возобновления программы создания frames.
 
 ### 9.1. Authentication и onboarding — 6 страниц
 
@@ -534,32 +550,32 @@ Empty state содержит причину, prerequisite и одну следу
 | ID | Route | Страница | Фаза | Роли | Основное содержимое и действия |
 |---|---|---|---|---|---|
 | UI-DATA-001 | `/connections` | Connections | MVP | WA | PostgreSQL/MSSQL/MySQL/ClickHouse и CSV/XLSX template modes, status, test all, add, filter, owner; Yandex marked future-only |
-| UI-DATA-002 | `/connections/new` | Connection editor | MVP | WA | Governed connector choice, read-only credentials reference, network parameters/template version, limits, test, save draft |
-| UI-DATA-003 | `/connections/:id` | Connection detail | MVP | WA | Configuration, test history, catalog snapshots, health, permissions, disable/archive |
+| UI-DATA-002 | `/connections/new` | Connection editor | MVP | WA | Governed connector choice, read-only credentials reference, network parameters/template version, limits, test, save draft; Acquisition direction, trigger/readiness policy, control-table field mapping, consistency group and source-load limits |
+| UI-DATA-003 | `/connections/:id` | Connection detail | MVP | WA | Configuration, test history, catalog snapshots, health, permissions, disable/archive; Last seen versus committed generation, waiting reason, marker semantics, dependent object readiness and refresh history |
 | UI-DATA-004 | `/catalog` | Data Catalog | MVP | WA, DS | Source/schema/object tree, search, freshness, row estimate, preview and discover |
 | UI-DATA-005 | `/catalog/objects/:id` | Catalog object detail | MVP | DS | Columns, profile, null/distinct stats, lineage, constraints, sample policy |
 | UI-DATA-006 | `/catalog/objects/:id/preview` | Bounded data preview | MVP | DS | Masked sample, column controls, row limit, PII warning, download restriction |
 | UI-DATA-007 | `/datasets` | Semantic datasets | MVP | DS, AN | List, lifecycle/readiness/capabilities, versions, create/clone |
-| UI-DATA-008 | `/datasets/:id/mapping` | Entity mapping wizard | MVP | DS | Customer/Receipt/ReceiptItem/Product/Store/Channel/Calendar mapping, namespace and keys |
+| UI-DATA-008 | `/datasets/:id/mapping` | Entity mapping wizard | MVP | DS | Customer/Receipt/ReceiptItem/Product/Store/Channel/Calendar mapping, namespace and keys; Typed value dictionaries, string booleans, flag-based returns, SP/is_lk derived channel rules and before/after preview |
 | UI-DATA-009 | `/datasets/:id/relationships` | Relationship editor | MVP | DS | Cardinality, temporal joins, validity, collision checks, graph + accessible form alternative |
-| UI-DATA-010 | `/datasets/:id/policies` | Semantic policies | MVP | DS | Returns, currency/FX, timezone/calendar, identity, activity and incomplete-period policies |
+| UI-DATA-010 | `/datasets/:id/policies` | Semantic policies | MVP | DS | Returns, currency/FX, timezone/calendar, identity, activity and incomplete-period policies; Duplicate/conflict/quarantine and snapshot absence policies, unresolved source rekey, child-channel unknown/overlap handling |
 | UI-DATA-011 | `/datasets/:id/capabilities` | Capability and readiness | MVP | DS, AN, ML | Available/degraded/blocked functions, evidence, thresholds, suggested remediation |
-| UI-DATA-012 | `/datasets/:id/versions` | Versions, diff and impact | MVP | DS | Draft/published history, schema drift, dependency impact, validate/publish/clone |
+| UI-DATA-012 | `/datasets/:id/versions` | Versions, diff and impact | MVP | DS | Draft/published history, schema drift, dependency impact, validate/publish/clone; Old correction/reassignment/withdrawal impact, mapping/channel versions and immutable previous results |
 | UI-DATA-013 | `/metrics` | Metric Registry | MVP | DS, AN | Search, domain/kind/status/version, usage impact, import and create |
 | UI-DATA-014 | `/metrics/:id` | Metric editor/detail | MVP | DS, AN | Expression tree, grain, aggregations, dimensions, currency/unit, NumberFormatSpec, MetricGroupVersion, labels, lineage, impact |
 | UI-DATA-015 | `/filter-fields` | Filter Field Registry | V1 | DS, AN | Searchable fields, type/operators, hierarchy, null/facet/security policy and versions |
 | UI-DATA-016 | `/data-guides` | Data Guides | V1 | DS, AN, VW | Dataset guides, published version, drift/review status, owner and locale |
-| UI-DATA-017 | `/data-guides/:id/edit` | Data Guide editor | V1 | DS | Approved Markdown template, preview, validation, safe links/assets, publish |
+| UI-DATA-017 | `/data-guides/:id/edit` | Data Guide editor | V1 | DS | Approved Markdown template, preview, validation, safe links/assets; publish requires explicit `data_guide.publish`, role hint alone grants nothing |
 | UI-DATA-018 | `/data-guides/:id` | Data Guide reader/history | V1 | allowed | Rendered guide, dataset/version binding, version history, drift banner |
 | UI-DATA-019 | `/artifacts` | Artifact Library and detail | MVP | DS, AN, ML, OP | Category/schema/version, grain/key/PII, lineage, retention, bounded preview, authorized download and related run |
-| UI-DATA-020 | `/datasets/:id` | Dataset Overview | MVP | DS, AN, ML | Canonical landing page: lifecycle/readiness, versions, freshness/quality, capabilities, mappings/policies, dependencies, Data Guide, recent runs and next action |
+| UI-DATA-020 | `/datasets/:id` | Dataset Overview | MVP | DS, AN, ML | Canonical landing page: lifecycle/readiness, versions, freshness/quality, capabilities, mappings/policies, dependencies, Data Guide, recent runs and next action; Extraction versus business-history completeness, affected capabilities and last-good limitations |
 | UI-DATA-021 | `/methodologies` | Methodology Registry | MVP | AN, DS, VW | Search, domain/status/owner, purpose/applicability, versions, usage impact, create/review/publish by permission |
 | UI-DATA-022 | `/methodologies/:id` | Method editor/detail | MVP | AN, DS, VW | Purpose, inputs, steps, assumptions, exclusions, thresholds, validation evidence, review, versions, usage impact and deprecation replacement |
 | UI-DATA-023 | `/file-import-templates` | File Import Template Registry | MVP | WA, DS | Published/draft/deprecated templates, media type, entity pack, owner, compatibility, usage and create |
 | UI-DATA-024 | `/file-import-templates/:id` | File Import Template editor/detail | MVP | WA, DS | Sheets/columns/types/aliases, locale parsing, limits, safe preview, validation, versions, publish/deprecate and impact |
 | UI-DATA-025 | `/imports` | File Import History | MVP | WA, DS, OP | Template/file metadata without raw path, status, dataset target, validation result, rejected counts, owner, run and retry link |
 | UI-DATA-026 | `/imports/new` | Governed File Import Wizard | MVP | WA | Template selection, bounded upload, preflight, mapping confirmation, unknown/formula/macro rejection, dataset target and submit |
-| UI-DATA-027 | `/imports/:id` | File Import Result and Diagnostics | MVP | WA, DS, OP | Immutable input/template versions, validation evidence, rejected-row diagnostics, lineage, created artifacts, run status and safe retry |
+| UI-DATA-027 | `/imports/:id` | File Import Result and Diagnostics | MVP | WA, DS, OP | Immutable input/template versions, validation evidence, rejected-row diagnostics, lineage, created artifacts, run status and safe retry; Complete versus partial batch, retained/collapsed/quarantined/excluded counts and replay identity |
 | UI-DATA-028 | `/metric-groups` | Metric Group Registry | MVP/V1 | DS, AN, ML | Group versions, localized label, domain, stable group/metric order, usage impact, create and publish |
 | UI-DATA-029 | `/metric-groups/:id` | Metric Group editor/detail | MVP/V1 | DS, AN, ML | Ordered metrics, boundaries, accessible headers, versions, presentation overrides, validation, diff/impact and publish |
 | UI-DATA-030 | `/number-formats` | Number Format Registry | MVP/V1 | DS, AN, ML | System/workspace/metric scopes, value kind, locale/unit/currency, compact/precision policy, preview matrix and create |
@@ -572,7 +588,7 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-DQ-001 | `/data-quality` | Quality Overview | MVP | DS, OP | Readiness, score, category summary, failed rules, trends and next actions |
 | UI-DQ-002 | `/quality-rules` | Quality rules | MVP | DS | Search, severity/action/scope/status, owner, execute, create |
 | UI-DQ-003 | `/quality-rules/:id` | Rule editor/detail | MVP | DS | Safe expression tree, threshold, severity, blocking action, version lifecycle |
-| UI-DQ-004 | `/quality-reports/:id` | QualityReport | MVP | DS, AN, OP | Gate decision, rules, redacted samples, comparison, trust/lineage, export |
+| UI-DQ-004 | `/quality-reports/:id` | QualityReport | MVP | DS, AN, OP | Gate decision, rules, redacted samples, comparison, trust/lineage, export; Per-scope denominators, unknown or observed monetary impact, remediation accounting and separate transport/business coverage |
 | UI-DQ-005 | `/quality-issues/:id` | Issue remediation and waiver | MVP | DS, OP | Evidence, affected capabilities, owner/comments, fix link, expiring scoped waiver, rerun |
 
 ### 9.5. Analytics и Research — 15 страниц
@@ -588,7 +604,7 @@ Empty state содержит причину, prerequisite и одну следу
 | UI-AN-007 | `/analytics/lifecycle` | Lifecycle and churn | MVP | AN, VW | State counts/revenue, transition matrix/flows, versioned rule set and impossible transitions |
 | UI-AN-008 | `/analytics/basket` | Basket Analytics | V1 | AN, VW | SKU/subcategory/category/brand level, basket KPIs, pairs, rules and affinity matrix |
 | UI-AN-009 | `/analytics/stores-channels` | Stores and Channels | V1 | AN, VW | Scorecards, online/offline migration, comparable-store policy, operating-day normalization |
-| UI-AN-010 | `/analytics/margin-discounts` | Margin and Discounts | V1 | AN, VW | Base price/recognized revenue, commercial discount/customer benefit, promo/loyalty/bonus/other breakdown, amount/rate/share/penetration, stacking overlap, depth, cap breaches, margin, PVM, vs LY, attribution coverage and Result Trust |
+| UI-AN-010 | `/analytics/margin-discounts` | Margin and Discounts | V1 | AN, VW | Base price/recognized revenue, commercial discount/customer benefit, promo/loyalty/bonus/other breakdown, amount/rate/share/penetration, stacking overlap, depth, cap breaches, margin, PVM, applied comparison mode including previous year, attribution coverage and Result Trust |
 | UI-AN-011 | `/analyses/custom` | Custom Builder | V1 | AN, DS | Dataset/population, metric/features, dimensions, typed filters, outlier policy, bucket/stratified mode, comparison, chart/table choice, preflight |
 | UI-AN-012 | `/analyses/:id/results/:runId` | Result detail and trust | MVP | allowed | Immutable result, ChartSpec/table/distribution, treatment chip and sensitivity, filters, YoY diagnostics, limitations, lineage, save/report/export |
 | UI-AN-013 | `/research` | Research Cases | MVP | AN, VW | Questions/cases, owner/status, pinned method/dataset, findings, related analytical products, create/open/filter |
@@ -599,8 +615,8 @@ Empty state содержит причину, prerequisite и одну следу
 
 | ID | Route | Страница | Фаза | Роли | Основное содержимое и действия |
 |---|---|---|---|---|---|
-| UI-SEG-001 | `/segments` | Segment Library | MVP | AN, VW | Rule/RFM/bucket/KMeans segments, versions, method/treatment, snapshot date, size/value, status, create |
-| UI-SEG-002 | `/segments/new` | Segment Builder | MVP | AN | Population/features → Data Treatment → rule/RFM/bucket/KMeans method and group count → preview/sensitivity → publish |
+| UI-SEG-001 | `/segments` | Segment Library | MVP | AN, VW | Rule/curated/composition/RFM/bucket/KMeans segments, versions/dependencies, freshness, size/value, status, create |
+| UI-SEG-002 | `/segments/new` | Segment Builder | MVP | AN | Customer scope → method-specific related-object rules / curated / composition / RFM / bucket / KMeans → authorized preview/explanation → versioned publish |
 | UI-SEG-003 | `/segments/:id` | Segment detail/snapshots | MVP | AN, VW | Overview, definition, profiles, authorized members, snapshots/migration, diagnostics, usage, frozen assignment/retrain and treatment evidence |
 
 ### 9.7. Forecasting — 7 страниц
@@ -700,7 +716,7 @@ Empty state содержит причину, prerequisite и одну следу
 |---|---|---|---|---|---|
 | UI-HELP-001 | `/help` | Help Center and keyboard shortcuts | MVP/V1 | all | Permission-aware search по shipped docs/Data Guides/codes, contextual help, shortcut reference, version/support and deterministic deep links |
 
-**Итого: 117 основных route-level страниц.** Исторический W10 зафиксировал прежний inventory `116/25/5`; позднее current route registry добавил planned `UI-AN-015 Products`, поэтому фактический current inventory теперь `117/25/5`. Это не доказательство полноты целевого inventory и не означает, что остальные принятые target families уже имеют exact route identities.
+**Итого: 117 основных route-level страниц.** Исторический W10 зафиксировал прежний inventory `116/25/5`; позднее current route registry добавил planned `UI-AN-015 Products`, поэтому фактический current inventory теперь `117/25/5`. Это не полный target inventory и не означает, что остальные принятые target families уже имеют exact route identities.
 
 ### 9.16. Обязательное дополнительное продуктовое покрытие
 
@@ -766,24 +782,24 @@ Implementation tickets должны определить route/embedded/overlay 
 | ID | Capability | Применимость | Основные требования |
 |---|---|---|---|
 | UI-CAP-001 | Workspace routing, guards and return | Все protected routes | ROUTE-001…012, RBAC-002 |
-| UI-CAP-002 | Searchable typed filters | Все разрешённые reportable datasets/results | FILTER-001…012 |
-| UI-CAP-003 | Shared and block-local period comparison | Любая аналитическая отчётность | UC-012, COMPARE-001…010 |
+| UI-CAP-002 | Searchable typed filters | Все разрешённые reportable datasets/results | FILTER-001, FILTER-002, FILTER-003, FILTER-004, FILTER-005, FILTER-006, FILTER-007, FILTER-008, FILTER-009, FILTER-010, FILTER-011, FILTER-012, FILTER-013, FILTER-014, FILTER-015, FILTER-016, FILTER-017, FILTER-018, DATA-MAP-004, DATA-MAP-005, DATA-MAP-006 |
+| UI-CAP-003 | Shared and block-local period comparison | Любая аналитическая отчётность | UC-012, COMPARE-001…010, COMPARE-011…013 |
 | UI-CAP-004 | Metric groups and adaptive formats | Web/email/XLSX metric and table blocks | METRIC-009…016 |
 | UI-CAP-005 | ChartSpec visualization | Все reportable visual blocks | UC-017, CHART-001…020 |
-| UI-CAP-006 | Chart ↔ Data table | Каждый chart с accessible alternative | CHART-015, A11Y-006, A11Y-007 |
+| UI-CAP-006 | Chart ↔ Data table | Каждый chart с accessible alternative | CHART-015, A11Y-006, A11Y-007, PIVOT-001…006, REPORT-015, SEGMENT-036 |
 | UI-CAP-007 | Focus / Explore | Chart, table и range timeline | UC-018, FOCUS-001…012 |
-| UI-CAP-008 | Result Trust | Analysis/research/dashboard/report/quality/forecast | REPORT-008, UX-JOURNEY-005 |
-| UI-CAP-009 | Research composition and findings | Research/dashboard/report composition | UC-020, RESEARCH-001…008 |
+| UI-CAP-008 | Result Trust | Analysis/research/dashboard/report/quality/forecast | REPORT-008, UX-JOURNEY-005, DQ-INPUT-001, DQ-INPUT-002, DQ-INPUT-003, DQ-INPUT-004, DQ-INPUT-005, DQ-INPUT-006, DQ-INPUT-007, DQ-INPUT-008, IDENTITY-007, IDENTITY-008, INGEST-017, INGEST-018 |
+| UI-CAP-009 | Research composition and findings | Research/dashboard/report composition | UC-020, RESEARCH-001…008, ANALYTICAL-DOC-014…015, BLOCK-BUILDER-009, PARAM-001…005 |
 | UI-CAP-010 | Object-scoped comments | Разрешённые research/dashboard/report blocks | UC-021, RESEARCH-005…007, UX-JOURNEY-009, RBAC-014 |
 | UI-CAP-011 | Resource access policy | Reports и dashboards | UC-011, UC-022, UX-JOURNEY-010, DASHBOARD-010, RBAC-013, RBAC-015 |
-| UI-CAP-012 | ReportSnapshot and export preflight | Reportable result/dashboard/report | UC-015, REPORT-001…014, XLSX-001, XLSX-006 |
+| UI-CAP-012 | ReportSnapshot and export preflight | Reportable result/dashboard/report | UC-015, REPORT-001…014, XLSX-001, XLSX-006, REPORT-015…017 |
 | UI-CAP-013 | Verified-user report email | Published report snapshots | UC-014, REPORT-MAIL-001…011 |
 | UI-CAP-014 | Progress, ETA and cancellation | Все тяжёлые CPU/job operations | PROGRESS-001…008, COMPUTE-001…010 |
 | UI-CAP-015 | Effective brand resolution | Shell/login/email/report/XLSX/docs | UC-023, BRAND-001…009 |
 | UI-CAP-016 | Authorized PII-safe rendering | Preview/filter/comment/export/send surfaces | RBAC-005, RBAC-011…015, DASHBOARD-011 |
 | UI-CAP-017 | Localization, accessibility and reduced motion | Все routes, overlays и system surfaces | I18N-001…011, A11Y-001…010, MOTION-001…012 |
 | UI-CAP-018 | Governed population and outlier treatment | Analysis/segment authoring, Result Trust, report/email/XLSX | UC-025, OUTLIER-001…012 |
-| UI-CAP-019 | Bucket, stratified and KMeans segmentation | Custom Builder, Segment Builder/detail, Research | UC-026, SEGMENT-001…018 |
+| UI-CAP-019 | Governed customer segmentation and populations | Custom Builder, Segment Builder/detail, Research | UC-026, SEGMENT-001…018, SEGMENT-019…037 |
 | UI-CAP-020 | Discount components, cap and PVM trust | Mapping/policies/metrics/methods, Margin & Discounts, Result/Research/export | UC-027, DISCOUNT-001…020, PVM-001…006, METRIC-017…020, METHOD-009…014 |
 | UI-CAP-021 | Organization-scoped effective access and ownership | Shell/navigation, organization/admin/access, libraries, report/dashboard/detail/actions | UC-028, RBAC-019…028, TEST-INV-076…084 |
 | UI-CAP-022 | Privacy-safe People & Creators | Organization/People, report/dashboard libraries, contributor cards/profile | UC-029, RBAC-022, RBAC-027, TEST-INV-078…088 |
@@ -799,10 +815,10 @@ Page header
 Context bar
   Dataset/version
   Period
-  Comparison (`vs LY`)
+  Comparison (localized applied-mode label; absent for none; `vs LY` only for previous year)
   Search filters
   Saved view
-Compact KPI strip: один общий контейнер, четыре ячейки без отдельных крупных cards
+Compact KPI strip: общий контейнер с task-appropriate metric group, без обязательного числа ячеек
   Personal view: выбрать/упорядочить доступные KPI, сбросить к published default
 Primary chart area
 Secondary decomposition/chart
@@ -819,8 +835,10 @@ Inspector разделяет `Контекст`, `Фильтры`, `Обсужд
 
 ### 11.1. Comparison
 
-- default action: «Сравнить с аналогичным периодом прошлого года»;
-- компактная подпись сравнения во всех локалях — `vs LY`; полная локализованная расшифровка используется в tooltip, accessible name и comparison editor;
+COMPARE-011…013 расширяют editor режимами «Предыдущий период» и «Свой период», а также comparison populations. `vs LY` — подпись только previous-year mode; прочие режимы имеют собственную локализованную подпись, а `none` не показывает comparison label. None/previous-year defaults прежних документов сохраняются. Current и comparison controls показывают обе resolved ranges, duration basis, overlap, incomplete coverage и population-time basis. Absolute, relative percent и percentage-point deltas не смешиваются; zero denominator имеет unavailable state. Population-only comparison сохраняет один период, combined comparison явно меняет обе оси. Это presentation semantics: изменение persisted/API типа `compact_label` или введение localization key требует отдельной проверки consumers и versioned compatibility, а не молчаливой смены wire schema.
+
+- previous-year action сохраняется; предыдущий/свой период и population comparison выбираются явно;
+- подпись `vs LY` применяется только к сравнению с прошлым годом; mode-specific полная локализованная расшифровка используется в tooltip, accessible name и comparison editor;
 - editor показывает resolved current/comparison ranges, timezone, calendar и coverage;
 - delta содержит абсолютное и относительное изменение;
 - неполный либо несовместимый период имеет warning/blocked state;
@@ -856,14 +874,14 @@ Drawer содержит population/grain/feature/window/peer scope, quantile/IQR
 
 `UI-AN-010` использует один compact result pattern, но не сворачивает разные
 экономические понятия в «total discount». Context Bar показывает dataset/policy,
-period, `vs LY` и filters. KPI strip имеет максимум четыре компактные ячейки:
+period, подпись applied comparison mode (отсутствует при `none`; `vs LY` только для previous year) и filters. KPI strip имеет максимум четыре компактные ячейки:
 base-price GMV, recognized net revenue, commercial discount и customer benefit;
 остальные показатели находятся в ordered MetricGroup table и charts.
 
 Основная композиция:
 
 1. component bridge/stacked view для promo, loyalty, bonus redemption и other;
-2. table с amount, eligible base, rate, share, penetration, `vs LY`, attribution
+2. table с amount, eligible base, rate, share, penetration, применённым comparison при его наличии, attribution
    mode/coverage и full typed value;
 3. stacking overlap matrix и discount-depth distribution;
 4. cap diagnostics с policy/base/rate/tolerance, breach count/amount/share и
@@ -913,7 +931,7 @@ regions. W08 methodology content не должен добавляться пол
 Focus header
   Close + return-to-origin
   Title
-  Current period + `vs LY`
+  Current period + localized applied-mode label (absent for none; `vs LY` only for previous year)
   Result Trust
   Export
 Filter context
@@ -977,6 +995,19 @@ Responsive:
 - `DocumentOpenPlan` показывает reuse/compute/last-good/blocked по page/block, freshness и ожидаемые resources без навязывания технических деталей обычному Viewer;
 - design/benchmark envelope — 100 pages × 30 blocks/page с cold/warm open/switch, DOM/memory/request counts, duplicate-compute proof, RU/EN/pseudo-locale и 200% zoom; это не обещание unlimited и не hard production limit.
 
+### 12.1. Matrix / Pivot и переход к evidence
+
+PIVOT-001…006 и REPORT-015 задают общую matrix/table capability:
+
+- Multi-level rows/columns, несколько measures, expand/collapse, transpose, subtotals и grand total имеют readable headers и stable semantic keys; grouping order не смешивается с visual column order.
+- Итоги приходят с backend по полному authorized result. UI подписывает total basis при top-N/filters и не складывает visible page, ratio или distinct measures. Collapsing/virtualization не меняет population.
+- Cohort cell показывает observation age и denominator; observed zero, not yet observable, missing source, suppressed, not applicable и unknown различаются текстом/accessible name, а не одним цветом. Suppression сохраняется в totals и exports.
+- Conditional formatting использует typed values, metric-aware scale, legend и accessible alternative. Нельзя считать проценты/накопление в browser по отрисованным rows; absolute/rate/cumulative/comparable-age views используют authorized result projections.
+- На широком экране основная таблица видна в первом рабочем viewport; sticky header/first column и local scroll сохраняют ориентацию. Narrow screen и 200% zoom сохраняют controls, headers, keyboard access и полные значения; фиксированный tiny font не является способом пройти acceptance.
+- Cell action открывает definition, exact period/filters/population basis и reconciliation; contributing records доступны только с отдельным grant. Отсутствие grant оставляет permitted aggregate explanation. Details сохраняют source snapshot и Back/Close state.
+- «Сохранить группу» предлагает exact observed customer set или reusable rule только при supported lossless mapping. UI показывает member type, full versus sampled source, resolved count/freshness и policy; sample, visible rows и approximate conversion не выдаются за полный сохранённый сегмент.
+- Preflight показывает large matrix risk, bounded projection/reuse и ограничения каналов; unsupported output объясняется до export, silent truncation запрещён. Loading/partial/stale/failed/cancelled состояния сохраняют last-good snapshot с явной подписью.
+
 ## 13. Forms и builders
 
 ### 13.1. Wizard
@@ -1023,27 +1054,33 @@ Guided и Advanced показывают один normalized `BlockDefinition` и
 
 ### 13.4. Population and Segmentation Builder
 
-`UI-SEG-002` переиспользует общий wizard и не превращается в отдельный canvas:
+`UI-SEG-002` использует один governed builder с method-specific steps, а не отдельный универсальный canvas. FILTER-013…018 и SEGMENT-029…037 расширяют прежний flat-feature пример:
 
 ```text
-1 Definition scope & observation-window policy
-2 Features & Metrics
-3 Data Treatment
-4 Method & Group Count
-5 Preview & Validation
-6 Publish
+1 Customer population, data scope and reusable observation-window policy
+2 Method: related-object rule / curated list / set composition / RFM / bucket / KMeans
+3 Method-specific expression, inputs and dependencies
+4 Data Treatment where applicable
+5 Preview, explanation and validation
+6 Versioned publication and evaluation
 ```
 
-- Step 1 фиксирует dataset/version, entity grain, eligible population и reusable observation-window policy; exact as-of задаётся SegmentRun, а не переписывает definition.
-- Step 2 разрешает только опубликованные features/metrics, показывает type, missingness, PII class и запрещает identifiers/leakage.
-- Step 3 использует `UI-OVR-025`; default `Flag only`, а `Exclude/Winsorize` требуют impact acknowledgement.
-- Step 4 предлагает rule, RFM, quantile/equal-width/custom bucket и KMeans; exact group count обязателен там, где это применимо. HDBSCAN/GMM/automatic-K controls в v1 отсутствуют.
-- Step 5 показывает bucket/distribution/cluster profiles, sizes, center/feature distinctions, stability, silhouette/limitation, treatment sensitivity, minimum-cell privacy и blockers. Для KMeans diagnostic K-1/K/K+1 не меняет выбранный K.
-- Step 6 показывает normalized immutable definition, pinned boundaries/treatment/preprocessing/seed, downstream impact и publish diff.
+- Customer — текущий member type. В searchable entity catalog доступны опубликованные Customer, Receipt, ReceiptItem, Product/Store/Channel attributes и supported event projections. Product/Store в условиях не превращаются в отдельный тип segment membership; B2B objects отсутствуют.
+- Rule editor строится как читаемая вложенная форма с AND/OR groups. «Есть заказ, в котором…» и «Нет заказа, в котором…» показывают scope breadcrumb; refinements по одной позиции/заказу остаются внутри него. Два независимых exists визуально отделены. DnD может переставлять условия, но перенос между scopes показывает изменение смысла и требует новой validation; кнопки/menu/keyboard дают тот же результат.
+- Aggregate condition выбирает related scope, completed/returns predicate, count/distinct count/registered metric, grain, window и threshold/compatible operand. Count distinct days/categories и ratio category/all показывают denominator и null/empty policy, а не маскируются под lifetime feature.
+- Behavioral sequence editor задаёт positive/negative steps, «затем», min/max gap, event-time, same-property/session binding и observation window. Strict-time tie policy и insufficient history/late events видимы. Отсутствующая event capability блокирует соответствующий step; publisher не принимает unknown absence как доказанный отказ от покупки.
+- Curated method поддерживает governed ID import с namespace, match preview и matched/unmatched/ambiguous/duplicate outcomes; append/replace и manual add/remove имеют явную область. Unknown IDs не создают Customer. Conflict stale revision предлагает reload/review; publication создаёт новую collection revision и immutable snapshot.
+- Composition method выбирает разрешённые saved populations и union/intersection/difference. UI показывает exact definition/snapshot/revision, eligible universe, pinned/follow-fixed-version policy, dependency freshness, cycle errors и impact; отсутствующие permissions не раскрывают имя upstream object.
+- Feature/preprocessing/identifier-leakage checks и exact K относятся к соответствующим RFM/bucket/KMeans paths. Rule/curated methods не требуют бессмысленного feature matrix или group count. Data Treatment использует общий `UI-OVR-025`, когда применим; flag default и sensitivity semantics сохраняются.
+- Preview отдельно показывает draft и applied version, exact/estimated count, branch impact, contradiction diagnostics, coverage/unknown и limitations. Action «Почему входит/не входит?» использует то же evaluator evidence при member/field grant. Repeated previews/counts соблюдают suppression; устаревший response не заменяет новый draft preview.
+- Preflight включает cost/depth/fan-out/step limits и unsupported operators; heavy preview имеет progress/cancel/last-good behavior. Run/Publish выполняют повторную backend validation/authorization. Autosave не публикует и не запускает compute.
+- Publication показывает normalized readable rule, versions/dependencies, diff/impact и immutable snapshot lifecycle. Для KMeans K-1/K/K+1 diagnostics не меняют выбранный K; retrain создаёт новый snapshot без переименования historical cluster IDs.
 
-`UI-SEG-003` использует tabs `Overview`, `Definition`, `Runs & Schedule`, `Profiles`, `Members`, `Snapshots & Migration`, `Diagnostics`, `Usage`. Header показывает definition version, last successful, next run, failed/paused state, selected snapshot и binding mode. Trends включают size/value, entrants/exits, migration, overlap и drift. `Members` и excluded/flagged observations загружаются только после authorization и PII policy. Frozen-model assignment и full retrain имеют разные actions и confirmation copy; retrain создаёт новый snapshot и не переименовывает historical cluster IDs. Published Workbook/Research выбирает `pinned_snapshot`; live Dashboard может явно выбрать `latest_successful`, но publish preflight показывает resolved snapshot и freshness. `Used by` permission-filtered и не раскрывает denied assets.
+`UI-SEG-003` сохраняет tabs Overview, Definition, Runs & Schedule, Profiles, Members, Snapshots & Migration, Diagnostics и Usage. Curated revisions и inclusion explanation размещаются в Definition/Members; composition dependencies — в Definition/Usage. Durable identities остаются в существующем segment lifecycle, contextual dialogs не получают фиктивные отдельные pages. Last/next/failed/paused, size/value/entrants/exits/overlap/drift и permission-filtered Used by сохраняются.
 
-Stratified distribution остаётся mode Custom Builder/Research, а не новым top-level route. Global bucket boundaries выбраны по умолчанию; within-stratum quantiles имеют явный `Relative rank within each stratum` label. Из selected cell можно выполнить `Save as segment`, после чего открывается normalized Segment Builder draft с lineage исходного DistributionArtifact.
+Report binding отдельно спрашивает **какой состав** (`pinned_snapshot` или latest successful evaluation фиксированной definition version) и **какой временной смысл**: выбранный состав на весь период, состав в момент события либо фиксированная исходная когорта. Event-time показывает history revision, effective interval policy и knowledge-as-of; без истории доступен blocker, не скрытая замена сегодняшним составом. Published workbook/research и каждый document snapshot сохраняют exact resolved refs. Смена режима показывает impact и новый result; старые snapshots не меняются.
+
+Stratified distribution остаётся mode Custom Builder/Research, а не новым top-level route. Global bucket boundaries выбраны по умолчанию; within-stratum quantiles имеют явный `Relative rank within each stratum` label. `Save as segment` из selected cell открывает normalized Segment Builder draft с lineage исходного DistributionArtifact при supported lossless mapping согласно §12.1.
 
 ### 13.5. Organization, department access и People & Creators
 
@@ -1056,7 +1093,7 @@ Organization tree:
 - member assignment требует ровно один primary department/team; transfer preview показывает lost/gained scopes, grants to review и published-resource handover;
 - leadership editor задаёт unit, `include descendants`, effective dates и reason; слово `Manager` само по себе не выдаёт permission;
 - Department Access отображает data/object/row-column/PII ceilings отдельными слоями и итоговый allow/deny с объяснением без hidden values;
-- cross-department grant требует subject, bounded resource/data/actions, reason, start/expiry и preview; indefinite grant требует более строгого policy permission.
+- cross-department grant требует subject, bounded resource/data/actions, reason, start, конечный expiry и preview; бессрочное исключение не предусмотрено. Конкретный TTL задаётся принятой versioned policy, а не UI default. Действующая optional-expiry API-модель требует отдельной проверки совместимости и миграции перед изменением реализации.
 
 People & Creators:
 
@@ -1067,6 +1104,46 @@ People & Creators:
 - loading/empty/filtered-empty/partial/forbidden/inactive/transferred states имеют объяснение и безопасное next action; удалённый/уволенный пользователь не исчезает из historical attribution.
 
 `C25 Organization, Access & People` содержит Org Tree, Unit Card, Membership/Leadership Assignment, Data Policy Summary, Effective Access Preview, Handover Status, Contributor Card и Activity Summary. Flow 10: `Organization → Department Hub → People → Contributor Profile → visible report → Back`, плюс admin branch `Organization Settings → transfer preview → access/ownership handover → publish`.
+
+### 13.6. Сопоставление и обновление неполных данных
+
+Основание: IDENTITY-006–IDENTITY-008, DATA-MAP-001–DATA-MAP-007,
+INGEST-008–INGEST-020, DQ-INPUT-001–DQ-INPUT-008 и
+[контракт подключения](./docs/contracts/source-data-adaptation-contract.md).
+Это требования к поведению существующих surfaces; точная композиция и API
+определяются implementing tickets.
+
+- Mapping editor предоставляет таблицу «поле источника → преобразование → поле
+  Custometry», поиск, словари значений, редактор условий, ключи/связи и bounded
+  preview. Формулировки вопросов в проектных примерах не задают обязательную
+  анкету. Drag-and-drop дополняет табличные и клавиатурные команды.
+- Пример нормализации: строки «да»/«нет» переводятся в true/false по явному
+  словарю. Пользователь видит null, неизвестные значения, политику регистра и
+  пробелов; preview показывает размер выборки и не доказывает full coverage.
+- Возврат можно описать флагом продажи/возврата без отдельного документа.
+  Редактор показывает направление флага и правило знака суммы/количества;
+  неизвестный статус не становится автоматически возвратом.
+- Derived channel editor позволяет определить SP как родительский канал и
+  два дочерних: прямые продажи через менеджера при is_lk = false и личный
+  кабинет при true. Неизвестный is_lk остаётся отдельной неполной классификацией.
+  Отображаются пересечения правил, fallback, доля классификации и rollup без
+  двойного счёта; эти каналы доступны общим отчётам и сегментам.
+- Connections и существующие schedule/run surfaces показывают pull, push или
+  уведомление с последующим pull; расписание/ручной запуск/readiness polling,
+  control table и роли её полей, необходимые объекты, marker semantics,
+  consistency group, timeout и лимиты чтения. Видны ожидание готовности,
+  последнее замеченное и успешно опубликованное поколения, причина повтора.
+- Dataset/version/quality views различают полную доставку, полноту истории,
+  coverage полей/связей, retained/collapsed/quarantined/excluded records и
+  измеренный либо неизвестный финансовый эффект. Можно использовать обоснованный
+  allow_degraded; загрязнённый источник не означает blanket запрет аналитики.
+- Перед publish показываются старые исправления, исчезновения/возвраты записей,
+  переносы покупок и влияние на клиентов, периоды, каналы, отчёты и сегменты.
+  Без доказанного crosswalk смена customer ID остаётся unresolved; интерфейс
+  не обещает автоматическое восстановление личности по изменяемым контактам.
+- Незавершённая передача, quarantine и отсутствие в подтверждённом полном
+  снимке различаются. Last-good данные явно помечаются по freshness policy.
+  Диагностика и примеры исходных значений соблюдают row/field/PII permissions.
 
 ## 14. Accessibility, i18n и content
 
@@ -1105,7 +1182,7 @@ People & Creators:
 
 ## 15. Обязательные состояния
 
-Каждая из 117 известных route-level страниц и каждая новая поверхность будущего atlas проектируется минимум для применимых состояний; system surfaces используют отдельные contracts §10.1:
+Каждая из 117 известных route-level страниц и каждая новая поверхность в implementation ticket проектируется минимум для применимых состояний; system surfaces используют отдельные contracts §10.1:
 
 | State | UI contract |
 |---|---|
@@ -1171,7 +1248,7 @@ every-state-by-every-viewport screenshots.
 | Forecasting | JOURNEY-005, §13, ForecastSpec/Backtest/Model Registry |
 | Promotion Journal | UC-013, PROMO, `range_timeline` |
 | Dashboards/comments/access | DASHBOARD-007…012, RBAC-009…015, UC-021/022 |
-| Reports/email/XLSX | UC-014/015/027, REPORT, REPORT-MAIL, XLSX-001…014, METRIC-009…020, DISCOUNT-017, PVM-006 |
+| Reports/email/XLSX | UC-014/015/027, REPORT-001…017, REPORT-MAIL, XLSX-001…014, METRIC-009…020, DISCOUNT-017, PVM-006 |
 | Pipelines/runs | JOURNEY-006, PIPELINE, RUN/EXEC/PROGRESS |
 | Notifications | NOTIFY, RESOLVED-007 |
 | Admin/operations | OPS, COMPUTE, access policies, BrandProfile/CompanyPack, backup, plugins и audit |
@@ -1179,9 +1256,9 @@ every-state-by-every-viewport screenshots.
 | URL/history/workspaces | ROUTE-001…012, TEST-INV-050, V1-AC-017 |
 | Motion/loading | MOTION-001…012, PROGRESS, TEST-INV-051, V1-AC-018 |
 | System/help/lifecycle | SYS-UI-001…005, HELP-001…004, ADMIN-010…011, NOTIFY-014…015, V1-AC-019 |
-| Analytical documents/builders | GOAL-017, ANALYTICAL-DOC-001…012, BLOCK-BUILDER-001…008 |
+| Analytical documents/builders | GOAL-017, ANALYTICAL-DOC-001…015, BLOCK-BUILDER-001…009, PIVOT-001…006, PARAM-001…005 |
 | Collaboration/adoption/annotations | GOAL-014, COLLAB-001…023, WATCH-001…006, AC-046…047 |
-| Segments over time | SEGMENT-001…026 |
+| Segments over time | SEGMENT-001…037, FILTER-013…018 |
 | Products/categories/assortment | GOAL-018, PRODUCT-ANALYTICS-001…012 |
 | Compute reuse/materialization | GOAL-015, MATERIALIZE-001…019, AC-048 |
 | Digital journey/marketing/unit economics | GOAL-016, DIGITAL-001…015, ATTRIBUTION-001…010, UNIT-ECON-001…014, ASSUMPTION-001…006, V1-AC-044…047 |
@@ -1233,6 +1310,12 @@ responsive, accessibility и performance проверяются на работ�
 | Request hash/cache identity | `new compatible namespace required` | Document/page/filter/segment/materialization versions входят в future normalized identity; zoom/legend/tab chrome остаются presentation-only |
 | Mobile scope | `unauthorized` | Адаптивный Web обязателен; mobile-specific IA/composition не добавлены |
 | Rollback | `documentation recovery only` | Возврат старого target требует нового owner decision; Git history сама по себе не создаёт authority |
+
+### 19.1. Принятые authoring requirements и proof boundary — 2026-09-05
+
+Расширены существующие capability bindings в `ui-surface-contracts.json`: typed filters, comparison, table/evidence, composition/parameters, report diff и customer segments. Route IDs, paths и guards не изменены; это target requirement coverage, не implemented behavior. Для новых persisted query modes, template/collection/history и pivot contracts нужен versioned rollout из [authoring contract](./docs/contracts/analytical-authoring-contract.md); runtime compatibility и browser proof ещё не установлены.
+
+Implementation tickets проверяют TEST-INV-102…112 и V1-AC-055…062 на synthetic fixtures с backend/API/browser/permission evidence по фактическому boundary. Снимки работодателя не входят в публичные fixtures. Forecasting остаётся в **hold**; требования к нему сохранены без возобновления разработки. Первый внешний release scenario не выбран. Дополнительные Product/Store membership types, manual targets и новые PDF/standalone HTML formats требуют отдельного scope decision.
 
 ## 20. Следующий шаг
 

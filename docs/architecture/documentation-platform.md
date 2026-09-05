@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DOCUMENTATION-PLATFORM-001
 title: Custometry documentation platform
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -10,14 +10,14 @@ requirement_ids: [HELP-001, HELP-002, HELP-003, HELP-004]
 status: accepted
 proof_boundary:
   label: documentation-governance-and-target-information-architecture
-  exclusions: [permission-aware-help-runtime, authenticated-docs-serving, penpot-acceptance]
+  exclusions: [permission-aware-help-runtime, authenticated-docs-serving, visual-conformance]
 ---
 
 # Custometry Documentation Platform
 
 ## 1. Goal
 
-Human-readable documentation is part of the locally installed product. A user must not depend on GitHub, a CDN, or an external website to install, use, operate, or diagnose Custometry.
+Human-readable documentation is part of the locally installed product. The delivered installation, user, operator, and diagnostic instructions must be readable locally without GitHub, a CDN, or an external website. This is an offline-reading contract, not air-gap acquisition: the default installation downloads pinned images and required assets, and the core operates without Internet access after successful pull and bootstrap, as defined in [the runtime installation contract](./runtime-network-installation.md).
 
 The authoring source is Markdown in the repository. The target static engine is MkDocs Material. A separate React route, `/help`, uses the same generated index and connects page context to permitted articles, stable error codes, keyboard shortcuts, and published Data Guides.
 
@@ -108,7 +108,7 @@ Getting started
 User guide
   Data Foundation
   Data Quality
-  Analytics and vs LY
+  Analytics and comparison modes
   Forecasting
   Promotions
   Dashboards, reports and exports
@@ -183,9 +183,13 @@ An architecture document uses [architecture-document-template.md](../contracts/a
 - en/ru catalogs and localized documentation navigation labels pass a parity check.
 - A Data Guide version is pinned in `ReportSnapshot` when it is used for explanation or export.
 
-## 8. Penpot design scope
+## 8. Design and interaction proof
 
-Before the documentation UI is implemented, a dedicated Penpot design pass must cover:
+Before implementing a changed documentation UI surface, its current bounded task
+must identify accepted product and visual sources and describe coverage of the
+applicable items below. Acceptance requires the corresponding design and runtime
+evidence. The retired Linear/Penpot workflow and a separate design-board process
+are not prerequisites:
 
 - documentation home and navigation;
 - an article containing code, a table, a callout, and a diagram;
@@ -194,10 +198,15 @@ Before the documentation UI is implemented, a dedicated Penpot design pass must 
 - authenticated/operator boundary;
 - version-mismatch and deprecated banners;
 - 403, 404, and offline states;
-- Data Guide editor, preview, validation, publication, and history;
+- Data Guide editor, preview, validation, publication by an actor with explicit
+  `data_guide.publish`, and history; an administrative role alone does not grant publication;
 - keyboard, focus, reduced-motion, and responsive behavior.
 
-Penpot proves layout and interaction intent, but not authorization, search correctness, offline delivery, or runtime accessibility. Those properties are accepted through browser and integration gates.
+Design artifacts establish layout and interaction intent only within their
+accepted scope; historical Penpot artifacts remain evidence of their original
+review. The accepted target pilot retains its demonstrated composition and
+interaction authority. Authorization, search correctness, offline delivery and
+runtime accessibility require browser and integration evidence.
 
 ## 9. Content excluded from delivery
 

@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-UI-ROUTE-001
 title: Executable UI route contract
-doc_version: 7
+doc_version: 8
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -10,7 +10,7 @@ requirement_ids: [UC-025, UC-026, UC-027, UC-028, UC-029, ROUTE-001, ROUTE-002, 
 status: accepted
 proof_boundary:
   label: executable-route-contract-static
-  exclusions: [router-implementation, api-authorization, browser-behavior, future-ui-program-acceptance]
+  exclusions: [router-implementation, api-authorization, browser-behavior, visual-conformance]
 ---
 
 # Executable UI Route Contract
@@ -157,7 +157,7 @@ browser behavior, or accessibility.
 
 The repository validator checks:
 
-- exact route coverage derived from the UI blueprint, currently 116 unique
+- exact route coverage derived from the UI blueprint, currently 117 unique
   IDs/paths/title keys, without treating that number as a permanent ceiling;
 - identity fields against the compact registry;
 - roles against the UI blueprint row;

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 6
+doc_version: 7
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -23,6 +23,7 @@ After a successful pull and bootstrap, the core operates without Internet access
 
 - connector path: reads from an explicitly configured source;
 - report-delivery path: uses a configured mail transport;
+- operational-notification path: Notifications-owned email and HTTPS webhook adapters use only their configured, versioned destinations when the v1 channels are enabled;
 - update job: uses the approved release origin.
 
 Web/API, PostgreSQL, Valkey, the chart renderer, scheduler/orchestrator, and other workers receive no arbitrary outbound Internet access. Edge is handled separately: Compose segmentation limits its adjacency, but its non-internal transport network may retain an ambient outbound route until target-specific production hardening is applied.
@@ -122,6 +123,7 @@ Internal container ports remain stable in Compose and service discovery; dynamic
 | `artifact` | Authorized API/workers through a mounted root/port | Local filesystem; path normalization, no network |
 | `connector-egress` | Data worker/connector adapter | Allowlisted scheme, host, IP, port, and source only; read-only source operations |
 | `mail-egress` | Report-delivery adapter | Pinned configured mail endpoint/version only |
+| `notification-egress` | Notifications-owned operational email/webhook adapters | v1-only; pinned endpoint version, verified email destination or HTTPS webhook with SEC-006 DNS/IP/redirect controls; no arbitrary Internet access |
 | `update-egress` | Explicit update job | Approved release origin only; unavailable to the ordinary runtime |
 
 In Foundation, `edge_to_web`, `web_to_api`, `control`, and `demo_source` use `internal: true`. Edge connects only to `ingress_edge` and `edge_to_web`; Web connects only to `edge_to_web` and `web_to_api`; API connects only to `web_to_api` and `control`. Exact membership is validated fail-closed: Edge and API share no network, and no unrelated service may connect to both ingress-path networks.
@@ -130,7 +132,7 @@ Edge is an infrastructure ingress adapter, not a new bounded context or an indep
 
 Compose does not provide a portable ingress-only network primitive. In particular, on Docker Desktop an `internal: true` network cannot portably provide reliable host-port publication at the same time, while the non-internal `ingress_edge` network may give Edge an ambient outbound route. Foundation therefore does not describe Edge as having no egress. A fixed upstream restricts proxy routing only; the absence of secrets and business logic limits impact; the separate `edge_to_web` and `web_to_api` networks prevent direct Edge-to-API adjacency. The versioned runtime policy fixes the source Nginx configuration, the `web:8080` upstream, and allowed and denied ingress probes; the static gate rejects a dynamic resolver, an API or external upstream, and arbitrary `proxy_pass` targets. Web and API pass negative Internet probes, while the runtime gate separately checks successful `Edge → Web` access and failed `Edge → API` access.
 
-Docker network names alone are insufficient for a production security claim. The connector allowlist includes DNS/IP validation, redirect policy, and protection of loopback, link-local, and private ranges according to deployment policy; the database-source allowlist specifies exact hosts and ports. The future connector, mail, and update egress zones in the table are target contracts, not active Foundation services.
+Docker network names alone are insufficient for a production security claim. The connector allowlist includes DNS/IP validation, redirect policy, and protection of loopback, link-local, and private ranges according to deployment policy; the database-source allowlist specifies exact hosts and ports. The future connector, report-mail, operational-notification, and update egress zones in the table are target contracts, not active Foundation services. Operational email/webhook channels remain disabled in public MVP under NOTIFY-008 and AC-040. Their implementing ticket selects the bounded process/network adapter without granting Web, API, or the chart renderer ambient egress or moving Notifications state into Report Delivery.
 
 Development topology is intentionally separate. `compose.dev.yaml` publishes
 the control and demo PostgreSQL ports only to `127.0.0.1`, uses a
@@ -147,7 +149,7 @@ settings.
 
 ## 6. Separate production-hardening stage
 
-Foundation verifies portable Compose segmentation but not strict Edge outbound denial. For every supported production target, Workstream 12, `Hardening`, must:
+Foundation verifies portable Compose segmentation but not strict Edge outbound denial. For every supported production target, the current bounded hardening task must produce the following evidence before production qualification; an old workstream number or accepted historical ticket does not substitute for it:
 
 1. apply a host firewall, CNI, or equivalent target-specific policy;
 2. permit host ingress only on approved addresses and ports;
@@ -172,7 +174,7 @@ Compose `healthcheck` does not substitute for the final two levels. The UI shows
 
 ## 8. Storage and cleanup
 
-The ownership manifest lists created installation paths, volumes, images and digests, temporary roots, and permitted cleanup actions. Cleanup:
+The target installation ownership manifest lists created installation paths, volumes, images and digests, temporary roots, and permitted cleanup actions. The existing repository cleanup CLI has a narrower boundary: it accepts repository-local disposable paths only, as specified in tooling-gates.md. It does not prove or authorize installed-resource cleanup outside that root. A download-first installer must supply and verify its installation-owned cleanup boundary before claiming this lifecycle; the shared manifest/confirmation shape is not permission to broaden the repository tool. Cleanup:
 
 - is dry-run by default;
 - requires `--apply --ownership-manifest <path> --confirm DELETE-CUSTOMETRY-OWNED-PATHS` for deletion;
@@ -216,6 +218,7 @@ The release installation gate on the M3 Pro must observe:
 - no published PostgreSQL/Valkey ports;
 - positive `Edge → Web` and `Web → API` probes, plus a negative direct `Edge → API` probe;
 - Web/API outbound negative probes and allowlisted connector positive and negative probes;
+- for v1 operational email/webhook channels, Notifications-owned endpoint-version, bounded retry and positive/negative egress evidence for both channels; verified destination/recipient evidence for email; HTTPS/signature and SSRF/redirect evidence for webhooks under NOTIFY-008 through NOTIFY-011 and TEST-INV-029; public MVP proves these channels remain disabled;
 - for a production target, separate firewall/CNI-equivalent evidence that denies Edge outbound access and direct control/data adjacency;
 - migration, start, browser/API/docs smoke;
 - restart with preserved state;

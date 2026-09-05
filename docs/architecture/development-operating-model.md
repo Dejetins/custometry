@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 8
+doc_version: 9
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -29,13 +29,25 @@ failure modes, documentation, compatibility disposition, and evidence agree.
 
 ## 2. Sources and artifact selection
 
-The normative sources are:
+Use each source within its declared authority:
 
-1. `custometry-technical-blueprint-ru.md` for machine-readable product rules;
-2. `custometry-technical-blueprint-human-ru.md` for the synchronized human mirror;
-3. `custometry-ui-blueprint-ru.md` for UI/UX requirements;
-4. accepted architecture documents and ADRs;
-5. implementation, schemas, tests, and observed evidence.
+| Source | Authority and proof boundary |
+|---|---|
+| `custometry-technical-blueprint-ru.md` | Normative product requirements and stable IDs |
+| `custometry-technical-blueprint-human-ru.md` | Synchronized explanation of the same requirements; no independent obligations |
+| `custometry-ui-blueprint-ru.md` and the target pilot | Blueprint requirements and inventory; the accepted target pilot owns its demonstrated composition, navigation, analytical interactions and visual language; ADR-0007 owns frontend architecture |
+| Accepted architecture documents and ADRs | Explicitly accepted decisions within their scope; verify acceptance and supersession for the disputed claim |
+| Implementation, schemas, tests, and observed evidence | Version-bound implementation and verification evidence; not authority to change product obligations |
+| Plans, research, and historical audits | Proposed sequence or supporting evidence at the recorded revision; not execution or release acceptance |
+
+Apply the source order in the current repository `AGENTS.md` and
+`.codex/AGENTS.md`. Scope and explicit acceptance/supersession evidence determine
+what an accepted source actually decides; a later date, version, or language
+does not create higher authority. Implementation cannot weaken requirements.
+Research and roadmaps do not authorize execution, a release, or Forecasting
+resumption. The accepted target pilot and Web implementation source contract
+retain their published authority; unseen states and implementation conformance
+require the affected ticket and its boundary-matched evidence.
 
 Global Delivery Contract v1 selects the smallest sufficient delivery artifact:
 

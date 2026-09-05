@@ -16,6 +16,12 @@ A template is not an accepted decision or executable ticket. Remove all
 placeholders, distinguish facts from proposals, and obtain stable requirement
 IDs from the generated requirement index.
 
+- [Governed population and analytical authoring](./analytical-authoring-contract.md) - accepted relational/temporal segmentation, compact matrices, typed templates, comparisons, evidence and version-transition requirements. Target contracts do not claim implemented APIs.
+
+- [Source data adaptation and imperfect snapshot refresh](./source-data-adaptation-contract.md) - accepted source readiness, push/pull, daily rebuild reconciliation, quality tolerance, typed flags and derived channels, with ownership and acceptance requirements.
+
+- [Artifact format registry](./artifact-format-contract.md) - complete vocabulary for already-required immutable outputs, media mapping, reader-first compatibility and rollback.
+
 ## Foundation contract drift manifest
 
 `contract-drift.json` lists the OpenAPI document, external JSON Schemas, and the

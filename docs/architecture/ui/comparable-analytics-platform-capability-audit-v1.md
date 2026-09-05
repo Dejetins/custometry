@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-UI-CAPABILITY-AUDIT-001
 title: Comparable analytics platform capability audit
-doc_version: 1
+doc_version: 2
 product_spec_version: 0.10.0-draft
 ui_spec_version: 0.8.0-draft
 visibility: internal
@@ -15,6 +15,12 @@ proof_boundary:
 ---
 
 # Comparable analytics platform capability audit
+
+> Current-use boundary: this accepted research is supporting pattern evidence.
+> Current UI work uses accepted requirements, applicable architecture and
+> visual sources, and ordinary scoped implementation proof. Forecast-related
+> capabilities remain target requirements under the owner's hold; this research
+> does not authorize forecasting work or select an external release scenario.
 
 ## Purpose and method
 

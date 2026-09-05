@@ -1,12 +1,12 @@
 ---
 doc_id: ARCH-SYSTEM-DESIGN-001
 title: Custometry Target System Design
-doc_version: 13
+doc_version: 16
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [ARCH-PRINCIPLE-001, GOAL-011, GOAL-012, GOAL-013, GOAL-014, GOAL-015, GOAL-016, GOAL-017, GOAL-018, ANALYTICAL-DOC-001, BLOCK-BUILDER-001, PRODUCT-ANALYTICS-001, UC-017, UC-018, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, DIGITAL-001, ATTRIBUTION-001, UNIT-ECON-001, ASSUMPTION-001, MATERIALIZE-001, COLLAB-001, WATCH-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-009, RBAC-010, RBAC-011, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, ROUTE-001, ROUTE-012, OUTLIER-001, SEGMENT-001, SEGMENT-019, THEME-001, WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-004, WEB-PERF-001, WEB-PERF-005, PRIVATE-FUTURE-001]
+requirement_ids: [ARCH-PRINCIPLE-001, GOAL-011, GOAL-012, GOAL-013, GOAL-014, GOAL-015, GOAL-016, GOAL-017, GOAL-018, ANALYTICAL-DOC-001, BLOCK-BUILDER-001, PRODUCT-ANALYTICS-001, UC-017, UC-018, UC-020, UC-021, UC-022, UC-023, UC-024, UC-025, UC-026, UC-027, UC-028, UC-029, CONNECTOR-001, DIGITAL-001, ATTRIBUTION-001, UNIT-ECON-001, ASSUMPTION-001, MATERIALIZE-001, COLLAB-001, WATCH-001, METHOD-001, METHOD-009, METRIC-009, METRIC-017, DISCOUNT-001, PVM-001, RBAC-009, RBAC-010, RBAC-011, RBAC-019, RBAC-020, RBAC-027, REPORT-003, REPORT-012, ROUTE-001, ROUTE-012, OUTLIER-001, SEGMENT-001, SEGMENT-019, FILTER-013, SEGMENT-034, PIVOT-001, PARAM-001, REPORT-016, THEME-001, WEB-ARCH-001, WEB-ARCH-002, WEB-ARCH-004, WEB-PERF-001, WEB-PERF-005, PRIVATE-FUTURE-001]
 status: accepted
 proof_boundary:
   label: accepted-v1-target-architecture
@@ -38,6 +38,11 @@ copies are not versioned because they add a second synchronization surface
 without an independent product, delivery, or acceptance use case. A PDF or
 DOCX may be generated on demand for a specific external handoff, but it is an
 ephemeral export and never an architecture authority or acceptance dependency.
+
+**Execution priority, 2026-09-05:** Forecasting is on hold until explicit owner
+resumption. Its target boundaries below are retained; they do not authorize
+forecast-specific work or block independent reports/segments. The first
+external release scenario remains undecided.
 
 ## 1. Outcome, scope, and non-goals
 
@@ -251,10 +256,14 @@ functional permission
   MINUS explicit denies
 ```
 
-`CrossDepartmentGrant` is an allow-only, reasoned, effective-dated and usually
+`CrossDepartmentGrant` is an allow-only, reasoned, effective-dated and
 expiring exception over a bounded subject/resource/data/action scope. It does
 not change the member's primary department and cannot exceed functional or PII
-ceilings. Every list, count, search, facet, aggregation, pagination, cache hit,
+ceilings. This target follows RESOLVED-040 and V1-AC-040. The current grant
+API/persistence still permits a null expiry; enforcement needs an explicit
+consumer and existing-grant migration decision before changing that boundary.
+No default numeric lifetime or indefinite exception is implied.
+Every list, count, search, facet, aggregation, pagination, cache hit,
 and object action applies the same effective policy before producing output.
 
 Creator and owner are separate. Personal drafts remain principal-owned. New
@@ -301,6 +310,7 @@ API
 
 worker-data   -- allowlisted source egress --> configured source only
 worker-report -- allowlisted mail egress   --> configured transport only
+Notifications -- v1 allowlisted email/HTTPS webhook egress --> versioned operational endpoint only
 update job    -- allowlisted update egress --> approved release origin only
 ```
 
@@ -312,9 +322,14 @@ network that may retain ambient outbound routing. Foundation proves separate
 fixed Edge upstream is not a firewall. Strict Edge egress denial is a separate
 production-hardening gate using a target host firewall or CNI-equivalent policy.
 
-Source, mail, update, plugin, and future identity adapters are distinct trust
-boundaries. Each has explicit destination allowlists, secret references,
-timeouts, retry classes, redaction, and unknown-state reconciliation. Browser
+Source, report mail, operational notification email/webhook, update, plugin,
+and future identity adapters are distinct trust boundaries. Each has explicit
+destination allowlists, secret references, timeouts, retry classes, redaction,
+and unknown-state reconciliation. Notifications owns operational delivery;
+Report Delivery owns user-initiated report email. Operational email/webhook
+adapters are required only for v1 under NOTIFY-008 through NOTIFY-011; public
+MVP remains in_app-only. Their process/network composition must preserve the
+SEC-006 and no-arbitrary-egress boundaries. Browser
 renderers and static chart rendering operate without network asset fetches.
 
 ## 7. Primary end-to-end flows
@@ -344,15 +359,30 @@ the installation-approved source pack.
 3. CSV/XLSX intake validates media type, sheets, columns, types, locale parsing,
    size/row limits, formulas/macros, duplicates, and rejected rows against an
    immutable `FileImportTemplateVersion`.
-4. Ingestion pins the connection/template version and source consistency mode,
-   extracts into staging, and records schema observations and watermark intent.
-5. Artifact Lifecycle atomically commits the manifest/hash before visibility;
-   only then does the control transaction advance the durable watermark.
-6. Data Quality evaluates schema, freshness, reconciliation, and business rules.
+4. Ingestion pins acquisition/trigger/readiness policy and the connection/template
+   version, resolves compatible source-generation evidence, then stages the declared
+   scope under its consistency mode. Daily full rebuilds without row change markers
+   use complete-snapshot reconciliation, not a recent-sales watermark shortcut.
+5. Artifact Lifecycle commits complete landing manifests/hashes. The control
+   transaction advances the successful ingestion checkpoint only with all required
+   validation results; a received notification or file part cannot advance it.
+6. Data Quality validates schema, duplicates/conflicts, coverage, freshness,
+   reconciliation and business rules. Governed remediation can yield an explicit
+   degraded eligible subset while preserving canonical invariants.
 7. Semantic Model publishes immutable mappings, metrics, formats, filters, and
    capabilities only with visible validation and downstream impact.
 8. Data Guide publication exposes safe source labels, grain, definitions,
    quality, limitations, and lineage without DSNs, hosts, secrets, or denied PII.
+
+The [source data adaptation contract](../contracts/source-data-adaptation-contract.md)
+allocates INGEST-008 through INGEST-020, DATA-MAP-001 through DATA-MAP-007,
+IDENTITY-006 through IDENTITY-008 and DQ-INPUT-001 through DQ-INPUT-008. Platform
+pull, source push and notification-triggered pull use the same governed path.
+Transport completeness is independent of business-history completeness. Source
+rekey uncertainty, old corrections, reassignment and absence policy remain
+visible; validated changes update affected old/new projections, preserving prior
+published results. String flags and SP/is_lk channel rules compile through the
+shared semantic model. No new service or second ingestion truth is introduced.
 
 Yandex Metrica remains a future connector boundary. Reporting API and Logs API
 would require different capability, provenance, sampling/privacy, and freshness
@@ -449,9 +479,12 @@ calculation.
 4. The platform previews counts, shares, metric deltas, protected/high-value
    cohort impact, and minimum-population warnings before publication. Outlier
    treatment remains an analytical choice, not an automatic DQ correction.
-5. A versioned segmentation definition selects rule, bucket, stratified, or
-   exact-K KMeans mode. Bucket and stratum boundaries, inclusivity, null/overflow
-   policy, labels, and ordering are deterministic.
+5. A versioned segmentation definition uses the declared rule, RFM, bucket,
+   KMeans, curated, or composition method. KMeans keeps an explicit final K.
+   Stratified distribution is a DistributionArtifact within AnalysisVersion
+   by default; explicitly saving a selected cell creates a segment definition
+   with source lineage (SEGMENT-007/010). Bucket and stratum boundaries,
+   inclusivity, null/overflow policy, labels, and ordering are deterministic.
 6. KMeans pins feature order, transformations, scaling, missing-value policy,
    requested `K`, initialization, seed, implementation version, fitted model,
    quality diagnostics, and empty/small-cluster behavior. Training and later
@@ -462,6 +495,34 @@ calculation.
 
 Heavy previews and fits use Execution Control and Artifact Lifecycle. The Web
 client configures and visualizes them but does not fit bounds or clusters.
+
+### 7.4.3. Relational populations and compact analytical authoring
+
+The owner-approved 2026-09-05 requirements extend the existing Analytics and
+Presentation responsibilities through the
+[governed authoring contract](../contracts/analytical-authoring-contract.md).
+FILTER-013 through FILTER-018 define typed relationship scopes, aggregates,
+sequences, unknown/completeness semantics and bounded backend plans.
+SEGMENT-029 through SEGMENT-037 add customer collections/composition,
+inclusion explanation, selection/event/fixed-cohort time and evidence-linked
+selection. Existing customer snapshot keys and immutable history are retained.
+
+Analytics owns PivotSpec/PivotResult, correct full-population totals and cohort
+cell states. Presentation owns compact table-first composition, parameter
+bindings, explicit reader/explorer/author modes and semantic-diff presentation;
+the producer owns the result evidence behind the diff. Parameters and expanded
+period/population comparisons enter normalized identity, while density and
+already resolved display order do not. Related-object filtering never becomes
+an arbitrary join or browser calculation. Digital Measurement supplies public
+event projections; generic Execution controls work and does not own operators.
+
+Old definitions remain readable under their original schema. New filter and
+comparison modes require version dispatch, resolved dependency identity and
+reader-before-writer rollout. The contract records unknown runtime/persistence
+compatibility, rollback constraints and synthetic acceptance witnesses; none
+is inferred complete from documentation. The implementation order is bounded
+customer rules and a compact matrix report, followed by dependent capabilities.
+Temporal sequences and event-time reporting wait for real history providers.
 
 ### 7.5. Dashboard, report, email, and XLSX
 
@@ -613,10 +674,9 @@ navigation and coverage graph without directory traversal.
 ## 9. Route and Web execution model
 
 The current inventory contains 117 route-level pages, 25 typed overlays, and 5
-system surfaces. W03-W10 evidence records the earlier 116-route historical
-inventory and is preserved as provenance. Neither count is an accepted target,
-a complete future atlas, a visual authority, or browser/authorization runtime
-proof.
+system surfaces, including planned UI-AN-015 Products. W03-W10 evidence records
+the earlier `116/25/5` boundary and is preserved as historical provenance. It is not an accepted target, a complete
+product coverage model, a visual authority, or browser/authorization runtime proof.
 A standalone route is required for a durable/versioned lifecycle, deterministic
 deep link, independent Back/refresh/dirty/recovery semantics, or sufficiently
 complex permission boundary. Transient confirmations and inspectors remain
@@ -690,15 +750,18 @@ contracts, preserve workspace isolation and safe URL/history semantics, and
 resolve theme/white-label presentation through accepted semantic tokens and
 validated assets.
 
-The current `116` routes, `25` overlays, `5` system surfaces, and `22`
+The current `117` routes, `25` overlays, `5` system surfaces, and `22`
 cross-surface capabilities are current-state inventory evidence, not the future
 all-screen atlas or a permanent ceiling. Historical Penpot metadata remains
 traceability only and cannot close a current design or browser gate.
 
 Performance evidence must separate input feedback, client dispatch,
-network/API wait, response/event-to-paint, and final interaction latency. Exact
-budgets belong to the accepted platform baseline and representative journeys;
-historical thresholds do not carry forward automatically.
+network/API wait, response/event-to-paint, and final interaction latency.
+Journey performance budgets require the applicable accepted baseline and
+measured evidence. This does not discard the still-normative motion token and
+duration requirements in product blueprint section 15.10 (MOTION-001..012);
+changing those obligations requires an explicit synchronized product decision.
+Historical design thresholds alone do not create new performance authority.
 
 ## 10. Persistence, versioning, and consistency
 
@@ -849,7 +912,7 @@ prompts are exceptional rather than standing inventory.
 | Dashboard/research/report composition shapes | breaking target schema-v2 change | add common composition DTO and legacy read adapters, backfill stable hierarchy IDs, move new drafts to v2, and prohibit dual-write or lossy rollback |
 | Report snapshot | compatible first migration step | add root/page manifests while preserving legacy reads; all channels switch together before retiring the old resolved-block projection |
 | Organization/access persistence | compatible target addition before stable consumers | create versioned units/assignments/policies/grants/ownership/projection tables, backfill one primary department, migrate legacy publications to `workspace_legacy`, and fail closed until invariants pass |
-| Organization/People routes | additive current-inventory evidence | the six route IDs remain in current route contracts; the future atlas may reshape their composition without silently changing product meaning or stable route compatibility |
+| Organization/People routes | additive current-inventory evidence | the six route IDs remain in current route contracts; future implementation tickets complete unshown states while preserving accepted target-pilot composition, product meaning and stable route compatibility |
 | Discount component/policy/PVM contracts | compatible target addition before persistence consumers | rollback disables new publication/UI capability but preserves imported source fields and pinned immutable results; later schema migration requires owner-context up/down proof |
 | Metric certification/method availability | compatible target addition | lifecycle remains intact; rollback hides the new projection but cannot relabel or delete historical evidence |
 | Population-treatment contracts | compatible target addition | versioned specs/results migrate atomically; rollback disables new publication but preserves pinned results |
@@ -881,8 +944,9 @@ that the working frontend already matches the concept or implements all screens.
 
 ## 16. Proof boundaries and acceptance
 
-This document proves only that an accepted architecture exists and is internally
-traceable to product specification `0.10.0-draft`. Static validation may prove:
+This document records accepted architecture and declared traceability to product
+specification `0.10.0-draft`; its existence does not prove internal consistency.
+Static validation establishes only the checks actually observed, such as:
 
 - route identity/execution/surface-contract/schema/localization/UI-blueprint parity and exact product use-case bindings;
 - requirement IDs and documentation links;

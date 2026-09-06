@@ -45,6 +45,7 @@
 - [<Architecture document title>](contracts/architecture-document-template.md)
 - [Artifact format registry and reader compatibility](contracts/artifact-format-contract.md)
 - [<Contract name>](contracts/contract-document-template.md)
+- [Report refresh, prepared serving and recovery](contracts/report-refresh-serving-recovery-contract.md)
 - [Source data adaptation and imperfect snapshot refresh](contracts/source-data-adaptation-contract.md)
 - [Executable UI Route Contract](contracts/ui-route-contract.md)
 - [UI Surface Coverage Contract](contracts/ui-surface-contract.md)

@@ -2,8 +2,8 @@
 document_family_id: CUSTOMETRY-UI-BLUEPRINT
 document_id: CUSTOMETRY-UI-BLUEPRINT-RU
 title: Custometry — требования к Web UI и целевая концепция
-ui_spec_version: 0.8.0-draft
-source_product_spec: 0.10.0-draft
+ui_spec_version: 0.9.0-draft
+source_product_spec: 0.11.0-draft
 source_documents:
   - ./custometry-technical-blueprint-ru.md
   - ./custometry-technical-blueprint-human-ru.md
@@ -30,7 +30,7 @@ mobile_scope: unauthorized
 
 ## 0. Статус и назначение
 
-Этот документ переводит продуктовый blueprint Custometry `0.10.0-draft` в исходные требования к Web UI: пользовательские результаты, роли, journeys, данные, текущие поверхности, состояния, действия, permissions, accessibility, localization и responsive-приоритеты.
+Этот документ переводит продуктовый blueprint Custometry `0.11.0-draft` в исходные требования к Web UI: пользовательские результаты, роли, journeys, данные, текущие поверхности, состояния, действия, permissions, accessibility, localization и responsive-приоритеты.
 
 Документ является производным источником UI-требований и не изменяет нормативную продуктовую спецификацию. Если UI-требование противоречит `custometry-technical-blueprint-ru.md`, действует machine blueprint. Новая бизнес-функция сначала появляется в machine blueprint и его human mirror, затем получает UI-представление здесь.
 
@@ -524,7 +524,7 @@ Empty state содержит причину, prerequisite и одну следу
 | ID | Route | Страница | Фаза | Роли | Основное содержимое и действия |
 |---|---|---|---|---|---|
 | UI-AUTH-001 | `/auth/sign-in` | Sign in | MVP | all | Email/password, remember, language, password help, self-hosted trust copy |
-| UI-AUTH-002 | `/bootstrap` | First administrator bootstrap | MVP | IA | One-time token, first admin, password, first workspace, irreversible completion warning |
+| UI-AUTH-002 | `/bootstrap` | First administrator bootstrap | MVP | IA | One-time token, first admin, password, first workspace, explicit initial role summary, irreversible completion warning |
 | UI-AUTH-003 | `/invites/:token` | Accept invitation | MVP | invited | Workspace/role summary, identity confirmation, password setup or sign-in, expiry/error |
 | UI-AUTH-004 | `/auth/recovery` | Password recovery/reset | MVP | all | Host/admin reset token flow, password rules, generic security messages; no implied email reset before channel exists |
 | UI-AUTH-005 | `/onboarding` | First-run onboarding | MVP | IA, WA | Account, workspace, locale/timezone, data/demo, finish; resumable checklist |

@@ -1,8 +1,8 @@
 ---
 doc_id: install-local
 title: Local development installation
-doc_version: 2
-product_spec_version: 0.10.0-draft
+doc_version: 3
+product_spec_version: 0.11.0-draft
 locale: en
 visibility: public
 ship: true
@@ -63,3 +63,7 @@ is unavailable by design.
 ```
 
 Only the selected loopback HTTP port is published. PostgreSQL is not exposed to the host.
+
+## Target machine and next installer
+
+The first test machine is a Mac M5 Max with 36 GB RAM; a separate Linux VM on it supplies bounded Linux installation tests, not qualification of every Linux server. The commands above describe current Foundation behavior. The next installer targets a preinstalled container engine, prebuilt images, automated configuration/migrations and browser bootstrap. The first delivery need not migrate experimental data and must preserve unrelated storage.

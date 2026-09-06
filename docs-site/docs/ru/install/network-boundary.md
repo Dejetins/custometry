@@ -1,8 +1,8 @@
 ---
 doc_id: network-boundary
 title: Сетевая граница
-doc_version: 2
-product_spec_version: 0.10.0-draft
+doc_version: 3
+product_spec_version: 0.11.0-draft
 locale: ru
 visibility: public
 ship: true
@@ -38,3 +38,7 @@ Docker Compose не предоставляет portable ingress-only network pri
 | Исходящий Edge transport | Может существовать в Foundation; строгий запрет требует target firewall/CNI evidence |
 
 Браузер обращается к `/`, `/docs/` и `/api/*` через единственную Edge-точку; Web проксирует API route через `web_to_api`. Пароли создаются в игнорируемых secret-файлах и монтируются только в нужные сервисы; Edge не получает secrets.
+
+## Принятый целевой HTTPS-режим
+
+Текст выше описывает существующую HTTP Foundation-конфигурацию. Для следующей поставки принят HTTPS на Edge с единственным исключением: read-only TLS private key и certificate chain установки. Другие credentials и доменное состояние ему недоступны; выпуск и обновление сертификатов происходят вне Edge. Эта настройка ещё требует реализации и проверки. По умолчанию доступ остаётся локальным; явный LAN-режим должен пройти проверку из браузера другого компьютера. Production hardening сохраняет отдельную приёмку.

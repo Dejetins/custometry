@@ -1,8 +1,8 @@
 ---
 doc_id: foundation-workspace
 title: Foundation workspace
-doc_version: 1
-product_spec_version: 0.10.0-draft
+doc_version: 2
+product_spec_version: 0.11.0-draft
 locale: en
 visibility: public
 ship: true

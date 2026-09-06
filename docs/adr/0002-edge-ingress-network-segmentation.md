@@ -1,8 +1,8 @@
 ---
 doc_id: ADR-0002
 title: Edge ingress adapter and network segmentation
-doc_version: 1
-product_spec_version: 0.9.0-draft
+doc_version: 2
+product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -37,14 +37,14 @@ We need an explicit and accurate Foundation boundary that:
 ## Decision
 
 1. Edge is an infrastructure ingress adapter, not a bounded context or an independently evolved product microservice.
-2. Edge reuses the immutable Web image, runs a fixed Nginx configuration, remains secretless, read-only, and stateless, and receives no business logic, environment override, writable mount, or user-controlled upstream.
+2. Edge reuses the immutable Web image, runs a fixed Nginx configuration, remains read-only and free of domain state, and receives no business logic, environment override, writable mount, or user-controlled upstream. The accepted 2026-09-06 amendment permits only read-only installation TLS private-key/certificate-chain files; all business, workspace, database, source, mail, API and master-key credentials remain forbidden.
 3. `ingress_edge` is the only non-internal transport network and contains only Edge.
 4. `edge_to_web` is an internal network containing only Edge and Web.
 5. `web_to_api` is a separate internal network containing only Web and API.
 6. Edge and the API, control, and data services share no network adjacency; Web is the only bridge on the `Edge → Web → API` path.
 7. Web and API pass negative Internet probes. Runtime smoke verifies `Edge → Web` and `Web → API`, while direct `Edge → API` access must fail.
 8. Foundation does not claim strict Edge outbound denial: the non-internal transport network may retain an ambient outbound route.
-9. Workstream 12, `Hardening`, applies a host firewall, CNI, or equivalent policy on each production target and observably denies Edge access to API, control, data, Internet, private, link-local, and metadata destinations, leaving only the approved ingress and `Edge → Web` path.
+9. The selected production-hardening unit applies a host firewall, CNI, or equivalent policy on each production target and observably denies Edge access to API, control, data, Internet, private, link-local, and metadata destinations, leaving only the approved ingress and `Edge → Web` path.
 
 ## Alternatives
 
@@ -108,3 +108,29 @@ Production evidence must additionally observe target firewall/CNI enforcement, E
 - a separate Edge release cadence or the introduction of secrets;
 - a change to the Web proxy role;
 - multi-host topology.
+
+## Accepted TLS amendment — 2026-09-06
+
+The owner accepted the TLS-only credential exception from
+[the contract proposal](../architecture/planning/audit-contract-decisions-2026-09-06.md#4-production-tls-a-credential-only-edge-exception)
+through [WS-001](../architecture/planning/directions/DIR-006/workstreams/WS-001.md)
+`1.0.0`. This changes the old blanket secretless policy; the other segmentation
+decisions remain in force. Edge terminates HTTPS directly. An external TLS
+terminator is not required for the selected installation.
+
+Installation custody owns issuance/renewal outside Edge. The proxy receives
+validated read-only file references and has no certificate-acquisition egress.
+Private material never enters Git, images, environment values or diagnostics.
+Rotation validates a complete pair, activates one configuration revision and
+checks the handshake; failed validation preserves the prior valid pair. Expired
+or compromised credentials cannot be restored, and HTTP is not a fallback.
+
+Contract impact is `breaking-change` to the former security/configuration promise;
+application API and PostgreSQL schemas are unchanged by this documentation.
+The coordinated Edge configuration, Compose mounts, manifest and static policy
+must be amended and proved in the selected implementation milestone. Existing
+HTTP/no-secret static checks still describe the old implementation, not HTTPS
+acceptance. Positive/negative browser, TLS, mount, restart/rotation and
+target-specific network proof remain required. No new context or domain owner
+is introduced. The local/LAN defaults and target inputs are in runtime contract
+doc_version 8.

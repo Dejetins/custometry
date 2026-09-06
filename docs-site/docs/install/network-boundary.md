@@ -1,8 +1,8 @@
 ---
 doc_id: network-boundary
 title: Network boundary
-doc_version: 2
-product_spec_version: 0.10.0-draft
+doc_version: 3
+product_spec_version: 0.11.0-draft
 locale: en
 visibility: public
 ship: true
@@ -40,3 +40,7 @@ Strict Edge outbound denial is a separate production-hardening step. Each produc
 | Edge transport egress | May exist in Foundation; strict denial requires target firewall/CNI evidence |
 
 The browser reaches `/`, `/docs/`, and `/api/*` through the single Edge endpoint; Web proxies the API route across `web_to_api`. Database credentials are generated into ignored local secret files and mounted only into the services that require them; Edge receives none.
+
+## Accepted HTTPS target
+
+The preceding sections describe the existing HTTP Foundation configuration. The next delivery targets HTTPS at Edge with one exception: read-only installation TLS private-key and certificate-chain files. Other credentials and domain state remain forbidden; issuance and renewal stay outside Edge. This mode still requires implementation and proof. Access remains local by default; explicit LAN mode must pass browser checks from another computer. Production hardening retains its separate acceptance boundary.

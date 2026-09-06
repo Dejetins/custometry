@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-ROADMAP-001
 title: Custometry development roadmap and integration decisions
-doc_version: 8
+doc_version: 10
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -37,9 +37,13 @@ and independent status; do not duplicate their state or revive retired UI progra
 Agents must maintain affected document links, versions, decisions, indexes and
 evidence without owner reminders. Product priorities and Forecasting hold remain
 unchanged. The owner has now accepted [MAP-001 and its six L1 directions](project-map.md)
-at version 1.0.0. The next planning action is owner selection of an L2 branch;
-old N0/N1 implementation suggestions below do not bypass that checkpoint or
-authorize implementation.
+at version 1.0.0, followed by the accepted sequential priorities and WS-001 registration at MAP-001 `1.2.0`.
+The accepted [WS-001: installable platform and first administrator bootstrap](directions/DIR-006/workstreams/WS-001.md) `1.0.0` belongs to DIR-006, with DIR-001/005 contributions. It fixes M5 Max/36 GB and Linux VM tests, explicit LAN/HTTPS, a guided installer, initial-account roles and no experimental-data migration. The next document is the separate C02 L3 plan for reproducible prebuilt delivery; its MS ID/path/version is produced during that authoring unit. Inventory remains part of L2 preparation; five sequential milestone outcomes are accepted.
+The sequence starts with prebuilt delivery, installation and protected bootstrap,
+then staff/access, sources, usable data, analysis, authoring, publication/access,
+reader use and the next update/recovery cycle. The older report-first recommendation
+and N0/N1/M0/M1 rows below are supporting analysis only; where their ordering differs,
+[MAP-001](project-map.md#accepted-delivery-sequence) governs the selected planning frontier.
 
 ### Owner priority update — 2026-09-05
 
@@ -90,6 +94,12 @@ V1-AC-063 through V1-AC-067 define the acceptance boundary. Forecasting remains
 on hold and existing release labels are not redefined.
 
 ## Recommended first outcome
+
+First, an installation administrator obtains a versioned prebuilt delivery, installs
+it on the supported target, completes protected bootstrap and retains the state
+after restart. Workspace administration then prepares separate staff accounts and
+access. These prerequisites are now explicit in MAP-001 and the selected WS-001
+draft; the remaining scenario below is not the first development block by itself.
 
 A real user can bootstrap/sign in, select an authorized workspace, import governed Customer/Receipt files, understand mapping and quality issues, run sales/customer/RFM analytics, create a reusable rule-based customer segment, and compose/save/reopen a small analytical report using that segment and existing analytical results. The user can inspect trust and provenance in the accepted UI concept and observe/cancel/retry the same work in Operations. A failure produces an actionable inbox entry and preserves consistent artifacts and history.
 

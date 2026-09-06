@@ -1,8 +1,8 @@
 ---
 doc_id: docs-home
 title: Документация Custometry
-doc_version: 1
-product_spec_version: 0.10.0-draft
+doc_version: 2
+product_spec_version: 0.11.0-draft
 locale: ru
 visibility: public
 ship: true

@@ -1,8 +1,8 @@
 ---
 doc_id: ARCH-SYSTEM-DESIGN-001
 title: Custometry Target System Design
-doc_version: 17
-product_spec_version: 0.10.0-draft
+doc_version: 18
+product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -18,7 +18,7 @@ proof_boundary:
 ## Document status and authority
 
 This document projects the normative Custometry product specification
-`0.10.0-draft` into an implementable target architecture. It defines ownership,
+`0.11.0-draft` into an implementable target architecture. It defines ownership,
 dependency direction, integration contracts, trust boundaries, consistency,
 failure semantics, compatibility, and proof seams. It does not repeat every
 product requirement and does not replace:
@@ -140,7 +140,7 @@ The following are outside the public `v1_target`:
 | UI surfaces | Compact route identity, executable route policy, and complete UI surface coverage are separate contracts | URL identity remains stable; route policy evolves independently; every UI-visible use case must bind to a route, overlay, system surface, or reusable capability |
 | Branding | Versioned BrandProfile and CompanyPack | Customer identity changes by validated configuration, not code fork |
 | Distribution | Public self-host core only | Future activation/commercial implementation remains outside the public repository and public package graph |
-| First platform | Apple Silicon M3 Pro Foundation proof before broader targets | Other architectures and production hardening require separate evidence |
+| First platform | Mac M5 Max / 36 GB, followed by separate Linux VM proof on the same host | Other architectures and production hardening require separate evidence |
 
 ## 3. Dependency direction and composition
 
@@ -314,8 +314,11 @@ Notifications -- v1 allowlisted email/HTTPS webhook egress --> versioned operati
 update job    -- allowlisted update egress --> approved release origin only
 ```
 
-Edge is a secretless infrastructure ingress adapter, not a bounded context or
-product microservice. Compose does not provide a portable ingress-only network
+Edge is an infrastructure ingress adapter with only read-only installation TLS
+key/chain credentials, no domain state and a fixed Web upstream. It is not a
+bounded context or product microservice. Issuance/renewal stays outside Edge;
+other credentials and certificate-acquisition egress remain forbidden under
+ADR-0002 doc_version 2 and runtime contract doc_version 8. Compose does not provide a portable ingress-only network
 primitive on Docker Desktop: host publishing requires a non-internal transport
 network that may retain ambient outbound routing. Foundation proves separate
 `edge_to_web` and `web_to_api` adjacency and negative egress for Web/API; a
@@ -336,8 +339,11 @@ renderers and static chart rendering operate without network asset fetches.
 
 ### 7.1. Bootstrap and workspace branding
 
-1. Installation bootstrap creates the first local administrator through a
-   one-time, local-only authority.
+1. Installation bootstrap uses a host-controlled one-time token over the configured
+   protected origin, with local access by default and explicitly configured LAN access.
+   It creates one initial account with installation administration and disclosed roles
+   in the first workspace; Identity owns the reviewed bootstrap grants. Other workspace
+   and PII access are never automatic.
 2. The administrator creates a workspace and assigns a permitted CompanyPack
    and BrandProfile version.
 3. Identity & Workspace resolves membership, role grants, locale, timezone,
@@ -987,7 +993,7 @@ that the working frontend already matches the concept or implements all screens.
 ## 16. Proof boundaries and acceptance
 
 This document records accepted architecture and declared traceability to product
-specification `0.10.0-draft`; its existence does not prove internal consistency.
+specification `0.11.0-draft`; its existence does not prove internal consistency.
 Static validation establishes only the checks actually observed, such as:
 
 - route identity/execution/surface-contract/schema/localization/UI-blueprint parity and exact product use-case bindings;
@@ -1059,3 +1065,13 @@ The primary architectural risks are:
 | Explicit certification and method availability | infer trust from published status or hide future methods | keeps definition lifecycle separate from evidence strength and prevents roadmap claims from becoming runtime claims |
 | Organization assignments plus functional roles | create a role per department/manager combination | avoids role explosion and keeps permission, hierarchy, and leadership independently versioned |
 | Redacted contributor projection | query raw Audit for People & Creators | prevents surveillance-oriented leakage and gives the product an explicit privacy/aggregation contract |
+
+
+## Installation and bootstrap amendment — 2026-09-06
+
+The owner accepted [WS-001](planning/directions/DIR-006/workstreams/WS-001.md)
+`1.0.0`: M5 Max/36 GB and bounded Linux VM targets, Edge TLS-only credentials,
+guided prebuilt installation, explicit first-account roles and no required
+experimental-data migration. The existing modular monolith and domain ownership
+remain. These are target contracts; runtime code, migrations and browser
+implementation are separate milestone work.

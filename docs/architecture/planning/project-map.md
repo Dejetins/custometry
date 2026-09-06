@@ -540,3 +540,7 @@ Publication-copy checks also passed using that checkout's own tools with the exi
 #### Direct-main publication outcome
 
 On 2026-09-06, the scoped publication commit `2af36e964740d2034137096103a9f522f9039ae6` was prepared on main in the publication checkout. GitHub rejected `git push origin main` with GH006: changes require a pull request and the required `Foundation gate` status is expected. Remote main remains `d9e1fddd2fd12ac51c88275544833d8b20b93728`. No new remote branch or PR was created, protections were not changed, and no CI run for this unpublished commit is claimed. Documentation preparation and local/publication-copy static verification are complete; remote publication remains blocked until the owner permits the required PR route. The local main history retains the accepted document and prior unrelated work.
+
+#### Authorized PR publication route
+
+After the protected-main rejection, the owner explicitly authorized a temporary technical branch and pull request, merge into main after the required checks, and deletion of that branch. This supersedes only the original direct-push constraint; the accepted WS-001 scope, engineering decisions and proof limits are unchanged. The GitHub rejection above is historical evidence, not an outstanding owner-decision blocker. Publication uses the scoped documentation checkout, preserves unrelated local commits and leaves branch protection intact. The PR and its checks provide the merge receipt; publication is not product runtime or release acceptance.

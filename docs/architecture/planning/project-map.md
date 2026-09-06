@@ -8,7 +8,7 @@
   "artifact_kind": "project_map",
   "doc_id": "MAP-001",
   "title": "Custometry development direction map",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "planning_status": "accepted",
   "language": "en",
   "parent_ref": null,
@@ -22,7 +22,7 @@
   "requirement_refs": [
     {
       "source": "custometry-technical-blueprint-ru.md",
-      "revision": "5a963ab0166bfa44d508679dcafa29723bbeb68b",
+      "revision": "sha256:183d9d2f2070cb8e651eca46fa44244b0d0af2a914830bcee6e5716ae15fd163",
       "ids": [
         "A11Y-001",
         "ANALYTICAL-DOC-001",
@@ -127,7 +127,8 @@
     "MAP-001/DEC-02",
     "MAP-001/DEC-05",
     "MAP-001/DEC-06",
-    "MAP-001/DEC-07"
+    "MAP-001/DEC-07",
+    "MAP-001/DEC-08"
   ],
   "supersedes_ref": null,
   "proof_boundary": {
@@ -144,10 +145,10 @@
 
 # Custometry development direction map
 
-> **Accepted map, L1 boundaries and sequential priorities, version `1.1.0`, 2026-09-06.**
+> **Accepted map, L1 boundaries and sequential priorities, version `1.2.0`, 2026-09-06.**
 > The owner accepted the full installation-to-reader sequence and selected delivery,
-> installation and bootstrap as the first block to develop. WS-001 is the new L2
-> draft for that discussion; its detailed structure and implementation remain separate decisions.
+> installation and bootstrap as the first block. WS-001 1.0.0 now records accepted
+> owner decisions and five outcomes; unwritten L3 plans and implementation remain separate.
 
 ## Accepted structure
 
@@ -174,12 +175,12 @@ The default is **four levels below the project map**. The accepted framework
 allows repeated workstream depth where an actual decomposition need is explained.
 The iteration journal accompanies a milestone; it is not a fifth planning level.
 The L1 candidate tables describe composition. The selected first block now has one
-L2 draft, WS-001, under DIR-006. No milestone, pack or execution ledger is initialized.
+accepted L2, WS-001 1.0.0, under DIR-006. No milestone, pack or execution ledger is initialized.
 
 ## Direction registry
 
-All six documents below are accepted at `1.1.0` and point back to MAP-001 `1.1.0`.
-The amendment adds the owner-selected sequence and synchronizes relationships;
+All six documents below are accepted at `1.2.0` and point back to MAP-001 `1.2.0`.
+The amendments add the owner-selected sequence and synchronize accepted WS-001 relationships;
 their six capability boundaries remain those accepted at `1.0.0`.
 
 | Direction | Purpose | Contents | Main boundary |
@@ -191,9 +192,9 @@ their six capability boundaries remain those accepted at `1.0.0`.
 | [DIR-005. Web interface and user journeys](directions/DIR-005/direction.md) | Make capabilities usable by every supported role | Shell/components, feature screens, composer/reader/Focus, states, RU/EN/accessibility/responsive and API integration | Preserve demonstrated pilot decisions; providers enforce policy and calculations |
 | [DIR-006. Operations, integration and system acceptance](directions/DIR-006/direction.md) | Install, observe, recover and verify the whole product | Environments/CI, migrations/install/update, security/observability, backup/restore, mixed-load, end-to-end qualification and docs | Feature owners retain local proof; system acceptance connects their results |
 
-The selected entry is **[WS-001. Installable platform and first administrator bootstrap](directions/DIR-006/workstreams/WS-001.md)** `0.1.0`, with DIR-006 as its single parent
-and DIR-001/005 contributing their existing ownership. Selection is accepted;
-the newly authored L2 structure is a draft for the next owner discussion.
+The selected entry is **[WS-001. Installable platform and first administrator bootstrap](directions/DIR-006/workstreams/WS-001.md)** `1.0.0`, with DIR-006 as its single parent
+and DIR-001/005 contributing their existing ownership. Its five milestone outcomes
+and six owner decisions are accepted. The next document is its separate C02 L3 plan.
 
 ## Accepted delivery sequence
 
@@ -212,7 +213,7 @@ analyst content publication.
 
 | Sequence ID | Participant and outcome | Required completed capability / proof | Primary responsibility and contributors | Selected planning document |
 |---|---|---|---|---|
-| MAP-001/SEQ-01 | Engineering supplies an installable delivery | Versioned launcher/configuration, compatible prebuilt images, required assets/dependencies, provenance and instructions; distinguish candidate images from an accepted installable bundle | DIR-006; each feature owner supplies its required runtime assets | [WS-001](directions/DIR-006/workstreams/WS-001.md) `0.1.0`, first-block draft |
+| MAP-001/SEQ-01 | Engineering supplies an installable delivery | Versioned launcher/configuration, compatible prebuilt images, required assets/dependencies, provenance and instructions; distinguish candidate images from an accepted installable bundle | DIR-006; each feature owner supplies its required runtime assets | [WS-001](directions/DIR-006/workstreams/WS-001.md) `1.0.0`, accepted first block |
 | MAP-001/SEQ-02 | Installation administrator installs and starts it | Supported-target preflight, explicit ingress/origin/transport, protected secrets, persistent stores, migrations, actual readiness/URL and actionable failure | DIR-006; DIR-001/005 security and initial Web integration | Same WS-001 |
 | MAP-001/SEQ-03 | Installation administrator completes bootstrap | One-time bootstrap creates first administrator/workspace; locale/timezone, protected sign-in/logout and restart persistence; initial UI explains next setup action | DIR-001 and DIR-005 contribute; DIR-006 owns installed integration | Same WS-001; this closes only the first block |
 | MAP-001/SEQ-04 | Workspace administrator prepares staff and authority | Invitations and their states, member roles, access/session revocation and required local-auth recovery; separate users and workspaces prove permission boundaries | DIR-001 + DIR-005, integrated proof in DIR-006 | Later L2 is not instantiated |
@@ -383,15 +384,15 @@ For the original 1.0.0 adoption, the Russian draft was inspected at local commit
 `5a963ab0166bfa44d508679dcafa29723bbeb68b`. Relevant product/code sources were
 compared for equality; the accepted planning-framework dependency was included
 from local adoption commit `2d370f6ef1cd5cf9ddb09afa7987004b9412042c`.
-Unrelated local governance cleanup was excluded from that publication. The 1.1.0
+Unrelated local governance cleanup was excluded from that publication. The 1.2.0
 amendment baseline and its narrower current-state inspection are recorded below.
 
 | Source | Version / role |
 |---|---|
 | [Planning framework](framework-v1/README.md) | 1.0.0, doc_version 2; shape and owner checkpoints, published as prerequisite |
-| [Machine blueprint](../../../custometry-technical-blueprint-ru.md) | 0.10.0-draft, 2026-09-06; normative product requirements |
-| [Human mirror](../../../custometry-technical-blueprint-human-ru.md) | 0.10.0-draft; explanations of selected areas |
-| [UI blueprint](../../../custometry-ui-blueprint-ru.md) | 0.8.0-draft; all-family scope and inventory |
+| [Machine blueprint](../../../custometry-technical-blueprint-ru.md) | 0.11.0-draft, 2026-09-06; normative product requirements |
+| [Human mirror](../../../custometry-technical-blueprint-human-ru.md) | 0.11.0-draft; explanations of selected areas |
+| [UI blueprint](../../../custometry-ui-blueprint-ru.md) | 0.9.0-draft; all-family scope and inventory |
 | [System design](../system-design.md) | doc_version 17; target architecture |
 | [Context map](../bounded-context-map.md) | doc_version 13; domain ownership and integration |
 | [Frontend ADR](../../adr/0007-responsive-web-frontend-platform.md) | doc_version 2; accepted frontend platform |
@@ -416,11 +417,12 @@ their own version and acceptance provenance. Architecture status is not code rea
 |---|---|---|---|
 | MAP-001/DEC-01 | Adopt the six directions and their L1 boundaries | Owner accepted the six-direction format on 2026-09-06; version 1.0.0 | Settles MAP/L1 structure |
 | MAP-001/DEC-02 | Apply four levels below the map, with justified repeated workstream depth | Accepted framework and owner acceptance of its L1 application | Preserves the existing planning form |
-| MAP-001/DEC-03 | Which area should be detailed next? | Resolved by MAP-001/DEC-07. The earlier DIR-004-first recommendation is superseded by the owner-accepted installation-first correction | WS-001 is selected for L2 development |
+| MAP-001/DEC-03 | Which area should be detailed next? | Resolved by MAP-001/DEC-07. The earlier DIR-004-first recommendation is superseded by the owner-accepted installation-first correction | WS-001 1.0.0 is accepted; C02 L3 is the next planning document |
 | MAP-001/DEC-04 | First external release scenario | Deferred; not needed to adopt L1 | Must be resolved before relevant release promises |
 | MAP-001/DEC-05 | Adopt MAP-001 and DIR-001..006 in English and publish to main; remove Russian drafts | Explicit owner instruction in this task on 2026-09-06; version 1.0.0 | Authorizes this adoption/publication and required framework dependencies, not implementation |
 | MAP-001/DEC-06 | Adopt the complete installation-to-reader sequence and sequential development with prerequisite decisions | Owner accepted the expanded proposal and requested English documentation on 2026-09-06; version 1.1.0 | Sets priority/order across directions; does not promise zero rework or select parallel dispatch |
 | MAP-001/DEC-07 | Select delivery, installation and first administrator bootstrap for deep planning | Same owner decision, 2026-09-06; version 1.1.0 | DIR-006 owns WS-001; DIR-001/005 contribute; authoring the L2 draft is authorized, its unwritten children are not accepted |
+| MAP-001/DEC-08 | Finalize WS-001 and synchronize accepted installation/HTTPS/bootstrap choices | Owner accepted six proposals, corrected target to M5 Max/36 GB, allowed local Linux VM, excluded experimental-data migration and authorized direct main publication on 2026-09-06 | WS-001 1.0.0 owns five sequential outcomes; develop C02 as separate L3. No general publication-policy or product-execution authority is inferred. |
 
 The owner first reviewed the Russian `0.1.0` drafts, then explicitly accepted L1
 and requested the English records. Their Russian bodies are replaced in the same
@@ -435,6 +437,7 @@ milestones have been accepted.
 | 0.1.0 | 2026-09-06 | Russian review map and six direction drafts | Owner draft request |
 | 1.0.0 | 2026-09-06 | Accepted English map/L1, reciprocal version links and navigation | MAP-001/DEC-05 |
 | 1.1.0 | 2026-09-06 | Full sequential priorities adopted; first-block WS-001 draft selected and registered; L1 links synchronized | MAP-001/DEC-06/07 |
+| 1.2.0 | 2026-09-06 | Register accepted WS-001 1.0.0, source amendments and exact-version revalidation across unchanged directions | MAP-001/DEC-08 |
 
 The original 1.0.0 adoption changed this map, six direction documents, architecture/contributor
 navigation and the roadmap's next-planning-step reference. The previously adopted
@@ -504,3 +507,32 @@ deferrals, preserved roles/holds, actual source paths and the next owner checkpo
 This is a deterministic author check, not a new independent review. The amendment
 creates no runtime evidence or accepted L3 implementation plan. No publication or
 deployment is recorded for this documentation unit.
+
+### WS-001 finalization validation
+
+The 1.2.0 map/direction amendment registers accepted WS-001 1.0.0. Original 1.1.0
+planning bytes are preserved in local commit `8a67a678`; prior 1.0.0 publication
+evidence above remains historical. Current product sources are machine/human
+`0.11.0-draft` and UI `0.9.0-draft`. Their exact content digests are pinned by the
+current planning metadata; code baseline and historical proof remain separately
+identified. WS-001 decides the changed installation, TLS and bootstrap contracts.
+Other direction boundaries, full downstream order, Forecasting hold and final
+functional XLSX increment are unchanged. L1 source bindings are revalidated for
+these bounded changes; no existing ticket or claimed ledger is mutated.
+
+Publication scope includes the preceding installation-first planning amendment
+and this finalization plus required source/index synchronization. Previously
+unpublished local governance/tooling commits are not part of this publication.
+The owner explicitly authorized direct main publication without a new branch;
+repository protections are not changed.
+
+| Check | Result / scope |
+|---|---|
+| Source/version/requirement and link synchronization | Passed the grouped source checks after regenerating the requirement/contributor indexes; initial consumer-version drift was corrected |
+| Local grouped profile and publication profile | `uv run --locked --offline python -m tools.check --scope local` and `--scope pre-push` passed; no runtime profile run |
+| Scoped Git diff and reciprocal planning bindings | `git diff --check` and semantic inspection passed: eight accepted plans, seven reciprocal parent edges, exact source hashes/IDs, five ordered outcomes and twelve MAP sequence rows |
+| Runtime, browser, Linux VM, TLS, recovery, performance and external release | Not executed or claimed by this documentation task |
+
+The shipped documentation build also passed: `uv run --locked --offline mkdocs build --strict --config-file mkdocs.yml`. Route/surface contracts and three authoring templates change only their product/UI version references; no prompt behavior, route behavior or persisted schema changes. Publication-copy verification and remote identity are reported at handoff; no commit identifier is invented inside its own content.
+
+Publication-copy checks also passed using that checkout's own tools with the existing locked Python interpreter: the pre-push profile and semantic/scope audit. Eight accepted plans retain exact source hashes and reciprocal parents; five outcome rows and twelve sequence rows are present. The publication contributor index contains 63 documents; the local index contains 64 because an unrelated local synchronization report is intentionally not published. Local and publication WS-001/source documents match. Foreign governance, role profiles and validator/test changes remain outside the scoped patch.

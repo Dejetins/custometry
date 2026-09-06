@@ -1,7 +1,7 @@
 ---
 document_family_id: CUSTOMETRY-TECH-BLUEPRINT
 document_id: custometry-technical-blueprint-human-ru
-spec_version: 0.10.0-draft
+spec_version: 0.11.0-draft
 representation: human
 normative: false
 status: draft
@@ -11,14 +11,14 @@ updated_at: 2026-09-06
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
-  expected_spec_version: 0.10.0-draft
+  expected_spec_version: 0.11.0-draft
 project_name: Custometry
 license_target: Apache-2.0
 ---
 
 # Custometry — полный технический план платформы
 
-> Это человекочитаемое смысловое зеркало спецификации `0.10.0-draft`. Нормативным источником истины является [машиночитаемый blueprint](./custometry-technical-blueprint-ru.md). Обе версии относятся к семейству `CUSTOMETRY-TECH-BLUEPRINT`, имеют одинаковый `spec_version` и одинаковый набор нормативных requirement ID. При любом расхождении действует machine-версия.
+> Это человекочитаемое смысловое зеркало спецификации `0.11.0-draft`. Нормативным источником истины является [машиночитаемый blueprint](./custometry-technical-blueprint-ru.md). Обе версии относятся к семейству `CUSTOMETRY-TECH-BLUEPRINT`, имеют одинаковый `spec_version` и одинаковый набор нормативных requirement ID. При любом расхождении действует machine-версия.
 
 ## 0. Как читать этот документ
 
@@ -1643,7 +1643,7 @@ Workspace scope берётся из authenticated membership/path/resource, а �
 | SVC-POSTGRES | Durable control-plane state |
 | SVC-VALKEY | Broker, cache и ephemeral locks |
 | SVC-ARTIFACTS | Только local immutable bulk objects на persistent volume |
-| SVC-PROXY | Secretless/state-free инфраструктурный Edge-адаптер входа: TLS, routing и limits только к фиксированному Web upstream; это не bounded context и не новый продуктовый микросервис |
+| SVC-PROXY | Инфраструктурный Edge-адаптер без доменного состояния: только installation TLS key/chain, routing и limits к фиксированному Web upstream; остальные secrets запрещены, выпуск/обновление сертификатов вне Edge |
 | SVC-OTEL | Optional telemetry collector |
 
 Backend следует логическому владению из [bounded context map](./docs/architecture/bounded-context-map.md). Identity/access владеет OrgUnit, memberships, leadership, department policies/grants/ownership и privacy-safe contributor projection; Connections/Catalog владеет configuration/catalog metadata; Semantic Model — metrics/groups/formats/filter registry и semantic meaning; Data Documentation — guides/file-import templates; Ingestion — extraction/landing; Execution — outbox/leases/fencing/reconciliation; Artifact Lifecycle — manifests/retention; DQ — quality reports/gates. Analytics включает customer/sales/product/category/assortment/inventory analytics, normalized block/result contracts, treatment/segmentation, discount/PVM и comparison/migration semantics. Methodology/Research владеет methods/packs/cases/research/findings/decisions/products. Collaboration/Adoption владеет participant bindings, discussion threads/comments/replies/mentions, resolve/reopen/re-anchor provenance, reactions/subscriptions, meaningful views, permission-filtered feed, privacy-safe adoption и metric watches. Digital Marketing Analytics владеет event taxonomy/sessions/touchpoints/spend/cost, identity observations/resolution, campaign normalization, journey/conversion definitions, cost reconciliation, attribution/unit-economics specs/results, governed assumptions и journey/funnel projections. Promotion Journal и Forecasting сохраняют отдельные области; Presentation/Reports владеет composition/snapshots, canonical ChartSpec/compiler ports, dashboards/reports/access policies/branding/company packs и render metadata. Report Delivery отвечает за user-initiated report email, Notifications — за operational events/deliveries/preferences и разрешённые channel adapters; Audit сохраняет audit evidence. Product analytics не становится новым bounded context. Cross-context доступ идёт через публичный port/DTO или versioned projection владельца, а private repository/table остаются внутри context. Это target ownership, не утверждение о созданных packages/таблицах или новых сервисах.
@@ -1765,7 +1765,7 @@ People & Creators читает отдельную `ContributorActivitySummary`, 
 
 Local auth входит в public MVP. Общий `IdentityProvider` normalizes platform principal, но OIDC/Keycloak/Authlib runtime относится к post-v1 и отдельному security ADR.
 
-Bootstrap работает только при zero users и защищён одноразовым deployment token. Invite хранится hash-only, workspace/identity/grants/expiry и single-use. Password использует Argon2id. Access short-lived, refresh opaque rotating hash-only с session/device/absolute expiry/revocation. API token показывается один раз, hash-only, workspace/scopes/expiry/last use/revocation.
+Bootstrap работает только при zero users и защищён одноразовым deployment token. Один первоначальный аккаунт совмещает installation administrator и явно показанные роли первого workspace. Начальная bootstrap policy должна позволять организовать команду и назначить нужные роли без ручной правки БД; точная матрица grants фиксируется до реализации. Это не даёт автоматического доступа к другим workspace или PII. Invite хранится hash-only, workspace/identity/grants/expiry и single-use. Password использует Argon2id. Access short-lived, refresh opaque rotating hash-only с session/device/absolute expiry/revocation. API token показывается один раз, hash-only, workspace/scopes/expiry/last use/revocation.
 
 | ID | Auth lifecycle |
 |---|---|
@@ -1806,7 +1806,7 @@ Audit event хранит event/time, `scope_type` installation/workspace, nullab
 | SEC-013 | Installation audit имеет `scope_type=installation` и null `workspace_id`; любое действие с workspace data создаёт workspace-scoped event с ненулевым workspace ID |
 | SEC-014 | ChartSpec/API отклоняют raw options/functions/renderItem/HTML/CSS/URLs/assets/expressions/regex; adapters принимают только validated allowlist |
 | SEC-015 | Static chart renderer без network, с read-only runtime, resource/time/path/workspace limits и cleanup partial SVG/PNG |
-| SEC-016 | Edge/proxy остаётся secretless/state-free инфраструктурным ingress-адаптером без бизнес-логики и пользовательского upstream, а не отдельным bounded context или продуктовым микросервисом |
+| SEC-016 | Edge/proxy не хранит доменное состояние и использует фиксированный Web upstream; единственные допустимые secrets — TLS private key и certificate chain установки в read-only файлах. Другие credentials запрещены; выпуск и обновление сертификатов выполняются вне Edge без certificate-acquisition egress у прокси |
 | SEC-017 | Путь разделён на разные internal networks `edge_to_web` и `web_to_api`; Edge не имеет общей сети с API, control-plane, PostgreSQL, Valkey или workers |
 | SEC-018 | Compose не считается portable ingress-only или Edge egress-denial механизмом; production требует target-specific firewall/CNI-equivalent policy и positive/negative runtime evidence |
 
@@ -2010,6 +2010,13 @@ Benchmark до stable release использует минимум 500k customers
 | REPORT-PERF-002 | Ready open использует metadata и bounded готовые результаты без повторного чтения исходной истории; новые фильтры/drill-through могут требовать вычисления. Измеряются cold-after-restart/warm/hot open, time-to-usable, страницы/фильтры, refresh lag, p50/p95/p99, throughput, ресурсы, bytes и duplicate compute. До приёмки согласуются hardware/data/document profile и численные latency/freshness budgets; наблюдение PyArrow не является замером платформы. |
 
 ## 24. Развёртывание
+
+Принятый [WS-001](./docs/architecture/planning/directions/DIR-006/workstreams/WS-001.md) `1.0.0` использует Mac M5 Max с 36 GB RAM и отдельную Linux VM на нём как проверочные среды. Guest OS/architecture, движок, VM и её ресурсы фиксируются перед испытанием; это не обещание поддержки всех Linux-серверов. Прежний demo-бюджет 6 GiB RAM / 25 GiB owned data сохраняется.
+
+Администратор заранее устанавливает контейнерный движок, запускает небольшой установщик и задаёт каталог/доступ. Установщик загружает готовые образы, проверяет окружение, готовит локальные secrets и конфигурацию, выполняет миграции и показывает рабочий URL; ручные YAML, SQL и сборка исходников не требуются. По умолчанию доступ локальный; явный LAN-режим проверяется с другого компьютера по HTTPS. Первая поставка не обязана переносить экспериментальные данные, сохраняет чужие хранилища и доказывает restart/retry и предусмотренное восстановление. Полный backup/restore/update cycle остаётся MAP-001/SEQ-12.
+
+TLS завершается на Edge с единственным исключением для read-only installation TLS key/chain. Выпуск, обновление и хранение управляющих полномочий находятся вне Edge; остальные секреты и доменное состояние ему недоступны. Это принятый целевой контракт, а не доказательство готового HTTPS runtime.
+
 
 Production Docker Compose включает web, API, scheduler, orchestrator, outbox dispatcher, reconciler, data/ML/report workers, migration job, PostgreSQL, Valkey и infrastructure Edge/proxy. API/reconciler/workers используют общий artifact volume; master key и mail credentials поступают как file secret; наружу публикуется только Edge, PostgreSQL/Valkey остаются internal, а Report Delivery имеет bounded outbound report-mail egress. Notifications отдельно владеет v1_target operational email/HTTPS-webhook adapters с allowlisted destinations, endpoint-version pinning, verified email и SEC-006 controls по NOTIFY-008…011; public MVP остаётся in_app-only. Это логические owners, не требование нового контейнера или произвольного egress core services.
 

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-ROADMAP-001
 title: Custometry development roadmap and integration decisions
-doc_version: 9
+doc_version: 10
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -37,9 +37,8 @@ and independent status; do not duplicate their state or revive retired UI progra
 Agents must maintain affected document links, versions, decisions, indexes and
 evidence without owner reminders. Product priorities and Forecasting hold remain
 unchanged. The owner has now accepted [MAP-001 and its six L1 directions](project-map.md)
-at version 1.0.0, followed by the accepted sequential priorities at MAP-001 `1.1.0`.
-The next planning document is [WS-001: installable platform and first administrator bootstrap](directions/DIR-006/workstreams/WS-001.md) `0.1.0`, under DIR-006 with DIR-001/005 contributions.
-Develop that L2 draft with the owner before selecting detailed L3 milestones.
+at version 1.0.0, followed by the accepted sequential priorities and WS-001 registration at MAP-001 `1.2.0`.
+The accepted [WS-001: installable platform and first administrator bootstrap](directions/DIR-006/workstreams/WS-001.md) `1.0.0` belongs to DIR-006, with DIR-001/005 contributions. It fixes M5 Max/36 GB and Linux VM tests, explicit LAN/HTTPS, a guided installer, initial-account roles and no experimental-data migration. The next document is the separate C02 L3 plan for reproducible prebuilt delivery; its MS ID/path/version is produced during that authoring unit. Inventory remains part of L2 preparation; five sequential milestone outcomes are accepted.
 The sequence starts with prebuilt delivery, installation and protected bootstrap,
 then staff/access, sources, usable data, analysis, authoring, publication/access,
 reader use and the next update/recovery cycle. The older report-first recommendation

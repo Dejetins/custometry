@@ -1,8 +1,8 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 20
-product_spec_version: 0.10.0-draft
+doc_version: 21
+product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -19,7 +19,7 @@ This directory contains accepted architecture decisions and shared engineering c
 
 ## Sources of truth
 
-1. `custometry-technical-blueprint-ru.md` contains the normative product requirements, version `0.10.0-draft`.
+1. `custometry-technical-blueprint-ru.md` contains the normative product requirements, version `0.11.0-draft`.
 2. `custometry-technical-blueprint-human-ru.md` is the synchronized human-readable mirror.
 3. `custometry-ui-blueprint-ru.md` preserves UI/UX requirements and current inventory. The final interactive target pilot owns its demonstrated composition, behavior, and visual language; ADR-0007 owns frontend architecture.
 4. Documents in this directory contain accepted architecture and process decisions within the blueprint.
@@ -31,15 +31,15 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 
 | Document | Purpose |
 |---|---|
-| [Development direction map — MAP-001](./planning/project-map.md) | Accepted version 1.1.0: six L1 directions, full sequential priorities and installation-first planning entry |
-| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Selected L2 draft 0.1.0 to develop next: installable delivery, installation and first administrator bootstrap; candidate L3 boundaries remain for owner review |
-| [System Design](./system-design.md) | Complete `0.10.0-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
+| [Development direction map — MAP-001](./planning/project-map.md) | Accepted version 1.2.0: six L1 directions, full sequential priorities and installation-first planning entry |
+| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 1.0.0: M5/Linux installation, TLS, explicit bootstrap roles and five sequential outcomes; the next document is its C02 L3 delivery plan |
+| [System Design](./system-design.md) | Complete `0.11.0-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted customer segmentation/reporting requirements, target contract ownership, compatibility and implementing-ticket acceptance |
 | [Source data adaptation and imperfect snapshot refresh](../contracts/source-data-adaptation-contract.md) | Accepted source readiness, daily rebuilds, degraded-input handling, typed mapping and derived-channel requirements |
 | [Report refresh, prepared serving and recovery](../contracts/report-refresh-serving-recovery-contract.md) | Accepted version 1: document schedules/status, immutable current snapshots, artifact commit, mixed 50-author/100-viewer workload and coherent off-primary backup; numeric latency/recovery objectives remain unproven |
 | [Artifact format registry](../contracts/artifact-format-contract.md) | Required output vocabulary, manifest meaning, reader compatibility and rollback |
-| [Audit contract proposals](./planning/audit-contract-decisions-2026-09-06.md) | Proposed PVM, shared cancellation, endpoint-revocation and TLS contracts; no runtime acceptance |
+| [Audit contract proposals](./planning/audit-contract-decisions-2026-09-06.md) | Proposed PVM, shared cancellation and endpoint revocation; TLS-only Edge exception accepted through WS-001; runtime proof remains separate |
 | [Documentation audit reconciliation](./planning/documentation-audit-reconciliation-2026-09-06.md) | Accepted correction scope, finding disposition, compatibility and observed documentation evidence |
 | [Executable UI route contract](../contracts/ui-route-contract.md) | Identity/execution manifest split, guard/permission/state/history semantics, agent resolution, and validation rules |
 | [UI surface coverage contract](../contracts/ui-surface-contract.md) | Requirement-to-surface coverage, route decision policy, historical design provenance, and complete agent load order |

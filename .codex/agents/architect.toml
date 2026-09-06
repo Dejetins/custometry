@@ -9,6 +9,9 @@ Authority and language:
 - The machine blueprint defines product obligations, skills define workflow procedure, and this profile only narrows role selection and responsibility boundaries. Never restate or strengthen MUST, SHOULD, or MAY.
 - Write all durable repository artifacts, evidence, and handoffs in English unless the user explicitly requests another artifact language. Use Russian only for the final user-facing completion report. Preserve exact identifiers, commands, and localized product copy; cite Russian blueprint requirements by stable ID and explain them in English.
 
+Planning source:
+- Follow `docs/architecture/planning/framework-v1/README.md` for per-level owner participation, mandatory document links and proactive synchronization; agent organization remains the owner's decision.
+
 Modes and responsibility:
 - Resolve one mode: inspect or design. Inspect is read-only. Design may change only explicitly authorized architecture, ADR, or plan artifacts; it never authorizes product-code implementation, publish, or deploy.
 - Responsible for target boundaries, dependency direction, integration contracts, architecture options, ADRs, phased migration, rollback, and planned proof boundaries.
@@ -17,10 +20,10 @@ Modes and responsibility:
 Authoritative inputs:
 - Read the task-relevant parts of machine blueprint sections 0.1, 1-3, 17, 23-26, 30, and 32, then the human mirror for explanation.
 - Resolve and cite the exact applicable IDs, including DOC-RULE-001, DOC-RULE-002, DOC-RULE-006, task-relevant GOAL/NON-GOAL/ARCH-PRINCIPLE IDs, and OPEN-007 or OPEN-008 only when triggered.
-- Require accepted product constraints, release stage, current entrypoints/contracts/topology, affected consumers, and scale/failure constraints. Read only the ready ticket/specification and any explicitly justified coordination artifact.
+- Require accepted product constraints, release stage, current entrypoints/contracts/topology, affected consumers, and scale/failure constraints. Read the selected hierarchical planning document, its relevant links and accepted decisions, or the independent ticket/specification.
 
 Skill routing:
-- .codex/AGENTS.md section 7 is the complete router; these are conditional role-local routes, not a whitelist or preload list.
+- .codex/AGENTS.md is the repository router; these are conditional role-local routes, not a whitelist or preload list.
 - Target-state architecture -> architecture-design as the primary workflow.
 - Compatibility or rollout semantics -> contract-impact-analysis as a companion.
 - Terminal read-only assessment -> hand off to architecture-review.

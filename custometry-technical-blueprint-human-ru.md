@@ -663,6 +663,14 @@ class LocalArtifactStore(Protocol):
 
 Retention различает published outputs, temporary node data, preview, exports, models и audit. Нельзя удалить единственный вход опубликованного результата до окончания воспроизводимого срока.
 
+### 8.2. Надёжная публикация артефактов
+
+| ID | Согласованное требование |
+|---|---|
+| ARTIFACT-COMMIT-001 | Artifact Lifecycle управляет staging, validation, надёжной записью неизменяемого файла и публикацией через PostgreSQL. Долговечность записи доказывается до publication; одного rename недостаточно. Чтение идёт по committed authorized manifest; третий источник истины не нужен. |
+| ARTIFACT-COMMIT-002 | Commit проверяет fencing/idempotency. Reconciler сверяет неизвестный исход транзакции и через owner ports завершает только допустимый переход либо очищает остатки после проверок ссылок, leases и retention. Published, воспроизводимые и защищённые backup файлы сохраняются. |
+| ARTIFACT-COMMIT-003 | Fault injection покрывает все границы записи и publication, повторы, устаревшего worker и concurrent cleanup. Потерянные/повреждённые артефакты блокируют затронутое чтение; restore/recompute проверяет exact identity и не подменяет результат молча. |
+
 ## 9. Low-code pipeline engine
 
 Pipeline — DAG из типизированных узлов. Поддерживаются source, semantic, transform, quality, mart, customer/sales analytics, segmentation, forecasting, visualization и output nodes. У node есть stable type/version, English/Russian label, category, JSON Schema конфигурации, typed ports, queue/resource profile, determinism/cache/cancel flags и PII access. Backend повторяет всю validation, даже если форму сгенерировал frontend.
@@ -1294,6 +1302,20 @@ class ReportDeliveryPort(Protocol):
 | REPORT-016 | Semantic revision diff сравнивает exact authorized document/result versions, отдельно показывая изменения data artifacts/late corrections, metric/filter/parameter/segment definitions, population-time basis и policy, а также presentation-only edits. Где причины неразделимы без отдельного controlled recomputation, показывается mixed/unknown explanation, а не выдуманная причинная декомпозиция; недоступная версия не раскрывает metadata/counts. |
 | REPORT-017 | Draft-to-published comparison показывает affected blocks, normalized semantic changes, comparable values и stale/unavailable dependencies до publication; одинаковые входы не дают выдуманной business delta. Diff с новыми расчётами проходит обычный preflight/Execution/authorization, immutable publications не переписываются, comments/findings не re-anchor-ятся автоматически. |
 
+#### 14.4.1. Обновляемый отчёт и готовые снимки
+
+Согласование владельца от 2026-09-06 закреплено в [контракт обновления, выдачи и восстановления отчётов](./docs/contracts/report-refresh-serving-recovery-contract.md). Определение и ссылки живут в PostgreSQL, готовые значения — в immutable artifacts, ускоряющий cache временный. Новый refresh создаёт новый снимок; уже отправленный или закреплённый остаётся прежним.
+
+| ID | Согласованное требование |
+|---|---|
+| REPORT-REFRESH-001 | Каждый dashboard, workbook-report и research имеет versioned настройку автоматического, календарного либо ручного обновления, timezone, pause/disable и next/last times. Новые рабочие отчёты и dashboards по умолчанию обновляются после загрузки; research и зафиксированные публикации остаются manual/pinned. Неготовые inputs дают понятный blocker. |
+| REPORT-REFRESH-002 | Обновление следует за публикацией проверенных inputs. Если срок наступил раньше готовности новых данных, сохраняется намерение waiting_for_data; если данные пришли раньше срока — ожидается срок. Неизменные inputs не создают фиктивное обновление; as-of входит в identity. Используется общий scheduler/outbox. |
+| REPORT-REFRESH-003 | Обновление сохраняет версию определения, разрешает inputs в точные версии и создаёт новый снимок. Формулы, структура, authored findings и pinning меняются отдельной публикацией; старые снимки, exports и comments неизменны. |
+| REPORT-REFRESH-004 | Несколько pending обновлений объединяются до последнего согласованного поколения без потери входных изменений. Одинаковое вычисление выполняется один раз; непрерывный поток не отменяет полезный расчёт бесконечно, lag виден. |
+| REPORT-REFRESH-005 | Current переключается атомарно только после готовности обязательных blocks и проверок. Policy/definition revision, fencing и publication generation защищают от позднего старого расчёта; failure не заменяет успешный снимок. |
+| REPORT-REFRESH-006 | Читатель остаётся на выбранном снимке до явного применения обновления, видит freshness/progress и сохраняет совместимый контекст. Новый обычный open получает current, exact link сохраняет старый снимок; last-good следует политике, revoke закрывает доступ. |
+| REPORT-REFRESH-007 | Доступность/целостность результата, свежесть и попытка обновления показываются отдельно. Ready, scheduled, waiting_for_data, queued/running, failed/blocked и доказанное повреждение различаются. Updated означает успешную публикацию с датой; ошибка refresh или временная недоступность не доказывает повреждение. |
+
 ### 14.5. Пользовательский email-отчёт
 
 Это user-initiated workflow, а не operational notification и не marketing campaign. Installation Administrator публикует global maximum recipient-domain allowlist, Workspace Administrator может только сузить его, отсутствие policy означает deny. Sender identity связана с user/workspace, verified и отдельно transport-authorized. `From` равен адресу пользователя; silent system fallback и замена требования одним `Reply-To` запрещены.
@@ -1808,6 +1830,8 @@ Backup включает PostgreSQL, local artifacts, master key/KMS config, depl
 | OPS-006 | SLO thresholds ставятся после baseline, но metric names и owners существуют в public MVP |
 | OPS-007 | V1 runbooks покрывают report backlog, XLSX limit, mail unavailable, sender authorization и unknown delivery |
 | OPS-008 | V1 runbook покрывает invalid/unsupported ChartSpec, renderer backlog, SSR/raster timeout/crash, bounded-data reject, parity failure и safe cleanup/retry |
+| OPS-009 | Администратор настраивает автоматический бэкап, целевой режим — ежедневно вечером с явными временем, timezone, destination и retention. Поддерживается согласованный комплект PostgreSQL/artifacts/key recovery/deployment metadata вне основного сервера; это не remote live storage, credentials не публикуются. |
+| OPS-010 | UI показывает next/last backup, age, failure и проверку восстановления. Recovery point определяется последним успешным комплектом; ежедневность не гарантирует RPO/RTO. Drill проверяет ссылки, снимки, права, ключи и измеряет восстановление; численные цели задаются policy либо остаются явно нерешёнными. |
 
 ## 22. Тестирование
 
@@ -1939,6 +1963,10 @@ Test pyramid включает backend unit/property/contract/API tests, real-dat
 | TEST-INV-120 | Тестовый набор SP/is_lk должен проверять оба дочерних канала, unknown/null, overlapping rules и остальные каналы; SP rollup не удваивает продажи, отчёты/сегменты используют одну dimension version, изменение правила инвалидирует соответствующий reuse. |
 | TEST-INV-121 | Тестовый набор неполных данных должен различать полную доставку и неполную историю/атрибуты, сохранять source-row accounting и monetary impact, разрешать независимые capabilities и блокировать необоснованные negative segment conditions; редкий критичный дефект не скрывается общей долей ошибок. |
 | TEST-INV-122 | Snapshot refresh benchmark должен включать полный scan, sparse old corrections, unchanged snapshot, skew/duplicates, cold/warm reuse, bounded memory/temp disk и concurrent source-read budget; результаты сравниваются с эталонным full refresh без ложного обещания incremental source I/O. |
+| TEST-INV-123 | Refresh policy во всех profiles проверяется на due/data ordering, unchanged inputs, DST/misfire, pause/revision races и повторы. Возникает один допустимый demand; pinned publications/findings сохраняются. |
+| TEST-INV-124 | Burst и out-of-order completion не теряют изменения и не откатывают current; нет duplicate compute, continuous arrival сохраняет прогресс, viewer явно применяет целый снимок с соблюдением last-good/revoke и exact links. |
+| TEST-INV-125 | Fault matrix подтверждает publication authority, durability, fencing, unknown commit и safe cleanup без partial reads. Failed refresh, temporary unavailability и corruption имеют разные состояния. |
+| TEST-INV-126 | Mixed 50+100 с refresh проверяет готовую выдачу и согласованные budgets; off-primary restore восстанавливает exact snapshot, PostgreSQL, artifacts и ключи. Нет pass без критериев и наблюдаемого proof. |
 
 Golden datasets дополнительно включают последовательные ежедневные rebuild без updated_at, старые исправления, withdrawals/reappearances, переносы покупок и смену customer ID с/без crosswalk, readiness races, partial push/replay, string booleans, flag-only returns и SP child-channel rules. Golden datasets включают ideal, anonymous, returns, multi-currency, late corrections, duplicates, missing products, SCD, irregular/intermittent series, new store, incomplete month, duplicate source IDs, overlapping/gapped validity, разные metric kinds, percentage/compact-format boundaries, stable metric groups, YoY leap/week53/fiscal cases, overlapping promotions, skewed/zero-inflated/heavy-tail sales с legitimate VIP и DQ-invalid rows, quantile/IQR/MAD bounds/ties/missing, global/within-stratum/privacy-cardinality cases, exact-K/frozen/retrain KMeans fixtures, research findings/comments, requester/executor/mentions/like/view/feed/admin-suppression cases, cold/warm/hot/concurrent/invalidation/last-good/resource-lane reuse cases, web/app identity/session/touch/spend/FX/offline/refund/cohort-maturity cases, governed assumptions и watches, low/high-cardinality sensitive filters, safe/unsafe Markdown и brand assets, multi-block reports, generated XLSX README/limits/injection/names, все shipped themes, полный ChartSpec allowlist, invalid executable/network specs, range timeline, dense aggregate/sample/LOD, identical shared-compiler Web/SSR option hashes и Web/SSR/email/XLSX semantic outputs, а также bundled-font/compiler/renderer build rotation fixtures.
 
@@ -1973,6 +2001,13 @@ Benchmark до stable release использует минимум 500k customers
 | SCALE-002 | Source connection имеет per-connection limit/backpressure |
 | SCALE-003 | Local workers используют один canonical artifact root и supported atomic filesystem semantics |
 | SCALE-004 | Deployment отклоняет remote worker до future distributed ADR |
+
+### 23.1. Готовые отчёты и смешанная нагрузка
+
+| ID | Согласованное требование |
+|---|---|
+| REPORT-PERF-001 | Цель — субъективно моментальное открытие готового предрассчитанного отчёта. Профиль включает 1–50 активных аналитиков и 1–100 читателей, совместную нагрузку 50+100 и background refresh. Это пользователи, а не 50 одновременно выделенных CPU jobs или обещание для любого сервера. |
+| REPORT-PERF-002 | Ready open использует metadata и bounded готовые результаты без повторного чтения исходной истории; новые фильтры/drill-through могут требовать вычисления. Измеряются cold-after-restart/warm/hot open, time-to-usable, страницы/фильтры, refresh lag, p50/p95/p99, throughput, ресурсы, bytes и duplicate compute. До приёмки согласуются hardware/data/document profile и численные latency/freshness budgets; наблюдение PyArrow не является замером платформы. |
 
 ## 24. Развёртывание
 
@@ -2207,6 +2242,9 @@ Authorized Customer + Receipt + ReceiptItem data and completeness evidence
 | V1-AC-065 | Платформа принимает неполные данные с допустимыми дублями/ошибками по опубликованной политике, показывает retained/quarantined/excluded coverage и финансовый эффект, предоставляет обоснованные degraded capabilities и не нарушает обязательные canonical invariants. |
 | V1-AC-066 | В mapping editor настраиваются string-to-bool словари, flag-based sale/return semantics и derived child channels SP по is_lk, включая unknown и conflicts; предпросмотр, публикация, отчёт и сегмент используют одинаковую версию правил. |
 | V1-AC-067 | Приёмка первого реального подключения использует обезличенный согласованный source contract и synthetic adversarial snapshot corpus с ожидаемыми результатами, readiness/coverage evidence и согласованным workload budget; редкость ошибок и успешный sample не заменяют full-scope proof. |
+| V1-AC-068 | Для всех analytical documents доступны период/trigger/timezone/status, проверены due/data ожидание, coalescing, предрасчёт, fixed-definition history, monotonic publication и применение обновления пользователем. |
+| V1-AC-069 | Готовые отчёты читаются без повторного эквивалентного сканирования истории; mixed workload до 50 аналитиков и 100 читателей с refresh проходит заранее согласованные измеримые budgets на объявленном hardware/data/document profile. |
+| V1-AC-070 | Artifact fault matrix и off-primary backup/restore drill подтверждают согласованные snapshots, ссылки и ключи. Администратор настраивает daily-evening schedule/timezone/destination/retention, система честно сообщает recovery point/duration. |
 
 ## 29. Закрытые пробелы исходного плана
 

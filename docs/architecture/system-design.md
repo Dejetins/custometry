@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-SYSTEM-DESIGN-001
 title: Custometry Target System Design
-doc_version: 16
+doc_version: 17
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -592,6 +592,31 @@ numeric with native formats and an accessible path to full precision.
 7. Web, email, XLSX and API consume the same immutable artifact. Last-good
    serving is explicit and exposes freshness/revalidation/limitation.
 
+### 7.7.1. Scheduled document refresh and prepared serving
+
+The owner-approved 2026-09-06 amendment is allocated in
+[Report refresh, prepared serving and recovery, version 1](../contracts/report-refresh-serving-recovery-contract.md).
+Every supported document profile has a refresh setting; new working reports
+and dashboards default to after-ingestion, while research/pinned publications
+remain manual/pinned. A due occurrence without fresh compatible data persists
+as waiting demand. Pending work coalesces without losing final input changes.
+
+Presentation owns stable document/definition/snapshot/current references and
+refresh intent; Execution Control owns schedules and execution through public
+ports. Artifact Lifecycle owns durable placement and committed manifests.
+No third publication authority or independent report scheduler is introduced.
+A complete new root is published with policy/definition revision, fencing and
+monotonic generation checks, so an older late completion cannot regress current.
+An active viewer explicitly adopts updates; new ordinary opens resolve current
+and historical links retain exact snapshots.
+
+Result integrity, freshness and refresh attempt state remain separate. A failed
+refresh can coexist with an authorized valid last-good snapshot. Prepared reads
+serve bounded active-page values, with no equivalent source-history rescan.
+The mixed-load target includes up to 50 active authors and 100 viewers plus
+background refresh under shared CPU/memory/IO admission. Numeric latency and
+freshness budgets, hardware and data volume remain unresolved acceptance inputs.
+
 ### 7.8. Cross-channel acquisition and unit economics
 
 1. Governed connectors/imports publish versioned web/app events, sessions,
@@ -790,6 +815,23 @@ transaction. Cross-context durable handoff uses outbox/event delivery. A
 consumer records idempotency and must tolerate duplicates. Strong consistency
 is used for permission and publication decisions; projections expose explicit
 freshness for search, impact, notification, and read models.
+
+### 10.1. Publication durability and coherent recovery
+
+REPORT-REFRESH-001 through REPORT-REFRESH-007, ARTIFACT-COMMIT-001 through
+ARTIFACT-COMMIT-003 and OPS-009/010 are allocated in the
+[version 1 refresh/recovery contract](../contracts/report-refresh-serving-recovery-contract.md).
+Durable immutable file placement precedes PostgreSQL publication. Unknown
+commit outcomes and orphan cleanup reconcile through owner ports with fencing,
+reference and retention checks; rename alone is not power-loss evidence.
+Cross-context handoffs do not become direct private-table transactions.
+
+V1 keeps one local live artifact volume while supporting coherent backup
+outside the primary server. The administrator configures the daily-evening
+time/timezone, destination and retention. A restore point binds PostgreSQL,
+referenced artifacts, keys and deployment metadata; restore proof reproduces
+exact snapshots. A configured schedule does not establish a successful copy,
+a numeric RPO/RTO or observed recovery. Fault and restore drills remain required.
 
 ## 11. CPU, performance, and capacity
 

@@ -22,6 +22,8 @@ IDs from the generated requirement index.
 
 - [Artifact format registry](./artifact-format-contract.md) - complete vocabulary for already-required immutable outputs, media mapping, reader-first compatibility and rollback.
 
+- [Report refresh, prepared serving and recovery](./report-refresh-serving-recovery-contract.md) - accepted version 1 document refresh/status, publication durability, prepared serving, mixed-load and backup requirements with ownership, compatibility and proof boundaries.
+
 ## Foundation contract drift manifest
 
 `contract-drift.json` lists the OpenAPI document, external JSON Schemas, and the

@@ -30,6 +30,7 @@
 - [DIR-004. Analytical documents and result delivery](architecture/planning/directions/DIR-004/direction.md)
 - [DIR-005. Web interface and user journeys](architecture/planning/directions/DIR-005/direction.md)
 - [DIR-006. Operations, integration and system acceptance](architecture/planning/directions/DIR-006/direction.md)
+- [WS-001. Installable platform and first administrator bootstrap](architecture/planning/directions/DIR-006/workstreams/WS-001.md)
 - [Documentation audit reconciliation](architecture/planning/documentation-audit-reconciliation-2026-09-06.md)
 - [Template — project planning map](architecture/planning/framework-v1/01-project-map-template.md)
 - [Template — development direction](architecture/planning/framework-v1/02-direction-template.md)

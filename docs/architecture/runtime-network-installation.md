@@ -1,8 +1,8 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 7
-product_spec_version: 0.9.0-draft
+doc_version: 8
+product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
 owner: devops
@@ -10,7 +10,7 @@ requirement_ids: [SCALE-004, SEC-016, SEC-017, SEC-018]
 status: accepted
 proof_boundary:
   label: foundation-runtime-target-contract
-  exclusions: [observed-m3-installation, release-artifact, future-egress]
+  exclusions: [observed-m5-or-linux-vm-installation, release-artifact, future-egress]
 ---
 
 # Custometry Runtime, Network, and Installation
@@ -30,13 +30,19 @@ Web/API, PostgreSQL, Valkey, the chart renderer, scheduler/orchestrator, and oth
 
 ## 2. First target environment
 
-- Apple Silicon MacBook Pro M3 Pro;
+- Apple Silicon Mac M5 Max with 36 GB host RAM, supplied by the owner on 2026-09-06;
+- a Linux VM on that same Mac as the additional bounded installation test environment;
+- the selected guest OS/architecture, hypervisor, engine and resource allocation are recorded before target proof; VM evidence does not qualify arbitrary Linux servers or x86_64;
 - one selected Docker-compatible engine;
 - normal `demo` ceiling: 6 GiB of RAM and 25 GiB of repository-owned/container data;
 - CPU only, using no more than container-visible cores and the administrator cap;
 - other operating systems and architectures are added only after separate platform proof.
 
 `doctor` must detect concurrently active engines and contexts, architecture, CPU/cgroup limits, memory, disk, bind-port availability, and required CLI versions. Two parallel engines with separate images and caches are a configuration error, not additional capacity.
+
+The 36 GB host capacity does not increase the existing demo ceilings. Only one
+container engine/context is active for each target run; macOS and Linux VM tests
+are sequential and report their distinct resource and network boundaries.
 
 ## 3. Download-first installation
 
@@ -46,7 +52,7 @@ Foundation exposes three Compose profiles/contracts:
 - `demo`: separate demo-source PostgreSQL in addition to core;
 - `migration`: one-shot Alembic job that completes before application startup.
 
-Full Stack developer bootstrap on the M3 target:
+Full Stack developer bootstrap on the M5 Max target:
 
 ```bash
 deploy/compose/bootstrap.sh --build
@@ -74,6 +80,21 @@ images after the protected `main` gate. It does not publish an accepted end-user
 is parsed as strict data and must come from a future protected bundle workflow. Candidate
 publication alone is not release acceptance.
 
+The owner accepted [WS-001](planning/directions/DIR-006/workstreams/WS-001.md)
+`1.0.0` on 2026-09-06. The administrator installs the supported container engine
+before running the launcher; the installer checks it and gives actionable failure.
+The supported path asks for the installation directory and explicit access
+configuration, then handles configuration, local secrets, downloads, migrations
+and readiness. It requires no source build, manual Compose/YAML or SQL editing.
+First account/workspace creation happens in the browser. No separate native
+graphical installer or automatic host engine installation is required.
+
+The first delivery creates installation-owned state and need not import prior
+experimental data. It preserves other installations and host resources. Repeat
+installation/restart preserves identity, secrets and persistent data; migrations
+remain explicit, versioned and fail closed. Whole-product updates and coherent
+backup/restore qualification retain their later sequence allocation.
+
 Target user flow:
 
 1. Download a small signed and checksummed launcher or release configuration.
@@ -94,6 +115,36 @@ Target user flow:
 A build or pull exit code of `0` is insufficient: the installer checks manifest existence, platform, digest, runtime start/import, and post-start health. If the artifact was not published, the platform is unavailable, or the publication workflow was skipped, installation fails with the exact reason.
 
 Optional air-gap export/import may be added later as a separate release artifact with inventory and checksums. It must not silently become the default and does not include build caches, package registries, or unnecessary platform layers.
+
+### Accepted HTTPS and bootstrap boundary
+
+Edge terminates HTTPS with one narrow exception to its former blanket secret ban:
+read-only installation TLS private-key and certificate-chain files. Business,
+workspace, database, source, mail, API and master-key credentials remain forbidden.
+Edge has no domain state, certificate-issuance client, acquisition egress or dynamic
+upstream; it retains the fixed Web upstream and separate adjacency from API.
+
+DevOps owns the installation TLS configuration: selected mode, approved origin,
+file references, public fingerprint and configuration revision. Issuance and renewal
+remain outside Edge under installation custody. Preflight verifies key/chain match,
+trusted name/validity, readable protected mounts and the selected origin. Rotation
+validates the new pair before activation and verifies the new handshake; an invalid
+candidate preserves the last valid configuration. Expired or compromised material
+requires forward repair and never falls back to HTTP. Keys stay out of environment
+values, images, Git, diagnostic bundles and logs. Exact certificates, origin and
+renewal procedure are target inputs to settle before runtime proof.
+
+Local access stays the default. Explicit LAN mode must pass protected browser
+access from another computer; bootstrap remains protected by its host-controlled
+one-time token on the configured origin. The first account receives installation
+administration plus explicitly disclosed initial roles in the first workspace.
+Identity owns the reviewed initial grants, normal delegation ceiling and irreversible
+closure; no implicit other-workspace or PII access is created.
+
+These are accepted target decisions under [ADR-0002](../adr/0002-edge-ingress-network-segmentation.md)
+doc_version 2. Current HTTP Foundation code is not proof of their implementation.
+External TLS termination is not a required installation prerequisite.
+Production firewall/CNI proof under SEC-018 remains separate.
 
 ## 4. Port contract
 
@@ -208,7 +259,7 @@ Install/update preflight reserves space not only for the compressed download, bu
 
 ## 10. Release acceptance
 
-The release installation gate on the M3 Pro must observe:
+The release installation gate on the M5 Max and selected Linux VM must observe:
 
 - clean machine/engine-context preflight;
 - download by digest without a build-cache dependency;
@@ -227,3 +278,7 @@ The release installation gate on the M3 Pro must observe:
 - disk/RAM ceiling evidence.
 
 Until these observations exist, the documentation describes a target contract, not a proven installation.
+
+## Accepted amendment — 2026-09-06
+
+Version 8 records WS-001 owner decisions: M5 Max/36 GB plus Linux VM, local and explicit LAN access, Edge TLS-only credentials, guided installation and first-account policy, and no experimental-data migration obligation. Earlier M3 runtime evidence remains historical. No runtime, public release or production qualification is claimed by this amendment.

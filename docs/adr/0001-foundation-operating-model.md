@@ -1,8 +1,8 @@
 ---
 doc_id: ADR-0001
 title: Foundation operating model
-doc_version: 4
-product_spec_version: 0.9.0-draft
+doc_version: 5
+product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -31,8 +31,8 @@ The repository is at the Foundation stage. We need to establish a tangible Web e
 1. The repository remains public.
 2. `main` is protected; changes go through pull requests, required checks, squash merges, and linear history; no `develop` branch is created.
 3. The delivery contract uses contract-backed, UI-first vertical slices.
-4. The first deployment proof is performed locally on a MacBook Pro M3 Pro / Apple Silicon.
-5. The Web/API/data core is offline-capable and deny-by-default for egress. Edge is a separate, secretless infrastructure ingress adapter with limited adjacency, but Compose alone does not prove that Edge has no ambient outbound route. Future connector, mail, and update paths receive separate allowlists, while strict Edge policy is handled by the target-specific hardening defined in ADR-0002.
+4. The first deployment proof is performed locally on a Mac M5 Max / Apple Silicon with 36 GB host RAM; a Linux VM on the same Mac supplies separate Linux proof.
+5. The Web/API/data core is offline-capable and deny-by-default for egress. Edge is a separate infrastructure ingress adapter with only the installation TLS key/chain exception in ADR-0002 with limited adjacency, but Compose alone does not prove that Edge has no ambient outbound route. Future connector, mail, and update paths receive separate allowlists, while strict Edge policy is handled by the target-specific hardening defined in ADR-0002.
 6. The normal local budget is 6 GiB of RAM and 25 GiB of owned disk; benchmarks are opt-in.
 7. The default installation is download-first: pinned images and assets are downloaded and verified; a large full-offline bundle is not the default.
 8. Public user and installation documentation is available locally; operator and administrator documentation requires authorization; architecture, ADRs, internal contracts, delivery tickets/evidence, and iteration evidence are not included in the ordinary installation.
@@ -83,7 +83,7 @@ Costs:
 - host/Hybrid behavior can drift from images, so Full Stack proof remains
   mandatory whenever a ticket claims integrated image/runtime behavior;
 - authenticated documentation requires a separate build and serving boundary;
-- multi-platform release is deferred until the M3 Pro path is proven.
+- multi-platform release is deferred until the M5 Max path is proven.
 
 ## Compatibility and migration
 
@@ -94,7 +94,7 @@ Until release consumers exist, this decision is a `compatible-change`. After the
 Foundation is accepted only after:
 
 - tested quality tools and grouped profiles pass;
-- a clean local bootstrap and Compose smoke test pass on the M3 Pro;
+- a clean local bootstrap and Compose smoke test pass on the M5 Max;
 - actual port and network checks pass;
 - documentation build, search, visibility, and browser checks pass;
 - deterministic fixture and migration evidence exists;
@@ -108,5 +108,16 @@ This ADR records the decision but is not itself runtime evidence.
 - mandatory air-gapped deployment;
 - a multi-tenant hosted control plane;
 - a need for a different documentation engine;
-- CI or runtime consistently exceeds the accepted M3 budget;
+- CI or runtime consistently exceeds the accepted demo budget;
 - an independent deployment cadence or trust boundary justifies service extraction.
+
+
+## Owner amendment — 2026-09-06
+
+[WS-001](../architecture/planning/directions/DIR-006/workstreams/WS-001.md) `1.0.0`
+replaces the M3 target with M5 Max/36 GB and adds bounded Linux VM testing.
+The demo resource ceilings are unchanged; generic Linux/x86_64 and production
+claims need their own evidence. ADR-0002 doc_version 2 accepts TLS-only Edge
+credentials without changing context or adjacency ownership. The owner's direct
+main publication authorization applies to this documentation unit only; it
+does not amend the default PR workflow or authorize protection changes.

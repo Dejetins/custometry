@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-AUDIT-CONTRACT-DECISIONS-2026-09-06
 title: Remaining documentation audit contract proposals
-doc_version: 1
+doc_version: 2
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -17,10 +17,10 @@ proof_boundary:
 
 ## Status and authority
 
-The four contract proposals are complete for review and remain `proposed`.
-They cover PVM algebra, shared compute cancellation, notification endpoint
-revocation, and production TLS. The bounded policy selections below must be
-accepted before changing dependent behavior; they do not block unrelated
+PVM, shared cancellation and notification revocation remain `proposed`. The owner accepted only the TLS exception in section 4 on 2026-09-06 through WS-001 1.0.0; the artifact retains proposed status for the other three decisions.
+The three pending selections cover PVM algebra, shared compute cancellation and
+notification endpoint revocation. Those policies must be accepted before changing
+dependent behavior; they do not block unrelated
 accepted documentation repairs. Implementation belongs to the respective
 context owners and its independent verification boundary.
 
@@ -38,13 +38,13 @@ release, forecast work, threshold, SLA, credential, or deployment target is sele
 | Kind | Evidence and consequence |
 |---|---|
 | Fact | Machine §12.13 names PVM order and reconciliation without algebra; §9.7/9.11 require coalescing and cancellation without consumer ownership rules. |
-| Fact | `NOTIFY-012` currently applies changes/revocation only to new delivery. `SEC-001` requires proxy TLS while `SEC-016` and §24.1 describe a secretless Edge. Both conflicts need explicit acceptance before behavior changes. |
+| Historical baseline | NOTIFY-012 applied revocation only to new delivery; SEC-001 proxy TLS conflicted with the former SEC-016 secretless Edge. The TLS conflict is resolved by the owner adoption in section 4; notification revocation remains pending. |
 | Fact | Publication-base source inspection at `d5ecbd33c1fd582058ec3514e2084820c8a3f1c2` finds implemented execution-control and Notifications modules; `packages/analytics_sales` remains a placeholder, while implemented analytics lives in `packages/analytics_core`. Presence of analytics code alone does not establish PVM support. The earlier local-audit placeholder observation does not describe this publication base. [Edge configuration](../../../deploy/edge/nginx.conf) still listens on HTTP port 8080 with one Web upstream. Source presence is not runtime or external-consumer evidence. |
 | Fact | Existing execution cancellation is scoped to a Run: `packages/execution/application/service.py` delegates `run.cancel`, and `infrastructure/control_postgres.py` serializes revision/idempotency, transitions to CANCELLING and fences outstanding attempts with cancel outbox records. Migration `0008` already persists runs, attempts, history, outbox and idempotency. No durable shared-consumer-interest graph was found in the bounded owner paths. The proposal extends this existing lifecycle. |
 | Fact | Existing Notifications implements in-app inbox delivery and read/update operations, with source-event, inbox, event-history, idempotency and audit-outbox persistence in migration `0009`. No external endpoint/version/security-revoke or external retry implementation was found in the bounded Notifications/API/contracts search. The endpoint proposal concerns the future v1 external-delivery extension. |
 | Assumption | Existing execution, notification and artifact records/consumers must be inventoried before adopting the proposed contracts. Their absence cannot be assumed; no proposal authorizes rewriting existing records. |
-| Proposal | Four primary options below resolve engineering details; none is an accepted amendment to the blueprint. |
-| Unknown | Acceptance of the economic attribution convention, last-consumer policy, security-revoke semantics, and TLS trust boundary; actual supported deployment/provider/consumer matrix remains future qualification input. |
+| Proposal | Three primary options remain proposals; only the TLS option is an accepted amendment to the blueprint. |
+| Unknown | Acceptance of the economic attribution convention, last-consumer policy and security-revoke semantics; the actual deployment/provider/consumer matrix and TLS runtime proof remain future qualification inputs. |
 
 Ownership and dependency direction follow the accepted [context map](../bounded-context-map.md).
 Apps compose inbound adapters; application/domain contracts own their ports; infrastructure
@@ -241,7 +241,7 @@ feasibility still needs evidence.
 
 ## 4. Production TLS: a credential-only Edge exception
 
-**Primary recommendation:** amend `SEC-016`/§24.1 to allow only installation TLS private
+**Accepted selection (2026-09-06):** the owner adopted the narrow exception in WS-001 1.0.0, now reflected in SEC-016, §24.1, ADR-0002 doc_version 2 and runtime contract doc_version 8. Allow only installation TLS private
 keys/certificate chains in Edge, preserving the ban on business, workspace, source, database, mail,
 API and master-key credentials. Edge remains an infrastructure adapter with one immutable Web
 upstream and no domain state. The alternative is an explicitly trusted external TLS terminator
@@ -266,8 +266,7 @@ threshold is selected. `SEC-001/007/017/018` and [network/install
 policy](../runtime-network-installation.md) still constrain headers, secrets, adjacency and
 target-specific egress proof.
 
-**Selection still needed:** approve the narrow credential exception or external termination
-boundary. Exact origin, certificate authority, custody/renewal mechanism, supported runtime and
+**Selection resolved:** the narrow credential exception is accepted; external termination is not a required boundary for WS-001. Exact origin, certificate authority, custody/renewal mechanism, supported runtime and
 exposure are qualification inputs, not values needed to write this design. No deployment is
 authorized by this choice.
 
@@ -282,7 +281,7 @@ consumers remain `unknown` until found.
 | PVM named order → exact allocation and scope identity | `unknown` for any preexisting result consumers; same-name method semantics can change values. Version spec/result schema and algorithm identity before publication; never reinterpret stored results. Disable new computation on rollback and preserve old readers/results. |
 | One cancel/run state → separate durable consumer/global commands | `breaking-change` if ordinary cancel currently stops shared work; version APIs and projections. New commands are `compatible-change` only for consumers explicitly adopting them. Preserve old terminal history; drain/fence work before reverting readers and never revive cancelled interests. |
 | New-delivery-only endpoint revoke → dispatch barrier and unknown outcomes | `breaking-change` to pending/retry guarantees and exhaustive state readers. Expand readers/schema first, then switch dispatch under one epoch-aware writer; no old dispatcher may bypass revocation. Rollback pauses external sends and retains revocation/unknown records. |
-| Secretless Edge → TLS-only key custody | `breaking-change` to security/config policy; fixed routing/network boundaries remain. Introduce an explicit production mode only after acceptance. Rollback may use a valid uncompromised prior certificate, never HTTP or revoked material. |
+| Secretless Edge → TLS-only key custody | `breaking-change` to security/config policy; fixed routing/network boundaries remain. Acceptance is recorded above; introduce the coordinated TLS mode only through its implementation milestone. Rollback may use a valid uncompromised prior certificate, never HTTP or revoked material. |
 
 Logical phases: (1) accept the bounded choices and synchronize normative contracts; (2) inventory
 actual consumers and introduce versioned owner ports, schemas/readers with migration proof; (3)
@@ -300,3 +299,12 @@ machine §24.3. No numeric scale target is added.
 
 All runtime/DB/provider/browser/performance/recovery/release proof above remains unverified.
 Engineering follows accepted choices and scoped tickets; the Forecasting hold remains in force.
+
+
+## Partial adoption record — 2026-09-06
+
+[WS-001](directions/DIR-006/workstreams/WS-001.md) `1.0.0` accepts section 4 only.
+The former conflict is historical evidence of the proposal baseline, resolved in
+product specification `0.11.0-draft`. PVM, shared-consumer cancellation and
+notification-revocation proposals are unchanged and require their own decisions.
+Runtime TLS, recovery and production proof are still unobserved here.

@@ -8,13 +8,13 @@
   "artifact_kind": "direction",
   "doc_id": "DIR-004",
   "title": "Analytical documents and result delivery",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "planning_status": "accepted",
   "language": "en",
   "parent_ref": {
     "id": "MAP-001",
     "path": "docs/architecture/planning/project-map.md",
-    "version": "1.0.0"
+    "version": "1.2.0"
   },
   "direction_ref": "DIR-004",
   "baseline_ref": {
@@ -26,7 +26,7 @@
   "requirement_refs": [
     {
       "source": "custometry-technical-blueprint-ru.md",
-      "revision": "5a963ab0166bfa44d508679dcafa29723bbeb68b",
+      "revision": "sha256:183d9d2f2070cb8e651eca46fa44244b0d0af2a914830bcee6e5716ae15fd163",
       "ids": [
         "GOAL-012",
         "GOAL-017",
@@ -53,13 +53,15 @@
     "MAP-001/DEC-01",
     "MAP-001/DEC-02",
     "MAP-001/DEC-05",
-    "DIR-004/DEC-01"
+    "DIR-004/DEC-01",
+    "MAP-001/DEC-06",
+    "MAP-001/DEC-07"
   ],
   "supersedes_ref": null,
   "proof_boundary": {
     "label": "accepted-level-1-planning-boundaries",
     "exclusions": [
-      "workstream-selection",
+      "unwritten-child-acceptance",
       "exhaustive-code-audit",
       "runtime-readiness",
       "implementation-authority"
@@ -70,9 +72,9 @@
 
 # DIR-004. Analytical documents and result delivery
 
-> Accepted L1 scope, version `1.0.0`, 2026-09-06. Parent: [MAP-001](../../project-map.md) `1.0.0`.
-> The owner accepted the six-direction structure and requested English adoption and publication.
-> L2 selection, milestone acceptance, agent assignment and implementation remain separate decisions.
+> Accepted L1 scope and sequence links, version `1.2.0`, 2026-09-06. Parent: [MAP-001](../../project-map.md) `1.2.0`.
+> MAP-001 records the owner-selected installation-first sequence and WS-001 entry. WS-001 1.0.0 now records the accepted M5/Linux, TLS, installation and first-account decisions.
+> Detailed child acceptance, agent assignment and implementation remain separate decisions.
 
 ## Intent and boundaries
 
@@ -87,7 +89,7 @@
 | Observable direction completion | One publication has consistent values across supported channels; refresh preserves history and monotonic current state; readers obtain a safe prepared snapshot. Closure includes real data, analytical and Web integration. |
 
 Normative meaning remains in the [machine blueprint](../../../../../custometry-technical-blueprint-ru.md) and
-[human mirror](../../../../../custometry-technical-blueprint-human-ru.md), version `0.10.0-draft`. The
+[human mirror](../../../../../custometry-technical-blueprint-human-ru.md), version `0.11.0-draft`. The
 [context map](../../../bounded-context-map.md) doc_version 13
 defines ownership. Metadata pins the source commit. Selected `requirement_refs`
 are anchors, not an exhaustive direction acceptance inventory.
@@ -105,9 +107,9 @@ The target contracts and pilot exist. A presentation package does not establish 
 ## Candidate L2 composition
 
 These rows describe the accepted L1 scope at candidate workstream granularity.
-They are not accepted L2 plans or a selected execution order. After owner selection,
-create the chosen WS document with stable ID, version, real path and reciprocal
-parent link. No WS file, milestone or executable promise is initialized here.
+The unselected rows are not accepted L2 plans. The selected first-block document
+is referenced separately below. Other WS documents receive stable IDs, versions
+and reciprocal parent links only after selection; no milestone is initialized here.
 
 | Local candidate ID | Large task | Intended result | Existing base / dependency |
 |---|---|---|---|
@@ -118,8 +120,18 @@ parent link. No WS file, milestone or executable promise is initialized here.
 | DIR-004/C05 | Delivery and exports | Exact-snapshot operations, report email policy/reconciliation and shared export adapters. | Report email remains separate from operational notifications. |
 | DIR-004/C06 | Universal XLSX — late phase | One workbook renderer over stable ReportSnapshot. | Preserve its position as the final new functional v1 increment. |
 
-The next authorized planning step produces those future documents; the owner is
-not expected to supply them manually. Candidate presence is not entry readiness.
+The agent produces future selected documents with the owner; the owner is not
+expected to supply them manually. Candidate presence is not entry readiness.
+
+## Accepted sequence and first-block relationship
+
+Follow [MAP-001's accepted sequence](../../project-map.md#accepted-delivery-sequence)
+`1.2.0`. The accepted starting document is [WS-001](../DIR-006/workstreams/WS-001.md) `1.0.0`, whose single
+parent is DIR-006. Authoring, immutable publication and reader serving follow the necessary result contracts at MAP-001/SEQ-09..11. Report delivery is no longer the first detailed branch.
+
+This is a contribution/reference, not a second decomposition parent. No duplicate
+WS or parallel dispatch is created. Actual provider contributions are bounded
+inside the selected workstream; later contracts are resolved before their consumers.
 
 ## Relationships with other directions
 
@@ -129,15 +141,15 @@ dependencies. Informational interactions do not create a cyclic execution graph.
 
 | ID | Provider and version | Required output | Consumer | Needed before | Satisfaction proof / integration responsibility |
 |---|---|---|---|---|---|
-| DIR-004/DEP-01 | [DIR-003](../DIR-003/direction.md) `1.0.0` | Result artifacts, normalized blocks, matrices and segment/finding references | DIR-004 | Acceptance of the relevant scenario | Document content. The owning milestone and its proof are selected at L2/L3. |
-| DIR-004/DEP-02 | [DIR-002](../DIR-002/direction.md) `1.0.0` | Committed artifacts, readiness, data versions and lineage | DIR-004 | Acceptance of the relevant scenario | Safe publication and exact snapshots. The owning milestone and its proof are selected at L2/L3. |
-| DIR-004/DEP-03 | [DIR-001](../DIR-001/direction.md) `1.0.0` | Policy, execution, schedules and collaboration ports | DIR-004 | Acceptance of the relevant scenario | Refresh, access and shared work. The owning milestone and its proof are selected at L2/L3. |
+| DIR-004/DEP-01 | [DIR-003](../DIR-003/direction.md) `1.2.0` | Result artifacts, normalized blocks, matrices and segment/finding references | DIR-004 | Acceptance of the relevant scenario | Document content. The owning milestone and its proof are selected at L2/L3. |
+| DIR-004/DEP-02 | [DIR-002](../DIR-002/direction.md) `1.2.0` | Committed artifacts, readiness, data versions and lineage | DIR-004 | Acceptance of the relevant scenario | Safe publication and exact snapshots. The owning milestone and its proof are selected at L2/L3. |
+| DIR-004/DEP-03 | [DIR-001](../DIR-001/direction.md) `1.2.0` | Policy, execution, schedules and collaboration ports | DIR-004 | Acceptance of the relevant scenario | Refresh, access and shared work. The owning milestone and its proof are selected at L2/L3. |
 
 **Outputs supplied:**
 
-- [DIR-005](../DIR-005/direction.md) `1.0.0`: Editing/read APIs, snapshot projections, refresh state and renderer.
-- [DIR-006](../DIR-006/direction.md) `1.0.0`: Prepared serving path and coherent recovery set.
-- [DIR-001](../DIR-001/direction.md) `1.0.0`: Versioned refresh demand and report-delivery events.
+- [DIR-005](../DIR-005/direction.md) `1.2.0`: Editing/read APIs, snapshot projections, refresh state and renderer.
+- [DIR-006](../DIR-006/direction.md) `1.2.0`: Prepared serving path and coherent recovery set.
+- [DIR-001](../DIR-001/direction.md) `1.2.0`: Versioned refresh demand and report-delivery events.
 
 Each consumer proves integration with the provider-owned contract. The common
 snapshot/refresh ownership allocation is in [MAP-001](../../project-map.md). Actual public
@@ -148,7 +160,7 @@ contract changes remain with their accepted context owners.
 | Decision ID | Decision or question | Authority / next condition | Effect |
 |---|---|---|---|
 | DIR-004/DEC-01 | This direction's L1 boundary and composition are accepted | Owner decision on 2026-09-06, recorded at [MAP-001 adoption](../../project-map.md) / MAP-001/DEC-05; version `1.0.0` | Settles L1 structure; does not accept an unwritten child plan. |
-| DIR-004/DEC-02 | Which large task is detailed first? | Not selected; owner chooses the next branch | Blocks selecting an L2 planning unit, not publication of this accepted L1. |
+| DIR-004/DEC-02 | What is the next planning relationship? | Follow accepted MAP-001/DEC-06/07; WS-001 under DIR-006 is first. A separate child of this direction is not selected here | Contribute the declared prerequisites; select later owned L2 detail with the owner. |
 
 Product exclusions, forecasting hold and XLSX sequencing in MAP-001 apply here.
 No agent, calendar, worktree topology or parallel execution is assigned by this plan.
@@ -159,8 +171,11 @@ No agent, calendar, worktree topology or parallel execution is assigned by this 
 |---|---|---|---|
 | 0.1.0 | 2026-09-06 | Russian owner-review draft | Initial draft request; historical authoring baseline |
 | 1.0.0 | 2026-09-06 | L1 adopted in English; draft replaced; parent and interface versions synchronized | Owner acceptance and publication request; MAP-001/DEC-05 |
+| 1.1.0 | 2026-09-06 | Apply accepted sequential priorities and first-block relationship; synchronize parent/provider versions; retain capability boundaries | Owner sequencing acceptance; MAP-001/DEC-06/07 |
+| 1.2.0 | 2026-09-06 | Revalidate unchanged direction boundary and MAP/WS links against accepted WS-001 1.0.0 and amended requirement sources | Owner finalization instruction; substantive changes are owned by WS-001 |
 
-MAP-001 registers this direction at `1.0.0`; metadata points back to that exact
-parent version. Requirements, architecture and existing ticket state are unchanged.
+MAP-001 registers this direction at `1.2.0`; metadata points back to that exact
+parent version. Direction boundaries and existing ticket state remain unchanged;
+the bounded installation/TLS/bootstrap requirement amendment is owned by WS-001 1.0.0.
 Future edits update both sides of affected links. Publication/source checks and
 their limits are recorded in MAP-001; no duplicate execution journal is created.

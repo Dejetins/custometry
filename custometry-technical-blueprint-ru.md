@@ -2,7 +2,7 @@
 document_family_id: CUSTOMETRY-TECH-BLUEPRINT
 document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
 title: Custometry — технический blueprint платформы клиентской аналитики и прогнозирования
-spec_version: 0.10.0-draft
+spec_version: 0.11.0-draft
 representation: machine
 normative: true
 status: draft
@@ -12,7 +12,7 @@ updated_at: 2026-09-06
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
-  expected_spec_version: 0.10.0-draft
+  expected_spec_version: 0.11.0-draft
 intended_readers:
   - software_architect
   - backend_agent
@@ -39,7 +39,7 @@ license_target: Apache-2.0
 
 Этот документ является единым техническим blueprint для создания открытой self-hosted платформы клиентской аналитики и прогнозирования под названием `Custometry`.
 
-> Это нормативная машиночитаемая версия спецификации `0.10.0-draft`. Полное человекочитаемое смысловое зеркало: [custometry-technical-blueprint-human-ru.md](./custometry-technical-blueprint-human-ru.md). Обе версии MUST иметь одинаковый `document_family_id`, `spec_version` и набор нормативных requirement ID; при расхождении источником истины является этот документ.
+> Это нормативная машиночитаемая версия спецификации `0.11.0-draft`. Полное человекочитаемое смысловое зеркало: [custometry-technical-blueprint-human-ru.md](./custometry-technical-blueprint-human-ru.md). Обе версии MUST иметь одинаковый `document_family_id`, `spec_version` и набор нормативных requirement ID; при расхождении источником истины является этот документ.
 
 Документ объединяет:
 
@@ -93,6 +93,10 @@ interpretation_rules:
 Forecasting находится в **hold** по решению владельца: forecast-specific разработка, модели, backtesting и новый forecast UI возобновляются только по его явному решению. Существующие требования сохраняются; общие analytics/segments/reports могут развиваться независимо. Первый внешний release scenario пока не выбран; старые alpha/MVP/v1 критерии с forecasting не считаются выполненными благодаря одному report-and-segment preview.
 
 Manual plan-versus-actual targets, новые PDF/standalone HTML exports и дополнительные Product/Store membership types остаются отдельно оцениваемыми расширениями; related Product/Store conditions и существующие Web/email/XLSX semantics входят в текущие требования. B2B, activation и SaaS exclusions сохраняются. Последовательность поставки новых возможностей описана в §26 и [плане продолжения](./docs/architecture/planning/development-roadmap-v1.md).
+
+## 0.3. Принятый контракт первой установки — 2026-09-06
+
+Версия 0.11.0-draft отражает согласованные владельцем WS-001, начальную bootstrap policy и узкое TLS-исключение SEC-016. Реализация и runtime proof этим изменением не утверждаются; остальные открытые предложения аудита сохраняют свой статус.
 
 # 1. Резюме продукта
 
@@ -379,6 +383,7 @@ user_journeys:
     name: first_run_and_workspace_bootstrap
     requirements:
       - Bootstrap endpoint доступен только до создания первого installation administrator и защищён одноразовым bootstrap token.
+      - Первый аккаунт совмещает installation administrator и явно показанные перед завершением роли первого workspace; начальная bootstrap policy позволяет организовать команду без ручного изменения БД, не выдавая доступ к другим workspace или PII автоматически.
       - Пользователь выбирает language, format locale и timezone независимо друг от друга.
       - Система создаёт первый workspace и предлагает опциональный демонстрационный dataset.
       - Checklist сохраняется и может быть продолжен после повторного входа.
@@ -6920,6 +6925,10 @@ auth_lifecycle:
     precondition: zero_users
     protection: one_time_deployment_bootstrap_token
     result: first_installation_admin_and_workspace
+    initial_account: installation_admin_and_explicit_first_workspace_role_assignments
+    grant_policy: reviewed_bootstrap_policy_sufficient_to_initialize_required_role_delegation
+    ui_confirmation: show_initial_roles_before_completion
+    exclusions: [implicit_other_workspace_access, automatic_pii_access]
   invite:
     token_storage: hash_only
     properties: [workspace_id, intended_identity, role_grants, expires_at, single_use]
@@ -7056,7 +7065,7 @@ security_requirements:
   - id: SEC-015
     requirement: Static chart renderer MUST работать без outbound network, с read-only code/runtime, bounded temp/output/memory/CPU/time, workspace-scoped artifact access, path normalization и cleanup incomplete SVG/PNG после failure/cancel/crash.
   - id: SEC-016
-    requirement: Edge/proxy MUST быть secretless/state-free инфраструктурным ingress-адаптером без бизнес-логики и пользовательски выбираемого upstream; его наличие не создаёт новый bounded context или продуктовый микросервис.
+    requirement: Edge/proxy MUST оставаться инфраструктурным ingress-адаптером без доменного состояния, бизнес-логики и пользовательски выбираемого upstream. Единственное разрешённое исключение для secrets — installation TLS private key и certificate chain через read-only file references; business/workspace/source/database/mail/API/master-key secrets запрещены. Выпуск и обновление сертификатов выполняются вне Edge; Edge не получает certificate-acquisition egress. Его наличие не создаёт новый bounded context или продуктовый микросервис.
   - id: SEC-017
     requirement: Deployment MUST разделять ingress adjacency на две разные internal networks edge_to_web и web_to_api; Edge и API, control-plane services, PostgreSQL, Valkey или data workers MUST не иметь общей network adjacency.
   - id: SEC-018
@@ -7734,6 +7743,13 @@ report_performance_requirements:
 
 # 24. Развёртывание
 
+Принятое уточнение владельца от 2026-09-06 закреплено в [WS-001](./docs/architecture/planning/directions/DIR-006/workstreams/WS-001.md) `1.0.0`. Первая проверочная машина — Apple Silicon Mac M5 Max с 36 GB RAM; Linux проверяется отдельно в локальной VM на этой машине. Конкретные guest OS/architecture, версии движка/VM, ресурсы и transport фиксируются до соответствующего испытания. VM proof не означает квалификацию произвольного Linux-сервера или x86_64.
+
+Штатная установка использует готовые образы и небольшой versioned launcher/configuration. Администратор заранее устанавливает поддерживаемый контейнерный движок, выбирает каталог и режим доступа; установщик выполняет preflight, подготовку конфигурации и локальных secrets, загрузку, миграции и readiness, затем выдаёт действительный URL. Ручное редактирование YAML/SQL и сборка исходников не входят в штатный путь. Локальный доступ является default; LAN-доступ включается явно и проверяется с другого компьютера с HTTPS, разрешённым origin и browser authentication. Больший объём памяти host не увеличивает автоматически существующий demo-бюджет 6 GiB RAM / 25 GiB owned data.
+
+Первая поставка не обязана переносить экспериментальные данные: новая установка имеет собственные хранилища и не изменяет чужие. Сохранность данных и secrets после restart, безопасный повтор установки, версии схем и границы восстановления остаются обязательной частью первого блока. Полный продуктовый backup/restore и update cycle сохраняют отдельную приёмку по MAP-001/SEQ-12.
+
+
 ## 24.1. Docker Compose profile
 
 ```yaml
@@ -7786,6 +7802,7 @@ services:
   proxy:
     depends_on: [web]
     networks: [public, edge_to_web]
+    secrets: [ingress_tls_key, ingress_tls_chain]
 volumes:
   postgres_data: {}
   artifacts: {}
@@ -7793,6 +7810,10 @@ volumes:
 secrets:
   master_key:
     file: ./secrets/master_key
+  ingress_tls_key:
+    file: ./secrets/ingress_tls_key
+  ingress_tls_chain:
+    file: ./secrets/ingress_tls_chain
 networks:
   public:
     internal: false
@@ -7806,7 +7827,7 @@ networks:
 
 Compose release MUST дополнительно определять healthchecks, restart policies, non-root users, read-only root filesystems где возможно, `tmpfs`/bounded temp directories, log rotation, CPU/memory limits, artifact volume mounts, dependency readiness и documented migration command. PostgreSQL и Valkey не публикуют порты наружу по умолчанию; внешний traffic принимает только proxy/Edge.
 
-Edge является инфраструктурным адаптером входа, а не новым bounded context или независимо развиваемым продуктовым микросервисом. Он не хранит secrets или состояние, не содержит бизнес-логики и проксирует только на зафиксированный в immutable configuration Web upstream. Сети `edge_to_web` и `web_to_api` разделяют путь `Edge → Web → API`: Edge не разделяет сеть с API, control-plane или data services, а Web является единственным сетевым мостом между двумя adjacency.
+Edge является инфраструктурным адаптером входа, а не новым bounded context или независимо развиваемым продуктовым микросервисом. Он не хранит доменное состояние и не содержит бизнес-логики; единственное исключение для secrets — installation TLS private key и certificate chain по SEC-016. Эти файлы доступны только для чтения; выпуск и обновление выполняются вне Edge. Прокси использует только зафиксированный в immutable configuration Web upstream. Сети `edge_to_web` и `web_to_api` разделяют путь `Edge → Web → API`: Edge не разделяет сеть с API, control-plane или data services, а Web является единственным сетевым мостом между двумя adjacency.
 
 Docker Compose не предоставляет portable primitive, который одновременно публикует host ingress и доказывает отсутствие outbound route у публикующего контейнера на всех поддерживаемых engines, включая Docker Desktop. Поэтому невнутренняя transport network Edge MAY давать ему ambient transport egress; fixed upstream ограничивает proxy routing, но сам по себе не является firewall и не доказывает egress denial. Это не разрешение business egress: Web, API и core services остаются во внутренних сетях и проходят negative outbound probes, а connector, report-mail, operational-notification email/HTTPS-webhook и update paths получают отдельные allowlisted adapters. Operational notification adapters принадлежат Notifications и включаются для v1_target по NOTIFY-008…011 с endpoint-version pinning, verified email destination и SEC-006 controls; public MVP сохраняет только in_app. Это не передаёт operational delivery в Report Delivery и не разрешает arbitrary egress core services.
 

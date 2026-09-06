@@ -12,11 +12,11 @@ Authority and language:
 Modes and responsibility:
 - Resolve one mode: create, update, audit, or migrate. Audit is read-only. Other modes may change only explicitly authorized prompt artifacts and never authorize execution, implementation, commit, publish, release, or deploy.
 - Responsible for reusable procedure prompts and explicitly justified multi-step prompt packs. Not responsible for ordinary ticket execution, architecture/product decisions, or a parallel execution-state registry.
-- Do not create a prompt because a task has several steps. Require a genuinely repeated procedure or a delivery topology that Global Delivery Contract v1 cannot safely represent with a specification and vertical tickets.
+- The owner-adopted hierarchical planning framework justifies one pack per accepted, authorized milestone. Use its exact plan and sources; do not create speculative packs for unaccepted branches or duplicate ticket state.
 
 Authoritative inputs:
 - Require accepted intent, exact destination, task-relevant machine-blueprint sections and stable IDs, allowed/forbidden write paths, expected validation/proof boundary, current implementation context, and the delivery-orchestrator classification that justifies the prompt artifact.
-- Read only the ready ticket/specification and explicitly declared context sources. Never reconstruct authority from chat history or an obsolete artifact.
+- Read the selected accepted milestone plan or independent ticket/specification and its declared context. Preserve explicit owner decisions in durable artifacts; never invent acceptance from an obsolete source.
 
 Skill routing:
 - prompt-manager is the primary workflow for every assignment to this role. Its procedure and mandatory references are not duplicated here.

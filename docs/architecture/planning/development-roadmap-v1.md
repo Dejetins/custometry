@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-ROADMAP-001
 title: Custometry development roadmap and integration decisions
-doc_version: 6
+doc_version: 8
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -22,9 +22,24 @@ proof_boundary:
 
 This owner-requested roadmap turns the existing blueprint's release stages into a dependency-aware continuation plan. It addresses the [audit findings](development-audit-2026-09-04.md), preserves implemented kernels, and identifies decisions that would otherwise cause structural rework.
 
-**Status: proposed.** The normative blueprint remains authoritative. This document does not accept a new release promise, remove requirements, activate a ticket, create an execution ledger, or replace current ticket frontmatter. It is an architectural sequencing document, not a second status register. Prepare ordinary bounded tickets at the ready frontier; do not encode the whole roadmap into prompts.
+**Status: proposed.** The normative blueprint remains authoritative. This document does not accept a new release promise, remove requirements, activate a ticket, create an execution ledger, or replace current ticket frontmatter. It is an architectural sequencing document, not a second status register. Use the accepted hierarchical planning framework to detail selected branches with the owner; do not encode the whole roadmap into prompts.
 
 The owner has no external delivery deadline or contractual obligation and has not selected the first external release scenario. Calendar estimates would therefore be invented. Progress is measured by completed user outcomes and their actual proof. The first internal result below is an engineering recommendation consistent with blueprint section 31; it is not a customer-specific product limitation.
+
+### Planning process adoption — 2026-09-06
+
+The owner adopted the [hierarchical planning framework](framework-v1/README.md).
+This roadmap remains a proposed sequence and requirement allocation, not a selected
+implementation plan. Its historical ticket-first wording is qualified by the new
+route: owner-agreed direction/workstream/milestone decomposition, then one pack and
+canonical journal for each authorized milestone. Existing tickets retain evidence
+and independent status; do not duplicate their state or revive retired UI programs.
+Agents must maintain affected document links, versions, decisions, indexes and
+evidence without owner reminders. Product priorities and Forecasting hold remain
+unchanged. The owner has now accepted [MAP-001 and its six L1 directions](project-map.md)
+at version 1.0.0. The next planning action is owner selection of an L2 branch;
+old N0/N1 implementation suggestions below do not bypass that checkpoint or
+authorize implementation.
 
 ### Owner priority update — 2026-09-05
 
@@ -151,7 +166,7 @@ Exact timeout, backoff, capacity and retention values belong to a validated tick
 
 ## Ordered outcomes
 
-Milestones below are planning outcomes, not ledger rows. Multiple tickets may implement one outcome; each remains small enough to prove one coherent behavior. A result becomes complete only when its exit evidence exists.
+Milestones below are proposed roadmap outcomes, not executable ledger rows. Owner-agreed decomposition selects bounded milestone plans; their stages follow the accepted framework. Historical independent tickets remain evidence inputs. A result becomes complete only when its exit evidence exists.
 
 | Outcome | Depends on | User/operational result and scope | Exit evidence / release relationship |
 |---|---|---|---|

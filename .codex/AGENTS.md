@@ -30,8 +30,8 @@ select Penpot as an active design source, mutation route, or delivery target.
 3. Use `docs/architecture/README.md` for architecture navigation and
    `docs/architecture/tooling-gates.md` for local commands.
 4. For non-trivial or authority-unclear executable work, use
-   `delivery-orchestrator`; then read only the selected ticket and its declared
-   context. A trivial explicit repair may execute directly. Create a platform
+   `delivery-orchestrator`; then read the selected ticket or accepted milestone plan/journal
+   and its declared context. A trivial explicit repair may execute directly. Create a platform
    Goal only when the user or platform explicitly authorizes it.
 
 For Web UI work, preserve the requirements and current inventory in
@@ -41,12 +41,12 @@ its shown composition, navigation, analytical interactions, and visual language
 are authority, not merely inspiration. ADR-0007 owns frontend technology.
 Existing production code is current-state evidence; it is not automatically
 conformant with the pilot. Complete product coverage remains the goal, with
-ordinary bounded implementation tickets for remaining gaps.
+bounded implementation units under the selected ticket or milestone route for remaining gaps.
 
 The owner authorized removal of the G0-G6 program and its generated materials
 on 2026-09-04. Their historical record remains in Git, as explained in
 `docs/architecture/ui/ui-program-retirement.md`. Do not restore a G-stage
-workflow, family boards, certification receipts, or a prompt-pack/ledger route.
+workflow, family boards, certification receipts, or the retired program's prompt-pack/ledger route.
 The previous Linear/Penpot direction and W19-W23, W29/W30 execution routes
 remain retired or superseded. Historical evidence never makes them executable.
 
@@ -55,6 +55,33 @@ Custometry routes and must not be installed or suggested. A supplied Figma
 export or screenshot is ordinary native-image evidence; request an export when
 the only source is a live target. Historical Figma references, if encountered,
 are evidence only and never execution authority.
+
+## Hierarchical planning and execution
+
+The owner adopted the [planning framework](../docs/architecture/planning/framework-v1/README.md)
+on 2026-09-06. This is the required planning form across development directions:
+project map -> direction -> workstream -> milestone -> stage prompt. Use its
+per-level templates, stable IDs, exact-version links, current-state evidence,
+mandatory decisions and owner review before detailing each selected branch.
+Agent assignment and parallel execution remain the owner's decisions.
+
+This owner-selected topology justifies milestone plans and packs under Global
+Delivery Contract v1. Route accepted milestone authoring through `prompt-manager`
+and execution through `staged-plan-runner`, with exactly one allowed stage unless
+explicit Goal authority permits continuation. The milestone's plan, prompt pack
+and iteration journal form the canonical triad; the journal alone owns stage state.
+Do not create a ticket that duplicates that same unit's mutable execution state.
+Existing independent tickets and explicit tiny repairs keep their selected route.
+No retired G0-G6 pack, board, certification or ledger is reactivated.
+
+Documentation maintenance is mandatory and included in the authorized unit.
+Without waiting for an owner reminder, maintain reciprocal parent/child links,
+provider/consumer references, required versions and approval evidence, triad bindings,
+iteration evidence, affected canonical docs and navigation/generated indexes.
+Apply the framework's synchronization checklist and record checks at handoff.
+A required update left unresolved prevents the affected completion/readiness claim;
+identify its concrete authority/input blocker and continue independent work.
+Material decisions remain with the owner; routine link/index bookkeeping is delegated.
 
 ## Custometry representation
 
@@ -76,10 +103,12 @@ are evidence only and never execution authority.
   add `--contract <installed-path>` to resolve the global source and supplying
   skill; CI does not depend on a developer-home path.
 - A specification is created only when behavior or its proof seam is unresolved.
-  A plan, ledger, or reusable procedure prompt is exceptional and is created
-  only when the global contract classifies it as necessary for the current
-  delivery topology. Custometry keeps no standing program plan, parallel
-  status register, or generated prompt-pack inventory.
+  Hierarchical plans and milestone packs use the accepted framework and current
+  user authority. Keep one execution-state source per unit; no duplicate status
+  register or generated prompt-pack inventory is maintained.
+- Planning documents live under `docs/architecture/planning/`; milestone journals
+  under `.codex/delivery/ledgers/`; prompts under `.codex/agents/generated/`.
+  Follow the framework's exact storage and validation rules.
 
 ## Product, scope, and proof
 
@@ -94,7 +123,7 @@ are evidence only and never execution authority.
   dependency. Classify non-trivial API, port, DTO/schema, persistence, config,
   identity/cache, side-effect, browser, migration, rollback, and performance
   impact as `none`, `compatible-change`, `breaking-change`, or `unknown`.
-- Keep work inside ticket scope; preserve foreign worktree changes; do not
+- Keep work inside the selected ticket or milestone-stage scope; preserve foreign worktree changes; do not
   publish, deploy, use secrets, or perform external/irreversible work without
   explicit authority.
 - Evidence must match the changed boundary. Source tests do not prove database,
@@ -107,8 +136,8 @@ The global skill router selects technical skills. Custometry-specific routes:
 | Trigger | Primary skill |
 |---|---|
 | Reusable procedure prompt or explicitly justified prompt pack | `prompt-manager` after `delivery-orchestrator` |
-| Product-wide Web UI coverage | Use the existing requirements, target pilot, and surface inventory to scope ordinary implementation tickets; do not recreate the retired G0-G6 program |
-| Current Custometry Web implementation | Execute exactly one `ready` ticket under `.codex/delivery/tickets/`, using the active implementation-source contract and boundary-matched browser proof |
+| Product-wide Web UI coverage | Use the hierarchical planning framework with the owner to scope the selected milestone or independent-ticket route against existing requirements, target pilot and surface inventory; do not recreate the retired G0-G6 program |
+| Current Custometry Web implementation | Execute the selected ready ticket or ledger-allowed milestone stage, using the active implementation-source contract and boundary-matched browser proof |
 | Faithful local Product Design prototype | `product-design:image-to-code` for an inspectable image/export or `product-design:url-to-code` for an authorized live URL; do not substitute these for ordinary ticket-governed production implementation |
 | UX/product-flow critique | `product-design:audit`; keep its verdict separate from fidelity and runtime readiness |
 | Source-to-prototype fidelity | `product-design:design-qa`; normalize source and implementation viewport/state and keep runtime readiness with `browser-qa-evidence` |
@@ -122,7 +151,7 @@ mechanic and redacted evidence set, but each skill returns its own verdict.
 The user's selected Browser, Chrome, or `playwright-cli` mechanic wins.
 Current Web work follows
 [`docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`](../docs/architecture/ui/custometry-web-implementation-source-contract-v1.md)
-and one ticket whose frontmatter status is `ready`.
+and the selected ready ticket or accepted milestone plan and ledger-allowed stage.
 
 The initial brief and later corrections remain the authority for desired
 product meaning. Repository sources constrain current-state compatibility but

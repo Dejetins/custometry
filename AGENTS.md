@@ -10,7 +10,25 @@ For every task in this repository:
 2. treat `custometry-technical-blueprint-ru.md` as the normative product specification;
 3. use `custometry-technical-blueprint-human-ru.md` as its required explanatory mirror;
 4. use `custometry-ui-blueprint-ru.md` for UI/UX requirements and current inventory, `docs/architecture/ui/target-pilot/README.md` for the accepted target UI concept, and ADR-0007 for frontend architecture;
-5. for executable work governed by a ready delivery ticket, take scope and execution truth from that ticket.
+5. resolve the selected execution route: a ready ticket for an independent unit, or the accepted milestone plan and its canonical stage ledger for milestone execution;
+6. follow the required hierarchical planning and documentation maintenance rules below.
+
+## Required hierarchical planning and documentation maintenance
+
+Use the accepted [planning framework](docs/architecture/planning/framework-v1/README.md)
+for development planning: project map -> direction -> workstream -> milestone ->
+stage prompt. Apply its templates, required fields, versions and owner checkpoints.
+The owner participates at each selected decomposition level and decides agent
+organization. Milestones use an accepted plan, prompt pack and one iteration journal;
+independent bounded tickets and tiny repairs retain their declared execution route.
+
+Document links and their maintenance are mandatory. In the same authorized unit,
+update reciprocal parent/child links, affected dependencies, source/decision versions,
+plan/pack/journal bindings, evidence and relevant documentation/indexes. Agents must
+perform this work proactively without waiting for an owner reminder. Follow the
+framework's synchronization checklist; stale or missing required links/documentation
+prevent the affected completion claim. Do not invent acceptance or mutate a claimed
+ledger outside the runner's exclusive update mechanism.
 
 Repository-authored engineering artifacts are written in English by default:
 architecture, ADRs, contracts, specifications, tickets, evidence reports,

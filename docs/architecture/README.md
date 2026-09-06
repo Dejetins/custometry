@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 15
+doc_version: 16
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -23,7 +23,7 @@ This directory contains accepted architecture decisions and shared engineering c
 2. `custometry-technical-blueprint-human-ru.md` is the synchronized human-readable mirror.
 3. `custometry-ui-blueprint-ru.md` preserves UI/UX requirements and current inventory. The final interactive target pilot owns its demonstrated composition, behavior, and visual language; ADR-0007 owns frontend architecture.
 4. Documents in this directory contain accepted architecture and process decisions within the blueprint.
-5. Global Delivery Contract v1 defines artifact choice and ticket authority. A ready Custometry delivery ticket is the current execution source for one execution unit; a platform Goal is optional and requires explicit user or platform authority. Custometry keeps no standing program plan, generated prompt-pack inventory, or execution ledger. `validate_delivery_contract` validates the portable adapter and can optionally inspect an installed global source.
+5. Global Delivery Contract v1 and the owner-adopted [planning framework](planning/framework-v1/README.md) define hierarchical planning and milestone pack execution. Each milestone has one canonical iteration journal; independent tickets retain ticket state. Parent/child, dependency and execution-artifact links and affected documentation must be synchronized by agents without owner reminders. Goal mode requires explicit authority.
 
 If sources conflict, the higher-precedence source applies. An architecture document does not introduce a new normative `MUST`: a new product obligation is first added to the machine blueprint and mirrored synchronously in the human-readable version.
 
@@ -48,8 +48,9 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [Target UI concept](./ui/target-pilot/README.md) | Preserved interactive pilot, byte-pinned resources, demonstrated composition and interactions, and proof limits |
 | [UI program retirement](./ui/ui-program-retirement.md) | Removed materials, preserved requirements/code, historical recovery, and cleanup evidence |
 | [Web implementation source contract](./ui/custometry-web-implementation-source-contract-v1.md) | Ticket-first execution from the target pilot and product requirements, source precedence, and browser proof boundary |
-| [Development operating model](./development-operating-model.md) | UI-first vertical slices, ticket-first execution, optional coordination artifacts, Git, and CI/CD |
-| [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Ticket-first execution and removal of the obsolete staged planning system |
+| [Hierarchical planning framework](planning/framework-v1/README.md) | Required per-level templates, versions, owner checkpoints, mandatory document synchronization and milestone plan/pack/journal bindings |
+| [Development operating model](./development-operating-model.md) | Observable outcomes, hierarchical planning, milestone packs, independent tickets, Git and CI/CD |
+| [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Hierarchical-planning amendment, independent ticket route and historical staged-system retirement |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |
 | [Documentation platform](./documentation-platform.md) | Docs as code, `/docs`, `/help`, visibility, and publication |
 | [Runtime, network, and installation](./runtime-network-installation.md) | Download-first installation, ports, networks, egress, resources, and container lessons |

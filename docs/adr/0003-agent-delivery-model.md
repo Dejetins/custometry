@@ -1,7 +1,7 @@
 ---
 doc_id: ADR-0003
 title: Agent delivery model
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -14,6 +14,29 @@ proof_boundary:
 ---
 
 # ADR-0003: Custometry Adapter to Global Ticket-First Delivery
+
+## Amendment — hierarchical planning adopted 2026-09-06
+
+The owner accepted the [hierarchical planning framework](../architecture/planning/framework-v1/README.md)
+and required mandatory document links, proactive documentation updates and project
+AGENTS routing. This amendment supersedes the earlier restriction that future
+planning must always be represented by tickets unless exceptional. The earlier
+removal of obsolete S00-S06/G0-G6 workflows and duplicated state remains in force.
+
+New development planning follows project map, direction, workstream and milestone
+levels with owner participation at each selected decomposition. Each authorized
+milestone uses one accepted plan, prompt pack and iteration journal. The journal
+is its sole mutable execution-state source; independent tickets keep their own
+state and history. No unit is controlled by both. The canonical pack lifecycle,
+exclusive updater and real-boundary evidence requirements remain unchanged.
+
+Agents must update affected documentation, reciprocal hierarchy/dependency links,
+versions, decisions, indexes and execution evidence in the same authorized unit,
+without owner reminders. The framework owns the exact checklist and templates.
+Substantive owner decisions are not inferred from mechanical synchronization.
+
+The sections below retain the earlier decision's rationale and removal history;
+this amendment governs any conflicting prospective instruction in them.
 
 ## Context
 

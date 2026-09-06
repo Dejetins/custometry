@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 9
+doc_version: 10
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -49,26 +49,33 @@ resumption. The accepted target pilot and Web implementation source contract
 retain their published authority; unseen states and implementation conformance
 require the affected ticket and its boundary-matched evidence.
 
-Global Delivery Contract v1 selects the smallest sufficient delivery artifact:
+Global Delivery Contract v1 and the owner-adopted
+[hierarchical planning framework](planning/framework-v1/README.md) select the route:
 
-- direct execution for a trivial, explicit, low-risk repair;
-- one ready vertical ticket for one bounded observable outcome;
-- a specification before tickets when behavior, invariants, failure semantics,
-  or the proof seam remain materially unresolved;
-- a blocker-linked ticket graph when several dependent slices need an explicit
-  ready frontier or disjoint path ownership;
-- an exceptional plan, ledger, or reusable procedure only when real
-  multi-ticket coordination, risky external state, approval checkpoints, or a
-  genuinely repeated method requires it.
+- Development planning uses project map -> direction -> workstream -> milestone,
+  with per-level templates, evidence of current state and owner review before
+  each selected branch is detailed further.
+- An accepted milestone is prepared as a prompt pack and one iteration journal
+  under explicit authority. `prompt-manager` owns authoring; `staged-plan-runner`
+  owns stage selection, claims, transitions and immutable receipt binding.
+- One ledger-allowed stage is one execution unit; broader continuation requires
+  explicit Goal authority. The owner determines agent assignment and parallelism.
+- Independent bounded tickets and tiny explicit repairs retain their declared
+  route; a specification is used when behavior or proof is unresolved.
 
-Custometry keeps no standing program plan, generated prompt-pack inventory,
-parallel stage ledger, or duplicate status register. A ticket graph may record
-dependencies and path ownership, but the ticket frontmatter remains the only
-repository-local source of current status, scope, blockers, repair authority,
-and acceptance evidence. One ready ticket is one execution unit. Goal mode is
-optional runtime orchestration; it is not a file-backed planning layer.
+The milestone journal alone owns its mutable stage state. Ticket frontmatter owns
+state only for independent ticket units. A graph records links/dependencies and
+ownership, never a second current status. Planning acceptance and implementation
+completion are distinct; no historical ticket or retired UI pack is converted
+implicitly. The framework defines required versions, links, storage and checkpoints.
 
-## 3. Ticket lifecycle
+Agents must synchronize affected documentation within the same authorized unit
+without waiting for owner reminders: reciprocal hierarchy and dependency links,
+source/decision versions, plan/pack/journal bindings, implementation evidence,
+canonical docs and indexes. An unresolved required update prevents the affected
+completion claim. Use the framework's checklist and document real blockers.
+
+## 3. Independent ticket lifecycle
 
 Tickets live in `.codex/delivery/tickets/` and use these states:
 

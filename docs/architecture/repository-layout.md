@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-REPOSITORY-LAYOUT-001
 title: Custometry repository and agent infrastructure layout
-doc_version: 8
+doc_version: 9
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -41,10 +41,11 @@ Establish the minimal monorepo for Phase 0 (Foundation), recording the then-curr
 7. Empty modules are reserved ownership boundaries only. A `.gitkeep` file does not imply an implementation or public contract.
 8. Until `v1_target`, only a single-server topology with a local artifact filesystem is permitted. Remote workers, object storage, and Kubernetes are not introduced implicitly.
 9. `.gitignore` and `.editorconfig` are added as portable hygiene and secret-state boundaries explicitly authorized by the repository-creation task.
-10. `.codex/delivery/` contains only currently justified specifications,
-    blocker-linked ticket graphs, vertical tickets, and compact terminal
-    evidence. A graph records dependencies and path ownership but never
-    duplicates ticket status; this is not a standing program-plan registry.
+10. The [planning framework](planning/framework-v1/README.md) owns development
+    plans under `docs/architecture/planning/`, milestone prompts under
+    `.codex/agents/generated/` and canonical journals under `.codex/delivery/ledgers/`.
+    `.codex/delivery/` also contains independent specs/tickets/graphs and redacted
+    evidence. Graphs and parent registries never duplicate execution state.
 
 ## Alternatives considered
 
@@ -113,17 +114,21 @@ AGENTS.md                       # standard discovery point
     spec_template.md
     ticket_template.md          # one ready ticket = one execution unit
     iteration_report_template.md
+    generated/                 # authorized milestone stage prompts
   delivery/
     specs/                     # only when behavior or proof seam is unresolved
     graphs/                    # only for a justified dependent-ticket frontier
     tickets/                   # current delivery frontier and execution state
-    evidence/                  # ticket-local durable evidence
+    ledgers/                   # one canonical iteration journal per milestone
+    evidence/                  # ticket or milestone evidence and immutable receipts
 docs/iterations/               # standalone bounded reports only
 ```
 
-A ticket is the sole repository-local execution-state source for its execution
-unit. Goal mode is optional runtime orchestration, not a file-backed source of
-truth. Raw `.codex/agents/.context/`,
+A milestone journal is its sole stage-state source; an independent ticket owns
+its own unit's state. The same unit never has both. Goal mode is optional runtime
+orchestration. Required parent/child, dependency and triad links are maintained by
+the changing agent within each authorized unit; see the framework checklist.
+Raw `.codex/agents/.context/`,
 `.codex/tmp/`, `.codex/sessions/`, logs, and secrets are not committed.
 
 ### Separation of agent layers

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 19
+doc_version: 20
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -31,7 +31,8 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 
 | Document | Purpose |
 |---|---|
-| [Development direction map — MAP-001](./planning/project-map.md) | Accepted version 1.0.0: six L1 directions, requirement allocation, interfaces and owner decisions; next L2 planning unit remains unselected |
+| [Development direction map — MAP-001](./planning/project-map.md) | Accepted version 1.1.0: six L1 directions, full sequential priorities and installation-first planning entry |
+| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Selected L2 draft 0.1.0 to develop next: installable delivery, installation and first administrator bootstrap; candidate L3 boundaries remain for owner review |
 | [System Design](./system-design.md) | Complete `0.10.0-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted customer segmentation/reporting requirements, target contract ownership, compatibility and implementing-ticket acceptance |

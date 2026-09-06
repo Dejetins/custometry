@@ -8,13 +8,13 @@
   "artifact_kind": "direction",
   "doc_id": "DIR-002",
   "title": "Data and semantic model",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "planning_status": "accepted",
   "language": "en",
   "parent_ref": {
     "id": "MAP-001",
     "path": "docs/architecture/planning/project-map.md",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "direction_ref": "DIR-002",
   "baseline_ref": {
@@ -54,13 +54,15 @@
     "MAP-001/DEC-01",
     "MAP-001/DEC-02",
     "MAP-001/DEC-05",
-    "DIR-002/DEC-01"
+    "DIR-002/DEC-01",
+    "MAP-001/DEC-06",
+    "MAP-001/DEC-07"
   ],
   "supersedes_ref": null,
   "proof_boundary": {
     "label": "accepted-level-1-planning-boundaries",
     "exclusions": [
-      "workstream-selection",
+      "unwritten-child-acceptance",
       "exhaustive-code-audit",
       "runtime-readiness",
       "implementation-authority"
@@ -71,9 +73,9 @@
 
 # DIR-002. Data and semantic model
 
-> Accepted L1 scope, version `1.0.0`, 2026-09-06. Parent: [MAP-001](../../project-map.md) `1.0.0`.
-> The owner accepted the six-direction structure and requested English adoption and publication.
-> L2 selection, milestone acceptance, agent assignment and implementation remain separate decisions.
+> Accepted L1 scope and sequence links, version `1.1.0`, 2026-09-06. Parent: [MAP-001](../../project-map.md) `1.1.0`.
+> MAP-001 records the owner-selected installation-first sequence and WS-001 entry.
+> Detailed child acceptance, agent assignment and implementation remain separate decisions.
 
 ## Intent and boundaries
 
@@ -106,9 +108,9 @@ W14 proves bounded PostgreSQL/file intake; W15 describes one retail snapshot thr
 ## Candidate L2 composition
 
 These rows describe the accepted L1 scope at candidate workstream granularity.
-They are not accepted L2 plans or a selected execution order. After owner selection,
-create the chosen WS document with stable ID, version, real path and reciprocal
-parent link. No WS file, milestone or executable promise is initialized here.
+The unselected rows are not accepted L2 plans. The selected first-block document
+is referenced separately below. Other WS documents receive stable IDs, versions
+and reciprocal parent links only after selection; no milestone is initialized here.
 
 | Local candidate ID | Large task | Intended result | Existing base / dependency |
 |---|---|---|---|
@@ -118,8 +120,18 @@ parent link. No WS file, milestone or executable promise is initialized here.
 | DIR-002/C04 | Quality and data explanation | DQ, quarantine/coverage, remediation/waivers, Data Guide and safe preview. | Readiness is capability-specific; errors never silently become zero. |
 | DIR-002/C05 | Marts and artifact lifecycle | Shared granular marts, immutable artifacts, durable publication, retention and repair. | Compare W15 with ARTIFACT-COMMIT-001..003; no new fault proof is claimed. |
 
-The next authorized planning step produces those future documents; the owner is
-not expected to supply them manually. Candidate presence is not entry readiness.
+The agent produces future selected documents with the owner; the owner is not
+expected to supply them manually. Candidate presence is not entry readiness.
+
+## Accepted sequence and first-block relationship
+
+Follow [MAP-001's accepted sequence](../../project-map.md#accepted-delivery-sequence)
+`1.1.0`. The selected starting document is [WS-001](../DIR-006/workstreams/WS-001.md) `0.1.0`, whose single
+parent is DIR-006. Preserve storage/configuration and artifact-version ownership that constrains installation. Source, semantic and ingestion outcomes follow at MAP-001/SEQ-05..07.
+
+This is a contribution/reference, not a second decomposition parent. No duplicate
+WS or parallel dispatch is created. Actual provider contributions are bounded
+inside the selected workstream; later contracts are resolved before their consumers.
 
 ## Relationships with other directions
 
@@ -129,16 +141,16 @@ dependencies. Informational interactions do not create a cyclic execution graph.
 
 | ID | Provider and version | Required output | Consumer | Needed before | Satisfaction proof / integration responsibility |
 |---|---|---|---|---|---|
-| DIR-002/DEP-01 | [DIR-001](../DIR-001/direction.md) `1.0.0` | Policy and common execution/fencing protocol | DIR-002 | Acceptance of the relevant scenario | Admission, access and attempt control. The owning milestone and its proof are selected at L2/L3. |
-| DIR-002/DEP-02 | [DIR-006](../DIR-006/direction.md) `1.0.0` | Supported filesystem/storage environment and recovery procedure | DIR-002 | Acceptance of the relevant scenario | Durability and restore verification. The owning milestone and its proof are selected at L2/L3. |
+| DIR-002/DEP-01 | [DIR-001](../DIR-001/direction.md) `1.1.0` | Policy and common execution/fencing protocol | DIR-002 | Acceptance of the relevant scenario | Admission, access and attempt control. The owning milestone and its proof are selected at L2/L3. |
+| DIR-002/DEP-02 | [DIR-006](../DIR-006/direction.md) `1.1.0` | Supported filesystem/storage environment and recovery procedure | DIR-002 | Acceptance of the relevant scenario | Durability and restore verification. The owning milestone and its proof are selected at L2/L3. |
 
 **Outputs supplied:**
 
-- [DIR-003](../DIR-003/direction.md) `1.0.0`: Versioned semantic datasets, metrics, relationships, readiness and marts.
-- [DIR-004](../DIR-004/direction.md) `1.0.0`: Authorized manifests, data-as-of and lineage.
-- [DIR-005](../DIR-005/direction.md) `1.0.0`: Source/mapping/DQ/Data Guide projections.
-- [DIR-001](../DIR-001/direction.md) `1.0.0`: Published input generations and readiness events.
-- [DIR-006](../DIR-006/direction.md) `1.0.0`: Immutable artifact/reference set and storage recovery ports.
+- [DIR-003](../DIR-003/direction.md) `1.1.0`: Versioned semantic datasets, metrics, relationships, readiness and marts.
+- [DIR-004](../DIR-004/direction.md) `1.1.0`: Authorized manifests, data-as-of and lineage.
+- [DIR-005](../DIR-005/direction.md) `1.1.0`: Source/mapping/DQ/Data Guide projections.
+- [DIR-001](../DIR-001/direction.md) `1.1.0`: Published input generations and readiness events.
+- [DIR-006](../DIR-006/direction.md) `1.1.0`: Immutable artifact/reference set and storage recovery ports.
 
 Each consumer proves integration with the provider-owned contract. The common
 snapshot/refresh ownership allocation is in [MAP-001](../../project-map.md). Actual public
@@ -149,7 +161,7 @@ contract changes remain with their accepted context owners.
 | Decision ID | Decision or question | Authority / next condition | Effect |
 |---|---|---|---|
 | DIR-002/DEC-01 | This direction's L1 boundary and composition are accepted | Owner decision on 2026-09-06, recorded at [MAP-001 adoption](../../project-map.md) / MAP-001/DEC-05; version `1.0.0` | Settles L1 structure; does not accept an unwritten child plan. |
-| DIR-002/DEC-02 | Which large task is detailed first? | Not selected; owner chooses the next branch | Blocks selecting an L2 planning unit, not publication of this accepted L1. |
+| DIR-002/DEC-02 | What is the next planning relationship? | Follow accepted MAP-001/DEC-06/07; WS-001 under DIR-006 is first. A separate child of this direction is not selected here | Contribute the declared prerequisites; select later owned L2 detail with the owner. |
 
 Product exclusions, forecasting hold and XLSX sequencing in MAP-001 apply here.
 No agent, calendar, worktree topology or parallel execution is assigned by this plan.
@@ -160,8 +172,9 @@ No agent, calendar, worktree topology or parallel execution is assigned by this 
 |---|---|---|---|
 | 0.1.0 | 2026-09-06 | Russian owner-review draft | Initial draft request; historical authoring baseline |
 | 1.0.0 | 2026-09-06 | L1 adopted in English; draft replaced; parent and interface versions synchronized | Owner acceptance and publication request; MAP-001/DEC-05 |
+| 1.1.0 | 2026-09-06 | Apply accepted sequential priorities and first-block relationship; synchronize parent/provider versions; retain capability boundaries | Owner sequencing acceptance; MAP-001/DEC-06/07 |
 
-MAP-001 registers this direction at `1.0.0`; metadata points back to that exact
+MAP-001 registers this direction at `1.1.0`; metadata points back to that exact
 parent version. Requirements, architecture and existing ticket state are unchanged.
 Future edits update both sides of affected links. Publication/source checks and
 their limits are recorded in MAP-001; no duplicate execution journal is created.

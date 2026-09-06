@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 15
+doc_version: 16
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -35,6 +35,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted customer segmentation/reporting requirements, target contract ownership, compatibility and implementing-ticket acceptance |
 | [Source data adaptation and imperfect snapshot refresh](../contracts/source-data-adaptation-contract.md) | Accepted source readiness, daily rebuilds, degraded-input handling, typed mapping and derived-channel requirements |
+| [Report refresh, prepared serving and recovery](../contracts/report-refresh-serving-recovery-contract.md) | Accepted version 1: document schedules/status, immutable current snapshots, artifact commit, mixed 50-author/100-viewer workload and coherent off-primary backup; numeric latency/recovery objectives remain unproven |
 | [Artifact format registry](../contracts/artifact-format-contract.md) | Required output vocabulary, manifest meaning, reader compatibility and rollback |
 | [Audit contract proposals](./planning/audit-contract-decisions-2026-09-06.md) | Proposed PVM, shared cancellation, endpoint-revocation and TLS contracts; no runtime acceptance |
 | [Documentation audit reconciliation](./planning/documentation-audit-reconciliation-2026-09-06.md) | Accepted correction scope, finding disposition, compatibility and observed documentation evidence |

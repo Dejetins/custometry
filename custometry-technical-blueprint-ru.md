@@ -2346,6 +2346,18 @@ Retention MUST различать:
 
 Удаление артефакта запрещено, если он является единственным входом опубликованного результата, пока не истёк срок воспроизводимости.
 
+## 8.5. Надёжная публикация и восстановление артефактов
+
+```yaml
+artifact_commit_requirements:
+  - id: ARTIFACT-COMMIT-001
+    requirement: "Artifact Lifecycle MUST владеть протоколом staging, validation, durable immutable file placement и publication manifest через PostgreSQL. Durable placement на поддерживаемой filesystem предшествует объявлению результата published; atomic rename сам по себе не считается доказательством power-loss durability. Readers используют только committed authorized manifests, а validation evidence, physical durability и publication status различаются; отдельный третий authoritative store не требуется."
+  - id: ARTIFACT-COMMIT-002
+    requirement: "Commit MUST проверять актуальный execution fencing token и idempotency identity. Crash до metadata publication может оставить unreferenced staged/placed files; Reconciler через owner ports MUST завершать только доказуемо допустимый переход либо очищать после проверки references, active leases и retention. Неизвестный исход PostgreSQL commit сначала сверяется с authoritative state; retry не создаёт двойную публикацию. Published artifacts, воспроизводимые inputs и backup-protected files не удаляются orphan cleanup."
+  - id: ARTIFACT-COMMIT-003
+    requirement: "Publication/recovery proof MUST включать crash между write, validation, durable placement, metadata commit и consumer-current switch, duplicate delivery, expired fencing и concurrent cleanup. Потерянный или повреждённый published artifact MUST закрывать affected reads, давать truthful integrity state и запускать разрешённый restore/recompute с проверкой exact identity; тихая подмена другим результатом запрещена."
+```
+
 # 9. Low-code pipeline engine
 
 ## 9.1. Категории узлов
@@ -5265,6 +5277,28 @@ report_requirements:
     requirement: Draft-to-published comparison MUST показывать affected blocks, normalized semantic changes, comparable values и stale/unavailable dependencies до publication; одинаковые входы не дают выдуманной business delta. Diff с новыми расчётами проходит обычный preflight/Execution/authorization, immutable publications не переписываются, comments/findings не re-anchor-ятся автоматически.
 ```
 
+### 14.4.1. Обновляемый отчёт и текущий готовый снимок
+
+Принято владельцем 2026-09-06: [контракт обновления, выдачи и восстановления отчётов](./docs/contracts/report-refresh-serving-recovery-contract.md) связывает lifecycle, storage, serving и proof. Отчёт состоит из постоянного logical object, versioned definition, immutable результатов и snapshots; current reference выбирает готовый снимок. PostgreSQL хранит определения, metadata и current references, artifact store — durable результаты, Valkey/memory — ограниченный ephemeral cache.
+
+```yaml
+report_refresh_requirements:
+  - id: REPORT-REFRESH-001
+    requirement: "Каждый поддерживаемый analytical document (dashboard, workbook-report, narrative research) MUST предоставлять уполномоченному автору настройку versioned refresh policy с режимом after_ingestion, scheduled или manual, периодом/cron, IANA timezone, состоянием enabled/paused/disabled, next due, last evaluation и last successful refresh. Для новых опубликованных рабочих отчётов и dashboards default — after_ingestion; для research и зафиксированных публикаций — manual/pinned. Настройка не меняет immutable definition или существующий snapshot; несовместимые либо ещё не опубликованные inputs дают explicit preflight blocker."
+  - id: REPORT-REFRESH-002
+    requirement: "After-ingestion refresh MUST запускаться после публикации новой проверенной версии необходимых inputs. Scheduled refresh MUST создавать durable намерение наступившего occurrence; если новые согласованные inputs не готовы, оно остаётся waiting_for_data и переоценивается после их публикации. Данные, поступившие до due time, ожидают выбранного срока. Повторная проверка неизменных inputs не выдаётся за новое обновление; periodic/as-of parameters входят в resolved identity. Используются существующие Scheduler, outbox, Execution Control и их timezone/misfire/cancellation semantics."
+  - id: REPORT-REFRESH-003
+    requirement: "Refresh MUST использовать fixed published definition version и разрешать все logical data bindings в exact immutable input versions. Изменение формул, структуры, authored findings или pinning policy требует отдельной versioned публикации; explicitly pinned input не начинает следовать latest автоматически. Новое обновление создаёт новый root/page snapshot и ReportSnapshot projection, а исходные snapshots, exports, annotations и comments сохраняют прежние ссылки."
+  - id: REPORT-REFRESH-004
+    requirement: "Refresh MUST объединять pending requests для одного document/policy в bounded durable demand на последнее согласованное поколение inputs; пропуск промежуточной сборки отчёта не теряет изменения в итоговых inputs. Equal computation identities используют существующий single-flight. Непрерывный поток не должен бесконечно отменять текущий полезный расчёт: bounded freshness/fairness policy обеспечивает прогресс и раскрывает lag."
+  - id: REPORT-REFRESH-005
+    requirement: "Новый current snapshot MUST публиковаться только после readiness обязательных blocks, проверки manifests, quality/authorization и explicit partial policy; переключение root/current reference атомарно в PostgreSQL. Publish проверяет актуальные policy/definition revision, fencing и монотонный publication generation, разрешённый из input version set; поздний старый run не откатывает current. Ошибка refresh не заменяет valid current snapshot незавершённым результатом."
+  - id: REPORT-REFRESH-006
+    requirement: "Открытый viewer MUST оставаться на exact выбранном snapshot до явного применения доступного обновления пользователем; UI показывает data-as-of, freshness, progress и new-version availability. Применение обновления сохраняет совместимые page/filter/scroll context и объясняет несовместимости. Новый обычный open разрешает latest successfully published current snapshot, deep link на exact snapshot сохраняет его identity. Last-good доступен только по serving policy и текущим permissions; revoke запрещает показ независимо от кэша."
+  - id: REPORT-REFRESH-007
+    requirement: "UI MUST раздельно показывать availability/integrity текущего результата, freshness и refresh execution state, включая ready, scheduled, waiting_for_data, queued/running, failed/blocked и confirmed corruption. Updated является событием/временем успешной публикации, а не доказательством свежести без input coverage. Failed refresh либо временная недоступность storage не маркируют valid last-good result как corrupted. Читатель видит безопасную причину и разрешённое действие; technical paths и закрытые metadata не раскрываются."
+```
+
 ## 14.5. Пользовательская отправка отчёта по email
 
 Report email является отдельным user-initiated delivery workflow. Он MAY переиспользовать низкоуровневый mail transport, но не является `notification_delivery` и не наследует operational recipient selection.
@@ -7159,6 +7193,10 @@ operations_requirements:
     requirement: V1 target MUST иметь versioned runbooks для report-render backlog, XLSX resource limit, mail transport unavailable, sender authorization failure и email unknown delivery state.
   - id: OPS-008
     requirement: V1 target MUST иметь versioned runbook для invalid/unsupported ChartSpec, chart renderer backlog, SSR/raster timeout or crash, bounded-data rejection, cross-render parity failure и safe cleanup/retry без публикации partial artifact.
+  - id: OPS-009
+    requirement: "V1 MUST предоставлять administrator-configured automated backup schedule с ежедневным вечерним целевым режимом, явными local time/IANA timezone, destination и retention. Точное время задаёт администратор; off-primary-server backup capability MUST охватывать согласованный PostgreSQL snapshot, необходимые immutable artifacts, key recovery material и deployment metadata. Remote backup destination не разрешает remote live artifact store или multi-host runtime; secrets и destination credentials не входят в открытые manifests."
+  - id: OPS-010
+    requirement: "Backup UI MUST показывать schedule, next run, last successful backup, age, failure и last verified restore. Защищённый recovery point определяется последним успешным согласованным комплектом, а не наличием расписания; ежедневный режим не обещает фиксированный RPO/RTO. Restore drill MUST проверять reference closure, exact report snapshots, permissions и key decryptability и измерять время восстановления; administrator policy задаёт retention и допустимые recovery objectives, а невыбранные численные цели остаются explicit unresolved."
 ```
 
 # 22. Тестирование
@@ -7435,6 +7473,14 @@ test_invariants:
     invariant: "Degraded input fixture MUST различать полную доставку и неполную историю/атрибуты, сохранять source-row accounting и monetary impact, разрешать независимые capabilities и блокировать необоснованные negative segment conditions; редкий критичный дефект не скрывается общей долей ошибок."
   - id: TEST-INV-122
     invariant: "Snapshot refresh benchmark MUST включать полный scan, sparse old corrections, unchanged snapshot, skew/duplicates, cold/warm reuse, bounded memory/temp disk и concurrent source-read budget; результаты сравниваются с эталонным full refresh без ложного обещания incremental source I/O."
+  - id: TEST-INV-123
+    invariant: "Все document profiles предоставляют refresh policy; due-before-data, data-before-due, unchanged inputs, DST/misfire, pause/revision race и repeated events дают один разрешённый refresh demand без ложного updated state. Pinned publications и authored findings не переписываются."
+  - id: TEST-INV-124
+    invariant: "Burst inputs, duplicate requests и out-of-order completion не теряют итоговые изменения, не откатывают current snapshot и не создают duplicate equivalent compute; continuous arrival сохраняет прогресс. Viewer применяет целый новый snapshot явно, новый open выбирает current, exact links и last-good/revoke semantics сохранены."
+  - id: TEST-INV-125
+    invariant: "Fault injection во всех artifact commit boundaries и concurrent cleanup проверяет PostgreSQL publication authority, durability evidence, fencing, unknown-commit reconciliation, отсутствие partial reads и сохранность referenced artifacts. Refresh failure, temporary unavailability и confirmed corruption дают различные UI states."
+  - id: TEST-INV-126
+    invariant: "Mixed 50 author/100 viewer workload с background refresh проверяет ready-open reuse и согласованные latency/resource budgets; backup drill восстанавливает согласованный PostgreSQL/artifact/key комплект вне потерянного primary server и exact report snapshot. Неопределённые latency/RPO/RTO или отсутствующий drill не дают performance/recovery pass."
 ```
 
 ## 22.3. Golden datasets
@@ -7674,6 +7720,16 @@ scaling_requirements:
     requirement: Local workers MUST использовать один canonical artifact root и атомарные rename/metadata semantics на поддерживаемой filesystem.
   - id: SCALE-004
     requirement: Deployment MUST отклонять конфигурацию remote worker до утверждения future distributed topology ADR.
+```
+
+## 23.6. Быстрое открытие готовых отчётов и смешанная нагрузка
+
+```yaml
+report_performance_requirements:
+  - id: REPORT-PERF-001
+    requirement: "Целевой пользовательский результат MUST быть субъективно моментальным открытием предрассчитанного готового отчёта. Workload envelope MUST включать 1–50 одновременно активных аналитиков и 1–100 одновременно читающих пользователей, включая совместную нагрузку 50+100 с background refresh. Это профиль активных пользователей, не обещание 50 одновременных CPU jobs или производительности на произвольном hardware; admission и fairness применяют единый budget CPU/memory/IO."
+  - id: REPORT-PERF-002
+    requirement: "Prepared-report serving MUST читать authorized snapshot metadata и bounded готовые block/page results, переиспользовать materializations и не сканировать исходную историю для эквивалентного ready open. New filters/drill-through могут требовать отдельного explicit computation; произвольные фильтры не обещаются полностью предрассчитанными. Benchmark MUST отдельно измерять ready open после restart/cold cache и warm/hot, time-to-usable active page, page/filter latency, ingestion-to-publication lag, p50/p95/p99, throughput, memory/CPU/IO, bytes и duplicate compute под mixed load. Численные latency/freshness budgets, hardware, data volume/distribution и document profile MUST быть согласованы до performance acceptance; фраза instant и локальное ускорение PyArrow не заменяют этот proof."
 ```
 
 # 24. Развёртывание
@@ -8524,6 +8580,12 @@ v1_acceptance_criteria:
     criterion: "В mapping editor настраиваются string-to-bool словари, flag-based sale/return semantics и derived child channels SP по is_lk, включая unknown и conflicts; предпросмотр, публикация, отчёт и сегмент используют одинаковую версию правил."
   - id: V1-AC-067
     criterion: "Приёмка первого реального подключения использует обезличенный согласованный source contract и synthetic adversarial snapshot corpus с ожидаемыми результатами, readiness/coverage evidence и согласованным workload budget; редкость ошибок и успешный sample не заменяют full-scope proof."
+  - id: V1-AC-068
+    criterion: "Для каждого поддерживаемого analytical document доступны refresh period/trigger/timezone и truthful status; проверены ожидание новых данных к due occurrence, coalescing, automatic preparation, fixed-definition snapshots, monotonic atomic publication и явное применение обновления в viewer без изменения исторических exports/comments."
+  - id: V1-AC-069
+    criterion: "Ready report opens используют готовые bounded results без повторного эквивалентного сканирования истории; controlled mixed-load benchmark покрывает до 50 активных аналитиков и 100 читателей вместе с background refresh и проходит заранее согласованные hardware/data/document/latency budgets. Согласованный workload envelope сам по себе не является performance proof."
+  - id: V1-AC-070
+    criterion: "Artifact commit fault matrix и автоматизированный согласованный off-primary backup/restore drill проходят с truthful UI status, reference closure, key recovery и сохранением exact report snapshots. Administrator управляет daily-evening schedule/timezone/destination/retention; фактические recovery point и duration сообщаются без выдуманного RPO/RTO."
 ```
 
 # 29. Пробелы исходного плана и решения

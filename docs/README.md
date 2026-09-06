@@ -34,6 +34,7 @@
 - [Hierarchical planning framework — 1.0.0](architecture/planning/framework-v1/README.md)
 - [Hierarchical planning framework adoption evidence](architecture/planning/framework-v1/adoption-evidence.md)
 - [Product capability discovery for segmentation and analytical authoring](architecture/planning/product-capability-discovery-2026-09-05.md)
+- [Working-copy synchronization evidence](architecture/planning/working-copy-synchronization-2026-09-06.md)
 - [Custometry Repository and Agent Infrastructure Layout](architecture/repository-layout.md)
 - [Custometry Runtime, Network, and Installation](architecture/runtime-network-installation.md)
 - [Custometry - Target System Design](architecture/system-design.md)

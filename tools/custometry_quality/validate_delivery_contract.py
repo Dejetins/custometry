@@ -88,13 +88,6 @@ def check(root: Path, contract_path: Path | None = None) -> CheckResult:
         "global contract must declare Global Delivery Contract v1",
         result,
     )
-    _require_text(
-        contract_path,
-        "One ready ticket is one execution unit.",
-        "delivery-contract-execution-unit-rule-missing",
-        "global contract must preserve the one ready ticket / one execution unit rule",
-        result,
-    )
 
     skill_path = contract_path.parent.parent / "SKILL.md"
     if not require_file(skill_path, result, "delivery-contract-skill-missing"):
@@ -114,6 +107,13 @@ def check(root: Path, contract_path: Path | None = None) -> CheckResult:
     global_agent = contract_path.parents[3] / "AGENTS.md"
     if not require_file(global_agent, result, "delivery-contract-global-agent-missing"):
         return result
+    _require_text(
+        global_agent,
+        "One ready ticket is one execution unit.",
+        "delivery-contract-execution-unit-rule-missing",
+        "global AGENTS.md must preserve the one ready ticket / one execution unit rule",
+        result,
+    )
     _require_text(
         global_agent,
         contract_reference,

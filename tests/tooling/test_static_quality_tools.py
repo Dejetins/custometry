@@ -1033,7 +1033,7 @@ def delivery_contract_fixture(root: Path) -> Path:
     )
     write(
         contract,
-        "# Global Delivery Contract v1\n\nOne ready ticket is one execution unit.\n",
+        "# Global Delivery Contract v1\n\nExecution units follow global AGENTS.md.\n",
     )
     write(
         contract.parent.parent / "SKILL.md",
@@ -1041,7 +1041,8 @@ def delivery_contract_fixture(root: Path) -> Path:
     )
     write(
         contract.parents[3] / "AGENTS.md",
-        f"Use delivery-orchestrator at {contract.as_posix()}.\n",
+        f"Use delivery-orchestrator at {contract.as_posix()}.\n"
+        "One ready ticket is one execution unit.\n",
     )
     write(
         root / ".codex/AGENTS.md",
@@ -1055,6 +1056,24 @@ def test_delivery_contract_accepts_linked_global_skill(tmp_path: Path) -> None:
     contract = delivery_contract_fixture(tmp_path)
 
     assert validate_delivery_contract.check(tmp_path, contract).ok
+
+
+def test_delivery_contract_rejects_rule_missing_from_global_owner(tmp_path: Path) -> None:
+    contract = delivery_contract_fixture(tmp_path)
+    global_agent = contract.parents[3] / "AGENTS.md"
+    write(global_agent, f"Use delivery-orchestrator at {contract.as_posix()}.\n")
+    # A stale duplicate in the reference cannot replace the canonical owner.
+    write(contract, "# Global Delivery Contract v1\nOne ready ticket is one execution unit.\n")
+
+    result = validate_delivery_contract.check(tmp_path, contract)
+
+    findings = [
+        item
+        for item in result.findings
+        if item.code == "delivery-contract-execution-unit-rule-missing"
+    ]
+    assert len(findings) == 1
+    assert not result.ok
 
 
 def test_delivery_contract_accepts_portable_adapter_without_installed_source(

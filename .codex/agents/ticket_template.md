@@ -33,9 +33,9 @@ repair_policy:
   retest_invalidated_evidence: true
 validation:
   depth: tests
-# For current Custometry Web implementation, use the repository-selected
-# implementation-source contract and preserved target pilot. Do not restore
-# retired G-program artifacts. Add browser-qa-evidence for a browser boundary.
+# Use accepted product and visual sources, including the current Web
+# implementation-source contract when applicable. Add browser-qa-evidence
+# for a browser boundary; do not restore retired G-program artifacts.
   proof_skills: []
   commands: [<focused-command>]
   proof_boundary: <exact-boundary>

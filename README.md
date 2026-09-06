@@ -10,6 +10,7 @@ The repository is permanently public. Never commit credentials, customer data, p
 
 - [Machine-readable technical blueprint](./custometry-technical-blueprint-ru.md) — normative source of truth, version `0.10.0-draft`.
 - [Human-readable technical blueprint](./custometry-technical-blueprint-human-ru.md) — synchronized explanatory representation.
+- [Planning framework](./docs/architecture/planning/framework-v1/README.md) — owner-led hierarchy, milestone packs, iteration journals and mandatory documentation synchronization.
 - [UI/UX requirements](./custometry-ui-blueprint-ru.md) — product UI requirements and current surface inventory.
 - [Target UI concept](./docs/architecture/ui/target-pilot/README.md) — the preserved final interactive pilot, including demonstrated composition and behavior.
 
@@ -29,8 +30,8 @@ If the documents diverge, the machine-readable blueprint wins. New normative req
 
 Development is contract-backed and UI-first. The previous Linear/Penpot target
 and G0-G6 design program have been retired. Web work uses product requirements,
-the accepted target pilot, ADR-0007, and ordinary bounded implementation tickets
-under the Web implementation source contract. Current frontend code is working
+the accepted target pilot, ADR-0007, and the selected milestone or independent-ticket
+route under the Web implementation source contract. Current frontend code is working
 implementation evidence, not automatic proof of target-concept conformance.
 Each bounded context still replaces
 contract-generated mocks with a real vertical slice through API,

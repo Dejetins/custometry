@@ -1,6 +1,6 @@
 ---
 doc_id: ARCH-PLANNING-FRAMEWORK-ADOPTION-001
-doc_version: 1
+doc_version: 2
 status: accepted
 visibility: internal
 ship: false
@@ -12,6 +12,12 @@ proof_boundary:
 ---
 
 # Hierarchical planning framework adoption evidence
+
+This report preserves evidence from the initial, local-only framework adoption.
+The later [MAP-001 adoption](../project-map.md#owner-decisions-and-adoption) accepts
+six real L1 directions and authorizes publication of this framework prerequisite.
+The statements below about no directions or remote-publication authority describe
+the earlier unit only; current publication checks are recorded in MAP-001.
 
 ## Authority and scope
 

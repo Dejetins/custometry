@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-ROADMAP-001
 title: Custometry development roadmap and integration decisions
-doc_version: 7
+doc_version: 8
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -36,8 +36,10 @@ canonical journal for each authorized milestone. Existing tickets retain evidenc
 and independent status; do not duplicate their state or revive retired UI programs.
 Agents must maintain affected document links, versions, decisions, indexes and
 evidence without owner reminders. Product priorities and Forecasting hold remain
-unchanged. The next planning action is to review the project map with the owner;
-old N0/N1 implementation suggestions below do not bypass that checkpoint.
+unchanged. The owner has now accepted [MAP-001 and its six L1 directions](project-map.md)
+at version 1.0.0. The next planning action is owner selection of an L2 branch;
+old N0/N1 implementation suggestions below do not bypass that checkpoint or
+authorize implementation.
 
 ### Owner priority update — 2026-09-05
 

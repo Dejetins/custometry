@@ -1,0 +1,208 @@
+[
+  {
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python",
+      "/tmp/ms001-s02-clean-bc347d7e/source/tools/custometry_quality/delivery_bundle.py",
+      "observe-image-files",
+      "--image",
+      "custometry-ms001-s02-clean-api:arm64",
+      "--role",
+      "api",
+      "--output",
+      "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/evidence/MS-001/MS-001-S02/iteration-02/api-arm64-files.json"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"result\": \"pass\", \"code\": \"DELIVERY_CANDIDATE_PREPARED\", \"next_action\": \"Complete independent authenticity and runtime checks.\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:size=64m",
+      "--entrypoint",
+      "python",
+      "custometry-ms001-s02-clean-api:arm64",
+      "-c",
+      "import custometry_api.main,alembic,sqlalchemy,psycopg,pyarrow as pa,pyarrow.parquet as pq,openpyxl,importlib.util,os; assert importlib.util.find_spec(\"pytest\") is None; assert os.environ[\"CUSTOMETRY_VERSION\"]==\"0.1.0-dev.0+sha.bc347d7e74c5\"; t=pa.table({\"value\":[1,2]}); pq.write_table(t,\"/tmp/probe.parquet\"); assert pq.read_table(\"/tmp/probe.parquet\").equals(t); print(\"CLEAN_API_IMPORT_VERSION_PARQUET_OK\")"
+    ],
+    "exit_code": 0,
+    "stdout": "CLEAN_API_IMPORT_VERSION_PARQUET_OK\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:size=64m",
+      "--entrypoint",
+      "alembic",
+      "custometry-ms001-s02-clean-api:arm64",
+      "-c",
+      "/app/migrations/alembic.ini",
+      "heads"
+    ],
+    "exit_code": 0,
+    "stdout": "0009_notifications (head)\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python",
+      "/tmp/ms001-s02-clean-bc347d7e/source/tools/custometry_quality/delivery_bundle.py",
+      "observe-image-files",
+      "--image",
+      "custometry-ms001-s02-clean-web:arm64",
+      "--role",
+      "web",
+      "--output",
+      "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/evidence/MS-001/MS-001-S02/iteration-02/web-arm64-files.json"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"result\": \"pass\", \"code\": \"DELIVERY_CANDIDATE_PREPARED\", \"next_action\": \"Complete independent authenticity and runtime checks.\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:size=64m",
+      "--add-host",
+      "api:127.0.0.1",
+      "--add-host",
+      "web:127.0.0.1",
+      "--entrypoint",
+      "sh",
+      "custometry-ms001-s02-clean-web:arm64",
+      "-c",
+      "nginx -t && nginx -t -c /etc/nginx/edge.conf"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful\nnginx: the configuration file /etc/nginx/edge.conf syntax is ok\nnginx: configuration file /etc/nginx/edge.conf test is successful\n"
+  },
+  {
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python",
+      "/tmp/ms001-s02-clean-bc347d7e/source/tools/custometry_quality/delivery_bundle.py",
+      "observe-image-files",
+      "--image",
+      "custometry-ms001-s02-clean-api:amd64",
+      "--role",
+      "api",
+      "--output",
+      "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/evidence/MS-001/MS-001-S02/iteration-02/api-amd64-files.json"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"result\": \"pass\", \"code\": \"DELIVERY_CANDIDATE_PREPARED\", \"next_action\": \"Complete independent authenticity and runtime checks.\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/amd64",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:size=64m",
+      "--entrypoint",
+      "python",
+      "custometry-ms001-s02-clean-api:amd64",
+      "-c",
+      "import custometry_api.main,alembic,sqlalchemy,psycopg,pyarrow as pa,pyarrow.parquet as pq,openpyxl,importlib.util,os; assert importlib.util.find_spec(\"pytest\") is None; assert os.environ[\"CUSTOMETRY_VERSION\"]==\"0.1.0-dev.0+sha.bc347d7e74c5\"; t=pa.table({\"value\":[1,2]}); pq.write_table(t,\"/tmp/probe.parquet\"); assert pq.read_table(\"/tmp/probe.parquet\").equals(t); print(\"CLEAN_API_IMPORT_VERSION_PARQUET_OK\")"
+    ],
+    "exit_code": 0,
+    "stdout": "CLEAN_API_IMPORT_VERSION_PARQUET_OK\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/amd64",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:size=64m",
+      "--entrypoint",
+      "alembic",
+      "custometry-ms001-s02-clean-api:amd64",
+      "-c",
+      "/app/migrations/alembic.ini",
+      "heads"
+    ],
+    "exit_code": 0,
+    "stdout": "0009_notifications (head)\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python",
+      "/tmp/ms001-s02-clean-bc347d7e/source/tools/custometry_quality/delivery_bundle.py",
+      "observe-image-files",
+      "--image",
+      "custometry-ms001-s02-clean-web:amd64",
+      "--role",
+      "web",
+      "--output",
+      "/Users/daniildegtyarev/Projects/Custometry/.codex/delivery/evidence/MS-001/MS-001-S02/iteration-02/web-amd64-files.json"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"result\": \"pass\", \"code\": \"DELIVERY_CANDIDATE_PREPARED\", \"next_action\": \"Complete independent authenticity and runtime checks.\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/amd64",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:size=64m",
+      "--add-host",
+      "api:127.0.0.1",
+      "--add-host",
+      "web:127.0.0.1",
+      "--entrypoint",
+      "sh",
+      "custometry-ms001-s02-clean-web:amd64",
+      "-c",
+      "nginx -t && nginx -t -c /etc/nginx/edge.conf"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful\nnginx: the configuration file /etc/nginx/edge.conf syntax is ok\nnginx: configuration file /etc/nginx/edge.conf test is successful\n"
+  }
+]

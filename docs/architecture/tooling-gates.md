@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 8
+doc_version: 9
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -70,6 +70,7 @@ The prefix for every direct command is `uv run python -m tools.custometry_qualit
 | `validate_delivery_tickets` | Delivery ticket changed or a Goal is prepared | PC, L, PP, CI, R | Always | Ticket identity, frontier blockers, exact scope, repair policy, validation boundary/proof-skill route, escalation set, blocked records, and the schema of terminal evidence; it does not prove the behavior |
 | `validate_agent_profiles` | Root governance documents, `AGENTS`, role TOML, templates, or skill routes changed | PC, L, PP, CI, R | Semantic role changes also require a canary | Schema, routing, reference integrity, and English-authoring rules for root contributor/governance documents, repository agent instructions, registries, profiles, and templates |
 | `doctor` | Setup, engine, configuration, ports, network, resources, Compose, or release changed | L static; PP/CI static; R static+runtime | `custometry-doctor --mode runtime` on the target | Preconditions, engine, and resources; not application readiness |
+| `validate_prompt_packs` | Milestone plan, prompts, journal, updater or bound capability evidence changed | PC, L, PP, CI, R | Always | Schema, accepted plan/hash bindings, receipts and declared entry inputs; no stage execution or concurrent-claim proof |
 | `development_runtime` | Hybrid CLI, development Compose override, host-process ownership, demo reset, or release isolation changed | PC, L, PP, CI, R | `scripts/dev validate`; real lifecycle is executed separately for W11 acceptance | Static ownership, loopback publication, volume separation, bounded logs, reset target, and release-entrypoint exclusion; static validation does not prove the Docker/host lifecycle |
 | `cleanup` | Generated, temporary, or container data deletion, or disk remediation | Not included automatically | Dry-run when triggered; R synthetic apply drill | Ownership-bounded deletion and post-condition; not broad deletion authority |
 | `check_ddd_boundaries` | Imports, package boundaries, allowlist, or context map changed | PC, L, PP, CI, R | Always | Compile-time dependency policy; not runtime SQL proof |
@@ -193,3 +194,91 @@ probes.
 - Path-based optimization is added only after measuring CI duration and must not permit false skips for shared contracts.
 - Tool output contains no secrets, DSNs, raw PII, cookies, or provider payloads.
 - Auto-fix in CI is prohibited; a local generator or fixer shows the exact owned diff.
+
+
+## 7. Stage journal transactions
+
+The accepted planning framework uses `prompt-pack-ledger/v1`, `stage-prompt/v1`
+and `prompt-pack-receipt/v1`. The repository snapshot
+[`prompt_pack_validation.py`](../../tools/custometry_quality/prompt_pack_validation.py)
+records its Prompt Manager source SHA and preserves that profile, adding accepted
+plan/version/hash checks and in-memory candidate validation. It needs no installed
+home-directory skill to validate repository artifacts in CI. The read-only
+`validate_prompt_packs` gate runs in every source profile. It checks actual
+journals under `.codex/delivery/ledgers/`; no journal is activated by a gate.
+
+The [`stage_ledger.py`](../../tools/custometry_quality/stage_ledger.py) updater is
+`custometry-stage-ledger/v1`, available on macOS and Linux with Python and Git.
+The runner resolves current user authority and reviews real evidence; the updater
+supplies the exclusive local transaction. Use one canonical checkout and journal
+for a pack. Separate clones/worktrees or network filesystems are not a shared
+coordination service. Distributed execution is outside this mechanism's scope.
+
+```sh
+uv run --locked python -m tools.custometry_quality.validate_prompt_packs
+uv run --locked python -m tools.custometry_quality.prompt_pack_validation --root "$PWD" --ledger "$PWD/.codex/delivery/ledgers/MS-001.md" --check entry --stage MS-001-S01
+uv run --locked python -m tools.custometry_quality.stage_ledger preflight --ledger .codex/delivery/ledgers/MS-001.md --stage MS-001-S01
+```
+
+`preflight` checks entry plus actual updater availability and returns the current
+`ledger_sha256`; it never claims a stage. After the user requests execution, use
+`claim` with the same ledger/stage and `--expected-sha256 <observed-sha256>`.
+Each mutating command requires that exact observed hash and returns the new hash.
+A stale hash requires a reread and renewed checks, never a blind retry. Resolve
+`CODEX_THREAD_ID` from the actual runner session; outside Codex explicitly pass
+`--session <actual-stable-session-id>`. A new session may claim a new pending stage;
+it cannot resume another session's existing claim. Never copy a foreign session
+identifier, reset a claim or delete updater metadata to obtain ownership.
+
+The updater holds a nonblocking POSIX `flock` on a stable file in the checkout's
+Git metadata for the entire read/validate/write transaction. Lock files are never
+unlinked. Session ownership uses a private 0600 random key in Git metadata; only
+its hash is recorded in the journal. Neither the key nor its bytes are printed,
+committed or included in evidence. A process exit releases the transaction lock;
+the durable stage claim survives, so another executor cannot silently restart it.
+An unavailable original session requires an explicit reconciled recovery change;
+this CLI deliberately offers no force-steal or state-reset operation.
+
+Before each transition, the updater verifies the bound implementation/capability,
+live plan and prompts, current claim, dependencies, entry inputs and receipt.
+It validates the proposed state in memory, checks source/evidence hashes again,
+then uses a same-directory temporary file, `fsync` and atomic `os.replace`.
+All cooperating writers must use this updater. Direct file editors and malicious
+processes running as the same OS user are outside its concurrency guarantee.
+
+| Operation | Required evidence and result |
+|---|---|
+| `claim` | Allowed pending stage and current entry inputs; activates the journal and records one claim atomically |
+| `advance` | After current-stage acceptance with a disallowed successor: `--reason` and `--evidence` for renewed input/authority checks; enables that pending successor without rewriting the accepted row or its receipt |
+| `pause` | `--reason`, `--evidence`, `--question`, `--resume-condition`; records recoverable `needs_input` |
+| `resume` | Original session plus `--resolution` pointing to the actual answer; rechecks entry and resumes the same claim |
+| `accept` | `--receipt` pointing to a new immutable receipt; `review_ready` pauses for required user acceptance, `ready` accepts and enables only its independently verified successor, or completes the final stage |
+| `block` | `--reason` and `--evidence`; records a demonstrated hard blocker, preserving the terminal row and all history |
+
+Evidence/receipt/resolution paths are relative to the journal directory and must
+resolve within the checkout. Consumed receipts are recorded by canonical resolved path and content hash.
+Every transaction rejects changed/missing consumed receipts and path aliases.
+`pause`/`block` verify the claim and evidence without requiring lost runtime
+entry inputs to be restored first; control artifacts must remain parseable.
+
+The runner writes immutable reports/check evidence
+and receipts before a terminal transition, reviews their meaning, and never
+uses a fabricated `pass` or acceptance file. A hash establishes bytes, not truth.
+For a paused completed result, preserve the earlier report/receipt snapshot,
+record the actual user decision, rerun required checks and create a new receipt.
+An absent successor remains disallowed; normal MS-001 handoffs produce declared
+inputs before allowing the next stage. If a successor becomes ready only after
+acceptance, the new execution request uses `advance --stage <successor>
+--reason <reason> --evidence <journal-relative-readiness-evidence>
+--expected-sha256 <current-observed-hash>` and then its normal preflight/claim. Repair revisions and deliberate migration
+of an already activated plan require an explicitly scoped reconciliation; the
+normal CLI does not silently rewrite existing contracts or terminal history.
+
+Commands emit one bounded JSON result. Exit 0 with `status: pass` confirms only
+the reported operation; nonzero, malformed or interrupted output requires reading
+actual journal state before retry. If interruption follows atomic replacement,
+the durable record and history determine whether the operation already completed.
+[`test_stage_ledger.py`](../../tests/tooling/test_stage_ledger.py) exercises actual
+subprocess contention, process death, stale writes, session isolation, receipt
+binding, pause/resume/final acceptance and interrupted replacement in temporary
+Git checkouts. These tests never execute a product milestone.

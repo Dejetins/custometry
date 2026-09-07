@@ -40,6 +40,7 @@
 - [Template — milestone iteration journal](architecture/planning/framework-v1/06-iteration-journal-template.md)
 - [Hierarchical planning framework — 1.0.0](architecture/planning/framework-v1/README.md)
 - [Hierarchical planning framework adoption evidence](architecture/planning/framework-v1/adoption-evidence.md)
+- [MS-001. Reproducible versioned prebuilt delivery](architecture/planning/milestones/MS-001/plan.md)
 - [Product capability discovery for segmentation and analytical authoring](architecture/planning/product-capability-discovery-2026-09-05.md)
 - [Custometry development direction map](architecture/planning/project-map.md)
 - [Custometry Repository and Agent Infrastructure Layout](architecture/repository-layout.md)

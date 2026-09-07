@@ -70,6 +70,12 @@ Delivery Contract v1. Route accepted milestone authoring through `prompt-manager
 and execution through `staged-plan-runner`, with exactly one allowed stage unless
 explicit Goal authority permits continuation. The milestone's plan, prompt pack
 and iteration journal form the canonical triad; the journal alone owns stage state.
+Use the repository `tools.custometry_quality.stage_ledger` CLI described in
+[tooling gates](../docs/architecture/tooling-gates.md#7-stage-journal-transactions)
+for exclusive claim, pause, resume and receipt-backed completion. The supported
+scope is one canonical journal in a local POSIX Git checkout; separate checkouts
+are not a shared concurrent execution target. `validate_prompt_packs` is the
+portable read-only gate; a structural pass alone does not execute a stage.
 Do not create a ticket that duplicates that same unit's mutable execution state.
 Existing independent tickets and explicit tiny repairs keep their selected route.
 No retired G0-G6 pack, board, certification or ledger is reactivated.

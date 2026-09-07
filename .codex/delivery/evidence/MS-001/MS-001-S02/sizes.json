@@ -1,0 +1,16 @@
+[
+  {
+    "tags": [
+      "custometry-ms001-s02-api:local"
+    ],
+    "compressed_layer_bytes": 115010255,
+    "uncompressed_layer_tar_bytes": 381197312
+  },
+  {
+    "tags": [
+      "custometry-ms001-s02-web:local"
+    ],
+    "compressed_layer_bytes": 22729295,
+    "uncompressed_layer_tar_bytes": 55403008
+  }
+]

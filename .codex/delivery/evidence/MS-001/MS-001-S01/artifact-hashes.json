@@ -1,0 +1,37 @@
+{
+  "proof_boundary": "S01-source-artifact-bytes-at-final-validation",
+  "artifacts": [
+    {
+      "path": "deploy/compose/delivery-manifest.schema.json",
+      "sha256": "d8df69f26fa90aea6628f03cbb235cfea7a085ed47c27ca4c12ab879a0f32b61"
+    },
+    {
+      "path": "deploy/compose/delivery-verification-policy.json",
+      "sha256": "6f4dfa9f100eb7cf6c994a63bdd5b56c30f689338324a2305966596356d41f0a"
+    },
+    {
+      "path": "deploy/compose/validate-delivery-manifest.py",
+      "sha256": "3e0e8a91dee3f706026ec1a5ef68dfed37189d1d2d20c98402b036a51d2bb2b2"
+    },
+    {
+      "path": "tests/tooling/test_delivery_bundle.py",
+      "sha256": "f62cf6a335cf5def36ed4013b62fb357f67013a94f051dec397708a06983ec51"
+    },
+    {
+      "path": "tests/tooling/fixtures/delivery-manifest.valid.json",
+      "sha256": "7f89fcbba52ab9a5a63a16dd2be2c427fed5b28168bd58d1aab93980e21c7d6a"
+    },
+    {
+      "path": "docs/architecture/runtime-network-installation.md",
+      "sha256": "0bc2cd3873366eb64daae7c24e4e3d26281399306063da556c5d8f0be7ad1cd0"
+    },
+    {
+      "path": "docs/architecture/tooling-gates.md",
+      "sha256": "fac6feebe17792ed19bf9cd050cac6a9b4c12c572e07726cd82d77cc8253885b"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "sha256": "e666bcefabaffff9e3d10e9534c22869a6e473d0a8f6611a8d081f0851fb7239"
+    }
+  ]
+}

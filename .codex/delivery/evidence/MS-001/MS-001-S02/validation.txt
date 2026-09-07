@@ -1,0 +1,87 @@
+COMMAND ['uv', 'run', '--locked', 'pytest', '-q', 'tests/tooling/test_delivery_bundle.py', 'tests/tooling/test_delivery_bundle_producer.py', 'tests/integration/test_release_manifest.py']
+EXIT 0
+........................................................................ [ 72%]
+............................                                             [100%]
+100 passed in 1.58s
+
+COMMAND ['uv', 'run', '--locked', 'ruff', 'check', 'tools/custometry_quality/delivery_bundle.py', 'tests/tooling/test_delivery_bundle_producer.py']
+EXIT 0
+All checks passed!
+
+COMMAND ['uv', 'run', '--locked', 'pyright']
+EXIT 1
+/Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:60:59 - error: Type of "item" is unknown (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:62:5 - error: Type of "items" is partially unknown
+    Type of "items" is "tuple[Unknown, ...]" (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:62:19 - error: Argument type is partially unknown
+    Argument corresponds to parameter "iterable" in function "__new__"
+    Argument type is "list[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:63:12 - error: Return type, "tuple[Unknown, ...] | None", is partially unknown (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:63:39 - error: Argument type is partially unknown
+    Argument corresponds to parameter "obj" in function "len"
+    Argument type is "tuple[Unknown, ...]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:63:53 - error: Argument type is partially unknown
+    Argument corresponds to parameter "obj" in function "len"
+    Argument type is "set[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:63:57 - error: Argument type is partially unknown
+    Argument corresponds to parameter "iterable" in function "__init__"
+    Argument type is "tuple[Unknown, ...]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:110:5 - error: Type of "record" is partially unknown
+    Type of "record" is "dict[Unknown, Unknown] | None" (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:111:35 - error: Type of "get" is partially unknown
+    Type of "get" is "Overload[(key: Unknown, default: None = None, /) -> (Unknown | None), (key: Unknown, default: Unknown, /) -> Unknown, (key: Unknown, default: _T@get, /) -> (Unknown | _T@get)]" (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:111:35 - error: Argument type is partially unknown
+    Argument corresponds to parameter "value" in function "_proof_paths"
+    Argument type is "Unknown | None" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:114:31 - error: Type of "get" is partially unknown
+    Type of "get" is "Overload[(key: Unknown, default: None = None, /) -> (Unknown | None), (key: Unknown, default: Unknown, /) -> Unknown, (key: Unknown, default: _T@get, /) -> (Unknown | _T@get)]" (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:114:31 - error: Argument type is partially unknown
+    Argument corresponds to parameter "value" in function "_non_empty_string"
+    Argument type is "Unknown | None" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:118:31 - error: Type of "get" is partially unknown
+    Type of "get" is "Overload[(key: Unknown, default: None = None, /) -> (Unknown | None), (key: Unknown, default: Unknown, /) -> Unknown, (key: Unknown, default: _T@get, /) -> (Unknown | _T@get)]" (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:118:31 - error: Argument type is partially unknown
+    Argument corresponds to parameter "value" in function "_non_empty_string"
+    Argument type is "Unknown | None" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:266:16 - error: Type of "strip" is partially unknown
+    Type of "strip" is "Unknown | ((chars: str | None = None, /) -> str)" (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:266:45 - error: "strip" is not a known attribute of "None" (reportOptionalMemberAccess)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:266:45 - error: Cannot access attribute "strip" for class "bool"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:266:45 - error: Cannot access attribute "strip" for class "int"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:266:45 - error: Cannot access attribute "strip" for class "float"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:266:45 - error: Cannot access attribute "strip" for class "list[JsonValue]"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_delivery_tickets.py:266:45 - error: Cannot access attribute "strip" for class "dict[str, JsonValue]"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+/Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:434:21 - error: Type of "states" is partially unknown
+    Type of "states" is "set[Unknown]" (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:481:21 - error: Type of "allowed_keys" is partially unknown
+    Type of "allowed_keys" is "set[Unknown]" (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1006:17 - error: Type of "expected_requirements" is partially unknown
+    Type of "expected_requirements" is "set[Unknown]" (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1006:45 - error: Argument of type "object" cannot be assigned to parameter "iterable" of type "Iterable[_T@set]" in function "__init__"
+    "object" is incompatible with protocol "Iterable[_T@set]"
+      "__iter__" is not present (reportArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1011:98 - error: Argument type is partially unknown
+    Argument corresponds to parameter "iterable" in function "sorted"
+    Argument type is "set[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1080:62 - error: Type of "strip" is partially unknown
+    Type of "strip" is "Unknown | ((chars: str | None = None, /) -> str)" (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1080:88 - error: "strip" is not a known attribute of "None" (reportOptionalMemberAccess)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1080:88 - error: Cannot access attribute "strip" for class "bool"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1080:88 - error: Cannot access attribute "strip" for class "int"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1080:88 - error: Cannot access attribute "strip" for class "float"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1080:88 - error: Cannot access attribute "strip" for class "list[JsonValue]"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/validate_route_registry.py:1080:88 - error: Cannot access attribute "strip" for class "dict[str, JsonValue]"
+    Attribute "strip" is unknown (reportAttributeAccessIssue)
+33 errors, 0 warnings, 0 informations
+

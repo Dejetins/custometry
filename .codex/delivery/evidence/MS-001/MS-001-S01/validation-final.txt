@@ -1,0 +1,30 @@
+MS-001-S01 final source checks after policy/frontend and documentation updates.
+Toolchain activated by scripts/activate-toolchain.sh.
+
+$ uv run --locked --offline --no-sync pytest -q tests/tooling/test_delivery_bundle.py tests/integration/test_release_manifest.py
+.............................................................            [100%]
+61 passed in 1.21s
+exit_code: 0
+
+$ uv run --locked --offline --no-sync ruff check deploy/compose/validate-delivery-manifest.py tests/tooling/test_delivery_bundle.py
+All checks passed!
+exit_code: 0
+
+$ uv run --locked --offline --no-sync pyright deploy/compose/validate-delivery-manifest.py tests/tooling/test_delivery_bundle.py
+0 errors, 0 warnings, 0 informations
+exit_code: 0
+
+$ uv run --locked python deploy/compose/validate-delivery-manifest.py tests/tooling/fixtures/delivery-manifest.valid.json
+{"result": "pass", "code": "DELIVERY_STRUCTURE_VALID", "next_action": "Complete independent authenticity and closure verification."}
+exit_code: 0
+
+$ uv run --locked python deploy/compose/validate-delivery-manifest.py --policy deploy/compose/delivery-verification-policy.json
+{"result": "pass", "code": "DELIVERY_STRUCTURE_VALID", "next_action": "Complete independent authenticity and closure verification."}
+exit_code: 0
+
+$ uv run --locked python -m tools.check --scope local
+PASS check:local (observed=true)
+exit_code: 0
+
+$ git diff --check
+exit_code: 0

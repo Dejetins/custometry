@@ -1,0 +1,71 @@
+{
+  "proof_boundary": "local ARM64 images from explicitly identified uncommitted S02 preparation; not registry or clean-commit evidence",
+  "images": [
+    {
+      "Id": "sha256:1f4086f1438ab2fca641babfafbaf4c314fa920af1ae4bf78f8ac0579ef04809",
+      "RepoTags": [
+        "custometry-ms001-s02-api:local"
+      ],
+      "Architecture": "arm64",
+      "Os": "linux",
+      "Size": 105845714,
+      "Created": "2026-09-07T21:38:56.031991305Z",
+      "version": "0.1.0-dev.0+s02.preparation",
+      "rootfs_layers": [
+        "sha256:3e5d01a55aea2c9ea64c3cfef2bb870df4b01c7e206103a970d4c3dc6caed96b",
+        "sha256:62750a0d4afa47971eda307d875c99fc4a7292beb47970df9c18647609d86e88",
+        "sha256:3603fa54c00d0cb83e3070b70cd08bc24ca60844986408ade6c1b80ef7b0f532",
+        "sha256:4882eb1c66d54726bda0140b368f4388ceca8351cdcc6d10fe29bdcddb0b6f59",
+        "sha256:8aa585a4805eae234ebf82bafd9d35c6850def9c2e228782269072bdc28af8c5",
+        "sha256:e6b1d382f79ceface9f861cb6fcc2548c3f5c9e1f40f04be5260253d3b048e24",
+        "sha256:b4532183368e93a1b2edc07d044bf6d0b041c9a0c8fd8154189190e6902ab828",
+        "sha256:2a70db8a4d3567c5567f699d5ba909783b32e41fda9bdad298833110ffda16ab",
+        "sha256:63ab57444d2e33e5771803fb854cd30fa28f7e7880aef9dc6beb13848322c2d3",
+        "sha256:98001132fd0ec2ffee14a20536bd50e0468fa2783dfda56e9ce9602147f70d46",
+        "sha256:95cfd2cd08aa28db63241b92e6ce0d7c667d67384e34535aaa3ef852c1610e03",
+        "sha256:f55931aacd636ec59ee86058c58d41b8d788fa05d1adf722405bfb2dd5299164",
+        "sha256:c1325de33417279dbe6b70c91ba39317aedba5cca3ebe98ec5de89e15aefc8e8",
+        "sha256:4a974ef3c5a34bc295135c560fa847b48a706e38fa625b2a4fece073d794ff13",
+        "sha256:4a653358c8e15d34cc37e2695908842f33f507c08e11f579f062d648d96fe663",
+        "sha256:0c47de501a031b3a9a54c8db889d686e935206f24bef95838b7ba8cc80d07fa6",
+        "sha256:aa3dd13f52b451a86ecc9a77d308bf58f3b1344ed36ba88965671c55d51c0a3b",
+        "sha256:94591949080321a8c2a048248b803cfd25e4f7c710efe7d1a7de5c2520895f5a",
+        "sha256:7d8d18cb2ce8d04c78878c54e70447c94e8ee505e3a7fcc5882eedbdb5304029",
+        "sha256:e4960eda61f1faca478f3bbbe6be7f3ae29a5e431075bf1a6a173e9d956913ef",
+        "sha256:804ced1c870fa3786bce2a55771b8224374b00f5167fb45617787193e50ee30a",
+        "sha256:6e657a9eda3fcef4caa0d1b6ec28cc5c6a587e15a3ea30ac7160b53372bec861",
+        "sha256:df4624a8c78c0b2771510861c8f3aa699a67ead02cb288afd93b67c0fc3c713f",
+        "sha256:081e603b754ba6242146025bd814a414e80cfbc5a24e9832a1e0f831e5662820",
+        "sha256:c17ef0ce6e7a3b5fef11c59738918a8f4e3746ee12dc5e79663f4a2cce9a00ce",
+        "sha256:2529df05cf60acb042622bded80b2e378d144ed4fc6190ae0dd96870fdfd211a"
+      ]
+    },
+    {
+      "Id": "sha256:d028ad37c01e010a3ff884da357a0119158f962e6f8247a89090a50c6438ce61",
+      "RepoTags": [
+        "custometry-ms001-s02-web:local"
+      ],
+      "Architecture": "arm64",
+      "Os": "linux",
+      "Size": 22748378,
+      "Created": "2026-09-07T21:36:13.336439757Z",
+      "version": "0.1.0-dev.0+s02.preparation",
+      "rootfs_layers": [
+        "sha256:982780712fdf5e22c7ed01172785fd7059a9ec11cb375c7133dc5b06c24250ff",
+        "sha256:9797487c353f6e8b4b2755834b47e62e9be3a37fc36d4e0ec129f21e2c0d8606",
+        "sha256:36ee79140adc68664fa2df63772dbff82eaa1905a43df7b89f2a523247a2ee12",
+        "sha256:8771405cd03dd8832f4f42d93849a5e63a0994af5dadadfc21e7a80195dd3d29",
+        "sha256:877fb8c6917d0dbc57a28cdf84b05b4da51ce6993731c37367e1b62ed9fefb5e",
+        "sha256:ad80e8d95e16c138cd015eb519a1be4aad7c2ff55b54a6b0b93f40f117ec4524",
+        "sha256:2bb109e27bf797fea05fa90693eff3b811a86584315d77bee28b5c6177362491",
+        "sha256:04575a0ad6dc6dcb8c3202de00f9d03430eb24b19a99a796a9d997f53a2ee8a8",
+        "sha256:7868fb7884d80e55cc69c1f84a44115588076797de46ab45fafea438811026fe",
+        "sha256:6000c1ab422023b22e803aade4315c424d9c2e20a681fb6dae4ec531efb21252",
+        "sha256:6dc2bcc93e6e90f1c232d57a4b11d5eb5072179c81148657fe1113a7d261e452",
+        "sha256:9ab8f16aded7e8795615f9cef6876503a3daaacb83c16ecea8ac19d9a450944a",
+        "sha256:ab465f7985dd18fa3d7b9494d4ab723c29a527021e84d79193010ef6ff1bcc02",
+        "sha256:30753320f6595271ff9e0c57c8156b83477ab2fcdf62bc20d9d4ce12a95ac8ae"
+      ]
+    }
+  ]
+}

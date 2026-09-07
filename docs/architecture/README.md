@@ -33,7 +33,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 |---|---|
 | [Development direction map — MAP-001](./planning/project-map.md) | Accepted version 1.2.0: six L1 directions, full sequential priorities and installation-first planning entry |
 | [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.3: M5/Linux installation, TLS, explicit bootstrap roles and five sequential outcomes |
-| [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 1.1.0: accepted working plan, measurable comparisons, five prompts, tested journal updater and S01 entry readiness; implementation not started |
+| [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 1.1.0: accepted working plan, measurable comparisons, five prompts, tested journal updater; execution state and stage evidence live in the canonical journal |
 | [System Design](./system-design.md) | Complete `0.11.0-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted customer segmentation/reporting requirements, target contract ownership, compatibility and implementing-ticket acceptance |

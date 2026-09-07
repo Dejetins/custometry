@@ -1,0 +1,137 @@
+{
+  "proof_boundary": "uncommitted local preparation; ARM64 native engine and AMD64 emulation, not native AMD64 proof",
+  "images": [
+    {
+      "Id": "sha256:1f4086f1438ab2fca641babfafbaf4c314fa920af1ae4bf78f8ac0579ef04809",
+      "RepoTags": [
+        "custometry-ms001-s02-api:local"
+      ],
+      "Architecture": "arm64",
+      "Os": "linux",
+      "Size": 105845714,
+      "Created": "2026-09-07T21:38:56.031991305Z",
+      "version": "0.1.0-dev.0+s02.preparation",
+      "rootfs_layers": [
+        "sha256:3e5d01a55aea2c9ea64c3cfef2bb870df4b01c7e206103a970d4c3dc6caed96b",
+        "sha256:62750a0d4afa47971eda307d875c99fc4a7292beb47970df9c18647609d86e88",
+        "sha256:3603fa54c00d0cb83e3070b70cd08bc24ca60844986408ade6c1b80ef7b0f532",
+        "sha256:4882eb1c66d54726bda0140b368f4388ceca8351cdcc6d10fe29bdcddb0b6f59",
+        "sha256:8aa585a4805eae234ebf82bafd9d35c6850def9c2e228782269072bdc28af8c5",
+        "sha256:e6b1d382f79ceface9f861cb6fcc2548c3f5c9e1f40f04be5260253d3b048e24",
+        "sha256:b4532183368e93a1b2edc07d044bf6d0b041c9a0c8fd8154189190e6902ab828",
+        "sha256:2a70db8a4d3567c5567f699d5ba909783b32e41fda9bdad298833110ffda16ab",
+        "sha256:63ab57444d2e33e5771803fb854cd30fa28f7e7880aef9dc6beb13848322c2d3",
+        "sha256:98001132fd0ec2ffee14a20536bd50e0468fa2783dfda56e9ce9602147f70d46",
+        "sha256:95cfd2cd08aa28db63241b92e6ce0d7c667d67384e34535aaa3ef852c1610e03",
+        "sha256:f55931aacd636ec59ee86058c58d41b8d788fa05d1adf722405bfb2dd5299164",
+        "sha256:c1325de33417279dbe6b70c91ba39317aedba5cca3ebe98ec5de89e15aefc8e8",
+        "sha256:4a974ef3c5a34bc295135c560fa847b48a706e38fa625b2a4fece073d794ff13",
+        "sha256:4a653358c8e15d34cc37e2695908842f33f507c08e11f579f062d648d96fe663",
+        "sha256:0c47de501a031b3a9a54c8db889d686e935206f24bef95838b7ba8cc80d07fa6",
+        "sha256:aa3dd13f52b451a86ecc9a77d308bf58f3b1344ed36ba88965671c55d51c0a3b",
+        "sha256:94591949080321a8c2a048248b803cfd25e4f7c710efe7d1a7de5c2520895f5a",
+        "sha256:7d8d18cb2ce8d04c78878c54e70447c94e8ee505e3a7fcc5882eedbdb5304029",
+        "sha256:e4960eda61f1faca478f3bbbe6be7f3ae29a5e431075bf1a6a173e9d956913ef",
+        "sha256:804ced1c870fa3786bce2a55771b8224374b00f5167fb45617787193e50ee30a",
+        "sha256:6e657a9eda3fcef4caa0d1b6ec28cc5c6a587e15a3ea30ac7160b53372bec861",
+        "sha256:df4624a8c78c0b2771510861c8f3aa699a67ead02cb288afd93b67c0fc3c713f",
+        "sha256:081e603b754ba6242146025bd814a414e80cfbc5a24e9832a1e0f831e5662820",
+        "sha256:c17ef0ce6e7a3b5fef11c59738918a8f4e3746ee12dc5e79663f4a2cce9a00ce",
+        "sha256:2529df05cf60acb042622bded80b2e378d144ed4fc6190ae0dd96870fdfd211a"
+      ]
+    },
+    {
+      "Id": "sha256:771c1ae538fe8960fb43a507bf35666ec3308237669e77a98f33f0e16a5f661a",
+      "RepoTags": [
+        "custometry-ms001-s02-api:amd64-local"
+      ],
+      "Architecture": "amd64",
+      "Os": "linux",
+      "Size": 107546037,
+      "Created": "2026-09-07T21:48:05.383652503Z",
+      "version": "0.1.0-dev.0+s02.preparation",
+      "rootfs_layers": [
+        "sha256:aca83606673032726b42f8e1396ceb979c32bfb26b602732baf699053e46b33e",
+        "sha256:9cec99e910cbef45442323a31a04c92b5c14dddf236dd769d02c54af99e56d6d",
+        "sha256:4858806d59148b044f1fb5491f84963f5742556eefa0ce9de13717e1a195edae",
+        "sha256:6bcbbe0b3546e8b3e707223aee64fd1c2d220d8d8c6834829e392648f38d5b6e",
+        "sha256:0c8f7ad907453f94879187bc5a81921de4b0ed3ce96bf556f6731a18b6f2502f",
+        "sha256:43d58937cf38483d8e6cf0b9137afd2df2d10203f0f4fab763473b11ea8b8f78",
+        "sha256:41d549f986be3e32ce314b37f0d06b1168783ac129404d0952e8b520fd157fbb",
+        "sha256:9cd50e63f8aa7020628cdfbaaa2d409cc4bc37ce41c836cf1efbc0d9885a4ee9",
+        "sha256:63d87cb8e3f69519b1f7579baa8553e03843be9b57cd1ff6ea45145d2ee460b6",
+        "sha256:a5a3054a1c455aebd89bcc6293257d13f56d353048dc5a65fd34dca2290d9439",
+        "sha256:55ec796e816f0e9455485699a2a2410bb93e9602b460ed795c794514b1c8b4b0",
+        "sha256:d0dbe6610eb3b17bab25e919773394c5c5192dccf2abc1e682c42a4c2c7c6b0a",
+        "sha256:9eb44d525632ad8177cbfcf59cd8c1172c50cca0a0e9c949fadf303165318a5c",
+        "sha256:db80613f322bbae3d1330555556392b33bf486da698f447125a9e460234ab0c7",
+        "sha256:2806fff2ab8c6541be8930881d19204a607ac742aab70e2f211a389c6bea2584",
+        "sha256:08b2a2840df7092103cde64e779b43c474485a340eb524c723c3b8249aca0b4f",
+        "sha256:fc614efd5e247f19a737028545c9046fcfd9664c6675016ae1f5b7d9cecd545d",
+        "sha256:ee193b45fd2c3d2fc6a42f33d9584cc13fc0af732834b6669e912458cae50b08",
+        "sha256:42681153f52155a73ce1dec203bab8bc3fd6f61f4f4f19b0c0945cf4201e55ab",
+        "sha256:b64e6f8a32ddb27b73d7a0a80dc37450096c8d06271ae9fda09f6985f7a528e1",
+        "sha256:399015b25913b4e9d0c639f9d7360f089cea6867d205a337dbf11e503946fb81",
+        "sha256:456922862cbfe042d65419557a00c6a4ae6d0bbbea2c6eec27b4700ea865967d",
+        "sha256:0a072caa2c5badde1403c13767dce05bafc7f82b5c1d8f43cebdc9bc18edb6d2",
+        "sha256:fb71dbd59361c50a003370cc6ef9bc7ac7818059509e0f7b5cfe4433e5a4f485",
+        "sha256:ec109b9ab98f36119c1d09199492ebb8ea453d8506bc48aff9d2a442aecf8a2b",
+        "sha256:9306df3e8e0b3bde2492f01a086a9591572084fef3bf5cb6cb84fc0676614896"
+      ]
+    },
+    {
+      "Id": "sha256:b969685db4d3913928da2c2e4ccee96c86b920a6a2ca9883dfa7fb75fe2252aa",
+      "RepoTags": [
+        "custometry-ms001-s02-web:local"
+      ],
+      "Architecture": "arm64",
+      "Os": "linux",
+      "Size": 22747798,
+      "Created": "2026-09-07T21:48:25.430756471Z",
+      "version": "0.1.0-dev.0+s02.preparation",
+      "rootfs_layers": [
+        "sha256:982780712fdf5e22c7ed01172785fd7059a9ec11cb375c7133dc5b06c24250ff",
+        "sha256:9797487c353f6e8b4b2755834b47e62e9be3a37fc36d4e0ec129f21e2c0d8606",
+        "sha256:36ee79140adc68664fa2df63772dbff82eaa1905a43df7b89f2a523247a2ee12",
+        "sha256:8771405cd03dd8832f4f42d93849a5e63a0994af5dadadfc21e7a80195dd3d29",
+        "sha256:877fb8c6917d0dbc57a28cdf84b05b4da51ce6993731c37367e1b62ed9fefb5e",
+        "sha256:ad80e8d95e16c138cd015eb519a1be4aad7c2ff55b54a6b0b93f40f117ec4524",
+        "sha256:2bb109e27bf797fea05fa90693eff3b811a86584315d77bee28b5c6177362491",
+        "sha256:04575a0ad6dc6dcb8c3202de00f9d03430eb24b19a99a796a9d997f53a2ee8a8",
+        "sha256:7868fb7884d80e55cc69c1f84a44115588076797de46ab45fafea438811026fe",
+        "sha256:6000c1ab422023b22e803aade4315c424d9c2e20a681fb6dae4ec531efb21252",
+        "sha256:b4fa4f6cdb0d8593ebe5d1ad45e8bea55e7fd643bd2c03bfdbc5b6ff22f00d8c",
+        "sha256:d2ceb4c1ed6a18fa6e2becb7ac9fec84cb09657ecb210a238ded686d04007795",
+        "sha256:e27f16768f61a4642c9ccce149108ae7cc35be6edbc70b69cae3bf0c4763cf05",
+        "sha256:b63af482d69c4c1f882a6b9ae960f8e5e099de6aac87ce877372c20cf8e035b6"
+      ]
+    },
+    {
+      "Id": "sha256:1ad016a1ead8cd9ed7a2d352c55e3cb1840f7ff08e1b5cb1d0fcd6454bdab204",
+      "RepoTags": [
+        "custometry-ms001-s02-web:amd64-local"
+      ],
+      "Architecture": "amd64",
+      "Os": "linux",
+      "Size": 21903838,
+      "Created": "2026-09-07T21:50:30.391599459Z",
+      "version": "0.1.0-dev.0+s02.preparation",
+      "rootfs_layers": [
+        "sha256:922ec217407c0fd31cb18b46090bf62e439fb53ecd01f09406d62e25a906e09b",
+        "sha256:0e19dcbccb67aac577319dce0190e9b7029fdd59fa335c735542dc8eb9b72fd3",
+        "sha256:79c8f842099283e9a504808c658818bbc63dc237424d91522e3e9327ad4cdf5c",
+        "sha256:8771405cd03dd8832f4f42d93849a5e63a0994af5dadadfc21e7a80195dd3d29",
+        "sha256:aa3ec426a496bd76f30ec830aae4e5adcb825e47facc4072d84cbfb26ceeae9e",
+        "sha256:d7deb9772f64c1c24c07f260c7da716a1ee1d58067f06cd88e8302f05bfff64f",
+        "sha256:4f2b4173013a21bedf74751ea92ccfc01006211889abda3cfcd4bb58223d3131",
+        "sha256:b0d8fc3ff2a6eabc49fc8c869b58cfa6e442025d0075c8cf998634ecf72f661a",
+        "sha256:e1d2cbc7a61f7120378e16cbd0b888951f23f47d7cda7d395f046e7533446e1d",
+        "sha256:dc08ac28db4312521bf05fa70a92fb3ac77e86c1dc9ce9f7cb35832aaf389bef",
+        "sha256:bd59eabccfeb4a1f0f9fa8d57a05c7d1f226fe8a6076bc2965f410496d95e6c5",
+        "sha256:427d5cc0a140e357152919d0dcb2bf124d87c0d0c5f897a1b0cf93b28c7de508",
+        "sha256:21f6c7c5ce9b5bae61678f493c14007e7d10eadc0e824d512481507f32e121e1",
+        "sha256:17ef71f815b4e2cea8f45ebda444d12fa29f314919e01c14685f0039d6c24db6"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 8
+doc_version: 10
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -282,3 +282,317 @@ Until these observations exist, the documentation describes a target contract, n
 ## Accepted amendment — 2026-09-06
 
 Version 8 records WS-001 owner decisions: M5 Max/36 GB plus Linux VM, local and explicit LAN access, Edge TLS-only credentials, guided installation and first-account policy, and no experimental-data migration obligation. Earlier M3 runtime evidence remains historical. No runtime, public release or production qualification is claimed by this amendment.
+
+## 11. Internal delivery v1 contract (MS-001/S01)
+
+This additive contract implements the source-level contribution of
+[MS-001 1.1.0](planning/milestones/MS-001/plan.md), AC-01/04/05/06/09.
+The [schema](../../deploy/compose/delivery-manifest.schema.json),
+[verification policy](../../deploy/compose/delivery-verification-policy.json) and
+[structural reader](../../deploy/compose/validate-delivery-manifest.py) are delivery
+inputs. The policy owns finite trust/resource limits; it is not execution state.
+The [S01 report](../../.codex/delivery/evidence/MS-001/MS-001-S01/report.md) binds
+source inventory, protocol, provider observations and downstream obligations.
+Version 9 adds this contract to version 8 without altering its target installation,
+network or first-account decisions. The bound milestone plan still selects its
+version 8 baseline; this compatible addition requires no active-plan rewrite.
+
+### Record, identity and compatibility
+
+`delivery-manifest.json` is a strict `custometry-delivery/v1` object. Every object
+is closed and every declared field required. The separately versioned
+`custometry-delivery-policy/v1` object is validated against the schema's
+`verificationPolicy` definition. The source-level reader accepts only the exact
+finite schema vocabulary present in the checked-in schema and rejects unknown
+keywords/references. It loads no network schema and installs no dependencies.
+Its CLI checks structure only; S02 adds record/file/Compose closure and S04 proves
+archive/authenticity/runtime rejection. Structural success never permits execution.
+
+```sh
+python3 deploy/compose/validate-delivery-manifest.py delivery-manifest.json
+python3 deploy/compose/validate-delivery-manifest.py --policy deploy/compose/delivery-verification-policy.json
+```
+
+The delivery SemVer identifies an immutable internal set; application version
+identifies the shared API/Web application build; reader major identifies the
+format. Do not reuse a delivery version for different manifest bytes. A rerun
+with different content gets a new version, while comparison records retain both
+run IDs/attempts. Existing build inputs remain locked. Compare the application
+version against both image labels, API `/version`, and the env projection.
+Do not silently substitute the delivery version for application version.
+
+The compatibility floor is Docker API 1.43 and Compose 2.24.4 (the existing
+`!reset` overlay needs a compatible Compose reader). Actual tested engine and
+Compose versions are separate manifest observations, never fabricated minima.
+OCI platforms are exactly `linux/amd64` and `linux/arm64`; the consumer host may
+be Darwin with a Linux ARM64 engine. Both descriptor sets and actual execution
+must agree. PostgreSQL remains 17.5 at the source-pinned upstream identity.
+Unknown reader major/config schema/platform and mismatched application pairs fail.
+
+### Canonical signature and complete closure
+
+Canonical bytes are ASCII JSON, lexicographically sorted object keys, compact
+`,`/`:` separators, no whitespace outside strings and no trailing newline. Arrays
+retain order; producers sort inventories by path, images by platform, services
+by name, and migration revisions by chain. Only booleans, null, strings and exact
+integers within schema bounds are allowed; reject duplicate keys, floats, NaN,
+Infinity, BOM, non-ASCII strings, controls, trailing data and excessive depth.
+Require incoming manifest bytes to equal canonical reserialization before signature
+validation. Hash canonical bytes with SHA-256; sign those exact bytes using Cosign
+`sign-blob`, with the Sigstore bundle in `delivery-manifest.sigstore.json`.
+
+Avoid circular identities: `files` lists every payload file but excludes the
+manifest and its detached signature. Those two are the only envelope exceptions.
+The signature binds the manifest, whose file hashes transitively bind payload,
+notices, policy copy, configuration, verifier and evidence. The signature file is
+validated cryptographically against that manifest, never trusted by its name.
+The final GitHub ZIP SHA-256, artifact ID, run ID/attempt, manifest SHA-256 and
+expiry are recorded in the authenticated handoff receipt **after** upload, outside
+the archive; the archive cannot include its own digest or post-upload artifact ID.
+No sidecar is allowed to redefine trust or grant runtime acceptance.
+
+Each image has an approved repository, OCI index digest and two real platform
+child manifest digests with compressed/unpacked sizes. Verify the index descriptor
+for each child, the child's platform/config, and all downloaded content digests.
+BuildKit attestation descriptors are separately identified evidence, not runnable
+platform children. Never use a local config/image ID as an index or child digest.
+API and migrate resolve to `images.api`; Web and Edge to `images.web`; both database
+roles to `images.postgres`. The upstream selection is attested by Custometry;
+Custometry does not claim authorship or an upstream signature it did not verify.
+
+The semantic consumer must reject duplicate logical image platforms, service
+names, resource IDs, revision IDs, file paths (also case-folded collisions), omitted
+core/migration services, unsupported profiles, dangling references, cyclic service
+or migration dependencies, and mismatched declared/configured identities. Exactly
+five core/migration roles exist, with `demo-source-db` and its resources only when
+the explicit optional demo component is present. Every capability names its real
+services and a truthful enabled/unavailable/deferred reason. A green health endpoint
+does not upgrade capability status.
+
+File closure covers both declared files and **every archive entry**, including
+metadata and ignored-looking names. Image-contained files have separate root-relative
+inventory; migrations include their chain, `env.py`, `alembic.ini` and supporting
+files. Build inputs bind source paths, locks, Dockerfiles, pinned bases and tool
+versions; final SBOM/license/vulnerability/provenance/rebuild evidence names actual
+image subjects. Evidence references also appear in the payload file inventory.
+
+The `.release.env` adapter contains exactly `CUSTOMETRY_VERSION` (application
+version), `CUSTOMETRY_API_IMAGE` and `CUSTOMETRY_WEB_IMAGE` in that order, newline
+terminated, ASCII, mode 0600, with the unchanged expected GHCR origins and lowercase
+index SHA-256 references. Run the existing parser and compare its values against
+the manifest before rendering. Never add fields to that adapter. The structured
+record, PostgreSQL reference, rendered Compose and embedded migrations must agree.
+Bare env input has no bundle-verification or accepted-release meaning.
+
+### Extraction and state safety
+
+The independent verifier treats all downloaded files as data. It never invokes a
+bundled script, imports a bundled module, evaluates env/shell syntax, renders
+untrusted Compose or starts an image until authenticity and closure pass. The
+verified bundle may contain a later-stage consumer, but cannot bootstrap its own
+trust. C02 uses a separately selected candidate harness; accepted end-user release
+eligibility remains the stronger contract in section 10.
+
+Version 1 uses one GitHub ZIP with stored/deflated regular files only. Reject
+absolute paths, drive/UNC prefixes, backslashes, percent encodings, empty or dot
+segments, traversal, controls, non-ASCII names, trailing slash entries, symlinks,
+hardlinks, directories, devices, FIFOs, encrypted entries, unsupported compression,
+duplicate entries, case-fold collisions, overlapping local records and conflicting
+central/local names or sizes. Producers omit directory entries; the verifier creates
+parents itself. Never rely on `extractall`, `tar`, shell or a path-normalization
+repair to make an unsafe archive acceptable.
+
+The policy caps metadata at 1 MiB, policy at 64 KiB, JSON nesting at 32, ZIP at
+128 MiB, streamed expanded payload at 512 MiB, each file at 64 MiB, entry count at
+2048, ratio at 100:1, path at 240 bytes, redirects at two and network operations
+at 300 seconds. These are hostile-input safety ceilings for the **small bundle**,
+not a new product total-size acceptance budget. Measure image bytes separately.
+Check declared and streamed bytes/ratio, CRC and SHA-256; abort on truncation or
+excess even when archive headers claim smaller sizes. Never recursively unpack a
+payload archive during validation. Enforce limits before and during reads.
+
+Extract only to a new private owned quarantine directory; create files exclusively,
+reject pre-existing destinations and symlinked parent components, use no-follow
+opens and check containment on every operation. Discard only owned partial data
+on failure. Promote atomically only after all checks; existing installation paths,
+secrets, volumes and earlier verified sets remain intact. Install state and real
+credentials are never bundle contents. Expiry of an artifact is unrelated to the
+lifetime of a product account.
+
+### Migrations, services and resources
+
+The current source chain has nine revisions, ending at `0009_notifications`.
+The S01 inventory binds each revision/down-revision and file SHA-256. The producer
+must compare these against the **embedded** image bytes. Expected migration head,
+application read head and write head agree. Initially supported starting state is
+only a fresh owned PostgreSQL database. A repeat upgrade at the same declared head
+must preserve state. Foreign/nonempty unknown schemas, multiple/unknown heads or
+hash changes fail before application start. The one-shot command remains
+`alembic -c /app/migrations/alembic.ini upgrade head` using the API image.
+Migration failure leaves application readiness false and requires forward repair;
+installed upgrade/downgrade/rollback and analytics artifact-format compatibility
+are `not-qualified`, not inferred from a development downgrade drill.
+
+| Role / profile | Image | Required resources and dependencies |
+|---|---|---|
+| `control-db` / core | PostgreSQL | `control_db_data`, password file slot, `control`, `pg_isready` |
+| `migrate` / migration | API | Healthy control DB, same password slot, `control`, 32 MiB `/tmp`, Alembic/SQLAlchemy/psycopg |
+| `api` / core | API | Healthy control DB, password slot, `control` + `web_to_api`, 64 MiB `/tmp`, Python app/import closure |
+| `web` / core | Web | Healthy API, `edge_to_web` + `web_to_api`, 64 MiB `/tmp`, Nginx config, built UI/help/public docs/CSP/assets |
+| `edge` / core | Web | Healthy Web, fixed `/etc/nginx/edge.conf`, `ingress_edge` + `edge_to_web`, 32 MiB `/tmp`, only loopback host ingress |
+| `demo-source-db` / demo | PostgreSQL | `demo_source_data`, admin/reader password slots, `demo_source`, five `deploy/demo-source/init` files |
+
+The only current checkout-relative content mount is the demo init directory; the
+producer copies its five files into the bundle and renders a contained relative
+mount. Secret paths become installation-owned slots, never files shipped from
+`.runtime-secrets`. Volumes and networks remain per-project owned resources.
+Source mounts, build directives, implicit host state, Valkey and worker additions
+are forbidden in the portable candidate configuration.
+
+Current routes compose Identity, Organization, Connections, Imports, Analytics,
+People, Execution and Notifications plus health/version. Their package/plugin
+imports are source-inventoried; business enablement is not established by packaging.
+Bootstrap has no configured token; demo credentials/network are not mounted on API;
+analytics defaults to `/var/lib/custometry/artifacts` without a writable volume;
+Valkey/workers and full ingestion/analytics execution are absent. Preserve honest
+unavailability and existing routes. C03/C04 and later capability providers own those
+integrations; do not silently enable them or claim successful end-to-end demo data.
+
+### Retrieval, independent trust and failure interface
+
+Use an immutable Actions artifact in `Dejetins/custometry` from
+`.github/workflows/publish-candidates.yml` on `refs/heads/main`. Name it
+`custometry-delivery-<delivery-version>-<run-id>-<attempt>`, upload once with
+`overwrite: false`, fail on missing files, and request 90-day retention. Record
+provider-returned expiry; no permanent availability guarantee follows. A public
+GitHub release attachment would allow anonymous bundle retrieval and is not the
+selected mechanism. The repository remains public; this is authentication, not a
+private-recipient confidentiality promise.
+
+Download by exact artifact ID using the GitHub API, verify run/ref/source/digest,
+and follow only the authenticated API's HTTPS redirect to an approved provider
+host. Do not forward Authorization across hosts; do not record signed redirect
+URLs. Initial credentials come from existing host keychain/`gh` integration or CI
+secret injection, scoped to Actions read. Do not embed credentials in commands,
+URLs, logs, files in the archive or image build args. Validate the provider's one-minute
+redirect when used and reacquire for the same artifact if it expires; never switch
+to a different artifact. Overall bounded failure ends without a success message.
+Keep the independently verified handoff copy in an explicit consumer-owned private
+location before expiry; record its same manifest and archive hashes. No new hosted
+mirror or account-policy mutation is implied. After expiry/deletion, only the exact
+already-verified retained copy is usable; otherwise report unavailable and obtain a
+new, separately versioned delivery. No latest-tag or source-build fallback.
+
+The policy pins the signer to
+`https://github.com/Dejetins/custometry/.github/workflows/publish-candidates.yml@refs/heads/main`
+and issuer `https://token.actions.githubusercontent.com`; regex identities and
+transparency-log bypasses are forbidden. S03 adds signing in that workflow after
+source gates, with `id-token: write`; image publication needs `packages: write`,
+checkout `contents: read`, and consumer download `actions: read`. Resolve actual
+workflow certificate/ref/source claims and Rekor inclusion, not merely issuer text.
+
+Bootstrap trust is independent: obtain the reviewed policy/verifier hashes from the
+accepted repository source/receipt over the administrator's existing trusted channel.
+Retrieve Cosign from its official GitHub release with the policy's asset SHA-256;
+check bytes before execution. Its upstream Sigstore trust bootstrap is independent
+of the candidate bundle. Pin/archive the actual trusted-root/TUF metadata used in
+S03 evidence, verify metadata expiry, and reject bundle-supplied trust replacements.
+The policy records exact Cosign, Syft, Trivy and action pins resolved on 2026-09-08;
+those are proposed producer inputs, not evidence that binaries ran. Subsequent pin
+changes require compatibility and current checks before new signatures are accepted.
+
+Use real final-image Syft CycloneDX output with the existing `gate_sbom` and
+`gate_licenses`; the license policy remains fail-closed including review/unknown
+findings. Trivy scans every shipped platform child, including PostgreSQL, with all
+vulnerabilities reported (no ignore-unfixed/ignorefile filtering), zero unresolved
+critical findings, and report plus vulnerability-database age at most 24 hours at
+handoff. Record DB digest/update time and scanner version. Missing/stale/offline DB
+without a qualifying retained snapshot is unavailable proof, never a clean scan.
+
+| Code | Result / stable user message | Next action |
+|---|---|---|
+| `DELIVERY_VERIFIED` | Pass: selected delivery verified | Continue the explicitly authorized candidate check |
+| `DELIVERY_STRUCTURE_VALID` | Pass: structure only validated | Complete independent authenticity and closure checks |
+| `DELIVERY_UNAUTHORIZED` | Fail: bundle access denied | Supply a current permitted credential through the protected host mechanism |
+| `DELIVERY_UNAVAILABLE` | Fail: selected artifact unavailable | Obtain the exact retained verified copy or a newly identified delivery |
+| `DELIVERY_TAMPERED` | Fail: authenticity, source or content mismatch | Discard owned quarantine and obtain intact input; do not execute |
+| `DELIVERY_UNSUPPORTED` | Fail: unsupported schema/platform/compatibility | Obtain a supported reader or matching delivery |
+| `DELIVERY_LIMIT` | Fail: input exceeds verification limits | Obtain a compliant delivery; do not increase limits to pass |
+
+Structural JSON/schema failures use bounded `DELIVERY_JSON_*`/`DELIVERY_SCHEMA_*`
+codes. Every terminal result has `result`, `code`, `next_action` and nonzero exit
+on failure (CLI code 2). No raw input, path, DSN, token, headers or provider response
+is returned. Only `DELIVERY_STRUCTURE_VALID` and structural failures are implemented
+by S01; later verifier codes are the fixed S02/S04 interface contract.
+
+### Candidate packaging implementation (MS-001/S02)
+
+Version 10 adds the bounded [candidate producer](../../tools/custometry_quality/delivery_bundle.py),
+[portable template](../../deploy/compose/compose.candidate.json) and
+[image file inventory](../../deploy/compose/delivery-image-inventory.json).
+The [S02 report](../../.codex/delivery/evidence/MS-001/MS-001-S02/report.md) records
+actual checks and the remaining source-capture decision. These additions do not
+change the accepted installation or release entrypoint. Stage state belongs only
+to the journal, and a locally prepared candidate is not an accepted release.
+
+The producer's `assemble` command accepts v1 metadata with exactly the derived
+`files`, `services` and `resources` fields omitted. All other data, including real
+image subjects/platform sizes, source/build inputs, embedded inventories, migration
+chain, tested engines and evidence, must come from the actual producer run.
+It never invents those observations. A separate payload directory contains the
+five demo files when selected, actual evidence referenced by metadata, and notices.
+The tool materializes `compose.json`, the unchanged `.release.env` projection and
+the independently selected policy copy, then creates canonical manifest bytes.
+`prepare` supports an already complete record; `check` validates its local closure.
+
+The core-only configuration omits demo services, volumes, networks and secret
+slots. The demo configuration retains the five init files under `demo/init` and
+preserves executable mode for the two shell scripts. Secrets must be supplied
+through `CUSTOMETRY_SECRETS_DIR` outside the payload. Set an explicit isolated
+`COMPOSE_PROJECT_NAME`; loopback ingress and per-project network/volume ownership
+are preserved. No source build, fallback image, external artifact store, new worker,
+TLS/bootstrap or domain feature is added. Candidate configuration fixes the demo
+dataset to `demo` and excludes the separately authorized benchmark mode.
+
+The semantic check requires exact service/dependency/profile/role mappings, both
+image platforms, pinned upstream PostgreSQL, unique inventories, the full current
+migration chain and its embedded hashes, required source/asset bytes, generated Web
+assets, exact env values, resource mappings, policy bytes and evidence file hashes.
+It compares Compose against the independently selected template rather than
+rendering arbitrary candidate configuration. The inventory is version-specific:
+packaging/source changes must update it and rerun image observation. The focused
+source test detects stale hashes. Generated Web asset identities come from images.
+
+`observe-image-files` reads an existing, explicitly authorized local API/Web image
+through a temporary stopped container, without a source mount or implicit pull.
+It verifies the source-bound files and inventories built Web content. It removes
+only its own temporary container and filesystem copy. Import/start, native platform,
+signature and registry identity checks remain separate evidence.
+
+`pack` emits a deterministic ZIP of regular files, sorted names, fixed timestamps
+and preserved file modes. It consumes canonical manifest bytes, matching payload
+and a separately produced signature file; it does **not** verify that signature.
+The assembled directory and ZIP must be verified independently before execution.
+No command here emits `DELIVERY_VERIFIED`; success is
+`DELIVERY_CANDIDATE_PREPARED`, with an explicit instruction to complete authenticity
+and runtime checks. `capture` requires an exact current commit and a clean tracked
+set of declared build paths, then uses `git archive`; unrelated journal/evidence
+edits and the preserved foreign prompt deletion do not enter that source snapshot.
+Uncommitted packaging inputs fail with `DELIVERY_SOURCE_CAPTURE_REQUIRED`.
+
+The reader uses only Python's standard library. An independently reviewed toolkit
+copy needs `tools/custometry_quality/delivery_bundle.py` and these files under
+`deploy/compose`: both existing manifest readers, the schema, policy, candidate
+template and image inventory. A fixture test executes that copied toolkit with
+isolated Python outside the checkout. It must not load a verifier from an untrusted
+bundle to establish trust. Authenticated retrieval, malicious archive extraction,
+signature verification and native final-subject runtime evidence retain their
+S03/S04 allocations.
+
+API packaging keeps Python sources and disables generated bytecode to fit the
+existing unpacked image cap. This does not establish startup performance; S04 must
+measure the same workload. Web packaging includes collected installed dependency
+notices and Python documentation-build notices, plus the project license. Notice
+collection includes build/test dependencies and is not the final shipped-component
+license decision. Missing license text and all policy-review findings remain
+explicit in the S02 report; no exception or supply-chain pass is implied.

@@ -1,8 +1,8 @@
-# syntax=docker/dockerfile:1.11
+# syntax=docker/dockerfile:1.11@sha256:10c699f1b6c8bdc8f6b4ce8974855dd8542f1768c26eb240237b8f1c9c6c9976
 FROM ghcr.io/astral-sh/uv:0.9.26-python3.12-bookworm-slim@sha256:add251a8fbfa14ff5e115adf93cb113c7b58c57bc84f0992164f5b6631b3451f AS build
 
 WORKDIR /src
-ENV UV_COMPILE_BYTECODE=1 \
+ENV UV_COMPILE_BYTECODE=0 \
     UV_LINK_MODE=copy \
     UV_PROJECT_ENVIRONMENT=/app/.venv
 
@@ -49,6 +49,7 @@ COPY --chown=10001:10001 packages/contracts/source_intake /app/.venv/lib/python3
 COPY --chown=10001:10001 plugins/connector_files /app/.venv/lib/python3.12/site-packages/plugins/connector_files
 COPY --chown=10001:10001 plugins/connector_postgresql /app/.venv/lib/python3.12/site-packages/plugins/connector_postgresql
 COPY --chown=10001:10001 migrations /app/migrations
+COPY --chown=10001:10001 LICENSE /app/notices/Custometry-LICENSE
 
 USER 10001:10001
 EXPOSE 8000

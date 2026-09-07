@@ -1,0 +1,23 @@
+COMMAND ['uv', 'run', '--locked', 'pyright', 'tools/custometry_quality/delivery_bundle.py', 'tests/tooling/test_delivery_bundle_producer.py']
+EXIT 0
+0 errors, 0 warnings, 0 informations
+
+COMMAND ['docker', 'run', '--rm', '--network', 'none', '--read-only', '--tmpfs', '/tmp:size=32m', '--entrypoint', 'python', 'custometry-ms001-s02-api:local', '-c', 'import custometry_api.main,alembic,sqlalchemy,psycopg,pyarrow as pa,pyarrow.parquet as pq,openpyxl,importlib.util; assert importlib.util.find_spec("pytest") is None; t=pa.table({"value":[1,2]}); pq.write_table(t,"/tmp/probe.parquet"); assert pq.read_table("/tmp/probe.parquet").equals(t); print("API_IMPORT_AND_PARQUET_CLOSURE_OK")']
+EXIT 0
+API_IMPORT_AND_PARQUET_CLOSURE_OK
+
+COMMAND ['docker', 'run', '--rm', '--network', 'none', '--read-only', '--tmpfs', '/tmp:size=32m', '--entrypoint', 'alembic', 'custometry-ms001-s02-api:local', '-c', '/app/migrations/alembic.ini', 'heads']
+EXIT 0
+0009_notifications (head)
+
+COMMAND ['docker', 'run', '--rm', '--network', 'none', '--read-only', '--tmpfs', '/tmp:size=64m', '--add-host', 'api:127.0.0.1', '--add-host', 'web:127.0.0.1', '--entrypoint', 'sh', 'custometry-ms001-s02-web:local', '-c', 'nginx -t && nginx -t -c /etc/nginx/edge.conf']
+EXIT 0
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+nginx: the configuration file /etc/nginx/edge.conf syntax is ok
+nginx: configuration file /etc/nginx/edge.conf test is successful
+
+COMMAND ['uv', 'run', '--locked', 'python', '-m', 'tools.custometry_quality.delivery_bundle', 'capture', '--commit', 'd2e3c65b15f02f7970eac8c32feede3cbbd01ef9', '--output', '/tmp/ms001-s02-01a07dc8/clean-source.tar']
+EXIT 2
+{"result": "fail", "code": "DELIVERY_SOURCE_CAPTURE_REQUIRED", "next_action": "Correct candidate inputs; do not execute."}
+

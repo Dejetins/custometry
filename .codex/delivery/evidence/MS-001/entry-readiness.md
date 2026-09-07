@@ -94,3 +94,16 @@ The journal stays `draft` until the runner performs the first actual claim.
 Publication uses a temporary branch based on `origin/main`, excluding pre-existing
 local-only governance history and the foreign working-tree deletion. Those local
 commits are preserved when bringing the published result back into local main.
+
+## Publication-tree verification
+
+The technical branch contains only the 18 task-owned paths above `origin/main`.
+On this exact publication tree, `python -m tools.check --scope ci` passed and
+`python -m pytest -q tests/tooling` passed **114 tests**. The local-only governance
+history includes one additional existing test, explaining its earlier 115 total.
+An initial attempt to link the existing virtual environment into the temporary
+checkout failed the ownership-path gate and test import resolution. The symlink
+was removed; using the existing locked environment explicitly and `python -m`
+from the publication checkout passed both checks. No dependency installation,
+credential change or source-gate waiver was used. Hosted CI remains a separate
+publication check on the actual PR SHA.

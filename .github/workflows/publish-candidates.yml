@@ -132,3 +132,138 @@ jobs:
             echo
             echo "This is a main-branch candidate, not an accepted end-user release."
           } >>"${GITHUB_STEP_SUMMARY}"
+
+  # S03 preparation: enable only after explicit signed-bundle target authority.
+  # A Git merge must not indirectly authorize this new publication effect.
+  supply_native:
+    name: Prepare native supply evidence (${{ matrix.architecture }})
+    if: ${{ false }}
+    needs: [candidate_metadata, api_image, web_image]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          version: "0.9.26"
+      - name: Install locked producer environment and policy-pinned scanners
+        run: |
+          uv sync --locked --all-groups --all-packages
+          python3 deploy/compose/install-supply-tools.py --output "${RUNNER_TEMP}/supply-tools"
+          echo "${RUNNER_TEMP}/supply-tools" >> "${GITHUB_PATH}"
+      - name: Compare two clean builds to selected final subjects and run supply gates
+        env:
+          ARCHITECTURE: ${{ matrix.architecture }}
+          API_DIGEST: ${{ needs.api_image.outputs.digest }}
+          WEB_DIGEST: ${{ needs.web_image.outputs.digest }}
+        run: |
+          uv run --locked python -m tools.custometry_quality.delivery_supply native \
+            --architecture "${ARCHITECTURE}" --commit "${GITHUB_SHA}" \
+            --api-digest "${API_DIGEST}" --web-digest "${WEB_DIGEST}" \
+            --output "${RUNNER_TEMP}/supply-proof"
+      - name: Preserve bounded actual evidence, including failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: custometry-supply-proof-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.architecture }}
+          path: |
+            ${{ runner.temp }}/supply-proof/platform.json
+            ${{ runner.temp }}/supply-proof/api/*.json
+            ${{ runner.temp }}/supply-proof/web/*.json
+            ${{ runner.temp }}/supply-proof/web/THIRD-PARTY.txt
+            ${{ runner.temp }}/supply-proof/postgres/*.json
+          retention-days: 90
+          if-no-files-found: error
+          overwrite: false
+
+  supply_bundle:
+    name: Sign and retain internal supply bundle
+    if: ${{ false }}
+    needs: supply_native
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          version: "0.9.26"
+      - name: Install locked producer and independently pinned verification tools
+        run: |
+          uv sync --locked --all-groups --all-packages
+          python3 deploy/compose/install-supply-tools.py --output "${RUNNER_TEMP}/supply-tools"
+          echo "${RUNNER_TEMP}/supply-tools" >> "${GITHUB_PATH}"
+      - name: Fetch this exact run's native evidence and assemble complete manifest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for arch in amd64 arm64; do
+            gh run download "${GITHUB_RUN_ID}" --repo "${GITHUB_REPOSITORY}" \
+              --name "custometry-supply-proof-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${arch}" \
+              --dir "${RUNNER_TEMP}/supply-input/${arch}"
+          done
+          uv run --locked python -m tools.custometry_quality.delivery_supply assemble \
+            --inputs "${RUNNER_TEMP}/supply-input" --output "${RUNNER_TEMP}/assembled" \
+            --commit "${GITHUB_SHA}" --run-id "${GITHUB_RUN_ID}" --run-attempt "${GITHUB_RUN_ATTEMPT}"
+      - name: Sign exact canonical manifest and verify source, signer and closure
+        id: sign
+        run: |
+          set -euo pipefail
+          cosign sign-blob --yes --bundle "${RUNNER_TEMP}/manifest.sigstore.json" \
+            "${RUNNER_TEMP}/assembled/delivery-manifest.json"
+          uv run --locked python -m tools.custometry_quality.delivery_supply verify \
+            --record "${RUNNER_TEMP}/assembled/delivery-manifest.json" \
+            --signature "${RUNNER_TEMP}/manifest.sigstore.json" \
+            --trust-root "${RUNNER_TEMP}/supply-tools/trusted_root.json" --commit "${GITHUB_SHA}"
+          uv run --locked python -m tools.custometry_quality.delivery_bundle pack \
+            --record "${RUNNER_TEMP}/assembled/delivery-manifest.json" --payload "${RUNNER_TEMP}/assembled" \
+            --signature "${RUNNER_TEMP}/manifest.sigstore.json" --output "${RUNNER_TEMP}/delivery.zip"
+          echo "payload_sha256=$(sha256sum "${RUNNER_TEMP}/delivery.zip" | cut -d' ' -f1)" >> "${GITHUB_OUTPUT}"
+          echo "manifest_sha256=$(sha256sum "${RUNNER_TEMP}/assembled/delivery-manifest.json" | cut -d' ' -f1)" >> "${GITHUB_OUTPUT}"
+      - name: Reject reassigning an existing version and reconcile completed upload
+        id: reconcile
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          uv run --locked python -m tools.custometry_quality.delivery_supply reconcile \
+            --archive "${RUNNER_TEMP}/delivery.zip" --run-id "${GITHUB_RUN_ID}" \
+            --output "${GITHUB_OUTPUT}"
+      - name: Expose complete signed bundle only after every referenced check exists
+        id: upload
+        if: steps.reconcile.outputs.exists == 'false'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: custometry-delivery-0.1.0-ms001.${{ github.run_id }}
+          path: ${{ runner.temp }}/delivery.zip
+          compression-level: 0
+          retention-days: 90
+          if-no-files-found: error
+          overwrite: false
+      - name: Record immutable provider identity
+        env:
+          ARTIFACT_ID: ${{ steps.upload.outputs.artifact-id || steps.reconcile.outputs.artifact_id }}
+          ARTIFACT_DIGEST: ${{ steps.upload.outputs.artifact-digest || steps.reconcile.outputs.artifact_digest }}
+          PAYLOAD_SHA256: ${{ steps.sign.outputs.payload_sha256 }}
+          MANIFEST_SHA256: ${{ steps.sign.outputs.manifest_sha256 }}
+        run: |
+          {
+            echo "Internal preliminary supply; not an official product release."
+            echo "Artifact ID: ${ARTIFACT_ID}; provider digest: ${ARTIFACT_DIGEST}; retention: 90 days."
+            echo "Inner delivery.zip SHA-256: ${PAYLOAD_SHA256}; canonical manifest SHA-256: ${MANIFEST_SHA256}."
+            echo "Protected installation-owned handoff copy and S04 retrieval/native runtime proof remain required."
+          } >> "${GITHUB_STEP_SUMMARY}"

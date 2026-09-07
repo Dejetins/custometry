@@ -61,6 +61,8 @@ SOURCE_PATHS = (
     "docs-site",
     "deploy",
     "tools/custometry_quality/delivery_bundle.py",
+    "tools/custometry_quality/delivery_supply.py",
+    ".github/workflows/publish-candidates.yml",
 )
 PATH_PATTERN = re.compile(
     r"(?!.*(?:^|/)[.]{1,2}(?:/|$))[A-Za-z0-9_.][A-Za-z0-9_.-]*(?:/[A-Za-z0-9_.][A-Za-z0-9_.-]*)*"

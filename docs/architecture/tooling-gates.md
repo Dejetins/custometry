@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 11
+doc_version: 12
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -319,3 +319,21 @@ the durable record and history determine whether the operation already completed
 subprocess contention, process death, stale writes, session isolation, receipt
 binding, pause/resume/final acceptance and interrupted replacement in temporary
 Git checkouts. These tests never execute a product milestone.
+
+
+### S03 supply preparation checks
+
+The disabled workflow/producer is covered by:
+
+```sh
+uv run --locked pytest -q tests/tooling/test_delivery_supply.py tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py
+uv run --locked ruff check tools/custometry_quality/delivery_supply.py tools/custometry_quality/delivery_bundle.py tests/tooling/test_delivery_supply.py deploy/compose/install-supply-tools.py
+uv run --locked pyright tools/custometry_quality/delivery_supply.py tests/tooling/test_delivery_supply.py deploy/compose/install-supply-tools.py
+```
+
+Synthetic tests exercise native evidence assembly, subject/freshness failures,
+filesystem comparison, immutable provider reconciliation and bounded transport
+unwrapping. They do not certify actual scanner output, signatures or publication.
+Real selected-image SBOM/license/Trivy findings remain hard supply gates; source
+profiles and ordinary Foundation CI cannot waive them. See the
+[runtime supply contract](runtime-network-installation.md#13-internal-supply-producer-preparation-ms-001s03).

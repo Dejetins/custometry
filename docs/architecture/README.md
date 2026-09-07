@@ -53,7 +53,6 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [UI program retirement](./ui/ui-program-retirement.md) | Removed materials, preserved requirements/code, historical recovery, and cleanup evidence |
 | [Web implementation source contract](./ui/custometry-web-implementation-source-contract-v1.md) | Selected ticket or milestone-stage execution from the target pilot and product requirements, source precedence, and browser proof boundary |
 | [Hierarchical planning framework](planning/framework-v1/README.md) | Required per-level templates, versions, owner checkpoints, mandatory document synchronization and milestone plan/pack/journal bindings |
-| [Development direction map — MAP-001](planning/project-map.md) | Accepted version 1.0.0: six L1 directions, requirement allocation, interfaces and owner decisions; next L2 planning unit remains unselected |
 | [Development operating model](./development-operating-model.md) | Observable outcomes, hierarchical planning, milestone packs, independent tickets, Git and CI/CD |
 | [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Hierarchical-planning amendment, independent ticket route and historical staged-system retirement |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |

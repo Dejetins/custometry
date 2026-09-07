@@ -7,9 +7,9 @@ The normative repository engineering contract is [`.codex/AGENTS.md`](./.codex/A
 For every task in this repository:
 
 1. read this file and `.codex/AGENTS.md` before task actions;
-2. treat `custometry-technical-blueprint-ru.md` as the normative product specification;
-3. use `custometry-technical-blueprint-human-ru.md` as its required explanatory mirror;
-4. use `custometry-ui-blueprint-ru.md` for UI/UX requirements and current inventory, `docs/architecture/ui/target-pilot/README.md` for the accepted target UI concept, and ADR-0007 for frontend architecture;
+2. use relevant IDs in `custometry-technical-blueprint-ru.md` when product requirements are affected; it remains the normative product specification;
+3. read their explanation in `custometry-technical-blueprint-human-ru.md` when those requirements are in scope; skip unrelated blueprint reading for settled trivial repairs;
+4. use `custometry-ui-blueprint-ru.md` for UI requirements and current inventory, `docs/architecture/ui/target-pilot/README.md` for the accepted target UI concept, and ADR-0007 for frontend architecture;
 5. resolve the selected execution route: a ready ticket for an independent unit, or the accepted milestone plan and its canonical stage ledger for milestone execution;
 6. follow the required hierarchical planning and documentation maintenance rules below.
 
@@ -34,9 +34,7 @@ Repository-authored engineering artifacts are written in English by default:
 architecture, ADRs, contracts, specifications, tickets, evidence reports,
 runbooks, templates, code comments, and contributor documentation. The
 normative `*-ru.md` product blueprints and localized `docs-site/docs/ru/**`
-content are explicit product-language exceptions. Unless the user asks
-otherwise for the current task, only the final user-facing completion report is
-written in Russian.
+content are explicit product-language exceptions.
 
 The architecture and governance index is [`docs/architecture/README.md`](./docs/architecture/README.md). Before handing off a repository change, run the smallest applicable tools from [`docs/architecture/tooling-gates.md`](./docs/architecture/tooling-gates.md); the default grouped local gate is:
 
@@ -44,6 +42,6 @@ The architecture and governance index is [`docs/architecture/README.md`](./docs/
 uv run python -m tools.check --scope local
 ```
 
-`ci` and `release` are stronger proof profiles. Do not use a green `local` result to claim runtime, browser, recovery, performance, supply-chain or release readiness.
+`ci` and `release` are stronger proof profiles; report the actual profile and its observed boundary.
 
 If `.codex/AGENTS.md` cannot be read, follow the platform/global instructions and report the limitation before changing files.

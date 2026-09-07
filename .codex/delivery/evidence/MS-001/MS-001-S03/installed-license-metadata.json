@@ -1,0 +1,61 @@
+{
+  "subject": "ghcr.io/dejetins/custometry-api@sha256:61e25b42c24c21efa30d8f219fa560494653b68cddd0f4c9d3adba2c0a648a42",
+  "proof_boundary": "actual selected ARM64 final-image distribution metadata; not license approval",
+  "distributions": [
+    {
+      "name": "custometry-api",
+      "version": "0.1.0.dev0",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [],
+      "license_files": []
+    },
+    {
+      "name": "fastapi",
+      "version": "0.115.14",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        {
+          "path": "fastapi-0.115.14.dist-info/licenses/LICENSE",
+          "sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e"
+        }
+      ]
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.7.0",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        {
+          "path": "annotated_types-0.7.0.dist-info/licenses/LICENSE",
+          "sha256": "fe1049884b1a0d9342901e88e07f32925d24b3121d9972b6a6805fb9824b095d"
+        }
+      ]
+    },
+    {
+      "name": "greenlet",
+      "version": "3.5.3",
+      "license_expression": "MIT AND PSF-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "license_files": [
+        {
+          "path": "greenlet-3.5.3.dist-info/licenses/LICENSE",
+          "sha256": "769831d6e5dfaf2c20802faccff1fafb4c2025dd8f6253dfa47fcad59d4d0979"
+        },
+        {
+          "path": "greenlet-3.5.3.dist-info/licenses/LICENSE.PSF",
+          "sha256": "e5ff3c23c110e494cd7d736c10fd96d462457bafeca310840db6527298c7d46b"
+        }
+      ]
+    }
+  ]
+}

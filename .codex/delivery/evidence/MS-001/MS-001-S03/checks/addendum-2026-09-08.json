@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "tools.custometry_quality.generate_docs_index",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": "PASS generate_docs_index (observed=true)\n  artifact: /Users/daniildegtyarev/Projects/Custometry/docs/README.md\n  audience: contributor\n  documents: 65\n  mode: check\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "tools.custometry_quality.check_docs_links"
+      ],
+      "exit_code": 0,
+      "output": "PASS check_docs_links (observed=true)\n  documents: 81\n  local_links: 506\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "tools.custometry_quality.validate_prompt_packs"
+      ],
+      "exit_code": 0,
+      "output": "PASS validate_prompt_packs (observed=true)\n  journals: 1\n  proof_boundary: artifact-structure-and-file-binding; no claims or stage execution\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "historical_45_file_hashes_at_commit": "6ca4d6d77acfc01ea6efde96246036796fc531b7",
+  "historical_hashes_pass": true,
+  "frozen_journal_report_receipt_hashes_pass": true
+}

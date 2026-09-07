@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 10
+doc_version: 11
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -531,7 +531,7 @@ Version 10 adds the bounded [candidate producer](../../tools/custometry_quality/
 [portable template](../../deploy/compose/compose.candidate.json) and
 [image file inventory](../../deploy/compose/delivery-image-inventory.json).
 The [S02 report](../../.codex/delivery/evidence/MS-001/MS-001-S02/report.md) records
-actual checks and the remaining source-capture decision. These additions do not
+clean tracked-source builds, actual image checks and protected-main publication. These additions do not
 change the accepted installation or release entrypoint. Stage state belongs only
 to the journal, and a locally prepared candidate is not an accepted release.
 

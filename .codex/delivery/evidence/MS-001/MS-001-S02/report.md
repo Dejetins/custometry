@@ -1,205 +1,181 @@
-# MS-001-S02 — Portable candidate packaging preparation
+# MS-001-S02 — Portable candidate packaging
 
 Stage: `MS-001-S02`; execution mode: `manual_sequential`.
 The [journal](../../../ledgers/MS-001.md) alone owns execution state.
 Plan: [MS-001 1.1.0](../../../../../docs/architecture/planning/milestones/MS-001/plan.md).
 Executor: actual `CODEX_THREAD_ID=01a07dc8-dc34-7741-aa7b-d1c96e7f08b8`.
-Inspection base: `d2e3c65b15f02f7970eac8c32feede3cbbd01ef9`, canonical `main` checkout.
-Product comparison baseline remains `f9f39a75994d2f7a8e8d7a75df293c35579f842d`.
 
-## Result and unresolved input
+## Result and authority
 
-Portable configuration, deterministic bundle assembly, strict semantic validation,
-source-bound image inventory, notice collection and local image checks are prepared.
-This is **not an accepted S02 result**: no commit containing the S01/S02 packaging
-inputs exists, and this execution explicitly lacks Git commit authority. The real
-`capture` command rejects the current inputs with `DELIVERY_SOURCE_CAPTURE_REQUIRED`.
-Local builds are identified as uncommitted preparation, never as clean-commit builds
-or published candidates. The missing clean tracked build remains an S02 obligation.
+The S02 packaging contribution is complete: bounded candidate assembly/validation,
+portable configuration, source-bound image inventories and actual clean-source
+API/Web builds for ARM64 and AMD64. The exact tracked build commit is
+`bc347d7e74c57640b42462c24cc2ed60d76ef055`; application version is
+`0.1.0-dev.0+sha.bc347d7e74c5`. The clean archive contains 340 declared build files,
+with no uncommitted overlay or checkout mount. All four builds and required local
+image probes pass. This is candidate packaging proof, not an accepted release.
 
-The concrete requested decision is permission for local commit(s) on the current
-canonical `main` checkout covering the reviewed S01/S02 delivery input changes and
-their tests/documentation, while preserving existing history and excluding the
-foreign deletion. No push, PR, package/bundle publication, credential change or
-deployment is requested. Once authorized, resume this same claim, capture the exact
-new commit, rebuild the selected images from its archive, repeat the affected image
-and source checks, preserve this iteration and write a new report/ready receipt.
-Do not accept S02 merely to move its clean-build obligation into S03.
+The missing Git authority was resolved by the owner's
+[2026-09-08 instruction](owner-resolution-2026-09-08.md). The original claim resumed
+through the ledger CLI. [PR #55](https://github.com/Dejetins/custometry/pull/55)
+published only the scoped S01/S02 delta and clean-build evidence, with all required
+Foundation CI jobs successful. Protected-main merge commit is
+`2090b366c01ff8d5f8e807b3b468f5eff6092eda`.
+[Publication evidence](iteration-02/publication.json) binds the observed head,
+merge, checks and empty review-thread inventory. Normal GitHub CI effects are
+within authority; no manual image/bundle publication or deployment was performed.
+This report and its new ready receipt are the evidence-only closure publication.
 
-The immutable pause receipt under `receipts/` is evidence for `stage_ledger pause`.
-It is not a `prompt-pack-receipt/v1` acceptance receipt: that format requires a
-finished result and passing required proof. Neither `ready` nor `review_ready` is
-truthful for the incomplete source-build boundary. A new valid acceptance receipt
-must be created after the missing decision and actual checks.
+## Changed paths and preservation
 
-## Changed paths and preserved work
-
-S02 changes only these product/tooling/documentation paths, plus this stage's
-evidence directory and CLI-owned journal transitions:
+S02 changes these product/tooling/documentation paths plus its evidence directory
+and CLI-owned journal transitions:
 
 - `apps/api/Dockerfile`: immutable frontend pin, project license, no generated `.pyc` layer.
 - `apps/web/Dockerfile`: immutable frontend pin, deterministic Web/docs notices and project license.
-- `deploy/compose/collect-web-notices.mjs`: installed-package notices, with missing text explicitly reported.
+- `deploy/compose/collect-web-notices.mjs`: installed-package notices, reporting missing text.
 - `deploy/compose/compose.candidate.json`: finite core/migration/optional-demo topology without build directives.
-- `deploy/compose/delivery-image-inventory.json`: exact required source/asset/migration file bindings.
-- `tools/custometry_quality/delivery_bundle.py`: capture, assembly, projection, closure, packing and image-file observation.
-- `tests/tooling/test_delivery_bundle_producer.py`: source-inventory, semantic, portable Compose, copied-toolkit and producer round-trip proof.
-- `docs/architecture/runtime-network-installation.md`: doc_version 10, additive candidate implementation contract.
-- `docs/architecture/tooling-gates.md`: doc_version 11, focused commands and image-size evidence semantics.
+- `deploy/compose/delivery-image-inventory.json`: exact required source/asset/migration bindings.
+- `tools/custometry_quality/delivery_bundle.py`: capture, assembly, strict semantic closure, projection, packing and actual image-file observation.
+- `tests/tooling/test_delivery_bundle_producer.py`: inventory, hostile substitution, portable Compose, copied-toolkit and deterministic round-trip proof.
+- `docs/architecture/runtime-network-installation.md`: candidate contract and completed source-build evidence, doc_version 11.
+- `docs/architecture/tooling-gates.md`: focused commands and size evidence semantics, doc_version 11.
 
-The additional collector, template, inventory and focused test file are within
-the stage's packaging/asset/tooling zones. The new test file preserves S01 tests
-byte-for-byte and keeps this iteration's proof separate. No source file was deleted.
-All S01 report/evidence/receipt files and its schema/policy/reader/tests were retained.
-The pre-existing architecture-index edit and all local commits were preserved.
-The deletion of `.codex/agents/generated/w21-figma-master-elements-index/internal-figma-agent-prompt.md`
-is foreign, unmodified and excluded. Existing runtime/tooling document edits from
-S01 were retained before adding S02 sections; no active plan or prompt was amended.
-No worktree, clone, branch, subagent, Goal, commit or external write was created.
+No source file was deleted. S01 schema/policy/reader/tests and all accepted S01
+report/evidence/receipt bytes remain unchanged; publication merely committed those
+existing inputs. Active plan, prompts and stage contracts remain unchanged.
+The pre-existing deletion of
+`.codex/agents/generated/w21-figma-master-elements-index/internal-figma-agent-prompt.md`
+is foreign and excluded. Pre-existing local-only governance commits remain local;
+the scoped publication branch starts at the actual remote base and includes no
+such commits. Local preservation merges are not publication inputs. Canonical
+checkout synchronization must preserve this history before deleting technical
+branches. No worktree, clone, stash, subagent or Goal was created.
+
+The old report is preserved byte-for-byte at
+[report-pause-2026-09-08.md](report-pause-2026-09-08.md), SHA-256
+`a71b27cfc05d4b12fd6c27fa02508d1fc55ed7de4cc02a3290bb4eb95583c7be`,
+and at its original path in commit `475ef389dbb291f4f27f11ed069ef56819ba5608`.
+The [old pause receipt](receipts/2026-09-08-s02-pause-01.md), old hash manifests,
+uncommitted-preparation evidence and failed-check observations were not rewritten.
+Their original report-path bindings describe those historical bytes, not this
+replacement report. New clean-source evidence is under `iteration-02/`.
 
 ## Contract impact and criterion coverage
 
-Requirements: SEC-009/012/016/017/018, OPS-001/002, SCALE-003/004 and the selected
-MS-001 criteria. Machine/human clauses and accepted runtime source were consulted.
-Their MUST/SHOULD modality, network separation, migration separation, capability
-unavailability, internal-candidate status and full release gates are preserved.
+Requirements: SEC-009/012/016/017/018, OPS-001/002, SCALE-003/004 and selected
+MS-001 criteria. Network/migration separation, unavailable capabilities, candidate
+status and full release gates are preserved.
 
-| Surface | Before / after and classification | Evidence / limit |
+| Surface | Classification and resulting behavior | Observed boundary |
 |---|---|---|
-| Legacy env consumers and accepted-release bootstrap | `compatible-change`: additive candidate seam; original parser, three-key projection, release overlay and bootstrap unchanged | Existing valid/invalid parser tests pass; candidate output never grants release eligibility |
-| Candidate record, configuration and resource reader | `compatible-change`: additive finite v1 implementation | Exact template comparison, full migration/file/service mappings, unique identities and bounded input checks; future versions fail closed |
-| API image payload | `compatible-change` for source/import behavior: license added, generated bytecode omitted | Local imports, Parquet round-trip and Alembic head pass; startup timing effect is unmeasured |
-| Web/Edge artifact | `compatible-change` for packaging: notices added, application/public asset bytes retained | Actual image source hashes and Nginx checks; visual/browser fidelity remains S04 |
-| Domain/API/identity, persisted schema, migrations, cache, feature readiness | `none`: no corresponding source change | No installed DB, rollback, TLS/bootstrap or business capability completion is claimed |
-| Authenticated provider retrieval/signatures/final subject supply | `unknown` end to end, allocated to S03/S04 | This local producer does not authenticate a signature, download an archive or grant execution trust |
+| Legacy env/accepted-release bootstrap | `compatible-change`: additive candidate seam; original strict three-key parser, overlay and bootstrap unchanged | Existing valid/invalid parser tests pass; candidate output grants no release eligibility |
+| Candidate record/config/resources | `compatible-change`: additive finite v1 producer and reader | Exact trusted template, migration/file/service mapping, unique identities, bounded inputs and out-of-tree Compose checks |
+| API payload | `compatible-change`: license added, generated bytecode omitted, source behavior retained | Actual imports, Parquet round-trip and Alembic head pass; timing effects unmeasured |
+| Web/Edge payload | `compatible-change`: notices added, application/public assets retained | Actual source/asset hashes and both Nginx config checks |
+| Domain/API/identity/persistence/migrations/cache/capabilities | `none` | No corresponding source or schema change |
+| Authenticated retrieval/signatures/final supply | `unknown` end to end; S03/S04 allocation retained | Local producer does not authenticate an archive or grant execution trust |
 
-| Criterion | Actual S02 preparation | Still required before the applicable completion claim |
+| Criterion | Completed S02 contribution | Remaining milestone proof |
 |---|---|---|
-| MS-001/AC-01 | Deterministic bundle payload and complete declared configuration; actual image files checked against trusted inventory | S02 clean-commit rebuild; S04 hostile retrieval/extraction and installed artifact checks |
-| MS-001/AC-02 | Pinned frontend/bases/locks, clean-source capture guard and deterministic ZIP fixture round-trip | S02 exact recorded candidate commit/build; S03 real repeat-build comparison |
-| MS-001/AC-05 | Original env compatibility, exact role/version/resource pairing, all nine migration revisions/support hashes | S02 clean-image recheck; S04 fresh/repeat PostgreSQL migration proof |
-| MS-001/AC-07 | Actual local imports, required Web/docs/assets/notices and Nginx configuration | S02 clean-image recheck; final subject readiness/platform/DB/browser evidence remains S04 |
-| MS-001/AC-09 | Real compressed/uncompressed image measurements and preservation of S01 comparison inputs | Source-built historical baseline and complete runtime/timing/browser samples remain S04; no new speed threshold |
+| MS-001/AC-01 | Closed declared bundle/config inventory, actual image files, deterministic fixture extraction/render outside checkout | S04 hostile retrieval/extraction and final installed-artifact checks |
+| MS-001/AC-02 | Exact clean tracked source commit, pinned inputs/locks and deterministic producer ZIP round-trip | S03/S05 real repeat-build comparison and immutable retrieval |
+| MS-001/AC-05 | Original env compatibility, exact role/version/resource pairing, all nine migration revision/support hashes and image head | S04 fresh/repeat PostgreSQL migrations on final subjects |
+| MS-001/AC-07 | Clean-image API imports, Web/docs/assets/notices and Web/Edge Nginx checks on both architectures | S04 final subject/platform/DB/browser readiness |
+| MS-001/AC-09 | Preserved S01 source/protocol inputs, actual compressed and conservative unpacked image sizes | S04/S05 historical baseline, runtime/timing/browser observations and comparison |
 
-## Observed checks
+No S02 clean-source or available image check is deferred. The remaining cells
+are the accepted later-stage allocation, not milestone-wide acceptance here.
 
-[validation.txt](validation.txt) records 100 passing focused tests and passing Ruff.
-The additional full `uv run --locked pyright` check fails with 33 diagnostics in
-`validate_delivery_tickets.py` and `validate_route_registry.py`. A clean archive of
-the inspection commit, same Python environment and same Pyright configuration
-reproduces exactly the same normalized diagnostics; see
-[pyright-comparison.json](pyright-comparison.json). Those existing validators were
-not changed. This expanded check remains **failed**, not silently waived or repaired
-outside S02. Focused Pyright for S02 passes in
-[validation-runtime.txt](validation-runtime.txt), which also records actual image
-probes and the rejected source capture. The final grouped source profile is recorded
-separately after documentation synchronization.
-The observed final `check --scope local` result is `PASS` in
-[local-profile.txt](local-profile.txt); `generate_docs_index --check` also passes.
-After the final source and documentation changes, the same scoped checks passed
-again: [100 tests](tests-final.txt), [Ruff](ruff-final.txt),
-[focused Pyright](pyright-focused-final.txt) and [local profile](local-profile-final.txt).
-Final source bytes are bound in [source-inputs-final.json](source-inputs-final.json).
+## Validation and actual images
 
-Docker Desktop initially had no socket. `docker desktop status` reported it stopped;
-the authorized reversible `docker desktop start --timeout 45` succeeded. Observed
-engine: 29.6.2, `aarch64`, 8,319,213,568 bytes engine memory. Docker's existing
-containers/volumes/images were not removed or started. Each inspection container
-was created by this run and removed after use. The engine remains available.
-Docker/Compose availability is no longer the reason for the source-build pause.
+The earlier focused suite passed 100 tests; [tests-final.txt](tests-final.txt),
+[ruff-final.txt](ruff-final.txt), [pyright-focused-final.txt](pyright-focused-final.txt)
+and [local-profile-final.txt](local-profile-final.txt) preserve exact results.
+The unchanged code then passed the CI-equivalent source checks:
 
-ARM64 API and Web builds use application version `0.1.0-dev.0+s02.preparation`.
-[local-images.json](local-images.json) records local identities, not remote OCI
-platform provenance. [api-files.json](api-files.json) contains 111 actual image file
-records; [web-files.json](web-files.json) contains 94. Required source bytes,
-eleven public SVG assets, help index, generated docs/search/CSP and notice files
-were observed. The standalone copied standard-library reader and real Compose CLI
-rendering outside the repository pass in tests, using explicitly synthetic subjects.
-No synthetic fixture was represented as an image, supply or runtime observation.
+- `source scripts/activate-toolchain.sh` followed by `uv run --locked python -m tools.check --scope ci`: PASS, [evidence](iteration-02/ci-source-profile.txt).
+- `uv run --locked ruff check apps/api/src migrations tests tools`: PASS, [evidence](iteration-02/ci-ruff.txt).
+- `uv run --locked pyright apps/api/src tests/integration`: zero errors, [evidence](iteration-02/ci-pyright.txt).
+- `uv run --locked pytest -q`: 336 passed, 15 skipped; skips are not runtime proof, [evidence](iteration-02/pytest-all.txt).
+- Hosted [Foundation CI run 34165630457](https://github.com/Dejetins/custometry/actions/runs/34165630457): static/unit/contracts, disposable Compose/browser proof and required Foundation gate all success on PR head `829b1c10096e0e0f170889baf9734699b2ebf237`.
 
-| ARM64 measurement | Before bytecode repair | After repair | Criterion / observation |
-|---|---:|---:|---|
-| API compressed layer bytes | 115,010,255 | 105,825,956 | Local stored content; not registry transfer bytes |
-| API streamed uncompressed layer-tar bytes | 381,197,312 | 355,354,112 | Conservative upper bound including tar metadata; below 367,001,600 after repair |
-| Web streamed uncompressed layer-tar bytes | 55,403,008 | 55,403,008 | Before final deterministic notice-order rebuild; final measurement recorded separately; limit 104,857,600 |
+The optional expanded `uv run --locked pyright` remains failed with 33 diagnostics
+in unchanged `validate_delivery_tickets.py` and `validate_route_registry.py`.
+[pyright-comparison.json](pyright-comparison.json) reproduces exactly the same
+normalized diagnostics at the original inspection commit using the same environment
+and configuration. This is not a required passing profile and is not reported as
+passed. No unrelated validator repair was included.
 
-These are exact byte counts, one observation per immutable local image; sample
-spread is not a meaningful statistic for the same bytes. The only API source change
-between these two measured builds is `UV_COMPILE_BYTECODE=1` to `0`: generated `.pyc`
-files accounted for 24,756,364 payload bytes. Total uncompressed layer-tar reduction
-is 25,843,200 bytes (including metadata). Import and Parquet checks were repeated.
-This is an S02 local repair comparison, **not** the S01 historical baseline or a
-startup/performance result. The legacy `Size`-field check alone would have missed
-the initial unpacked cap violation on this image store. Compressed layer bytes,
-uncompressed bytes and actual network downloads are distinct measurements.
-
-## Notice and proof limits
-
-The Web notice collector reports no unknown declared license identifiers, but
-five installed ARM64 packages have no root license text: `@esbuild/linux-arm64@0.25.12`,
-`@rollup/rollup-linux-arm64-musl@4.62.2`, `html-parse-stringify@3.0.1`, `saxes@6.0.0`
-and `stackback@0.0.2`. The collector deliberately includes build/test dependencies;
-four are not Web runtime dependencies. `html-parse-stringify` is a runtime
-dependency. Its installed metadata/README declare MIT; the upstream `v3.0.1` tag
-resolves to `ed405e32a6ad5afc583001b238a34772e7340bac`, and a read-only GitHub contents
-query at that commit also returned no LICENSE file. No license text, exemption or
-legal acceptance was fabricated. S03 must bind the actual shipped-component SBOM,
-license findings and required notice resolution to final subjects. This preparation
-does not claim `gate_licenses`, SBOM, vulnerability or signature acceptance.
-
-Actual authenticated bundle retrieval, native AMD64 host proof, fresh/repeat DB
-migrations, browser fidelity, runtime RAM/disk aggregates and timing samples were
-not performed here. Emulated cross-platform preparation is labeled separately.
-No images/bundles were published, and no host installation or existing data changed.
-
-### Final local cross-platform preparation
-
-Both architectures were built from the reviewed uncommitted preparation, with
-locked dependencies and pinned base/frontend images. The final Web rebuild sorts
-Python notice distributions/files deterministically; earlier local Web evidence
-above is preserved. [local-images-final.json](local-images-final.json) binds all
-four final local identities. [image-validation-final.txt](image-validation-final.txt)
-records successful source-file observations, API imports/Parquet and Alembic heads,
-and both Nginx configuration checks for each architecture. Native engine platform
-is ARM64; AMD64 execution is explicitly **emulated**, not S04 native-host proof.
-
-| Final local image | Compressed layer bytes | Uncompressed layer-tar bytes | Existing unpacked cap |
-|---|---:|---:|---:|
-| API ARM64 | 105,825,956 | 355,354,112 | 367,001,600 — below cap |
-| API AMD64 | 107,526,279 | 337,203,200 | 367,001,600 — below cap |
-| Web ARM64 | 22,728,714 | 55,403,008 | 104,857,600 — below cap |
-| Web AMD64 | 21,884,756 | 53,853,696 | 104,857,600 — below cap |
-
-[sizes-all-final.json](sizes-all-final.json) records method, archive size and SHA-256.
-Actual network-transfer bytes and a retained signed bundle do not exist here.
-The final per-architecture file lists contain 111 API records and 94 Web records.
-All cross-platform Web file hashes agree except `notices/THIRD-PARTY.txt`, which
-names platform-specific installed build packages. This is a file comparison, not
-a browser fidelity or repeat-build verdict. The inspector never starts an image,
-mounts source, or implicitly pulls a missing local image.
-
-Final source and build evidence includes the exact commands:
+[source-capture.json](iteration-02/source-capture.json) records the clean archive
+and each declared source hash. [clean-builds.json](iteration-02/clean-builds.json)
+records the four exact build commands, source directory and successful exits.
+Build inputs were rechecked unchanged after building. The build command template,
+instantiated for both roles and architectures in that evidence, is:
 
 ```sh
-docker build --platform linux/arm64 --load -t custometry-ms001-s02-api:local --build-arg CUSTOMETRY_VERSION=0.1.0-dev.0+s02.preparation -f apps/api/Dockerfile .
-docker build --platform linux/arm64 --load -t custometry-ms001-s02-web:local --build-arg CUSTOMETRY_VERSION=0.1.0-dev.0+s02.preparation -f apps/web/Dockerfile .
-docker build --platform linux/amd64 --load -t custometry-ms001-s02-api:amd64-local --build-arg CUSTOMETRY_VERSION=0.1.0-dev.0+s02.preparation -f apps/api/Dockerfile .
-docker build --platform linux/amd64 --load -t custometry-ms001-s02-web:amd64-local --build-arg CUSTOMETRY_VERSION=0.1.0-dev.0+s02.preparation -f apps/web/Dockerfile .
+docker build --platform linux/arm64 --load -t custometry-ms001-s02-clean-api:arm64 --build-arg CUSTOMETRY_VERSION=0.1.0-dev.0+sha.bc347d7e74c5 -f apps/api/Dockerfile .
 ```
 
-These successful build invocations use the explicitly disclosed working source.
-They cannot fulfill the remaining clean tracked commit criterion. A source archive
-of the existing commit was used only to reproduce the unrelated Pyright errors;
-it is neither a new checkout/clone nor the candidate build snapshot.
+[image-checks.json](iteration-02/image-checks.json) records actual source inventory,
+API imports/Parquet, absence of pytest, application version, Alembic
+`0009_notifications` head, and both Nginx config checks. Each architecture has
+111 API file records and 94 Web file records; source bytes match the trusted
+inventory. The inventories are
+[API ARM64](iteration-02/api-arm64-files.json),
+[API AMD64](iteration-02/api-amd64-files.json),
+[Web ARM64](iteration-02/web-arm64-files.json) and
+[Web AMD64](iteration-02/web-amd64-files.json).
+Temporary stopped inspector containers use no source mount or implicit image pull
+and are removed after observation. Existing Docker workloads/data were untouched.
 
-## Handoff and documentation synchronization
+| Clean image | Compressed layer bytes | Uncompressed layer-tar bytes | Existing unpacked cap |
+|---|---:|---:|---:|
+| API ARM64 | 105,826,444 | 355,354,112 | 367,001,600 |
+| API AMD64 | 107,526,061 | 337,203,200 | 367,001,600 |
+| Web ARM64 | 22,727,240 | 55,393,792 | 104,857,600 |
+| Web AMD64 | 21,883,320 | 53,844,480 | 104,857,600 |
 
-The S03 prompt and all declared input paths were inspected. Its files can consume
-the new producer after S02 is actually accepted; S03 remains disallowed now.
-It must not consume these local tags as final published identities or use this
-report as a substitute for a completed S02 clean-source build.
+All four conservative unpacked upper bounds fit the existing caps.
+[clean-images.json](iteration-02/clean-images.json) binds image IDs, rootfs layers,
+labels, archive hash and method. The uncompressed total includes layer-tar metadata;
+compressed local content is not registry network transfer. The engine is Linux
+ARM64 (Docker 29.6.2); AMD64 execution is emulated. One immutable-byte observation
+per image is sufficient for these counts and does not establish speed or native
+AMD64 acceptance. The old pause report retains the measured causal bytecode-size
+repair comparison; it is not a historical product performance baseline.
 
-Commands retained for the later authorized producer (use actual run inputs):
+## Notice and downstream proof limits
+
+The Web collector reports five installed ARM64 packages without root license text:
+`@esbuild/linux-arm64@0.25.12`, `@rollup/rollup-linux-arm64-musl@4.62.2`,
+`html-parse-stringify@3.0.1`, `saxes@6.0.0`, `stackback@0.0.2`.
+Four are build/test-only; `html-parse-stringify` is a runtime dependency with MIT
+metadata/README. Its upstream v3.0.1 commit
+`ed405e32a6ad5afc583001b238a34772e7340bac` also has no LICENSE file. Available actual
+notices and metadata are retained. No license text, exception or legal acceptance
+was fabricated. S03 must bind the shipped-component SBOM and license resolution to
+final subjects; `gate_licenses`, vulnerabilities, signatures and supply acceptance
+are not claimed here.
+
+Local build tags are not final registry subjects. Native final-image platform
+proof, fresh/repeat DB migrations, authenticated retrieval, final-bundle browser
+checks, runtime RAM/disk aggregates and timing samples remain S03/S04/S05 work.
+The normal CI disposable Compose/browser check is real but does not establish
+those final-bundle or installed-product boundaries.
+
+## Handoff and documentation
+
+The exact S03 prompt and its producer inputs were inspected. Producer, schema,
+policy, trusted template/inventory, Dockerfiles and this report are available.
+S03 requires a separate execution request and authority for its external supply
+operations. It remains disallowed by this handoff; no S03 action was performed.
+The new [ready receipt](receipts/2026-09-08-s02-ready-02.md) binds this live report,
+plan, prompt, stage contract and actual evidence. S02 does not require a separate
+owner acceptance of its finished result; Git authorization is not represented as
+such acceptance.
+
+Commands available to a later authorized producer, using actual run inputs:
 
 ```sh
 python -m tools.custometry_quality.delivery_bundle capture --commit "$SOURCE_COMMIT" --output "$SOURCE_ARCHIVE"
@@ -207,24 +183,20 @@ python -m tools.custometry_quality.delivery_bundle observe-image-files --image "
 python -m tools.custometry_quality.delivery_bundle observe-image-files --image "$WEB_IMAGE" --role web --output "$WEB_FILES"
 python -m tools.custometry_quality.delivery_bundle assemble --record "$ACTUAL_METADATA" --payload "$PAYLOAD_INPUTS" --output "$ASSEMBLED"
 python -m tools.custometry_quality.delivery_bundle check --record "$ASSEMBLED/delivery-manifest.json" --payload "$ASSEMBLED"
-# Independent S03 signing/verification precedes any publication or execution.
+# Independent signing/verification precedes publication or execution.
 python -m tools.custometry_quality.delivery_bundle pack --record "$ASSEMBLED/delivery-manifest.json" --payload "$ASSEMBLED" --signature "$SIGSTORE_BUNDLE" --output "$NEW_ARCHIVE"
 ```
 
-`ACTUAL_METADATA` contains every required v1 field except derived
-`files/services/resources`; actual evidence records retain their exact hashes and
-`evidence` role. `PAYLOAD_INPUTS` contains only referenced evidence, project/third-party
-notices and optional demo init files. Generated config/env/policy are supplied by
-the producer. The independently trusted toolkit selects the image inventory and
-template version; an arbitrary bundle cannot replace them.
+Metadata retains all v1 fields except derived `files/services/resources`. Payload
+inputs contain referenced actual evidence, notices and selected optional demo
+files; the producer supplies config/env/policy. Trusted toolkit code/template and
+inventory must be supplied independently of an untrusted bundle. Fixture tests
+prove isolated standard-library execution and real portable Compose rendering.
+`DELIVERY_CANDIDATE_PREPARED` is the only success claim; packing does not authenticate
+the separately supplied signature.
 
-Parent WS-001, accepted plan version, triad bindings and S01 decision/source
-versions remain unchanged: no new planning child, policy decision or product
-requirement was introduced. Runtime/tooling docs link this implementation and
-evidence; existing architecture navigation still points to the canonical journal.
-The documentation index and source/link profile are checked in this iteration.
-Only the supported CLI changes the journal. No next stage or milestone is started.
-
-The requested pause is bound by the new immutable
-[pause receipt](receipts/2026-09-08-s02-pause-01.md). It records the specific source
-decision and all current hashes, without a fabricated acceptance status.
+Parent WS-001, plan version, triad bindings, S01 decisions and navigation remain
+valid. No planning child or product decision changed. Runtime/tooling docs link
+the candidate implementation and evidence. Final documentation/source checks are
+captured in [closure-validation.txt](iteration-02/closure-validation.txt), and the
+ledger transition is made only by its exclusive CLI before the final handoff.

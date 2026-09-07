@@ -1,0 +1,283 @@
+{
+  "check": "gate_licenses",
+  "details": {
+    "components_evaluated": 269,
+    "components_ignored": 0,
+    "components_total": 269,
+    "license_declarations": 269
+  },
+  "findings": [
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "@csstools/color-helpers: MIT-0",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "caniuse-lite: CC-BY-4.0",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "tslib: 0BSD",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "alpine-baselayout: GPL-2.0-only",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "alpine-baselayout-data: GPL-2.0-only",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "aom-libs: BSD-2-Clause AND custom",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "apk-tools: GPL-2.0-only",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "busybox: GPL-2.0-only",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "busybox-binsh: GPL-2.0-only",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "ca-certificates: MPL-2.0 AND MIT",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "ca-certificates-bundle: MPL-2.0 AND MIT",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "curl: curl",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "freetype: FTL OR GPL-2.0-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-review-required",
+      "line": null,
+      "message": "geoip: LGPL-2.1-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "gettext-envsubst: GPL-3.0-or-later AND LGPL-2.1-or-later AND MIT",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libbz2: bzip2-1.0.6",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libcurl: curl",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libgcrypt: LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libgd: GD",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libgpg-error: GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libice: X11",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libidn2: GPL-2.0-or-later OR LGPL-3.0-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-review-required",
+      "line": null,
+      "message": "libintl: LGPL-2.1-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libjpeg-turbo: BSD-3-Clause AND IJG AND Zlib",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libmd: BSD-3-Clause AND BSD-2-Clause AND ISC AND Beerware AND Public Domain",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libncursesw: X11",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libpng: Libpng",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libunistring: GPL-2.0-or-later OR LGPL-3.0-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libx11: X11",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libxpm: X11",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "libxslt: X11",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "musl-utils: MIT AND BSD-2-Clause AND GPL-2.0-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "ncurses-terminfo-base: X11",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "nginx: 2-clause BSD-like license",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "nginx-module-geoip: 2-clause BSD-like license",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "nginx-module-image-filter: 2-clause BSD-like license",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "nginx-module-njs: 2-clause BSD-like license",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "nginx-module-xslt: 2-clause BSD-like license",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "scanelf: GPL-2.0-only",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "ssl_client: GPL-2.0-only",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "tiff: libtiff",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "tzdata: Public-Domain",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "xz-libs: GPL-2.0-or-later AND 0BSD AND Public-Domain AND LGPL-2.1-or-later",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "zlib: Zlib",
+      "path": "notice-audit-sbom.json"
+    },
+    {
+      "code": "license-not-allowed",
+      "line": null,
+      "message": "zstd-libs: BSD-3-Clause OR GPL-2.0-or-later",
+      "path": "notice-audit-sbom.json"
+    }
+  ],
+  "observed": true,
+  "status": "failed"
+}

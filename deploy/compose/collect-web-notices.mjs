@@ -8,6 +8,9 @@ async function packageNotice(directory) {
   let metadata;
   try { metadata = JSON.parse(await readFile(path.join(directory, 'package.json'), 'utf8')); }
   catch (error) { if (error.code === 'ENOENT') return; throw error; }
+  // Platform compiler executables stay in the build stage, outside the shipped Web payload.
+  // Preserve the common esbuild/rollup package notices; omit only these unshipped binaries.
+  if (/^@(?:esbuild\/linux-|rollup\/rollup-linux-)/.test(metadata.name)) return;
   const entries = await readdir(directory, { withFileTypes: true });
   const names = entries.filter(entry => entry.isFile() && /^(licen[cs]e|copying|notice)([.-]|$)/i.test(entry.name))
     .map(entry => entry.name).sort();

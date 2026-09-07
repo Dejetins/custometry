@@ -1,0 +1,37 @@
+{
+  "proof_boundary": "actual existing provider downloads and hash identities, not an S03 bundle",
+  "observations": [
+    {
+      "artifact_id": 10034464188,
+      "name": "Dejetins~custometry~FVCNM2.dockerbuild",
+      "provider_digest": "sha256:64afb06ef7160a2517853f73e727f311c8250825c63198b05c4104eedbd724f2",
+      "download_sha256": "sha256:64afb06ef7160a2517853f73e727f311c8250825c63198b05c4104eedbd724f2",
+      "digest_matches": true,
+      "provider_size_bytes": 168922,
+      "download_bytes": 168922,
+      "expires_at": "2026-12-06T22:26:06Z",
+      "expired": false,
+      "format": "gzip",
+      "note": "Docker build record is uploaded as native gzip; the /zip API suffix alone does not prove ZIP format."
+    },
+    {
+      "artifact_id": 9891162493,
+      "name": "foundation-playwright-evidence",
+      "provider_digest": "sha256:6b3d45f991e8457d1d7a3b1fbcd1b1585e5a33031db61db04378bf3a4e8a8aed",
+      "download_sha256": "sha256:6b3d45f991e8457d1d7a3b1fbcd1b1585e5a33031db61db04378bf3a4e8a8aed",
+      "digest_matches": true,
+      "provider_size_bytes": 707551,
+      "download_bytes": 707551,
+      "expires_at": "2026-09-10T11:30:59Z",
+      "expired": false,
+      "format": "zip",
+      "entry_count": 71,
+      "compression_types": [
+        8
+      ],
+      "file_type_modes": [
+        "0o100000"
+      ]
+    }
+  ]
+}

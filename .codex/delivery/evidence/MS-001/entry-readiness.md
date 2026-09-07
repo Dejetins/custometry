@@ -107,3 +107,5 @@ was removed; using the existing locked environment explicitly and `python -m`
 from the publication checkout passed both checks. No dependency installation,
 credential change or source-gate waiver was used. Hosted CI remains a separate
 publication check on the actual PR SHA.
+
+The plan baseline is bound to published commit `f9f39a75994d2f7a8e8d7a75df293c35579f842d`. A direct Git comparison confirms that the previously inspected local commit has identical application/package/deployment/migration/workflow/Compose/lockfile bytes. A new executor therefore does not need unpublished local history.

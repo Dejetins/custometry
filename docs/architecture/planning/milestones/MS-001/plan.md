@@ -18,7 +18,7 @@
   },
   "direction_ref": "DIR-006",
   "baseline_ref": {
-    "commit": "6664bd81fe5dae6ee47e3dbaf295c70776e9d800",
+    "commit": "f9f39a75994d2f7a8e8d7a75df293c35579f842d",
     "evidence_refs": [
       "docs/architecture/planning/milestones/MS-001/plan.md#current-state-evidence"
     ]
@@ -104,7 +104,7 @@ The [human mirror](../../../../../custometry-technical-blueprint-human-ru.md) `0
 
 ### Current-state evidence
 
-The working tree was clean at inspection. Build, deployment, migration and application sources match the L2 code baseline `d9e1fddd2fd12ac51c88275544833d8b20b93728`; the comparison across application/package/deployment/workflow zones additionally found two changed route-contract JSON files. This plan uses the recorded inspection baseline above, not an assumption that all package bytes are unchanged.
+The working tree was clean at inspection. Build, deployment, migration and application sources match the L2 code baseline `d9e1fddd2fd12ac51c88275544833d8b20b93728`; the comparison across application/package/deployment/workflow zones additionally found two changed route-contract JSON files. The published baseline is `f9f39a75994d2f7a8e8d7a75df293c35579f842d`, available from origin/main history. The earlier local inspection used `6664bd81fe5dae6ee47e3dbaf295c70776e9d800`; comparison confirms identical application, package, deployment, migration, workflow, Compose and lockfile bytes. Local-only governance commits are preserved locally and are not prerequisites for a fresh executor checkout.
 
 | Claim ID | Capability | Observation | Evidence at baseline / external revision | Gap / next resolution |
 |---|---|---|---|---|

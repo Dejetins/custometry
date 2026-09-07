@@ -1,0 +1,61 @@
+MS-001-S01 validation evidence — 2026-09-08
+Working directory: /Users/daniildegtyarev/Projects/Custometry
+Boundary: source-level structural delivery contract; not image/runtime/publication.
+Toolchain activation: source scripts/activate-toolchain.sh
+Observed activation: Node 24.18.0, pnpm 11.13.0, uv 0.9.26.
+
+ENTRY
+uv run --locked python -m tools.custometry_quality.stage_ledger preflight --ledger .codex/delivery/ledgers/MS-001.md --stage MS-001-S01
+Exit 0; status pass; ledger_sha256 49433b3acfd8c22b324f074b4996dda3d8868e6c0ea5513bce1665f1e94d25e5.
+uv run --locked python -m tools.custometry_quality.stage_ledger claim --ledger .codex/delivery/ledgers/MS-001.md --stage MS-001-S01 --expected-sha256 49433b3acfd8c22b324f074b4996dda3d8868e6c0ea5513bce1665f1e94d25e5
+Exit 0; status pass; in_progress; ledger_sha256 6b1c62a26936b669bb6ace297f7c1e1009327fa58584f730849f455b61873816.
+Claim used the process's actual CODEX_THREAD_ID, without --session override.
+
+FINAL PRODUCT SOURCE CHECKS (completed before evidence write; outputs retained)
+uv run --locked --offline --no-sync pytest -q tests/tooling/test_delivery_bundle.py tests/integration/test_release_manifest.py
+Exit 0: 61 passed in 1.21s. No skipped tests.
+uv run --locked --offline --no-sync ruff check deploy/compose/validate-delivery-manifest.py tests/tooling/test_delivery_bundle.py
+Exit 0: All checks passed!
+uv run --locked --offline --no-sync pyright deploy/compose/validate-delivery-manifest.py tests/tooling/test_delivery_bundle.py
+Exit 0: 0 errors, 0 warnings, 0 informations.
+uv run --locked python -m tools.check --scope local
+Exit 0: PASS check:local (observed=true).
+
+EARLIER ITERATION
+Initial schema test set: 62 passed; Ruff passed. Initial Pyright failed with 25
+introduced narrowing errors. Explicit casts/narrowing fixed the errors, then
+Pyright passed. One path fixture (A/case) was removed from the invalid-path set:
+source paths such as Dockerfile/LICENSE legitimately require ASCII uppercase;
+case-collision rejection is a distinct S02 semantic/archive obligation, not a ban
+on uppercase letters. The final 61-test suite tests the revised real schema.
+
+DIRECT READERS
+uv run --locked --offline --no-sync python deploy/compose/validate-delivery-manifest.py tests/tooling/fixtures/delivery-manifest.valid.json
+Exit 0: result pass, code DELIVERY_STRUCTURE_VALID; independent authenticity/closure still required.
+uv run --locked --offline --no-sync python deploy/compose/validate-delivery-manifest.py --policy deploy/compose/delivery-verification-policy.json
+Exit 0: result pass, code DELIVERY_STRUCTURE_VALID; independent authenticity/closure still required.
+
+DOCUMENTATION CHECKS
+uv run --locked python -m tools.custometry_quality.generate_docs_index
+Exit 0: PASS; 65 contributor documents; generated docs/README.md unchanged.
+uv run --locked python -m tools.custometry_quality.check_docs_links
+Exit 0: PASS; 81 documents, 496 local links.
+git diff --check
+Exit 0; no diagnostics.
+
+SOURCE/BOUNDARY REVIEW
+Source-zone comparison baseline f9f39a75994d2f7a8e8d7a75df293c35579f842d to
+inspection d2e3c65b15f02f7970eac8c32feede3cbbd01ef9:
+git diff --name-only f9f39a75994d2f7a8e8d7a75df293c35579f842d HEAD -- apps packages plugins migrations compose.yaml deploy .github/workflows uv.lock pnpm-lock.yaml
+Exit 0; no paths.
+335 source/build/tooling inputs and 9 migrations hashed into source-inventory.json.
+17 measurement sources hashed at both source identities; all same_bytes true.
+Legacy env reader and existing integration tests unchanged.
+S02 prompt read fully; all four declared entry-input files present.
+
+UNOBSERVED STRONGER BOUNDARIES
+Docker client 29.6.2 exists; desktop-linux server socket unavailable. No image
+build/start, real PostgreSQL migration, browser, scanner, signature or performance
+execution was attempted. No ci/release profile, remote publication or account-policy
+change. Provider observations and exact primary source links are in report.md.
+Timing acceptance: not assessed — threshold not specified.

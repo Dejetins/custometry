@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 9
+doc_version: 11
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -169,6 +169,43 @@ Docker Desktop it uses `host.docker.internal`. Product Web/API still pass separa
 probes.
 
 `--apply` is permitted only after reviewing the dry run, with the exact confirmation phrase, and only for a manifest created by the current installation/workspace. CI does not delete host-wide resources.
+
+### Internal delivery structural reader
+
+`deploy/compose/validate-delivery-manifest.py` is the dependency-free v1 delivery
+input reader, owned by the runtime delivery tooling boundary. Changes to its schema,
+policy or parsing require these focused checks before handoff:
+
+```sh
+uv run --locked python -m pytest -q tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py tests/integration/test_release_manifest.py
+uv run --locked python deploy/compose/validate-delivery-manifest.py tests/tooling/fixtures/delivery-manifest.valid.json
+uv run --locked python deploy/compose/validate-delivery-manifest.py --policy deploy/compose/delivery-verification-policy.json
+```
+
+The first two artifact checks report `DELIVERY_STRUCTURE_VALID`, not verified
+signatures, archive closure or release readiness. The source-level fixture uses
+synthetic digests. This is a parser seam, not a new grouped runtime gate; S03's
+artifact-producing workflow must invoke the completed producer/consumer and final
+subject gates. The existing local profile still supplies documentation, migration,
+contract and prompt-pack source checks. See the
+[internal delivery contract](runtime-network-installation.md#11-internal-delivery-v1-contract-ms-001s01)
+and its separately allocated S02–S04 proof obligations.
+
+S02 adds `python -m tools.custometry_quality.delivery_bundle` with `capture`,
+`assemble`, `prepare`, `check`, `pack` and `observe-image-files`. See each command's
+`--help` and the runtime contract's candidate packaging section. `check` is read-only;
+the other commands create explicit new local outputs. Image observation needs an
+existing authorized local image and creates/removes its own stopped container.
+Fixture tests cover actual Compose rendering outside the repository and a copied
+standard-library toolkit, so that test file requires Docker CLI with Compose but
+not an engine. No fixture certifies real image subjects or signature trust.
+
+The original `check-image-size.sh` uses Docker's `Size` field. Record engine/store
+semantics: the observed containerd image store reports compressed content there.
+For the unpacked cap, S02 also measured streamed decompressed layer-tar bytes from
+`docker image save`, a conservative upper bound including layer metadata. S03/S04
+must retain separate compressed, unpacked and transfer observations; neither a
+local image ID nor an unpacked upper bound is a registry download measurement.
 
 ## 5. Change-trigger groups
 

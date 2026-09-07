@@ -1,0 +1,1709 @@
+{
+  "source_commit": "bc347d7e74c57640b42462c24cc2ed60d76ef055",
+  "application_version": "0.1.0-dev.0+sha.bc347d7e74c5",
+  "archive_sha256": "cbd5c00cd9e498c0c8648ea60844dcf658290ab0129a786b2471969c427efe93",
+  "archive_bytes": 2324480,
+  "proof_boundary": "git archive of clean tracked build inputs; no checkout source mount or uncommitted source overlay",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "d828826088558162e850fe4fba1d0a007e0a834c0c3aa93c7402f4b0287ce492",
+      "size_bytes": 539
+    },
+    {
+      "path": ".node-version",
+      "sha256": "55075b5ec4e8b31936cbbc282b8829116d1fd48f2f2f1856dee592a6650700ce",
+      "size_bytes": 8
+    },
+    {
+      "path": ".uv-version",
+      "sha256": "64534544e1af45ce11c26d08fe3e2f1be45bb68f8261431e2d59d85101f3df35",
+      "size_bytes": 7
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size_bytes": 11357
+    },
+    {
+      "path": "README.md",
+      "sha256": "45eac1ed0c3338e4235bb0586505a248caf98e8804fd017d4ef8ed87444c2fd0",
+      "size_bytes": 5762
+    },
+    {
+      "path": "apps/api/Dockerfile",
+      "sha256": "4ad4ff5759f5c9df7281ee3aa2ebcda761ce12639d4e378ad3689951d2e25a68",
+      "size_bytes": 3672
+    },
+    {
+      "path": "apps/api/pyproject.toml",
+      "sha256": "3c62245acbec675bd1df76147780e3c9d499c6c3d107f3f38d04d478fa1bb4f1",
+      "size_bytes": 632
+    },
+    {
+      "path": "apps/api/src/custometry_api/__init__.py",
+      "sha256": "8c86b6bc18223e9dd9673fcfbd5f2db0d5831bc63167e56f9a4e0329c40da62b",
+      "size_bytes": 103
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/__init__.py",
+      "sha256": "bf4a2702e256f49e8db0441cadd9448a0ec87fec045a9d4b77cae5782797de8f",
+      "size_bytes": 101
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/router.py",
+      "sha256": "ee3d3366c43d8d8c210e3ed3006b87bc427a71f104dd5cf9b6af2bfb7d4394cb",
+      "size_bytes": 11292
+    },
+    {
+      "path": "apps/api/src/custometry_api/config.py",
+      "sha256": "7f18aa329f4a1fc60cbe85f98bc4f81519d64da8a31385b277d37ea9c7720b5f",
+      "size_bytes": 3597
+    },
+    {
+      "path": "apps/api/src/custometry_api/connections/__init__.py",
+      "sha256": "f3e0df6d9ae2ee515f8c45adaa47c404dba43f64b4127dbf3e5fe944a926b329",
+      "size_bytes": 37
+    },
+    {
+      "path": "apps/api/src/custometry_api/connections/router.py",
+      "sha256": "23ff35e82c98c6143731f5fe620322a8e62cf801ac155151c4eef24ce2ac6f6e",
+      "size_bytes": 12968
+    },
+    {
+      "path": "apps/api/src/custometry_api/health.py",
+      "sha256": "80b9d14601f8e7a5ac7258b28e43bb7f66f668ae16d71ce25f542b70de1619a2",
+      "size_bytes": 1549
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/__init__.py",
+      "sha256": "1e6f0bfd75bb46f250b69d2397e651bce2125ba87378e6940215f75c59075111",
+      "size_bytes": 28
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/router.py",
+      "sha256": "922bd01ae348fc245e6c9934b11ca595f6641e7d200f27b3cbe03b8395f0714c",
+      "size_bytes": 23468
+    },
+    {
+      "path": "apps/api/src/custometry_api/imports/__init__.py",
+      "sha256": "3a0430858c8d1221aff172307defb33595d69197e0162889bcbb8d46bd9d6d26",
+      "size_bytes": 40
+    },
+    {
+      "path": "apps/api/src/custometry_api/imports/router.py",
+      "sha256": "b159d942dd5996e7f8b652e7bf6379048bcf269f26a9852e941f1c77c2925b44",
+      "size_bytes": 9960
+    },
+    {
+      "path": "apps/api/src/custometry_api/main.py",
+      "sha256": "a967a872f4b6f2ce6b648fb3fe2c6cc95b8c31a498c0e09bd5cdf13bfcf178c4",
+      "size_bytes": 4741
+    },
+    {
+      "path": "apps/api/src/custometry_api/notifications/__init__.py",
+      "sha256": "5d1ee9bcccde2d59ecbc3454c9c17bf89bb5acf035c500b6fc77c79d4a99cfc6",
+      "size_bytes": 154
+    },
+    {
+      "path": "apps/api/src/custometry_api/notifications/router.py",
+      "sha256": "0e05b5b735cb885da3e141c8cdc2f6d939873ded65c72112b567a44235f2aded",
+      "size_bytes": 14968
+    },
+    {
+      "path": "apps/api/src/custometry_api/organization/__init__.py",
+      "sha256": "f33c45fe9148a26f9da2ccfc78eecdaafb8ba8c1eaa6fadf89cd95c07ea608d9",
+      "size_bytes": 32
+    },
+    {
+      "path": "apps/api/src/custometry_api/organization/router.py",
+      "sha256": "b7e886d788e594b7b66015c25dae590013a4f41231a7e931fa90940028cf3e75",
+      "size_bytes": 17850
+    },
+    {
+      "path": "apps/api/src/custometry_api/people/__init__.py",
+      "sha256": "d866326e3936790c1a168471d4e19bdeddb1e3d6eeffc657376d2062a77ea055",
+      "size_bytes": 51
+    },
+    {
+      "path": "apps/api/src/custometry_api/people/router.py",
+      "sha256": "e070ded955642b4a48e6a2cb57ae55fc48080983b717a767fa9f98a0c3d1ab69",
+      "size_bytes": 6903
+    },
+    {
+      "path": "apps/api/src/custometry_api/py.typed",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "apps/api/src/custometry_api/runs/__init__.py",
+      "sha256": "d0ad1abe5c9035774eca398a74e52a40bd8209cdfa59fa94bdcd7da169160030",
+      "size_bytes": 137
+    },
+    {
+      "path": "apps/api/src/custometry_api/runs/router.py",
+      "sha256": "3bb435bcc78a8525cf3e25d79b25babdd518143508feec3cb737f21c40294394",
+      "size_bytes": 12193
+    },
+    {
+      "path": "apps/web/Dockerfile",
+      "sha256": "94cc01b034921cd3014328660f997ba1f8e40360a762efd2cf9afc7693c9ffae",
+      "size_bytes": 3128
+    },
+    {
+      "path": "apps/web/index.html",
+      "sha256": "74d84fedbbcaee4a97d9d890128403c6f5c9e716050092f1a64b7ceddaeea2d5",
+      "size_bytes": 434
+    },
+    {
+      "path": "apps/web/nginx.conf",
+      "sha256": "5307ac80fb76f3e444a994f61ec23d1aac8c1d5c54f728b3beb09a470eb32f43",
+      "size_bytes": 1872
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "3fddd3fd39b5d15e8d14f9471e4106b8ac9da6b8d2920ca9b4d09753f09ce269",
+      "size_bytes": 1164
+    },
+    {
+      "path": "apps/web/playwright.spike.config.cjs",
+      "sha256": "a79faea73a13721caaa551028960af4432fa89a4c2ac564481e528b2f760086b",
+      "size_bytes": 1156
+    },
+    {
+      "path": "apps/web/public/help-index.json",
+      "sha256": "288affadbbdae8d4d18d95f539ae54ff4897ed38b142f81f2d9990171ba38d01",
+      "size_bytes": 1459
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/bookmark.svg",
+      "sha256": "77fca79f83c43089181368fa50ce2a043e9381ffa0af017ccbef9ccee070caf7",
+      "size_bytes": 511
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/context-actions.svg",
+      "sha256": "d44bf91a87a269939d9fedc148bd7a27d720527e03a2b699cd29732bdab2018e",
+      "size_bytes": 793
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/download.svg",
+      "sha256": "39095eaadc38ec1c4cdf25df7741f5ae4b1908aa2ebce39fc15eeaa2a3a07f1c",
+      "size_bytes": 587
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/expand.svg",
+      "sha256": "2088f71233cf0485ba28738a2245cf2530d3a384b72ddbfc8a9618d1b6b905bd",
+      "size_bytes": 388
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/filter.svg",
+      "sha256": "9438f9699a8babe4ae2257e9c76c4c7209043f34d0b7f0642846859beb65651f",
+      "size_bytes": 360
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/link.svg",
+      "sha256": "f3c9f0ab0215e19a4f7748e781747e20942e8ee2efe32a74c2334cece5ef48e3",
+      "size_bytes": 694
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/mail.svg",
+      "sha256": "75890716facc902891187dc307af7e8b1206f469e6012d2152edacf443b6f680",
+      "size_bytes": 545
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/revenue-ly.svg",
+      "sha256": "d9e8f9d2a412d72368a652cf8c596be58b1cdb7a7ee1e0c8919556bd537ab856",
+      "size_bytes": 391
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/revenue.svg",
+      "sha256": "75d23bd4d371599f6c3105c28a068f428e99feaed99ce2869ccb41bd065dee4b",
+      "size_bytes": 348
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/trust-status.svg",
+      "sha256": "766f43e926341669f3cc0ee331ec55bee6f43b4acb9725e82b2ff488fcabe223",
+      "size_bytes": 226
+    },
+    {
+      "path": "apps/web/public/ui-an-003-prototype/unread-indicator.svg",
+      "sha256": "e140c6fbb946d4d820bfb67363d7bfe4410eb81eaa2ddd440933f8d637881a0b",
+      "size_bytes": 242
+    },
+    {
+      "path": "apps/web/src/App.tsx",
+      "sha256": "699fcd5111ada215e1a531de6a4f008da02c71fcebad7089307f6fd6dfe65ad0",
+      "size_bytes": 2829
+    },
+    {
+      "path": "apps/web/src/app/index.ts",
+      "sha256": "7f11204f4a96a90c2a8cb17634ee5fd05bd287ad97efec790582cd79dc58a499",
+      "size_bytes": 230
+    },
+    {
+      "path": "apps/web/src/app/router/route-resolution.ts",
+      "sha256": "335fd534399312ca456499cad2fe12b443c6b2fe6ee3a64308c3019cbed5a5e1",
+      "size_bytes": 5366
+    },
+    {
+      "path": "apps/web/src/app/routes/feature-route-contract.ts",
+      "sha256": "d4cfd8679355ec618b10ab55d0012acb3419e37ce449d9e9ef94ae04d08dc3bf",
+      "size_bytes": 679
+    },
+    {
+      "path": "apps/web/src/app/routes/feature-route-loader.ts",
+      "sha256": "6d3265e15ee8f3ec62b1969540ec5c6f23217c8943ebac0f6b61debf84d0761b",
+      "size_bytes": 957
+    },
+    {
+      "path": "apps/web/src/app/routes/features/analytics-sales.tsx",
+      "sha256": "0259587110661670c44b7b93405724b6c17718f745c9737bf12fcfcb3cdfc3af",
+      "size_bytes": 333
+    },
+    {
+      "path": "apps/web/src/app/routes/features/connections.tsx",
+      "sha256": "c8c19661b1fcd04309b08171c72a38d0f78a64757e551a1b63d02b8c9e0eb3ce",
+      "size_bytes": 1129
+    },
+    {
+      "path": "apps/web/src/app/routes/features/notifications.tsx",
+      "sha256": "892e440b067cb9544d8c73e78fbcaa89628a35275e4a2adae066c7e565b899b7",
+      "size_bytes": 342
+    },
+    {
+      "path": "apps/web/src/app/routes/features/operator-runs.tsx",
+      "sha256": "f14d0cd7667d10a78bc1b704c42c321393d3dfb81738f4ae12b0f56d3ee0fa8b",
+      "size_bytes": 326
+    },
+    {
+      "path": "apps/web/src/app/shell/ApplicationShell.tsx",
+      "sha256": "7425a56cf0b9ebdae1d9349a4b41f29b3d1d62cf166e8105a5f6a1c792c3e302",
+      "size_bytes": 10379
+    },
+    {
+      "path": "apps/web/src/app/shell/CompatibilitySurfaces.tsx",
+      "sha256": "52403203589ba8d7e19cfb0531a4db4539aade8258adce6997688aa96bff03ac",
+      "size_bytes": 4728
+    },
+    {
+      "path": "apps/web/src/app/system-surfaces/SystemSurface.tsx",
+      "sha256": "b093efb12ce0141e393c5d7358ea95b18b29dbaec122bb116de10926b5dedff7",
+      "size_bytes": 3505
+    },
+    {
+      "path": "apps/web/src/architecture-spike/ArchitectureSpike.tsx",
+      "sha256": "278c18f45cbec6888eff2f0703dcfe43556803d5ea349fdd3715aa25329f7724",
+      "size_bytes": 9331
+    },
+    {
+      "path": "apps/web/src/architecture-spike/metrics.ts",
+      "sha256": "3ab32a6b0d4b9dbc0f3b5305a0bf6c0a65e4508c737abc612695f4af99bd7cf3",
+      "size_bytes": 3286
+    },
+    {
+      "path": "apps/web/src/architecture-spike/server-state.ts",
+      "sha256": "588bd0107fe36f32727da942cef2e5ebd39aea1fa1aeb541e5278eb577787616",
+      "size_bytes": 2770
+    },
+    {
+      "path": "apps/web/src/architecture-spike/ui-store.ts",
+      "sha256": "0a066844a9e403238e33fbabcab3726549665d9ce28a03f2ed8d45a8635063cc",
+      "size_bytes": 1625
+    },
+    {
+      "path": "apps/web/src/features/analytics-sales/SalesOverview.tsx",
+      "sha256": "b81d576d4f27646f823181921790d7e6f77e97cadd7e833498f36cebcf0805e7",
+      "size_bytes": 18248
+    },
+    {
+      "path": "apps/web/src/features/analytics-sales/UI-AN-003.feature-route.tsx",
+      "sha256": "e6f40b1387ceb4e8d0e91da05e8ddc3b01fa925b8e8550cf0853fd2cf4c8c944",
+      "size_bytes": 154
+    },
+    {
+      "path": "apps/web/src/features/analytics-sales/analytics-sales-api.ts",
+      "sha256": "35a688ce06f33ed03497b2e490bfa91894104ce52adb3ac934c450fe57e1b38a",
+      "size_bytes": 6928
+    },
+    {
+      "path": "apps/web/src/features/analytics-sales/analytics-sales-copy.ts",
+      "sha256": "8cee26d603f6d37db0be750c1fbe575f3d3c21f48053415c364c4c004157d540",
+      "size_bytes": 8600
+    },
+    {
+      "path": "apps/web/src/features/analytics-sales/sales-overview.css",
+      "sha256": "a01238e92776b61be43f74b8a32374c3b057e2c2ca02ad029c75251dd3b08f5c",
+      "size_bytes": 11201
+    },
+    {
+      "path": "apps/web/src/features/connections/Connections.tsx",
+      "sha256": "377e07df10f42c5b3fcf9ca1a0e488cd79da5f1f28356ec762b371c46df5f8ac",
+      "size_bytes": 21343
+    },
+    {
+      "path": "apps/web/src/features/connections/UI-DATA-001.feature-route.tsx",
+      "sha256": "48f5a0fb7ea32622e47ff23b807c28da04438ee44e2b578abb8f3a3b913eafb8",
+      "size_bytes": 146
+    },
+    {
+      "path": "apps/web/src/features/connections/UI-DATA-002.feature-route.tsx",
+      "sha256": "fdf0539e7bfbd15a21c75461205e45601a019f6c9aaa9e8ebf2f85b5f1891612",
+      "size_bytes": 156
+    },
+    {
+      "path": "apps/web/src/features/connections/connection-copy.ts",
+      "sha256": "40255caf6c884216488baf9042a38f2b962df1ee99825782eae57c6974488862",
+      "size_bytes": 10267
+    },
+    {
+      "path": "apps/web/src/features/connections/connection-fixtures.ts",
+      "sha256": "f2c5795cb1d173dd36a1ec2198f98c68645077dc3d7bbc3d1d8d23fc856a2e85",
+      "size_bytes": 3429
+    },
+    {
+      "path": "apps/web/src/features/connections/connections-api.ts",
+      "sha256": "34e48b384205857cbbb43234e4b9cdc44bf399ecd9d0ae22f4434c523610f1a1",
+      "size_bytes": 6059
+    },
+    {
+      "path": "apps/web/src/features/connections/connections.css",
+      "sha256": "bcca18bbd7934ded46ecfffdf5cafa97a6bd1d01d9b5fe8f9e9d5625dc8c4e7e",
+      "size_bytes": 9653
+    },
+    {
+      "path": "apps/web/src/features/notifications/NotificationInbox.tsx",
+      "sha256": "29873212bb9d59a57ff53b44cce3976a9c5a79f82b0d2f2c7a0798410b2534ac",
+      "size_bytes": 15576
+    },
+    {
+      "path": "apps/web/src/features/notifications/UI-NOTIFY-001.feature-route.tsx",
+      "sha256": "0d1ff88e13d3cbd511f906a2f71d7cb88f4e0a4d6bde7b5d6958bac070c514b3",
+      "size_bytes": 154
+    },
+    {
+      "path": "apps/web/src/features/notifications/notification-api.ts",
+      "sha256": "4c1c67aadd29cc7ff9ced779ee7efaf1dead1b86a2f6fbd29e4d48a9856f74d1",
+      "size_bytes": 6834
+    },
+    {
+      "path": "apps/web/src/features/notifications/notification-copy.ts",
+      "sha256": "559f9974b060e7fa8d3c7198eb6bdc60ca7c9784d26cfef2e864e13881156d5b",
+      "size_bytes": 7955
+    },
+    {
+      "path": "apps/web/src/features/notifications/notification-deep-link.ts",
+      "sha256": "1226a38c182a6fcb31ab6880a086024207695d509cce6e964ad27145abe2f378",
+      "size_bytes": 1459
+    },
+    {
+      "path": "apps/web/src/features/notifications/notifications.css",
+      "sha256": "a681c47d35741b60d4004304cedf1d65716c6a1f2da0d69217a8afef599a1df3",
+      "size_bytes": 8792
+    },
+    {
+      "path": "apps/web/src/features/operator-runs/OperatorRuns.tsx",
+      "sha256": "353f5810f17c8cd5de2b015b23d590d26e279297e3a3e19ec30433ca788a6023",
+      "size_bytes": 19279
+    },
+    {
+      "path": "apps/web/src/features/operator-runs/UI-OPS-001.feature-route.tsx",
+      "sha256": "f708eff51a1d15279767e4ebefe2231eb2bddd1797d0079587ff251c139d035d",
+      "size_bytes": 149
+    },
+    {
+      "path": "apps/web/src/features/operator-runs/operator-runs-api.ts",
+      "sha256": "bdb59ee4da7e7df24011d16dbd02373ef2d3cb4deb11c8a25749ae2a0a1fd287",
+      "size_bytes": 6530
+    },
+    {
+      "path": "apps/web/src/features/operator-runs/operator-runs-copy.ts",
+      "sha256": "03b837b6436399f0acfc26ed8339025e5cb8fb86edaccfbb1ac5ffcda513ea21",
+      "size_bytes": 10777
+    },
+    {
+      "path": "apps/web/src/features/operator-runs/operator-runs.css",
+      "sha256": "aba5131e38964d01b583613d326983b71c279f0b45389f1357e1319ad7b54efb",
+      "size_bytes": 10850
+    },
+    {
+      "path": "apps/web/src/i18n.ts",
+      "sha256": "cbd63845a586f431dfa974f80b93b3f9e49c807e8c1693e07d1de917703cbd78",
+      "size_bytes": 652
+    },
+    {
+      "path": "apps/web/src/main.tsx",
+      "sha256": "b7a2000973381d8de899a985147ae62fa7597587bbc4da8c8fd6b469851324c2",
+      "size_bytes": 438
+    },
+    {
+      "path": "apps/web/src/sales-overview-prototype/SalesOverviewPrototype.tsx",
+      "sha256": "89b1359d5d6684eda0e6021adb408b91b179417965662202ca9c5e02a379f785",
+      "size_bytes": 34351
+    },
+    {
+      "path": "apps/web/src/sales-overview-prototype/sales-overview-prototype.css",
+      "sha256": "435a4ca8989c370f8647ce5bb484f33b89acbb6516c865c7c7768dc5cf115a1e",
+      "size_bytes": 25971
+    },
+    {
+      "path": "apps/web/src/styles.css",
+      "sha256": "2a60c68fa43f846eac4c08d5183f07392867045b0d41e1730aa366c1a0840ac9",
+      "size_bytes": 13973
+    },
+    {
+      "path": "apps/web/tests/analytics-sales/analytics-sales-api.test.ts",
+      "sha256": "a180a41c1ebadfc55a76684ff60f59598e2e3b05f314c367d615abe223b008dc",
+      "size_bytes": 4173
+    },
+    {
+      "path": "apps/web/tests/analytics-sales/sales-overview.test.tsx",
+      "sha256": "16d538f0918945a35d306bfa8be09536fff13a7dcccc5259092a5ebce51e177a",
+      "size_bytes": 6201
+    },
+    {
+      "path": "apps/web/tests/app-shell/feature-route-loader.test.tsx",
+      "sha256": "d9eda2cbb3e445a6c21c858399ed3651948c2f9e17825696f464f182de2fdeaa",
+      "size_bytes": 1433
+    },
+    {
+      "path": "apps/web/tests/app-shell/route-resolution.test.ts",
+      "sha256": "d6647aa5e27c88f1c5fcbf3094414d0ad39c1c3d175cb1bfa2082186866845ae",
+      "size_bytes": 2021
+    },
+    {
+      "path": "apps/web/tests/app-shell/system-surfaces.test.tsx",
+      "sha256": "6d8a3a1d679d244e9ea1fdac010715b671930b636ec4502d01a1bc98fd59c3ff",
+      "size_bytes": 2987
+    },
+    {
+      "path": "apps/web/tests/app.test.tsx",
+      "sha256": "575b52c049907b85e7cad6c489fe19a34b0bb6f6955c4b4d1f613c69226dc433",
+      "size_bytes": 3589
+    },
+    {
+      "path": "apps/web/tests/architecture-spike.test.tsx",
+      "sha256": "cd13579ce400f9ca61995a30f289c9b428828315216d971f94c6827a9cf9ef75",
+      "size_bytes": 5130
+    },
+    {
+      "path": "apps/web/tests/connections/connections-api.test.ts",
+      "sha256": "9f165a6737f58394d559f834f853b1ee9dc944e7b448f6a11f80112768fac7d4",
+      "size_bytes": 2963
+    },
+    {
+      "path": "apps/web/tests/connections/connections.test.tsx",
+      "sha256": "39b117f9ccceca71328238f423ee0798d43bc16798111fa109d2d434545b7c5b",
+      "size_bytes": 6484
+    },
+    {
+      "path": "apps/web/tests/notifications/notification-api.test.ts",
+      "sha256": "7ebad3ff1f90d84ea8e9acbc3e9484edff9d7a79ecface36cc8a298afe85f22b",
+      "size_bytes": 3435
+    },
+    {
+      "path": "apps/web/tests/notifications/notification-deep-link.test.ts",
+      "sha256": "01aefd9425a8cc02f42b8cb6ae38eeaeefc1616d8869fe6ad8ca1752c153471a",
+      "size_bytes": 1156
+    },
+    {
+      "path": "apps/web/tests/notifications/notification-inbox.test.tsx",
+      "sha256": "ac8af0fbfc23a2c6426d53b9154c09179fc6e286c92ecb698107dbc708a809af",
+      "size_bytes": 5555
+    },
+    {
+      "path": "apps/web/tests/operator-runs/operator-runs-api.test.ts",
+      "sha256": "2af66c056146871c230f6fd8e08c99466fe4c44c7d7759b3ed4a5c498ac919be",
+      "size_bytes": 2944
+    },
+    {
+      "path": "apps/web/tests/operator-runs/operator-runs.test.tsx",
+      "sha256": "fb5a125329d99f64f55507cc83b2442a0aea258bc0f61c0a2d9d9304d784a0a2",
+      "size_bytes": 5820
+    },
+    {
+      "path": "apps/web/tests/sales-overview-prototype.test.tsx",
+      "sha256": "846fc20a597aa86368439bfd5bc1f41e3cb583ccebe1dc5ac56da7c962741746",
+      "size_bytes": 10796
+    },
+    {
+      "path": "apps/web/tests/setup.ts",
+      "sha256": "9b328c4843431fa76d8de00008fc159e95f99a840211085ff3b8f25e53d14409",
+      "size_bytes": 43
+    },
+    {
+      "path": "apps/web/tsconfig.json",
+      "sha256": "7361652c6206e2cf3c6b06b87ea42f8e40d5c0be2f2e38016a6ea197e5541250",
+      "size_bytes": 515
+    },
+    {
+      "path": "apps/web/vite.config.ts",
+      "sha256": "db4abf34b0d4e8a0f2f5e42ddf570892f9d50b1792fcc1b5c554bad80a86a470",
+      "size_bytes": 438
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "5842da004ba6ae13e789bbb2c79ed26a88d2abf6ccc630339bc1263a9f824537",
+      "size_bytes": 5662
+    },
+    {
+      "path": "deploy/compose/.gitignore",
+      "sha256": "b2f42285487353f2d37031641b5d3cef2310f41cad9b6d42f04b6b039e333da0",
+      "size_bytes": 44
+    },
+    {
+      "path": "deploy/compose/bootstrap.sh",
+      "sha256": "8c60f38611cdfee2445a945ead4bce938079acdafcf6cd4fdba5d4876d54106c",
+      "size_bytes": 12430
+    },
+    {
+      "path": "deploy/compose/check-image-size.sh",
+      "sha256": "f0138a712e1c6b66bb98b10df14a2300701ce0b3e42e57de7960576dce646094",
+      "size_bytes": 796
+    },
+    {
+      "path": "deploy/compose/ci-smoke.sh",
+      "sha256": "27a2352299c4d90ef10a28b7373e2cdd8645b2a731b219adf61d36ff9a80bc4d",
+      "size_bytes": 5525
+    },
+    {
+      "path": "deploy/compose/collect-web-notices.mjs",
+      "sha256": "efca60c3139e780c4413c2ca7db115a7b41a78026c084662117d29be498f4c4e",
+      "size_bytes": 2039
+    },
+    {
+      "path": "deploy/compose/compose.candidate.json",
+      "sha256": "813700bd0b0f5db78ccf1e572164a35401771c373fc3fcae19bec176c35bf8ff",
+      "size_bytes": 7922
+    },
+    {
+      "path": "deploy/compose/compose.release.yaml",
+      "sha256": "f72330095b58c9813d7c10d9acaa1523014d4642b9ee994ebfce22375b84165f",
+      "size_bytes": 556
+    },
+    {
+      "path": "deploy/compose/delivery-image-inventory.json",
+      "sha256": "295282c2e9fab2d725ffccd51141edeb81f68af5f3704b6fbf031b651505ee36",
+      "size_bytes": 33609
+    },
+    {
+      "path": "deploy/compose/delivery-manifest.schema.json",
+      "sha256": "d8df69f26fa90aea6628f03cbb235cfea7a085ed47c27ca4c12ab879a0f32b61",
+      "size_bytes": 26204
+    },
+    {
+      "path": "deploy/compose/delivery-verification-policy.json",
+      "sha256": "6f4dfa9f100eb7cf6c994a63bdd5b56c30f689338324a2305966596356d41f0a",
+      "size_bytes": 4913
+    },
+    {
+      "path": "deploy/compose/development-runtime-policy.json",
+      "sha256": "5c65396ba75b0df806ce5b6825a965c0b7839452e08f9d2d02d5bf292dc1e63a",
+      "size_bytes": 1810
+    },
+    {
+      "path": "deploy/compose/egress-policy.example.yaml",
+      "sha256": "5fe3cf7e96e77535202e22705768c8a8ca1f4c8f7fc39f55aabff4fa5b2caf0d",
+      "size_bytes": 507
+    },
+    {
+      "path": "deploy/compose/migration-lifecycle.sh",
+      "sha256": "8c10d585991cd7533c58c7f31d20d5c448a1c96234a2fbc340001cd5e7125b08",
+      "size_bytes": 2496
+    },
+    {
+      "path": "deploy/compose/ownership-manifest.json",
+      "sha256": "6ea7dc92d71c7850f414fb39c342c1f581a481890f393ab894f57d47ca51ce80",
+      "size_bytes": 669
+    },
+    {
+      "path": "deploy/compose/release.env.example",
+      "sha256": "035a27f94d4dffd6138e1006032d300f69ce3186dbf13dfd1e830c58c7951e38",
+      "size_bytes": 332
+    },
+    {
+      "path": "deploy/compose/runtime-policy.json",
+      "sha256": "ae2ded961d6dd401994924abfc286b4d6be174bd372f8872201be46f338b71ba",
+      "size_bytes": 1595
+    },
+    {
+      "path": "deploy/compose/runtime.env.example",
+      "sha256": "a057c8c18439ba47d0214913bd7ac4de022ae4249617e5a74eb3d401771e204c",
+      "size_bytes": 310
+    },
+    {
+      "path": "deploy/compose/validate-delivery-manifest.py",
+      "sha256": "3e0e8a91dee3f706026ec1a5ef68dfed37189d1d2d20c98402b036a51d2bb2b2",
+      "size_bytes": 7024
+    },
+    {
+      "path": "deploy/compose/validate-release-manifest.py",
+      "sha256": "1c3390b0debada8b6c548250100c1c671bf95de4659a646551c77bd02282ac7c",
+      "size_bytes": 4641
+    },
+    {
+      "path": "deploy/demo-source/init/010_create_reader.sh",
+      "sha256": "6e2bf243fd74ef724afeced8683742a967cf268dde0c68f746f89e148bd3e0da",
+      "size_bytes": 441
+    },
+    {
+      "path": "deploy/demo-source/init/015_profile.sh",
+      "sha256": "03035aa733269144f1de83893a135883c0373cafafb2581351c8ef1e1088a025",
+      "size_bytes": 1433
+    },
+    {
+      "path": "deploy/demo-source/init/020_schema.sql",
+      "sha256": "31d78912c69a2e97b4a861fd7ebbdaaf062b80bf049085fa48620584fbf40660",
+      "size_bytes": 4442
+    },
+    {
+      "path": "deploy/demo-source/init/030_seed.sql",
+      "sha256": "c7f3605aa8854110c6b7e5044a5dd1ebfd95ab87b54531e7d7859a730b296e29",
+      "size_bytes": 8413
+    },
+    {
+      "path": "deploy/demo-source/init/040_grants.sql",
+      "sha256": "1099e09e027bd603ec225f147a50deb4f8a11fa10c74e62e46760c9db667e2cc",
+      "size_bytes": 362
+    },
+    {
+      "path": "deploy/demo-source/profiles/benchmark.json",
+      "sha256": "856bf7290a2e0d63162604e319c06507f00a3265b473b10b1f19112fdaaf0573",
+      "size_bytes": 616
+    },
+    {
+      "path": "deploy/demo-source/profiles/demo.json",
+      "sha256": "4a2358009b299c8eb43430c25e881076967d03e256cd13d36f02816a0f1af7bc",
+      "size_bytes": 343
+    },
+    {
+      "path": "deploy/demo-source/profiles/smoke.json",
+      "sha256": "725e53eeef2a251434c5c2fe1c48f8811f363bc1e21c01cdbb1fa246597dfc07",
+      "size_bytes": 339
+    },
+    {
+      "path": "deploy/edge/nginx.conf",
+      "sha256": "deff94a703de48a9be75712e521f01a2a008d9aab5be228511cf80fc77bccbde",
+      "size_bytes": 1089
+    },
+    {
+      "path": "deploy/examples/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "deploy/license-policy.json",
+      "sha256": "4b4b6a2bf46a660d34db534df4d1da879d32eb160493070bb9fdb9ae9f948166",
+      "size_bytes": 484
+    },
+    {
+      "path": "docs-site/docs/assets/frost.css",
+      "sha256": "edb062967e995a013cfc71b8ad8c3dbc185c529680e319fc1d662aec546535d9",
+      "size_bytes": 698
+    },
+    {
+      "path": "docs-site/docs/index.md",
+      "sha256": "da3e326ba6cc278870bd155d2c70b097b314d75112dc406540d33af40044b178",
+      "size_bytes": 1436
+    },
+    {
+      "path": "docs-site/docs/install/local.md",
+      "sha256": "86041dd473941e0f89954f073e46b3cae490ae6fd4b19990d2c43fa8bbef1a25",
+      "size_bytes": 2624
+    },
+    {
+      "path": "docs-site/docs/install/network-boundary.md",
+      "sha256": "851d8ebf1fd7fc25ae3cb8b94d97d75d168af378f7e596ac563325e2ab33309b",
+      "size_bytes": 3394
+    },
+    {
+      "path": "docs-site/docs/ru/index.md",
+      "sha256": "9056bb1bba0879465aa962bae86735d0ef9db33c0afb2b39d02db5723d5d5876",
+      "size_bytes": 1599
+    },
+    {
+      "path": "docs-site/docs/ru/install/local.md",
+      "sha256": "6e06d90624c199488fe3e3f91bcea4c29a0d20587d7f62d0221cddedf45211d1",
+      "size_bytes": 2984
+    },
+    {
+      "path": "docs-site/docs/ru/install/network-boundary.md",
+      "sha256": "bea8093d2e21df0817206815ca6af11aed7e0ead244281a266ed7d567ab83919",
+      "size_bytes": 4757
+    },
+    {
+      "path": "docs-site/docs/ru/user-guide/foundation.md",
+      "sha256": "ab1c161b7ed951baa5c927c8e66407c09d3cb164f9ddc27ad043cb54a31f1bf5",
+      "size_bytes": 1789
+    },
+    {
+      "path": "docs-site/docs/user-guide/foundation.md",
+      "sha256": "ca9f14141509a4b4c55e6ad72b339fe49b3199402e87b2371c5f80492b617a4f",
+      "size_bytes": 1303
+    },
+    {
+      "path": "docs-site/generate_csp.py",
+      "sha256": "cb99f8019edf4a8fcf264a869413e4e392e0c85554d425e72ab883c58ad72b52",
+      "size_bytes": 2648
+    },
+    {
+      "path": "docs-site/pyproject.toml",
+      "sha256": "545906e10f8b912bed8d4be03a07e1963b21a60307f5477215f3c86cde0c6892",
+      "size_bytes": 241
+    },
+    {
+      "path": "migrations/alembic.ini",
+      "sha256": "6168b89b8932939fca41a579060d8d74c486996890250e6247bda690d96db18d",
+      "size_bytes": 556
+    },
+    {
+      "path": "migrations/env.py",
+      "sha256": "012f0c8c56546ef79eb96ab51b737ee27b0ba99355c8be64b55e9fa5291502d0",
+      "size_bytes": 1492
+    },
+    {
+      "path": "migrations/script.py.mako",
+      "sha256": "8f04eceacc65e51e5371acb08200412129d28d866c44cf9c8d87b91f6e5474f5",
+      "size_bytes": 580
+    },
+    {
+      "path": "migrations/versions/0001_foundation_metadata.py",
+      "sha256": "99df9aa5ffbddc6be15991da1aca604d9ae5b0356a75f9bae221040fb3aa4b6d",
+      "size_bytes": 879
+    },
+    {
+      "path": "migrations/versions/0002_identity_workspace_auth.py",
+      "sha256": "ac726ed65bb252e0983c38bcff790193daaa7b1f4dfc9a52f66c0c034f26d3be",
+      "size_bytes": 11565
+    },
+    {
+      "path": "migrations/versions/0003_organization_access.py",
+      "sha256": "b9b643ac623d45b6ab211ab12d0ccd8cef70441f4b0a8cd3933539edec5bccba",
+      "size_bytes": 18846
+    },
+    {
+      "path": "migrations/versions/0004_source_intake.py",
+      "sha256": "f16cbaa70981ec1830912be299dd43f795855d5edccfec41659d9cc472744425",
+      "size_bytes": 8087
+    },
+    {
+      "path": "migrations/versions/0005_data_pipeline.py",
+      "sha256": "e97fe76cf5f2e25b2504387bb390a3d84014ad36eba244c05b323d52f2bb8396",
+      "size_bytes": 11663
+    },
+    {
+      "path": "migrations/versions/0006_analytics_projection.py",
+      "sha256": "9544d385c302b80779a5fd465a96d15c33c65fb0d3b5d37574b21bccf08c9706",
+      "size_bytes": 4108
+    },
+    {
+      "path": "migrations/versions/0007_contributor_projection.py",
+      "sha256": "dcc54cbe9aa27cd257194cdceb5df8be2cbcc76735bef9368fa29bf26c368150",
+      "size_bytes": 7273
+    },
+    {
+      "path": "migrations/versions/0008_execution_control.py",
+      "sha256": "36e9db063f0c25faa52654345302c8491e4744ca8f3e7f9aedea80036b86dfe7",
+      "size_bytes": 10721
+    },
+    {
+      "path": "migrations/versions/0009_notifications.py",
+      "sha256": "d60b7fd242530641d3a2c4aad7ba6bf3457b631f905bd70b15b2ef6df9eda0d9",
+      "size_bytes": 8865
+    },
+    {
+      "path": "mkdocs.yml",
+      "sha256": "b041c6bd67b672d03e15aa544518a6dec019e16da518b685aa1ffc92974381e9",
+      "size_bytes": 1132
+    },
+    {
+      "path": "package.json",
+      "sha256": "8fb03a1889d24b3fdda8a4f75df2248ca6b0e70f46f31bbc762e7a54326d5466",
+      "size_bytes": 564
+    },
+    {
+      "path": "packages/analytics_core/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/analytics_core/__init__.py",
+      "sha256": "fa7ec6f903fcee1f15ee487ba123d4525d32518048dea34254c9e07f5c24df7d",
+      "size_bytes": 105
+    },
+    {
+      "path": "packages/analytics_core/application/__init__.py",
+      "sha256": "fa7ec6f903fcee1f15ee487ba123d4525d32518048dea34254c9e07f5c24df7d",
+      "size_bytes": 105
+    },
+    {
+      "path": "packages/analytics_core/application/service.py",
+      "sha256": "7e5247b0e22e11be9d3763a8b1b620b22870f68123d2022b8feabe6690ddfc1b",
+      "size_bytes": 21880
+    },
+    {
+      "path": "packages/analytics_core/domain/__init__.py",
+      "sha256": "45e80c9dbbda13789aa4f4cca547d967ed8a1c8b77735af358ceb0349d675b73",
+      "size_bytes": 207
+    },
+    {
+      "path": "packages/analytics_core/domain/model.py",
+      "sha256": "faf18b5a9b3b839bdf99b4c05aea4c3c8f3d6d9b7d7ffda7b12e60c40561e3b3",
+      "size_bytes": 4953
+    },
+    {
+      "path": "packages/analytics_core/infrastructure/__init__.py",
+      "sha256": "8bcd820d06a0809ea4d4ddd3facb672056d898aae5d85c8355f34c2754d0af82",
+      "size_bytes": 247
+    },
+    {
+      "path": "packages/analytics_core/infrastructure/local.py",
+      "sha256": "0cbf3f889fea49c676bf69aa5ecb12e04e0c8ddda56901109cef28559d12d196",
+      "size_bytes": 2889
+    },
+    {
+      "path": "packages/analytics_core/infrastructure/postgres.py",
+      "sha256": "108c387ca029374eea3dc19529ca04d393debc75fa605ab1286333f341e29377",
+      "size_bytes": 5021
+    },
+    {
+      "path": "packages/analytics_customer/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/analytics_sales/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/artifacts/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/artifacts/__init__.py",
+      "sha256": "6312249141a4e0cbcd48acfe0c29a246a63ec8f78f83dbaabd25b6ca89db4302",
+      "size_bytes": 274
+    },
+    {
+      "path": "packages/artifacts/domain/__init__.py",
+      "sha256": "8fdf2e93788fcfd84b2934735f71c7b768a6ecce73ebb7e06eff43733faac5a3",
+      "size_bytes": 39
+    },
+    {
+      "path": "packages/artifacts/domain/model.py",
+      "sha256": "d835ca6a8b45fa272fd5fd842b3401e2667997080ed8d264df0fa29f4f8ac608",
+      "size_bytes": 1273
+    },
+    {
+      "path": "packages/artifacts/infrastructure/__init__.py",
+      "sha256": "fe5804249c35cababca476fcbff5fb14fbf6bd1c89446cf4860939e0b505d506",
+      "size_bytes": 35
+    },
+    {
+      "path": "packages/artifacts/infrastructure/local.py",
+      "sha256": "cc9fc639237b276fd77f54b24e2d88d7bfb633b2d824b720ab963bc03cc0ff65",
+      "size_bytes": 4075
+    },
+    {
+      "path": "packages/artifacts/infrastructure/postgres.py",
+      "sha256": "4b8a45c75abe210f5183245346763a79735a1210ed955cb2a7ab8054dae581b8",
+      "size_bytes": 2063
+    },
+    {
+      "path": "packages/audit/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/chart_compiler_ts/package.json",
+      "sha256": "d3e05beeec57be1d6d0ebf006a41eab3ce13ab3866c458bd27eba0334958a673",
+      "size_bytes": 368
+    },
+    {
+      "path": "packages/chart_compiler_ts/src/index.ts",
+      "sha256": "dee955928406d951067bdff00dca24eb8b1ced5c5ad197b48ef03792d7aaf046",
+      "size_bytes": 452
+    },
+    {
+      "path": "packages/chart_compiler_ts/tests/lifecycle.test.ts",
+      "sha256": "1ec884d682358bfcaeca4134f08c0d13522b4835c360af66cced853f6dc9bc6d",
+      "size_bytes": 297
+    },
+    {
+      "path": "packages/chart_compiler_ts/tsconfig.json",
+      "sha256": "3b67c226a7794cef9137496addf122f7ed01b842441cdeec55d645945ada1801",
+      "size_bytes": 272
+    },
+    {
+      "path": "packages/connection_catalog/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/connection_catalog/__init__.py",
+      "sha256": "be4811134ebb2030bfaf0788b70b54d3bbf05024e704cd9158c942b82dd857b9",
+      "size_bytes": 50
+    },
+    {
+      "path": "packages/connection_catalog/application/__init__.py",
+      "sha256": "2c061395cc9705902215ce85c7153087b259225cd465368880a12f7ab0318600",
+      "size_bytes": 44
+    },
+    {
+      "path": "packages/connection_catalog/application/service.py",
+      "sha256": "a9cfca94c3b9b9d366bb0b99d2904063a430466c1a8c8bcf1f8e0dd5a5754614",
+      "size_bytes": 7000
+    },
+    {
+      "path": "packages/connection_catalog/domain/__init__.py",
+      "sha256": "190990f213ef7090c394afedab72502b8679c54fa063a62974991028c40deaec",
+      "size_bytes": 43
+    },
+    {
+      "path": "packages/connection_catalog/domain/model.py",
+      "sha256": "1002fffdd675c582b8c1a4d963574de80aabeb0fc9ba5dc5f9f80633ad828423",
+      "size_bytes": 2308
+    },
+    {
+      "path": "packages/connection_catalog/infrastructure/__init__.py",
+      "sha256": "80e90cee3ee85678f1ddaa9319abae44dcfecb0e323c9c64df692295712c5a00",
+      "size_bytes": 50
+    },
+    {
+      "path": "packages/connection_catalog/infrastructure/postgres.py",
+      "sha256": "dd2093852c469cf578814c92d36d94d7a937c6a27b52c45764c8b3e76a6fd1bc",
+      "size_bytes": 4816
+    },
+    {
+      "path": "packages/contracts/analytics/__init__.py",
+      "sha256": "94ec41ab3875814b39119b554758ffd009f7cc64a7352843290079a0fd878cb2",
+      "size_bytes": 1363
+    },
+    {
+      "path": "packages/contracts/data_pipeline/__init__.py",
+      "sha256": "4cc1b42093ea49bfec3fcd18ccb1d40a5645e182c7d0d124c72c6270877ce2be",
+      "size_bytes": 440
+    },
+    {
+      "path": "packages/contracts/execution/__init__.py",
+      "sha256": "2155205c1347ced61ea27aca1a35e5462545524761bf5bfee8c4d956c2983917",
+      "size_bytes": 2941
+    },
+    {
+      "path": "packages/contracts/execution/generator.py",
+      "sha256": "d018511f3088f75048c514ab5224dbfcf723e61cdf0dd7560e9ce41586d3f830",
+      "size_bytes": 7068
+    },
+    {
+      "path": "packages/contracts/identity/__init__.py",
+      "sha256": "2f8ccf0d891ffacf43cad88bc2a89eaf367a43a4eff68c0c6f4a1ff5ab4a85a0",
+      "size_bytes": 44
+    },
+    {
+      "path": "packages/contracts/identity/provider.py",
+      "sha256": "5ee068f0d2bdd26d7fccf53192ba6900162092ad3e371eadcbc9957f7d0f3be3",
+      "size_bytes": 1247
+    },
+    {
+      "path": "packages/contracts/notifications/__init__.py",
+      "sha256": "6d70d07e0250b1e51fbf5e8edc4763cc36adec1533bab615fbd5da1bb67f722b",
+      "size_bytes": 3538
+    },
+    {
+      "path": "packages/contracts/notifications/generator.py",
+      "sha256": "e194f85d56194238f44c04566ac4ec5932573a45bebb8520377c46cdcecf23d7",
+      "size_bytes": 5394
+    },
+    {
+      "path": "packages/contracts/openapi/analytics.openapi.json",
+      "sha256": "3ead049ad63f9e9029eba7eadb5c38c66cf501cb4b79ed57c75c86bc71e64f2c",
+      "size_bytes": 20187
+    },
+    {
+      "path": "packages/contracts/openapi/execution-control.openapi.json",
+      "sha256": "59bd5afa5c6653a33ddfc44f53a331888deacb8769b1f5c25326f5d1e8cfeebc",
+      "size_bytes": 28008
+    },
+    {
+      "path": "packages/contracts/openapi/foundation.openapi.json",
+      "sha256": "77c07b3f34c209519207364a95b5fefce3f2a933fce1bb2c763b6836061e33ba",
+      "size_bytes": 1784
+    },
+    {
+      "path": "packages/contracts/openapi/identity.openapi.json",
+      "sha256": "69026fe7f96a60eff94af1e999c7f1109f99e82bf9f10b484d2425db14556304",
+      "size_bytes": 24944
+    },
+    {
+      "path": "packages/contracts/openapi/notifications.openapi.json",
+      "sha256": "691358bd61c2cc76af298042899782219bb5f329c76a7189bda672473e36ff86",
+      "size_bytes": 27446
+    },
+    {
+      "path": "packages/contracts/openapi/organization.openapi.json",
+      "sha256": "34fbce583fd5bbebfaad2afed94e24497f1044b2febcaa2dbbf3d80b92e44f79",
+      "size_bytes": 58220
+    },
+    {
+      "path": "packages/contracts/openapi/people.openapi.json",
+      "sha256": "999535af4f7d8d6475d44d0dde324335f6f6ebd70bca185615e24e54b5437a97",
+      "size_bytes": 11978
+    },
+    {
+      "path": "packages/contracts/openapi/source-connections.openapi.json",
+      "sha256": "f37cbb39c8f25523f111bcbed5055d1e6556397c5ed0fc3339571d23170cb6c2",
+      "size_bytes": 22217
+    },
+    {
+      "path": "packages/contracts/openapi/source-imports.openapi.json",
+      "sha256": "8365e07c524f1b95e3943cba02b9a1d4785c057ae521ca030c90a1d05ec6aba1",
+      "size_bytes": 16422
+    },
+    {
+      "path": "packages/contracts/organization/__init__.py",
+      "sha256": "61d254cf5969d16933b8bc8d7fdc4cdba59b09573b213efd7e722f963b7a3521",
+      "size_bytes": 656
+    },
+    {
+      "path": "packages/contracts/package.json",
+      "sha256": "11a1e97ac7325c50216d93eaa9b1a412af0c9777f439d2444089731d44107ac6",
+      "size_bytes": 363
+    },
+    {
+      "path": "packages/contracts/people/__init__.py",
+      "sha256": "9dd1013ac4c2a39b3912db5cc30437d5cd71622e8d91bd2f6006b3345d0212b1",
+      "size_bytes": 4063
+    },
+    {
+      "path": "packages/contracts/routes/ui-route-contracts.json",
+      "sha256": "888962032ce3eb5c578c471363e2977f45307c7a3b29db060463b536d62b2458",
+      "size_bytes": 144640
+    },
+    {
+      "path": "packages/contracts/routes/ui-route-contracts.schema.json",
+      "sha256": "a315e7b5c9ed1d6b93bf9b41e7600cf33caf05c4428584409f709bd9fa1b5368",
+      "size_bytes": 8178
+    },
+    {
+      "path": "packages/contracts/routes/ui-routes.json",
+      "sha256": "a6c9c4b2a31c2c22c1e0eae22118b9b591e513bba5a95ba68c7cd25b32d70b1c",
+      "size_bytes": 21077
+    },
+    {
+      "path": "packages/contracts/routes/ui-surface-contracts.json",
+      "sha256": "e18b4d5dfb3b66fe22a275cfaa704ac1dfd8051b980cdd9fc75b9e7aba355495",
+      "size_bytes": 25696
+    },
+    {
+      "path": "packages/contracts/routes/ui-surface-contracts.schema.json",
+      "sha256": "3b200def6337854944144bb5b821c4235b52b510e6997bf5f1a09a40680f89f5",
+      "size_bytes": 5202
+    },
+    {
+      "path": "packages/contracts/schemas/execution-terminal-event.schema.json",
+      "sha256": "e32454590a06399c5ff20fd011d283cf72ed8cd43a5128745c2e76637f094018",
+      "size_bytes": 2959
+    },
+    {
+      "path": "packages/contracts/schemas/foundation-health.schema.json",
+      "sha256": "55d34bf6195e8321f7961cd640a80d579db539d747949d54d113c45bc3ad02ac",
+      "size_bytes": 502
+    },
+    {
+      "path": "packages/contracts/schemas/notification-event.schema.json",
+      "sha256": "1cbcef152a93283d91921a48414a7dfca23e31a170b234f686808aebf8ed0251",
+      "size_bytes": 2640
+    },
+    {
+      "path": "packages/contracts/schemas/route-registry.schema.json",
+      "sha256": "a7ae0090bdf7f4cf40c71c095518472be274e0eceae445ae9ff3fb4ed4cc64d5",
+      "size_bytes": 1159
+    },
+    {
+      "path": "packages/contracts/source_intake/__init__.py",
+      "sha256": "b90937f3a2c21ff956f88e00178df78839114bb6997eacb1b2aec36cadc8b281",
+      "size_bytes": 1114
+    },
+    {
+      "path": "packages/contracts/src/execution-control.ts",
+      "sha256": "1e25d6b590bdb26268137926e6ea2ad1244a3f358b69c4141e0acba19568999e",
+      "size_bytes": 804
+    },
+    {
+      "path": "packages/contracts/src/execution-terminal-events.ts",
+      "sha256": "5d7c23df46a83b822ec0ae2662d6a184d846dc423e39b5527ef64d3f1d330d79",
+      "size_bytes": 1143
+    },
+    {
+      "path": "packages/contracts/src/foundation-client.ts",
+      "sha256": "e69e650714237b683f519467c78080dd03ccedf7d637fd2f7463b926a26c1d9f",
+      "size_bytes": 1664
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "c6a074de4c56448935f59615821c23554dcb9b38f760cd4dc5c5384b08540b9d",
+      "size_bytes": 696
+    },
+    {
+      "path": "packages/contracts/src/notifications.ts",
+      "sha256": "5e250a7bd4c44937b4fddcd9db7c87f47a7846a48da96fbdd8d5e2691b44532c",
+      "size_bytes": 1043
+    },
+    {
+      "path": "packages/contracts/tests/routes.test.ts",
+      "sha256": "e8d749289173371683c95a716a01b3eb1df9bfa75d92607ce81a8254a096b2a7",
+      "size_bytes": 1558
+    },
+    {
+      "path": "packages/contracts/tsconfig.json",
+      "sha256": "b197886adfeec012eb792945eae81b48789475a70e4c5317462358a95bc16a05",
+      "size_bytes": 365
+    },
+    {
+      "path": "packages/contracts/ui-design/README.md",
+      "sha256": "dcf11435e72d92a96def7cf494fbda4a791f1aca0b246361de258a4fce46a412",
+      "size_bytes": 1259
+    },
+    {
+      "path": "packages/contracts/ui-design/component-registry.schema.json",
+      "sha256": "0c09ac2a0805303c07dedd530c6284b3da3d9b88ea1839b77b4b00e2e43ae16c",
+      "size_bytes": 2191
+    },
+    {
+      "path": "packages/contracts/ui-design/components.ui-an-003.v1.json",
+      "sha256": "1c3f174d3453f29ed8f34a19cee79644c603590ab8197dab3b745b50ac3b0cfc",
+      "size_bytes": 11529
+    },
+    {
+      "path": "packages/contracts/ui-design/icons.ui-an-003.v1.json",
+      "sha256": "034eb386aacf1cd5bb511e67e9e471b09816737f50b912ceb1b1288920d8917b",
+      "size_bytes": 3250
+    },
+    {
+      "path": "packages/contracts/ui-design/render-receipt.schema.json",
+      "sha256": "db699fff38156d487bbd797344e61585313ca1a00ba8fefd73f6a4392a167d68",
+      "size_bytes": 929
+    },
+    {
+      "path": "packages/contracts/ui-design/screen-manifest.schema.json",
+      "sha256": "825dcf42d61f79723830230be03ccf7feea90dd6d41b6c483fa7a61ef83e4772",
+      "size_bytes": 1950
+    },
+    {
+      "path": "packages/contracts/ui-design/token-contract.schema.json",
+      "sha256": "27835640d696cd3ecc2fc9d6c73efa6c491e3390c3cbc31c2ee24cf1e1f47193",
+      "size_bytes": 1265
+    },
+    {
+      "path": "packages/contracts/ui-design/tokens.v1.json",
+      "sha256": "d0d2d4d0365f1f7159cc34ec1e24b75d98d8d48e712906013d1e5fe4a439a186",
+      "size_bytes": 6303
+    },
+    {
+      "path": "packages/contracts/ui-design/ui-an-003.manifest.v1.json",
+      "sha256": "edbf95b330f55fcac90c052ff61767b3fa69216fc216ab52d175877afba5c148",
+      "size_bytes": 4470
+    },
+    {
+      "path": "packages/contracts/ui-design/visual-decisions.ui-an-003.v1.json",
+      "sha256": "74cfb434bc1c35933867023e09fddd9ecee3e60a86375a354a39c95f1e4ae0bb",
+      "size_bytes": 3536
+    },
+    {
+      "path": "packages/data_documentation/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/data_documentation/__init__.py",
+      "sha256": "c0562f8a8fe637bf20b6d619c2e80bb766c1c5c8c309873df739caf60b63d677",
+      "size_bytes": 50
+    },
+    {
+      "path": "packages/data_documentation/application/__init__.py",
+      "sha256": "0bf9afe9d02d29b0db302fa1ea042993c59c7b920ea7fcecd2e5e417958dccf5",
+      "size_bytes": 44
+    },
+    {
+      "path": "packages/data_documentation/application/service.py",
+      "sha256": "4e25fdbe0a169d9f4ecc745faae5f78fa78b20032bf97976c698ea1fdbfef144",
+      "size_bytes": 4675
+    },
+    {
+      "path": "packages/data_documentation/domain/__init__.py",
+      "sha256": "b39a679cd2faf4fb347d93dfe1427db2d41b0386422c69805b556ae5fe11e5c5",
+      "size_bytes": 43
+    },
+    {
+      "path": "packages/data_documentation/domain/model.py",
+      "sha256": "b0e9b866c9c758e7ee8517d9967bebe5c793370409cdc5973c1ce85676b2ce90",
+      "size_bytes": 1381
+    },
+    {
+      "path": "packages/data_documentation/infrastructure/__init__.py",
+      "sha256": "3990af9294266b41294d1b652520e2ea74e1603bc0bb26b1af6982cbf7979c4b",
+      "size_bytes": 50
+    },
+    {
+      "path": "packages/data_documentation/infrastructure/postgres.py",
+      "sha256": "8585d1211ab804c50335612c86121faad8243d0651c755fa581fbbec95647347",
+      "size_bytes": 7432
+    },
+    {
+      "path": "packages/data_quality/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/data_quality/__init__.py",
+      "sha256": "07fe7ab91a6eba2629facf85bbbd70a48da7ed756c3135c3b1a1d784de5e2da2",
+      "size_bytes": 360
+    },
+    {
+      "path": "packages/data_quality/application/__init__.py",
+      "sha256": "7aaec904efce94725979f06a5842e124330003b7c333bfda288578260a0dd700",
+      "size_bytes": 30
+    },
+    {
+      "path": "packages/data_quality/application/service.py",
+      "sha256": "505dde72b10fd0011c47336cab27f926b47a9a4332c9359f92c4c71c83c1eb98",
+      "size_bytes": 4748
+    },
+    {
+      "path": "packages/data_quality/domain/__init__.py",
+      "sha256": "4fc3881f34ba2483918892b36b7dc5424e1e7d768b1a9898ca4962ec8d287fc5",
+      "size_bytes": 33
+    },
+    {
+      "path": "packages/data_quality/domain/model.py",
+      "sha256": "f17ccd0aa4197de07a8666562b62caba38758c820562def089e98e492a91b984",
+      "size_bytes": 2323
+    },
+    {
+      "path": "packages/data_quality/infrastructure/__init__.py",
+      "sha256": "8d67232c7de013087bfa67abf6c4a69b6382394f550eba71a3664c2b44e139eb",
+      "size_bytes": 29
+    },
+    {
+      "path": "packages/data_quality/infrastructure/postgres.py",
+      "sha256": "e18915cb77c8843641a33d64080d62222ac00f6ddde7e6616ce90d943f63dfeb",
+      "size_bytes": 3097
+    },
+    {
+      "path": "packages/execution/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/execution/__init__.py",
+      "sha256": "5805462d84cf34595102df326e0de43e7b14e2981d75ef363f8e623f4f515775",
+      "size_bytes": 410
+    },
+    {
+      "path": "packages/execution/application/__init__.py",
+      "sha256": "59c191386a394ee5018f104d23cbf3639cba400a4a1b4fa427c217883e2362a9",
+      "size_bytes": 161
+    },
+    {
+      "path": "packages/execution/application/service.py",
+      "sha256": "7456111d85f790f5cfbb217cfb862154e02a57d3a7efb69fb6b44cb1a6039d45",
+      "size_bytes": 5462
+    },
+    {
+      "path": "packages/execution/domain/__init__.py",
+      "sha256": "d40d084357663a08ea6eccb672a569835f35f453dc406714fe5a0f85222d2a0f",
+      "size_bytes": 38
+    },
+    {
+      "path": "packages/execution/domain/model.py",
+      "sha256": "cc273233fd9a5808bfc844f5fd4bb88965c1e571e8cc44ea5eeb045dcafea6f5",
+      "size_bytes": 2630
+    },
+    {
+      "path": "packages/execution/infrastructure/__init__.py",
+      "sha256": "6cdbead03ceef3ec292290b62fc0e19b24df59052dfae0e1a29909b79a9fdd54",
+      "size_bytes": 34
+    },
+    {
+      "path": "packages/execution/infrastructure/control_postgres.py",
+      "sha256": "447adca978778bb05c80f3b0d6467ba5674ffbf4f36ef56bd7b26a59c715261c",
+      "size_bytes": 61103
+    },
+    {
+      "path": "packages/execution/infrastructure/postgres.py",
+      "sha256": "91454c7aef5c250a543e9475f16a0a5fb3bda90eeefd9639c356e58697345818",
+      "size_bytes": 4026
+    },
+    {
+      "path": "packages/execution/infrastructure/valkey.py",
+      "sha256": "f308bd3fabea99d1e519da55cbedd7a7d202a3b8097e7e6ee9de2f3ffdfb2ba5",
+      "size_bytes": 5822
+    },
+    {
+      "path": "packages/forecasting/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/identity_access/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/identity_access/__init__.py",
+      "sha256": "d4cfa4d94b898c18c2beb6108b9c448544ad4a2a675f8bf845a492f518560df9",
+      "size_bytes": 46
+    },
+    {
+      "path": "packages/identity_access/application/__init__.py",
+      "sha256": "ace248de6d05473110969da06bc9c6056804376dd35270699bb9231ef32372c6",
+      "size_bytes": 305
+    },
+    {
+      "path": "packages/identity_access/application/contributor_activity.py",
+      "sha256": "e8e91c8053eaa4b140f9032c670decaa26ea661a039bd9b8f1d185b9b5f1bd8f",
+      "size_bytes": 5635
+    },
+    {
+      "path": "packages/identity_access/application/organization.py",
+      "sha256": "3d029cf8c6be0d7829937bfe61608269553235d4b055099631e6c4a90397d847",
+      "size_bytes": 21278
+    },
+    {
+      "path": "packages/identity_access/application/service.py",
+      "sha256": "9768a17741b0f6945abe4082df1b6f7bf0056a6a912a25ab70b20fda42eb0179",
+      "size_bytes": 21015
+    },
+    {
+      "path": "packages/identity_access/domain/__init__.py",
+      "sha256": "67de3f2051b4ddd7913a8a23557d64d7ae5d2fed8c62bf6b5cdc0446d1393660",
+      "size_bytes": 65
+    },
+    {
+      "path": "packages/identity_access/domain/organization.py",
+      "sha256": "593526f897d69fcd89ea9232c1b8ffebc958ed37e3fd8913b820d126f42a6469",
+      "size_bytes": 5046
+    },
+    {
+      "path": "packages/identity_access/domain/policy.py",
+      "sha256": "e2149ed826880579f99e8bd561937cb467051dd6d0ca3ffb28cf2d60438e9f11",
+      "size_bytes": 5042
+    },
+    {
+      "path": "packages/identity_access/infrastructure/__init__.py",
+      "sha256": "a6b1a3c8c85258177d27f8714735ce1a8e652e3aed515d087650b8679adcbbad",
+      "size_bytes": 250
+    },
+    {
+      "path": "packages/identity_access/infrastructure/contributor_postgres.py",
+      "sha256": "701e0a78d3861e8eee06b16971ba13ee1245b46e5bb7ae770ac8e46aa4bd4fa6",
+      "size_bytes": 24260
+    },
+    {
+      "path": "packages/identity_access/infrastructure/organization_postgres.py",
+      "sha256": "41836b5914aa8bdb50c07c0cb7e8756a8a2e9063cd69f7a516522ac00435ea55",
+      "size_bytes": 67410
+    },
+    {
+      "path": "packages/identity_access/infrastructure/postgres.py",
+      "sha256": "7e85969a6b4998269c21f903572b223a6588515eef1400d42f76cc21e986b442",
+      "size_bytes": 42234
+    },
+    {
+      "path": "packages/ingestion/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/ingestion/__init__.py",
+      "sha256": "e325d58c1909983afdfd345e92c6f83f7988979d2fc319b71eaec282421b0512",
+      "size_bytes": 176
+    },
+    {
+      "path": "packages/ingestion/domain/__init__.py",
+      "sha256": "4dad3385aa66327fd63a5c1546cff3b660193b87f1f11e3abe5857aa037a1dea",
+      "size_bytes": 30
+    },
+    {
+      "path": "packages/ingestion/domain/model.py",
+      "sha256": "825b7618c833418211d49ade3a45f94b56c66e1971f906f47e6127c9e665d342",
+      "size_bytes": 2334
+    },
+    {
+      "path": "packages/ingestion/infrastructure/__init__.py",
+      "sha256": "bee9f8e7a9c180e262cca73daa30aae93b070e9c4bea8ed2d521abdd39a09534",
+      "size_bytes": 26
+    },
+    {
+      "path": "packages/ingestion/infrastructure/postgres.py",
+      "sha256": "65e6fc4eddf58ce16574a9ac06f0b0ee6fc89bbb1ff38279ffc349869b88c00c",
+      "size_bytes": 6172
+    },
+    {
+      "path": "packages/localization/locales/en/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/localization/locales/en/foundation.json",
+      "sha256": "ef043811939e4f814d5b7bf54e7f3810a18f2e995d475cba1b66fa75079288ec",
+      "size_bytes": 4569
+    },
+    {
+      "path": "packages/localization/locales/en/route-titles.json",
+      "sha256": "e21813cfb8eb2ac0c21dca963d16e88e9eaca4ec4ee9cd5b4ca2c714a88d0479",
+      "size_bytes": 5027
+    },
+    {
+      "path": "packages/localization/locales/ru/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/localization/locales/ru/foundation.json",
+      "sha256": "eb4585dedd062ace15c21c0b41a3446634902a16eed8b3474cb5a13d1e4eba5b",
+      "size_bytes": 6828
+    },
+    {
+      "path": "packages/localization/locales/ru/route-titles.json",
+      "sha256": "7a053ce7f3504f33344efcd18f2e397f68c72a8fbb308c82d62552629e2aff59",
+      "size_bytes": 8087
+    },
+    {
+      "path": "packages/localization/package.json",
+      "sha256": "a4e83a23108c0973d09d0cfbdd48a93d57aa239d23ec566c3921ca75c6948fde",
+      "size_bytes": 366
+    },
+    {
+      "path": "packages/localization/src/index.ts",
+      "sha256": "82b89d67b53fd7b7a85b1fa8f6c28c2cacefc689b93eaa3e2d0eb001d9ef02a2",
+      "size_bytes": 545
+    },
+    {
+      "path": "packages/localization/tests/parity.test.ts",
+      "sha256": "80c6c5f3eab480064aaff3d7b6898c89dfea9cdcc3696666ccddb2fd30d4c9ee",
+      "size_bytes": 1152
+    },
+    {
+      "path": "packages/localization/tsconfig.json",
+      "sha256": "e206cc6345ad2dbf91d7426c60b29f6eaac2c7b18f0a8811ed060e1b6c9c17f5",
+      "size_bytes": 366
+    },
+    {
+      "path": "packages/notifications/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/notifications/__init__.py",
+      "sha256": "46aa09ec4230efed88b56dc61fdadcb4d877351fc36fbba5a3703ed394f5cdac",
+      "size_bytes": 272
+    },
+    {
+      "path": "packages/notifications/application/__init__.py",
+      "sha256": "ffe9b102f412b704752ad0c2c4bf93b06560a857f4d65d19e2287e0c88a48cb4",
+      "size_bytes": 163
+    },
+    {
+      "path": "packages/notifications/application/service.py",
+      "sha256": "f3d2512e1be569b97d77283d322fdc4ba5947c86a6b85637fa5e1c61855bfc47",
+      "size_bytes": 10864
+    },
+    {
+      "path": "packages/notifications/domain/__init__.py",
+      "sha256": "3d9780f73f9a6bfb202f20421f1bf37c076f2b683511e0d5555ba210db6a7aa6",
+      "size_bytes": 34
+    },
+    {
+      "path": "packages/notifications/domain/model.py",
+      "sha256": "dea4510fad00aed7f39148d1036920842034afbca2ee33ea18cf9994b77b52f0",
+      "size_bytes": 1910
+    },
+    {
+      "path": "packages/notifications/infrastructure/__init__.py",
+      "sha256": "5846aff4403f37a627280bfcf9e7ed57004fee4041de1278ae2da2db81ee29f2",
+      "size_bytes": 30
+    },
+    {
+      "path": "packages/notifications/infrastructure/postgres.py",
+      "sha256": "83f2f8b5f0fb710a7d12b873b724a9cf0cfcef2858022fbb0ed49defdd1f27a4",
+      "size_bytes": 18261
+    },
+    {
+      "path": "packages/plugin_sdk/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/presentation/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/presentation/__init__.py",
+      "sha256": "3a20a48894bfa81fb16fbf0c0fa01132fea2445690a840995b0e401d41589dbe",
+      "size_bytes": 54
+    },
+    {
+      "path": "packages/presentation/application/__init__.py",
+      "sha256": "3c05d5dcd9c9f1aa13ad03f11e8c67f01469189b551d061e40f882cdb0d7a1c8",
+      "size_bytes": 63
+    },
+    {
+      "path": "packages/presentation/application/people.py",
+      "sha256": "561a66d53479b5e3f1cbfafff72869d4751f1d6084e88efad1892bebc9eb7e29",
+      "size_bytes": 7082
+    },
+    {
+      "path": "packages/promotion_journal/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/report_delivery/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/semantic_model/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "packages/semantic_model/__init__.py",
+      "sha256": "0c12388cf1058380e73ef87d90f03884718169cdcfa576623e6455cde1490ec6",
+      "size_bytes": 265
+    },
+    {
+      "path": "packages/semantic_model/application/__init__.py",
+      "sha256": "8a1f231e06e66139cc8608ccb318f1a364543a75013f19b0bf129e8bab67b86b",
+      "size_bytes": 32
+    },
+    {
+      "path": "packages/semantic_model/application/service.py",
+      "sha256": "3b0f6395c8eb9f9fa9d1148c053661aec046379398d875cdb584f57f523353b5",
+      "size_bytes": 3695
+    },
+    {
+      "path": "packages/semantic_model/domain/__init__.py",
+      "sha256": "e068386a916cfdea82fd0bc9656021d28d7525111a7e3d7438ef8e1a343a2598",
+      "size_bytes": 35
+    },
+    {
+      "path": "packages/semantic_model/domain/model.py",
+      "sha256": "301ca57859be2b8c2ab2a51aadefe1f82a640fb159a54781f8069d68c5c47c6f",
+      "size_bytes": 632
+    },
+    {
+      "path": "packages/semantic_model/infrastructure/__init__.py",
+      "sha256": "6b6df20131b2e910b4238ef060a8a63b5ad092f2325203186b7d3e5cf8d943fd",
+      "size_bytes": 31
+    },
+    {
+      "path": "packages/semantic_model/infrastructure/postgres.py",
+      "sha256": "a50128bdcb138efdc228892a039dd15922cc629d0d2542a12f01808a77120885",
+      "size_bytes": 1605
+    },
+    {
+      "path": "packages/ui-foundation/package.json",
+      "sha256": "d25914c1d7e3b003cce16d3e41b114fe1483d469acc5e2354e1f213efd4900b5",
+      "size_bytes": 683
+    },
+    {
+      "path": "packages/ui-foundation/src/components.tsx",
+      "sha256": "31d2d0d93f74f5b5b58ebf138ba8976fb4a09a4520b58ec23d16b93b419898bd",
+      "size_bytes": 1559
+    },
+    {
+      "path": "packages/ui-foundation/src/index.ts",
+      "sha256": "4125f934574895d6f8c9f6e936a4f54d6f6533455ff2d06892af7b3f1525f34a",
+      "size_bytes": 56
+    },
+    {
+      "path": "packages/ui-foundation/src/themes.ts",
+      "sha256": "8b5a00ffe2638b14197fca18b86962a7c92694772a5bdb7988ca57aae9dba621",
+      "size_bytes": 3926
+    },
+    {
+      "path": "packages/ui-foundation/tests/themes.test.tsx",
+      "sha256": "fdfb89a4ca7c191f7b6133c47b53605c5b620d93f0c5d26b8bf754f3b1135e21",
+      "size_bytes": 1024
+    },
+    {
+      "path": "packages/ui-foundation/tsconfig.json",
+      "sha256": "70fbe9bc16941517535e7d3c4868c32a42e6bb1465b64c17f0fea38778f75c15",
+      "size_bytes": 435
+    },
+    {
+      "path": "plugins/connector_files/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "plugins/connector_files/__init__.py",
+      "sha256": "1c0401635abbf8076adb7966b590610872169fefae19bce1dd76d26ba02c051c",
+      "size_bytes": 115
+    },
+    {
+      "path": "plugins/connector_files/validator.py",
+      "sha256": "55d3591c2be22b0e6a6bb8a88fc11dfe2e63ff1bb32f52b471c9c57951008852",
+      "size_bytes": 8501
+    },
+    {
+      "path": "plugins/connector_mssql/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "plugins/connector_postgresql/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "plugins/connector_postgresql/__init__.py",
+      "sha256": "9074034203be42325473b0c898bef8ceea00fa184529ef8300fb65c5a3599705",
+      "size_bytes": 156
+    },
+    {
+      "path": "plugins/connector_postgresql/adapter.py",
+      "sha256": "a8101b6a7423969eca09defbcce43602a927bba5dfdc5a6a399f98db940261fa",
+      "size_bytes": 8076
+    },
+    {
+      "path": "plugins/example_node/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "1b6381ecf5ed701d3f270437d3dcfa5a37a2aafaab4da8bb521f54048593d525",
+      "size_bytes": 77695
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "sha256": "57c9790b9c2810a21b32bfb86b42ac5bf42b171ce75654473a82e0eae569a89d",
+      "size_bytes": 72
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "9fc1e0c9536cbd74859cf44aaed69a7e0eb6148052e6128968e700834556622e",
+      "size_bytes": 3643
+    },
+    {
+      "path": "scripts/activate-toolchain.sh",
+      "sha256": "7d7995ca413e9224504410dee15d514b65309934f3bd8c79f0241b558d491cb5",
+      "size_bytes": 2472
+    },
+    {
+      "path": "tools/custometry_quality/delivery_bundle.py",
+      "sha256": "1359e27834a8d977ca269e15711281e5c4898f0f4360fe935d419ef708b91965",
+      "size_bytes": 23070
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "44b09fbcc5f711c47d7d89f9607760f4da3cd8f85640486403798fd92635970f",
+      "size_bytes": 130546
+    }
+  ]
+}

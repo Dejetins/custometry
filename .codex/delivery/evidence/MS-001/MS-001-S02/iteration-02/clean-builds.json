@@ -1,0 +1,82 @@
+[
+  {
+    "command": [
+      "docker",
+      "build",
+      "--platform",
+      "linux/arm64",
+      "--load",
+      "-t",
+      "custometry-ms001-s02-clean-api:arm64",
+      "--build-arg",
+      "CUSTOMETRY_VERSION=0.1.0-dev.0+sha.bc347d7e74c5",
+      "-f",
+      "apps/api/Dockerfile",
+      "."
+    ],
+    "cwd": "/tmp/ms001-s02-clean-bc347d7e/source",
+    "exit_code": 0,
+    "elapsed_seconds": 19.894,
+    "log_sha256": "2fe64bc859ba8f96cd2f9bb1e70bc34bc5b4138167c937181640f16164eb6990"
+  },
+  {
+    "command": [
+      "docker",
+      "build",
+      "--platform",
+      "linux/arm64",
+      "--load",
+      "-t",
+      "custometry-ms001-s02-clean-web:arm64",
+      "--build-arg",
+      "CUSTOMETRY_VERSION=0.1.0-dev.0+sha.bc347d7e74c5",
+      "-f",
+      "apps/web/Dockerfile",
+      "."
+    ],
+    "cwd": "/tmp/ms001-s02-clean-bc347d7e/source",
+    "exit_code": 0,
+    "elapsed_seconds": 6.372,
+    "log_sha256": "ac650148384f7e7fc0906cbff9efe6ee4f5310d7b6b6bd685ebeb63534a0af61"
+  },
+  {
+    "command": [
+      "docker",
+      "build",
+      "--platform",
+      "linux/amd64",
+      "--load",
+      "-t",
+      "custometry-ms001-s02-clean-api:amd64",
+      "--build-arg",
+      "CUSTOMETRY_VERSION=0.1.0-dev.0+sha.bc347d7e74c5",
+      "-f",
+      "apps/api/Dockerfile",
+      "."
+    ],
+    "cwd": "/tmp/ms001-s02-clean-bc347d7e/source",
+    "exit_code": 0,
+    "elapsed_seconds": 37.558,
+    "log_sha256": "78edbefafba598e26baf54e088e614a96a34505e113c4d006b90df0400b333e0"
+  },
+  {
+    "command": [
+      "docker",
+      "build",
+      "--platform",
+      "linux/amd64",
+      "--load",
+      "-t",
+      "custometry-ms001-s02-clean-web:amd64",
+      "--build-arg",
+      "CUSTOMETRY_VERSION=0.1.0-dev.0+sha.bc347d7e74c5",
+      "-f",
+      "apps/web/Dockerfile",
+      "."
+    ],
+    "cwd": "/tmp/ms001-s02-clean-bc347d7e/source",
+    "exit_code": 0,
+    "elapsed_seconds": 28.923,
+    "log_sha256": "85f60e4ab4c9e0adeaf30b0e7d1bc3a77763babf6b1fdc85cec3a67594de4f0a"
+  }
+]

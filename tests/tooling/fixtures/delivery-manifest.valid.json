@@ -1,0 +1,250 @@
+{
+  "schema_version": "custometry-delivery/v1",
+  "delivery_version": "0.1.0-dev.0",
+  "application_version": "0.1.0-dev.0",
+  "channel": "internal-candidate",
+  "source": {
+    "repository": "https://github.com/Dejetins/custometry",
+    "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "producer": {
+    "workflow": ".github/workflows/publish-candidates.yml",
+    "ref": "refs/heads/main",
+    "run_id": 1,
+    "run_attempt": 1
+  },
+  "capabilities": [
+    {
+      "id": "fixture",
+      "status": "enabled",
+      "services": [],
+      "reason": "fixture"
+    }
+  ],
+  "profiles": [
+    "core",
+    "migration",
+    "demo"
+  ],
+  "images": {
+    "api": {
+      "repository": "ghcr.io/dejetins/custometry-api",
+      "index_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "platforms": [
+        {
+          "os": "linux",
+          "architecture": "amd64",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "compressed_bytes": 1,
+          "unpacked_bytes": 1
+        },
+        {
+          "os": "linux",
+          "architecture": "arm64",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "compressed_bytes": 1,
+          "unpacked_bytes": 1
+        }
+      ],
+      "embedded_files": []
+    },
+    "web": {
+      "repository": "ghcr.io/dejetins/custometry-web",
+      "index_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "platforms": [
+        {
+          "os": "linux",
+          "architecture": "amd64",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "compressed_bytes": 1,
+          "unpacked_bytes": 1
+        },
+        {
+          "os": "linux",
+          "architecture": "arm64",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "compressed_bytes": 1,
+          "unpacked_bytes": 1
+        }
+      ],
+      "embedded_files": []
+    },
+    "postgres": {
+      "repository": "docker.io/library/postgres",
+      "index_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "platforms": [
+        {
+          "os": "linux",
+          "architecture": "amd64",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "compressed_bytes": 1,
+          "unpacked_bytes": 1
+        },
+        {
+          "os": "linux",
+          "architecture": "arm64",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "compressed_bytes": 1,
+          "unpacked_bytes": 1
+        }
+      ],
+      "embedded_files": []
+    }
+  },
+  "services": [
+    {
+      "name": "control-db",
+      "image": "postgres",
+      "profile": "core",
+      "depends_on": []
+    },
+    {
+      "name": "api",
+      "image": "api",
+      "profile": "core",
+      "depends_on": [
+        "control-db"
+      ]
+    },
+    {
+      "name": "web",
+      "image": "web",
+      "profile": "core",
+      "depends_on": [
+        "api"
+      ]
+    },
+    {
+      "name": "edge",
+      "image": "web",
+      "profile": "core",
+      "depends_on": [
+        "web"
+      ]
+    },
+    {
+      "name": "migrate",
+      "image": "api",
+      "profile": "migration",
+      "depends_on": [
+        "control-db"
+      ]
+    },
+    {
+      "name": "demo-source-db",
+      "image": "postgres",
+      "profile": "demo",
+      "depends_on": []
+    }
+  ],
+  "files": [
+    {
+      "path": "fixture",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "size_bytes": 1,
+      "role": "compose"
+    }
+  ],
+  "resources": [
+    {
+      "id": "fixture",
+      "kind": "bundle-file",
+      "location": "fixture",
+      "services": [
+        "control-db"
+      ],
+      "profile": "core",
+      "required": true
+    }
+  ],
+  "compatibility": {
+    "reader_major": 1,
+    "configuration_schema": "custometry-compose/v1",
+    "docker_api_min": "1.43",
+    "compose_min": "2.24.4",
+    "tested_engines": [
+      {
+        "engine_version": "fixture",
+        "compose_version": "fixture",
+        "host_os": "linux",
+        "host_arch": "arm64"
+      }
+    ],
+    "postgres_version": "17.5",
+    "supported_platforms": [
+      "linux/amd64",
+      "linux/arm64"
+    ]
+  },
+  "migrations": {
+    "head": "0001_fixture",
+    "revisions": [
+      {
+        "revision": "0001_fixture",
+        "down_revision": null,
+        "file": {
+          "path": "fixture",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "size_bytes": 1,
+          "role": "compose"
+        }
+      }
+    ],
+    "support_files": [
+      {
+        "path": "fixture",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size_bytes": 1,
+        "role": "compose"
+      }
+    ],
+    "starting_state": "fresh-owned-database",
+    "read_head": "0001_fixture",
+    "write_head": "0001_fixture",
+    "command": [
+      "alembic",
+      "-c",
+      "/app/migrations/alembic.ini",
+      "upgrade",
+      "head"
+    ],
+    "downtime": "before-application-start",
+    "rollback": "not-qualified",
+    "artifact_format_compatibility": "not-qualified"
+  },
+  "build_inputs": [
+    {
+      "path": "fixture",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "sbom",
+      "subject": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "file": {
+        "path": "fixture",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size_bytes": 1,
+        "role": "compose"
+      }
+    }
+  ],
+  "resources_budget": {
+    "ram_bytes": 6442450944,
+    "owned_disk_bytes": 26843545600,
+    "api_unpacked_max_bytes": 367001600,
+    "web_unpacked_max_bytes": 104857600
+  },
+  "retrieval": {
+    "provider": "github-actions-artifact",
+    "repository": "Dejetins/custometry",
+    "artifact_name": "custometry-delivery-0.1.0-dev.0",
+    "retention_days": 1
+  },
+  "signature": {
+    "format": "sigstore-bundle",
+    "path": "delivery-manifest.sigstore.json",
+    "subject": "canonical-manifest-bytes"
+  }
+}

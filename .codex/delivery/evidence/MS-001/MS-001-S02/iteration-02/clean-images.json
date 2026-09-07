@@ -1,0 +1,183 @@
+{
+  "source_commit": "bc347d7e74c57640b42462c24cc2ed60d76ef055",
+  "native_engine": "linux/arm64",
+  "amd64_execution": "emulated",
+  "image_archive_bytes": 258142720,
+  "image_archive_sha256": "7c006e8373924cb91c28f9b92e6e841fa13bdf0d1b3d313506ee9ae7c3272383",
+  "network_transfer_bytes": null,
+  "method": "sum gzip layer bytes and streamed uncompressed layer tar bytes; conservative unpacked upper bound",
+  "images": [
+    {
+      "tags": [
+        "custometry-ms001-s02-clean-api:arm64"
+      ],
+      "compressed_layer_bytes": 105826444,
+      "uncompressed_layer_tar_bytes": 355354112,
+      "unpacked_cap": 367001600,
+      "within_cap": true,
+      "Id": "sha256:0c1596fcb63897839a7d111c241990bafb9879224cf63962e173423014369f4f",
+      "Architecture": "arm64",
+      "Os": "linux",
+      "Size": 105846207,
+      "labels": {
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.title": "Custometry API",
+        "org.opencontainers.image.version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      },
+      "rootfs_layers": [
+        "sha256:3e5d01a55aea2c9ea64c3cfef2bb870df4b01c7e206103a970d4c3dc6caed96b",
+        "sha256:62750a0d4afa47971eda307d875c99fc4a7292beb47970df9c18647609d86e88",
+        "sha256:3603fa54c00d0cb83e3070b70cd08bc24ca60844986408ade6c1b80ef7b0f532",
+        "sha256:4882eb1c66d54726bda0140b368f4388ceca8351cdcc6d10fe29bdcddb0b6f59",
+        "sha256:82f5be215753ce76f922f0f8bf88350b41679f5707968aea286cd4b32c7fe20e",
+        "sha256:58444894d8659cb98716251f27037cbebc47d9afc389cfe8c8405bea9a5a4f7f",
+        "sha256:a4952e78d3702fefb69ce29d0129a5d0c4afc21e80b9adc47a6dcd45148bfa11",
+        "sha256:626b8ac609ab2f2a2bc30b21be3dc36e44da6fe10490dcbda04ca1a9ba98b485",
+        "sha256:f32f107d6a8fa7b45c75d6cb520ab33f0dbae85cb35ee3b83da823f2f9c0d75d",
+        "sha256:25c414bf9fb9641a9ad172d223e3a484ffc97c24662444ce64c7b3949bb25c15",
+        "sha256:9e544ead0147ab7dd84c657455eec1184f17ac19d2a6fe9f55a76f3651d0956b",
+        "sha256:19c0e4707b735c35c74e7072f65046f5a52a559450c3b7c1772cfc8af81e64ee",
+        "sha256:b4562e33942c1b778e2e168a7a66c2ef30ef7e9a855f6bf1fb5f311fc172d3b1",
+        "sha256:9c0dfc73cc62032477da9113a1c4a5d7281de69b40053964821d2e47fd4c577f",
+        "sha256:173469fe33e61722f493eb6406ae26da8b059796d29312a05c491ff6f222713d",
+        "sha256:abfa96d7c2d2bddddf41eedeffc53149e97a5f104239d475efc51028de255ec5",
+        "sha256:3f1a7909b2c4c00d6219ab7ac81f03a739e0b4b3df71640af3d2bdeed7f8a272",
+        "sha256:3d519c9264913342370d8ef1287dab1d8a54b13857035a8803606eaf0ad91764",
+        "sha256:06096d7994eb20abff5e3a3fffa5d900f2a3afc9e01db7ad5efbb0f2a923236a",
+        "sha256:038a259c35161f42626e16ccc7e2e4d13ffae14558e901add8f226c69201e55c",
+        "sha256:ed293d370262224090edc0544e09e7d1f8b1921ddd21695d6d1d333495514f40",
+        "sha256:443fc02e300e5ec90502c7032bbaf5126ad9591fe35ff1d48a6ac7ed05746521",
+        "sha256:19e0d18dd0c789d5842e6c367e41215f06bd9199e48aec28ecc3a39ef0723804",
+        "sha256:6cdfdd183583d880fb5fa9c3d6c47176ec6b35f3b02a37f57f0b09c38dc24a03",
+        "sha256:5670050f5f4df5f9cf33c29ba318613aa3c63baf58d86399c6a558c14a6dc36a",
+        "sha256:95c6b1466f1054c53c89da806648d6c75d59e5df7c1eabdeb41b5269ce9c870d"
+      ]
+    },
+    {
+      "tags": [
+        "custometry-ms001-s02-clean-web:arm64"
+      ],
+      "compressed_layer_bytes": 22727240,
+      "uncompressed_layer_tar_bytes": 55393792,
+      "unpacked_cap": 104857600,
+      "within_cap": true,
+      "Id": "sha256:2f04bfe519f0cb4358dcba76775f827e4063059c5183fb2685d598a346903163",
+      "Architecture": "arm64",
+      "Os": "linux",
+      "Size": 22746327,
+      "labels": {
+        "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>",
+        "org.opencontainers.image.created": "2026-01-26T01:42:19.722Z",
+        "org.opencontainers.image.description": "Unprivileged NGINX Dockerfiles",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "eb142eabcc0a3e282aea6f1e5592cfe773e86321",
+        "org.opencontainers.image.source": "https://github.com/nginx/docker-nginx-unprivileged",
+        "org.opencontainers.image.title": "Custometry Web",
+        "org.opencontainers.image.url": "https://github.com/nginx/docker-nginx-unprivileged",
+        "org.opencontainers.image.version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      },
+      "rootfs_layers": [
+        "sha256:982780712fdf5e22c7ed01172785fd7059a9ec11cb375c7133dc5b06c24250ff",
+        "sha256:9797487c353f6e8b4b2755834b47e62e9be3a37fc36d4e0ec129f21e2c0d8606",
+        "sha256:36ee79140adc68664fa2df63772dbff82eaa1905a43df7b89f2a523247a2ee12",
+        "sha256:8771405cd03dd8832f4f42d93849a5e63a0994af5dadadfc21e7a80195dd3d29",
+        "sha256:877fb8c6917d0dbc57a28cdf84b05b4da51ce6993731c37367e1b62ed9fefb5e",
+        "sha256:ad80e8d95e16c138cd015eb519a1be4aad7c2ff55b54a6b0b93f40f117ec4524",
+        "sha256:2bb109e27bf797fea05fa90693eff3b811a86584315d77bee28b5c6177362491",
+        "sha256:04575a0ad6dc6dcb8c3202de00f9d03430eb24b19a99a796a9d997f53a2ee8a8",
+        "sha256:7868fb7884d80e55cc69c1f84a44115588076797de46ab45fafea438811026fe",
+        "sha256:1bdfafffc7dd76770a8a142b5f5d475e41f748345c2b8c4871322e8fd05acf45",
+        "sha256:9ba8cc8a9ee41e971a97022f44cc30748605f4d90c3c38e89e379be540d439f1",
+        "sha256:105ad905f3030884ccf47d584d8a418cf8ba9f052f9133d0c107d9e592553da5",
+        "sha256:0869ec4b8c182990434174d67b121f5341e8e9f33a6ce3e56fd1e6860f3b77a4",
+        "sha256:8e8f7970f055311e5c7c6e683ed6c30df20ba82ff4a43513a530bd67146c8c61"
+      ]
+    },
+    {
+      "tags": [
+        "custometry-ms001-s02-clean-api:amd64"
+      ],
+      "compressed_layer_bytes": 107526061,
+      "uncompressed_layer_tar_bytes": 337203200,
+      "unpacked_cap": 367001600,
+      "within_cap": true,
+      "Id": "sha256:a14345bf0f37a32c1c92cded85c05c82fd899a595654eb1fc295d6fe68f8c200",
+      "Architecture": "amd64",
+      "Os": "linux",
+      "Size": 107545825,
+      "labels": {
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.title": "Custometry API",
+        "org.opencontainers.image.version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      },
+      "rootfs_layers": [
+        "sha256:aca83606673032726b42f8e1396ceb979c32bfb26b602732baf699053e46b33e",
+        "sha256:9cec99e910cbef45442323a31a04c92b5c14dddf236dd769d02c54af99e56d6d",
+        "sha256:4858806d59148b044f1fb5491f84963f5742556eefa0ce9de13717e1a195edae",
+        "sha256:6bcbbe0b3546e8b3e707223aee64fd1c2d220d8d8c6834829e392648f38d5b6e",
+        "sha256:f9f4fc780b82acfc069208a6db051995cf205172085533ac5125309f3e198a7f",
+        "sha256:2e73299ba79100192916d52970de5e3471d1484bb7faa93b0326520660097486",
+        "sha256:833c7c6858f7fdae7ff63ca2552300e2b2756bb2900e5f4c7f37d5a6e8c6fa14",
+        "sha256:2264f1ae5a330706ae9e9a7590784839a0cbc7450a633acc4c17c57203f9efac",
+        "sha256:6f6a8adf2936436d2b118e4563cd615f80fc8a545bfda7f7e192c4c7de25f96d",
+        "sha256:629c7c56d5b1cb22f4a66b5dfccca738a04a99b5dcc693cda1788e5d78dfa8e4",
+        "sha256:4ab2869d8c0983d2e64b367cfa1c0f622dd1b4dced7e74acc755aecf56479fec",
+        "sha256:8758ce5eae9a2778bb578c1f10dd64695e1ab30c8a23af63ddde2bdf7ff99546",
+        "sha256:779aafab5f417ab2d6ae93fdf8f73ca736eb1073b44bb63a12d8d9fe977ef2af",
+        "sha256:ec3ac64800c8c28beaca9e57c6fee8e711904e6e243324ac51173a5e5d3fc18d",
+        "sha256:20ddd0edb8d9e6452c206ca63157389af19a0b59edf3bee5b6fad7ed4dcf5deb",
+        "sha256:9ac5f31a95dcebf32f52e9655aef4e48413d1d73fcdbb1b5f88a2500bb04987c",
+        "sha256:6dd92e79f81b0409376dd2c8eaae0fa489541393c0f6e0b190b6d8787c39a556",
+        "sha256:f3121abcea6b6207ffed58a5b081a0d1f04b1120d3e027f3bfa1686b10504b3e",
+        "sha256:1d8669c30a892bc4f2a0b620e5babfa957b93e6d7130e82e0b9cdff7ca83cb9e",
+        "sha256:019f310da86f6d38fdb4f453aef54fcce2e1d3c51a2fe44266c58d1a27472e87",
+        "sha256:c933c4c85302cb8079fd47f7040e5fa0df1e0e70fbb20b71e3cfc500d8fd39f9",
+        "sha256:6947682fb7d9e9f6f05ea2c65bf88b9b84a023444f5dc194aa686a32bcffac41",
+        "sha256:c924e08732ef5c4a6b16b439231e5c244aebf2ed354ac1517c93005412c4635c",
+        "sha256:88051a5f38531988c1411bb5378bab61cf112bed03249e6aab4b2f3bc46e3144",
+        "sha256:75bcb012755decfa099bdb5ec15d1c96ec0020642600a46b763cd327fb4843e0",
+        "sha256:d066a64fe496be01f1690c14602af2a019806e474ac088712504fb1e86149c42"
+      ]
+    },
+    {
+      "tags": [
+        "custometry-ms001-s02-clean-web:amd64"
+      ],
+      "compressed_layer_bytes": 21883320,
+      "uncompressed_layer_tar_bytes": 53844480,
+      "unpacked_cap": 104857600,
+      "within_cap": true,
+      "Id": "sha256:bc99d92ea9bb67ca91b4daa0f8a9d9a450c9d5086ac97e7136583458b61bec8c",
+      "Architecture": "amd64",
+      "Os": "linux",
+      "Size": 21902405,
+      "labels": {
+        "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>",
+        "org.opencontainers.image.created": "2026-01-26T01:42:19.722Z",
+        "org.opencontainers.image.description": "Unprivileged NGINX Dockerfiles",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "eb142eabcc0a3e282aea6f1e5592cfe773e86321",
+        "org.opencontainers.image.source": "https://github.com/nginx/docker-nginx-unprivileged",
+        "org.opencontainers.image.title": "Custometry Web",
+        "org.opencontainers.image.url": "https://github.com/nginx/docker-nginx-unprivileged",
+        "org.opencontainers.image.version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      },
+      "rootfs_layers": [
+        "sha256:922ec217407c0fd31cb18b46090bf62e439fb53ecd01f09406d62e25a906e09b",
+        "sha256:0e19dcbccb67aac577319dce0190e9b7029fdd59fa335c735542dc8eb9b72fd3",
+        "sha256:79c8f842099283e9a504808c658818bbc63dc237424d91522e3e9327ad4cdf5c",
+        "sha256:8771405cd03dd8832f4f42d93849a5e63a0994af5dadadfc21e7a80195dd3d29",
+        "sha256:aa3ec426a496bd76f30ec830aae4e5adcb825e47facc4072d84cbfb26ceeae9e",
+        "sha256:d7deb9772f64c1c24c07f260c7da716a1ee1d58067f06cd88e8302f05bfff64f",
+        "sha256:4f2b4173013a21bedf74751ea92ccfc01006211889abda3cfcd4bb58223d3131",
+        "sha256:b0d8fc3ff2a6eabc49fc8c869b58cfa6e442025d0075c8cf998634ecf72f661a",
+        "sha256:e1d2cbc7a61f7120378e16cbd0b888951f23f47d7cda7d395f046e7533446e1d",
+        "sha256:e5a861ed596f7cb03c8df134e3fde1396be6785c3fb6fda5ac125becc0a4c8a8",
+        "sha256:f679632b62276a519bb03c58d9c17b0737e4b1f935ab6ebdd3fad8c8c6a85b5e",
+        "sha256:9b523b11e37d6f46605610c457ab3c71c88f275248a753b64b960492d89ebbdf",
+        "sha256:61e8afd3c055f3c790f2fc8857e7c15ea3d46c89985bd318e0f3821ce24c718f",
+        "sha256:109c00923d3c02980944016a28e5b0c0f8401841228ba9113714d3dd093eb1c7"
+      ]
+    }
+  ]
+}

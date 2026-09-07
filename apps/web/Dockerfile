@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.11
+# syntax=docker/dockerfile:1.11@sha256:10c699f1b6c8bdc8f6b4ce8974855dd8542f1768c26eb240237b8f1c9c6c9976
 FROM node:24.18.0-alpine3.23@sha256:595398b0081eacda8e1c4c5b97b76cd1020e4d58a8ebcb4843b9bca1e79e7436 AS web-build
 
 WORKDIR /src
@@ -15,7 +15,11 @@ COPY packages/contracts packages/contracts
 COPY packages/localization packages/localization
 COPY packages/chart_compiler_ts packages/chart_compiler_ts
 COPY packages/ui-foundation packages/ui-foundation
-RUN pnpm --filter @custometry/web build
+COPY deploy/compose/collect-web-notices.mjs deploy/compose/collect-web-notices.mjs
+COPY LICENSE LICENSE
+RUN pnpm --filter @custometry/web build \
+    && node deploy/compose/collect-web-notices.mjs \
+    && cp LICENSE apps/web/dist/notices/Custometry-LICENSE
 
 FROM ghcr.io/astral-sh/uv:0.9.26-python3.12-bookworm-slim@sha256:add251a8fbfa14ff5e115adf93cb113c7b58c57bc84f0992164f5b6631b3451f AS docs-build
 
@@ -27,7 +31,9 @@ RUN uv sync --locked --no-dev --package custometry-docs
 COPY docs-site/docs docs-site/docs
 COPY docs-site/generate_csp.py docs-site/generate_csp.py
 RUN uv run --frozen --package custometry-docs mkdocs build --strict --config-file mkdocs.yml \
-    && python docs-site/generate_csp.py site /tmp/docs-csp.conf
+    && python docs-site/generate_csp.py site /tmp/docs-csp.conf \
+    && mkdir -p site/notices \
+    && python -c 'import importlib.metadata as m, pathlib; p=pathlib.Path("site/notices/python-packages.txt"); p.write_text("\n\n".join(str(d.metadata["Name"])+"=="+d.version+"\n"+"\n".join(d.locate_file(f).read_text(errors="replace") for f in sorted(d.files or [], key=str) if "dist-info" in str(f) and ("license" in str(f).lower() or "notice" in str(f).lower())) for d in sorted(m.distributions(path=[".venv/lib/python3.12/site-packages"]), key=lambda d: (str(d.metadata["Name"]), d.version))))'
 
 FROM nginxinc/nginx-unprivileged:1.28.0-alpine3.21@sha256:c97ff0bf7cbae369953c6da1232ec14ad9f971d66360c5698db0856a4cd657a0 AS runtime
 

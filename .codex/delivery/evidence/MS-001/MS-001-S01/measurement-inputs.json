@@ -1,0 +1,138 @@
+{
+  "protocol_version": "MS-001-S01-measurement/v1",
+  "baseline_commit": "f9f39a75994d2f7a8e8d7a75df293c35579f842d",
+  "fixture": {
+    "database": "fresh-owned-empty-before-migrations",
+    "account": "none",
+    "workspace_route": "northwind-retail",
+    "source_data": "optional-demo-init-files-only",
+    "locales": [
+      "en",
+      "ru"
+    ],
+    "viewports": [
+      [
+        768,
+        1024
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "device_scale_factor": 1,
+    "timezone": "UTC",
+    "browser": "Playwright 1.52.0 Chromium bundled revision",
+    "runtime_profiles": [
+      "core",
+      "core+demo"
+    ],
+    "timing_samples_per_mode": 5,
+    "web_samples_per_journey_mode": 30,
+    "retry_policy": "zero-retries-retain-all-failures"
+  },
+  "source_inputs": [
+    {
+      "path": "compose.yaml",
+      "baseline_sha256": "5842da004ba6ae13e789bbb2c79ed26a88d2abf6ccc630339bc1263a9f824537",
+      "inspection_sha256": "5842da004ba6ae13e789bbb2c79ed26a88d2abf6ccc630339bc1263a9f824537",
+      "same_bytes": true
+    },
+    {
+      "path": "apps/api/Dockerfile",
+      "baseline_sha256": "cd28448fb5d3bfd1f4325087f370cbbe161e4840ee66fe69814ea6de72ebbe97",
+      "inspection_sha256": "cd28448fb5d3bfd1f4325087f370cbbe161e4840ee66fe69814ea6de72ebbe97",
+      "same_bytes": true
+    },
+    {
+      "path": "apps/web/Dockerfile",
+      "baseline_sha256": "be681feca7b148a90bb04e0235afe57f4db7b14c63deee7b273cd4c133873b73",
+      "inspection_sha256": "be681feca7b148a90bb04e0235afe57f4db7b14c63deee7b273cd4c133873b73",
+      "same_bytes": true
+    },
+    {
+      "path": "uv.lock",
+      "baseline_sha256": "44b09fbcc5f711c47d7d89f9607760f4da3cd8f85640486403798fd92635970f",
+      "inspection_sha256": "44b09fbcc5f711c47d7d89f9607760f4da3cd8f85640486403798fd92635970f",
+      "same_bytes": true
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "baseline_sha256": "1b6381ecf5ed701d3f270437d3dcfa5a37a2aafaab4da8bb521f54048593d525",
+      "inspection_sha256": "1b6381ecf5ed701d3f270437d3dcfa5a37a2aafaab4da8bb521f54048593d525",
+      "same_bytes": true
+    },
+    {
+      "path": "package.json",
+      "baseline_sha256": "8fb03a1889d24b3fdda8a4f75df2248ca6b0e70f46f31bbc762e7a54326d5466",
+      "inspection_sha256": "8fb03a1889d24b3fdda8a4f75df2248ca6b0e70f46f31bbc762e7a54326d5466",
+      "same_bytes": true
+    },
+    {
+      "path": "pyproject.toml",
+      "baseline_sha256": "9fc1e0c9536cbd74859cf44aaed69a7e0eb6148052e6128968e700834556622e",
+      "inspection_sha256": "9fc1e0c9536cbd74859cf44aaed69a7e0eb6148052e6128968e700834556622e",
+      "same_bytes": true
+    },
+    {
+      "path": "deploy/compose/runtime-policy.json",
+      "baseline_sha256": "ae2ded961d6dd401994924abfc286b4d6be174bd372f8872201be46f338b71ba",
+      "inspection_sha256": "ae2ded961d6dd401994924abfc286b4d6be174bd372f8872201be46f338b71ba",
+      "same_bytes": true
+    },
+    {
+      "path": "deploy/compose/check-image-size.sh",
+      "baseline_sha256": "f0138a712e1c6b66bb98b10df14a2300701ce0b3e42e57de7960576dce646094",
+      "inspection_sha256": "f0138a712e1c6b66bb98b10df14a2300701ce0b3e42e57de7960576dce646094",
+      "same_bytes": true
+    },
+    {
+      "path": "deploy/compose/ci-smoke.sh",
+      "baseline_sha256": "27a2352299c4d90ef10a28b7373e2cdd8645b2a731b219adf61d36ff9a80bc4d",
+      "inspection_sha256": "27a2352299c4d90ef10a28b7373e2cdd8645b2a731b219adf61d36ff9a80bc4d",
+      "same_bytes": true
+    },
+    {
+      "path": "tests/e2e/foundation.spec.ts",
+      "baseline_sha256": "f7eb426873d4863b246e4cb9bb4e2a29545d9f594a8bd51f53370f9ce8dd1b22",
+      "inspection_sha256": "f7eb426873d4863b246e4cb9bb4e2a29545d9f594a8bd51f53370f9ce8dd1b22",
+      "same_bytes": true
+    },
+    {
+      "path": "tests/e2e/playwright.config.ts",
+      "baseline_sha256": "fdeb5be5fa9c2401ab2cd59bdced9cc38822b2ec726062fa7624d66cb457bee3",
+      "inspection_sha256": "fdeb5be5fa9c2401ab2cd59bdced9cc38822b2ec726062fa7624d66cb457bee3",
+      "same_bytes": true
+    },
+    {
+      "path": "deploy/demo-source/init/010_create_reader.sh",
+      "baseline_sha256": "6e2bf243fd74ef724afeced8683742a967cf268dde0c68f746f89e148bd3e0da",
+      "inspection_sha256": "6e2bf243fd74ef724afeced8683742a967cf268dde0c68f746f89e148bd3e0da",
+      "same_bytes": true
+    },
+    {
+      "path": "deploy/demo-source/init/015_profile.sh",
+      "baseline_sha256": "03035aa733269144f1de83893a135883c0373cafafb2581351c8ef1e1088a025",
+      "inspection_sha256": "03035aa733269144f1de83893a135883c0373cafafb2581351c8ef1e1088a025",
+      "same_bytes": true
+    },
+    {
+      "path": "deploy/demo-source/init/020_schema.sql",
+      "baseline_sha256": "31d78912c69a2e97b4a861fd7ebbdaaf062b80bf049085fa48620584fbf40660",
+      "inspection_sha256": "31d78912c69a2e97b4a861fd7ebbdaaf062b80bf049085fa48620584fbf40660",
+      "same_bytes": true
+    },
+    {
+      "path": "deploy/demo-source/init/030_seed.sql",
+      "baseline_sha256": "c7f3605aa8854110c6b7e5044a5dd1ebfd95ab87b54531e7d7859a730b296e29",
+      "inspection_sha256": "c7f3605aa8854110c6b7e5044a5dd1ebfd95ab87b54531e7d7859a730b296e29",
+      "same_bytes": true
+    },
+    {
+      "path": "deploy/demo-source/init/040_grants.sql",
+      "baseline_sha256": "1099e09e027bd603ec225f147a50deb4f8a11fa10c74e62e46760c9db667e2cc",
+      "inspection_sha256": "1099e09e027bd603ec225f147a50deb4f8a11fa10c74e62e46760c9db667e2cc",
+      "same_bytes": true
+    }
+  ]
+}

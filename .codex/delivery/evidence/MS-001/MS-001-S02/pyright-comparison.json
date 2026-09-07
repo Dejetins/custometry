@@ -1,0 +1,508 @@
+{
+  "baseline_commit": "d2e3c65b15f02f7970eac8c32feede3cbbd01ef9",
+  "baseline_command": "uv run --locked pyright --project /tmp/ms001-s02-01a07dc8/pyright-baseline/pyproject.toml --pythonpath /Users/daniildegtyarev/Projects/Custometry/.venv/bin/python --outputjson",
+  "candidate_command": "uv run --locked pyright --outputjson",
+  "same_interpreter": true,
+  "same_pyproject": true,
+  "same_normalized_diagnostics": true,
+  "baseline_errors": 33,
+  "candidate_errors": 33,
+  "classification": "pre-existing outside S02 changed paths; expanded gate remains failed",
+  "diagnostics": [
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "\"strip\" is not a known attribute of \"None\"",
+      "rule": "reportOptionalMemberAccess",
+      "range": {
+        "end": {
+          "character": 49,
+          "line": 265
+        },
+        "start": {
+          "character": 44,
+          "line": 265
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Argument type is partially unknown\n\u00a0\u00a0Argument corresponds to parameter \"iterable\" in function \"__init__\"\n\u00a0\u00a0Argument type is \"tuple[Unknown, ...]\"",
+      "rule": "reportUnknownArgumentType",
+      "range": {
+        "end": {
+          "character": 61,
+          "line": 62
+        },
+        "start": {
+          "character": 56,
+          "line": 62
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Argument type is partially unknown\n\u00a0\u00a0Argument corresponds to parameter \"iterable\" in function \"__new__\"\n\u00a0\u00a0Argument type is \"list[Unknown]\"",
+      "rule": "reportUnknownArgumentType",
+      "range": {
+        "end": {
+          "character": 23,
+          "line": 61
+        },
+        "start": {
+          "character": 18,
+          "line": 61
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Argument type is partially unknown\n\u00a0\u00a0Argument corresponds to parameter \"obj\" in function \"len\"\n\u00a0\u00a0Argument type is \"set[Unknown]\"",
+      "rule": "reportUnknownArgumentType",
+      "range": {
+        "end": {
+          "character": 62,
+          "line": 62
+        },
+        "start": {
+          "character": 52,
+          "line": 62
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Argument type is partially unknown\n\u00a0\u00a0Argument corresponds to parameter \"obj\" in function \"len\"\n\u00a0\u00a0Argument type is \"tuple[Unknown, ...]\"",
+      "rule": "reportUnknownArgumentType",
+      "range": {
+        "end": {
+          "character": 43,
+          "line": 62
+        },
+        "start": {
+          "character": 38,
+          "line": 62
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Argument type is partially unknown\n\u00a0\u00a0Argument corresponds to parameter \"value\" in function \"_non_empty_string\"\n\u00a0\u00a0Argument type is \"Unknown | None\"",
+      "rule": "reportUnknownArgumentType",
+      "range": {
+        "end": {
+          "character": 60,
+          "line": 117
+        },
+        "start": {
+          "character": 30,
+          "line": 117
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Argument type is partially unknown\n\u00a0\u00a0Argument corresponds to parameter \"value\" in function \"_non_empty_string\"\n\u00a0\u00a0Argument type is \"Unknown | None\"",
+      "rule": "reportUnknownArgumentType",
+      "range": {
+        "end": {
+          "character": 61,
+          "line": 113
+        },
+        "start": {
+          "character": 30,
+          "line": 113
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Argument type is partially unknown\n\u00a0\u00a0Argument corresponds to parameter \"value\" in function \"_proof_paths\"\n\u00a0\u00a0Argument type is \"Unknown | None\"",
+      "rule": "reportUnknownArgumentType",
+      "range": {
+        "end": {
+          "character": 56,
+          "line": 110
+        },
+        "start": {
+          "character": 34,
+          "line": 110
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Cannot access attribute \"strip\" for class \"bool\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 49,
+          "line": 265
+        },
+        "start": {
+          "character": 44,
+          "line": 265
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Cannot access attribute \"strip\" for class \"dict[str, JsonValue]\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 49,
+          "line": 265
+        },
+        "start": {
+          "character": 44,
+          "line": 265
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Cannot access attribute \"strip\" for class \"float\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 49,
+          "line": 265
+        },
+        "start": {
+          "character": 44,
+          "line": 265
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Cannot access attribute \"strip\" for class \"int\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 49,
+          "line": 265
+        },
+        "start": {
+          "character": 44,
+          "line": 265
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Cannot access attribute \"strip\" for class \"list[JsonValue]\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 49,
+          "line": 265
+        },
+        "start": {
+          "character": 44,
+          "line": 265
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Return type, \"tuple[Unknown, ...] | None\", is partially unknown",
+      "rule": "reportUnknownVariableType",
+      "range": {
+        "end": {
+          "character": 73,
+          "line": 62
+        },
+        "start": {
+          "character": 11,
+          "line": 62
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Type of \"get\" is partially unknown\n\u00a0\u00a0Type of \"get\" is \"Overload[(key: Unknown, default: None = None, /) -> (Unknown | None), (key: Unknown, default: Unknown, /) -> Unknown, (key: Unknown, default: _T@get, /) -> (Unknown | _T@get)]\"",
+      "rule": "reportUnknownMemberType",
+      "range": {
+        "end": {
+          "character": 40,
+          "line": 113
+        },
+        "start": {
+          "character": 30,
+          "line": 113
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Type of \"get\" is partially unknown\n\u00a0\u00a0Type of \"get\" is \"Overload[(key: Unknown, default: None = None, /) -> (Unknown | None), (key: Unknown, default: Unknown, /) -> Unknown, (key: Unknown, default: _T@get, /) -> (Unknown | _T@get)]\"",
+      "rule": "reportUnknownMemberType",
+      "range": {
+        "end": {
+          "character": 40,
+          "line": 117
+        },
+        "start": {
+          "character": 30,
+          "line": 117
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Type of \"get\" is partially unknown\n\u00a0\u00a0Type of \"get\" is \"Overload[(key: Unknown, default: None = None, /) -> (Unknown | None), (key: Unknown, default: Unknown, /) -> Unknown, (key: Unknown, default: _T@get, /) -> (Unknown | _T@get)]\"",
+      "rule": "reportUnknownMemberType",
+      "range": {
+        "end": {
+          "character": 44,
+          "line": 110
+        },
+        "start": {
+          "character": 34,
+          "line": 110
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Type of \"item\" is unknown",
+      "rule": "reportUnknownVariableType",
+      "range": {
+        "end": {
+          "character": 62,
+          "line": 59
+        },
+        "start": {
+          "character": 58,
+          "line": 59
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Type of \"items\" is partially unknown\n\u00a0\u00a0Type of \"items\" is \"tuple[Unknown, ...]\"",
+      "rule": "reportUnknownVariableType",
+      "range": {
+        "end": {
+          "character": 9,
+          "line": 61
+        },
+        "start": {
+          "character": 4,
+          "line": 61
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Type of \"record\" is partially unknown\n\u00a0\u00a0Type of \"record\" is \"dict[Unknown, Unknown] | None\"",
+      "rule": "reportUnknownVariableType",
+      "range": {
+        "end": {
+          "character": 10,
+          "line": 109
+        },
+        "start": {
+          "character": 4,
+          "line": 109
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_delivery_tickets.py",
+      "message": "Type of \"strip\" is partially unknown\n\u00a0\u00a0Type of \"strip\" is \"Unknown | ((chars: str | None = None, /) -> str)\"",
+      "rule": "reportUnknownMemberType",
+      "range": {
+        "end": {
+          "character": 49,
+          "line": 265
+        },
+        "start": {
+          "character": 15,
+          "line": 265
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "\"strip\" is not a known attribute of \"None\"",
+      "rule": "reportOptionalMemberAccess",
+      "range": {
+        "end": {
+          "character": 92,
+          "line": 1079
+        },
+        "start": {
+          "character": 87,
+          "line": 1079
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Argument of type \"object\" cannot be assigned to parameter \"iterable\" of type \"Iterable[_T@set]\" in function \"__init__\"\n\u00a0\u00a0\"object\" is incompatible with protocol \"Iterable[_T@set]\"\n\u00a0\u00a0\u00a0\u00a0\"__iter__\" is not present",
+      "rule": "reportArgumentType",
+      "range": {
+        "end": {
+          "character": 80,
+          "line": 1005
+        },
+        "start": {
+          "character": 44,
+          "line": 1005
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Argument type is partially unknown\n\u00a0\u00a0Argument corresponds to parameter \"iterable\" in function \"sorted\"\n\u00a0\u00a0Argument type is \"set[Unknown]\"",
+      "rule": "reportUnknownArgumentType",
+      "range": {
+        "end": {
+          "character": 118,
+          "line": 1010
+        },
+        "start": {
+          "character": 97,
+          "line": 1010
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Cannot access attribute \"strip\" for class \"bool\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 92,
+          "line": 1079
+        },
+        "start": {
+          "character": 87,
+          "line": 1079
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Cannot access attribute \"strip\" for class \"dict[str, JsonValue]\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 92,
+          "line": 1079
+        },
+        "start": {
+          "character": 87,
+          "line": 1079
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Cannot access attribute \"strip\" for class \"float\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 92,
+          "line": 1079
+        },
+        "start": {
+          "character": 87,
+          "line": 1079
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Cannot access attribute \"strip\" for class \"int\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 92,
+          "line": 1079
+        },
+        "start": {
+          "character": 87,
+          "line": 1079
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Cannot access attribute \"strip\" for class \"list[JsonValue]\"\n\u00a0\u00a0Attribute \"strip\" is unknown",
+      "rule": "reportAttributeAccessIssue",
+      "range": {
+        "end": {
+          "character": 92,
+          "line": 1079
+        },
+        "start": {
+          "character": 87,
+          "line": 1079
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Type of \"allowed_keys\" is partially unknown\n\u00a0\u00a0Type of \"allowed_keys\" is \"set[Unknown]\"",
+      "rule": "reportUnknownVariableType",
+      "range": {
+        "end": {
+          "character": 32,
+          "line": 480
+        },
+        "start": {
+          "character": 20,
+          "line": 480
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Type of \"expected_requirements\" is partially unknown\n\u00a0\u00a0Type of \"expected_requirements\" is \"set[Unknown]\"",
+      "rule": "reportUnknownVariableType",
+      "range": {
+        "end": {
+          "character": 37,
+          "line": 1005
+        },
+        "start": {
+          "character": 16,
+          "line": 1005
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Type of \"states\" is partially unknown\n\u00a0\u00a0Type of \"states\" is \"set[Unknown]\"",
+      "rule": "reportUnknownVariableType",
+      "range": {
+        "end": {
+          "character": 26,
+          "line": 433
+        },
+        "start": {
+          "character": 20,
+          "line": 433
+        }
+      }
+    },
+    {
+      "path": "tools/custometry_quality/validate_route_registry.py",
+      "message": "Type of \"strip\" is partially unknown\n\u00a0\u00a0Type of \"strip\" is \"Unknown | ((chars: str | None = None, /) -> str)\"",
+      "rule": "reportUnknownMemberType",
+      "range": {
+        "end": {
+          "character": 92,
+          "line": 1079
+        },
+        "start": {
+          "character": 61,
+          "line": 1079
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "name": "${COMPOSE_PROJECT_NAME:?Set an isolated candidate project}",
+  "services": {
+    "control-db": {
+      "restart": "unless-stopped",
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "image": "@POSTGRES_IMAGE@",
+      "environment": {
+        "POSTGRES_DB": "custometry",
+        "POSTGRES_USER": "custometry",
+        "POSTGRES_PASSWORD_FILE": "/run/secrets/control_db_password"
+      },
+      "secrets": [
+        "control_db_password"
+      ],
+      "volumes": [
+        "control_db_data:/var/lib/postgresql/data"
+      ],
+      "networks": [
+        "control"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -h 127.0.0.1 -U custometry -d custometry"
+        ],
+        "interval": "3s",
+        "timeout": "3s",
+        "retries": 20,
+        "start_period": "8s"
+      },
+      "mem_limit": "1g",
+      "cpus": "1.5",
+      "pull_policy": "always"
+    },
+    "demo-source-db": {
+      "restart": "unless-stopped",
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "profiles": [
+        "demo"
+      ],
+      "image": "@POSTGRES_IMAGE@",
+      "environment": {
+        "POSTGRES_DB": "northwind_retail",
+        "POSTGRES_USER": "demo_source_admin",
+        "POSTGRES_PASSWORD_FILE": "/run/secrets/demo_source_admin_password",
+        "CUSTOMETRY_DATA_PROFILE": "demo",
+        "CUSTOMETRY_ALLOW_BENCHMARK": "0"
+      },
+      "secrets": [
+        "demo_source_admin_password",
+        "demo_source_reader_password"
+      ],
+      "volumes": [
+        "demo_source_data:/var/lib/postgresql/data",
+        "./demo/init:/docker-entrypoint-initdb.d:ro"
+      ],
+      "networks": [
+        "demo_source"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -h 127.0.0.1 -U demo_source_admin -d northwind_retail"
+        ],
+        "interval": "3s",
+        "timeout": "3s",
+        "retries": 20,
+        "start_period": "8s"
+      },
+      "mem_limit": "1g",
+      "cpus": "1.5",
+      "pull_policy": "always"
+    },
+    "migrate": {
+      "profiles": [
+        "migration"
+      ],
+      "image": "@API_IMAGE@",
+      "command": [
+        "alembic",
+        "-c",
+        "/app/migrations/alembic.ini",
+        "upgrade",
+        "head"
+      ],
+      "environment": {
+        "CUSTOMETRY_VERSION": "@APPLICATION_VERSION@",
+        "CUSTOMETRY_ENVIRONMENT": "development",
+        "CUSTOMETRY_DATABASE_HOST": "control-db",
+        "CUSTOMETRY_DATABASE_PORT": "5432",
+        "CUSTOMETRY_DATABASE_NAME": "custometry",
+        "CUSTOMETRY_DATABASE_USER": "custometry",
+        "CUSTOMETRY_DATABASE_PASSWORD_FILE": "/run/secrets/control_db_password"
+      },
+      "secrets": [
+        "control_db_password"
+      ],
+      "networks": [
+        "control"
+      ],
+      "depends_on": {
+        "control-db": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "no",
+      "read_only": true,
+      "tmpfs": [
+        "/tmp:size=32m,mode=1777"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "mem_limit": "256m",
+      "cpus": "0.5",
+      "pull_policy": "always"
+    },
+    "api": {
+      "restart": "unless-stopped",
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "image": "@API_IMAGE@",
+      "environment": {
+        "CUSTOMETRY_VERSION": "@APPLICATION_VERSION@",
+        "CUSTOMETRY_ENVIRONMENT": "development",
+        "CUSTOMETRY_DATABASE_HOST": "control-db",
+        "CUSTOMETRY_DATABASE_PORT": "5432",
+        "CUSTOMETRY_DATABASE_NAME": "custometry",
+        "CUSTOMETRY_DATABASE_USER": "custometry",
+        "CUSTOMETRY_DATABASE_PASSWORD_FILE": "/run/secrets/control_db_password"
+      },
+      "secrets": [
+        "control_db_password"
+      ],
+      "networks": [
+        "web_to_api",
+        "control"
+      ],
+      "depends_on": {
+        "control-db": {
+          "condition": "service_healthy"
+        }
+      },
+      "read_only": true,
+      "tmpfs": [
+        "/tmp:size=64m,mode=1777"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=2)"
+        ],
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 12,
+        "start_period": "5s"
+      },
+      "mem_limit": "512m",
+      "cpus": "1.0",
+      "pull_policy": "always"
+    },
+    "web": {
+      "restart": "unless-stopped",
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "image": "@WEB_IMAGE@",
+      "depends_on": {
+        "api": {
+          "condition": "service_healthy"
+        }
+      },
+      "networks": [
+        "edge_to_web",
+        "web_to_api"
+      ],
+      "read_only": true,
+      "tmpfs": [
+        "/tmp:size=64m,mode=1777"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--spider",
+          "http://127.0.0.1:8080/health/live"
+        ],
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 12,
+        "start_period": "3s"
+      },
+      "mem_limit": "128m",
+      "cpus": "0.5",
+      "pull_policy": "always"
+    },
+    "edge": {
+      "restart": "unless-stopped",
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "image": "@WEB_IMAGE@",
+      "command": [
+        "nginx",
+        "-c",
+        "/etc/nginx/edge.conf",
+        "-g",
+        "daemon off;"
+      ],
+      "depends_on": {
+        "web": {
+          "condition": "service_healthy"
+        }
+      },
+      "networks": [
+        "ingress_edge",
+        "edge_to_web"
+      ],
+      "ports": [
+        {
+          "name": "http",
+          "target": 8080,
+          "host_ip": "${CUSTOMETRY_BIND_HOST:-127.0.0.1}",
+          "published": "${CUSTOMETRY_HTTP_PORT:-0}",
+          "protocol": "tcp"
+        }
+      ],
+      "read_only": true,
+      "tmpfs": [
+        "/tmp:size=32m,mode=1777"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--spider",
+          "http://127.0.0.1:8080/health/live"
+        ],
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 12,
+        "start_period": "3s"
+      },
+      "mem_limit": "64m",
+      "cpus": "0.25",
+      "pull_policy": "always"
+    }
+  },
+  "volumes": {
+    "control_db_data": {},
+    "demo_source_data": {}
+  },
+  "secrets": {
+    "control_db_password": {
+      "file": "${CUSTOMETRY_SECRETS_DIR:?Set an external candidate secret directory}/control_db_password"
+    },
+    "demo_source_admin_password": {
+      "file": "${CUSTOMETRY_SECRETS_DIR:?Set an external candidate secret directory}/demo_source_admin_password"
+    },
+    "demo_source_reader_password": {
+      "file": "${CUSTOMETRY_SECRETS_DIR:?Set an external candidate secret directory}/demo_source_reader_password"
+    }
+  },
+  "networks": {
+    "ingress_edge": {
+      "internal": false
+    },
+    "edge_to_web": {
+      "internal": true
+    },
+    "web_to_api": {
+      "internal": true
+    },
+    "control": {
+      "internal": true
+    },
+    "demo_source": {
+      "internal": true
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 12
+doc_version: 13
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -633,9 +633,20 @@ into a new owned CI directory; it does not provision credentials.
 
 ### Provider transport versus signed payload
 
-The artifact name is `custometry-delivery-0.1.0-ms001.<run_id>`, exactly
-`custometry-delivery-<delivery_version>` from the v1 retrieval contract. The GitHub
-artifact contains one opaque file named `delivery.zip`. There are three separate
+The accepted S01 artifact name remains
+`custometry-delivery-<delivery-version>-<run-id>-<attempt>`, as specified in section 11.
+The disabled S03 preparation currently generates
+`custometry-delivery-0.1.0-ms001.<run_id>` in both assembly and reconciliation;
+that implementation differs from the accepted name. The schema only constrains the
+prefix and character set; passing it does not establish naming-contract compliance.
+Before enabling supply jobs, align assembly, reconciliation, tests and the descriptor
+with the accepted name, preserving rejection of different bytes for an existing
+delivery version across attempts. The frozen S03 report's attribution of the shorter
+name to S01 is corrected by the
+[addendum](../../.codex/delivery/evidence/MS-001/MS-001-S03/decision-refinement-2026-09-08.md).
+No existing artifact is renamed and no new naming contract is accepted here.
+
+The GitHub artifact contains one opaque file named `delivery.zip`. There are three separate
 identities: (1) provider archive SHA-256 from the authenticated REST artifact record,
 (2) exact inner `delivery.zip` SHA-256 in the authoritative producer descriptor,
 and (3) exact canonical manifest SHA-256 authenticated by Cosign. The manifest retains

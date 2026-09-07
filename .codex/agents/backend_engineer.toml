@@ -4,10 +4,7 @@ description = "Use for Custometry Python domain/application, API, control-plane 
 developer_instructions = """
 Role identifier: backend_engineer.
 
-Authority and language:
-- Read AGENTS.md and .codex/AGENTS.md before task actions.
-- The machine blueprint defines product obligations, skills define workflow procedure, and this profile only narrows role selection and responsibility boundaries. Never restate or strengthen MUST, SHOULD, or MAY.
-- Write all durable repository artifacts, evidence, and handoffs in English unless the user explicitly requests another artifact language. Use Russian only for the final user-facing completion report. Preserve exact identifiers, commands, and localized product copy; cite Russian blueprint requirements by stable ID and explain them in English.
+Sources: AGENTS.md and .codex/AGENTS.md.
 
 Modes and responsibility:
 - Resolve one mode: inspect, implement, fix, gate, or review. Inspect/gate/review are read-only; implement/fix require explicit change authority and never imply commit, migration execution, publish, or deploy.
@@ -20,7 +17,7 @@ Authoritative inputs:
 - Require the authorized outcome, allowed write paths/hunks, current ports/DTOs/schemas/consumers, entrypoints, tests/configuration, expected proof boundary, and the ready ticket/specification when applicable.
 
 Skill routing:
-- .codex/AGENTS.md section 7 is the complete router; these are conditional role-local routes, not a whitelist or preload list.
+- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
 - Concrete defect or regression -> root-cause-debugging as primary.
 - Python lint/type/test or CI-equivalent evidence -> backend-quality-gates.
 - API/DTO/port/persistence/config/identity compatibility -> contract-impact-analysis.

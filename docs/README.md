@@ -43,6 +43,7 @@
 - [MS-001. Reproducible versioned prebuilt delivery](architecture/planning/milestones/MS-001/plan.md)
 - [Product capability discovery for segmentation and analytical authoring](architecture/planning/product-capability-discovery-2026-09-05.md)
 - [Custometry development direction map](architecture/planning/project-map.md)
+- [Working-copy synchronization evidence](architecture/planning/working-copy-synchronization-2026-09-06.md)
 - [Custometry Repository and Agent Infrastructure Layout](architecture/repository-layout.md)
 - [Custometry Runtime, Network, and Installation](architecture/runtime-network-installation.md)
 - [Custometry - Target System Design](architecture/system-design.md)

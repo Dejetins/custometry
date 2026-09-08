@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Historical Foundation engine statistic. S03/S04 unpacked caps additionally
+# require delivery_image_size's OCI descriptor/DiffID-bound observation.
+echo 'Legacy Docker engine Size check; this does not prove the S03/S04 unpacked layer cap.' >&2
+
 api_image="${CUSTOMETRY_API_IMAGE:-custometry-api:dev}"
 web_image="${CUSTOMETRY_WEB_IMAGE:-custometry-web:dev}"
 api_limit_bytes="${CUSTOMETRY_API_IMAGE_MAX_BYTES:-367001600}"

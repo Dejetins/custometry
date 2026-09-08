@@ -18,7 +18,7 @@ from tools.custometry_quality import delivery_set as delivery
 from .test_delivery_companions import fixture
 
 
-@pytest.mark.parametrize("failure", [None, "signature", "provider", "download", "archive", "second_part", "existing"])
+@pytest.mark.parametrize("failure", [None, "signature", "provider", "download", "archive", "second_part", "existing", "obligations"])
 def test_whole_set_is_private_atomic_and_signature_precedes_provider(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, failure: str | None,
 ) -> None:
@@ -82,6 +82,12 @@ def test_whole_set_is_private_atomic_and_signature_precedes_provider(
 
     monkeypatch.setattr(delivery, "verify_root", trusted)
     monkeypatch.setattr(delivery, "GitHub", Provider)
+    def verified_obligations(*args: Any) -> None:
+        events.append("obligations")
+        if failure == "obligations":
+            raise ValueError("missing source obligation")
+
+    monkeypatch.setattr(delivery.obligations, "verify", verified_obligations)
     if failure is None:
         delivery.verify_set(source, signature, signature, record["source"]["commit"], output)
         assert (output / "main/data").read_bytes() == (source / "data").read_bytes()
@@ -89,6 +95,7 @@ def test_whole_set_is_private_atomic_and_signature_precedes_provider(
         for path in [output, *output.rglob("*")]:
             assert stat.S_IMODE(path.stat().st_mode) == (0o700 if path.is_dir() else 0o600)
         assert events[:3] == ["signature", "signature", "credentials"]
+        assert events[-1] == "obligations"
     else:
         with pytest.raises((ValueError, OSError)):
             delivery.verify_set(source, signature, signature, record["source"]["commit"], output)

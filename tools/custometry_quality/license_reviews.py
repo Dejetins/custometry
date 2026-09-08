@@ -9,7 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
-from typing import Any, cast
+from typing import Any, Mapping, cast
 
 
 # Supported review profiles, not an allowlist. Every component still needs its
@@ -19,9 +19,10 @@ from typing import Any, cast
 REVIEW_OBLIGATIONS: dict[str, frozenset[str]] = {
     identifier: frozenset({"notice"}) for identifier in (
         "PSF-2.0", "Python-2.0", "Python-2.0.1", "MIT-0", "0BSD", "X11", "Zlib", "curl",
-        "BSD-4-Clause", "BSD-4-Clause-UC", "ICU", "Unicode-3.0", "OLDAP-2.8",
+        "BSD-4-Clause", "BSD-4-Clause-UC", "ICU", "Unicode-3.0", "OLDAP-2.8", "BSL-1.0", "CC0-1.0",
     )
 }
+REVIEW_OBLIGATIONS["Unicode-DFS-2015"] = frozenset({"notice", "modification-record"})
 REVIEW_OBLIGATIONS.update({
     identifier: frozenset({"notice", "corresponding-source"}) for identifier in (
         "GPL-2.0-only", "GPL-2.0-or-later", "GPL-3.0-only", "GPL-3.0-or-later", "MPL-2.0",
@@ -47,7 +48,8 @@ def declaration_digest(component: dict[str, Any]) -> str:
 
 
 def validate_reviews(
-    path: Path, sbom: Path, policy: Path, subjects: set[str], components: list[dict[str, Any]]
+    path: Path, sbom: Path, policy: Path, subjects: set[str], components: list[dict[str, Any]],
+    *, verified_evidence: Mapping[str, Path] | None = None,
 ) -> dict[tuple[str, str, str], set[str]]:
     """Missing/mismatched/duplicate/unfulfilled evidence always fails closed."""
     if path.is_symlink() or path.stat().st_size > 1048576:
@@ -63,7 +65,8 @@ def validate_reviews(
     record = json.loads(path.read_text(), object_pairs_hook=pairs)
     if set(record) != {"schema_version", "policy_sha256", "sbom_sha256", "subjects", "components"}:
         raise ValueError("invalid component review fields")
-    if (record["schema_version"] != 1 or not subjects
+    version = record["schema_version"]
+    if (type(version) is not int or version not in {1, 2} or (version == 2 and verified_evidence is None) or not subjects
             or set(record["subjects"]) != subjects
             or record["policy_sha256"] != _digest(policy)
             or record["sbom_sha256"] != _digest(sbom)):
@@ -77,11 +80,18 @@ def validate_reviews(
         name = PurePosixPath(item["path"])
         if name.is_absolute() or ".." in name.parts or not name.parts:
             raise ValueError("unsafe review evidence path")
-        target = path.parent
-        for part in name.parts:
-            target /= part
+        if version == 2:
+            if verified_evidence is None or item["path"] not in verified_evidence:
+                raise ValueError("review evidence not in verified delivery set")
+            target = verified_evidence[item["path"]]
             if target.is_symlink():
                 raise ValueError("linked review evidence forbidden")
+        else:
+            target = path.parent
+            for part in name.parts:
+                target /= part
+                if target.is_symlink():
+                    raise ValueError("linked review evidence forbidden")
         if (not target.is_file() or target.stat().st_size != item["size_bytes"]
                 or item["size_bytes"] <= 0 or _digest(target) != item["sha256"]):
             raise ValueError("review evidence missing or altered")

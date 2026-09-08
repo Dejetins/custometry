@@ -131,6 +131,27 @@ def verify_zip(archive: Path, part: dict[str, Any], output: Path) -> None:
             entries = container.infolist()
             bundle.require(len(entries) == len(expected) and set(container.namelist()) == set(expected), "DELIVERY_COMPANION_FILES")
             bundle.require(not container.comment and len({i.filename.casefold() for i in entries}) == len(entries))
+            raw.seek(-22, 2)
+            eocd_position = raw.tell()
+            end_signature, disk, central_disk, disk_count, count, central_size, central_offset, comment = struct.unpack("<4s4H2IH", raw.read(22))
+            bundle.require(end_signature == b"PK\x05\x06" and disk == central_disk == comment == 0)
+            central_end = eocd_position
+            raw.seek(max(0, eocd_position - 20))
+            locator = raw.read(20)
+            if locator[:4] == b"PK\x06\x07":
+                _, locator_disk, zip64_offset, disks = struct.unpack("<4sIQI", locator)
+                bundle.require(locator_disk == 0 and disks == 1 and zip64_offset + 56 == eocd_position - 20)
+                raw.seek(zip64_offset)
+                end64 = raw.read(56)
+                bundle.require(len(end64) == 56)
+                sig64, record_size, _made, _needed, disk64, central_disk64, disk_count64, count64, size64, offset64 = struct.unpack("<4sQ2H2I4Q", end64)
+                bundle.require(sig64 == b"PK\x06\x06" and record_size == 44 and disk64 == central_disk64 == 0)
+                bundle.require(disk_count in {0xFFFF, disk_count64} and count in {0xFFFF, count64}
+                               and central_size in {0xFFFFFFFF, size64} and central_offset in {0xFFFFFFFF, offset64})
+                disk_count, count, central_size, central_offset = disk_count64, count64, size64, offset64
+                central_end = zip64_offset
+            bundle.require(disk_count == count == len(entries) and central_offset == container.start_dir
+                           and central_offset + central_size == central_end)
             intervals: list[tuple[int, int]] = []
             total = 0
             for info in entries:

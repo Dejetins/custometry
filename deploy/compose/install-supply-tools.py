@@ -15,9 +15,11 @@ from pathlib import Path
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--reader-major", type=int, choices=(1, 2), default=1)
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
-    policy = json.loads((root / "delivery-verification-policy.json").read_bytes())
+    policy_name = "delivery-verification-policy.v2.json" if args.reader_major == 2 else "delivery-verification-policy.json"
+    policy = json.loads((root / policy_name).read_bytes())
     settings = json.loads((root / "delivery-supply-tools.json").read_bytes())
     if platform.system() != "Linux" or platform.machine() not in {"x86_64", "aarch64"}:
         raise SystemExit("DELIVERY_NATIVE_REQUIRED")
@@ -27,6 +29,8 @@ def main() -> None:
         policy["tools"][4 if arm else 3],
         policy["tools"][6 if arm else 5],
     ]
+    if args.reader_major == 2:
+        pins.append(policy["tools"][8 if arm else 7])
     args.output.mkdir(mode=0o700, parents=True, exist_ok=False)
     for pin in [*pins, {"name": "trusted_root.json", **settings["trusted_root"]}]:
         with urllib.request.urlopen(pin["url"], timeout=300) as response:

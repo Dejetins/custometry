@@ -106,6 +106,18 @@
       "version": "v1.51.1",
       "url": "https://github.com/anchore/syft/releases/download/v1.51.1/syft_1.51.1_linux_arm64.tar.gz",
       "sha256": "a7fd2b784e6664acd44719270574f6cd8c6864fc2b1700bf9099bd1cccda7d7f"
+    },
+    {
+      "name": "grype",
+      "version": "v0.118.0",
+      "url": "https://github.com/anchore/grype/releases/download/v0.118.0/grype_0.118.0_linux_amd64.tar.gz",
+      "sha256": "1d444c5e7360471815f7158f71935fcecc68a3c417d85c7344f770854300bba2"
+    },
+    {
+      "name": "grype",
+      "version": "v0.118.0",
+      "url": "https://github.com/anchore/grype/releases/download/v0.118.0/grype_0.118.0_linux_arm64.tar.gz",
+      "sha256": "32aceeb8ee837244775fcb522372c8b3a47914986385f3148f4ee2c930482a84"
     }
   ],
   "actions": [

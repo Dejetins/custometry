@@ -25,7 +25,7 @@ from typing import Any, cast
 from urllib.parse import quote
 
 from . import delivery_bundle as bundle
-from . import gate_licenses, gate_sbom
+from . import delivery_image_size, delivery_native, gate_licenses, gate_sbom
 
 ROOT = bundle.ROOT
 POLICY = json.loads((ROOT / "deploy/compose/delivery-verification-policy.json").read_bytes())
@@ -524,6 +524,10 @@ def scan(image: str, subject: str, directory: Path) -> dict[str, Any]:
     save(directory / "sbom-original.json", bound)
     normalized = normalize_python_licenses(bound, raw, image, directory)
     save(directory / "license-metadata.json", {"subject": subject, "normalizations": normalized})
+    supplement: dict[str, Any] | None = None
+    if "custometry-api@" in image:
+        supplement = arrow_native_sbom(image, subject, directory)
+        bound["components"].extend(supplement["components"])
     save(directory / "sbom.json", bound)
     sbom_result = gate_sbom.check(
         directory, Path("sbom.json"), expected_subjects=[subject], require_subjects=True
@@ -566,18 +570,94 @@ def scan(image: str, subject: str, directory: Path) -> dict[str, Any]:
         load(directory / "trivy.json"), database, subject, datetime.now(timezone.utc)
     )
     notices_ok = web_notices(image, subject, directory) if "custometry-web@" in image else True
+    if "custometry-web@" in image:
+        supplement = load(directory / "web-notices-sbom.json")
+    supplemental = scan_supplement(supplement, subject, directory) if supplement is not None else None
     results = {
         "web_notice_coverage": notices_ok,
         "sbom": sbom_result.to_dict(),
         "licenses": licenses.to_dict(),
         "vulnerabilities": vulnerabilities,
+        "supplemental_vulnerabilities": supplemental,
     }
     save(directory / "gates.json", results)
     require(
-        sbom_result.ok and licenses.ok and vulnerabilities["status"] == "pass" and notices_ok,
+        sbom_result.ok and licenses.ok and vulnerabilities["status"] == "pass" and notices_ok
+        and (supplemental is None or supplemental["status"] == "pass"),
         "DELIVERY_SUPPLY_GATES_FAILED",
     )
     return results
+
+
+def arrow_native_sbom(image: str, subject: str, directory: Path) -> dict[str, Any]:
+    location = "app/notices/pyarrow-native-build.json"
+    inventory = load(directory / "selected-filesystem.json")
+    expected = {row["path"]: row for row in inventory}[location]
+    require(0 < expected["size_bytes"] <= 1048576, "DELIVERY_LIMIT")
+    container = run("docker", "create", "--pull=never", image).decode().strip()
+    require(re.fullmatch(r"[a-f0-9]{64}", container) is not None)
+    target = directory / "native-build.json"
+    compilation_target = directory / "compilation-inputs.json"
+    require(not target.exists())
+    try:
+        run("docker", "cp", container + ":/" + location, str(target))
+        require(target.stat().st_size == expected["size_bytes"] and sha(target) == expected["sha256"],
+                "DELIVERY_SUBJECT_MISMATCH")
+        compilation_location = "app/notices/pyarrow-compilation-inputs.json"
+        expected_compilation = {row["path"]: row for row in inventory}[compilation_location]
+        require(not compilation_target.exists() and 0 < expected_compilation["size_bytes"] <= 16777216, "DELIVERY_LIMIT")
+        run("docker", "cp", container + ":/" + compilation_location, str(compilation_target))
+        require(compilation_target.stat().st_size == expected_compilation["size_bytes"]
+                and sha(compilation_target) == expected_compilation["sha256"], "DELIVERY_SUBJECT_MISMATCH")
+        for row in inventory:
+            prefix = "app/notices/pyarrow-native/"
+            if not row["path"].startswith(prefix):
+                continue
+            if row["type"] == "5":
+                continue
+            require(row["type"] == "0", "DELIVERY_NATIVE_NOTICE_MISSING")
+            relative = row["path"].removeprefix(prefix)
+            bundle.safe_path(relative)
+            require(0 < row["size_bytes"] <= 1048576, "DELIVERY_LIMIT")
+            notice = directory / "native-notices" / relative
+            require(not notice.exists())
+            notice.parent.mkdir(parents=True, exist_ok=True)
+            run("docker", "cp", container + ":/" + row["path"], str(notice))
+            require(notice.stat().st_size == row["size_bytes"] and sha(notice) == row["sha256"], "DELIVERY_SUBJECT_MISMATCH")
+    finally:
+        run("docker", "rm", "-v", container)
+    document = native_document(directory, subject)
+    save(directory / "native-sbom.json", document)
+    return document
+
+
+def native_document(directory: Path, subject: str) -> dict[str, Any]:
+    pins = ROOT / "deploy/compose/arrow-source-build.json"
+    declarations = ROOT / "deploy/compose/arrow-native-licenses.json"
+    return delivery_native.arrow_sbom(load(directory / "native-build.json"), load(pins), sha(pins),
+                                          load(directory / "selected-filesystem.json"), subject,
+                                          load(declarations) if declarations.is_file() else None,
+                                          load(directory / "compilation-inputs.json"))
+
+
+def scan_supplement(document: dict[str, Any], subject: str, directory: Path) -> dict[str, Any]:
+    source = (directory / "supplemental-sbom.json").resolve()
+    save(source, document)
+    started = datetime.now(timezone.utc)
+    report = json.loads(run("grype", "--config", str(ROOT / "deploy/compose/grype.yaml"), "sbom:" + str(source), "-o", "json"))
+    completed = datetime.now(timezone.utc)
+    # Persist the actual findings before any classification can fail closed.
+    save(directory / "grype.json", report)
+    save(directory / "grype-binding.json", {
+        "subject": subject, "input_path": str(source), "sbom_sha256": sha(source), "report_sha256": sha(directory / "grype.json"),
+        "started_at": started.isoformat(), "completed_at": completed.isoformat(),
+    })
+    result = delivery_native.grype_result(report, subject, str(source), completed)
+    if (directory / "native-sbom.json").is_file():
+        resolutions = delivery_native.folly_applicability(report, document,
+            load(directory / "compilation-inputs.json"), load(ROOT / "deploy/compose/arrow-source-build.json"), subject)
+        result = delivery_native.apply_resolutions(result, report, resolutions)
+    return result
 
 
 def native(args: argparse.Namespace) -> None:
@@ -623,9 +703,18 @@ def native(args: argparse.Namespace) -> None:
         inspected = json.loads(run("docker", "image", "inspect", image))[0]
         check_local_subject(inspected, platform_record, image)
         platform_record.pop("config_digest")
-        platform_record["unpacked_bytes"] = inspected["Size"]
         directory = output / role
         directory.mkdir()
+        saved_image = directory / "selected-image.tar"
+        try:
+            run("docker", "image", "save", "--output", str(saved_image), image)
+            measurement = delivery_image_size.observe(saved_image, platform_record["digest"], architecture)
+        finally:
+            saved_image.unlink(missing_ok=True)
+        measurement["engine_reported_size_bytes"] = inspected["Size"]
+        save(directory / "image-size.json", measurement)
+        platform_record["unpacked_bytes"] = measurement["uncompressed_layer_tar_bytes"]
+        validate_image_size(measurement, platform_record, role)
         selected = export_inventory(image, directory, "selected")
         if role != "postgres":
             require(inspected["Config"]["Labels"]["org.opencontainers.image.version"] == version)
@@ -730,6 +819,24 @@ def verify(record_path: Path, signature: Path, trust_root: Path, expected_commit
     bundle.check_payload(record, bundle.candidate_payload(record, record_path.parent))
 
 
+def validate_image_size(measurement: dict[str, Any], platform_record: dict[str, Any], role: str) -> None:
+    """Require the native observation and preserve the accepted byte caps."""
+    require(measurement.get("method") == "oci-verified-uncompressed-layer-tar-bytes/v1"
+            and measurement.get("subject") == platform_record["digest"]
+            and measurement.get("architecture") == platform_record["architecture"]
+            and measurement.get("os") == "linux", "DELIVERY_SIZE_EVIDENCE_INVALID")
+    layers = measurement["layers"]
+    require(bool(layers) and all(type(row["uncompressed_tar_bytes"]) is int
+                                and row["uncompressed_tar_bytes"] > 0 for row in layers))
+    size = sum(row["uncompressed_tar_bytes"] for row in layers)
+    require(size == measurement["uncompressed_layer_tar_bytes"] == platform_record["unpacked_bytes"],
+            "DELIVERY_SIZE_EVIDENCE_INVALID")
+    require(sum(row["descriptor_bytes"] for row in layers) == measurement["compressed_layer_bytes"],
+            "DELIVERY_SIZE_EVIDENCE_INVALID")
+    if role in {"api", "web"}:
+        require(size <= {"api": 367001600, "web": 104857600}[role], "DELIVERY_IMAGE_SIZE_LIMIT")
+
+
 def assemble_supply(inputs: Path, output: Path, commit: str, run_id: int, run_attempt: int) -> None:
     """Aggregate native observations; use exact evidence bytes and preserve subjects."""
     require(re.fullmatch(r"[a-f0-9]{40}", commit) is not None and run_id > 0 and run_attempt > 0)
@@ -752,6 +859,7 @@ def assemble_supply(inputs: Path, output: Path, commit: str, run_id: int, run_at
         for arch, record in records.items():
             directory = inputs / arch / role
             subject = record["images"][role]["platform"]["digest"]
+            validate_image_size(load(directory / "image-size.json"), record["images"][role]["platform"], role)
             sbom_result = gate_sbom.check(
                 directory, Path("sbom.json"), expected_subjects=[subject], require_subjects=True
             )
@@ -769,6 +877,7 @@ def assemble_supply(inputs: Path, output: Path, commit: str, run_id: int, run_at
                 "DELIVERY_SUPPLY_GATES_FAILED",
             )
             files = {
+                "image-size.json": "provenance",
                 "sbom.json": "sbom",
                 "gates.json": "licenses",
                 "trivy.json": "vulnerabilities",

@@ -351,3 +351,35 @@ def test_cli_error_redaction_and_source_capture_fail_closed(tmp_path: Path) -> N
     with pytest.raises(bundle.BundleError):
         bundle.capture("a" * 40, tmp_path / "source.tar")
     assert not (tmp_path / "source.tar").exists()
+
+
+@pytest.mark.parametrize("helper", [
+    "tools/__init__.py", "tools/custometry_quality/__init__.py",
+    "tools/custometry_quality/core.py", "tools/custometry_quality/gate_sbom.py",
+    "tools/custometry_quality/gate_licenses.py", "tools/custometry_quality/delivery_image_size.py",
+])
+def test_source_capture_rejects_changed_executed_helper(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, helper: str,
+) -> None:
+    repository = tmp_path / "repository"
+    repository.mkdir()
+
+    def git(*args: str) -> str:
+        return subprocess.run(["git", "-C", str(repository), *args], check=True,
+                              capture_output=True, text=True).stdout.strip()
+
+    git("init", "--quiet")
+    for name in bundle.SOURCE_PATHS:
+        target = repository / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("original source\n")
+    git("add", "--all")
+    git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+        "-c", "commit.gpgsign=false", "commit", "--quiet", "-m", "fixture")
+    commit = git("rev-parse", "HEAD")
+    monkeypatch.setattr(bundle, "ROOT", repository)
+    bundle.capture(commit, tmp_path / "clean.tar")
+    (repository / helper).write_text("changed executed source\n")
+    with pytest.raises(bundle.BundleError, match="^DELIVERY_SOURCE_CAPTURE_REQUIRED$"):
+        bundle.capture(commit, tmp_path / "dirty.tar")
+    assert not (tmp_path / "dirty.tar").exists()

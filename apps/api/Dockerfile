@@ -1,5 +1,12 @@
 # syntax=docker/dockerfile:1.11@sha256:10c699f1b6c8bdc8f6b4ce8974855dd8542f1768c26eb240237b8f1c9c6c9976
 FROM ghcr.io/astral-sh/uv:0.9.26-python3.12-bookworm-slim@sha256:add251a8fbfa14ff5e115adf93cb113c7b58c57bc84f0992164f5b6631b3451f AS uv-tool
+FROM python:3.12.14-bookworm@sha256:581429e3df12d76e6af4be5ab7d0e7fc2013eb57dc23d2de691411c8efdbb970 AS arrow-build
+COPY --from=uv-tool /usr/local/bin/uv /usr/local/bin/uv
+ENV SOURCE_DATE_EPOCH=315532800 CFLAGS=-g0 CXXFLAGS=-g0 CMAKE_BUILD_PARALLEL_LEVEL=2
+COPY deploy/compose/arrow-build-requirements.txt deploy/compose/arrow-source-build.json deploy/compose/build-pyarrow.py deploy/compose/arrow-build-provenance.py /build-inputs/
+RUN uv pip install --system --require-hashes -r /build-inputs/arrow-build-requirements.txt
+RUN python /build-inputs/build-pyarrow.py
+
 FROM python:3.12.14-bookworm@sha256:581429e3df12d76e6af4be5ab7d0e7fc2013eb57dc23d2de691411c8efdbb970 AS build
 COPY --from=uv-tool /usr/local/bin/uv /usr/local/bin/uv
 
@@ -15,10 +22,12 @@ COPY pyproject.toml uv.lock README.md LICENSE ./
 COPY apps/api/pyproject.toml apps/api/pyproject.toml
 COPY docs-site/pyproject.toml docs-site/pyproject.toml
 COPY deploy/compose/python-build-constraints.txt deploy/compose/python-build-constraints.txt
-RUN uv sync --locked --no-dev --extra container --no-install-package psycopg-binary --no-install-workspace --package custometry-api
+RUN uv sync --locked --no-dev --extra container --no-install-package psycopg-binary --no-install-package pyarrow --no-install-workspace --package custometry-api
 
 COPY apps/api/src apps/api/src
-RUN uv sync --locked --no-dev --extra container --no-install-package psycopg-binary --no-editable --package custometry-api
+RUN uv sync --locked --no-dev --extra container --no-install-package psycopg-binary --no-install-package pyarrow --no-editable --package custometry-api
+COPY --from=arrow-build /arrow/out/*.whl /tmp/arrow-wheel/
+RUN uv pip install --python /app/.venv/bin/python --no-deps /tmp/arrow-wheel/*.whl
 
 FROM python:3.12.14-slim-trixie@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea AS runtime-closure
 COPY deploy/compose/libpq-runtime-packages.json /tmp/libpq-runtime-packages.json
@@ -49,6 +58,9 @@ COPY --chown=10001:10001 plugins/connector_files /app/.venv/lib/python3.12/site-
 COPY --chown=10001:10001 plugins/connector_postgresql /app/.venv/lib/python3.12/site-packages/plugins/connector_postgresql
 COPY --chown=10001:10001 migrations /app/migrations
 COPY --chown=10001:10001 LICENSE /app/notices/Custometry-LICENSE
+COPY --from=arrow-build --chown=10001:10001 /arrow/out/native-build.json /app/notices/pyarrow-native-build.json
+COPY --from=arrow-build --chown=10001:10001 /arrow/out/compilation-inputs.json /app/notices/pyarrow-compilation-inputs.json
+COPY --from=arrow-build --chown=10001:10001 /arrow/out/notices/ /app/notices/pyarrow-native/
 COPY deploy/compose/collect-python-runtime.py /tmp/collect-python-runtime.py
 RUN python /tmp/collect-python-runtime.py
 
@@ -65,5 +77,6 @@ COPY --from=runtime-closure /runtime/ /
 WORKDIR /app
 
 USER 10001:10001
+RUN ["/app/.venv/bin/python", "-c", "import custometry_api.main, psycopg, pyarrow.dataset, pyarrow.acero, pyarrow.parquet, pyarrow.ipc"]
 EXPOSE 8000
 CMD ["uvicorn", "custometry_api.main:app", "--host", "0.0.0.0", "--port", "8000", "--no-access-log"]

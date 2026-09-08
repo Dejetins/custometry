@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 14
+doc_version: 16
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -206,6 +206,26 @@ For the unpacked cap, S02 also measured streamed decompressed layer-tar bytes fr
 `docker image save`, a conservative upper bound including layer metadata. S03/S04
 must retain separate compressed, unpacked and transfer observations; neither a
 local image ID nor an unpacked upper bound is a registry download measurement.
+S03 now requires `delivery_image_size.observe` over an OCI-preserving save archive:
+child/config/platform identity, each compressed descriptor, and ordered DiffIDs
+are verified before counting uncompressed layer tar bytes. Native evidence keeps
+`image-size.json`; assembly requires that observation and enforces the unchanged
+API 367001600 / Web 104857600 byte caps. A classic Docker archive that discarded
+the original OCI blobs fails closed. The legacy shell check alone does not prove
+these caps. Any S04 comparison must remeasure its baseline with this same method;
+the total includes tar headers, padding and overwritten lower-layer content.
+
+```bash
+uv run --locked python -m pytest -q tests/tooling/test_delivery_image_size.py tests/tooling/test_delivery_source_parts.py tests/tooling/test_delivery_supply.py
+uv run --locked python -m pytest -q tests/tooling/test_arrow_build_provenance.py tests/tooling/test_delivery_native.py tests/tooling/test_delivery_obligations.py tests/tooling/test_license_reviews.py
+```
+
+The v2 whole-set verifier additionally requires six subject-bound `license_closure`
+entries and schema-2 component reviews whose evidence resolves exclusively to
+signed set files. These gates validate exact evidence bindings and the supported
+obligations; substantive license/source review is still required. Native source
+builds collect complete compiler dependency records, including builder-system
+headers, and retain raw scanner findings beside narrow applicability resolutions.
 
 ## 5. Change-trigger groups
 

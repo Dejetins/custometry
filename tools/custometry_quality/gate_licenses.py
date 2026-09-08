@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import re
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Iterable, Mapping, Sequence
 
 from .license_reviews import REVIEW_OBLIGATIONS, validate_reviews
 
@@ -122,6 +122,7 @@ def _alternatives(value: str) -> list[frozenset[str]]:
 def check(
     root: Path, sbom: Path, policy: Path, *,
     reviews: Path | None = None, expected_subjects: Sequence[str] = (),
+    verified_evidence: Mapping[str, Path] | None = None,
 ) -> CheckResult:
     result = CheckResult("gate_licenses")
     sbom_path, policy_path = root / sbom, root / policy
@@ -155,7 +156,8 @@ def check(
         if not evaluated:
             raise ValueError("SBOM contains no package-level components")
         reviewed = validate_reviews(
-            root / reviews, sbom_path, policy_path, set(expected_subjects), evaluated
+            root / reviews, sbom_path, policy_path, set(expected_subjects), evaluated,
+            verified_evidence=verified_evidence,
         ) if reviews is not None else {}
     except (ValueError, OSError, KeyError, TypeError) as exc:
         result.add("license-input-invalid", str(exc))

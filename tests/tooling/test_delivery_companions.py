@@ -30,6 +30,11 @@ def fixture(tmp_path: Path) -> tuple[dict[str, Any], Path]:
     record, _ = candidate()
     record["schema_version"] = "custometry-delivery/v2"
     record["compatibility"]["reader_major"] = 2
+    record["license_closure"] = [
+        {"subject": platform["digest"], "sbom_path": f"evidence/{role}-{platform['architecture']}-sbom.json",
+         "reviews_path": f"evidence/{role}-{platform['architecture']}-reviews.json"}
+        for role, image in record["images"].items() for platform in image["platforms"]
+    ]
     producer = record["producer"]
     data = b"opaque corresponding source; never recursively unpacked"
     archive = tmp_path / "part.zip"
@@ -96,6 +101,28 @@ def test_primary_and_companion_paths_cannot_collide(tmp_path: Path) -> None:
         companions.validate_descriptors(record, now=NOW)
 
 
+def test_zip64_end_records_are_checked(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    record, archive = fixture(tmp_path)
+    part = record["companions"][0]
+    data = b"opaque corresponding source; never recursively unpacked"
+    with monkeypatch.context() as context:
+        context.setattr(zipfile, "ZIP64_LIMIT", 1)
+        with zipfile.ZipFile(archive, "w") as output:
+            output.writestr(part["files"][0]["path"], data)
+    raw = archive.read_bytes()
+    assert b"PK\x06\x06" in raw
+    part["archive_bytes"] = len(raw)
+    part["provider_sha256"] = companions.sha(archive)
+    companions.verify_zip(archive, part, tmp_path / "wide")
+    changed = bytearray(raw)
+    changed[changed.index(b"PK\x06\x06") + 32] ^= 1
+    archive.write_bytes(changed)
+    part["provider_sha256"] = companions.sha(archive)
+    with pytest.raises(ValueError):
+        companions.verify_zip(archive, part, tmp_path / "altered")
+    assert not (tmp_path / "altered").exists()
+
+
 @pytest.mark.parametrize("failure", ["parent", "duplicate_part", "duplicate_id", "case_collision", "future_attempt", "expired", "sum"])
 def test_descriptor_failure_prevents_any_materialization(tmp_path: Path, failure: str) -> None:
     record, _ = fixture(tmp_path)
@@ -125,10 +152,12 @@ def test_descriptor_failure_prevents_any_materialization(tmp_path: Path, failure
         companions.validate_descriptors(record, now=NOW)
 
 
-@pytest.mark.parametrize("failure", [None, "tampered", "missing", "extra", "symlink", "duplicate", "header_size", "truncated", "file_hash"])
+@pytest.mark.parametrize("failure", [None, "tampered", "missing", "extra", "symlink", "duplicate", "header_size", "truncated", "file_hash", "trailing_bytes"])
 def test_streamed_zip_closure_and_cleanup(tmp_path: Path, failure: str | None) -> None:
     record, archive = fixture(tmp_path)
     part = record["companions"][0]
+    if failure == "trailing_bytes":
+        archive.write_bytes(archive.read_bytes() + b"unlisted trailer")
     if failure in {"missing", "extra", "symlink", "duplicate"}:
         mode = "w" if failure in {"missing", "symlink"} else "a"
         with zipfile.ZipFile(archive, mode) as output:

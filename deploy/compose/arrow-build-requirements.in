@@ -1,0 +1,8 @@
+cmake==3.31.10
+ninja==1.11.1.4
+Cython==3.1.2
+numpy==2.2.6
+setuptools==80.9.0
+setuptools_scm==8.3.1
+wheel==0.45.1
+packaging==25.0

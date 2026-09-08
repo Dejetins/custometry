@@ -31,6 +31,20 @@ See [diagnostic hashes](resumed/diagnostic-hashes-02.json),
 [imports](resumed/api6-imports.json) and [scan summary](resumed/api6-scan-summary.json).
 The input was a diagnostic snapshot with overlays, not a final clean producer run.
 Earlier failed builds remain evidence; the final native matrix is pending.
+The later [compiled-source and API7 size observations](resumed/arrow-compiled-probe.md)
+record Thrift 0.24/full Boost, actual Ninja dependencies for 12 internal Arrow
+components, narrow Folly source exclusion evidence and independently reproduced
+194012672 uncompressed layer tar bytes. Final current-input native supply remains
+pending; the diagnostic build does not satisfy that stronger boundary.
+API8's actual 23-component native inventory binds successfully, but explicit
+Dataset/Acero imports exposed a sibling RUNPATH defect. API9 passes the `$ORIGIN`
+repair, mandatory nonroot final-stage imports, Dataset/Acero/Parquet/IPC probes and
+three artifact-store tests. Full-image Trivy has zero Critical/unknown; the native
+supplement retains one raw Critical Folly finding with an exact `not_affected`
+resolution and zero applicable Critical/unknown. API9 measures 202791936 unpacked
+layer tar bytes. Earlier Parquet fallback probes do not establish Dataset coverage.
+The actual unreviewed license gate still fails; source/license conclusions and
+complete obligations remain unfinished. These are diagnostic ARM64 observations.
 
 Web's actual local build records 173 included modules and 20 package identities,
 with all package notice texts present. A separate diagnostic SBOM scan has zero
@@ -52,6 +66,12 @@ including Linux atomic no-replace and absolute HTTP deadline behavior. Current
 combined bundle/producer/supply/companion/set tests: **184 passed**; `check:local`
 passed. Publisher reconciliation, actual signatures/provider parts and source-obligation
 bindings are still pending. No hosted CI result or complete supply gate is inferred.
+The later current-source group passed 276 tests, Ruff, Pyright and `check:local`.
+Whole-set obligation checking now requires all six subjects and schema-2 reviews
+whose evidence paths resolve only to signed main/companion descriptors. Missing,
+altered, unbound or linked sources and legacy relative-path reviews fail before
+promotion. Actual source collection, review records and publisher/assembler
+integration still need completion.
 
 ## Historical preparation boundary before owner resolution
 

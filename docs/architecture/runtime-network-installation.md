@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 15
+doc_version: 16
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -666,6 +666,22 @@ fulfill which obligations. Provider IDs are learned from actual uploads; future 
 and expiry are never guessed. Source companions contain only listed regular files,
 including opaque upstream source archives; verification never recursively unpacks
 or executes those archives. Producer-side substantive source inspection is separate.
+
+The required `license_closure` array binds one main-payload SBOM and one component
+review file to each of the six image/platform subjects. Reviews use schema 2 and
+logical set paths. The reader resolves these paths only through signed main and
+companion file descriptors, verifies their size/hash, and re-runs the independent
+SBOM/license gates before promotion. A legacy relative-path review is rejected in
+this v2 set context; standalone v1 review behavior is preserved. Missing source,
+relinking, notice or modification evidence fails the entire set. An unsigned file
+next to a review cannot fulfill an obligation, and URLs do not replace source bytes.
+
+Supplemental native scans preserve every raw finding and severity count. A narrow
+`not_affected` resolution must bind the exact subject, source subset, complete
+compiler dependencies and raw match. Zero unresolved applicable Critical findings
+and zero unknown-severity findings remain required. The Folly IOBuf adapter checks
+both owned and builder-system inputs, including symlink identities; no whole-library
+waiver or removal of the original scanner finding is permitted.
 
 Finite independent policy limits: at most 16 companions, 512 MiB per provider ZIP
 and per expanded companion, 256 MiB per contained file, 4096 source entries across

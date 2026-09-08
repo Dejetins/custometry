@@ -270,6 +270,56 @@ def test_transport_rejects_symlink_and_wrong_provider_hash() -> None:
         supply.unwrap_transport(raw, "sha256:" + supply.bundle.digest(raw))
 
 
+@pytest.mark.parametrize("failure", [None, "method", "subject", "architecture", "total", "cap"])
+def test_unpacked_size_binding_and_cap(failure: str | None) -> None:
+    record = {"digest": SUBJECT, "architecture": "arm64", "unpacked_bytes": 24}
+    observation: dict[str, Any] = {"method": "oci-verified-uncompressed-layer-tar-bytes/v1", "subject": SUBJECT,
+                   "architecture": "arm64", "os": "linux", "compressed_layer_bytes": 12,
+                   "uncompressed_layer_tar_bytes": 24,
+                   "layers": [{"descriptor_bytes": 12, "uncompressed_tar_bytes": 24}]}
+    if failure == "cap":
+        record["unpacked_bytes"] = observation["uncompressed_layer_tar_bytes"] = 367001601
+        observation["layers"][0]["uncompressed_tar_bytes"] = 367001601
+    elif failure == "total":
+        observation["uncompressed_layer_tar_bytes"] = 25
+    elif failure is not None:
+        observation[failure] = "untrusted"
+    if failure:
+        with pytest.raises(ValueError):
+            supply.validate_image_size(observation, record, "api")
+    else:
+        supply.validate_image_size(observation, record, "api")
+
+
+def test_supplement_preserves_raw_report_when_applicability_fails(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from .test_delivery_native import report_fixture
+
+    report = report_fixture(datetime.now(timezone.utc))
+    report["source"]["target"] = str((tmp_path / "supplemental-sbom.json").resolve())
+    report["matches"] = [{"vulnerability": {"id": "CVE-2021-24036", "severity": "Critical"}}]
+    (tmp_path / "native-sbom.json").write_text("{}")
+    (tmp_path / "compilation-inputs.json").write_text("{}")
+
+    def scanner(*args: str) -> bytes:
+        assert args[:2] == ("grype", "--config")
+        assert args[2].endswith("deploy/compose/grype.yaml")
+        return json.dumps(report).encode()
+
+    def rejected(*args: Any) -> list[dict[str, Any]]:
+        raise supply.bundle.BundleError("DELIVERY_APPLICABILITY_UNPROVEN")
+
+    monkeypatch.setattr(supply, "run", scanner)
+    monkeypatch.setattr(supply.delivery_native, "folly_applicability", rejected)
+    with pytest.raises(ValueError, match="DELIVERY_APPLICABILITY_UNPROVEN"):
+        supply.scan_supplement({"components": []}, SUBJECT, tmp_path)
+    assert supply.load(tmp_path / "grype.json") == report
+    binding = supply.load(tmp_path / "grype-binding.json")
+    assert binding["report_sha256"] == supply.sha(tmp_path / "grype.json")
+    assert binding["sbom_sha256"] == supply.sha(tmp_path / "supplemental-sbom.json")
+
+
 def test_complete_native_evidence_assembly(tmp_path: Path) -> None:
     """Drive actual gates/schema/closure with explicitly synthetic inputs."""
     commit = "b" * 40
@@ -299,6 +349,12 @@ def test_complete_native_evidence_assembly(tmp_path: Path) -> None:
                     "unpacked_bytes": 24,
                 },
             }
+            supply.save(directory / "image-size.json", {
+                "method": "oci-verified-uncompressed-layer-tar-bytes/v1", "subject": subject,
+                "architecture": arch, "os": "linux", "compressed_layer_bytes": 12,
+                "uncompressed_layer_tar_bytes": 24,
+                "layers": [{"descriptor_bytes": 12, "uncompressed_tar_bytes": 24}],
+            })
             bom = {
                 "bomFormat": "CycloneDX",
                 "specVersion": "1.6",

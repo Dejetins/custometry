@@ -23,7 +23,8 @@
     "resources_budget",
     "retrieval",
     "signature",
-    "companions"
+    "companions",
+    "license_closure"
   ],
   "properties": {
     "schema_version": {
@@ -554,6 +555,41 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "license_closure": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "subject",
+          "sbom_path",
+          "reviews_path"
+        ],
+        "properties": {
+          "subject": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "maxLength": 71,
+            "minLength": 71
+          },
+          "sbom_path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "^(?!.*(?:^|/)[.]{1,2}(?:/|$))[A-Za-z0-9_.][A-Za-z0-9_.-]*(?:/[A-Za-z0-9_.][A-Za-z0-9_.-]*)*$"
+          },
+          "reviews_path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "^(?!.*(?:^|/)[.]{1,2}(?:/|$))[A-Za-z0-9_.][A-Za-z0-9_.-]*(?:/[A-Za-z0-9_.][A-Za-z0-9_.-]*)*$"
           }
         }
       }
@@ -1127,7 +1163,8 @@
                 "enum": [
                   "cosign",
                   "trivy",
-                  "syft"
+                  "syft",
+                  "grype"
                 ]
               },
               "version": {
@@ -1150,8 +1187,8 @@
               }
             }
           },
-          "minItems": 7,
-          "maxItems": 7,
+          "minItems": 9,
+          "maxItems": 9,
           "uniqueItems": true
         },
         "actions": {

@@ -1,0 +1,3 @@
+# Explicit empty configuration prevents discovery of user/project ignore files.
+# The report adapter separately rejects filtering and ignored matches.
+{}

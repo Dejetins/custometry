@@ -1,0 +1,93 @@
+{
+  "boost": {
+    "expression": "BSL-1.0",
+    "source_sha256": "205666dea9f6a7cfed87c7a6dfbeb52a2c1b9de55712c9c1a87735d7181452b6",
+    "notice_sha256": [
+      "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "brotli": {
+    "expression": "MIT",
+    "source_sha256": "f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46",
+    "notice_sha256": [
+      "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "lz4": {
+    "expression": "BSD-2-Clause",
+    "source_sha256": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b",
+    "notice_sha256": [
+      "4bc9c403f6b679cc076dee210e0e21c27b4e8f6d3fb43d85364c76657bfaaac5",
+      "8b58c446121a109ccf32edc094bba3010a3d85e4ee3702950db55e4d3e87736c"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "re2": {
+    "expression": "BSD-3-Clause",
+    "source_sha256": "f89c61410a072e5cbcf8c27e3a778da7d6fd2f2b5b1445cd4f4508bee946ab0f",
+    "notice_sha256": [
+      "6040cda75d90b1738292a631d89934c411ef7ffd543c4d6a1b7edfc8edf29449"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "snappy": {
+    "expression": "BSD-3-Clause",
+    "source_sha256": "90f74bc1fbf78a6c56b3c4a082a05103b3a56bb17bca1a27e052ea11723292dc",
+    "notice_sha256": [
+      "55172044f7e241207117448a4d9d6ba1d0925c8ad66b5d4c08c70adfa9cc3de6"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "xsimd": {
+    "expression": "BSD-3-Clause",
+    "source_sha256": "8bdbbad0c3e7afa38d88d0d484d70a1671a1d8aefff03f4223ab2eb6a41110a3",
+    "notice_sha256": [
+      "501352acba62cc54e8e3d293754d606f919c9b425b962193c211f9fa29cd9940"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "rapidjson": {
+    "expression": "MIT",
+    "source_sha256": "b9290a9a6d444c8e049bd589ab804e0ccf2b05dc5984a19ed5ae75d090064806",
+    "notice_sha256": [
+      "a140e5d46fe734a1c78f1a3c3ef207871dd75648be71fdda8e309b23ab8b1f32"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "thrift": {
+    "expression": "Apache-2.0",
+    "source_sha256": "e0fa5839a4c5c1d631b0931cf2c554ebbfa4e2fee3a9fb3ffd4f82ce4396c6e4",
+    "notice_sha256": [
+      "89aa7b27868669299bd8a6c53b72ec4beadce42dad6c8336797cc26e1e8df98d",
+      "c2534e065069887565f871f0648b013a7e5f4a422809faf4ae3c590b7c0bf561"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "utf8proc": {
+    "expression": "MIT AND Unicode-DFS-2015",
+    "source_sha256": "4bb121e297293c0fd55f08f83afab6d35d48f0af4ecc07523ad8ec99aa2b12a1",
+    "notice_sha256": [
+      "3b510150d34f248a221bb88e1d811238d6c6c18b51231822c42974c39bb07256"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "zlib": {
+    "expression": "Zlib",
+    "source_sha256": "9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23",
+    "notice_sha256": [
+      "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  },
+  "zstd": {
+    "expression": "BSD-3-Clause",
+    "source_sha256": "eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3",
+    "notice_sha256": [
+      "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+      "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505"
+    ],
+    "scope": "Actual compiled runtime inputs only; optional full upstream archives are not distributed by this declaration."
+  }
+}

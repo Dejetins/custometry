@@ -29,6 +29,7 @@ from typing import Any, BinaryIO, Generator
 
 from . import delivery_bundle as bundle
 from . import delivery_companions as companions
+from . import delivery_obligations as obligations
 from . import delivery_supply as supply
 
 API = "https://api.github.com/repos/Dejetins/custometry/"
@@ -256,6 +257,7 @@ def verify_set(payload: Path, signature: Path, trusted_root: Path, commit: str, 
                 archive.unlink()
             # No part may expire while the remaining set is being retrieved.
             companions.validate_descriptors(record)
+            obligations.verify(record, complete)
             bundle.require(not output.exists() and not output.is_symlink(), "DELIVERY_VERSION_CONFLICT")
             promote_new(complete, output)
     finally:

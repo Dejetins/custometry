@@ -1,1 +1,0 @@
-{"schema": 1, "platform": "linux/arm64", "pyarrow": "20.0.0", "checks": ["dataset-acero-imports", "local-filesystem", "parquet-2.6", "zstd", "column-statistics", "decimal", "utc-timestamps", "nulls", "record-batches", "ipc-stream", "ipc-file-mmap", "prebuilt-wheel-artifact-read"], "result": "pass"}

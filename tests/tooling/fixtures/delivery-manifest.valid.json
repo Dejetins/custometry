@@ -170,7 +170,7 @@
         "host_arch": "arm64"
       }
     ],
-    "postgres_version": "17.11",
+    "postgres_version": "17.5",
     "supported_platforms": [
       "linux/amd64",
       "linux/arm64"
@@ -239,7 +239,7 @@
   "retrieval": {
     "provider": "github-actions-artifact",
     "repository": "Dejetins/custometry",
-    "artifact_name": "custometry-delivery-0.1.0-dev.0-1-1",
+    "artifact_name": "custometry-delivery-0.1.0-dev.0",
     "retention_days": 1
   },
   "signature": {

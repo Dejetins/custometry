@@ -2,7 +2,6 @@
 name = "custometry-api"
 version = "0.1.0.dev0"
 description = "Custometry Foundation API composition root"
-license = "Apache-2.0"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "alembic==1.16.2",
@@ -16,9 +15,6 @@ dependencies = [
   "sqlalchemy==2.0.41",
   "uvicorn[standard]==0.34.3",
 ]
-
-[project.optional-dependencies]
-container = ["psycopg[c]==3.2.9"]
 
 [dependency-groups]
 test = [

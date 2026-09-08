@@ -1,6 +1,0 @@
-{
-  "baseline": "build5 diagnostic-inputs.json",
-  "overlay": {
-    "apps/api/Dockerfile": "4b8304f3a6db88eb4bf1e3be1141ce13141493027b169b8d4399ff8717e5c6e5"
-  }
-}

@@ -258,11 +258,6 @@ dependencies = [
     { name = "uvicorn", extra = ["standard"] },
 ]
 
-[package.optional-dependencies]
-container = [
-    { name = "psycopg", extra = ["c"] },
-]
-
 [package.dev-dependencies]
 test = [
     { name = "httpx" },
@@ -276,14 +271,12 @@ requires-dist = [
     { name = "fastapi", specifier = "==0.115.14" },
     { name = "openpyxl", specifier = "==3.1.5" },
     { name = "psycopg", extras = ["binary"], specifier = "==3.2.9" },
-    { name = "psycopg", extras = ["c"], marker = "extra == 'container'", specifier = "==3.2.9" },
     { name = "pyarrow", specifier = "==20.0.0" },
     { name = "pydantic-settings", specifier = "==2.10.1" },
     { name = "redis", specifier = "==6.4.0" },
     { name = "sqlalchemy", specifier = "==2.0.41" },
     { name = "uvicorn", extras = ["standard"], specifier = "==0.34.3" },
 ]
-provides-extras = ["container"]
 
 [package.metadata.requires-dev]
 test = [
@@ -681,9 +674,6 @@ wheels = [
 binary = [
     { name = "psycopg-binary", marker = "implementation_name != 'pypy'" },
 ]
-c = [
-    { name = "psycopg-c", marker = "implementation_name != 'pypy'" },
-]
 
 [[package]]
 name = "psycopg-binary"
@@ -702,12 +692,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/67/55/ea8d227c77df8e8aec880ded398316735add8fda5eb4ff5cc96fac11e964/psycopg_binary-3.2.9-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:14f64d1ac6942ff089fc7e926440f7a5ced062e2ed0949d7d2d680dc5c00e2d4", size = 3472493, upload-time = "2025-05-13T16:08:15.672Z" },
     { url = "https://files.pythonhosted.org/packages/3c/02/6ff2a5bc53c3cd653d281666728e29121149179c73fddefb1e437024c192/psycopg_binary-3.2.9-cp312-cp312-win_amd64.whl", hash = "sha256:7a838852e5afb6b4126f93eb409516a8c02a49b788f4df8b6469a40c2157fa21", size = 2927400, upload-time = "2025-05-13T16:08:18.652Z" },
 ]
-
-[[package]]
-name = "psycopg-c"
-version = "3.2.9"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/83/7f/6147cb842081b0b32692bf5a0fdf58e9ac95418ebac1184d4431ec44b85f/psycopg_c-3.2.9.tar.gz", hash = "sha256:8c9f654f20c6c56bddc4543a3caab236741ee94b6732ab7090b95605502210e2", size = 609538, upload-time = "2025-05-13T16:11:19.856Z" }
 
 [[package]]
 name = "pyarrow"

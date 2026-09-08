@@ -1,8 +1,0 @@
-{
-  "role": "web-current",
-  "subject": "nginxinc/nginx-unprivileged@sha256:1864ac7a6548eb5baba6b6a60fdd1729f18681cf3b4c9ca938bcc717c1e120e8",
-  "config_digest": "sha256:169c4be64eb468f3a33417269f19edcaabbb8729963b76f646bf15a6b438598b",
-  "archive_sha256": "833b716dce82fd78ed41d58da923be0e98d75880ef066f3f93dff9d70824dc2a",
-  "critical_or_unknown": [],
-  "proof_boundary": "native ARM64 base image scan, not final product or AMD64 scan"
-}

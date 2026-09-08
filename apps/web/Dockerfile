@@ -35,7 +35,7 @@ RUN uv run --frozen --package custometry-docs mkdocs build --strict --config-fil
     && mkdir -p site/notices \
     && python -c 'import importlib.metadata as m, pathlib; p=pathlib.Path("site/notices/python-packages.txt"); p.write_text("\n\n".join(str(d.metadata["Name"])+"=="+d.version+"\n"+"\n".join(d.locate_file(f).read_text(errors="replace") for f in sorted(d.files or [], key=str) if "dist-info" in str(f) and ("license" in str(f).lower() or "notice" in str(f).lower())) for d in sorted(m.distributions(path=[".venv/lib/python3.12/site-packages"]), key=lambda d: (str(d.metadata["Name"]), d.version))))'
 
-FROM nginxinc/nginx-unprivileged:1.30.4-alpine3.24-slim@sha256:3a4485bf084957d56674ee22db07d77d5a281418815c5852827419d6d629d440 AS runtime
+FROM nginxinc/nginx-unprivileged:1.28.0-alpine3.21@sha256:c97ff0bf7cbae369953c6da1232ec14ad9f971d66360c5698db0856a4cd657a0 AS runtime
 
 ARG CUSTOMETRY_VERSION=0.1.0-dev.0
 LABEL org.opencontainers.image.title="Custometry Web" \

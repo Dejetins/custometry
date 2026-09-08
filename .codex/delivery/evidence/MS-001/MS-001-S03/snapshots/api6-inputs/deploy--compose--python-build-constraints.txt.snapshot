@@ -1,5 +1,0 @@
-# Frozen PEP 517 build inputs for psycopg-c 3.2.9; runtime dependencies stay in uv.lock.
-setuptools==80.9.0
-wheel==0.45.1
-packaging==25.0
-Cython==3.1.2

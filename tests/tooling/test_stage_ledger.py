@@ -11,7 +11,7 @@ from typing import Any
 
 import pytest
 
-from tools.custometry_quality.prompt_pack_validation import Pack, contract_digest, digest, document
+from tools.custometry_quality.prompt_pack_validation import Invalid, Pack, contract_digest, digest, document
 from tools.custometry_quality.stage_ledger import render
 
 REPOSITORY = Path(__file__).resolve().parents[2]
@@ -203,6 +203,46 @@ def assert_pass(result: subprocess.CompletedProcess[str]) -> dict[str, Any]:
     value = json.loads(result.stdout)
     assert value["status"] == "pass"
     return value
+
+
+def test_plan_revision_preserves_accepted_receipt_and_rejects_changed_snapshot(pack_root: Path) -> None:
+    assert_pass(invoke(pack_root, "claim"))
+    receipt_path = receipt(pack_root, "S1")
+    assert_pass(invoke(pack_root, "accept", receipt=receipt_path))
+    original_receipt = (pack_root / receipt_path).read_bytes()
+    old_plan = (pack_root / "plan.md").read_bytes()
+    (pack_root / "plan-v1.snapshot").write_bytes(old_plan)
+    write(pack_root / "decision.md", "Owner requested a plan revision; S1 remains accepted.\n")
+    original = (pack_root / "ledger.md").read_text()
+    data = document(pack_root / "ledger.md", "<!-- prompt-pack-ledger:v1 -->")
+    data["stages"][0]["historical_plan"] = {
+        "version": "1.0.0", "binding": binding(pack_root, "plan-v1.snapshot")
+    }
+    data["stages"][0]["reconciliation_evidence"] = binding(pack_root, "decision.md")
+    write(pack_root / "plan.md", front({"version": "2.0.0", "planning_status": "accepted"}))
+    data["plan_binding"] = {"version": "2.0.0", "sha256": digest(pack_root / "plan.md")}
+    # Revising an unstarted successor must not invalidate a consumed predecessor
+    # receipt or require retaining the successor's obsolete prompt bytes.
+    successor = document(pack_root / "prompts/S2.md", frontmatter=True)
+    successor["plan_binding"] = data["plan_binding"]
+    write(pack_root / "prompts/S2.md", front(successor))
+    write(pack_root / "ledger.md", render(original, data))
+    revised = Pack(pack_root, pack_root / "ledger.md")
+    assert revised.satisfied("S1")
+    revised.entry("S2")
+    with pytest.raises(Invalid, match="missing or changed bytes"):
+        revised.receipt(pack_root / receipt_path)
+    assert (pack_root / receipt_path).read_bytes() == original_receipt
+    write(pack_root / "plan-v1.snapshot", "Changed historical source\n")
+    with pytest.raises(Invalid, match="missing or changed bytes"):
+        Pack(pack_root, pack_root / "ledger.md")
+
+
+def test_pending_stage_cannot_select_historical_plan(pack_root: Path) -> None:
+    data = document(pack_root / "ledger.md", "<!-- prompt-pack-ledger:v1 -->")
+    data["stages"][0]["historical_plan"] = {}
+    with pytest.raises(Invalid, match="non-executable terminal history"):
+        Pack(pack_root, pack_root / "ledger.md", data)
 
 
 def test_preflight_does_not_claim_or_change_ledger(pack_root: Path) -> None:

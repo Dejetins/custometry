@@ -239,7 +239,7 @@ def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool
             "demo_source_reader_password",
         ):
             path = secret_dir / name
-            path.write_text(secrets.token_urlsafe(32))
+            path.write_text(secrets.token_hex(32))
             path.chmod(0o444)
         environment.update(
             COMPOSE_PROJECT_NAME=project,
@@ -291,6 +291,24 @@ def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool
                 "demo-source-db",
             ],
         )
+        demo_rows = run(
+            compose
+            + [
+                "exec",
+                "-T",
+                "demo-source-db",
+                "psql",
+                "--username",
+                "demo_reader",
+                "--dbname",
+                "northwind_retail",
+                "-At",
+                "-c",
+                "SELECT count(*) FROM retail.receipts;",
+            ]
+        )
+        require(demo_rows == "5000", "DEMO_INITIALIZATION")
+        result["demo_receipts_read_as_demo_reader"] = 5000
         timed("migration_fresh", compose + ["run", "--rm", "--no-deps", "migrate"])
         current = run(
             compose

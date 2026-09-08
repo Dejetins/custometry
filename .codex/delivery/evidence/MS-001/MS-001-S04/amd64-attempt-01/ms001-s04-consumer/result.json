@@ -1,0 +1,24 @@
+{
+  "status": "failed",
+  "architecture": "amd64",
+  "timings_seconds": {
+    "retrieval": 0.807,
+    "verification": 0.396,
+    "import_api": 7.416
+  },
+  "project": "ms001s04-458d47b134",
+  "retrieved_bytes": 478784861,
+  "manifest_sha256": "693cbe3b4dfcd5148c9aab6dd2b1e946d9b46ae0ce3c22a69b4a03111f1a735a",
+  "source_commit": "bc347d7e74c57640b42462c24cc2ed60d76ef055",
+  "profile": "internal-development",
+  "engine": {
+    "ServerVersion": "28.0.4",
+    "Architecture": "x86_64",
+    "OSType": "linux",
+    "MemTotal": 16766414848,
+    "NCPU": 4
+  },
+  "images": [],
+  "error": "COMMAND_FAILED:docker:image:inspect",
+  "cleanup": "runtime-not-started"
+}

@@ -1,0 +1,6 @@
+{
+  "local_archive_verification": "pass",
+  "workflow_yaml_parse": "pass",
+  "remote_upload": "not_run",
+  "remote_runtime": "not_run"
+}

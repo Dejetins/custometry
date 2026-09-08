@@ -1,0 +1,17 @@
+{
+  "boundary": "Whole-file hashes bind mixed docs; S05 owns only new handoff/appendix/index hunks, preserving prior changes",
+  "files": [
+    {
+      "path": "docs/architecture/runtime-network-installation.md",
+      "sha256": "17cacc6e2e98aca0574fc6e539a0e91927a6d9c1f843d57582c52bef5bba40f8"
+    },
+    {
+      "path": "docs/architecture/planning/directions/DIR-006/workstreams/WS-001.md",
+      "sha256": "78a3ccb5832dd9191ef7ecffa44079e61a38ea7a77d545cf5d56a3b9b6412fc0"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "sha256": "5d718e1c21446c19802c9df719b1e82e5b2825570019c929b14523d062ddc815"
+    }
+  ]
+}

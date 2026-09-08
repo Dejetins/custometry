@@ -1,0 +1,3 @@
+PASS check_docs_links (observed=true)
+  documents: 81
+  local_links: 498

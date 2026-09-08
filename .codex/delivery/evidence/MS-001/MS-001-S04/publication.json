@@ -1,0 +1,65 @@
+{
+  "pull_requests": [
+    {
+      "headRefOid": "67470fdf9f543e242a64f7b3f8d53e5b325b7d95",
+      "mergeCommit": {
+        "oid": "75df816c7f57500ca26a6dd74c0e51f8f0e65117"
+      },
+      "number": 60,
+      "state": "MERGED",
+      "url": "https://github.com/Dejetins/custometry/pull/60",
+      "checks": [
+        {
+          "name": "Locked static, unit and contract gates",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/Dejetins/custometry/actions/runs/34273920233/job/102222123798"
+        },
+        {
+          "name": "Disposable Compose and browser proof",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/Dejetins/custometry/actions/runs/34273920233/job/102222725893"
+        },
+        {
+          "name": "Foundation gate",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/Dejetins/custometry/actions/runs/34273920233/job/102223472318"
+        }
+      ]
+    },
+    {
+      "headRefOid": "8eb146ce6a28b98a8dcd6ec10bf3ecdbaef1bb65",
+      "mergeCommit": {
+        "oid": "c3ae01eebc2a8f010ec2c10c51281bc2c4078e1a"
+      },
+      "number": 61,
+      "state": "MERGED",
+      "url": "https://github.com/Dejetins/custometry/pull/61",
+      "checks": [
+        {
+          "name": "Locked static, unit and contract gates",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/Dejetins/custometry/actions/runs/34275377713/job/102227445190"
+        },
+        {
+          "name": "Disposable Compose and browser proof",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/Dejetins/custometry/actions/runs/34275377713/job/102228175849"
+        },
+        {
+          "name": "Foundation gate",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/Dejetins/custometry/actions/runs/34275377713/job/102228848532"
+        }
+      ]
+    }
+  ],
+  "local_branch": "main",
+  "local_head": "7deefea4f0cfdd284d8f5ef0711af56800c6d826",
+  "temporary_remote_branches": ""
+}

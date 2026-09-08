@@ -1,0 +1,18 @@
+{
+  "archive_digest": {
+    "rejected": true,
+    "error_type": "BundleError"
+  },
+  "archive_platform": {
+    "rejected": true,
+    "error_type": "KeyError"
+  },
+  "archive_path": {
+    "rejected": true,
+    "error_type": "BundleError"
+  },
+  "partial_payload": {
+    "rejected": true,
+    "error_type": "BundleError"
+  }
+}

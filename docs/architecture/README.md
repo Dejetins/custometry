@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 24
+doc_version: 25
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -32,8 +32,8 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | Document | Purpose |
 |---|---|
 | [Development direction map — MAP-001](./planning/project-map.md) | Accepted version 1.2.0: six L1 directions, full sequential priorities and installation-first planning entry |
-| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.5: M5/Linux installation, TLS, explicit bootstrap roles and five sequential outcomes |
-| [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 2.1.0: upstream prebuilt dependencies, internal-first bundle and S03 restart; retained S01/S02 evidence and one canonical journal |
+| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.6: M5/Linux installation, TLS, explicit bootstrap roles and five sequential outcomes |
+| [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 2.2.0: exact internal bundle and native ARM64/AMD64 evidence; [S05 criterion map](../../.codex/delivery/evidence/MS-001/MS-001-S05/report.md) and [C03 handoff](runtime-network-installation.md#s05-installation-author-handoff); owner decision remains in the canonical journal |
 | [System Design](./system-design.md) | Complete `0.11.0-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted customer segmentation/reporting requirements, target contract ownership, compatibility and implementing-ticket acceptance |

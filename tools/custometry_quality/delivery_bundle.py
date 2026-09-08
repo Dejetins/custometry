@@ -1,7 +1,7 @@
 """Local candidate packaging and closure checks; never release authorization.
 
 All executable readers/templates come from this independently selected source,
-not from a candidate payload. S03 supplies actual subjects/evidence and signs;
+not from a candidate payload. Internal development is explicitly unsigned;
 S04 owns authenticated retrieval and hostile archive/runtime verification.
 """
 
@@ -15,6 +15,7 @@ import re
 import stat
 import subprocess
 import tempfile
+import tarfile
 import zipfile
 from pathlib import Path
 from types import ModuleType
@@ -88,6 +89,120 @@ STRUCTURE = reader("validate-delivery-manifest.py")
 LEGACY = reader("validate-release-manifest.py")
 
 
+INTERNAL = "internal-development"
+
+
+def is_internal(record: dict[str, Any]) -> bool:
+    return record.get("channel") == INTERNAL
+
+
+def record_schema(profile: str = "release") -> dict[str, Any]:
+    schema = STRUCTURE.parse_json(
+        (ROOT / "deploy/compose/delivery-manifest.schema.json").read_bytes()
+    )
+    require(profile in {"release", INTERNAL}, "DELIVERY_UNSUPPORTED_PROFILE")
+    if profile == INTERNAL:
+        extension = STRUCTURE.parse_json(
+            (ROOT / "deploy/compose/delivery-internal-profile.json").read_bytes()
+        )
+        schema["properties"].update(extension["properties"])
+        schema["$defs"]["image"]["properties"]["index_digest"] = {
+            "anyOf": [{"type": "null"}, schema["$defs"]["image"]["properties"]["index_digest"]]
+        }
+        schema["properties"]["compatibility"]["properties"]["tested_engines"]["minItems"] = 0
+    STRUCTURE.check_schema(schema, schema)
+    return schema
+
+
+def read_record(path: Path, profile: str = "release") -> dict[str, Any]:
+    with path.open("rb") as stream:
+        record = STRUCTURE.parse_json(stream.read(1048577))
+    schema = record_schema(profile)
+    STRUCTURE.validate(record, schema, schema)
+    return record
+
+
+def platform_env(record: dict[str, Any], architecture: str) -> bytes:
+    values = {"CUSTOMETRY_VERSION": record["application_version"]}
+    for item in record["retrieval"]["archives"]:
+        if item["architecture"] == architecture:
+            values[f"CUSTOMETRY_{item['role'].upper()}_IMAGE"] = item["docker_id"]
+    return "".join(f"{k}={v}\n" for k, v in sorted(values.items())).encode("ascii")
+
+
+def check_image_archives(record: dict[str, Any], directory: Path) -> None:
+    """Check retained bytes before a later consumer imports them; no extraction."""
+    if not is_internal(record):
+        return
+    require(directory.is_dir() and not directory.is_symlink())
+    items = record["retrieval"]["archives"]
+    require(sum(item["size_bytes"] for item in items) <= 26843545600, "DELIVERY_LIMIT")
+    for item in items:
+        path = directory / safe_path(item["path"])
+        require(path.resolve().is_relative_to(directory.resolve()) and not path.is_symlink())
+        require(path.is_file() and path.stat().st_size == item["size_bytes"])
+        with path.open("rb") as stream:
+            require(hashlib.file_digest(stream, "sha256").hexdigest() == item["sha256"])
+
+        # Docker save OCI identities are checked without extracting or executing.
+        with tarfile.open(path) as archive:
+            members: list[tarfile.TarInfo] = []
+            for member in archive:
+                require(len(members) < 4096, "DELIVERY_LIMIT")
+                members.append(member)
+            names = [m.name.rstrip("/") for m in members]
+            require(len(names) <= 4096 and len(set(names)) == len(names), "DELIVERY_LIMIT")
+            for member, name in zip(members, names, strict=True):
+                safe_path(name)
+                require(member.isfile() or member.isdir())
+            platform = next(
+                p
+                for p in record["images"][item["role"]]["platforms"]
+                if p["architecture"] == item["architecture"]
+            )
+
+            def blob(subject: str) -> dict[str, Any]:
+                member = archive.getmember("blobs/sha256/" + subject.removeprefix("sha256:"))
+                require(member.isfile() and member.size <= 1048576, "DELIVERY_LIMIT")
+                stream = archive.extractfile(member)
+                require(stream is not None)
+                assert stream is not None
+                raw = stream.read(1048577)
+                require("sha256:" + digest(raw) == subject)
+                # OCI timestamps/config values need ordinary JSON, not manifest canonicalization.
+                return json.loads(raw)
+
+            manifest = blob(platform["digest"])
+            require(manifest["config"]["digest"] == item["image_id"])
+            engine_subject = blob(item["docker_id"])
+            require(
+                item["docker_id"] == platform["digest"]
+                or any(
+                    p["digest"] == platform["digest"] for p in engine_subject.get("manifests", [])
+                )
+            )
+            config = blob(item["image_id"])
+            require(config["architecture"] == item["architecture"] and config["os"] == "linux")
+
+
+def generated_payload(record: dict[str, Any]) -> dict[str, bytes]:
+    result = {
+        CONFIG: canonical(configuration(record)),
+        "delivery-verification-policy.json": (
+            ROOT / "deploy/compose/delivery-verification-policy.json"
+        ).read_bytes(),
+    }
+    if is_internal(record):
+        for arch in ("arm64", "amd64"):
+            result[f".internal-{arch}.env"] = platform_env(record, arch)
+        result["delivery-internal-profile.json"] = (
+            ROOT / "deploy/compose/delivery-internal-profile.json"
+        ).read_bytes()
+    else:
+        result[ENV] = projection(record)
+    return result
+
+
 def canonical(value: Any) -> bytes:
     return STRUCTURE.canonical_bytes(value)
 
@@ -145,7 +260,13 @@ def configuration(record: dict[str, Any]) -> dict[str, Any]:
     )
     for name, service in config["services"].items():
         image = record["images"][ROLES[name]]
-        service["image"] = image["repository"] + "@" + image["index_digest"]
+        service["image"] = (
+            "${CUSTOMETRY_" + ROLES[name].upper() + "_IMAGE:?Select internal platform env}"
+            if is_internal(record)
+            else image["repository"] + "@" + image["index_digest"]
+        )
+        if is_internal(record):
+            service["pull_policy"] = "never"
         if name in ("api", "migrate"):
             service["environment"]["CUSTOMETRY_VERSION"] = record["application_version"]
     if "demo" not in record["profiles"]:
@@ -202,11 +323,17 @@ def resource_records(config: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def validate_record(record: dict[str, Any]) -> None:
-    schema = STRUCTURE.parse_json(
-        (ROOT / "deploy/compose/delivery-manifest.schema.json").read_bytes()
-    )
-    STRUCTURE.check_schema(schema, schema)
+    schema = record_schema(INTERNAL if is_internal(record) else "release")
     STRUCTURE.validate(record, schema, schema)
+    if is_internal(record):
+        archives = record["retrieval"]["archives"]
+        unique(archives, "path")
+        require(
+            {(a["role"], a["architecture"]) for a in archives}
+            == {(r, a) for r in ("api", "web", "postgres") for a in ("arm64", "amd64")}
+        )
+        for archive in archives:
+            safe_path(archive["path"])
     config = configuration(record)
     require(sorted(record["profiles"]) in (["core", "migration"], ["core", "demo", "migration"]))
     require(sorted(record["services"], key=lambda s: s["name"]) == service_records(config))
@@ -243,7 +370,7 @@ def validate_record(record: dict[str, Any]) -> None:
     # Pin upstream identity independently of the candidate record.
     require(record["images"]["postgres"]["index_digest"] == POSTGRES_DIGEST)
     files = unique(record["files"], "path")
-    require(CONFIG in files and ENV in files and not (set(files) & ENVELOPE))
+    require(CONFIG in files and not (set(files) & ENVELOPE))
     for name in files:
         safe_path(name)
     unique(record["build_inputs"], "path")
@@ -279,13 +406,14 @@ def validate_record(record: dict[str, Any]) -> None:
         subjects = {i["index_digest"] for i in record["images"].values()}
         subjects.update(p["digest"] for i in record["images"].values() for p in i["platforms"])
         require(item["subject"] in subjects)
-    required_payload = {CONFIG, ENV, "delivery-verification-policy.json"}
+    required_payload = set(generated_payload(record))
     required_payload.update(e["file"]["path"] for e in record["evidence"])
     if "demo" in record["profiles"]:
         required_payload.update("demo/init/" + name for name in DEMO_FILES)
     require(required_payload <= set(files))
     require(all(name in required_payload or name.startswith("notices/") for name in files))
-    projection(record)
+    if not is_internal(record):
+        projection(record)
 
 
 POSTGRES_DIGEST = "sha256:5d004e058f520673f1f6edbad6b1603d5dab4c818e257c041889ef64672a8cc4"
@@ -320,12 +448,8 @@ def check_payload(record: dict[str, Any], payload: dict[str, bytes]) -> None:
     require(set(payload) == set(files))
     for name, raw in payload.items():
         require(file_record(name, raw, files[name]["role"]) == files[name])
-    require(payload[ENV] == projection(record))
-    require(payload[CONFIG] == canonical(configuration(record)))
-    require(
-        payload.get("delivery-verification-policy.json")
-        == (ROOT / "deploy/compose/delivery-verification-policy.json").read_bytes()
-    )
+    for name, raw in generated_payload(record).items():
+        require(payload.get(name) == raw)
 
 
 def candidate_payload(record: dict[str, Any], directory: Path) -> dict[str, bytes]:
@@ -351,11 +475,7 @@ def prepare(record: dict[str, Any], source: Path, output: Path) -> None:
     """Materialize supplied complete record inputs; never invent image evidence."""
     payload = payload_files(source)
     require(not (set(payload) & ENVELOPE))
-    payload[CONFIG] = canonical(configuration(record))
-    payload[ENV] = projection(record)
-    payload["delivery-verification-policy.json"] = (
-        ROOT / "deploy/compose/delivery-verification-policy.json"
-    ).read_bytes()
+    payload.update(generated_payload(record))
     check_payload(record, payload)
     write_new(output, payload)
 
@@ -374,11 +494,7 @@ def assemble(metadata: dict[str, Any], source: Path, output: Path) -> None:
     config = configuration(record)
     record["services"] = service_records(config)
     record["resources"] = resource_records(config)
-    payload[CONFIG] = canonical(config)
-    payload[ENV] = projection(record)
-    payload["delivery-verification-policy.json"] = (
-        ROOT / "deploy/compose/delivery-verification-policy.json"
-    ).read_bytes()
+    payload.update(generated_payload(record))
     evidence_paths = {e["file"]["path"] for e in record["evidence"]}
 
     def role(name: str) -> str:
@@ -404,14 +520,19 @@ def assemble(metadata: dict[str, Any], source: Path, output: Path) -> None:
     write_new(output, payload)
 
 
-def pack(record: dict[str, Any], payload: Path, signature: Path, output: Path) -> None:
+def pack(record: dict[str, Any], payload: Path, signature: Path | None, output: Path) -> None:
     """Construct a deterministic ZIP after local closure; signature is not verified here."""
     content = candidate_payload(record, payload)
     check_payload(record, content)
     content["delivery-manifest.json"] = canonical(record)
-    with signature.open("rb") as stream:
-        content["delivery-manifest.sigstore.json"] = stream.read(1048577)
-    require(0 < len(content["delivery-manifest.sigstore.json"]) <= 1048576, "DELIVERY_LIMIT")
+    if is_internal(record):
+        require(signature is None, "DELIVERY_UNSUPPORTED_PROFILE")
+    else:
+        require(signature is not None, "DELIVERY_SIGNATURE_REQUIRED")
+        assert signature is not None
+        with signature.open("rb") as stream:
+            content["delivery-manifest.sigstore.json"] = stream.read(1048577)
+        require(0 < len(content["delivery-manifest.sigstore.json"]) <= 1048576, "DELIVERY_LIMIT")
     require(not output.exists() and not output.is_symlink())
     # Stored regular entries have deterministic bytes and cannot exceed ratio limits.
     with tempfile.TemporaryFile() as stream:
@@ -524,12 +645,14 @@ def main() -> int:
     sub = parser.add_subparsers(dest="command", required=True)
     for command in ("check", "prepare", "pack", "assemble"):
         child = sub.add_parser(command)
+        child.add_argument("--profile", choices=("release", INTERNAL), default="release")
+        child.add_argument("--image-store", type=Path)
         child.add_argument("--record", type=Path, required=True)
         child.add_argument("--payload", type=Path, required=True)
         if command != "check":
             child.add_argument("--output", type=Path, required=True)
         if command == "pack":
-            child.add_argument("--signature", type=Path, required=True)
+            child.add_argument("--signature", type=Path)
     child = sub.add_parser("capture")
     child.add_argument("--commit", required=True)
     child.add_argument("--output", type=Path, required=True)
@@ -547,16 +670,33 @@ def main() -> int:
             if args.command == "assemble":
                 with args.record.open("rb") as stream:
                     metadata = STRUCTURE.parse_json(stream.read(1048577))
+                require(
+                    is_internal(metadata) == (args.profile == INTERNAL),
+                    "DELIVERY_UNSUPPORTED_PROFILE",
+                )
+                if is_internal(metadata):
+                    require(args.image_store is not None, "DELIVERY_IMAGE_STORE_REQUIRED")
+                    check_image_archives(metadata, args.image_store)
                 assemble(metadata, args.payload, args.output)
             else:
-                record = STRUCTURE.read_contract(args.record)
+                record = read_record(args.record, args.profile)
+                if is_internal(record):
+                    require(args.image_store is not None, "DELIVERY_IMAGE_STORE_REQUIRED")
+                    check_image_archives(record, args.image_store)
                 if args.command == "check":
                     check_payload(record, candidate_payload(record, args.payload))
                 elif args.command == "prepare":
                     prepare(record, args.payload, args.output)
                 elif args.command == "pack":
                     pack(record, args.payload, args.signature, args.output)
-    except (ValueError, OSError, KeyError, TypeError, subprocess.SubprocessError) as error:
+    except (
+        ValueError,
+        OSError,
+        KeyError,
+        TypeError,
+        tarfile.TarError,
+        subprocess.SubprocessError,
+    ) as error:
         print(
             json.dumps(
                 {

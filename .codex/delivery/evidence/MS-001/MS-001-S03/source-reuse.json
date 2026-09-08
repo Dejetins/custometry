@@ -1,0 +1,9 @@
+{
+  "source_commit": "bc347d7e74c57640b42462c24cc2ed60d76ef055",
+  "validated_source_files": 340,
+  "build_input_diff": "empty",
+  "historical_image_ids_and_rootfs": "match",
+  "build_evidence": ".codex/delivery/evidence/MS-001/MS-001-S02/iteration-02/clean-builds.json",
+  "new_builds": 0,
+  "reason": "Exact accepted S02 builds reused under MS-001/AC-02"
+}

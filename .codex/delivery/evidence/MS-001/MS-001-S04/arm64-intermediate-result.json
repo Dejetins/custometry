@@ -1,0 +1,178 @@
+{
+  "status": "pass",
+  "architecture": "arm64",
+  "timings_seconds": {
+    "retrieval": 0.413,
+    "verification": 0.189,
+    "import_api": 0.741,
+    "import_web": 0.198,
+    "import_postgres": 0.719,
+    "database_start": 6.212,
+    "migration_fresh": 2.774,
+    "migration_repeat": 2.544,
+    "application_start": 17.446
+  },
+  "project": "ms001s04-839d210daf",
+  "retrieved_bytes": 478784861,
+  "manifest_sha256": "693cbe3b4dfcd5148c9aab6dd2b1e946d9b46ae0ce3c22a69b4a03111f1a735a",
+  "source_commit": "bc347d7e74c57640b42462c24cc2ed60d76ef055",
+  "profile": "internal-development",
+  "engine": {
+    "ServerVersion": "29.6.2",
+    "Architecture": "aarch64",
+    "OSType": "linux",
+    "MemTotal": 8319213568,
+    "NCPU": 18
+  },
+  "images": [
+    {
+      "architecture": "arm64",
+      "docker_id": "sha256:52b65dd7244569f20a91c3db67932a01c277b92ea8e11f89c0674b06f8fd3fd2",
+      "image_id": "sha256:8c8a5ab49b9b1da3e2791332e3c7afecaaad7d232944f259356e4aeba22bd8b6",
+      "path": "api-arm64.tar",
+      "role": "api",
+      "sha256": "d74997f1dd1df832e498352681d2a665a0759ebc49cda294733e3585fb452f0b",
+      "size_bytes": 105873920,
+      "observed_id": "sha256:52b65dd7244569f20a91c3db67932a01c277b92ea8e11f89c0674b06f8fd3fd2"
+    },
+    {
+      "architecture": "arm64",
+      "docker_id": "sha256:e33f799be1c0f365e320d2cbb1d9e4b20dda01878ef330e0bb077fb0fbfc357e",
+      "image_id": "sha256:02147c19d18a80cfc2ec34bcb26de2e81f1defd01a934ad1a96c750aa178f54b",
+      "path": "web-arm64.tar",
+      "role": "web",
+      "sha256": "87961739658033624cd80f7831e62c4f859987dc48cce2c97001cdd514cd2e33",
+      "size_bytes": 22763008,
+      "observed_id": "sha256:e33f799be1c0f365e320d2cbb1d9e4b20dda01878ef330e0bb077fb0fbfc357e"
+    },
+    {
+      "architecture": "arm64",
+      "docker_id": "sha256:08f8dfa2be115968517649092cd4b4204813d28ca7145dba6283685a73128524",
+      "image_id": "sha256:49a3a9c54969a6f3eb148b424f22fcce953f128664301e0ec3ee122a99131503",
+      "path": "postgres-arm64.tar",
+      "role": "postgres",
+      "sha256": "c862a6b3692f5a28fec01c671deb1b6a8b93655fd16a93f019a33aba3066b443",
+      "size_bytes": 107318272,
+      "observed_id": "sha256:08f8dfa2be115968517649092cd4b4204813d28ca7145dba6283685a73128524"
+    }
+  ],
+  "migration_head": "0009_notifications",
+  "imports": "pass",
+  "url": "http://127.0.0.1:55003",
+  "http": {
+    "/": {
+      "status": 200,
+      "bytes": 532
+    },
+    "/assets/index-VmNGaPWM.js": {
+      "status": 200,
+      "bytes": 593014
+    },
+    "/assets/index-BXnJC0O6.css": {
+      "status": 200,
+      "bytes": 34950
+    },
+    "/health/live": {
+      "status": 200,
+      "bytes": 3
+    },
+    "/api/health/ready": {
+      "status": 200,
+      "bytes": 87
+    },
+    "/docs/": {
+      "status": 200,
+      "bytes": 17320
+    }
+  },
+  "stats": [
+    {
+      "BlockIO": "0B / 0B",
+      "CPUPerc": "0.27%",
+      "Container": "ab09f28ff4aac893130f15cf86d24d0569cc648b5b29acdfeea6f55d0c4354ce",
+      "ID": "ab09f28ff4aa",
+      "MemPerc": "11.99%",
+      "MemUsage": "61.41MiB / 512MiB",
+      "Name": "ms001s04-839d210daf-api-1",
+      "NetIO": "8.89kB / 6.01kB",
+      "PIDs": "6"
+    },
+    {
+      "BlockIO": "0B / 58.1MB",
+      "CPUPerc": "0.03%",
+      "Container": "d199cfbda201390faadec6a89d6fcc7951f09b01ca5fa6e67d28164b8ff8d9cd",
+      "ID": "d199cfbda201",
+      "MemPerc": "2.66%",
+      "MemUsage": "27.27MiB / 1GiB",
+      "Name": "ms001s04-839d210daf-control-db-1",
+      "NetIO": "69.8kB / 23kB",
+      "PIDs": "6"
+    },
+    {
+      "BlockIO": "0B / 229kB",
+      "CPUPerc": "0.04%",
+      "Container": "259bd4e2a16b3b8bc865ac77bfdaca4dce730ea3e1e3cfcbeaacae2fc9ebc18a",
+      "ID": "259bd4e2a16b",
+      "MemPerc": "2.42%",
+      "MemUsage": "24.8MiB / 1GiB",
+      "Name": "ms001s04-839d210daf-demo-source-db-1",
+      "NetIO": "1.75kB / 126B",
+      "PIDs": "6"
+    },
+    {
+      "BlockIO": "0B / 0B",
+      "CPUPerc": "0.00%",
+      "Container": "3a903a8c67df7fbaaedb75a4029907c3ba7c09426cbd0526d324b3f1cf387246",
+      "ID": "3a903a8c67df",
+      "MemPerc": "15.39%",
+      "MemUsage": "9.852MiB / 64MiB",
+      "Name": "ms001s04-839d210daf-edge-1",
+      "NetIO": "664kB / 663kB",
+      "PIDs": "19"
+    },
+    {
+      "BlockIO": "0B / 0B",
+      "CPUPerc": "0.00%",
+      "Container": "95443ad22535311515ffa234674f4629ebc2f4eefa2c4c138cae14cdff5cdb1b",
+      "ID": "95443ad22535",
+      "MemPerc": "10.68%",
+      "MemUsage": "13.67MiB / 128MiB",
+      "Name": "ms001s04-839d210daf-web-1",
+      "NetIO": "8.54kB / 654kB",
+      "PIDs": "19"
+    }
+  ],
+  "containers": [
+    {
+      "Name": "ms001s04-839d210daf-api-1",
+      "State": "running",
+      "Health": "healthy",
+      "Service": "api"
+    },
+    {
+      "Name": "ms001s04-839d210daf-control-db-1",
+      "State": "running",
+      "Health": "healthy",
+      "Service": "control-db"
+    },
+    {
+      "Name": "ms001s04-839d210daf-demo-source-db-1",
+      "State": "running",
+      "Health": "healthy",
+      "Service": "demo-source-db"
+    },
+    {
+      "Name": "ms001s04-839d210daf-edge-1",
+      "State": "running",
+      "Health": "healthy",
+      "Service": "edge"
+    },
+    {
+      "Name": "ms001s04-839d210daf-web-1",
+      "State": "running",
+      "Health": "healthy",
+      "Service": "web"
+    }
+  ],
+  "cleanup": "owned-compose-resources-removed"
+}

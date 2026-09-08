@@ -1,0 +1,110 @@
+{
+  "profile": "internal-development",
+  "properties": {
+    "channel": {
+      "const": "internal-development"
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "tool",
+        "source_commit"
+      ],
+      "properties": {
+        "kind": {
+          "const": "owner-local"
+        },
+        "tool": {
+          "const": "tools.custometry_quality.delivery_bundle"
+        },
+        "source_commit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "signature": {
+      "type": "null"
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "archives"
+      ],
+      "properties": {
+        "provider": {
+          "const": "owner-local-retained-images"
+        },
+        "archives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "role",
+              "architecture",
+              "path",
+              "sha256",
+              "size_bytes",
+              "image_id",
+              "docker_id"
+            ],
+            "properties": {
+              "role": {
+                "enum": [
+                  "api",
+                  "web",
+                  "postgres"
+                ]
+              },
+              "architecture": {
+                "enum": [
+                  "arm64",
+                  "amd64"
+                ]
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 240,
+                "pattern": "^(?!.*(?:^|/)[.]{1,2}(?:/|$))[A-Za-z0-9_.][A-Za-z0-9_.-]*(?:/[A-Za-z0-9_.][A-Za-z0-9_.-]*)*$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 26843545600
+              },
+              "image_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 71,
+                "pattern": "^sha256:[0-9a-f]{64}$"
+              },
+              "docker_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 71,
+                "pattern": "^sha256:[0-9a-f]{64}$"
+              }
+            }
+          },
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

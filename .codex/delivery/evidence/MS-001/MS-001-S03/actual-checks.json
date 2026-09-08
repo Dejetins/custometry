@@ -1,0 +1,142 @@
+[
+  {
+    "name": "actual internal payload and retained OCI archive verification",
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python3",
+      "-I",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/toolkit/tools/custometry_quality/delivery_bundle.py",
+      "check",
+      "--profile",
+      "internal-development",
+      "--record",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle/delivery-manifest.json",
+      "--payload",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle",
+      "--image-store",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/images"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"result\": \"pass\", \"code\": \"DELIVERY_CANDIDATE_PREPARED\", \"next_action\": \"Complete independent authenticity and runtime checks.\"}",
+    "elapsed_seconds": 0.253
+  },
+  {
+    "name": "release profile rejects actual unsigned internal bundle",
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python3",
+      "-I",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/toolkit/tools/custometry_quality/delivery_bundle.py",
+      "check",
+      "--profile",
+      "release",
+      "--record",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle/delivery-manifest.json",
+      "--payload",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle",
+      "--image-store",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/images"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"result\": \"fail\", \"code\": \"DELIVERY_SCHEMA_VALUE\", \"next_action\": \"Correct candidate inputs; do not execute.\"}",
+    "elapsed_seconds": 0.049
+  },
+  {
+    "name": "altered archive hash",
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python3",
+      "-I",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/toolkit/tools/custometry_quality/delivery_bundle.py",
+      "check",
+      "--profile",
+      "internal-development",
+      "--record",
+      "/var/folders/bz/j3xmpgc95cz8ty7p79b272gh0000gn/T/ms001-s03-negatives-3t1aq_f7/altered.json",
+      "--payload",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle",
+      "--image-store",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/images"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"result\": \"fail\", \"code\": \"DELIVERY_TAMPERED\", \"next_action\": \"Correct candidate inputs; do not execute.\"}",
+    "elapsed_seconds": 0.086
+  },
+  {
+    "name": "escaping archive path",
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python3",
+      "-I",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/toolkit/tools/custometry_quality/delivery_bundle.py",
+      "check",
+      "--profile",
+      "internal-development",
+      "--record",
+      "/var/folders/bz/j3xmpgc95cz8ty7p79b272gh0000gn/T/ms001-s03-negatives-3t1aq_f7/altered.json",
+      "--payload",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle",
+      "--image-store",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/images"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"result\": \"fail\", \"code\": \"DELIVERY_SCHEMA_VALUE\", \"next_action\": \"Correct candidate inputs; do not execute.\"}",
+    "elapsed_seconds": 0.045
+  },
+  {
+    "name": "altered image manifest digest",
+    "command": [
+      "/Users/daniildegtyarev/Projects/Custometry/.venv/bin/python3",
+      "-I",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/toolkit/tools/custometry_quality/delivery_bundle.py",
+      "check",
+      "--profile",
+      "internal-development",
+      "--record",
+      "/var/folders/bz/j3xmpgc95cz8ty7p79b272gh0000gn/T/ms001-s03-negatives-3t1aq_f7/altered.json",
+      "--payload",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle",
+      "--image-store",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/images"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"result\": \"fail\", \"code\": \"DELIVERY_INPUT_INVALID\", \"next_action\": \"Correct candidate inputs; do not execute.\"}",
+    "elapsed_seconds": 0.086
+  },
+  {
+    "name": "Compose arm64 six services resolve to retained platform image IDs",
+    "command": [
+      "docker",
+      "compose",
+      "--env-file",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle/.internal-arm64.env",
+      "-f",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle/compose.json",
+      "--profile",
+      "demo",
+      "--profile",
+      "migration",
+      "config",
+      "--format",
+      "json"
+    ],
+    "exit_code": 0,
+    "native_runtime": "not_observed"
+  },
+  {
+    "name": "Compose amd64 six services resolve to retained platform image IDs",
+    "command": [
+      "docker",
+      "compose",
+      "--env-file",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle/.internal-amd64.env",
+      "-f",
+      "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3/bundle/compose.json",
+      "--profile",
+      "demo",
+      "--profile",
+      "migration",
+      "config",
+      "--format",
+      "json"
+    ],
+    "exit_code": 0,
+    "native_runtime": "not_observed"
+  }
+]

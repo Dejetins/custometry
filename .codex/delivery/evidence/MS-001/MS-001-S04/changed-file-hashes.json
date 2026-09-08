@@ -1,0 +1,22 @@
+[
+  {
+    "path": "tools/custometry_quality/delivery_consumer.py",
+    "sha256": "4818424885bd2082e1e114451557f8a1168be04e88139b2347b9463252e7cbde"
+  },
+  {
+    "path": "tests/tooling/test_delivery_consumer.py",
+    "sha256": "76ef81a8778957492d26a7a9f959cf0a533cdba77ec0c2bfc2217db89e853e96"
+  },
+  {
+    "path": ".github/workflows/verify-internal-bundle.yml",
+    "sha256": "bcebc939391ae2931a8fe758f0d68c3c2cd95fa968ed56a22be2d5562247f522"
+  },
+  {
+    "path": "docs/architecture/runtime-network-installation.md",
+    "sha256": "5bef1e5be45943df7726800be6ac11afcd6388209be9270ed6a2451088457480"
+  },
+  {
+    "path": "docs/architecture/tooling-gates.md",
+    "sha256": "ebc74483dcfff11bc11137217a596d33d2ba3d1ed489cbb8dae6261d10e0e292"
+  }
+]

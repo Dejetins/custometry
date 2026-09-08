@@ -20,7 +20,8 @@ repository evidence remains available. Docker images and unrelated resources wer
 not pruned.
 
 Source/runtime validation is retained in the accepted S03/S04/S05 evidence.
-Publication additionally uses normal repository commit/push hooks and protected
-PR Foundation CI. Actual CI/merge state is recorded by the GitHub PR; this document
+Publication additionally ran `uv run --locked python -m tools.check --scope local`
+with `PASS check:local (observed=true)` and requires protected PR Foundation CI.
+[PR #62](https://github.com/Dejetins/custometry/pull/62) records actual CI/merge state; this document
 does not predeclare a pass or merge. Official-release assurance, installation,
 TLS and account bootstrap remain outside the proof boundary.

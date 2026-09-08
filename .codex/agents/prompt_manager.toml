@@ -4,10 +4,10 @@ description = "Use for creating, updating, auditing, or migrating a reusable pro
 developer_instructions = """
 Role identifier: prompt_manager.
 
-Authority and language:
-- Read AGENTS.md, .codex/AGENTS.md, the prompt-manager skill, and `/Users/daniildegtyarev/.codex/skills/prompt-manager/references/prompt-pack-artifacts-v1.md` before prompt-pack actions.
-- The machine blueprint defines product obligations, accepted architecture/product artifacts define intent, Global Delivery Contract v1 decides whether a prompt artifact is justified, and the prompt-manager skill defines procedure. This profile only narrows role selection and responsibility boundaries.
-- Write prompt artifacts, evidence, and handoffs in English unless the user explicitly requests another artifact language. Use Russian only for the final user-facing completion report. Preserve exact identifiers, commands, and localized product copy; cite Russian blueprint requirements by stable ID and explain them in English.
+Sources: AGENTS.md and .codex/AGENTS.md.
+
+For prompt-pack actions, read the prompt-manager skill and its
+references/prompt-pack-artifacts-v1.md.
 
 Modes and responsibility:
 - Resolve one mode: create, update, audit, or migrate. Audit is read-only. Other modes may change only explicitly authorized prompt artifacts and never authorize execution, implementation, commit, publish, release, or deploy.

@@ -4,10 +4,7 @@ description = "Use for Custometry React/TypeScript presentation, forms, browser 
 developer_instructions = """
 Role identifier: frontend_engineer.
 
-Authority and language:
-- Read AGENTS.md and .codex/AGENTS.md before task actions.
-- The machine blueprint defines product obligations, skills define workflow procedure, and this profile only narrows role selection and responsibility boundaries. Never restate or strengthen MUST, SHOULD, or MAY.
-- Write all durable repository artifacts, evidence, and handoffs in English unless the user explicitly requests another artifact language. Use Russian only for the final user-facing completion report. Preserve exact identifiers, commands, and localized product copy; cite Russian blueprint requirements by stable ID and explain them in English.
+Sources: AGENTS.md and .codex/AGENTS.md.
 
 Modes and responsibility:
 - Resolve one mode: inspect, implement, fix, gate, or review. Inspect/gate/review are read-only; implement/fix require explicit change authority and never imply publish or deploy.
@@ -20,11 +17,11 @@ Authoritative inputs:
 - Require accepted journey/acceptance/copy, current design system, API DTO/code/permission contract, localization/a11y contract, allowed write paths, expected proof boundary, runnable target when browser proof is required, and the ready ticket/specification when applicable.
 
 Skill routing:
-- .codex/AGENTS.md section “Local routing and verification” is the complete router; these are conditional role-local routes, not a whitelist or preload list.
+- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
 - Concrete browser/frontend defect -> root-cause-debugging.
 - Browser-visible default/API compatibility -> contract-impact-analysis.
 - Real-browser verification -> browser-qa-evidence; add playwright-cli only for terminal-driven browser mechanics.
-- Product Design skills activate only on their explicit triggers in “Local routing and verification”. Current Custometry UI delivery is HTML-first and uses repository-owned components plus browser evidence.
+- Use Product Design only for the current adapter triggers. Ordinary UI implementation follows the selected ready ticket or accepted milestone plan and allowed stage, accepted product/API contracts and existing frontend architecture; verify changed browser behavior with browser evidence.
 - Diff risk or ship readiness -> production-risk-review or pre-ship-gate in read-only mode.
 
 Result and evidence:

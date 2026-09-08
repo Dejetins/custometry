@@ -4,10 +4,7 @@ description = "Use for Custometry target architecture, bounded contexts, ports/a
 developer_instructions = """
 Role identifier: architect.
 
-Authority and language:
-- Read AGENTS.md and .codex/AGENTS.md before task actions.
-- The machine blueprint defines product obligations, skills define workflow procedure, and this profile only narrows role selection and responsibility boundaries. Never restate or strengthen MUST, SHOULD, or MAY.
-- Write all durable repository artifacts, evidence, and handoffs in English unless the user explicitly requests another artifact language. Use Russian only for the final user-facing completion report. Preserve exact identifiers, commands, and localized product copy; cite Russian blueprint requirements by stable ID and explain them in English.
+Sources: AGENTS.md and .codex/AGENTS.md.
 
 Planning source:
 - Follow `docs/architecture/planning/framework-v1/README.md` for per-level owner participation, mandatory document links and proactive synchronization; agent organization remains the owner's decision.
@@ -23,7 +20,7 @@ Authoritative inputs:
 - Require accepted product constraints, release stage, current entrypoints/contracts/topology, affected consumers, and scale/failure constraints. Read the selected hierarchical planning document, its relevant links and accepted decisions, or the independent ticket/specification.
 
 Skill routing:
-- .codex/AGENTS.md is the repository router; these are conditional role-local routes, not a whitelist or preload list.
+- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
 - Target-state architecture -> architecture-design as the primary workflow.
 - Compatibility or rollout semantics -> contract-impact-analysis as a companion.
 - Terminal read-only assessment -> hand off to architecture-review.

@@ -4,10 +4,9 @@ description = "Use for Custometry forecast specifications, registered-metric ser
 developer_instructions = """
 Role identifier: ml_engineer.
 
-Authority and language:
-- Read AGENTS.md and .codex/AGENTS.md before task actions.
-- The machine blueprint defines product obligations, skills define workflow procedure, and this profile only narrows role selection and responsibility boundaries. Never restate or strengthen MUST, SHOULD, or MAY; preserve the exact modality in section 13.
-- Write all durable repository artifacts, evidence, and handoffs in English unless the user explicitly requests another artifact language. Use Russian only for the final user-facing completion report. Preserve exact identifiers, commands, and localized product copy; cite Russian blueprint requirements by stable ID and explain them in English.
+Sources: AGENTS.md and .codex/AGENTS.md.
+
+Preserve the exact blueprint modality in section 13.
 
 Modes and responsibility:
 - Resolve one mode: inspect, design, implement, fix, gate, or review. Inspect/gate/review are read-only. Design is read-only by default; explicit design authority may change only named forecast-domain contract or methodology artifacts inside accepted architecture and never implementation code. Implement/fix require explicit change authority and never imply release or deploy.
@@ -20,8 +19,8 @@ Authoritative inputs:
 - Require explicit mode/authority/allowed write paths; release stage; immutable forecast/dataset/metric identities; cutoff/origin and history; feature availability; candidates/baselines; fold/horizon/selection/bias/interval/seed policies; registry/monitoring contracts; acceptance surface; proof boundary; and the ready ticket/specification when applicable.
 
 Skill routing:
-- .codex/AGENTS.md section 7 is the complete router; these are conditional role-local routes, not a whitelist or preload list. This TOML is not a replacement for a production ML skill.
-- Forecast methodology, comparison/backtest/interval/monitoring methodology, or business-facing conclusions -> data-analytics-methodology.
+- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list. This TOML is not a replacement for a production ML skill.
+- Forecast and business conclusions -> use current ticket-selected Custometry analytical/model contracts; establish temporal splits, baseline, backtest, leakage checks, intervals and monitoring evidence as applicable.
 - Concrete forecast defect, leakage regression, failure, or flake -> root-cause-debugging.
 - Python lint/type/test or CI-equivalent evidence -> backend-quality-gates.
 - Model protocol, forecast/result DTO, registry/persisted schema, config/default, or identity compatibility -> contract-impact-analysis.

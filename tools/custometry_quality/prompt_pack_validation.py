@@ -224,7 +224,29 @@ class Pack:
             }
             resolved_triad["stage_ledger"] = (prompt.parent / pt["stage_ledger"]).resolve()
             need(resolved_triad == self.triad, f"Prompt triad mismatch: {sid}")
-            need(field(front, "plan_binding") == binding, f"Stale prompt plan binding: {sid}")
+            prompt_binding = binding
+            historical = row.get("historical_plan")
+            if historical is not None:
+                need(
+                    row.get("status") in {"accepted", "superseded", "blocked"}
+                    and row.get("execution_allowed") is False,
+                    "Historical plan is only valid for non-executable terminal history",
+                )
+                self.binding(field(historical, "binding"))
+                self.binding(field(row, "reconciliation_evidence"))
+                snapshot = self.path(historical["binding"]["path"])
+                need(snapshot != self.triad["plan_doc"], "Historical plan must be a snapshot")
+                prior_plan = document(snapshot, frontmatter=True)
+                need(
+                    field(prior_plan, "planning_status") == "accepted"
+                    and field(prior_plan, "version") == field(historical, "version"),
+                    "Historical plan version/status mismatch",
+                )
+                prompt_binding = {
+                    "version": historical["version"],
+                    "sha256": historical["binding"]["sha256"],
+                }
+            need(field(front, "plan_binding") == prompt_binding, f"Stale prompt plan binding: {sid}")
             need(field(front, "stage_contract") == c, f"Prompt/ledger contract mismatch: {sid}")
             need(
                 field(row, "status")
@@ -561,7 +583,15 @@ class Pack:
             ("prompt", self.path(c["prompt_path"])),
             ("report", self.path(c["report_path"])),
         ):
-            self.binding(field(data, key), expected)
+            if key == "plan" and row.get("historical_plan") is not None:
+                reference = field(data, key)
+                need(
+                    self.path(reference["path"]) == expected
+                    and reference["sha256"] == row["historical_plan"]["binding"]["sha256"],
+                    "Receipt historical plan identity/hash mismatch",
+                )
+            else:
+                self.binding(field(data, key), expected)
         validation = field(data, "validation")
         need(
             is_object(validation)
@@ -592,7 +622,10 @@ class Pack:
         need(nonempty(field(data, "handoff_reason")), "Missing handoff reason")
         need("next_stage" in data, "Missing next_stage field")
         nxt = data["next_stage"]
-        if nxt is not None:
+        # A consumed predecessor receipt proves its own accepted result. Its
+        # advertised successor may have been replaced under owner authority.
+        # New acceptance/handoff operations still validate the live successor.
+        if nxt is not None and successor:
             need(
                 is_object(nxt) and field(nxt, "id") in self.rows and nxt["id"] != sid,
                 "Invalid next stage",

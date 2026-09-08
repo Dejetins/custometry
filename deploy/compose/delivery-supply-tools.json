@@ -1,8 +1,0 @@
-{
-  "schema_version": "custometry-supply-tools/v1",
-  "buildkit": "moby/buildkit:v0.24.0@sha256:6eceb8971ce4fceb3daca562832642706238b7eea72941fcf9896c93c3c4a53e",
-  "trusted_root": {
-    "url": "https://raw.githubusercontent.com/sigstore/root-signing/3f83c2527bf36e63076b7d2065f10ed22623af57/targets/trusted_root.json",
-    "sha256": "6494e21ea73fa7ee769f85f57d5a3e6a08725eae1e38c755fc3517c9e6bc0b66"
-  }
-}

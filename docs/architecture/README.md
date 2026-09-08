@@ -32,8 +32,8 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | Document | Purpose |
 |---|---|
 | [Development direction map — MAP-001](./planning/project-map.md) | Accepted version 1.2.0: six L1 directions, full sequential priorities and installation-first planning entry |
-| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.3: M5/Linux installation, TLS, explicit bootstrap roles and five sequential outcomes |
-| [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 1.1.0: accepted working plan, measurable comparisons, five prompts, tested journal updater; execution state and stage evidence live in the canonical journal |
+| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.5: M5/Linux installation, TLS, explicit bootstrap roles and five sequential outcomes |
+| [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 2.1.0: upstream prebuilt dependencies, internal-first bundle and S03 restart; retained S01/S02 evidence and one canonical journal |
 | [System Design](./system-design.md) | Complete `0.11.0-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted customer segmentation/reporting requirements, target contract ownership, compatibility and implementing-ticket acceptance |
@@ -53,7 +53,6 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [UI program retirement](./ui/ui-program-retirement.md) | Removed materials, preserved requirements/code, historical recovery, and cleanup evidence |
 | [Web implementation source contract](./ui/custometry-web-implementation-source-contract-v1.md) | Selected ticket or milestone-stage execution from the target pilot and product requirements, source precedence, and browser proof boundary |
 | [Hierarchical planning framework](planning/framework-v1/README.md) | Required per-level templates, versions, owner checkpoints, mandatory document synchronization and milestone plan/pack/journal bindings |
-| [Development direction map — MAP-001](planning/project-map.md) | Accepted version 1.0.0: six L1 directions, requirement allocation, interfaces and owner decisions; next L2 planning unit remains unselected |
 | [Development operating model](./development-operating-model.md) | Observable outcomes, hierarchical planning, milestone packs, independent tickets, Git and CI/CD |
 | [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Hierarchical-planning amendment, independent ticket route and historical staged-system retirement |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |

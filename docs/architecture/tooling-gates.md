@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 12
+doc_version: 17
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -143,6 +143,17 @@ deduplicates repeated layer records, and emits a separate `license-review-requir
 MPL/LGPL. Unknown, not-allowed, review-required, and denied results fail closed; the release
 workflow does not create an accepted installer manifest until architecture/legal review and
 `THIRD_PARTY_NOTICES` are closed by real artifacts.
+
+For the owner-local `internal-development` supply selected by
+[MS-001 2.1.0](planning/milestones/MS-001/plan.md), license/scanner results are
+report-only and optional tool unavailability is explicit `not_observed`.
+The existing strict gate is not weakened; its failure is not automatically a
+failure of an internal build. Do not install assurance tools, adjudicate every
+system-package license, or rebuild third-party libraries merely to turn this
+internal stage green. Retain notices and meet applicable conditions before
+external redistribution. Actual payload integrity/runtime failures still block.
+The internal-profile producer is future S03 work; this amendment does not claim
+that the restored S02 reader already accepts unsigned output.
 
 Cleanup always starts with a dry run:
 
@@ -319,21 +330,3 @@ the durable record and history determine whether the operation already completed
 subprocess contention, process death, stale writes, session isolation, receipt
 binding, pause/resume/final acceptance and interrupted replacement in temporary
 Git checkouts. These tests never execute a product milestone.
-
-
-### S03 supply preparation checks
-
-The disabled workflow/producer is covered by:
-
-```sh
-uv run --locked pytest -q tests/tooling/test_delivery_supply.py tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py
-uv run --locked ruff check tools/custometry_quality/delivery_supply.py tools/custometry_quality/delivery_bundle.py tests/tooling/test_delivery_supply.py deploy/compose/install-supply-tools.py
-uv run --locked pyright tools/custometry_quality/delivery_supply.py tests/tooling/test_delivery_supply.py deploy/compose/install-supply-tools.py
-```
-
-Synthetic tests exercise native evidence assembly, subject/freshness failures,
-filesystem comparison, immutable provider reconciliation and bounded transport
-unwrapping. They do not certify actual scanner output, signatures or publication.
-Real selected-image SBOM/license/Trivy findings remain hard supply gates; source
-profiles and ordinary Foundation CI cannot waive them. See the
-[runtime supply contract](runtime-network-installation.md#13-internal-supply-producer-preparation-ms-001s03).

@@ -93,6 +93,20 @@ def checked_copy(source: Path, destination: Path, trusted: dict[str, Any]) -> in
     return total
 
 
+def prepare_demo_mount(bundle: Path) -> None:
+    """Make verified demo files readable to PostgreSQL; retain private host parents."""
+    root = bundle / "demo/init"
+    root.chmod(0o755)
+    for name in (
+        "010_create_reader.sh",
+        "015_profile.sh",
+        "020_schema.sql",
+        "030_seed.sql",
+        "040_grants.sql",
+    ):
+        (root / name).chmod(0o755 if name.endswith(".sh") else 0o644)
+
+
 def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool) -> dict[str, Any]:
     require(not work.exists(), "WORK_EXISTS")
     require(shutil.disk_usage(work.parent).free >= 2 * 1024**3, "INSUFFICIENT_DISK")
@@ -120,6 +134,38 @@ def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool
             timeout=timeout,
             check=False,
         )
+        if process.returncode != 0:
+            result["failed_command"] = (
+                args[len(compose) :] if compose and args[: len(compose)] == compose else args[:4]
+            )
+            # Only fixed diagnostic labels enter durable evidence, never raw logs.
+            indicators = (
+                "permission denied",
+                "invalid reference format",
+                "no such image",
+                "unhealthy",
+                "exited",
+                "additional property",
+                "invalid",
+                "not found",
+                "denied",
+            )
+            result["failure_indicators"] = [
+                value for value in indicators if value in process.stderr.lower()
+            ]
+            if compose:
+                logs = subprocess.run(
+                    compose + ["logs", "--no-color", "--tail", "30"],
+                    cwd=work,
+                    env=environment,
+                    text=True,
+                    capture_output=True,
+                    timeout=20,
+                    check=False,
+                )
+                result["container_log_indicators"] = [
+                    value for value in indicators if value in logs.stdout.lower()
+                ]
         require(process.returncode == 0, "COMMAND_FAILED:" + ":".join(args[:3]))
         return process.stdout.strip()
 
@@ -156,6 +202,7 @@ def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool
         start = time.monotonic()
         reader.check_payload(record, reader.candidate_payload(record, acquired / "bundle"))
         reader.check_image_archives(record, acquired / "images")
+        prepare_demo_mount(acquired / "bundle")
         result["timings_seconds"]["verification"] = round(time.monotonic() - start, 3)
         result.update(
             manifest_sha256=sha(manifest),
@@ -192,7 +239,7 @@ def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool
             "demo_source_reader_password",
         ):
             path = secret_dir / name
-            path.write_text(secrets.token_urlsafe(32))
+            path.write_text(secrets.token_hex(32))
             path.chmod(0o444)
         environment.update(
             COMPOSE_PROJECT_NAME=project,
@@ -244,6 +291,24 @@ def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool
                 "demo-source-db",
             ],
         )
+        demo_rows = run(
+            compose
+            + [
+                "exec",
+                "-T",
+                "demo-source-db",
+                "psql",
+                "--username",
+                "demo_reader",
+                "--dbname",
+                "northwind_retail",
+                "-At",
+                "-c",
+                "SELECT count(*) FROM retail.receipts;",
+            ]
+        )
+        require(demo_rows == "5000", "DEMO_INITIALIZATION")
+        result["demo_receipts_read_as_demo_reader"] = 5000
         timed("migration_fresh", compose + ["run", "--rm", "--no-deps", "migrate"])
         current = run(
             compose

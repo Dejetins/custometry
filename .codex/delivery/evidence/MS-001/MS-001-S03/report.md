@@ -5,7 +5,40 @@ Stage: `MS-001-S03`; mode: `manual_sequential`; executor:
 alone owns state. [Plan 1.1.0](../../../../../docs/architecture/planning/milestones/MS-001/plan.md),
 S01/S02 reports, accepted receipts and prompt contracts remain unchanged.
 
-## Scope and current boundary
+## Resumed execution — current boundary
+
+The [owner resolution](owner-resolution-2026-09-08.md) authorizes the exact supply
+effects and necessary repairs. The original executor resumed this same claim using
+the supported ledger CLI. S03 remains in progress; no signed complete bundle or
+S04 readiness is claimed. Prior report/addendum/hash records are preserved under
+`snapshots/pre-resume-2026-09-08/`. The sections below retain earlier observations
+and the permission packet as history, not an outstanding approval request.
+
+Current repairs and limits are recorded in [repair boundaries](resumed/repair-boundaries.md).
+The full accepted artifact name is now enforced. The default license policy is
+unchanged; parsing and narrowly bound review evidence do not fabricate approval.
+Diagnostic API6 ARM64 passes application imports with psycopg 3.2.9 C implementation,
+system libpq 17.11 and OpenSSL 3.5.7; psycopg-binary and vendored libcrypto under `/app`
+are absent. Its actual Trivy 0.74.0 final-image scan has zero CRITICAL/UNKNOWN findings.
+See [diagnostic hashes](resumed/diagnostic-hashes-02.json),
+[imports](resumed/api6-imports.json) and [scan summary](resumed/api6-scan-summary.json).
+The input was a diagnostic snapshot with overlays, not a final clean producer run.
+Earlier failed builds remain evidence; the final native matrix is pending.
+
+Web's actual local build records 173 included modules and 20 package identities,
+with all package notice texts present. A separate diagnostic SBOM scan has zero
+CRITICAL/UNKNOWN findings but covers a local build directory, not a final image.
+Producer and assembler now enforce runtime graph/hash coverage. Generated docs,
+vendored native libraries, substantive license obligations and both native platforms
+still need complete proof. The [gosu observation](resumed/gosu-applicability-observation.json)
+records extracted ARM64 symbols and primary advisories; production resolution and
+AMD64 applicability checks are not yet integrated.
+
+At this checkpoint, 277 tooling tests passed; subsequent Web graph changes passed
+42 focused tests and Ruff. Final type/source/docs checks must be recorded against
+final bytes. No hosted CI result or complete supply gate is inferred.
+
+## Historical preparation boundary before owner resolution
 
 Local implementation prepares an explicitly disabled native producer matrix,
 original-subject comparison against two no-cache builds, actual scanner adapters,

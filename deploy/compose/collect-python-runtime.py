@@ -44,7 +44,7 @@ def main() -> None:
                 continue
             copy_file(source)
 
-    for prefix in (Path("/etc/ssl/certs"), Path("/usr/share/zoneinfo")):
+    for prefix in (Path("/etc/ssl/certs"), Path("/usr/share/zoneinfo"), Path("/usr/share/common-licenses")):
         for source in sorted(prefix.rglob("*")):
             if source.is_file():
                 copy_file(source)

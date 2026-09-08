@@ -1,0 +1,25 @@
+{
+  "status": "observed-not-integrated",
+  "subject": "docker.io/library/postgres@sha256:f2924e77eb4939843396c157a86e5545f8b5d7568c35a80eca7dfdb3a0fe764b",
+  "binary_path": "usr/local/bin/gosu",
+  "binary_sha256": "3a8ef022d82c0bc4a98bcb144e77da714c25fcfa64dccc57f6aba7ae47ff1a44",
+  "scanner": "govulncheck1.7.0",
+  "binary_symbols": 2964,
+  "os": "linux",
+  "architecture": "arm64",
+  "go_version": "go1.24.6",
+  "primary_documents": {
+    "GO-2026-4337": "df1a6110a54bb08c2d5c8726971cd51069a30f48deea2cace5e5cf97893def37",
+    "GO-2026-5024": "ec93b4e06338823aff63cebe8aa3bad0d46bc68e16fe226cffaed3846af8b95f"
+  },
+  "observed_absent_packages": [
+    "crypto/tls",
+    "golang.org/x/sys/windows"
+  ],
+  "limitations": [
+    "No AMD64 observation",
+    "No production resolver acceptance",
+    "JSON scanner exit0 is only successful tool execution, never a vulnerability pass",
+    "Extract blob parser must be explicitly pinned to tool/version and fail on shape drift"
+  ]
+}

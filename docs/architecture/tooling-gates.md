@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 12
+doc_version: 13
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -326,7 +326,7 @@ Git checkouts. These tests never execute a product milestone.
 The disabled workflow/producer is covered by:
 
 ```sh
-uv run --locked pytest -q tests/tooling/test_delivery_supply.py tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py
+uv run --locked pytest -q tests/tooling/test_delivery_supply.py tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py tests/tooling/test_license_reviews.py tests/tooling/test_license_expressions.py
 uv run --locked ruff check tools/custometry_quality/delivery_supply.py tools/custometry_quality/delivery_bundle.py tests/tooling/test_delivery_supply.py deploy/compose/install-supply-tools.py
 uv run --locked pyright tools/custometry_quality/delivery_supply.py tests/tooling/test_delivery_supply.py deploy/compose/install-supply-tools.py
 ```
@@ -334,6 +334,12 @@ uv run --locked pyright tools/custometry_quality/delivery_supply.py tests/toolin
 Synthetic tests exercise native evidence assembly, subject/freshness failures,
 filesystem comparison, immutable provider reconciliation and bounded transport
 unwrapping. They do not certify actual scanner output, signatures or publication.
+The Web producer additionally runs `pnpm --filter @custometry/web build` and
+`node deploy/compose/collect-web-notices.mjs`; included module/package identities,
+source/metadata/chunk hash mismatches and notice coverage have focused negative tests.
+Component reviews bind policy, exact SBOM, OCI subjects, name/version/PURL,
+declaration and nonempty hashed obligation evidence. Structural validation does
+not supply a substantive license review or authorize an unknown license.
 Real selected-image SBOM/license/Trivy findings remain hard supply gates; source
 profiles and ordinary Foundation CI cannot waive them. See the
 [runtime supply contract](runtime-network-installation.md#13-internal-supply-producer-preparation-ms-001s03).

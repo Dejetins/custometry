@@ -1,0 +1,5 @@
+{
+  "critical_or_unknown": [],
+  "image_archive_sha256": "b3f51b8dbafa2c37b86d95962a0c1114e6af4be5424003f840a5673fe3230999",
+  "proof_boundary": "diagnostic ARM64 final API image; not AMD64/repeatability/provider proof"
+}

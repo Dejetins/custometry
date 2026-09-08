@@ -1,0 +1,1 @@
+{"imports": "pass", "psycopg": "3.2.9", "implementation": "c", "libpq": 170011, "openssl": "OpenSSL 3.5.7 9 Jun 2026", "sqlite": "3.46.1", "vendored_crypto_paths": []}

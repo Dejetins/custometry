@@ -327,6 +327,7 @@ def test_complete_native_evidence_assembly(tmp_path: Path) -> None:
             )
             supply.save(directory / "gates.json", {"fixture": True})
             if role != "postgres":
+                filesystem: list[dict[str, Any]] = [{"path": "synthetic-file", "sha256": "e" * 64}]
                 embedded = copy.deepcopy(inventory[role])
                 if role == "web":
                     embedded += [
@@ -334,13 +335,27 @@ def test_complete_native_evidence_assembly(tmp_path: Path) -> None:
                         for name in inventory["web_generated_required"]
                     ]
                     (directory / "THIRD-PARTY.txt").write_text(text)
-                    notices, missing = supply.notice_sbom(text, subject)
+                    package = {"name": "example", "version": "1.0", "root": "node_modules/example", "metadata_sha256": "a" * 64}
+                    supply.save(directory / "runtime-modules.json", {
+                        "schema_version": 1, "packages": [package],
+                        "modules": [{"package": package["root"], "chunks": ["chunk.js"]}],
+                        "chunks": {"chunk.js": "c" * 64},
+                    })
+                    supply.save(directory / "runtime-packages.json", {
+                        "schema_version": 1, "packages": [{**package, "license": "MIT", "notices": [{"fixture": True}]}],
+                    })
+                    filesystem.append({"path": "usr/share/nginx/html/chunk.js", "sha256": "c" * 64})
+                    for name in ("THIRD-PARTY.txt", "runtime-modules.json", "runtime-packages.json"):
+                        file = directory / name
+                        filesystem.append({"path": "usr/share/nginx/html/notices/" + name, "sha256": supply.sha(file), "size_bytes": file.stat().st_size})
+                    supply.save(directory / "selected-filesystem.json", filesystem)
+                    notices, missing = supply.web_graph_sbom(directory, subject)
                     assert not missing
                     supply.save(directory / "web-notices-sbom.json", notices)
                     supply.save(directory / "web-notices-gate.json", {"fixture": True})
                 supply.save(directory / "embedded.json", embedded)
-                filesystem = [{"path": "synthetic-file", "sha256": "e" * 64}]
-                supply.save(directory / "selected-filesystem.json", filesystem)
+                if role != "web":
+                    supply.save(directory / "selected-filesystem.json", filesystem)
                 for attempt in (1, 2):
                     supply.save(directory / f"rebuild-{attempt}-filesystem.json", filesystem)
                     supply.save(
@@ -416,24 +431,48 @@ def test_archived_scanner_binding_requires_verified_config() -> None:
     assert result["metadata"]["properties"][0]["value"] == "sha256:" + "d" * 64
 
 
-def test_web_notices_exclude_only_unshipped_platform_compiler_binaries(tmp_path: Path) -> None:
+@pytest.mark.parametrize("tamper", [None, "source", "metadata", "chunk", "coverage"])
+def test_web_notices_bind_actual_bundled_dependencies(tmp_path: Path, tamper: str | None) -> None:
     import subprocess
 
-    for name, directory in (("@esbuild/linux-arm64", "native"), ("esbuild", "common")):
-        base = tmp_path / "node_modules/.pnpm" / directory / "node_modules" / name
-        base.mkdir(parents=True)
-        (base / "package.json").write_text(
-            json.dumps({"name": name, "version": "1", "license": "MIT"})
-        )
-        (base / "LICENSE").write_text("Exact fixture upstream text")
-    subprocess.run(
+    package = "node_modules/.pnpm/example/node_modules/example"
+    base = tmp_path / package
+    base.mkdir(parents=True)
+    raw = json.dumps({"name": "example", "version": "1", "license": "MIT"}).encode()
+    (base / "package.json").write_bytes(raw)
+    (base / "LICENSE").write_text("Exact fixture upstream text")
+    (base / "index.js").write_text("fixture source")
+    # Installed but unbundled dependency must not masquerade as shipped code.
+    unused = tmp_path / "node_modules/.pnpm/unused/node_modules/unused"
+    unused.mkdir(parents=True)
+    (unused / "package.json").write_text('{"name":"unused","version":"1","license":"UNKNOWN"}')
+    output = tmp_path / "apps/web/dist"
+    (output / "notices").mkdir(parents=True)
+    (output / "chunk.js").write_text("fixture compiled chunk")
+    inventory = {
+        "schema_version": 1,
+        "packages": [{"name": "example", "version": "1", "root": package, "metadata_sha256": supply.bundle.digest(raw)}],
+        "modules": [{"path": package + "/index.js", "sha256": supply.bundle.digest(b"fixture source"), "package": package, "chunks": ["chunk.js"]}],
+        "chunks": {"chunk.js": supply.bundle.digest(b"fixture compiled chunk")},
+    }
+    if tamper == "coverage":
+        inventory["packages"] = []
+    (output / "notices/runtime-modules.json").write_text(json.dumps(inventory))
+    if tamper in {"source", "metadata", "chunk"}:
+        target = {"source": base / "index.js", "metadata": base / "package.json", "chunk": output / "chunk.js"}[tamper]
+        target.write_bytes(target.read_bytes() + b" ")
+    result = subprocess.run(
         ["node", str(supply.ROOT / "deploy/compose/collect-web-notices.mjs")],
-        cwd=tmp_path,
-        check=True,
+        cwd=tmp_path, capture_output=True,
     )
-    notices = (tmp_path / "apps/web/dist/notices/THIRD-PARTY.txt").read_text()
-    assert "@esbuild/linux-arm64" not in notices
-    assert "esbuild@1" in notices and "Exact fixture upstream text" in notices
+    if tamper is not None:
+        assert result.returncode != 0
+        assert not (output / "notices/THIRD-PARTY.txt").exists()
+    else:
+        assert result.returncode == 0, result.stderr.decode()
+        notices = (output / "notices/THIRD-PARTY.txt").read_text()
+        assert "unused" not in notices
+        assert "example@1" in notices and "Exact fixture upstream text" in notices
 
 
 def test_only_explained_uv_cache_metadata_is_normalized() -> None:

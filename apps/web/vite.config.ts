@@ -1,8 +1,9 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { supplyInventory } from "./supply-inventory";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), supplyInventory()],
   server: {
     port: 5173,
     strictPort: true,

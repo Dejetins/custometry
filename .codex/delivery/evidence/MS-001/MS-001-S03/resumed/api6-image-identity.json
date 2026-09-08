@@ -1,0 +1,64 @@
+[
+    {
+        "Id": "sha256:c0923f9116a7dda179189a7d4db463f1bfbb7f019785288bf7aaf6e83a823120",
+        "RepoTags": [
+            "custometry-ms001-s03-resumed-api6:arm64"
+        ],
+        "RepoDigests": [
+            "custometry-ms001-s03-resumed-api6@sha256:c0923f9116a7dda179189a7d4db463f1bfbb7f019785288bf7aaf6e83a823120"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-08T08:05:04.964754845Z",
+        "Config": {
+            "User": "10001:10001",
+            "ExposedPorts": {
+                "8000/tcp": {}
+            },
+            "Env": [
+                "PATH=/app/.venv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin",
+                "PYTHONUNBUFFERED=1",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "CUSTOMETRY_VERSION=0.1.0-dev.0"
+            ],
+            "Cmd": [
+                "uvicorn",
+                "custometry_api.main:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "8000",
+                "--no-access-log"
+            ],
+            "WorkingDir": "/app",
+            "Labels": {
+                "org.opencontainers.image.licenses": "Apache-2.0",
+                "org.opencontainers.image.title": "Custometry API",
+                "org.opencontainers.image.version": "0.1.0-dev.0"
+            },
+            "ArgsEscaped": true
+        },
+        "Architecture": "arm64",
+        "Os": "linux",
+        "Size": 78475224,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:f9bea82252f69dea28ee8f4693b0a20c412b38cd672637e8c02b1feceaf9c585",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-08T08:05:09.245153083Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:c0923f9116a7dda179189a7d4db463f1bfbb7f019785288bf7aaf6e83a823120",
+            "size": 669,
+            "annotations": {
+                "io.containerd.image.name": "docker.io/library/custometry-ms001-s03-resumed-api6:arm64",
+                "org.opencontainers.image.created": "2026-09-08T08:05:08Z",
+                "org.opencontainers.image.ref.name": "arm64"
+            }
+        }
+    }
+]

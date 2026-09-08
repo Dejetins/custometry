@@ -22,6 +22,7 @@ from datetime import datetime, timezone
 from email.parser import BytesParser
 from pathlib import Path
 from typing import Any, cast
+from urllib.parse import quote
 
 from . import delivery_bundle as bundle
 from . import gate_licenses, gate_sbom
@@ -384,10 +385,11 @@ def web_notices(image: str, subject: str, directory: Path) -> bool:
     require(re.fullmatch(r"[a-f0-9]{64}", container) is not None)
     path = directory / "THIRD-PARTY.txt"
     try:
-        run("docker", "cp", container + ":/usr/share/nginx/html/notices/THIRD-PARTY.txt", str(path))
+        for name in ("THIRD-PARTY.txt", "runtime-modules.json", "runtime-packages.json"):
+            run("docker", "cp", container + ":/usr/share/nginx/html/notices/" + name, str(directory / name))
     finally:
         run("docker", "rm", "-v", container)
-    document, missing = notice_sbom(path.read_text(), subject)
+    document, missing = web_graph_sbom(directory, subject)
     save(directory / "web-notices-sbom.json", document)
     result = gate_licenses.check(
         directory, Path("web-notices-sbom.json"), ROOT / "deploy/license-policy.json"
@@ -404,6 +406,46 @@ def web_notices(image: str, subject: str, directory: Path) -> bool:
     # Retain evidence even when policy findings prevent signing. The notice inventory
     # supplements final-image cataloging; known missing runtime notices never pass.
     return result.ok and not missing
+
+
+def web_graph_sbom(directory: Path, subject: str) -> tuple[dict[str, Any], list[str]]:
+    """Bind the emitted graph, notice identities and every product JS chunk to the image."""
+    inventory = {row["path"]: row for row in load(directory / "selected-filesystem.json")}
+    prefix = "usr/share/nginx/html/"
+    for name in ("THIRD-PARTY.txt", "runtime-modules.json", "runtime-packages.json"):
+        observed = inventory[prefix + "notices/" + name]
+        file = directory / name
+        require(observed["sha256"] == sha(file) and observed["size_bytes"] == file.stat().st_size,
+                "DELIVERY_SUBJECT_MISMATCH")
+    graph = load(directory / "runtime-modules.json")
+    declarations = load(directory / "runtime-packages.json")
+    require(graph["schema_version"] == declarations["schema_version"] == 1)
+    packages = declarations["packages"]
+    require(bool(packages) and bool(graph["modules"]) and bool(graph["chunks"]))
+    roots = {p["root"] for p in packages}
+    require(len(roots) == len(packages) and roots == {p["root"] for p in graph["packages"]})
+    require(roots == {m["package"] for m in graph["modules"] if m["package"] is not None})
+    for package in packages:
+        require({k: package[k] for k in ("name", "version", "root", "metadata_sha256")} in graph["packages"])
+    actual_js = {
+        name.removeprefix(prefix) for name in inventory
+        if name.startswith(prefix) and not name.startswith(prefix + "docs/") and name.endswith(".js")
+    }
+    require(actual_js == set(graph["chunks"]), "DELIVERY_WEB_INVENTORY_MISSING")
+    for name, digest in graph["chunks"].items():
+        bundle.safe_path(name)
+        require(inventory[prefix + name]["sha256"] == digest, "DELIVERY_SUBJECT_MISMATCH")
+    for module in graph["modules"]:
+        require(bool(module["chunks"]) and set(module["chunks"]) <= actual_js)
+    document, missing = notice_sbom((directory / "THIRD-PARTY.txt").read_text(), subject)
+    expected = sorted((p["name"], p["version"], str(p["license"])) for p in packages)
+    actual = sorted((c["name"], c["version"], c["licenses"][0]["license"]["name"]) for c in document["components"])
+    require(expected == actual, "DELIVERY_WEB_INVENTORY_MISSING")
+    for component in document["components"]:
+        component["purl"] = "pkg:npm/" + quote(component["name"], safe="/") + "@" + quote(component["version"], safe="")
+    document["metadata"]["properties"][1]["value"] = "actual emitted Web chunks and included package/module identities; docs/assets assessed separately"
+    missing.extend(p["name"] + "@" + p["version"] for p in packages if not p["notices"])
+    return document, sorted(set(missing))
 
 
 def normalize_python_licenses(
@@ -738,7 +780,7 @@ def assemble_supply(inputs: Path, output: Path, commit: str, run_id: int, run_at
             }
             if role == "web":
                 notice_path = directory / "THIRD-PARTY.txt"
-                bom, missing = notice_sbom(notice_path.read_text(), subject)
+                bom, missing = web_graph_sbom(directory, subject)
                 require(
                     bom == load(directory / "web-notices-sbom.json") and not missing,
                     "DELIVERY_WEB_INVENTORY_MISSING",
@@ -754,6 +796,8 @@ def assemble_supply(inputs: Path, output: Path, commit: str, run_id: int, run_at
                 payload[f"notices/{arch}-THIRD-PARTY.txt"] = notice_path.read_bytes()
                 files["web-notices-sbom.json"] = "sbom"
                 files["web-notices-gate.json"] = "licenses"
+                files["runtime-modules.json"] = "provenance"
+                files["runtime-packages.json"] = "licenses"
             if role != "postgres":
                 current = load(directory / "embedded.json")
                 if not embedded:

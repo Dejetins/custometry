@@ -1,0 +1,78 @@
+name: Verify retained MS-001 internal bundle
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ms001-s04-exact-archives
+  cancel-in-progress: false
+
+jobs:
+  native-amd64:
+    if: github.repository == 'Dejetins/custometry'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    # Draft release assets require repository push access. This job only reads
+    # the one trusted draft; it neither creates nor publishes a release.
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Check native engine and reader dependency
+        run: |
+          set -euo pipefail
+          test "$(uname -m)" = x86_64
+          python3 -c 'import yaml'
+          docker info --format '{{.Architecture}}'
+      - name: Retrieve exact private draft asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: Dejetins/custometry
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, pathlib, subprocess, time, urllib.error, urllib.request
+          trust = json.loads(pathlib.Path('.codex/delivery/evidence/MS-001/MS-001-S04/transfer.json').read_text())
+          draft = json.loads(subprocess.check_output(['gh', 'release', 'view', trust['draft_tag'], '--json', 'isDraft,assets'], text=True, timeout=30))
+          assert draft['isDraft'], 'Refuse published release as internal transfer'
+          asset = next(a for a in draft['assets'] if a['name'] == trust['asset'])
+          # No credentials in this request; record only denied status, never URLs/headers.
+          try:
+              with urllib.request.urlopen(asset['apiUrl'], timeout=15) as response:
+                  denied = response.status
+          except urllib.error.HTTPError as error:
+              denied = error.code
+          assert denied in (401, 403, 404), 'Anonymous access must be denied'
+          output = pathlib.Path('/tmp/ms001-s04-transfer')
+          output.mkdir(mode=0o700)
+          start = time.monotonic()
+          subprocess.run(['gh', 'release', 'download', trust['draft_tag'], '--pattern', trust['asset'], '--dir', str(output)], check=True, timeout=180)
+          from tools.custometry_quality.delivery_consumer import sha, unpack
+          archive = output / trust['asset']
+          assert archive.stat().st_size == trust['size_bytes'] and sha(archive) == trust['sha256']
+          unpack(archive, output / 'source')
+          pathlib.Path('/tmp/ms001-s04-transfer-observation.json').write_text(json.dumps({'anonymous_status': denied, 'retrieval_seconds': round(time.monotonic()-start, 3), 'bytes': archive.stat().st_size, 'sha256': trust['sha256']}))
+          PY
+      - name: Native import, migrations and packaged HTTP smoke without rebuild
+        run: |
+          python3 -m tools.custometry_quality.delivery_consumer \
+            --source /tmp/ms001-s04-transfer/source \
+            --work /tmp/ms001-s04-consumer \
+            --trust .codex/delivery/evidence/MS-001/MS-001-S04/transfer.json \
+            --architecture amd64
+      - name: Retain redacted observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: ms001-s04-native-amd64-observations
+          path: |
+            /tmp/ms001-s04-consumer/result.json
+            /tmp/ms001-s04-transfer-observation.json
+          retention-days: 90
+          if-no-files-found: error
+      - name: Remove task-owned transfer and secret files
+        if: always()
+        run: rm -rf /tmp/ms001-s04-transfer /tmp/ms001-s04-consumer/secrets

@@ -93,6 +93,20 @@ def checked_copy(source: Path, destination: Path, trusted: dict[str, Any]) -> in
     return total
 
 
+def prepare_demo_mount(bundle: Path) -> None:
+    """Make verified demo files readable to PostgreSQL; retain private host parents."""
+    root = bundle / "demo/init"
+    root.chmod(0o755)
+    for name in (
+        "010_create_reader.sh",
+        "015_profile.sh",
+        "020_schema.sql",
+        "030_seed.sql",
+        "040_grants.sql",
+    ):
+        (root / name).chmod(0o755 if name.endswith(".sh") else 0o644)
+
+
 def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool) -> dict[str, Any]:
     require(not work.exists(), "WORK_EXISTS")
     require(shutil.disk_usage(work.parent).free >= 2 * 1024**3, "INSUFFICIENT_DISK")
@@ -188,6 +202,7 @@ def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool
         start = time.monotonic()
         reader.check_payload(record, reader.candidate_payload(record, acquired / "bundle"))
         reader.check_image_archives(record, acquired / "images")
+        prepare_demo_mount(acquired / "bundle")
         result["timings_seconds"]["verification"] = round(time.monotonic() - start, 3)
         result.update(
             manifest_sha256=sha(manifest),

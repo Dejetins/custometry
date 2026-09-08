@@ -27,6 +27,26 @@ jobs:
           test "$(uname -m)" = x86_64
           python3 -c 'import yaml'
           docker info --format '{{.Architecture}}'
+      - name: Enable manifest-preserving store on the disposable runner
+        run: |
+          set -euo pipefail
+          docker info --format '{{json .DriverStatus}}' > /tmp/ms001-s04-store-before.json
+          test -z "$(docker ps -aq)"
+          sudo python3 - <<'PYCODE'
+          import json, pathlib
+          path = pathlib.Path('/etc/docker/daemon.json')
+          config = json.loads(path.read_text()) if path.exists() else {}
+          config.setdefault('features', {})['containerd-snapshotter'] = True
+          path.write_text(json.dumps(config))
+          PYCODE
+          sudo systemctl restart docker
+          python3 - <<'PYCODE'
+          import json, pathlib, subprocess
+          after = json.loads(subprocess.check_output(['docker', 'info', '--format', '{{json .DriverStatus}}'], text=True))
+          assert ['driver-type', 'io.containerd.snapshotter.v1'] in after
+          before = json.loads(pathlib.Path('/tmp/ms001-s04-store-before.json').read_text())
+          pathlib.Path('/tmp/ms001-s04-store-observation.json').write_text(json.dumps({'before': before, 'after': after}))
+          PYCODE
       - name: Retrieve exact private draft asset
         env:
           GH_TOKEN: ${{ github.token }}
@@ -71,6 +91,7 @@ jobs:
           path: |
             /tmp/ms001-s04-consumer/result.json
             /tmp/ms001-s04-transfer-observation.json
+            /tmp/ms001-s04-store-observation.json
           retention-days: 90
           if-no-files-found: error
       - name: Remove task-owned transfer and secret files

@@ -1,0 +1,8 @@
+.........................................................                [100%]
+=============================== warnings summary ===============================
+tests/tooling/test_delivery_companions.py::test_streamed_zip_closure_and_cleanup[duplicate]
+  /usr/local/lib/python3.12/zipfile/__init__.py:1625: UserWarning: Duplicate name: 'sources/component.tar.gz'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+57 passed, 1 warning in 1.29s

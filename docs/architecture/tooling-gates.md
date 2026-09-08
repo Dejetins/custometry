@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 13
+doc_version: 14
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -327,8 +327,10 @@ The disabled workflow/producer is covered by:
 
 ```sh
 uv run --locked pytest -q tests/tooling/test_delivery_supply.py tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py tests/tooling/test_license_reviews.py tests/tooling/test_license_expressions.py
+uv run --locked pytest -q tests/tooling/test_delivery_companions.py tests/tooling/test_delivery_set.py
 uv run --locked ruff check tools/custometry_quality/delivery_supply.py tools/custometry_quality/delivery_bundle.py tests/tooling/test_delivery_supply.py deploy/compose/install-supply-tools.py
 uv run --locked pyright tools/custometry_quality/delivery_supply.py tests/tooling/test_delivery_supply.py deploy/compose/install-supply-tools.py
+uv run --locked pyright tools/custometry_quality/delivery_companions.py tools/custometry_quality/delivery_set.py
 ```
 
 Synthetic tests exercise native evidence assembly, subject/freshness failures,

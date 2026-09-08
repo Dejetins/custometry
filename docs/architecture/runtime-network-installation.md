@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 14
+doc_version: 15
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -619,7 +619,18 @@ shipped libstdc++/libgcc object libraries retain GPL source-distribution obligat
 The complete matching source package is the justified delivery choice; artificial
 source-tree reduction is not required. No v2 reader or companion delivery is claimed
 complete by this amendment.
-The [exact source selection](../../.codex/delivery/evidence/MS-001/MS-001-S03/resumed/debian-source-selection.json)
+The S03 implementation now includes a producer/handoff entrypoint
+`python -m tools.custometry_quality.delivery_set --payload <local-root-directory>
+--signature <bundle> --trusted-root <independently-pinned-root> --expected-commit
+<commit> --output <new-private-directory>`. It verifies the pinned Cosign binary,
+root signature and bounded payload before accessing provider credentials; then
+checks the actual workflow and every source part before atomic no-replace
+promotion. Supported execution is the main thread of a POSIX CLI on Linux or
+macOS, with an absolute I/O deadline and a private 0700 destination parent.
+Its success status is `DELIVERY_SET_VERIFIED_LOCAL_ROOT`: this does not prove that
+the main provider artifact was published or retrieved. Actual provider/signature
+and publication agreement remain required before S03 completion.
+The [exact source selection](../../.codex/delivery/evidence/MS-001/MS-001-S03/resumed/debian-source-selection-corrected.json)
 uses authenticated Debian Sources metadata and matches every represented source
 version in diagnostic API6. Full source archives total 278044212 bytes after
 deduplication. The GPL/LGPL/DB source-package subset currently under review totals
@@ -627,6 +638,12 @@ deduplication. The GPL/LGPL/DB source-package subset currently under review tota
 metadata-declared exact archive sizes, not a claim that all archives were downloaded
 or that the final minimum legal obligation set was approved. Component reviews must
 finish that selection and retain exact build/patch inputs.
+The subsequent [download observation](../../.codex/delivery/evidence/MS-001/MS-001-S03/resumed/debian-source-download-observation.json)
+confirms all 78 files, 278044212 bytes, downloaded with exact size and SHA-256
+checks. Security-pool URLs were corrected to the authenticated `debian-security`
+origin; selected source versions and hashes were not changed. The earlier normalized
+selection remains historical evidence. Actual source delivery and obligation
+bindings are not inferred from these local downloads.
 
 Complete upstream source-archive delivery cannot fit v1's 64 MiB file
 ceiling. Increasing that ceiling or disguising split sources as recursively unpacked

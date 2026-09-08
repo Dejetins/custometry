@@ -62,6 +62,9 @@ SOURCE_PATHS = (
     "deploy",
     "tools/custometry_quality/delivery_bundle.py",
     "tools/custometry_quality/delivery_supply.py",
+    "tools/custometry_quality/delivery_companions.py",
+    "tools/custometry_quality/delivery_set.py",
+    "tools/custometry_quality/license_reviews.py",
     ".github/workflows/publish-candidates.yml",
 )
 PATH_PATTERN = re.compile(
@@ -210,8 +213,11 @@ def artifact_name(delivery_version: str, run_id: int, run_attempt: int) -> str:
 
 
 def validate_record(record: dict[str, Any]) -> None:
+    version = record.get("schema_version")
+    require(version in {"custometry-delivery/v1", "custometry-delivery/v2"}, "DELIVERY_READER_UNSUPPORTED")
+    name = "delivery-manifest.v2.schema.json" if version == "custometry-delivery/v2" else "delivery-manifest.schema.json"
     schema = STRUCTURE.parse_json(
-        (ROOT / "deploy/compose/delivery-manifest.schema.json").read_bytes()
+        (ROOT / "deploy/compose" / name).read_bytes()
     )
     STRUCTURE.check_schema(schema, schema)
     STRUCTURE.validate(record, schema, schema)
@@ -326,6 +332,13 @@ def payload_files(directory: Path) -> dict[str, bytes]:
     return result
 
 
+def policy_path(record: dict[str, Any]) -> Path:
+    version = record.get("schema_version")
+    require(version in {"custometry-delivery/v1", "custometry-delivery/v2"}, "DELIVERY_READER_UNSUPPORTED")
+    name = "delivery-verification-policy.v2.json" if version == "custometry-delivery/v2" else "delivery-verification-policy.json"
+    return ROOT / "deploy/compose" / name
+
+
 def check_payload(record: dict[str, Any], payload: dict[str, bytes]) -> None:
     validate_record(record)
     files = unique(record["files"], "path")
@@ -336,7 +349,7 @@ def check_payload(record: dict[str, Any], payload: dict[str, bytes]) -> None:
     require(payload[CONFIG] == canonical(configuration(record)))
     require(
         payload.get("delivery-verification-policy.json")
-        == (ROOT / "deploy/compose/delivery-verification-policy.json").read_bytes()
+        == policy_path(record).read_bytes()
     )
 
 
@@ -365,9 +378,7 @@ def prepare(record: dict[str, Any], source: Path, output: Path) -> None:
     require(not (set(payload) & ENVELOPE))
     payload[CONFIG] = canonical(configuration(record))
     payload[ENV] = projection(record)
-    payload["delivery-verification-policy.json"] = (
-        ROOT / "deploy/compose/delivery-verification-policy.json"
-    ).read_bytes()
+    payload["delivery-verification-policy.json"] = policy_path(record).read_bytes()
     check_payload(record, payload)
     write_new(output, payload)
 
@@ -388,9 +399,7 @@ def assemble(metadata: dict[str, Any], source: Path, output: Path) -> None:
     record["resources"] = resource_records(config)
     payload[CONFIG] = canonical(config)
     payload[ENV] = projection(record)
-    payload["delivery-verification-policy.json"] = (
-        ROOT / "deploy/compose/delivery-verification-policy.json"
-    ).read_bytes()
+    payload["delivery-verification-policy.json"] = policy_path(record).read_bytes()
     evidence_paths = {e["file"]["path"] for e in record["evidence"]}
 
     def role(name: str) -> str:
@@ -561,7 +570,7 @@ def main() -> int:
                     metadata = STRUCTURE.parse_json(stream.read(1048577))
                 assemble(metadata, args.payload, args.output)
             else:
-                record = STRUCTURE.read_contract(args.record)
+                record = STRUCTURE.read_contract(args.record, reader_major=2)
                 if args.command == "check":
                     check_payload(record, candidate_payload(record, args.payload))
                 elif args.command == "prepare":

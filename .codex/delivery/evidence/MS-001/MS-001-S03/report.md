@@ -20,6 +20,13 @@ unchanged; parsing and narrowly bound review evidence do not fabricate approval.
 Diagnostic API6 ARM64 passes application imports with psycopg 3.2.9 C implementation,
 system libpq 17.11 and OpenSSL 3.5.7; psycopg-binary and vendored libcrypto under `/app`
 are absent. Its actual Trivy 0.74.0 final-image scan has zero CRITICAL/UNKNOWN findings.
+That count does **not** establish complete security coverage: subsequent direct
+inspection found statically included OpenSSL 3.3.1 in the prebuilt PyArrow 20 wheel,
+which the generated image SBOM omitted. A diagnostic source build of the same
+PyArrow version removes the unused Flight/cloud/encrypted-Parquet dependency edge;
+its ARM64 application imports, Parquet/IPC probes and three artifact-store tests
+pass. See [source-build observations](resumed/arrow-source-probe.md). Final image,
+compiled dependency inventory, licensing and both native platforms remain pending.
 See [diagnostic hashes](resumed/diagnostic-hashes-02.json),
 [imports](resumed/api6-imports.json) and [scan summary](resumed/api6-scan-summary.json).
 The input was a diagnostic snapshot with overlays, not a final clean producer run.
@@ -34,9 +41,17 @@ still need complete proof. The [gosu observation](resumed/gosu-applicability-obs
 records extracted ARM64 symbols and primary advisories; production resolution and
 AMD64 applicability checks are not yet integrated.
 
-At this checkpoint, 277 tooling tests passed; subsequent Web graph changes passed
-42 focused tests and Ruff. Final type/source/docs checks must be recorded against
-final bytes. No hosted CI result or complete supply gate is inferred.
+The v2 source-part schema/policy, strict descriptor/provider/ZIP checks and trusted
+local-root whole-set verifier are implemented as work in progress. At the latest
+focused checkpoint, 57 companion/set tests, Ruff and Pyright pass. Real local HTTP
+tests enforce an absolute deadline for slow headers/body; atomic no-replace
+promotion preserves an existing empty directory. The coordinator independently
+reproduced both earlier defects and confirmed the fixes on Darwin. The same 57
+tests also passed in an actual read-only/no-network Linux ARM64 container,
+including Linux atomic no-replace and absolute HTTP deadline behavior. Current
+combined bundle/producer/supply/companion/set tests: **184 passed**; `check:local`
+passed. Publisher reconciliation, actual signatures/provider parts and source-obligation
+bindings are still pending. No hosted CI result or complete supply gate is inferred.
 
 ## Historical preparation boundary before owner resolution
 

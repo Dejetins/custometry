@@ -1,0 +1,121 @@
+{
+  "wheel": "pyarrow-20.0.0-cp312-cp312-linux_aarch64.whl",
+  "sha256": "244b113aed09006763fc05a8c82dd359bf728dbd89eff5e85d1cc6ebbfbc2e6e",
+  "bytes": 18306527,
+  "libraries": [
+    {
+      "path": "pyarrow/_acero.cpython-312-aarch64-linux-gnu.so",
+      "size": 344928,
+      "sha256": "f7bcfd09a9847c28664a9ca612ddee56e93543e09379cdd9cf2557cdc1661a39",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_compute.cpython-312-aarch64-linux-gnu.so",
+      "size": 1423128,
+      "sha256": "62557215ac01a6018c582b0c537e9638d1fbbda29e2f1833c4f7ca20c7825062",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_csv.cpython-312-aarch64-linux-gnu.so",
+      "size": 405600,
+      "sha256": "027998b72cd7d25af49f53d0107a2547cd09ab93eff4cc0f97c731ee77802308",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_dataset.cpython-312-aarch64-linux-gnu.so",
+      "size": 1077952,
+      "sha256": "80e12a37072bd8356c5fea9e6bf1aaabd1d2bc9fabbbcb6b825005ba48669f7a",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_dataset_parquet.cpython-312-aarch64-linux-gnu.so",
+      "size": 350480,
+      "sha256": "384a3af9cd0b3e7ea447df36713ee5935225b68bf5cb399a24cfc2cffd194312",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_feather.cpython-312-aarch64-linux-gnu.so",
+      "size": 163736,
+      "sha256": "55d19fc8ae54899e7025b463ce88c73fb115acbc299df7f39f0802f9c67ed2be",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_fs.cpython-312-aarch64-linux-gnu.so",
+      "size": 424448,
+      "sha256": "913540f9c5c4fe121e5c3329d0e2f7b6591656e0da47e95237f6fe5b73ac4f79",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_json.cpython-312-aarch64-linux-gnu.so",
+      "size": 167304,
+      "sha256": "e96beb4af39c8ce93861678faa68e35950bc381ee1c7574dec497e55258dfe5c",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_parquet.cpython-312-aarch64-linux-gnu.so",
+      "size": 592104,
+      "sha256": "673b73c18be15140e4dbb49cd2b92b61248fcd9c7794818bae95b23db8853324",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/_pyarrow_cpp_tests.cpython-312-aarch64-linux-gnu.so",
+      "size": 91856,
+      "sha256": "01abcddf5e6d8ac729171c5e77a4f05eef9cc8513b553ef16a4a64fcb814ca97",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/lib.cpython-312-aarch64-linux-gnu.so",
+      "size": 4477360,
+      "sha256": "87794ea22323bea03171020de8208fa780cdeb24e6518049505fbb2ba9351e9c",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/libarrow.so.2000",
+      "size": 32569704,
+      "sha256": "371e03a4398663e66a44105a54fdc5f6a420bb44a2139cc08692a85f6793c79f",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/libarrow_acero.so.2000",
+      "size": 2110552,
+      "sha256": "a8efe4e8b5d9f701f7ffd4768fda2c1b980023d9105030037b04e41d17c95195",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/libarrow_dataset.so.2000",
+      "size": 2642888,
+      "sha256": "3b744df455ae9072b9c81529d6fa6253b0c14a7e11e5ca757ced8bd1768aaba9",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/libarrow_python.so",
+      "size": 2650392,
+      "sha256": "54efb1c8d1cb8e44725ea1d22b8600e026e5b7190e563b3fc503d47662cb8d1a",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/libarrow_python.so.2000",
+      "size": 2650392,
+      "sha256": "54efb1c8d1cb8e44725ea1d22b8600e026e5b7190e563b3fc503d47662cb8d1a",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/libarrow_python.so.2000.0.0",
+      "size": 2650392,
+      "sha256": "54efb1c8d1cb8e44725ea1d22b8600e026e5b7190e563b3fc503d47662cb8d1a",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/libparquet.so.2000",
+      "size": 4810704,
+      "sha256": "c5e94353a3cf587cb3ea189373f2bec76ab1ff0c644a8ca4c13eec5cb3774a3b",
+      "openssl_marker": false
+    },
+    {
+      "path": "pyarrow/tests/data/parquet/v0.7.1.some-named-index.parquet",
+      "size": 4008,
+      "sha256": "5468128ea8a1091b5d07195471f3f9b3705247b69440aba45be6c68092dffc76",
+      "openssl_marker": false
+    }
+  ]
+}

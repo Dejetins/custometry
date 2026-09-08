@@ -139,24 +139,33 @@ def validate(value: Any, node: dict[str, Any], root: dict[str, Any]) -> None:
         raise InvalidDelivery("DELIVERY_LIMIT")
 
 
-def read_contract(path: Path, *, policy: bool = False) -> Any:
-    schema_path = Path(__file__).with_name("delivery-manifest.schema.json")
-    schema = parse_json(schema_path.read_bytes())
-    check_schema(schema, schema)
+def read_contract(path: Path, *, policy: bool = False, reader_major: int = 1) -> Any:
     with path.open("rb") as stream:
         limit = 65536 if policy else MAX_BYTES
         value = parse_json(stream.read(limit + 1), limit)
-    validate(value, schema["$defs"]["verificationPolicy"] if policy else schema, schema)
-    return value
+    if not isinstance(value, dict):
+        raise InvalidDelivery("DELIVERY_READER_UNSUPPORTED")
+    record = cast(dict[str, Any], value)
+    version = record.get("manifest_schema" if policy else "schema_version")
+    if not isinstance(version, str) or version not in {"custometry-delivery/v1", "custometry-delivery/v2"}:
+        raise InvalidDelivery("DELIVERY_READER_UNSUPPORTED")
+    if reader_major not in (1, 2) or (version.endswith("/v2") and reader_major < 2):
+        raise InvalidDelivery("DELIVERY_READER_UNSUPPORTED")
+    name = "delivery-manifest.v2.schema.json" if version.endswith("/v2") else "delivery-manifest.schema.json"
+    schema = parse_json(Path(__file__).with_name(name).read_bytes())
+    check_schema(schema, schema)
+    validate(record, schema["$defs"]["verificationPolicy"] if policy else schema, schema)
+    return record
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("path", type=Path)
     parser.add_argument("--policy", action="store_true")
+    parser.add_argument("--reader-major", type=int, choices=(1, 2), default=1)
     args = parser.parse_args()
     try:
-        read_contract(args.path, policy=args.policy)
+        read_contract(args.path, policy=args.policy, reader_major=args.reader_major)
     except (InvalidDelivery, OSError, ValueError, KeyError, TypeError) as error:
         code = str(error) if isinstance(error, InvalidDelivery) else "DELIVERY_INPUT_INVALID"
         print(json.dumps({"result": "fail", "code": code,

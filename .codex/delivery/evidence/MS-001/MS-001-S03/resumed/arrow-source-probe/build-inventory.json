@@ -1,0 +1,172 @@
+{
+  "archives": [
+    {
+      "path": "/build/boost_ep-prefix/src/boost_1_81_0.tar.gz",
+      "sha256": "9e0ffae35528c35f90468997bc8d99500bf179cbae355415a89a600c38e13574",
+      "size_bytes": 11323509
+    },
+    {
+      "path": "/build/brotli_ep-prefix/src/v1.0.9.tar.gz",
+      "sha256": "f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46",
+      "size_bytes": 486984
+    },
+    {
+      "path": "/build/lz4_ep-prefix/src/v1.10.0.tar.gz",
+      "sha256": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b",
+      "size_bytes": 387114
+    },
+    {
+      "path": "/build/re2_ep-prefix/src/2022-06-01.tar.gz",
+      "sha256": "f89c61410a072e5cbcf8c27e3a778da7d6fd2f2b5b1445cd4f4508bee946ab0f",
+      "size_bytes": 381032
+    },
+    {
+      "path": "/build/snappy_ep-prefix/src/1.2.2.tar.gz",
+      "sha256": "90f74bc1fbf78a6c56b3c4a082a05103b3a56bb17bca1a27e052ea11723292dc",
+      "size_bytes": 1108618
+    },
+    {
+      "path": "/build/src/13.0.0.tar.gz",
+      "sha256": "8bdbbad0c3e7afa38d88d0d484d70a1671a1d8aefff03f4223ab2eb6a41110a3",
+      "size_bytes": 259967
+    },
+    {
+      "path": "/build/src/232389d4f1012dddec4ef84861face2d2ba85709.tar.gz",
+      "sha256": "b9290a9a6d444c8e049bd589ab804e0ccf2b05dc5984a19ed5ae75d090064806",
+      "size_bytes": 1107967
+    },
+    {
+      "path": "/build/thrift_ep-prefix/src/thrift-0.20.0.tar.gz",
+      "sha256": "b5d8311a779470e1502c027f428a1db542f5c051c8e1280ccd2163fa935ff2d6",
+      "size_bytes": 4397667
+    },
+    {
+      "path": "/build/utf8proc_ep-prefix/src/v2.7.0.tar.gz",
+      "sha256": "4bb121e297293c0fd55f08f83afab6d35d48f0af4ecc07523ad8ec99aa2b12a1",
+      "size_bytes": 187906
+    },
+    {
+      "path": "/build/zlib_ep-prefix/src/zlib-1.3.1.tar.gz",
+      "sha256": "9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23",
+      "size_bytes": 1512791
+    },
+    {
+      "path": "/build/zstd_ep-prefix/src/zstd-1.5.7.tar.gz",
+      "sha256": "eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3",
+      "size_bytes": 2434947
+    }
+  ],
+  "static_libraries": [
+    {
+      "path": "/build/brotli_ep/src/brotli_ep-install/lib/libbrotlicommon-static.a",
+      "sha256": "62f3585a44748e30d5d4685b94bfb1415da0b420310cccce47ec5c74db398913",
+      "size_bytes": 136084
+    },
+    {
+      "path": "/build/brotli_ep/src/brotli_ep-install/lib/libbrotlidec-static.a",
+      "sha256": "aaba44d3f467a7601718a851e47d2891e870be4fa4c9326a78e40a3842b752f7",
+      "size_bytes": 48192
+    },
+    {
+      "path": "/build/brotli_ep/src/brotli_ep-install/lib/libbrotlienc-static.a",
+      "sha256": "bdf81cb7761fd681ed005a0c4ee0c046d501ada4e059c913da315d27de738721",
+      "size_bytes": 615208
+    },
+    {
+      "path": "/build/brotli_ep-prefix/src/brotli_ep-build/libbrotlicommon-static.a",
+      "sha256": "62f3585a44748e30d5d4685b94bfb1415da0b420310cccce47ec5c74db398913",
+      "size_bytes": 136084
+    },
+    {
+      "path": "/build/brotli_ep-prefix/src/brotli_ep-build/libbrotlidec-static.a",
+      "sha256": "aaba44d3f467a7601718a851e47d2891e870be4fa4c9326a78e40a3842b752f7",
+      "size_bytes": 48192
+    },
+    {
+      "path": "/build/brotli_ep-prefix/src/brotli_ep-build/libbrotlienc-static.a",
+      "sha256": "bdf81cb7761fd681ed005a0c4ee0c046d501ada4e059c913da315d27de738721",
+      "size_bytes": 615208
+    },
+    {
+      "path": "/build/lz4_ep-install/lib/liblz4.a",
+      "sha256": "613403d1e0863c0de52585ba7eeba6f62a232c51ee3840f6ef9dbfb6c3a0b607",
+      "size_bytes": 223370
+    },
+    {
+      "path": "/build/lz4_ep-prefix/src/lz4_ep-build/liblz4.a",
+      "sha256": "613403d1e0863c0de52585ba7eeba6f62a232c51ee3840f6ef9dbfb6c3a0b607",
+      "size_bytes": 223370
+    },
+    {
+      "path": "/build/re2_ep-install/lib/libre2.a",
+      "sha256": "927f200c24dcb681d5ee8fc2cd82d81025b9dce7c6b00b04ae48d28475bf3b48",
+      "size_bytes": 920838
+    },
+    {
+      "path": "/build/re2_ep-prefix/src/re2_ep-build/libre2.a",
+      "sha256": "927f200c24dcb681d5ee8fc2cd82d81025b9dce7c6b00b04ae48d28475bf3b48",
+      "size_bytes": 920838
+    },
+    {
+      "path": "/build/re2_ep-prefix/src/re2_ep-build/libtesting.a",
+      "sha256": "81d010f7a9adc2215f724ff89d413777d9f7da12ca8a1a31dacf55fe9588e920",
+      "size_bytes": 268052
+    },
+    {
+      "path": "/build/snappy_ep/src/snappy_ep-install/lib/libsnappy.a",
+      "sha256": "c7e65c76531190e2c5f4a11dca5f73980abaf740400b3a3a7d19462b997f31b2",
+      "size_bytes": 62040
+    },
+    {
+      "path": "/build/snappy_ep-prefix/src/snappy_ep/libsnappy.a",
+      "sha256": "c7e65c76531190e2c5f4a11dca5f73980abaf740400b3a3a7d19462b997f31b2",
+      "size_bytes": 62040
+    },
+    {
+      "path": "/build/thrift_ep-install/lib/libthrift.a",
+      "sha256": "65030afd10eb78e076dc4df32dfd85b0406b821107ecab2ff7d51a22d2cf3e28",
+      "size_bytes": 2255586
+    },
+    {
+      "path": "/build/thrift_ep-prefix/src/thrift_ep-build/lib/libthrift.a",
+      "sha256": "65030afd10eb78e076dc4df32dfd85b0406b821107ecab2ff7d51a22d2cf3e28",
+      "size_bytes": 2255586
+    },
+    {
+      "path": "/build/utf8proc_ep-install/lib/libutf8proc.a",
+      "sha256": "9b5cd4dfb7be1beaa7f5dc5e6084ab3c2ad9aed7a8a2adac5a9ab422eeac6b47",
+      "size_bytes": 343160
+    },
+    {
+      "path": "/build/utf8proc_ep-prefix/src/utf8proc_ep-build/libutf8proc.a",
+      "sha256": "9b5cd4dfb7be1beaa7f5dc5e6084ab3c2ad9aed7a8a2adac5a9ab422eeac6b47",
+      "size_bytes": 343160
+    },
+    {
+      "path": "/build/zlib_ep/src/zlib_ep-install/lib/libz.a",
+      "sha256": "e41b8ecad8b84784839b525c2ff34be356d7d7fca2881cd1d2910f09c2911494",
+      "size_bytes": 127196
+    },
+    {
+      "path": "/build/zlib_ep-prefix/src/zlib_ep-build/libz.a",
+      "sha256": "e41b8ecad8b84784839b525c2ff34be356d7d7fca2881cd1d2910f09c2911494",
+      "size_bytes": 127196
+    },
+    {
+      "path": "/build/zstd_ep-install/lib/libzstd.a",
+      "sha256": "45a9bec8e1f53e7de83a66ee52e6ac7d2f083fc679f02b1dabc7c2096909f741",
+      "size_bytes": 954918
+    },
+    {
+      "path": "/build/zstd_ep-prefix/src/zstd_ep-build/lib/libzstd.a",
+      "sha256": "45a9bec8e1f53e7de83a66ee52e6ac7d2f083fc679f02b1dabc7c2096909f741",
+      "size_bytes": 954918
+    }
+  ],
+  "link_libraries": [
+    "  LINK_LIBRARIES = -lrt  re2_ep-install/lib/libre2.a  utf8proc_ep-install/lib/libutf8proc.a  -ldl  brotli_ep/src/brotli_ep-install/lib/libbrotlienc-static.a  brotli_ep/src/brotli_ep-install/lib/libbrotlidec-static.a  brotli_ep/src/brotli_ep-install/lib/libbrotlicommon-static.a  lz4_ep-install/lib/liblz4.a  snappy_ep/src/snappy_ep-install/lib/libsnappy.a  zlib_ep/src/zlib_ep-install/lib/libz.a  zstd_ep-install/lib/libzstd.a",
+    "  LINK_LIBRARIES = -Wl,-rpath,/build/release:  release/libarrow.so.2000.0.0",
+    "  LINK_LIBRARIES = -Wl,-rpath,/build/release:  release/libparquet.so.2000.0.0  release/libarrow_acero.so.2000.0.0  release/libarrow.so.2000.0.0",
+    "  LINK_LIBRARIES = -Wl,-rpath,/build/release:  release/libarrow.so.2000.0.0  thrift_ep-install/lib/libthrift.a"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "role": "api-trixie",
+  "subject": "docker.io/library/python@sha256:3949e4271b0a3ff82afac7306764c313dcc8edeeb89c0376a3c2ac6007c66b1d",
+  "config_digest": "sha256:4f8d1afed6d58037c680221ca6dd9fb4737b7ecfa7d4809ca809fdc0c7d9b786",
+  "archive_sha256": "39986c9f3c161a44c9ea22c6ab6f2b487e018ba90d668037246ec53a7b7c312e",
+  "critical_or_unknown": [
+    {
+      "VulnerabilityID": "CVE-2026-86145",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.46-1~deb13u1",
+      "FixedVersion": null,
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "TEMP-0000000-21C4F8",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.46-1~deb13u1",
+      "FixedVersion": null,
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "TEMP-0000000-8188AC",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.46-1~deb13u1",
+      "FixedVersion": null,
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "TEMP-0000000-A5518C",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.46-1~deb13u1",
+      "FixedVersion": null,
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "TEMP-0000000-B05303",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.46-1~deb13u1",
+      "FixedVersion": null,
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-13221",
+      "PkgName": "perl-base",
+      "InstalledVersion": "5.40.1-6",
+      "FixedVersion": null,
+      "Severity": "CRITICAL"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-42496",
+      "PkgName": "perl-base",
+      "InstalledVersion": "5.40.1-6",
+      "FixedVersion": null,
+      "Severity": "CRITICAL"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8376",
+      "PkgName": "perl-base",
+      "InstalledVersion": "5.40.1-6",
+      "FixedVersion": null,
+      "Severity": "CRITICAL"
+    }
+  ],
+  "proof_boundary": "native ARM64 base image scan, not final product or AMD64 scan"
+}

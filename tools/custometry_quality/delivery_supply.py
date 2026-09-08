@@ -19,6 +19,7 @@ import subprocess
 import tarfile
 import zipfile
 from datetime import datetime, timezone
+from email.parser import BytesParser
 from pathlib import Path
 from typing import Any, cast
 
@@ -405,6 +406,69 @@ def web_notices(image: str, subject: str, directory: Path) -> bool:
     return result.ok and not missing
 
 
+def normalize_python_licenses(
+    document: dict[str, Any], raw: dict[str, Any], image: str, directory: Path
+) -> list[dict[str, Any]]:
+    """Fill missing declarations from exact installed metadata and actual notice files."""
+    inventory = {row["path"]: row for row in load(directory / "selected-filesystem.json")}
+    python_packages = {
+        (p["name"], p["version"]): p for p in raw["artifacts"] if p["type"] == "python"
+    }
+    observations: list[dict[str, Any]] = []
+    container = run("docker", "create", "--pull=never", image).decode().strip()
+    require(re.fullmatch(r"[a-f0-9]{64}", container) is not None)
+    try:
+        for component in document["components"]:
+            package = python_packages.get((component.get("name"), component.get("version")))
+            if package is None or component.get("licenses"):
+                continue
+            locations = [p["path"] for p in package["locations"] if p["path"].endswith(".dist-info/METADATA")]
+            require(len(locations) == 1)
+            location = locations[0].lstrip("/")
+            bundle.safe_path(location)
+            expected = inventory[location]
+            require(0 < expected["size_bytes"] <= 1048576, "DELIVERY_LIMIT")
+            temporary = directory / "installed-metadata"
+            try:
+                run("docker", "cp", container + ":/" + location, str(temporary))
+                data = temporary.read_bytes()
+                require(bundle.digest(data) == expected["sha256"], "DELIVERY_SUBJECT_MISMATCH")
+            finally:
+                temporary.unlink(missing_ok=True)
+            metadata = BytesParser().parsebytes(data)
+            require(metadata["Name"] == package["name"] and metadata["Version"] == package["version"])
+            declaration = metadata.get("License-Expression")
+            if declaration is None:
+                classifiers = metadata.get_all("Classifier", [])
+                # Only the exact standardized MIT classifier is mapped here. No fuzzy
+                # copyright-text matching or conversion of an unlisted license occurs.
+                licenses = [v for v in classifiers if v.startswith("License ::")]
+                if licenses == ["License :: OSI Approved :: MIT License"]:
+                    declaration = "MIT"
+            if declaration is None:
+                continue
+            root = package["metadata"]["sitePackagesRootPath"].strip("/")
+            notice_files: list[dict[str, Any]] = []
+            for item in package["metadata"]["files"]:
+                name = root + "/" + item["path"]
+                if ".dist-info/" in name and re.search(r"/(?:LICENSE|COPYING|NOTICE)(?:[./]|$)", name, re.I):
+                    bundle.safe_path(name)
+                    actual = inventory.get(name)
+                    if actual is not None and actual.get("size_bytes", 0) > 0:
+                        notice_files.append(actual)
+            if not notice_files:
+                continue
+            component["licenses"] = [{"expression": str(declaration)}]
+            observations.append({
+                "name": package["name"], "version": package["version"],
+                "expression": str(declaration), "metadata": expected,
+                "notice_files": notice_files,
+            })
+    finally:
+        run("docker", "rm", "-v", container)
+    return observations
+
+
 def scan(image: str, subject: str, directory: Path) -> dict[str, Any]:
     """Invoke pinned installed tools against the exact pulled registry child."""
     require(image.endswith("@" + subject))
@@ -414,7 +478,11 @@ def scan(image: str, subject: str, directory: Path) -> dict[str, Any]:
     converted = json.loads(
         run("syft", "convert", str(directory / "sbom-raw.json"), "-o", "cyclonedx-json")
     )
-    save(directory / "sbom.json", bind_sbom(converted, raw["source"], subject))
+    bound = bind_sbom(converted, raw["source"], subject)
+    save(directory / "sbom-original.json", bound)
+    normalized = normalize_python_licenses(bound, raw, image, directory)
+    save(directory / "license-metadata.json", {"subject": subject, "normalizations": normalized})
+    save(directory / "sbom.json", bound)
     sbom_result = gate_sbom.check(
         directory, Path("sbom.json"), expected_subjects=[subject], require_subjects=True
     )
@@ -665,6 +733,8 @@ def assemble_supply(inputs: Path, output: Path, commit: str, run_id: int, run_at
                 "trivy-version.json": "vulnerabilities",
                 "trivy-db.json": "vulnerabilities",
                 "sbom-raw.json": "sbom",
+                "sbom-original.json": "sbom",
+                "license-metadata.json": "licenses",
             }
             if role == "web":
                 notice_path = directory / "THIRD-PARTY.txt"
@@ -771,7 +841,7 @@ def assemble_supply(inputs: Path, output: Path, commit: str, run_id: int, run_at
             "configuration_schema": "custometry-compose/v1",
             "docker_api_min": "1.43",
             "compose_min": "2.24.4",
-            "postgres_version": "17.5",
+            "postgres_version": "17.11",
             "supported_platforms": ["linux/amd64", "linux/arm64"],
             "tested_engines": [
                 {
@@ -806,7 +876,7 @@ def assemble_supply(inputs: Path, output: Path, commit: str, run_id: int, run_at
         "retrieval": {
             "provider": "github-actions-artifact",
             "repository": "Dejetins/custometry",
-            "artifact_name": "custometry-delivery-" + delivery_version,
+            "artifact_name": bundle.artifact_name(delivery_version, run_id, run_attempt),
             "retention_days": 90,
         },
         "signature": {
@@ -846,22 +916,30 @@ def unwrap_transport(raw: bytes, provider_digest: str) -> bytes:
     return payload
 
 
-def reconcile(archive: Path, run_id: int, output: Path) -> None:
+def reconcile(archive: Path, run_id: int, run_attempt: int, output: Path) -> None:
     """Read-only provider reconciliation; never overwrite or delete any version."""
     require(run_id > 0 and archive.stat().st_size <= POLICY["limits"]["archive_bytes"])
-    name = f"custometry-delivery-0.1.0-ms001.{run_id}"
+    version = f"0.1.0-ms001.{run_id}"
+    name = bundle.artifact_name(version, run_id, run_attempt)
+    legacy_name = f"custometry-delivery-{version}"
+    attempts = re.compile(re.escape(f"{legacy_name}-{run_id}-") + r"[1-9][0-9]*")
     pages = json.loads(
         run(
             "gh",
             "api",
             "--paginate",
             "--slurp",
-            f"repos/Dejetins/custometry/actions/artifacts?name={name}&per_page=100",
+            "repos/Dejetins/custometry/actions/artifacts?per_page=100",
         )
     )
-    artifacts = [a for page in pages for a in page["artifacts"] if a["name"] == name]
+    # Global enumeration prevents another attempt (or the legacy short name)
+    # from reassigning an already published delivery version.
+    artifacts = [
+        a for page in pages for a in page["artifacts"]
+        if a["name"] == legacy_name or attempts.fullmatch(a["name"])
+    ]
     require(len(artifacts) <= 1, "DELIVERY_VERSION_CONFLICT")
-    lines = ["exists=false"]
+    lines = ["exists=false", f"artifact_name={name}"]
     if artifacts:
         artifact = artifacts[0]
         require(
@@ -876,6 +954,7 @@ def reconcile(archive: Path, run_id: int, output: Path) -> None:
         require(bundle.digest(payload) == sha(archive), "DELIVERY_VERSION_CONFLICT")
         lines = [
             "exists=true",
+            f"artifact_name={artifact['name']}",
             f"artifact_id={int(artifact['id'])}",
             f"artifact_digest={artifact['digest']}",
         ]
@@ -908,6 +987,7 @@ def main() -> int:
     p = sub.add_parser("reconcile")
     p.add_argument("--archive", type=Path, required=True)
     p.add_argument("--run-id", type=int, required=True)
+    p.add_argument("--run-attempt", type=int, required=True)
     p.add_argument("--output", type=Path, required=True)
     p = sub.add_parser("unwrap")
     p.add_argument("--transport", type=Path, required=True)
@@ -930,7 +1010,7 @@ def main() -> int:
         elif args.action == "native":
             native(args)
         elif args.action == "reconcile":
-            reconcile(args.archive, args.run_id, args.output)
+            reconcile(args.archive, args.run_id, args.run_attempt, args.output)
         elif args.action == "assemble":
             assemble_supply(args.inputs, args.output, args.commit, args.run_id, args.run_attempt)
         elif args.action == "inventory":

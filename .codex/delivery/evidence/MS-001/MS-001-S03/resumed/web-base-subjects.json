@@ -1,0 +1,10 @@
+{
+  "arm64": {
+    "digest": "sha256:e00b7e2763a0dfec9ec6d99253612510c253df47d7218cdd35c4e465b4e9ad1f",
+    "config_digest": "sha256:b486e3d150c0420da4819a722088ac5e0d4ff3e46148761b7fdf310dbf45ba38"
+  },
+  "amd64": {
+    "digest": "sha256:209331cfcaec00da781f5b8a38e0d1c0abd00cb2b51e6ad385a30abbbdb04e15",
+    "config_digest": "sha256:fdfb0ecd79afbb90c47e2af4ba2d9599b05301c4956b560b832c1f1e3d7c2993"
+  }
+}

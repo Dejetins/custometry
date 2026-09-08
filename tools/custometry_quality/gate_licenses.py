@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 from pathlib import Path
 from typing import Iterable, Sequence
 
@@ -19,7 +20,7 @@ from .core import (
 
 
 UNKNOWN = {"", "NOASSERTION", "NONE", "UNKNOWN"}
-NON_PACKAGE_COMPONENT_TYPES = {"file"}
+NON_PACKAGE_COMPONENT_TYPES = {"file", "operating-system"}
 
 
 def _licenses(item: JsonObject) -> Iterable[str]:
@@ -31,10 +32,70 @@ def _licenses(item: JsonObject) -> Iterable[str]:
     if isinstance(licenses, list):
         for index, value in enumerate(licenses):
             entry = json_object(value, f"licenses[{index}]")
+            expression = entry.get("expression")
+            if isinstance(expression, str):
+                yield expression
+                continue
             nested = entry.get("license")
             license_value = json_object(nested, f"licenses[{index}].license") if nested is not None else entry
             identifier = license_value.get("id") or license_value.get("name")
             yield identifier if isinstance(identifier, str) else ""
+
+
+def _alternatives(value: str) -> list[frozenset[str]]:
+    """Bounded SPDX AND/OR/WITH evaluation; unknown atoms still fail policy."""
+    tokens = re.findall(r"[()]|[^\s()]+", value)
+    if not tokens or len(tokens) > 128:
+        raise ValueError("empty or oversized license expression")
+    index = 0
+
+    def atom() -> list[frozenset[str]]:
+        nonlocal index
+        if index >= len(tokens):
+            raise ValueError("missing license operand")
+        token = tokens[index]
+        index += 1
+        if token == "(":
+            options = expression()
+            if index >= len(tokens) or tokens[index] != ")":
+                raise ValueError("unclosed license expression")
+            index += 1
+            return options
+        if token in {"AND", "OR", "WITH", ")"}:
+            raise ValueError("invalid license operand")
+        if index < len(tokens) and tokens[index] == "WITH":
+            index += 1
+            if index >= len(tokens) or tokens[index] in {"AND", "OR", "WITH", "(", ")"}:
+                raise ValueError("missing license exception")
+            token += " WITH " + tokens[index]
+            index += 1
+        return [frozenset({token})]
+
+    def conjunction() -> list[frozenset[str]]:
+        nonlocal index
+        options = atom()
+        while index < len(tokens) and tokens[index] == "AND":
+            index += 1
+            right = atom()
+            if len(options) * len(right) > 64:
+                raise ValueError("too many license alternatives")
+            options = [left | other for left in options for other in right]
+        return options
+
+    def expression() -> list[frozenset[str]]:
+        nonlocal index
+        options = conjunction()
+        while index < len(tokens) and tokens[index] == "OR":
+            index += 1
+            options += conjunction()
+            if len(options) > 64:
+                raise ValueError("too many license alternatives")
+        return options
+
+    options = expression()
+    if index != len(tokens):
+        raise ValueError("unexpected license expression token")
+    return options
 
 
 def check(root: Path, sbom: Path, policy: Path) -> CheckResult:
@@ -92,14 +153,23 @@ def check(root: Path, sbom: Path, policy: Path) -> CheckResult:
                 continue
             seen.add(finding)
             observed += 1
-            if value.upper() in UNKNOWN:
-                result.add("license-unknown", f"{name}: {value or '<empty>'}", sbom_path)
-            elif value in denied:
-                result.add("license-denied", f"{name}: {value}", sbom_path)
-            elif value in review_required:
-                result.add("license-review-required", f"{name}: {value}", sbom_path)
-            elif value not in allowed:
-                result.add("license-not-allowed", f"{name}: {value}", sbom_path)
+            try:
+                options = _alternatives(value) if value else [frozenset({""})]
+            except ValueError:
+                # Preserve uninterpretable names instead of guessing an SPDX license.
+                options = [frozenset({value})]
+            if any(option <= allowed for option in options):
+                continue
+            for identifier in sorted({identifier for option in options for identifier in option} - allowed):
+                if identifier.upper() in UNKNOWN:
+                    code = "license-unknown"
+                elif identifier in denied:
+                    code = "license-denied"
+                elif identifier in review_required:
+                    code = "license-review-required"
+                else:
+                    code = "license-not-allowed"
+                result.add(code, f"{name}: {identifier or '<empty>'} (declared: {value})", sbom_path)
     result.details.update(
         components_total=len(components),
         components_evaluated=len(evaluated),

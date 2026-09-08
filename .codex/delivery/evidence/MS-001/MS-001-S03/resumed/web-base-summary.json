@@ -1,0 +1,170 @@
+{
+  "role": "web",
+  "subject": "nginxinc/nginx-unprivileged@sha256:e00b7e2763a0dfec9ec6d99253612510c253df47d7218cdd35c4e465b4e9ad1f",
+  "config_digest": "sha256:b486e3d150c0420da4819a722088ac5e0d4ff3e46148761b7fdf310dbf45ba38",
+  "archive_sha256": "741006d7b1b62d68f1395f90e045c89b3d15092321f662e202961040d27b16c4",
+  "critical_or_unknown": [
+    {
+      "VulnerabilityID": "CVE-2026-13608",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-18924",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-19931",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80229",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80230",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80231",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80255",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80256",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-82208",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-82209",
+      "PkgName": "curl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-31789",
+      "PkgName": "libcrypto3",
+      "InstalledVersion": "3.5.5-r0",
+      "FixedVersion": "3.5.6-r0",
+      "Severity": "CRITICAL"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-13608",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-18924",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-19931",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80229",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80230",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80231",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80255",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80256",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-82208",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-82209",
+      "PkgName": "libcurl",
+      "InstalledVersion": "8.17.0-r1",
+      "FixedVersion": "8.22.0-r0",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-31789",
+      "PkgName": "libssl3",
+      "InstalledVersion": "3.5.5-r0",
+      "FixedVersion": "3.5.6-r0",
+      "Severity": "CRITICAL"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-42945",
+      "PkgName": "nginx",
+      "InstalledVersion": "1.28.2-r1",
+      "FixedVersion": "1.28.3-r1",
+      "Severity": "CRITICAL"
+    }
+  ],
+  "proof_boundary": "native ARM64 base image scan, not final product or AMD64 scan"
+}

@@ -1,0 +1,79 @@
+{
+  "role": "api",
+  "subject": "docker.io/library/python@sha256:d04f49f5882f49a3b91f874e75e19f0c265f7222da8659741a9d7eab148f22a9",
+  "config_digest": "sha256:a74ddf067736251b63204a4d7a26411cffa3da75600b4e67ad54c9c79f3f81cb",
+  "archive_sha256": "027800971f938feb09fe1cc5a7da29f9f945d1db4780d7eaa198b522a63a627d",
+  "critical_or_unknown": [
+    {
+      "VulnerabilityID": "CVE-2026-86145",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.42-1",
+      "FixedVersion": "10.42-1+deb12u1",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "TEMP-0000000-21C4F8",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.42-1",
+      "FixedVersion": "10.42-1+deb12u1",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "TEMP-0000000-8188AC",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.42-1",
+      "FixedVersion": "10.42-1+deb12u1",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "TEMP-0000000-A5518C",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.42-1",
+      "FixedVersion": "10.42-1+deb12u1",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "TEMP-0000000-B05303",
+      "PkgName": "libpcre2-8-0",
+      "InstalledVersion": "10.42-1",
+      "FixedVersion": "10.42-1+deb12u1",
+      "Severity": "UNKNOWN"
+    },
+    {
+      "VulnerabilityID": "CVE-2025-7458",
+      "PkgName": "libsqlite3-0",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "CRITICAL"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-13221",
+      "PkgName": "perl-base",
+      "InstalledVersion": "5.36.0-7+deb12u3",
+      "FixedVersion": null,
+      "Severity": "CRITICAL"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-42496",
+      "PkgName": "perl-base",
+      "InstalledVersion": "5.36.0-7+deb12u3",
+      "FixedVersion": null,
+      "Severity": "CRITICAL"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8376",
+      "PkgName": "perl-base",
+      "InstalledVersion": "5.36.0-7+deb12u3",
+      "FixedVersion": null,
+      "Severity": "CRITICAL"
+    },
+    {
+      "VulnerabilityID": "CVE-2023-45853",
+      "PkgName": "zlib1g",
+      "InstalledVersion": "1:1.2.13.dfsg-1",
+      "FixedVersion": null,
+      "Severity": "CRITICAL"
+    }
+  ],
+  "proof_boundary": "native ARM64 base image scan, not final product or AMD64 scan"
+}

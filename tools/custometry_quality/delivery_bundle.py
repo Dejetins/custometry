@@ -203,12 +203,22 @@ def resource_records(config: dict[str, Any]) -> list[dict[str, Any]]:
     return result
 
 
+def artifact_name(delivery_version: str, run_id: int, run_attempt: int) -> str:
+    """S01 immutable provider identity; attempts never redefine delivery contents."""
+    require(run_id > 0 and run_attempt > 0)
+    return f"custometry-delivery-{delivery_version}-{run_id}-{run_attempt}"
+
+
 def validate_record(record: dict[str, Any]) -> None:
     schema = STRUCTURE.parse_json(
         (ROOT / "deploy/compose/delivery-manifest.schema.json").read_bytes()
     )
     STRUCTURE.check_schema(schema, schema)
     STRUCTURE.validate(record, schema, schema)
+    producer = record["producer"]
+    require(record["retrieval"]["artifact_name"] == artifact_name(
+        record["delivery_version"], producer["run_id"], producer["run_attempt"]
+    ))
     config = configuration(record)
     require(sorted(record["profiles"]) in (["core", "migration"], ["core", "demo", "migration"]))
     require(sorted(record["services"], key=lambda s: s["name"]) == service_records(config))
@@ -290,7 +300,7 @@ def validate_record(record: dict[str, Any]) -> None:
     projection(record)
 
 
-POSTGRES_DIGEST = "sha256:5d004e058f520673f1f6edbad6b1603d5dab4c818e257c041889ef64672a8cc4"
+POSTGRES_DIGEST = "sha256:9ae4e8f8d0284836a505f0b2e825144e32e20499856e7dc5f7b99e19d10eedd6"
 
 
 def payload_files(directory: Path) -> dict[str, bytes]:

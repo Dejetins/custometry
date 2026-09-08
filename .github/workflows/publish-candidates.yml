@@ -241,14 +241,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           uv run --locked python -m tools.custometry_quality.delivery_supply reconcile \
-            --archive "${RUNNER_TEMP}/delivery.zip" --run-id "${GITHUB_RUN_ID}" \
+            --archive "${RUNNER_TEMP}/delivery.zip" --run-id "${GITHUB_RUN_ID}" --run-attempt "${GITHUB_RUN_ATTEMPT}" \
             --output "${GITHUB_OUTPUT}"
       - name: Expose complete signed bundle only after every referenced check exists
         id: upload
         if: steps.reconcile.outputs.exists == 'false'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: custometry-delivery-0.1.0-ms001.${{ github.run_id }}
+          name: ${{ steps.reconcile.outputs.artifact_name }}
           path: ${{ runner.temp }}/delivery.zip
           compression-level: 0
           retention-days: 90

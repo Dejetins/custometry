@@ -268,7 +268,7 @@
           "uniqueItems": true
         },
         "postgres_version": {
-          "const": "17.5"
+          "const": "17.11"
         },
         "supported_platforms": {
           "const": [

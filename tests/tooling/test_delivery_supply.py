@@ -152,7 +152,7 @@ def test_index_digest_and_exact_child_checked(monkeypatch: pytest.MonkeyPatch) -
         supply.inspect_index("ghcr.io/dejetins/custometry-api", digest, "amd64")
 
 
-@pytest.mark.parametrize("mode", ["absent", "identical", "different", "expired", "duplicate"])
+@pytest.mark.parametrize("mode", ["absent", "identical", "different", "expired", "duplicate", "prior-attempt", "legacy"])
 def test_provider_reconcile_never_overwrites(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path, mode: str
 ) -> None:
@@ -160,16 +160,18 @@ def test_provider_reconcile_never_overwrites(
     archive.write_bytes(b"signed-bytes")
     stream = io.BytesIO()
     with zipfile.ZipFile(stream, "w") as z:
-        z.writestr("delivery.zip", b"other" if mode == "different" else archive.read_bytes())
+        z.writestr("delivery.zip", b"other" if mode in {"different", "prior-attempt", "legacy"} else archive.read_bytes())
     raw = stream.getvalue()
     item = {
-        "name": "custometry-delivery-0.1.0-ms001.12",
+        "name": "custometry-delivery-0.1.0-ms001.12-12-1",
         "expired": mode == "expired",
         "workflow_run": {"id": 12},
         "size_in_bytes": len(raw),
         "id": 10,
         "digest": "sha256:" + supply.bundle.digest(raw),
     }
+    if mode == "legacy":
+        item["name"] = "custometry-delivery-0.1.0-ms001.12"
     items = [] if mode == "absent" else [item] * (2 if mode == "duplicate" else 1)
 
     def command(*args: str) -> bytes:
@@ -177,12 +179,12 @@ def test_provider_reconcile_never_overwrites(
 
     monkeypatch.setattr(supply, "run", command)
     output = tmp_path / "output"
-    if mode in {"different", "expired", "duplicate"}:
+    if mode in {"different", "expired", "duplicate", "prior-attempt", "legacy"}:
         with pytest.raises(ValueError):
-            supply.reconcile(archive, 12, output)
+            supply.reconcile(archive, 12, 2 if mode == "prior-attempt" else 1, output)
         assert not output.exists()
     else:
-        supply.reconcile(archive, 12, output)
+        supply.reconcile(archive, 12, 2 if mode == "prior-attempt" else 1, output)
         assert f"exists={'false' if mode == 'absent' else 'true'}" in output.read_text()
 
 
@@ -202,6 +204,44 @@ def test_preparation_cannot_publish_bundle_on_git_merge() -> None:
         r["architecture"]
         for r in workflow["jobs"]["supply_native"]["strategy"]["matrix"]["include"]
     } == supply.PLATFORMS
+
+
+@pytest.mark.parametrize("tampered", [False, True])
+def test_installed_license_metadata_must_match_observed_filesystem(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, tampered: bool
+) -> None:
+    data = b"Name: example\nVersion: 1\nClassifier: License :: OSI Approved :: MIT License\n"
+    location = "app/site-packages/example-1.dist-info/METADATA"
+    notice = "app/site-packages/example-1.dist-info/licenses/LICENSE"
+    supply.save(tmp_path / "selected-filesystem.json", [
+        {"path": location, "size_bytes": len(data), "sha256": supply.bundle.digest(data)},
+        {"path": notice, "size_bytes": 10, "sha256": "b" * 64},
+    ])
+    document = {"components": [{"name": "example", "version": "1"}]}
+    raw = {"artifacts": [{
+        "name": "example", "version": "1", "type": "python",
+        "locations": [{"path": "/" + location}],
+        "metadata": {"sitePackagesRootPath": "/app/site-packages", "files": [
+            {"path": "example-1.dist-info/licenses/LICENSE"},
+        ]},
+    }]}
+
+    def command(*args: str) -> bytes:
+        if args[1] == "create":
+            return b"a" * 64
+        if args[1] == "cp":
+            Path(args[-1]).write_bytes(data + (b"tampered" if tampered else b""))
+        return b""
+
+    monkeypatch.setattr(supply, "run", command)
+    if tampered:
+        with pytest.raises(ValueError, match="DELIVERY_SUBJECT_MISMATCH"):
+            supply.normalize_python_licenses(document, raw, "fixture", tmp_path)
+        assert "licenses" not in document["components"][0]
+    else:
+        observations = supply.normalize_python_licenses(document, raw, "fixture", tmp_path)
+        assert observations[0]["notice_files"][0]["path"] == notice
+        assert document["components"][0]["licenses"] == [{"expression": "MIT"}]
 
 
 @pytest.mark.parametrize(
@@ -271,6 +311,8 @@ def test_complete_native_evidence_assembly(tmp_path: Path) -> None:
             }
             supply.save(directory / "sbom.json", bom)
             supply.save(directory / "sbom-raw.json", {"fixture": True})
+            supply.save(directory / "sbom-original.json", bom)
+            supply.save(directory / "license-metadata.json", {"subject": subject, "normalizations": []})
             report, db = scan_inputs()
             report["CreatedAt"] = now.isoformat()
             report["Metadata"]["RepoDigests"] = [repo + "@" + subject]
@@ -324,7 +366,7 @@ def test_complete_native_evidence_assembly(tmp_path: Path) -> None:
     supply.assemble_supply(inputs, output, commit, 123, 1)
     record = supply.load(output / "delivery-manifest.json")
     supply.bundle.check_payload(record, supply.bundle.candidate_payload(record, output))
-    assert record["retrieval"]["artifact_name"] == "custometry-delivery-0.1.0-ms001.123"
+    assert record["retrieval"]["artifact_name"] == "custometry-delivery-0.1.0-ms001.123-123-1"
     assert len(record["images"]) == 3
     assert record["source"]["commit"] == commit
 

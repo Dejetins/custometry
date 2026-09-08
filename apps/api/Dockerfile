@@ -14,17 +14,7 @@ RUN uv sync --locked --no-dev --no-install-workspace --package custometry-api
 COPY apps/api/src apps/api/src
 RUN uv sync --locked --no-dev --no-editable --package custometry-api
 
-FROM python:3.12.11-slim-bookworm@sha256:519591d6871b7bc437060736b9f7456b8731f1499a57e22e6c285135ae657bf7 AS runtime
-
-ARG CUSTOMETRY_VERSION=0.1.0-dev.0
-LABEL org.opencontainers.image.title="Custometry API" \
-      org.opencontainers.image.version="${CUSTOMETRY_VERSION}" \
-      org.opencontainers.image.licenses="Apache-2.0"
-
-ENV PATH="/app/.venv/bin:${PATH}" \
-    PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    CUSTOMETRY_VERSION="${CUSTOMETRY_VERSION}"
+FROM python:3.12.14-slim-trixie@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea AS runtime-closure
 
 RUN groupadd --system --gid 10001 custometry \
     && useradd --system --uid 10001 --gid custometry --home-dir /nonexistent --shell /usr/sbin/nologin custometry
@@ -50,6 +40,20 @@ COPY --chown=10001:10001 plugins/connector_files /app/.venv/lib/python3.12/site-
 COPY --chown=10001:10001 plugins/connector_postgresql /app/.venv/lib/python3.12/site-packages/plugins/connector_postgresql
 COPY --chown=10001:10001 migrations /app/migrations
 COPY --chown=10001:10001 LICENSE /app/notices/Custometry-LICENSE
+COPY deploy/compose/collect-python-runtime.py /tmp/collect-python-runtime.py
+RUN python /tmp/collect-python-runtime.py
+
+FROM scratch AS runtime
+ARG CUSTOMETRY_VERSION=0.1.0-dev.0
+LABEL org.opencontainers.image.title="Custometry API" \
+      org.opencontainers.image.version="${CUSTOMETRY_VERSION}" \
+      org.opencontainers.image.licenses="Apache-2.0"
+ENV PATH="/app/.venv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin" \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    CUSTOMETRY_VERSION="${CUSTOMETRY_VERSION}"
+COPY --from=runtime-closure /runtime/ /
+WORKDIR /app
 
 USER 10001:10001
 EXPOSE 8000

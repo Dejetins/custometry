@@ -7,6 +7,7 @@ for copied libraries so scanners still identify their exact distro versions.
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -52,11 +53,18 @@ def main() -> None:
     # ldd runs only against trusted, pinned Python/wheel ELF inputs in this builder.
     # Its transitive output includes the dynamic interpreter and all linked libs.
     libraries: set[str] = set()
+    elf_files: list[str] = []
     for source in sorted(copied):
         with Path(source).open("rb") as stream:
             if stream.read(4) != b"\x7fELF":
                 continue
-        result = subprocess.run(["ldd", source], capture_output=True, text=True)
+        elf_files.append(source)
+    library_directories = sorted({str(Path(source).parent) for source in elf_files})
+    for source in elf_files:
+        # Private wheel libraries may inherit their importing extension's search
+        # path. Inspect their dependencies with those already retained dirs too.
+        environment = {**os.environ, "LD_LIBRARY_PATH": ":".join([str(Path(source).parent), *library_directories])}
+        result = subprocess.run(["ldd", source], capture_output=True, text=True, env=environment)
         if "not found" in result.stdout:
             raise ValueError(f"Unresolved runtime library: {source}")
         if result.returncode and "not a dynamic executable" not in result.stderr + result.stdout:
@@ -72,7 +80,7 @@ def main() -> None:
     for listing in Path("/var/lib/dpkg/info").glob("*.list"):
         if any(str(Path(name).resolve()) in copied for name in listing.read_text().splitlines()):
             packages.add(listing.name.removesuffix(".list").split(":")[0])
-    status = []
+    status: list[str] = []
     for paragraph in Path("/var/lib/dpkg/status").read_text().split("\n\n"):
         package = re.search(r"^Package: (.+)$", paragraph, re.M)
         if package and package[1] in packages:

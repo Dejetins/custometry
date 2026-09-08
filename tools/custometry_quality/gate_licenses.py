@@ -5,6 +5,8 @@ import re
 from pathlib import Path
 from typing import Iterable, Sequence
 
+from .license_reviews import validate_reviews
+
 from .core import (
     CheckResult,
     JsonObject,
@@ -20,7 +22,26 @@ from .core import (
 
 
 UNKNOWN = {"", "NOASSERTION", "NONE", "UNKNOWN"}
-NON_PACKAGE_COMPONENT_TYPES = {"file", "operating-system"}
+NON_PACKAGE_COMPONENT_TYPES = {"file"}
+
+
+def _bare_distribution_descriptor(item: JsonObject) -> bool:
+    """Only Syft's package-free distro descriptor; explicit declarations always count."""
+    if (item.get("type") != "operating-system" or item.get("name") not in {"debian", "alpine"}
+            or any(key in item for key in ("purl", "licenses", "licenseConcluded", "hashes"))):
+        return False
+    name, version = item.get("name"), item.get("version")
+    if not isinstance(version, str) or item.get("bom-ref") != f"os:{name}@{version}":
+        return False
+    properties = item.get("properties")
+    if not isinstance(properties, list):
+        return False
+    pairs = [json_object(value, "distribution.properties") for value in properties]
+    return (
+        {"name": "syft:distro:id", "value": name} in pairs
+        and {"name": "syft:distro:versionID", "value": version} in pairs
+        and all(str(value.get("name", "")).startswith("syft:distro:") for value in pairs)
+    )
 
 
 def _licenses(item: JsonObject) -> Iterable[str]:
@@ -98,7 +119,10 @@ def _alternatives(value: str) -> list[frozenset[str]]:
     return options
 
 
-def check(root: Path, sbom: Path, policy: Path) -> CheckResult:
+def check(
+    root: Path, sbom: Path, policy: Path, *,
+    reviews: Path | None = None, expected_subjects: Sequence[str] = (),
+) -> CheckResult:
     result = CheckResult("gate_licenses")
     sbom_path, policy_path = root / sbom, root / policy
     if not require_file(sbom_path, result, "sbom-missing") or not require_file(policy_path, result, "license-policy-missing"):
@@ -126,11 +150,14 @@ def check(root: Path, sbom: Path, policy: Path) -> CheckResult:
         evaluated = [
             item
             for item in components
-            if item.get("type") not in NON_PACKAGE_COMPONENT_TYPES
+            if item.get("type") not in NON_PACKAGE_COMPONENT_TYPES and not _bare_distribution_descriptor(item)
         ]
         if not evaluated:
             raise ValueError("SBOM contains no package-level components")
-    except ValueError as exc:
+        reviewed = validate_reviews(
+            root / reviews, sbom_path, policy_path, set(expected_subjects), evaluated
+        ) if reviews is not None else {}
+    except (ValueError, OSError, KeyError, TypeError) as exc:
         result.add("license-input-invalid", str(exc))
         return result
     observed = 0
@@ -161,6 +188,22 @@ def check(root: Path, sbom: Path, policy: Path) -> CheckResult:
             if any(option <= allowed for option in options):
                 continue
             for identifier in sorted({identifier for option in options for identifier in option} - allowed):
+                obligations = reviewed.get((name, version, str(item.get("purl", ""))))
+                base_license = identifier.split(" WITH ", 1)[0]
+                reviewable = (
+                    re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.+-]*(?: WITH [A-Za-z0-9.-]+)?", identifier) is not None
+                    and identifier.upper() not in UNKNOWN
+                    and not base_license.upper().startswith(("AGPL", "SSPL", "BUSL", "LICENSEREF"))
+                    and base_license not in denied
+                )
+                if obligations is not None and reviewable:
+                    required = {"notice"}
+                    if "GPL" in base_license:
+                        required.add("corresponding-source")
+                    if "LGPL" in base_license:
+                        required.add("relinking")
+                    if required <= obligations:
+                        continue
                 if identifier.upper() in UNKNOWN:
                     code = "license-unknown"
                 elif identifier in denied:
@@ -175,6 +218,7 @@ def check(root: Path, sbom: Path, policy: Path) -> CheckResult:
         components_evaluated=len(evaluated),
         components_ignored=len(components) - len(evaluated),
         license_declarations=observed,
+        components_with_bound_review=len(reviewed),
     )
     return result
 
@@ -184,8 +228,13 @@ def cli(argv: Sequence[str] | None = None) -> int:
     add_common_arguments(parser)
     parser.add_argument("--sbom", type=Path, required=True)
     parser.add_argument("--policy", type=Path, default=Path("deploy/license-policy.json"))
+    parser.add_argument("--reviews", type=Path)
+    parser.add_argument("--subject", action="append", default=[])
     args = parser.parse_args(argv)
-    return render_result(check(args.root.resolve(), args.sbom, args.policy), args.json)
+    return render_result(check(
+        args.root.resolve(), args.sbom, args.policy,
+        reviews=args.reviews, expected_subjects=args.subject,
+    ), args.json)
 
 
 if __name__ == "__main__":

@@ -31,7 +31,11 @@ def test_expression_preserves_every_required_obligation(
         "bomFormat": "CycloneDX",
         "components": [
             {"type": "library", "name": "real-package", "licenses": [{"expression": expression}]},
-            {"type": "operating-system", "name": "distribution-descriptor"},
+            {"type": "operating-system", "name": "debian", "version": "12",
+             "bom-ref": "os:debian@12", "properties": [
+                 {"name": "syft:distro:id", "value": "debian"},
+                 {"name": "syft:distro:versionID", "value": "12"},
+             ]},
         ],
     }))
     (tmp_path / "policy.json").write_text(json.dumps({
@@ -44,3 +48,17 @@ def test_expression_preserves_every_required_obligation(
     assert [finding.code for finding in result.findings] == codes
     assert result.details["components_evaluated"] == 1
 
+
+@pytest.mark.parametrize("license_id", ["AGPL-3.0-only", "LGPL-2.1-only"])
+def test_os_component_with_its_own_license_cannot_be_ignored(tmp_path: Path, license_id: str) -> None:
+    policy = Path(__file__).resolve().parents[2] / "deploy/license-policy.json"
+    document = {"bomFormat": "CycloneDX", "components": [
+        {"type": "library", "name": "allowed", "licenses": [{"license": {"id": "MIT"}}]},
+        {"type": "operating-system", "name": "licensed-os-component", "version": "1.0",
+         "purl": "pkg:generic/explicit-os-component@1.0", "licenses": [{"license": {"id": license_id}}]},
+    ]}
+    (tmp_path / "bom.json").write_text(json.dumps(document))
+    result = gate_licenses.check(tmp_path, Path("bom.json"), policy)
+    assert not result.ok
+    assert result.details["components_evaluated"] == 2
+    assert result.findings[0].code == ("license-denied" if license_id.startswith("AGPL") else "license-review-required")

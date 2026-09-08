@@ -351,3 +351,114 @@ def test_cli_error_redaction_and_source_capture_fail_closed(tmp_path: Path) -> N
     with pytest.raises(bundle.BundleError):
         bundle.capture("a" * 40, tmp_path / "source.tar")
     assert not (tmp_path / "source.tar").exists()
+
+
+def internal_candidate(tmp_path: Path) -> tuple[dict[str, Any], dict[str, bytes], Path]:
+    import io
+    import tarfile
+
+    record, payload = candidate()
+    record["channel"] = bundle.INTERNAL
+    record["signature"] = None
+    record["producer"] = {
+        "kind": "owner-local",
+        "tool": "tools.custometry_quality.delivery_bundle",
+        "source_commit": record["source"]["commit"],
+    }
+    store = tmp_path / "images"
+    store.mkdir()
+    archives = []
+    for role, image in record["images"].items():
+        for platform in image["platforms"]:
+            arch = platform["architecture"]
+            config = bundle.canonical({"architecture": arch, "os": "linux"})
+            image_id = "sha256:" + bundle.digest(config)
+            manifest = bundle.canonical({"config": {"digest": image_id}})
+            platform["digest"] = "sha256:" + bundle.digest(manifest)
+            path = store / f"{role}-{arch}.tar"
+            with tarfile.open(path, "w") as archive:
+                for raw in (config, manifest):
+                    info = tarfile.TarInfo("blobs/sha256/" + bundle.digest(raw))
+                    info.size = len(raw)
+                    archive.addfile(info, io.BytesIO(raw))
+            archives.append(
+                {
+                    "role": role,
+                    "architecture": arch,
+                    "path": path.name,
+                    "sha256": bundle.digest(path.read_bytes()),
+                    "size_bytes": path.stat().st_size,
+                    "image_id": image_id,
+                    "docker_id": platform["digest"],
+                }
+            )
+    record["retrieval"] = {"provider": "owner-local-retained-images", "archives": archives}
+    record["evidence"][0]["subject"] = record["images"]["api"]["platforms"][0]["digest"]
+    payload.pop(bundle.ENV)
+    payload.update(bundle.generated_payload(record))
+    record["services"] = bundle.service_records(bundle.configuration(record))
+    record["resources"] = bundle.resource_records(bundle.configuration(record))
+    record["files"] = [
+        bundle.file_record(n, raw, "evidence" if n.startswith("evidence/") else "config")
+        for n, raw in sorted(payload.items())
+    ]
+    record["evidence"][0]["file"] = next(
+        f for f in record["files"] if f["path"] == "evidence/sbom.json"
+    )
+    return record, payload, store
+
+
+def test_unsigned_internal_assembly_and_strict_release_reader(tmp_path: Path) -> None:
+    record, payload, store = internal_candidate(tmp_path)
+    bundle.check_payload(record, payload)
+    bundle.check_image_archives(record, store)
+    source = tmp_path / "input"
+    bundle.write_new(source, payload)
+    output = tmp_path / "bundle"
+    bundle.assemble(
+        {k: v for k, v in record.items() if k not in {"files", "services", "resources"}},
+        source,
+        output,
+    )
+    path = output / "delivery-manifest.json"
+    actual = bundle.read_record(path, bundle.INTERNAL)
+    bundle.pack(actual, output, None, tmp_path / "internal.zip")
+    with zipfile.ZipFile(tmp_path / "internal.zip") as archive:
+        assert "delivery-manifest.sigstore.json" not in archive.namelist()
+    with pytest.raises(ValueError):
+        bundle.read_record(path)
+    with pytest.raises(ValueError):
+        bundle.STRUCTURE.read_contract(path)
+    release, _ = candidate()
+    release_path = tmp_path / "release.json"
+    release_path.write_bytes(bundle.canonical(release))
+    assert bundle.read_record(release_path) == release
+    with pytest.raises(ValueError):
+        bundle.read_record(release_path, bundle.INTERNAL)
+    with pytest.raises(bundle.BundleError, match="DELIVERY_SIGNATURE_REQUIRED"):
+        release_source = tmp_path / "release-input"
+        _, release_payload = candidate()
+        bundle.write_new(release_source, release_payload)
+        bundle.pack(release, release_source, None, tmp_path / "release.zip")
+
+
+@pytest.mark.parametrize("change", ["bytes", "path", "manifest", "config", "platform", "signature"])
+def test_internal_tampering_rejected(tmp_path: Path, change: str) -> None:
+    record, payload, store = internal_candidate(tmp_path)
+    item = record["retrieval"]["archives"][0]
+    if change == "bytes":
+        with (store / item["path"]).open("ab") as stream:
+            stream.write(b"altered")
+    elif change == "path":
+        item["path"] = "../escape.tar"
+    elif change == "manifest":
+        record["images"][item["role"]]["platforms"][0]["digest"] = "sha256:" + "b" * 64
+    elif change == "config":
+        item["image_id"] = "sha256:" + "b" * 64
+    elif change == "platform":
+        item["architecture"] = "riscv64"
+    else:
+        record["signature"] = {"format": "fake"}
+    with pytest.raises((ValueError, KeyError)):
+        bundle.check_payload(record, payload)
+        bundle.check_image_archives(record, store)

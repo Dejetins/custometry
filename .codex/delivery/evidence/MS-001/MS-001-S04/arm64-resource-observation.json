@@ -1,0 +1,74 @@
+{
+  "mounts": [
+    {
+      "name": "/ms001s04-8ab4706e1b-edge-1",
+      "mounts": []
+    },
+    {
+      "name": "/ms001s04-8ab4706e1b-web-1",
+      "mounts": []
+    },
+    {
+      "name": "/ms001s04-8ab4706e1b-api-1",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/s04-consumer-arm64-01/secrets/control_db_password",
+          "Destination": "/run/secrets/control_db_password",
+          "RW": false
+        }
+      ]
+    },
+    {
+      "name": "/ms001s04-8ab4706e1b-control-db-1",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/ms001s04-8ab4706e1b_control_db_data/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/s04-consumer-arm64-01/secrets/control_db_password",
+          "Destination": "/run/secrets/control_db_password",
+          "RW": false
+        }
+      ]
+    },
+    {
+      "name": "/ms001s04-8ab4706e1b-demo-source-db-1",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/s04-consumer-arm64-01/acquired/bundle/demo/init",
+          "Destination": "/docker-entrypoint-initdb.d",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/ms001s04-8ab4706e1b_demo_source_data/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/s04-consumer-arm64-01/secrets/demo_source_admin_password",
+          "Destination": "/run/secrets/demo_source_admin_password",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/s04-consumer-arm64-01/secrets/demo_source_reader_password",
+          "Destination": "/run/secrets/demo_source_reader_password",
+          "RW": false
+        }
+      ]
+    }
+  ],
+  "database_disk_kib": {
+    "/ms001s04-8ab4706e1b-control-db-1": "49372",
+    "/ms001s04-8ab4706e1b-demo-source-db-1": "46728"
+  },
+  "host_handoff_disk_kib": "1888640"
+}

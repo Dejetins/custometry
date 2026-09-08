@@ -1,0 +1,10 @@
+{
+  "bundle": "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03",
+  "profile": "internal-development",
+  "elapsed_seconds": 0.303,
+  "delivery_zip_bytes": 2420460,
+  "delivery_zip_sha256": "7a3aa8aad4fa862f712fbfa2b03ce82537b778bc4709fcb1ef404f38c1bcbb36",
+  "manifest_sha256": "b3e9e370ade2d8260c0ccdf2907d1a85c238735deca4a2975c3dca791e18e28d",
+  "archive_bytes": 476247552,
+  "proof_boundary": "Local retained images and unsigned configuration; no consumer runtime."
+}

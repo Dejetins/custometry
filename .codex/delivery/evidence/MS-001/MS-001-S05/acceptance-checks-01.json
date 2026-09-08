@@ -1,0 +1,57 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "tools.custometry_quality.validate_blueprints"
+      ],
+      "exit_code": 0,
+      "output": "PASS validate_blueprints (observed=true)\n  requirement_ids: 1265\n  spec_version: 0.11.0-draft\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "tools.custometry_quality.generate_docs_index",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": "PASS generate_docs_index (observed=true)\n  artifact: /Users/daniildegtyarev/Projects/Custometry/docs/README.md\n  audience: contributor\n  documents: 65\n  mode: check\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "tools.custometry_quality.check_docs_links"
+      ],
+      "exit_code": 0,
+      "output": "PASS check_docs_links (observed=true)\n  documents: 81\n  local_links: 508\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "tools.custometry_quality.validate_prompt_packs"
+      ],
+      "exit_code": 0,
+      "output": "PASS validate_prompt_packs (observed=true)\n  journals: 1\n  proof_boundary: artifact-structure-and-file-binding; no claims or stage execution\n"
+    }
+  ],
+  "review_bindings": "All original review receipt source/report/document/evidence hashes unchanged",
+  "criterion_review": "Original AC-01\u2013AC-09 map retained; owner acceptance now satisfies AC-08 final review; runtime evidence reused without reruns",
+  "proof_boundary": "Post-owner-acceptance documentation and immutable binding checks; installation and official release remain outside scope"
+}

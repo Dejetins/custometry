@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "ledger_status": "awaiting_input",
+  "stage_status": "needs_input",
+  "receipt": "../evidence/MS-001/MS-001-S05/receipts/2026-09-08-s05-review-01.md",
+  "receipt_check": {
+    "initial": "--stage rejected for receipt check; no transition attempted",
+    "corrected": "receipt validation passed with --check receipt and --receipt only"
+  },
+  "transition": "Normal accept transaction consumed review_ready receipt; owner acceptance remains absent"
+}

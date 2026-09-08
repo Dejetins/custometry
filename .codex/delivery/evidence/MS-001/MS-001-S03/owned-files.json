@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "path": "tools/custometry_quality/delivery_bundle.py",
+      "sha256": "12ef218e2cd0edd7fbf34fa66546f03f5961812bb6a1d7fd64ffbb9e9b99042d"
+    },
+    {
+      "path": "deploy/compose/delivery-internal-profile.json",
+      "sha256": "9309780958017f4ce72c6874967737e522249e4f2fb5c22e8f9de58e1e8bf05a"
+    },
+    {
+      "path": "tests/tooling/test_delivery_bundle_producer.py",
+      "sha256": "7760c6586de20a5d8b76c4fe0549b440de13555d71ebb0aaced92547e0bc60f6"
+    },
+    {
+      "path": "docs/architecture/runtime-network-installation.md",
+      "sha256": "07a21ce8f8d162d84f2dc4529e8bb24795af7ac0e45ec25d75bc3f474932f245"
+    },
+    {
+      "path": "docs/architecture/tooling-gates.md",
+      "sha256": "e85ca45a27073f52cb2c22b7255708e1f396f3671242a9f67459b15f4c087371"
+    }
+  ],
+  "foreign_changes_excluded": [
+    ".codex/agents/generated/w21-figma-master-elements-index/internal-figma-agent-prompt.md (pre-existing deletion)"
+  ],
+  "evidence_scope": ".codex/delivery/evidence/MS-001/MS-001-S03",
+  "ledger": "exclusive updater only"
+}

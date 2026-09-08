@@ -1,0 +1,38 @@
+{
+  "status": "pass",
+  "authority": "Current owner explicitly requested removal of obsolete builds, retaining only the accepted one",
+  "root": "/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001",
+  "retained": "0.1.0-internal.20260908.s03.3",
+  "retained_hash_verification": "pass before and after deletion",
+  "removed": [
+    {
+      "name": "0.1.0-internal.20260908.s03",
+      "allocated_kib_before": 472676
+    },
+    {
+      "name": "0.1.0-internal.20260908.s03.2",
+      "allocated_kib_before": 472828
+    },
+    {
+      "name": "s04-consumer-arm64-01",
+      "allocated_kib_before": 470296
+    },
+    {
+      "name": "s04-consumer-arm64-02",
+      "allocated_kib_before": 470292
+    },
+    {
+      "name": "s04-consumer-arm64-03",
+      "allocated_kib_before": 470292
+    },
+    {
+      "name": "s04-transfer-01",
+      "allocated_kib_before": 935164
+    }
+  ],
+  "reclaimed_allocated_kib": 3291548,
+  "remaining_directories": [
+    "0.1.0-internal.20260908.s03.3"
+  ],
+  "boundary": "Only named MS-001 obsolete filesystem copies removed; repository evidence, accepted bundle, Docker images and unrelated application resources preserved"
+}

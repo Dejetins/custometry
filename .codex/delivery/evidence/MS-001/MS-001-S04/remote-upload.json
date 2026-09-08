@@ -1,0 +1,17 @@
+{
+  "repository": "Dejetins/custometry",
+  "draft": true,
+  "release_id": 385035881,
+  "tag": "ms001-s04-transfer-20260908-01",
+  "asset": {
+    "id": 551236330,
+    "name": "transfer.zip",
+    "size": 478787131,
+    "digest": "sha256:c89759d1459ec2e09f4e89b08b10cf725df0357fc04f63ec6268cb6d1cdb1b77",
+    "state": "uploaded"
+  },
+  "anonymous_status": 404,
+  "observed_at": "2026-09-08T20:20:34.813411+00:00",
+  "failed_initial_attempt": "GitHub 422 rejected abbreviated target_commitish; no release was created by that attempt",
+  "target_commitish": "codex/ms001-s04-native-consumer"
+}

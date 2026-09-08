@@ -1,0 +1,74 @@
+{
+  "status": "failed",
+  "architecture": "amd64",
+  "timings_seconds": {
+    "retrieval": 1.031,
+    "verification": 0.518,
+    "import_api": 4.079,
+    "import_web": 1.03,
+    "import_postgres": 2.463
+  },
+  "project": "ms001s04-cb5ea88a24",
+  "retrieved_bytes": 478784861,
+  "manifest_sha256": "693cbe3b4dfcd5148c9aab6dd2b1e946d9b46ae0ce3c22a69b4a03111f1a735a",
+  "source_commit": "bc347d7e74c57640b42462c24cc2ed60d76ef055",
+  "profile": "internal-development",
+  "engine": {
+    "ServerVersion": "28.0.4",
+    "Architecture": "x86_64",
+    "OSType": "linux",
+    "MemTotal": 16766414848,
+    "NCPU": 4
+  },
+  "images": [
+    {
+      "architecture": "amd64",
+      "docker_id": "sha256:3c68888162ae19efc760ea761a1ab0e555d5dd333fcc1d9095091b9e8cee72f5",
+      "image_id": "sha256:e800bb4f9fc831f2d0492e47eada4363bb879e30aa7aabfd6d214eba2da7ab6f",
+      "path": "api-amd64.tar",
+      "role": "api",
+      "sha256": "23e8588febb1cb14917ac46460c388affc69001c8bd545a85e72a97e5cc3c79c",
+      "size_bytes": 107573248,
+      "observed_id": "sha256:3c68888162ae19efc760ea761a1ab0e555d5dd333fcc1d9095091b9e8cee72f5"
+    },
+    {
+      "architecture": "amd64",
+      "docker_id": "sha256:cc4b8ed0b614a407d423795fd573e3168aa2417b8f46ee26625b76b19860784e",
+      "image_id": "sha256:56c51f4560d6e6b18cda0da88a3abf2490a3c3d5195ff39c8fd93ff55f6e3360",
+      "path": "web-amd64.tar",
+      "role": "web",
+      "sha256": "6356072485efea38a240fdfa4c457b264a08f498b6cde1b07821bdaf735396dd",
+      "size_bytes": 21919232,
+      "observed_id": "sha256:cc4b8ed0b614a407d423795fd573e3168aa2417b8f46ee26625b76b19860784e"
+    },
+    {
+      "architecture": "amd64",
+      "docker_id": "sha256:c258b4dceb11a3c2b7cd2580e341d6afa5c0f2ae2c73313597f2a266c897bd44",
+      "image_id": "sha256:ae302d6547ebdf6646e22ee9afebfc60c0163a6d6ee0126e2fc7e59088b210c4",
+      "path": "postgres-amd64.tar",
+      "role": "postgres",
+      "sha256": "b5e1873471ea181bd6fd5b95aaeeb3930cdf20d880b17bf2a23eb26c7961f4cc",
+      "size_bytes": 110799872,
+      "observed_id": "sha256:c258b4dceb11a3c2b7cd2580e341d6afa5c0f2ae2c73313597f2a266c897bd44"
+    }
+  ],
+  "failed_command": [
+    "up",
+    "-d",
+    "--no-build",
+    "--wait",
+    "--wait-timeout",
+    "120",
+    "control-db",
+    "demo-source-db"
+  ],
+  "failure_indicators": [
+    "unhealthy"
+  ],
+  "container_log_indicators": [
+    "exited",
+    "invalid"
+  ],
+  "error": "COMMAND_FAILED:docker:compose:--project-name",
+  "cleanup": "owned-compose-resources-removed"
+}

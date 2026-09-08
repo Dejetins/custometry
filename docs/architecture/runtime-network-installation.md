@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 17
+doc_version: 20
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -17,15 +17,14 @@ proof_boundary:
 
 ## Internal development supply amendment — 2026-09-08
 
-[MS-001 2.1.0](planning/milestones/MS-001/plan.md) governs the replacement S03
-and its C03 development handoff. The detailed signed v1 protocol below remains
+[MS-001 2.2.0](planning/milestones/MS-001/plan.md) governs current consumption
+and the C03 development handoff; accepted S03 retains its historical 2.1.0 basis. The detailed signed v1 protocol below remains
 the historical S01/S02 implementation and the strict release-verification path;
 it is not a requirement to complete full release assurance before an internal
 working bundle can be built. An explicitly selected internal-development profile
 may be unsigned and contain unresolved or unavailable scanner/license reports.
 Never represent that output as signed, security-cleared or an official release.
-The actual internal-profile producer/reader extension is assigned to S03 and
-is not claimed implemented by this documentation amendment.
+The S03 producer now implements the explicit profile described below.
 
 Use upstream binary packages and standard images. Custom third-party builds/forks
 need a separately explained owner decision. Keep supplied LICENSE/NOTICE files;
@@ -41,6 +40,191 @@ release inputs retain their behavior. Single real build/retrieval/start observat
 suffice for MS-001; mandatory double builds and repeated performance matrices are
 removed from its internal acceptance. C03 uses its declared internal reader/profile
 and actual S04 runtime proof. SEC-009 official-release assurance remains separate.
+
+### S03 owner-local bundle and reader
+
+The [S03 report](../../.codex/delivery/evidence/MS-001/MS-001-S03/report.md)
+binds version `0.1.0-internal.20260908.s03.3`, image source commit
+`bc347d7e74c57640b42462c24cc2ed60d76ef055`, actual retained archives and verification.
+The producer uses the unchanged v1 schema plus the independently selected
+[internal profile](../../deploy/compose/delivery-internal-profile.json).
+`channel=internal-development`, `signature=null`, a local producer and six retained
+image archive identities replace hosted/signature assertions. API/Web index digests
+are null because no combined registry index was published. Platform manifest and
+config digests are real OCI subjects. The profile is an explicit reader capability;
+the default release reader and original structural reader reject this combination.
+All existing release schema, policy, legacy env and signed packing inputs remain strict.
+
+The protected copy contains `delivery.zip`, unpacked `bundle/`, `images/`, the exact
+independently selected `toolkit/`, and `SHA256SUMS`. Files are 0600, directories 0700.
+Acquire it by copying this complete directory from the owner-controlled location in
+the report; neither a registry push nor an anonymous download is implied. The checksum
+list/manifest hash must come from that trusted handoff, not solely an unknown archive.
+The exact toolkit hashes bind the producer's local overlay separately from its Git
+baseline; application build inputs bind the immutable S02 commit without an overlay.
+
+```sh
+cd /Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3
+shasum -a 256 -c SHA256SUMS
+python3 -I toolkit/tools/custometry_quality/delivery_bundle.py check \
+  --profile internal-development --record bundle/delivery-manifest.json \
+  --payload bundle --image-store images
+# On the selected ARM64 consumer; use amd64 consistently for AMD64.
+docker load --input images/api-arm64.tar
+docker load --input images/web-arm64.tar
+docker load --input images/postgres-arm64.tar
+docker compose --env-file bundle/.internal-arm64.env -f bundle/compose.json \
+  --profile demo --profile migration config
+```
+
+Compose resolves the Docker manifest IDs retained in each archive and uses
+`pull_policy: never`. `image_id` records the OCI config digest; `docker_id` records
+the importable Docker subject. They are distinct and checked against archive blobs.
+Local Docker 29.6.2 imported both platform sets; clean consumer and other engine
+compatibility remain S04 proof. Do not use the old release bootstrap for this profile.
+External secret slots must be prepared by the installer; no credentials are bundled.
+The ZIP is the portable configuration/evidence payload, while the six separate image
+archives are mandatory parts of the complete retained copy. Do not distribute the
+ZIP alone as a complete bundle. The reader streams archive hashes and checks bounded
+OCI identities without extracting or running content. S04 owns clean consumption,
+service startup, migrations and consumer-side hostile archive handling.
+
+Upstream package/LICENSE/NOTICE files remain in the images; available application
+notice text and package metadata are also retained in the payload. No scanner was
+installed for this stage. Missing SBOM/vulnerability reports are `not_observed`, and
+license metadata is report-only. None of this is security clearance or permission
+for external redistribution. The earlier `.s03` and `.s03.2` local candidates are preserved as
+superseded preparation evidence and is not the handoff version.
+
+### S04 consumer qualification
+
+[MS-001 2.2.0](planning/milestones/MS-001/plan.md) separates environment preparation
+from dual-platform acceptance. The [S04 report](../../.codex/delivery/evidence/MS-001/MS-001-S04/report.md)
+records native M5/ARM64 and GitHub AMD64 runs of the exact S03 archives. The
+[consumer harness](../../tools/custometry_quality/delivery_consumer.py) copies the
+trusted file set into a new private directory, checks independent hashes before
+loading the retained reader, validates and atomically extracts regular ZIP entries,
+then imports native images and runs isolated core/demo databases, fresh/repeat
+migration and API/Web/Edge HTTP smoke. It never builds application images.
+
+```sh
+source scripts/activate-toolchain.sh
+uv run --locked python -m tools.custometry_quality.delivery_consumer \
+  --source /Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3 \
+  --work /Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/s04-consumer-arm64-NEW \
+  --trust .codex/delivery/evidence/MS-001/MS-001-S03/protected-files.json \
+  --architecture arm64
+```
+
+Use a new work directory for each authorized run; existing identities reject.
+Default cleanup removes only the generated Compose project and volumes. The
+`--keep-for-browser` option retains a passing project for the one browser smoke;
+its caller must then remove that exact project and generated secret directory.
+A failed run retains a redacted `result.json`; it is never reported as passed.
+Generated secret values must not enter evidence or remote observation artifacts.
+The tested ARM64 engine already held image bytes; acquisition was fresh and all
+three selected archives were loaded, but this is not an empty-engine experiment.
+
+The [AMD64 workflow](../../.github/workflows/verify-internal-bundle.yml) uses
+`ubuntu-24.04`, the same harness and trusted S03 archives without rebuilding.
+[Run 34275373622](https://github.com/Dejetins/custometry/actions/runs/34275373622)
+passed native import, core/demo startup, packaged fresh/repeat migrations and
+API/Web/Edge HTTP checks. It used Docker 28.0.4 with the standard containerd image
+store explicitly enabled. M5 Docker 29.6.2 uses the same store. Classic image-store
+support is not established: its manifest-ID lookup failed in the preserved first run.
+C03 must check this prerequisite rather than silently changing an existing host store.
+
+The independently verified demo-init mount needs directory mode 0755, shell modes
+0755 and SQL modes 0644 for PostgreSQL's container UID. Private host parent directories
+remain 0700. Generate the demo reader secret as 32 random bytes encoded into 64 lowercase
+hex characters; the packaged init script validates that format. The harness confirms
+5,000 receipts are readable as `demo_reader`, in addition to service health.
+
+The [authorized temporary transfer](../../.codex/delivery/evidence/MS-001/MS-001-S04/remote-operation.md)
+was uploaded to unpublished draft `ms001-s04-transfer-20260908-01`. Authenticated
+retrieval succeeded and anonymous access returned 404. The draft and asset were
+[deleted after evidence retrieval](../../.codex/delivery/evidence/MS-001/MS-001-S04/remote-cleanup.json);
+they are not the continuing acquisition endpoint. The complete protected S03
+owner-local copy remains available. The hosted redacted observation artifact has
+90-day retention; no credential or bundle bytes are in that artifact.
+The manually dispatched workflow therefore needs a newly authorized temporary
+transfer if replayed after cleanup; a missing draft must fail, never trigger publication.
+
+[The final evidence and limitations](../../.codex/delivery/evidence/MS-001/MS-001-S04/report.md)
+support S04 only. Official release, TLS, installation, account bootstrap and arbitrary
+Docker configurations remain outside this packaging proof. S05 owns final owner
+acceptance and the exact C03 handoff.
+
+### S05 installation-author handoff
+
+This documentation revision binds the [S05 criterion map and decision packet](../../.codex/delivery/evidence/MS-001/MS-001-S05/report.md)
+to accepted plan 2.2.0 and WS-001 1.0.6. The [journal](../../.codex/delivery/ledgers/MS-001.md)
+alone records final owner acceptance. C03 is a later planning outcome, not an
+MS-001 successor stage; these instructions do not start installation.
+
+Use delivery `0.1.0-internal.20260908.s03.3` with application
+`0.1.0-dev.0+sha.bc347d7e74c5`, migration/read/write head `0009_notifications`,
+the standard-library Python reader and the exact retained S03 `toolkit/`.
+The reader has no separately published semantic version: its complete identity is
+[the trusted file inventory](../../.codex/delivery/evidence/MS-001/MS-001-S03/protected-files.json).
+Do not replace it with a current checkout reader. Manifest SHA-256 is
+`693cbe3b4dfcd5148c9aab6dd2b1e946d9b46ae0ce3c22a69b4a03111f1a735a`;
+ZIP SHA-256 is `6687d2a58ef194072634b462a7ab8750fcca3f32a47c81fd8989c3498dd77e49`.
+The unchanged manifest binds configuration, image platform subjects and migration files.
+
+For an authorized local acquisition, copy the entire trusted owner-local directory
+to a new private destination; preserve modes and reject an existing destination:
+
+```sh
+umask 077
+supply_source=/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/0.1.0-internal.20260908.s03.3
+supply_copy=/Users/daniildegtyarev/.local/share/custometry/delivery/MS-001/c03-acquisition-01
+mkdir -m 700 "$supply_copy" && cp -pR "$supply_source/." "$supply_copy/"
+```
+
+Stop if that command fails. Independently compare the copied manifest, ZIP, six
+archives and toolkit with the owner-provided trusted inventory before executing
+any copied reader. Then run the checksum/reader/import commands in
+[S03 owner-local bundle and reader](#s03-owner-local-bundle-and-reader) from the
+new copy. Select `arm64` or `amd64` consistently with the Linux engine; use its
+three matching archives and `.internal-<architecture>.env`. A complete copy includes
+both platform sets. The ZIP alone is insufficient. No remote endpoint is needed.
+
+| Installer input | Exact supplied slot / required behavior |
+|---|---|
+| Compose | `bundle/compose.json`, matching `bundle/.internal-arm64.env` or `.internal-amd64.env`; `pull_policy: never`; no build |
+| Installation identity | Explicit unique `COMPOSE_PROJECT_NAME`, new owned installation root; retain identity on retry |
+| Access | `CUSTOMETRY_BIND_HOST=127.0.0.1`, `CUSTOMETRY_HTTP_PORT=0` for the observed smoke; C03 owns persistent port, origin and HTTPS selection |
+| Secrets | External `CUSTOMETRY_SECRETS_DIR`; `control_db_password`, and for demo `demo_source_admin_password`, `demo_source_reader_password`; private parent 0700, mountable files 0444; generated locally, never shipped or printed |
+| Demo | `demo` profile; `bundle/demo/init` directory 0755, shell files 0755 and SQL 0644 only after validation; reader password is 64 lowercase hex characters |
+| Storage/network | Project-owned `control_db_data`, optional `demo_source_data`; fixed declared networks; preserve foreign volumes and installations |
+| Migrations | `migration` profile uses the API image, `alembic -c /app/migrations/alembic.ini upgrade head`; fresh DB and repeat at `0009_notifications` qualified; application starts only after success |
+| Resources | 6 GiB workload and 25 GiB owned-data ceilings; supplied service caps total 3,154,116,608 bytes including migration; administrator CPU cap and available disk remain preflight inputs |
+| Host compatibility | Native Linux ARM64 Docker 29.6.2 or AMD64 Docker 28.0.4 as tested, both containerd image store; the existing API/Compose floors do not qualify every engine/store |
+
+C03 must inspect the existing engine/store and fail with an actionable message if
+unsupported; do not silently switch host storage. The S04 harness is a disposable
+qualification helper that deletes its owned DB volumes by default, not a persistent
+installer. Reuse its validated acquisition/resource preparation semantics in C03;
+do not invoke it as the normal installation lifecycle. No migration of an unknown
+existing database, installed upgrade/rollback, TLS or bootstrap is qualified here.
+
+The protected S03 copy has no scheduled expiry; its availability depends on owner
+retention. The temporary GitHub draft/asset are deleted. Run `34275373622` and
+observation artifact `10075519806` identify historical AMD64 evidence only, with
+recorded expiry `2026-12-07T20:32:17Z` (90 days). They are not bundle download locations.
+A further remote transfer requires its own concrete authorization and applicable
+redistribution conditions. No access or retention change is made by this handoff.
+
+C04 receives the existing first-account/role/bootstrap work and the accepted
+[account-lifetime clarification](planning/milestones/MS-001/plan.md#downstream-account-clarification):
+no automatic account-age expiry until administrator disablement, separately from
+session and token lifetimes. AUTH reconciliation and implementation remain C04 work.
+Valkey/workers, writable analytics artifact storage and complete ingestion journeys
+remain unavailable in this bundle. Before official release, obtain SEC-009 SBOM,
+vulnerability report and signed provenance, resolve critical findings and satisfy
+the existing release/license gates. Current scan/SBOM status is `not_observed` and
+notice gaps remain report-only; this handoff supplies no release assurance.
 
 ## 1. Goals
 

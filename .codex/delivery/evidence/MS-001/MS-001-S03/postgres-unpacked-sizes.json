@@ -1,0 +1,14 @@
+[
+  {
+    "architecture": "arm64",
+    "uncompressed_layer_tar_bytes": 272513536,
+    "elapsed_seconds": 0.27,
+    "method": "One streaming count over retained layer tar bytes; conservative unpacked upper bound."
+  },
+  {
+    "architecture": "amd64",
+    "uncompressed_layer_tar_bytes": 281014784,
+    "elapsed_seconds": 0.279,
+    "method": "One streaming count over retained layer tar bytes; conservative unpacked upper bound."
+  }
+]

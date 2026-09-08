@@ -1,0 +1,38 @@
+/Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:151:29 - error: Argument type is partially unknown
+    Argument corresponds to parameter "obj" in function "len"
+    Argument type is "list[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:152:17 - error: Type of "append" is partially unknown
+    Type of "append" is "(object: Unknown, /) -> None" (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:153:13 - error: Type of "names" is partially unknown
+    Type of "names" is "list[Unknown]" (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:153:22 - error: Type of "name" is unknown (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:153:22 - error: Type of "rstrip" is unknown (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:153:45 - error: Type of "m" is unknown (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:154:25 - error: Argument type is partially unknown
+    Argument corresponds to parameter "obj" in function "len"
+    Argument type is "list[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:154:48 - error: Argument type is partially unknown
+    Argument corresponds to parameter "obj" in function "len"
+    Argument type is "set[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:154:52 - error: Argument type is partially unknown
+    Argument corresponds to parameter "iterable" in function "__init__"
+    Argument type is "list[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:154:67 - error: Argument type is partially unknown
+    Argument corresponds to parameter "obj" in function "len"
+    Argument type is "list[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:155:17 - error: Type of "member" is unknown (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:155:25 - error: Type of "name" is unknown (reportUnknownVariableType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:155:37 - error: Argument type is partially unknown
+    Argument corresponds to parameter "iter1" in function "__new__"
+    Argument type is "list[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:155:46 - error: Argument type is partially unknown
+    Argument corresponds to parameter "iter2" in function "__new__"
+    Argument type is "list[Unknown]" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:156:27 - error: Argument type is unknown
+    Argument corresponds to parameter "name" in function "safe_path" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:157:25 - error: Type of "isfile" is unknown (reportUnknownMemberType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:157:25 - error: Argument type is unknown
+    Argument corresponds to parameter "condition" in function "require" (reportUnknownArgumentType)
+  /Users/daniildegtyarev/Projects/Custometry/tools/custometry_quality/delivery_bundle.py:157:44 - error: Type of "isdir" is unknown (reportUnknownMemberType)
+18 errors, 0 warnings, 0 informations

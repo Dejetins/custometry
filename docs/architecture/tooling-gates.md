@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 17
+doc_version: 19
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -330,3 +330,50 @@ the durable record and history determine whether the operation already completed
 subprocess contention, process death, stale writes, session isolation, receipt
 binding, pause/resume/final acceptance and interrupted replacement in temporary
 Git checkouts. These tests never execute a product milestone.
+
+
+### Internal development profile checks (MS-001/S03)
+
+The [runtime contract](runtime-network-installation.md#s03-owner-local-bundle-and-reader)
+and [S03 evidence](../../.codex/delivery/evidence/MS-001/MS-001-S03/report.md)
+identify the owner-local copy. Use `delivery_bundle check`, `assemble`, or `pack`
+with `--profile internal-development --image-store <retained-images>` explicitly.
+Unsigned internal packing omits `--signature`; release packing still requires it.
+This profile preserves release schema/policy behavior and does not invoke release
+license/security gates or grant their assurance. Focused source checks are:
+
+```sh
+uv run --locked pytest -q tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py
+uv run --locked ruff check tools/custometry_quality/delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py
+uv run --locked pyright tools/custometry_quality/delivery_bundle.py
+```
+
+Real bundle verification also requires the image store; mock fixtures alone are
+not acceptance. Profile mismatch, missing/altered archive, OCI subject mismatch,
+escaping path and payload drift fail. Runtime qualification is recorded by S04 at its exact native targets.
+
+### Internal bundle consumer checks (MS-001/S04)
+
+The [consumer harness](../../tools/custometry_quality/delivery_consumer.py) and
+[workflow](../../.github/workflows/verify-internal-bundle.yml) add a bounded S04
+surface. Existing delivery/release validators remain unchanged. Run:
+
+```sh
+uv run --locked pytest -q tests/tooling/test_delivery_consumer.py tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py
+uv run --locked ruff check tools/custometry_quality/delivery_consumer.py tests/tooling/test_delivery_consumer.py
+uv run --locked pyright tools/custometry_quality/delivery_consumer.py
+```
+
+Use the [runtime command](runtime-network-installation.md#s04-consumer-qualification)
+only for an authorized fresh task-owned consumer directory. ZIP fixtures prove
+escaping/symlink/duplicate/partial-promotion and identity-overwrite rejection;
+[actual evidence](../../.codex/delivery/evidence/MS-001/MS-001-S04/report.md) separately
+records retained-image digest/platform negatives and native runtime/browser results.
+A source gate, prepared workflow or ARM64-only pass cannot accept AC-03. The workflow
+requires existing Python/PyYAML, Docker/Compose and authenticated draft access on the
+runner. It enables Docker’s standard containerd store only on that disposable runner;
+unavailable tools fail and are not automatically installed. The validated demo mount
+gets PostgreSQL-readable modes and its generated reader secret uses 64 hex characters.
+The final runtime checks include actual `demo_reader` access to 5,000 seeded receipts.
+The successful temporary draft was deleted; replay needs a newly authorized transfer. Only
+redacted observations are uploaded with 90-day retention, never bundle bytes or secrets.

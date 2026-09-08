@@ -8,13 +8,13 @@
   "artifact_kind": "milestone",
   "doc_id": "MS-001",
   "title": "Versioned internal delivery on upstream prebuilt dependencies",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "planning_status": "accepted",
   "language": "en",
   "parent_ref": {
     "id": "WS-001",
     "path": "docs/architecture/planning/directions/DIR-006/workstreams/WS-001.md",
-    "version": "1.0.5"
+    "version": "1.0.6"
   },
   "direction_ref": "DIR-006",
   "baseline_ref": {
@@ -64,13 +64,14 @@
     "MS-001/DEC-09",
     "MS-001/DEC-10",
     "MS-001/DEC-11",
-    "MS-001/DEC-12"
+    "MS-001/DEC-12",
+    "MS-001/DEC-13"
   ],
   "supersedes_ref": {
     "id": "MS-001",
-    "version": "1.1.0",
-    "path": ".codex/delivery/evidence/MS-001/restart-2026-09-08/plan-1.1.0.md.snapshot",
-    "reason": "Owner-accepted internal-first delivery and clean S03 start"
+    "version": "2.1.0",
+    "path": ".codex/delivery/evidence/MS-001/s04-entry-2026-09-08/plan-2.1.0.md.snapshot",
+    "reason": "Owner-approved S04 environment preparation within unchanged dual-platform acceptance"
   },
   "execution_ref": {
     "path": ".codex/delivery/ledgers/MS-001.md",
@@ -91,11 +92,14 @@
 
 # MS-001. Versioned internal delivery on upstream prebuilt dependencies
 
-**Accepted version 2.1.0, 2026-09-08.** The owner accepted the simplification and
-requested the S03 rollback and restart preparation. This replaces 1.1.0 for future
-work. Its immutable snapshot remains the basis for accepted S01/S02. [Owner decision](../../../../../.codex/delivery/evidence/MS-001/restart-2026-09-08/owner-decision.md).
+**Accepted version 2.2.0, 2026-09-08.** The owner approved preparing the AMD64
+verification path inside S04 and requested the corresponding plan, prompt and
+journal updates. Native ARM64/AMD64 acceptance remains unchanged. Version 2.1.0
+remains the immutable basis for accepted S03; S01/S02 retain their 1.1.0 basis.
+[Current decision](../../../../../.codex/delivery/evidence/MS-001/s04-entry-2026-09-08/decision.md).
+[Earlier internal-delivery decision](../../../../../.codex/delivery/evidence/MS-001/restart-2026-09-08/owner-decision.md).
 
-Parent: [WS-001](../../directions/DIR-006/workstreams/WS-001.md) 1.0.5, C02.
+Parent: [WS-001](../../directions/DIR-006/workstreams/WS-001.md) 1.0.6, C02.
 Direction: DIR-006, accepted scope 1.2.0. State and claims belong only to the
 [journal](../../../../../.codex/delivery/ledgers/MS-001.md).
 
@@ -127,15 +131,17 @@ already makes this distinction; no product-wide license waiver is introduced.
 | MS-001/REQ-06 | Keep one stable version/commit, image/platform digests, portable file hashes, migration identity and bounded verification before execution | Missing required payload, wrong digest/platform, escaping archive paths, secrets in payload or broken runtime remain real blockers. Do not overwrite an existing delivery identity with different bytes. |
 | MS-001/REQ-07 | Separate `internal-development` from the existing release verification path explicitly | Missing signature/scan evidence is allowed only for explicitly selected internal development. Never silently relax the release reader or invent signatures, findings, hashes or credentials. No automatic promotion from this bundle to official release. |
 | MS-001/REQ-08 | Finish one selected stage and reuse current evidence | No whole-repository audit, custom delivery framework or repeated independent reviews of every helper. Run focused checks for changed behavior; rerun only when inputs changed or a specific failure invalidates evidence. A large new subtask returns with its smallest ordinary alternative before implementation. |
+| MS-001/REQ-09 | Prepare the consumer test environment as S04 work; distinguish entry from completion | Accepted S03, its available complete local handoff and a valid unclaimed S04 are entry inputs. A ready AMD64 job or remote transfer route is not an entry prerequisite. Native ARM64/AMD64 runtime evidence remains mandatory before accepting S04 or allowing S05. |
 
 ## 3. Current state and reuse
 
 | Evidence | Observed state | Consequence |
 |---|---|---|
 | S01/S02 accepted journal records and immutable receipts | Delivery v1 schema/policy, portable configuration producer and original image packaging exist | Preserve acceptance for those exact historical inputs; new internal-profile behavior needs focused proof in S03. |
-| Rollback baseline b0e51705616a2deb5472a7af26a3b6daa79c2250 | Last local accepted S02 boundary; includes published ff43baa8 | S03 implementation is removed from current source, including custom Arrow builds, v2 source sets and review engines. No old execution result is carried into the new S03. |
+| Rollback baseline b0e51705616a2deb5472a7af26a3b6daa79c2250 | Historical S02 boundary used for the completed restart | The abandoned custom Arrow/source-review implementation remains removed; the subsequently accepted S03 adds the ordinary internal-profile producer. |
 | Existing candidate workflow and S02 Dockerfiles | Standard upstream packages and ordinary prebuilt candidates | Reuse them; resolve only observed failures. The restored old pins are a rollback baseline, not an assertion of current security. |
-| Restart evidence | Owner requested preparation, removal of the abandoned attempt and Git publication, not stage execution | Only S03 can become entry-ready; no stage completion is inferred. |
+| [Accepted S03 report](../../../../../.codex/delivery/evidence/MS-001/MS-001-S03/report.md) | The journal records acceptance under 2.1.0; the owner-local handoff retains six image archives and the exact reader | Reuse the accepted bundle and source identities without rebuilding S03. Its earlier AMD64 availability reservation is superseded by DEC-13 for entry only. |
+| [S04 entry amendment](../../../../../.codex/delivery/evidence/MS-001/s04-entry-2026-09-08/decision.md) | Owner requested documentation and next-entry preparation | Only S04 can be enabled; this amendment makes no consumer runtime or S04 completion claim. |
 
 ## 4. Work breakdown and acceptance
 
@@ -143,20 +149,58 @@ already makes this distinction; no product-wide license waiver is introduced.
 |---|---|---|---|
 | MS-001-S01 / S02 | Retained historical acceptance under 1.1.0 | Existing accepted records | No rerun; source-level compatibility is rechecked only where S03 changes it. |
 | MS-001-S03 | A complete versioned internal bundle from ordinary upstream packages | S02 | Existing Dockerfiles, Compose/delivery schema-policy-producer, relevant candidate workflow, focused tests, runtime/tooling docs. Produce actual bundle, source/platform identities and short finding report. |
-| MS-001-S04 | Clean retrieval/import/start on native ARM64 and AMD64; real packaged Web and fresh/repeat migration smoke | S03 | Existing lifecycle and delivery tools, focused integration/browser checks. No source build or hidden checkout mounts on the consumer. |
+| MS-001-S04 | Prepare the native test targets and exact-bundle transfer, then prove clean retrieval/import/start on ARM64 and AMD64; packaged Web and fresh/repeat migration smoke | S03 | Existing lifecycle/delivery tools, a bounded verification workflow under .github/workflows, focused integration/browser checks and affected runtime/tooling docs. No source build or hidden checkout mounts on the consumer. |
 | MS-001-S05 | Owner acceptance and exact C03 installation handoff | S04 | Existing plan/parent/runtime docs, reports and one journal; no new product work. |
 
 | Criterion | Observable acceptance | Proof |
 |---|---|---|
 | MS-001/AC-01 | Every enabled service, migration and required configuration/asset resolves from the bundle | S03 inventory checks; S04 clean consumption |
 | MS-001/AC-02 | One actual successful build per required platform from recorded immutable source/locked inputs; selected content is stable when retrieved | S03 source/digests; S04 verification. Mandatory double clean rebuild/comparison is removed from this internal milestone. |
-| MS-001/AC-03 | ARM64 and AMD64 API/Web/PostgreSQL import/start proof | S04 native runs; no claim from emulation alone |
+| MS-001/AC-03 | ARM64 and AMD64 API/Web/PostgreSQL import/start proof | S04 completion requires both native runs; environment preparation is S04 work. No claim from emulation alone. |
 | MS-001/AC-04 | Source, profile, image and file hashes/platforms are checked before execution; altered/mismatched inputs reject | S03/S04 positive and relevant negative checks. Signatures and clean license/vulnerability reports are not mandatory internal acceptance inputs; preserve truthful reports and official-release requirements. |
 | MS-001/AC-05 | Configuration/application/migration pairing is explicit; fresh owned DB reaches declared head; repeating migration succeeds | S04 actual packaged Alembic and PostgreSQL; legacy three-key env validation remains strict |
 | MS-001/AC-06 | One protected retrievable internal copy; no traversal, partial promotion, identity overwrite or credential exposure | Owner-local protected directory is sufficient. If remote retrieval is selected, use actual authorized access and finite timeout/retry; validate denial once. |
 | MS-001/AC-07 | Required imports, API/Web/assets/Edge configuration and migrations work from selected prebuilt images | S04 actual smoke; no HTTPS/bootstrap/product-wide functional acceptance |
 | MS-001/AC-08 | Installer author receives exact location, profile/reader, identities, configuration/resource/secret slots, platform and known limitations | S05 owner-reviewed handoff to WS-001/C03 |
 | MS-001/AC-09 | Actual sizes and single-run build/retrieval/start/migration timings, clear tested/untested scope | S03/S04 observations; no mandatory five-run or thirty-sample benchmark, performance certification or packaging screenshot matrix |
+
+### S04 entry, work order and completion
+
+Entry checks establish accepted S03, the complete local bundle/reader and bound
+report, current plan/prompt/journal agreement, and the exclusive updater. Use the
+normal `advance` transaction if the unclaimed S04 is still disallowed. Do not
+treat `Entry is not allowed` as an instruction to find a new server: inspect
+the current decision and perform the authorized advancement. No runtime result
+or ready remote job is required merely to begin environment preparation.
+
+Within the claimed S04:
+
+1. Inspect the handoff and prepare one focused consumer harness. Use the available
+   M5 Docker engine for native ARM64. Retain the existing image bytes and metadata.
+2. Implement the native AMD64 check using the selected `Dejetins/custometry`
+   GitHub-hosted `ubuntu-24.04` target. A self-hosted runner is not required.
+   Prepare a small verification job and an ordinary authenticated transfer of
+   the exact retained archive set, portable payload and independently selected
+   reader. Resolve the concrete transfer channel from existing access during S04;
+   do not require the owner to supply infrastructure before local work starts.
+3. Run available local integrity, native ARM64, migration and packaged-Web checks
+   while the AMD64 job/transfer is being prepared. Agent organization remains
+   owner-controlled; these are work dependencies, not a delegation instruction.
+4. On the native AMD64 runner, verify trusted hashes, import the same archives
+   and execute the consumer harness. Record the workflow/run, engine/architecture
+   and exact subjects. An ordinary CI source rebuild cannot replace this proof.
+5. Accept S04 only after both native targets and all applicable AC-01/03/04/05/06/07/09
+   checks pass. Enable S05 only from that complete, receipt-backed result.
+
+Preparation may edit the verification harness/workflow and its documentation.
+Before upload or workflow execution, use the existing authorized repository,
+access and audience; prepare the concrete transfer operation first. If a new
+account, wider audience, credential or external action outside current authority
+is actually needed, finish independent work and report that specific decision
+with the smallest proposed operation. Pause at that boundary with `needs_input`;
+do not ask generically for an AMD64 server or mark partial proof accepted.
+No new registry service, runner fleet, public release, custom transport framework,
+dependency rebuild, or reopened S03 is part of this clarification.
 
 ## 5. Delivery, compatibility and publication
 
@@ -196,6 +240,7 @@ not start S03 or deploy the platform.
 | MS-001/DEC-10 | Owner accepted ordinary upstream dependencies and internal-first delivery on 2026-09-08. Replaces the 1.1.0 internal critical-zero/license-clear/signature and repeat-build prerequisites; image targets become advisory. Avoid maintaining custom third-party builds. |
 | MS-001/DEC-11 | Restore the accepted S02 implementation boundary and start S03 cleanly. The owner explicitly requested removal of the abandoned attempt, including its prompt, claim, transition entries, reports and snapshots. Update S04/S05 for the new internal handoff. |
 | MS-001/DEC-12 | Preserve S01/S02 immutable contracts and receipts against the exact 1.1.0 snapshot. This is historical acceptance, not proof of new 2.1.0 behavior. Reconciliation uses the existing exclusive journal mechanism; never copy another session identity or reset the journal to draft. |
+| MS-001/DEC-13 | Owner approved S04 environment/CI and exact-archive transfer preparation as work inside the stage, with local checks continuing independently. The AMD64 availability reservation in the S03 handoff no longer prevents entry. Native dual-platform acceptance and remote-action authority remain unchanged. Preserve S03 prompt/report/receipt bytes against the 2.1.0 snapshot; update only pending S04/S05 contracts and normal next-entry permission. Source: current decision linked above, 2026-09-08; covered version 2.2.0. |
 
 DEC-02 platform coverage, DEC-03/04 internal audience and permitted image access,
 DEC-05 core/optional demo, DEC-06 owner control of agents, and DEC-08 account
@@ -205,16 +250,21 @@ remain in the 1.1.0 snapshot. S03 requires its own explicit execution request; p
 
 ## 7. Execution artifact binding and checks
 
-`plan_doc`: this accepted 2.1.0 document. `prompt_pack_dir`:
+`plan_doc`: this accepted 2.2.0 document. `prompt_pack_dir`:
 [MS-001](../../../../../.codex/agents/generated/MS-001/). `stage_ledger`:
-[MS-001](../../../../../.codex/delivery/ledgers/MS-001.md). There are five prompts: S01/S02 remain accepted and S03/S04/S05 are pending,
-with one canonical journal and only S03 eligible for a new claim. Default mode is `manual_sequential`.
+[MS-001](../../../../../.codex/delivery/ledgers/MS-001.md). The journal alone records stage status and permission.
+The 2026-09-08 amendment preserves S01/S02/S03 accepted results and updates the two
+unclaimed successor prompts. S04 is the only next-entry candidate; S05 depends on
+its complete acceptance. Default mode is `manual_sequential`.
 
 The standard `prompt-pack/v1` validator and `custometry-stage-ledger/v1` updater
 remain. A terminal row may bind its immutable historical plan snapshot and explicit
 reconciliation evidence; active/pending prompts bind only this current plan.
-The new capability evidence records the narrow validator support and real focused
-checks. Claims and execution receipts are not created during preparation.
+The existing capability already supports terminal historical-plan bindings.
+Preserve S03's exact 2.1.0 plan, prompt and receipt; the current DEC-13 evidence
+explains the compatible future-stage amendment. Claims and execution receipts
+are not created during this document update. Normal advancement records S04
+permission separately from the accepted S03 receipt.
 
 ### Downstream account clarification
 
@@ -225,15 +275,17 @@ remain separate; no identity implementation changes are made here.
 
 ## Mandatory documentation handoff
 
-WS-001 1.0.5 registers this amendment and its internal C03 handoff while preserving
-the L2 five-outcome scope. Update affected runtime/tooling contracts and navigation
-with the same authorized change. Blueprint release requirements remain unchanged.
-Run focused delivery/ledger tests and the local documentation/source gate once;
-repeat only for changed inputs or an identified defect. No container builds,
-license scans, performance benchmarks or release checks are needed to prepare
-this restart. Implementation stages run their explicitly relevant checks.
+WS-001 1.0.6 registers this compatible execution detail while preserving the L2
+five-outcome scope. The architecture index follows the exact child versions.
+Accepted S03 runtime/tooling documentation and implementation remain unchanged by
+this amendment; S04 updates those documents when its actual consumer path exists.
+Product blueprints and L1/L2 acceptance stay unchanged. Run prompt/ledger validation,
+read-only S04 entry preflight and the local documentation/source gate; record the
+independent review and preservation check in the linked amendment checks. No
+container build, product test matrix or runtime execution is needed for authoring.
 
 | Version | Date | Change / authority |
 |---|---|---|
 | 1.1.0 | 2026-09-07 | Original accepted plan, preserved in the immutable restart snapshot |
 | 2.1.0 | 2026-09-08 | Owner accepted simplified requirements, full S03 rollback and preparation of S03; S01/S02 acceptance retained |
+| 2.2.0 | 2026-09-08 | Owner approved compatible S04 environment and transfer preparation; unchanged dual-platform completion, accepted S03 preserved and S04 next-entry enabled through the updater |

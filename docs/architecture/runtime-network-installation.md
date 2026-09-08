@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 13
+doc_version: 17
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -14,6 +14,33 @@ proof_boundary:
 ---
 
 # Custometry Runtime, Network, and Installation
+
+## Internal development supply amendment — 2026-09-08
+
+[MS-001 2.1.0](planning/milestones/MS-001/plan.md) governs the replacement S03
+and its C03 development handoff. The detailed signed v1 protocol below remains
+the historical S01/S02 implementation and the strict release-verification path;
+it is not a requirement to complete full release assurance before an internal
+working bundle can be built. An explicitly selected internal-development profile
+may be unsigned and contain unresolved or unavailable scanner/license reports.
+Never represent that output as signed, security-cleared or an official release.
+The actual internal-profile producer/reader extension is assigned to S03 and
+is not claimed implemented by this documentation amendment.
+
+Use upstream binary packages and standard images. Custom third-party builds/forks
+need a separately explained owner decision. Keep supplied LICENSE/NOTICE files;
+report-only development does not waive redistribution conditions. Prefer an
+owner-local protected handoff until applicable external-distribution conditions
+are met. Ordinary pinned dependency updates are preferred to private library
+builds or a custom distro. API 350 MiB/Web 100 MiB are advisory for this first
+internal supply; disk/memory limits and data/secret protection remain hard limits.
+
+The internal path must still reject wrong source/profile/platform/digests, missing
+required files and escaping/partial archives before execution. Existing strict
+release inputs retain their behavior. Single real build/retrieval/start observations
+suffice for MS-001; mandatory double builds and repeated performance matrices are
+removed from its internal acceptance. C03 uses its declared internal reader/profile
+and actual S04 runtime proof. SEC-009 official-release assurance remains separate.
 
 ## 1. Goals
 
@@ -596,100 +623,3 @@ notices and Python documentation-build notices, plus the project license. Notice
 collection includes build/test dependencies and is not the final shipped-component
 license decision. Missing license text and all policy-review findings remain
 explicit in the S02 report; no exception or supply-chain pass is implied.
-
-## 13. Internal supply producer preparation (MS-001/S03)
-
-The existing candidate workflow contains disabled `supply_native` and `supply_bundle`
-jobs. Both have literal `if: ${{ false }}` until exact signed-bundle publication
-is authorized. Ordinary protected-main Git publication therefore keeps its existing
-Foundation candidate effects. Prepared code is not evidence of a signed delivery.
-The [S03 report](../../.codex/delivery/evidence/MS-001/MS-001-S03/report.md) records
-actual proof and remaining criteria; the canonical journal owns execution state.
-
-The [producer](../../tools/custometry_quality/delivery_supply.py) selects the original
-API/Web index outputs, resolves and hashes exact native child manifests, pulls those
-children, and compares each complete exported filesystem with two fresh no-cache
-builds in separate pinned BuildKit instances from the same clean source archive.
-Modes, owners, links and file contents are compared; only tar order, mtimes and four
-Docker-generated container files are excluded explicitly. The exact uv 0.9.26
-local-wheel cache timestamp and source-directory inode are normalized only after
-checking their shape and the matching wheel RECORD hash/size; all other RECORD
-rows, source identity and file content remain compared. Raw differences remain
-in evidence. Application/dependency differences fail. Native `ubuntu-24.04` and `ubuntu-24.04-arm` jobs fail on a mismatched
-host/engine architecture. These preparation checks do not replace S04 runtime proof.
-
-Syft source metadata must identify the exact child before adding the subject property
-required by existing SBOM/license gates. Trivy version, report time, DB update/expiry
-and actual DB file hashes are retained. Critical or unknown-severity findings fail;
-license policy is unchanged. Web notice declarations supplement cataloging, and
-missing notice text fails explicitly. Scanner execution and further coverage/remediation
-must be observed before enabling signing; no claim of complete minified JavaScript or
-generated documentation vulnerability coverage follows from static preparation.
-Cosign verifies exact canonical manifest bytes, source commit, workflow repository/ref,
-exact signer/issuer and the source-pinned independent trusted root. No root supplied by
-an untrusted payload establishes initial trust. The tool bootstrap downloads only S01
-binary pins and the additional [supply pins](../../deploy/compose/delivery-supply-tools.json)
-into a new owned CI directory; it does not provision credentials.
-
-### Provider transport versus signed payload
-
-The accepted S01 artifact name remains
-`custometry-delivery-<delivery-version>-<run-id>-<attempt>`, as specified in section 11.
-The disabled S03 preparation currently generates
-`custometry-delivery-0.1.0-ms001.<run_id>` in both assembly and reconciliation;
-that implementation differs from the accepted name. The schema only constrains the
-prefix and character set; passing it does not establish naming-contract compliance.
-Before enabling supply jobs, align assembly, reconciliation, tests and the descriptor
-with the accepted name, preserving rejection of different bytes for an existing
-delivery version across attempts. The frozen S03 report's attribution of the shorter
-name to S01 is corrected by the
-[addendum](../../.codex/delivery/evidence/MS-001/MS-001-S03/decision-refinement-2026-09-08.md).
-No existing artifact is renamed and no new naming contract is accepted here.
-
-The GitHub artifact contains one opaque file named `delivery.zip`. There are three separate
-identities: (1) provider archive SHA-256 from the authenticated REST artifact record,
-(2) exact inner `delivery.zip` SHA-256 in the authoritative producer descriptor,
-and (3) exact canonical manifest SHA-256 authenticated by Cosign. The manifest retains
-the complete payload digest closure; neither the final provider ID nor an archive's
-own digest is inserted recursively into the signed record.
-
-The trusted `delivery_supply unwrap` transport adapter verifies the provider hash,
-requires exactly one regular `delivery.zip` entry, rejects links, duplicates, unknown
-paths, encryption and unsupported compression, and bounds both compressed and expanded
-bytes by the existing 128 MiB archive limit and 100:1 ratio. It checks the independently
-expected inner hash before writing a new private file. It never opens or recursively
-extracts that inner archive. S04 then applies S01 signature, strict inner entry/file
-closure, quarantine and atomic promotion to those exact bytes. The prohibition on
-recursive **payload** archive extraction remains unchanged. A `.dockerbuild` artifact
-is not an alternative bundle: real observation found native gzip bytes despite the
-API endpoint suffix `/zip`; trusted content validation must not rely on that suffix.
-
-```sh
-# After S04's authenticated, bounded download to a private new transport file:
-uv run --locked python -m tools.custometry_quality.delivery_supply unwrap \
-  --transport "$PROVIDER_ZIP" --provider-digest "$PROVIDER_DIGEST" \
-  --payload-sha256 "$EXPECTED_PAYLOAD_SHA256" --output "$NEW_PRIVATE_DELIVERY_ZIP"
-# After S04's quarantine reader exposes exact manifest/signature and closed payload:
-uv run --locked python -m tools.custometry_quality.delivery_supply verify \
-  --record "$QUARANTINE/delivery-manifest.json" \
-  --signature "$QUARANTINE/delivery-manifest.sigstore.json" \
-  --trust-root "$INDEPENDENT_TRUST_ROOT" --commit "$EXPECTED_SOURCE_COMMIT"
-```
-
-These commands use the independently selected producer toolkit. The standalone,
-no-checkout consumer remains S04 work; never execute a tool obtained from an unverified
-payload. Provider archive bytes and inner bytes are measured separately in S04 timings.
-
-The final upload occurs only after assembly, gates, signing and signature/closure
-verification. `overwrite: false` and source-scoped workflow concurrency prevent silent
-replacement. Reconciliation lists the exact global artifact name, rejects duplicates,
-expired/unavailable artifacts and different inner bytes, and reuses only identical
-inner bytes with a verified provider hash. A re-signed payload or changed run attempt
-is different content and fails for an existing version; it is not automatically an
-idempotent retry. Partial native proof artifacts have separate run/attempt/platform
-names and never constitute a delivery. Do not delete an existing version to retry.
-
-Retention is 90 days from actual provider creation, with exact `expires_at` checked
-post-upload; reruns do not extend existing retention. S03 must retain a verified private
-installation-owned copy through C03–C06 before acceptance. No new store, target credential,
-public release, account lifetime policy or installed database change is authorized here.

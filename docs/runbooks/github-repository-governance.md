@@ -1,7 +1,7 @@
 ---
 doc_id: RUNBOOK-GITHUB-GOVERNANCE-001
 title: GitHub repository governance
-doc_version: 3
+doc_version: 2
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -34,14 +34,7 @@ only after a second accountable reviewer exists.
 release workflow. It repeats the Foundation gate, grants `packages: write` only to the
 two image jobs, publishes SHA-scoped candidate images, and records the actual digests in
 the workflow summary. It has no manual or tag trigger and produces no installer
-manifest in its currently enabled path. S03 adds two literal-disabled preparation
-jobs for native evidence and a signed internal bundle. Both remain disabled until
-publication authority covers the exact Actions artifact target and signing effect.
-The [runtime supply contract](../architecture/runtime-network-installation.md#13-internal-supply-producer-preparation-ms-001s03)
-defines targets, tool pins, transport/inner hash identities, reconciliation and
-retention. Only the disabled signer job declares `id-token: write`; no new
-`packages: write` permission or manual/tag trigger is added. A candidate is not an
-accepted end-user release.
+manifest. A candidate is not an accepted end-user release.
 
 ## Preconditions
 

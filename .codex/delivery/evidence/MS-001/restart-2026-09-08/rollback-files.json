@@ -1,0 +1,329 @@
+{
+  "baseline_commit": "b0e51705616a2deb5472a7af26a3b6daa79c2250",
+  "paths": [
+    {
+      "path": ".github/workflows/publish-candidates.yml",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "apps/api/Dockerfile",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "apps/api/pyproject.toml",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "apps/web/Dockerfile",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "apps/web/supply-inventory.ts",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "apps/web/vite.config.ts",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "compose.yaml",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/arrow-build-provenance.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/arrow-build-requirements.in",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/arrow-build-requirements.txt",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/arrow-license-review.md",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/arrow-native-licenses.json",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/arrow-source-build.json",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/build-pyarrow.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/check-image-size.sh",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/collect-python-runtime.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/collect-web-notices.mjs",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/delivery-manifest.schema.json",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/delivery-manifest.v2.schema.json",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/delivery-supply-tools.json",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/delivery-verification-policy.v2.json",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/grype.yaml",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/install-runtime-debs.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/install-supply-tools.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/libpq-runtime-packages.json",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/python-build-constraints.txt",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "deploy/compose/validate-delivery-manifest.py",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "docs/architecture/runtime-network-installation.md",
+      "action": "restore",
+      "matches_s02": false,
+      "amendment": true
+    },
+    {
+      "path": "docs/architecture/tooling-gates.md",
+      "action": "restore",
+      "matches_s02": false,
+      "amendment": true
+    },
+    {
+      "path": "docs/runbooks/github-repository-governance.md",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/fixtures/delivery-manifest.valid.json",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_arrow_build_provenance.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_delivery_bundle_producer.py",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_delivery_companions.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_delivery_image_size.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_delivery_native.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_delivery_obligations.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_delivery_set.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_delivery_source_parts.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_delivery_supply.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_license_expressions.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tests/tooling/test_license_reviews.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_bundle.py",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_companions.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_image_size.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_native.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_obligations.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_set.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_source_parts.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_supply.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/gate_licenses.py",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/license_reviews.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "uv.lock",
+      "action": "restore",
+      "matches_s02": true,
+      "amendment": false
+    },
+    {
+      "path": "tools/custometry_quality/delivery_staging.py",
+      "action": "remove",
+      "matches_s02": true,
+      "amendment": false
+    }
+  ]
+}

@@ -120,6 +120,38 @@ def consume(source: Path, work: Path, trust: Path, architecture: str, keep: bool
             timeout=timeout,
             check=False,
         )
+        if process.returncode != 0:
+            result["failed_command"] = (
+                args[len(compose) :] if compose and args[: len(compose)] == compose else args[:4]
+            )
+            # Only fixed diagnostic labels enter durable evidence, never raw logs.
+            indicators = (
+                "permission denied",
+                "invalid reference format",
+                "no such image",
+                "unhealthy",
+                "exited",
+                "additional property",
+                "invalid",
+                "not found",
+                "denied",
+            )
+            result["failure_indicators"] = [
+                value for value in indicators if value in process.stderr.lower()
+            ]
+            if compose:
+                logs = subprocess.run(
+                    compose + ["logs", "--no-color", "--tail", "30"],
+                    cwd=work,
+                    env=environment,
+                    text=True,
+                    capture_output=True,
+                    timeout=20,
+                    check=False,
+                )
+                result["container_log_indicators"] = [
+                    value for value in indicators if value in logs.stdout.lower()
+                ]
         require(process.returncode == 0, "COMMAND_FAILED:" + ":".join(args[:3]))
         return process.stdout.strip()
 

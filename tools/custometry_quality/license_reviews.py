@@ -12,6 +12,30 @@ from pathlib import Path, PurePosixPath
 from typing import Any, cast
 
 
+# Supported review profiles, not an allowlist. Every component still needs its
+# exact SBOM/subject/declaration and verified file/obligation bindings below.
+# Primary texts: https://spdx.org/licenses/<identifier>.html; unknown licenses and
+# exceptions (including source-available licenses) have no supported review route.
+REVIEW_OBLIGATIONS: dict[str, frozenset[str]] = {
+    identifier: frozenset({"notice"}) for identifier in (
+        "PSF-2.0", "Python-2.0", "Python-2.0.1", "MIT-0", "0BSD", "X11", "Zlib", "curl",
+        "BSD-4-Clause", "BSD-4-Clause-UC", "ICU", "Unicode-3.0", "OLDAP-2.8",
+    )
+}
+REVIEW_OBLIGATIONS.update({
+    identifier: frozenset({"notice", "corresponding-source"}) for identifier in (
+        "GPL-2.0-only", "GPL-2.0-or-later", "GPL-3.0-only", "GPL-3.0-or-later", "MPL-2.0",
+        "GPL-3.0-only WITH GCC-exception-3.1", "GPL-3.0-or-later WITH GCC-exception-3.1",
+    )
+})
+REVIEW_OBLIGATIONS.update({
+    identifier: frozenset({"notice", "corresponding-source", "relinking"}) for identifier in (
+        "LGPL-2.0-only", "LGPL-2.0-or-later", "LGPL-2.1-only", "LGPL-2.1-or-later",
+        "LGPL-3.0-only", "LGPL-3.0-or-later",
+    )
+})
+
+
 def _digest(path: Path) -> str:
     with path.open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()

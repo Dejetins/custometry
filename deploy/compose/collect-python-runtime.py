@@ -48,7 +48,7 @@ def main() -> None:
         for source in sorted(prefix.rglob("*")):
             if source.is_file():
                 copy_file(source)
-    for name in ("/etc/passwd", "/etc/group", "/etc/os-release", "/usr/lib/os-release"):
+    for name in ("/etc/passwd", "/etc/group", "/etc/os-release", "/usr/lib/os-release", "/etc/ld.so.cache"):
         copy_file(Path(name))
     (output / "etc/nsswitch.conf").write_text("passwd: files\ngroup: files\nhosts: files dns\n")
     (output / "tmp").mkdir(mode=0o1777)

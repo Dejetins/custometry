@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 from typing import Iterable, Sequence
 
-from .license_reviews import validate_reviews
+from .license_reviews import REVIEW_OBLIGATIONS, validate_reviews
 
 from .core import (
     CheckResult,
@@ -161,21 +161,22 @@ def check(
         result.add("license-input-invalid", str(exc))
         return result
     observed = 0
-    seen: set[tuple[str, str, str]] = set()
+    seen: set[tuple[str, str, str, str]] = set()
     for item in evaluated:
         raw_name = item.get("name") or item.get("PackageName")
         name = raw_name if isinstance(raw_name, str) else "<unnamed>"
         raw_version = item.get("version") or item.get("PackageVersion")
         version = raw_version if isinstance(raw_version, str) else ""
+        purl = str(item.get("purl", ""))
         values = list(_licenses(item))
         if not values:
-            finding = (name, version, "<missing>")
+            finding = (name, version, purl, "<missing>")
             if finding not in seen:
                 seen.add(finding)
                 result.add("license-unknown", f"{name}: no license declaration", sbom_path)
             continue
         for value in values:
-            finding = (name, version, value)
+            finding = (name, version, purl, value)
             if finding in seen:
                 continue
             seen.add(finding)
@@ -188,20 +189,10 @@ def check(
             if any(option <= allowed for option in options):
                 continue
             for identifier in sorted({identifier for option in options for identifier in option} - allowed):
-                obligations = reviewed.get((name, version, str(item.get("purl", ""))))
+                obligations = reviewed.get((name, version, purl))
                 base_license = identifier.split(" WITH ", 1)[0]
-                reviewable = (
-                    re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.+-]*(?: WITH [A-Za-z0-9.-]+)?", identifier) is not None
-                    and identifier.upper() not in UNKNOWN
-                    and not base_license.upper().startswith(("AGPL", "SSPL", "BUSL", "LICENSEREF"))
-                    and base_license not in denied
-                )
-                if obligations is not None and reviewable:
-                    required = {"notice"}
-                    if "GPL" in base_license:
-                        required.add("corresponding-source")
-                    if "LGPL" in base_license:
-                        required.add("relinking")
+                required = REVIEW_OBLIGATIONS.get(identifier)
+                if obligations is not None and required is not None and base_license not in denied:
                     if required <= obligations:
                         continue
                 if identifier.upper() in UNKNOWN:

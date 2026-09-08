@@ -60,9 +60,31 @@ def test_review_requires_exact_context_and_every_obligation(tmp_path: Path, muta
     assert not gate_licenses.check(tmp_path, Path("bom.json"), Path("policy.json")).ok
 
 
-@pytest.mark.parametrize("license_id", ["AGPL-3.0-only", "SSPL-1.0", "UNKNOWN", "sha256:1234", "LicenseRef-unknown"])
+@pytest.mark.parametrize("license_id", ["AGPL-3.0-only", "SSPL-1.0", "UNKNOWN", "sha256:1234", "LicenseRef-unknown",
+    "Not-A-Real-License", "Elastic-2.0", "GPL-3.0-only WITH Invented-exception"])
 def test_review_cannot_admit_prohibited_or_unresolved_licenses(tmp_path: Path, license_id: str) -> None:
     record = fixture(tmp_path, license_id)
     (tmp_path / "review.json").write_text(json.dumps(record))
     assert not gate_licenses.check(tmp_path, Path("bom.json"), Path("policy.json"),
         reviews=Path("review.json"), expected_subjects=["sha256:" + "a" * 64]).ok
+
+
+@pytest.mark.parametrize("reverse", [False, True])
+@pytest.mark.parametrize("same_purl", [False, True])
+def test_review_cannot_leak_to_another_source_or_ambiguous_identity(
+    tmp_path: Path, reverse: bool, same_purl: bool
+) -> None:
+    record = fixture(tmp_path)
+    document = json.loads((tmp_path / "bom.json").read_text())
+    other = {**document["components"][0], "bom-ref": "another-source"}
+    if not same_purl:
+        other["purl"] = "pkg:generic/other-source/library@1"
+    document["components"].append(other)
+    if reverse:
+        document["components"].reverse()
+    (tmp_path / "bom.json").write_text(json.dumps(document))
+    record["sbom_sha256"] = hashlib.sha256((tmp_path / "bom.json").read_bytes()).hexdigest()
+    (tmp_path / "review.json").write_text(json.dumps(record))
+    result = gate_licenses.check(tmp_path, Path("bom.json"), Path("policy.json"),
+        reviews=Path("review.json"), expected_subjects=["sha256:" + "a" * 64])
+    assert not result.ok

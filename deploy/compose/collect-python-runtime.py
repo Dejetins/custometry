@@ -36,6 +36,10 @@ def main() -> None:
             if prefix == Path("/usr/local") and (
                 "site-packages" in source.parts
                 or (source.parent == Path("/usr/local/bin") and source.name.startswith("pip"))
+                # Both the previous and current upstream slim image ship this
+                # extension without libtk: it was already unavailable. GUI/Tk is
+                # outside the headless API/migration runtime, not a removed route.
+                or source.name.startswith("_tkinter.") or "tkinter" in source.parts
             ):
                 continue
             copy_file(source)
@@ -96,6 +100,7 @@ def main() -> None:
         "selection": "complete Python/venv plus linked ELF dependencies and required OS resources",
         "source_packages": sorted(packages),
         "elf_dependency_paths": sorted(libraries),
+        "excluded_unavailable_optional_module": "tkinter (libtk absent in both pinned slim baselines)",
     }, sort_keys=True) + "\n")
 
 

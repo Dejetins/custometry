@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-09-09T22:09:14.996399+00:00",
+  "target": "utm-ubuntu-24.04-arm64",
+  "observation_method": "actual UTM guest console",
+  "result": "pass",
+  "os": "Ubuntu 24.04.4 ARM64",
+  "kernel": "6.8.0-139-generic",
+  "python": "3.12.3",
+  "docker": "29.6.2",
+  "docker_build": "dfc4efb",
+  "compose": "2.40.3",
+  "containerd_package": "2.3.5-1~ubuntu.24.04~noble",
+  "public_ca_trust": "openssl verify -CApath /etc/ssl/certs returned OK",
+  "docker_configuration": "configuration OK",
+  "services": {
+    "docker.service": "inactive, disabled",
+    "docker.socket": "inactive, disabled",
+    "containerd.service": "inactive, disabled"
+  },
+  "completion_marker": "MS002_GUEST_SETUP_PASS",
+  "earlier_failure": "Initial setup reached installed packages and disabled engines, then failed to copy mixed-case rootCA.crt; guest ISO exposed rootca.crt. Completed using a separately inspected ISO with lowercase local.crt and finish.sh.",
+  "setup_files_sha256": {
+    "guest-finish.iso": "0e9730b9486ff4c49f1d6e5b68f2469a3d99173f50f9b120d950dbd184884a30",
+    "guest-finish-media/finish.sh": "84c60b29b78af26974f143c1d17050cc05866ad17802ff256653145cbc7f3c3d",
+    "guest-finish-media/local.crt": "8825bcc36142eccf1c9e3ee65daddbde52623f1b333f536de23c87b1269ca97b"
+  },
+  "proof_boundary": "prepared guest prerequisites and trust; no guest product installation or HTTPS claim"
+}

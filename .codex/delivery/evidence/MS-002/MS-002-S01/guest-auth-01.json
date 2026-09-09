@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-09-09T22:03:30.786053+00:00",
+  "target": "utm-ubuntu-24.04-arm64",
+  "os_installed": true,
+  "setup_iso_attached": true,
+  "operation": "sudo mount /dev/sr0 /mnt",
+  "state": "awaiting_guest_sudo_password",
+  "resume_condition": "Owner completes the current guest sudo prompt; executor observes successful mount and completes prepared package setup and verification.",
+  "macos_trust": "verified",
+  "local_gate": "PASS check:local (observed=true)",
+  "stage_acceptance": false
+}

@@ -1,0 +1,45 @@
+{
+  "created_at": "2026-09-09T21:54:20.070196Z",
+  "profile": "prompt-pack/v1",
+  "proof_boundary": "focused source checks plus separately linked real runtime observations",
+  "checks": [
+    {
+      "command": "uv run --locked pytest -q tests/tooling/test_installation.py tests/tooling/test_delivery_consumer.py tests/tooling/test_delivery_bundle.py",
+      "result": "pass",
+      "summary": "77 passed in 1.13s"
+    },
+    {
+      "command": "uv run --locked ruff check tools/custometry_quality/installation.py tools/custometry_quality/delivery_consumer.py tests/tooling/test_installation.py deploy/compose/package-installer.py",
+      "result": "pass"
+    },
+    {
+      "command": "uv run --locked pyright tools/custometry_quality/installation.py tools/custometry_quality/delivery_consumer.py",
+      "result": "pass",
+      "summary": "0 errors, 0 warnings, 0 informations"
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "result": "pass",
+      "summary": "PASS check:local (observed=true); final documentation updates require a final recheck"
+    }
+  ],
+  "source_sha256": {
+    "tools/custometry_quality/installation.py": "e5ac350db3a63ed82c2199bdd0e577fc3914dcfbf49386db6657ed574c530205",
+    "tools/custometry_quality/delivery_consumer.py": "c0ac965d905cf1603d394530a03ddceaa3b30f8e46f397e5bbf195411925cf82",
+    "deploy/compose/install.sh": "60c9cba0e0def88bb834d1c0ff755eafd85aaecc86bfcc9e62e5d92922b5242c",
+    "deploy/compose/package-installer.py": "97ab1359bc80e49edd995c66df62d3be473067a3f0032360796ff4d3617a340b",
+    "tests/tooling/test_installation.py": "1da0be1d0977ec7604a885d3411df4b487554d6d196081db2f6b9293ef8f44cf"
+  },
+  "earlier_nonpassing_checks": [
+    {
+      "check": "initial Pyright",
+      "result": "failed",
+      "cause": "new type annotations incomplete; fixed before passing checks"
+    },
+    {
+      "check": "runtime proof rerun setup",
+      "result": "failed",
+      "cause": "primary DB intentionally stopped by earlier drill; harness now resumes before querying"
+    }
+  ]
+}

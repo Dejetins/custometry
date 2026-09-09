@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-09-09T22:17:15.676601+00:00",
+  "authority": "Owner requested shutdown, temporary-image cleanup and publication through a temporary branch to main.",
+  "vm": "stopped via utmctl stop --request; QEMULauncher PID absent",
+  "removed_setup_assets": [
+    {
+      "name": "UTM-4.7.5.dmg",
+      "bytes": 250021057
+    },
+    {
+      "name": "ubuntu-24.04.4-live-server-arm64.iso",
+      "bytes": 3059724288
+    },
+    {
+      "name": "guest-setup.iso",
+      "bytes": 66330624
+    },
+    {
+      "name": "guest-finish.iso",
+      "bytes": 921600
+    },
+    {
+      "name": "guest-media",
+      "bytes": 66269663
+    },
+    {
+      "name": "guest-finish-media",
+      "bytes": 2149
+    },
+    {
+      "name": "installer-toolkit-01",
+      "bytes": 67259
+    },
+    {
+      "name": "runtime-proof.py",
+      "bytes": 2951
+    }
+  ],
+  "removed_bytes": 3443339591,
+  "preserved": [
+    "installed Ubuntu VM disk",
+    "original MS-001 trusted delivery",
+    "installation state/secrets/volumes",
+    "current standalone toolkit",
+    "isolated CA and TLS files",
+    "immutable stage receipt and evidence"
+  ],
+  "scope": "post-acceptance cleanup; no product or accepted receipt changes"
+}

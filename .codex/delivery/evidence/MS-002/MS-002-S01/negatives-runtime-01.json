@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "target": "m5-native-arm64",
+  "real_root_competing_mutation": "INSTALLATION_LOCKED",
+  "locked_state_byte_identical": true,
+  "corrupt_acquired_archive": "TRUSTED_HASH_MISMATCH",
+  "failed_state_recorded": true,
+  "identity_and_secret_preserved": true,
+  "restored_trusted_archive_sha256": "6687d2a58ef194072634b462a7ab8750fcca3f32a47c81fd8989c3498dd77e49",
+  "resume_after_exact_restore": "migrated",
+  "final_state": "stopped",
+  "volumes_removed": false
+}

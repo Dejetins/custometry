@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-09T22:02:41.593560+00:00",
+  "target": "m5-macos",
+  "check": "security verify-cert -p ssl -s 127.0.0.1",
+  "exit_code": 0,
+  "certificate_verification": "successful",
+  "administrator_interaction": "owner performed",
+  "public_ct_qualification": false
+}

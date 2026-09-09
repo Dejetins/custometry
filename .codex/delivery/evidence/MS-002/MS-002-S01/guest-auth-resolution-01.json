@@ -1,0 +1,6 @@
+{
+  "timestamp": "2026-09-09T22:05:28.831797+00:00",
+  "owner_response": "\u0433\u043e\u0442\u043e\u0432\u043e",
+  "observation": "Guest sudo mount succeeded; ISO mounted read-only and shell returned.",
+  "resume_condition_satisfied": true
+}

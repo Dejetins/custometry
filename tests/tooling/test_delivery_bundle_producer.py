@@ -21,10 +21,33 @@ from tools.custometry_quality import delivery_bundle as bundle
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def test_frozen_image_inventory_matches_current_source_bytes() -> None:
+def test_frozen_image_inventory_matches_its_recorded_source_revision() -> None:
     expected = json.loads((ROOT / "deploy/compose/delivery-image-inventory.json").read_bytes())
+    # A retained delivery inventory describes its own build, not future source edits.
+    # Fail closed if that exact source revision is unavailable (CI fetches history).
+    revision = subprocess.check_output(
+        ["git", "log", "-1", "--format=%H", "--", "deploy/compose/delivery-image-inventory.json"],
+        cwd=ROOT,
+        text=True,
+    ).strip()
+    assert re.fullmatch(r"[a-f0-9]{40}", revision)
+
+    def recorded(path: Path) -> bytes | None:
+        result = subprocess.run(
+            ["git", "show", f"{revision}:{path.relative_to(ROOT).as_posix()}"],
+            cwd=ROOT,
+            capture_output=True,
+            check=False,
+        )
+        return result.stdout if result.returncode == 0 else None
+
+    dockerfile = recorded(ROOT / "apps/api/Dockerfile")
+    assert dockerfile is not None
+
     api_mappings = re.findall(
-        r"^COPY --chown=10001:10001 (\S+) (\S+)$", (ROOT / "apps/api/Dockerfile").read_text(), re.M
+        r"^COPY --chown=10001:10001 (\S+) (\S+)$",
+        dockerfile.decode(),
+        re.M,
     )
     api_mappings.append(
         ("apps/api/src/custometry_api", "/app/.venv/lib/python3.12/site-packages/custometry_api")
@@ -47,7 +70,7 @@ def test_frozen_image_inventory_matches_current_source_bytes() -> None:
             matches = [
                 p
                 for p in candidates
-                if p.is_file() and bundle.digest(p.read_bytes()) == item["sha256"]
+                if (raw := recorded(p)) is not None and bundle.digest(raw) == item["sha256"]
             ]
             assert len(matches) == 1, item["path"]
 

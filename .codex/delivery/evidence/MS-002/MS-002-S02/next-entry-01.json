@@ -1,0 +1,24 @@
+{
+  "created_at": "2026-09-09T23:23:15.739243Z",
+  "stage_id": "MS-002-S03",
+  "declared_inputs": [
+    {
+      "path": "../../../docs/architecture/planning/milestones/MS-002/plan.md",
+      "sha256": "e2f63aa38502436dfe2532715239d0d6be9cf3250b6f84a4485504e35ef6dd05",
+      "producer_stage": null
+    },
+    {
+      "path": "../evidence/MS-002/MS-002-S02/report.md",
+      "sha256": "fb6294a6d5da6978fd76f8cff51eb98ee76902cf640aaa911655a596e023c916",
+      "producer_stage": "MS-002-S02"
+    },
+    {
+      "path": "../../../tools/custometry_quality/installation.py",
+      "sha256": "e08e13a03b06ef07b2de097c3a2215d712a397fff5da77196d0a5058b69dc41a",
+      "producer_stage": "MS-002-S01"
+    }
+  ],
+  "prompt_read": true,
+  "execution_allowed": false,
+  "reason": "Current owner request authorizes S02 only; S03 requires a separate execution request and normal advance. Host browser setup is S03 assigned work."
+}

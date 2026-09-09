@@ -1,0 +1,22 @@
+{
+  "modified": [
+    "apps/api/src/custometry_api/health.py",
+    "apps/api/src/custometry_api/main.py",
+    "tools/custometry_quality/installation.py",
+    "tests/integration/test_api_health.py",
+    "packages/contracts/openapi/foundation.openapi.json",
+    "packages/contracts/src/foundation-client.ts",
+    "docs/architecture/runtime-network-installation.md",
+    "docs/architecture/README.md"
+  ],
+  "created": [
+    "apps/api/src/custometry_api/installation.py",
+    "tests/integration/test_installed_runtime.py",
+    ".codex/delivery/evidence/MS-002/MS-002-S02"
+  ],
+  "journal": "updater-owned transitions only",
+  "unchanged_regenerated": [
+    "docs/README.md"
+  ],
+  "foreign_changes": "none on entry; MS-001 paths preserved"
+}

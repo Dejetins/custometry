@@ -58,7 +58,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Hierarchical-planning amendment, independent ticket route and historical staged-system retirement |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |
 | [Documentation platform](./documentation-platform.md) | Docs as code, `/docs`, `/help`, visibility, and publication |
-| [Runtime, network, and installation](./runtime-network-installation.md) | Persistent installer, restricted HTTPS and operational status contract (revision 22), download-first supply, ports, networks, resources and container lessons |
+| [Runtime, network, and installation](./runtime-network-installation.md) | Persistent installer, restricted HTTPS and operational status contract (revision 23), download-first supply, ports, networks, resources and container lessons |
 | [Quality tooling](./tooling-gates.md) | Canonical commands, hook profiles, and mandatory execution points |
 | [Repository architecture](./repository-layout.md) | Physical tree and ownership boundaries |
 

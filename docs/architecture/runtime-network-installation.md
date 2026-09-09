@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-RUNTIME-INSTALLATION-001
 title: Custometry runtime network and installation contract
-doc_version: 22
+doc_version: 23
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -42,7 +42,10 @@ fixed `web:8080` upstream. It permits GET `/`, `/assets/`, `/docs/`, and exact
 Host must equal the saved address **including port**; an Origin header, if present,
 must exactly match the saved HTTPS origin. Both proxy hops preserve that Host;
 Web preserves Edge's HTTPS scheme. Bootstrap is not exposed or provisioned.
-Developer HTTP configuration is unchanged. CORS remains a browser policy, not
+Developer HTTP routing is unchanged. The disposable/development Compose API
+now mounts a 64 MiB tmpfs at the canonical artifact root, owned by UID/GID 10001
+with mode 0700. It is ephemeral; installed storage remains the persistent owned
+bind mount. This aligns the CI/development readiness prerequisite with S02. CORS remains a browser policy, not
 an authorization mechanism.
 
 Default binding is loopback. Explicit LAN mode requires the selected interface

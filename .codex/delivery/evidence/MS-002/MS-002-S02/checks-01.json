@@ -1,0 +1,54 @@
+{
+  "created_at": "2026-09-09T23:22:01.666331Z",
+  "checks": [
+    {
+      "command": "uv run --locked pytest -q tests/integration/test_api_health.py tests/tooling/test_installation.py",
+      "exit_code": 0,
+      "result": "27 passed"
+    },
+    {
+      "command": "uv run --locked ruff check apps/api/src/custometry_api/health.py apps/api/src/custometry_api/installation.py apps/api/src/custometry_api/main.py tools/custometry_quality/installation.py tests/integration/test_api_health.py tests/integration/test_installed_runtime.py",
+      "exit_code": 0,
+      "result": "passed"
+    },
+    {
+      "command": "uv run --locked pyright apps/api/src/custometry_api/health.py apps/api/src/custometry_api/installation.py apps/api/src/custometry_api/main.py tools/custometry_quality/installation.py tests/integration/test_api_health.py tests/integration/test_installed_runtime.py",
+      "exit_code": 0,
+      "result": "0 errors"
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.check_contract_drift",
+      "exit_code": 0,
+      "result": "passed"
+    },
+    {
+      "command": "pnpm --filter @custometry/contracts typecheck",
+      "exit_code": 0,
+      "result": "passed"
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.compose_lifecycle",
+      "exit_code": 0,
+      "result": "passed, static"
+    }
+  ],
+  "python_gate_targets": [
+    "apps/api/src/custometry_api/health.py",
+    "apps/api/src/custometry_api/installation.py",
+    "apps/api/src/custometry_api/main.py",
+    "tools/custometry_quality/installation.py",
+    "tests/integration/test_api_health.py",
+    "tests/integration/test_installed_runtime.py"
+  ],
+  "source_hashes": {
+    "apps/api/src/custometry_api/health.py": "453e00df411302bcd9c6598b81321f658cd8233be26fcef8eb25e08d34c8de7e",
+    "apps/api/src/custometry_api/installation.py": "8e546bf457cc7b8baa818ebabc35e0cf59d9d59081017b2a03ee5f8f9e3bcd23",
+    "apps/api/src/custometry_api/main.py": "35701f8c591095477e3e6328bc7daf3769199b57b38aab06eb3967a3be63cfe0",
+    "tools/custometry_quality/installation.py": "e08e13a03b06ef07b2de097c3a2215d712a397fff5da77196d0a5058b69dc41a",
+    "tests/integration/test_api_health.py": "ec41beb5238d31bd7d91945770d0e1e8c03ef8d6bd99a58840fbd8b1ad9ef448",
+    "tests/integration/test_installed_runtime.py": "2328f457f748e0d0fba2a758017e62dbc67caa1bc8d046c56a9941643e8ac829",
+    "packages/contracts/openapi/foundation.openapi.json": "13cac3e1a8dc8249739597f455f3c9ffc0e007d2c5a97efa801bb23ccbe85739",
+    "packages/contracts/src/foundation-client.ts": "933a7103ad0e11fcd7b0391acd07eb4fbc5fa6e663804f78b0f24edcc94fa29d"
+  },
+  "runtime_evidence": "runtime-01.json"
+}

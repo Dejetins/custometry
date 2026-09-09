@@ -1,0 +1,37 @@
+{
+  "created_at": "2026-09-09T23:22:01.666331Z",
+  "target": "m5-docker-native-arm64",
+  "command": "CUSTOMETRY_S02_BASE_STATE=<retained-S01-state> CUSTOMETRY_S02_TLS_DIRECTORY=<prepared-private-TLS> CUSTOMETRY_S02_API_IMAGE=<local-candidate-digest> uv run --locked pytest -q tests/integration/test_installed_runtime.py",
+  "exit_code": 0,
+  "result": "1 passed in 78.29s",
+  "installation_id": "custometry-a1f5b799e829ebda56cfa0d3",
+  "final_state": "stopped",
+  "images": [
+    {
+      "role": "api",
+      "docker_id": "sha256:896850910ca664c33d47f25ae825547243fdfd3972b7d1f425fb616d932c9e23"
+    },
+    {
+      "role": "web",
+      "docker_id": "sha256:e33f799be1c0f365e320d2cbb1d9e4b20dda01878ef330e0bb077fb0fbfc357e"
+    },
+    {
+      "role": "postgres",
+      "docker_id": "sha256:08f8dfa2be115968517649092cd4b4204813d28ca7145dba6283685a73128524"
+    }
+  ],
+  "observations": {
+    "adjacency": "pass",
+    "database_schema_storage_negatives": "pass",
+    "invalid_nginx_retains_active": "pass",
+    "invalid_tls_retains_active": "pass",
+    "no_http_fallback": "pass",
+    "ready": "ready_for_bootstrap",
+    "restricted_ingress": "pass",
+    "rotation": "pass",
+    "stop_restart_persistence": "pass"
+  },
+  "allocation": "Docker inspected ephemeral port, retained through rotation/restart",
+  "mounts": "actual read-only Edge key/chain/config and canonical API artifact mount inspected",
+  "proof_boundary": "local installed candidate TLS/API/PostgreSQL/storage; no bundled target matrix, browser UI, LAN or production egress"
+}

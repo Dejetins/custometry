@@ -1,0 +1,8 @@
+{
+  "created_at": "2026-09-09T23:23:15.739243Z",
+  "command": "source scripts/activate-toolchain.sh; uv run --locked python -m tools.check --scope local",
+  "exit_code": 0,
+  "result": "PASS check:local (observed=true)",
+  "proof_boundary": "grouped local source/documentation gates; runtime recorded separately",
+  "source_hashes_match": true
+}

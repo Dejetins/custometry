@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "target": "m5-native-arm64",
+  "fault": "real-one-shot-process-exit-23-before-alembic",
+  "failed_state": "failed",
+  "last_completed_step": "acquired",
+  "failure_code": "COMMAND_FAILED",
+  "head_after_failure": "empty",
+  "head_after_resume": "0009_notifications",
+  "id_and_secret_preserved": true,
+  "volumes_preserved_on_stop": true,
+  "schema_files_modified": false
+}

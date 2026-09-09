@@ -117,7 +117,9 @@ def verify_capability(pack: Pack) -> None:
     }
     observed: set[Path] = set()
     for item in bindings:
-        pack.binding(item)
+        # A completed journal records the implementation used at that time.
+        # Draft/active journals still require the exact currently loaded code.
+        pack.binding(item, historical=True)
         observed.add(pack.path(item["path"]))
     need(expected <= observed, "Capability does not bind the loaded updater and validator")
 

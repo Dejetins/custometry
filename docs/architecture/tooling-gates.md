@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 19
+doc_version: 20
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -286,6 +286,17 @@ committed or included in evidence. A process exit releases the transaction lock;
 the durable stage claim survives, so another executor cannot silently restart it.
 An unavailable original session requires an explicit reconciled recovery change;
 this CLI deliberately offers no force-steal or state-reset operation.
+
+For a `completed` journal only, validation-source documents under `docs/` may
+be checked against their exact SHA-256 at the same path in retained `HEAD` Git
+ancestry. Historical updater implementation/test bindings use the same rule.
+Plan, prompt, report, receipt, owner-acceptance and capability-evidence files
+remain strict current-file bindings; draft/active journals also require the
+current updater bytes. No hash is rewritten and no completed journal is skipped.
+A missing revision/hash fails with an actionable history error; verification does
+not fetch. CI's quality checkout uses `fetch-depth: 0`. This compatible read-only
+historical interpretation leaves the v1 schemas and transition rules unchanged.
+Focused regression coverage is in `tests/tooling/test_stage_ledger.py`.
 
 Before each transition, the updater verifies the bound implementation/capability,
 live plan and prompts, current claim, dependencies, entry inputs and receipt.

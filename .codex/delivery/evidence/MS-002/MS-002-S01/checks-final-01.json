@@ -1,0 +1,15 @@
+{
+  "created_at": "2026-09-09T22:09:55.349799Z",
+  "profile": "local",
+  "command": "uv run --locked python -m tools.check --scope local",
+  "result": "pass",
+  "observation": "PASS check:local (observed=true)",
+  "focused_source_hashes": "unchanged from checks-01.json",
+  "plan_hash": "unchanged",
+  "successor_entry_check": {
+    "stage": "MS-002-S02",
+    "prompt_read": true,
+    "declared_inputs_exist": true,
+    "stage_execution_authority": false
+  }
+}

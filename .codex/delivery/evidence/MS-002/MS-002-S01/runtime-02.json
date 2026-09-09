@@ -1,0 +1,117 @@
+{
+  "status": "pass",
+  "target": "m5-native-arm64",
+  "steps": [
+    {
+      "action": "install",
+      "result": {
+        "code": "HTTPS_NOT_IMPLEMENTED",
+        "installation_id": "custometry-a38aca6eda3ececd01c10b29",
+        "last_completed_step": "migrated",
+        "next_action": "configure_https_in_s02",
+        "ready": false,
+        "schema_version": "custometry-installation/v1",
+        "state": "migrated",
+        "url": null,
+        "version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      }
+    },
+    {
+      "action": "stop",
+      "result": {
+        "code": "HTTPS_NOT_IMPLEMENTED",
+        "installation_id": "custometry-a38aca6eda3ececd01c10b29",
+        "last_completed_step": "migrated",
+        "next_action": "resume",
+        "ready": false,
+        "schema_version": "custometry-installation/v1",
+        "state": "stopped",
+        "url": null,
+        "version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      }
+    },
+    {
+      "action": "status",
+      "result": {
+        "code": "HTTPS_NOT_IMPLEMENTED",
+        "installation_id": "custometry-a38aca6eda3ececd01c10b29",
+        "last_completed_step": "migrated",
+        "next_action": "resume",
+        "ready": false,
+        "schema_version": "custometry-installation/v1",
+        "state": "stopped",
+        "url": null,
+        "version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      }
+    },
+    {
+      "action": "resume",
+      "result": {
+        "code": "HTTPS_NOT_IMPLEMENTED",
+        "installation_id": "custometry-a38aca6eda3ececd01c10b29",
+        "last_completed_step": "migrated",
+        "next_action": "configure_https_in_s02",
+        "ready": false,
+        "schema_version": "custometry-installation/v1",
+        "state": "migrated",
+        "url": null,
+        "version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      }
+    },
+    {
+      "action": "status",
+      "result": {
+        "code": "HTTPS_NOT_IMPLEMENTED",
+        "installation_id": "custometry-a38aca6eda3ececd01c10b29",
+        "last_completed_step": "migrated",
+        "next_action": "configure_https_in_s02",
+        "ready": false,
+        "schema_version": "custometry-installation/v1",
+        "state": "migrated",
+        "url": null,
+        "version": "0.1.0-dev.0+sha.bc347d7e74c5"
+      }
+    }
+  ],
+  "identity_preserved": true,
+  "secrets_preserved": true,
+  "owned_volume_sentinel_preserved": true,
+  "foreign_container_ids_and_start_times_preserved": 2,
+  "demo_reader_rows": 5000,
+  "volume_labels": [
+    {
+      "com.docker.compose.config-hash": "c4689b3567e95a5c24a2f3c3cd325e883e4428efadfb9998ba614dae84eaef75",
+      "com.docker.compose.project": "custometry-a38aca6eda3ececd01c10b29",
+      "com.docker.compose.version": "5.3.1",
+      "com.docker.compose.volume": "control_db_data",
+      "io.custometry.installation": "custometry-a38aca6eda3ececd01c10b29"
+    },
+    {
+      "com.docker.compose.config-hash": "6e2d362fee3688dcf21bfc6a17129d32d76c8f06c002065349ee86651610cd06",
+      "com.docker.compose.project": "custometry-a38aca6eda3ececd01c10b29",
+      "com.docker.compose.version": "5.3.1",
+      "com.docker.compose.volume": "demo_source_data",
+      "io.custometry.installation": "custometry-a38aca6eda3ececd01c10b29"
+    }
+  ],
+  "schema_head": "0009_notifications",
+  "resources": {
+    "acquisition_bytes": 478899376,
+    "artifact_temporary_reserve_bytes": 1073741824,
+    "configured_memory_bytes": 3154116608,
+    "data_ceiling_bytes": 26843545600,
+    "disk_preflight_required": 28280243728,
+    "memory_ceiling_bytes": 6442450944,
+    "native_unpacked_image_bytes": 683261440,
+    "retained_acquisition_bytes": 481249218
+  },
+  "engine": {
+    "architecture": "arm64",
+    "compose_version": "5.3.1",
+    "context": "desktop-linux",
+    "cpu_cap": 4,
+    "memory_bytes": 8319213568,
+    "version": "29.6.2"
+  },
+  "standalone_isolated_python": true
+}

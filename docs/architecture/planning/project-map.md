@@ -8,7 +8,7 @@
   "artifact_kind": "project_map",
   "doc_id": "MAP-001",
   "title": "Custometry development direction map",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "planning_status": "accepted",
   "language": "en",
   "parent_ref": null,
@@ -194,7 +194,10 @@ their six capability boundaries remain those accepted at `1.0.0`.
 
 The selected entry is **[WS-001. Installable platform and first administrator bootstrap](directions/DIR-006/workstreams/WS-001.md)** `1.0.0`, with DIR-006 as its single parent
 and DIR-001/005 contributing their existing ownership. Its five milestone outcomes
-and six owner decisions are accepted. The next document is its separate C02 L3 plan.
+and six owner decisions are accepted. The current next planning document is
+[MS-002](milestones/MS-002/plan.md) `1.0.0` for WS-001/C03: installation, HTTPS
+and the pilot-derived first-run entry. The [MS-001 journal](../../../.codex/delivery/ledgers/MS-001.md)
+records C02 completion; its proof is not transferred to C03.
 
 ## Accepted delivery sequence
 
@@ -417,12 +420,12 @@ their own version and acceptance provenance. Architecture status is not code rea
 |---|---|---|---|
 | MAP-001/DEC-01 | Adopt the six directions and their L1 boundaries | Owner accepted the six-direction format on 2026-09-06; version 1.0.0 | Settles MAP/L1 structure |
 | MAP-001/DEC-02 | Apply four levels below the map, with justified repeated workstream depth | Accepted framework and owner acceptance of its L1 application | Preserves the existing planning form |
-| MAP-001/DEC-03 | Which area should be detailed next? | Resolved by MAP-001/DEC-07. The earlier DIR-004-first recommendation is superseded by the owner-accepted installation-first correction | WS-001 1.0.0 is accepted; C02 L3 is the next planning document |
+| MAP-001/DEC-03 | Which area should be detailed next? | Resolved by MAP-001/DEC-07. The earlier DIR-004-first recommendation is superseded by the owner-accepted installation-first correction | WS-001 1.0.0 is accepted; C02 was selected first. Current child selection follows the WS-001 registry |
 | MAP-001/DEC-04 | First external release scenario | Deferred; not needed to adopt L1 | Must be resolved before relevant release promises |
 | MAP-001/DEC-05 | Adopt MAP-001 and DIR-001..006 in English and publish to main; remove Russian drafts | Explicit owner instruction in this task on 2026-09-06; version 1.0.0 | Authorizes this adoption/publication and required framework dependencies, not implementation |
 | MAP-001/DEC-06 | Adopt the complete installation-to-reader sequence and sequential development with prerequisite decisions | Owner accepted the expanded proposal and requested English documentation on 2026-09-06; version 1.1.0 | Sets priority/order across directions; does not promise zero rework or select parallel dispatch |
 | MAP-001/DEC-07 | Select delivery, installation and first administrator bootstrap for deep planning | Same owner decision, 2026-09-06; version 1.1.0 | DIR-006 owns WS-001; DIR-001/005 contribute; authoring the L2 draft is authorized, its unwritten children are not accepted |
-| MAP-001/DEC-08 | Finalize WS-001 and synchronize accepted installation/HTTPS/bootstrap choices | Owner accepted six proposals, corrected target to M5 Max/36 GB, allowed local Linux VM, excluded experimental-data migration and authorized direct main publication on 2026-09-06 | WS-001 1.0.0 owns five sequential outcomes; develop C02 as separate L3. No general publication-policy or product-execution authority is inferred. |
+| MAP-001/DEC-08 | Finalize WS-001 and synchronize accepted installation/HTTPS/bootstrap choices | Owner accepted six proposals, corrected target to M5 Max/36 GB, allowed local Linux VM, excluded experimental-data migration and authorized direct main publication on 2026-09-06 | WS-001 1.0.0 owns five sequential outcomes; C02 was the first separate L3. No general publication-policy or product-execution authority is inferred. |
 
 The owner first reviewed the Russian `0.1.0` drafts, then explicitly accepted L1
 and requested the English records. Their Russian bodies are replaced in the same
@@ -438,6 +441,12 @@ milestones have been accepted.
 | 1.0.0 | 2026-09-06 | Accepted English map/L1, reciprocal version links and navigation | MAP-001/DEC-05 |
 | 1.1.0 | 2026-09-06 | Full sequential priorities adopted; first-block WS-001 draft selected and registered; L1 links synchronized | MAP-001/DEC-06/07 |
 | 1.2.0 | 2026-09-06 | Register accepted WS-001 1.0.0, source amendments and exact-version revalidation across unchanged directions | MAP-001/DEC-08 |
+| 1.2.1 | 2026-09-09 | Refresh next-planning navigation to C03/MS-002; six directions and all sequence rows unchanged | Owner requested next iteration; delegated editorial link maintenance |
+
+The 1.2.1 navigation patch preserves the accepted 1.2.0 scope. Existing directions
+and WS-001 retain their exact accepted parent/source bindings; no content or
+acceptance cascade is needed. DIR-006 has its corresponding 1.2.1 navigation
+patch, and MS-002 has an accepted plan and an unclaimed draft journal. Completed MS-001 artifacts are unchanged.
 
 The original 1.0.0 adoption changed this map, six direction documents, architecture/contributor
 navigation and the roadmap's next-planning-step reference. The previously adopted

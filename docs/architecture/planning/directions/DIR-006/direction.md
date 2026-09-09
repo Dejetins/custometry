@@ -8,7 +8,7 @@
   "artifact_kind": "direction",
   "doc_id": "DIR-006",
   "title": "Operations, integration and system acceptance",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "planning_status": "accepted",
   "language": "en",
   "parent_ref": {
@@ -129,7 +129,7 @@ expected to supply them manually. Candidate presence is not entry readiness.
 
 | Child ID + path + version | Intended outcome | Parent allocation | Contributions and next action |
 |---|---|---|---|
-| [WS-001. Installable platform and first administrator bootstrap](workstreams/WS-001.md) `1.0.0` | Versioned delivery -> installation -> first administrator/workspace -> protected Web access and restart persistence | Bounded first portion of DIR-006/C01/C02/C03/C06; later updates, whole-system backup and load acceptance remain allocated separately | DIR-001 Identity and DIR-005 Web contribute within one canonical workstream. Accepted L2 1.0.0 fixes five sequential outcomes; develop the separate C02 L3 plan next |
+| [WS-001. Installable platform and first administrator bootstrap](workstreams/WS-001.md) `1.0.0` | Versioned delivery -> installation -> first administrator/workspace -> protected Web access and restart persistence | Bounded first portion of DIR-006/C01/C02/C03/C06; later updates, whole-system backup and load acceptance remain allocated separately | DIR-001 Identity and DIR-005 Web contribute within one canonical workstream. Accepted L2 1.0.0 fixes five sequential outcomes; navigation revision 1.0.7 links the next [C03/MS-002 plan](../../milestones/MS-002/plan.md) 1.0.0 |
 
 The owner selected this block in MAP-001/DEC-07. Selection does not accept the new
 WS draft's candidate milestones. DIR-006 owns installed integration and closure;
@@ -168,7 +168,7 @@ contract changes remain with their accepted context owners.
 |---|---|---|---|
 | DIR-006/DEC-01 | This direction's L1 boundary and composition are accepted | Owner decision on 2026-09-06, recorded at [MAP-001 adoption](../../project-map.md) / MAP-001/DEC-05; version `1.0.0` | Settles L1 structure; does not accept an unwritten child plan. |
 | DIR-006/DEC-02 | Develop delivery, installation and first administrator bootstrap first | Owner selected WS-001 on 2026-09-06; MAP-001/DEC-07 | Historical first-draft selection; DIR-006/DEC-03 now accepts WS-001 1.0.0. Unwritten L3 plans and implementation remain separate. |
-| DIR-006/DEC-03 | Accept WS-001 1.0.0 and its five sequential milestone outcomes | Owner accepted six proposals with M5 Max/36 GB and Linux VM correction on 2026-09-06 | Next is the separate C02 L3 delivery plan; no product execution is selected. |
+| DIR-006/DEC-03 | Accept WS-001 1.0.0 and its five sequential milestone outcomes | Owner accepted six proposals with M5 Max/36 GB and Linux VM correction on 2026-09-06 | C02 was selected first; current child planning follows the WS-001 registry. No product execution is selected by this L1 record. |
 
 Product exclusions, forecasting hold and XLSX sequencing in MAP-001 apply here.
 No agent, calendar, worktree topology or parallel execution is assigned by this plan.
@@ -181,9 +181,13 @@ No agent, calendar, worktree topology or parallel execution is assigned by this 
 | 1.0.0 | 2026-09-06 | L1 adopted in English; draft replaced; parent and interface versions synchronized | Owner acceptance and publication request; MAP-001/DEC-05 |
 | 1.1.0 | 2026-09-06 | Apply accepted sequential priorities and first-block relationship; synchronize parent/provider versions; retain capability boundaries | Owner sequencing acceptance; MAP-001/DEC-06/07 |
 | 1.2.0 | 2026-09-06 | Revalidate unchanged direction boundary and MAP/WS links against accepted WS-001 1.0.0 and amended requirement sources | Owner finalization instruction; substantive changes are owned by WS-001 |
+| 1.2.1 | 2026-09-10 | Refresh child-planning navigation to WS-001 1.0.7 and C03/MS-002 1.0.0; L1 boundary unchanged | Owner requested next iteration; delegated editorial synchronization |
 
-MAP-001 registers this direction at `1.2.0`; metadata points back to that exact
-parent version. Direction boundaries and existing ticket state remain unchanged;
+MAP-001 retains this direction's accepted-scope registration at `1.2.0`;
+metadata points back to that exact parent version. The compatible 1.2.1
+navigation patches preserve these accepted baselines and existing consumer links.
+WS-001 still records DIR-006 1.2.0 as its scope basis; its 1.0.7 navigation patch
+registers the MS-002 plan without changing completed MS-001 bindings. Direction boundaries and existing ticket state remain unchanged;
 the bounded installation/TLS/bootstrap requirement amendment is owned by WS-001 1.0.0.
 Future edits update both sides of affected links. Publication/source checks and
 their limits are recorded in MAP-001; no duplicate execution journal is created.

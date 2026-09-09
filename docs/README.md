@@ -41,6 +41,7 @@
 - [Hierarchical planning framework — 1.0.0](architecture/planning/framework-v1/README.md)
 - [Hierarchical planning framework adoption evidence](architecture/planning/framework-v1/adoption-evidence.md)
 - [MS-001. Versioned internal delivery on upstream prebuilt dependencies](architecture/planning/milestones/MS-001/plan.md)
+- [MS-002 — Guided installation, HTTPS and the first-run Web entry](architecture/planning/milestones/MS-002/plan.md)
 - [Product capability discovery for segmentation and analytical authoring](architecture/planning/product-capability-discovery-2026-09-05.md)
 - [Custometry development direction map](architecture/planning/project-map.md)
 - [Working-copy synchronization evidence](architecture/planning/working-copy-synchronization-2026-09-06.md)

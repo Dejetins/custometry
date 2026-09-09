@@ -463,3 +463,101 @@ def test_receipt_alias_cannot_replace_consumed_history(pack_root: Path, alias: s
     before = (pack_root / "ledger.md").read_bytes()
     assert invoke(pack_root, "accept", stage="S2", receipt=reference).returncode == 1
     assert (pack_root / "ledger.md").read_bytes() == before
+
+
+def commit_fixture(root: Path) -> None:
+    subprocess.run(["git", "-C", str(root), "add", "."], check=True)
+    subprocess.run(
+        ["git", "-C", str(root), "-c", "user.name=Fixture", "-c",
+         "user.email=fixture@example.invalid", "commit", "-qm", "Retained fixture"],
+        check=True,
+    )
+
+
+def complete_with_document(root: Path) -> str:
+    """Exercise actual CLI transitions; no direct fabrication of terminal state."""
+    assert_pass(invoke(root, "claim"))
+    assert_pass(invoke(root, "accept", receipt=receipt(root, "S1")))
+    assert_pass(invoke(root, "claim", stage="S2"))
+    ref = receipt(root, "S2")
+    path = root / ref
+    data = document(path, "<!-- prompt-pack-receipt:v1 -->")
+    write(root / "docs/shared.md", "Accepted shared documentation\n")
+    data["validation"]["evidence"].append(binding(root, "docs/shared.md"))
+    write(path, marked("<!-- prompt-pack-receipt:v1 -->", data))
+    assert_pass(invoke(root, "accept", stage="S2", receipt=ref))
+    commit_fixture(root)
+    return ref
+
+
+@pytest.mark.parametrize("deleted", [False, True])
+def test_completed_shared_document_uses_exact_retained_bytes(pack_root: Path, deleted: bool) -> None:
+    ref = complete_with_document(pack_root)
+    before = (pack_root / ref).read_bytes()
+    if deleted:
+        (pack_root / "docs/shared.md").unlink()
+    else:
+        write(pack_root / "docs/shared.md", "Next milestone navigation\n")
+    commit_fixture(pack_root)
+    assert Pack(pack_root, pack_root / "ledger.md").data["ledger_status"] == "completed"
+    assert (pack_root / ref).read_bytes() == before
+
+
+def test_completed_unavailable_historical_hash_fails(pack_root: Path) -> None:
+    complete_with_document(pack_root)
+    write(pack_root / "docs/shared.md", "Later revision")
+    pack = Pack(pack_root, pack_root / "ledger.md")
+    with pytest.raises(Invalid, match="Historical evidence hash not found"):
+        pack.binding({"path": "docs/shared.md", "sha256": "0" * 64}, historical=True)
+
+
+def test_shallow_history_cannot_fake_historical_proof(pack_root: Path, tmp_path_factory: Any) -> None:
+    complete_with_document(pack_root)
+    write(pack_root / "docs/shared.md", "New revision only")
+    commit_fixture(pack_root)
+    clone = tmp_path_factory.mktemp("shallow") / "repo"
+    subprocess.run(
+        ["git", "clone", "-q", "--depth=1", pack_root.as_uri(), str(clone)], check=True
+    )
+    with pytest.raises(Invalid, match="Historical evidence hash not found"):
+        Pack(clone, clone / "ledger.md")
+
+
+@pytest.mark.parametrize("path", ["evidence/S2/report.md", "evidence/S2/checks.md", "acceptance.md"])
+def test_completed_immutable_evidence_still_rejects_drift(pack_root: Path, path: str) -> None:
+    complete_with_document(pack_root)
+    write(pack_root / path, "Changed immutable evidence")
+    with pytest.raises(Invalid, match="Receipt references missing or changed bytes"):
+        Pack(pack_root, pack_root / "ledger.md")
+
+
+def test_active_receipt_document_requires_current_bytes(pack_root: Path) -> None:
+    assert_pass(invoke(pack_root, "claim"))
+    ref = receipt(pack_root, "S1")
+    path = pack_root / ref
+    data = document(path, "<!-- prompt-pack-receipt:v1 -->")
+    write(pack_root / "docs/shared.md", "Original")
+    data["validation"]["evidence"].append(binding(pack_root, "docs/shared.md"))
+    write(path, marked("<!-- prompt-pack-receipt:v1 -->", data))
+    commit_fixture(pack_root)
+    write(pack_root / "docs/shared.md", "Unaccepted change")
+    assert invoke(pack_root, "accept", receipt=ref).returncode == 1
+
+
+def test_capability_drift_is_historical_only_after_completion(pack_root: Path) -> None:
+    complete_with_document(pack_root)
+    implementation = pack_root / "tools/custometry_quality/prompt_pack_validation.py"
+    implementation.write_text(implementation.read_text() + "\n# Later compatible revision\n")
+    code = (
+        "from pathlib import Path; from tools.custometry_quality.prompt_pack_validation import Pack; "
+        "from tools.custometry_quality.stage_ledger import verify_capability; "
+        "verify_capability(Pack(Path.cwd(), Path('ledger.md')))"
+    )
+    result = subprocess.run([sys.executable, "-c", code], cwd=pack_root, capture_output=True)
+    assert result.returncode == 0, result.stderr
+    # The same historical implementation binding is never authority for active work.
+    pack = Pack(pack_root, pack_root / "ledger.md")
+    pack.data["ledger_status"] = "active"
+    old = document(pack_root / "capability.md", "<!-- stage-ledger-capability:v1 -->")
+    with pytest.raises(Invalid, match="Receipt references missing or changed bytes"):
+        pack.binding(old["implementation"][1], historical=True)

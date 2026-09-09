@@ -4,7 +4,8 @@
 Source: prompt-manager/scripts/validate_pack.py, SHA-256:
 bcb7ee44d67e0568bec7b26683d180c32b68766ba6eaf20df8271d951ffb1077
 Adaptations: typed interface; in-memory candidate validation for atomic updates;
-accepted plan/hash binding. Lifecycle and receipt schema remain prompt-pack/v1.
+accepted plan/hash binding; historical completed-document verification from Git.
+Lifecycle and receipt schema remain prompt-pack/v1.
 """
 
 from __future__ import annotations
@@ -13,6 +14,7 @@ import argparse
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -101,6 +103,7 @@ class Pack:
         self.ledger = Path(ledger).resolve(strict=True)
         need(self.ledger.is_relative_to(self.root), "Ledger escapes declared root")
         self.base = self.ledger.parent
+        self._historical_matches: dict[tuple[Path, str], bool] = {}
         self.data = (
             document(self.ledger, "<!-- prompt-pack-ledger:v1 -->") if data is None else data
         )
@@ -530,15 +533,63 @@ class Pack:
         for item in row["contract"]["entry_inputs"]:
             need(self.path(item["path"]).is_file(), f"Missing live entry input: {sid}")
 
-    def binding(self, ref: Any, expected: Path | None = None) -> None:
+    def retained_binding(self, path: Path, value: str) -> bool:
+        """Find exact prior bytes at this path in HEAD ancestry, without fetching."""
+        key = (path, value)
+        if key in self._historical_matches:
+            return self._historical_matches[key]
+        relative = path.relative_to(self.root).as_posix()
+        try:
+            history = subprocess.run(
+                ["git", "-C", str(self.root), "log", "--format=%H", "HEAD", "--", relative],
+                capture_output=True, text=True, check=False, timeout=10,
+            )
+            need(history.returncode == 0, "Historical evidence requires retained Git history")
+            for revision in history.stdout.splitlines():
+                need(bool(re.fullmatch(r"[0-9a-f]{40,64}", revision)), "Invalid Git revision")
+                blob = subprocess.run(
+                    ["git", "-C", str(self.root), "show", f"{revision}:{relative}"],
+                    capture_output=True, check=False, timeout=10,
+                )
+                if blob.returncode == 0 and hashlib.sha256(blob.stdout).hexdigest() == value:
+                    self._historical_matches[key] = True
+                    return True
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            raise Invalid("Historical evidence requires readable retained Git history") from exc
+        self._historical_matches[key] = False
+        return False
+
+    def binding(
+        self, ref: Any, expected: Path | None = None, *, historical: bool = False
+    ) -> None:
         need(is_object(ref) and set(ref) == {"path", "sha256"}, "Invalid file binding")
         path = self.path(ref["path"])
         need(expected is None or path == expected, "Receipt artifact identity mismatch")
         value = ref["sha256"]
         need(isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value), "Invalid SHA-256")
-        need(
-            path.is_file() and digest(path) == value, "Receipt references missing or changed bytes"
-        )
+        if path.is_file() and digest(path) == value:
+            return
+        if historical and self.data["ledger_status"] == "completed":
+            need(
+                self.retained_binding(path, value),
+                "Historical evidence hash not found at its retained Git path; "
+                "restore exact history (CI checkout fetch-depth: 0), never rewrite receipt hashes",
+            )
+            return
+        raise Invalid("Receipt references missing or changed bytes")
+
+    def shared_document(self, ref: Any) -> bool:
+        """Only validation-source docs may evolve; execution artifacts stay immutable."""
+        if not is_object(ref) or not nonempty(field(ref, "path")):
+            return False
+        path = self.path(ref["path"])
+        protected = {self.ledger, self.triad["plan_doc"]}
+        for row in self.rows.values():
+            contract = row["contract"]
+            protected.update(self.path(contract[key]) for key in ("prompt_path", "report_path"))
+            if path.is_relative_to(self.path(contract["receipt_dir"])):
+                return False
+        return path.is_relative_to(self.root / "docs") and path not in protected
 
     def receipt(
         self, path: Path, successor: bool = True, expected_stage: str | None = None
@@ -602,7 +653,7 @@ class Pack:
         evidence = field(validation, "evidence")
         need(is_array(evidence) and bool(evidence), "Receipt has no validation evidence")
         for item in evidence:
-            self.binding(item)
+            self.binding(item, historical=self.shared_document(item))
         need("user_acceptance" in data, "Missing user_acceptance field")
         acceptance = data["user_acceptance"]
         if acceptance is not None:

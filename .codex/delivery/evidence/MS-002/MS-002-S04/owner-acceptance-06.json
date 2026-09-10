@@ -1,0 +1,15 @@
+{
+  "recorded_at": "2026-09-10T21:20:59.559235Z",
+  "stage": "MS-002-S04",
+  "decision": "accepted with limitations",
+  "authority": "Owner explicitly instructed to mark S04 accepted with limitations on the basis of working macOS delivery, after receiving the incomplete Linux results and previous Safari deferral.",
+  "accepted_subject": "Delivery 0.1.0-internal.20260910.ms002.s04.2; application 0.1.0-internal.20260910.ms002.s04.1.",
+  "scope_amendment": "Remaining Linux campaign and second-MacBook trusted Safari proof are waived as S04 acceptance blockers, retained as limitations. This supersedes the earlier stop/needs_input handoff.",
+  "limitations": [
+    "Linux standalone resume reached ready; read-only storage drill timed out; cause undetermined.",
+    "Later Linux rotation, persistence, resource, LAN and browser campaign unverified.",
+    "Second-MacBook Brave displayed page but trusted HTTPS/Safari unverified."
+  ],
+  "proof_semantics": "Owner acceptance of bounded result, not a passing label for failed or unexecuted checks. Original plan/prompt bytes preserved; current owner decision governs this transition.",
+  "successor": "S05 not executed or enabled by this decision; no publication or milestone-wide closure inferred."
+}

@@ -1,0 +1,54 @@
+{
+  "target": "Mac Docker ARM64 LAN",
+  "at": "2026-09-10T19:58:15.052469+00:00",
+  "origin": "https://192.168.0.120:8443",
+  "installation_id": "custometry-994f905f29496190b375245d",
+  "delivery_version": "0.1.0-internal.20260910.ms002.s04.2",
+  "application_version": "0.1.0-internal.20260910.ms002.s04.1",
+  "config_sha256": "941ec9593e959e77b715ad975b1d45c9baf4831afb0f216f80ffa12e236ae666",
+  "manifest_sha256": "57d182c056b949e470e67100fd422d9a16e993842ca5c8feba81ad82365facce",
+  "engine": "29.6.2",
+  "compose": "5.3.1",
+  "api_status": {
+    "schema_version": "custometry-installation-status/v1",
+    "state": "ready_for_bootstrap",
+    "version": "0.1.0-internal.20260910.ms002.s04.1",
+    "components": {
+      "database": "ready",
+      "schema": "ready",
+      "storage": "ready"
+    },
+    "next_action": "bootstrap_not_available"
+  },
+  "only_edge_publishes": true,
+  "published_mapping": [
+    {
+      "8443/tcp": [
+        {
+          "HostIp": "192.168.0.120",
+          "HostPort": "8443"
+        }
+      ]
+    }
+  ],
+  "macos": "26.6",
+  "image_ids": [
+    {
+      "role": "api",
+      "docker_id": "sha256:db777126db237b2dd27916d3969d0d56b4f1249752f3bd4660193b114e53f1b3"
+    },
+    {
+      "role": "web",
+      "docker_id": "sha256:52e983ecfe2d42a8b70ed6ce5880a483c36c085130c28a29bf68a94e1ca754ca"
+    },
+    {
+      "role": "postgres",
+      "docker_id": "sha256:08f8dfa2be115968517649092cd4b4204813d28ca7145dba6283685a73128524"
+    }
+  ],
+  "running_memory_caps_bytes": 1811939328,
+  "data_ceiling_bytes": 26843545600,
+  "memory_ceiling_bytes": 6442450944,
+  "second_macbook_safari": "pending",
+  "browser_scope": "same-host Chromium trusted LAN entry observed"
+}

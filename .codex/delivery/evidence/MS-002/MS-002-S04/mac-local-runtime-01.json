@@ -1,0 +1,101 @@
+{
+  "restricted_ingress": "pass",
+  "no_http_fallback": "pass",
+  "invalid_tls_preserves_active": "pass",
+  "invalid_config_and_valid_rotation": "pass",
+  "commands": [
+    {
+      "action": "stop",
+      "exit_code": 0,
+      "result": {
+        "code": "TLS_REQUIRED",
+        "installation_id": "custometry-4f8e4de769bbc637c9da60ac",
+        "last_completed_step": "ready",
+        "next_action": "resume",
+        "ready": false,
+        "schema_version": "custometry-installation/v1",
+        "state": "stopped",
+        "url": null,
+        "version": "0.1.0-internal.20260910.ms002.s04.1"
+      },
+      "elapsed_seconds": 1.799
+    },
+    {
+      "action": "resume",
+      "exit_code": 1,
+      "result": {
+        "status": "failed",
+        "code": "TRUSTED_HASH_MISMATCH",
+        "ready": false
+      },
+      "elapsed_seconds": 0.263
+    },
+    {
+      "action": "resume",
+      "exit_code": 0,
+      "result": {
+        "code": null,
+        "installation_id": "custometry-4f8e4de769bbc637c9da60ac",
+        "last_completed_step": "ready",
+        "next_action": "bootstrap_not_available",
+        "ready": true,
+        "schema_version": "custometry-installation/v1",
+        "state": "ready",
+        "url": "https://127.0.0.1:59308",
+        "version": "0.1.0-internal.20260910.ms002.s04.1"
+      },
+      "elapsed_seconds": 19.459
+    }
+  ],
+  "corrupt_acquisition_stop_resume_persistence": "pass",
+  "foreign_container_identity_start_time": "unchanged",
+  "target": {
+    "installation_id": "custometry-4f8e4de769bbc637c9da60ac",
+    "url": "https://127.0.0.1:59308",
+    "application_version": "0.1.0-internal.20260910.ms002.s04.1",
+    "delivery_version": "0.1.0-internal.20260910.ms002.s04.2",
+    "engine_version": "29.6.2",
+    "compose_version": "5.3.1",
+    "architecture": "arm64",
+    "schema_head": "0009_notifications",
+    "config_sha256": "b6a01a55d0eb07837518da76d719fc65ad568c3649fe616e3cd06f396d8bf993",
+    "image_ids": [
+      {
+        "role": "api",
+        "docker_id": "sha256:db777126db237b2dd27916d3969d0d56b4f1249752f3bd4660193b114e53f1b3"
+      },
+      {
+        "role": "web",
+        "docker_id": "sha256:52e983ecfe2d42a8b70ed6ce5880a483c36c085130c28a29bf68a94e1ca754ca"
+      },
+      {
+        "role": "postgres",
+        "docker_id": "sha256:08f8dfa2be115968517649092cd4b4204813d28ca7145dba6283685a73128524"
+      }
+    ],
+    "service_memory_limit_bytes": 1811939328,
+    "stats": [
+      {
+        "service_id": "03c688d695c8",
+        "memory": "61.31MiB / 512MiB",
+        "cpu": "0.13%"
+      },
+      {
+        "service_id": "55010b127703",
+        "memory": "19.4MiB / 1GiB",
+        "cpu": "1.78%"
+      },
+      {
+        "service_id": "fc45c1ea46b6",
+        "memory": "10.19MiB / 64MiB",
+        "cpu": "0.00%"
+      },
+      {
+        "service_id": "7a85f1f23662",
+        "memory": "13.26MiB / 128MiB",
+        "cpu": "0.00%"
+      }
+    ]
+  },
+  "result": "pass"
+}

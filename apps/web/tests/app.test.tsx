@@ -20,7 +20,11 @@ beforeEach(() => {
         }),
       };
     }
-    return { ok: true, json: async () => ({ status: "ready", version: "test" }) };
+    return { ok: true, status: 200, json: async () => ({
+      schema_version: "custometry-installation-status/v1", state: "ready_for_bootstrap",
+      next_action: "bootstrap_not_available", version: "test",
+      components: { database: "ready", schema: "ready", storage: "ready" },
+    }) };
   }));
 });
 
@@ -30,10 +34,14 @@ afterEach(() => {
 });
 
 describe("Foundation shell", () => {
-  it("renders the runnable Foundation home", async () => {
+  it("renders the installation entry with operational readiness", async () => {
     render(<MemoryRouter initialEntries={["/"]}><App /></MemoryRouter>);
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
-    expect(await screen.findByText(/API readiness: ready/i)).toBeInTheDocument();
+    expect(await screen.findByText("Installation is ready")).toHaveAttribute("role", "status");
+    expect(screen.getByText("test")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Open installation help" })).toHaveAttribute(
+      "href", "/docs/install/local/#first-run-status",
+    );
   });
 
   it("labels unimplemented product routes as planned", () => {
@@ -49,12 +57,14 @@ describe("Foundation shell", () => {
     expect(screen.queryByText("Internal")).not.toBeInTheDocument();
   });
 
-  it("localizes the visible Foundation shell into Russian", async () => {
+  it("localizes the installation entry into Russian", async () => {
     await i18n.changeLanguage("ru");
     render(<MemoryRouter initialEntries={["/"]}><App /></MemoryRouter>);
-    expect(screen.getByText("Локальная работа")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Аналитика" })).toBeInTheDocument();
-    expect(await screen.findByText(/Готовность API: готов/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Установка");
+    expect(await screen.findByText("Установка готова")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Открыть справку по установке" })).toHaveAttribute(
+      "href", "/docs/ru/install/local/#first-run-status",
+    );
   });
 
   it("does not expose an English route title on a Russian planned surface", async () => {
@@ -67,7 +77,7 @@ describe("Foundation shell", () => {
   });
 
   it("exposes every route through the mobile More menu", () => {
-    render(<MemoryRouter initialEntries={["/"]}><App /></MemoryRouter>);
+    render(<MemoryRouter initialEntries={["/w/northwind-retail/overview"]}><App /></MemoryRouter>);
     const moreButton = screen.getByRole("button", { name: "More sections" });
     fireEvent.click(moreButton);
     const menu = screen.getByRole("dialog", { name: "All sections" });

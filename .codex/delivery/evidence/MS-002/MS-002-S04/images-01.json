@@ -1,0 +1,62 @@
+[
+  {
+    "role": "api",
+    "architecture": "arm64",
+    "path": "api-arm64.tar",
+    "sha256": "90956095006f5e151e3b114162458aded458b80916d232fad6b99ce7a6c44795",
+    "size_bytes": 105874432,
+    "image_id": "sha256:866ab962cdcd32cec0bd94062f3d361023cb22e99e70943ff456343b8731bcf1",
+    "docker_id": "sha256:db777126db237b2dd27916d3969d0d56b4f1249752f3bd4660193b114e53f1b3",
+    "unpacked_bytes": 355358208
+  },
+  {
+    "role": "api",
+    "architecture": "amd64",
+    "path": "api-amd64.tar",
+    "sha256": "42e12e67baa420ea25f535095768c2ff00a9e930bbd7c110a25e5a30e077fc8d",
+    "size_bytes": 107573760,
+    "image_id": "sha256:d6c05dd95cddfc8487f86b3e319b36a61ee7fad33bfd377a7fd77cfc21564357",
+    "docker_id": "sha256:34d6d9a14da4b0fd4df98d57bda91c6651678531060028c31e06b8fb8491f535",
+    "unpacked_bytes": 337207296
+  },
+  {
+    "role": "web",
+    "architecture": "arm64",
+    "path": "web-arm64.tar",
+    "sha256": "28088319718ea7896f44add5e838dc373f8ea3543af4864f10412f2755b9b117",
+    "size_bytes": 22769152,
+    "image_id": "sha256:4088b9445bba6a93d9bbe1e45f5b1c27468095668d420c5d91b931d4f180334f",
+    "docker_id": "sha256:52e983ecfe2d42a8b70ed6ce5880a483c36c085130c28a29bf68a94e1ca754ca",
+    "unpacked_bytes": 55410176
+  },
+  {
+    "role": "web",
+    "architecture": "amd64",
+    "path": "web-amd64.tar",
+    "sha256": "b372fcbe1a45940b0d9f64c7fc3477551188dca29be9f09c3b37634a097c75af",
+    "size_bytes": 21925376,
+    "image_id": "sha256:87ae0623a1b4fbffac11b9864a920cf0d2406dbadd939b321fa2f7dde9524fb0",
+    "docker_id": "sha256:f6e96c6a962a341da608f2e03d6f7323b6e9b6d6162cb9f8cf29c745f5843df6",
+    "unpacked_bytes": 53860864
+  },
+  {
+    "role": "postgres",
+    "architecture": "arm64",
+    "path": "postgres-arm64.tar",
+    "sha256": "c862a6b3692f5a28fec01c671deb1b6a8b93655fd16a93f019a33aba3066b443",
+    "size_bytes": 107318272,
+    "image_id": "sha256:49a3a9c54969a6f3eb148b424f22fcce953f128664301e0ec3ee122a99131503",
+    "docker_id": "sha256:08f8dfa2be115968517649092cd4b4204813d28ca7145dba6283685a73128524",
+    "unpacked_bytes": 272513536
+  },
+  {
+    "role": "postgres",
+    "architecture": "amd64",
+    "path": "postgres-amd64.tar",
+    "sha256": "b5e1873471ea181bd6fd5b95aaeeb3930cdf20d880b17bf2a23eb26c7961f4cc",
+    "size_bytes": 110799872,
+    "image_id": "sha256:ae302d6547ebdf6646e22ee9afebfc60c0163a6d6ee0126e2fc7e59088b210c4",
+    "docker_id": "sha256:c258b4dceb11a3c2b7cd2580e341d6afa5c0f2ae2c73313597f2a266c897bd44",
+    "unpacked_bytes": 281014784
+  }
+]

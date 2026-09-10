@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-09-10T21:18:27.699457+00:00",
+  "owner_direction": "Stop further task execution and finish the handoff now. No additional guest commands requested.",
+  "observations": [
+    "All three missing toolkit config paths restored using exact trusted hashes; supply verification passed.",
+    "Installer resume exited 0: installation custometry-33f9c68221f6a375901b5054, state ready, last_completed_step ready, URL https://127.0.0.1:32768, application version 0.1.0-internal.20260910.ms002.s04.1.",
+    "Recovery harness subsequently timed out at line 43 waiting for STORAGE_UNAVAILABLE during read-only artifact drill."
+  ],
+  "cause": "Storage-drill timeout cause undetermined. Do not classify product or harness defect without further evidence.",
+  "cleanup_boundary": "The executed source wraps this drill in finally: restore API from canonical compose with --wait, then unlink the temporary fault config. Supplied traceback shows the original assertion only, consistent with successful cleanup; final installed readiness was not independently rechecked. No further resource changes made at handoff.",
+  "remaining_unverified": [
+    "Linux storage negative result and subsequent readiness",
+    "Linux TLS rotation and stop/resume preservation drill",
+    "Linux LAN installation, resource accounting and browser proof"
+  ],
+  "deferred": "Second-MacBook trusted HTTPS/Safari explicitly deferred by owner; not a blocker under amended scope and not a pass.",
+  "disposition": "Work stopped at owner request; preserve partial results, needs_input until owner explicitly requests continuation or resolves remaining acceptance scope. No ready receipt, S04 acceptance, S05 execution or publication claimed.",
+  "runtime": "Mac Docker Desktop previously stopped under owner authority. Guest Docker was running for installation; no final shutdown performed."
+}

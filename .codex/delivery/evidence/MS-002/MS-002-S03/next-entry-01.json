@@ -1,0 +1,23 @@
+{
+  "stage": "MS-002-S04",
+  "checked_at": "2026-09-09T23:51:56.271643+00:00",
+  "inputs": [
+    {
+      "path": "docs/architecture/planning/milestones/MS-002/plan.md",
+      "sha256": "e2f63aa38502436dfe2532715239d0d6be9cf3250b6f84a4485504e35ef6dd05",
+      "exists": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-002/MS-002-S03/report.md",
+      "sha256": "4e4ae77b671d13f9462a8f3117baa239c35921888bb049470829f8826e6a50b4",
+      "exists": true
+    },
+    {
+      "path": "tools/custometry_quality/installation.py",
+      "sha256": "e08e13a03b06ef07b2de097c3a2215d712a397fff5da77196d0a5058b69dc41a",
+      "exists": true
+    }
+  ],
+  "allowed": false,
+  "reason": "Current request authorizes S03 only. S04 owns candidate packaging and target setup; separate execution request and normal advance required."
+}

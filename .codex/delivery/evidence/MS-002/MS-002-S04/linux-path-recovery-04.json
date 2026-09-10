@@ -1,0 +1,13 @@
+{
+  "recorded_at": "2026-09-10T21:14:35.697424+00:00",
+  "observed_missing": [
+    "toolkit/deploy/compose/compose.candidate.json",
+    "toolkit/deploy/compose/delivery-manifest.schema.json",
+    "toolkit/deploy/compose/delivery-verification-policy.json"
+  ],
+  "authority": "Existing S04 owner-local supply and bounded recovery; no publication or new dependency",
+  "repair": "Find unique same-directory regular non-symlink candidate by exact trusted size and SHA256; restore missing expected path. Validate all other trusted supply files. Preserve original harness and installation; create prove-recovery.py using installer resume for persisted roots. Abort on missing or ambiguous hash match.",
+  "repair_script_sha256": "3042f980c796bc2edebd13cf4c641a045d6588d26e23af3d95dc588801c34c29",
+  "validation": "Simulated altered filenames restored; generated recovery harness compiles. Real guest repair and runtime not yet observed.",
+  "next_input": "Owner transfers prepared script over SSH and executes recovery in selected guest."
+}

@@ -1,0 +1,92 @@
+{
+  "stage": "MS-002-S03",
+  "files": [
+    {
+      "path": "apps/web/src/App.tsx",
+      "sha256": "a316106326bf0f3a462c3e58dcc47f64f215a3a9aa37a759d74c8b3db4e818bc",
+      "snapshot": "snapshots/apps__web__src__App.tsx.txt"
+    },
+    {
+      "path": "apps/web/src/features/installation/InstallationEntry.tsx",
+      "sha256": "a8ba798057e75ac2f7b4cb46eede28e00e091a9c8b2cf4991c6e06fdc4c56480",
+      "snapshot": "snapshots/apps__web__src__features__installation__InstallationEntry.tsx.txt"
+    },
+    {
+      "path": "apps/web/src/features/installation/status.test.ts",
+      "sha256": "f7d39dea86df2da41018faf7bbe66bc535b33d742fcfba645f43b02a8217909e",
+      "snapshot": "snapshots/apps__web__src__features__installation__status.test.ts.txt"
+    },
+    {
+      "path": "apps/web/src/features/installation/status.ts",
+      "sha256": "49f33904dd50e9134fbbc30aea8d0774a8382e2af9485a0acadbf2aad1483dd2",
+      "snapshot": "snapshots/apps__web__src__features__installation__status.ts.txt"
+    },
+    {
+      "path": "docs-site/docs/install/local.md",
+      "sha256": "2c56edea0ee6427e85e45b7ec97cc3b809293bbca73670b5be29907f90d9c4b8",
+      "snapshot": "snapshots/docs-site__docs__install__local.md.txt"
+    },
+    {
+      "path": "docs-site/docs/ru/install/local.md",
+      "sha256": "0000bb5059dac6e4fc66508d64dbc3f6efd9a77ee2483f22032737f152a3d894",
+      "snapshot": "snapshots/docs-site__docs__ru__install__local.md.txt"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "sha256": "34c533999f1bfac4b0991274da30945f9b600dca701fa1471667aa4e95345a52",
+      "snapshot": "snapshots/docs__architecture__README.md.txt"
+    },
+    {
+      "path": "docs/architecture/runtime-network-installation.md",
+      "sha256": "4d05f74781b5df3e13638efaab1f41f646d60139b655181a16ec695ef002a498",
+      "snapshot": "snapshots/docs__architecture__runtime-network-installation.md.txt"
+    },
+    {
+      "path": "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md",
+      "sha256": "8b15c7131d2a84cc02cd535f13c43db09935fe94efd5303961e7c016e9ace22f",
+      "snapshot": "snapshots/docs__architecture__ui__custometry-web-implementation-source-contract-v1.md.txt"
+    },
+    {
+      "path": "packages/localization/locales/en/foundation.json",
+      "sha256": "8ed6130541ee1780836d03f09656f58bfe1640b51ebf1a4b98c2d658c42979b3",
+      "snapshot": "snapshots/packages__localization__locales__en__foundation.json.txt"
+    },
+    {
+      "path": "packages/localization/locales/ru/foundation.json",
+      "sha256": "de0f24b232dea6989da1bc8092e3cc9d26391153551bf6454e94101b1ac748ca",
+      "snapshot": "snapshots/packages__localization__locales__ru__foundation.json.txt"
+    },
+    {
+      "path": "packages/ui-foundation/src/index.ts",
+      "sha256": "6e2aa035fc52b462ce0b5700dc59724a7deebc6bc81821509ea714b2cd345a31",
+      "snapshot": "snapshots/packages__ui-foundation__src__index.ts.txt"
+    },
+    {
+      "path": "packages/ui-foundation/src/installation.tsx",
+      "sha256": "e84ba67b316567f0e072f605ca81db7562bdd95a7247f9a9637e7ba251917e6d",
+      "snapshot": "snapshots/packages__ui-foundation__src__installation.tsx.txt"
+    },
+    {
+      "path": "tests/e2e/ms-002-installation/installation.spec.ts",
+      "sha256": "8798d5826cc1103d21161adce1f903e3c442633c6151c36f8d087e5c1b6c6419",
+      "snapshot": "snapshots/tests__e2e__ms-002-installation__installation.spec.ts.txt"
+    },
+    {
+      "path": "tests/e2e/ms-002-installation/playwright.config.ts",
+      "sha256": "85845003302f1eb0f22f7507304fd450376d853c089940b8eeedd164f5af1d4d",
+      "snapshot": "snapshots/tests__e2e__ms-002-installation__playwright.config.ts.txt"
+    },
+    {
+      "path": "tests/e2e/ms-002-installation/real_api_fixture.py",
+      "sha256": "a67a517664c2d7d3192f7df10587f2c1dabb6bf0a5845ba1a1e1bc56577a1392",
+      "snapshot": "snapshots/tests__e2e__ms-002-installation__real_api_fixture.py.txt"
+    },
+    {
+      "path": "tests/e2e/ms-002-installation/vite.config.ts",
+      "sha256": "fd75ce94d8a3289dd221971fc8704a271c45d8b00df9e4760ff5c230f4b8f38b",
+      "snapshot": "snapshots/tests__e2e__ms-002-installation__vite.config.ts.txt"
+    }
+  ],
+  "foreign_changes": "none observed at entry; no foreign changes adopted",
+  "preserved": "MS-001 and accepted plan/prompt/predecessor evidence bytes unchanged"
+}

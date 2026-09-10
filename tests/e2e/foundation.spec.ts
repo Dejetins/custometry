@@ -66,24 +66,24 @@ async function expectDocsReady(page: Page): Promise<void> {
   await page.waitForLoadState("networkidle");
 }
 
-test("Foundation home, API, language round-trip and local docs CSP/search", async ({
+test("Foundation shell, API, language round-trip and local docs CSP/search", async ({
   page,
   request,
 }) => {
   const evidence = observeBrowser(page);
 
-  await page.goto("/");
+  await page.goto("/help");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect(page.getByText(/API readiness: ready/i)).toBeVisible();
   const languageButton = page.getByRole("button", { name: "Switch language" });
   await expect(languageButton).toHaveText("RU");
   await languageButton.click();
-  await expect(page.getByText("Локальная работа")).toBeVisible();
+  await expect(page.getByText(/Готовность API: готов/i)).toBeVisible();
   await expect(page.getByRole("link", { name: "Аналитика" })).toBeVisible();
   const russianLanguageButton = page.getByRole("button", { name: "Переключить язык" });
   await expect(russianLanguageButton).toHaveText("EN");
   await russianLanguageButton.click();
-  await expect(page.getByText("Local first")).toBeVisible();
+  await expect(page.getByText(/API readiness: ready/i)).toBeVisible();
 
   const readiness = await request.get("/api/health/ready");
   expect(readiness.ok()).toBeTruthy();
@@ -135,8 +135,10 @@ test("production sales route, 404 and shell return keep honest route state", asy
   await expect(page.getByText("Sales Overview is unavailable")).toBeVisible();
   await expect(page.getByText("Planned surface", { exact: true })).toHaveCount(0);
   await expectUnauthenticatedSalesBoundary(evidence);
-  await page.getByRole("link", { name: "Custometry" }).click();
-  await expect(page).toHaveURL(/\/$/);
+  // The installed root has its own trusted packaged journey; this smoke owns shell navigation.
+  await expect(page.getByRole("link", { name: "Custometry" })).toHaveAttribute("href", "/");
+  await page.getByRole("link", { name: "Overview", exact: true }).click();
+  await expect(page).toHaveURL(/\/w\/northwind-retail\/overview$/);
   await page.goBack();
   await expect(page).toHaveURL(/\/w\/northwind-retail\/analytics\/sales$/);
   await expect(page.getByRole("heading", { level: 1, name: "Sales Overview" })).toBeVisible();
@@ -144,7 +146,7 @@ test("production sales route, 404 and shell return keep honest route state", asy
   await expect(page.getByText("Planned surface", { exact: true })).toHaveCount(0);
   await expectUnauthenticatedSalesBoundary(evidence);
   await page.goForward();
-  await expect(page).toHaveURL(/\/$/);
+  await expect(page).toHaveURL(/\/w\/northwind-retail\/overview$/);
 
   await page.goto("/not-a-registered-surface");
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
@@ -157,7 +159,7 @@ test("responsive navigation exposes names and icons in every supported state", a
   page,
 }, testInfo) => {
   const evidence = observeBrowser(page);
-  await page.goto("/");
+  await page.goto("/help");
   const viewport = page.viewportSize();
 
   if (viewport && viewport.width > 900) {

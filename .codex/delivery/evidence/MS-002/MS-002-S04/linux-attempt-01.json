@@ -1,0 +1,13 @@
+{
+  "recorded_at": "2026-09-10T21:01:03.816256+00:00",
+  "source": "Owner-provided guest console screenshot",
+  "observed": [
+    "ISO mounted read-only successfully; expected optical-media behavior",
+    "setup.sh executed; first installer CLI returned TLS_INPUT and ready=false",
+    "proof harness stopped on failed return code"
+  ],
+  "localization": "tls_validate requires each supplied path to be a regular file of at most 1 MiB. Failure occurs before installation state persistence. Prepared ISO inventory contains tls/chain.pem, tls/key.pem, tls/rootCA.pem; guest copied names/sizes not yet observed.",
+  "cause": "undetermined; awaiting guest directory listing",
+  "acceptance": "No Linux runtime pass. Owner-deferred second-MacBook trust remains independent.",
+  "next_input": "sudo ls -l /opt/custometry-s04/tls/"
+}

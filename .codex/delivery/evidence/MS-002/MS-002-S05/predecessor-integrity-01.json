@@ -1,0 +1,30 @@
+{
+  "at": "2026-09-10T21:52:52.296265+00:00",
+  "checks": [
+    {
+      "stage": "MS-002-S01",
+      "receipt_sha256": "07e1cf3258e4c055b7718e144b15ed1538919430a36cfd1bc3086b741b9a6893",
+      "references_checked": 21,
+      "mismatches": []
+    },
+    {
+      "stage": "MS-002-S02",
+      "receipt_sha256": "8740094c68d893cb91251799248fa610a407c4df3d6909b014257ba3af30472b",
+      "references_checked": 20,
+      "mismatches": []
+    },
+    {
+      "stage": "MS-002-S03",
+      "receipt_sha256": "fd2fcf56cdfdced57d91807ee19a370ae5dba25019845bdd48223d90e2316bf3",
+      "references_checked": 49,
+      "mismatches": []
+    },
+    {
+      "stage": "MS-002-S04",
+      "receipt_sha256": "355df07fb76f497a2fa937745f12b6a0f32e512b23cc1353e52e171a9a8d81f1",
+      "references_checked": 52,
+      "mismatches": []
+    }
+  ],
+  "boundary": "Current exact hashes of prior receipts and all directly bound proof. Semantic limits retained in report."
+}

@@ -1,0 +1,49 @@
+{
+  "at": "2026-09-10T21:55:30.159212+00:00",
+  "installation_id": "custometry-994f905f29496190b375245d",
+  "application_version": "0.1.0-internal.20260910.ms002.s04.1",
+  "delivery_version": "0.1.0-internal.20260910.ms002.s04.2",
+  "origin": "https://192.168.0.120:8443",
+  "config_sha256": "941ec9593e959e77b715ad975b1d45c9baf4831afb0f216f80ffa12e236ae666",
+  "schema_head": "0009_notifications",
+  "status": {
+    "schema_version": "custometry-installation-status/v1",
+    "state": "ready_for_bootstrap",
+    "version": "0.1.0-internal.20260910.ms002.s04.1",
+    "components": {
+      "database": "ready",
+      "schema": "ready",
+      "storage": "ready"
+    },
+    "next_action": "bootstrap_not_available"
+  },
+  "http": {
+    "cache_control": "no-store",
+    "http_status": 200
+  },
+  "supply_files_checked": 19,
+  "supply_mismatches": 0,
+  "browser": {
+    "mechanic": "playwright-cli",
+    "session": "ms002s05",
+    "viewport": [
+      1440,
+      900
+    ],
+    "flows": [
+      "trusted HTTPS navigation",
+      "EN to RU",
+      "manual retry"
+    ],
+    "console_messages": 0,
+    "status_requests": "HTTP 200",
+    "tls_bypass": false
+  },
+  "recovery": {
+    "loopback": "resume failed: Docker all predefined address pools fully subnetted; direct Compose reproduction confirmed; stopped preserving volumes",
+    "lan": "exact existing LAN installation resumed ready with retained networks",
+    "guest": "selected UTM VM suspended with saved state before Mac Docker startup",
+    "product_fix": false
+  },
+  "boundary": "Current same-host LAN review availability; prior Linux/Safari limitations unchanged"
+}

@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-09-10T21:59:15.536542Z",
+  "stage": "MS-002-S05",
+  "decision": "accepted",
+  "authority": "Owner replied that the presented result is accepted and explicitly requested recording acceptance, delivery to main through a technical branch, and deletion of that branch afterward.",
+  "accepted_subject": {
+    "delivery": "0.1.0-internal.20260910.ms002.s04.2",
+    "application": "0.1.0-internal.20260910.ms002.s04.1",
+    "behavior": "accepted",
+    "pilot_derived_appearance": "accepted",
+    "review_receipt_sha256": "846c627cb92ec14b3b600b6366443002e63652b009d88bfd315dac1628fc0721"
+  },
+  "accepted_limitations": [
+    "Partial Linux proof and unverified trusted second-MacBook Safari retained from S04.",
+    "Loopback restart encountered exhausted Docker address pools; existing LAN instance restored and available."
+  ],
+  "boundary": "Final bounded C03 installation/UI acceptance, not passing failed checks, product bootstrap, official release, production qualification or C04 execution."
+}

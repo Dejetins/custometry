@@ -1,0 +1,761 @@
+{
+  "api": [
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/__init__.py",
+      "sha256": "8c86b6bc18223e9dd9673fcfbd5f2db0d5831bc63167e56f9a4e0329c40da62b",
+      "size_bytes": 103
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/analytics/__init__.py",
+      "sha256": "bf4a2702e256f49e8db0441cadd9448a0ec87fec045a9d4b77cae5782797de8f",
+      "size_bytes": 101
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/analytics/router.py",
+      "sha256": "ee3d3366c43d8d8c210e3ed3006b87bc427a71f104dd5cf9b6af2bfb7d4394cb",
+      "size_bytes": 11292
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/config.py",
+      "sha256": "7f18aa329f4a1fc60cbe85f98bc4f81519d64da8a31385b277d37ea9c7720b5f",
+      "size_bytes": 3597
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/connections/__init__.py",
+      "sha256": "f3e0df6d9ae2ee515f8c45adaa47c404dba43f64b4127dbf3e5fe944a926b329",
+      "size_bytes": 37
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/connections/router.py",
+      "sha256": "23ff35e82c98c6143731f5fe620322a8e62cf801ac155151c4eef24ce2ac6f6e",
+      "size_bytes": 12968
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/health.py",
+      "sha256": "453e00df411302bcd9c6598b81321f658cd8233be26fcef8eb25e08d34c8de7e",
+      "size_bytes": 3595
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/identity/__init__.py",
+      "sha256": "1e6f0bfd75bb46f250b69d2397e651bce2125ba87378e6940215f75c59075111",
+      "size_bytes": 28
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/identity/router.py",
+      "sha256": "922bd01ae348fc245e6c9934b11ca595f6641e7d200f27b3cbe03b8395f0714c",
+      "size_bytes": 23468
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/imports/__init__.py",
+      "sha256": "3a0430858c8d1221aff172307defb33595d69197e0162889bcbb8d46bd9d6d26",
+      "size_bytes": 40
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/imports/router.py",
+      "sha256": "b159d942dd5996e7f8b652e7bf6379048bcf269f26a9852e941f1c77c2925b44",
+      "size_bytes": 9960
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/installation.py",
+      "sha256": "8e546bf457cc7b8baa818ebabc35e0cf59d9d59081017b2a03ee5f8f9e3bcd23",
+      "size_bytes": 947
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/main.py",
+      "sha256": "35701f8c591095477e3e6328bc7daf3769199b57b38aab06eb3967a3be63cfe0",
+      "size_bytes": 5410
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/notifications/__init__.py",
+      "sha256": "5d1ee9bcccde2d59ecbc3454c9c17bf89bb5acf035c500b6fc77c79d4a99cfc6",
+      "size_bytes": 154
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/notifications/router.py",
+      "sha256": "0e05b5b735cb885da3e141c8cdc2f6d939873ded65c72112b567a44235f2aded",
+      "size_bytes": 14968
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/organization/__init__.py",
+      "sha256": "f33c45fe9148a26f9da2ccfc78eecdaafb8ba8c1eaa6fadf89cd95c07ea608d9",
+      "size_bytes": 32
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/organization/router.py",
+      "sha256": "b7e886d788e594b7b66015c25dae590013a4f41231a7e931fa90940028cf3e75",
+      "size_bytes": 17850
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/people/__init__.py",
+      "sha256": "d866326e3936790c1a168471d4e19bdeddb1e3d6eeffc657376d2062a77ea055",
+      "size_bytes": 51
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/people/router.py",
+      "sha256": "e070ded955642b4a48e6a2cb57ae55fc48080983b717a767fa9f98a0c3d1ab69",
+      "size_bytes": 6903
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/py.typed",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/runs/__init__.py",
+      "sha256": "d0ad1abe5c9035774eca398a74e52a40bd8209cdfa59fa94bdcd7da169160030",
+      "size_bytes": 137
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/custometry_api/runs/router.py",
+      "sha256": "3bb435bcc78a8525cf3e25d79b25babdd518143508feec3cb737f21c40294394",
+      "size_bytes": 12193
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/__init__.py",
+      "sha256": "fa7ec6f903fcee1f15ee487ba123d4525d32518048dea34254c9e07f5c24df7d",
+      "size_bytes": 105
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/application/__init__.py",
+      "sha256": "fa7ec6f903fcee1f15ee487ba123d4525d32518048dea34254c9e07f5c24df7d",
+      "size_bytes": 105
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/application/service.py",
+      "sha256": "7e5247b0e22e11be9d3763a8b1b620b22870f68123d2022b8feabe6690ddfc1b",
+      "size_bytes": 21880
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/domain/__init__.py",
+      "sha256": "45e80c9dbbda13789aa4f4cca547d967ed8a1c8b77735af358ceb0349d675b73",
+      "size_bytes": 207
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/domain/model.py",
+      "sha256": "faf18b5a9b3b839bdf99b4c05aea4c3c8f3d6d9b7d7ffda7b12e60c40561e3b3",
+      "size_bytes": 4953
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/infrastructure/__init__.py",
+      "sha256": "8bcd820d06a0809ea4d4ddd3facb672056d898aae5d85c8355f34c2754d0af82",
+      "size_bytes": 247
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/infrastructure/local.py",
+      "sha256": "0cbf3f889fea49c676bf69aa5ecb12e04e0c8ddda56901109cef28559d12d196",
+      "size_bytes": 2889
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/analytics_core/infrastructure/postgres.py",
+      "sha256": "108c387ca029374eea3dc19529ca04d393debc75fa605ab1286333f341e29377",
+      "size_bytes": 5021
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/connection_catalog/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/connection_catalog/__init__.py",
+      "sha256": "be4811134ebb2030bfaf0788b70b54d3bbf05024e704cd9158c942b82dd857b9",
+      "size_bytes": 50
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/connection_catalog/application/__init__.py",
+      "sha256": "2c061395cc9705902215ce85c7153087b259225cd465368880a12f7ab0318600",
+      "size_bytes": 44
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/connection_catalog/application/service.py",
+      "sha256": "a9cfca94c3b9b9d366bb0b99d2904063a430466c1a8c8bcf1f8e0dd5a5754614",
+      "size_bytes": 7000
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/connection_catalog/domain/__init__.py",
+      "sha256": "190990f213ef7090c394afedab72502b8679c54fa063a62974991028c40deaec",
+      "size_bytes": 43
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/connection_catalog/domain/model.py",
+      "sha256": "1002fffdd675c582b8c1a4d963574de80aabeb0fc9ba5dc5f9f80633ad828423",
+      "size_bytes": 2308
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/connection_catalog/infrastructure/__init__.py",
+      "sha256": "80e90cee3ee85678f1ddaa9319abae44dcfecb0e323c9c64df692295712c5a00",
+      "size_bytes": 50
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/connection_catalog/infrastructure/postgres.py",
+      "sha256": "dd2093852c469cf578814c92d36d94d7a937c6a27b52c45764c8b3e76a6fd1bc",
+      "size_bytes": 4816
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/analytics/__init__.py",
+      "sha256": "94ec41ab3875814b39119b554758ffd009f7cc64a7352843290079a0fd878cb2",
+      "size_bytes": 1363
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/data_pipeline/__init__.py",
+      "sha256": "4cc1b42093ea49bfec3fcd18ccb1d40a5645e182c7d0d124c72c6270877ce2be",
+      "size_bytes": 440
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/execution/__init__.py",
+      "sha256": "2155205c1347ced61ea27aca1a35e5462545524761bf5bfee8c4d956c2983917",
+      "size_bytes": 2941
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/execution/generator.py",
+      "sha256": "d018511f3088f75048c514ab5224dbfcf723e61cdf0dd7560e9ce41586d3f830",
+      "size_bytes": 7068
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/identity/__init__.py",
+      "sha256": "2f8ccf0d891ffacf43cad88bc2a89eaf367a43a4eff68c0c6f4a1ff5ab4a85a0",
+      "size_bytes": 44
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/identity/provider.py",
+      "sha256": "5ee068f0d2bdd26d7fccf53192ba6900162092ad3e371eadcbc9957f7d0f3be3",
+      "size_bytes": 1247
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/notifications/__init__.py",
+      "sha256": "6d70d07e0250b1e51fbf5e8edc4763cc36adec1533bab615fbd5da1bb67f722b",
+      "size_bytes": 3538
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/notifications/generator.py",
+      "sha256": "e194f85d56194238f44c04566ac4ec5932573a45bebb8520377c46cdcecf23d7",
+      "size_bytes": 5394
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/organization/__init__.py",
+      "sha256": "61d254cf5969d16933b8bc8d7fdc4cdba59b09573b213efd7e722f963b7a3521",
+      "size_bytes": 656
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/people/__init__.py",
+      "sha256": "9dd1013ac4c2a39b3912db5cc30437d5cd71622e8d91bd2f6006b3345d0212b1",
+      "size_bytes": 4063
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/contracts/source_intake/__init__.py",
+      "sha256": "b90937f3a2c21ff956f88e00178df78839114bb6997eacb1b2aec36cadc8b281",
+      "size_bytes": 1114
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/data_documentation/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/data_documentation/__init__.py",
+      "sha256": "c0562f8a8fe637bf20b6d619c2e80bb766c1c5c8c309873df739caf60b63d677",
+      "size_bytes": 50
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/data_documentation/application/__init__.py",
+      "sha256": "0bf9afe9d02d29b0db302fa1ea042993c59c7b920ea7fcecd2e5e417958dccf5",
+      "size_bytes": 44
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/data_documentation/application/service.py",
+      "sha256": "4e25fdbe0a169d9f4ecc745faae5f78fa78b20032bf97976c698ea1fdbfef144",
+      "size_bytes": 4675
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/data_documentation/domain/__init__.py",
+      "sha256": "b39a679cd2faf4fb347d93dfe1427db2d41b0386422c69805b556ae5fe11e5c5",
+      "size_bytes": 43
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/data_documentation/domain/model.py",
+      "sha256": "b0e9b866c9c758e7ee8517d9967bebe5c793370409cdc5973c1ce85676b2ce90",
+      "size_bytes": 1381
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/data_documentation/infrastructure/__init__.py",
+      "sha256": "3990af9294266b41294d1b652520e2ea74e1603bc0bb26b1af6982cbf7979c4b",
+      "size_bytes": 50
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/data_documentation/infrastructure/postgres.py",
+      "sha256": "8585d1211ab804c50335612c86121faad8243d0651c755fa581fbbec95647347",
+      "size_bytes": 7432
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/__init__.py",
+      "sha256": "5805462d84cf34595102df326e0de43e7b14e2981d75ef363f8e623f4f515775",
+      "size_bytes": 410
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/application/__init__.py",
+      "sha256": "59c191386a394ee5018f104d23cbf3639cba400a4a1b4fa427c217883e2362a9",
+      "size_bytes": 161
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/application/service.py",
+      "sha256": "7456111d85f790f5cfbb217cfb862154e02a57d3a7efb69fb6b44cb1a6039d45",
+      "size_bytes": 5462
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/domain/__init__.py",
+      "sha256": "d40d084357663a08ea6eccb672a569835f35f453dc406714fe5a0f85222d2a0f",
+      "size_bytes": 38
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/domain/model.py",
+      "sha256": "cc273233fd9a5808bfc844f5fd4bb88965c1e571e8cc44ea5eeb045dcafea6f5",
+      "size_bytes": 2630
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/infrastructure/__init__.py",
+      "sha256": "6cdbead03ceef3ec292290b62fc0e19b24df59052dfae0e1a29909b79a9fdd54",
+      "size_bytes": 34
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/infrastructure/control_postgres.py",
+      "sha256": "447adca978778bb05c80f3b0d6467ba5674ffbf4f36ef56bd7b26a59c715261c",
+      "size_bytes": 61103
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/infrastructure/postgres.py",
+      "sha256": "91454c7aef5c250a543e9475f16a0a5fb3bda90eeefd9639c356e58697345818",
+      "size_bytes": 4026
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/execution/infrastructure/valkey.py",
+      "sha256": "f308bd3fabea99d1e519da55cbedd7a7d202a3b8097e7e6ee9de2f3ffdfb2ba5",
+      "size_bytes": 5822
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/__init__.py",
+      "sha256": "d4cfa4d94b898c18c2beb6108b9c448544ad4a2a675f8bf845a492f518560df9",
+      "size_bytes": 46
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/application/__init__.py",
+      "sha256": "ace248de6d05473110969da06bc9c6056804376dd35270699bb9231ef32372c6",
+      "size_bytes": 305
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/application/contributor_activity.py",
+      "sha256": "e8e91c8053eaa4b140f9032c670decaa26ea661a039bd9b8f1d185b9b5f1bd8f",
+      "size_bytes": 5635
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/application/organization.py",
+      "sha256": "3d029cf8c6be0d7829937bfe61608269553235d4b055099631e6c4a90397d847",
+      "size_bytes": 21278
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/application/service.py",
+      "sha256": "9768a17741b0f6945abe4082df1b6f7bf0056a6a912a25ab70b20fda42eb0179",
+      "size_bytes": 21015
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/domain/__init__.py",
+      "sha256": "67de3f2051b4ddd7913a8a23557d64d7ae5d2fed8c62bf6b5cdc0446d1393660",
+      "size_bytes": 65
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/domain/organization.py",
+      "sha256": "593526f897d69fcd89ea9232c1b8ffebc958ed37e3fd8913b820d126f42a6469",
+      "size_bytes": 5046
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/domain/policy.py",
+      "sha256": "e2149ed826880579f99e8bd561937cb467051dd6d0ca3ffb28cf2d60438e9f11",
+      "size_bytes": 5042
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/infrastructure/__init__.py",
+      "sha256": "a6b1a3c8c85258177d27f8714735ce1a8e652e3aed515d087650b8679adcbbad",
+      "size_bytes": 250
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/infrastructure/contributor_postgres.py",
+      "sha256": "701e0a78d3861e8eee06b16971ba13ee1245b46e5bb7ae770ac8e46aa4bd4fa6",
+      "size_bytes": 24260
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/infrastructure/organization_postgres.py",
+      "sha256": "41836b5914aa8bdb50c07c0cb7e8756a8a2e9063cd69f7a516522ac00435ea55",
+      "size_bytes": 67410
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/identity_access/infrastructure/postgres.py",
+      "sha256": "7e85969a6b4998269c21f903572b223a6588515eef1400d42f76cc21e986b442",
+      "size_bytes": 42234
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/notifications/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/notifications/__init__.py",
+      "sha256": "46aa09ec4230efed88b56dc61fdadcb4d877351fc36fbba5a3703ed394f5cdac",
+      "size_bytes": 272
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/notifications/application/__init__.py",
+      "sha256": "ffe9b102f412b704752ad0c2c4bf93b06560a857f4d65d19e2287e0c88a48cb4",
+      "size_bytes": 163
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/notifications/application/service.py",
+      "sha256": "f3d2512e1be569b97d77283d322fdc4ba5947c86a6b85637fa5e1c61855bfc47",
+      "size_bytes": 10864
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/notifications/domain/__init__.py",
+      "sha256": "3d9780f73f9a6bfb202f20421f1bf37c076f2b683511e0d5555ba210db6a7aa6",
+      "size_bytes": 34
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/notifications/domain/model.py",
+      "sha256": "dea4510fad00aed7f39148d1036920842034afbca2ee33ea18cf9994b77b52f0",
+      "size_bytes": 1910
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/notifications/infrastructure/__init__.py",
+      "sha256": "5846aff4403f37a627280bfcf9e7ed57004fee4041de1278ae2da2db81ee29f2",
+      "size_bytes": 30
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/notifications/infrastructure/postgres.py",
+      "sha256": "83f2f8b5f0fb710a7d12b873b724a9cf0cfcef2858022fbb0ed49defdd1f27a4",
+      "size_bytes": 18261
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/presentation/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/presentation/__init__.py",
+      "sha256": "3a20a48894bfa81fb16fbf0c0fa01132fea2445690a840995b0e401d41589dbe",
+      "size_bytes": 54
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/presentation/application/__init__.py",
+      "sha256": "3c05d5dcd9c9f1aa13ad03f11e8c67f01469189b551d061e40f882cdb0d7a1c8",
+      "size_bytes": 63
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/packages/presentation/application/people.py",
+      "sha256": "561a66d53479b5e3f1cbfafff72869d4751f1d6084e88efad1892bebc9eb7e29",
+      "size_bytes": 7082
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/plugins/connector_files/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/plugins/connector_files/__init__.py",
+      "sha256": "1c0401635abbf8076adb7966b590610872169fefae19bce1dd76d26ba02c051c",
+      "size_bytes": 115
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/plugins/connector_files/validator.py",
+      "sha256": "55d3591c2be22b0e6a6bb8a88fc11dfe2e63ff1bb32f52b471c9c57951008852",
+      "size_bytes": 8501
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/plugins/connector_postgresql/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/plugins/connector_postgresql/__init__.py",
+      "sha256": "9074034203be42325473b0c898bef8ceea00fa184529ef8300fb65c5a3599705",
+      "size_bytes": 156
+    },
+    {
+      "path": "app/.venv/lib/python3.12/site-packages/plugins/connector_postgresql/adapter.py",
+      "sha256": "a8101b6a7423969eca09defbcce43602a927bba5dfdc5a6a399f98db940261fa",
+      "size_bytes": 8076
+    },
+    {
+      "path": "app/migrations/alembic.ini",
+      "sha256": "6168b89b8932939fca41a579060d8d74c486996890250e6247bda690d96db18d",
+      "size_bytes": 556
+    },
+    {
+      "path": "app/migrations/env.py",
+      "sha256": "012f0c8c56546ef79eb96ab51b737ee27b0ba99355c8be64b55e9fa5291502d0",
+      "size_bytes": 1492
+    },
+    {
+      "path": "app/migrations/script.py.mako",
+      "sha256": "8f04eceacc65e51e5371acb08200412129d28d866c44cf9c8d87b91f6e5474f5",
+      "size_bytes": 580
+    },
+    {
+      "path": "app/migrations/versions/0001_foundation_metadata.py",
+      "sha256": "99df9aa5ffbddc6be15991da1aca604d9ae5b0356a75f9bae221040fb3aa4b6d",
+      "size_bytes": 879
+    },
+    {
+      "path": "app/migrations/versions/0002_identity_workspace_auth.py",
+      "sha256": "ac726ed65bb252e0983c38bcff790193daaa7b1f4dfc9a52f66c0c034f26d3be",
+      "size_bytes": 11565
+    },
+    {
+      "path": "app/migrations/versions/0003_organization_access.py",
+      "sha256": "b9b643ac623d45b6ab211ab12d0ccd8cef70441f4b0a8cd3933539edec5bccba",
+      "size_bytes": 18846
+    },
+    {
+      "path": "app/migrations/versions/0004_source_intake.py",
+      "sha256": "f16cbaa70981ec1830912be299dd43f795855d5edccfec41659d9cc472744425",
+      "size_bytes": 8087
+    },
+    {
+      "path": "app/migrations/versions/0005_data_pipeline.py",
+      "sha256": "e97fe76cf5f2e25b2504387bb390a3d84014ad36eba244c05b323d52f2bb8396",
+      "size_bytes": 11663
+    },
+    {
+      "path": "app/migrations/versions/0006_analytics_projection.py",
+      "sha256": "9544d385c302b80779a5fd465a96d15c33c65fb0d3b5d37574b21bccf08c9706",
+      "size_bytes": 4108
+    },
+    {
+      "path": "app/migrations/versions/0007_contributor_projection.py",
+      "sha256": "dcc54cbe9aa27cd257194cdceb5df8be2cbcc76735bef9368fa29bf26c368150",
+      "size_bytes": 7273
+    },
+    {
+      "path": "app/migrations/versions/0008_execution_control.py",
+      "sha256": "36e9db063f0c25faa52654345302c8491e4744ca8f3e7f9aedea80036b86dfe7",
+      "size_bytes": 10721
+    },
+    {
+      "path": "app/migrations/versions/0009_notifications.py",
+      "sha256": "d60b7fd242530641d3a2c4aad7ba6bf3457b631f905bd70b15b2ef6df9eda0d9",
+      "size_bytes": 8865
+    },
+    {
+      "path": "app/notices/Custometry-LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size_bytes": 11357
+    }
+  ],
+  "migration_chain": [
+    {
+      "down_revision": null,
+      "file": {
+        "path": "app/migrations/versions/0001_foundation_metadata.py",
+        "role": "migration",
+        "sha256": "99df9aa5ffbddc6be15991da1aca604d9ae5b0356a75f9bae221040fb3aa4b6d",
+        "size_bytes": 879
+      },
+      "revision": "0001_foundation"
+    },
+    {
+      "down_revision": "0001_foundation",
+      "file": {
+        "path": "app/migrations/versions/0002_identity_workspace_auth.py",
+        "role": "migration",
+        "sha256": "ac726ed65bb252e0983c38bcff790193daaa7b1f4dfc9a52f66c0c034f26d3be",
+        "size_bytes": 11565
+      },
+      "revision": "0002_identity_auth"
+    },
+    {
+      "down_revision": "0002_identity_auth",
+      "file": {
+        "path": "app/migrations/versions/0003_organization_access.py",
+        "role": "migration",
+        "sha256": "b9b643ac623d45b6ab211ab12d0ccd8cef70441f4b0a8cd3933539edec5bccba",
+        "size_bytes": 18846
+      },
+      "revision": "0003_organization_access"
+    },
+    {
+      "down_revision": "0003_organization_access",
+      "file": {
+        "path": "app/migrations/versions/0004_source_intake.py",
+        "role": "migration",
+        "sha256": "f16cbaa70981ec1830912be299dd43f795855d5edccfec41659d9cc472744425",
+        "size_bytes": 8087
+      },
+      "revision": "0004_source_intake"
+    },
+    {
+      "down_revision": "0004_source_intake",
+      "file": {
+        "path": "app/migrations/versions/0005_data_pipeline.py",
+        "role": "migration",
+        "sha256": "e97fe76cf5f2e25b2504387bb390a3d84014ad36eba244c05b323d52f2bb8396",
+        "size_bytes": 11663
+      },
+      "revision": "0005_data_pipeline"
+    },
+    {
+      "down_revision": "0005_data_pipeline",
+      "file": {
+        "path": "app/migrations/versions/0006_analytics_projection.py",
+        "role": "migration",
+        "sha256": "9544d385c302b80779a5fd465a96d15c33c65fb0d3b5d37574b21bccf08c9706",
+        "size_bytes": 4108
+      },
+      "revision": "0006_analytics_projection"
+    },
+    {
+      "down_revision": "0006_analytics_projection",
+      "file": {
+        "path": "app/migrations/versions/0007_contributor_projection.py",
+        "role": "migration",
+        "sha256": "dcc54cbe9aa27cd257194cdceb5df8be2cbcc76735bef9368fa29bf26c368150",
+        "size_bytes": 7273
+      },
+      "revision": "0007_contributor_projection"
+    },
+    {
+      "down_revision": "0007_contributor_projection",
+      "file": {
+        "path": "app/migrations/versions/0008_execution_control.py",
+        "role": "migration",
+        "sha256": "36e9db063f0c25faa52654345302c8491e4744ca8f3e7f9aedea80036b86dfe7",
+        "size_bytes": 10721
+      },
+      "revision": "0008_execution_control"
+    },
+    {
+      "down_revision": "0008_execution_control",
+      "file": {
+        "path": "app/migrations/versions/0009_notifications.py",
+        "role": "migration",
+        "sha256": "d60b7fd242530641d3a2c4aad7ba6bf3457b631f905bd70b15b2ef6df9eda0d9",
+        "size_bytes": 8865
+      },
+      "revision": "0009_notifications"
+    }
+  ],
+  "migration_support": [
+    {
+      "path": "app/migrations/alembic.ini",
+      "role": "migration",
+      "sha256": "6168b89b8932939fca41a579060d8d74c486996890250e6247bda690d96db18d",
+      "size_bytes": 556
+    },
+    {
+      "path": "app/migrations/env.py",
+      "role": "migration",
+      "sha256": "012f0c8c56546ef79eb96ab51b737ee27b0ba99355c8be64b55e9fa5291502d0",
+      "size_bytes": 1492
+    },
+    {
+      "path": "app/migrations/script.py.mako",
+      "role": "migration",
+      "sha256": "8f04eceacc65e51e5371acb08200412129d28d866c44cf9c8d87b91f6e5474f5",
+      "size_bytes": 580
+    }
+  ],
+  "web": [
+    {
+      "path": "etc/nginx/edge.conf",
+      "sha256": "deff94a703de48a9be75712e521f01a2a008d9aab5be228511cf80fc77bccbde",
+      "size_bytes": 1089
+    },
+    {
+      "path": "etc/nginx/nginx.conf",
+      "sha256": "5307ac80fb76f3e444a994f61ec23d1aac8c1d5c54f728b3beb09a470eb32f43",
+      "size_bytes": 1872
+    },
+    {
+      "path": "usr/share/nginx/html/help-index.json",
+      "sha256": "288affadbbdae8d4d18d95f539ae54ff4897ed38b142f81f2d9990171ba38d01",
+      "size_bytes": 1459
+    },
+    {
+      "path": "usr/share/nginx/html/notices/Custometry-LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size_bytes": 11357
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/bookmark.svg",
+      "sha256": "77fca79f83c43089181368fa50ce2a043e9381ffa0af017ccbef9ccee070caf7",
+      "size_bytes": 511
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/context-actions.svg",
+      "sha256": "d44bf91a87a269939d9fedc148bd7a27d720527e03a2b699cd29732bdab2018e",
+      "size_bytes": 793
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/download.svg",
+      "sha256": "39095eaadc38ec1c4cdf25df7741f5ae4b1908aa2ebce39fc15eeaa2a3a07f1c",
+      "size_bytes": 587
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/expand.svg",
+      "sha256": "2088f71233cf0485ba28738a2245cf2530d3a384b72ddbfc8a9618d1b6b905bd",
+      "size_bytes": 388
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/filter.svg",
+      "sha256": "9438f9699a8babe4ae2257e9c76c4c7209043f34d0b7f0642846859beb65651f",
+      "size_bytes": 360
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/link.svg",
+      "sha256": "f3c9f0ab0215e19a4f7748e781747e20942e8ee2efe32a74c2334cece5ef48e3",
+      "size_bytes": 694
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/mail.svg",
+      "sha256": "75890716facc902891187dc307af7e8b1206f469e6012d2152edacf443b6f680",
+      "size_bytes": 545
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/revenue-ly.svg",
+      "sha256": "d9e8f9d2a412d72368a652cf8c596be58b1cdb7a7ee1e0c8919556bd537ab856",
+      "size_bytes": 391
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/revenue.svg",
+      "sha256": "75d23bd4d371599f6c3105c28a068f428e99feaed99ce2869ccb41bd065dee4b",
+      "size_bytes": 348
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/trust-status.svg",
+      "sha256": "766f43e926341669f3cc0ee331ec55bee6f43b4acb9725e82b2ff488fcabe223",
+      "size_bytes": 226
+    },
+    {
+      "path": "usr/share/nginx/html/ui-an-003-prototype/unread-indicator.svg",
+      "sha256": "e140c6fbb946d4d820bfb67363d7bfe4410eb81eaa2ddd440933f8d637881a0b",
+      "size_bytes": 242
+    }
+  ],
+  "web_generated_required": [
+    "usr/share/nginx/html/index.html",
+    "usr/share/nginx/html/docs/index.html",
+    "usr/share/nginx/html/docs/search/search_index.json",
+    "etc/nginx/docs-csp.conf",
+    "usr/share/nginx/html/notices/THIRD-PARTY.txt",
+    "usr/share/nginx/html/docs/notices/python-packages.txt"
+  ]
+}

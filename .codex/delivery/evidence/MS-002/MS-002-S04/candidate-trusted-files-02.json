@@ -1,0 +1,100 @@
+{
+  "schema_version": "custometry-protected-files/v1",
+  "files": [
+    {
+      "path": "bundle/delivery-manifest.json",
+      "sha256": "57d182c056b949e470e67100fd422d9a16e993842ca5c8feba81ad82365facce",
+      "size_bytes": 120756
+    },
+    {
+      "path": "delivery.zip",
+      "sha256": "a383c5a1dad82d9d227b60b506b9f71437ea129e2c153551e28f952a4cd91088",
+      "size_bytes": 2416984
+    },
+    {
+      "path": "images/api-amd64.tar",
+      "sha256": "42e12e67baa420ea25f535095768c2ff00a9e930bbd7c110a25e5a30e077fc8d",
+      "size_bytes": 107573760
+    },
+    {
+      "path": "images/api-arm64.tar",
+      "sha256": "90956095006f5e151e3b114162458aded458b80916d232fad6b99ce7a6c44795",
+      "size_bytes": 105874432
+    },
+    {
+      "path": "images/postgres-amd64.tar",
+      "sha256": "b5e1873471ea181bd6fd5b95aaeeb3930cdf20d880b17bf2a23eb26c7961f4cc",
+      "size_bytes": 110799872
+    },
+    {
+      "path": "images/postgres-arm64.tar",
+      "sha256": "c862a6b3692f5a28fec01c671deb1b6a8b93655fd16a93f019a33aba3066b443",
+      "size_bytes": 107318272
+    },
+    {
+      "path": "images/web-amd64.tar",
+      "sha256": "b372fcbe1a45940b0d9f64c7fc3477551188dca29be9f09c3b37634a097c75af",
+      "size_bytes": 21925376
+    },
+    {
+      "path": "images/web-arm64.tar",
+      "sha256": "28088319718ea7896f44add5e838dc373f8ea3543af4864f10412f2755b9b117",
+      "size_bytes": 22769152
+    },
+    {
+      "path": "toolkit/deploy/compose/compose.candidate.json",
+      "sha256": "813700bd0b0f5db78ccf1e572164a35401771c373fc3fcae19bec176c35bf8ff",
+      "size_bytes": 7922
+    },
+    {
+      "path": "toolkit/deploy/compose/delivery-image-inventory.json",
+      "sha256": "42e6ff4c6f12e6fc72dabee66bec260d646a3c7086d5f1b5ba510ecd08ba3b86",
+      "size_bytes": 30871
+    },
+    {
+      "path": "toolkit/deploy/compose/delivery-internal-profile.json",
+      "sha256": "9309780958017f4ce72c6874967737e522249e4f2fb5c22e8f9de58e1e8bf05a",
+      "size_bytes": 2755
+    },
+    {
+      "path": "toolkit/deploy/compose/delivery-manifest.schema.json",
+      "sha256": "d8df69f26fa90aea6628f03cbb235cfea7a085ed47c27ca4c12ab879a0f32b61",
+      "size_bytes": 26204
+    },
+    {
+      "path": "toolkit/deploy/compose/delivery-verification-policy.json",
+      "sha256": "6f4dfa9f100eb7cf6c994a63bdd5b56c30f689338324a2305966596356d41f0a",
+      "size_bytes": 4913
+    },
+    {
+      "path": "toolkit/deploy/compose/install.sh",
+      "sha256": "60c9cba0e0def88bb834d1c0ff755eafd85aaecc86bfcc9e62e5d92922b5242c",
+      "size_bytes": 374
+    },
+    {
+      "path": "toolkit/deploy/compose/validate-delivery-manifest.py",
+      "sha256": "3e0e8a91dee3f706026ec1a5ef68dfed37189d1d2d20c98402b036a51d2bb2b2",
+      "size_bytes": 7024
+    },
+    {
+      "path": "toolkit/deploy/compose/validate-release-manifest.py",
+      "sha256": "1c3390b0debada8b6c548250100c1c671bf95de4659a646551c77bd02282ac7c",
+      "size_bytes": 4641
+    },
+    {
+      "path": "toolkit/tools/custometry_quality/delivery_bundle.py",
+      "sha256": "806d800e678add8f1d6f492d14133be349028ea767d4cda387655a6ea4e7e7fc",
+      "size_bytes": 29827
+    },
+    {
+      "path": "toolkit/tools/custometry_quality/delivery_consumer.py",
+      "sha256": "c0ac965d905cf1603d394530a03ddceaa3b30f8e46f397e5bbf195411925cf82",
+      "size_bytes": 16936
+    },
+    {
+      "path": "toolkit/tools/custometry_quality/installation.py",
+      "sha256": "7812820ec786431c56537ed5abd962137291f10f82c5b55a2d73513420124088",
+      "size_bytes": 48120
+    }
+  ]
+}

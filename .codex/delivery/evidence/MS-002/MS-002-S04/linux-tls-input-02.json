@@ -1,0 +1,13 @@
+{
+  "recorded_at": "2026-09-10T21:07:20.080873+00:00",
+  "source": "Owner guest directory listing screenshot",
+  "observed_files": {
+    "chain.pem": 1472,
+    "key.pem": 1704,
+    "rootca.pem": 1651
+  },
+  "cause": "Confirmed filename case mismatch: proof harness requests tls/rootCA.pem, guest copied file is tls/rootca.pem. Linux paths are case-sensitive; tls_validate returns TLS_INPUT before persisting installation state.",
+  "repair": "Rename the copied guest public CA to rootCA.pem, then rerun prove.py directly. Do not rerun setup.sh or replace product bytes.",
+  "verification": "Guest rerun requested; not yet observed.",
+  "boundary": "Test supply filename preparation; browser trust deferral remains unchanged."
+}

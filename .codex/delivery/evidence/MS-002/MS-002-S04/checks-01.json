@@ -1,0 +1,71 @@
+{
+  "stage": "MS-002-S04",
+  "checked_at": "2026-09-10T19:56:02.102227+00:00",
+  "results": [
+    {
+      "command": "uv run --locked pytest -q tests/tooling/test_delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py",
+      "result": "passed",
+      "tests": 93
+    },
+    {
+      "command": "uv run --locked ruff check tools/custometry_quality/delivery_bundle.py tests/tooling/test_delivery_bundle_producer.py",
+      "result": "passed"
+    },
+    {
+      "command": "uv run --locked pyright tools/custometry_quality/delivery_bundle.py",
+      "result": "passed",
+      "errors": 0
+    },
+    {
+      "command": "uv run --locked pytest -q tests/tooling/test_installation.py",
+      "result": "passed",
+      "tests": 21
+    },
+    {
+      "command": "uv run --locked ruff check tools/custometry_quality/installation.py tests/e2e/ms-002-installation/packaged_fault.py",
+      "result": "passed"
+    },
+    {
+      "command": "uv run --locked pyright tools/custometry_quality/installation.py",
+      "result": "passed",
+      "errors": 0
+    },
+    {
+      "command": "pnpm --filter @custometry/web exec playwright test --config ../../tests/e2e/ms-002-installation/packaged.config.ts",
+      "result": "passed",
+      "tests": 4,
+      "duration_seconds": 132,
+      "origin": "https://127.0.0.1:59308",
+      "tls_errors_ignored": false,
+      "additional_ca": "selected public MS002 test CA",
+      "boundary": "real packaged Chromium entry and API/PostgreSQL/storage failures, RU/EN, keyboard, CSS layout zoom, public help; four ADR viewports"
+    }
+  ],
+  "earlier_failures": [
+    {
+      "code": "DELIVERY_LIMIT",
+      "cause": "preparation omitted required evidence record array",
+      "disposition": "corrected metadata; no passing claim for that attempt"
+    },
+    {
+      "code": "PLATFORM_NOTICE_DIFFERENCE",
+      "cause": "THIRD-PARTY.txt differs across architectures",
+      "disposition": "internal reader now supports per-platform embedded file records; exact notices retained"
+    },
+    {
+      "code": "CSP_BLOCKED_STYLE",
+      "candidate": "s04.1",
+      "cause": "installed style-src self blocked styled-components and blanked the page",
+      "disposition": "s04.2 toolkit generates per-response script/style nonce; browser proof passed"
+    },
+    {
+      "code": "DOCKER_ADDRESS_POOLS_EXHAUSTED",
+      "disposition": "only failed S04 containers/networks removed without volumes; resume completed"
+    },
+    {
+      "code": "HARNESS_GATEWAY_EXPECTATION",
+      "cause": "real upstream timeout returned 504 instead of test-specific 502",
+      "disposition": "allows either gateway failure while requiring truthful UI failure and recovery"
+    }
+  ]
+}

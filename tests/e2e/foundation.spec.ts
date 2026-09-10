@@ -78,12 +78,12 @@ test("Foundation shell, API, language round-trip and local docs CSP/search", asy
   const languageButton = page.getByRole("button", { name: "Switch language" });
   await expect(languageButton).toHaveText("RU");
   await languageButton.click();
-  await expect(page.getByText("Локальная работа")).toBeVisible();
+  await expect(page.getByText(/Готовность API: готов/i)).toBeVisible();
   await expect(page.getByRole("link", { name: "Аналитика" })).toBeVisible();
   const russianLanguageButton = page.getByRole("button", { name: "Переключить язык" });
   await expect(russianLanguageButton).toHaveText("EN");
   await russianLanguageButton.click();
-  await expect(page.getByText("Local first")).toBeVisible();
+  await expect(page.getByText(/API readiness: ready/i)).toBeVisible();
 
   const readiness = await request.get("/api/health/ready");
   expect(readiness.ok()).toBeTruthy();

@@ -1,0 +1,33 @@
+{
+  "at": "2026-09-10T21:56:24.497126Z",
+  "profile": "prompt-pack/v1",
+  "commands": [
+    {
+      "command": "stage_ledger preflight --stage MS-002-S05 (before advance)",
+      "result": "fail: entry not allowed; resolved by authorized advance"
+    },
+    {
+      "command": "stage_ledger advance / preflight / claim --stage MS-002-S05",
+      "result": "pass; actual session ownership"
+    },
+    {
+      "command": "generate_docs_index",
+      "result": "pass; deterministic index unchanged"
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "result": "pass; final source includes corrected parent revision table"
+    },
+    {
+      "command": "git diff --check",
+      "result": "pass"
+    },
+    {
+      "command": "SHA256 predecessor receipts and directly bound evidence",
+      "result": "pass; 142 references; no mismatches"
+    }
+  ],
+  "proof_boundary": "Documentation, source and receipt binding; does not replace runtime or actual owner acceptance",
+  "runtime": "See runtime-review-01.json: LAN resume and trusted Chromium smoke passed; loopback network-pool failure retained",
+  "foreign_changes": "Clean checkout on entry; only declared S05 docs/evidence and updater journal changed; no MS-001 or predecessor evidence changes"
+}

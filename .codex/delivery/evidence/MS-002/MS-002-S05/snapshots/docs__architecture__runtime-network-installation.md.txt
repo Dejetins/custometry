@@ -23,9 +23,6 @@ consolidates delivery `0.1.0-internal.20260910.ms002.s04.2` with application
 owns final acceptance; the S04 owner decision accepts Mac proof and partial Linux
 with explicit limitations, without asserting successful Linux/Safari campaigns.
 The S05 report links the functioning review entry and the pilot comparison.
-The owner [accepted both behavior and appearance](../../.codex/delivery/evidence/MS-002/MS-002-S05/owner-acceptance-02.json)
-with the disclosed limits. Final receipt and completed state are recorded in the
-single journal; C04 remains separately selected.
 
 The S02 command/transport section below describes the current installed lifecycle;
 S01 is historical increment behavior. Use the exact retained toolkit and saved

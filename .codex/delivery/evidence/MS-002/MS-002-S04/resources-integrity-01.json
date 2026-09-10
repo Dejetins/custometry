@@ -1,0 +1,11 @@
+{
+  "at": "2026-09-10T20:00:11.725403+00:00",
+  "old_ms001_trusted_files_checked": 16,
+  "old_ms001_files_unchanged": true,
+  "stage_owned_regular_file_bytes": 3382706936,
+  "all_six_image_unpacked_bytes_conservatively_added": 1355364864,
+  "accounted_bytes_excluding_docker_volume_data": 4738071800,
+  "owned_data_ceiling_bytes": 26843545600,
+  "note": "Conservative logical file/layer accounting, including retained failed candidates and private transfer ISO; not a peak-use or filesystem quota claim. Container volume use recorded separately.",
+  "passed": true
+}

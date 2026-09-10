@@ -1,0 +1,7 @@
+{
+  "recorded_at": "2026-09-10T20:06:19.037214+00:00",
+  "command": "source scripts/activate-toolchain.sh && uv run --locked python -m tools.check --scope local",
+  "exit_code": 0,
+  "result": "PASS check:local (observed=true)",
+  "boundary": "Repository local handoff checks after owner deferral report update; does not prove pending Linux runtime or deferred Safari trust."
+}

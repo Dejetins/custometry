@@ -1,0 +1,94 @@
+[
+  {
+    "role": "api",
+    "architecture": "arm64",
+    "tag": "custometry-ms002-s04-api:arm64-01",
+    "command": [
+      "docker",
+      "buildx",
+      "build",
+      "--platform",
+      "linux/arm64",
+      "--load",
+      "--provenance=false",
+      "--build-arg",
+      "CUSTOMETRY_VERSION=0.1.0-internal.20260910.ms002.s04.1",
+      "-t",
+      "custometry-ms002-s04-api:arm64-01",
+      "-f",
+      "apps/api/Dockerfile",
+      "."
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 7.897
+  },
+  {
+    "role": "web",
+    "architecture": "arm64",
+    "tag": "custometry-ms002-s04-web:arm64-01",
+    "command": [
+      "docker",
+      "buildx",
+      "build",
+      "--platform",
+      "linux/arm64",
+      "--load",
+      "--provenance=false",
+      "--build-arg",
+      "CUSTOMETRY_VERSION=0.1.0-internal.20260910.ms002.s04.1",
+      "-t",
+      "custometry-ms002-s04-web:arm64-01",
+      "-f",
+      "apps/web/Dockerfile",
+      "."
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 6.228
+  },
+  {
+    "role": "api",
+    "architecture": "amd64",
+    "tag": "custometry-ms002-s04-api:amd64-01",
+    "command": [
+      "docker",
+      "buildx",
+      "build",
+      "--platform",
+      "linux/amd64",
+      "--load",
+      "--provenance=false",
+      "--build-arg",
+      "CUSTOMETRY_VERSION=0.1.0-internal.20260910.ms002.s04.1",
+      "-t",
+      "custometry-ms002-s04-api:amd64-01",
+      "-f",
+      "apps/api/Dockerfile",
+      "."
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 7.775
+  },
+  {
+    "role": "web",
+    "architecture": "amd64",
+    "tag": "custometry-ms002-s04-web:amd64-01",
+    "command": [
+      "docker",
+      "buildx",
+      "build",
+      "--platform",
+      "linux/amd64",
+      "--load",
+      "--provenance=false",
+      "--build-arg",
+      "CUSTOMETRY_VERSION=0.1.0-internal.20260910.ms002.s04.1",
+      "-t",
+      "custometry-ms002-s04-web:amd64-01",
+      "-f",
+      "apps/web/Dockerfile",
+      "."
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 11.319
+  }
+]

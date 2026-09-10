@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-09-10T20:05:46.073455+00:00",
+  "stage": "MS-002-S04",
+  "authority": "Current owner explicitly directs that second-MacBook CA trust configuration and trusted Safari proof must not block S04 completion; defer and record for separate follow-up.",
+  "affected_criteria": [
+    "MS-002/AC-05/07"
+  ],
+  "observed": "Owner reports installation page opened on second MacBook in Brave after correcting the address; browser reports not secure. Always Trust setup did not succeed. OS/browser versions and client IPv4 were not supplied.",
+  "disposition": "Owner-authorized deferral of second-MacBook trusted HTTPS/Safari acceptance for S04. Not a passing TLS or Safari result. No software trust bypass or reduced TLS policy introduced.",
+  "remaining_scope": "Actual sequential Ubuntu ARM64 installation and agent-accessible trusted packaged checks remain required. S05 and publication remain unauthorized.",
+  "runtime_transition": "Mac LAN installation stopped through its owned installer. Docker Desktop stop requested under prior explicit authority; Docker API socket is unavailable. UTM shows guest-s04.iso attached to selected Ubuntu VM.",
+  "next_input": "Owner executes prepared mount/setup commands in Ubuntu; enter sudo credentials only in guest. Obtain real Linux proof report.",
+  "follow_up": "Resolve CA trust on second MacBook, capture actual macOS/Safari/client IPv4, then verify both selected LAN origins without certificate bypass. Deferred proof remains explicitly unverified."
+}

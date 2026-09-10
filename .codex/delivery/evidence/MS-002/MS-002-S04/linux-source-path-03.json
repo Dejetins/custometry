@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-09-10T21:10:37.598292+00:00",
+  "observed": "Owner renamed public CA and reran harness; installer returned SOURCE_PATH, ready=false. One-shot guest report fetched successfully and contains targets=[].",
+  "localization": "checked_copy rejects a trusted source entry that is missing, a symlink, or resolves outside supply. Exact failed path not exposed by CLI.",
+  "cause": "undetermined; requested names-only guest inventory comparison. Prepared ISO filename transformation is a hypothesis, not confirmed for this error.",
+  "recovery_constraint": "Inspect persisted installation before retry; harness fresh-root assertion is not a resume mechanism. Do not delete root or rerun setup.",
+  "remote_access": "SSH endpoint reachable; noninteractive existing authentication denied. No credential requested or exposed."
+}

@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-09-10T21:21:40.310815Z",
+  "command": "source scripts/activate-toolchain.sh && uv run --locked python -m tools.check --scope local",
+  "result": "pass",
+  "exit_code": 0,
+  "output": "PASS check:local (observed=true)",
+  "acceptance_boundary": "Owner-amended S04 acceptance with limitations; no failed Linux or unverified Safari test promoted to pass."
+}

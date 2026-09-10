@@ -1,0 +1,111 @@
+{
+  "stage": "MS-002-S03",
+  "recorded_at": "2026-09-09T23:53:19.747596+00:00",
+  "profile": "prompt-pack/v1",
+  "setup": "source scripts/activate-toolchain.sh; commands run from repository root; pnpm filter selects Web cwd for browser config",
+  "checks": [
+    {
+      "command": "pnpm --filter @custometry/web typecheck",
+      "result": "pass: TypeScript",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm --filter @custometry/web exec vitest run src/features/installation/status.test.ts",
+      "result": "pass: 2 tests; invalid DTO and fake-transport timeout boundary",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm --filter @custometry/ui-foundation test",
+      "result": "pass: 2 tests",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm --filter @custometry/localization test",
+      "result": "pass: 2 tests",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm --filter @custometry/ui-foundation typecheck",
+      "result": "pass: TypeScript",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm --filter @custometry/localization typecheck",
+      "result": "pass: TypeScript",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm --filter @custometry/web build",
+      "result": "pass: Vite build; non-fatal 603.15 kB chunk warning",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm --filter @custometry/web exec playwright test --config ../../tests/e2e/ms-002-installation/playwright.config.ts",
+      "result": "pass: 4 projects; 768x1024, 1024x768, 1440x900, 1920x1080; real API/PostgreSQL faults and recovery, locale/focus/zoom/pseudo/help",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked ruff check tests/e2e/ms-002-installation/real_api_fixture.py",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked pyright tests/e2e/ms-002-installation/real_api_fixture.py",
+      "result": "pass: 0 errors, 0 warnings",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.generate_docs_index",
+      "result": "pass: contributor index regenerated",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "result": "pass: local grouped gate including route/i18n/contracts/docs/ledger checks",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "result": "pass",
+      "exit_code": 0
+    }
+  ],
+  "previous_failures": [
+    {
+      "check": "extended browser suite",
+      "result": "failed: DB restart changed ephemeral published port; confirmed in separate disposable reproduction; fixture reconciles actual port"
+    },
+    {
+      "check": "focused Python typing",
+      "result": "failed: missing upstream stub and nested route usage; bounded annotation and explicit route registration repaired"
+    },
+    {
+      "check": "local gate",
+      "result": "failed: introduced documentation anchor mismatch; link corrected"
+    }
+  ],
+  "proof_boundary": "host Chromium + real FastAPI/PostgreSQL/artifact-root; CSS layout zoom; no mocked integration responses",
+  "limitations": [
+    "No packaged HTTPS/target-matrix/Safari LAN proof",
+    "No actual screen-reader speech observation or full WCAG certification",
+    "Final owner visual acceptance remains S05",
+    "Timeout is unit-tested with fake transport; browser unavailable journey uses stopped real API"
+  ],
+  "browser_observations": {
+    "unexpected_page_errors": 0,
+    "unexpected_console_errors_before_help": 0,
+    "observed_status_codes": [
+      200,
+      503,
+      500
+    ],
+    "expected_faults": [
+      "database stopped",
+      "unsupported schema",
+      "artifact directory unavailable",
+      "API stopped"
+    ],
+    "background_fault_detection": "storage failure without manual retry",
+    "cleanup": "owned Playwright webServer lifecycle completed"
+  }
+}

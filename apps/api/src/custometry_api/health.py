@@ -10,7 +10,7 @@ import psycopg
 from custometry_api.config import Settings
 from custometry_api.installation import InstallationComponents, InstallationStatus
 
-SUPPORTED_HEAD = "0009_notifications"
+SUPPORTED_HEAD = "0010_sales_report"
 
 
 class ReadinessProbe(Protocol):

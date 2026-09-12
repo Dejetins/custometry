@@ -2,6 +2,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from decimal import Decimal
 from pathlib import Path
+from typing import Any, TypedDict, cast
 from uuid import UUID, uuid4
 
 import pytest
@@ -15,12 +16,19 @@ from packages.artifacts.infrastructure.sales import SalesArtifactStore
 from packages.contracts.analytics import AnalyticsFailure
 from packages.contracts.analytics.sales_report import SalesReportRequest
 from packages.semantic_model.infrastructure.postgres import PostgresSalesSemanticRepository
+from tests.integration.data_pipeline.conftest import DataPipelineRuntime
 from tests.integration.data_pipeline.test_retail_report import request_for
 
 
+class Actor(TypedDict):
+    workspace_id: UUID
+    principal_id: UUID
+    permissions: frozenset[str]
+
+
 def test_real_report_oracle_concurrency_and_artifact_failures(
-    data_pipeline_runtime, tmp_path: Path
-):
+    data_pipeline_runtime: DataPipelineRuntime, tmp_path: Path
+) -> None:
     runtime = data_pipeline_runtime
     runner = DataPipelineRunner(
         connector=runtime.connector,
@@ -29,6 +37,7 @@ def test_real_report_oracle_concurrency_and_artifact_failures(
     )
     intake = request_for(runtime)
     prepared = runner.run(intake)
+    assert prepared.semantic_dataset_version_id is not None
     repository = PostgresAnalyticsRepository(runtime.connect)
     artifacts = SalesArtifactStore(runtime.connect, tmp_path)
     service = AnalyticsService(
@@ -40,19 +49,21 @@ def test_real_report_oracle_concurrency_and_artifact_failures(
         sales_results=repository,
         sales_artifacts=artifacts,
     )
-    actor = dict(
-        workspace_id=runtime.workspace_id,
-        principal_id=runtime.actor_id,
-        permissions=frozenset({"analysis.read", "analysis.run"}),
-    )
+    actor: Actor = {
+        "workspace_id": runtime.workspace_id,
+        "principal_id": runtime.actor_id,
+        "permissions": frozenset({"analysis.read", "analysis.run"}),
+    }
     request = SalesReportRequest(
         prepared.semantic_dataset_version_id, comparison="previous_year_same_dates"
     )
+
+    def run_once(_: int) -> dict[str, Any]:
+        return service.run_sales_report(**actor, request=request)
+
     # All contenders use the same production services, DB uniqueness and immutable files.
     with ThreadPoolExecutor(max_workers=4) as pool:
-        results = list(
-            pool.map(lambda _: service.run_sales_report(**actor, request=request), range(4))
-        )
+        results = list(pool.map(run_once, range(4)))
     assert all(r == results[0] for r in results)
     result = results[0]
     assert len(result["daily"]) == 334
@@ -61,7 +72,7 @@ def test_real_report_oracle_concurrency_and_artifact_failures(
     # Independent readonly source SQL: receipt headers only, no production helper.
     import psycopg
 
-    target = runtime.connector._target
+    target = cast(Any, runtime.connector)._target
     with psycopg.connect(
         host=target.host,
         port=target.port,
@@ -87,6 +98,7 @@ def test_real_report_oracle_concurrency_and_artifact_failures(
                AND (%s::text IS NULL OR store_id::text=%s)""",
                 (start, end, store, store),
             ).fetchone()
+            assert row is not None
             assert Decimal(calculated["totals"]["net_revenue"]) == row[0]
             assert Decimal(calculated["totals"]["receipt_count"]) == row[1]
             assert Decimal(calculated["totals"]["average_receipt"]) == row[0] / row[1]
@@ -106,40 +118,63 @@ def test_real_report_oracle_concurrency_and_artifact_failures(
     assert service.get_sales_report(**actor, result_id=UUID(result["result_id"])) == result
     with pytest.raises(AnalyticsFailure, match="FORBIDDEN"):
         service.get_sales_report(
-            **{**actor, "permissions": frozenset({"analysis.read"})},
+            workspace_id=actor["workspace_id"],
+            principal_id=actor["principal_id"],
+            permissions=frozenset({"analysis.read"}),
             result_id=UUID(result["result_id"]),
         )
     with pytest.raises(AnalyticsFailure, match="NOT_FOUND"):
         service.get_sales_report(
-            **{**actor, "principal_id": uuid4()}, result_id=UUID(result["result_id"])
+            workspace_id=actor["workspace_id"],
+            principal_id=uuid4(),
+            permissions=actor["permissions"],
+            result_id=UUID(result["result_id"]),
         )
     changed_policy = service.run_sales_report(
-        **{**actor, "permissions": actor["permissions"] | {"extra.permission"}}, request=request
+        workspace_id=actor["workspace_id"],
+        principal_id=actor["principal_id"],
+        permissions=actor["permissions"] | {"extra.permission"},
+        request=request,
     )
     assert changed_policy["result_id"] != result["result_id"]
     # Controlled next-input snapshot over real source rows; the source DB is never mutated.
     from plugins.connector_postgresql.adapter import PostgreSQLConnector
 
     class NextSnapshot(PostgreSQLConnector):
-        def extract(self, **kwargs):
-            rows = super().extract(**kwargs)
-            if kwargs["object_name"] == "receipts":
+        def extract(
+            self,
+            *,
+            session: Any,
+            schema_name: str,
+            object_name: str,
+            columns: tuple[str, ...],
+            limit: int,
+        ) -> tuple[dict[str, object], ...]:
+            rows = super().extract(
+                session=session,
+                schema_name=schema_name,
+                object_name=object_name,
+                columns=columns,
+                limit=limit,
+            )
+            if object_name == "receipts":
                 return tuple(
                     {
                         **r,
-                        "net_amount": r["net_amount"] + Decimal(1),
-                        "gross_amount": r["gross_amount"] + Decimal(1),
+                        "net_amount": Decimal(str(r["net_amount"])) + Decimal(1),
+                        "gross_amount": Decimal(str(r["gross_amount"])) + Decimal(1),
                     }
                     for r in rows
                 )
             return rows
 
     next_runner = DataPipelineRunner(
-        connector=NextSnapshot(runtime.connector._target),
+        connector=NextSnapshot(cast(Any, runtime.connector)._target),
         connect=runtime.connect,
         artifact_store=LocalArtifactStore(tmp_path),
     )
     newer = next_runner.run(request_for(runtime))
+    assert newer.semantic_dataset_version_id is not None
     assert newer.semantic_dataset_version_id != prepared.semantic_dataset_version_id
     updated = service.run_sales_report(
         **actor,
@@ -170,7 +205,12 @@ def test_real_report_oracle_concurrency_and_artifact_failures(
     finally:
         path.write_bytes(saved)
     with pytest.raises(AnalyticsFailure, match="SEMANTIC_DATASET_NOT_FOUND"):
-        service.run_sales_report(**{**actor, "workspace_id": uuid4()}, request=request)
+        service.run_sales_report(
+            workspace_id=uuid4(),
+            principal_id=actor["principal_id"],
+            permissions=actor["permissions"],
+            request=request,
+        )
     output = tmp_path / result["manifest"]["relative_uri"]
     output.unlink()
     with pytest.raises(AnalyticsFailure, match="ARTIFACT_UNAVAILABLE"):

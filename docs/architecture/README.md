@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 30
+doc_version: 34
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -31,10 +31,12 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 
 | Document | Purpose |
 |---|---|
-| [Development direction map — MAP-001](./planning/project-map.md) | Accepted scope 1.2.0, navigation 1.2.1: six L1 directions, full sequential priorities and current MS-002 planning entry |
-| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.8: M5/Linux installation, TLS, explicit bootstrap roles and five sequential outcomes |
+| [Development direction map — MAP-001](./planning/project-map.md) | Sequence draft 2.0.2: product-first checkpoints, explicit segment lifecycle, retained L1 scopes and selected WS-002/MS-003 review package |
+| [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.10: retained installation/bootstrap outcomes and closed C02/C03 evidence; full C04–C06 selected later |
 | [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 2.2.0: exact internal bundle and native ARM64/AMD64 evidence; [S05 criterion map](../../.codex/delivery/evidence/MS-001/MS-001-S05/report.md) and [C03 handoff](runtime-network-installation.md#s05-installation-author-handoff); owner decision remains in the canonical journal |
-| [Next milestone — MS-002](./planning/milestones/MS-002/plan.md) | C03 L3 accepted 1.0.0: guided installation, HTTPS, truthful readiness and a pilot-derived first-run entry; fixed implementation choices and owner decision packet; five prompts and one canonical journal; [S01 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S01/report.md), [S02 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S02/report.md), [S03 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S03/report.md), [S04 candidate and target evidence](../../.codex/delivery/evidence/MS-002/MS-002-S04/report.md), [S05 criterion map and C04 handoff](../../.codex/delivery/evidence/MS-002/MS-002-S05/report.md); final acceptance remains in the journal |
+| [Installation milestone — MS-002](./planning/milestones/MS-002/plan.md) | C03 L3 accepted 1.0.0: guided installation, HTTPS, truthful readiness and a pilot-derived first-run entry; fixed implementation choices and owner decision packet; five prompts and one canonical journal; [S01 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S01/report.md), [S02 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S02/report.md), [S03 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S03/report.md), [S04 candidate and target evidence](../../.codex/delivery/evidence/MS-002/MS-002-S04/report.md), [S05 criterion map and C04 handoff](../../.codex/delivery/evidence/MS-002/MS-002-S05/report.md); final acceptance remains in the journal |
+| [First analyst report — WS-002](planning/directions/DIR-004/workstreams/WS-002.md) | L2 review candidate 0.2.0: synthetic six-table source and real governed report cycle under DIR-004, with scoped provider contributions |
+| [Saved report milestone — MS-003](planning/milestones/MS-003/plan.md) | L3 review candidate 0.2.0: Customer/Product directories, receipt/item relationships and fixed metric/session/document/UI contracts, six prompts and [one draft journal](../../.codex/delivery/ledgers/MS-003.md); no implementation claimed |
 | [System Design](./system-design.md) | Complete `0.11.0-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted customer segmentation/reporting requirements, target contract ownership, compatibility and implementing-ticket acceptance |

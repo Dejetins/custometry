@@ -139,7 +139,24 @@ class Pack:
         rows = field(self.data, "stages")
         need(is_array(rows) and bool(rows), "Stages must be a nonempty list")
         plan = document(self.triad["plan_doc"], frontmatter=True)
-        need(field(plan, "planning_status") == "accepted", "Plan is not accepted")
+        self.plan_accepted = field(plan, "planning_status") == "accepted"
+        if not self.plan_accepted:
+            need(
+                field(plan, "planning_status") in {"draft", "in_review"}
+                and self.data["ledger_status"] == "draft"
+                and self.data["current_stage"] is None
+                and not self.data.get("transition_history")
+                and all(
+                    is_object(row)
+                    and row.get("status") == "pending"
+                    and row.get("execution_allowed") is False
+                    and row.get("executor_claim") is None
+                    and row.get("claimed_at") is None
+                    and row.get("transition_receipt") is None
+                    for row in rows
+                ),
+                "Unaccepted plan requires an unclaimed, wholly disallowed authoring draft",
+            )
         binding = field(self.data, "plan_binding")
         need(
             is_object(binding)
@@ -479,6 +496,7 @@ class Pack:
         require_allowed: bool = True,
         executor: str | None = None,
     ) -> None:
+        need(self.plan_accepted, "Entry requires an accepted plan")
         need(sid in self.rows, "Unknown entry stage")
         capability = field(self.data, "claim_capability")
         need(

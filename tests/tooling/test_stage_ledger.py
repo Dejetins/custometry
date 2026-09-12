@@ -205,6 +205,53 @@ def assert_pass(result: subprocess.CompletedProcess[str]) -> dict[str, Any]:
     return value
 
 
+def authoring_draft(root: Path, planning_status: str) -> dict[str, Any]:
+    write(root / "plan.md", front({"version": "0.1.0", "planning_status": planning_status}))
+    data = document(root / "ledger.md", "<!-- prompt-pack-ledger:v1 -->")
+    data["plan_binding"] = {"version": "0.1.0", "sha256": digest(root / "plan.md")}
+    for row in data["stages"]:
+        row["execution_allowed"] = False
+        path = root / row["contract"]["prompt_path"]
+        prompt = document(path, frontmatter=True)
+        prompt["plan_binding"] = data["plan_binding"]
+        write(path, front(prompt))
+    write(root / "ledger.md", marked("<!-- prompt-pack-ledger:v1 -->", data))
+    return data
+
+
+@pytest.mark.parametrize("planning_status", ["draft", "in_review"])
+def test_unaccepted_authoring_pack_validates_but_cannot_enter(
+    pack_root: Path, planning_status: str
+) -> None:
+    authoring_draft(pack_root, planning_status)
+    pack = Pack(pack_root, pack_root / "ledger.md")
+    with pytest.raises(Invalid, match="Entry requires an accepted plan"):
+        pack.entry("S1", require_allowed=False)
+    before = (pack_root / "ledger.md").read_bytes()
+    result = invoke(pack_root, "claim")
+    assert result.returncode != 0
+    assert (pack_root / "ledger.md").read_bytes() == before
+
+
+@pytest.mark.parametrize("mutation", ["allowed", "claimed", "active", "history", "archived"])
+def test_unaccepted_plan_cannot_carry_execution_state(pack_root: Path, mutation: str) -> None:
+    data = authoring_draft(pack_root, "in_review")
+    if mutation == "allowed":
+        data["stages"][0]["execution_allowed"] = True
+    elif mutation == "claimed":
+        data["stages"][0]["executor_claim"] = "foreign"
+    elif mutation == "active":
+        data["ledger_status"] = "active"
+    elif mutation == "history":
+        data["transition_history"] = [{"action": "claim"}]
+    else:
+        authoring_draft(pack_root, "archived")
+        data = document(pack_root / "ledger.md", "<!-- prompt-pack-ledger:v1 -->")
+    write(pack_root / "ledger.md", marked("<!-- prompt-pack-ledger:v1 -->", data))
+    with pytest.raises(Invalid, match="Unaccepted plan requires"):
+        Pack(pack_root, pack_root / "ledger.md")
+
+
 def test_plan_revision_preserves_accepted_receipt_and_rejects_changed_snapshot(pack_root: Path) -> None:
     assert_pass(invoke(pack_root, "claim"))
     receipt_path = receipt(pack_root, "S1")

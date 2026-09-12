@@ -8,13 +8,13 @@
   "artifact_kind": "direction",
   "doc_id": "DIR-006",
   "title": "Operations, integration and system acceptance",
-  "version": "1.2.1",
-  "planning_status": "accepted",
+  "version": "2.0.2",
+  "planning_status": "in_review",
   "language": "en",
   "parent_ref": {
     "id": "MAP-001",
     "path": "docs/architecture/planning/project-map.md",
-    "version": "1.2.0"
+    "version": "2.0.2"
   },
   "direction_ref": "DIR-006",
   "baseline_ref": {
@@ -57,7 +57,10 @@
     "MAP-001/DEC-06",
     "MAP-001/DEC-07",
     "DIR-006/DEC-02",
-    "DIR-006/DEC-03"
+    "DIR-006/DEC-03",
+    "MAP-001/DEC-09",
+    "MAP-001/DEC-10",
+    "MAP-001/DEC-11"
   ],
   "supersedes_ref": null,
   "proof_boundary": {
@@ -74,9 +77,9 @@
 
 # DIR-006. Operations, integration and system acceptance
 
-> Accepted L1 scope and sequence links, version `1.2.0`, 2026-09-06. Parent: [MAP-001](../../project-map.md) `1.2.0`.
-> MAP-001 records the owner-selected installation-first sequence and WS-001 entry. WS-001 1.0.0 now records the accepted M5/Linux, TLS, installation and first-account decisions.
-> Detailed child acceptance, agent assignment and implementation remain separate decisions.
+> L1 sequence draft `2.0.2`, 2026-09-12. Parent: [MAP-001](../../project-map.md) `2.0.2`.
+> Accepted capability boundaries remain; the proposed next product L2 is a working analyst report under DIR-004.
+> The owner selected product-first priority; detailed checkpoint order and child plans remain under review.
 
 ## Intent and boundaries
 
@@ -105,6 +108,7 @@ W11 provides local Hybrid lifecycle evidence. Tooling contracts, runtime sources
 | DIR-006/EV-01 | `documented_only`: recorded previous results | [W11-HYBRID-DEVELOPMENT-RUNTIME](../../../../../.codex/delivery/evidence/W11-HYBRID-DEVELOPMENT-RUNTIME.md) | Historical reports were inspected; recheck applicability before implementation. |
 | DIR-006/EV-02 | `code_observed`: bounded static inspection | [apps/api/src/custometry_api/main.py](../../../../../apps/api/src/custometry_api/main.py) | Only this entrypoint/contract was inspected; no complete direction audit is claimed. |
 | DIR-006/EV-03 | `unknown`: complete direction readiness | No current exhaustive requirement-to-code-to-proof matrix | Resolve within the selected L2 investigation; do not assign a completion percentage. |
+| DIR-006/EV-04 | `boundary_verified`: C02/C03 closure, read 2026-09-11 | [MS-001 journal](../../../../../.codex/delivery/ledgers/MS-001.md), [MS-002 journal](../../../../../.codex/delivery/ledgers/MS-002.md), [C04 handoff](../../../../../.codex/delivery/evidence/MS-002/MS-002-S05/report.md) | Preserve final owner-accepted target/resource limits; no C04 or complete update/recovery proof is transferred. |
 
 ## Candidate L2 composition
 
@@ -125,16 +129,34 @@ and reciprocal parent links only after selection; no milestone is initialized he
 The agent produces future selected documents with the owner; the owner is not
 expected to supply them manually. Candidate presence is not entry readiness.
 
-## Selected first workstream
+## Retained installation workstream
 
 | Child ID + path + version | Intended outcome | Parent allocation | Contributions and next action |
 |---|---|---|---|
-| [WS-001. Installable platform and first administrator bootstrap](workstreams/WS-001.md) `1.0.0` | Versioned delivery -> installation -> first administrator/workspace -> protected Web access and restart persistence | Bounded first portion of DIR-006/C01/C02/C03/C06; later updates, whole-system backup and load acceptance remain allocated separately | DIR-001 Identity and DIR-005 Web contribute within one canonical workstream. Accepted L2 1.0.0 fixes five sequential outcomes; navigation revision 1.0.7 links the next [C03/MS-002 plan](../../milestones/MS-002/plan.md) 1.0.0 |
+| [WS-001. Installable platform and first administrator bootstrap](workstreams/WS-001.md) `1.0.10` | Versioned delivery -> installation -> first administrator/workspace -> protected Web access and restart persistence | Bounded first portion of DIR-006/C01/C02/C03/C06; later updates, whole-system backup and load acceptance remain allocated separately | DIR-001 Identity and DIR-005 Web contribute within one canonical workstream. Accepted L2 scope 1.0.0 fixes five sequential outcomes; navigation 1.0.10 retains completed C02/C03 evidence and defers full C04–C06 until after the initial analyst workflow |
 
-The owner selected this block in MAP-001/DEC-07. Selection does not accept the new
-WS draft's candidate milestones. DIR-006 owns installed integration and closure;
+The owner selected this block in MAP-001/DEC-07. The L2 scope is accepted;
+unwritten C04–C06 child plans retain their owner checkpoints. DIR-006 owns installed integration and closure;
 the domain/client owners retain their contracts. The registry is a scope/link
 table, not a second workstream-status source.
+
+## Product-first sequence and contributions
+
+Follow the proposed checkpoint order in [MAP-001 2.0.2](../../project-map.md#proposed-product-checkpoints).
+Reuse the completed supply/installation base while product outcomes are built.
+Provide changed-runtime and packaged proof without introducing a new full-install
+prerequisite for each feature. Remaining WS-001/C04–C06 and broader administration/
+operation qualification follow the selected analyst workflow.
+
+## Development cadence for this direction
+
+Follow [MAP-001 2.0.2 draft](../../project-map.md#development-and-delivery-cadence).
+Maintain the reusable build/installation base as feature contents evolve.
+Provide scoped runtime and delivery proof at the selected boundaries; full target
+campaigns are not default prerequisites for each local edit or unrelated feature.
+Use existing L2/L3 fields for the local, packaged and delivery proof allocation.
+Development cadence remains accepted; this draft changes priority and next-L2
+selection. Original scope evidence remains historical.
 
 ## Relationships with other directions
 
@@ -144,23 +166,33 @@ dependencies. Informational interactions do not create a cyclic execution graph.
 
 | ID | Provider and version | Required output | Consumer | Needed before | Satisfaction proof / integration responsibility |
 |---|---|---|---|---|---|
-| DIR-006/DEP-01 | [DIR-001](../DIR-001/direction.md) `1.2.0` | Real execution/access processes and operational projections | DIR-006 | Acceptance of the relevant scenario | Whole-system failure/recovery/load checks. The owning milestone and its proof are selected at L2/L3. |
-| DIR-006/DEP-02 | [DIR-002](../DIR-002/direction.md) `1.2.0` | Storage durability and coherent backup input set | DIR-006 | Acceptance of the relevant scenario | Restore integrity and source refresh. The owning milestone and its proof are selected at L2/L3. |
-| DIR-006/DEP-03 | [DIR-003](../DIR-003/direction.md) `1.2.0` | Reproducible calculations and golden expectations | DIR-006 | Acceptance of the relevant scenario | Semantic scenario acceptance. The owning milestone and its proof are selected at L2/L3. |
-| DIR-006/DEP-04 | [DIR-004](../DIR-004/direction.md) `1.2.0` | Exact snapshots and prepared serving | DIR-006 | Acceptance of the relevant scenario | Ready-open, refresh and restore checks. The owning milestone and its proof are selected at L2/L3. |
-| DIR-006/DEP-05 | [DIR-005](../DIR-005/direction.md) `1.2.0` | Real browser journeys | DIR-006 | Acceptance of the relevant scenario | Complete user-outcome verification. The owning milestone and its proof are selected at L2/L3. |
+| DIR-006/DEP-01 | [DIR-001](../DIR-001/direction.md) `2.0.2` | Real execution/access processes and operational projections | DIR-006 | Acceptance of the relevant scenario | Whole-system failure/recovery/load checks. The owning milestone and its proof are selected at L2/L3. |
+| DIR-006/DEP-02 | [DIR-002](../DIR-002/direction.md) `2.0.2` | Storage durability and coherent backup input set | DIR-006 | Acceptance of the relevant scenario | Restore integrity and source refresh. The owning milestone and its proof are selected at L2/L3. |
+| DIR-006/DEP-03 | [DIR-003](../DIR-003/direction.md) `2.0.2` | Reproducible calculations and golden expectations | DIR-006 | Acceptance of the relevant scenario | Semantic scenario acceptance. The owning milestone and its proof are selected at L2/L3. |
+| DIR-006/DEP-04 | [DIR-004](../DIR-004/direction.md) `2.0.2` | Exact snapshots and prepared serving | DIR-006 | Acceptance of the relevant scenario | Ready-open, refresh and restore checks. The owning milestone and its proof are selected at L2/L3. |
+| DIR-006/DEP-05 | [DIR-005](../DIR-005/direction.md) `2.0.2` | Real browser journeys | DIR-006 | Acceptance of the relevant scenario | Complete user-outcome verification. The owning milestone and its proof are selected at L2/L3. |
 
 **Outputs supplied:**
 
-- [DIR-001](../DIR-001/direction.md) `1.2.0`: Supported environment and resource-policy inputs.
-- [DIR-002](../DIR-002/direction.md) `1.2.0`: Storage/recovery/environment constraints.
-- [DIR-003](../DIR-003/direction.md) `1.2.0`: Reproducible test/runtime environment.
-- [DIR-004](../DIR-004/direction.md) `1.2.0`: Observed performance and recovery results.
-- [DIR-005](../DIR-005/direction.md) `1.2.0`: Verified combined build and UI runtime constraints.
+- [DIR-001](../DIR-001/direction.md) `2.0.2`: Supported environment and resource-policy inputs.
+- [DIR-002](../DIR-002/direction.md) `2.0.2`: Storage/recovery/environment constraints.
+- [DIR-003](../DIR-003/direction.md) `2.0.2`: Reproducible test/runtime environment.
+- [DIR-004](../DIR-004/direction.md) `2.0.2`: Observed performance and recovery results.
+- [DIR-005](../DIR-005/direction.md) `2.0.2`: Verified combined build and UI runtime constraints.
 
 Each consumer proves integration with the provider-owned contract. The common
 snapshot/refresh ownership allocation is in [MAP-001](../../project-map.md). Actual public
 contract changes remain with their accepted context owners.
+
+## Selected first product contribution — 2026-09-12
+
+[WS-002](../DIR-004/workstreams/WS-002.md) `0.2.0` and
+[MS-003](../../milestones/MS-003/plan.md) `0.2.0` now define the next first-report
+review candidate, with six prompts and one canonical journal. The owner asked
+for their complete preparation; exact new details remain under review. This
+contribution is implemented once in MS-003, not duplicated into another pack.
+
+S05 integrates the first product feature using the existing producer/installer and native M5 candidate. Preserve MS-001/MS-002 historical proof and WS-001 C04–C06 deferrals; do not repeat the full VM/LAN installation campaign for ordinary feature edits.
 
 ## Owner decisions and next decomposition
 
@@ -182,12 +214,15 @@ No agent, calendar, worktree topology or parallel execution is assigned by this 
 | 1.1.0 | 2026-09-06 | Apply accepted sequential priorities and first-block relationship; synchronize parent/provider versions; retain capability boundaries | Owner sequencing acceptance; MAP-001/DEC-06/07 |
 | 1.2.0 | 2026-09-06 | Revalidate unchanged direction boundary and MAP/WS links against accepted WS-001 1.0.0 and amended requirement sources | Owner finalization instruction; substantive changes are owned by WS-001 |
 | 1.2.1 | 2026-09-10 | Refresh child-planning navigation to WS-001 1.0.7 and C03/MS-002 1.0.0; L1 boundary unchanged | Owner requested next iteration; delegated editorial synchronization |
+| 1.3.0 | 2026-09-11 | Apply MAP-001 development cadence and synchronize reciprocal parent/provider links; preserve capability boundaries and closed milestone evidence | Owner accepted approach and requested general planning amendment; MAP-001/DEC-09 |
+| 2.0.0 | 2026-09-12 | Draft product-first ordering and analyst-report L2 contributions; retain accepted scope | Owner priority correction, MAP-001/DEC-10; detailed sequence under review |
+| 2.0.1 | 2026-09-12 | Register WS-002/MS-003 review candidates and exact first-product contributions; synchronize navigation | Owner requested documentation, prompts and journal; MAP-001/DEC-11 |
+| 2.0.2 | 2026-09-12 | Refresh reciprocal navigation for WS-002/MS-003 0.2.0; L1 scope and checkpoint order unchanged | Owner requires Customer and Product data in the selected child; editorial reference maintenance |
 
-MAP-001 retains this direction's accepted-scope registration at `1.2.0`;
-metadata points back to that exact parent version. The compatible 1.2.1
-navigation patches preserve these accepted baselines and existing consumer links.
-WS-001 still records DIR-006 1.2.0 as its scope basis; its 1.0.7 navigation patch
-registers the MS-002 plan without changing completed MS-001 bindings. Direction boundaries and existing ticket state remain unchanged;
-the bounded installation/TLS/bootstrap requirement amendment is owned by WS-001 1.0.0.
-Future edits update both sides of affected links. Publication/source checks and
-their limits are recorded in MAP-001; no duplicate execution journal is created.
+MAP-001 2.0.2 registers this sequence draft at 2.0.2 with reciprocal draft
+parent/provider links. Capability boundaries remain accepted at their earlier
+basis; this draft does not change public/domain contracts or accept an unwritten
+child. WS-001 navigation 1.0.10 keeps scope 1.0.0 and its recorded DIR-006 1.2.0
+parent basis; its unimplemented C04–C06 remain allocated for later selection.
+Completed milestones preserve exact historical plan/pack/journal/evidence bytes.
+The map owns the proposed checkpoint order and records its validation.

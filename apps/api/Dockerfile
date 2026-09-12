@@ -37,6 +37,7 @@ COPY --chown=10001:10001 packages/connection_catalog /app/.venv/lib/python3.12/s
 COPY --chown=10001:10001 packages/data_documentation /app/.venv/lib/python3.12/site-packages/packages/data_documentation
 COPY --chown=10001:10001 packages/artifacts /app/.venv/lib/python3.12/site-packages/packages/artifacts
 COPY --chown=10001:10001 packages/analytics_core /app/.venv/lib/python3.12/site-packages/packages/analytics_core
+COPY --chown=10001:10001 packages/semantic_model /app/.venv/lib/python3.12/site-packages/packages/semantic_model
 COPY --chown=10001:10001 packages/execution /app/.venv/lib/python3.12/site-packages/packages/execution
 COPY --chown=10001:10001 packages/notifications /app/.venv/lib/python3.12/site-packages/packages/notifications
 COPY --chown=10001:10001 packages/contracts/analytics /app/.venv/lib/python3.12/site-packages/packages/contracts/analytics

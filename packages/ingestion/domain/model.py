@@ -22,6 +22,8 @@ class ExtractionBatchRequest:
     source_system_id: UUID
     semantic_dataset_id: UUID
     idempotency_key: str
+    profile: str = "retail/v1"
+    source_fingerprint: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -103,6 +105,24 @@ RETAIL_OBJECTS: tuple[RetailObjectSpec, ...] = (
             "valid_to",
         ),
         "product_id",
+        "internal",
+    ),
+)
+
+
+RETAIL_REPORT_OBJECTS = RETAIL_OBJECTS + (
+    RetailObjectSpec(
+        "Store",
+        "stores",
+        ("store_id", "store_code", "store_name", "region", "opened_on"),
+        "store_id",
+        "internal",
+    ),
+    RetailObjectSpec(
+        "Calendar",
+        "calendar",
+        ("calendar_date", "iso_year", "iso_week", "month_start", "is_period_complete"),
+        "calendar_date",
         "internal",
     ),
 )

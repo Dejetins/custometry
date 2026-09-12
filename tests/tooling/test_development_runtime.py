@@ -50,9 +50,7 @@ def test_release_entrypoint_rejects_development_override_reference(tmp_path: Pat
     result = development_runtime.static_check(tmp_path)
 
     assert not result.ok
-    assert {finding.code for finding in result.findings} == {
-        "development-override-in-release-path"
-    }
+    assert {finding.code for finding in result.findings} == {"development-override-in-release-path"}
 
 
 def test_policy_requires_loopback_only_unique_ports() -> None:
@@ -125,8 +123,7 @@ def test_log_redaction_is_bounded() -> None:
     payload = (
         "password=hunter2\n"
         "TOKEN: abcdef\n"
-        "postgresql://custometry:very-secret@127.0.0.1:55432/custometry\n"
-        + "x" * 2048
+        "postgresql://custometry:very-secret@127.0.0.1:55432/custometry\n" + "x" * 2048
     )
 
     rendered = development_runtime.redact(payload, max_bytes=512)
@@ -171,6 +168,7 @@ def test_owned_process_requires_pid_group_and_exact_start_fingerprint(
         "started": "Mon Jul 21 01:00:00 2026",
         "observed_command": "uv run uvicorn",
     }
+
     def fingerprint(pid: int) -> tuple[str, str] | None:
         return ("Mon Jul 21 01:00:00 2026", "uv run uvicorn") if pid == 123 else None
 
@@ -192,6 +190,7 @@ def test_status_distinguishes_healthy_degraded_and_unavailable(
 ) -> None:
     policy = development_runtime.load_policy(ROOT)
     paths = development_runtime.runtime_paths(tmp_path, policy)
+
     def engine(root: Path) -> str:
         return "desktop-linux"
 
@@ -257,3 +256,19 @@ def test_compose_health_requires_loopback_tcp_visibility(
         "control-db": "degraded",
         "demo-source-db": "degraded",
     }
+
+
+def test_hybrid_api_storage_is_ready_in_owned_runtime(tmp_path: Path) -> None:
+    from custometry_api.config import Settings
+    from custometry_api.health import storage_ready
+
+    policy = development_runtime.load_policy(ROOT)
+    paths = development_runtime.runtime_paths(tmp_path, policy)
+    development_runtime.prepare_runtime(paths, policy)
+    environment = development_runtime.host_environment(paths, policy, "api")
+    root = Path(environment["CUSTOMETRY_ANALYTICS_ARTIFACT_ROOT"])
+    assert root.is_relative_to(paths.runtime_dir)
+    assert root.stat().st_mode & 0o777 == 0o700
+    assert storage_ready(Settings(analytics_artifact_root=root))
+    assert environment["CUSTOMETRY_SOURCE_POSTGRESQL_HOST"] == "127.0.0.1"
+    assert environment["CUSTOMETRY_IDENTITY_COOKIE_SECURE"] == "false"

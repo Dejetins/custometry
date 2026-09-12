@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from psycopg.types.json import Jsonb
 
@@ -49,4 +49,33 @@ class PostgresArtifactRepository:
             VALUES (%s, %s, %s) ON CONFLICT (parent_artifact_id, child_artifact_id) DO NOTHING
             """,
             (uuid4(), parent_id, child_id),
+        )
+
+    @staticmethod
+    def for_batch(
+        cursor: Any, *, workspace_id: UUID, batch_id: UUID
+    ) -> tuple[ArtifactManifest, ...]:
+        cursor.execute(
+            """SELECT id, entity, artifact_type, relative_uri, content_hash,
+                          row_count, byte_size, schema_json, pii_class FROM artifact_manifests
+                          WHERE workspace_id = %s AND producer_batch_id = %s AND state = 'committed'
+                          ORDER BY entity""",
+            (workspace_id, batch_id),
+        )
+        return tuple(
+            ArtifactManifest(
+                UUID(str(r[0])),
+                workspace_id,
+                batch_id,
+                str(r[1]),
+                str(r[2]),
+                str(r[3]),
+                str(r[4]),
+                int(r[5]),
+                int(r[6]),
+                tuple(r[7]["columns"]),
+                str(r[8]),
+                int(r[7]["version"]),
+            )
+            for r in cursor.fetchall()
         )

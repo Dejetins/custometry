@@ -1,0 +1,24 @@
+{
+  "observed_at": "2026-09-12T21:28:02.100631+00:00",
+  "stage": "MS-003-S01",
+  "command": "scripts/dev up --mode hybrid",
+  "exit_code": 2,
+  "error": "all predefined address pools have been fully subnetted",
+  "docker_context": "desktop-linux",
+  "docker_server_version": "29.6.2",
+  "owned_project": "custometry-hybrid-383a7390af",
+  "owned_containers_observed": 0,
+  "proposed_cleanup_authorized": false,
+  "candidate_networks": [
+    {
+      "name": "custometry-a38aca6eda3ececd01c10b29_control",
+      "attached_container_count": 0,
+      "compose_project": "custometry-a38aca6eda3ececd01c10b29"
+    },
+    {
+      "name": "custometry-a38aca6eda3ececd01c10b29_demo_source",
+      "attached_container_count": 0,
+      "compose_project": "custometry-a38aca6eda3ececd01c10b29"
+    }
+  ]
+}

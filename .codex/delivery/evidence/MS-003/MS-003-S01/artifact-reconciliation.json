@@ -1,0 +1,323 @@
+{
+  "artifacts": [
+    {
+      "content_hash": "e55ab8cad1369f62ee6aa0e29afa8aaaca52ed7c5c82711c0057c94bd71119b1",
+      "entity": "Calendar",
+      "id": "954ea079-24ed-58dc-b7c7-4cf6a08d559e",
+      "relative_uri": "objects/954ea079-24ed-58dc-b7c7-4cf6a08d559e.parquet",
+      "row_count": 1830
+    },
+    {
+      "content_hash": "b3a3604e10d69b7c516e662989698d76d03b3eb5703eb909b2d694ec7e3ac6f2",
+      "entity": "Customer",
+      "id": "df9ef2de-655a-5722-8665-9af3d589c55c",
+      "relative_uri": "objects/df9ef2de-655a-5722-8665-9af3d589c55c.parquet",
+      "row_count": 1000
+    },
+    {
+      "content_hash": "a4f500f723992d6b0b7082836a3bd0d8b25b22cdb4cc1fa2bcd945edffcd8440",
+      "entity": "Product",
+      "id": "0085da04-4e84-5eba-aa61-a29d648d6a60",
+      "relative_uri": "objects/0085da04-4e84-5eba-aa61-a29d648d6a60.parquet",
+      "row_count": 120
+    },
+    {
+      "content_hash": "e9e4d8bed96d487d8052799015793f7570fe3d3e293088641dc74b0d7274ef32",
+      "entity": "QuarantineReceiptItem",
+      "id": "63584227-6386-53b0-81b2-c3f9e1a50245",
+      "relative_uri": "objects/63584227-6386-53b0-81b2-c3f9e1a50245.parquet",
+      "row_count": 5
+    },
+    {
+      "content_hash": "9d02d0993b7a3cf8283268a6ef2366c5ca64682774d17786e268cbcba82caf14",
+      "entity": "RawCalendar",
+      "id": "777d0fac-bac0-5e71-866b-a9dc97cecaa2",
+      "relative_uri": "objects/777d0fac-bac0-5e71-866b-a9dc97cecaa2.parquet",
+      "row_count": 1830
+    },
+    {
+      "content_hash": "3cdf5eb548fd3099e3702455b5090f0b8003a36fa55ed6ab1fd653b73335ffac",
+      "entity": "RawCustomer",
+      "id": "894be870-5370-54f0-b305-94ae3dd0fb54",
+      "relative_uri": "objects/894be870-5370-54f0-b305-94ae3dd0fb54.parquet",
+      "row_count": 1000
+    },
+    {
+      "content_hash": "64f8cc55975a47a90c6ee6174b8901e093de31414b71a08e849b3c6d18d2fa0d",
+      "entity": "RawProduct",
+      "id": "f8e0deaf-1737-5c6c-8b98-e26d5eb19561",
+      "relative_uri": "objects/f8e0deaf-1737-5c6c-8b98-e26d5eb19561.parquet",
+      "row_count": 120
+    },
+    {
+      "content_hash": "b40e65d545cc919a7eb58f52ba1539068a0aefaee5032dcd19e457654f7fa60d",
+      "entity": "RawReceipt",
+      "id": "04d765c6-ff1e-5288-a421-b27894f270dc",
+      "relative_uri": "objects/04d765c6-ff1e-5288-a421-b27894f270dc.parquet",
+      "row_count": 5000
+    },
+    {
+      "content_hash": "006ef5622f8c6231150edc686137d0ee34a31bae5249b53d6d9cdb1de3203d52",
+      "entity": "RawReceiptItem",
+      "id": "f8021b71-b7d9-5615-9f67-deaee631667c",
+      "relative_uri": "objects/f8021b71-b7d9-5615-9f67-deaee631667c.parquet",
+      "row_count": 15000
+    },
+    {
+      "content_hash": "31f491e82860d93ea131889f3d92c8bf31607ba62d7a7950ef88f73af2db916e",
+      "entity": "RawStore",
+      "id": "3ffed731-a3b4-5cf5-8d07-3d9cee98ae92",
+      "relative_uri": "objects/3ffed731-a3b4-5cf5-8d07-3d9cee98ae92.parquet",
+      "row_count": 20
+    },
+    {
+      "content_hash": "f7a8758ebf56baf79534c03c77c67b5805910dc34131061030a2c673548a1103",
+      "entity": "Receipt",
+      "id": "8e966571-a6da-5e9b-846c-c70837438ecf",
+      "relative_uri": "objects/8e966571-a6da-5e9b-846c-c70837438ecf.parquet",
+      "row_count": 5000
+    },
+    {
+      "content_hash": "3ad35c3cb51330cb47a41927f1737717ce93bc4e9046022813b0ea80590d84b9",
+      "entity": "ReceiptItem",
+      "id": "2e41a434-1f54-5f4d-81c8-e5fedf7224d0",
+      "relative_uri": "objects/2e41a434-1f54-5f4d-81c8-e5fedf7224d0.parquet",
+      "row_count": 14995
+    },
+    {
+      "content_hash": "47bcae8c1915b572f36cbd9406b2f00684b2331c28a52198b8fd8bde9158c637",
+      "entity": "Store",
+      "id": "133917b5-d541-535b-a0bc-c9abf7adeb7f",
+      "relative_uri": "objects/133917b5-d541-535b-a0bc-c9abf7adeb7f.parquet",
+      "row_count": 20
+    }
+  ],
+  "bindings": [
+    {
+      "artifact_id": "df9ef2de-655a-5722-8665-9af3d589c55c",
+      "entity": "Customer",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "customer_version_id"
+      ]
+    },
+    {
+      "artifact_id": "0085da04-4e84-5eba-aa61-a29d648d6a60",
+      "entity": "Product",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "product_version_id"
+      ]
+    },
+    {
+      "artifact_id": "133917b5-d541-535b-a0bc-c9abf7adeb7f",
+      "entity": "Store",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "store_version_id"
+      ]
+    },
+    {
+      "artifact_id": "954ea079-24ed-58dc-b7c7-4cf6a08d559e",
+      "entity": "Calendar",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "calendar_date"
+      ]
+    },
+    {
+      "artifact_id": "8e966571-a6da-5e9b-846c-c70837438ecf",
+      "entity": "Receipt",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "receipt_id"
+      ]
+    },
+    {
+      "artifact_id": "2e41a434-1f54-5f4d-81c8-e5fedf7224d0",
+      "entity": "ReceiptItem",
+      "field_roles": {
+        "line_id": "line_identifier",
+        "receipt_item_id": "source_line_identifier",
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "receipt_id",
+        "line_id"
+      ]
+    }
+  ],
+  "boundary": "readonly-source-SQL-to-committed-Parquet",
+  "calendar_date_max": "2025-12-31",
+  "calendar_date_min": "2020-12-28",
+  "counts": {
+    "Calendar": 1830,
+    "Customer": 1000,
+    "Product": 120,
+    "QuarantineReceiptItem": 5,
+    "RawCalendar": 1830,
+    "RawCustomer": 1000,
+    "RawProduct": 120,
+    "RawReceipt": 5000,
+    "RawReceiptItem": 15000,
+    "RawStore": 20,
+    "Receipt": 5000,
+    "ReceiptItem": 14995,
+    "Store": 20
+  },
+  "ids": {
+    "admin_id": "ecb2bd6c-22da-424c-880f-c08ac4997a8f",
+    "analyst_id": "37fc7324-3a81-4db6-986e-53a898360e7c",
+    "batch_id": "7f3509cb-4cca-4073-a8fe-d95b3de7d41d",
+    "connection_id": "d640cd5a-8bf1-4f54-9476-cdd322e7f58f",
+    "dataset_id": "2a5a76a6-9530-4338-9386-0a8f9b9d8df5",
+    "quality_report_id": "c23cb37a-52b8-5597-8968-81508272b212",
+    "semantic_dataset_version_id": "e81d5594-b690-5863-8650-9f21e1a8db84",
+    "source_system_id": "65676f96-de65-4de1-9d3d-a9357fd1a445",
+    "workspace_id": "1af52456-b651-4bd8-9703-f558cd7fd7f1"
+  },
+  "policy": "retail-report-current-only/v1",
+  "quality_accounting": {
+    "anonymous_receipts": 263,
+    "business_history_completeness": "unknown",
+    "business_impact": "unknown",
+    "classification_coverage": "degraded",
+    "collapsed_duplicates": 0,
+    "denominator": 15000,
+    "eligible_counts": {
+      "Calendar": 1830,
+      "Customer": 1000,
+      "Product": 120,
+      "Receipt": 5000,
+      "ReceiptItem": 14995,
+      "Store": 20
+    },
+    "expanded_rows": 0,
+    "gate": "allow_degraded",
+    "policy": "retail-report-orphan-product/v1",
+    "policy_excluded": 0,
+    "product_relationship_eligible_count": 14995,
+    "quarantined_count": 5,
+    "quarantined_item_net_by_currency_date": {
+      "EUR:2024-03-07": "316.62",
+      "EUR:2024-09-22": "34.32",
+      "EUR:2024-11-28": "564.45",
+      "EUR:2025-06-15": "144.91",
+      "EUR:2025-08-21": "174.66"
+    },
+    "raw_counts": {
+      "Calendar": 1830,
+      "Customer": 1000,
+      "Product": 120,
+      "Receipt": 5000,
+      "ReceiptItem": 15000,
+      "Store": 20
+    },
+    "receipt_headers_retained": 5000,
+    "transport_completeness": "complete"
+  },
+  "receipt_totals_by_currency": {
+    "EUR": {
+      "anonymous_count": 262,
+      "count": 4977,
+      "net_amount": "893057.90"
+    },
+    "SEK": {
+      "anonymous_count": 1,
+      "count": 23,
+      "net_amount": "4361.92"
+    }
+  },
+  "relationships": [
+    {
+      "cardinality": "one_to_many",
+      "child": "Receipt",
+      "child_key": [
+        "source_system_id",
+        "customer_id"
+      ],
+      "nullable": true,
+      "parent": "Customer",
+      "parent_key": [
+        "source_system_id",
+        "customer_id"
+      ],
+      "policy": "retail-report-current-only/v1"
+    },
+    {
+      "cardinality": "one_to_many",
+      "child": "ReceiptItem",
+      "child_key": [
+        "source_system_id",
+        "receipt_id"
+      ],
+      "nullable": false,
+      "parent": "Receipt",
+      "parent_key": [
+        "source_system_id",
+        "receipt_id"
+      ],
+      "policy": "retail-report-current-only/v1"
+    },
+    {
+      "cardinality": "one_to_many",
+      "child": "ReceiptItem",
+      "child_key": [
+        "source_system_id",
+        "product_id"
+      ],
+      "nullable": false,
+      "parent": "Product",
+      "parent_key": [
+        "source_system_id",
+        "product_id"
+      ],
+      "policy": "retail-report-current-only/v1"
+    },
+    {
+      "cardinality": "one_to_many",
+      "child": "Receipt",
+      "child_key": [
+        "source_system_id",
+        "store_id"
+      ],
+      "nullable": false,
+      "parent": "Store",
+      "parent_key": [
+        "source_system_id",
+        "store_id"
+      ],
+      "policy": "retail-report-current-only/v1"
+    },
+    {
+      "cardinality": "one_to_many",
+      "child": "Receipt",
+      "child_key": [
+        "source_system_id",
+        "receipt_date"
+      ],
+      "nullable": false,
+      "parent": "Calendar",
+      "parent_key": [
+        "source_system_id",
+        "calendar_date"
+      ],
+      "policy": "retail-report-current-only/v1"
+    }
+  ],
+  "source_fingerprint": "6b483dbde58acaecf17bcf1ce6d0556dcf102b9522a88663b87d285ac20a7a3d",
+  "status": "pass"
+}

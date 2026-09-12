@@ -55,7 +55,8 @@ class PostgresIngestionRepository:
             )
             cursor.execute(
                 """
-                SELECT id, state, lower_watermark, candidate_upper_watermark, consistency_mode
+                SELECT id, state, lower_watermark, candidate_upper_watermark, consistency_mode,
+                       connection_id, source_system_id, semantic_dataset_id
                 FROM ingestion_batches WHERE workspace_id = %s AND idempotency_key = %s
                 """,
                 (request.workspace_id, request.idempotency_key),
@@ -64,6 +65,11 @@ class PostgresIngestionRepository:
         assert row is not None
         if UUID(str(row["id"])) != request.batch_id:
             raise DataPipelineFailure("BATCH_IDEMPOTENCY_ID_MISMATCH")
+        if any(
+            UUID(str(row[field])) != getattr(request, field)
+            for field in ("connection_id", "source_system_id", "semantic_dataset_id")
+        ):
+            raise DataPipelineFailure("BATCH_REQUEST_IDENTITY_MISMATCH")
         return ExtractionBatchState(
             batch_id=request.batch_id,
             state=str(row["state"]),

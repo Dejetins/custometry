@@ -76,8 +76,8 @@
 # DIR-004. Analytical documents and result delivery
 
 > L1 sequence draft `2.0.2`, 2026-09-12. Parent: [MAP-001](../../project-map.md) `2.0.2`.
-> Accepted capability boundaries remain; the proposed next product L2 is a working analyst report under DIR-004.
-> The owner selected product-first priority; detailed checkpoint order and child plans remain under review.
+> Accepted capability boundaries remain; the accepted next product L2 is WS-002, a working analyst report under DIR-004.
+> The broader checkpoint sequence remains under review; WS-002/MS-003 0.2.0 was accepted on 2026-09-13.
 
 ## Intent and boundaries
 
@@ -129,11 +129,11 @@ expected to supply them manually. Candidate presence is not entry readiness.
 ## Product-first sequence and contributions
 
 Follow the proposed checkpoint order in [MAP-001 2.0.2](../../project-map.md#proposed-product-checkpoints).
-This direction is the parent of the selected WS-002 review candidate: a working analyst report
+This direction is the parent of the accepted WS-002 scope: a working analyst report
 using the C01/C02 document and authoring scope. Start with useful blocks, period/
 filter controls, backend save/reopen and reproducible results. DIR-005 owns Web,
 DIR-002/003 provide actual inputs/calculations and DIR-001 supplies bounded policy
-support. The owner selected preparation of [WS-002 0.2.0](workstreams/WS-002.md) and [MS-003 0.2.0](../../milestones/MS-003/plan.md); the concrete drafts and pack now await review.
+support. The owner selected preparation of [WS-002 0.2.0](workstreams/WS-002.md) and [MS-003 0.2.0](../../milestones/MS-003/plan.md); the concrete 0.2.0 plans and pack were accepted on 2026-09-13.
 The existing [WS-001](../DIR-006/workstreams/WS-001.md) `1.0.10` retains its
 accepted scope and completed evidence, but full C04–C06 is no longer the next
 universal prerequisite. The selected first product workstream is registered below; no agent dispatch is authorized.
@@ -174,8 +174,8 @@ contract changes remain with their accepted context owners.
 
 [WS-002](../DIR-004/workstreams/WS-002.md) `0.2.0` and
 [MS-003](../../milestones/MS-003/plan.md) `0.2.0` now define the next first-report
-review candidate, with six prompts and one canonical journal. The owner asked
-for their complete preparation; exact new details remain under review. This
+accepted scope, with six prompts and one canonical journal. The owner accepted
+WS-002/MS-003 0.2.0 on 2026-09-13; initial entry is recorded in that journal. This
 contribution is implemented once in MS-003, not duplicated into another pack.
 
 This is the decomposition parent for WS-002. C01/C02/C04 contribute the bounded draft composition, snapshot and chart path; publication, scheduled refresh, rich composition and delivery remain allocated to their later units.

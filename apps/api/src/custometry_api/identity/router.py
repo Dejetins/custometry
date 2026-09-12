@@ -15,13 +15,13 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from custometry_api.config import Settings
+from custometry_api.identity.http_auth import (
+    ACCESS_COOKIE, CSRF_COOKIE, REFRESH_COOKIE, IdentityHTTPAdapter,
+)
 from packages.identity_access.application.service import IdentityFailure, IdentityService
 from packages.identity_access.domain.policy import Actor
 from packages.identity_access.infrastructure.postgres import PostgresIdentityRepository
 
-ACCESS_COOKIE = "custometry_access"
-REFRESH_COOKIE = "custometry_refresh"
-CSRF_COOKIE = "custometry_csrf"
 
 
 class StrictModel(BaseModel):
@@ -190,7 +190,7 @@ class SlidingWindowRateLimiter:
             entries.append(now)
 
 
-def _service(settings: Settings) -> IdentityService:
+def create_identity_service(settings: Settings) -> IdentityService:
     def connect() -> psycopg.Connection[object]:
         return psycopg.connect(
             host=settings.database_host,
@@ -233,13 +233,14 @@ def _status_for(code: str) -> int:
 
 
 def _set_session_cookies(response: Response, tokens: object, settings: Settings) -> None:
+    _clear_session_cookies(response, settings)
     response.set_cookie(
         ACCESS_COOKIE,
         getattr(tokens, "access_token"),
         httponly=True,
         secure=settings.identity_cookie_secure,
         samesite="strict",
-        path="/identity",
+        path="/",
         max_age=settings.identity_access_ttl_seconds,
     )
     response.set_cookie(
@@ -248,7 +249,7 @@ def _set_session_cookies(response: Response, tokens: object, settings: Settings)
         httponly=True,
         secure=settings.identity_cookie_secure,
         samesite="strict",
-        path="/identity",
+        path="/api/identity",
         max_age=settings.identity_refresh_ttl_seconds,
     )
     response.set_cookie(
@@ -257,7 +258,7 @@ def _set_session_cookies(response: Response, tokens: object, settings: Settings)
         httponly=False,
         secure=settings.identity_cookie_secure,
         samesite="strict",
-        path="/identity",
+        path="/",
         max_age=settings.identity_refresh_ttl_seconds,
     )
     response.headers["Cache-Control"] = "no-store"
@@ -265,13 +266,11 @@ def _set_session_cookies(response: Response, tokens: object, settings: Settings)
 
 def _clear_session_cookies(response: Response, settings: Settings) -> None:
     for name, httponly in ((ACCESS_COOKIE, True), (REFRESH_COOKIE, True), (CSRF_COOKIE, False)):
-        response.delete_cookie(
-            name,
-            path="/identity",
-            secure=settings.identity_cookie_secure,
-            httponly=httponly,
-            samesite="strict",
-        )
+        for path in ("/identity", "/api/identity", "/"):
+            response.delete_cookie(
+                name, path=path, secure=settings.identity_cookie_secure,
+                httponly=httponly, samesite="strict",
+            )
     response.headers["Cache-Control"] = "no-store"
 
 
@@ -282,7 +281,7 @@ def create_identity_app(
 ) -> FastAPI:
     """Build the independently versioned Identity API boundary."""
 
-    service = identity_service or _service(settings)
+    service = identity_service or create_identity_service(settings)
     limiter = SlidingWindowRateLimiter(
         settings.identity_rate_limit_requests,
         settings.identity_rate_limit_window_seconds,
@@ -303,31 +302,10 @@ def create_identity_app(
         host = request.client.host if request.client else "unknown"
         limiter.check(f"{endpoint}:{host}")
 
-    def browser_origin(request: Request) -> None:
-        origin = request.headers.get("origin")
-        if origin not in settings.cors_allowed_origins:
-            raise IdentityFailure("CSRF_FAILED")
-
-    def authenticated(
-        authorization: Annotated[str | None, Header()] = None,
-        access_cookie: Annotated[str | None, Cookie(alias=ACCESS_COOKIE)] = None,
-    ) -> Actor:
-        raw: str | None = None
-        if authorization:
-            scheme, _, candidate = authorization.partition(" ")
-            if scheme.casefold() == "bearer" and candidate:
-                raw = candidate
-        elif access_cookie:
-            raw = access_cookie
-        if raw is None:
-            raise IdentityFailure("AUTHENTICATION_FAILED")
-        return service.authenticate(raw)
-
-    def protect_mutation(request: Request, actor: Actor) -> None:
-        if request.headers.get("authorization"):
-            return
-        browser_origin(request)
-        service.verify_csrf(actor, request.headers.get("x-csrf-token"))
+    http_auth = IdentityHTTPAdapter(service, settings)
+    authenticated = http_auth.authenticate
+    browser_origin = http_auth.browser_origin
+    protect_mutation = http_auth.protect_mutation
 
     @app.post(
         "/bootstrap",

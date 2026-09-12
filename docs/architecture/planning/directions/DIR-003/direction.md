@@ -81,8 +81,8 @@
 # DIR-003. Analytics, segments and research
 
 > L1 sequence draft `2.0.2`, 2026-09-12. Parent: [MAP-001](../../project-map.md) `2.0.2`.
-> Accepted capability boundaries remain; the proposed next product L2 is a working analyst report under DIR-004.
-> The owner selected product-first priority; detailed checkpoint order and child plans remain under review.
+> Accepted capability boundaries remain; the accepted next product L2 is WS-002, a working analyst report under DIR-004.
+> The broader checkpoint sequence remains under review; WS-002/MS-003 0.2.0 was accepted on 2026-09-13.
 
 ## Intent and boundaries
 
@@ -179,8 +179,8 @@ contract changes remain with their accepted context owners.
 
 [WS-002](../DIR-004/workstreams/WS-002.md) `0.2.0` and
 [MS-003](../../milestones/MS-003/plan.md) `0.2.0` now define the next first-report
-review candidate, with six prompts and one canonical journal. The owner asked
-for their complete preparation; exact new details remain under review. This
+accepted scope, with six prompts and one canonical journal. The owner accepted
+WS-002/MS-003 0.2.0 on 2026-09-13; initial entry is recorded in that journal. This
 contribution is implemented once in MS-003, not duplicated into another pack.
 
 S02 supplies registered sales totals/daily results. DIR-003/C02 later owns the complete segment lifecycle: create rules, version/save definitions, calculate with status/errors, persist immutable membership, recalculate manually or on schedule, compare history, expose Used by and bind exact results in reports. Recalculation/scheduling is part of the segment product, not deferred administrative polish. No segment picker is implemented by MS-003.

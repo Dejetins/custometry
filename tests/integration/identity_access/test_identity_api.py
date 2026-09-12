@@ -94,7 +94,7 @@ def test_local_auth_workspace_invitation_session_and_token_flow(
     assert accepted.status_code == 200, accepted.text
     analyst_id = accepted.json()["principal_id"]
 
-    analyst_client = TestClient(identity_app, base_url="http://testserver")
+    analyst_client = TestClient(identity_app, base_url="http://testserver/api/")
     analyst_login = login(
         analyst_client,
         email="analyst@example.test",
@@ -172,8 +172,8 @@ def test_local_auth_workspace_invitation_session_and_token_flow(
     new_access = refreshed.cookies["custometry_access"]
     new_csrf = refreshed.json()["csrf_token"]
 
-    replay_client = TestClient(identity_app, base_url="http://testserver")
-    replay_client.cookies.set("custometry_refresh", owner_refresh, path="/identity")
+    replay_client = TestClient(identity_app, base_url="http://testserver/api/")
+    replay_client.cookies.set("custometry_refresh", owner_refresh, path="/api/identity")
     replay = replay_client.post(
         "/identity/refresh",
         headers=browser_headers(owner_csrf),
@@ -303,3 +303,28 @@ def test_password_reset_and_change_revoke_sessions(
         ).status_code
         == 200
     )
+
+
+def test_https_cookie_configuration_keeps_browser_prefix_and_cleanup(
+    identity_settings: Settings, bootstrap_owner: dict[str, str]
+) -> None:
+    from custometry_api.main import create_app
+
+    secured = identity_settings.model_copy(update={
+        'identity_cookie_secure': True, 'cors_allowed_origins': ['https://testserver']})
+    app = FastAPI()
+    app.mount('/api', create_app(settings=secured))
+    with TestClient(app, base_url='https://testserver/api/') as browser:
+        response = login(browser, email='owner@example.test', password='Owner-password-123!',
+                         workspace_id=bootstrap_owner['workspace_id'])
+        assert response.status_code == 200
+        cookies = {cookie.name: cookie for cookie in browser.cookies.jar}
+        assert all(cookie.secure for cookie in cookies.values())
+        assert cookies['custometry_access'].path == '/'
+        assert cookies['custometry_refresh'].path == '/api/identity'
+        assert cookies['custometry_csrf'].path == '/'
+        assert browser.get('/identity/me').status_code == 200
+        response = browser.post('/identity/logout', headers={
+            'Origin': 'https://testserver', 'X-CSRF-Token': response.json()['csrf_token']})
+        assert response.status_code == 204
+        assert not list(browser.cookies.jar)

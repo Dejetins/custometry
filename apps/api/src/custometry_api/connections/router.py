@@ -129,7 +129,7 @@ def _status_for(code: str) -> int:
     return status.HTTP_400_BAD_REQUEST
 
 
-def _services(
+def create_connection_services(
     settings: Settings,
 ) -> tuple[IdentityService, ConnectionService, dict[UUID, PostgreSQLConnector]]:
     def connect() -> psycopg.Connection[object]:
@@ -209,7 +209,7 @@ def create_connection_app(
     identity_service: IdentityService | None = None,
     connection_service: ConnectionService | None = None,
 ) -> FastAPI:
-    default_identity, default_connections, adapters = _services(settings)
+    default_identity, default_connections, adapters = create_connection_services(settings)
     identity = identity_service or default_identity
     connections = connection_service or default_connections
     sessions: dict[UUID, tuple[UUID, ExtractionSession]] = {}

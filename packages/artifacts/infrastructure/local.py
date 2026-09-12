@@ -88,6 +88,11 @@ class LocalArtifactStore:
             staging.unlink(missing_ok=True)
             raise
 
+    def verify(self, manifest: ArtifactManifest) -> None:
+        path = self.resolve(manifest.relative_uri)
+        if not path.is_file() or self._hash(path) != manifest.content_hash:
+            raise DataPipelineFailure("ARTIFACT_INTEGRITY_FAILED")
+
     def resolve(self, relative_uri: str) -> Path:
         candidate = self.root / relative_uri
         resolved = candidate.resolve()

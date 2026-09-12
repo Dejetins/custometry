@@ -182,14 +182,15 @@ The L1 candidate tables describe composition. The selected first block now has o
 accepted L2, WS-001 scope 1.0.0, under DIR-006. Its existing MS-001 and MS-002
 plans, packs and journals retain their exact accepted bindings. The new selected
 product branch is [WS-002](directions/DIR-004/workstreams/WS-002.md) `0.2.0`, with
-[MS-003](milestones/MS-003/plan.md) `0.2.0` and its draft pack/journal. Their concrete
-content is under review; no implementation stage is started.
+[MS-003](milestones/MS-003/plan.md) `0.2.0` and its draft pack/journal. Their concrete content was accepted by the owner on 2026-09-13; the journal
+records initial S01 entry allowance without claiming implementation.
 
 ## Direction registry
 
 The six direction documents have synchronized `2.0.2` sequence drafts and point
 back to MAP-001 `2.0.2`. Their capability boundaries remain accepted at `1.0.0`;
-the changed priority and next-workstream selection are under owner review.
+the broader sequence remains a review draft. WS-002/MS-003 0.2.0 was explicitly
+accepted on 2026-09-13; this does not widen L1 scope.
 
 | Direction | Purpose | Contents | Main boundary |
 |---|---|---|---|
@@ -211,8 +212,8 @@ they alone own execution state. This is a dated planning baseline, read 2026-09-
 [MS-003 milestone](milestones/MS-003/plan.md) `0.2.0`. The owner requested its
 plan, prompts and journal together. The concrete recommendation uses the existing
 Northwind Retail PostgreSQL demo, three receipt metrics, period/store/comparison,
-a pilot-derived chart/table and backend save/reopen. Newly written details remain
-under owner review; no stage has started. The
+a pilot-derived chart/table and backend save/reopen. WS-002/MS-003 0.2.0 was
+accepted on 2026-09-13; initial S01 entry is allowed in the journal. The
 [canonical journal](../../../.codex/delivery/ledgers/MS-003.md) links all six prompts.
 
 WS-001/C04–C06 remain required work but cease to be the next universal prerequisite.
@@ -248,7 +249,7 @@ are developed together within the selected checkpoint.
 
 | Order | What the user can do | Necessary supporting work | Full outcome references |
 |---|---|---|---|
-| 1 | Open the pilot-derived workspace, create a report with a useful table/chart, change period/filter, save it and reopen it with the same definition and reproducible values | One prepared real source/dataset path, versioned inputs, bounded calculations, document persistence and a prepared test identity/workspace; no preceding admin-screen programme | Bounded contributions from SEQ-05..09; [WS-002](directions/DIR-004/workstreams/WS-002.md) / [MS-003](milestones/MS-003/plan.md) review candidates |
+| 1 | Open the pilot-derived workspace, create a report with a useful table/chart, change period/filter, save it and reopen it with the same definition and reproducible values | One prepared real source/dataset path, versioned inputs, bounded calculations, document persistence and a prepared test identity/workspace; no preceding admin-screen programme | Bounded contributions from SEQ-05..09; [WS-002](directions/DIR-004/workstreams/WS-002.md) / [MS-003](milestones/MS-003/plan.md) accepted 0.2.0 plans |
 | 2 | Connect or import data through the UI, inspect meaning/quality and refresh the report from a new admitted input version | Source configuration, typed mapping, DQ and the real ingestion/execution path; extend the path used by checkpoint 1 | SEQ-05..07 and relevant refresh contribution of SEQ-12 |
 | 3 | Create and save segment definitions, calculate membership, inspect results, recalculate manually or on schedule, compare history and use exact results in reports | DIR-003/C02 owns the full definition/run/immutable-snapshot lifecycle, Used by and consumer bindings; DIR-001 supplies only the required scheduling/execution contribution | SEQ-08 with report integration; this is product functionality |
 | 4 | Compose the selected report pages/blocks, configure presentation and reopen a readable preview of the stored result | Common document/snapshot path, pilot-derived editor/reader, actual state/error handling; no fabricated analytical values | SEQ-09 and reader presentation from SEQ-11; separate-user access is checkpoint 5 |
@@ -346,7 +347,7 @@ blocks. Forecast-specific contracts and implementation remain held.
 ### Development and delivery cadence
 
 Apply the existing [development runtime contract](../development-runtime-contract.md)
-`doc_version 3` and [operating model](../development-operating-model.md) `doc_version 13`.
+`doc_version 3` and [operating model](../development-operating-model.md) `doc_version 15`.
 There is one application, one set of domain rules, locked dependencies and
 versioned migrations. Host development and packaged execution use those same
 sources; development convenience is not a second implementation or auth policy.
@@ -404,8 +405,8 @@ needed by an earlier shipped migration.
 The owner selected preparation of [WS-002 0.2.0](directions/DIR-004/workstreams/WS-002.md)
 and [MS-003 0.2.0](milestones/MS-003/plan.md), including their six prompts and
 single journal. Static current-state inspection and fixed implementation choices
-are recorded there. Review the complete L2/L3/pack together; acceptance of newly
-written details and an actual stage request are still required before execution.
+are recorded there. The owner accepted the complete L2/L3/pack on 2026-09-13; MS-003/DEC-01 and
+its journal record the decision. Stage execution follows the existing runner.
 
 Keep WS-001/C04–C06 for the later full onboarding/admin checkpoint. Extract only
 the minimum prerequisite contracts needed by the early product unit, without
@@ -602,7 +603,7 @@ their own version and acceptance provenance. Architecture status is not code rea
 | MAP-001/DEC-08 | Finalize WS-001 and synchronize accepted installation/HTTPS/bootstrap choices | Owner accepted six proposals, corrected target to M5 Max/36 GB, allowed local Linux VM, excluded experimental-data migration and authorized direct main publication on 2026-09-06 | WS-001 1.0.0 owns five sequential outcomes; C02 was the first separate L3. No general publication-policy or product-execution authority is inferred. |
 | MAP-001/DEC-09 | Preserve completed MS-002 and use focused local development, packaged milestone proof and explicit delivery qualification across all directions | Owner accepted the explained approach on 2026-09-11 and requested the general plan/sequence amendment before later L2/L3 work; compatible detail in 1.3.0 | Reuse delivery machinery, retain requirements and SEQ IDs, the then-selected C04 frontier is superseded by DEC-10; development cadence remains accepted |
 | MAP-001/DEC-10 | Build usable analyst functionality before full administration/access-management workflows; retain necessary technical safeguards | Owner correction, 2026-09-12; priority accepted, detailed checkpoint order in 2.0.0 is proposed | First report L2 under DIR-004 is proposed; defer full WS-001/C04–C06; preserve MS-001/MS-002 and all product requirements |
-| MAP-001/DEC-11 | Prepare the first-report L2/L3, prompts and journal together; retain full segment lifecycle in product sequencing | Owner request on 2026-09-12; WS-002/MS-003 content `0.2.0` under review; Customer/Product source inclusion required by the owner | Authoring authorized; exact content approval, execution and publication are separate |
+| MAP-001/DEC-11 | Prepare the first-report L2/L3, prompts and journal together; retain full segment lifecycle in product sequencing | Owner request on 2026-09-12; WS-002/MS-003 content `0.2.0` accepted by the owner on 2026-09-13, including Customer/Product source inclusion | Plan acceptance recorded; initial S01 entry allowed in the journal; execution and publication remain separate |
 
 The owner first reviewed the Russian `0.1.0` drafts, then explicitly accepted L1
 and requested the English records. Their Russian bodies are replaced in the same

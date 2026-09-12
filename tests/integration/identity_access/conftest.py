@@ -69,12 +69,14 @@ def clean_identity_database(identity_settings: Settings) -> None:
 
 @pytest.fixture
 def identity_app(identity_settings: Settings) -> FastAPI:
-    return create_app(settings=identity_settings)
+    app = FastAPI()
+    app.mount("/api", create_app(settings=identity_settings))
+    return app
 
 
 @pytest.fixture
 def client(identity_app: FastAPI) -> Iterator[TestClient]:
-    with TestClient(identity_app, base_url="http://testserver") as test_client:
+    with TestClient(identity_app, base_url="http://testserver/api/") as test_client:
         yield test_client
 
 

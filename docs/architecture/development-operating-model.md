@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 10
+doc_version: 14
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -115,9 +115,19 @@ rollback, observability, and performance as `none`, `compatible-change`,
 
 ## 5. Development runtime modes
 
-Use the smallest runtime that can prove the ticket boundary. The exact commands
-and current implementation status live in
+Use the smallest runtime that can prove the selected ticket or milestone-stage
+boundary. The exact commands and current implementation status live in
 [development-runtime-contract.md](./development-runtime-contract.md).
+
+The owner accepted the development cadence on 2026-09-11: focused local feedback,
+applicable packaged milestone proof and installation qualification at declared
+delivery boundaries. [MAP-001 2.0.2](planning/project-map.md#development-and-delivery-cadence)
+retains that cadence and proposes the 2026-09-12 product-first ordering. Reuse
+matching observed evidence; retain required CI checks and existing internal/release
+profiles. The selected [WS-002](planning/directions/DIR-004/workstreams/WS-002.md) /
+[MS-003](planning/milestones/MS-003/plan.md) review package applies this cadence.
+Its plan-review draft can validate without being executable; product runtime
+commands and CI proof profiles remain unchanged.
 
 | Mode | Purpose | Cannot prove by itself |
 |---|---|---|

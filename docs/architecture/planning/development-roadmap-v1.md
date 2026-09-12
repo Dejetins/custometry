@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-ROADMAP-001
 title: Custometry development roadmap and integration decisions
-doc_version: 10
+doc_version: 14
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -36,14 +36,23 @@ canonical journal for each authorized milestone. Existing tickets retain evidenc
 and independent status; do not duplicate their state or revive retired UI programs.
 Agents must maintain affected document links, versions, decisions, indexes and
 evidence without owner reminders. Product priorities and Forecasting hold remain
-unchanged. The owner has now accepted [MAP-001 and its six L1 directions](project-map.md)
-at version 1.0.0, followed by the accepted sequential priorities and WS-001 registration at MAP-001 `1.2.0`.
-The accepted [WS-001: installable platform and first administrator bootstrap](directions/DIR-006/workstreams/WS-001.md) `1.0.0` belongs to DIR-006, with DIR-001/005 contributions. It fixes M5 Max/36 GB and Linux VM tests, explicit LAN/HTTPS, a guided installer, initial-account roles and no experimental-data migration. The next document is the separate C02 L3 plan for reproducible prebuilt delivery; its MS ID/path/version is produced during that authoring unit. Inventory remains part of L2 preparation; five sequential milestone outcomes are accepted.
-The sequence starts with prebuilt delivery, installation and protected bootstrap,
-then staff/access, sources, usable data, analysis, authoring, publication/access,
-reader use and the next update/recovery cycle. The older report-first recommendation
-and N0/N1/M0/M1 rows below are supporting analysis only; where their ordering differs,
-[MAP-001](project-map.md#accepted-delivery-sequence) governs the selected planning frontier.
+unchanged. The six direction scopes remain accepted. On 2026-09-11 the owner
+accepted local feature feedback, packaged milestone proof and explicit delivery
+qualification. On 2026-09-12 the owner selected usable analyst functionality
+before full administration. [MAP-001 2.0.2](project-map.md) contains the proposed
+checkpoint order for that correction and supersedes the local C04-first frontier.
+This supporting roadmap does not override the current hierarchical map.
+
+[WS-001](directions/DIR-006/workstreams/WS-001.md), accepted scope `1.0.0` /
+navigation `1.0.10`, retains completed MS-001/MS-002 and the remaining C04–C06
+onboarding/admin obligations. The selected [WS-002](directions/DIR-004/workstreams/WS-002.md) /
+[MS-003](milestones/MS-003/plan.md) review package is a working analyst report
+under DIR-004, with real prepared inputs, backend persistence and pilot-derived
+Web interactions. Necessary Identity/data support contributes within that unit;
+full administrative workflows follow the initial analyst cycle. The six-prompt pack and its single draft journal are linked from MS-003;
+new content awaits review and no execution has started. The older N0/N1/M0/M1 rows remain supporting
+analysis; [the current checkpoint proposal](project-map.md#proposed-product-checkpoints)
+owns the detailed ordering under review.
 
 ### Owner priority update — 2026-09-05
 

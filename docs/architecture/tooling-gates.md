@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 20
+doc_version: 21
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -70,7 +70,7 @@ The prefix for every direct command is `uv run python -m tools.custometry_qualit
 | `validate_delivery_tickets` | Delivery ticket changed or a Goal is prepared | PC, L, PP, CI, R | Always | Ticket identity, frontier blockers, exact scope, repair policy, validation boundary/proof-skill route, escalation set, blocked records, and the schema of terminal evidence; it does not prove the behavior |
 | `validate_agent_profiles` | Root governance documents, `AGENTS`, role TOML, templates, or skill routes changed | PC, L, PP, CI, R | Semantic role changes also require a canary | Schema, routing, reference integrity, and English-authoring rules for root contributor/governance documents, repository agent instructions, registries, profiles, and templates |
 | `doctor` | Setup, engine, configuration, ports, network, resources, Compose, or release changed | L static; PP/CI static; R static+runtime | `custometry-doctor --mode runtime` on the target | Preconditions, engine, and resources; not application readiness |
-| `validate_prompt_packs` | Milestone plan, prompts, journal, updater or bound capability evidence changed | PC, L, PP, CI, R | Always | Schema, accepted plan/hash bindings, receipts and declared entry inputs; no stage execution or concurrent-claim proof |
+| `validate_prompt_packs` | Milestone plan, prompts, journal, updater or bound capability evidence changed | PC, L, PP, CI, R | Always | Schema, exact plan/hash bindings, receipts and declared entry inputs; a draft/in-review plan is allowed only in a wholly disallowed unclaimed draft; entry still requires acceptance; no stage execution or concurrent-claim proof |
 | `development_runtime` | Hybrid CLI, development Compose override, host-process ownership, demo reset, or release isolation changed | PC, L, PP, CI, R | `scripts/dev validate`; real lifecycle is executed separately for W11 acceptance | Static ownership, loopback publication, volume separation, bounded logs, reset target, and release-entrypoint exclusion; static validation does not prove the Docker/host lifecycle |
 | `cleanup` | Generated, temporary, or container data deletion, or disk remediation | Not included automatically | Dry-run when triggered; R synthetic apply drill | Ownership-bounded deletion and post-condition; not broad deletion authority |
 | `check_ddd_boundaries` | Imports, package boundaries, allowlist, or context map changed | PC, L, PP, CI, R | Always | Compile-time dependency policy; not runtime SQL proof |

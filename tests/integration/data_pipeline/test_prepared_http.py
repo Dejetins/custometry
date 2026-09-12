@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+from typing import Any, cast
 
 import httpx
 import pytest
@@ -33,7 +34,8 @@ def test_prepared_analyst_http_prefix_session_and_revocation() -> None:
             },
         )
         assert login.status_code == 200
-        cookies = {c.name: c for c in client.cookies.jar}
+        cookie_jar = cast(Any, client.cookies.jar)
+        cookies: dict[str, Any] = {c.name: c for c in cookie_jar}
         assert cookies["custometry_access"].path == "/"
         assert cookies["custometry_refresh"].path == "/api/identity"
         assert cookies["custometry_csrf"].path == "/"
@@ -63,7 +65,7 @@ def test_prepared_analyst_http_prefix_session_and_revocation() -> None:
             client.get("/api/identity/me", headers={"Authorization": "Basic invalid"}).status_code
             == 401
         )
-        token = cookies["custometry_access"].value
+        token = cast(str, cookies["custometry_access"].value)
         assert (
             client.get("/api/identity/me", headers={"Authorization": "Bearer " + token}).status_code
             == 200

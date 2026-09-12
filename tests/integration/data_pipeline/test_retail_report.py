@@ -2,17 +2,24 @@ from __future__ import annotations
 
 from dataclasses import replace
 from pathlib import Path
+from typing import Any, cast
 from uuid import uuid4
 
-import pyarrow.parquet as pq
+import pyarrow.parquet as pq  # pyright: ignore[reportMissingTypeStubs]
 import pytest
 
-from apps.worker_data.vertical_slice import DataPipelineRunner
+from apps.worker_data.vertical_slice import DataPipelineRunner, RetailConnector
 from packages.artifacts.infrastructure.local import LocalArtifactStore
 from packages.contracts.data_pipeline import DataPipelineFailure, InjectedCrash
 from packages.ingestion.domain.model import ExtractionBatchRequest
 from packages.semantic_model.infrastructure.postgres import PostgresSemanticRepository
 from tests.integration.data_pipeline.conftest import DataPipelineRuntime
+
+
+def read_rows(path: Path) -> list[dict[str, Any]]:
+    read_table = cast(Any, pq).read_table
+    table = read_table(path)
+    return cast(list[dict[str, Any]], table.to_pylist())
 
 
 def request_for(runtime: DataPipelineRuntime) -> ExtractionBatchRequest:
@@ -52,16 +59,14 @@ def test_real_six_table_publication_replay_and_integrity(
     for entity, count in counts.items():
         assert manifests[entity].row_count == count
         assert manifests["Raw" + entity].row_count == (15000 if entity == "ReceiptItem" else count)
-    quarantine = pq.read_table(
-        store.resolve(manifests["QuarantineReceiptItem"].relative_uri)
-    ).to_pylist()
+    quarantine = read_rows(store.resolve(manifests["QuarantineReceiptItem"].relative_uri))
     assert len(quarantine) == 5
     assert all(
         r["product_id"] == 999999 and r["reason"] == "receipt_item.product.reference"
         for r in quarantine
     )
-    receipts = pq.read_table(store.resolve(manifests["Receipt"].relative_uri)).to_pylist()
-    items = pq.read_table(store.resolve(manifests["ReceiptItem"].relative_uri)).to_pylist()
+    receipts = read_rows(store.resolve(manifests["Receipt"].relative_uri))
+    items = read_rows(store.resolve(manifests["ReceiptItem"].relative_uri))
     assert all(
         r["source_system_id"] == "northwind-retail" and isinstance(r["receipt_id"], str)
         for r in receipts
@@ -73,6 +78,7 @@ def test_real_six_table_publication_replay_and_integrity(
             "SELECT bindings, impact_summary, capability_matrix FROM semantic_dataset_versions WHERE id=%s",
             (result.semantic_dataset_version_id,),
         ).fetchone()
+        assert row is not None
         assert len(row[0]) == 6
         assert len(row[1]["relationships"]) == 5
         assert row[1]["quality_accounting"]["gate"] == "allow_degraded"
@@ -82,11 +88,15 @@ def test_real_six_table_publication_replay_and_integrity(
             "SELECT violations, applied_waiver_ids FROM data_quality_reports WHERE id=%s",
             (result.quality_report_id,),
         ).fetchone()
+        assert report is not None
         assert report[1] == []
         assert report[0][-1]["details"]["quarantined_count"] == 5
     with runtime.connect() as c, c.cursor() as cursor:
         with pytest.raises(DataPipelineFailure, match="SEMANTIC_DATASET_NOT_FOUND"):
-            PostgresSemanticRepository.get(cursor, workspace_id=uuid4(), version_id=result.semantic_dataset_version_id)
+            assert result.semantic_dataset_version_id is not None
+            PostgresSemanticRepository.get(
+                cursor, workspace_id=uuid4(), version_id=result.semantic_dataset_version_id
+            )
     replay = runner.run(request)
     assert (
         replay.reused and replay.semantic_dataset_version_id == result.semantic_dataset_version_id
@@ -116,17 +126,21 @@ def test_failed_real_publication_has_no_semantic_visibility(
     with pytest.raises(InjectedCrash):
         runner.run(request)
     with runtime.connect() as c:
+        semantic_count = c.execute(
+            "SELECT count(*) FROM semantic_dataset_versions WHERE workspace_id=%s",
+            (runtime.workspace_id,),
+        ).fetchone()
+        assert semantic_count is not None
         assert (
-            c.execute(
-                "SELECT count(*) FROM semantic_dataset_versions WHERE workspace_id=%s",
-                (runtime.workspace_id,),
-            ).fetchone()[0]
+            semantic_count[0]
             == 0
         )
+        batch_state = c.execute(
+            "SELECT state FROM ingestion_batches WHERE id=%s", (request.batch_id,)
+        ).fetchone()
+        assert batch_state is not None
         assert (
-            c.execute(
-                "SELECT state FROM ingestion_batches WHERE id=%s", (request.batch_id,)
-            ).fetchone()[0]
+            batch_state[0]
             == "failed"
         )
 
@@ -140,16 +154,32 @@ def test_unexpected_critical_defects_block_real_intake(
 ) -> None:
     runtime = data_pipeline_runtime
 
-    class DamagedSource:
-        def begin_extraction_session(self, **kwargs):
-            return runtime.connector.begin_extraction_session(**kwargs)
+    class DamagedSource(RetailConnector):
+        def begin_extraction_session(self, *, workspace_id: Any, source_system_id: Any) -> Any:
+            return runtime.connector.begin_extraction_session(
+                workspace_id=workspace_id, source_system_id=source_system_id
+            )
 
-        def close_extraction_session(self, *args):
-            return runtime.connector.close_extraction_session(*args)
+        def close_extraction_session(self, session: Any, outcome: str) -> Any:
+            return runtime.connector.close_extraction_session(session, outcome)
 
-        def extract(self, **kwargs):
-            rows = runtime.connector.extract(**kwargs)
-            entity = kwargs["object_name"]
+        def extract(
+            self,
+            *,
+            session: Any,
+            schema_name: str,
+            object_name: str,
+            columns: tuple[str, ...],
+            limit: int,
+        ) -> tuple[dict[str, object], ...]:
+            rows = runtime.connector.extract(
+                session=session,
+                schema_name=schema_name,
+                object_name=object_name,
+                columns=columns,
+                limit=limit,
+            )
+            entity = object_name
             if defect == "duplicate_customer" and entity == "customers":
                 return rows + (dict(rows[0]),)
             targets = {
@@ -173,11 +203,13 @@ def test_unexpected_critical_defects_block_real_intake(
     assert result.semantic_dataset_version_id is None
     assert len(result.artifact_manifests) == 6  # All raw input remains durable.
     with runtime.connect() as c:
+        semantic_count = c.execute(
+            "SELECT count(*) FROM semantic_dataset_versions WHERE workspace_id=%s",
+            (runtime.workspace_id,),
+        ).fetchone()
+        assert semantic_count is not None
         assert (
-            c.execute(
-                "SELECT count(*) FROM semantic_dataset_versions WHERE workspace_id=%s",
-                (runtime.workspace_id,),
-            ).fetchone()[0]
+            semantic_count[0]
             == 0
         )
 
@@ -194,10 +226,12 @@ def test_source_fingerprint_conflict_rejects_real_source(
             artifact_store=LocalArtifactStore(tmp_path),
         ).run(request)
     with runtime.connect() as c:
+        semantic_count = c.execute(
+            "SELECT count(*) FROM semantic_dataset_versions WHERE workspace_id=%s",
+            (runtime.workspace_id,),
+        ).fetchone()
+        assert semantic_count is not None
         assert (
-            c.execute(
-                "SELECT count(*) FROM semantic_dataset_versions WHERE workspace_id=%s",
-                (runtime.workspace_id,),
-            ).fetchone()[0]
+            semantic_count[0]
             == 0
         )

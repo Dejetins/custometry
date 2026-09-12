@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "current_authority": true,
+  "stage": "MS-003-S03",
+  "inputs": [
+    {
+      "path": "docs/architecture/planning/milestones/MS-003/plan.md",
+      "sha256": "4a6b1bf2a64a04b74e073bb22e46895795e187be57fe93b6711408069d6e7280",
+      "producer_stage": null
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-003/MS-003-S02/report.md",
+      "sha256": "f1fac826b9924f73f719395b4fffadd46cecb18edd2be8a086a3abfa579e81bd",
+      "producer_stage": "MS-003-S02"
+    },
+    {
+      "path": "packages/presentation/application/people.py",
+      "sha256": "561a66d53479b5e3f1cbfafff72869d4751f1d6084e88efad1892bebc9eb7e29",
+      "producer_stage": null
+    },
+    {
+      "path": "apps/api/src/custometry_api/main.py",
+      "sha256": "35701f8c591095477e3e6328bc7daf3769199b57b38aab06eb3967a3be63cfe0",
+      "producer_stage": null
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "sha256": "bb2c501633f53f08668fa88cfb1fead2b9e142f85df9c2e62196a0f77bd1b363",
+      "producer_stage": null
+    }
+  ],
+  "successor_outputs": "Presentation APIs, ChartSpec and system default references are S03-produced, deferred",
+  "permission": "enable only with current-stage acceptance; no automatic execution"
+}

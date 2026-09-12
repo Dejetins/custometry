@@ -1,0 +1,193 @@
+{
+  "status": "pass",
+  "profile": "prompt-pack/v1",
+  "created_at": "2026-09-12T22:25:20.569507+00:00",
+  "commands": [
+    {
+      "command": "uv run --locked pytest -q tests/unit/analytics tests/contract/analytics",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "24 passed in 0.43s"
+      ]
+    },
+    {
+      "command": "uv run --locked python .codex/delivery/evidence/MS-003/MS-003-S02/run_tests.py",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "2 passed in 8.79s"
+      ]
+    },
+    {
+      "command": "uv run --locked python .codex/delivery/evidence/MS-003/MS-003-S02/verify_runtime.py",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": []
+    },
+    {
+      "command": "uv run --locked ruff check packages/analytics_core/application/service.py packages/analytics_core/application/sales_report.py packages/analytics_core/infrastructure/postgres.py packages/artifacts/infrastructure/sales.py packages/semantic_model/application/sales_metrics.py packages/semantic_model/infrastructure/postgres.py packages/contracts/analytics/sales_report.py packages/contracts/generate_sales_client.py apps/api/src/custometry_api/analytics/router.py apps/api/src/custometry_api/analytics/sales_models.py migrations/versions/0010_sales_report.py tests/unit/analytics tests/integration/analytics/test_sales_report.py tests/contract/analytics",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "All checks passed!"
+      ]
+    },
+    {
+      "command": "uv run --locked pyright packages/analytics_core/application/service.py packages/analytics_core/application/sales_report.py packages/analytics_core/infrastructure/postgres.py packages/artifacts/infrastructure/sales.py packages/semantic_model/application/sales_metrics.py packages/semantic_model/infrastructure/postgres.py packages/contracts/analytics/sales_report.py packages/contracts/generate_sales_client.py apps/api/src/custometry_api/analytics/router.py apps/api/src/custometry_api/analytics/sales_models.py",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "0 errors, 0 warnings, 0 informations"
+      ]
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/contracts typecheck",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": []
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.generate_docs_index",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "PASS generate_docs_index (observed=true)"
+      ]
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.check_docs_links",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "PASS check_docs_links (observed=true)"
+      ]
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "PASS check:local (observed=true)"
+      ]
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": []
+    }
+  ],
+  "source_manifest": [
+    {
+      "path": "apps/api/src/custometry_api/analytics/router.py",
+      "change": "modified",
+      "sha256": "07bebdd3c55e060b842a7475b7a7428e8110fbbd7337256bd6a327a210e7dac4"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "change": "modified",
+      "sha256": "632afd3214d9478185d9763666106027e33239039d9e9df5414ef1eb1438712c"
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "change": "modified",
+      "sha256": "bb2c501633f53f08668fa88cfb1fead2b9e142f85df9c2e62196a0f77bd1b363"
+    },
+    {
+      "path": "docs/contracts/artifact-format-contract.md",
+      "change": "modified",
+      "sha256": "72b3954d94c3bfc7060ee3401652a7bf328720b8420af8a200815e2375b5edb5"
+    },
+    {
+      "path": "packages/analytics_core/application/service.py",
+      "change": "modified",
+      "sha256": "043d70598baa4bbb54370db0dc526629acb45de3359c67005eaddb08a7c883c6"
+    },
+    {
+      "path": "packages/analytics_core/infrastructure/postgres.py",
+      "change": "modified",
+      "sha256": "054c1b381d0d757a627db822217e56b66c92252c7b81ba988323ba7e150379f3"
+    },
+    {
+      "path": "packages/contracts/openapi/analytics.openapi.json",
+      "change": "modified",
+      "sha256": "91be62f618352e82e6c1b605570545b145ef261df0437249eb7747bbaca0ac07"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "change": "modified",
+      "sha256": "91e939278a2c164beccf1835363fd4b3ad2b14c1c098f6d9a59ff7a5535cf836"
+    },
+    {
+      "path": "packages/semantic_model/infrastructure/postgres.py",
+      "change": "modified",
+      "sha256": "8a058521a78f70e91cac0789edaca3c70b52473ec5d31d82587140b56590ce20"
+    },
+    {
+      "path": "tests/contract/analytics/test_analytics_api_contract.py",
+      "change": "modified",
+      "sha256": "9ba7f54fb701954de9b75c7f7a20433ee63c21553dbe123975f38688857f5c6c"
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/sales_models.py",
+      "change": "created",
+      "sha256": "c14afc547104f874ecf90c6f6a9581812f68451ca9443c3b4d2eee8fc36315d7"
+    },
+    {
+      "path": "migrations/versions/0010_sales_report.py",
+      "change": "created",
+      "sha256": "816a23b7cdd8eb4bfa91836c5f7985115934fcbe21445ab5f2342b829f964f40"
+    },
+    {
+      "path": "packages/analytics_core/application/sales_report.py",
+      "change": "created",
+      "sha256": "dc131dd09c056bb9af98cbe5617d415e6d0f922712a1d52480aed0e54fc5f09e"
+    },
+    {
+      "path": "packages/artifacts/infrastructure/sales.py",
+      "change": "created",
+      "sha256": "5c8dbdd047e367be1a310c3ff6234904d67fc0f2a70039827d7294852e860a83"
+    },
+    {
+      "path": "packages/contracts/analytics/sales_report.py",
+      "change": "created",
+      "sha256": "51403ce7d26c69467cb8b46a92f4236fc91e131ff614fcf123e951f44dacfc56"
+    },
+    {
+      "path": "packages/contracts/generate_sales_client.py",
+      "change": "created",
+      "sha256": "8b3fa0f9f7d4f3b6d90b5c48be5eca19fe4da9b0f4db1371675a4d1dc7d5a5d0"
+    },
+    {
+      "path": "packages/contracts/schemas/sales-report-request.schema.json",
+      "change": "created",
+      "sha256": "70d6e3cac04e416d687d76cf38f1a146ace6b37cbd9c67c47e52f12e6eac80dd"
+    },
+    {
+      "path": "packages/contracts/src/analytics-client.ts",
+      "change": "created",
+      "sha256": "5590d18e1d44572aaac665a76fc5527d8f0bf21735da3711e81c1ccba6fd89aa"
+    },
+    {
+      "path": "packages/semantic_model/application/sales_metrics.py",
+      "change": "created",
+      "sha256": "c724bf559a031825ce9a92d9a4769e0cf2d30ee834cf52789e7d2780a3be81e0"
+    },
+    {
+      "path": "tests/integration/analytics/test_sales_report.py",
+      "change": "created",
+      "sha256": "e3567f4e0d618d309294bf3ef246c0ae9a60a1c1d7f54fe33108239addbcc723"
+    },
+    {
+      "path": "tests/unit/analytics/test_sales_report.py",
+      "change": "created",
+      "sha256": "b996454b7ff6ff03316fe8d24acbf2e1a19c36331c970667b34fb774c8a68c11"
+    }
+  ],
+  "foreign_changes_at_entry": [],
+  "deleted_paths": [],
+  "protected_completed_milestones": "unchanged against HEAD",
+  "legacy_api": "all previous paths and schemas equal HEAD",
+  "proof_boundary": "real source/control PostgreSQL, API, metric and artifact result; no UI or packaged proof"
+}

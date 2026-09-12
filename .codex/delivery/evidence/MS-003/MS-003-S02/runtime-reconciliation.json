@@ -1,0 +1,188 @@
+{
+  "boundary": "real-S01-source-HTTP-PostgreSQL-artifacts",
+  "cases": [
+    {
+      "anonymous_receipts": 111,
+      "artifact_hash": "baca5675d3533d9d50bc041e9b1c6a5efef946ffefb1bc3cc90f96c78e8b1d29",
+      "daily_sql_rows": 334,
+      "end": "2025-11-30",
+      "result_id": "5cd26336-11ad-5156-8d62-7ee4ce9a12a4",
+      "start": "2025-01-01",
+      "store_id": null,
+      "totals": {
+        "average_receipt": "183.7027425373134328358208955",
+        "net_revenue": "393858.68",
+        "receipt_count": "2144"
+      }
+    },
+    {
+      "anonymous_receipts": 7,
+      "artifact_hash": "836cc4a2de5391b7819439dfb0aa71f547882c7e1d1540554c3e83475b95f390",
+      "daily_sql_rows": 109,
+      "end": "2025-11-30",
+      "result_id": "7810dd02-6575-5f17-9062-da9f5f30733b",
+      "start": "2025-01-01",
+      "store_id": "1",
+      "totals": {
+        "average_receipt": "189.0899082568807339449541284",
+        "net_revenue": "20610.80",
+        "receipt_count": "109"
+      }
+    },
+    {
+      "anonymous_receipts": 121,
+      "artifact_hash": "d219f6c3e3446bc1e6fd8286538f41531d596901e3c595ac769147dff8aa6d05",
+      "daily_sql_rows": 335,
+      "end": "2024-11-30",
+      "result_id": "bc76e8ac-1627-5be8-b823-acdc0cbcfda4",
+      "start": "2024-01-01",
+      "store_id": null,
+      "totals": {
+        "average_receipt": "191.6665950782997762863534676",
+        "net_revenue": "428374.84",
+        "receipt_count": "2235"
+      }
+    },
+    {
+      "anonymous_receipts": 10,
+      "artifact_hash": "60fe5517c1c1c97575ba7158fee35e3f10468ff385f2d7446f7ab7886dc01e84",
+      "daily_sql_rows": 30,
+      "end": "2025-06-30",
+      "result_id": "d469830e-da5a-524d-a476-7898afb323b1",
+      "start": "2025-06-01",
+      "store_id": null,
+      "totals": {
+        "average_receipt": "198.8254",
+        "net_revenue": "39765.08",
+        "receipt_count": "200"
+      }
+    }
+  ],
+  "concurrent_identical_requests": 4,
+  "daily_source_sql": "matched each observed day; bounded unobserved days explicitly unavailable",
+  "dataset_version_id": "e81d5594-b690-5863-8650-9f21e1a8db84",
+  "metric_versions": [
+    {
+      "aggregation": "sum",
+      "allowed_dimensions": [
+        "date",
+        "store_id"
+      ],
+      "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d",
+      "denominator_version_id": null,
+      "eligibility": {
+        "currency": "EUR",
+        "locked": true,
+        "policy_version": "completed-eur-receipt/v1",
+        "status": "completed"
+      },
+      "expression": "sum(net_amount)",
+      "fact_scope": "receipt_header",
+      "format": {
+        "decimal_places": 2
+      },
+      "labels": {
+        "en": "Net revenue",
+        "ru": "\u0412\u044b\u0440\u0443\u0447\u043a\u0430 \u043d\u0435\u0442\u0442\u043e"
+      },
+      "metric_id": "net_revenue",
+      "metric_kind": "additive_measure",
+      "null_policy": "reject_null_amount;empty_is_unavailable",
+      "numerator_version_id": null,
+      "return_policy": "exclude_non_completed_not_refund_adjusted",
+      "schema_version": "sales-metric/v1",
+      "source_grain": [
+        "source_system_id",
+        "receipt_id"
+      ],
+      "time_aggregation": "sum",
+      "timezone": "UTC",
+      "unit": "EUR",
+      "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc"
+    },
+    {
+      "aggregation": "sum",
+      "allowed_dimensions": [
+        "date",
+        "store_id"
+      ],
+      "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0",
+      "denominator_version_id": null,
+      "eligibility": {
+        "currency": "EUR",
+        "locked": true,
+        "policy_version": "completed-eur-receipt/v1",
+        "status": "completed"
+      },
+      "expression": "count_distinct(source_system_id,receipt_id)",
+      "fact_scope": "receipt_header",
+      "format": {
+        "decimal_places": 0
+      },
+      "labels": {
+        "en": "Receipts",
+        "ru": "\u0427\u0435\u043a\u0438"
+      },
+      "metric_id": "receipt_count",
+      "metric_kind": "event_count",
+      "null_policy": "reject_null_amount;empty_is_unavailable",
+      "numerator_version_id": null,
+      "return_policy": "exclude_non_completed_not_refund_adjusted",
+      "schema_version": "sales-metric/v1",
+      "source_grain": [
+        "source_system_id",
+        "receipt_id"
+      ],
+      "time_aggregation": "sum",
+      "timezone": "UTC",
+      "unit": "receipt",
+      "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433"
+    },
+    {
+      "aggregation": "recompute_ratio",
+      "allowed_dimensions": [
+        "date",
+        "store_id"
+      ],
+      "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a",
+      "denominator_version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+      "eligibility": {
+        "currency": "EUR",
+        "locked": true,
+        "policy_version": "completed-eur-receipt/v1",
+        "status": "completed"
+      },
+      "expression": "net_revenue/receipt_count",
+      "fact_scope": "receipt_header",
+      "format": {
+        "decimal_places": 2
+      },
+      "labels": {
+        "en": "Average receipt",
+        "ru": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439 \u0447\u0435\u043a"
+      },
+      "metric_id": "average_receipt",
+      "metric_kind": "derived_ratio",
+      "null_policy": "reject_null_amount;empty_is_unavailable",
+      "numerator_version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+      "return_policy": "exclude_non_completed_not_refund_adjusted",
+      "schema_version": "sales-metric/v1",
+      "source_grain": [
+        "source_system_id",
+        "receipt_id"
+      ],
+      "time_aggregation": "recompute_ratio",
+      "timezone": "UTC",
+      "unit": "EUR/receipt",
+      "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144"
+    }
+  ],
+  "quality_report_id": "c23cb37a-52b8-5597-8968-81508272b212",
+  "quarantined_item_linked_eligible_headers": {
+    "count": 5,
+    "net_amount": "930.10"
+  },
+  "revoked_session_read_and_reuse": "denied",
+  "status": "pass",
+  "unsupported_dimensions": "rejected"
+}

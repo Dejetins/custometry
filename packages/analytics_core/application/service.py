@@ -6,7 +6,7 @@ from datetime import date, datetime
 from decimal import Decimal, ROUND_HALF_UP
 import hashlib
 import json
-from typing import Protocol
+from typing import Any, Protocol, cast
 from uuid import UUID, uuid5
 
 from packages.analytics_core.domain.model import (
@@ -21,6 +21,14 @@ from packages.contracts.analytics import (
     TabularArtifactPort,
 )
 
+
+from packages.contracts.analytics.sales_report import (
+    SalesReportRequest,
+    SalesSemanticPort,
+    SalesResultPort,
+    SalesArtifactPort,
+)
+from packages.analytics_core.application.sales_report import build_report, policy_hash
 
 RESULT_NAMESPACE = UUID("2ef8434d-0b48-50be-9b97-bf41a1a8aef1")
 
@@ -167,7 +175,7 @@ def _customer_metrics(
         "active_customers": Decimal(len(current_ids)),
         "new_customers": Decimal(
             sum(
-                current_period.starts_on <= first_dates[item] <= current_period.ends_on
+                current_period.starts_on <= first_dates[cast(str, item)] <= current_period.ends_on
                 for item in current_ids
             )
         ),
@@ -224,9 +232,9 @@ def _rfm(
             item[f"{field}_score"] = min(bins, (index * bins // len(ordered)) + 1)
     profiles: list[dict[str, object]] = []
     for item in sorted(features, key=lambda value: str(value["customer"])):
-        r = int(item["recency_score"])
-        f = int(item["frequency_score"])
-        m = int(item["monetary_score"])
+        r = int(cast(int, item["recency_score"]))
+        f = int(cast(int, item["frequency_score"]))
+        m = int(cast(int, item["monetary_score"]))
         segment = (
             "champions"
             if min(r, f, m) >= bins - 1
@@ -251,9 +259,12 @@ def _rfm(
     count = Decimal(len(features))
     return {
         "rfm_customers": count,
-        "recency_days_avg": sum((item["recency"] for item in features), Decimal(0)) / count,
-        "frequency_avg": sum((item["frequency"] for item in features), Decimal(0)) / count,
-        "monetary_avg": sum((item["monetary"] for item in features), Decimal(0)) / count,
+        "recency_days_avg": sum((cast(Decimal, item["recency"]) for item in features), Decimal(0))
+        / count,
+        "frequency_avg": sum((cast(Decimal, item["frequency"]) for item in features), Decimal(0))
+        / count,
+        "monetary_avg": sum((cast(Decimal, item["monetary"]) for item in features), Decimal(0))
+        / count,
     }, profiles
 
 
@@ -313,7 +324,7 @@ def _metric_groups(
                 else None
             )
             percent = (
-                absolute / abs(comparison_value) * 100
+                absolute / abs(cast(Decimal, comparison_value)) * 100
                 if absolute is not None and comparison_value not in {None, Decimal(0)}
                 else None
             )
@@ -345,11 +356,17 @@ class AnalyticsService:
         artifacts: TabularArtifactPort,
         results: ResultRepository,
         result_store: ResultArtifactStore,
+        sales_semantics: SalesSemanticPort | None = None,
+        sales_results: SalesResultPort | None = None,
+        sales_artifacts: SalesArtifactPort | None = None,
     ) -> None:
         self._projections = projections
         self._artifacts = artifacts
         self._results = results
         self._result_store = result_store
+        self._sales_semantics = sales_semantics
+        self._sales_results = sales_results
+        self._sales_artifacts = sales_artifacts
 
     def run(
         self,
@@ -570,3 +587,71 @@ class AnalyticsService:
         return self._results.list_visible(
             workspace_id=workspace_id, principal_id=principal_id, offset=offset, limit=limit
         )
+
+    def run_sales_report(
+        self,
+        *,
+        workspace_id: UUID,
+        principal_id: UUID,
+        permissions: frozenset[str],
+        request: SalesReportRequest,
+    ) -> dict[str, Any]:
+        if not {"analysis.run", "analysis.read"} <= permissions:
+            raise AnalyticsFailure("FORBIDDEN")
+        request.validate()
+        if (
+            self._sales_semantics is None
+            or self._sales_results is None
+            or self._sales_artifacts is None
+        ):
+            raise AnalyticsFailure("SALES_REPORT_UNAVAILABLE")
+        source = self._sales_semantics.sales_projection(
+            workspace_id=workspace_id, version_id=request.semantic_dataset_version_id
+        )
+        inputs = self._sales_artifacts.read_sales_inputs(
+            workspace_id=workspace_id,
+            bindings=source["bindings"],
+            supporting_artifacts=[
+                *source["summary"]["raw_artifacts"].values(),
+                source["summary"]["quarantine_artifact"],
+            ],
+        )
+        payload = build_report(
+            request, source, inputs, policy_hash(workspace_id, principal_id, permissions)
+        )
+        existing = self._sales_results.find_sales(
+            workspace_id=workspace_id,
+            principal_id=principal_id,
+            request_hash=payload["request_hash"],
+        )
+        if existing is not None:
+            self._sales_artifacts.verify_sales(workspace_id=workspace_id, payload=existing)
+            return existing
+        payload["manifest"] = self._sales_artifacts.commit_sales(
+            workspace_id=workspace_id, payload=payload
+        )
+        winner = self._sales_results.save_sales(
+            payload, workspace_id=workspace_id, principal_id=principal_id
+        )
+        self._sales_artifacts.verify_sales(workspace_id=workspace_id, payload=winner)
+        return winner
+
+    def get_sales_report(
+        self,
+        *,
+        workspace_id: UUID,
+        principal_id: UUID,
+        permissions: frozenset[str],
+        result_id: UUID,
+    ) -> dict[str, Any]:
+        if "analysis.read" not in permissions:
+            raise AnalyticsFailure("FORBIDDEN")
+        if self._sales_results is None or self._sales_artifacts is None:
+            raise AnalyticsFailure("SALES_REPORT_UNAVAILABLE")
+        payload = self._sales_results.get_sales(
+            workspace_id=workspace_id, principal_id=principal_id, result_id=result_id
+        )
+        if payload["policy_hash"] != policy_hash(workspace_id, principal_id, permissions):
+            raise AnalyticsFailure("FORBIDDEN")
+        self._sales_artifacts.verify_sales(workspace_id=workspace_id, payload=payload)
+        return payload

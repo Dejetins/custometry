@@ -130,3 +130,53 @@ class PostgresAnalyticsRepository:
             )
             rows = cursor.fetchall()
         return tuple(dict(row[0]) for row in rows), (0 if not rows else int(rows[0][1]))
+
+    def find_sales(
+        self, *, workspace_id: UUID, principal_id: UUID, request_hash: str
+    ) -> dict[str, Any] | None:
+        with self._connect() as connection, connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT response_payload FROM analytics_sales_reports WHERE workspace_id=%s AND owner_principal_id=%s AND request_hash=%s",
+                (workspace_id, principal_id, request_hash),
+            )
+            row = cursor.fetchone()
+        return None if row is None else dict(row[0])
+
+    def get_sales(
+        self, *, workspace_id: UUID, principal_id: UUID, result_id: UUID
+    ) -> dict[str, Any]:
+        with self._connect() as connection, connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT response_payload FROM analytics_sales_reports WHERE workspace_id=%s AND owner_principal_id=%s AND id=%s",
+                (workspace_id, principal_id, result_id),
+            )
+            row = cursor.fetchone()
+        if row is None:
+            raise AnalyticsFailure("NOT_FOUND")
+        return dict(row[0])
+
+    def save_sales(
+        self, payload: dict[str, Any], *, workspace_id: UUID, principal_id: UUID
+    ) -> dict[str, Any]:
+        with self._connect() as connection, connection.transaction(), connection.cursor() as cursor:
+            cursor.execute(
+                """INSERT INTO analytics_sales_reports(id, workspace_id, owner_principal_id, semantic_dataset_version_id, request_hash, policy_hash, response_payload)
+                VALUES (%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(workspace_id,request_hash) DO NOTHING""",
+                (
+                    payload["result_id"],
+                    workspace_id,
+                    principal_id,
+                    payload["semantic_dataset_version_id"],
+                    payload["request_hash"],
+                    payload["policy_hash"],
+                    Jsonb(payload),
+                ),
+            )
+            cursor.execute(
+                "SELECT response_payload FROM analytics_sales_reports WHERE workspace_id=%s AND owner_principal_id=%s AND request_hash=%s",
+                (workspace_id, principal_id, payload["request_hash"]),
+            )
+            row = cursor.fetchone()
+            if row is None or dict(row[0]) != payload:
+                raise AnalyticsFailure("RESULT_IDENTITY_CONFLICT")
+            return dict(row[0])

@@ -52,3 +52,15 @@ def test_request_contract_is_typed_and_response_is_policy_safe() -> None:
     )
     assert "visible_count" in listing["required"]
     assert "total_count" not in listing["properties"]
+
+
+def test_sales_client_and_request_schema_match_provider() -> None:
+    from packages.contracts.generate_sales_client import render
+    from custometry_api.analytics.sales_models import SalesRunRequest
+
+    root = Path(__file__).resolve().parents[3]
+    assert (root / "packages/contracts/src/analytics-client.ts").read_bytes() == render(root)
+    request_schema = json.loads((root / "packages/contracts/schemas/sales-report-request.schema.json").read_text())
+    request_schema.pop("$id")
+    request_schema.pop("$schema")
+    assert request_schema == SalesRunRequest.model_json_schema()

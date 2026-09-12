@@ -12,6 +12,9 @@ from fastapi import Depends, FastAPI, Header, Query, Request, status
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from custometry_api.analytics.sales_models import SalesRunRequest, SalesResponse
+from packages.artifacts.infrastructure.sales import SalesArtifactStore
+from packages.semantic_model.infrastructure.postgres import PostgresSalesSemanticRepository
 from custometry_api.config import Settings
 from custometry_api.identity.http_auth import IdentityHTTPAdapter
 from packages.analytics_core.application.service import AnalyticsService
@@ -97,9 +100,7 @@ class AnalyticsRunRequest(StrictModel):
     result_type: Literal["sales", "customer", "rfm"]
     semantic_dataset_version_id: UUID
     comparison: TimeComparisonRequest
-    filters: list[TypedFilterRequest] = Field(
-        default_factory=_empty_typed_filters, max_length=12
-    )
+    filters: list[TypedFilterRequest] = Field(default_factory=_empty_typed_filters, max_length=12)
     rfm_score_bins: int = Field(default=5, ge=2, le=10)
     rfm_frequency_measure: Literal["receipt_count", "purchase_day_count"] = "receipt_count"
     rfm_segment_rule_set_version: Literal["rfm-retail-v1"] = "rfm-retail-v1"
@@ -198,10 +199,15 @@ def _services(settings: Settings) -> tuple[IdentityService, AnalyticsService]:
         artifacts=artifacts,
         results=repository,
         result_store=artifacts,
+        sales_semantics=PostgresSalesSemanticRepository(connect),
+        sales_results=repository,
+        sales_artifacts=SalesArtifactStore(connect, settings.analytics_artifact_root),
     )
 
 
 def _status_for(code: str) -> int:
+    if code == "RESULT_STORAGE_UNAVAILABLE":
+        return status.HTTP_503_SERVICE_UNAVAILABLE
     if code == "AUTHENTICATION_FAILED":
         return status.HTTP_401_UNAUTHORIZED
     if code in {"FORBIDDEN", "CSRF_FAILED"}:
@@ -237,7 +243,8 @@ def create_analytics_app(
     http_auth = IdentityHTTPAdapter(identity, settings)
 
     def authenticated(
-        request: Request, authorization: Annotated[str | None, Header()] = None,
+        request: Request,
+        authorization: Annotated[str | None, Header()] = None,
     ) -> Actor:
         _ = authorization
         try:
@@ -301,5 +308,46 @@ def create_analytics_app(
             visible_count=count,
         )
 
-    _ = (analytics_failure_handler, run_result, get_result, list_results)
+    @app.post("/sales-reports/v1", response_model=SalesResponse, operation_id="run_sales_report_v1")
+    def run_sales_report(
+        payload: SalesRunRequest, actor: Actor = Depends(authenticated)
+    ) -> SalesResponse:
+        try:
+            return SalesResponse.model_validate(
+                analytics.run_sales_report(
+                    workspace_id=actor.workspace_id,
+                    principal_id=actor.principal_id,
+                    permissions=actor.permissions,
+                    request=payload.domain(),
+                )
+            )
+        except psycopg.Error as exc:
+            raise AnalyticsFailure("RESULT_STORAGE_UNAVAILABLE") from exc
+
+    @app.get(
+        "/sales-reports/v1/{result_id}",
+        response_model=SalesResponse,
+        operation_id="get_sales_report_v1",
+    )
+    def get_sales_report(result_id: UUID, actor: Actor = Depends(authenticated)) -> SalesResponse:
+        try:
+            return SalesResponse.model_validate(
+                analytics.get_sales_report(
+                    workspace_id=actor.workspace_id,
+                    principal_id=actor.principal_id,
+                    permissions=actor.permissions,
+                    result_id=result_id,
+                )
+            )
+        except psycopg.Error as exc:
+            raise AnalyticsFailure("RESULT_STORAGE_UNAVAILABLE") from exc
+
+    _ = (
+        analytics_failure_handler,
+        run_result,
+        get_result,
+        list_results,
+        run_sales_report,
+        get_sales_report,
+    )
     return app

@@ -21,3 +21,5 @@ export const routeRegistry = routeRegistryDocument as RouteRegistryDocument;
 
 export * from "./foundation-client";
 export * from "./execution-control";
+
+export * as salesReports from "./analytics-client";

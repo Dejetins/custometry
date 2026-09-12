@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://custometry.local/schemas/sales-report-request/v1",
+  "additionalProperties": false,
+  "properties": {
+    "semantic_dataset_version_id": {
+      "format": "uuid",
+      "title": "Semantic Dataset Version Id",
+      "type": "string"
+    },
+    "starts_on": {
+      "default": "2025-01-01",
+      "format": "date",
+      "title": "Starts On",
+      "type": "string"
+    },
+    "ends_on": {
+      "default": "2025-11-30",
+      "format": "date",
+      "title": "Ends On",
+      "type": "string"
+    },
+    "store_id": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Store Id"
+    },
+    "comparison": {
+      "default": "none",
+      "enum": [
+        "none",
+        "previous_year_same_dates"
+      ],
+      "title": "Comparison",
+      "type": "string"
+    }
+  },
+  "required": [
+    "semantic_dataset_version_id"
+  ],
+  "title": "SalesRunRequest",
+  "type": "object"
+}

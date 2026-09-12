@@ -9,7 +9,7 @@
   "doc_id": "MS-003",
   "title": "First saved analyst report on governed retail data",
   "version": "0.2.0",
-  "planning_status": "in_review",
+  "planning_status": "accepted",
   "language": "en",
   "parent_ref": {
     "id": "WS-002",
@@ -102,10 +102,12 @@
 
 # MS-003. First saved analyst report on governed retail data
 
-L3 review candidate `0.2.0`, 2026-09-12. Parent:
+L3 accepted plan `0.2.0`, owner acceptance 2026-09-13. Parent:
 [WS-002 0.2.0](../../directions/DIR-004/workstreams/WS-002.md).
-The owner requested the plan, prompts and journal together. Prepare the complete
-review package now; do not claim acceptance of the newly written details.
+The owner accepted the current first-report plan on 2026-09-13 and requested
+removal of the plan-acceptance blocker for S01. This covers the concrete L2/L3
+scenario and TECH-01..08, including the six-table source amendment. Acceptance is
+recorded in the canonical journal; product-stage results remain future evidence.
 
 ## Result and boundaries
 
@@ -116,8 +118,8 @@ review package now; do not claim acceptance of the newly written details.
 | First controls | Title; explicit date range; all stores or one authorized store; no comparison or previous-year same dates when coverage permits; chart/table and Focus; save and reopen from library/deep link |
 | Lifecycle | An owned `workbook_report` draft with immutable saved versions and exact draft preview snapshots. Saving is not publication, sharing or a scheduled refresh. It never grants another account access |
 | Excluded | Directory management screens; full installation/bootstrap/admin UI; arbitrary source wizard; complete metric designer; segment builder/selection; arbitrary page/block editor; automatic refresh, publication, separate-reader grants, email, downloads/XLSX, Forecasting, large-workload or full installation qualification |
-| Authority | This request authorizes documentation and initial non-runnable pack construction. Product execution, Git publication, transfer, trust-store mutation and deployment are separate actions. Ordinary engineering work is delegated only within an accepted stage |
-| Input decisions | The concrete sales scenario and this L2/L3 detail need owner review. All future stage outputs are producer-owned work, not inputs to request from the owner |
+| Authority | The owner accepted this plan and initial S01 entry preparation on 2026-09-13. Product execution, Git publication, transfer, trust-store mutation and deployment are separate actions. Ordinary engineering work is delegated only within an accepted stage |
+| Input decisions | The concrete sales scenario and L2/L3 detail are accepted; no initial owner decision remains open. All future stage outputs are producer-owned work, not inputs to request from the owner |
 
 ### Current-state evidence
 
@@ -145,15 +147,15 @@ runtime, browser, container or source connection was exercised during planning.
 
 ## Implementation decisions
 
-These are concrete proposed choices for this milestone, not permission for an
-executor to redesign the stack. Acceptance of this plan fixes them. New endpoints,
+These are the concrete choices accepted by the owner on 2026-09-13. Executors
+implement TECH-01..08 within the declared scope; they do not redesign the stack. New endpoints,
 files and schemas below are target contracts, not claims that they exist today.
 
 | Decision | Current design → selected change and rationale | Owner/source and compatibility | Migration/recovery | Required proof |
 |---|---|---|---|---|
 | MS-003/TECH-01: prepared source | Reuse `demo` PostgreSQL seed through the existing readonly connector and DataPipelineRunner. Add named `retail-report/v1` extraction/publication profile for Customer, Product, Receipt, ReceiptItem, Store and Calendar. Land all source rows immutably, then publish the governed canonical subset with explicit quality accounting under the source contract below; no fabricated control-table inserts, embedded UI data or whole-retail DQ waiver | Ingestion/Artifacts/DQ/Semantic; additive profile; DATA-RULE-001/002/005/008..011 and DQ-INPUT-001/003..007 | Keep existing default retail profile unchanged. Idempotent setup references exact batch/dataset IDs and source fingerprint; mismatch fails explicitly. No source mutation or accepted-data reset | S01 proves six-table counts, qualified keys and relationships, anonymous customers, current-only dimension binding, five orphan-item quarantines, unchanged receipt totals, immutable source/derived artifacts and replay; critical key/artifact/security failures remain blocking |
 | MS-003/TECH-02: internal actor/session | Prepare a workspace admin for setup, create/invite/accept a separate ordinary analyst through existing Identity services. A loopback-only preparation command uses protected runtime files and records only safe IDs. Minimal login/logout/re-login UI; no user-management programme | Identity; server remains authority. Reuse existing auth/CSRF primitives through a shared API dependency; preserve bearer API clients. Internal analyst has existing analyst permissions, not installation-admin privileges | Browser requests use same-origin `/api`. Access cookie Path `/`, refresh Path `/api/identity`, CSRF Path `/`; Secure in packaged HTTPS, existing explicit loopback-only dev exception. Clear legacy `/identity` cookies and new paths on login/logout; old sessions may require re-login. No token in browser storage/URL | S01 API cookie/origin/CSRF/logout/revoke/outsider tests; S04 real browser login through Vite proxy; S05 actual HTTPS proxy |
-| MS-003/TECH-03: metric/time meaning | Register exactly three immutable Semantic metric definitions and their formatting: receipt-grain `net_revenue = sum(net_amount)`, `receipt_count = count distinct(source_system_id, receipt_id)`, `average_receipt = net_revenue / receipt_count`. Proposed initial eligibility: completed receipts, EUR only, visibly locked; refunds/cancellations and SEK are excluded explicitly. Do not describe this as refund-adjusted revenue | Semantic owns meaning, Analytics computes. METRIC-001/002/004/005/007/008. New versions distinguish this profile from prior experimental results | Preserve historical metric/result identities. Initial period 2025-01-01..2025-11-30, UTC; daily grain and same-dates previous year optional. Import/pin Calendar coverage; do not infer completeness from observed sales alone. Reject unsupported/mixed-currency or incompatible grain binding | S02 independent SQL reconciliation, negative/sparse/empty cases, weighted ratio, date boundaries, complete/partial comparison coverage; no sum of daily averages or receipt-total fan-out from ReceiptItem; Customer/Product presence does not enable unsupported metric dimensions |
+| MS-003/TECH-03: metric/time meaning | Register exactly three immutable Semantic metric definitions and their formatting: receipt-grain `net_revenue = sum(net_amount)`, `receipt_count = count distinct(source_system_id, receipt_id)`, `average_receipt = net_revenue / receipt_count`. Accepted initial eligibility: completed receipts, EUR only, visibly locked; refunds/cancellations and SEK are excluded explicitly. Do not describe this as refund-adjusted revenue | Semantic owns meaning, Analytics computes. METRIC-001/002/004/005/007/008. New versions distinguish this profile from prior experimental results | Preserve historical metric/result identities. Initial period 2025-01-01..2025-11-30, UTC; daily grain and same-dates previous year optional. Import/pin Calendar coverage; do not infer completeness from observed sales alone. Reject unsupported/mixed-currency or incompatible grain binding | S02 independent SQL reconciliation, negative/sparse/empty cases, weighted ratio, date boundaries, complete/partial comparison coverage; no sum of daily averages or receipt-total fan-out from ReceiptItem; Customer/Product presence does not enable unsupported metric dimensions |
 | MS-003/TECH-04: bounded computation/result | Reuse the current synchronous AnalyticsService for the internal 5,000-receipt fixture and bounded daily outputs, with accessible busy/error state (§15.4 permits synchronous compute). Produce a receipt-grain sales-period mart and daily aggregate through existing data/analytics seams; typed totals and chart/table data share an immutable result. No new worker/service/scheduler for this bounded call | Analytics owns calculations; Semantic public projection and Artifact owner ports supply data. `ANALYTICS-SALES-OVERVIEW`, REPORT-003/004. Version the report projection; retain existing analytics API contracts or add a version-dispatched operation | Identity pins workspace/actor-effective-policy, dataset/artifact hashes, metric/calendar/code versions, normalized filters, periods and grain. Same-key request/result publication is deduplicated in PostgreSQL; concurrent insert losers return only their authorized winner. No partial result reference. Read failures never substitute latest | S02 deterministic replay/concurrent same-key, policy-separated reuse, artifact corruption and no stale authorization; no large-scale/SLO claim. If the fixed fixture cannot fit existing bounds, return for a scoped amendment, not a new engine |
 | MS-003/TECH-05: document aggregate | Presentation owns logical document, immutable saved draft versions, ordered page/section/blocks, filter context and exact root/page preview snapshots. One supplied report template instantiates the supported composition subset; save preserves node IDs, new documents receive new IDs. Reuse the canonical `AnalyticalDocumentCompositionV1`, not a sales-only document format | ANALYTICAL-DOC-001/002/006/015 and REPORT-002/012; additive Presentation tables/API. Planned `/reports` collection, `/reports/{id}` draft read, `/reports/{id}/versions` save, `/reports/{id}/snapshots/{sid}` exact preview under the existing API prefix | Atomic expected-revision/CAS + idempotency-key write after required result artifacts are committed and checked. S03 produces and validates the bounded canonical line ChartSpec plus real Presentation-owned versioned system BrandProfile/CompanyPack defaults, using the accepted local assets/tokens and S02 public metric references; it pins their exact IDs/hashes before snapshot commit. No full brand editor is required. Snapshot result IDs/metric/filter/calendar/schema/grain/unit/lineage and author are pinned. Failed save keeps prior draft; conflict preserves unsaved UI changes and offers reload, never silent overwrite | S03 real PostgreSQL concurrent edit/idempotency, unknown ChartSpec/default-reference rejection and fail-between-artifact/metadata tests; reopened snapshots retain exact valid references; another principal/workspace cannot list/read/write even by guessed IDs |
 | MS-003/TECH-06: read/open semantics | Library open resolves latest saved draft version once; exact link pins version/snapshot/page/block and rechecks access. Open, page selection, Focus, locale and chart/table toggles do not compute. Explicit Apply period/filter produces a new result; Save writes the draft version. UI labels preview as draft, never published | REPORT-002/005/008/014; ANALYTICAL-DOC-007/015. `report.read`/`report.manage` plus ownership and source/result policy intersect; installation-admin status alone grants no access | Result metadata in PostgreSQL; immutable bulk results in Artifact Lifecycle. Return safe projections without raw local paths, credentials or inaccessible counts. Missing/corrupt/storage-unavailable states are distinct; no old data shown after permission failure | S03/S04 reopen with source/API calculation disabled, refresh browser and restart API, revoked/forbidden/expired session, immutable prior snapshot after edits |
@@ -307,7 +309,7 @@ Playwright owns the host Vite lifecycle and fails rather than adopting a foreign
 | Repairs | Fix reproducible in-scope defects and rerun invalidated checks. A material contradiction becomes one concise amendment with evidence and recommended minimal fix |
 | Protected state | Preserve foreign changes, pilot files and completed MS-001/MS-002 plan/pack/journal/evidence. No broad staging, stash/worktree/branch cleanup, global Docker prune, accepted-volume reset or browser fake identity |
 | Publication/deployment | Current request does not authorize Git publication or product execution. Later stage authority covers its named local test/candidate actions; external push/merge/transfer or trust-store changes need their own scope |
-| Dependencies | Use locked upstream packages. Exact ECharts 6.1.0 addition is proposed here; no custom PyArrow/chart/auth substitute. Internal license/scanner findings retain report-only policy and do not create new delivery gates |
+| Dependencies | Use locked upstream packages. Exact ECharts 6.1.0 addition is accepted here; no custom PyArrow/chart/auth substitute. Internal license/scanner findings retain report-only policy and do not create new delivery gates |
 | Documentation | Update affected existing contracts/runtime/Web-source/help pages and generated docs index when behavior changes; preserve this plan's bound bytes after acceptance and keep attempts in the journal |
 | Sensitive data | Runtime secrets in owned protected files only. Reports contain safe identities, aggregate expected/observed values, redacted errors/screens; no credential/DSN/token/cookie/browser-storage/raw row dumps |
 
@@ -320,7 +322,7 @@ Playwright owns the host Vite lifecycle and fails rather than adopting a foreign
 | `stage_ledger` | [MS-003 journal](../../../../../.codex/delivery/ledgers/MS-003.md) |
 | Validation | Repository `prompt-pack/v1`; `stage-prompt/v1`, `prompt-pack-ledger/v1`, `prompt-pack-receipt/v1`; `tools.custometry_quality.prompt_pack_validation` and `validate_prompt_packs` |
 | Claim/update | Existing `custometry-stage-ledger/v1`, POSIX lock + private session + CAS + atomic replacement; exact current implementation/test evidence bound in preparation capability evidence |
-| Mode | `manual_sequential`; initial `draft`, no current stage, all rows pending/disallowed, no fabricated execution receipt |
+| Mode | `manual_sequential`; initial `draft`, no current stage; all rows pending, only S01 allowed after the recorded plan acceptance; no fabricated execution receipt |
 | Authoring boundary | A nonaccepted plan may structurally validate only while the whole pack is an unclaimed disallowed draft. Entry still requires accepted plan, owner execution request, actual inputs and exclusive updater |
 
 After preparation, `uv run --locked python -m tools.custometry_quality.validate_prompt_packs`
@@ -336,13 +338,13 @@ resumes, accepts and advances. No Goal mode or fourth progress register.
 
 | Decision ID | Question | Alternatives/consequence | Recommendation/basis | Decider | Blocks | Decision/source/date/version |
 |---|---|---|---|---|---|---|
-| MS-003/DEC-01 | Accept WS-002/MS-003 `0.2.0` and the proposed first sales scenario, subset and proof boundary? | Accept this complete prepared-data draft cycle; or amend concrete source/controls/policy before starting | Reuse verified project components; gives a useful report before full admin while preserving future semantics | Owner | S01 entry | Pending; question/recommendation raised 2026-09-12. Exact answer belongs in the journal before any allowed entry |
+| MS-003/DEC-01 | Accept WS-002/MS-003 `0.2.0` and the proposed first sales scenario, subset and proof boundary? | Accept this complete prepared-data draft cycle; or amend concrete source/controls/policy before starting | Reuse verified project components; gives a useful report before full admin while preserving future semantics | Owner | S01 entry | Accepted on 2026-09-13: the owner explicitly accepted the current plan and asked to remove the S01 acceptance blocker. WS-002/MS-003 0.2.0 and their concrete scenario/TECH decisions are covered; evidence is linked in the journal |
 | MS-003/DEC-02 | Implementation and agents | Run one requested stage after acceptance; separate Goal/parallel authority if wanted | Manual sequential pack follows existing owner preference | Owner | Actual execution, not document preparation | No stage execution requested by this authoring task |
-| MS-003/DEC-04 | Include Customer and Product reference data? | Load both directories and ReceiptItem relationships in this milestone | Six-table governed source; keep the report at receipt grain | Owner | Source scope for S01 | Accepted source inclusion: owner correction on 2026-09-12; the 0.2.0 mapping/remediation detail remains part of DEC-01 review |
+| MS-003/DEC-04 | Include Customer and Product reference data? | Load both directories and ReceiptItem relationships in this milestone | Six-table governed source; keep the report at receipt grain | Owner | Source scope for S01 | Accepted source inclusion: owner correction on 2026-09-12; the 0.2.0 mapping/remediation detail was accepted through DEC-01 on 2026-09-13 |
 | MS-003/DEC-03 | Accept finished behavior and visual conformity? | Accept demonstrated scope or identify concrete missing criterion | Review actual S05 candidate, with evidence ready in S06 | Owner | Milestone closure | Future final-result decision; not an authoring entry gap |
 
-One combined owner review can settle L2/L3 and first-scenario decisions; no
-separate approval round is required for routine technical bookkeeping. If the
+The combined L2/L3 and first-scenario decision is settled by owner acceptance
+on 2026-09-13. No repeated plan-acceptance question is required for S01. If the
 owner requests changes, revise the unclaimed drafts and rebind hashes. Before
 first runnable entry, record exact accepted versions and synchronize all hashes. While the journal is
 still an unclaimed `draft`, Prompt Manager sets only S01 `execution_allowed=true`
@@ -357,6 +359,11 @@ validator.
 |---|---|---|---|---|
 | 0.2.0 | 2026-09-12 | Expand to six source tables with Customer/Product/ReceiptItem; fix keys, relationships, explicit orphan handling and receipt-grain proof | WS-002 0.2.0; six prompts/journal; parent navigation 2.0.2 | Owner requires customer/product inclusion; concrete amended plan remains in review |
 | 0.1.0 | 2026-09-12 | Concrete first-report design, six stages and single journal | WS-002, six prompts, capability/preparation evidence | Current owner preparation request; new content under review |
+
+Acceptance record, 2026-09-13: version `0.2.0` is accepted without a technical
+scope change. Status/decision annotations and exact plan hashes are synchronized;
+initial allowance is recorded only in the canonical journal. The 2026-09-12
+review history above remains historical evidence.
 
 ## Mandatory documentation handoff
 

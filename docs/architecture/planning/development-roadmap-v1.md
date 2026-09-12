@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-ROADMAP-001
 title: Custometry development roadmap and integration decisions
-doc_version: 14
+doc_version: 15
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -46,7 +46,7 @@ This supporting roadmap does not override the current hierarchical map.
 [WS-001](directions/DIR-006/workstreams/WS-001.md), accepted scope `1.0.0` /
 navigation `1.0.10`, retains completed MS-001/MS-002 and the remaining C04–C06
 onboarding/admin obligations. The selected [WS-002](directions/DIR-004/workstreams/WS-002.md) /
-[MS-003](milestones/MS-003/plan.md) review package is a working analyst report
+[MS-003](milestones/MS-003/plan.md) accepted package is a working analyst report
 under DIR-004, with real prepared inputs, backend persistence and pilot-derived
 Web interactions. Necessary Identity/data support contributes within that unit;
 full administrative workflows follow the initial analyst cycle. The six-prompt pack and its single draft journal are linked from MS-003;

@@ -1,0 +1,34 @@
+{
+  "stage": "MS-003-S02",
+  "inputs": [
+    {
+      "path": "../../../docs/architecture/planning/milestones/MS-003/plan.md",
+      "sha256": "4a6b1bf2a64a04b74e073bb22e46895795e187be57fe93b6711408069d6e7280",
+      "producer_stage": null
+    },
+    {
+      "path": "../evidence/MS-003/MS-003-S01/report.md",
+      "sha256": "d89d765851e7762667a9b7cb56c8a763e33d4609b80dd09c8a987f7bbae0084d",
+      "producer_stage": "MS-003-S01"
+    },
+    {
+      "path": "../../../packages/analytics_core/application/service.py",
+      "sha256": "7e5247b0e22e11be9d3763a8b1b620b22870f68123d2022b8feabe6690ddfc1b",
+      "producer_stage": null
+    },
+    {
+      "path": "../../../packages/analytics_core/infrastructure/postgres.py",
+      "sha256": "108c387ca029374eea3dc19529ca04d393debc75fa605ab1286333f341e29377",
+      "producer_stage": null
+    },
+    {
+      "path": "../../../packages/semantic_model/application/service.py",
+      "sha256": "3b0f6395c8eb9f9fa9d1148c053661aec046379398d875cdb584f57f523353b5",
+      "producer_stage": null
+    }
+  ],
+  "current_authority": true,
+  "entry_inputs_available": true,
+  "dependency_condition": "MS-003-S01 acceptance in the receipt transaction",
+  "execution_mode": "manual_sequential; no S02 execution in this task"
+}

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Literal
 from uuid import UUID
@@ -48,6 +48,7 @@ class QualityViolation:
     count: int
     sample_keys: tuple[str, ...]
     waived: bool
+    details: dict[str, object] = field(default_factory=dict)
 
 
 @dataclass(frozen=True, slots=True)
@@ -76,6 +77,7 @@ class QualityReport:
                     "count": violation.count,
                     "sample_keys": list(violation.sample_keys),
                     "waived": violation.waived,
+                    **({"details": violation.details} if violation.details else {}),
                 }
                 for violation in self.violations
             ],

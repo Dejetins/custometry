@@ -1,0 +1,211 @@
+{
+  "schema_version": "ms003-s01-evidence/v1",
+  "observed_at": "2026-09-12T21:53:31.832295+00:00",
+  "profile": "prompt-pack/v1",
+  "result": "pass",
+  "source_manifest": [
+    {
+      "path": "apps/api/src/custometry_api/identity/http_auth.py",
+      "change": "created",
+      "sha256": "8f3511549539975864166be82953526a0e58e140f133376c2c30ff9010b6a423"
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/router.py",
+      "change": "modified",
+      "sha256": "5eceb2d0f01a56a28b763e1b68dc5d76a7a04f8dcebbb6b2a2fd86fc9748ac4c"
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/router.py",
+      "change": "modified",
+      "sha256": "537270b41e733fe996be396babf6390cb6c75ee347ffb8530739e5eb89e04d0a"
+    },
+    {
+      "path": "apps/api/src/custometry_api/connections/router.py",
+      "change": "modified",
+      "sha256": "23da5a45050bd8ee30706ca892df20aed3c7f9d1df816fcd487e76b7bfda9ca6"
+    },
+    {
+      "path": "apps/worker_data/prepare_retail_report.py",
+      "change": "created",
+      "sha256": "4c2c782c1c6abb349d0dfd95d751a671218474992d9caedfac6bf779c52ca8c4"
+    },
+    {
+      "path": "apps/worker_data/vertical_slice.py",
+      "change": "modified",
+      "sha256": "106399f09ebf188f6e26007acf8ee71d27de57bea76b5affe8e9ba0181e6ce2a"
+    },
+    {
+      "path": "packages/ingestion/domain/model.py",
+      "change": "modified",
+      "sha256": "4f2f4c35d81693773cb60675710788e883970d245c35ab584d2658e2ebab49c3"
+    },
+    {
+      "path": "packages/ingestion/infrastructure/postgres.py",
+      "change": "modified",
+      "sha256": "380e9e1747560b836598f2ab289dd6cce1fb8f965b82d6ba128ab9cdbc770f76"
+    },
+    {
+      "path": "packages/data_quality/application/retail_report.py",
+      "change": "created",
+      "sha256": "4d2c2c8ff487b6030a8f140ab4f3aa2d9b9dc62cffc807bd31389cb0250ee555"
+    },
+    {
+      "path": "packages/data_quality/domain/model.py",
+      "change": "modified",
+      "sha256": "fce75a8d4cf87a5125d3dd74e3bf5c55b2b2e5987524b5cda826f67f639ad3ae"
+    },
+    {
+      "path": "packages/semantic_model/application/retail_report.py",
+      "change": "created",
+      "sha256": "b1f15ec850c4eee7207422e4b028ca5b907f0d06deb7b596d29187ea70cb3771"
+    },
+    {
+      "path": "packages/semantic_model/infrastructure/postgres.py",
+      "change": "modified",
+      "sha256": "c5916e2aa2df730d50a9c8dfb98a182ac468203244d65c7d2399985242d459bc"
+    },
+    {
+      "path": "packages/artifacts/infrastructure/local.py",
+      "change": "modified",
+      "sha256": "bb6397d3f5b346535a53e913900e1ae38cf428c84a697aefcf7cad558ec08dd8"
+    },
+    {
+      "path": "packages/artifacts/infrastructure/postgres.py",
+      "change": "modified",
+      "sha256": "6bff6c65541d363c38af77fedf6de2b382387618133b5ae0aa4a52fc2b2bd860"
+    },
+    {
+      "path": "tools/custometry_quality/development_runtime.py",
+      "change": "modified",
+      "sha256": "3e64ae4e91de7f7f9db6ef20fd2cc843677828e916dc2a2a5b995b9e8fe50084"
+    },
+    {
+      "path": "tests/tooling/test_development_runtime.py",
+      "change": "modified",
+      "sha256": "25ffb9a691cdb5572261068e0aefe61757386c7fe9fa41e0b245abdb3b3dfa04"
+    },
+    {
+      "path": "tests/integration/data_pipeline/test_retail_report.py",
+      "change": "created",
+      "sha256": "9ea9061dafae9734a8723296b36827fe39e30f9b94a833da32b4d4169e2d793a"
+    },
+    {
+      "path": "tests/integration/data_pipeline/test_prepared_http.py",
+      "change": "created",
+      "sha256": "e9e4620eedc1eabebdb52a55b958b9a26852535b8cb23e3440c19171786a0007"
+    },
+    {
+      "path": "tests/unit/data_pipeline/test_preparation_state.py",
+      "change": "created",
+      "sha256": "f5b46a3e5f7fa9fdb66704fefecde68e74cb335705ef67e65311968639484b98"
+    },
+    {
+      "path": "tests/integration/identity_access/conftest.py",
+      "change": "modified",
+      "sha256": "2729c81908559c9f23ee580be508768211936f2c399fe0848890654e07172b9f"
+    },
+    {
+      "path": "tests/integration/identity_access/test_identity_api.py",
+      "change": "modified",
+      "sha256": "dce4a589212cab87e0c4ad7b4ff7e9a5841ad8f2c6599f3fcf3745bf7253d293"
+    },
+    {
+      "path": "docs/architecture/development-runtime-contract.md",
+      "change": "modified",
+      "sha256": "0f59e23c432a78101fea1ff032939a631c8155f58902e8b0e6743534d787ec10"
+    },
+    {
+      "path": "docs/contracts/source-data-adaptation-contract.md",
+      "change": "modified",
+      "sha256": "e7b519029cb391ad9f909a959e5342a9e083dd31df8e23e4f7021f1ad7c9ca3b"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "change": "modified",
+      "sha256": "915a4b8d85d301e9de22b7a4d6126d490cff1e3b0e6a6efbfb50ad34753c7db2"
+    }
+  ],
+  "checks": [
+    {
+      "command": "uv run --locked pytest -q tests/unit/data_pipeline tests/contract/data_pipeline tests/contract/identity_access tests/contract/analytics tests/tooling/test_development_runtime.py",
+      "result": "passed",
+      "observed": "32 passed"
+    },
+    {
+      "command": "uv run --locked python .runtime/development/ms003-test-tools/run_tests.py",
+      "result": "passed",
+      "observed": "Migration upgrade head exit 0; 18 passed, 1 skipped. Explicit custometry_ms003_s01_tests database; skipped prepared HTTP test is executed separately."
+    },
+    {
+      "command": "CUSTOMETRY_TEST_PREPARED_HTTP=1 uv run --locked pytest -q tests/integration/data_pipeline/test_prepared_http.py",
+      "result": "passed",
+      "observed": "1 passed; actual Vite prefix -> production API -> prepared Identity database."
+    },
+    {
+      "command": "uv run --locked python -m apps.worker_data.prepare_retail_report",
+      "result": "passed",
+      "observed": "Initial admitted publication; repeated calls reused identical IDs/fingerprint and verified all artifacts."
+    },
+    {
+      "command": "uv run --locked python .runtime/development/ms003-test-tools/verify_artifacts.py",
+      "result": "passed",
+      "observed": "13 immutable artifact hashes/counts; independent source SQL header totals equal canonical Parquet; anonymous counts preserved."
+    },
+    {
+      "command": "uv run --locked pyright apps/worker_data/prepare_retail_report.py apps/worker_data/vertical_slice.py apps/api/src/custometry_api/identity/http_auth.py apps/api/src/custometry_api/identity/router.py apps/api/src/custometry_api/analytics/router.py packages/data_quality/application/retail_report.py packages/semantic_model/application/retail_report.py packages/ingestion/domain/model.py packages/ingestion/infrastructure/postgres.py packages/artifacts/infrastructure/postgres.py packages/semantic_model/infrastructure/postgres.py tools/custometry_quality/development_runtime.py tests/tooling/test_development_runtime.py",
+      "result": "passed",
+      "observed": "0 errors, 0 warnings; no dependency upgrade performed."
+    },
+    {
+      "command": "uv run --locked ruff check apps/worker_data apps/api/src/custometry_api/identity apps/api/src/custometry_api/analytics/router.py apps/api/src/custometry_api/connections/router.py packages/ingestion packages/data_quality packages/artifacts/infrastructure packages/semantic_model/application/retail_report.py packages/semantic_model/infrastructure/postgres.py tests/integration/data_pipeline/test_retail_report.py tests/integration/data_pipeline/test_prepared_http.py tests/unit/data_pipeline/test_preparation_state.py tests/integration/identity_access tools/custometry_quality/development_runtime.py tests/tooling/test_development_runtime.py",
+      "result": "passed",
+      "observed": "All checks passed."
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "result": "passed",
+      "observed": "PASS check:local"
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.check_docs_links",
+      "result": "passed",
+      "observed": "84 documents / 670 links"
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.generate_docs_index",
+      "result": "passed",
+      "observed": "68 contributor documents"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed",
+      "observed": "exit 0"
+    }
+  ],
+  "proof_limits": [
+    "No browser UI acceptance",
+    "No packaged HTTPS or release acceptance",
+    "No S02 metric/result implementation",
+    "No report persistence",
+    "No general source wizard/refresh acceptance"
+  ],
+  "verification_script_snapshots": [
+    "run_tests.py",
+    "verify_artifacts.py"
+  ],
+  "protected_history_check": {
+    "result": "pass",
+    "paths": [
+      ".codex/agents/generated/MS-001",
+      ".codex/agents/generated/MS-002",
+      ".codex/delivery/ledgers/MS-001.md",
+      ".codex/delivery/ledgers/MS-002.md",
+      ".codex/delivery/evidence/MS-001",
+      ".codex/delivery/evidence/MS-002",
+      "docs/architecture/planning/milestones/MS-001",
+      "docs/architecture/planning/milestones/MS-002"
+    ],
+    "plan_hash_preserved": true,
+    "source_manifest_current": true
+  }
+}

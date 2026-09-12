@@ -573,6 +573,7 @@ def prepare_runtime(paths: RuntimePaths, policy: RuntimePolicy) -> None:
         paths.runtime_dir,
         paths.logs_dir,
         paths.secrets_dir,
+        paths.runtime_dir / "artifacts",
     )
     for directory in directories:
         if directory.is_symlink():
@@ -586,6 +587,7 @@ def prepare_runtime(paths: RuntimePaths, policy: RuntimePolicy) -> None:
             raise RuntimeErrorSafe("runtime directory escapes repository ownership") from exc
     os.chmod(paths.runtime_dir, 0o700)
     os.chmod(paths.secrets_dir, 0o700)
+    os.chmod(paths.runtime_dir / "artifacts", 0o700)
     for name in policy.secret_files:
         path = paths.secrets_dir / name
         if path.is_symlink():
@@ -595,11 +597,12 @@ def prepare_runtime(paths: RuntimePaths, policy: RuntimePolicy) -> None:
         os.chmod(path, 0o444)
 
 
-def _host_environment(paths: RuntimePaths, policy: RuntimePolicy, name: str) -> dict[str, str]:
+def host_environment(paths: RuntimePaths, policy: RuntimePolicy, name: str) -> dict[str, str]:
     environment = os.environ.copy()
     environment["CUSTOMETRY_DEV_RUNTIME_ID"] = paths.project_name
     if name == "api":
         control = policy.databases["control-db"]
+        source = policy.databases["demo-source-db"]
         environment.update(
             {
                 "CUSTOMETRY_ENVIRONMENT": "development",
@@ -610,6 +613,14 @@ def _host_environment(paths: RuntimePaths, policy: RuntimePolicy, name: str) -> 
                 "CUSTOMETRY_DATABASE_PASSWORD_FILE": str(
                     paths.secrets_dir / "control_db_password"
                 ),
+                "CUSTOMETRY_ANALYTICS_ARTIFACT_ROOT": str(paths.runtime_dir / "artifacts"),
+                "CUSTOMETRY_SOURCE_POSTGRESQL_HOST": source.host,
+                "CUSTOMETRY_SOURCE_POSTGRESQL_PORT": str(source.port),
+                "CUSTOMETRY_SOURCE_POSTGRESQL_PASSWORD_FILE": str(
+                    paths.secrets_dir / "demo_source_reader_password"
+                ),
+                "CUSTOMETRY_BOOTSTRAP_TOKEN_FILE": str(paths.secrets_dir / "bootstrap_token"),
+                "CUSTOMETRY_IDENTITY_COOKIE_SECURE": "false",
             }
         )
     return environment
@@ -638,7 +649,7 @@ def _start_host_process(
         child = subprocess.Popen(
             list(process.command),
             cwd=paths.root,
-            env=_host_environment(paths, policy, process.name),
+            env=host_environment(paths, policy, process.name),
             stdin=subprocess.DEVNULL,
             stdout=stream,
             stderr=subprocess.STDOUT,
@@ -686,7 +697,7 @@ def _wait_http(process: HostProcess, timeout: int = 60) -> None:
 
 def _run_migrations(paths: RuntimePaths, policy: RuntimePolicy) -> None:
     control = policy.databases["control-db"]
-    environment = _host_environment(paths, policy, "api")
+    environment = host_environment(paths, policy, "api")
     command = [
         "uv",
         "run",

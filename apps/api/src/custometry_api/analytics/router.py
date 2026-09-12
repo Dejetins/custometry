@@ -13,6 +13,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from custometry_api.config import Settings
+from custometry_api.identity.http_auth import IdentityHTTPAdapter
 from packages.analytics_core.application.service import AnalyticsService
 from packages.analytics_core.domain.model import (
     AnalyticsRequest,
@@ -23,7 +24,7 @@ from packages.analytics_core.domain.model import (
 from packages.analytics_core.infrastructure.local import LocalAnalyticsArtifactStore
 from packages.analytics_core.infrastructure.postgres import PostgresAnalyticsRepository
 from packages.contracts.analytics import ANALYTICS_API_VERSION, AnalyticsFailure
-from packages.identity_access.application.service import IdentityService
+from packages.identity_access.application.service import IdentityFailure, IdentityService
 from packages.identity_access.domain.policy import Actor
 from packages.identity_access.infrastructure.postgres import PostgresIdentityRepository
 
@@ -203,7 +204,7 @@ def _services(settings: Settings) -> tuple[IdentityService, AnalyticsService]:
 def _status_for(code: str) -> int:
     if code == "AUTHENTICATION_FAILED":
         return status.HTTP_401_UNAUTHORIZED
-    if code == "FORBIDDEN":
+    if code in {"FORBIDDEN", "CSRF_FAILED"}:
         return status.HTTP_403_FORBIDDEN
     if code in {"NOT_FOUND", "SEMANTIC_DATASET_NOT_FOUND"}:
         return status.HTTP_404_NOT_FOUND
@@ -233,16 +234,16 @@ def create_analytics_app(
     async def analytics_failure_handler(_: Request, exc: AnalyticsFailure) -> JSONResponse:
         return JSONResponse(status_code=_status_for(exc.code), content={"code": exc.code})
 
-    def authenticated(authorization: Annotated[str | None, Header()] = None) -> Actor:
-        if authorization is None:
-            raise AnalyticsFailure("AUTHENTICATION_FAILED")
-        scheme, _, token = authorization.partition(" ")
-        if scheme.casefold() != "bearer" or not token:
-            raise AnalyticsFailure("AUTHENTICATION_FAILED")
+    http_auth = IdentityHTTPAdapter(identity, settings)
+
+    def authenticated(
+        request: Request, authorization: Annotated[str | None, Header()] = None,
+    ) -> Actor:
+        _ = authorization
         try:
-            return identity.authenticate(token)
-        except Exception as exc:
-            raise AnalyticsFailure("AUTHENTICATION_FAILED") from exc
+            return http_auth.authenticate(request)
+        except IdentityFailure as exc:
+            raise AnalyticsFailure(exc.code) from exc
 
     @app.post(
         "/results",

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
+from uuid import UUID
 
 from psycopg.types.json import Jsonb
 
@@ -41,3 +42,23 @@ class PostgresSemanticRepository:
                 publication.request_hash,
             ),
         )
+
+    @staticmethod
+    def get(cursor: Any, *, workspace_id: UUID, version_id: UUID) -> dict[str, object]:
+        cursor.execute(
+            """SELECT bindings, capability_matrix, impact_summary, request_hash
+                          FROM semantic_dataset_versions
+                          WHERE workspace_id = %s AND id = %s AND status = 'published'""",
+            (workspace_id, version_id),
+        )
+        row = cursor.fetchone()
+        if row is None:
+            from packages.contracts.data_pipeline import DataPipelineFailure
+
+            raise DataPipelineFailure("SEMANTIC_DATASET_NOT_FOUND")
+        return {
+            "bindings": row[0],
+            "capability_matrix": row[1],
+            "impact_summary": row[2],
+            "request_hash": row[3],
+        }

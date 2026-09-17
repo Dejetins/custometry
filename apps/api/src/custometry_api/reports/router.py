@@ -46,12 +46,16 @@ def create_reports_app(
             connect_timeout=settings.database_connect_timeout_seconds,
         )
 
-    brand = json.loads(
-        (
-            Path(__file__).resolve().parents[5]
-            / "packages/presentation/infrastructure/system-brand.v1.json"
-        ).read_text()
+    brand_path = (
+        Path(__file__).resolve().parents[5]
+        / "packages/presentation/infrastructure/system-brand.v1.json"
     )
+    if not brand_path.is_file():
+        brand_path = (
+            Path(__file__).resolve().parents[2]
+            / "packages/presentation/infrastructure/system-brand.v1.json"
+        )
+    brand = json.loads(brand_path.read_text())
     service = report_service or ReportService(
         PostgresReportRepository(connect),
         analytics,

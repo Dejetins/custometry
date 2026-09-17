@@ -310,7 +310,7 @@
       "navigation_group": "authentication",
       "surface_kind": "editor",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "all"
       ],
@@ -3614,7 +3614,7 @@
       "navigation_group": "reports_exports",
       "surface_kind": "list",
       "release": "V1",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "AN",
         "VW"
@@ -3658,7 +3658,7 @@
       "navigation_group": "reports_exports",
       "surface_kind": "editor",
       "release": "V1",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "AN"
       ],
@@ -3699,7 +3699,7 @@
       "navigation_group": "reports_exports",
       "surface_kind": "detail",
       "release": "V1",
-      "status": "planned",
+      "status": "implemented",
       "role_hints": [
         "allowed"
       ],

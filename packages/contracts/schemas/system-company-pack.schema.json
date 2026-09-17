@@ -1,0 +1,83 @@
+{
+  "$defs": {
+    "Reference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "content_hash"
+      ],
+      "title": "Reference",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "system-company-pack/v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "company_pack_version_id": {
+      "format": "uuid",
+      "title": "Company Pack Version Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "brand_profile": {
+      "$ref": "#/$defs/Reference"
+    },
+    "metric_versions": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Metric Versions",
+      "type": "array"
+    },
+    "methodology_packs": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Methodology Packs",
+      "type": "array"
+    },
+    "localization_catalogs": {
+      "items": {
+        "enum": [
+          "en",
+          "ru"
+        ],
+        "type": "string"
+      },
+      "title": "Localization Catalogs",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "company_pack_version_id",
+    "name",
+    "brand_profile",
+    "metric_versions",
+    "methodology_packs",
+    "localization_catalogs"
+  ],
+  "title": "SystemCompanyPackV1",
+  "type": "object"
+}

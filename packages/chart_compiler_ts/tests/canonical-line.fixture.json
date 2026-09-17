@@ -1,0 +1,198 @@
+{
+  "spec": {
+    "schema_version": "1.0.0",
+    "created_at": "2026-09-13T00:00:00Z",
+    "chart_type": "line",
+    "workspace_id": "11111111-1111-4111-8111-111111111111",
+    "title_key": "analytics.net_revenue",
+    "title_override": null,
+    "description_key": null,
+    "source_binding": {
+      "source_artifact_id": "11111111-1111-4111-8111-111111111111",
+      "source_artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "projection": {
+        "current": "daily",
+        "comparison": "comparison.daily"
+      },
+      "normalized_filter_expression": {
+        "period": {
+          "starts_on": "2025-02-28",
+          "ends_on": "2025-03-01"
+        },
+        "store_id": null,
+        "comparison": "previous_year_same_dates",
+        "timezone": "UTC",
+        "eligibility": {
+          "status": "completed",
+          "currency": "EUR",
+          "locked": true,
+          "policy_version": "completed-eur-receipt/v1"
+        }
+      },
+      "comparison_artifact_id": "11111111-1111-4111-8111-111111111111"
+    },
+    "chart_data": {
+      "data_artifact_id": "11111111-1111-4111-8111-111111111111",
+      "schema_id": "sales-report",
+      "schema_version": 1,
+      "grain": "date",
+      "row_count": 2,
+      "column_count": 5,
+      "deterministic_reduction": "none",
+      "reduction_policy_hash": null
+    },
+    "dimensions": [
+      {
+        "field": "date",
+        "type": "date",
+        "timezone": "UTC"
+      }
+    ],
+    "measures": [
+      {
+        "field": "net_revenue",
+        "metric_version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "metric_content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d",
+        "unit": "EUR",
+        "number_format": {
+          "decimal_places": 2
+        }
+      }
+    ],
+    "axes": [
+      {
+        "id": "date",
+        "dimension": "date"
+      },
+      {
+        "id": "value",
+        "measure": "net_revenue",
+        "unit": "EUR"
+      }
+    ],
+    "series": [
+      {
+        "id": "current",
+        "projection": "daily",
+        "x": "date",
+        "y": "net_revenue",
+        "color_role": "series-primary"
+      },
+      {
+        "id": "comparison",
+        "projection": "comparison.daily",
+        "x": "date",
+        "y": "net_revenue",
+        "color_role": "series-comparison",
+        "alignment": "same_dates_previous_year"
+      }
+    ],
+    "annotations": [],
+    "range_timeline": null,
+    "interaction": {
+      "zoom": false,
+      "pan": false,
+      "brush": false,
+      "tooltip": true,
+      "legend_filter": false,
+      "drilldown_action_id": null
+    },
+    "visual_semantics": {
+      "semantic_color_roles": [
+        "series-primary",
+        "series-comparison"
+      ],
+      "current_period_style": {
+        "line": "solid"
+      },
+      "comparison_period_style": {
+        "line": "dashed"
+      },
+      "forecast_style": null,
+      "interval_style": null,
+      "promotion_style": null
+    },
+    "accessibility": {
+      "summary_key": "analytics.net_revenue",
+      "summary_params": {},
+      "table_alternative": "required",
+      "series_descriptions": [
+        "current",
+        "comparison"
+      ]
+    },
+    "export_policy": {
+      "email": "png_from_ssr_svg",
+      "xlsx": "native_when_lossless_else_same_png_pipeline",
+      "allow_raster_fallback": false
+    },
+    "access_policy": {
+      "owner_principal_id": "11111111-1111-4111-8111-111111111111",
+      "policy_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "chart_spec_id": "3e5bd826-dbfb-5eff-acac-9451157c6ddf"
+  },
+  "data": {
+    "workspaceId": "11111111-1111-4111-8111-111111111111",
+    "ownerPrincipalId": "11111111-1111-4111-8111-111111111111",
+    "policyHash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "artifactId": "11111111-1111-4111-8111-111111111111",
+    "artifactHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "parameters": {
+      "period": {
+        "starts_on": "2025-02-28",
+        "ends_on": "2025-03-01"
+      },
+      "store_id": null,
+      "comparison": "previous_year_same_dates",
+      "timezone": "UTC",
+      "eligibility": {
+        "status": "completed",
+        "currency": "EUR",
+        "locked": true,
+        "policy_version": "completed-eur-receipt/v1"
+      }
+    },
+    "metricVersionId": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+    "metricHash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d",
+    "daily": [
+      {
+        "date": "2025-02-28",
+        "net_revenue": "1.25",
+        "receipt_count": "1",
+        "average_receipt": "1.25",
+        "state": "observed"
+      },
+      {
+        "date": "2025-03-01",
+        "net_revenue": null,
+        "receipt_count": null,
+        "average_receipt": null,
+        "state": "no_eligible_receipts"
+      }
+    ],
+    "comparison": [
+      {
+        "date": "2024-02-28",
+        "net_revenue": "2.50",
+        "receipt_count": "1",
+        "average_receipt": "2.50",
+        "state": "observed"
+      },
+      {
+        "date": "2024-02-29",
+        "net_revenue": "999.00",
+        "receipt_count": "1",
+        "average_receipt": "999.00",
+        "state": "observed"
+      },
+      {
+        "date": "2024-03-01",
+        "net_revenue": "3.75",
+        "receipt_count": "1",
+        "average_receipt": "3.75",
+        "state": "observed"
+      }
+    ]
+  }
+}

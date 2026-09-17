@@ -6,7 +6,7 @@
       "id": "UI-AUTH-001",
       "path": "/auth/sign-in",
       "release": "MVP",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-AUTH-001"
     },
     {
@@ -524,21 +524,21 @@
       "id": "UI-RPT-001",
       "path": "/w/:workspaceKey/reports",
       "release": "V1",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-RPT-001"
     },
     {
       "id": "UI-RPT-002",
       "path": "/w/:workspaceKey/reports/:id/edit",
       "release": "V1",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-RPT-002"
     },
     {
       "id": "UI-RPT-003",
       "path": "/w/:workspaceKey/reports/:id/snapshots/:sid",
       "release": "V1",
-      "status": "planned",
+      "status": "implemented",
       "title_key": "UI-RPT-003"
     },
     {

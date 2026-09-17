@@ -27,6 +27,7 @@ class SalesReportRequest:
 
 
 class SalesSemanticPort(Protocol):
+    def sales_versions(self, *, workspace_id: UUID) -> list[dict[str, Any]]: ...
     def sales_projection(self, *, workspace_id: UUID, version_id: UUID) -> dict[str, Any]: ...
 
 

@@ -4,7 +4,18 @@ on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      full_validation:
+        description: Run builds and disposable Compose/browser proof
+        type: boolean
+        default: false
   workflow_call:
+    inputs:
+      full_validation:
+        description: Run builds and disposable Compose/browser proof
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -55,12 +66,17 @@ jobs:
       - name: Python tests
         run: uv run pytest -q
       - name: Shipped documentation build
+        if: ${{ inputs.full_validation == true }}
         run: uv run mkdocs build --strict --config-file mkdocs.yml
-      - name: Frontend static, unit and production build
-        run: pnpm check
+      - name: Frontend static and unit checks
+        run: pnpm lint && pnpm typecheck && pnpm test
+      - name: Frontend production build
+        if: ${{ inputs.full_validation == true }}
+        run: pnpm build
 
   runtime:
     name: Disposable Compose and browser proof
+    if: ${{ inputs.full_validation == true }}
     needs: quality
     runs-on: ubuntu-24.04
     timeout-minutes: 35
@@ -87,10 +103,15 @@ jobs:
     needs: [quality, runtime]
     runs-on: ubuntu-24.04
     steps:
-      - name: Require every Foundation job
+      - name: Require the selected validation profile
         env:
+          FULL_VALIDATION: ${{ inputs.full_validation == true }}
           QUALITY_RESULT: ${{ needs.quality.result }}
           RUNTIME_RESULT: ${{ needs.runtime.result }}
         run: |
           test "${QUALITY_RESULT}" = success
-          test "${RUNTIME_RESULT}" = success
+          if [ "${FULL_VALIDATION}" = true ]; then
+            test "${RUNTIME_RESULT}" = success
+          else
+            test "${RUNTIME_RESULT}" = skipped
+          fi

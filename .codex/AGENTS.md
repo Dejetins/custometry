@@ -128,6 +128,25 @@ authority or repeat product specifications. Before a grouped profile outside a
 hook/CI, source `scripts/activate-toolchain.sh`; then run the smallest relevant
 profile from `docs/architecture/tooling-gates.md`.
 
+## Routine repository synchronization
+
+The owner selected fast development synchronization on 2026-09-17. For an
+explicit synchronization request, run `check --scope local` and focused local
+source tests, reuse still-current results, then publish through a short-lived
+technical branch and PR. Wait only for the required fast `Foundation gate`,
+squash merge, update local `main`, and delete the technical branch after confirming
+success. Preserve unrelated work and report any concrete merge blocker.
+
+Follow [the synchronization contract](../docs/architecture/tooling-gates.md#routine-development-synchronization)
+for the exact proof boundary. Do not run documentation/frontend/Docker builds,
+Compose/browser proof, candidate publication, or release checks merely to sync
+source. Publishing candidate images does not trigger CI revalidation, image checks,
+Compose/browser proof, or post-publication qualification. It only builds/pushes
+requested images and records their identities. Full validation is opt-in only,
+requires its own explicit request, and is not implied by image publication. Do not route Custometry publication through the Roehub-only
+`publish-ci-deploy` skill. A source sync does not accept a milestone or prove
+runtime/release readiness; its stronger acceptance checks remain separate.
+
 ## Durable output
 
 Repository delivery artifacts are specs, tickets, justified coordination

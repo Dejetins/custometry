@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "stage_id": "MS-003-S04",
+  "current_authority": true,
+  "input_checks": [
+    {
+      "path": "docs/architecture/planning/milestones/MS-003/plan.md",
+      "sha256": "4a6b1bf2a64a04b74e073bb22e46895795e187be57fe93b6711408069d6e7280",
+      "producer_stage": null
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-003/MS-003-S03/report.md",
+      "sha256": "90a28d6e7b0cce625425ff9c30721d85e8cfde21dacbadce2187050ef26fdbd9",
+      "producer_stage": "MS-003-S03"
+    },
+    {
+      "path": "apps/web/src/features/analytics-sales/SalesOverview.tsx",
+      "sha256": "b81d576d4f27646f823181921790d7e6f77e97cadd7e833498f36cebcf0805e7",
+      "producer_stage": null
+    },
+    {
+      "path": "packages/chart_compiler_ts/src/index.ts",
+      "sha256": "dee955928406d951067bdff00dca24eb8b1ced5c5ad197b48ef03792d7aaf046",
+      "producer_stage": null
+    },
+    {
+      "path": "docs/architecture/ui/target-pilot/README.md",
+      "sha256": "66843f1da517cab6123547c8685a639b661c829c5bd518fcd9c06a44175ce3b1",
+      "producer_stage": null
+    }
+  ],
+  "actual_S03_outputs": [
+    {
+      "path": "packages/contracts/openapi/reports.openapi.json",
+      "sha256": "4d6c442a1584aff9c43ea093b26495c04c856af341b211ac0c248821eb3b38ef"
+    },
+    {
+      "path": "packages/contracts/src/reports-client.ts",
+      "sha256": "c266a686b86f586e5fbfd9e78171181a553866943ead87121f08b9b9b0da4fba"
+    },
+    {
+      "path": "packages/contracts/schemas/line-chart-spec.schema.json",
+      "sha256": "ce57eed6490317a6147373dff43c09ce615381806f473aa75f4f8a8eccc8a3e3"
+    },
+    {
+      "path": "packages/contracts/schemas/system-brand-profile.schema.json",
+      "sha256": "873f5e4118df0c43f4f66afb73ed373ec7e8fd7906e951b892bff2dd62c1b254"
+    },
+    {
+      "path": "packages/contracts/schemas/system-company-pack.schema.json",
+      "sha256": "3eb29e2be2bdc0b70a12cacc7ba88011399f2ad81b8bb8f1529fea0e54cab4f5"
+    },
+    {
+      "path": "packages/presentation/infrastructure/system-brand.v1.json",
+      "sha256": "14a44fd52365d0fd3e0caf3f6655a8380a5e1418fa5d96c60498d03062c2fdde"
+    }
+  ],
+  "dependency_condition": "S03 acceptance required before S04 claim; no S04 execution performed"
+}

@@ -1,9 +1,9 @@
 ---
 doc_id: ARCH-UI-WEB-IMPLEMENTATION-SOURCE-001
 title: Custometry Web implementation source contract
-doc_version: 4
-product_spec_version: 0.10.0-draft
-ui_spec_version: 0.8.0-draft
+doc_version: 8
+product_spec_version: 0.11.0-draft
+ui_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
 owner: engineering
@@ -17,6 +17,8 @@ proof_boundary:
 # Custometry Web implementation source contract
 
 ## Decision and execution authority
+
+The owner-selected [2026-09-17 metric interaction atlas](references/mindbox-metrics-2026-09-17/README.md), version 1, adds future workset/card/comparison/goal requirements (blueprint requirements revision `2026-09-17.1`). It supplies ten source screenshots for those added behaviors. The preserved pilot still governs its demonstrated elements; this addition neither replaces its shell nor changes the current route capability inventory or accepted milestone execution authority.
 
 On 2026-09-04 the owner selected the final interactive pilot as the target UI
 concept and authorized removal of the G0-G6 program and generated materials.
@@ -122,3 +124,68 @@ stored in the browser.
 separates host-Vite/real-API behavior from normalized source comparison. S04
 must package these sources with S02 API in a new identified bundle; S05 retains
 the owner's final visual decision. This does not expand product-route coverage.
+
+## Bounded report workspace — MS-003-S04
+
+The current capability inventory below narrows the `implemented` marker in the
+[route registry](../../../packages/contracts/routes/ui-routes.json) and
+[execution contracts](../../../packages/contracts/routes/ui-route-contracts.json).
+Those markers identify a working bounded route, not completion of every target
+capability on that screen. Route identities and workspace-aware path/query shapes
+are unchanged; the prepared access details supply the workspace UUID.
+
+| Route | Implemented capability | Deferred target capability |
+|---|---|---|
+| UI-AUTH-001 | Real ordinary-analyst email/password session, workspace identifier, RU/EN, failure/re-entry | Password recovery, remember-device settings, administrative setup |
+| UI-RPT-001 | Authorized saved-draft library and supplied sales template | Publication, delivery scheduling, arbitrary templates |
+| UI-RPT-002 | Title, source version, dates, Store, same-date previous-year comparison; explicit Apply and CAS Save | Block builder, segments, product/customer analysis |
+| UI-RPT-003 | Exact saved draft/page preview, canonical SVG line and full accessible tables, Result Trust, Focus | Published reports, email/XLSX/export, full renderer certification |
+
+[The implementation](../../../apps/web/src/features/reports/ReportWorkspace.tsx)
+now hosts the actual preserved pilot document. The owner explicitly rejected
+both the first adaptation and the subsequent CSS-based recreation, and required
+using the pilot itself with real APIs. [Current integration evidence](../../../.codex/delivery/evidence/MS-003/MS-003-pilot-native/report.md)
+records this correction; earlier S04 receipts and correction captures remain
+historical and do not establish current fidelity or owner acceptance.
+
+A deterministic generator takes the byte-pinned HTML, CSS and SVG unchanged,
+removing executable script tags only. It compiles the original presentation
+runtime with explicit data/persistence seams. No replacement JSX report layout
+is used. A same-origin document island isolates original selectors, CSS globals,
+focus and native popovers. React remains the route/session owner; a typed port
+carries model snapshots and actions into that document. TanStack Query and the
+existing generated clients own all backend access. Server payloads never become
+HTML, scripts, callbacks or arbitrary ECharts options. The bridge escapes text,
+validates canonical references, compiles the server series and applies the
+pilot's original chart presentation functions.
+
+Original report elements, including eight KPI positions, the second table panel,
+full contextual navigation, menus, inspector and Focus, remain in the document.
+Three supplied receipt metrics replace their corresponding value slots; other
+customer metrics are unavailable. Unsupported comparisons, segmentation,
+publication and export cannot claim backend success. Fixture values are cleared
+from the generated data declarations. Pilot browser-storage access is replaced
+with ephemeral presentation preferences; it cannot store result truth.
+
+The source title element edits the report title; source context controls drive
+Apply; the original view-menu action drives Save, and the inspector's saved-view
+row opens the exact draft preview. New report labels/data semantics still come
+from the accepted receipt-total scope. Login and library have no complete source
+pilot screen and retain their separately bounded implementations.
+
+TanStack Query owns server results, drafts and versioned projections. Component
+state holds only unsaved controls/presentation; a session-scoped memory map retains
+unsaved inputs across history navigation. Only locale preference enters
+localStorage. Authorization failure clears protected queries and draft memory,
+hides protected content, and rejects late responses from the previous generation.
+A 409 retains input and offers explicit reload. Apply never silently replaces a
+saved snapshot; Save pins the calculated result. Exact reopen validates the page
+locator and reads immutable artifacts without calculation.
+
+[Stage evidence](../../../.codex/delivery/evidence/MS-003/MS-003-S04/report.md)
+records real host Vite/production API/owned PostgreSQL/artifact browser proof,
+RU/EN at 768x1024 and 1920x1080, keyboard/Focus and 200% layout zoom smoke.
+This source increment does not certify packaged HTTPS, full accessibility or
+complete design-system fidelity; S05 packages it and S06 retains owner review.
+User-facing [report help](../../../docs-site/docs/user-guide/reports.md) explains
+entry details, Apply/Save and recovery without backend implementation jargon.

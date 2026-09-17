@@ -8,7 +8,8 @@ normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-09-06
+updated_at: 2026-09-17
+requirements_revision: 2026-09-17.1
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -1517,7 +1518,19 @@ metric_presentation_requirements:
     requirement: KPI label, unit, aggregation и time basis MUST разрешаться из MetricVersion, NumberFormatSpec и resolved result period; UI MUST NOT синтезировать `/month` либо другую нормализацию, поэтому годовая frequency отображается как значение за период, если сама metric version не определяет нормализованную месячную частоту.
   - id: METRIC-024
     requirement: Изменение visibility/order уже разрешённых projection является presentation state; выбор метрики, требующий нового data projection или compute, MUST входить в normalized request, manifest, request_hash и cache identity и выполняться backend CPU, а не вычисляться браузером.
+  - id: METRIC-025
+    requirement: Рабочий набор метрик MUST хранить устойчивый порядок настроенных карточек, localized name и явную область видимости personal или authorized shared workspace; набор MAY соответствовать задаче или отделу, но не создаёт новую business ontology. Копирование набора MUST сохранять bindings и не изменять источник; shared save требует существующих permissions и явного действия.
+  - id: METRIC-026
+    requirement: Настроенная карточка MUST отличаться от определения метрики и ссылаться на immutable MetricVersion, typed allowed filters, population/target-action binding и effective context. Несколько карточек одной метрики с разными фильтрами MUST поддерживаться без дублирования metric definition; запрещённые или несовместимые параметры не могут молча применяться.
+  - id: METRIC-027
+    requirement: Настройка набора MUST предоставлять searchable catalog разрешённых метрик, выбор, порядок с keyboard alternative, редактирование карточки и copy-as-new; локальные filters и inheritance видимы. Bulk apply MUST показывать применимые карточки и несовместимости; personal preferences не меняют shared publication, а изменения запроса сохраняют explicit Apply/Save semantics.
+  - id: METRIC-028
+    requirement: Панель метрик MUST различать выбор одной карточки для temporal comparison и выбор двух карточек для descriptive metric-to-metric comparison; обе серии сохраняют metric/version/filter/unit/period identity. Разные units имеют явно подписанные отдельные шкалы, несовместимые periods/grain дают blocker, совместное движение линий не является causal evidence.
+  - id: METRIC-029
+    requirement: Пользовательская monitoring goal MUST ссылаться на настроенную метрику и хранить typed target value, явный интервал, owner/scope и описание гипотезы достижения; фактическое значение и прогресс используют ту же server-resolved методику и permissions. Monitoring goal MUST отличаться от целевого действия фильтра и прогноза; missing actual не считается нулём или достижением цели. Progress direction/aggregation и правила изменения active goal фиксируются до реализации.
 ```
+
+> Уточнение требований от 2026-09-17: [наборы метрик, comparison и monitoring goals — source reference 1](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md). Это будущий product target; принятый MS-003 и его границы не расширяются. Базовый draft spec_version сохраняется; редакция требований явно отмечена requirements_revision.
 
 ### 6.3.2. DiscountPolicyVersion и компонентная семантика скидок
 
@@ -4816,6 +4829,8 @@ chart_requirements:
     requirement: Release gate MUST проверять ChartSpec validation/security, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantic parity, SSR-SVG-to-PNG fidelity, font/render-build identity invalidation, range_timeline behavior, XLSX native/raster mapping, all-shipped-theme accessibility и golden data parity.
   - id: CHART-020
     requirement: Versioned visual style template MUST задавать semantic palette, contrast policy, typography scale и table density; report MUST иметь default template, block MAY задать explicit override, effective template/version MUST входить в snapshot/export/render/cache identity, а отдельный template builder MUST жить в Settings и проверять shipped-theme contrast.
+  - id: CHART-021
+    requirement: Temporal comparison chart MUST поддерживать дельту для каждого сопоставимого bucket как соединение current/baseline с подписью либо отдельную delta-series; видимость серий и подписей является presentation state. Дельта, absolute/relative/percentage-point units и unavailable reasons берутся из ComparisonArtifact; нулевая база не создаёт infinity, пропуски не соединяются как ноль. Table/tooltip MUST раскрывать current, baseline и обе допустимые дельты; плотные подписи скрываются по presentation policy без потери доступной таблицы. Renderer использует только product-owned typed ChartSpec и trusted adapter, без пользовательского кода.
 ```
 
 ### 14.1.1. Полноэкранный Focus / Explore mode

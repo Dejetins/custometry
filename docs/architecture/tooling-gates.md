@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-QUALITY-TOOLING-001
 title: Custometry quality tooling and gates
-doc_version: 21
+doc_version: 22
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -54,6 +54,45 @@ and uv pins before entering the locked Python environment. Direct grouped
 profiles must source `scripts/activate-toolchain.sh` first for the same reason.
 Author handoff uses `--scope local`, GitHub Actions uses `--scope ci`, and the
 protected release environment uses `--scope release`.
+
+### Routine development synchronization
+
+Owner decision, 2026-09-17: routine synchronization uses fast source verification.
+Run `check --scope local` and focused local tests for changed source; reuse current
+results when their inputs have not changed. The existing hooks remain static.
+After an authorized push through a technical branch, the required `Foundation gate`
+checks repository contracts, Python lint/typing/tests and frontend lint/typing/tests.
+Automatic PR and `main` runs do not build documentation, frontend bundles or Docker
+images and do not start Compose/browser proof. Merge through the protected PR,
+update local `main`, and delete the technical branch after confirmed success.
+Do not expand synchronization into a runtime repair or release-qualification task.
+
+[Foundation CI](../../.github/workflows/ci.yml) retains full validation through
+`workflow_dispatch` with explicitly selected `full_validation: true`, or a reusable
+workflow call with that input. The input defaults to false in both cases. In full mode its gate requires both quality and
+runtime success; in fast mode it requires quality success and runtime skipped.
+The required check name remains `Foundation gate`; branch protection needs no change.
+[Candidate publication](../../.github/workflows/publish-candidates.yml) is manual
+on `main`: build/push the requested images and record their digests. It does not
+call CI, validate images, start Compose/browser checks, or trigger qualification
+before or after publication. It no longer runs on every merge. Image publication
+does not authorize full validation; each needs its own explicit request.
+
+This changes the automatic synchronization gate, not product acceptance criteria.
+Fast CI proves only source checks and tests. Full runtime, packaged milestone and
+release evidence remain separate; no build or runtime success is inferred from a
+fast pass. The grouped `ci` and `release` CLI profiles retain their existing meaning.
+The [agent adapter](../../.codex/AGENTS.md#routine-repository-synchronization) and
+[contributor workflow](../../CONTRIBUTING.md#workflow) use this same contract.
+
+Local verification of this process change (2026-09-17): `check --scope local`
+and `git diff --check` passed. YAML/trigger/build-condition assertions and all 32
+fast/full quality/runtime result combinations passed in a local shell harness.
+One independent read-only instruction/workflow review found no material issues in
+the initial revision. The owner's follow-up removes CI from candidate publication
+entirely and makes full validation opt-in; focused YAML/dependency assertions passed
+for this correction. No build or GitHub execution of the changed workflow was performed; activation
+requires publishing the workflow changes.
 
 ## 3. Tool matrix
 

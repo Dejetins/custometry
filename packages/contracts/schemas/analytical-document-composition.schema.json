@@ -1,0 +1,250 @@
+{
+  "$defs": {
+    "Block": {
+      "additionalProperties": false,
+      "properties": {
+        "block_id": {
+          "format": "uuid",
+          "title": "Block Id",
+          "type": "string"
+        },
+        "section_id": {
+          "format": "uuid",
+          "title": "Section Id",
+          "type": "string"
+        },
+        "order": {
+          "title": "Order",
+          "type": "integer"
+        },
+        "block_type": {
+          "enum": [
+            "metric_group",
+            "chart",
+            "table",
+            "result_trust"
+          ],
+          "title": "Block Type",
+          "type": "string"
+        },
+        "source_binding": {
+          "additionalProperties": true,
+          "title": "Source Binding",
+          "type": "object"
+        },
+        "content_binding": {
+          "default": null,
+          "title": "Content Binding",
+          "type": "null"
+        },
+        "presentation": {
+          "additionalProperties": true,
+          "title": "Presentation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "block_id",
+        "section_id",
+        "order",
+        "block_type",
+        "source_binding",
+        "presentation"
+      ],
+      "title": "Block",
+      "type": "object"
+    },
+    "Page": {
+      "additionalProperties": false,
+      "properties": {
+        "page_id": {
+          "format": "uuid",
+          "title": "Page Id",
+          "type": "string"
+        },
+        "chapter_id": {
+          "default": null,
+          "title": "Chapter Id",
+          "type": "null"
+        },
+        "order": {
+          "title": "Order",
+          "type": "integer"
+        },
+        "title": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Title",
+          "type": "object"
+        },
+        "visibility": {
+          "const": "visible",
+          "title": "Visibility",
+          "type": "string"
+        },
+        "layout_mode": {
+          "const": "flow",
+          "title": "Layout Mode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "page_id",
+        "order",
+        "title",
+        "visibility",
+        "layout_mode"
+      ],
+      "title": "Page",
+      "type": "object"
+    },
+    "Section": {
+      "additionalProperties": false,
+      "properties": {
+        "section_id": {
+          "format": "uuid",
+          "title": "Section Id",
+          "type": "string"
+        },
+        "page_id": {
+          "format": "uuid",
+          "title": "Page Id",
+          "type": "string"
+        },
+        "parent_section_id": {
+          "default": null,
+          "title": "Parent Section Id",
+          "type": "null"
+        },
+        "order": {
+          "title": "Order",
+          "type": "integer"
+        },
+        "title": {
+          "default": null,
+          "title": "Title",
+          "type": "null"
+        }
+      },
+      "required": [
+        "section_id",
+        "page_id",
+        "order"
+      ],
+      "title": "Section",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "analytical_document_version_id": {
+      "format": "uuid",
+      "title": "Analytical Document Version Id",
+      "type": "string"
+    },
+    "analytical_document_id": {
+      "format": "uuid",
+      "title": "Analytical Document Id",
+      "type": "string"
+    },
+    "workspace_id": {
+      "format": "uuid",
+      "title": "Workspace Id",
+      "type": "string"
+    },
+    "profile": {
+      "const": "workbook_report",
+      "title": "Profile",
+      "type": "string"
+    },
+    "composition_schema_version": {
+      "const": 1,
+      "title": "Composition Schema Version",
+      "type": "integer"
+    },
+    "source_owner_ref": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Source Owner Ref",
+      "type": "object"
+    },
+    "navigation_mode": {
+      "const": "tabs",
+      "title": "Navigation Mode",
+      "type": "string"
+    },
+    "default_page_id": {
+      "format": "uuid",
+      "title": "Default Page Id",
+      "type": "string"
+    },
+    "chapters": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Chapters",
+      "type": "array"
+    },
+    "pages": {
+      "items": {
+        "$ref": "#/$defs/Page"
+      },
+      "title": "Pages",
+      "type": "array"
+    },
+    "sections": {
+      "items": {
+        "$ref": "#/$defs/Section"
+      },
+      "title": "Sections",
+      "type": "array"
+    },
+    "blocks": {
+      "items": {
+        "$ref": "#/$defs/Block"
+      },
+      "title": "Blocks",
+      "type": "array"
+    },
+    "brand_profile_version_id": {
+      "format": "uuid",
+      "title": "Brand Profile Version Id",
+      "type": "string"
+    },
+    "access_policy_id": {
+      "format": "uuid",
+      "title": "Access Policy Id",
+      "type": "string"
+    },
+    "filter_scope_bindings": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Filter Scope Bindings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "analytical_document_version_id",
+    "analytical_document_id",
+    "workspace_id",
+    "profile",
+    "composition_schema_version",
+    "source_owner_ref",
+    "navigation_mode",
+    "default_page_id",
+    "chapters",
+    "pages",
+    "sections",
+    "blocks",
+    "brand_profile_version_id",
+    "access_policy_id",
+    "filter_scope_bindings"
+  ],
+  "title": "AnalyticalDocumentCompositionV1",
+  "type": "object"
+}

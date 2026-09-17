@@ -47,6 +47,7 @@ COPY --chown=10001:10001 packages/contracts/identity /app/.venv/lib/python3.12/s
 COPY --chown=10001:10001 packages/contracts/notifications /app/.venv/lib/python3.12/site-packages/packages/contracts/notifications
 COPY --chown=10001:10001 packages/contracts/organization /app/.venv/lib/python3.12/site-packages/packages/contracts/organization
 COPY --chown=10001:10001 packages/contracts/people /app/.venv/lib/python3.12/site-packages/packages/contracts/people
+COPY --chown=10001:10001 packages/contracts/presentation /app/.venv/lib/python3.12/site-packages/packages/contracts/presentation
 COPY --chown=10001:10001 packages/contracts/source_intake /app/.venv/lib/python3.12/site-packages/packages/contracts/source_intake
 COPY --chown=10001:10001 plugins/connector_files /app/.venv/lib/python3.12/site-packages/plugins/connector_files
 COPY --chown=10001:10001 plugins/connector_postgresql /app/.venv/lib/python3.12/site-packages/plugins/connector_postgresql

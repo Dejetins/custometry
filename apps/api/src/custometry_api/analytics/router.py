@@ -12,7 +12,7 @@ from fastapi import Depends, FastAPI, Header, Query, Request, status
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from custometry_api.analytics.sales_models import SalesRunRequest, SalesResponse
+from custometry_api.analytics.sales_models import SalesRunRequest, SalesResponse, SalesContext
 from packages.artifacts.infrastructure.sales import SalesArtifactStore
 from packages.semantic_model.infrastructure.postgres import PostgresSalesSemanticRepository
 from custometry_api.config import Settings
@@ -180,7 +180,7 @@ class AnalyticsResultListResponse(StrictModel):
     visible_count: int = Field(ge=0)
 
 
-def _services(settings: Settings) -> tuple[IdentityService, AnalyticsService]:
+def build_analytics_services(settings: Settings) -> tuple[IdentityService, AnalyticsService]:
     def connect() -> psycopg.Connection[object]:
         return psycopg.connect(
             host=settings.database_host,
@@ -225,7 +225,7 @@ def create_analytics_app(
     identity_service: IdentityService | None = None,
     analytics_service: AnalyticsService | None = None,
 ) -> FastAPI:
-    default_identity, default_analytics = _services(settings)
+    default_identity, default_analytics = build_analytics_services(settings)
     identity = identity_service or default_identity
     analytics = analytics_service or default_analytics
     app = FastAPI(
@@ -308,6 +308,16 @@ def create_analytics_app(
             visible_count=count,
         )
 
+    @app.get("/sales-report-context/v1", response_model=SalesContext, operation_id="sales_report_context_v1")
+    def sales_context(actor: Actor = Depends(authenticated)) -> SalesContext:
+        try:
+            return SalesContext.model_validate(analytics.sales_report_context(
+                workspace_id=actor.workspace_id, principal_id=actor.principal_id,
+                permissions=actor.permissions,
+            ))
+        except psycopg.Error as exc:
+            raise AnalyticsFailure("RESULT_STORAGE_UNAVAILABLE") from exc
+
     @app.post("/sales-reports/v1", response_model=SalesResponse, operation_id="run_sales_report_v1")
     def run_sales_report(
         payload: SalesRunRequest, actor: Actor = Depends(authenticated)
@@ -348,6 +358,7 @@ def create_analytics_app(
         get_result,
         list_results,
         run_sales_report,
+        sales_context,
         get_sales_report,
     )
     return app

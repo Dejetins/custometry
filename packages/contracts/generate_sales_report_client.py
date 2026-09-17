@@ -19,7 +19,9 @@ def render() -> bytes:
         render_typescript(json.loads(raw), source_digest=hashlib.sha256(raw).hexdigest(), schema_ids=[])
         .decode()
         .split("export class FoundationApiClient")[0]
+        .rstrip()
         .encode()
+        + b"\n"
     )
 
 

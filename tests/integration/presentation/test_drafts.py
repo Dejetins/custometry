@@ -68,7 +68,7 @@ def test_migration_real_versions_conflicts_and_faults(
     )
     # The harness starts this freshly owned database at the actual previous head.
     with runtime.connect() as c:
-        assert scalar(c, "SELECT version_num FROM alembic_version") == "0010_sales_report"
+        assert scalar(c, "SELECT version_num FROM alembic_version") == "0011_presentation_drafts"
         before = scalar(c, "SELECT count(*) FROM artifact_manifests")
     command = [
         "uv",

@@ -1,0 +1,57 @@
+{
+  "schema_version": "documentation-reference-verification/v1",
+  "timestamp_utc": "2026-09-16T22:54:43.191948+00:00",
+  "status": "pass",
+  "scope": "Owner-selected target requirements and ten live Brave reference captures; no product implementation or milestone execution",
+  "requirements_revision": "2026-09-17.1",
+  "new_requirement_ids": [
+    "METRIC-025",
+    "METRIC-026",
+    "METRIC-027",
+    "METRIC-028",
+    "METRIC-029",
+    "CHART-021"
+  ],
+  "checks": [
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.generate_requirement_index",
+      "result": "pass"
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.generate_docs_index",
+      "result": "pass"
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "result": "PASS check:local (observed=true)"
+    },
+    {
+      "command": "capture-manifest image count and SHA-256 verification",
+      "result": "10 images passed"
+    },
+    {
+      "command": "preserved pilot SHA-256 verification",
+      "result": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700"
+    }
+  ],
+  "source_head": "cb4f696dc1dca3bc051debd347810f7d74caa319",
+  "proof_limits": [
+    "Native browser visual/reference inspection only; no vendor backend/schema inference",
+    "No Custometry runtime behavior or owner visual implementation acceptance proven",
+    "Screenshots internal; no publication",
+    "Prior S03/S04/backend and ledger working changes preserved; none owned by this documentation unit"
+  ],
+  "changed_document_sha256": {
+    "custometry-technical-blueprint-ru.md": "28c52edab5c48b3f0a01aaf08c02792d2c4988beee3b27960562ef31c77c651f",
+    "custometry-technical-blueprint-human-ru.md": "98fea30503925b4e68716675b99ec4688209050d9e1d2bf434123289d386659d",
+    "custometry-ui-blueprint-ru.md": "eb034049dab30f85fbb5681c6af9af3b814cb9417ae74d0c79a190b4fe5213fc",
+    "docs/architecture/README.md": "1b5f200c64a439a1cf298e32fafcbb7d904cd4f84cf73bdeb8fb2c0c5b99bf19",
+    "docs/architecture/ui/target-pilot/README.md": "5f71c45113bfee592e117c38569ec93b824484368f1e86f994511d611aafa8e2",
+    "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md": "7408fc272f965dc5417d668cd8342175addfe56433ff936773c79d3b9c5c52bb",
+    "docs/contracts/analytical-authoring-contract.md": "553efee4dd8f425240700c69a1aa6a30994ab75b02479ba52e6e89ea85989f69",
+    "docs/README.md": "28b84cf230e763669d5c6dacfd0f5da93b7df5307f46e6d821b83af967997eb3",
+    "docs/generated/requirement-index.json": "9f7776166b37aaeb97e4d312f3a4552484ee0005ba29ddb59a06d9fdbce23f95",
+    "docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md": "65c26c0e41c41aead37aadfab1848477eec9144775eccd5210b03920ec904a20",
+    "docs/architecture/ui/references/mindbox-metrics-2026-09-17/capture-manifest.json": "dc497a19895ae761d46b1129528b00eed44f945e2b9879a6ee03337be663d6fd"
+  }
+}

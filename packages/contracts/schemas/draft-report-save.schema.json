@@ -1,0 +1,76 @@
+{
+  "$defs": {
+    "Reference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "content_hash"
+      ],
+      "title": "Reference",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "draft-report/v1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "result_id": {
+      "format": "uuid",
+      "title": "Result Id",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Title",
+      "type": "string"
+    },
+    "expected_revision": {
+      "minimum": 0,
+      "title": "Expected Revision",
+      "type": "integer"
+    },
+    "idempotency_key": {
+      "format": "uuid",
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "chart_spec": {
+      "$ref": "#/$defs/Reference"
+    },
+    "brand_profile": {
+      "$ref": "#/$defs/Reference"
+    },
+    "company_pack": {
+      "$ref": "#/$defs/Reference"
+    }
+  },
+  "required": [
+    "contract_version",
+    "result_id",
+    "title",
+    "expected_revision",
+    "idempotency_key",
+    "chart_spec",
+    "brand_profile",
+    "company_pack"
+  ],
+  "title": "SaveRequest",
+  "type": "object"
+}

@@ -1,0 +1,76 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "system-brand/v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "brand_profile_version_id": {
+      "format": "uuid",
+      "title": "Brand Profile Version Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "token_version": {
+      "title": "Token Version",
+      "type": "string"
+    },
+    "source": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Source",
+      "type": "object"
+    },
+    "font_family": {
+      "const": "Inter",
+      "title": "Font Family",
+      "type": "string"
+    },
+    "themes": {
+      "items": {
+        "enum": [
+          "abyss",
+          "graphite",
+          "frost",
+          "paper"
+        ],
+        "type": "string"
+      },
+      "title": "Themes",
+      "type": "array"
+    },
+    "tokens": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Tokens",
+      "type": "array"
+    },
+    "remote_assets": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remote Assets",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "brand_profile_version_id",
+    "name",
+    "token_version",
+    "source",
+    "font_family",
+    "themes",
+    "tokens",
+    "remote_assets"
+  ],
+  "title": "SystemBrandProfileV1",
+  "type": "object"
+}

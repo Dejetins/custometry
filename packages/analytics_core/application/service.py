@@ -588,6 +588,35 @@ class AnalyticsService:
             workspace_id=workspace_id, principal_id=principal_id, offset=offset, limit=limit
         )
 
+    def sales_report_context(
+        self, *, workspace_id: UUID, principal_id: UUID, permissions: frozenset[str]
+    ) -> dict[str, Any]:
+        if not {"analysis.read", "analysis.run"} <= permissions:
+            raise AnalyticsFailure("FORBIDDEN")
+        if self._sales_semantics is None or self._sales_artifacts is None:
+            raise AnalyticsFailure("SALES_REPORT_UNAVAILABLE")
+        datasets: list[dict[str, Any]] = []
+        for version in self._sales_semantics.sales_versions(workspace_id=workspace_id):
+            source = self._sales_semantics.sales_projection(
+                workspace_id=workspace_id, version_id=UUID(version["id"])
+            )
+            store_bindings = [b for b in source["bindings"] if b["entity"] == "Store"]
+            if len(store_bindings) != 1:
+                raise AnalyticsFailure("SIX_ENTITY_BINDING_REQUIRED")
+            stores = self._sales_artifacts.read_sales_inputs(
+                workspace_id=workspace_id, bindings=store_bindings, supporting_artifacts=[]
+            )["Store"]
+            datasets.append({
+                "id": version["id"], "version": version["version"],
+                "label": "Northwind Retail",
+                "stores": [{"id": str(s["store_id"]), "label": str(s.get("store_name") or s["store_id"])} for s in stores],
+            })
+        return {
+            "schema_version": "sales-report-context/v1", "workspace_id": str(workspace_id),
+            "datasets": datasets, "default_period": {"starts_on": "2025-01-01", "ends_on": "2025-11-30"},
+            "eligibility": {"status": "completed", "currency": "EUR", "locked": True},
+        }
+
     def run_sales_report(
         self,
         *,

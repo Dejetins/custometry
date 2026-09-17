@@ -1,0 +1,69 @@
+{
+  "buildSnapshotUrl": {
+    "body": "return location.href;"
+  },
+  "storedAnalysisView": {
+    "body": "return null;"
+  },
+  "saveAnalysisView": {
+    "body": "bridge.save(document.querySelector('.title-row h1').textContent);"
+  },
+  "applyStoredAnalysisView": {
+    "body": "bridge.preview();"
+  },
+  "renderSavedAnalysisView": {
+    "body": "document.getElementById('personal-analysis-view-row').hidden=true;document.getElementById('published-analysis-view-row').querySelector('strong').textContent=locale==='ru'?'Точный предпросмотр':'Exact preview';document.getElementById('published-analysis-view-row').querySelector('small').textContent='';"
+  },
+  "overviewOption": {
+    "args": "focus=false",
+    "body": "const data=bridge.chart(locale,focus);if(!data)return emptyOption();const base=chartBase(focus,'overview');const palette=dataPalette('overview');base.xAxis={...base.xAxis,...data.xAxis,axisLabel:base.xAxis.axisLabel,axisLine:base.xAxis.axisLine,axisTick:base.xAxis.axisTick};base.yAxis={...base.yAxis,name:'EUR'};base.legend={...base.legend,data:data.legend.data};base.tooltip=data.tooltip;base.series=data.series.map((s,index)=>({...s,lineStyle:{...s.lineStyle,width:focus?3:2.4,color:palette[index%palette.length]},itemStyle:{color:palette[index%palette.length]},symbol:'none'}));return base;"
+  },
+  "dynamicsOption": {
+    "body": "return emptyOption();"
+  },
+  "quarterOption": {
+    "body": "return emptyOption();"
+  },
+  "segmentsOption": {
+    "body": "return emptyOption();"
+  },
+  "renderOverviewTable": {
+    "body": "document.getElementById('overview-chart-table').innerHTML=realTable();scheduleSharedTableGeometry();"
+  },
+  "renderOverviewFocusTable": {
+    "body": "setFocusTableMarkup(realTable());"
+  },
+  "renderLifecycleTable": {
+    "body": "document.getElementById('lifecycle-table').innerHTML=bridge.tableRows(locale);document.getElementById('lifecycle-range').textContent=bridge.range();document.getElementById('lifecycle-footnote').textContent='EUR · UTC';scheduleSharedTableGeometry();"
+  },
+  "buildLifecycleTableMarkup": {
+    "body": "return realTable();"
+  },
+  "renderDynamicsTable": {
+    "body": "unavailableTable('dynamics-table');"
+  },
+  "renderQuarterTable": {
+    "body": "unavailableTable('quarter-table');"
+  },
+  "renderSegmentTables": {
+    "body": "document.querySelectorAll('#page-segments table').forEach(t=>{t.innerHTML=`<caption>${unavailable()}</caption>`;});"
+  },
+  "renderMigrationMatrix": {
+    "body": "document.querySelectorAll('#page-segments table').forEach(t=>{t.innerHTML=`<caption>${unavailable()}</caption>`;});"
+  },
+  "exportTable": {
+    "body": "showToast(unavailable());"
+  },
+  "downloadBlob": {
+    "body": "showToast(unavailable());"
+  },
+  "updateSharePreview": {
+    "body": "document.querySelectorAll('#share-dialog input,#share-dialog button:not([data-dialog-close])').forEach(n=>{n.disabled=true;n.title=unavailable();});"
+  },
+  "storeSummary": {
+    "body": "if(!selectedStores.size)return locale==='ru'?'Все магазины':'All stores';return [...selectedStores].map(id=>storeMeta[id]?.[locale]??(locale==='ru'?'Выбранный магазин':'Selected store')).join(' · ');"
+  },
+  "syncSharedTableGeometry": {
+    "body": "\n      const allTables = [...document.querySelectorAll('table')];\n      allTables.forEach(clearSharedTableGrid);\n      const groups = new Map();\n      allTables.filter(table => table.getClientRects().length && table.closest('[hidden]') === null).forEach(table => {\n        const signature = tableColumnSignature(table);\n        if (!signature) return;\n        if (!groups.has(signature)) groups.set(signature, []);\n        groups.get(signature).push(table);\n      });\n      groups.forEach((tables, signature) => {\n        if (!tables.length) return;\n        const columnCount = tables[0].tHead.rows[tables[0].tHead.rows.length - 1].cells.length - 1;\n        if (!columnCount || tables.some(table => table.tHead.rows[table.tHead.rows.length - 1].cells.length !== columnCount + 1)) return;\n        let sharedWidth = Math.max(...tables.map(table => table.getBoundingClientRect().width));\n        const naturalStubWidth = Math.max(...tables.flatMap(table => [...table.rows].flatMap(row => {\n          const cell = row.cells[0];\n          return cell && !cell.hasAttribute('colspan') ? [intrinsicCellWidth(cell)] : [];\n        })));\n        const minimumTrackWidth = 96;\n        const minimumStubWidth = innerWidth <= 720 ? 168 : 192;\n        const stubWidth = Math.max(minimumStubWidth, naturalStubWidth);\n        sharedWidth = Math.max(sharedWidth, stubWidth + columnCount * minimumTrackWidth);\n        const valueColumnWidth = (sharedWidth - stubWidth) / columnCount;\n        tables.forEach(table => {\n          const colgroup = document.createElement('colgroup');\n          colgroup.dataset.sharedTableGrid = '';\n          colgroup.innerHTML = '<col>' + '<col>'.repeat(columnCount);\n          table.insertBefore(colgroup, table.firstChild);\n          table.dataset.sharedTableGrid = 'true';\n          table.dataset.sharedTableSignature = signature;\n          table.style.setProperty('--shared-table-width', `${sharedWidth.toFixed(3)}px`);\n          table.style.setProperty('--shared-stub-width', `${stubWidth.toFixed(3)}px`);\n          table.style.setProperty('--shared-value-column-width', `${valueColumnWidth.toFixed(3)}px`);\n        });\n      });\n    "
+  }
+}

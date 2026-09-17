@@ -15,3 +15,7 @@ export const routeTitleCatalogs = {
   en: enRouteTitles,
   ru: ruRouteTitles,
 } as const;
+
+export { reportCopy, type Copy } from './report-copy';
+
+export { reportPilotCopy } from './report-pilot-copy';

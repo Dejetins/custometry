@@ -1,0 +1,40 @@
+/* Required API controls use the preserved pilot's form/menu geometry. */
+.report-pilot {
+  .report-popover { position: fixed; margin: 0; inset: auto; width: min(290px, calc(100vw - 16px)); max-height: calc(100dvh - 24px); overflow: auto; }
+  .report-popover:not([open]), .report-focus:not([open]) { display: none; }
+  .report-popover::backdrop { background: transparent; backdrop-filter: none; }
+  .menu-heading { display: flex; align-items: center; justify-content: space-between; }
+  .form-field { color: var(--text-secondary); font-size: 10px; }
+  .form-field input { min-height: 32px; color: var(--text); background: var(--module); font: inherit; }
+  .report-focus { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0; border-radius: 0; }
+  .drawer-body p { overflow-wrap: anywhere; }
+  .drawer-body small, .narrative small { overflow-wrap: anywhere; }
+  .report-message, .report-alert { padding: 12px; color: var(--text-secondary); font-size: 11px; }
+  .report-table { max-height: 540px; --shared-table-width: 100%; }
+  .report-table caption { padding: 8px 10px; color: var(--text-muted); text-align: start; font-size: 10px; }
+  .report-table td { text-align: end; }
+  .report-table th { text-align: end; }
+  .report-table th:first-child { text-align: start; }
+  .report-login-workspace, .report-library-workspace { display: block; overflow: auto; }
+  .report-login { max-width: 380px; margin: 10vh auto; padding: 20px; }
+  .report-login label { display: grid; gap: 6px; margin: 14px 0; }
+  .report-login input { color: var(--text); background: var(--module); border: 1px solid var(--border); border-radius: 7px; padding: 8px; }
+  .report-login button.primary { color: #090a0b; background: var(--accent); border: 0; padding: 8px 16px; border-radius: 16px; }
+  .report-library { padding: 20px; }
+  .report-template { display: block; max-width: 340px; padding: 16px; background: var(--surface-soft); border: 1px solid var(--border); border-radius: 10px; }
+  .report-template h2 { font-size: 14px; }
+  .report-library ul { list-style: none; padding: 0; }
+  .report-library li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border-soft); }
+  .report-library small { color: var(--text-muted); }
+  .report-chart { width: 100%; min-width: 0; }
+  .report-plot { height: 286px; width: 100%; }
+  .report-chart-stage { height: auto !important; min-height: 318px; }
+  .report-chart-stage > .report-chart { min-height: 318px; }
+  .report-chart-title { margin: 0; padding: 36px 14px 0; color: var(--text-secondary); font-size: 11px; font-weight: 600; }
+  .report-chart-stage .series-panel { min-height: 318px; }
+  .report-chart-stage .adaptive-legend-item { cursor: default; }
+  .focus-content .report-plot { height: min(66vh, 720px); }
+  @media (max-width: 1100px) { .report-chart-stage.has-series-panel-right { grid-template-columns: minmax(0, 1fr); } .report-chart-stage .series-panel { display: none; } }
+}
+
+.report-pilot .chart-period-controls.is-enhanced > .icon-button { width: 30px; min-height: 30px; }

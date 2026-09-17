@@ -1,0 +1,220 @@
+{
+  "status": "pass",
+  "profile": "prompt-pack/v1",
+  "created_at": "2026-09-12T23:23:58.798814+00:00",
+  "commands": [
+    {
+      "command": "uv run --locked pytest -q tests/unit/presentation tests/contract/presentation tests/unit/analytics tests/contract/analytics",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "28 passed in 0.36s"
+      ]
+    },
+    {
+      "command": "uv run --locked python .codex/delivery/evidence/MS-003/MS-003-S03/run_tests.py",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "1 passed in 4.44s",
+        "previous-head migration exit= 0"
+      ]
+    },
+    {
+      "command": "uv run --locked python .codex/delivery/evidence/MS-003/MS-003-S03/verify_runtime.py",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "Real authenticated HTTP, reference integrity, root faults and fresh-process reopen passed."
+      ]
+    },
+    {
+      "command": "uv run --locked ruff check packages/presentation/application/reports.py packages/presentation/domain packages/presentation/infrastructure packages/contracts/presentation packages/contracts/generate_reports_client.py packages/artifacts/infrastructure/document_snapshots.py apps/api/src/custometry_api/reports apps/api/src/custometry_api/main.py apps/api/src/custometry_api/analytics/router.py migrations/versions/0011_presentation_drafts.py tests/unit/presentation tests/contract/presentation tests/integration/presentation",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "All checks passed!"
+      ]
+    },
+    {
+      "command": "uv run --locked pyright packages/presentation/application/reports.py packages/presentation/domain packages/presentation/infrastructure packages/contracts/presentation packages/contracts/generate_reports_client.py packages/artifacts/infrastructure/document_snapshots.py apps/api/src/custometry_api/reports apps/api/src/custometry_api/main.py apps/api/src/custometry_api/analytics/router.py migrations/versions/0011_presentation_drafts.py tests/unit/presentation tests/contract/presentation tests/integration/presentation",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "0 errors, 0 warnings, 0 informations"
+      ]
+    },
+    {
+      "command": "pnpm --filter @custometry/contracts typecheck",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": []
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": [
+        "PASS check:local (observed=true)"
+      ]
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": []
+    }
+  ],
+  "proof_boundary": "real local PostgreSQL, production owner services, immutable artifacts, authenticated HTTP and fresh API process; no browser/package/release",
+  "completed_at": "2026-09-12T23:24:11.941637+00:00",
+  "owned_source_manifest": [
+    {
+      "path": "apps/api/src/custometry_api/analytics/router.py",
+      "change": "modified",
+      "sha256": "916320eda5400b755933f40e4e66362380eff446cd8417b947c4f92b6dbb8300"
+    },
+    {
+      "path": "apps/api/src/custometry_api/main.py",
+      "change": "modified",
+      "sha256": "82efe420a639ff7f7941d8db63e2b2a88790dab163102633744ade145f35d297"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/__init__.py",
+      "change": "created",
+      "sha256": "7a60b23e88300df5c76f3ac4260d1160ab8ec75b194bc7de2c3fd0d31b6b975b"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/router.py",
+      "change": "created",
+      "sha256": "714e7713903b849d46416bc461161361f464e4bbfca17648bee36a1c4c282cf4"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "change": "modified",
+      "sha256": "3d7e180a139f50a3f99e7a2787992f1e38256d9b20f5c2b1ab4c372a03d9197e"
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "change": "modified",
+      "sha256": "58ff31cbf4e414e7527d19ea96edbdc5887af18a2e6ba16f11d4031b92a4d693"
+    },
+    {
+      "path": "docs/contracts/artifact-format-contract.md",
+      "change": "modified",
+      "sha256": "d21c9e3a074080290248b64020379df1fd6160d4cc0fa4ade211354dce38c367"
+    },
+    {
+      "path": "migrations/versions/0011_presentation_drafts.py",
+      "change": "created",
+      "sha256": "73bee6697fea69743fbd85ae9002701c99fd2393243473a481e4b1b1aa6ff3d1"
+    },
+    {
+      "path": "packages/artifacts/infrastructure/document_snapshots.py",
+      "change": "created",
+      "sha256": "0bb71019f27ffb3461f4be8c6d96c7c281a3e7e5fe041c719bdd7a75c90d6223"
+    },
+    {
+      "path": "packages/contracts/generate_reports_client.py",
+      "change": "created",
+      "sha256": "9ec759fb96c86db56fdffb9de772621ab327b7beacb09d69a6e429696389fb88"
+    },
+    {
+      "path": "packages/contracts/openapi/reports.openapi.json",
+      "change": "created",
+      "sha256": "4d6c442a1584aff9c43ea093b26495c04c856af341b211ac0c248821eb3b38ef"
+    },
+    {
+      "path": "packages/contracts/presentation/__init__.py",
+      "change": "created",
+      "sha256": "141f0bd991c9cf17a2ea21269b08126412e781fb5378851beb3add042d75f7f7"
+    },
+    {
+      "path": "packages/contracts/schemas/analytical-document-composition.schema.json",
+      "change": "created",
+      "sha256": "7765576274891605677fce2ff8e0587e1885905e7cfeb6b7cdf5a8e97ac6a1e9"
+    },
+    {
+      "path": "packages/contracts/schemas/draft-report-save.schema.json",
+      "change": "created",
+      "sha256": "51a88344542e9ed6b4edd23d6409eb82eb263f5e7b0aacbe6db6b216d1439823"
+    },
+    {
+      "path": "packages/contracts/schemas/line-chart-spec.schema.json",
+      "change": "created",
+      "sha256": "ce57eed6490317a6147373dff43c09ce615381806f473aa75f4f8a8eccc8a3e3"
+    },
+    {
+      "path": "packages/contracts/schemas/system-brand-profile.schema.json",
+      "change": "created",
+      "sha256": "873f5e4118df0c43f4f66afb73ed373ec7e8fd7906e951b892bff2dd62c1b254"
+    },
+    {
+      "path": "packages/contracts/schemas/system-company-pack.schema.json",
+      "change": "created",
+      "sha256": "3eb29e2be2bdc0b70a12cacc7ba88011399f2ad81b8bb8f1529fea0e54cab4f5"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "change": "modified",
+      "sha256": "8056f930c14f77197753dbede3be79d5b41da1f20c305da9a875db2eb456c4fe"
+    },
+    {
+      "path": "packages/contracts/src/reports-client.ts",
+      "change": "created",
+      "sha256": "c266a686b86f586e5fbfd9e78171181a553866943ead87121f08b9b9b0da4fba"
+    },
+    {
+      "path": "packages/presentation/application/reports.py",
+      "change": "created",
+      "sha256": "34fe22b6a9b8d352a6c6acc15fb0c7189689a429f78f46911718204dd0684490"
+    },
+    {
+      "path": "packages/presentation/domain/__init__.py",
+      "change": "created",
+      "sha256": "625d64376a36ed7517d27f3d876a083b683f2c7068b220ead476dcd0b5957dff"
+    },
+    {
+      "path": "packages/presentation/domain/reports.py",
+      "change": "created",
+      "sha256": "fac735054d2c068caae66f81fffc7013314f96c6610ea2ec966c9e132529d924"
+    },
+    {
+      "path": "packages/presentation/infrastructure/__init__.py",
+      "change": "created",
+      "sha256": "2c968254c9e3c0467e8da77536d17e8adbb29c0bcd79a1923f4b63c541ee4717"
+    },
+    {
+      "path": "packages/presentation/infrastructure/postgres.py",
+      "change": "created",
+      "sha256": "22fed09030324339afa78ec8220b54a107b1fe2ec4a9ff2aa5e98ca02529fda3"
+    },
+    {
+      "path": "packages/presentation/infrastructure/system-brand.v1.json",
+      "change": "created",
+      "sha256": "14a44fd52365d0fd3e0caf3f6655a8380a5e1418fa5d96c60498d03062c2fdde"
+    },
+    {
+      "path": "tests/contract/presentation/test_reports.py",
+      "change": "created",
+      "sha256": "04c62d91a90a33f13b04f7c721bd667767211fbab4709ba779b7655ec20acf9d"
+    },
+    {
+      "path": "tests/integration/presentation/conftest.py",
+      "change": "created",
+      "sha256": "b2f1518c50ad58a265784a87abf629ebdc16b28a01c02eb64daac5e443e14de9"
+    },
+    {
+      "path": "tests/integration/presentation/test_drafts.py",
+      "change": "created",
+      "sha256": "c2cc227f1fa7739e0a8af132a19569ed1d77317e9a3b85017d24f45199436c21"
+    },
+    {
+      "path": "tests/unit/presentation/test_invariants.py",
+      "change": "created",
+      "sha256": "d05d227fefb0a564d179a0ee257920810ef172b162c2ba15c9fa1df9249c635c"
+    }
+  ],
+  "foreign_changes_excluded": [],
+  "deleted_paths": [],
+  "extra_provider_path_reason": "Artifact Lifecycle owns root/page manifest IO; Presentation uses only its public port."
+}

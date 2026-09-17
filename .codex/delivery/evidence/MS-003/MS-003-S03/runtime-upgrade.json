@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "backup_retained_in_protected_owned_runtime": true,
+  "backup_sha256": "51fef944ee1ef7b0679653c773a0945e4668a23bc71fb9684d224972d79cdc1a",
+  "backup_bytes": 208509,
+  "migration": "0010_sales_report -> 0011_presentation_drafts",
+  "rollback": "Pre-upgrade backup with retained immutable artifacts or forward repair; no lossless document downgrade."
+}

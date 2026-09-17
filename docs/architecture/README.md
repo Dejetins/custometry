@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 35
+doc_version: 41
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -31,15 +31,16 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 
 | Document | Purpose |
 |---|---|
+| [Mindbox metric worksets reference atlas](ui/references/mindbox-metrics-2026-09-17/README.md) | Owner-selected target addition, revision 1: ten cropped live-browser references, configured metric cards, worksets, per-period deltas, dual-metric views and monitoring goals; no implementation claim |
 | [Development direction map — MAP-001](./planning/project-map.md) | Sequence draft 2.0.2: product-first checkpoints, explicit segment lifecycle, retained L1 scopes and accepted WS-002/MS-003 0.2.0 package |
 | [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.10: retained installation/bootstrap outcomes and closed C02/C03 evidence; full C04–C06 selected later |
 | [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 2.2.0: exact internal bundle and native ARM64/AMD64 evidence; [S05 criterion map](../../.codex/delivery/evidence/MS-001/MS-001-S05/report.md) and [C03 handoff](runtime-network-installation.md#s05-installation-author-handoff); owner decision remains in the canonical journal |
 | [Installation milestone — MS-002](./planning/milestones/MS-002/plan.md) | C03 L3 accepted 1.0.0: guided installation, HTTPS, truthful readiness and a pilot-derived first-run entry; fixed implementation choices and owner decision packet; five prompts and one canonical journal; [S01 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S01/report.md), [S02 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S02/report.md), [S03 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S03/report.md), [S04 candidate and target evidence](../../.codex/delivery/evidence/MS-002/MS-002-S04/report.md), [S05 criterion map and C04 handoff](../../.codex/delivery/evidence/MS-002/MS-002-S05/report.md); final acceptance remains in the journal |
 | [First analyst report — WS-002](planning/directions/DIR-004/workstreams/WS-002.md) | L2 accepted 0.2.0: synthetic six-table source and real governed report cycle under DIR-004, with scoped provider contributions |
-| [Saved report milestone — MS-003](planning/milestones/MS-003/plan.md) | L3 accepted 0.2.0: Customer/Product directories, receipt/item relationships and fixed metric/session/document/UI contracts, six prompts and [one journal](../../.codex/delivery/ledgers/MS-003.md); [S01 preparation evidence](../../.codex/delivery/evidence/MS-003/MS-003-S01/report.md), [S02 sales-result evidence](../../.codex/delivery/evidence/MS-003/MS-003-S02/report.md); document/UI stages remain pending |
+| [Saved report milestone — MS-003](planning/milestones/MS-003/plan.md) | L3 accepted 0.2.0: Customer/Product directories, receipt/item relationships and fixed metric/session/document/UI contracts, six prompts and [one journal](../../.codex/delivery/ledgers/MS-003.md); [S01 preparation evidence](../../.codex/delivery/evidence/MS-003/MS-003-S01/report.md), [S02 sales-result evidence](../../.codex/delivery/evidence/MS-003/MS-003-S02/report.md), [S03 draft persistence evidence](../../.codex/delivery/evidence/MS-003/MS-003-S03/report.md), [S04 report workspace evidence](../../.codex/delivery/evidence/MS-003/MS-003-S04/report.md); [native pilot/API integration](../../.codex/delivery/evidence/MS-003/MS-003-pilot-native/report.md) replaces both rejected report reconstructions; packaged verification and final owner review remain separate stages |
 | [System Design](./system-design.md) | Complete `0.11.0-draft` target architecture, accepted decisions, flows, trust boundaries, compatibility, proof limits, and direction of evolution |
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
-| [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted customer segmentation/reporting requirements, target contract ownership, compatibility and implementing-ticket acceptance |
+| [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted segmentation/reporting requirements, target ownership, implemented bounded sales results and draft composition, compatibility and evidence |
 | [Source data adaptation and imperfect snapshot refresh](../contracts/source-data-adaptation-contract.md) | Accepted source readiness, daily rebuilds, degraded-input handling, typed mapping and derived-channel requirements |
 | [Report refresh, prepared serving and recovery](../contracts/report-refresh-serving-recovery-contract.md) | Accepted version 1: document schedules/status, immutable current snapshots, artifact commit, mixed 50-author/100-viewer workload and coherent off-primary backup; numeric latency/recovery objectives remain unproven |
 | [Artifact format registry](../contracts/artifact-format-contract.md) | Required output vocabulary, manifest meaning, reader compatibility and rollback |

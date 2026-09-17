@@ -56,6 +56,7 @@
 - [Custometry Web implementation source contract](architecture/ui/custometry-web-implementation-source-contract-v1.md)
 - [Historical August 5 visual pilots](architecture/ui/pilots/README.md)
 - [Source checkout publication reconciliation, 2026-09-04](architecture/ui/publication-reconciliation-2026-09-04.md)
+- [Metric worksets and comparison interactions](architecture/ui/references/mindbox-metrics-2026-09-17/README.md)
 - [Target UI concept](architecture/ui/target-pilot/README.md)
 - [UI-program retirement and retained sources](architecture/ui/ui-program-retirement.md)
 

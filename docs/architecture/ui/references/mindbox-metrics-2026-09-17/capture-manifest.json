@@ -1,0 +1,244 @@
+{
+  "schema_version": "ui-reference-capture/v1",
+  "captured_at_utc": "2026-09-16T22:53:35.124Z",
+  "source_url": "https://simplewine.mindbox.ru/home?brandId=1",
+  "surface": "Owner-authenticated Brave native UI",
+  "browser_zoom_percent": 90,
+  "window_logical_pixels": [
+    1312,
+    768
+  ],
+  "transform": "Lossless crop; opaque grey masks over unrelated financial amounts, campaign rows and assistant control. No generated/reconstructed pixels. Percentage chart series retained as reference only; not product fixture data.",
+  "publication": "internal repository documentation only; no upload or external publication",
+  "captures": [
+    {
+      "file": "images/01-metric-sets.png",
+      "crop_source_logical_pixels": [
+        52,
+        229,
+        1240,
+        102
+      ],
+      "redaction_rectangles_crop_logical_pixels": [],
+      "width_px": 1240,
+      "height_px": 102,
+      "sha256": "f798802b54bbce553ca2551417b14c49be8379fa9909e0c7f8978c0b0362c24c"
+    },
+    {
+      "file": "images/02-metric-filters.png",
+      "crop_source_logical_pixels": [
+        468,
+        319,
+        496,
+        392
+      ],
+      "redaction_rectangles_crop_logical_pixels": [],
+      "width_px": 496,
+      "height_px": 392,
+      "sha256": "d22280c3b8154aa6e8b04aeb9b10070893fc44d22cd49e100afb8212aaac8ebd"
+    },
+    {
+      "file": "images/03-metric-catalog.png",
+      "crop_source_logical_pixels": [
+        969,
+        61,
+        333,
+        651
+      ],
+      "redaction_rectangles_crop_logical_pixels": [],
+      "width_px": 333,
+      "height_px": 651,
+      "sha256": "c6b9c282bc13108f7eba3c5fbddb028034a24da7a944138ccb6ef70d7a0843e2"
+    },
+    {
+      "file": "images/04-create-set.png",
+      "crop_source_logical_pixels": [
+        950,
+        263,
+        255,
+        159
+      ],
+      "redaction_rectangles_crop_logical_pixels": [],
+      "width_px": 255,
+      "height_px": 159,
+      "sha256": "3dba5d97caf922d89ada0632287878a4b58ff0299595605f02c6e7cda09f033e"
+    },
+    {
+      "file": "images/05-period-deltas.png",
+      "crop_source_logical_pixels": [
+        73,
+        400,
+        1204,
+        316
+      ],
+      "redaction_rectangles_crop_logical_pixels": [],
+      "width_px": 1204,
+      "height_px": 316,
+      "sha256": "16cb51660998f5557b73d928f503d899c4c2647fee92ba9ebafda9f45f38ebb2"
+    },
+    {
+      "file": "images/06-comparison-controls.png",
+      "crop_source_logical_pixels": [
+        970,
+        61,
+        333,
+        305
+      ],
+      "redaction_rectangles_crop_logical_pixels": [],
+      "width_px": 333,
+      "height_px": 305,
+      "sha256": "ac94e61d8e8b270554b89e2248ab151c201168e0c5e7288736cc6a6c45ae9429"
+    },
+    {
+      "file": "images/07-delta-trend.png",
+      "crop_source_logical_pixels": [
+        73,
+        400,
+        1204,
+        316
+      ],
+      "redaction_rectangles_crop_logical_pixels": [],
+      "width_px": 1204,
+      "height_px": 316,
+      "sha256": "28a11ffa871efd41c9feb52a6059a8d0ff325542431b0ad9c43f66dc0e3352d3"
+    },
+    {
+      "file": "images/08-metric-goal.png",
+      "crop_source_logical_pixels": [
+        970,
+        62,
+        333,
+        698
+      ],
+      "redaction_rectangles_crop_logical_pixels": [
+        [
+          288,
+          655,
+          44,
+          42
+        ]
+      ],
+      "width_px": 333,
+      "height_px": 698,
+      "sha256": "89241c1c2eb6e8c6736c2e6d91fd2a6f6a733b1c340ca5c7e5a96467dea9a64c"
+    },
+    {
+      "file": "images/09-two-metrics.png",
+      "crop_source_logical_pixels": [
+        74,
+        292,
+        1204,
+        424
+      ],
+      "redaction_rectangles_crop_logical_pixels": [
+        [
+          0,
+          54,
+          1198,
+          34
+        ],
+        [
+          0,
+          124,
+          57,
+          250
+        ],
+        [
+          38,
+          234,
+          70,
+          20
+        ],
+        [
+          140,
+          218,
+          70,
+          20
+        ],
+        [
+          234,
+          119,
+          70,
+          20
+        ],
+        [
+          334,
+          316,
+          70,
+          20
+        ],
+        [
+          433,
+          312,
+          70,
+          20
+        ],
+        [
+          533,
+          309,
+          70,
+          20
+        ],
+        [
+          630,
+          293,
+          70,
+          20
+        ],
+        [
+          730,
+          289,
+          70,
+          20
+        ],
+        [
+          829,
+          281,
+          70,
+          20
+        ],
+        [
+          928,
+          317,
+          70,
+          20
+        ],
+        [
+          1010,
+          308,
+          90,
+          22
+        ]
+      ],
+      "width_px": 1204,
+      "height_px": 424,
+      "sha256": "41edcdb9ae713d28bfb76c29426e2bd575822706152797e28453b53f4d87926b"
+    },
+    {
+      "file": "images/10-segments-campaigns.png",
+      "crop_source_logical_pixels": [
+        53,
+        192,
+        1238,
+        526
+      ],
+      "redaction_rectangles_crop_logical_pixels": [
+        [
+          510,
+          110,
+          73,
+          365
+        ],
+        [
+          650,
+          187,
+          565,
+          285
+        ]
+      ],
+      "width_px": 1238,
+      "height_px": 526,
+      "sha256": "8eb3eb0105c43226eea74b5cfa5153d2b71201180452cbb91ea374fbd352d71b"
+    }
+  ]
+}

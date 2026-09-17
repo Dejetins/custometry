@@ -110,7 +110,7 @@ test("generated Help links and browser history preserve return-to-origin", async
   await page.goto("/help");
   await expect(page.getByText(/API readiness: ready/i)).toBeVisible();
   const articles = page.locator(".help-links a");
-  await expect(articles).toHaveCount(8);
+  await expect(articles).toHaveCount(10);
   await expect(articles.first()).toHaveAttribute("href", "/docs/");
   await articles.first().click();
   await expect(page).toHaveURL(/\/docs\/$/);

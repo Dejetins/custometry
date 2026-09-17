@@ -117,7 +117,7 @@ test("generated Help links and browser history preserve return-to-origin", async
   await expectDocsReady(page);
   await page.goBack();
   await expect(page).toHaveURL(/\/help$/);
-  await expect(articles).toHaveCount(8);
+  await expect(articles).toHaveCount(10);
   await page.goForward();
   await expect(page).toHaveURL(/\/docs\/$/);
   await expectDocsReady(page);

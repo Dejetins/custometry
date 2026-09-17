@@ -184,6 +184,52 @@
         }
       }
     },
+    "/sales-report-context/v1": {
+      "get": {
+        "summary": "Sales Context",
+        "operationId": "sales_report_context_v1",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SalesContext"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sales-reports/v1": {
       "post": {
         "summary": "Run Sales Report",
@@ -688,6 +734,39 @@
         ],
         "title": "Daily"
       },
+      "DatasetOption": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "stores": {
+            "items": {
+              "$ref": "#/components/schemas/StoreOption"
+            },
+            "type": "array",
+            "title": "Stores"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "version",
+          "label",
+          "stores"
+        ],
+        "title": "DatasetOption"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -847,6 +926,49 @@
           "ends_on"
         ],
         "title": "PeriodRequest"
+      },
+      "SalesContext": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "sales-report-context/v1",
+            "title": "Schema Version"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "datasets": {
+            "items": {
+              "$ref": "#/components/schemas/DatasetOption"
+            },
+            "type": "array",
+            "title": "Datasets"
+          },
+          "default_period": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Default Period"
+          },
+          "eligibility": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Eligibility"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "workspace_id",
+          "datasets",
+          "default_period",
+          "eligibility"
+        ],
+        "title": "SalesContext"
       },
       "SalesResponse": {
         "properties": {
@@ -1014,6 +1136,25 @@
           "semantic_dataset_version_id"
         ],
         "title": "SalesRunRequest"
+      },
+      "StoreOption": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "title": "StoreOption"
       },
       "TimeComparisonRequest": {
         "properties": {

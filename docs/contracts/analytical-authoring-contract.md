@@ -1,8 +1,8 @@
 ---
 doc_id: CONTRACT-ANALYTICAL-AUTHORING-001
 title: Governed population and analytical authoring contract
-doc_version: 3
-product_spec_version: 0.10.0-draft
+doc_version: 8
+product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
 owner: architecture
@@ -30,8 +30,7 @@ these target DTOs, editors or evaluators exist in production.
 
 The scope is customer populations and compact analytical documents in B2C
 retail. Product, store, receipt, line and event relationships can participate
-in customer rules. Additional Product/Store membership types, general manual
-targets and new PDF/standalone HTML formats remain separate scope decisions.
+in customer rules. Additional Product/Store membership types and new PDF/standalone HTML formats remain separate scope decisions. The owner-selected 2026-09-17 amendment adds bounded monitoring goals bound to configured metrics (METRIC-029); a general planning engine remains outside that addition.
 B2B sales objects, activation and SaaS are not added. Forecasting remains on
 hold until explicit owner resumption. Existing release labels and forecasting
 obligations are preserved; the first external release scenario is undecided.
@@ -300,3 +299,117 @@ packages.contracts.generate_sales_client`. The client uses the existing DTO rend
 and bounded input-aware methods, because the Foundation HTTP generator supports
 only operations without inputs. Existing `/analytics/results` consumers and stored
 v1 results retain their contracts. The new client is exported as `salesReports`.
+
+
+## Implemented bounded draft composition (MS-003-S03)
+
+[MS-003 TECH-05/06/08](../architecture/planning/milestones/MS-003/plan.md) now has a
+Presentation-owned implementation: the common `AnalyticalDocumentCompositionV1`
+subset, one `workbook_report` template, immutable versions and root/page preview
+manifests. [S03 evidence](../../.codex/delivery/evidence/MS-003/MS-003-S03/report.md)
+records actual PostgreSQL, artifact and session/API proof. It does not claim full
+composition editing, publication, sharing, refresh, rendering or UI readiness.
+
+The independent [reports OpenAPI](../../packages/contracts/openapi/reports.openapi.json)
+and [generated client](../../packages/contracts/src/reports-client.ts) are exported
+as `draftReports`. The API base is `/api/reports`; collection paths end in `/`.
+Every mutation explicitly supplies `contract_version: "draft-report/v1"`, uses the
+S01 session adapter and requires Origin/CSRF for browser cookies. Reads return
+`Cache-Control: no-store`. Ownership and `report.read` intersect `analysis.read`
+and the result owner's current policy; saving also requires `report.manage`.
+Installation administration alone grants none of these document capabilities.
+Filtering precedes list pagination/counts; denied entries cannot contribute counts.
+Missing/corrupt results do not produce partially populated library responses.
+
+1. Explicit Apply uses the S02 compute endpoint. `POST /prepare` consumes its exact
+   result ID and persists a canonical line ChartSpec, system BrandProfile and
+   CompanyPack, returning their complete typed projections and exact ID/hash pairs.
+   These are real Presentation records. Local system tokens are packaged in the
+   Presentation adapter with their source hash; CompanyPack pins S02 metric versions,
+   units and formats. Arbitrary visual options, unknown IDs, content drift and
+   incompatible result/default bindings cannot enter a save.
+2. `POST /` creates and saves a report with `expected_revision: 0`; creation identity
+   is derived from workspace, actor and idempotency key. `POST /{id}/versions` saves
+   another immutable version against the expected current revision. A repeated key
+   returns its exact original version; a changed request with that key or a stale
+   revision returns 409. Title and resolved result are editable; node IDs are stable.
+3. `GET /{id}` resolves the latest saved version once. `GET /{id}/snapshots/{sid}`
+   opens the exact owned draft preview, optionally checking `version_id`, `page_id`
+   and `block_id` query UUIDs. A mismatched locator returns 404. Both paths recheck the
+   result owner, reference hashes and actual root/page/result artifact bytes. They
+   never calculate, fetch source directories, resolve new metric/default versions,
+   or substitute another snapshot.
+
+The root pins the full immutable S02 result, six entity bindings, Calendar,
+relationship/policy identities, QualityReport, orphan-item limitation, parameters,
+metrics/units/grain/schema, author and system defaults. Chart/table consume `daily`;
+comparison uses `comparison.daily` with same-date previous-year alignment. The line
+spec is renderer-neutral; compiler and actual renderer output belong to S04. Locale
+switching may format the same values; it cannot change their business identity.
+
+Artifact Lifecycle commits result-dependent page and root manifests before the
+Presentation transaction inserts a version and atomically switches latest. Failures
+before the switch preserve the prior complete draft. Unreferenced immutable artifacts
+can remain after failed/concurrent saves; this slice does not implement orphan cleanup.
+Missing bytes return `ARTIFACT_MISSING`, integrity failures `ARTIFACT_CORRUPT`, and
+unavailable storage `STORAGE_UNAVAILABLE`. No error includes local paths or data.
+
+The additive `0011_presentation_drafts` migration follows actual `0010_sales_report`.
+Existing migrations and prior-feature records remain unchanged. Run migrations before
+activating the new API; older servers do not implement these new endpoints. Downgrade
+with saved documents fails closed. Recovery after writes uses the retained owned
+pre-upgrade PostgreSQL backup and unchanged immutable artifacts, or forward repair;
+no lossless document downgrade is promised.
+
+A credential-free client example after a real session and explicit S02 computation:
+
+```typescript
+const reports = new draftReports.DraftReportClient("/api/reports");
+const refs = await reports.prepare({contract_version: "draft-report/v1", result_id}, csrf);
+const saved = await reports.create({
+  contract_version: "draft-report/v1", result_id, title: "Retail report",
+  expected_revision: 0, idempotency_key: crypto.randomUUID(),
+  chart_spec: refs.chart_spec.reference,
+  brand_profile: refs.brand_profile.reference,
+  company_pack: refs.company_pack.reference,
+}, csrf);
+const exact = await reports.preview(saved.report_id, saved.snapshot_id);
+```
+
+`csrf` is the current session value in memory, never a committed credential. Regenerate
+with `uv run --locked python -m packages.contracts.generate_reports_client`.
+`tests/contract/presentation` checks provider/OpenAPI/schema/client parity;
+`tests/unit/presentation` checks composition and request invariants;
+`tests/integration/presentation` proves the isolated real database/artifact boundary.
+
+## Bounded analyst discovery and Web consumer (MS-003-S04)
+
+The [owner-authorized context extension](../../.codex/delivery/evidence/MS-003/MS-003-S04/owner-context-authorization-20260915.md)
+adds `GET /api/analytics/sales-report-context/v1`. It requires `analysis.read` and
+`analysis.run` before discovering published `retail-report/v1` versions through
+Semantic's public port. It reads only the integrity-checked Store artifact through
+Artifact's existing sales port. The projection returns dataset/version labels,
+Store IDs/labels, a default period and locked eligibility/currency. It neither
+computes sales nor exposes connection secrets, raw paths, other workspaces or
+customer/product directories. Missing or corrupt Store bytes fail closed.
+[Analytics OpenAPI](../../packages/contracts/openapi/analytics.openapi.json) and
+the generated `reportSales` DTO namespace bind this additive contract.
+
+The [Web source contract](../architecture/ui/custometry-web-implementation-source-contract-v1.md)
+records the bounded route capability inventory. Its ECharts 6.1.0 SVG adapter
+verifies canonical reference hashes, CompanyPack/BrandProfile bindings and the
+closed line ChartSpec before compiling. Chart and accessible current/prior tables
+consume the same immutable server series; locale does not change value identity.
+The native pilot document applies its original Web palette, axes and adaptive
+legend through a typed presentation port after validating those references; persisted
+BrandProfile values and ChartSpec/data identities are not rewritten.
+CAS conflict preserves unsaved input. Session expiry/revocation clears protected
+query state, including late-response races. Exact preview validates its page and
+retains the S02 item-attribution limitation and eligible receipt totals.
+No new persistence schema or permission grant is introduced by this extension.
+
+## Metric worksets and monitoring goals: target amendment
+
+The [Mindbox interaction atlas](../architecture/ui/references/mindbox-metrics-2026-09-17/README.md), revision 1, binds owner-selected target METRIC-025…029 and CHART-021 to observed screenshots. Existing MetricVersion, MetricGroupVersion, Saved View, TimeComparisonSpec and ComparisonArtifact remain the semantic anchors. A configured metric card and an ordered workset are conceptual presentation requirements, not a new service or an approved persistence schema. A monitoring goal is distinct from a target-action definition and forecast.
+
+This addition changes target requirements only: no endpoint, schema, migration, current capability or accepted milestone binding is introduced. The next selected implementation unit must resolve configured-card/workset versioning, shared-write permissions/CAS, target progress direction and aggregation, missing-data policy, and typed chart comparison projection. It must preserve server-owned calculations and the existing Apply/Save/immutable-preview boundary.

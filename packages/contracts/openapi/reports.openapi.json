@@ -1,0 +1,1355 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Custometry Draft Reports API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/prepare": {
+      "post": {
+        "summary": "Prepare",
+        "operationId": "prepare_report_v1",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrepareRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreparedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "post": {
+        "summary": "Create",
+        "operationId": "create_report_v1",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listing",
+        "operationId": "list_reports_v1",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportList"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{report_id}": {
+      "get": {
+        "summary": "Get",
+        "operationId": "get_report_v1",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{report_id}/versions": {
+      "post": {
+        "summary": "Save",
+        "operationId": "save_report_v1",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{report_id}/snapshots/{snapshot_id}": {
+      "get": {
+        "summary": "Preview",
+        "operationId": "preview_report_v1",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          },
+          {
+            "name": "snapshot_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Snapshot Id"
+            }
+          },
+          {
+            "name": "version_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Version Id"
+            }
+          },
+          {
+            "name": "page_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Page Id"
+            }
+          },
+          {
+            "name": "block_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Block Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnalyticalDocumentCompositionV1": {
+        "properties": {
+          "analytical_document_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Analytical Document Version Id"
+          },
+          "analytical_document_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Analytical Document Id"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "profile": {
+            "type": "string",
+            "const": "workbook_report",
+            "title": "Profile"
+          },
+          "composition_schema_version": {
+            "type": "integer",
+            "const": 1,
+            "title": "Composition Schema Version"
+          },
+          "source_owner_ref": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Source Owner Ref"
+          },
+          "navigation_mode": {
+            "type": "string",
+            "const": "tabs",
+            "title": "Navigation Mode"
+          },
+          "default_page_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Default Page Id"
+          },
+          "chapters": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Chapters"
+          },
+          "pages": {
+            "items": {
+              "$ref": "#/components/schemas/Page"
+            },
+            "type": "array",
+            "title": "Pages"
+          },
+          "sections": {
+            "items": {
+              "$ref": "#/components/schemas/Section"
+            },
+            "type": "array",
+            "title": "Sections"
+          },
+          "blocks": {
+            "items": {
+              "$ref": "#/components/schemas/Block"
+            },
+            "type": "array",
+            "title": "Blocks"
+          },
+          "brand_profile_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Brand Profile Version Id"
+          },
+          "access_policy_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Access Policy Id"
+          },
+          "filter_scope_bindings": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Filter Scope Bindings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "analytical_document_version_id",
+          "analytical_document_id",
+          "workspace_id",
+          "profile",
+          "composition_schema_version",
+          "source_owner_ref",
+          "navigation_mode",
+          "default_page_id",
+          "chapters",
+          "pages",
+          "sections",
+          "blocks",
+          "brand_profile_version_id",
+          "access_policy_id",
+          "filter_scope_bindings"
+        ],
+        "title": "AnalyticalDocumentCompositionV1"
+      },
+      "Block": {
+        "properties": {
+          "block_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Block Id"
+          },
+          "section_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Section Id"
+          },
+          "order": {
+            "type": "integer",
+            "title": "Order"
+          },
+          "block_type": {
+            "type": "string",
+            "enum": [
+              "metric_group",
+              "chart",
+              "table",
+              "result_trust"
+            ],
+            "title": "Block Type"
+          },
+          "source_binding": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Source Binding"
+          },
+          "content_binding": {
+            "type": "null",
+            "title": "Content Binding"
+          },
+          "presentation": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Presentation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "block_id",
+          "section_id",
+          "order",
+          "block_type",
+          "source_binding",
+          "presentation"
+        ],
+        "title": "Block"
+      },
+      "BrandProfileObject": {
+        "properties": {
+          "reference": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "kind": {
+            "type": "string",
+            "const": "brand_profile",
+            "title": "Kind"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/SystemBrandProfileV1"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reference",
+          "kind",
+          "payload"
+        ],
+        "title": "BrandProfileObject"
+      },
+      "ChartSpecObject": {
+        "properties": {
+          "reference": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "kind": {
+            "type": "string",
+            "const": "chart_spec",
+            "title": "Kind"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/LineChartSpecV1"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reference",
+          "kind",
+          "payload"
+        ],
+        "title": "ChartSpecObject"
+      },
+      "CompanyPackObject": {
+        "properties": {
+          "reference": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "kind": {
+            "type": "string",
+            "const": "company_pack",
+            "title": "Kind"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/SystemCompanyPackV1"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reference",
+          "kind",
+          "payload"
+        ],
+        "title": "CompanyPackObject"
+      },
+      "DraftResponse": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "draft-report/v1",
+            "title": "Contract Version"
+          },
+          "lifecycle": {
+            "type": "string",
+            "const": "owned_draft_preview",
+            "title": "Lifecycle"
+          },
+          "report_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Report Id"
+          },
+          "revision": {
+            "type": "integer",
+            "title": "Revision"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Snapshot Id"
+          },
+          "author_principal_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Author Principal Id"
+          },
+          "saved_at": {
+            "type": "string",
+            "title": "Saved At"
+          },
+          "composition": {
+            "$ref": "#/components/schemas/AnalyticalDocumentCompositionV1"
+          },
+          "snapshot": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Snapshot"
+          },
+          "page_snapshot": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Page Snapshot"
+          },
+          "result": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Result"
+          },
+          "references": {
+            "$ref": "#/components/schemas/PreparedResponse"
+          },
+          "manifest": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Manifest"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "lifecycle",
+          "report_id",
+          "revision",
+          "title",
+          "version_id",
+          "snapshot_id",
+          "author_principal_id",
+          "saved_at",
+          "composition",
+          "snapshot",
+          "page_snapshot",
+          "result",
+          "references",
+          "manifest"
+        ],
+        "title": "DraftResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "LineChartSpecV1": {
+        "properties": {
+          "chart_spec_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Chart Spec Id"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "schema_version": {
+            "type": "string",
+            "const": "1.0.0",
+            "title": "Schema Version"
+          },
+          "chart_type": {
+            "type": "string",
+            "const": "line",
+            "title": "Chart Type"
+          },
+          "title_key": {
+            "type": "string",
+            "title": "Title Key"
+          },
+          "title_override": {
+            "type": "null",
+            "title": "Title Override"
+          },
+          "description_key": {
+            "type": "null",
+            "title": "Description Key"
+          },
+          "source_binding": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Source Binding"
+          },
+          "chart_data": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Chart Data"
+          },
+          "dimensions": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Dimensions"
+          },
+          "measures": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Measures"
+          },
+          "axes": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Axes"
+          },
+          "series": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Series"
+          },
+          "annotations": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Annotations"
+          },
+          "range_timeline": {
+            "type": "null",
+            "title": "Range Timeline"
+          },
+          "interaction": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Interaction"
+          },
+          "visual_semantics": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Visual Semantics"
+          },
+          "accessibility": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Accessibility"
+          },
+          "export_policy": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Export Policy"
+          },
+          "access_policy": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Access Policy"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "chart_spec_id",
+          "workspace_id",
+          "schema_version",
+          "chart_type",
+          "title_key",
+          "title_override",
+          "description_key",
+          "source_binding",
+          "chart_data",
+          "dimensions",
+          "measures",
+          "axes",
+          "series",
+          "annotations",
+          "range_timeline",
+          "interaction",
+          "visual_semantics",
+          "accessibility",
+          "export_policy",
+          "access_policy",
+          "created_at"
+        ],
+        "title": "LineChartSpecV1"
+      },
+      "Page": {
+        "properties": {
+          "page_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Page Id"
+          },
+          "chapter_id": {
+            "type": "null",
+            "title": "Chapter Id"
+          },
+          "order": {
+            "type": "integer",
+            "title": "Order"
+          },
+          "title": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Title"
+          },
+          "visibility": {
+            "type": "string",
+            "const": "visible",
+            "title": "Visibility"
+          },
+          "layout_mode": {
+            "type": "string",
+            "const": "flow",
+            "title": "Layout Mode"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "page_id",
+          "order",
+          "title",
+          "visibility",
+          "layout_mode"
+        ],
+        "title": "Page"
+      },
+      "PrepareRequest": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "draft-report/v1",
+            "title": "Contract Version"
+          },
+          "result_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Result Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "result_id"
+        ],
+        "title": "PrepareRequest"
+      },
+      "PreparedResponse": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "draft-report/v1",
+            "title": "Contract Version"
+          },
+          "chart_spec": {
+            "$ref": "#/components/schemas/ChartSpecObject"
+          },
+          "brand_profile": {
+            "$ref": "#/components/schemas/BrandProfileObject"
+          },
+          "company_pack": {
+            "$ref": "#/components/schemas/CompanyPackObject"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "chart_spec",
+          "brand_profile",
+          "company_pack"
+        ],
+        "title": "PreparedResponse"
+      },
+      "Reference": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Content Hash"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "content_hash"
+        ],
+        "title": "Reference"
+      },
+      "ReportList": {
+        "properties": {
+          "reports": {
+            "items": {
+              "$ref": "#/components/schemas/ReportSummary"
+            },
+            "type": "array",
+            "title": "Reports"
+          },
+          "visible_count": {
+            "type": "integer",
+            "title": "Visible Count"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reports",
+          "visible_count"
+        ],
+        "title": "ReportList"
+      },
+      "ReportSummary": {
+        "properties": {
+          "report_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Report Id"
+          },
+          "revision": {
+            "type": "integer",
+            "title": "Revision"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Snapshot Id"
+          },
+          "saved_at": {
+            "type": "string",
+            "title": "Saved At"
+          },
+          "lifecycle": {
+            "type": "string",
+            "const": "owned_draft_preview",
+            "title": "Lifecycle"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "report_id",
+          "revision",
+          "title",
+          "version_id",
+          "snapshot_id",
+          "saved_at",
+          "lifecycle"
+        ],
+        "title": "ReportSummary"
+      },
+      "SaveRequest": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "draft-report/v1",
+            "title": "Contract Version"
+          },
+          "result_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Result Id"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "\\S",
+            "title": "Title"
+          },
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Revision"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Idempotency Key"
+          },
+          "chart_spec": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "brand_profile": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "company_pack": {
+            "$ref": "#/components/schemas/Reference"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "result_id",
+          "title",
+          "expected_revision",
+          "idempotency_key",
+          "chart_spec",
+          "brand_profile",
+          "company_pack"
+        ],
+        "title": "SaveRequest"
+      },
+      "Section": {
+        "properties": {
+          "section_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Section Id"
+          },
+          "page_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Page Id"
+          },
+          "parent_section_id": {
+            "type": "null",
+            "title": "Parent Section Id"
+          },
+          "order": {
+            "type": "integer",
+            "title": "Order"
+          },
+          "title": {
+            "type": "null",
+            "title": "Title"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "section_id",
+          "page_id",
+          "order"
+        ],
+        "title": "Section"
+      },
+      "SystemBrandProfileV1": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "system-brand/v1",
+            "title": "Schema Version"
+          },
+          "brand_profile_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Brand Profile Version Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "token_version": {
+            "type": "string",
+            "title": "Token Version"
+          },
+          "source": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Source"
+          },
+          "font_family": {
+            "type": "string",
+            "const": "Inter",
+            "title": "Font Family"
+          },
+          "themes": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "abyss",
+                "graphite",
+                "frost",
+                "paper"
+              ]
+            },
+            "type": "array",
+            "title": "Themes"
+          },
+          "tokens": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Tokens"
+          },
+          "remote_assets": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Remote Assets"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "brand_profile_version_id",
+          "name",
+          "token_version",
+          "source",
+          "font_family",
+          "themes",
+          "tokens",
+          "remote_assets"
+        ],
+        "title": "SystemBrandProfileV1"
+      },
+      "SystemCompanyPackV1": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "system-company-pack/v1",
+            "title": "Schema Version"
+          },
+          "company_pack_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Company Pack Version Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "brand_profile": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "metric_versions": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Metric Versions"
+          },
+          "methodology_packs": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Methodology Packs"
+          },
+          "localization_catalogs": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "en",
+                "ru"
+              ]
+            },
+            "type": "array",
+            "title": "Localization Catalogs"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "company_pack_version_id",
+          "name",
+          "brand_profile",
+          "metric_versions",
+          "methodology_packs",
+          "localization_catalogs"
+        ],
+        "title": "SystemCompanyPackV1"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

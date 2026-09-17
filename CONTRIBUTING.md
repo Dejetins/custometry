@@ -52,6 +52,13 @@ Custometry is developed in a public repository. Never commit credentials, custom
    ```
 
 8. Open a pull request to protected `main`. Required checks must pass; the default merge strategy is squash with linear history.
+   Routine synchronization uses the fast `Foundation gate`: source checks and tests,
+   without documentation/frontend/Docker builds or Compose/browser proof. Full CI
+   and candidate image publication are manual, separately authorized workflows.
+   Publishing images does not run CI again or trigger image/runtime checks before
+   or after publication; full validation requires a separate explicit request.
+   See the [synchronization contract](docs/architecture/tooling-gates.md#routine-development-synchronization).
+   After successful synchronization, update local `main` and delete the technical branch.
 
 ## Repository language
 

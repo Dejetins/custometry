@@ -1,0 +1,437 @@
+{
+  "stage": "MS-003-S04",
+  "timestamp_utc": "2026-09-12T23:39:11.902910+00:00",
+  "status": "partial",
+  "proof_boundary": "synthetic-provider-contract-and-source-pilot-inspection",
+  "commands": [
+    {
+      "command": "stage_ledger preflight --ledger .codex/delivery/ledgers/MS-003.md --stage MS-003-S04",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "command": "stage_ledger claim (observed CAS hash and actual session)",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/chart-compiler typecheck",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/chart-compiler test",
+      "exit_code": 0,
+      "status": "pass",
+      "tests_passed": 28
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.generate_docs_index --check",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "status": "pass",
+      "exit_code": 0,
+      "result": "PASS check:local (observed=true)"
+    },
+    {
+      "command": "stage_ledger pause (fresh CAS hash and original session)",
+      "exit_code": 0,
+      "status": "pass",
+      "stage_status": "needs_input",
+      "ledger_sha256": "f9b6ef314a73220cbe0036c5505395d7d35b2ccc957f4e46e24d62d996542b8c"
+    }
+  ],
+  "owned_source_manifest": [
+    {
+      "path": "packages/chart_compiler_ts/src/index.ts",
+      "sha256": "4ee182728a6c61613b52c8e9784d1a9b0175491939b8d673d2f937554ddc210b"
+    },
+    {
+      "path": "packages/chart_compiler_ts/src/line.ts",
+      "sha256": "bc1444225f024b4c84bfaabda396689d5dbc71df4876a4f9ad5e018b859a9508"
+    },
+    {
+      "path": "packages/chart_compiler_ts/tests/lifecycle.test.ts",
+      "sha256": "a3e23c0eece8d00faa150e2109c36b2cdc815fad3fc4fb606c8401602f6bb0f5"
+    },
+    {
+      "path": "packages/chart_compiler_ts/tests/line.test.ts",
+      "sha256": "0c00a2259765c1d2ff2b44e0330c752600399fd09839b8373494571984f47567"
+    },
+    {
+      "path": "packages/chart_compiler_ts/tests/canonical-line.fixture.json",
+      "sha256": "80aa8306a2d391a369ca8bdb89a36b0fa6d23540fd5a00daeaacaa72f54ea275"
+    },
+    {
+      "path": "packages/chart_compiler_ts/tsconfig.json",
+      "sha256": "29844eec0ff24108724877fceed2dd5ec1432ef0457b7d2fec3f8700e83ec4a8"
+    },
+    {
+      "path": "packages/chart_compiler_ts/README.md",
+      "sha256": "bd8fc2c8e3788220df0d493e3f9486ee00d381d0f11e44edf15ea471cba3eada"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "sha256": "6ccf9d4c833172df73beff6ede16c5781c6b83d29ab9894aee48ccca8e2a76ac"
+    }
+  ],
+  "pilot": {
+    "path": "docs/architecture/ui/target-pilot/ru/source.html",
+    "sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "screenshot": "pilot-1920.png",
+    "console_errors": 0,
+    "console_warnings": 0,
+    "network_observation": "No dynamic requests; CLI reports 2 static requests hidden by default. Static HTTP statuses were not inspected."
+  },
+  "failed_tool_attempts": [
+    "playwright-cli network is unsupported; corrected to documented requests command. Several guessed read paths were absent; resolved paths through rg --files. No failed read was treated as evidence of missing API."
+  ],
+  "not_run": [
+    "Web UI and real-API browser journey",
+    "normalized implementation comparison",
+    "packaged proof"
+  ],
+  "next_stage_allowed": false,
+  "provider_sources": [
+    {
+      "path": "packages/presentation/domain/reports.py",
+      "sha256": "fac735054d2c068caae66f81fffc7013314f96c6610ea2ec966c9e132529d924"
+    },
+    {
+      "path": "packages/semantic_model/application/sales_metrics.py",
+      "sha256": "c724bf559a031825ce9a92d9a4769e0cf2d30ee834cf52789e7d2780a3be81e0"
+    }
+  ],
+  "api_route_inventory": [
+    {
+      "file": "apps/api/src/custometry_api/analytics/router.py",
+      "sha256": "916320eda5400b755933f40e4e66362380eff446cd8417b947c4f92b6dbb8300",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/results"
+        },
+        {
+          "method": "GET",
+          "path": "/results/{result_id}"
+        },
+        {
+          "method": "GET",
+          "path": "/results"
+        },
+        {
+          "method": "POST",
+          "path": "/sales-reports/v1"
+        },
+        {
+          "method": "GET",
+          "path": "/sales-reports/v1/{result_id}"
+        }
+      ]
+    },
+    {
+      "file": "apps/api/src/custometry_api/connections/router.py",
+      "sha256": "23da5a45050bd8ee30706ca892df20aed3c7f9d1df816fcd487e76b7bfda9ca6",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/"
+        },
+        {
+          "method": "POST",
+          "path": "/{connection_id}/test"
+        },
+        {
+          "method": "GET",
+          "path": "/{connection_id}/catalog"
+        },
+        {
+          "method": "POST",
+          "path": "/{connection_id}/preview"
+        },
+        {
+          "method": "POST",
+          "path": "/{connection_id}/sessions"
+        },
+        {
+          "method": "POST",
+          "path": "/{connection_id}/extract"
+        },
+        {
+          "method": "POST",
+          "path": "/{connection_id}/sessions/close"
+        }
+      ]
+    },
+    {
+      "file": "apps/api/src/custometry_api/identity/router.py",
+      "sha256": "5eceb2d0f01a56a28b763e1b68dc5d76a7a04f8dcebbb6b2a2fd86fc9748ac4c",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/bootstrap"
+        },
+        {
+          "method": "POST",
+          "path": "/login"
+        },
+        {
+          "method": "POST",
+          "path": "/refresh"
+        },
+        {
+          "method": "POST",
+          "path": "/logout"
+        },
+        {
+          "method": "GET",
+          "path": "/me"
+        },
+        {
+          "method": "POST",
+          "path": "/workspaces"
+        },
+        {
+          "method": "POST",
+          "path": "/invitations"
+        },
+        {
+          "method": "POST",
+          "path": "/invitations/accept"
+        },
+        {
+          "method": "DELETE",
+          "path": "/invitations/{invitation_id}"
+        },
+        {
+          "method": "GET",
+          "path": "/workspaces/{workspace_id}/members"
+        },
+        {
+          "method": "GET",
+          "path": "/sessions"
+        },
+        {
+          "method": "DELETE",
+          "path": "/sessions/{session_id}"
+        },
+        {
+          "method": "POST",
+          "path": "/logout-all"
+        },
+        {
+          "method": "POST",
+          "path": "/api-tokens"
+        },
+        {
+          "method": "DELETE",
+          "path": "/api-tokens/{token_id}"
+        },
+        {
+          "method": "POST",
+          "path": "/password/change"
+        },
+        {
+          "method": "POST",
+          "path": "/password/resets"
+        },
+        {
+          "method": "POST",
+          "path": "/password/resets/consume"
+        }
+      ]
+    },
+    {
+      "file": "apps/api/src/custometry_api/imports/router.py",
+      "sha256": "b159d942dd5996e7f8b652e7bf6379048bcf269f26a9852e941f1c77c2925b44",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/templates"
+        },
+        {
+          "method": "POST",
+          "path": "/templates/{template_id}/publish"
+        },
+        {
+          "method": "POST",
+          "path": "/templates/{template_id}/validate"
+        }
+      ]
+    },
+    {
+      "file": "apps/api/src/custometry_api/notifications/router.py",
+      "sha256": "0e05b5b735cb885da3e141c8cdc2f6d939873ded65c72112b567a44235f2aded",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/items"
+        },
+        {
+          "method": "GET",
+          "path": "/unread-count"
+        },
+        {
+          "method": "GET",
+          "path": "/items/{notification_id}"
+        },
+        {
+          "method": "POST",
+          "path": "/items/{notification_id}/read"
+        },
+        {
+          "method": "POST",
+          "path": "/items/{notification_id}/dismiss"
+        },
+        {
+          "method": "POST",
+          "path": "/items/{notification_id}/acknowledge"
+        }
+      ]
+    },
+    {
+      "file": "apps/api/src/custometry_api/organization/router.py",
+      "sha256": "b7e886d788e594b7b66015c25dae590013a4f41231a7e931fa90940028cf3e75",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/units"
+        },
+        {
+          "method": "GET",
+          "path": "/units"
+        },
+        {
+          "method": "POST",
+          "path": "/units/{org_unit_id}/versions"
+        },
+        {
+          "method": "POST",
+          "path": "/units/{org_unit_id}/lifecycle"
+        },
+        {
+          "method": "POST",
+          "path": "/primary-assignments"
+        },
+        {
+          "method": "POST",
+          "path": "/members/{principal_id}/transfer"
+        },
+        {
+          "method": "POST",
+          "path": "/members/{principal_id}/deactivate"
+        },
+        {
+          "method": "POST",
+          "path": "/leadership-assignments"
+        },
+        {
+          "method": "POST",
+          "path": "/department-policies/drafts"
+        },
+        {
+          "method": "POST",
+          "path": "/department-policies/{policy_id}/publish"
+        },
+        {
+          "method": "POST",
+          "path": "/cross-department-grants"
+        },
+        {
+          "method": "POST",
+          "path": "/cross-department-grants/{grant_id}/revoke"
+        },
+        {
+          "method": "POST",
+          "path": "/resource-ownership"
+        },
+        {
+          "method": "POST",
+          "path": "/access/decide"
+        },
+        {
+          "method": "POST",
+          "path": "/resource-visibility/search"
+        }
+      ]
+    },
+    {
+      "file": "apps/api/src/custometry_api/people/router.py",
+      "sha256": "e070ded955642b4a48e6a2cb57ae55fc48080983b717a767fa9f98a0c3d1ab69",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/contributors"
+        },
+        {
+          "method": "GET",
+          "path": "/contributors/{principal_id}"
+        }
+      ]
+    },
+    {
+      "file": "apps/api/src/custometry_api/reports/router.py",
+      "sha256": "714e7713903b849d46416bc461161361f464e4bbfca17648bee36a1c4c282cf4",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/prepare"
+        },
+        {
+          "method": "POST",
+          "path": "/"
+        },
+        {
+          "method": "GET",
+          "path": "/"
+        },
+        {
+          "method": "GET",
+          "path": "/{report_id}"
+        },
+        {
+          "method": "POST",
+          "path": "/{report_id}/versions"
+        },
+        {
+          "method": "GET",
+          "path": "/{report_id}/snapshots/{snapshot_id}"
+        }
+      ]
+    },
+    {
+      "file": "apps/api/src/custometry_api/runs/router.py",
+      "sha256": "3bb435bcc78a8525cf3e25d79b25babdd518143508feec3cb737f21c40294394",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/runs"
+        },
+        {
+          "method": "GET",
+          "path": "/runs/{run_id}"
+        },
+        {
+          "method": "GET",
+          "path": "/queue-summary"
+        },
+        {
+          "method": "POST",
+          "path": "/runs/{run_id}/cancel"
+        },
+        {
+          "method": "POST",
+          "path": "/runs/{run_id}/retry"
+        }
+      ]
+    }
+  ],
+  "cleanup": "Named playwright-cli session closed; exact owned http.server PID 30715 terminated after command verification."
+}

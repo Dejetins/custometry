@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 15
+doc_version: 16
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -159,7 +159,11 @@ logs, credentials, cookies, environment dumps, or provider payloads.
 
 ## 7. Git and publication
 
-- `main` is protected and potentially releasable.
+- `main` is protected; a synchronized development revision is not a release claim.
+- The owner-selected [fast synchronization contract](tooling-gates.md#routine-development-synchronization)
+  (2026-09-17) supersedes automatic build/runtime qualification on every sync:
+  ordinary PR/main CI runs source checks and tests, while full CI and candidate
+  publication require a separate manual invocation.
 - Product changes normally use one short-lived branch and one pull request.
 - Required checks must pass; squash merge preserves linear history.
 - No long-lived `develop`, per-stage branches, broad force-push, or hidden

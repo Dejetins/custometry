@@ -73,3 +73,23 @@ class SalesResponse(Strict):
     lineage: dict[str, object]
     trust: dict[str, object]
     manifest: dict[str, object]
+
+
+class StoreOption(Strict):
+    id: str
+    label: str
+
+
+class DatasetOption(Strict):
+    id: UUID
+    version: int
+    label: str
+    stores: list[StoreOption]
+
+
+class SalesContext(Strict):
+    schema_version: Literal["sales-report-context/v1"]
+    workspace_id: UUID
+    datasets: list[DatasetOption]
+    default_period: dict[str, str]
+    eligibility: dict[str, object]

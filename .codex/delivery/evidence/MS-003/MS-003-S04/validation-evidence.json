@@ -1,0 +1,633 @@
+{
+  "schema_version": "ms003-s04-evidence/v1",
+  "stage": "MS-003-S04",
+  "iteration": 1,
+  "timestamp_utc": "2026-09-14T23:07:49.547060Z",
+  "status": "pass",
+  "source_revision": "cb4f696dc1dca3bc051debd347810f7d74caa319",
+  "plan_sha256": "4a6b1bf2a64a04b74e073bb22e46895795e187be57fe93b6711408069d6e7280",
+  "stage_contract_sha256": "ec0bf29a40b4ed08f8266a68185c9d7ea8a4ef34fd49bd36c4974a634d99d75f",
+  "commands": [
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.stage_ledger preflight --ledger .codex/delivery/ledgers/MS-003.md --stage MS-003-S04",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "command": "uv run --locked pytest -q tests/unit/analytics tests/contract/analytics tests/contract/presentation tests/integration/test_api_health.py",
+      "exit_code": 0,
+      "result": "34 passed"
+    },
+    {
+      "command": "uv run --locked python .codex/delivery/evidence/MS-003/MS-003-S04/run_context_integration.py",
+      "exit_code": 0,
+      "result": "1 passed; newly owned isolated database dropped"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/web typecheck",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/web test",
+      "exit_code": 0,
+      "result": "78 passed"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/chart-compiler typecheck",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/chart-compiler test",
+      "exit_code": 0,
+      "result": "28 passed"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/ui-foundation typecheck",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/ui-foundation test",
+      "exit_code": 0,
+      "result": "2 passed"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/contracts typecheck",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "command": "uv run --locked pyright tests/e2e/ms-003-report/real_api_fixture.py tests/integration/presentation/test_report_context.py packages/contracts/generate_sales_report_client.py apps/api/src/custometry_api/analytics/router.py apps/api/src/custometry_api/analytics/sales_models.py apps/api/src/custometry_api/health.py packages/analytics_core/application/service.py packages/semantic_model/infrastructure/postgres.py",
+      "exit_code": 0,
+      "result": "0 errors, 0 warnings"
+    },
+    {
+      "command": "uv run --locked ruff check tests/integration/presentation/test_report_context.py tests/e2e/ms-003-report/real_api_fixture.py tests/unit/analytics/test_report_context.py packages/contracts/generate_sales_report_client.py apps/api/src/custometry_api/analytics/router.py apps/api/src/custometry_api/analytics/sales_models.py apps/api/src/custometry_api/health.py packages/analytics_core/application/service.py packages/semantic_model/infrastructure/postgres.py packages/contracts/analytics/sales_report.py",
+      "exit_code": 0,
+      "result": "all checks passed"
+    },
+    {
+      "command": "corepack pnpm exec playwright test --config tests/e2e/ms-003-report/playwright.config.ts",
+      "exit_code": 0,
+      "result": "10 passed (35.8s); then four closed ports and absent temporary credential file asserted"
+    },
+    {
+      "command": "corepack pnpm --filter @custometry/web build",
+      "exit_code": 0,
+      "result": "pass; report chunk 559.29kB / 192.51kB gzip; >500kB warning retained"
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.generate_docs_index",
+      "exit_code": 0,
+      "result": "pass; contributor index unchanged"
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.generate_docs_index --audience shipped",
+      "exit_code": 0,
+      "result": "pass; 10 shipped documents"
+    },
+    {
+      "command": "uv run --locked python -m tools.custometry_quality.validate_route_registry",
+      "exit_code": 0,
+      "result": "pass; route identities unchanged, four bounded implemented markers"
+    },
+    {
+      "command": "uv run --locked python -m tools.check --scope local",
+      "exit_code": 0,
+      "result": "PASS check:local (observed=true)"
+    },
+    {
+      "command": "uv run --locked mkdocs build --strict",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "pass"
+    }
+  ],
+  "owned_source_manifest": [
+    {
+      "path": "apps/api/src/custometry_api/analytics/router.py",
+      "sha256": "c5783b2a2fa6e266ec74bc769aca2199f4c0b5f89e5f37aea81ac302939af220",
+      "change": "mixed-S03-preserved-S04-hunk"
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/sales_models.py",
+      "sha256": "4839cb93b8313900ca63cadd8612d49ad6c3cad78d6ca9c8513bc4bc915daa1a",
+      "change": "modified"
+    },
+    {
+      "path": "apps/api/src/custometry_api/health.py",
+      "sha256": "9afc3e66f91c37b53b90b1c31297e1629b9dd4f5a9e4e73ffd1c34ae88510765",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "a03a847cb47796a5fd3d655fd216cb0f83a1ecd57faa13370e2b598f1d52f476",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/public/help-index.json",
+      "sha256": "d711f677923e970e230264c8ef12c4504f193a2bd142b0f71fbb0150c7bba24f",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/App.tsx",
+      "sha256": "09c6cedf2080c14e066b2fdd888d26478be27e826fbc670a18822f4b386ff78f",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/features/reports/ReportChart.tsx",
+      "sha256": "3f6f3274f98dc3ba65ef5c22dd93c5c5e6fc9d3c899875a24455f934493345a7",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/ReportWorkspace.tsx",
+      "sha256": "10beabda19ba51af66c9768e81472b941627b49b4f74f0731335a2272764c728",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/UI-AUTH-001.feature-route.tsx",
+      "sha256": "ce025f3e539981bb8cf96bb3b9fdc11d066907d455f6cc24cda52b2a3488afc8",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/UI-RPT-001.feature-route.tsx",
+      "sha256": "6fb3b2efb742de9a6eb0da7e465e0bd75b22336fd8fc336881bfc81f525610d6",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/UI-RPT-002.feature-route.tsx",
+      "sha256": "393b3df7b814521f1a8a29a52834d15c72f24a9a97d08e31e19b93419368da0c",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/UI-RPT-003.feature-route.tsx",
+      "sha256": "5c8bd10403389b89d0fd4517df537e8f6c63aae421b38c52786065012009791a",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/copy.ts",
+      "sha256": "bb2ac8797cdf8881c1845a96313dfbae2160d8ffecf4b5b4a3941538cf1e8995",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/report-api.test.ts",
+      "sha256": "0a6ffce08cc987129fe3bc7d1714954a0e43896c4225c1eddcb9dd722a06fc9f",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/report-api.ts",
+      "sha256": "3abeef09845753b460e98af22853260b79b95d5de403fbf1c839dbd5c4204f67",
+      "change": "created"
+    },
+    {
+      "path": "apps/web/src/features/reports/report.css",
+      "sha256": "9ea83888d79ca0448c3bd000cc62b74e14590ed968ea0dfa57a8ca5d3c498779",
+      "change": "created"
+    },
+    {
+      "path": "docs-site/docs/index.md",
+      "sha256": "207146fbc09f7f4844eb29f58bd15c275138e533b06c01c2a3cd632b7b759ee1",
+      "change": "modified"
+    },
+    {
+      "path": "docs-site/docs/ru/index.md",
+      "sha256": "01c888e1c0f40df4c24bbb24b99cf0403d609d048fa7e510b5170d7796ee60be",
+      "change": "modified"
+    },
+    {
+      "path": "docs-site/docs/ru/user-guide/foundation.md",
+      "sha256": "3e676b607569cab50ff74ca3b91eaadfb272994c93041448fed17dacece95d98",
+      "change": "modified"
+    },
+    {
+      "path": "docs-site/docs/ru/user-guide/reports.md",
+      "sha256": "f7fa410ab4bce22b8a1b8f51efa08ddd1bc290d4c3fc96fb16d0aa69caf72d09",
+      "change": "created"
+    },
+    {
+      "path": "docs-site/docs/user-guide/foundation.md",
+      "sha256": "c539e4e7818d356528f3e97bcccf16bebedba265469ecd14c651f62cb9d4982d",
+      "change": "modified"
+    },
+    {
+      "path": "docs-site/docs/user-guide/reports.md",
+      "sha256": "5639a1043b240b6a6274eebd7873f166b753b5f8d43b3ec9ace58c75dfbe0d89",
+      "change": "created"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "sha256": "fcecf21065002afa6540b84fd24a964a2ffd50ebeaaeabe2d7a83c1dc9a0a715",
+      "change": "mixed-S03-preserved-S04-hunk"
+    },
+    {
+      "path": "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md",
+      "sha256": "99489dd8ee45759fe98491de51b301979b3ecd8298b2937f48cc799bc2f8e303",
+      "change": "modified"
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "sha256": "6a4e5895cc586abb9307ae9e6e9ac57a15981f5127b97a1e84fe9c3dfe5a31a6",
+      "change": "mixed-S03-preserved-S04-hunk"
+    },
+    {
+      "path": "mkdocs.yml",
+      "sha256": "98a4dee35bfbe771979a879f3c11087c87c206c5430a12d0ec1348d5f52fcc3e",
+      "change": "modified"
+    },
+    {
+      "path": "packages/analytics_core/application/service.py",
+      "sha256": "6af170c579a02aa7c9615c30cb53f1d623bdb29dbebc7b5f28f0fe8bf71667d3",
+      "change": "modified"
+    },
+    {
+      "path": "packages/chart_compiler_ts/README.md",
+      "sha256": "0e21bcf96f68f754b5761786b0fe0bf02ce4bd37b635940446fed2334193b843",
+      "change": "created"
+    },
+    {
+      "path": "packages/chart_compiler_ts/src/index.ts",
+      "sha256": "4ee182728a6c61613b52c8e9784d1a9b0175491939b8d673d2f937554ddc210b",
+      "change": "modified"
+    },
+    {
+      "path": "packages/chart_compiler_ts/src/line.ts",
+      "sha256": "c99146c9323035798a79e394df2611f348a9193132843290937bdbb5382e3928",
+      "change": "created"
+    },
+    {
+      "path": "packages/chart_compiler_ts/tests/canonical-line.fixture.json",
+      "sha256": "80aa8306a2d391a369ca8bdb89a36b0fa6d23540fd5a00daeaacaa72f54ea275",
+      "change": "created"
+    },
+    {
+      "path": "packages/chart_compiler_ts/tests/lifecycle.test.ts",
+      "sha256": "a3e23c0eece8d00faa150e2109c36b2cdc815fad3fc4fb606c8401602f6bb0f5",
+      "change": "modified"
+    },
+    {
+      "path": "packages/chart_compiler_ts/tests/line.test.ts",
+      "sha256": "0c00a2259765c1d2ff2b44e0330c752600399fd09839b8373494571984f47567",
+      "change": "created"
+    },
+    {
+      "path": "packages/chart_compiler_ts/tsconfig.json",
+      "sha256": "29844eec0ff24108724877fceed2dd5ec1432ef0457b7d2fec3f8700e83ec4a8",
+      "change": "modified"
+    },
+    {
+      "path": "packages/contracts/analytics/sales_report.py",
+      "sha256": "7523d176dcc97a42b8660077857008d8449d623ca424813a7c94464073c39df8",
+      "change": "modified"
+    },
+    {
+      "path": "packages/contracts/generate_reports_client.py",
+      "sha256": "18379dd61252c4fa1bb289bf450d802aebb214b9c944a8d62957d7d098457f0e",
+      "change": "mixed-S03-preserved-S04-hunk"
+    },
+    {
+      "path": "packages/contracts/generate_sales_report_client.py",
+      "sha256": "18a12777dd9cc4b6953c4805970389577f9e73bb26e02c8a2ef8559e67aa6f88",
+      "change": "created"
+    },
+    {
+      "path": "packages/contracts/openapi/analytics.openapi.json",
+      "sha256": "b3c9513ac39f2a3409fcfe22a758092877486cacebb5262623467c60694d2ca3",
+      "change": "modified"
+    },
+    {
+      "path": "packages/contracts/routes/ui-route-contracts.json",
+      "sha256": "ca66c68dbc277e3918dd7f48fcc2b8b941f90874fb849a8da52522de96515001",
+      "change": "modified"
+    },
+    {
+      "path": "packages/contracts/routes/ui-routes.json",
+      "sha256": "6ef90da06e82f187c04125b2908b0a1e6fda7e6fdeeead5489ea67eb49eb4ae2",
+      "change": "modified"
+    },
+    {
+      "path": "packages/contracts/src/analytics-client.ts",
+      "sha256": "f244e31781ff44f4c1a8ddbce85c9d71decc6fc865ee42f37a8ec7a55f71e048",
+      "change": "modified"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "bf25be88c8b799db3a39b36f77fc40523751ca3dfd3ccfd9f81c05920404901b",
+      "change": "mixed-S03-preserved-S04-hunk"
+    },
+    {
+      "path": "packages/contracts/src/reports-client.ts",
+      "sha256": "226b1ab6c4d5e9f20de4bd270f8232bac00dec298278cd9a98a2d0b8aebfc76d",
+      "change": "mixed-S03-preserved-S04-hunk"
+    },
+    {
+      "path": "packages/contracts/src/sales-report-client.ts",
+      "sha256": "20ac5c90a5e53e5ee755c7b3f5ba3adc41ebcd171dfe5bcd1b53fa143dc24206",
+      "change": "created"
+    },
+    {
+      "path": "packages/localization/src/index.ts",
+      "sha256": "19212d2a68d4630a4da414bc63f2d4b36b2c249b38e2d1f6b6a9ae9f870d8b22",
+      "change": "modified"
+    },
+    {
+      "path": "packages/localization/src/report-copy.ts",
+      "sha256": "534be93e51dd80edf9fb961e0aaa81223ac1afd2fbe72515fa43b7fd063f42c4",
+      "change": "created"
+    },
+    {
+      "path": "packages/semantic_model/infrastructure/postgres.py",
+      "sha256": "a91768f2108f7deaac26ba18c41a369304214ecba2a0c12c9e5605d5e918d2c2",
+      "change": "modified"
+    },
+    {
+      "path": "packages/ui-foundation/src/index.ts",
+      "sha256": "d872e4de6bd85a433b33bab4e84e65ee6a6045a4b8295111605e24886ad35616",
+      "change": "modified"
+    },
+    {
+      "path": "packages/ui-foundation/src/report-theme.ts",
+      "sha256": "e5077e7b3f50b074c74b7b5dbdbcb4669aa721ac1edb6d1f4cbe8e321e785fcf",
+      "change": "created"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "02d7d00289d70471de40200ee39107b16cc1830d0c99dcc3a49c3a97073072b6",
+      "change": "modified"
+    },
+    {
+      "path": "tests/e2e/ms-003-report/playwright.config.ts",
+      "sha256": "1ea8a0d088bb9b1e11383682cced8ce1c9fc296abf87bcdc9290b44b4181c298",
+      "change": "created"
+    },
+    {
+      "path": "tests/e2e/ms-003-report/real_api_fixture.py",
+      "sha256": "96a3fbdb160b8d9686510b6c9fdf578203920b4bf33405ce2aea6b36a58ee614",
+      "change": "created"
+    },
+    {
+      "path": "tests/e2e/ms-003-report/report.spec.ts",
+      "sha256": "660fc7d4008909ced81133f219826063abfa2b0bcde1b9635c0ae3ec713db126",
+      "change": "created"
+    },
+    {
+      "path": "tests/e2e/ms-003-report/vite.config.ts",
+      "sha256": "a566d3cdf21318f4d59c4513474150c27d6ed262940723b931446e6f05343874",
+      "change": "created"
+    },
+    {
+      "path": "tests/integration/presentation/test_report_context.py",
+      "sha256": "f4d927867262b8ace3e478d6e1295c7bb3b5df1a1abacd598a4fae9d730f2934",
+      "change": "created"
+    },
+    {
+      "path": "tests/unit/analytics/test_report_context.py",
+      "sha256": "f49547037dcfec7102f61ebb29cd6d4070b7303728db497171c1bb0c5fba19f2",
+      "change": "created"
+    }
+  ],
+  "provider_source_manifest": [
+    {
+      "path": "apps/api/src/custometry_api/main.py",
+      "sha256": "82efe420a639ff7f7941d8db63e2b2a88790dab163102633744ade145f35d297"
+    },
+    {
+      "path": "apps/worker_data/prepare_retail_report.py",
+      "sha256": "4c2c782c1c6abb349d0dfd95d751a671218474992d9caedfac6bf779c52ca8c4"
+    },
+    {
+      "path": "packages/presentation/domain/reports.py",
+      "sha256": "fac735054d2c068caae66f81fffc7013314f96c6610ea2ec966c9e132529d924"
+    },
+    {
+      "path": "packages/presentation/application/reports.py",
+      "sha256": "34fe22b6a9b8d352a6c6acc15fb0c7189689a429f78f46911718204dd0684490"
+    },
+    {
+      "path": "packages/semantic_model/application/sales_metrics.py",
+      "sha256": "c724bf559a031825ce9a92d9a4769e0cf2d30ee834cf52789e7d2780a3be81e0"
+    },
+    {
+      "path": "packages/artifacts/infrastructure/sales.py",
+      "sha256": "5c8dbdd047e367be1a310c3ff6234904d67fc0f2a70039827d7294852e860a83"
+    },
+    {
+      "path": "migrations/versions/0011_presentation_drafts.py",
+      "sha256": "73bee6697fea69743fbd85ae9002701c99fd2393243473a481e4b1b1aa6ff3d1"
+    },
+    {
+      "path": "docs/architecture/ui/target-pilot/ru/source.html",
+      "sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700"
+    },
+    {
+      "path": "docs/architecture/ui/target-pilot/assets/echarts.min.js",
+      "sha256": "b66b25aeb4df84e33199dc21694014d336d222cbd9deb0e5a7c14bd6aa0d0fd0"
+    }
+  ],
+  "deleted_paths": [],
+  "additional_authorized_zones": [
+    "Analytics context application",
+    "Semantic discovery port/adapter",
+    "typed analytics API/OpenAPI",
+    "backend context tests"
+  ],
+  "necessary_integration_hunk": "apps/api/src/custometry_api/health.py: accepted migration head 0011 readiness",
+  "foreign_changes_excluded": "S03 report/main composition, Presentation, Artifact, migration 0011, schemas, tests, evidence; preserved mixed-file hunks are explicitly marked",
+  "documentation_snapshots": [
+    {
+      "source": "apps/web/public/help-index.json",
+      "path": "snapshots/apps__web__public__help-index.json",
+      "sha256": "d711f677923e970e230264c8ef12c4504f193a2bd142b0f71fbb0150c7bba24f"
+    },
+    {
+      "source": "docs-site/docs/index.md",
+      "path": "snapshots/docs-site__docs__index.md",
+      "sha256": "207146fbc09f7f4844eb29f58bd15c275138e533b06c01c2a3cd632b7b759ee1"
+    },
+    {
+      "source": "docs-site/docs/ru/index.md",
+      "path": "snapshots/docs-site__docs__ru__index.md",
+      "sha256": "01c888e1c0f40df4c24bbb24b99cf0403d609d048fa7e510b5170d7796ee60be"
+    },
+    {
+      "source": "docs-site/docs/ru/user-guide/foundation.md",
+      "path": "snapshots/docs-site__docs__ru__user-guide__foundation.md",
+      "sha256": "3e676b607569cab50ff74ca3b91eaadfb272994c93041448fed17dacece95d98"
+    },
+    {
+      "source": "docs-site/docs/ru/user-guide/reports.md",
+      "path": "snapshots/docs-site__docs__ru__user-guide__reports.md",
+      "sha256": "f7fa410ab4bce22b8a1b8f51efa08ddd1bc290d4c3fc96fb16d0aa69caf72d09"
+    },
+    {
+      "source": "docs-site/docs/user-guide/foundation.md",
+      "path": "snapshots/docs-site__docs__user-guide__foundation.md",
+      "sha256": "c539e4e7818d356528f3e97bcccf16bebedba265469ecd14c651f62cb9d4982d"
+    },
+    {
+      "source": "docs-site/docs/user-guide/reports.md",
+      "path": "snapshots/docs-site__docs__user-guide__reports.md",
+      "sha256": "5639a1043b240b6a6274eebd7873f166b753b5f8d43b3ec9ace58c75dfbe0d89"
+    },
+    {
+      "source": "docs/README.md",
+      "path": "snapshots/docs__README.md",
+      "sha256": "b9467098cb6ef4661035b0a3f3bc56ebde357a53e4ddc5ae7d4ffb17f1fe1373"
+    },
+    {
+      "source": "docs/architecture/README.md",
+      "path": "snapshots/docs__architecture__README.md",
+      "sha256": "fcecf21065002afa6540b84fd24a964a2ffd50ebeaaeabe2d7a83c1dc9a0a715"
+    },
+    {
+      "source": "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md",
+      "path": "snapshots/docs__architecture__ui__custometry-web-implementation-source-contract-v1.md",
+      "sha256": "99489dd8ee45759fe98491de51b301979b3ecd8298b2937f48cc799bc2f8e303"
+    },
+    {
+      "source": "docs/contracts/analytical-authoring-contract.md",
+      "path": "snapshots/docs__contracts__analytical-authoring-contract.md",
+      "sha256": "6a4e5895cc586abb9307ae9e6e9ac57a15981f5127b97a1e84fe9c3dfe5a31a6"
+    },
+    {
+      "source": "mkdocs.yml",
+      "path": "snapshots/mkdocs.yml",
+      "sha256": "98a4dee35bfbe771979a879f3c11087c87c206c5430a12d0ec1348d5f52fcc3e"
+    }
+  ],
+  "browser": {
+    "engine": "Chromium via Playwright 1.52.0",
+    "viewports": [
+      [
+        1920,
+        1080
+      ],
+      [
+        768,
+        1024
+      ]
+    ],
+    "locales": [
+      "en",
+      "ru"
+    ],
+    "positive_journey_console_errors": 0,
+    "positive_journey_console_warnings": 0,
+    "positive_journey_page_errors": 0,
+    "positive_journey_http_failures": 0,
+    "zoom": "CSS document zoom=2, real-browser layout/paint reflow; not native toolbar zoom",
+    "no_auth_or_route_stubs": true,
+    "final_cleanup": "All four test ports closed; transient credential file absent",
+    "screenshots": [
+      {
+        "path": "browser/pilot-1920.png",
+        "sha256": "f49b5883ec6c3ec1e16d16389091eb6573519844fa68720f37079b01f70505b6"
+      },
+      {
+        "path": "browser/pilot-768.png",
+        "sha256": "0d4ccd34a90c17207fda60e361e2ffe71fac85ec435912b5f9220c83bb274825"
+      },
+      {
+        "path": "browser/report-1920-en.png",
+        "sha256": "4cfb78e2c577158dcde24ca7761ef8cc132b4d7df9c394372108512c67383c26"
+      },
+      {
+        "path": "browser/report-1920-ru.png",
+        "sha256": "a2379e17483f1f8b00dddb802c3c7d3d24f934c5ccd1920c75a58473f1d7d69a"
+      },
+      {
+        "path": "browser/report-768-en.png",
+        "sha256": "5f228dd9cca1190e19f152da89f2b210a841af897002695fb81be1022de320b0"
+      },
+      {
+        "path": "browser/report-768-ru.png",
+        "sha256": "ab2634ada8d038dbacb3fe02d85880fce977b835877730108faef62b36093275"
+      },
+      {
+        "path": "browser/table-trust-1920-ru.png",
+        "sha256": "edb6e0947b74b12d5df92b75bacd0d2d9c1f750d066c833524e350d3744778b2"
+      },
+      {
+        "path": "browser/zoom-1920-en.png",
+        "sha256": "2ee9c3ae173483a4007ac68dd9f124984f0892e4c212f72ee693ddfa567aa6f2"
+      },
+      {
+        "path": "browser/zoom-1920-ru.png",
+        "sha256": "fc4da0fedad4e88ff4558d4d3aa3be02a2a1cbc32811281ae3b55dca6f6561e2"
+      },
+      {
+        "path": "browser/zoom-768-en.png",
+        "sha256": "de1fc6048470e87657cee68f855fb6339c036a5774d7943ee99962f0f2802bf9"
+      },
+      {
+        "path": "browser/zoom-768-ru.png",
+        "sha256": "db9348d0ba27772802b8053bfdf499e67cd6b8697a95dbcc0b5dbfc1bcb44daa"
+      }
+    ]
+  },
+  "runtime": {
+    "project": "custometry-hybrid-383a7390af",
+    "control_database": "custometry",
+    "control_port": 55432,
+    "source_database": "northwind_retail",
+    "source_port": 55433,
+    "schema_head": "0011_presentation_drafts",
+    "artifact_root": ".runtime/development/383a7390af/artifacts",
+    "web_port": 41734,
+    "api_port": 58104,
+    "control_port_test_only": 58105,
+    "pilot_port": 8834,
+    "preparation": "actual apps.worker_data.prepare_retail_report.prepare(ROOT)",
+    "account": "fresh ordinary analyst via real invite/accept per suite; no test credentials retained"
+  },
+  "failed_attempts": [
+    "Initial supplemental test selectors were ambiguous or named Close instead of Close Focus; corrected to actual controls.",
+    "Repeated fixture titles selected a different report; unique title tied to newly created document fixed test ownership.",
+    "Interrupted uv wrapper left an owned API child; final fixture uses direct Python child, occupied-port rejection, actual readiness and graceful cleanup.",
+    "Uvicorn SIGTERM re-raise skipped finally; explicit termination unwind fixed cleanup; final full run asserted absent credentials and closed ports.",
+    "Docs title/anchor/help-index drift corrected; final local and strict docs checks passed."
+  ],
+  "proof_limits": [
+    "Host Vite HTTP, not installed protected HTTPS/Edge",
+    "No complete design-system, font/render-manifest, native-toolbar zoom or WCAG certification",
+    "No packaged candidate or release proof",
+    "No browser performance SLO"
+  ],
+  "next_stage": {
+    "id": "MS-003-S05",
+    "current_inputs_checked": [
+      {
+        "path": "../../../docs/architecture/planning/milestones/MS-003/plan.md",
+        "sha256": "4a6b1bf2a64a04b74e073bb22e46895795e187be57fe93b6711408069d6e7280",
+        "producer_stage": null
+      },
+      {
+        "path": "../evidence/MS-003/MS-003-S04/report.md",
+        "sha256": "09206ef36b26b0166cda0721131a3ed0946512ad10c4129c177f5e176fc7927e",
+        "producer_stage": "MS-003-S04"
+      },
+      {
+        "path": "../../../tools/custometry_quality/delivery_bundle.py",
+        "sha256": "806d800e678add8f1d6f492d14133be349028ea767d4cda387655a6ea4e7e7fc",
+        "producer_stage": null
+      },
+      {
+        "path": "../../../tools/custometry_quality/installation.py",
+        "sha256": "7812820ec786431c56537ed5abd962137291f10f82c5b55a2d73513420124088",
+        "producer_stage": null
+      },
+      {
+        "path": "../../../docs/architecture/runtime-network-installation.md",
+        "sha256": "ab7417a6106fd47aa71f6e71bf7933df40eac84ba1e405214a1a115e7ae5e6ad",
+        "producer_stage": null
+      }
+    ],
+    "deferred_outputs": "New candidate images/config/schema/bundle identity and protected HTTPS/stop-resume proof belong to S05",
+    "execution": "not started; manual sequential handoff only"
+  }
+}

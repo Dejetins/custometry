@@ -19,6 +19,7 @@ from custometry_api.notifications.router import create_notifications_app
 from custometry_api.organization.router import create_organization_app
 from custometry_api.people.router import create_people_app
 from custometry_api.runs.router import create_runs_app
+from custometry_api.reports.router import create_reports_app
 
 
 class HealthResponse(BaseModel):
@@ -135,6 +136,7 @@ def create_app(
     app.mount("/connections", create_connection_app(runtime_settings), name="connections")
     app.mount("/imports", create_import_app(runtime_settings), name="imports")
     app.mount("/analytics", create_analytics_app(runtime_settings), name="analytics")
+    app.mount("/reports", create_reports_app(runtime_settings), name="reports")
     app.mount("/people", create_people_app(runtime_settings), name="people")
     app.mount("/execution", create_runs_app(runtime_settings), name="execution")
     app.mount(

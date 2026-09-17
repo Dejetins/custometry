@@ -1,10 +1,7 @@
-/**
- * Foundation boundary for the future versioned ChartSpec compiler.
- *
- * No compile function is exported yet: returning placeholder ECharts options would
- * create a false core contract before the ChartSpec stage is accepted.
- */
-export const chartCompilerLifecycle = "planned" as const;
+/** Only the MS-003 canonical daily revenue line subset is implemented. */
+export const chartCompilerLifecycle = "line-v1" as const;
+export { compileLineChart, ChartCompileError } from "./line";
+export type { DailyRow, LineData, LineRenderProfile } from "./line";
 
 export interface ChartSpecEnvelope {
   readonly schemaVersion: string;

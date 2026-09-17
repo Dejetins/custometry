@@ -12,7 +12,8 @@ status: accepted_ui_requirements
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-09-06
+updated_at: 2026-09-17
+requirements_revision: 2026-09-17.1
 artifact_role: product_ui_requirements_and_current_inventory
 program_route: ticket_first
 active_program: null
@@ -458,6 +459,21 @@ Header всегда разделяет:
 - approved Finding имеет author/review/evidence/limitations surface; comment имеет avatar/time/thread/resolve surface и никогда не выглядит как утверждённый вывод;
 - Viewer может открыть и добавить comment только к разрешённой non-PII projection; comment drawer не показывает hidden filters, denied facets или raw source values;
 - report/dashboard access находится в отдельной admin surface; Analyst видит effective access summary, но не grant/revoke controls.
+
+### 8.5.2a. Рабочие наборы метрик и сравнения — дополнение 2026-09-17
+
+Нормативная база: METRIC-025…029, CHART-021 и COMPARE-013. [Атлас из десяти точечных снимков Mindbox с пояснениями](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md) — выбранный владельцем референс **новых взаимодействий**. Документ не заменяет preserved pilot, его оболочку, typography/density, rail, Focus или inspector и не разрешает самостоятельную перестройку существующего интерфейса. Production capability inventory не меняется от добавления target requirements.
+
+| Поверхность | Целевое поведение | Снимки в атласе |
+|---|---|---|
+| Рабочие наборы | Быстрый выбор набора под задачу/отдел; личный и общий набор явно различаются; набор не является новой формулой | 01, 04 |
+| Каталог и карточка | Поиск, выбор, порядок; metric definition + фильтры образуют карточку; несколько карточек одной метрики допустимы | 02, 03 |
+| Сравнение по времени | Current/baseline и дельта каждого периода; абсолютная разница, относительный процент и п. п. не смешиваются | 05, 06, 07 |
+| Сравнение метрик | Две карточки с видимыми filters/units и подписанными шкалами; temporal comparison — отдельный режим | 09 |
+| Цели | Metric binding, фильтры, target, период и гипотеза; сохранение не подразумевается открытием формы | 08 |
+| Связанные исследования | Метрика по сегментам и доступный путь к подробностям; кампании доступны только при действующей source/attribution capability | 10 |
+
+Для Custometry сохраняются explicit Apply/Save, версии Saved View, server-side calculations, Result Trust, access-denied clearing, RU/EN, keyboard operation и source-aware availability. Автосохранение личных настроек в Mindbox не переносится автоматически на calculation/save contracts Custometry. Реальные данные reference не становятся fixtures. Дополнительный сценарий целей требует явного определения направления прогресса и aggregation basis до реализации; target-action definition и monitoring goal различны. Размещение новых элементов в пилоте проверяется отдельным implementation scope по атласу, без переинтерпретации существующих элементов.
 
 ### 8.5.3. Analytical document profiles, pages и collaboration
 

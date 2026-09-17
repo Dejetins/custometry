@@ -1,0 +1,57 @@
+{
+  "status": "pass",
+  "baseline_commit": "cb4f696dc1dca3bc051debd347810f7d74caa319",
+  "protected_tracked_paths_unchanged": [
+    "packages/presentation/application/people.py",
+    ".codex/delivery/evidence/MS-001",
+    ".codex/delivery/evidence/MS-002",
+    ".codex/delivery/ledgers/MS-001.md",
+    ".codex/delivery/ledgers/MS-002.md",
+    ".codex/agents/generated/MS-001",
+    ".codex/agents/generated/MS-002",
+    "docs/architecture/planning/milestones/MS-001",
+    "docs/architecture/planning/milestones/MS-002"
+  ],
+  "sealed_migrations": [
+    {
+      "path": "migrations/versions/0001_foundation_metadata.py",
+      "sha256": "99df9aa5ffbddc6be15991da1aca604d9ae5b0356a75f9bae221040fb3aa4b6d"
+    },
+    {
+      "path": "migrations/versions/0002_identity_workspace_auth.py",
+      "sha256": "ac726ed65bb252e0983c38bcff790193daaa7b1f4dfc9a52f66c0c034f26d3be"
+    },
+    {
+      "path": "migrations/versions/0003_organization_access.py",
+      "sha256": "b9b643ac623d45b6ab211ab12d0ccd8cef70441f4b0a8cd3933539edec5bccba"
+    },
+    {
+      "path": "migrations/versions/0004_source_intake.py",
+      "sha256": "f16cbaa70981ec1830912be299dd43f795855d5edccfec41659d9cc472744425"
+    },
+    {
+      "path": "migrations/versions/0005_data_pipeline.py",
+      "sha256": "e97fe76cf5f2e25b2504387bb390a3d84014ad36eba244c05b323d52f2bb8396"
+    },
+    {
+      "path": "migrations/versions/0006_analytics_projection.py",
+      "sha256": "9544d385c302b80779a5fd465a96d15c33c65fb0d3b5d37574b21bccf08c9706"
+    },
+    {
+      "path": "migrations/versions/0007_contributor_projection.py",
+      "sha256": "dcc54cbe9aa27cd257194cdceb5df8be2cbcc76735bef9368fa29bf26c368150"
+    },
+    {
+      "path": "migrations/versions/0008_execution_control.py",
+      "sha256": "36e9db063f0c25faa52654345302c8491e4744ca8f3e7f9aedea80036b86dfe7"
+    },
+    {
+      "path": "migrations/versions/0009_notifications.py",
+      "sha256": "d60b7fd242530641d3a2c4aad7ba6bf3457b631f905bd70b15b2ef6df9eda0d9"
+    },
+    {
+      "path": "migrations/versions/0010_sales_report.py",
+      "sha256": "816a23b7cdd8eb4bfa91836c5f7985115934fcbe21445ab5f2342b829f964f40"
+    }
+  ]
+}

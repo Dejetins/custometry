@@ -70,6 +70,17 @@ class PostgresSalesSemanticRepository:
     def __init__(self, connect: Any) -> None:
         self._connect = connect
 
+    def sales_versions(self, *, workspace_id: UUID) -> list[dict[str, Any]]:
+        with self._connect() as connection, connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT id, version FROM semantic_dataset_versions
+                   WHERE workspace_id=%s AND status='published'
+                   AND impact_summary->>'profile'='retail-report/v1'
+                   ORDER BY version, id""",
+                (workspace_id,),
+            )
+            return [{"id": str(row[0]), "version": row[1]} for row in cursor.fetchall()]
+
     def sales_projection(self, *, workspace_id: UUID, version_id: UUID) -> dict[str, Any]:
         from packages.contracts.analytics import AnalyticsFailure
         from packages.semantic_model.application.sales_metrics import definitions

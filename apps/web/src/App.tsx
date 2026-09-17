@@ -23,6 +23,7 @@ export function App(): React.JSX.Element {
     [location.pathname, location.search],
   );
   const [featureModule, setFeatureModule] = useState<FeatureRouteModule>();
+  const featureId = resolution.kind === "route" ? resolution.route.id : undefined;
 
   useEffect(() => {
     let active = true;
@@ -32,13 +33,17 @@ export function App(): React.JSX.Element {
       if (active) setFeatureModule(module);
     });
     return () => { active = false; };
-  }, [resolution]);
+  }, [featureId]);
 
   if (resolution.kind === "route" && resolution.compatibilityView === "html-prototype") {
     return <SalesOverviewPrototype />;
   }
   if (resolution.kind === "route" && resolution.compatibilityView === "linear-spike") {
     return <ArchitectureSpike fallbackHref={location.pathname} />;
+  }
+
+  if (resolution.kind === "route" && (resolution.route.id.startsWith("UI-RPT-") || resolution.route.id === "UI-AUTH-001") && featureModule?.routeId !== resolution.route.id) {
+    return <main aria-busy="true"><p role="status">{t("statusChecking")}</p></main>;
   }
 
   let content: React.JSX.Element;
@@ -56,7 +61,7 @@ export function App(): React.JSX.Element {
     if (resolution.systemFixture) {
       pageTitle = t(`system.${resolution.systemFixture}.title`);
       content = <SystemSurface kind={resolution.systemFixture} workspaceKey={workspaceKey} fixture />;
-    } else if (featureModule) {
+    } else if (featureModule?.routeId === resolution.route.id) {
       const FeatureRoute = featureModule.default;
       content = <FeatureRoute resolution={resolution} />;
     } else if (resolution.route.id === "UI-HELP-001") {
@@ -65,6 +70,8 @@ export function App(): React.JSX.Element {
       content = <PlannedSurface route={resolution.route} />;
     }
   }
+
+  if (resolution.kind === "route" && (resolution.route.id.startsWith("UI-RPT-") || resolution.route.id === "UI-AUTH-001") && featureModule) return content;
 
   return (
     <ApplicationShell profile={resolution.shellProfile} pageTitle={pageTitle} workspaceKey={workspaceKey}>

@@ -7,7 +7,8 @@ normative: false
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-09-06
+updated_at: 2026-09-17
+requirements_revision: 2026-09-17.1
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
@@ -431,6 +432,16 @@ versioned personal Saved View. Личный вид не меняет опубл�
 | METRIC-022 | Личный KPI selection хранится в versioned personal Saved View, привязанном к user/workspace/document scope, и сбрасывается к published default |
 | METRIC-023 | KPI label/unit/time basis берутся из MetricVersion и периода; UI не изобретает `/month` или другую нормализацию |
 | METRIC-024 | Visibility/order готовых projections — presentation state; новая projection меняет request/manifest/cache identity и считается только backend |
+
+| ID | Дополнение: рабочие наборы и цели |
+|---|---|
+| METRIC-025 | Рабочий набор метрик обязан хранить устойчивый порядок настроенных карточек, localized name и явную область видимости personal или authorized shared workspace; набор может соответствовать задаче или отделу, но не создаёт новую business ontology. Копирование набора обязан сохранять bindings и не изменять источник; shared save требует существующих permissions и явного действия. |
+| METRIC-026 | Настроенная карточка обязан отличаться от определения метрики и ссылаться на immutable MetricVersion, typed allowed filters, population/target-action binding и effective context. Несколько карточек одной метрики с разными фильтрами обязан поддерживаться без дублирования metric definition; запрещённые или несовместимые параметры не могут молча применяться. |
+| METRIC-027 | Настройка набора обязан предоставлять searchable catalog разрешённых метрик, выбор, порядок с keyboard alternative, редактирование карточки и copy-as-new; локальные filters и inheritance видимы. Bulk apply обязан показывать применимые карточки и несовместимости; personal preferences не меняют shared publication, а изменения запроса сохраняют explicit Apply/Save semantics. |
+| METRIC-028 | Панель метрик обязан различать выбор одной карточки для temporal comparison и выбор двух карточек для descriptive metric-to-metric comparison; обе серии сохраняют metric/version/filter/unit/period identity. Разные units имеют явно подписанные отдельные шкалы, несовместимые periods/grain дают blocker, совместное движение линий не является causal evidence. |
+| METRIC-029 | Пользовательская monitoring goal обязан ссылаться на настроенную метрику и хранить typed target value, явный интервал, owner/scope и описание гипотезы достижения; фактическое значение и прогресс используют ту же server-resolved методику и permissions. Monitoring goal обязан отличаться от целевого действия фильтра и прогноза; missing actual не считается нулём или достижением цели. Progress direction/aggregation и правила изменения active goal фиксируются до реализации. |
+
+Рабочие наборы помогают отделам выбирать показатели под задачу. Например, одна утверждённая «Выручка» может быть показана отдельными карточками для разных магазинов; у карточек собственные фильтры, но формула остаётся общей. Цель — плановое значение такой карточки на срок, а не определение события «Заказ» и не прогноз. [Снимки, пояснения и acceptance](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md) фиксируют редакцию `2026-09-17.1` базового draft; текущий MS-003 не расширен.
 
 #### Versioned политика скидок
 
@@ -1154,6 +1165,7 @@ ChartSpec не принимает JavaScript functions, `renderItem`, raw EChart
 | CHART-018 | Static adapter без network, с batch/dimension/output/temp/memory/CPU/time limits, cancellation и cleanup partial artifacts |
 | CHART-019 | Release gate проверяет schema/security, shared-compiler option hash Web/SSR, SVG/Canvas semantics, SSR→PNG, font/render-build cache invalidation, range timeline, native/raster XLSX, themes/a11y и golden parity |
 | CHART-020 | Versioned visual template задаёт semantic palette, contrast, typography scale и table density; отчёт имеет default, блок — override, effective template входит в snapshot/export/render/cache identity, builder живёт отдельно в Settings |
+| CHART-021 | Дельта каждого сопоставимого периода показывается соединением между current/baseline или отдельной линией; значения и причины недоступности берутся из ComparisonArtifact, процентные пункты отличаются от процентов. Подписи и серии можно скрыть, но полные значения доступны в таблице. Нулевая база и пропуски не создают вымышленных значений; пользовательский renderer code запрещён. |
 
 #### 14.1.1. Полноэкранный Focus / Explore mode
 

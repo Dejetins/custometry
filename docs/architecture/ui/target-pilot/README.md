@@ -77,3 +77,7 @@ Keep browser traces, repeated screenshots, generated boards, intermediate
 inventories, and local experiment outputs out of the maintained source tree.
 Retain compact implementation evidence once at the tested boundary. Do not
 restart the retired G0-G6 program to implement this concept.
+
+## Additive interaction references
+
+On 2026-09-17 the owner selected [Mindbox metric worksets, card filters, comparison overlays and goals](../references/mindbox-metrics-2026-09-17/README.md) as references for new capabilities. The atlas supplements the demonstrated pilot; it does not replace this document's visual authority or authorize a reconstructed shell. Original HTML, runtime asset and manifest bytes remain unchanged.

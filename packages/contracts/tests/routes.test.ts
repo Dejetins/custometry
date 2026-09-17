@@ -24,10 +24,14 @@ describe("canonical route registry", () => {
 
     expect(implementedRouteIds).toEqual(new Set([
       "UI-AN-003",
+      "UI-AUTH-001",
       "UI-DATA-001",
       "UI-DATA-002",
       "UI-NOTIFY-001",
       "UI-OPS-001",
+      "UI-RPT-001",
+      "UI-RPT-002",
+      "UI-RPT-003",
     ]));
   });
 

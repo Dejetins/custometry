@@ -1,8 +1,7 @@
 name: Publish immutable Foundation candidates
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,13 +11,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  foundation:
-    name: Required Foundation gate
-    uses: ./.github/workflows/ci.yml
-
   candidate_metadata:
     name: Derive trusted candidate metadata
-    needs: foundation
     runs-on: ubuntu-24.04
     outputs:
       api_image: ${{ steps.metadata.outputs.api_image }}

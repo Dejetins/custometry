@@ -23,3 +23,6 @@ export * from "./foundation-client";
 export * from "./execution-control";
 
 export * as salesReports from "./analytics-client";
+
+export * as draftReports from "./reports-client";
+export * as reportSales from "./sales-report-client";

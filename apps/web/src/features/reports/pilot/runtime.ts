@@ -1659,7 +1659,7 @@ const realTable=()=>bridge.table(locale);
       return Math.ceil(contentWidth + padding + hierarchyAllowance);
     }
 
-    function syncSharedTableGeometry() {
+    function syncSharedTableGeometry() { 
       const allTables = [...document.querySelectorAll('table')];
       allTables.forEach(clearSharedTableGrid);
       const groups = new Map();
@@ -2804,7 +2804,7 @@ const realTable=()=>bridge.table(locale);
     applyLocale('ru');
     activatePage(currentPage, false);
     showFocusSurface();
-
+  
 // Source controls bind to explicit application actions. No fixture calculation
 // or prototype storage participates in the report's result or saved identity.
 let synchronizing=false;

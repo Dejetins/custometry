@@ -1,0 +1,13 @@
+{
+  "source": "../../target-pilot/ru/source.html",
+  "source_sha256": "b54b8b77d677d57869b0065dbe3aa005f13070297dface19ba98938f50d83700",
+  "derivation": "Remove script elements; replace title; append composition.css, preserved ECharts asset and composition.js. Runtime changes only the proposed report surfaces; native CSS, SVG sprite and rail remain source-derived.",
+  "status": "accepted_initial_composition",
+  "owner_acceptance_date": "2026-09-17",
+  "decision_ref": "README.md#decision-record",
+  "prototype_sha256": {
+    "index.html": "4f7b717c6721024c60483729e883a7f2fb53358eee6853fbb2a7ae89a6eae820",
+    "composition.css": "f393a18b2bf8e76c74b1cec968f5b064cce0a6b78c9987c6124db2073c0785ea",
+    "composition.js": "72c9acbddeca24acc3028317e432c4c84980365a51f94f9fc441fdf2c5509d02"
+  }
+}

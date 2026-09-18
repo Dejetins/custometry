@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-ROADMAP-001
 title: Custometry development roadmap and integration decisions
-doc_version: 15
+doc_version: 18
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -39,9 +39,17 @@ evidence without owner reminders. Product priorities and Forecasting hold remain
 unchanged. The six direction scopes remain accepted. On 2026-09-11 the owner
 accepted local feature feedback, packaged milestone proof and explicit delivery
 qualification. On 2026-09-12 the owner selected usable analyst functionality
-before full administration. [MAP-001 2.0.2](project-map.md) contains the proposed
+before full administration. [MAP-001 2.1.1](project-map.md) contains the proposed
 checkpoint order for that correction and supersedes the local C04-first frontier.
 This supporting roadmap does not override the current hierarchical map.
+The later 2026-09-17 owner correction, [MAP-001/DEC-12](project-map.md#development-and-delivery-cadence),
+selects local feature acceptance and separately selected packaging. It supersedes
+the earlier automatic packaged-milestone cadence. The
+[initial metric-workspace composition](../ui/drafts/metric-workspace-v1/README.md),
+version 3, records the accepted baseline. [WS-003 1.0.0](directions/DIR-004/workstreams/WS-003.md)
+records the accepted order: worksets/cards/comparisons, then goals and shared-scope behavior. This
+continuation extends the first report; it does not replace the later source,
+segment and administration outcomes. MS-003 S05/S06 remain deferred in their journal.
 
 [WS-001](directions/DIR-006/workstreams/WS-001.md), accepted scope `1.0.0` /
 navigation `1.0.10`, retains completed MS-001/MS-002 and the remaining C04–C06
@@ -49,8 +57,8 @@ onboarding/admin obligations. The selected [WS-002](directions/DIR-004/workstrea
 [MS-003](milestones/MS-003/plan.md) accepted package is a working analyst report
 under DIR-004, with real prepared inputs, backend persistence and pilot-derived
 Web interactions. Necessary Identity/data support contributes within that unit;
-full administrative workflows follow the initial analyst cycle. The six-prompt pack and its single draft journal are linked from MS-003;
-new content awaits review and no execution has started. The older N0/N1/M0/M1 rows remain supporting
+full administrative workflows follow the initial analyst cycle. The six-prompt pack and its canonical journal are linked from MS-003;
+the journal alone records execution and the owner-selected S05/S06 deferral. The older N0/N1/M0/M1 rows remain supporting
 analysis; [the current checkpoint proposal](project-map.md#proposed-product-checkpoints)
 owns the detailed ordering under review.
 

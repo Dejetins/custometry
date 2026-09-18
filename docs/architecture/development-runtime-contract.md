@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-RUNTIME-001
 title: Custometry development runtime contract
-doc_version: 4
+doc_version: 5
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -33,6 +33,14 @@ The Hybrid launcher and development Compose override are implemented by W11.
 Generated mocks, browser-visible mock/real disclosure, complete Full Stack
 acceptance, and a release bundle remain separately owned outcomes.
 
+The owner clarified the cadence on 2026-09-17: implement and accept product
+features locally, then package at a separately selected delivery boundary.
+A stage/milestone ending does not select `full-stack` or `release`. The modes
+below describe available proof boundaries, not a mandatory ladder for each task.
+See [MAP-001/DEC-12](planning/project-map.md#development-and-delivery-cadence).
+A synthetic composition draft may use a plain loopback static server; it must
+not claim real API, database or permission behavior.
+
 ## 2. Current-state fact ledger
 
 | Type | Current fact | Repository evidence | Consequence |
@@ -50,7 +58,7 @@ acceptance, and a release bundle remain separately owned outcomes.
 |---|---|---|---|---|---|
 | `fast-loop` | Web, framework-independent Python, focused tests; later API reload when implemented | none required | UI/component work, domain/application logic, contracts, generated mocks | lint, types, unit/property/component tests, contract/mock parity, local Web behavior | PostgreSQL adapters, container networking, clean installation, restart/recovery, release |
 | `hybrid` | Web and API with reload | stateful infrastructure such as control PostgreSQL and demo-source PostgreSQL; later Valkey or other owned infrastructure | real adapters and end-to-end development without rebuilding application images | API/database integration, migrations against local disposable state, browser-to-real-API flows | production image behavior, Edge segmentation, clean full-stack lifecycle, release |
-| `full-stack` | only controlling tools and browser | the complete supported disposable application topology | ticketed runtime proof, pre-push/CI runtime checks, ingress/network behavior, restart and clean lifecycle | Compose health, Edge/Web/API paths, migrations, browser smoke, restart and cleanup | immutable release publication, supply chain, target firewall/CNI, accepted installer |
+| `full-stack` | only controlling tools and browser | the complete supported disposable application topology | explicitly selected runtime proof, ingress/network behavior, restart and clean lifecycle | Compose health, Edge/Web/API paths, migrations, browser smoke, restart and cleanup | immutable release publication, supply chain, target firewall/CNI, accepted installer |
 | `release` | launcher, verification tools, and browser only | immutable digest-pinned release composition | protected release/install/update acceptance | digest/platform, migration, install/update/rollback, recovery, SBOM/provenance/license, target security and performance | development convenience behavior or mutable source/build state |
 
 The mode is a proof boundary, not a quality rank. A focused domain test in
@@ -69,7 +77,7 @@ Use this decision order:
 3. Escalate to `full-stack` when container image behavior, Edge routing,
    service discovery, health/readiness, restart, cleanup, or clean-machine
    reproducibility is part of the claim.
-4. Escalate to `release` only when a milestone or change requires immutable
+4. Escalate to `release` only when a separately selected delivery task requires immutable
    artifact, install/update, recovery, supply-chain, target-security, or
    performance evidence.
 

@@ -81,3 +81,12 @@ restart the retired G0-G6 program to implement this concept.
 ## Additive interaction references
 
 On 2026-09-17 the owner selected [Mindbox metric worksets, card filters, comparison overlays and goals](../references/mindbox-metrics-2026-09-17/README.md) as references for new capabilities. The atlas supplements the demonstrated pilot; it does not replace this document's visual authority or authorize a reconstructed shell. Original HTML, runtime asset and manifest bytes remain unchanged.
+
+The subsequent [metric workspace composition](../drafts/metric-workspace-v1/README.md),
+version 3 (editorial navigation update), combines those additions with the actual pilot source. On 2026-09-17
+the owner accepted it as the initial baseline for the added report surfaces:
+worksets, configured cards, contextual controls, comparisons and goal placement.
+The original pilot still governs the shell and unaffected surfaces. The baseline
+can evolve through owner requests; its illustrative data and goal arithmetic do
+not establish production semantics. The existing implementation remains the basis
+for local development in the [accepted WS-003 1.0.0 outline](../../planning/directions/DIR-004/workstreams/WS-003.md).

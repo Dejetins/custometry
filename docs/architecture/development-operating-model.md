@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 16
+doc_version: 19
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -119,15 +119,24 @@ Use the smallest runtime that can prove the selected ticket or milestone-stage
 boundary. The exact commands and current implementation status live in
 [development-runtime-contract.md](./development-runtime-contract.md).
 
-The owner accepted the development cadence on 2026-09-11: focused local feedback,
-applicable packaged milestone proof and installation qualification at declared
-delivery boundaries. [MAP-001 2.0.2](planning/project-map.md#development-and-delivery-cadence)
-retains that cadence and proposes the 2026-09-12 product-first ordering. Reuse
-matching observed evidence; retain required CI checks and existing internal/release
-profiles. The selected [WS-002](planning/directions/DIR-004/workstreams/WS-002.md) /
-[MS-003](planning/milestones/MS-003/plan.md) accepted package applies this cadence.
-Its plan-review draft can validate without being executable; product runtime
-commands and CI proof profiles remain unchanged.
+The owner's 2026-09-17 correction selects local product development and local
+feature acceptance. [MAP-001/DEC-12](planning/project-map.md#development-and-delivery-cadence)
+supersedes automatic packaged acceptance at each milestone. Reuse the existing
+implementation, exercise the real boundaries needed for the selected local claim,
+and package later in a separately selected delivery task. Container rebuilds,
+clean installation and final-delivery qualification are not stage-end rituals.
+
+The owner accepted the [initial metric-workspace composition](ui/drafts/metric-workspace-v1/README.md),
+version 3 (navigation update; visual acceptance unchanged), on 2026-09-17. [WS-003 1.0.0](planning/directions/DIR-004/workstreams/WS-003.md)
+records the accepted continuation order and first-child scope before final polish. Concrete owner
+requests may add capabilities absent from current requirements. Synchronize only
+affected requirements, decisions and execution inputs; do not reject an authorized
+change merely because the old document does not contain it. Preserve unaffected
+decisions and ask only for an unresolved material product choice.
+MS-003 S05/S06 are deferred in the canonical journal; historical accepted
+plans/receipts remain evidence and do not override this later owner instruction.
+Local tests/browser proof still matter. They do not establish target image,
+installation or release compatibility; those claims wait for their actual proof.
 
 | Mode | Purpose | Cannot prove by itself |
 |---|---|---|

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-UI-WEB-IMPLEMENTATION-SOURCE-001
 title: Custometry Web implementation source contract
-doc_version: 8
+doc_version: 11
 product_spec_version: 0.11.0-draft
 ui_spec_version: 0.9.0-draft
 visibility: internal
@@ -15,6 +15,21 @@ proof_boundary:
 ---
 
 # Custometry Web implementation source contract
+
+## Accepted initial composition — 2026-09-17
+
+The owner accepted the [metric-workspace composition](drafts/metric-workspace-v1/README.md),
+version 3 (editorial navigation update), as the starting baseline for worksets, configured cards, comparisons
+and goal placement. Preserve the current native-pilot implementation as the
+foundation. This addition governs the demonstrated new report surfaces; the
+original pilot governs the shell and unaffected surfaces. The prototype does
+not establish backend contracts. [WS-003](../planning/directions/DIR-004/workstreams/WS-003.md)
+records the accepted order and first-child scope; L3 contract decisions remain to be fixed.
+New owner requirements may amend the baseline; synchronize affected sources and
+the selected execution unit without treating the old document as a product veto.
+Settle overlapping card/context/chart/persistence changes before final polish.
+Develop and verify locally. MS-003 S05/S06 are deferred in the canonical journal;
+container packaging and delivery qualification require a separate selected task.
 
 ## Decision and execution authority
 
@@ -44,7 +59,9 @@ Read only the smallest applicable set:
    surface identity, roles, states, permissions, and responsive intent;
 3. the [target pilot](target-pilot/README.md), its byte-pinned entrypoint and
    decision notes for the demonstrated composition, navigation, analytical
-   controls, interactions, density, and visual language;
+   controls, interactions, density, and visual language, plus the accepted
+   [metric-workspace composition, version 3](drafts/metric-workspace-v1/README.md)
+   for its explicitly added report surfaces;
 4. accepted architecture, especially ADR-0007, for production technology and
    dependency boundaries;
 5. production code, focused tests, and observed browser evidence for the

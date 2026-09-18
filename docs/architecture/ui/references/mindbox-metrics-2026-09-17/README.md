@@ -1,7 +1,7 @@
 ---
 doc_id: UI-REFERENCE-METRIC-WORKSETS-001
 title: Metric worksets, configured cards, comparisons and goals — Mindbox reference atlas
-doc_version: 1
+doc_version: 4
 product_spec_version: 0.11.0-draft
 requirements_revision: 2026-09-17.1
 visibility: internal
@@ -36,6 +36,12 @@ surfaces, exact card dimensions, brand navigation, terminology and business data
 are not a command to rebuild the pilot. New controls must be composed from the
 pilot's established elements; source changes or a new layout need an explicit
 implementation decision. This atlas does not expand accepted MS-003 stages.
+
+The owner accepted the [initial Custometry composition](../../drafts/metric-workspace-v1/README.md)
+on 2026-09-17 as the visual baseline for fitting these interactions into the
+preserved pilot; its current document version is 3. This changes neither the captured reference images nor the
+production implementation claims. Backend decisions remain in the subsequent
+bounded planning work.
 
 ## Capture boundary and provenance
 

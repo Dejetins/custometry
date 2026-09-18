@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 41
+doc_version: 43
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -21,7 +21,7 @@ This directory contains accepted architecture decisions and shared engineering c
 
 1. `custometry-technical-blueprint-ru.md` contains the normative product requirements, version `0.11.0-draft`.
 2. `custometry-technical-blueprint-human-ru.md` is the synchronized human-readable mirror.
-3. `custometry-ui-blueprint-ru.md` preserves UI/UX requirements and current inventory. The final interactive target pilot owns its demonstrated composition, behavior, and visual language; ADR-0007 owns frontend architecture.
+3. `custometry-ui-blueprint-ru.md` preserves UI/UX requirements and current inventory. The final interactive target pilot owns its demonstrated composition, behavior, and visual language; the accepted initial metric-workspace composition governs its added report surfaces. ADR-0007 owns frontend architecture.
 4. Documents in this directory contain accepted architecture and process decisions within the blueprint.
 5. Global Delivery Contract v1 and the owner-adopted [planning framework](planning/framework-v1/README.md) define hierarchical planning and milestone pack execution. Each milestone has one canonical iteration journal; independent tickets retain ticket state. Parent/child, dependency and execution-artifact links and affected documentation must be synchronized by agents without owner reminders. Goal mode requires explicit authority.
 
@@ -32,7 +32,9 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | Document | Purpose |
 |---|---|
 | [Mindbox metric worksets reference atlas](ui/references/mindbox-metrics-2026-09-17/README.md) | Owner-selected target addition, revision 1: ten cropped live-browser references, configured metric cards, worksets, per-period deltas, dual-metric views and monitoring goals; no implementation claim |
-| [Development direction map — MAP-001](./planning/project-map.md) | Sequence draft 2.0.2: product-first checkpoints, explicit segment lifecycle, retained L1 scopes and accepted WS-002/MS-003 0.2.0 package |
+| [Metric workspace composition baseline](ui/drafts/metric-workspace-v1/README.md) | Owner-accepted initial layout and interactions, version 3; evolvable requirements, synthetic prototype data, current product foundation preserved |
+| [Configured metric workspace — WS-003](planning/directions/DIR-004/workstreams/WS-003.md) | L2 accepted 1.0.0: confirmed order and C01 personal-workset scope; next is C01 L3, goal policies remain open |
+| [Development direction map — MAP-001](./planning/project-map.md) | Sequence draft 2.1.1: product-first checkpoints, local feature acceptance and separately selected packaging; MS-003 S05/S06 deferred in the canonical journal |
 | [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.10: retained installation/bootstrap outcomes and closed C02/C03 evidence; full C04–C06 selected later |
 | [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 2.2.0: exact internal bundle and native ARM64/AMD64 evidence; [S05 criterion map](../../.codex/delivery/evidence/MS-001/MS-001-S05/report.md) and [C03 handoff](runtime-network-installation.md#s05-installation-author-handoff); owner decision remains in the canonical journal |
 | [Installation milestone — MS-002](./planning/milestones/MS-002/plan.md) | C03 L3 accepted 1.0.0: guided installation, HTTPS, truthful readiness and a pilot-derived first-run entry; fixed implementation choices and owner decision packet; five prompts and one canonical journal; [S01 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S01/report.md), [S02 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S02/report.md), [S03 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S03/report.md), [S04 candidate and target evidence](../../.codex/delivery/evidence/MS-002/MS-002-S04/report.md), [S05 criterion map and C04 handoff](../../.codex/delivery/evidence/MS-002/MS-002-S05/report.md); final acceptance remains in the journal |

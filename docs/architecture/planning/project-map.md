@@ -8,7 +8,7 @@
   "artifact_kind": "project_map",
   "doc_id": "MAP-001",
   "title": "Custometry development direction map",
-  "version": "2.0.2",
+  "version": "2.1.1",
   "planning_status": "in_review",
   "language": "en",
   "parent_ref": null,
@@ -117,6 +117,18 @@
         "WEB-PERF-001",
         "XLSX-001"
       ]
+    },
+    {
+      "source": "custometry-technical-blueprint-ru.md",
+      "revision": "sha256:28c52edab5c48b3f0a01aaf08c02792d2c4988beee3b27960562ef31c77c651f",
+      "ids": [
+        "METRIC-025",
+        "METRIC-026",
+        "METRIC-027",
+        "METRIC-028",
+        "METRIC-029",
+        "CHART-021"
+      ]
     }
   ],
   "decision_refs": [
@@ -131,7 +143,10 @@
     "MAP-001/DEC-08",
     "MAP-001/DEC-09",
     "MAP-001/DEC-10",
-    "MAP-001/DEC-11"
+    "MAP-001/DEC-11",
+    "MAP-001/DEC-12",
+    "MAP-001/DEC-13",
+    "MAP-001/DEC-14"
   ],
   "supersedes_ref": null,
   "proof_boundary": {
@@ -148,10 +163,10 @@
 
 # Custometry development direction map
 
-> **Product-first sequence draft, version `2.0.2`, 2026-09-12.**
+> **Product-first sequence draft, version `2.1.1`, 2026-09-17.**
 > The owner selected usable analyst functionality before administrative workflows.
-> The six direction scopes, product requirements, development cadence and completed
-> MS-001/MS-002 remain. The checkpoint order below is proposed for owner review;
+> The six direction scopes, product requirements and completed MS-001/MS-002
+> remain. DEC-12 updates the development cadence to local feature acceptance. The checkpoint order below is proposed for owner review;
 > it does not accept an unwritten L2/L3 or start implementation.
 
 ## Accepted structure
@@ -187,8 +202,8 @@ records initial S01 entry allowance without claiming implementation.
 
 ## Direction registry
 
-The six direction documents have synchronized `2.0.2` sequence drafts and point
-back to MAP-001 `2.0.2`. Their capability boundaries remain accepted at `1.0.0`;
+The six direction documents have synchronized `2.1.1` sequence drafts and point
+back to MAP-001 `2.1.1`. Their capability boundaries remain accepted at `1.0.0`;
 the broader sequence remains a review draft. WS-002/MS-003 0.2.0 was explicitly
 accepted on 2026-09-13; this does not widen L1 scope.
 
@@ -207,7 +222,7 @@ and installation contributions. The [MS-001 journal](../../../.codex/delivery/le
 and [MS-002 journal](../../../.codex/delivery/ledgers/MS-002.md) record completion;
 they alone own execution state. This is a dated planning baseline, read 2026-09-12.
 
-**Selected next L2: [WS-002 — First working analyst report](directions/DIR-004/workstreams/WS-002.md) `0.2.0`**, under
+**First-report foundation: [WS-002 — First working analyst report](directions/DIR-004/workstreams/WS-002.md) `0.2.0`**, under
 [DIR-004](directions/DIR-004/direction.md), with one bounded
 [MS-003 milestone](milestones/MS-003/plan.md) `0.2.0`. The owner requested its
 plan, prompts and journal together. The concrete recommendation uses the existing
@@ -327,11 +342,10 @@ dependency chain; no whole-direction or full-admin completion gate is implied.
 4. Every milestone closes a bounded observable outcome with relevant UI, real
    integration, failure evidence and documentation. Dependency readiness is not
    inferred from finishing an entire direction or from a green static check.
-5. Keep the installation/bundle contract reusable as delivered features grow.
-   Later milestones publish compatible new contents and verify their new runtime
-   dependencies. Assemble candidates at the boundaries below, reuse unchanged
-   layers and retain the installer contract. No unsupported component may be
-   represented as operational.
+5. Keep the installation/bundle contract reusable as features grow. Local product
+   milestones do not automatically publish candidates or qualify containers.
+   Select packaging and its runtime proof separately when delivery is requested.
+   No unsupported component may be represented as operational.
 6. Capture new evidence that changes an accepted assumption as a scoped amendment:
    affected consumers, compatibility, migration/recovery, version and owner decision
    where material. Planning reduces avoidable rework; it cannot guarantee that no
@@ -346,30 +360,35 @@ blocks. Forecast-specific contracts and implementation remain held.
 
 ### Development and delivery cadence
 
-Apply the existing [development runtime contract](../development-runtime-contract.md)
-`doc_version 3` and [operating model](../development-operating-model.md) `doc_version 15`.
+The owner selected **local development and local feature acceptance first** on
+2026-09-17 (MAP-001/DEC-12), superseding the automatic packaged-milestone clause
+of DEC-09. Apply the [development runtime contract](../development-runtime-contract.md)
+`doc_version 5` and [operating model](../development-operating-model.md) `doc_version 19`.
 There is one application, one set of domain rules, locked dependencies and
-versioned migrations. Host development and packaged execution use those same
-sources; development convenience is not a second implementation or auth policy.
+versioned migrations. Host development and eventual packaged execution use the
+same sources; development convenience is not a second implementation or auth policy.
 
-| Work boundary | Normal work and evidence | When to build or install |
+| Work boundary | Normal work and evidence | Build / installation trigger |
 |---|---|---|
-| Ordinary source edit | `fast-loop`: focused policy/component/type/contract checks | No application image rebuild solely because a file was saved |
-| Real feature integration | `hybrid`: host API/Web with reload and only required containerized stateful adapters; real DB/API/browser checks | Reuse the owned running development environment; isolate test data and avoid repeated clean-stack startup |
-| Changed runtime boundary | `full-stack`: actual images, Edge, networking, mounts, schema or image-dependent behavior | Build affected images and test the changed boundary immediately; dependency/base-image/OS/architecture changes require applicable target proof |
-| Product milestone acceptance | Demonstrate the selected working journey and applicable failure cases in its packaged form; reuse matching earlier-stage or CI evidence | Build the changed candidate before acceptance; identify source, images and config. Documentation-only changes need their own source checks, not a new manual installation campaign |
-| Internal delivery / install or update claim | Versioned bundle/toolkit through the existing producer; actual declared consumer and supported target checks | Run clean installation or upgrade/recovery only for the selected delivery claim, changed installation behavior or an unresolved relevant failure; preserve accepted exceptions |
+| Composition proposal | A clearly labeled local prototype and real browser interaction/fidelity checks | No application image, API or container is required for a fixture-backed design draft |
+| Ordinary source edit | Host feedback and focused policy/component/type/contract checks | No application image rebuild |
+| Real feature integration / product milestone | Host API/Web, real required DB/API/browser boundaries and relevant failure cases; reuse the existing owned development infrastructure | Local feature acceptance is sufficient for the selected feature claim; no packaged candidate merely because a stage or milestone ends |
+| Explicit container/runtime task | Test the actual selected image, Edge, network, mount or target dependency boundary | Start only when that stronger boundary is explicitly selected; local source checks cannot claim it |
+| Separately selected delivery / install or update | Existing producer and versioned bundle; explicit target and applicable qualification | Build affected images and qualify the selected delivery. No automatic full validation on image publication |
 
-The ordinary feature sequence is **inspect/reuse -> settle the bounded contracts
-and checks -> implement and exercise locally -> verify the packaged candidate ->
-accept the outcome**. It repeats within the selected workstream. Dependency
-order stays sequential; this does not choose agents or parallel dispatch.
+The ordinary feature sequence is **inspect/reuse -> agree composition and bounded
+contracts -> implement and exercise locally -> accept the local outcome**.
+Packaging, target compatibility and installation checks follow in an explicitly
+selected delivery task. The owner has deferred MS-003 S05/S06; the
+[canonical journal](../../../.codex/delivery/ledgers/MS-003.md) owns their allowance.
+The [initial composition](../ui/drafts/metric-workspace-v1/README.md), version 3,
+records the accepted visual baseline. [WS-003 1.0.0](directions/DIR-004/workstreams/WS-003.md)
+records the separately accepted continuation sequence and C01 scope (DEC-14).
+Child implementation plans remain to be detailed; this does not create a runnable pack.
 
-Rebuild affected application images when their packaged contents change; retain
-valid cached layers and unchanged images. Changing toolkit/configuration only
-still creates a new delivery identity when shipped bytes change. Never modify
-an accepted bundle under its old version. Running old images is not proof of new
-source. The exact build mechanism remains the existing producer and lockfiles.
+At a later delivery boundary, changed shipped bytes require a new immutable
+identity. Reuse cached layers and unchanged images, but never present old images
+as evidence for new source. Do not change accepted bundles under their old version.
 
 Reusing infrastructure does not mean sharing uncontrolled test state. Keep
 development ownership separate from accepted installations; apply migrations to
@@ -377,13 +396,12 @@ the selected test database and use bounded fixtures/transactions/databases as
 appropriate. Never reset accepted or foreign data to make a check pass. Start
 additional workers/queues only when the selected real feature requires them.
 
-CI already builds a disposable Linux stack and runs browser checks on pull
-requests and main pushes. Preserve required checks and reuse their actual results
-for matching claims; do not repeat the same local campaign without changed inputs,
-a failure or a specific coverage gap. CI does not automatically prove native ARM64,
-an untested Linux guest, second-computer trust or an installer. Existing Mac/VM/LAN
-proof is reused only within its candidate/configuration/target scope. No hosted CI
-filter or gate bypass is implemented by this planning amendment.
+Routine repository synchronization uses the current fast source CI contract.
+Full runtime qualification and image publication are separately selected actions;
+see [tooling gates](../tooling-gates.md#routine-development-synchronization).
+Local evidence does not prove image behavior, native ARM64/Linux target execution,
+second-computer trust or installation. Keep those delivery obligations explicit
+without executing them during ordinary product development.
 
 Internal candidate delivery keeps the accepted internal-development profile and
 ordinary upstream dependencies. Runtime-mode names do not automatically select
@@ -401,6 +419,20 @@ SEQ-12 integrates the full backup/update/recovery cycle and does not defer safet
 needed by an earlier shipped migration.
 
 ### Next L2 and L3 planning boundary
+
+The owner accepted the initial metric-workspace composition on 2026-09-17 and
+requested further improvements, including the ability to add requirements later
+(MAP-001/DEC-13). The owner subsequently confirmed the order and first-stage
+scope (MAP-001/DEC-14). The accepted next L2 is
+[WS-003 1.0.0 — Configured metric workspace](directions/DIR-004/workstreams/WS-003.md)
+under DIR-004. It selects configured cards/worksets/context/comparisons first,
+then monitoring goals and shared worksets. This is a bounded extension of the
+first report, not a reordering or removal of the remaining product checkpoints.
+Detail WS-003/C01 as the next L3 using the confirmed first-stage scope. Goal
+policies remain open for C02; no repeated decision on order or C01 scope is needed.
+Do not reuse deferred S05/S06 or infer a runnable pack from L2 acceptance.
+
+The prior first-report planning basis remains preserved:
 
 The owner selected preparation of [WS-002 0.2.0](directions/DIR-004/workstreams/WS-002.md)
 and [MS-003 0.2.0](milestones/MS-003/plan.md), including their six prompts and
@@ -601,9 +633,13 @@ their own version and acceptance provenance. Architecture status is not code rea
 | MAP-001/DEC-06 | Adopt the complete installation-to-reader sequence and sequential development with prerequisite decisions | Owner accepted the expanded proposal and requested English documentation on 2026-09-06; version 1.1.0 | Sets priority/order across directions; does not promise zero rework or select parallel dispatch |
 | MAP-001/DEC-07 | Select delivery, installation and first administrator bootstrap for deep planning | Same owner decision, 2026-09-06; version 1.1.0 | DIR-006 owns WS-001; DIR-001/005 contribute; authoring the L2 draft is authorized, its unwritten children are not accepted |
 | MAP-001/DEC-08 | Finalize WS-001 and synchronize accepted installation/HTTPS/bootstrap choices | Owner accepted six proposals, corrected target to M5 Max/36 GB, allowed local Linux VM, excluded experimental-data migration and authorized direct main publication on 2026-09-06 | WS-001 1.0.0 owns five sequential outcomes; C02 was the first separate L3. No general publication-policy or product-execution authority is inferred. |
-| MAP-001/DEC-09 | Preserve completed MS-002 and use focused local development, packaged milestone proof and explicit delivery qualification across all directions | Owner accepted the explained approach on 2026-09-11 and requested the general plan/sequence amendment before later L2/L3 work; compatible detail in 1.3.0 | Reuse delivery machinery, retain requirements and SEQ IDs, the then-selected C04 frontier is superseded by DEC-10; development cadence remains accepted |
+| MAP-001/DEC-09 | Preserve completed MS-002 and use focused local development, packaged milestone proof and explicit delivery qualification across all directions | Owner accepted the explained approach on 2026-09-11 and requested the general plan/sequence amendment before later L2/L3 work; compatible detail in 1.3.0 | Reuse delivery machinery, retain requirements and SEQ IDs, the then-selected C04 frontier is superseded by DEC-10; automatic packaged-milestone cadence is superseded by DEC-12 |
 | MAP-001/DEC-10 | Build usable analyst functionality before full administration/access-management workflows; retain necessary technical safeguards | Owner correction, 2026-09-12; priority accepted, detailed checkpoint order in 2.0.0 is proposed | First report L2 under DIR-004 is proposed; defer full WS-001/C04–C06; preserve MS-001/MS-002 and all product requirements |
 | MAP-001/DEC-11 | Prepare the first-report L2/L3, prompts and journal together; retain full segment lifecycle in product sequencing | Owner request on 2026-09-12; WS-002/MS-003 content `0.2.0` accepted by the owner on 2026-09-13, including Customer/Product source inclusion | Plan acceptance recorded; initial S01 entry allowed in the journal; execution and publication remain separate |
+
+| MAP-001/DEC-12 | Preserve the current product foundation, agree the metric-workspace composition, develop and accept features locally; defer MS-003 S05/S06 and select packaging separately | Explicit owner instruction, 2026-09-17; [decision evidence](../../../.codex/delivery/evidence/MS-003/local-composition-20260917/owner-decision.md) | No automatic container, build or final-delivery check at each stage/milestone; subsequent initial composition acceptance is recorded in DEC-13 |
+| MAP-001/DEC-13 | Accept the initial metric-workspace composition, record it and prepare further improvements; allow concrete owner requirements absent from existing documents | Owner response, 2026-09-17; [composition decision record](../ui/drafts/metric-workspace-v1/README.md#decision-record), version 2 | Visual baseline accepted and evolvable; WS-003 0.1.0 is the proposed continuation, not an accepted unwritten milestone |
+| MAP-001/DEC-14 | Accept WS-003 sequence C01 → C02 → C03 and the explicit personal-workset C01 scope | Owner explicitly confirmed both decisions on 2026-09-17; [WS-003/DEC-01/02](directions/DIR-004/workstreams/WS-003.md#owner-decisions-and-next-child), version 1.0.0 | Next planning frontier is C01 L3; goal policies, shared-write contracts and unwritten child plans are not implicitly accepted |
 
 The owner first reviewed the Russian `0.1.0` drafts, then explicitly accepted L1
 and requested the English records. Their Russian bodies are replaced in the same
@@ -624,6 +660,9 @@ milestones have been accepted.
 | 2.0.0 | 2026-09-12 | Draft product-first checkpoint order and proposed analyst-report L2; defer full admin/onboarding; retain outcome IDs and development cadence | MAP-001/DEC-10; owner selected priority, detailed sequence awaits review |
 | 2.0.1 | 2026-09-12 | Register WS-002/MS-003 and six-prompt review package, disclose first-source proposal, expand segment lifecycle allocation | MAP-001/DEC-11; no product execution or publication |
 | 2.0.2 | 2026-09-12 | Refresh WS-002/MS-003 0.2.0 and reciprocal navigation; checkpoint order and L1 scopes unchanged | Owner source-scope correction; editorial reference maintenance |
+| 2.0.3 | 2026-09-17 | Adopt local feature acceptance and separately selected packaging; register the metric-workspace composition draft and S05/S06 deferral; synchronize L1 navigation | MAP-001/DEC-12 |
+| 2.1.0 | 2026-09-17 | Record accepted initial metric-workspace composition and register WS-003 0.1.0 continuation proposal; synchronize navigation without changing L1 scopes | MAP-001/DEC-13 |
+| 2.1.1 | 2026-09-17 | Record owner acceptance of WS-003 1.0.0 sequence and C01 scope; preserve deferred goal and shared-write policies | MAP-001/DEC-14; editorial navigation synchronization |
 
 The 2.0.0 draft synchronizes the map and six L1 sequence documents at 2.0.0
 with reciprocal draft references. Their accepted capability boundaries remain

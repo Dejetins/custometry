@@ -14,7 +14,6 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from custometry_api.analytics.workspace_router import workspace_router
-from custometry_api.config import Settings
 from custometry_api.main import create_app
 from apps.worker_data.vertical_slice import DataPipelineRunner
 from packages.analytics_core.application.workspace_service import WorkspaceAnalyticsService
@@ -624,13 +623,15 @@ def test_s02_real_corpus_oracle_and_artifacts(
         Path(destination).write_text(json.dumps(evidence, indent=2) + "\n")
 
 
-def test_v2_routes_remain_unmounted() -> None:
-    with TestClient(create_app(settings=Settings())) as client:
-        for path in (
-            "/api/analytics/workspace/v2/results",
-            "/api/reports/v2",
-            "/api/analytics/workspace/v2/datasets/00000000-0000-0000-0000-000000000001/context",
-            "/api/analytics/workspace/v2/datasets/00000000-0000-0000-0000-000000000001/catalog",
-        ):
-            assert client.get(path).status_code == 404
-            assert client.post(path, json={}).status_code == 404
+def test_v2_routes_require_current_authentication() -> None:
+    # S03 activates the actual app route (the reverse proxy adds /api externally).
+    with TestClient(create_app()) as client:
+        path = "/analytics/metric-workspace/v2"
+        assert client.post(path + "/results", json={}).status_code == 401
+        for suffix in ("context", "catalog"):
+            assert (
+                client.get(
+                    path + "/datasets/00000000-0000-0000-0000-000000000001/" + suffix
+                ).status_code
+                == 401
+            )

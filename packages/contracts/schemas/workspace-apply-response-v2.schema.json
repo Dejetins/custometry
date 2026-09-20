@@ -246,6 +246,59 @@
       "title": "CardResultBinding",
       "type": "object"
     },
+    "ChartSeriesRef": {
+      "additionalProperties": false,
+      "properties": {
+        "card_id": {
+          "format": "uuid",
+          "title": "Card Id",
+          "type": "string"
+        },
+        "artifact": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "field": {
+          "enum": [
+            "net_revenue",
+            "receipt_count",
+            "average_receipt",
+            "left",
+            "right",
+            "absolute_delta",
+            "relative_delta_percent"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "axis": {
+          "enum": [
+            "left",
+            "right"
+          ],
+          "title": "Axis",
+          "type": "string"
+        },
+        "unit": {
+          "enum": [
+            "EUR",
+            "receipt",
+            "EUR/receipt",
+            "percent"
+          ],
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "card_id",
+        "artifact",
+        "field",
+        "axis",
+        "unit"
+      ],
+      "title": "ChartSeriesRef",
+      "type": "object"
+    },
     "ComparisonBucket": {
       "additionalProperties": false,
       "properties": {
@@ -1153,6 +1206,83 @@
       ],
       "title": "Workset",
       "type": "object"
+    },
+    "WorkspaceChartSpecV2": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "chart_spec_id": {
+          "format": "uuid",
+          "title": "Chart Spec Id",
+          "type": "string"
+        },
+        "workspace_id": {
+          "format": "uuid",
+          "title": "Workspace Id",
+          "type": "string"
+        },
+        "chart_type": {
+          "const": "line",
+          "title": "Chart Type",
+          "type": "string"
+        },
+        "selection": {
+          "discriminator": {
+            "mapping": {
+              "pair": "#/$defs/PairSelection",
+              "single": "#/$defs/SingleSelection"
+            },
+            "propertyName": "mode"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/SingleSelection"
+            },
+            {
+              "$ref": "#/$defs/PairSelection"
+            }
+          ],
+          "title": "Selection"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/$defs/ChartSeriesRef"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "title": "Series",
+          "type": "array"
+        },
+        "comparison": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArtifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "accessibility_table": {
+          "$ref": "#/$defs/ArtifactRef"
+        }
+      },
+      "required": [
+        "schema_version",
+        "chart_spec_id",
+        "workspace_id",
+        "chart_type",
+        "selection",
+        "series",
+        "comparison",
+        "accessibility_table"
+      ],
+      "title": "WorkspaceChartSpecV2",
+      "type": "object"
     }
   },
   "additionalProperties": false,
@@ -1220,6 +1350,13 @@
       "pattern": "^[0-9a-f]{64}$",
       "title": "Access Fingerprint",
       "type": "string"
+    },
+    "chart_payloads": {
+      "items": {
+        "$ref": "#/$defs/WorkspaceChartSpecV2"
+      },
+      "title": "Chart Payloads",
+      "type": "array"
     },
     "status": {
       "enum": [

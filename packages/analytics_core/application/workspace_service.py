@@ -40,7 +40,7 @@ class WorkspaceAnalyticsService:
         self.semantics, self.results, self.artifacts = semantics, results, artifacts
         self.calendars, self.access = calendars, access
 
-    def _access(
+    def resolve_access(
         self,
         workspace_id: UUID,
         principal_id: UUID,
@@ -62,16 +62,16 @@ class WorkspaceAnalyticsService:
             raise AnalyticsFailure("FORBIDDEN")
         return access
 
-    def _recheck(self, old: WorkspaceAccess, action: Literal["read", "run"]) -> None:
+    def recheck_access(self, old: WorkspaceAccess, action: Literal["read", "run"]) -> None:
         if (
-            self._access(
+            self.resolve_access(
                 old.workspace_id, old.principal_id, old.semantic_dataset_version_id, action
             )
             != old
         ):
             raise AnalyticsFailure("FORBIDDEN")
 
-    def _inputs(self, access: WorkspaceAccess) -> tuple[dict[str, Any], dict[str, Any]]:
+    def verified_inputs(self, access: WorkspaceAccess) -> tuple[dict[str, Any], dict[str, Any]]:
         source = self.semantics.sales_projection(
             workspace_id=access.workspace_id, version_id=access.semantic_dataset_version_id
         )
@@ -88,14 +88,14 @@ class WorkspaceAnalyticsService:
     def context(
         self, *, workspace_id: UUID, principal_id: UUID, dataset_id: UUID
     ) -> dict[str, Any]:
-        access = self._access(workspace_id, principal_id, dataset_id, "read")
-        source, inputs = self._inputs(access)
+        access = self.resolve_access(workspace_id, principal_id, dataset_id, "read")
+        source, inputs = self.verified_inputs(access)
         stores = [
             {"id": str(s["store_id"]), "label": str(s.get("store_name") or s["store_id"])}
             for s in inputs["Store"]
             if str(s["store_id"]) in access.allowed_store_ids
         ]
-        self._recheck(access, "read")
+        self.recheck_access(access, "read")
         return {
             "schema_version": "workspace-context/v2",
             "semantic_dataset_version_id": str(dataset_id),
@@ -107,10 +107,10 @@ class WorkspaceAnalyticsService:
     def run(
         self, *, workspace_id: UUID, principal_id: UUID, request: WorkspaceRunRequest
     ) -> WorkspaceResultV2:
-        access = self._access(
+        access = self.resolve_access(
             workspace_id, principal_id, request.semantic_dataset_version_id, "run"
         )
-        source, inputs = self._inputs(access)
+        source, inputs = self.verified_inputs(access)
         calendar = self.calendars.get_version(request.calendar_ref, access)
         _, request_hash = normalize(request, source, inputs, access, calendar)
         existing = self.results.find_sales(
@@ -118,7 +118,7 @@ class WorkspaceAnalyticsService:
         )
         if existing is None:
             payload = build_workspace(request, source, inputs, access, calendar)
-            self._recheck(access, "run")
+            self.recheck_access(access, "run")
             payload["manifest"] = self.artifacts.commit_workspace(
                 workspace_id=workspace_id, payload=payload, bindings=source["bindings"]
             )
@@ -127,13 +127,13 @@ class WorkspaceAnalyticsService:
                 payload, workspace_id=workspace_id, principal_id=principal_id
             )
         self.artifacts.verify_workspace(workspace_id=workspace_id, payload=existing)
-        self._recheck(access, "run")
+        self.recheck_access(access, "run")
         return WorkspaceResultV2.model_validate(existing)
 
     def get(
         self, *, workspace_id: UUID, principal_id: UUID, dataset_id: UUID, result_id: UUID
     ) -> WorkspaceResultV2:
-        access = self._access(workspace_id, principal_id, dataset_id, "read")
+        access = self.resolve_access(workspace_id, principal_id, dataset_id, "read")
         payload = self.results.get_sales(
             workspace_id=workspace_id, principal_id=principal_id, result_id=result_id
         )
@@ -145,12 +145,12 @@ class WorkspaceAnalyticsService:
         ):
             raise AnalyticsFailure("FORBIDDEN")
         # Verify admitted input integrity as well as the immutable output.
-        source, _ = self._inputs(access)
+        source, _ = self.verified_inputs(access)
         if result.publication_hash != source["publication_hash"]:
             raise AnalyticsFailure("ARTIFACT_BINDING_MISMATCH")
         self.calendars.get_version(result.effective_context.calendar_ref, access)
         self.artifacts.verify_workspace(workspace_id=workspace_id, payload=payload)
-        self._recheck(access, "read")
+        self.recheck_access(access, "read")
         return result
 
     def apply(
@@ -168,8 +168,8 @@ class WorkspaceAnalyticsService:
                 raise AnalyticsFailure("METRIC_BASIS_MISMATCH")
             dataset = request.semantic_dataset_version_id
             if dataset not in loaded:
-                a = self._access(workspace_id, principal_id, dataset, "run")
-                source, inputs = self._inputs(a)
+                a = self.resolve_access(workspace_id, principal_id, dataset, "run")
+                source, inputs = self.verified_inputs(a)
                 loaded[dataset] = a, source, inputs
             a, source, inputs = loaded[dataset]
             calendar = self.calendars.get_version(request.calendar_ref, a)
@@ -205,7 +205,7 @@ class WorkspaceAnalyticsService:
                 )
             )
         for a, _, _ in loaded.values():
-            self._recheck(a, "run")
+            self.recheck_access(a, "run")
         return WorkspaceApplyResult(results=list(results.values()), bindings=bindings)
 
     def compare(
@@ -326,7 +326,7 @@ class WorkspaceAnalyticsService:
             "totals": total,
             "coverage": cov,
         }
-        access = self._access(workspace_id, principal_id, dataset_id, "read")
+        access = self.resolve_access(workspace_id, principal_id, dataset_id, "read")
         if (
             access.policy_hash != left_result.policy_hash
             or access.policy_hash != right_result.policy_hash
@@ -341,5 +341,50 @@ class WorkspaceAnalyticsService:
             ],
         )
         self.artifacts.verify_workspace(workspace_id=workspace_id, payload=payload)
-        self._recheck(access, "read")
+        self.recheck_access(access, "read")
         return CardComparisonV1.model_validate(payload)
+
+    def verify_query(
+        self,
+        *,
+        workspace_id: UUID,
+        principal_id: UUID,
+        request: WorkspaceRunRequest,
+        result_id: UUID,
+    ) -> WorkspaceResultV2:
+        """Exact binding verification without computing or silently rebasing a saved result."""
+        access = self.resolve_access(
+            workspace_id, principal_id, request.semantic_dataset_version_id, "read"
+        )
+        source, inputs = self.verified_inputs(access)
+        calendar = self.calendars.get_version(request.calendar_ref, access)
+        _, expected = normalize(request, source, inputs, access, calendar)
+        stored = self.results.get_sales(
+            workspace_id=workspace_id, principal_id=principal_id, result_id=result_id
+        )
+        if stored.get("policy_hash") != access.policy_hash:
+            raise AnalyticsFailure("ACCESS_CONTEXT_CHANGED")
+        result = self.get(
+            workspace_id=workspace_id,
+            principal_id=principal_id,
+            dataset_id=request.semantic_dataset_version_id,
+            result_id=result_id,
+        )
+        if (
+            result.request_hash != expected
+            and request.alignment == "none"
+            and result.effective_context.alignment == "previous_year_same_dates"
+        ):
+            # Display-only removal/pair selection can retain an already verified richer
+            # artifact. Enabling absent temporal data still requires explicit compute.
+            _, expected = normalize(
+                request.model_copy(update={"alignment": "previous_year_same_dates"}),
+                source,
+                inputs,
+                access,
+                calendar,
+            )
+        if result.request_hash != expected:
+            raise AnalyticsFailure("RESULT_BINDING_MISMATCH")
+        self.recheck_access(access, "read")
+        return result

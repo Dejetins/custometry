@@ -1907,6 +1907,24 @@
       "title": "SystemCompanyPackV1",
       "type": "object"
     },
+    "VersionedReport": {
+      "discriminator": {
+        "mapping": {
+          "configured-report/v2": "#/$defs/WorkspaceReportResponse",
+          "draft-report/v1": "#/$defs/DraftResponse"
+        },
+        "propertyName": "contract_version"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DraftResponse"
+        },
+        {
+          "$ref": "#/$defs/WorkspaceReportResponse"
+        }
+      ],
+      "title": "VersionedReport"
+    },
     "Workset": {
       "additionalProperties": false,
       "properties": {
@@ -2205,20 +2223,54 @@
       "type": "object"
     }
   },
-  "discriminator": {
-    "mapping": {
-      "configured-report/v2": "#/$defs/WorkspaceReportResponse",
-      "draft-report/v1": "#/$defs/DraftResponse"
+  "additionalProperties": false,
+  "description": "Editor projection keeps original snapshot bytes separate from its v2 configuration.",
+  "properties": {
+    "contract_version": {
+      "const": "workspace-editor/v2",
+      "default": "workspace-editor/v2",
+      "title": "Contract Version",
+      "type": "string"
     },
-    "propertyName": "contract_version"
-  },
-  "oneOf": [
-    {
-      "$ref": "#/$defs/DraftResponse"
+    "report": {
+      "$ref": "#/$defs/VersionedReport"
     },
-    {
-      "$ref": "#/$defs/WorkspaceReportResponse"
+    "definition": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ConfiguredReportV2"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "base_definition": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ConfiguredReportV2"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "capabilities": {
+      "$ref": "#/$defs/ReportCapabilities"
+    },
+    "saved_view_revision": {
+      "minimum": 0,
+      "title": "Saved View Revision",
+      "type": "integer"
     }
+  },
+  "required": [
+    "report",
+    "definition",
+    "base_definition",
+    "capabilities",
+    "saved_view_revision"
   ],
-  "title": "VersionedReport"
+  "title": "WorkspaceEditorResponse",
+  "type": "object"
 }

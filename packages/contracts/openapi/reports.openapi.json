@@ -5,6 +5,348 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/v2/{report_id}": {
+      "get": {
+        "summary": "Get",
+        "operationId": "get_v2__report_id__get",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceEditorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/{report_id}/snapshots/{snapshot_id}": {
+      "get": {
+        "summary": "Snapshot",
+        "operationId": "snapshot_v2__report_id__snapshots__snapshot_id__get",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          },
+          {
+            "name": "snapshot_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Snapshot Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceEditorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/{report_id}/apply": {
+      "post": {
+        "summary": "Apply",
+        "operationId": "apply_v2__report_id__apply_post",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkspaceApplyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceApplyResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/{report_id}/versions": {
+      "post": {
+        "summary": "Save",
+        "operationId": "save_v2__report_id__versions_post",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkspaceSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceReportResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/{report_id}/saved-views": {
+      "get": {
+        "summary": "Views",
+        "operationId": "views_v2__report_id__saved_views_get",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SavedViewV1"
+                  },
+                  "title": "Response Views V2  Report Id  Saved Views Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create View",
+        "operationId": "create_view_v2__report_id__saved_views_post",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveViewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedViewV1"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/{report_id}/saved-views/{saved_view_id}/versions": {
+      "post": {
+        "summary": "Save View",
+        "operationId": "save_view_v2__report_id__saved_views__saved_view_id__versions_post",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          },
+          {
+            "name": "saved_view_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Saved View Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveViewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedViewV1"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/prepare": {
       "post": {
         "summary": "Prepare",
@@ -539,6 +881,200 @@
         ],
         "title": "AnalyticalDocumentCompositionV1"
       },
+      "AnalyticalDocumentCompositionV2": {
+        "properties": {
+          "composition_schema_version": {
+            "type": "integer",
+            "const": 2,
+            "title": "Composition Schema Version"
+          },
+          "analytical_document_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Analytical Document Version Id"
+          },
+          "analytical_document_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Analytical Document Id"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "profile": {
+            "type": "string",
+            "const": "workbook_report",
+            "title": "Profile"
+          },
+          "source_owner_ref": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Source Owner Ref"
+          },
+          "navigation_mode": {
+            "type": "string",
+            "const": "tabs",
+            "title": "Navigation Mode"
+          },
+          "default_page_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Default Page Id"
+          },
+          "chapters": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Chapters"
+          },
+          "pages": {
+            "items": {
+              "$ref": "#/components/schemas/Page"
+            },
+            "type": "array",
+            "title": "Pages"
+          },
+          "sections": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceSection"
+            },
+            "type": "array",
+            "title": "Sections"
+          },
+          "blocks": {
+            "items": {
+              "$ref": "#/components/schemas/Block"
+            },
+            "type": "array",
+            "title": "Blocks"
+          },
+          "brand_profile_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Brand Profile Version Id"
+          },
+          "access_policy_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Access Policy Id"
+          },
+          "filter_scope_bindings": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceFilterBinding"
+            },
+            "type": "array",
+            "title": "Filter Scope Bindings"
+          },
+          "definition": {
+            "$ref": "#/components/schemas/ConfiguredReportV2"
+          },
+          "chart_specs": {
+            "items": {
+              "$ref": "#/components/schemas/Reference"
+            },
+            "type": "array",
+            "title": "Chart Specs"
+          },
+          "bindings_by_card": {
+            "items": {
+              "$ref": "#/components/schemas/CardResultBinding"
+            },
+            "type": "array",
+            "title": "Bindings By Card"
+          },
+          "comparisons": {
+            "items": {
+              "$ref": "#/components/schemas/CardComparisonV1"
+            },
+            "type": "array",
+            "title": "Comparisons"
+          },
+          "chart_payloads": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceChartSpecV2"
+            },
+            "type": "array",
+            "title": "Chart Payloads"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "composition_schema_version",
+          "analytical_document_version_id",
+          "analytical_document_id",
+          "workspace_id",
+          "profile",
+          "source_owner_ref",
+          "navigation_mode",
+          "default_page_id",
+          "chapters",
+          "pages",
+          "sections",
+          "blocks",
+          "brand_profile_version_id",
+          "access_policy_id",
+          "filter_scope_bindings",
+          "definition",
+          "chart_specs",
+          "bindings_by_card"
+        ],
+        "title": "AnalyticalDocumentCompositionV2"
+      },
+      "ArtifactRef": {
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Artifact Id"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Content Hash"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "artifact_id",
+          "content_hash"
+        ],
+        "title": "ArtifactRef"
+      },
+      "BaseSnapshotRef": {
+        "properties": {
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Snapshot Id"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version_id",
+          "snapshot_id",
+          "manifest"
+        ],
+        "title": "BaseSnapshotRef"
+      },
       "Block": {
         "properties": {
           "block_id": {
@@ -615,6 +1151,257 @@
         ],
         "title": "BrandProfileObject"
       },
+      "CalendarRef": {
+        "properties": {
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Content Hash"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version_id",
+          "content_hash"
+        ],
+        "title": "CalendarRef"
+      },
+      "Card": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Card Id"
+          },
+          "metric_ref": {
+            "$ref": "#/components/schemas/MetricRef"
+          },
+          "local_store_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "type": "array",
+                "maxItems": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Local Store Ids"
+          },
+          "population_binding": {
+            "type": "null",
+            "title": "Population Binding"
+          },
+          "target_action_binding": {
+            "type": "null",
+            "title": "Target Action Binding"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "card_id",
+          "metric_ref",
+          "local_store_ids"
+        ],
+        "title": "Card"
+      },
+      "CardComparisonV1": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "card-comparison/v1",
+            "title": "Schema Version"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "temporal",
+              "pair"
+            ],
+            "title": "Mode"
+          },
+          "left": {
+            "$ref": "#/components/schemas/ComparisonSide"
+          },
+          "right": {
+            "$ref": "#/components/schemas/ComparisonSide"
+          },
+          "comparability_status": {
+            "type": "string",
+            "enum": [
+              "comparable",
+              "descriptive",
+              "unavailable"
+            ],
+            "title": "Comparability Status"
+          },
+          "buckets": {
+            "items": {
+              "$ref": "#/components/schemas/ComparisonBucket"
+            },
+            "type": "array",
+            "title": "Buckets"
+          },
+          "totals": {
+            "$ref": "#/components/schemas/ComparisonValues"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "mode",
+          "left",
+          "right",
+          "comparability_status",
+          "buckets",
+          "totals",
+          "coverage",
+          "manifest"
+        ],
+        "title": "CardComparisonV1"
+      },
+      "CardResultBinding": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Card Id"
+          },
+          "metric_ref": {
+            "$ref": "#/components/schemas/MetricRef"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ResultRef"
+          },
+          "effective_context_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Effective Context Hash"
+          },
+          "configuration_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Configuration Hash"
+          },
+          "bucket_projection": {
+            "type": "string",
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt"
+            ],
+            "title": "Bucket Projection"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "receipt",
+              "EUR/receipt"
+            ],
+            "title": "Unit"
+          },
+          "format": {
+            "$ref": "#/components/schemas/NumberFormat"
+          },
+          "readiness": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "no_data",
+              "comparison_unavailable"
+            ],
+            "title": "Readiness"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "card_id",
+          "metric_ref",
+          "result",
+          "effective_context_hash",
+          "configuration_hash",
+          "bucket_projection",
+          "unit",
+          "format",
+          "readiness"
+        ],
+        "title": "CardResultBinding"
+      },
+      "ChartSeriesRef": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Card Id"
+          },
+          "artifact": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          },
+          "field": {
+            "type": "string",
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt",
+              "left",
+              "right",
+              "absolute_delta",
+              "relative_delta_percent"
+            ],
+            "title": "Field"
+          },
+          "axis": {
+            "type": "string",
+            "enum": [
+              "left",
+              "right"
+            ],
+            "title": "Axis"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "receipt",
+              "EUR/receipt",
+              "percent"
+            ],
+            "title": "Unit"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "card_id",
+          "artifact",
+          "field",
+          "axis",
+          "unit"
+        ],
+        "title": "ChartSeriesRef"
+      },
       "ChartSpecObject": {
         "properties": {
           "reference": {
@@ -660,6 +1447,456 @@
           "payload"
         ],
         "title": "CompanyPackObject"
+      },
+      "ComparisonBucket": {
+        "properties": {
+          "left_coverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "right_coverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "left": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Left"
+          },
+          "right": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Right"
+          },
+          "absolute_delta": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Absolute Delta"
+          },
+          "relative_delta_percent": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relative Delta Percent"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes"
+          },
+          "bucket_id": {
+            "type": "string",
+            "title": "Bucket Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "left_coverage",
+          "right_coverage",
+          "left",
+          "right",
+          "absolute_delta",
+          "relative_delta_percent",
+          "reason_codes",
+          "bucket_id"
+        ],
+        "title": "ComparisonBucket"
+      },
+      "ComparisonSide": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Card Id"
+          },
+          "metric_ref": {
+            "$ref": "#/components/schemas/MetricRef"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ResultRef"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "receipt",
+              "EUR/receipt"
+            ],
+            "title": "Unit"
+          },
+          "format": {
+            "$ref": "#/components/schemas/NumberFormat"
+          },
+          "context": {
+            "$ref": "#/components/schemas/EffectiveContext"
+          },
+          "baseline_dates": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baseline Dates"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "card_id",
+          "metric_ref",
+          "result",
+          "unit",
+          "format",
+          "context",
+          "baseline_dates"
+        ],
+        "title": "ComparisonSide"
+      },
+      "ComparisonValues": {
+        "properties": {
+          "left_coverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "right_coverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "left": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Left"
+          },
+          "right": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Right"
+          },
+          "absolute_delta": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Absolute Delta"
+          },
+          "relative_delta_percent": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relative Delta Percent"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "left_coverage",
+          "right_coverage",
+          "left",
+          "right",
+          "absolute_delta",
+          "relative_delta_percent",
+          "reason_codes"
+        ],
+        "title": "ComparisonValues"
+      },
+      "ConfiguredReportV2": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "configured-report/v2",
+            "title": "Schema Version"
+          },
+          "report_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Report Id"
+          },
+          "creator_principal_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Creator Principal Id"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "\\S",
+            "title": "Title"
+          },
+          "semantic_dataset_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Semantic Dataset Version Id"
+          },
+          "common_context": {
+            "$ref": "#/components/schemas/QueryContext"
+          },
+          "grain": {
+            "type": "string",
+            "enum": [
+              "day",
+              "week",
+              "month",
+              "quarter",
+              "half_year",
+              "year"
+            ],
+            "title": "Grain"
+          },
+          "calendar_ref": {
+            "$ref": "#/components/schemas/CalendarRef"
+          },
+          "calendar_basis": {
+            "type": "string",
+            "enum": [
+              "calendar",
+              "fiscal"
+            ],
+            "title": "Calendar Basis"
+          },
+          "worksets": {
+            "items": {
+              "$ref": "#/components/schemas/Workset"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Worksets"
+          },
+          "default_workset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Default Workset Id"
+          },
+          "selection": {
+            "anyOf": [
+              {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SingleSelection"
+                  },
+                  {
+                    "$ref": "#/components/schemas/PairSelection"
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "mode",
+                  "mapping": {
+                    "pair": "#/components/schemas/PairSelection",
+                    "single": "#/components/schemas/SingleSelection"
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selection"
+          },
+          "brand_profile": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "company_pack": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "base_snapshot_ref": {
+            "$ref": "#/components/schemas/BaseSnapshotRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "report_id",
+          "creator_principal_id",
+          "title",
+          "semantic_dataset_version_id",
+          "common_context",
+          "grain",
+          "calendar_ref",
+          "calendar_basis",
+          "worksets",
+          "default_workset_id",
+          "selection",
+          "brand_profile",
+          "company_pack",
+          "base_snapshot_ref"
+        ],
+        "title": "ConfiguredReportV2"
+      },
+      "Coverage": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "complete",
+              "partial",
+              "unavailable"
+            ],
+            "title": "State"
+          },
+          "expected_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Days"
+          },
+          "calendar_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Calendar Days"
+          },
+          "declared_complete_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Declared Complete Days"
+          },
+          "observed_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Observed Days"
+          },
+          "eligible_receipts": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Eligible Receipts"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "state",
+          "expected_days",
+          "calendar_days",
+          "declared_complete_days",
+          "observed_days",
+          "eligible_receipts",
+          "reason_codes"
+        ],
+        "title": "Coverage"
+      },
+      "CreatorApplyRequest": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "configured-report/v2",
+            "title": "Contract Version"
+          },
+          "mode": {
+            "type": "string",
+            "const": "creator",
+            "title": "Mode"
+          },
+          "base_revision": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Base Revision"
+          },
+          "definition": {
+            "$ref": "#/components/schemas/ConfiguredReportV2"
+          },
+          "reuse_result_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reuse Result Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "mode",
+          "base_revision",
+          "definition"
+        ],
+        "title": "CreatorApplyRequest"
       },
       "DraftResponse": {
         "properties": {
@@ -752,6 +1989,86 @@
           "manifest"
         ],
         "title": "DraftResponse"
+      },
+      "EffectiveContext": {
+        "properties": {
+          "starts_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Starts On"
+          },
+          "ends_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Ends On"
+          },
+          "store_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "type": "array",
+            "maxItems": 1000,
+            "title": "Store Ids"
+          },
+          "grain": {
+            "type": "string",
+            "enum": [
+              "day",
+              "week",
+              "month",
+              "quarter",
+              "half_year",
+              "year"
+            ],
+            "title": "Grain"
+          },
+          "calendar_ref": {
+            "$ref": "#/components/schemas/CalendarRef"
+          },
+          "calendar_basis": {
+            "type": "string",
+            "enum": [
+              "calendar",
+              "fiscal"
+            ],
+            "title": "Calendar Basis"
+          },
+          "timezone": {
+            "type": "string",
+            "const": "UTC",
+            "title": "Timezone",
+            "default": "UTC"
+          },
+          "week_start": {
+            "type": "string",
+            "const": "monday",
+            "title": "Week Start",
+            "default": "monday"
+          },
+          "alignment": {
+            "type": "string",
+            "enum": [
+              "none",
+              "previous_year_same_dates"
+            ],
+            "title": "Alignment"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "starts_on",
+          "ends_on",
+          "store_ids",
+          "grain",
+          "calendar_ref",
+          "calendar_basis",
+          "alignment"
+        ],
+        "title": "EffectiveContext"
       },
       "HTTPValidationError": {
         "properties": {
@@ -911,6 +2228,78 @@
         ],
         "title": "LineChartSpecV1"
       },
+      "LocalizedName": {
+        "properties": {
+          "ru": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "\\S",
+            "title": "Ru"
+          },
+          "en": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "\\S",
+            "title": "En"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ru",
+          "en"
+        ],
+        "title": "LocalizedName"
+      },
+      "MetricRef": {
+        "properties": {
+          "metric_id": {
+            "type": "string",
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt"
+            ],
+            "title": "Metric Id"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Content Hash"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "metric_id",
+          "version_id",
+          "content_hash"
+        ],
+        "title": "MetricRef"
+      },
+      "NumberFormat": {
+        "properties": {
+          "decimal_places": {
+            "type": "integer",
+            "maximum": 2.0,
+            "minimum": 0.0,
+            "title": "Decimal Places"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "decimal_places"
+        ],
+        "title": "NumberFormat"
+      },
       "Page": {
         "properties": {
           "page_id": {
@@ -954,6 +2343,39 @@
           "layout_mode"
         ],
         "title": "Page"
+      },
+      "PairSelection": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "const": "pair",
+            "title": "Mode"
+          },
+          "left_card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Left Card Id"
+          },
+          "right_card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Right Card Id"
+          },
+          "display": {
+            "type": "string",
+            "const": "series",
+            "title": "Display"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mode",
+          "left_card_id",
+          "right_card_id",
+          "display"
+        ],
+        "title": "PairSelection"
       },
       "PrepareRequest": {
         "properties": {
@@ -1003,6 +2425,94 @@
         ],
         "title": "PreparedResponse"
       },
+      "QueryContext": {
+        "properties": {
+          "starts_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Starts On"
+          },
+          "ends_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Ends On"
+          },
+          "store_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "type": "array",
+                "maxItems": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Store Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "starts_on",
+          "ends_on",
+          "store_ids"
+        ],
+        "title": "QueryContext"
+      },
+      "ReaderApplyRequest": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "configured-report/v2",
+            "title": "Contract Version"
+          },
+          "mode": {
+            "type": "string",
+            "const": "reader",
+            "title": "Mode"
+          },
+          "base_revision": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Base Revision"
+          },
+          "view_override": {
+            "$ref": "#/components/schemas/ReaderViewOverride"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "mode",
+          "base_revision",
+          "view_override"
+        ],
+        "title": "ReaderApplyRequest"
+      },
+      "ReaderViewOverride": {
+        "properties": {
+          "query_context": {
+            "$ref": "#/components/schemas/ViewQueryContext"
+          },
+          "display": {
+            "$ref": "#/components/schemas/ViewDisplay"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "query_context",
+          "display"
+        ],
+        "title": "ReaderViewOverride"
+      },
       "Reference": {
         "properties": {
           "id": {
@@ -1023,6 +2533,35 @@
           "content_hash"
         ],
         "title": "Reference"
+      },
+      "ReportCapabilities": {
+        "properties": {
+          "definition_edit": {
+            "type": "boolean",
+            "title": "Definition Edit"
+          },
+          "view_apply": {
+            "type": "boolean",
+            "title": "View Apply"
+          },
+          "saved_view_save": {
+            "type": "boolean",
+            "title": "Saved View Save"
+          },
+          "exact_preview": {
+            "type": "boolean",
+            "title": "Exact Preview"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "definition_edit",
+          "view_apply",
+          "saved_view_save",
+          "exact_preview"
+        ],
+        "title": "ReportCapabilities"
       },
       "ReportList": {
         "properties": {
@@ -1094,6 +2633,31 @@
         ],
         "title": "ReportSummary"
       },
+      "ResultRef": {
+        "properties": {
+          "result_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Result Id"
+          },
+          "schema_version": {
+            "type": "string",
+            "const": "metric-workspace/v2",
+            "title": "Schema Version"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "result_id",
+          "schema_version",
+          "manifest"
+        ],
+        "title": "ResultRef"
+      },
       "SaveRequest": {
         "properties": {
           "contract_version": {
@@ -1147,6 +2711,153 @@
         ],
         "title": "SaveRequest"
       },
+      "SaveViewRequest": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "saved-view/v1",
+            "title": "Contract Version"
+          },
+          "document_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Document Version Id"
+          },
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Revision"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Idempotency Key"
+          },
+          "view_override": {
+            "$ref": "#/components/schemas/ReaderViewOverride"
+          },
+          "result_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Result Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "document_version_id",
+          "expected_revision",
+          "idempotency_key",
+          "view_override",
+          "result_ids"
+        ],
+        "title": "SaveViewRequest"
+      },
+      "SavedViewV1": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "saved-view/v1",
+            "title": "Schema Version"
+          },
+          "saved_view_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Saved View Id"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "revision": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Revision"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "owner_principal_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Owner Principal Id"
+          },
+          "report_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Report Id"
+          },
+          "document_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Document Version Id"
+          },
+          "document_content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Document Content Hash"
+          },
+          "calendar_ref": {
+            "$ref": "#/components/schemas/CalendarRef"
+          },
+          "calendar_basis": {
+            "type": "string",
+            "enum": [
+              "calendar",
+              "fiscal"
+            ],
+            "title": "Calendar Basis"
+          },
+          "page_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Page Ids"
+          },
+          "result_scope": {
+            "items": {
+              "$ref": "#/components/schemas/CardResultBinding"
+            },
+            "type": "array",
+            "title": "Result Scope"
+          },
+          "query_context": {
+            "$ref": "#/components/schemas/ViewQueryContext"
+          },
+          "display": {
+            "$ref": "#/components/schemas/ViewDisplay"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "saved_view_id",
+          "version_id",
+          "revision",
+          "workspace_id",
+          "owner_principal_id",
+          "report_id",
+          "document_version_id",
+          "document_content_hash",
+          "calendar_ref",
+          "calendar_basis",
+          "page_ids",
+          "result_scope",
+          "query_context",
+          "display"
+        ],
+        "title": "SavedViewV1"
+      },
       "Section": {
         "properties": {
           "section_id": {
@@ -1180,6 +2891,45 @@
           "order"
         ],
         "title": "Section"
+      },
+      "SingleSelection": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "const": "single",
+            "title": "Mode"
+          },
+          "card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Card Id"
+          },
+          "temporal": {
+            "type": "string",
+            "enum": [
+              "none",
+              "previous_year_same_dates"
+            ],
+            "title": "Temporal"
+          },
+          "display": {
+            "type": "string",
+            "enum": [
+              "series",
+              "delta_trend"
+            ],
+            "title": "Display"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mode",
+          "card_id",
+          "temporal",
+          "display"
+        ],
+        "title": "SingleSelection"
       },
       "SystemBrandProfileV1": {
         "properties": {
@@ -1349,6 +3099,686 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "VersionedReport": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DraftResponse"
+          },
+          {
+            "$ref": "#/components/schemas/WorkspaceReportResponse"
+          }
+        ],
+        "title": "VersionedReport",
+        "discriminator": {
+          "propertyName": "contract_version",
+          "mapping": {
+            "configured-report/v2": "#/components/schemas/WorkspaceReportResponse",
+            "draft-report/v1": "#/components/schemas/DraftResponse"
+          }
+        }
+      },
+      "ViewDisplay": {
+        "properties": {
+          "active_workset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Workset Id"
+          },
+          "selection": {
+            "anyOf": [
+              {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SingleSelection"
+                  },
+                  {
+                    "$ref": "#/components/schemas/PairSelection"
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "mode",
+                  "mapping": {
+                    "pair": "#/components/schemas/PairSelection",
+                    "single": "#/components/schemas/SingleSelection"
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selection"
+          },
+          "card_order": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Card Order"
+          },
+          "hidden_card_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Hidden Card Ids"
+          },
+          "representation": {
+            "type": "string",
+            "enum": [
+              "chart",
+              "table"
+            ],
+            "title": "Representation"
+          },
+          "density": {
+            "type": "string",
+            "enum": [
+              "comfortable",
+              "compact"
+            ],
+            "title": "Density"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "active_workset_id",
+          "selection",
+          "card_order",
+          "hidden_card_ids",
+          "representation",
+          "density"
+        ],
+        "title": "ViewDisplay"
+      },
+      "ViewQueryContext": {
+        "properties": {
+          "starts_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Starts On"
+          },
+          "ends_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Ends On"
+          },
+          "store_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "type": "array",
+                "maxItems": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Store Ids"
+          },
+          "grain": {
+            "type": "string",
+            "enum": [
+              "day",
+              "week",
+              "month",
+              "quarter",
+              "half_year",
+              "year"
+            ],
+            "title": "Grain"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "starts_on",
+          "ends_on",
+          "store_ids",
+          "grain"
+        ],
+        "title": "ViewQueryContext"
+      },
+      "Workset": {
+        "properties": {
+          "workset_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workset Id"
+          },
+          "name": {
+            "$ref": "#/components/schemas/LocalizedName"
+          },
+          "visibility": {
+            "type": "string",
+            "const": "personal",
+            "title": "Visibility"
+          },
+          "owner_principal_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Owner Principal Id"
+          },
+          "cards": {
+            "items": {
+              "$ref": "#/components/schemas/Card"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Cards"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "workset_id",
+          "name",
+          "visibility",
+          "owner_principal_id",
+          "cards"
+        ],
+        "title": "Workset"
+      },
+      "WorkspaceApplyRequest": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreatorApplyRequest"
+          },
+          {
+            "$ref": "#/components/schemas/ReaderApplyRequest"
+          }
+        ],
+        "title": "WorkspaceApplyRequest",
+        "discriminator": {
+          "propertyName": "mode",
+          "mapping": {
+            "creator": "#/components/schemas/CreatorApplyRequest",
+            "reader": "#/components/schemas/ReaderApplyRequest"
+          }
+        }
+      },
+      "WorkspaceApplyResponse": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "configured-report/v2",
+            "title": "Contract Version"
+          },
+          "configuration_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Configuration Hash"
+          },
+          "definition": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ConfiguredReportV2"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "view_context": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReaderViewOverride"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "bindings_by_card": {
+            "items": {
+              "$ref": "#/components/schemas/CardResultBinding"
+            },
+            "type": "array",
+            "title": "Bindings By Card"
+          },
+          "comparison": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CardComparisonV1"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "chart_specs": {
+            "items": {
+              "$ref": "#/components/schemas/Reference"
+            },
+            "type": "array",
+            "title": "Chart Specs"
+          },
+          "base_revision": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Base Revision"
+          },
+          "access_fingerprint": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Access Fingerprint"
+          },
+          "chart_payloads": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceChartSpecV2"
+            },
+            "type": "array",
+            "title": "Chart Payloads"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "no_data",
+              "comparison_unavailable"
+            ],
+            "title": "Status"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "configuration_hash",
+          "definition",
+          "view_context",
+          "bindings_by_card",
+          "comparison",
+          "chart_specs",
+          "base_revision",
+          "access_fingerprint",
+          "status"
+        ],
+        "title": "WorkspaceApplyResponse"
+      },
+      "WorkspaceChartSpecV2": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "2.0.0",
+            "title": "Schema Version"
+          },
+          "chart_spec_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Chart Spec Id"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "chart_type": {
+            "type": "string",
+            "const": "line",
+            "title": "Chart Type"
+          },
+          "selection": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SingleSelection"
+              },
+              {
+                "$ref": "#/components/schemas/PairSelection"
+              }
+            ],
+            "title": "Selection",
+            "discriminator": {
+              "propertyName": "mode",
+              "mapping": {
+                "pair": "#/components/schemas/PairSelection",
+                "single": "#/components/schemas/SingleSelection"
+              }
+            }
+          },
+          "series": {
+            "items": {
+              "$ref": "#/components/schemas/ChartSeriesRef"
+            },
+            "type": "array",
+            "maxItems": 2,
+            "minItems": 1,
+            "title": "Series"
+          },
+          "comparison": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ArtifactRef"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "accessibility_table": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "chart_spec_id",
+          "workspace_id",
+          "chart_type",
+          "selection",
+          "series",
+          "comparison",
+          "accessibility_table"
+        ],
+        "title": "WorkspaceChartSpecV2"
+      },
+      "WorkspaceEditorResponse": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "workspace-editor/v2",
+            "title": "Contract Version",
+            "default": "workspace-editor/v2"
+          },
+          "report": {
+            "$ref": "#/components/schemas/VersionedReport"
+          },
+          "definition": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ConfiguredReportV2"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "base_definition": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ConfiguredReportV2"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "capabilities": {
+            "$ref": "#/components/schemas/ReportCapabilities"
+          },
+          "saved_view_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Saved View Revision"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "report",
+          "definition",
+          "base_definition",
+          "capabilities",
+          "saved_view_revision"
+        ],
+        "title": "WorkspaceEditorResponse",
+        "description": "Editor projection keeps original snapshot bytes separate from its v2 configuration."
+      },
+      "WorkspaceFilterBinding": {
+        "properties": {
+          "scope": {
+            "type": "string",
+            "enum": [
+              "document",
+              "workset",
+              "card"
+            ],
+            "title": "Scope"
+          },
+          "scope_resource_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Scope Resource Id"
+          },
+          "expression": {
+            "$ref": "#/components/schemas/QueryContext"
+          },
+          "combine_mode": {
+            "type": "string",
+            "const": "intersect",
+            "title": "Combine Mode"
+          },
+          "linked_target_block_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Linked Target Block Ids"
+          },
+          "precedence": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "security",
+                "system_locked",
+                "source_metric",
+                "document",
+                "card"
+              ]
+            },
+            "type": "array",
+            "title": "Precedence"
+          },
+          "policy_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Policy Hash"
+          },
+          "owner_principal_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Owner Principal Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scope",
+          "scope_resource_id",
+          "expression",
+          "combine_mode",
+          "linked_target_block_ids",
+          "precedence",
+          "policy_hash",
+          "owner_principal_id"
+        ],
+        "title": "WorkspaceFilterBinding"
+      },
+      "WorkspaceReportResponse": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "configured-report/v2",
+            "title": "Contract Version"
+          },
+          "report_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Report Id"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Revision"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Snapshot Id"
+          },
+          "author_principal_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Author Principal Id"
+          },
+          "saved_at": {
+            "type": "string",
+            "title": "Saved At"
+          },
+          "composition": {
+            "$ref": "#/components/schemas/AnalyticalDocumentCompositionV2"
+          },
+          "saved_view": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          },
+          "page_manifests": {
+            "items": {
+              "$ref": "#/components/schemas/ArtifactRef"
+            },
+            "type": "array",
+            "title": "Page Manifests"
+          },
+          "capabilities": {
+            "$ref": "#/components/schemas/ReportCapabilities"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "report_id",
+          "revision",
+          "version_id",
+          "snapshot_id",
+          "author_principal_id",
+          "saved_at",
+          "composition",
+          "saved_view",
+          "manifest",
+          "page_manifests",
+          "capabilities"
+        ],
+        "title": "WorkspaceReportResponse"
+      },
+      "WorkspaceSaveRequest": {
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "configured-report/v2",
+            "title": "Contract Version"
+          },
+          "definition": {
+            "$ref": "#/components/schemas/ConfiguredReportV2"
+          },
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Expected Revision"
+          },
+          "expected_saved_view_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Saved View Revision"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Idempotency Key"
+          },
+          "configuration_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Configuration Hash"
+          },
+          "result_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Result Ids"
+          },
+          "chart_specs": {
+            "items": {
+              "$ref": "#/components/schemas/Reference"
+            },
+            "type": "array",
+            "title": "Chart Specs"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_version",
+          "definition",
+          "expected_revision",
+          "expected_saved_view_revision",
+          "idempotency_key",
+          "configuration_hash",
+          "result_ids",
+          "chart_specs"
+        ],
+        "title": "WorkspaceSaveRequest"
+      },
+      "WorkspaceSection": {
+        "properties": {
+          "section_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Section Id"
+          },
+          "page_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Page Id"
+          },
+          "parent_section_id": {
+            "type": "null",
+            "title": "Parent Section Id"
+          },
+          "order": {
+            "type": "integer",
+            "title": "Order"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedName"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "section_id",
+          "page_id",
+          "order",
+          "title"
+        ],
+        "title": "WorkspaceSection"
       }
     }
   }

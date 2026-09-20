@@ -10,6 +10,8 @@ from uuid import UUID
 import psycopg
 from fastapi import Depends, FastAPI, Header, Query, Request, status
 from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+from fastapi.exception_handlers import request_validation_exception_handler
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from custometry_api.analytics.sales_models import SalesRunRequest, SalesResponse, SalesContext
@@ -237,8 +239,41 @@ def create_analytics_app(
     )
 
     @app.exception_handler(AnalyticsFailure)
-    async def analytics_failure_handler(_: Request, exc: AnalyticsFailure) -> JSONResponse:
+    async def analytics_failure_handler(request: Request, exc: AnalyticsFailure) -> JSONResponse:
+        if "/v2/" in request.url.path:
+            from custometry_api.analytics.workspace_errors import workspace_error
+
+            return workspace_error(exc.code, exc.__cause__)
         return JSONResponse(status_code=_status_for(exc.code), content={"code": exc.code})
+
+    @app.exception_handler(IdentityFailure)
+    async def identity_failure(request: Request, exc: IdentityFailure) -> JSONResponse:
+        from custometry_api.analytics.workspace_errors import workspace_error
+
+        return workspace_error(exc.code)
+
+    @app.exception_handler(psycopg.Error)
+    async def workspace_storage_failure(request: Request, exc: psycopg.Error) -> JSONResponse:
+        from custometry_api.analytics.workspace_errors import workspace_error
+
+        return workspace_error("STORAGE_UNAVAILABLE")
+
+    @app.exception_handler(RequestValidationError)
+    async def workspace_validation_failure(request: Request, exc: RequestValidationError):
+        if "/v2/" in request.url.path:
+            from custometry_api.analytics.workspace_errors import workspace_error
+
+            if any(
+                "WORKSPACE_LIMIT_EXCEEDED" in str(e.get("msg", ""))
+                or e.get("type") == "too_long"
+                and any(k in e.get("loc", ()) for k in ("store_ids", "local_store_ids"))
+                for e in exc.errors()
+            ):
+                return workspace_error("WORKSPACE_LIMIT_EXCEEDED")
+            return JSONResponse(
+                status_code=422, content={"code": "INVALID_INPUT", "retryable": False}
+            )
+        return await request_validation_exception_handler(request, exc)
 
     http_auth = IdentityHTTPAdapter(identity, settings)
 
@@ -251,6 +286,19 @@ def create_analytics_app(
             return http_auth.authenticate(request)
         except IdentityFailure as exc:
             raise AnalyticsFailure(exc.code) from exc
+
+    from custometry_api.analytics.workspace_router import workspace_router
+    from custometry_api.reports.workspace_composition import build_workspace
+
+    app.include_router(
+        workspace_router(
+            None,
+            read_actor=authenticated,
+            run_actor=authenticated,
+            service_factory=lambda request: build_workspace(settings, http_auth, request)[1],
+            prefix="/metric-workspace/v2",
+        )
+    )
 
     @app.post(
         "/results",
@@ -308,13 +356,20 @@ def create_analytics_app(
             visible_count=count,
         )
 
-    @app.get("/sales-report-context/v1", response_model=SalesContext, operation_id="sales_report_context_v1")
+    @app.get(
+        "/sales-report-context/v1",
+        response_model=SalesContext,
+        operation_id="sales_report_context_v1",
+    )
     def sales_context(actor: Actor = Depends(authenticated)) -> SalesContext:
         try:
-            return SalesContext.model_validate(analytics.sales_report_context(
-                workspace_id=actor.workspace_id, principal_id=actor.principal_id,
-                permissions=actor.permissions,
-            ))
+            return SalesContext.model_validate(
+                analytics.sales_report_context(
+                    workspace_id=actor.workspace_id,
+                    principal_id=actor.principal_id,
+                    permissions=actor.permissions,
+                )
+            )
         except psycopg.Error as exc:
             raise AnalyticsFailure("RESULT_STORAGE_UNAVAILABLE") from exc
 
@@ -354,6 +409,9 @@ def create_analytics_app(
 
     _ = (
         analytics_failure_handler,
+        identity_failure,
+        workspace_storage_failure,
+        workspace_validation_failure,
         run_result,
         get_result,
         list_results,

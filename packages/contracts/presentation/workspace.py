@@ -21,7 +21,6 @@ from packages.contracts.presentation import (
     LineChartSpecV1,
     Reference,
     Page,
-    Section,
     Block,
 )
 
@@ -270,6 +269,14 @@ class WorkspaceFilterBinding(Strict):
     owner_principal_id: UUID
 
 
+class WorkspaceSection(Strict):
+    section_id: UUID
+    page_id: UUID
+    parent_section_id: None = None
+    order: int
+    title: LocalizedName
+
+
 class AnalyticalDocumentCompositionV2(Strict):
     composition_schema_version: Literal[2]
     analytical_document_version_id: UUID
@@ -281,7 +288,7 @@ class AnalyticalDocumentCompositionV2(Strict):
     default_page_id: UUID
     chapters: list[dict[str, str]]
     pages: list[Page]
-    sections: list[Section]
+    sections: list[WorkspaceSection]
     blocks: list[Block]
     brand_profile_version_id: UUID
     access_policy_id: UUID
@@ -289,6 +296,8 @@ class AnalyticalDocumentCompositionV2(Strict):
     definition: ConfiguredReportV2
     chart_specs: list[Reference]
     bindings_by_card: list[CardResultBinding]
+    comparisons: list[CardComparisonV1] = Field(default_factory=list[CardComparisonV1])
+    chart_payloads: list[WorkspaceChartSpecV2] = Field(default_factory=list[WorkspaceChartSpecV2])
 
     @model_validator(mode="after")
     def complete_bindings(self) -> AnalyticalDocumentCompositionV2:
@@ -320,6 +329,7 @@ class CreatorApplyRequest(Strict):
     mode: Literal["creator"]
     base_revision: Annotated[int, Field(strict=True, ge=1)]
     definition: ConfiguredReportV2
+    reuse_result_ids: list[UUID] | None = None
 
 
 class ReaderApplyRequest(Strict):
@@ -345,6 +355,7 @@ class WorkspaceApplyResponse(Strict):
     chart_specs: list[Reference]
     base_revision: Annotated[int, Field(strict=True, ge=1)]
     access_fingerprint: Hash
+    chart_payloads: list[WorkspaceChartSpecV2] = Field(default_factory=list[WorkspaceChartSpecV2])
     status: Literal["ready", "no_data", "comparison_unavailable"]
 
 
@@ -488,3 +499,25 @@ def adapt_legacy_definition(
             ),
         ),
     )
+
+
+class WorkspaceEditorResponse(Strict):
+    """Editor projection keeps original snapshot bytes separate from its v2 configuration."""
+
+    contract_version: Literal["workspace-editor/v2"] = "workspace-editor/v2"
+    report: VersionedReport
+    definition: ConfiguredReportV2 | None
+    base_definition: ConfiguredReportV2 | None
+    capabilities: ReportCapabilities
+    saved_view_revision: Annotated[int, Field(strict=True, ge=0)]
+
+
+class WorkspaceReportRepository(Protocol):
+    def metadata(self, workspace: UUID, report: UUID) -> dict[str, object]: ...
+    def read(
+        self,
+        workspace: UUID,
+        report: UUID,
+        snapshot: UUID | None = None,
+        version: UUID | None = None,
+    ) -> dict[str, object]: ...

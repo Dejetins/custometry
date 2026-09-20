@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-UI-WEB-IMPLEMENTATION-SOURCE-001
 title: Custometry Web implementation source contract
-doc_version: 12
+doc_version: 13
 product_spec_version: 0.11.0-draft
 ui_spec_version: 0.9.0-draft
 visibility: internal
@@ -209,3 +209,23 @@ This source increment does not certify packaged HTTPS, full accessibility or
 complete design-system fidelity; S05 packages it and S06 retains owner review.
 User-facing [report help](../../../docs-site/docs/user-guide/reports.md) explains
 entry details, Apply/Save and recovery without backend implementation jargon.
+
+
+## MS-004 S03 API handoff to Web integration
+
+The [configured report contract](../../contracts/analytical-authoring-contract.md#ms-004-s03-guarded-api-and-configured-report-persistence)
+and [S03 evidence](../../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md)
+provide real guarded API and persistence inputs for S04. Use generated
+`packages/contracts/src/workspace-client.ts` and `workspace-contracts.ts`; external
+paths are `/api/reports/v2` and `/api/analytics/metric-workspace/v2`. The editor
+returns an exact version plus current capabilities and companion-view revision.
+Preserve the current native pilot and typed bridge; no S03 change implements Web UI.
+
+Apply is explicit and Save consumes its exact verified bindings and chart payloads.
+Display-only creator changes can pass `reuse_result_ids` to verify existing results
+without compute permission. Handle the typed error envelope, both CAS revisions,
+private reader base/own-view boundaries, pinned calendar versus current default,
+and explicit creator adoption. Server-projected numbers/comparisons remain the
+sole chart/table/tooltip values. A rejected Save must retain the user's draft.
+S04 supplies its own real-API browser harness; S05 consumes it. API tests are not
+browser/fidelity/accessibility proof or acceptance of the finished milestone.

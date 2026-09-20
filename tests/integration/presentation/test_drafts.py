@@ -9,6 +9,7 @@ import subprocess
 from typing import Any
 from uuid import UUID, uuid4
 import pytest
+from psycopg.types.json import Jsonb
 from apps.worker_data.vertical_slice import DataPipelineRunner
 from packages.analytics_core.application.service import AnalyticsService
 from packages.analytics_core.infrastructure.local import LocalAnalyticsArtifactStore
@@ -60,12 +61,36 @@ def test_migration_real_versions_conflicts_and_faults(
         "principal_id": runtime.actor_id,
         "permissions": frozenset({"analysis.read", "analysis.run", "report.read", "report.manage"}),
     }
-    result = analytics.run_sales_report(
-        **actor,
-        request=SalesReportRequest(
-            intake.semantic_dataset_version_id, comparison="previous_year_same_dates"
-        ),
-    )
+
+    # Seed the actual 0011 row shape. The current adapter also writes the 0012
+    # discriminator; it cannot represent an old binary running before migration.
+    def save_previous_sales(payload: dict[str, Any], *, workspace_id: UUID, principal_id: UUID):
+        with runtime.connect() as connection:
+            connection.execute(
+                """INSERT INTO analytics_sales_reports
+                (id,workspace_id,owner_principal_id,semantic_dataset_version_id,
+                 request_hash,policy_hash,response_payload)
+                VALUES (%s,%s,%s,%s,%s,%s,%s)""",
+                (
+                    payload["result_id"],
+                    workspace_id,
+                    principal_id,
+                    payload["semantic_dataset_version_id"],
+                    payload["request_hash"],
+                    payload["policy_hash"],
+                    Jsonb(payload),
+                ),
+            )
+        return payload
+
+    with monkeypatch.context() as historical:
+        historical.setattr(repository, "save_sales", save_previous_sales)
+        result = analytics.run_sales_report(
+            **actor,
+            request=SalesReportRequest(
+                intake.semantic_dataset_version_id, comparison="previous_year_same_dates"
+            ),
+        )
     # The harness starts this freshly owned database at the actual previous head.
     with runtime.connect() as c:
         assert scalar(c, "SELECT version_num FROM alembic_version") == "0011_presentation_drafts"
@@ -272,8 +297,6 @@ def test_migration_real_versions_conflicts_and_faults(
     corrupt = deepcopy(latest)
     corrupt["title"] = "tampered"
     with runtime.connect() as c:
-        from psycopg.types.json import Jsonb
-
         c.execute(
             "UPDATE presentation_versions SET payload=%s WHERE id=%s",
             (Jsonb(corrupt), latest["version_id"]),

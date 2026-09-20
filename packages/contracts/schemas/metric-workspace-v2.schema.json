@@ -1,0 +1,761 @@
+{
+  "$defs": {
+    "ArtifactRef": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "format": "uuid",
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_id",
+        "content_hash"
+      ],
+      "title": "ArtifactRef",
+      "type": "object"
+    },
+    "CalendarRef": {
+      "additionalProperties": false,
+      "properties": {
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version_id",
+        "content_hash"
+      ],
+      "title": "CalendarRef",
+      "type": "object"
+    },
+    "CardComparisonV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "card-comparison/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "temporal",
+            "pair"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "left": {
+          "$ref": "#/$defs/ComparisonSide"
+        },
+        "right": {
+          "$ref": "#/$defs/ComparisonSide"
+        },
+        "comparability_status": {
+          "enum": [
+            "comparable",
+            "descriptive",
+            "unavailable"
+          ],
+          "title": "Comparability Status",
+          "type": "string"
+        },
+        "buckets": {
+          "items": {
+            "$ref": "#/$defs/ComparisonBucket"
+          },
+          "title": "Buckets",
+          "type": "array"
+        },
+        "totals": {
+          "$ref": "#/$defs/ComparisonValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "manifest": {
+          "$ref": "#/$defs/ArtifactRef"
+        }
+      },
+      "required": [
+        "schema_version",
+        "mode",
+        "left",
+        "right",
+        "comparability_status",
+        "buckets",
+        "totals",
+        "coverage",
+        "manifest"
+      ],
+      "title": "CardComparisonV1",
+      "type": "object"
+    },
+    "ComparisonBucket": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Left"
+        },
+        "right": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Right"
+        },
+        "absolute_delta": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Absolute Delta"
+        },
+        "relative_delta_percent": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Relative Delta Percent"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "bucket_id": {
+          "title": "Bucket Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left",
+        "right",
+        "absolute_delta",
+        "relative_delta_percent",
+        "reason_codes",
+        "bucket_id"
+      ],
+      "title": "ComparisonBucket",
+      "type": "object"
+    },
+    "ComparisonSide": {
+      "additionalProperties": false,
+      "properties": {
+        "card_id": {
+          "format": "uuid",
+          "title": "Card Id",
+          "type": "string"
+        },
+        "metric_ref": {
+          "$ref": "#/$defs/MetricRef"
+        },
+        "result": {
+          "$ref": "#/$defs/ResultRef"
+        },
+        "unit": {
+          "enum": [
+            "EUR",
+            "receipt",
+            "EUR/receipt"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "format": {
+          "$ref": "#/$defs/NumberFormat"
+        },
+        "context": {
+          "$ref": "#/$defs/EffectiveContext"
+        }
+      },
+      "required": [
+        "card_id",
+        "metric_ref",
+        "result",
+        "unit",
+        "format",
+        "context"
+      ],
+      "title": "ComparisonSide",
+      "type": "object"
+    },
+    "ComparisonValues": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Left"
+        },
+        "right": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Right"
+        },
+        "absolute_delta": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Absolute Delta"
+        },
+        "relative_delta_percent": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Relative Delta Percent"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "left",
+        "right",
+        "absolute_delta",
+        "relative_delta_percent",
+        "reason_codes"
+      ],
+      "title": "ComparisonValues",
+      "type": "object"
+    },
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "complete",
+            "partial",
+            "unavailable"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "expected_days": {
+          "minimum": 0,
+          "title": "Expected Days",
+          "type": "integer"
+        },
+        "observed_days": {
+          "minimum": 0,
+          "title": "Observed Days",
+          "type": "integer"
+        },
+        "eligible_receipts": {
+          "minimum": 0,
+          "title": "Eligible Receipts",
+          "type": "integer"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "expected_days",
+        "observed_days",
+        "eligible_receipts",
+        "reason_codes"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "EffectiveContext": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        },
+        "store_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Store Ids",
+          "type": "array"
+        },
+        "grain": {
+          "enum": [
+            "day",
+            "week",
+            "month",
+            "quarter",
+            "half_year",
+            "year"
+          ],
+          "title": "Grain",
+          "type": "string"
+        },
+        "calendar_ref": {
+          "$ref": "#/$defs/CalendarRef"
+        },
+        "calendar_basis": {
+          "enum": [
+            "calendar",
+            "fiscal"
+          ],
+          "title": "Calendar Basis",
+          "type": "string"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "week_start": {
+          "const": "monday",
+          "default": "monday",
+          "title": "Week Start",
+          "type": "string"
+        },
+        "alignment": {
+          "enum": [
+            "none",
+            "previous_year_same_dates"
+          ],
+          "title": "Alignment",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on",
+        "store_ids",
+        "grain",
+        "calendar_ref",
+        "calendar_basis",
+        "alignment"
+      ],
+      "title": "EffectiveContext",
+      "type": "object"
+    },
+    "MetricRef": {
+      "additionalProperties": false,
+      "properties": {
+        "metric_id": {
+          "enum": [
+            "net_revenue",
+            "receipt_count",
+            "average_receipt"
+          ],
+          "title": "Metric Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "metric_id",
+        "version_id",
+        "content_hash"
+      ],
+      "title": "MetricRef",
+      "type": "object"
+    },
+    "MetricValues": {
+      "additionalProperties": false,
+      "properties": {
+        "net_revenue": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Net Revenue"
+        },
+        "receipt_count": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Receipt Count"
+        },
+        "average_receipt": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Average Receipt"
+        }
+      },
+      "required": [
+        "net_revenue",
+        "receipt_count",
+        "average_receipt"
+      ],
+      "title": "MetricValues",
+      "type": "object"
+    },
+    "NumberFormat": {
+      "additionalProperties": false,
+      "properties": {
+        "decimal_places": {
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Decimal Places",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "decimal_places"
+      ],
+      "title": "NumberFormat",
+      "type": "object"
+    },
+    "ResultRef": {
+      "additionalProperties": false,
+      "properties": {
+        "result_id": {
+          "format": "uuid",
+          "title": "Result Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "metric-workspace/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "manifest": {
+          "$ref": "#/$defs/ArtifactRef"
+        }
+      },
+      "required": [
+        "result_id",
+        "schema_version",
+        "manifest"
+      ],
+      "title": "ResultRef",
+      "type": "object"
+    },
+    "WorkspaceBucket": {
+      "additionalProperties": false,
+      "properties": {
+        "bucket_id": {
+          "title": "Bucket Id",
+          "type": "string"
+        },
+        "natural_starts_on": {
+          "format": "date",
+          "title": "Natural Starts On",
+          "type": "string"
+        },
+        "natural_ends_on": {
+          "format": "date",
+          "title": "Natural Ends On",
+          "type": "string"
+        },
+        "effective_starts_on": {
+          "format": "date",
+          "title": "Effective Starts On",
+          "type": "string"
+        },
+        "effective_ends_on": {
+          "format": "date",
+          "title": "Effective Ends On",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "clipped": {
+          "title": "Clipped",
+          "type": "boolean"
+        },
+        "values": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "state": {
+          "enum": [
+            "ready",
+            "no_data",
+            "incomplete"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        }
+      },
+      "required": [
+        "bucket_id",
+        "natural_starts_on",
+        "natural_ends_on",
+        "effective_starts_on",
+        "effective_ends_on",
+        "label",
+        "clipped",
+        "values",
+        "state",
+        "coverage"
+      ],
+      "title": "WorkspaceBucket",
+      "type": "object"
+    },
+    "WorkspaceLineage": {
+      "additionalProperties": false,
+      "properties": {
+        "source_artifacts": {
+          "items": {
+            "$ref": "#/$defs/ArtifactRef"
+          },
+          "title": "Source Artifacts",
+          "type": "array"
+        },
+        "metric_components": {
+          "items": {
+            "$ref": "#/$defs/MetricRef"
+          },
+          "title": "Metric Components",
+          "type": "array"
+        },
+        "source_calendar_version_id": {
+          "format": "uuid",
+          "title": "Source Calendar Version Id",
+          "type": "string"
+        },
+        "data_as_of": {
+          "format": "date-time",
+          "title": "Data As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_artifacts",
+        "metric_components",
+        "source_calendar_version_id",
+        "data_as_of"
+      ],
+      "title": "WorkspaceLineage",
+      "type": "object"
+    },
+    "WorkspaceTrust": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ready",
+            "no_data",
+            "comparison_unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "reason_codes"
+      ],
+      "title": "WorkspaceTrust",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "metric-workspace/v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "result_id": {
+      "format": "uuid",
+      "title": "Result Id",
+      "type": "string"
+    },
+    "request_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Request Hash",
+      "type": "string"
+    },
+    "policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Policy Hash",
+      "type": "string"
+    },
+    "semantic_dataset_version_id": {
+      "format": "uuid",
+      "title": "Semantic Dataset Version Id",
+      "type": "string"
+    },
+    "publication_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Publication Hash",
+      "type": "string"
+    },
+    "effective_context": {
+      "$ref": "#/$defs/EffectiveContext"
+    },
+    "metric_refs": {
+      "items": {
+        "$ref": "#/$defs/MetricRef"
+      },
+      "title": "Metric Refs",
+      "type": "array"
+    },
+    "buckets": {
+      "items": {
+        "$ref": "#/$defs/WorkspaceBucket"
+      },
+      "title": "Buckets",
+      "type": "array"
+    },
+    "totals": {
+      "$ref": "#/$defs/MetricValues"
+    },
+    "coverage": {
+      "$ref": "#/$defs/Coverage"
+    },
+    "comparison": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CardComparisonV1"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lineage": {
+      "$ref": "#/$defs/WorkspaceLineage"
+    },
+    "trust": {
+      "$ref": "#/$defs/WorkspaceTrust"
+    },
+    "manifest": {
+      "$ref": "#/$defs/ArtifactRef"
+    }
+  },
+  "required": [
+    "schema_version",
+    "result_id",
+    "request_hash",
+    "policy_hash",
+    "semantic_dataset_version_id",
+    "publication_hash",
+    "effective_context",
+    "metric_refs",
+    "buckets",
+    "totals",
+    "coverage",
+    "comparison",
+    "lineage",
+    "trust",
+    "manifest"
+  ],
+  "title": "WorkspaceResultV2",
+  "type": "object"
+}

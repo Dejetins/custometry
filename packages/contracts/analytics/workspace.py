@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from datetime import date, datetime
-from typing import Annotated, Literal, cast
+from typing import Annotated, Literal, Protocol, Any, cast
 from uuid import UUID
 from pydantic import Field, model_validator, BeforeValidator
 from packages.contracts.semantic import CalendarRef, Hash, Strict
@@ -75,6 +75,8 @@ class ResultRef(Strict):
 class Coverage(Strict):
     state: Literal["complete", "partial", "unavailable"]
     expected_days: Annotated[int, Field(strict=True, ge=0)]
+    calendar_days: Annotated[int, Field(strict=True, ge=0)]
+    declared_complete_days: Annotated[int, Field(strict=True, ge=0)]
     observed_days: Annotated[int, Field(strict=True, ge=0)]
     eligible_receipts: Annotated[int, Field(strict=True, ge=0)]
     reason_codes: list[str]
@@ -92,6 +94,16 @@ class WorkspaceBucket(Strict):
     natural_ends_on: date
     effective_starts_on: date
     effective_ends_on: date
+    bucket_start: date
+    bucket_end_exclusive: date
+    effective_start: date
+    effective_end_exclusive: date
+    is_partial_bucket: bool
+    calendar_ref: CalendarRef
+    calendar_basis: CalendarBasis
+    fiscal_year: int | None
+    fiscal_quarter: int | None
+    fiscal_half: int | None
     label: str
     clipped: bool
     values: MetricValues
@@ -106,9 +118,12 @@ class ComparisonSide(Strict):
     unit: Literal["EUR", "receipt", "EUR/receipt"]
     format: NumberFormat
     context: EffectiveContext
+    baseline_dates: list[date] | None
 
 
 class ComparisonValues(Strict):
+    left_coverage: Coverage
+    right_coverage: Coverage
     left: DecimalValue | None
     right: DecimalValue | None
     absolute_delta: DecimalValue | None
@@ -156,6 +171,37 @@ class WorkspaceTrust(Strict):
     reason_codes: list[str]
 
 
+class DayAlignment(Strict):
+    current_date: date
+    baseline_date: date | None
+
+
+class TemporalBucket(Strict):
+    bucket_id: str
+    baseline_dates: list[date]
+    values: MetricValues
+    coverage: Coverage
+    changes: dict[MetricId, ComparisonValues]
+
+
+class TemporalProjection(Strict):
+    alignment: Literal["previous_year_same_dates"]
+    mapping: list[DayAlignment]
+    baseline_dates: list[date]
+    excluded_baseline_dates: list[date]
+    buckets: list[TemporalBucket]
+    totals: MetricValues
+    coverage: Coverage
+    changes: dict[MetricId, ComparisonValues]
+    reason_codes: list[str]
+
+
+class WorkspaceDay(Strict):
+    date: date
+    values: MetricValues
+    coverage: Coverage
+
+
 class WorkspaceResultV2(Strict):
     schema_version: Literal["metric-workspace/v2"]
     result_id: UUID
@@ -169,6 +215,8 @@ class WorkspaceResultV2(Strict):
     totals: MetricValues
     coverage: Coverage
     comparison: CardComparisonV1 | None
+    temporal: TemporalProjection | None
+    daily: list[WorkspaceDay]
     lineage: WorkspaceLineage
     trust: WorkspaceTrust
     manifest: ArtifactRef
@@ -194,3 +242,59 @@ class CardResultBinding(Strict):
         ):
             raise ValueError("METRIC_PROJECTION_MISMATCH")
         return self
+
+
+class WorkspaceRunRequest(Strict):
+    semantic_dataset_version_id: UUID
+    common: QueryContext
+    local_store_ids: Stores | None
+    grain: Grain
+    calendar_ref: CalendarRef
+    calendar_basis: CalendarBasis
+    alignment: Literal["none", "previous_year_same_dates"]
+    metric_refs: Annotated[list[MetricRef], Field(min_length=1, max_length=3)]
+
+
+class WorkspaceAccess(Strict):
+    """Trusted server projection. Never populated from an HTTP request body."""
+
+    workspace_id: UUID
+    principal_id: UUID
+    semantic_dataset_version_id: UUID
+    policy_hash: Hash
+    allowed_store_ids: Stores
+    permissions: frozenset[str]
+
+
+class WorkspaceAccessPort(Protocol):
+    def resolve(
+        self,
+        *,
+        workspace_id: UUID,
+        principal_id: UUID,
+        dataset_id: UUID,
+        action: Literal["read", "run"],
+    ) -> WorkspaceAccess: ...
+
+
+class WorkspaceArtifactPort(Protocol):
+    def read_sales_inputs(
+        self, *, workspace_id: UUID, bindings: list[dict[str, Any]], supporting_artifacts: list[str]
+    ) -> dict[str, tuple[dict[str, Any], ...]]: ...
+    def commit_workspace(
+        self, *, workspace_id: UUID, payload: dict[str, Any], bindings: list[dict[str, Any]]
+    ) -> dict[str, Any]: ...
+    def verify_workspace(self, *, workspace_id: UUID, payload: dict[str, Any]) -> None: ...
+
+
+class WorkspaceCardRequest(Strict):
+    card_id: UUID
+    configuration_hash: Hash
+    metric_ref: MetricRef
+    query: WorkspaceRunRequest
+
+
+class WorkspaceApplyResult(Strict):
+    schema_version: Literal["workspace-apply/v2"] = "workspace-apply/v2"
+    results: list[WorkspaceResultV2]
+    bindings: list[CardResultBinding]

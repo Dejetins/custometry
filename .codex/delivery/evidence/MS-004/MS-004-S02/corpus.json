@@ -1,0 +1,130 @@
+{
+  "corpus": "ms004-retail/v1",
+  "source_min_date": "2023-01-01",
+  "source_max_date": "2025-12-31",
+  "eligible_receipts": 6573,
+  "store_coverage": [
+    {
+      "store_id": 1,
+      "eligible_receipts": 2192,
+      "observed_days": 1095,
+      "min_date": "2023-01-01",
+      "max_date": "2025-12-31"
+    },
+    {
+      "store_id": 2,
+      "eligible_receipts": 2189,
+      "observed_days": 1094,
+      "min_date": "2023-01-01",
+      "max_date": "2025-12-31"
+    },
+    {
+      "store_id": 3,
+      "eligible_receipts": 2192,
+      "observed_days": 1095,
+      "min_date": "2023-01-01",
+      "max_date": "2025-12-31"
+    }
+  ],
+  "observed_days": 1095,
+  "observed_stores": 3,
+  "calendar_days": 1095,
+  "declared_complete_days": 1094,
+  "oracle_bucket_checks": 2838,
+  "semantic_dataset_version_id": "422b92c4-97eb-5b01-a385-541a572d4288",
+  "publication_hash": "b693d17d278eeb6f99267e0f82861fdc20d0d2f89719e5441111aac6256fec66",
+  "bindings": [
+    {
+      "entity": "Customer",
+      "artifact_id": "65877f60-c542-50ba-88ca-edaca8b35285",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "customer_version_id"
+      ],
+      "content_hash": "471c6b2121cc83ea3c27091898db4bcd8e01243ffa181c4f25c760806a2f7d12"
+    },
+    {
+      "entity": "Product",
+      "artifact_id": "04464af9-7f83-5115-b95c-10afc6b3e5eb",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "product_version_id"
+      ],
+      "content_hash": "7554c04731b654c50f0cb4c3806d5cc8e6ef5aef55b1361fde3932e214736231"
+    },
+    {
+      "entity": "Store",
+      "artifact_id": "3769b3a7-dc2c-5b9d-96f7-108a9aee4ac8",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "store_version_id"
+      ],
+      "content_hash": "7ee8b4cf9b091f8ac7f52c5dbb573481ce77e5f38b72827012ef8015b33e4739"
+    },
+    {
+      "entity": "Calendar",
+      "artifact_id": "0dfde4cf-71eb-5477-966b-0819312d26c4",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "calendar_date"
+      ],
+      "content_hash": "e0db964531e879ef5d1e4e1da08bc6c8849a2b5006fd892e2255e4b75b5b2e02"
+    },
+    {
+      "entity": "Receipt",
+      "artifact_id": "628cc64f-fb28-5b9c-bafd-ed89aa8b66ee",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "receipt_id"
+      ],
+      "content_hash": "176e3d5938ce7422858ca7606a7723868ba5a5b110d440ec70a627735c6c6fe9"
+    },
+    {
+      "entity": "ReceiptItem",
+      "artifact_id": "e9e34afd-ecd3-56ad-8108-72dd11014af1",
+      "field_roles": {
+        "line_id": "line_identifier",
+        "receipt_item_id": "source_line_identifier",
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "receipt_id",
+        "line_id"
+      ],
+      "content_hash": "85b342e8881dea2769824ff3ea41cfcf74a98b86d07484fbc00e4157a8c96e8f"
+    }
+  ],
+  "admitted_counts": {
+    "RawCustomer": 1000,
+    "RawReceipt": 6573,
+    "RawReceiptItem": 19719,
+    "RawProduct": 120,
+    "RawStore": 20,
+    "RawCalendar": 1095,
+    "QuarantineReceiptItem": 5,
+    "Customer": 1000,
+    "Receipt": 6573,
+    "ReceiptItem": 19714,
+    "Product": 120,
+    "Store": 20,
+    "Calendar": 1095
+  },
+  "result_id": "75348de7-b989-5133-97db-1291a40ce8aa",
+  "result_manifest": {
+    "artifact_id": "75348de7-b989-5133-97db-1291a40ce8aa",
+    "content_hash": "deb2abd3c28c871fef86b314e3d8e746c36af7aa47f7bd7ac29dec3d5cc3896c"
+  }
+}

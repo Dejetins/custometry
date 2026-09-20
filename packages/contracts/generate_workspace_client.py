@@ -17,7 +17,12 @@ from packages.contracts.presentation.workspace import (
     SaveViewRequest,
     VersionedReport,
 )
-from packages.contracts.analytics.workspace import WorkspaceResultV2, CardComparisonV1
+from packages.contracts.analytics.workspace import (
+    WorkspaceResultV2,
+    CardComparisonV1,
+    WorkspaceRunRequest,
+    WorkspaceApplyResult,
+)
 
 MODELS: dict[str, type[BaseModel]] = {
     "configured-report-v2": ConfiguredReportV2,
@@ -30,6 +35,8 @@ MODELS: dict[str, type[BaseModel]] = {
     "saved-view-save-v1": SaveViewRequest,
     "report-versions": VersionedReport,
     "metric-workspace-v2": WorkspaceResultV2,
+    "analytics-workspace-run-v2": WorkspaceRunRequest,
+    "analytics-workspace-apply-v2": WorkspaceApplyResult,
     "card-comparison-v1": CardComparisonV1,
 }
 
@@ -69,7 +76,9 @@ def outputs() -> dict[str, bytes]:
         "components": {"schemas": schemas},
     }
     result["packages/contracts/openapi/workspace.openapi.json"] = _json(api)
-    result["packages/contracts/src/workspace-contracts.ts"] = (_types(api).rstrip("\n") + "\n").encode()
+    result["packages/contracts/src/workspace-contracts.ts"] = (
+        _types(api).rstrip("\n") + "\n"
+    ).encode()
     calendar = create_semantic_app(Settings()).openapi()
     result["packages/contracts/openapi/workspace-calendar.openapi.json"] = _json(calendar)
     client = (

@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-REPORT-REFRESH-SERVING-RECOVERY-001
 title: Report refresh, prepared serving and recovery contract
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -273,3 +273,35 @@ skips the real boundary; it cannot substitute for the owned non-skipped run.
 
 These checks prove bounded local migration/API behavior, not backup restoration,
 installation, production deployment or the broader scheduled-refresh contract.
+
+
+## MS-004 S02 immutable calculation recovery boundary
+
+The [S02 calculation contract](analytical-authoring-contract.md#ms-004-s02-calculation-and-immutable-result-boundary)
+uses existing `analytics_sales_reports` uniqueness with the explicit
+`metric-workspace/v2` discriminator. The admitted JSON artifact is durable before
+the result row. Concurrent equal requests may duplicate CPU work but converge on
+one result ID, exact bytes and manifest; disagreement fails instead of overwriting.
+The existing S01 downgrade refusal therefore also applies to these actual v2 rows.
+
+Exact reads and reuse verify immutable output bytes and admitted source bindings;
+missing, corrupt or mismatched content produces an explicit failure. There is no
+compute-on-GET, fallback to a stale result, implicit new calendar adoption or
+in-place repair. Comparison artifacts retain dependencies on their result artifacts.
+Temporary staging files are cleaned by their producer; orphan final files after a
+failed database transaction do not become admitted results. Existing lifecycle
+policy owns retention; this stage introduces no cleanup worker.
+
+`tests/integration/analytics/run_s02.py --image <available-postgresql-image-id>`
+provisions a loopback-only disposable PostgreSQL container with separate fresh
+control/source databases and a private temporary secret. It seeds real PostgreSQL
+retail tables, runs production readonly intake and independent readonly source SQL,
+then deletes only its own container, volumes and secret. The optional
+`MS004_S02_EVIDENCE_PATH` records redacted synthetic corpus IDs/hashes/counts, never
+rows or credentials. A plain test run that skips prerequisites is not proof.
+
+These checks cover local input/output corruption, missing output, registry and
+context identities, concurrent result admission and policy recheck seams. S03
+still owns real Identity object/data authorization, full report-save transactions
+and their fault-injection proof. No production restore, deployment or release is
+claimed by calculation tests.

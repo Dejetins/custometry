@@ -1,0 +1,150 @@
+{
+  "stage_id": "MS-004-S01",
+  "baseline": "471314d42d6c49e0f9cec5f1794b44dbaeb03a14",
+  "owned_sources": [
+    {
+      "path": "apps/api/src/custometry_api/identity/router.py",
+      "sha256": "c45e71e6b937ce0106a7fdc7f2d156aa0616c41005f499fdb51312caf8580801"
+    },
+    {
+      "path": "apps/api/src/custometry_api/main.py",
+      "sha256": "c833b4b007d2fac1c4642b68c49ba3e3dd4049f42ec5046f9f9b2308c229d310"
+    },
+    {
+      "path": "apps/api/src/custometry_api/semantic/__init__.py",
+      "sha256": "e431732bfd2ad78a7726a24cfd9aff5359ce99ab678c5972e466fc62eddf9051"
+    },
+    {
+      "path": "apps/api/src/custometry_api/semantic/router.py",
+      "sha256": "2e4fe72426006f9ead24f7b5e8b45b4575722557da153737c35d083633056700"
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "sha256": "f0623738af79e33d93a3a44b7deaef7c58a077fb77363e655a8f599398449e60"
+    },
+    {
+      "path": "docs/contracts/report-refresh-serving-recovery-contract.md",
+      "sha256": "3c9beedb00b0f163683aeff615de4e27cd09c342c482ed8a23e142a26c77e040"
+    },
+    {
+      "path": "migrations/versions/0012_metric_workspace.py",
+      "sha256": "348b3e47b3de8614d6f90d803ce662bd9b07ef94a2746d2f8b963315c8f22ce0"
+    },
+    {
+      "path": "packages/contracts/analytics/workspace.py",
+      "sha256": "63d69272d0ed00e8aafb053e85cfc6cbe2a6923acf9fb6676033c3f81d8ae212"
+    },
+    {
+      "path": "packages/contracts/generate_workspace_client.py",
+      "sha256": "7238328b04d55603f686742ead2fa31aae287cdfda9deeea22392bb7b0281bbd"
+    },
+    {
+      "path": "packages/contracts/openapi/workspace-calendar.openapi.json",
+      "sha256": "0c86583e3608f63d8773c6f3a99d121dea499da89a8c0e5b01bf153c2f150b86"
+    },
+    {
+      "path": "packages/contracts/openapi/workspace.openapi.json",
+      "sha256": "7c9a852a62da7079d6f00597b1f1bf476203e33164ec4a2c48b5cb1b4ea92111"
+    },
+    {
+      "path": "packages/contracts/presentation/workspace.py",
+      "sha256": "7d219048f8d633a7c356f08fd59fb5d794a936540ad3065c68eb259f7911d913"
+    },
+    {
+      "path": "packages/contracts/schemas/analytical-document-composition-versions.schema.json",
+      "sha256": "940eb99fa4d56776eb6fe6c020d1a3367fc89fbcd26f93b03ed140108004ff11"
+    },
+    {
+      "path": "packages/contracts/schemas/card-comparison-v1.schema.json",
+      "sha256": "8a52286dd5c7177e4691b794d9ca1207c3249c32b07478eaf4af5d270a733265"
+    },
+    {
+      "path": "packages/contracts/schemas/chart-spec-versions.schema.json",
+      "sha256": "3743291c60b1cc940e0fe30e1620e0f69860a5b70459e21f986d25cce15b8c61"
+    },
+    {
+      "path": "packages/contracts/schemas/configured-report-v2.schema.json",
+      "sha256": "ca541b3270832411c9043b9bdf2a97b53d4d86b295ff53c3b3c1c5586a1cfa4f"
+    },
+    {
+      "path": "packages/contracts/schemas/metric-workspace-v2.schema.json",
+      "sha256": "3575be90b9efbb53160b7050ada1e816f6417d1afd7613505c46aae44e4a99eb"
+    },
+    {
+      "path": "packages/contracts/schemas/report-versions.schema.json",
+      "sha256": "b35b2c6db35eb81ee30a765337c5454b559823886e13bae42979053ddb7e903f"
+    },
+    {
+      "path": "packages/contracts/schemas/saved-view-save-v1.schema.json",
+      "sha256": "7df919bbf01f8bcdc96a7310674ef2cf57800b1e3e1ae944057e13c3769c1137"
+    },
+    {
+      "path": "packages/contracts/schemas/saved-view-v1.schema.json",
+      "sha256": "0164396445344e982e5e00a55313f0b13b338c17aa1b0cd47ccfb797fe874b9a"
+    },
+    {
+      "path": "packages/contracts/schemas/workspace-apply-response-v2.schema.json",
+      "sha256": "0ce9e04c2cd7e991bac6637d2b1ae840acd64d544b9b036c521d2ac3066d419f"
+    },
+    {
+      "path": "packages/contracts/schemas/workspace-apply-v2.schema.json",
+      "sha256": "748e320ad57f03d93b1c38facc366148fbc6fb15afee0c08695495808a003f89"
+    },
+    {
+      "path": "packages/contracts/schemas/workspace-save-v2.schema.json",
+      "sha256": "b1c3c7efb310f24efc92bf4010fe10defc25bfc1cdc03a6cbd350df343ab9740"
+    },
+    {
+      "path": "packages/contracts/semantic/__init__.py",
+      "sha256": "a400bd25904e147eb0bcb9ab9d9c2c590b2426308a7060f8a1d78709797ff3d5"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "13d0e0465591a09bde2017d882259a86043ad7853b8e717a2edc25f8f456d992"
+    },
+    {
+      "path": "packages/contracts/src/workspace-calendar-client.ts",
+      "sha256": "70e7845a575abf36b85ce9e0bd3a0f49e4dc890a17eb412e42285be412be0bda"
+    },
+    {
+      "path": "packages/contracts/src/workspace-contracts.ts",
+      "sha256": "91396ee598b490f4024bcf44ac01e1b999b1efd82b4bcf71cb01ef71ea0316fc"
+    },
+    {
+      "path": "packages/semantic_model/application/calendar.py",
+      "sha256": "9728ca7e16f361edfcb838af3e01b7fc032ca3e6da2713bf7cd6d030ddd1b594"
+    },
+    {
+      "path": "packages/semantic_model/infrastructure/calendar.py",
+      "sha256": "f668e7c992e6bae12d7785a3cb29eb7314e512d51b19c9d7ef1f85b28753535d"
+    },
+    {
+      "path": "tests/contract/presentation/test_workspace.py",
+      "sha256": "eaf50ff5610da557ee25fd6e24a64bd8a341a73a2ba834df645fab44ee71836f"
+    },
+    {
+      "path": "tests/integration/semantic/run_s01.py",
+      "sha256": "ea0b363e0c9ea181de0b3f7fb30afa6a2f155b2a84809261b18f82791f3d7886"
+    },
+    {
+      "path": "tests/integration/semantic/test_s01.py",
+      "sha256": "363db46f72f24ceb85f23b64c0ac7046a47a4e97adaf42a7dbb4505d634e425c"
+    }
+  ],
+  "owned_evidence_directory": ".codex/delivery/evidence/MS-004/MS-004-S01",
+  "shared_file": {
+    "path": ".codex/delivery/ledgers/MS-004.md",
+    "owned_change": "Only supported runtime claim/accept transitions; coordinator preparation preserved"
+  },
+  "coordinator_preparation_preserved": [
+    ".codex/agents/generated/MS-004/MS-004-S01.md",
+    ".codex/agents/generated/MS-004/MS-004-S02.md",
+    ".codex/agents/generated/MS-004/MS-004-S03.md",
+    ".codex/agents/generated/MS-004/MS-004-S04.md",
+    ".codex/agents/generated/MS-004/MS-004-S05.md",
+    ".codex/delivery/evidence/MS-004/preparation/report.md",
+    ".codex/delivery/evidence/MS-004/preparation/entry-preparation.md"
+  ],
+  "unexpected_paths": [],
+  "publication": "not performed; coordinator only"
+}

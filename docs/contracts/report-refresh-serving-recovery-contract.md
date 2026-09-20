@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-REPORT-REFRESH-SERVING-RECOVERY-001
 title: Report refresh, prepared serving and recovery contract
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -239,3 +239,37 @@ and documentation-index generators passed. The command
 uv run --locked python -m tools.check --scope local passed, and git diff --check
 reported no whitespace errors. This is local documentation/static evidence;
 no runtime, browser, load, power-loss or backup/restore drill was executed.
+
+
+## MS-004 S01 additive schema and recovery boundary
+
+Migration `0012_metric_workspace` follows `0011_presentation_drafts`. It backfills
+immutable `presentation_documents.creator_principal_id` from the existing owner,
+adds explicit report/result discriminators, same-workspace/report Saved View
+foreign keys and Semantic-owned calendar versions/default pointers. Old v1
+inserts retain their compatibility path through the creator initialization
+trigger. Owner changes cannot rewrite creator attribution. No historical JSON
+payload or artifact is rewritten. See the
+[implemented authoring foundation](analytical-authoring-contract.md#ms-004-s01-implemented-foundation)
+and [S01 proof](../../.codex/delivery/evidence/MS-004/MS-004-S01/report.md).
+
+The supported local downgrade to 0011 succeeds only before any configured-report
+v2, metric-workspace v2, Saved View or custom-calendar record exists. After any
+such write, it fails with
+`METRIC_WORKSPACE_FORWARD_REPAIR_OR_PREUPGRADE_BACKUP_REQUIRED`; retain a dual
+reader and forward-repair. A separately authorized coherent PostgreSQL/artifact
+restore would lose changes after the backup and is not normal edit undo.
+System-only January initialization is reversible. Calendar versions reject
+UPDATE/DELETE; the default and previous-version FKs enforce workspace identity.
+
+Local reproducible proof uses `tests/integration/semantic/run_s01.py --image
+<available-postgresql-image-id>` through the locked API Python environment.
+It owns one loopback-only disposable container, generates a private temporary
+password file, creates fresh databases, migrates from 0011, runs actual
+PostgreSQL/Identity/API tests and removes its container/volumes and secrets.
+It never connects to a shared development database. Run after the repository's
+locked dependency/toolchain setup. A plain test-suite run without this fixture
+skips the real boundary; it cannot substitute for the owned non-skipped run.
+
+These checks prove bounded local migration/API behavior, not backup restoration,
+installation, production deployment or the broader scheduled-refresh contract.

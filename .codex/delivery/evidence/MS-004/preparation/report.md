@@ -35,6 +35,10 @@ it does not clear the review requirement or authorize execution.
 Validation status: structurally valid authoring draft. `entry_ready`: false.
 Preparation creates no execution receipts.
 
+Subsequent owner execution authority, the completed independent review and its
+draft corrections are recorded in [entry preparation](entry-preparation.md).
+The unavailable-review statement above describes this original authoring unit.
+
 ## Publication boundary
 
 Owner authorized normal technical-branch PR, fast Foundation gate, squash merge,

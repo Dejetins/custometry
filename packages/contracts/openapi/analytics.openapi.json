@@ -5,6 +5,296 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/metric-workspace/v2/results": {
+      "post": {
+        "summary": "Run",
+        "operationId": "run_metric_workspace_v2_results_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkspaceRunRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceResultV2"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metric-workspace/v2/datasets/{dataset_id}/results/{result_id}": {
+      "get": {
+        "summary": "Result",
+        "operationId": "result_metric_workspace_v2_datasets__dataset_id__results__result_id__get",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "result_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Result Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceResultV2"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metric-workspace/v2/datasets/{dataset_id}/context": {
+      "get": {
+        "summary": "Context",
+        "operationId": "context_metric_workspace_v2_datasets__dataset_id__context_get",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Context Metric Workspace V2 Datasets  Dataset Id  Context Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metric-workspace/v2/datasets/{dataset_id}/catalog": {
+      "get": {
+        "summary": "Catalog",
+        "operationId": "catalog_metric_workspace_v2_datasets__dataset_id__catalog_get",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Catalog Metric Workspace V2 Datasets  Dataset Id  Catalog Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metric-workspace/v2/comparisons": {
+      "post": {
+        "summary": "Compare",
+        "operationId": "compare_metric_workspace_v2_comparisons_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompareRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardComparisonV1"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/results": {
       "post": {
         "summary": "Run Result",
@@ -599,6 +889,209 @@
         ],
         "title": "AnalyticsRunRequest"
       },
+      "ArtifactRef": {
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Artifact Id"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Content Hash"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "artifact_id",
+          "content_hash"
+        ],
+        "title": "ArtifactRef"
+      },
+      "CalendarRef": {
+        "properties": {
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Content Hash"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version_id",
+          "content_hash"
+        ],
+        "title": "CalendarRef"
+      },
+      "CardComparisonV1": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "card-comparison/v1",
+            "title": "Schema Version"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "temporal",
+              "pair"
+            ],
+            "title": "Mode"
+          },
+          "left": {
+            "$ref": "#/components/schemas/ComparisonSide"
+          },
+          "right": {
+            "$ref": "#/components/schemas/ComparisonSide"
+          },
+          "comparability_status": {
+            "type": "string",
+            "enum": [
+              "comparable",
+              "descriptive",
+              "unavailable"
+            ],
+            "title": "Comparability Status"
+          },
+          "buckets": {
+            "items": {
+              "$ref": "#/components/schemas/ComparisonBucket"
+            },
+            "type": "array",
+            "title": "Buckets"
+          },
+          "totals": {
+            "$ref": "#/components/schemas/ComparisonValues"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "mode",
+          "left",
+          "right",
+          "comparability_status",
+          "buckets",
+          "totals",
+          "coverage",
+          "manifest"
+        ],
+        "title": "CardComparisonV1"
+      },
+      "CardResultBinding": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Card Id"
+          },
+          "metric_ref": {
+            "$ref": "#/components/schemas/MetricRef"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ResultRef"
+          },
+          "effective_context_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Effective Context Hash"
+          },
+          "configuration_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Configuration Hash"
+          },
+          "bucket_projection": {
+            "type": "string",
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt"
+            ],
+            "title": "Bucket Projection"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "receipt",
+              "EUR/receipt"
+            ],
+            "title": "Unit"
+          },
+          "format": {
+            "$ref": "#/components/schemas/NumberFormat"
+          },
+          "readiness": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "no_data",
+              "comparison_unavailable"
+            ],
+            "title": "Readiness"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "card_id",
+          "metric_ref",
+          "result",
+          "effective_context_hash",
+          "configuration_hash",
+          "bucket_projection",
+          "unit",
+          "format",
+          "readiness"
+        ],
+        "title": "CardResultBinding"
+      },
+      "CompareRequest": {
+        "properties": {
+          "semantic_dataset_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Semantic Dataset Version Id"
+          },
+          "left": {
+            "$ref": "#/components/schemas/CardResultBinding"
+          },
+          "right": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CardResultBinding"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "semantic_dataset_version_id",
+          "left",
+          "right"
+        ],
+        "title": "CompareRequest"
+      },
       "Comparison": {
         "properties": {
           "period": {
@@ -612,7 +1105,7 @@
             "$ref": "#/components/schemas/Totals"
           },
           "coverage": {
-            "$ref": "#/components/schemas/Coverage"
+            "$ref": "#/components/schemas/custometry_api__analytics__sales_models__Coverage"
           },
           "daily": {
             "items": {
@@ -632,44 +1125,221 @@
         ],
         "title": "Comparison"
       },
-      "Coverage": {
+      "ComparisonBucket": {
         "properties": {
-          "period_days": {
-            "type": "integer",
-            "title": "Period Days"
+          "left_coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
           },
-          "calendar_days": {
-            "type": "integer",
-            "title": "Calendar Days"
+          "right_coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
           },
-          "declared_complete_days": {
-            "type": "integer",
-            "title": "Declared Complete Days"
-          },
-          "observed_receipt_days": {
-            "type": "integer",
-            "title": "Observed Receipt Days"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "complete",
-              "partial",
-              "missing"
+          "left": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "title": "Status"
+            "title": "Left"
+          },
+          "right": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Right"
+          },
+          "absolute_delta": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Absolute Delta"
+          },
+          "relative_delta_percent": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relative Delta Percent"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes"
+          },
+          "bucket_id": {
+            "type": "string",
+            "title": "Bucket Id"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "period_days",
-          "calendar_days",
-          "declared_complete_days",
-          "observed_receipt_days",
-          "status"
+          "left_coverage",
+          "right_coverage",
+          "left",
+          "right",
+          "absolute_delta",
+          "relative_delta_percent",
+          "reason_codes",
+          "bucket_id"
         ],
-        "title": "Coverage"
+        "title": "ComparisonBucket"
+      },
+      "ComparisonSide": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Card Id"
+          },
+          "metric_ref": {
+            "$ref": "#/components/schemas/MetricRef"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ResultRef"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "receipt",
+              "EUR/receipt"
+            ],
+            "title": "Unit"
+          },
+          "format": {
+            "$ref": "#/components/schemas/NumberFormat"
+          },
+          "context": {
+            "$ref": "#/components/schemas/EffectiveContext"
+          },
+          "baseline_dates": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baseline Dates"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "card_id",
+          "metric_ref",
+          "result",
+          "unit",
+          "format",
+          "context",
+          "baseline_dates"
+        ],
+        "title": "ComparisonSide"
+      },
+      "ComparisonValues": {
+        "properties": {
+          "left_coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
+          },
+          "right_coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
+          },
+          "left": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Left"
+          },
+          "right": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Right"
+          },
+          "absolute_delta": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Absolute Delta"
+          },
+          "relative_delta_percent": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relative Delta Percent"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "left_coverage",
+          "right_coverage",
+          "left",
+          "right",
+          "absolute_delta",
+          "relative_delta_percent",
+          "reason_codes"
+        ],
+        "title": "ComparisonValues"
       },
       "Daily": {
         "properties": {
@@ -766,6 +1436,114 @@
           "stores"
         ],
         "title": "DatasetOption"
+      },
+      "DayAlignment": {
+        "properties": {
+          "current_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Current Date"
+          },
+          "baseline_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baseline Date"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "current_date",
+          "baseline_date"
+        ],
+        "title": "DayAlignment"
+      },
+      "EffectiveContext": {
+        "properties": {
+          "starts_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Starts On"
+          },
+          "ends_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Ends On"
+          },
+          "store_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "type": "array",
+            "maxItems": 1000,
+            "title": "Store Ids"
+          },
+          "grain": {
+            "type": "string",
+            "enum": [
+              "day",
+              "week",
+              "month",
+              "quarter",
+              "half_year",
+              "year"
+            ],
+            "title": "Grain"
+          },
+          "calendar_ref": {
+            "$ref": "#/components/schemas/CalendarRef"
+          },
+          "calendar_basis": {
+            "type": "string",
+            "enum": [
+              "calendar",
+              "fiscal"
+            ],
+            "title": "Calendar Basis"
+          },
+          "timezone": {
+            "type": "string",
+            "const": "UTC",
+            "title": "Timezone",
+            "default": "UTC"
+          },
+          "week_start": {
+            "type": "string",
+            "const": "monday",
+            "title": "Week Start",
+            "default": "monday"
+          },
+          "alignment": {
+            "type": "string",
+            "enum": [
+              "none",
+              "previous_year_same_dates"
+            ],
+            "title": "Alignment"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "starts_on",
+          "ends_on",
+          "store_ids",
+          "grain",
+          "calendar_ref",
+          "calendar_basis",
+          "alignment"
+        ],
+        "title": "EffectiveContext"
       },
       "HTTPValidationError": {
         "properties": {
@@ -906,6 +1684,101 @@
         ],
         "title": "MetricProjection"
       },
+      "MetricRef": {
+        "properties": {
+          "metric_id": {
+            "type": "string",
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt"
+            ],
+            "title": "Metric Id"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Version Id"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Content Hash"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "metric_id",
+          "version_id",
+          "content_hash"
+        ],
+        "title": "MetricRef"
+      },
+      "MetricValues": {
+        "properties": {
+          "net_revenue": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Net Revenue"
+          },
+          "receipt_count": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Receipt Count"
+          },
+          "average_receipt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Average Receipt"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "net_revenue",
+          "receipt_count",
+          "average_receipt"
+        ],
+        "title": "MetricValues"
+      },
+      "NumberFormat": {
+        "properties": {
+          "decimal_places": {
+            "type": "integer",
+            "maximum": 2.0,
+            "minimum": 0.0,
+            "title": "Decimal Places"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "decimal_places"
+        ],
+        "title": "NumberFormat"
+      },
       "PeriodRequest": {
         "properties": {
           "starts_on": {
@@ -926,6 +1799,71 @@
           "ends_on"
         ],
         "title": "PeriodRequest"
+      },
+      "QueryContext": {
+        "properties": {
+          "starts_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Starts On"
+          },
+          "ends_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Ends On"
+          },
+          "store_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "type": "array",
+                "maxItems": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Store Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "starts_on",
+          "ends_on",
+          "store_ids"
+        ],
+        "title": "QueryContext"
+      },
+      "ResultRef": {
+        "properties": {
+          "result_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Result Id"
+          },
+          "schema_version": {
+            "type": "string",
+            "const": "metric-workspace/v2",
+            "title": "Schema Version"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "result_id",
+          "schema_version",
+          "manifest"
+        ],
+        "title": "ResultRef"
       },
       "SalesContext": {
         "properties": {
@@ -1019,7 +1957,7 @@
             "title": "Daily"
           },
           "coverage": {
-            "$ref": "#/components/schemas/Coverage"
+            "$ref": "#/components/schemas/custometry_api__analytics__sales_models__Coverage"
           },
           "comparison": {
             "anyOf": [
@@ -1155,6 +2093,132 @@
           "label"
         ],
         "title": "StoreOption"
+      },
+      "TemporalBucket": {
+        "properties": {
+          "bucket_id": {
+            "type": "string",
+            "title": "Bucket Id"
+          },
+          "baseline_dates": {
+            "items": {
+              "type": "string",
+              "format": "date"
+            },
+            "type": "array",
+            "title": "Baseline Dates"
+          },
+          "values": {
+            "$ref": "#/components/schemas/MetricValues"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
+          },
+          "changes": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ComparisonValues"
+            },
+            "propertyNames": {
+              "enum": [
+                "net_revenue",
+                "receipt_count",
+                "average_receipt"
+              ]
+            },
+            "type": "object",
+            "title": "Changes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "bucket_id",
+          "baseline_dates",
+          "values",
+          "coverage",
+          "changes"
+        ],
+        "title": "TemporalBucket"
+      },
+      "TemporalProjection": {
+        "properties": {
+          "alignment": {
+            "type": "string",
+            "const": "previous_year_same_dates",
+            "title": "Alignment"
+          },
+          "mapping": {
+            "items": {
+              "$ref": "#/components/schemas/DayAlignment"
+            },
+            "type": "array",
+            "title": "Mapping"
+          },
+          "baseline_dates": {
+            "items": {
+              "type": "string",
+              "format": "date"
+            },
+            "type": "array",
+            "title": "Baseline Dates"
+          },
+          "excluded_baseline_dates": {
+            "items": {
+              "type": "string",
+              "format": "date"
+            },
+            "type": "array",
+            "title": "Excluded Baseline Dates"
+          },
+          "buckets": {
+            "items": {
+              "$ref": "#/components/schemas/TemporalBucket"
+            },
+            "type": "array",
+            "title": "Buckets"
+          },
+          "totals": {
+            "$ref": "#/components/schemas/MetricValues"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
+          },
+          "changes": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ComparisonValues"
+            },
+            "propertyNames": {
+              "enum": [
+                "net_revenue",
+                "receipt_count",
+                "average_receipt"
+              ]
+            },
+            "type": "object",
+            "title": "Changes"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "alignment",
+          "mapping",
+          "baseline_dates",
+          "excluded_baseline_dates",
+          "buckets",
+          "totals",
+          "coverage",
+          "changes",
+          "reason_codes"
+        ],
+        "title": "TemporalProjection"
       },
       "TimeComparisonRequest": {
         "properties": {
@@ -1375,6 +2439,531 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "WorkspaceBucket": {
+        "properties": {
+          "bucket_id": {
+            "type": "string",
+            "title": "Bucket Id"
+          },
+          "natural_starts_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Natural Starts On"
+          },
+          "natural_ends_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Natural Ends On"
+          },
+          "effective_starts_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Effective Starts On"
+          },
+          "effective_ends_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Effective Ends On"
+          },
+          "bucket_start": {
+            "type": "string",
+            "format": "date",
+            "title": "Bucket Start"
+          },
+          "bucket_end_exclusive": {
+            "type": "string",
+            "format": "date",
+            "title": "Bucket End Exclusive"
+          },
+          "effective_start": {
+            "type": "string",
+            "format": "date",
+            "title": "Effective Start"
+          },
+          "effective_end_exclusive": {
+            "type": "string",
+            "format": "date",
+            "title": "Effective End Exclusive"
+          },
+          "is_partial_bucket": {
+            "type": "boolean",
+            "title": "Is Partial Bucket"
+          },
+          "calendar_ref": {
+            "$ref": "#/components/schemas/CalendarRef"
+          },
+          "calendar_basis": {
+            "type": "string",
+            "enum": [
+              "calendar",
+              "fiscal"
+            ],
+            "title": "Calendar Basis"
+          },
+          "fiscal_year": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiscal Year"
+          },
+          "fiscal_quarter": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiscal Quarter"
+          },
+          "fiscal_half": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiscal Half"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "clipped": {
+            "type": "boolean",
+            "title": "Clipped"
+          },
+          "values": {
+            "$ref": "#/components/schemas/MetricValues"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "no_data",
+              "incomplete"
+            ],
+            "title": "State"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "bucket_id",
+          "natural_starts_on",
+          "natural_ends_on",
+          "effective_starts_on",
+          "effective_ends_on",
+          "bucket_start",
+          "bucket_end_exclusive",
+          "effective_start",
+          "effective_end_exclusive",
+          "is_partial_bucket",
+          "calendar_ref",
+          "calendar_basis",
+          "fiscal_year",
+          "fiscal_quarter",
+          "fiscal_half",
+          "label",
+          "clipped",
+          "values",
+          "state",
+          "coverage"
+        ],
+        "title": "WorkspaceBucket"
+      },
+      "WorkspaceDay": {
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "Date"
+          },
+          "values": {
+            "$ref": "#/components/schemas/MetricValues"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "date",
+          "values",
+          "coverage"
+        ],
+        "title": "WorkspaceDay"
+      },
+      "WorkspaceLineage": {
+        "properties": {
+          "source_artifacts": {
+            "items": {
+              "$ref": "#/components/schemas/ArtifactRef"
+            },
+            "type": "array",
+            "title": "Source Artifacts"
+          },
+          "metric_components": {
+            "items": {
+              "$ref": "#/components/schemas/MetricRef"
+            },
+            "type": "array",
+            "title": "Metric Components"
+          },
+          "source_calendar_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Source Calendar Version Id"
+          },
+          "data_as_of": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Data As Of"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_artifacts",
+          "metric_components",
+          "source_calendar_version_id",
+          "data_as_of"
+        ],
+        "title": "WorkspaceLineage"
+      },
+      "WorkspaceResultV2": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "metric-workspace/v2",
+            "title": "Schema Version"
+          },
+          "result_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Result Id"
+          },
+          "request_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Request Hash"
+          },
+          "policy_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Policy Hash"
+          },
+          "semantic_dataset_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Semantic Dataset Version Id"
+          },
+          "publication_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Publication Hash"
+          },
+          "effective_context": {
+            "$ref": "#/components/schemas/EffectiveContext"
+          },
+          "metric_refs": {
+            "items": {
+              "$ref": "#/components/schemas/MetricRef"
+            },
+            "type": "array",
+            "title": "Metric Refs"
+          },
+          "buckets": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceBucket"
+            },
+            "type": "array",
+            "title": "Buckets"
+          },
+          "totals": {
+            "$ref": "#/components/schemas/MetricValues"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/packages__contracts__analytics__workspace__Coverage"
+          },
+          "comparison": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CardComparisonV1"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "temporal": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TemporalProjection"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "daily": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceDay"
+            },
+            "type": "array",
+            "title": "Daily"
+          },
+          "lineage": {
+            "$ref": "#/components/schemas/WorkspaceLineage"
+          },
+          "trust": {
+            "$ref": "#/components/schemas/WorkspaceTrust"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ArtifactRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "result_id",
+          "request_hash",
+          "policy_hash",
+          "semantic_dataset_version_id",
+          "publication_hash",
+          "effective_context",
+          "metric_refs",
+          "buckets",
+          "totals",
+          "coverage",
+          "comparison",
+          "temporal",
+          "daily",
+          "lineage",
+          "trust",
+          "manifest"
+        ],
+        "title": "WorkspaceResultV2"
+      },
+      "WorkspaceRunRequest": {
+        "properties": {
+          "semantic_dataset_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Semantic Dataset Version Id"
+          },
+          "common": {
+            "$ref": "#/components/schemas/QueryContext"
+          },
+          "local_store_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "type": "array",
+                "maxItems": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Local Store Ids"
+          },
+          "grain": {
+            "type": "string",
+            "enum": [
+              "day",
+              "week",
+              "month",
+              "quarter",
+              "half_year",
+              "year"
+            ],
+            "title": "Grain"
+          },
+          "calendar_ref": {
+            "$ref": "#/components/schemas/CalendarRef"
+          },
+          "calendar_basis": {
+            "type": "string",
+            "enum": [
+              "calendar",
+              "fiscal"
+            ],
+            "title": "Calendar Basis"
+          },
+          "alignment": {
+            "type": "string",
+            "enum": [
+              "none",
+              "previous_year_same_dates"
+            ],
+            "title": "Alignment"
+          },
+          "metric_refs": {
+            "items": {
+              "$ref": "#/components/schemas/MetricRef"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Metric Refs"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "semantic_dataset_version_id",
+          "common",
+          "local_store_ids",
+          "grain",
+          "calendar_ref",
+          "calendar_basis",
+          "alignment",
+          "metric_refs"
+        ],
+        "title": "WorkspaceRunRequest"
+      },
+      "WorkspaceTrust": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "no_data",
+              "comparison_unavailable"
+            ],
+            "title": "Status"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "reason_codes"
+        ],
+        "title": "WorkspaceTrust"
+      },
+      "custometry_api__analytics__sales_models__Coverage": {
+        "properties": {
+          "period_days": {
+            "type": "integer",
+            "title": "Period Days"
+          },
+          "calendar_days": {
+            "type": "integer",
+            "title": "Calendar Days"
+          },
+          "declared_complete_days": {
+            "type": "integer",
+            "title": "Declared Complete Days"
+          },
+          "observed_receipt_days": {
+            "type": "integer",
+            "title": "Observed Receipt Days"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "complete",
+              "partial",
+              "missing"
+            ],
+            "title": "Status"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "period_days",
+          "calendar_days",
+          "declared_complete_days",
+          "observed_receipt_days",
+          "status"
+        ],
+        "title": "Coverage"
+      },
+      "packages__contracts__analytics__workspace__Coverage": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "complete",
+              "partial",
+              "unavailable"
+            ],
+            "title": "State"
+          },
+          "expected_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Days"
+          },
+          "calendar_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Calendar Days"
+          },
+          "declared_complete_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Declared Complete Days"
+          },
+          "observed_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Observed Days"
+          },
+          "eligible_receipts": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Eligible Receipts"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reason Codes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "state",
+          "expected_days",
+          "calendar_days",
+          "declared_complete_days",
+          "observed_days",
+          "eligible_receipts",
+          "reason_codes"
+        ],
+        "title": "Coverage"
       }
     }
   }

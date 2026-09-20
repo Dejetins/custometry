@@ -266,6 +266,22 @@
         },
         "definition": {
           "$ref": "#/$defs/ConfiguredReportV2"
+        },
+        "reuse_result_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reuse Result Ids"
         }
       },
       "required": [

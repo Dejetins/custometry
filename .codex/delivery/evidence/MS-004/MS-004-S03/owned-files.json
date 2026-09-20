@@ -1,0 +1,186 @@
+{
+  "stage": "MS-004-S03",
+  "source_files": [
+    {
+      "path": "apps/api/src/custometry_api/analytics/router.py",
+      "sha256": "352bc73e4f3acef695883941d047a3b4a6bb51352ffb588c5e09e0a473086d59"
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/workspace_access.py",
+      "sha256": "ca77a0cbaa367dc66a7e6c4c9f1b3423d3c9d0421aa59d713cecc79276d87e05"
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/workspace_errors.py",
+      "sha256": "6dfd6b95ea1aa508d6fa788dc10c07eaee72c1d5e6cd3fafbfc17ec9e989f923"
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/workspace_router.py",
+      "sha256": "0b2cbfa914a8dee45ffeb4ddc11cf1e1006a93d442ad565ea08def5b87b63d20"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/router.py",
+      "sha256": "ccb7d9a3d91afc618d28e04aba93d2c5216e409acf5370727057f678ccdd8cf0"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/workspace_composition.py",
+      "sha256": "72cabf7a1482942f3a52d1a84f56153f80ca1611a84381285a2c153199429ecc"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/workspace_router.py",
+      "sha256": "b21309d8d3ee39a5f06c73fd883139de9da6e8bf4ee59e4b3cb907ed183e7fff"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "sha256": "92092abc7c44f8e2b4860939e22ded3441402aab3b84a322b207e58009ecd9ed"
+    },
+    {
+      "path": "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md",
+      "sha256": "5eddef3ea3823c9a821e24928c89375acd91c77c2e4d34e0ea467c335997627e"
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "sha256": "614864b56c80671081fbb95b836c50bf7d341c62dbdc39f0d1e835663c45c235"
+    },
+    {
+      "path": "docs/contracts/report-refresh-serving-recovery-contract.md",
+      "sha256": "e0749d95bd0abf79971a3463db906e56c160864a0cda4837617d75d5792ab0ab"
+    },
+    {
+      "path": "packages/analytics_core/application/snapshot_verification.py",
+      "sha256": "3c5c84bd8db39ad22c9fdeb5c5ff5d4279e8f979b85551157b3f5aa1ed0fddbb"
+    },
+    {
+      "path": "packages/analytics_core/application/workspace_service.py",
+      "sha256": "f064a259d31918927e953fe62bb64a48e5203da2c242e7d911770191e59590df"
+    },
+    {
+      "path": "packages/contracts/generate_workspace_client.py",
+      "sha256": "f0181c54338b0d3395208e3577a147351ab03bd53a9302ca1e5dee07296bb752"
+    },
+    {
+      "path": "packages/contracts/identity/access.py",
+      "sha256": "cf901f7c38a6b8dad52fa19413a4ff925c71755af114ad0f02f30ccb43dde00c"
+    },
+    {
+      "path": "packages/contracts/openapi/analytics.openapi.json",
+      "sha256": "f368d40ba87360dac4830af3471388c5bbce7439dd70ac7ec3be6211b9c0a8b1"
+    },
+    {
+      "path": "packages/contracts/openapi/reports.openapi.json",
+      "sha256": "997f3efdb99a07ac6437b8977a357ce16449765bdc9823a5ec991128b6f14490"
+    },
+    {
+      "path": "packages/contracts/openapi/workspace.openapi.json",
+      "sha256": "b3ed0f0130f308ebfe386609131850257bda0861423f1ea8941a40731f46ffda"
+    },
+    {
+      "path": "packages/contracts/presentation/workspace.py",
+      "sha256": "01cc8a26bec011be4e1db9c55f8ce96c2ca37e38d7be1db18dc253c86096d4cf"
+    },
+    {
+      "path": "packages/contracts/presentation/workspace_ports.py",
+      "sha256": "e844ef6ebca43d0b09c193da4cc66022d7fa06b187196d27dd24f001ce85f6cf"
+    },
+    {
+      "path": "packages/contracts/schemas/analytical-document-composition-versions.schema.json",
+      "sha256": "9914efaaeada73e3cfec9a22d94b3f98822e02e5c03fe9e15edcb2aaf76a410f"
+    },
+    {
+      "path": "packages/contracts/schemas/report-versions.schema.json",
+      "sha256": "a667f84c06b3200061742964407431f59763939493ac46deff517187a2be8018"
+    },
+    {
+      "path": "packages/contracts/schemas/workspace-apply-response-v2.schema.json",
+      "sha256": "71da4d4ef4fae51de8452b82075687564f8a9d332236dd4c352da4fb3f404f46"
+    },
+    {
+      "path": "packages/contracts/schemas/workspace-apply-v2.schema.json",
+      "sha256": "e8971b6b6a917dd761654a5542748d2209a021f6bccfc3bc2311fe05658e7ad1"
+    },
+    {
+      "path": "packages/contracts/schemas/workspace-editor-v2.schema.json",
+      "sha256": "bfd1d0c98cdf655bf94b53f0e7aeb1a8f42f2b968708f72c942cd258b2f3c618"
+    },
+    {
+      "path": "packages/contracts/src/analytics-client.ts",
+      "sha256": "ba3ec572e98db0c414119fb5bd9f9cb7c308e43a402537caf9166d06265883ad"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "90c5893f9a3317a3ee138356262132a7c04eccc20b0bc2f2c787722d13fb89fd"
+    },
+    {
+      "path": "packages/contracts/src/reports-client.ts",
+      "sha256": "df73604197bda0a4fd164d00c60cfbb4213c475cd780174c1c1563ec2c6103e3"
+    },
+    {
+      "path": "packages/contracts/src/workspace-client.ts",
+      "sha256": "3079ee1fceffdfb19676fc66d846d22ea6b11c7f08b4ba1cf4fb33977dbc3e72"
+    },
+    {
+      "path": "packages/contracts/src/workspace-contracts.ts",
+      "sha256": "546603792c4a160fcaafbc82f5931934e9abbab7897157dde53ae351cbc7147d"
+    },
+    {
+      "path": "packages/identity_access/application/resource_access.py",
+      "sha256": "0f0578aefde2840519a0e7e621b836a8de8899d9b3a426881afdcdb6f5d74373"
+    },
+    {
+      "path": "packages/identity_access/infrastructure/organization_postgres.py",
+      "sha256": "09e23384a5ccbceecfd31ddb3c0b529034165641bdceed664ac6e9902fe5090c"
+    },
+    {
+      "path": "packages/identity_access/infrastructure/resource_access.py",
+      "sha256": "95d0e777ef4435e9bc4cbff4a4c48d5d512f653cac46d41d33d00d1fc0be53f6"
+    },
+    {
+      "path": "packages/presentation/application/reports.py",
+      "sha256": "f42af892967a04e6b112126190c595e8f648986f7e427df2882f04f186d360ad"
+    },
+    {
+      "path": "packages/presentation/application/workspace.py",
+      "sha256": "e21eb5c14e2de17765772f18ef8097a8b7657d495590ecaa9e7302761b537fa6"
+    },
+    {
+      "path": "packages/presentation/infrastructure/postgres.py",
+      "sha256": "95d858152f51f371cfb1f52a64ae28322058e4f2465db48e9c4defee0a238e92"
+    },
+    {
+      "path": "packages/presentation/infrastructure/workspace.py",
+      "sha256": "49fa8534ffe327f62d1480b9aa208d54db32975251a46ea57b4f5749db026bd1"
+    },
+    {
+      "path": "tests/contract/presentation/test_reports.py",
+      "sha256": "f24317a7bd44932d21b4f4561d0a3f67b7cbec194e4adff2c598af84cc1729b8"
+    },
+    {
+      "path": "tests/integration/analytics/test_workspace_s02.py",
+      "sha256": "e06eabb933a9425b6d49293b9a1bdae08c8fe7e3757ff50bf1322107bd495087"
+    },
+    {
+      "path": "tests/integration/presentation/conftest.py",
+      "sha256": "adfbbcd6fabcf2b507fbbe83336c6b6d6af0e37ea364495973752f9ec670bf80"
+    },
+    {
+      "path": "tests/integration/presentation/run_s03.py",
+      "sha256": "c01ae303cd4d1ceabbc8db0b5ea907c9098a27d673814e5c101e200b333e37de"
+    },
+    {
+      "path": "tests/integration/presentation/test_drafts.py",
+      "sha256": "d232b94aea4af12ad25072051a341a73ef3dfe060c749d577977e33dd4991ce6"
+    },
+    {
+      "path": "tests/integration/presentation/test_workspace_s03.py",
+      "sha256": "67739f003378c2d0fef54525563d51a9b62abd6edd176708371888946489fd21"
+    },
+    {
+      "path": "tests/unit/presentation/test_workspace_access.py",
+      "sha256": "1299483dcdd74812fc75db8695e87721a35c92e1d8935718be84e163402f80ae"
+    }
+  ],
+  "excluded_foreign": [
+    ".codex/delivery/evidence/MS-004/MS-004-S02/synchronization.md"
+  ],
+  "mixed_journal": ".codex/delivery/ledgers/MS-004.md",
+  "journal_policy": "Preserve incoming coordinator transitions; executor claim/accept only through exclusive updater."
+}

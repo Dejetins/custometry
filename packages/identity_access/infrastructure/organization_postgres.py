@@ -1316,7 +1316,8 @@ class PostgresOrganizationRepository:
         resource_type: str | None,
         resource_id: UUID | None,
         at: datetime,
-    ) -> dict[str, bool]:
+        projection_details: bool = False,
+    ) -> dict[str, Any]:
         with self._connect() as connection, connection.cursor(row_factory=dict_row) as cursor:
             self._active_unit(cursor, actor.workspace_id, target_org_unit_id)
             cursor.execute(
@@ -1371,12 +1372,11 @@ class PostgresOrganizationRepository:
                     scope_mode == "subtree"
                     and self._is_descendant(cursor, target_org_unit_id, unit_id)
                 )
-                leadership_permissions = {
-                    str(value) for value in leadership["permissions"]
-                }
+                leadership_permissions = {str(value) for value in leadership["permissions"]}
                 if covers and functional_permission in leadership_permissions:
                     leadership_covers = True
 
+            binding = None
             object_policy = False
             export_policy = False
             resource_requires_pii = True
@@ -1385,7 +1385,7 @@ class PostgresOrganizationRepository:
             if resource_type is not None and resource_id is not None:
                 cursor.execute(
                     """
-                    SELECT owner_type, owner_id, allowed_actions,
+                    SELECT id, version, owner_type, owner_id, allowed_actions,
                            required_row_scope_refs, required_column_policy_refs,
                            requires_pii
                     FROM organization_resource_ownership_bindings
@@ -1418,16 +1418,12 @@ class PostgresOrganizationRepository:
                         owner_primary = cursor.fetchone()
                         owner_matches = bool(
                             owner_id == actor.principal_id
-                            and
-                            owner_primary
-                            and UUID(str(owner_primary["org_unit_id"]))
-                            == target_org_unit_id
+                            and owner_primary
+                            and UUID(str(owner_primary["org_unit_id"])) == target_org_unit_id
                         )
                     if owner_type == "workspace_legacy":
                         owner_matches = False
-                    object_actions = {
-                        str(value) for value in binding["allowed_actions"]
-                    }
+                    object_actions = {str(value) for value in binding["allowed_actions"]}
                     object_policy = owner_matches and action in object_actions
                     export_policy = not action.startswith("export") or action in object_actions
                     required_row_scope_refs = tuple(
@@ -1450,7 +1446,7 @@ class PostgresOrganizationRepository:
                     ON v.org_unit_id = u.id AND v.version = u.current_version
                   WHERE v.parent_org_unit_id IS NOT NULL
                 )
-                SELECT v.allowed_actions, v.row_scope_refs, v.column_policy_refs,
+                SELECT v.policy_id, v.version, v.allowed_actions, v.row_scope_refs, v.column_policy_refs,
                        v.pii_allowed, v.include_descendants
                 FROM lineage AS l
                 JOIN organization_department_policies AS p ON p.org_unit_id = l.id
@@ -1481,10 +1477,11 @@ class PostgresOrganizationRepository:
                 policy_pii = bool(policy["pii_allowed"])
 
             grant_allowed = False
+            exact_grants: list[str] = []
             if active_membership and primary_ready and primary_id is not None:
                 cursor.execute(
                     """
-                    SELECT subject_type, subject_id, resource_type, resource_id, actions
+                    SELECT id, version, subject_type, subject_id, resource_type, resource_id, actions
                     FROM organization_cross_department_grants
                     WHERE workspace_id = %s AND target_org_unit_id = %s
                       AND effective_from <= %s
@@ -1499,22 +1496,23 @@ class PostgresOrganizationRepository:
                         and UUID(str(grant["subject_id"])) == actor.principal_id
                     ) or (
                         grant["subject_type"] == "org_unit"
-                        and self._is_descendant(
-                            cursor, primary_id, UUID(str(grant["subject_id"]))
-                        )
+                        and self._is_descendant(cursor, primary_id, UUID(str(grant["subject_id"])))
                     )
                     resource_match = grant["resource_id"] is None or (
                         resource_id is not None
                         and UUID(str(grant["resource_id"])) == resource_id
                         and str(grant["resource_type"]) == resource_type
                     )
-                    if subject_match and resource_match and action in {
-                        str(value) for value in grant["actions"]
-                    }:
+                    if (
+                        subject_match
+                        and resource_match
+                        and action in {str(value) for value in grant["actions"]}
+                    ):
                         grant_allowed = True
-                        break
+                        if grant["resource_id"] is not None:
+                            exact_grants.append(f"{grant['id']}:{grant['version']}")
 
-        return {
+        result: dict[str, Any] = {
             "functional_permission": actor.allows(functional_permission),
             "active_membership": active_membership and primary_ready,
             "organization_scope": own_scope or leadership_covers,
@@ -1525,6 +1523,18 @@ class PostgresOrganizationRepository:
             "column_policy": column_policy,
             "export_policy": export_policy,
             "policy_fresh": policy_fresh,
-            "pii_ceiling": (not resource_requires_pii)
-            or (policy_pii and actor.allows("pii.read")),
+            "pii_ceiling": (not resource_requires_pii) or (policy_pii and actor.allows("pii.read")),
         }
+
+        if projection_details:
+            # A resource-specific grant may open a principal-owned object. It never
+            # cancels the object's action ceiling or a department/data/PII denial.
+            if binding is not None and exact_grants and action in binding["allowed_actions"]:
+                result["object_policy"] = True
+            result["projection"] = {
+                "binding": dict(binding) if binding else None,
+                "policy": dict(policy) if policy else None,
+                "primary": str(primary_id),
+                "grants": sorted(exact_grants),
+            }
+        return result

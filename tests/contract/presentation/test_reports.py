@@ -31,6 +31,12 @@ def test_versioned_provider_schema_and_client_drift() -> None:
     assert set(api["paths"]) == {
         "/",
         "/prepare",
+        "/v2/{report_id}",
+        "/v2/{report_id}/apply",
+        "/v2/{report_id}/versions",
+        "/v2/{report_id}/snapshots/{snapshot_id}",
+        "/v2/{report_id}/saved-views",
+        "/v2/{report_id}/saved-views/{saved_view_id}/versions",
         "/{report_id}",
         "/{report_id}/versions",
         "/{report_id}/snapshots/{snapshot_id}",

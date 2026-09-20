@@ -1,3 +1,4 @@
+import {ConfiguredWorkspace} from './ConfiguredWorkspace';
 import { pilotPeriod } from './pilot-period';
 import { PilotDocument } from './PilotDocument';
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
@@ -26,7 +27,7 @@ function Protected({resolution}:FeatureRouteProps) {
   if(denied||actor.isError) return <Frame title={c.signIn}><div className="report-message"><p role="alert">{c.denied}</p><Link to="/auth/sign-in">{c.signIn}</Link></div></Frame>;
   if(!actor.data)return <Frame title={c.reports}><p role="status">{c.loading}</p></Frame>;
   if(actor.data.workspace_id!==workspace)return <Frame title={c.reports}><p role="alert">{c.workspaceMismatch}</p></Frame>;
-  return resolution.route.id==='UI-RPT-001'?<Frame title={c.reports} workspace={workspace}><Library workspace={workspace}/></Frame>:<Editor key={window.location.pathname} workspace={workspace} actor={actor.data} preview={resolution.route.id==='UI-RPT-003'}/>;
+  return resolution.route.id==='UI-RPT-001'?<Frame title={c.reports} workspace={workspace}><Library workspace={workspace}/></Frame>:window.location.pathname.split('/')[4]!=='new'&&!new URLSearchParams(window.location.search).has('legacy')?<ConfiguredWorkspace key={window.location.pathname} workspace={workspace} actor={actor.data} preview={resolution.route.id==='UI-RPT-003'}/>:<Editor key={window.location.pathname} workspace={workspace} actor={actor.data} preview={resolution.route.id==='UI-RPT-003'||new URLSearchParams(window.location.search).has('legacy')}/>;
 }
 function Library({workspace}:{workspace:string}) {
   const {c}=useCopy();const list=useQuery({queryKey:['reports',workspace],queryFn:()=>reportApi.drafts.list()});

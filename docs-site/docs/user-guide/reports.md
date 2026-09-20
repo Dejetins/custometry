@@ -1,7 +1,7 @@
 ---
 doc_id: sales-report-workspace
 title: Sign in and work with a sales report
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.11.0-draft
 locale: en
 visibility: public
@@ -10,11 +10,11 @@ audiences: [user]
 route: /docs/user-guide/reports/
 status: active
 owner: product-documentation
-requirement_ids: [HELP-001, HELP-003, REPORT-015, I18N-001]
+requirement_ids: [HELP-001, HELP-003, REPORT-015, I18N-001, METRIC-025, METRIC-026, METRIC-027, METRIC-028, METRIC-030]
 proof_boundary:
   label: bounded-sales-report-user-guide
   exclusions: [packaged-runtime-readiness, published-reports]
-reviewed_at: "2026-09-15"
+reviewed_at: "2026-09-21"
 ---
 # Sign in and work with a sales report
 
@@ -27,28 +27,46 @@ From **Report library**, choose **Create sales report** or open a saved draft.
 The supplied source contains completed receipts in EUR. Refunds, cancelled
 receipts and other currencies are excluded. The source rules are locked.
 
-Edit the title directly in the report heading. Source and period are in the top-right inspector; store and comparison use the toolbar menus. **Apply** is in the inspector footer. **Save** and language selection are in the view menu (eye icon). Open exact preview from the inspector’s **Views** tab. A dash means the metric is unavailable for this source.
+For a saved report, use **Configure workset** to open the inspector. The creator
+can add, copy and reorder personal worksets and cards. The catalog contains net
+revenue, receipt count and average receipt. Repeated cards can use different
+store restrictions. **Report context** controls the common dates, stores and
+Day/Week/Month/Quarter/Half year/Year grain. An empty store selection means no data;
+it does not mean all stores.
 
-1. Enter a report title, period and Store. Choose a previous-year comparison if needed.
-2. Select **Apply** to calculate those choices. A changed period or Store does not alter the saved result.
-3. Review the chart, **Table** and **Result trust**, then select **Save** to persist the calculated draft.
-4. Use **Open exact draft preview** to reopen that saved result. The preview is a draft, not a published report.
+1. Change the required context or card settings, then choose **Apply**.
+2. Review the chart, **Table**, exact dates and **Result Trust**.
+3. Choose **Save report** to save all worksets and their results together.
+4. Reopen the saved report or its **Exact snapshot**. Reopening does not calculate again.
 
-**Result trust** explains incomplete item attribution. The prepared source has
-14,995 eligible item relationships out of 15,000, with five quarantined items;
-the eligible receipt totals are retained. Coverage applies to the selected period.
+Display-only edits can be saved using existing results. A reader works with the
+accessible base and **My saved views**, using **Save personal view**. Personal
+views do not change the author's worksets. Changing a query requires calculation
+permission. A reader with an existing saved view can change its display and save
+without running a new calculation.
 
-Use the expand button to view the chart and complete table together. **Escape**
-or **Return to report** returns focus to that button. You can switch languages without
-changing the result.
+Administrators open **Company settings · financial year** from administration
+or the report. Choose the start month and whether the financial year is named
+for its start or end year. Years start on the first day of the selected month;
+the profile uses UTC and Monday weeks. April with end-year labels makes FY2026
+run from 1 April 2025 through 31 March 2026.
 
-If another tab saved a newer draft, your input stays visible. Copy any edits you
-want to keep, then choose **Reload saved draft** and reapply them before saving.
-If the session expires, sign in again; protected results are hidden. For an
-unavailable saved result, use **Retry** when offered or contact your administrator.
-For an empty period, choose another period and select **Apply**.
+Saving company settings leaves existing reports on their pinned calendar.
+The creator chooses **Adopt company calendar**, **Apply**, then **Save report**
+to use the new version. Readers cannot change this report setting.
 
-Publication, email, export and custom block authoring are not available in this
-report workspace. Availability in an installed candidate depends on its version.
+**Focus** shows the chart and full table together. **Escape** closes Focus or
+the inspector and returns focus to its opening control. Card and workset order
+also have keyboard-accessible buttons. Language changes preserve result values.
+
+A dash means no available value; zero remains zero. **Result Trust** explains
+coverage and source limitations for the selected period. If another tab saved a
+newer version, your input stays visible: preserve needed edits, choose
+**Reload saved**, then reapply them. If the session expires, protected results
+are hidden and you must sign in again.
+
+New-report creation retains the original source/Apply/Save flow. Goals, shared
+worksets, publication, email and export are unavailable here. Availability in an
+installed candidate depends on its version.
 
 [Back to documentation](../index.md)

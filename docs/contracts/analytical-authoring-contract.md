@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-ANALYTICAL-AUTHORING-001
 title: Governed population and analytical authoring contract
-doc_version: 14
+doc_version: 15
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -674,6 +674,30 @@ editor, exact snapshot, Apply/Save and own-view routes. Existing report/Analytic
 clients are regenerated from the mounted applications. See the
 [S03 report](../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md) for actual
 API/PostgreSQL/artifact proof and the [recovery boundary](report-refresh-serving-recovery-contract.md#ms-004-s03-atomic-report-and-view-recovery).
-S04 still owns Web integration and browser proof; S05 owns integrated acceptance.
+S04 implements the bounded Web integration described below; S05 owns integrated acceptance.
 The pinned draft base is not a published default: full METRIC-022 published-default
 reset, shared-version adoption, publication and release are not claimed.
+
+
+## MS-004 S04 Web consumption
+
+The native report workspace consumes the S03 v2 contracts for personal worksets,
+exactly three registered metric definitions, repeated independent cards, ordering,
+copy and common/local store restrictions. `null` retains inheritance and `[]`
+remains explicitly empty. Display selection, order and labels do not change the
+business query; changed context/grain/calendar requires explicit Apply. Save is
+separate and uses verified result bindings in card order, including inactive sets.
+
+Reader presentation state belongs to its selected own Saved View, including its
+query, calendar pin, representation and immutable result scope. Existing verified
+bindings support display-only Save without `analysis.run`; a legacy base without
+workspace bindings first needs an authorized Apply to produce those bindings.
+Private author worksets are not exposed as a shared reader definition.
+
+Workspace fiscal settings remain administrative and versioned. Report creators
+can explicitly adopt the current default; readers cannot rebase report policy.
+The chart, table and Focus render server values, temporal deltas and exact bucket
+dates. Different units retain separate axes; no browser metric arithmetic is used.
+See [S04 evidence](../../.codex/delivery/evidence/MS-004/MS-004-S04/report.md) and
+[the Web source contract](../architecture/ui/custometry-web-implementation-source-contract-v1.md#ms-004-s04-native-workspace-integration).
+Final integrated and owner acceptance remain S05.

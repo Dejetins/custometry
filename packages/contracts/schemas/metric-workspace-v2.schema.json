@@ -107,6 +107,12 @@
     "ComparisonBucket": {
       "additionalProperties": false,
       "properties": {
+        "left_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "right_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
         "left": {
           "anyOf": [
             {
@@ -168,6 +174,8 @@
         }
       },
       "required": [
+        "left_coverage",
+        "right_coverage",
         "left",
         "right",
         "absolute_delta",
@@ -206,6 +214,21 @@
         },
         "context": {
           "$ref": "#/$defs/EffectiveContext"
+        },
+        "baseline_dates": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "date",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Baseline Dates"
         }
       },
       "required": [
@@ -214,7 +237,8 @@
         "result",
         "unit",
         "format",
-        "context"
+        "context",
+        "baseline_dates"
       ],
       "title": "ComparisonSide",
       "type": "object"
@@ -222,6 +246,12 @@
     "ComparisonValues": {
       "additionalProperties": false,
       "properties": {
+        "left_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "right_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
         "left": {
           "anyOf": [
             {
@@ -279,6 +309,8 @@
         }
       },
       "required": [
+        "left_coverage",
+        "right_coverage",
         "left",
         "right",
         "absolute_delta",
@@ -305,6 +337,16 @@
           "title": "Expected Days",
           "type": "integer"
         },
+        "calendar_days": {
+          "minimum": 0,
+          "title": "Calendar Days",
+          "type": "integer"
+        },
+        "declared_complete_days": {
+          "minimum": 0,
+          "title": "Declared Complete Days",
+          "type": "integer"
+        },
         "observed_days": {
           "minimum": 0,
           "title": "Observed Days",
@@ -326,11 +368,41 @@
       "required": [
         "state",
         "expected_days",
+        "calendar_days",
+        "declared_complete_days",
         "observed_days",
         "eligible_receipts",
         "reason_codes"
       ],
       "title": "Coverage",
+      "type": "object"
+    },
+    "DayAlignment": {
+      "additionalProperties": false,
+      "properties": {
+        "current_date": {
+          "format": "date",
+          "title": "Current Date",
+          "type": "string"
+        },
+        "baseline_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Baseline Date"
+        }
+      },
+      "required": [
+        "current_date",
+        "baseline_date"
+      ],
+      "title": "DayAlignment",
       "type": "object"
     },
     "EffectiveContext": {
@@ -533,6 +605,132 @@
       "title": "ResultRef",
       "type": "object"
     },
+    "TemporalBucket": {
+      "additionalProperties": false,
+      "properties": {
+        "bucket_id": {
+          "title": "Bucket Id",
+          "type": "string"
+        },
+        "baseline_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Baseline Dates",
+          "type": "array"
+        },
+        "values": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "changes": {
+          "additionalProperties": {
+            "$ref": "#/$defs/ComparisonValues"
+          },
+          "propertyNames": {
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt"
+            ]
+          },
+          "title": "Changes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "bucket_id",
+        "baseline_dates",
+        "values",
+        "coverage",
+        "changes"
+      ],
+      "title": "TemporalBucket",
+      "type": "object"
+    },
+    "TemporalProjection": {
+      "additionalProperties": false,
+      "properties": {
+        "alignment": {
+          "const": "previous_year_same_dates",
+          "title": "Alignment",
+          "type": "string"
+        },
+        "mapping": {
+          "items": {
+            "$ref": "#/$defs/DayAlignment"
+          },
+          "title": "Mapping",
+          "type": "array"
+        },
+        "baseline_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Baseline Dates",
+          "type": "array"
+        },
+        "excluded_baseline_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Excluded Baseline Dates",
+          "type": "array"
+        },
+        "buckets": {
+          "items": {
+            "$ref": "#/$defs/TemporalBucket"
+          },
+          "title": "Buckets",
+          "type": "array"
+        },
+        "totals": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "changes": {
+          "additionalProperties": {
+            "$ref": "#/$defs/ComparisonValues"
+          },
+          "propertyNames": {
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt"
+            ]
+          },
+          "title": "Changes",
+          "type": "object"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "alignment",
+        "mapping",
+        "baseline_dates",
+        "excluded_baseline_dates",
+        "buckets",
+        "totals",
+        "coverage",
+        "changes",
+        "reason_codes"
+      ],
+      "title": "TemporalProjection",
+      "type": "object"
+    },
     "WorkspaceBucket": {
       "additionalProperties": false,
       "properties": {
@@ -559,6 +757,74 @@
           "format": "date",
           "title": "Effective Ends On",
           "type": "string"
+        },
+        "bucket_start": {
+          "format": "date",
+          "title": "Bucket Start",
+          "type": "string"
+        },
+        "bucket_end_exclusive": {
+          "format": "date",
+          "title": "Bucket End Exclusive",
+          "type": "string"
+        },
+        "effective_start": {
+          "format": "date",
+          "title": "Effective Start",
+          "type": "string"
+        },
+        "effective_end_exclusive": {
+          "format": "date",
+          "title": "Effective End Exclusive",
+          "type": "string"
+        },
+        "is_partial_bucket": {
+          "title": "Is Partial Bucket",
+          "type": "boolean"
+        },
+        "calendar_ref": {
+          "$ref": "#/$defs/CalendarRef"
+        },
+        "calendar_basis": {
+          "enum": [
+            "calendar",
+            "fiscal"
+          ],
+          "title": "Calendar Basis",
+          "type": "string"
+        },
+        "fiscal_year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fiscal Year"
+        },
+        "fiscal_quarter": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fiscal Quarter"
+        },
+        "fiscal_half": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fiscal Half"
         },
         "label": {
           "title": "Label",
@@ -590,6 +856,16 @@
         "natural_ends_on",
         "effective_starts_on",
         "effective_ends_on",
+        "bucket_start",
+        "bucket_end_exclusive",
+        "effective_start",
+        "effective_end_exclusive",
+        "is_partial_bucket",
+        "calendar_ref",
+        "calendar_basis",
+        "fiscal_year",
+        "fiscal_quarter",
+        "fiscal_half",
         "label",
         "clipped",
         "values",
@@ -597,6 +873,29 @@
         "coverage"
       ],
       "title": "WorkspaceBucket",
+      "type": "object"
+    },
+    "WorkspaceDay": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "format": "date",
+          "title": "Date",
+          "type": "string"
+        },
+        "values": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        }
+      },
+      "required": [
+        "date",
+        "values",
+        "coverage"
+      ],
+      "title": "WorkspaceDay",
       "type": "object"
     },
     "WorkspaceLineage": {
@@ -729,6 +1028,23 @@
         }
       ]
     },
+    "temporal": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TemporalProjection"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "daily": {
+      "items": {
+        "$ref": "#/$defs/WorkspaceDay"
+      },
+      "title": "Daily",
+      "type": "array"
+    },
     "lineage": {
       "$ref": "#/$defs/WorkspaceLineage"
     },
@@ -752,6 +1068,8 @@
     "totals",
     "coverage",
     "comparison",
+    "temporal",
+    "daily",
     "lineage",
     "trust",
     "manifest"

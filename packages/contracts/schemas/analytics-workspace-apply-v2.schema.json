@@ -21,31 +21,6 @@
       "title": "ArtifactRef",
       "type": "object"
     },
-    "BaseSnapshotRef": {
-      "additionalProperties": false,
-      "properties": {
-        "version_id": {
-          "format": "uuid",
-          "title": "Version Id",
-          "type": "string"
-        },
-        "snapshot_id": {
-          "format": "uuid",
-          "title": "Snapshot Id",
-          "type": "string"
-        },
-        "manifest": {
-          "$ref": "#/$defs/ArtifactRef"
-        }
-      },
-      "required": [
-        "version_id",
-        "snapshot_id",
-        "manifest"
-      ],
-      "title": "BaseSnapshotRef",
-      "type": "object"
-    },
     "CalendarRef": {
       "additionalProperties": false,
       "properties": {
@@ -65,54 +40,6 @@
         "content_hash"
       ],
       "title": "CalendarRef",
-      "type": "object"
-    },
-    "Card": {
-      "additionalProperties": false,
-      "properties": {
-        "card_id": {
-          "format": "uuid",
-          "title": "Card Id",
-          "type": "string"
-        },
-        "metric_ref": {
-          "$ref": "#/$defs/MetricRef"
-        },
-        "local_store_ids": {
-          "anyOf": [
-            {
-              "items": {
-                "maxLength": 128,
-                "minLength": 1,
-                "pattern": "\\S",
-                "type": "string"
-              },
-              "maxItems": 1000,
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Local Store Ids"
-        },
-        "population_binding": {
-          "default": null,
-          "title": "Population Binding",
-          "type": "null"
-        },
-        "target_action_binding": {
-          "default": null,
-          "title": "Target Action Binding",
-          "type": "null"
-        }
-      },
-      "required": [
-        "card_id",
-        "metric_ref",
-        "local_store_ids"
-      ],
-      "title": "Card",
       "type": "object"
     },
     "CardComparisonV1": {
@@ -462,137 +389,6 @@
       "title": "ComparisonValues",
       "type": "object"
     },
-    "ConfiguredReportV2": {
-      "additionalProperties": false,
-      "properties": {
-        "schema_version": {
-          "const": "configured-report/v2",
-          "title": "Schema Version",
-          "type": "string"
-        },
-        "report_id": {
-          "format": "uuid",
-          "title": "Report Id",
-          "type": "string"
-        },
-        "creator_principal_id": {
-          "format": "uuid",
-          "title": "Creator Principal Id",
-          "type": "string"
-        },
-        "title": {
-          "maxLength": 200,
-          "minLength": 1,
-          "pattern": "\\S",
-          "title": "Title",
-          "type": "string"
-        },
-        "semantic_dataset_version_id": {
-          "format": "uuid",
-          "title": "Semantic Dataset Version Id",
-          "type": "string"
-        },
-        "common_context": {
-          "$ref": "#/$defs/QueryContext"
-        },
-        "grain": {
-          "enum": [
-            "day",
-            "week",
-            "month",
-            "quarter",
-            "half_year",
-            "year"
-          ],
-          "title": "Grain",
-          "type": "string"
-        },
-        "calendar_ref": {
-          "$ref": "#/$defs/CalendarRef"
-        },
-        "calendar_basis": {
-          "enum": [
-            "calendar",
-            "fiscal"
-          ],
-          "title": "Calendar Basis",
-          "type": "string"
-        },
-        "worksets": {
-          "items": {
-            "$ref": "#/$defs/Workset"
-          },
-          "maxItems": 20,
-          "title": "Worksets",
-          "type": "array"
-        },
-        "default_workset_id": {
-          "anyOf": [
-            {
-              "format": "uuid",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Default Workset Id"
-        },
-        "selection": {
-          "anyOf": [
-            {
-              "discriminator": {
-                "mapping": {
-                  "pair": "#/$defs/PairSelection",
-                  "single": "#/$defs/SingleSelection"
-                },
-                "propertyName": "mode"
-              },
-              "oneOf": [
-                {
-                  "$ref": "#/$defs/SingleSelection"
-                },
-                {
-                  "$ref": "#/$defs/PairSelection"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Selection"
-        },
-        "brand_profile": {
-          "$ref": "#/$defs/Reference"
-        },
-        "company_pack": {
-          "$ref": "#/$defs/Reference"
-        },
-        "base_snapshot_ref": {
-          "$ref": "#/$defs/BaseSnapshotRef"
-        }
-      },
-      "required": [
-        "schema_version",
-        "report_id",
-        "creator_principal_id",
-        "title",
-        "semantic_dataset_version_id",
-        "common_context",
-        "grain",
-        "calendar_ref",
-        "calendar_basis",
-        "worksets",
-        "default_workset_id",
-        "selection",
-        "brand_profile",
-        "company_pack",
-        "base_snapshot_ref"
-      ],
-      "title": "ConfiguredReportV2",
-      "type": "object"
-    },
     "Coverage": {
       "additionalProperties": false,
       "properties": {
@@ -648,6 +444,34 @@
         "reason_codes"
       ],
       "title": "Coverage",
+      "type": "object"
+    },
+    "DayAlignment": {
+      "additionalProperties": false,
+      "properties": {
+        "current_date": {
+          "format": "date",
+          "title": "Current Date",
+          "type": "string"
+        },
+        "baseline_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Baseline Date"
+        }
+      },
+      "required": [
+        "current_date",
+        "baseline_date"
+      ],
+      "title": "DayAlignment",
       "type": "object"
     },
     "EffectiveContext": {
@@ -730,31 +554,6 @@
       "title": "EffectiveContext",
       "type": "object"
     },
-    "LocalizedName": {
-      "additionalProperties": false,
-      "properties": {
-        "ru": {
-          "maxLength": 200,
-          "minLength": 1,
-          "pattern": "\\S",
-          "title": "Ru",
-          "type": "string"
-        },
-        "en": {
-          "maxLength": 200,
-          "minLength": 1,
-          "pattern": "\\S",
-          "title": "En",
-          "type": "string"
-        }
-      },
-      "required": [
-        "ru",
-        "en"
-      ],
-      "title": "LocalizedName",
-      "type": "object"
-    },
     "MetricRef": {
       "additionalProperties": false,
       "properties": {
@@ -786,6 +585,54 @@
       "title": "MetricRef",
       "type": "object"
     },
+    "MetricValues": {
+      "additionalProperties": false,
+      "properties": {
+        "net_revenue": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Net Revenue"
+        },
+        "receipt_count": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Receipt Count"
+        },
+        "average_receipt": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Average Receipt"
+        }
+      },
+      "required": [
+        "net_revenue",
+        "receipt_count",
+        "average_receipt"
+      ],
+      "title": "MetricValues",
+      "type": "object"
+    },
     "NumberFormat": {
       "additionalProperties": false,
       "properties": {
@@ -800,117 +647,6 @@
         "decimal_places"
       ],
       "title": "NumberFormat",
-      "type": "object"
-    },
-    "PairSelection": {
-      "additionalProperties": false,
-      "properties": {
-        "mode": {
-          "const": "pair",
-          "title": "Mode",
-          "type": "string"
-        },
-        "left_card_id": {
-          "format": "uuid",
-          "title": "Left Card Id",
-          "type": "string"
-        },
-        "right_card_id": {
-          "format": "uuid",
-          "title": "Right Card Id",
-          "type": "string"
-        },
-        "display": {
-          "const": "series",
-          "title": "Display",
-          "type": "string"
-        }
-      },
-      "required": [
-        "mode",
-        "left_card_id",
-        "right_card_id",
-        "display"
-      ],
-      "title": "PairSelection",
-      "type": "object"
-    },
-    "QueryContext": {
-      "additionalProperties": false,
-      "properties": {
-        "starts_on": {
-          "format": "date",
-          "title": "Starts On",
-          "type": "string"
-        },
-        "ends_on": {
-          "format": "date",
-          "title": "Ends On",
-          "type": "string"
-        },
-        "store_ids": {
-          "anyOf": [
-            {
-              "items": {
-                "maxLength": 128,
-                "minLength": 1,
-                "pattern": "\\S",
-                "type": "string"
-              },
-              "maxItems": 1000,
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Store Ids"
-        }
-      },
-      "required": [
-        "starts_on",
-        "ends_on",
-        "store_ids"
-      ],
-      "title": "QueryContext",
-      "type": "object"
-    },
-    "ReaderViewOverride": {
-      "additionalProperties": false,
-      "properties": {
-        "query_context": {
-          "$ref": "#/$defs/ViewQueryContext"
-        },
-        "display": {
-          "$ref": "#/$defs/ViewDisplay"
-        }
-      },
-      "required": [
-        "query_context",
-        "display"
-      ],
-      "title": "ReaderViewOverride",
-      "type": "object"
-    },
-    "Reference": {
-      "additionalProperties": false,
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "title": "Id",
-          "type": "string"
-        },
-        "content_hash": {
-          "pattern": "^[0-9a-f]{64}$",
-          "title": "Content Hash",
-          "type": "string"
-        }
-      },
-      "required": [
-        "id",
-        "content_hash"
-      ],
-      "title": "Reference",
       "type": "object"
     },
     "ResultRef": {
@@ -938,311 +674,506 @@
       "title": "ResultRef",
       "type": "object"
     },
-    "SingleSelection": {
+    "TemporalBucket": {
       "additionalProperties": false,
       "properties": {
-        "mode": {
-          "const": "single",
-          "title": "Mode",
+        "bucket_id": {
+          "title": "Bucket Id",
           "type": "string"
         },
-        "card_id": {
-          "format": "uuid",
-          "title": "Card Id",
+        "baseline_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Baseline Dates",
+          "type": "array"
+        },
+        "values": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "changes": {
+          "additionalProperties": {
+            "$ref": "#/$defs/ComparisonValues"
+          },
+          "propertyNames": {
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt"
+            ]
+          },
+          "title": "Changes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "bucket_id",
+        "baseline_dates",
+        "values",
+        "coverage",
+        "changes"
+      ],
+      "title": "TemporalBucket",
+      "type": "object"
+    },
+    "TemporalProjection": {
+      "additionalProperties": false,
+      "properties": {
+        "alignment": {
+          "const": "previous_year_same_dates",
+          "title": "Alignment",
           "type": "string"
+        },
+        "mapping": {
+          "items": {
+            "$ref": "#/$defs/DayAlignment"
+          },
+          "title": "Mapping",
+          "type": "array"
+        },
+        "baseline_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Baseline Dates",
+          "type": "array"
+        },
+        "excluded_baseline_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Excluded Baseline Dates",
+          "type": "array"
+        },
+        "buckets": {
+          "items": {
+            "$ref": "#/$defs/TemporalBucket"
+          },
+          "title": "Buckets",
+          "type": "array"
+        },
+        "totals": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "changes": {
+          "additionalProperties": {
+            "$ref": "#/$defs/ComparisonValues"
+          },
+          "propertyNames": {
+            "enum": [
+              "net_revenue",
+              "receipt_count",
+              "average_receipt"
+            ]
+          },
+          "title": "Changes",
+          "type": "object"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "alignment",
+        "mapping",
+        "baseline_dates",
+        "excluded_baseline_dates",
+        "buckets",
+        "totals",
+        "coverage",
+        "changes",
+        "reason_codes"
+      ],
+      "title": "TemporalProjection",
+      "type": "object"
+    },
+    "WorkspaceBucket": {
+      "additionalProperties": false,
+      "properties": {
+        "bucket_id": {
+          "title": "Bucket Id",
+          "type": "string"
+        },
+        "natural_starts_on": {
+          "format": "date",
+          "title": "Natural Starts On",
+          "type": "string"
+        },
+        "natural_ends_on": {
+          "format": "date",
+          "title": "Natural Ends On",
+          "type": "string"
+        },
+        "effective_starts_on": {
+          "format": "date",
+          "title": "Effective Starts On",
+          "type": "string"
+        },
+        "effective_ends_on": {
+          "format": "date",
+          "title": "Effective Ends On",
+          "type": "string"
+        },
+        "bucket_start": {
+          "format": "date",
+          "title": "Bucket Start",
+          "type": "string"
+        },
+        "bucket_end_exclusive": {
+          "format": "date",
+          "title": "Bucket End Exclusive",
+          "type": "string"
+        },
+        "effective_start": {
+          "format": "date",
+          "title": "Effective Start",
+          "type": "string"
+        },
+        "effective_end_exclusive": {
+          "format": "date",
+          "title": "Effective End Exclusive",
+          "type": "string"
+        },
+        "is_partial_bucket": {
+          "title": "Is Partial Bucket",
+          "type": "boolean"
+        },
+        "calendar_ref": {
+          "$ref": "#/$defs/CalendarRef"
+        },
+        "calendar_basis": {
+          "enum": [
+            "calendar",
+            "fiscal"
+          ],
+          "title": "Calendar Basis",
+          "type": "string"
+        },
+        "fiscal_year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fiscal Year"
+        },
+        "fiscal_quarter": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fiscal Quarter"
+        },
+        "fiscal_half": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fiscal Half"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "clipped": {
+          "title": "Clipped",
+          "type": "boolean"
+        },
+        "values": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "state": {
+          "enum": [
+            "ready",
+            "no_data",
+            "incomplete"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        }
+      },
+      "required": [
+        "bucket_id",
+        "natural_starts_on",
+        "natural_ends_on",
+        "effective_starts_on",
+        "effective_ends_on",
+        "bucket_start",
+        "bucket_end_exclusive",
+        "effective_start",
+        "effective_end_exclusive",
+        "is_partial_bucket",
+        "calendar_ref",
+        "calendar_basis",
+        "fiscal_year",
+        "fiscal_quarter",
+        "fiscal_half",
+        "label",
+        "clipped",
+        "values",
+        "state",
+        "coverage"
+      ],
+      "title": "WorkspaceBucket",
+      "type": "object"
+    },
+    "WorkspaceDay": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "format": "date",
+          "title": "Date",
+          "type": "string"
+        },
+        "values": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        }
+      },
+      "required": [
+        "date",
+        "values",
+        "coverage"
+      ],
+      "title": "WorkspaceDay",
+      "type": "object"
+    },
+    "WorkspaceLineage": {
+      "additionalProperties": false,
+      "properties": {
+        "source_artifacts": {
+          "items": {
+            "$ref": "#/$defs/ArtifactRef"
+          },
+          "title": "Source Artifacts",
+          "type": "array"
+        },
+        "metric_components": {
+          "items": {
+            "$ref": "#/$defs/MetricRef"
+          },
+          "title": "Metric Components",
+          "type": "array"
+        },
+        "source_calendar_version_id": {
+          "format": "uuid",
+          "title": "Source Calendar Version Id",
+          "type": "string"
+        },
+        "data_as_of": {
+          "format": "date-time",
+          "title": "Data As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_artifacts",
+        "metric_components",
+        "source_calendar_version_id",
+        "data_as_of"
+      ],
+      "title": "WorkspaceLineage",
+      "type": "object"
+    },
+    "WorkspaceResultV2": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "metric-workspace/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "result_id": {
+          "format": "uuid",
+          "title": "Result Id",
+          "type": "string"
+        },
+        "request_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Request Hash",
+          "type": "string"
+        },
+        "policy_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Policy Hash",
+          "type": "string"
+        },
+        "semantic_dataset_version_id": {
+          "format": "uuid",
+          "title": "Semantic Dataset Version Id",
+          "type": "string"
+        },
+        "publication_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Publication Hash",
+          "type": "string"
+        },
+        "effective_context": {
+          "$ref": "#/$defs/EffectiveContext"
+        },
+        "metric_refs": {
+          "items": {
+            "$ref": "#/$defs/MetricRef"
+          },
+          "title": "Metric Refs",
+          "type": "array"
+        },
+        "buckets": {
+          "items": {
+            "$ref": "#/$defs/WorkspaceBucket"
+          },
+          "title": "Buckets",
+          "type": "array"
+        },
+        "totals": {
+          "$ref": "#/$defs/MetricValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "comparison": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CardComparisonV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "temporal": {
-          "enum": [
-            "none",
-            "previous_year_same_dates"
-          ],
-          "title": "Temporal",
-          "type": "string"
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TemporalProjection"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "display": {
-          "enum": [
-            "series",
-            "delta_trend"
-          ],
-          "title": "Display",
-          "type": "string"
+        "daily": {
+          "items": {
+            "$ref": "#/$defs/WorkspaceDay"
+          },
+          "title": "Daily",
+          "type": "array"
+        },
+        "lineage": {
+          "$ref": "#/$defs/WorkspaceLineage"
+        },
+        "trust": {
+          "$ref": "#/$defs/WorkspaceTrust"
+        },
+        "manifest": {
+          "$ref": "#/$defs/ArtifactRef"
         }
       },
       "required": [
-        "mode",
-        "card_id",
+        "schema_version",
+        "result_id",
+        "request_hash",
+        "policy_hash",
+        "semantic_dataset_version_id",
+        "publication_hash",
+        "effective_context",
+        "metric_refs",
+        "buckets",
+        "totals",
+        "coverage",
+        "comparison",
         "temporal",
-        "display"
+        "daily",
+        "lineage",
+        "trust",
+        "manifest"
       ],
-      "title": "SingleSelection",
+      "title": "WorkspaceResultV2",
       "type": "object"
     },
-    "ViewDisplay": {
+    "WorkspaceTrust": {
       "additionalProperties": false,
       "properties": {
-        "active_workset_id": {
-          "anyOf": [
-            {
-              "format": "uuid",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
+        "status": {
+          "enum": [
+            "ready",
+            "no_data",
+            "comparison_unavailable"
           ],
-          "title": "Active Workset Id"
+          "title": "Status",
+          "type": "string"
         },
-        "selection": {
-          "anyOf": [
-            {
-              "discriminator": {
-                "mapping": {
-                  "pair": "#/$defs/PairSelection",
-                  "single": "#/$defs/SingleSelection"
-                },
-                "propertyName": "mode"
-              },
-              "oneOf": [
-                {
-                  "$ref": "#/$defs/SingleSelection"
-                },
-                {
-                  "$ref": "#/$defs/PairSelection"
-                }
-              ]
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Selection"
-        },
-        "card_order": {
+        "reason_codes": {
           "items": {
-            "format": "uuid",
             "type": "string"
           },
-          "title": "Card Order",
-          "type": "array"
-        },
-        "hidden_card_ids": {
-          "items": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "title": "Hidden Card Ids",
-          "type": "array"
-        },
-        "representation": {
-          "enum": [
-            "chart",
-            "table"
-          ],
-          "title": "Representation",
-          "type": "string"
-        },
-        "density": {
-          "enum": [
-            "comfortable",
-            "compact"
-          ],
-          "title": "Density",
-          "type": "string"
-        }
-      },
-      "required": [
-        "active_workset_id",
-        "selection",
-        "card_order",
-        "hidden_card_ids",
-        "representation",
-        "density"
-      ],
-      "title": "ViewDisplay",
-      "type": "object"
-    },
-    "ViewQueryContext": {
-      "additionalProperties": false,
-      "properties": {
-        "starts_on": {
-          "format": "date",
-          "title": "Starts On",
-          "type": "string"
-        },
-        "ends_on": {
-          "format": "date",
-          "title": "Ends On",
-          "type": "string"
-        },
-        "store_ids": {
-          "anyOf": [
-            {
-              "items": {
-                "maxLength": 128,
-                "minLength": 1,
-                "pattern": "\\S",
-                "type": "string"
-              },
-              "maxItems": 1000,
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Store Ids"
-        },
-        "grain": {
-          "enum": [
-            "day",
-            "week",
-            "month",
-            "quarter",
-            "half_year",
-            "year"
-          ],
-          "title": "Grain",
-          "type": "string"
-        }
-      },
-      "required": [
-        "starts_on",
-        "ends_on",
-        "store_ids",
-        "grain"
-      ],
-      "title": "ViewQueryContext",
-      "type": "object"
-    },
-    "Workset": {
-      "additionalProperties": false,
-      "properties": {
-        "workset_id": {
-          "format": "uuid",
-          "title": "Workset Id",
-          "type": "string"
-        },
-        "name": {
-          "$ref": "#/$defs/LocalizedName"
-        },
-        "visibility": {
-          "const": "personal",
-          "title": "Visibility",
-          "type": "string"
-        },
-        "owner_principal_id": {
-          "format": "uuid",
-          "title": "Owner Principal Id",
-          "type": "string"
-        },
-        "cards": {
-          "items": {
-            "$ref": "#/$defs/Card"
-          },
-          "maxItems": 50,
-          "title": "Cards",
+          "title": "Reason Codes",
           "type": "array"
         }
       },
       "required": [
-        "workset_id",
-        "name",
-        "visibility",
-        "owner_principal_id",
-        "cards"
+        "status",
+        "reason_codes"
       ],
-      "title": "Workset",
+      "title": "WorkspaceTrust",
       "type": "object"
     }
   },
   "additionalProperties": false,
   "properties": {
-    "contract_version": {
-      "const": "configured-report/v2",
-      "title": "Contract Version",
+    "schema_version": {
+      "const": "workspace-apply/v2",
+      "default": "workspace-apply/v2",
+      "title": "Schema Version",
       "type": "string"
     },
-    "configuration_hash": {
-      "pattern": "^[0-9a-f]{64}$",
-      "title": "Configuration Hash",
-      "type": "string"
+    "results": {
+      "items": {
+        "$ref": "#/$defs/WorkspaceResultV2"
+      },
+      "title": "Results",
+      "type": "array"
     },
-    "definition": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/ConfiguredReportV2"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "view_context": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/ReaderViewOverride"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "bindings_by_card": {
+    "bindings": {
       "items": {
         "$ref": "#/$defs/CardResultBinding"
       },
-      "title": "Bindings By Card",
+      "title": "Bindings",
       "type": "array"
-    },
-    "comparison": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/CardComparisonV1"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "chart_specs": {
-      "items": {
-        "$ref": "#/$defs/Reference"
-      },
-      "title": "Chart Specs",
-      "type": "array"
-    },
-    "base_revision": {
-      "minimum": 1,
-      "title": "Base Revision",
-      "type": "integer"
-    },
-    "access_fingerprint": {
-      "pattern": "^[0-9a-f]{64}$",
-      "title": "Access Fingerprint",
-      "type": "string"
-    },
-    "status": {
-      "enum": [
-        "ready",
-        "no_data",
-        "comparison_unavailable"
-      ],
-      "title": "Status",
-      "type": "string"
     }
   },
   "required": [
-    "contract_version",
-    "configuration_hash",
-    "definition",
-    "view_context",
-    "bindings_by_card",
-    "comparison",
-    "chart_specs",
-    "base_revision",
-    "access_fingerprint",
-    "status"
+    "results",
+    "bindings"
   ],
-  "title": "WorkspaceApplyResponse",
+  "title": "WorkspaceApplyResult",
   "type": "object"
 }

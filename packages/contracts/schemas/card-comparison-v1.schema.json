@@ -45,6 +45,12 @@
     "ComparisonBucket": {
       "additionalProperties": false,
       "properties": {
+        "left_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "right_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
         "left": {
           "anyOf": [
             {
@@ -106,6 +112,8 @@
         }
       },
       "required": [
+        "left_coverage",
+        "right_coverage",
         "left",
         "right",
         "absolute_delta",
@@ -144,6 +152,21 @@
         },
         "context": {
           "$ref": "#/$defs/EffectiveContext"
+        },
+        "baseline_dates": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "date",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Baseline Dates"
         }
       },
       "required": [
@@ -152,7 +175,8 @@
         "result",
         "unit",
         "format",
-        "context"
+        "context",
+        "baseline_dates"
       ],
       "title": "ComparisonSide",
       "type": "object"
@@ -160,6 +184,12 @@
     "ComparisonValues": {
       "additionalProperties": false,
       "properties": {
+        "left_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "right_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
         "left": {
           "anyOf": [
             {
@@ -217,6 +247,8 @@
         }
       },
       "required": [
+        "left_coverage",
+        "right_coverage",
         "left",
         "right",
         "absolute_delta",
@@ -243,6 +275,16 @@
           "title": "Expected Days",
           "type": "integer"
         },
+        "calendar_days": {
+          "minimum": 0,
+          "title": "Calendar Days",
+          "type": "integer"
+        },
+        "declared_complete_days": {
+          "minimum": 0,
+          "title": "Declared Complete Days",
+          "type": "integer"
+        },
         "observed_days": {
           "minimum": 0,
           "title": "Observed Days",
@@ -264,6 +306,8 @@
       "required": [
         "state",
         "expected_days",
+        "calendar_days",
+        "declared_complete_days",
         "observed_days",
         "eligible_receipts",
         "reason_codes"

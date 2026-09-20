@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-ANALYTICAL-AUTHORING-001
 title: Governed population and analytical authoring contract
-doc_version: 12
+doc_version: 13
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -565,5 +565,64 @@ selection ownership. Server registry/access resolution, historical deleted-ID
 non-reuse, truthful limit error mapping and result verification remain mandatory
 when S02/S03 activate consumers. A valid DTO is not proof of those runtime checks.
 
-No financial bucket calculation, report v2 save/read endpoint, settings UI,
-shared workset, goal, publication or full METRIC-022 conformance is claimed here.
+The S01 foundation alone did not establish calculation, report v2 save/read,
+settings UI, shared worksets, goals or full METRIC-022 conformance. The following
+section records the subsequent S02 calculation boundary.
+
+
+## MS-004 S02 calculation and immutable result boundary
+
+`WorkspaceAnalyticsService` implements D03–D05 of the unchanged accepted plan.
+It consumes public Semantic/calendar and Artifact ports and a required
+`WorkspaceAccessPort`. Its caller must provide a trusted current dataset projection,
+never an HTTP-supplied policy fingerprint or allowed-store set. S03 owns the actual
+Identity/report object adapter and public activation; no v2 route is mounted yet.
+The service checks the actor/dataset/permission projection before work and rechecks
+it before returning reused or newly persisted results.
+
+`WorkspaceRunRequest` resolves null inheritance, explicit empty sets and the
+common/local/allowed intersection. Unknown and explicitly denied stores fail.
+Identity partitions by workspace, actor, policy/scope, dataset publication, all six
+source bindings, registered component definitions, pinned business calendar, exact
+period, grain and alignment. Card IDs, labels, ordering and presentation settings
+are excluded. Batch Apply groups equivalent contexts and returns separate card
+bindings; concurrent work uses existing artifact admission and PostgreSQL winner
+uniqueness, with no single-flight service or cross-actor reuse claim.
+
+The v2 envelope now includes exclusive natural/effective ends, clipped flags,
+calendar pins, financial indices, daily registered components and separate expected,
+Calendar-present, declared-complete, observed-day and receipt counts. Inclusive
+input dates are projected onto UTC receipt-header grain. Weeks remain ISO Monday;
+month arithmetic determines fiscal quarters/halves/years. Clipping is independent
+of completeness. Empty values are null; eligible zero revenue remains zero. Ratios
+are recomputed from summed components, using a local Decimal precision of 38 and
+canonical non-exponent strings; display formatting never changes raw values.
+
+Temporal projection stores exact current-to-prior-date mapping and baseline date
+sets. A current Feb 29 without a predecessor blocks that bucket and total delta;
+unaffected buckets may compare. An unmapped prior leap day is excluded with an
+explicit disclosure. Both comparison sides carry their own coverage. Absolute and
+relative deltas are server values; zero baseline only blocks the relative delta.
+Pair comparisons retain separate unit/format/result references. Cross-unit deltas
+are unavailable; period, grain, calendar or definition-basis incompatibility blocks
+a combined chart. The comparison artifact references admitted result artifacts;
+chart/table/tooltip consumers use the same typed projections. Temporal right-side
+`context` is the aligned current axis; `baseline_dates` names the actual prior dates.
+
+`WorkspaceArtifactStore` admits deterministic immutable JSON using existing
+manifests/dependencies and verifies exact content on reuse/read. Analytics records
+`contract_version=metric-workspace/v2` in the S01 migration's discriminator; existing
+v1 calculation and artifact formats are unchanged. Missing/corrupt input or output
+fails explicitly. No output files are repaired silently or treated as zero data.
+
+The unmounted `custometry_api.analytics.workspace_router` factory exposes bounded
+result/context/catalog/comparison adapters only when explicitly composed with read
+and run dependencies. It is absent from `create_app`; S03 must supply current
+object/data access plus CSRF for mutations. The workspace OpenAPI remains a
+component catalogue with no advertised paths. Regenerate the existing schema and
+TypeScript outputs after envelope changes with `generate_workspace_client`.
+
+Local intake/SQL/artifact evidence is recorded in
+[S02 report](../../.codex/delivery/evidence/MS-004/MS-004-S02/report.md).
+It does not establish saved-report transactions, real v2 public authorization,
+browser behavior, release readiness or owner acceptance of the milestone.

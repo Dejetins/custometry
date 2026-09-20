@@ -1,9 +1,9 @@
 ---
 doc_id: UI-METRIC-WORKSPACE-COMPOSITION-001
 title: Metric workspace composition baseline
-doc_version: 3
+doc_version: 4
 product_spec_version: 0.11.0-draft
-requirements_revision: 2026-09-17.1
+requirements_revision: 2026-09-20.1
 visibility: internal
 ship: false
 owner: product
@@ -26,9 +26,10 @@ composition does not approve unselected backend contracts or a release.
 The owner also explicitly retained the ability to request capabilities absent
 from current requirements. Such requests are valid inputs to development; see
 [handling new requirements](#handling-new-requirements). The accepted
-continuation is [WS-003 1.0.0](../../../planning/directions/DIR-004/workstreams/WS-003.md).
+continuation is [WS-003 2.0.0](../../../planning/directions/DIR-004/workstreams/WS-003.md).
 The owner separately confirmed its order and first-child scope; C01 L3 is next.
-Goal policies and unwritten milestone plans remain separate. The existing preview
+The owner resolved goal/shared-set product policies on 2026-09-20 in WS-003/DEC-04…15;
+exact L3 contracts and implementation proof remain separate. The existing preview
 URL remains stable.
 
 ## Open and inspect
@@ -100,9 +101,10 @@ is no new runnable milestone or implicit S05/S06 continuation from composition a
   One inspector edits the set, selected card, chart or goal.
 - Retain one main chart/table/Focus surface. Distinguish temporal comparison from
   descriptive two-card comparison; do not overlay every mode simultaneously.
-- Keep goals below the analysis; start their implementation only after agreeing
-  direction, period aggregation, edit/version behavior and access rules.
-  The illustrated higher-is-better sum goal is a proposal, not a product rule.
+- Keep goals below the analysis. The owner selected both minimum and maximum
+  goals, absolute/relative targets, one-off/recurring periods and creator-only
+  edits with history. L3 must fix the exact methods before implementation.
+  The illustrated sum goal is one demonstration and does not cover all accepted modes.
 - WS-003 confirms starting implementation with the three registered receipt metrics;
   Customer/Product sources remain available to later agreed calculations.
   Department-specific catalogs, CRM formulas and complete segmentation are not
@@ -141,6 +143,16 @@ evidence nor silently claims that existing implementation already satisfies it.
 | 1 | 2026-09-17 | Local interactive composition prepared and verified for owner review |
 | 2 | 2026-09-17 | Record initial owner acceptance, future requirement handling and the WS-003 continuation proposal |
 | 3 | 2026-09-17 | Editorial navigation update for accepted WS-003 1.0.0 sequence/C01 scope; composition and prototype code unchanged |
+| 4 | 2026-09-20 | Link accepted WS-003 2.0.0 product policies and disclose unchanged prototype coverage |
+
+## Product amendment — 2026-09-20
+
+[WS-003 2.0.0](../../../planning/directions/DIR-004/workstreams/WS-003.md) and
+requirements revision `2026-09-20.1` now govern six grains, goal behavior and
+creator-only report authoring. The prototype code remains unchanged: its monthly
+fixtures, simple goal and scope controls do not prove these added capabilities.
+Readers use permitted filters/display state; only the report creator changes
+the report definition, shared worksets and goal settings.
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-BOUNDED-CONTEXT-MAP-001
 title: Custometry bounded context map
-doc_version: 13
+doc_version: 14
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -33,7 +33,7 @@ share private domain objects, repositories, tables, or write paths.
 |---|---|---|---|---|
 | Identity & Workspace | `identity_access` | users, principals, local auth, memberships, roles, OrgUnit structures, primary memberships, scoped leadership, department data policies, cross-department grants, resource ownership bindings, contributor activity projections, object/data ceilings, workspaces, sessions, API tokens, policy decisions | report definitions, source secrets, business data, raw employee analytics, notification content | authorization, organization scope, ownership, and tenancy have independent security/lifecycle rules |
 | Connection Catalog | `connection_catalog` | connection versions, secret-reference metadata, source capabilities, source catalog snapshots, connector health | secret values, extracted rows, ingestion watermarks, semantic mappings | source configuration/metadata change independently from extraction |
-| Semantic Model | `semantic_model` | datasets, entity/field mappings, joins, metrics/certification, metric groups, NumberFormatSpec, DiscountPolicyVersion, filters, capabilities, product/category hierarchy versions, product assignments, reusable store clusters and assortment-scope semantics, logical aggregate-compatibility rules | physical extraction, inventory/price source facts, fitted analytical results, report layout, comments | analytical meaning, hierarchy history, pricing policy, and reusable numeric semantics require immutable versions |
+| Semantic Model | `semantic_model` | versioned business/fiscal calendar policies and workspace calendar defaults, datasets, entity/field mappings, joins, metrics/certification, metric groups, NumberFormatSpec, DiscountPolicyVersion, filters, capabilities, product/category hierarchy versions, product assignments, reusable store clusters and assortment-scope semantics, logical aggregate-compatibility rules | physical extraction, inventory/price source facts, fitted analytical results, report layout, comments | analytical meaning, hierarchy history, pricing policy, and reusable numeric semantics require immutable versions |
 | Data Documentation | `data_documentation` | Data Guides, FileImportTemplateVersion, validation/publication lifecycle, safe documentation projections | arbitrary source files, ingestion state, report narrative | governed explanation and intake shape are independently published contracts |
 | Ingestion | `ingestion` | extraction specs, batches, source consistency observations, schema observations, watermark intents/commits, landing manifests, inventory/availability/price/planned-assortment source facts | connection secrets, semantic definitions, product hierarchy meaning, DQ waivers | restartable source reads and watermark correctness form one consistency boundary |
 | Artifact Lifecycle | `artifacts` | staging/commit visibility, manifests, hashes, authorization, retention/eviction, orphan cleanup, dependency references between immutable artifacts | business meaning, aggregate compatibility, run orchestration, report definition | immutable bulk data and Parquet materializations need atomic visibility and lifecycle independent of producers |
@@ -536,3 +536,12 @@ Before implementation, the responsible specification or vertical ticket names:
 The artifact choice and execution authority follow
 `development-operating-model.md` and Global Delivery Contract v1. This map is
 not a ticket backlog and does not prove an implementation exists.
+
+## Financial calendar clarification — 2026-09-20
+
+The owner requires financial-year settings at company/workspace level (METRIC-030,
+requirements revision 2026-09-20.2). Semantic Model owns their analytical meaning,
+immutable versions and workspace default pointer; Identity authorizes settings
+changes. Presentation pins the policy; Analytics resolves period boundaries.
+Imported Calendar completeness stays an independent data binding. The bounded
+implementation proposal is [MS-004 0.2.0](planning/milestones/MS-004/plan.md); no new context or service is introduced.

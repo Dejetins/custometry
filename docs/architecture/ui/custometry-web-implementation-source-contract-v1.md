@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-UI-WEB-IMPLEMENTATION-SOURCE-001
 title: Custometry Web implementation source contract
-doc_version: 11
+doc_version: 12
 product_spec_version: 0.11.0-draft
 ui_spec_version: 0.9.0-draft
 visibility: internal
@@ -19,12 +19,15 @@ proof_boundary:
 ## Accepted initial composition — 2026-09-17
 
 The owner accepted the [metric-workspace composition](drafts/metric-workspace-v1/README.md),
-version 3 (editorial navigation update), as the starting baseline for worksets, configured cards, comparisons
+version 4 (editorial navigation update), as the starting baseline for worksets, configured cards, comparisons
 and goal placement. Preserve the current native-pilot implementation as the
 foundation. This addition governs the demonstrated new report surfaces; the
 original pilot governs the shell and unaffected surfaces. The prototype does
 not establish backend contracts. [WS-003](../planning/directions/DIR-004/workstreams/WS-003.md)
-records the accepted order and first-child scope; L3 contract decisions remain to be fixed.
+records the accepted order and all twelve product choices. C01 must implement
+all six grains and creator-only report editing; C02/C03 own the added goal/shared
+behavior. Exact L3 contract decisions remain to be fixed. Both UI affordances
+and backend mutations enforce REPORT-018; reader filtering is not authoring.
 New owner requirements may amend the baseline; synchronize affected sources and
 the selected execution unit without treating the old document as a product veto.
 Settle overlapping card/context/chart/persistence changes before final polish.
@@ -60,7 +63,7 @@ Read only the smallest applicable set:
 3. the [target pilot](target-pilot/README.md), its byte-pinned entrypoint and
    decision notes for the demonstrated composition, navigation, analytical
    controls, interactions, density, and visual language, plus the accepted
-   [metric-workspace composition, version 3](drafts/metric-workspace-v1/README.md)
+   [metric-workspace composition, version 4](drafts/metric-workspace-v1/README.md)
    for its explicitly added report surfaces;
 4. accepted architecture, especially ADR-0007, for production technology and
    dependency boundaries;

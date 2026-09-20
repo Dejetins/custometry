@@ -8,8 +8,8 @@ normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-09-17
-requirements_revision: 2026-09-17.1
+updated_at: 2026-09-20
+requirements_revision: 2026-09-20.2
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -1012,6 +1012,8 @@ entity:
     fiscal_period: string|null
 ```
 
+Базовые настройки компании/workspace включают версионируемый финансовый календарь (METRIC-030). Business calendar принадлежит Semantic Model; права администратора на его настройку проверяет Identity. Это отдельная политика границ периодов, а не изменение полноты дат в импортированном Calendar. Сохранённые результаты фиксируют обе версии.
+
 ## 5.10. Optional analytical dimensions
 
 | Сущность | Назначение | V1 target |
@@ -1527,10 +1529,24 @@ metric_presentation_requirements:
   - id: METRIC-028
     requirement: Панель метрик MUST различать выбор одной карточки для temporal comparison и выбор двух карточек для descriptive metric-to-metric comparison; обе серии сохраняют metric/version/filter/unit/period identity. Разные units имеют явно подписанные отдельные шкалы, несовместимые periods/grain дают blocker, совместное движение линий не является causal evidence.
   - id: METRIC-029
-    requirement: Пользовательская monitoring goal MUST ссылаться на настроенную метрику и хранить typed target value, явный интервал, owner/scope и описание гипотезы достижения; фактическое значение и прогресс используют ту же server-resolved методику и permissions. Monitoring goal MUST отличаться от целевого действия фильтра и прогноза; missing actual не считается нулём или достижением цели. Progress direction/aggregation и правила изменения active goal фиксируются до реализации.
+    requirement: Пользовательская monitoring goal MUST ссылаться на настроенную метрику и хранить typed target value, явный интервал, owner/scope и описание гипотезы достижения; фактическое значение и прогресс используют ту же server-resolved методику и permissions. Monitoring goal MUST отличаться от целевого действия фильтра и прогноза; missing actual не считается нулём или достижением цели. Направление, режим задания цели, повторение и lifecycle подчиняются METRIC-031…035; техническая методика фиксируется в L3 до реализации.
+  - id: METRIC-030
+    requirement: График и таблица отчёта MUST поддерживать детализацию day, week, month, quarter, half_year и year по общей versioned calendar/timezone policy; изменение детализации проходит server-side aggregation с сохранением смысла MetricVersion, границ и полноты периода. Ratio-метрики пересчитываются из числителя и знаменателя, а не усреднением отображаемых ratios; temporal comparison сохраняет явно выбранный alignment и не подменяется ISO-week comparison при выборе недель. Настраиваемый финансовый год компании MUST задаваться в базовых настройках workspace через versioned business calendar, а не локальную настройку карточки; его начало определяет финансовые год, полугодия и кварталы. Календарная и финансовая основа MUST быть явно различимы; calendar version, resolved boundaries и basis входят в result/cache identity и snapshots. Смена общего календаря MUST NOT переинтерпретировать сохранённые отчёты: переход на новую версию выполняется явно с сохранением предыдущих результатов; язык интерфейса не меняет календарь.
+  - id: METRIC-031
+    requirement: Monitoring goal MUST поддерживать lower_bound (достичь не менее) и upper_bound (не превысить), absolute_value и relative_change к явно заданной базе. Создатель отчёта задаёт режим и baseline policy заранее в versioned report configuration; при использовании отчёта читатель не меняет их. Resolved baseline value, period, metric/filter/data versions и единицы входят в расчёт; отсутствующая или непригодная база даёт unavailable, а не вымышленный процент. Progress display MUST отличать достижение нижней границы от расходования верхнего лимита.
+  - id: METRIC-032
+    requirement: Monitoring goal MUST поддерживать разовый явный интервал и повторяющееся календарное правило, заданное создателем отчёта. Каждое повторение имеет собственный period ID, точные границы, привязку к версии правила, расчёты и итог; создание следующего периода не изменяет прошлые цели. Повторение периодов не подразумевает автоматический пересчёт факта.
+  - id: METRIC-033
+    requirement: Monitoring goal MUST фиксировать metric version и effective filter context при создании; изменения фильтров просмотра или карточки не меняют условия существующей цели. Изменять определение цели может только создатель отчёта при наличии остальных необходимых permissions; изменение сохраняет автора, время, предыдущую и новую версии условий. Reader filters и personal display state не меняют target, direction, baseline, recurrence или контекст цели.
+  - id: METRIC-034
+    requirement: Факт и выполнение monitoring goal MUST пересчитываться по явной разрешённой команде пользователя с указанием data-as-of, coverage и lineage. Окончательный итог фиксируется после завершения периода при достаточной полноте данных; до этого достижение порога является предварительным. Missing/partial actual не считается нулём или выполнением. Исправленные данные после закрытия периода меняют итог только через явный новый расчёт с сохранением предыдущего зафиксированного результата.
+  - id: METRIC-035
+    requirement: Monitoring goal MAY предоставлять явно включаемый run rate при текущем темпе. Run rate MUST рассчитываться сервером по объявленной применимой методике, показывать elapsed/remaining period, data-as-of, coverage и допущения отдельно от факта и цели; он не устанавливает окончательное выполнение. Для метрик без допустимого способа экстраполяции или недостаточных данных показывается unavailable. Эта опция не возобновляет held Forecasting model/backtest work.
 ```
 
 > Уточнение требований от 2026-09-17: [наборы метрик, comparison и monitoring goals — source reference 1](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md). Это будущий product target; принятый MS-003 и его границы не расширяются. Базовый draft spec_version сохраняется; редакция требований явно отмечена requirements_revision.
+
+> Уточнение владельца от 2026-09-20: METRIC-030…035 и REPORT-018/019 закрепляют шесть детализаций, обе стороны порога, абсолютные/относительные и разовые/повторяющиеся цели, ручной пересчёт, фиксированный итог, optional run rate и редактирование отчёта только создателем. [WS-003 2.0.0](docs/architecture/planning/directions/DIR-004/workstreams/WS-003.md#owner-decisions-and-next-child) распределяет решения по C01–C03. Это target requirements редакции `2026-09-20.1`, не утверждение об уже реализованных возможностях.
 
 ### 6.3.2. DiscountPolicyVersion и компонентная семантика скидок
 
@@ -4627,7 +4643,7 @@ analytical_document_requirements:
   - id: ANALYTICAL-DOC-014
     requirement: Common composer MUST поддерживать compact table-first page в existing flow layout наряду с dashboard_grid и narrative; page composition, density и reader/explorer/author modes независимы от analytical semantics. Drag-and-drop размещает/reorders blocks и matrix shelves с эквивалентными keyboard/menu commands, undo и valid drop feedback; просмотр скрывает palette/handles/inspector, а таблица не требует предшествующего chart или фиксированного числа KPI.
   - id: ANALYTICAL-DOC-015
-    requirement: Reader MUST читать authorized published snapshot, Explorer — менять разрешённый personal draft/view, Author — сохранять draft document по edit permission; переключение режима само по себе не публикует, не запускает compute и не меняет filters/metrics/result identity. Unsaved changes, personal overrides, Save view, Apply to draft и Publish имеют разные observable outcomes; narrow-screen/zoom layout сохраняет reading order и table access.
+    requirement: Reader MUST читать authorized published snapshot, Explorer — менять разрешённый personal draft/view, Author — сохранять draft document по edit permission; переключение режима само по себе не публикует, не запускает compute и не меняет filters/metrics/result identity. Unsaved changes, personal overrides, Save view, Apply to draft и Publish имеют разные observable outcomes; narrow-screen/zoom layout сохраняет reading order и table access. Для профиля workbook_report сохранение определения дополнительно требует creator check из REPORT-018; разрешённое использование фильтров и личного представления не даёт права изменять определение.
 ```
 
 ## 14.1. Chart specification
@@ -5295,6 +5311,10 @@ report_requirements:
     requirement: Semantic revision diff MUST сравнивать exact authorized document/result versions, отдельно показывая изменения data artifacts/late corrections, metric/filter/parameter/segment definitions, population-time basis и policy, а также presentation-only edits. Где причины неразделимы без отдельного controlled recomputation, показывается mixed/unknown explanation, а не выдуманная причинная декомпозиция; недоступная версия не раскрывает metadata/counts.
   - id: REPORT-017
     requirement: Draft-to-published comparison MUST показывать affected blocks, normalized semantic changes, comparable values и stale/unavailable dependencies до publication; одинаковые входы не дают выдуманной business delta. Diff с новыми расчётами проходит обычный preflight/Execution/authorization, immutable publications не переписываются, comments/findings не re-anchor-ятся автоматически.
+  - id: REPORT-018
+    requirement: Изменять определение отчёта, его состав, общие наборы, настройки и связанные цели MUST иметь право только immutable creator_principal_id отчёта при наличии необходимых functional/object/data permissions. report.manage, административная роль, department ownership, transfer или grant другому пользователю не заменяют creator check. Читатели могут менять разрешённые параметры просмотра и личное представление без изменения report definition; UI и backend одинаково разграничивают authoring и использование. Копия, когда она разрешена существующими правами, является отдельным отчётом со своим создателем и не изменяет оригинал.
+  - id: REPORT-019
+    requirement: Общий набор отчёта MUST быть виден всем пользователям с действующим доступом к этому отчёту и соответствующим данным, без отдельного списка доступа к набору; редактирование подчиняется REPORT-018. Личные параметры просмотра MUST сохраняться при обновлении общего набора; новая общая версия применяется или становится основой сброса только по явному действию пользователя. Старое личное представление повторно проверяет текущие permissions и доступность привязок; потеря доступа не сохраняется как исключение из policy.
 ```
 
 ### 14.4.1. Обновляемый отчёт и текущий готовый снимок
@@ -6888,6 +6908,9 @@ rbac_requirements:
   - id: RBAC-028
     requirement: Workspace Administrator MAY конфигурировать organization/access policies, но не получает organization.activity.read, business content или PII автоматически; activity read требует отдельного leadership или explicit scoped grant.
 ```
+
+
+Уточнение владельца от 2026-09-20: REPORT-018 ограничивает редактирование отчёта его создателем даже при наличии report.manage, department ownership или административной роли. Управление доступом остаётся отдельной административной операцией; передача ownership не переписывает creator attribution и не предоставляет право редактирования содержания.
 
 ### 20.2.1. Организационная структура, ownership и contributor privacy
 

@@ -8,7 +8,7 @@
   "artifact_kind": "project_map",
   "doc_id": "MAP-001",
   "title": "Custometry development direction map",
-  "version": "2.1.1",
+  "version": "2.3.2",
   "planning_status": "in_review",
   "language": "en",
   "parent_ref": null,
@@ -22,7 +22,7 @@
   "requirement_refs": [
     {
       "source": "custometry-technical-blueprint-ru.md",
-      "revision": "sha256:183d9d2f2070cb8e651eca46fa44244b0d0af2a914830bcee6e5716ae15fd163",
+      "revision": "sha256:b874b966471a2b3a4103b14dcca6fb2488305409e37d46ae262b94c454dfba86",
       "ids": [
         "A11Y-001",
         "ANALYTICAL-DOC-001",
@@ -120,7 +120,7 @@
     },
     {
       "source": "custometry-technical-blueprint-ru.md",
-      "revision": "sha256:28c52edab5c48b3f0a01aaf08c02792d2c4988beee3b27960562ef31c77c651f",
+      "revision": "sha256:b874b966471a2b3a4103b14dcca6fb2488305409e37d46ae262b94c454dfba86",
       "ids": [
         "METRIC-025",
         "METRIC-026",
@@ -128,6 +128,20 @@
         "METRIC-028",
         "METRIC-029",
         "CHART-021"
+      ]
+    },
+    {
+      "source": "custometry-technical-blueprint-ru.md",
+      "revision": "sha256:b874b966471a2b3a4103b14dcca6fb2488305409e37d46ae262b94c454dfba86",
+      "ids": [
+        "METRIC-030",
+        "METRIC-031",
+        "METRIC-032",
+        "METRIC-033",
+        "METRIC-034",
+        "METRIC-035",
+        "REPORT-018",
+        "REPORT-019"
       ]
     }
   ],
@@ -146,7 +160,8 @@
     "MAP-001/DEC-11",
     "MAP-001/DEC-12",
     "MAP-001/DEC-13",
-    "MAP-001/DEC-14"
+    "MAP-001/DEC-14",
+    "MAP-001/DEC-15"
   ],
   "supersedes_ref": null,
   "proof_boundary": {
@@ -163,7 +178,7 @@
 
 # Custometry development direction map
 
-> **Product-first sequence draft, version `2.1.1`, 2026-09-17.**
+> **Product-first sequence draft, version `2.3.2`, 2026-09-17.**
 > The owner selected usable analyst functionality before administrative workflows.
 > The six direction scopes, product requirements and completed MS-001/MS-002
 > remain. DEC-12 updates the development cadence to local feature acceptance. The checkpoint order below is proposed for owner review;
@@ -202,8 +217,8 @@ records initial S01 entry allowance without claiming implementation.
 
 ## Direction registry
 
-The six direction documents have synchronized `2.1.1` sequence drafts and point
-back to MAP-001 `2.1.1`. Their capability boundaries remain accepted at `1.0.0`;
+The six direction documents have synchronized `2.2.0` sequence drafts and point
+back to MAP-001 `2.2.0`. Their capability boundaries remain accepted at `1.0.0`;
 the broader sequence remains a review draft. WS-002/MS-003 0.2.0 was explicitly
 accepted on 2026-09-13; this does not widen L1 scope.
 
@@ -363,7 +378,7 @@ blocks. Forecast-specific contracts and implementation remain held.
 The owner selected **local development and local feature acceptance first** on
 2026-09-17 (MAP-001/DEC-12), superseding the automatic packaged-milestone clause
 of DEC-09. Apply the [development runtime contract](../development-runtime-contract.md)
-`doc_version 5` and [operating model](../development-operating-model.md) `doc_version 19`.
+`doc_version 5` and [operating model](../development-operating-model.md) `doc_version 20`.
 There is one application, one set of domain rules, locked dependencies and
 versioned migrations. Host development and eventual packaged execution use the
 same sources; development convenience is not a second implementation or auth policy.
@@ -381,9 +396,9 @@ contracts -> implement and exercise locally -> accept the local outcome**.
 Packaging, target compatibility and installation checks follow in an explicitly
 selected delivery task. The owner has deferred MS-003 S05/S06; the
 [canonical journal](../../../.codex/delivery/ledgers/MS-003.md) owns their allowance.
-The [initial composition](../ui/drafts/metric-workspace-v1/README.md), version 3,
-records the accepted visual baseline. [WS-003 1.0.0](directions/DIR-004/workstreams/WS-003.md)
-records the separately accepted continuation sequence and C01 scope (DEC-14).
+The [initial composition](../ui/drafts/metric-workspace-v1/README.md), version 4,
+records the accepted visual baseline. [WS-003 2.0.0](directions/DIR-004/workstreams/WS-003.md)
+records the accepted sequence/C01 scope and all twelve product choices (DEC-14/15).
 Child implementation plans remain to be detailed; this does not create a runnable pack.
 
 At a later delivery boundary, changed shipped bytes require a new immutable
@@ -424,12 +439,17 @@ The owner accepted the initial metric-workspace composition on 2026-09-17 and
 requested further improvements, including the ability to add requirements later
 (MAP-001/DEC-13). The owner subsequently confirmed the order and first-stage
 scope (MAP-001/DEC-14). The accepted next L2 is
-[WS-003 1.0.0 — Configured metric workspace](directions/DIR-004/workstreams/WS-003.md)
+[WS-003 3.0.0 — Configured metric workspace](directions/DIR-004/workstreams/WS-003.md)
 under DIR-004. It selects configured cards/worksets/context/comparisons first,
 then monitoring goals and shared worksets. This is a bounded extension of the
 first report, not a reordering or removal of the remaining product checkpoints.
-Detail WS-003/C01 as the next L3 using the confirmed first-stage scope. Goal
-policies remain open for C02; no repeated decision on order or C01 scope is needed.
+[MS-004 — Personal report worksets](milestones/MS-004/plan.md), version 0.2.0,
+now records accepted WS-003/C01 L3 decisions, including six date grains and creator-only
+report writes and base company financial-calendar settings. WS-003 3.0.0 records
+the owner correction; DIR-004/MAP 2.3.0 register that C01 contribution. The broader
+sequence remains under review. Other direction providers retain their earlier
+capability basis and historical milestone bindings stay unchanged. The 2026-09-20 answers settle product choices for goals and shared
+sets; exact technical methods remain child L3 work. No questionnaire choice remains pending.
 Do not reuse deferred S05/S06 or infer a runnable pack from L2 acceptance.
 
 The prior first-report planning basis remains preserved:
@@ -640,6 +660,7 @@ their own version and acceptance provenance. Architecture status is not code rea
 | MAP-001/DEC-12 | Preserve the current product foundation, agree the metric-workspace composition, develop and accept features locally; defer MS-003 S05/S06 and select packaging separately | Explicit owner instruction, 2026-09-17; [decision evidence](../../../.codex/delivery/evidence/MS-003/local-composition-20260917/owner-decision.md) | No automatic container, build or final-delivery check at each stage/milestone; subsequent initial composition acceptance is recorded in DEC-13 |
 | MAP-001/DEC-13 | Accept the initial metric-workspace composition, record it and prepare further improvements; allow concrete owner requirements absent from existing documents | Owner response, 2026-09-17; [composition decision record](../ui/drafts/metric-workspace-v1/README.md#decision-record), version 2 | Visual baseline accepted and evolvable; WS-003 0.1.0 is the proposed continuation, not an accepted unwritten milestone |
 | MAP-001/DEC-14 | Accept WS-003 sequence C01 → C02 → C03 and the explicit personal-workset C01 scope | Owner explicitly confirmed both decisions on 2026-09-17; [WS-003/DEC-01/02](directions/DIR-004/workstreams/WS-003.md#owner-decisions-and-next-child), version 1.0.0 | Next planning frontier is C01 L3; goal policies, shared-write contracts and unwritten child plans are not implicitly accepted |
+| MAP-001/DEC-15 | Adopt all twelve answers for WS-003: six grains, both goal directions/modes, one-off/recurring periods, pinned contexts/history/manual actuals/final correction, optional run rate and creator-only report edits | Owner numbered answers, 2026-09-20; [WS-003/DEC-04…15](directions/DIR-004/workstreams/WS-003.md#owner-decisions-and-next-child), version 2.0.0 | C01 → C02 → C03 retained; old report edit grants no longer override creator identity in target policy; no new executable pack |
 
 The owner first reviewed the Russian `0.1.0` drafts, then explicitly accepted L1
 and requested the English records. Their Russian bodies are replaced in the same
@@ -663,6 +684,8 @@ milestones have been accepted.
 | 2.0.3 | 2026-09-17 | Adopt local feature acceptance and separately selected packaging; register the metric-workspace composition draft and S05/S06 deferral; synchronize L1 navigation | MAP-001/DEC-12 |
 | 2.1.0 | 2026-09-17 | Record accepted initial metric-workspace composition and register WS-003 0.1.0 continuation proposal; synchronize navigation without changing L1 scopes | MAP-001/DEC-13 |
 | 2.1.1 | 2026-09-17 | Record owner acceptance of WS-003 1.0.0 sequence and C01 scope; preserve deferred goal and shared-write policies | MAP-001/DEC-14; editorial navigation synchronization |
+| 2.2.1 | 2026-09-20 | Register MS-004/C01 and DIR-004/WS-003 reciprocal navigation; provider scope unchanged | Explicit delegated L3 documentation maintenance; broader planning status retained |
+| 2.2.0 | 2026-09-20 | Register WS-003 2.0.0 owner decisions: six grains, goal modes/recurrence/run rate and creator-only report authoring; retain child order | MAP-001/DEC-15; owner numbered answers |
 
 The 2.0.0 draft synchronizes the map and six L1 sequence documents at 2.0.0
 with reciprocal draft references. Their accepted capability boundaries remain
@@ -823,3 +846,27 @@ On 2026-09-06, the scoped publication commit `2af36e964740d2034137096103a9f522f9
 #### Authorized PR publication route
 
 After the protected-main rejection, the owner explicitly authorized a temporary technical branch and pull request, merge into main after the required checks, and deletion of that branch. This supersedes only the original direct-push constraint; the accepted WS-001 scope, engineering decisions and proof limits are unchanged. The GitHub rejection above is historical evidence, not an outstanding owner-decision blocker. Publication uses the scoped documentation checkout, preserves unrelated local commits and leaves branch protection intact. The PR and its checks provide the merge receipt; publication is not product runtime or release acceptance.
+
+## Fiscal-calendar amendment — 2026-09-20
+
+Version 2.3.0 registers the owner correction in WS-003 3.0.0 / DEC-16 and
+MS-004 0.2.0: base workspace financial-year settings, pinned calendar policy and
+fiscal aggregation in C01. Semantic Model owns meaning, Identity permissions,
+Presentation bindings and Web the bounded settings form. This does not select a
+full administration programme or alter C01→C02→C03. Broader planning_status remains
+in_review; other direction providers retain their earlier capability basis.
+Historical parent/source pins remain evidence.
+
+### Acceptance navigation — 2.3.1
+
+The owner accepted MS-004 0.2.0 decisions and expectations on 2026-09-20;
+MS-004/DEC-01 owns that record. WS-003 navigation 3.0.1 and DIR-004/MAP 2.3.1
+record only that acceptance and reciprocal links. Broader planning_status remains
+in_review, historical milestone bindings are preserved and no execution is started.
+
+### Pack registration — 2.3.2
+
+Register WS-003 navigation 3.0.2 and MS-004 editorial 0.2.1: five stage prompts
+and one draft journal are authorized preparation outputs, not product execution.
+Accepted L3 design remains 0.2.0; broader planning_status remains in_review.
+This is delegated reciprocal documentation maintenance, with no changed outcomes.

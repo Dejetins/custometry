@@ -1,9 +1,9 @@
 ---
 doc_id: UI-REFERENCE-METRIC-WORKSETS-001
 title: Metric worksets, configured cards, comparisons and goals — Mindbox reference atlas
-doc_version: 4
+doc_version: 5
 product_spec_version: 0.11.0-draft
-requirements_revision: 2026-09-17.1
+requirements_revision: 2026-09-20.1
 visibility: internal
 ship: false
 owner: product
@@ -42,6 +42,13 @@ on 2026-09-17 as the visual baseline for fitting these interactions into the
 preserved pilot; its current document version is 3. This changes neither the captured reference images nor the
 production implementation claims. Backend decisions remain in the subsequent
 bounded planning work.
+
+The subsequent owner answers on 2026-09-20 are recorded in
+[WS-003 2.0.0](../../../planning/directions/DIR-004/workstreams/WS-003.md).
+They select six grains, both goal directions/modes and recurrence, manual actuals,
+optional run rate and creator-only report edits. These Custometry rules govern
+implementation even where the captured vendor behavior differs. Original capture
+and prototype evidence remain unchanged and do not prove the expanded scope.
 
 ## Capture boundary and provenance
 

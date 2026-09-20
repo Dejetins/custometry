@@ -8,13 +8,13 @@
   "artifact_kind": "direction",
   "doc_id": "DIR-002",
   "title": "Data and semantic model",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "planning_status": "in_review",
   "language": "en",
   "parent_ref": {
     "id": "MAP-001",
     "path": "docs/architecture/planning/project-map.md",
-    "version": "2.1.1"
+    "version": "2.2.0"
   },
   "direction_ref": "DIR-002",
   "baseline_ref": {
@@ -62,7 +62,8 @@
     "MAP-001/DEC-11",
     "MAP-001/DEC-12",
     "MAP-001/DEC-13",
-    "MAP-001/DEC-14"
+    "MAP-001/DEC-14",
+    "MAP-001/DEC-15"
   ],
   "supersedes_ref": null,
   "proof_boundary": {
@@ -79,8 +80,8 @@
 
 # DIR-002. Data and semantic model
 
-> L1 sequence draft `2.1.1`, 2026-09-17. Parent: [MAP-001](../../project-map.md) `2.1.1`.
-> Accepted capability boundaries remain; WS-002 is the first-report foundation. WS-003 1.0.0 is the accepted metric-workspace continuation under DIR-004.
+> L1 sequence draft `2.2.0`, 2026-09-17. Parent: [MAP-001](../../project-map.md) `2.2.0`.
+> Accepted capability boundaries remain; WS-002 is the first-report foundation. WS-003 2.0.0 is the accepted metric-workspace continuation under DIR-004.
 > The broader checkpoint sequence remains under review; WS-002/MS-003 0.2.0 was accepted on 2026-09-13.
 
 ## Intent and boundaries
@@ -131,7 +132,7 @@ expected to supply them manually. Candidate presence is not entry readiness.
 
 ## Product-first sequence and contributions
 
-Follow the proposed checkpoint order in [MAP-001 2.1.1](../../project-map.md#proposed-product-checkpoints).
+Follow the proposed checkpoint order in [MAP-001 2.2.0](../../project-map.md#proposed-product-checkpoints).
 Supply one real prepared input path for the first report, with the necessary
 semantics, quality admission and version identity. The user-facing connection,
 mapping and refresh journey then extends that path. Do not require the entire
@@ -142,14 +143,14 @@ universal prerequisite. The selected first product workstream is registered belo
 
 ## Development cadence for this direction
 
-Follow [MAP-001 2.1.1](../../project-map.md#development-and-delivery-cadence),
+Follow [MAP-001 2.2.0](../../project-map.md#development-and-delivery-cadence),
 DEC-12 (owner decision, 2026-09-17). Develop and accept the selected feature
 locally, reusing the current implementation and the real provider boundaries
 needed for its claim. Do not add candidate builds, container qualification or
 final-delivery checks merely because a stage or milestone ends. Packaging and
 its target compatibility proof are a separately selected delivery task.
 The [metric-workspace composition](../../../ui/drafts/metric-workspace-v1/README.md)
-is an accepted initial design baseline; [WS-003 1.0.0](../DIR-004/workstreams/WS-003.md) records the accepted continuation.
+is an accepted initial design baseline; [WS-003 2.0.0](../DIR-004/workstreams/WS-003.md) records the accepted continuation.
 MS-003 S05/S06 remain deferred in their canonical journal.
 Capability boundaries and completed evidence remain unchanged.
 
@@ -161,16 +162,16 @@ dependencies. Informational interactions do not create a cyclic execution graph.
 
 | ID | Provider and version | Required output | Consumer | Needed before | Satisfaction proof / integration responsibility |
 |---|---|---|---|---|---|
-| DIR-002/DEP-01 | [DIR-001](../DIR-001/direction.md) `2.1.1` | Policy and common execution/fencing protocol | DIR-002 | Acceptance of the relevant scenario | Admission, access and attempt control. The owning milestone and its proof are selected at L2/L3. |
-| DIR-002/DEP-02 | [DIR-006](../DIR-006/direction.md) `2.1.1` | Supported filesystem/storage environment and recovery procedure | DIR-002 | Acceptance of the relevant scenario | Durability and restore verification. The owning milestone and its proof are selected at L2/L3. |
+| DIR-002/DEP-01 | [DIR-001](../DIR-001/direction.md) `2.2.0` | Policy and common execution/fencing protocol | DIR-002 | Acceptance of the relevant scenario | Admission, access and attempt control. The owning milestone and its proof are selected at L2/L3. |
+| DIR-002/DEP-02 | [DIR-006](../DIR-006/direction.md) `2.2.0` | Supported filesystem/storage environment and recovery procedure | DIR-002 | Acceptance of the relevant scenario | Durability and restore verification. The owning milestone and its proof are selected at L2/L3. |
 
 **Outputs supplied:**
 
-- [DIR-003](../DIR-003/direction.md) `2.1.1`: Versioned semantic datasets, metrics, relationships, readiness and marts.
-- [DIR-004](../DIR-004/direction.md) `2.1.1`: Authorized manifests, data-as-of and lineage.
-- [DIR-005](../DIR-005/direction.md) `2.1.1`: Source/mapping/DQ/Data Guide projections.
-- [DIR-001](../DIR-001/direction.md) `2.1.1`: Published input generations and readiness events.
-- [DIR-006](../DIR-006/direction.md) `2.1.1`: Immutable artifact/reference set and storage recovery ports.
+- [DIR-003](../DIR-003/direction.md) `2.2.0`: Versioned semantic datasets, metrics, relationships, readiness and marts.
+- [DIR-004](../DIR-004/direction.md) `2.2.0`: Authorized manifests, data-as-of and lineage.
+- [DIR-005](../DIR-005/direction.md) `2.2.0`: Source/mapping/DQ/Data Guide projections.
+- [DIR-001](../DIR-001/direction.md) `2.2.0`: Published input generations and readiness events.
+- [DIR-006](../DIR-006/direction.md) `2.2.0`: Immutable artifact/reference set and storage recovery ports.
 
 Each consumer proves integration with the provider-owned contract. The common
 snapshot/refresh ownership allocation is in [MAP-001](../../project-map.md). Actual public
@@ -211,8 +212,9 @@ No agent, calendar, worktree topology or parallel execution is assigned by this 
 | 2.0.3 | 2026-09-17 | Apply local feature acceptance and separately selected packaging; synchronize parent/provider navigation | MAP-001/DEC-12; owner correction |
 | 2.1.0 | 2026-09-17 | Record accepted initial metric-workspace composition and register WS-003 0.1.0 continuation proposal; synchronize navigation without changing L1 scopes | MAP-001/DEC-13 |
 | 2.1.1 | 2026-09-17 | Record owner acceptance of WS-003 1.0.0 sequence and C01 scope; preserve deferred goal and shared-write policies | MAP-001/DEC-14; editorial navigation synchronization |
+| 2.2.0 | 2026-09-20 | Register WS-003 2.0.0 owner decisions: six grains, goal modes/recurrence/run rate and creator-only report authoring; retain child order | MAP-001/DEC-15; owner numbered answers |
 
-MAP-001 2.1.1 registers this sequence draft at 2.1.1 with reciprocal draft
+MAP-001 2.2.0 registers this sequence draft at 2.2.0 with reciprocal draft
 parent/provider links. Capability boundaries remain accepted at their earlier
 basis; this draft does not change public/domain contracts or accept an unwritten
 child. WS-001 navigation 1.0.10 keeps scope 1.0.0 and its recorded DIR-006 1.2.0

@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-ROADMAP-001
 title: Custometry development roadmap and integration decisions
-doc_version: 18
+doc_version: 23
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -39,17 +39,22 @@ evidence without owner reminders. Product priorities and Forecasting hold remain
 unchanged. The six direction scopes remain accepted. On 2026-09-11 the owner
 accepted local feature feedback, packaged milestone proof and explicit delivery
 qualification. On 2026-09-12 the owner selected usable analyst functionality
-before full administration. [MAP-001 2.1.1](project-map.md) contains the proposed
+before full administration. [MAP-001 2.2.0](project-map.md) contains the proposed
 checkpoint order for that correction and supersedes the local C04-first frontier.
 This supporting roadmap does not override the current hierarchical map.
 The later 2026-09-17 owner correction, [MAP-001/DEC-12](project-map.md#development-and-delivery-cadence),
 selects local feature acceptance and separately selected packaging. It supersedes
 the earlier automatic packaged-milestone cadence. The
 [initial metric-workspace composition](../ui/drafts/metric-workspace-v1/README.md),
-version 3, records the accepted baseline. [WS-003 1.0.0](directions/DIR-004/workstreams/WS-003.md)
+version 4, records the accepted baseline. [WS-003 2.0.0](directions/DIR-004/workstreams/WS-003.md)
 records the accepted order: worksets/cards/comparisons, then goals and shared-scope behavior. This
 continuation extends the first report; it does not replace the later source,
 segment and administration outcomes. MS-003 S05/S06 remain deferred in their journal.
+The C01 technical L3 is [MS-004](milestones/MS-004/plan.md) 0.2.0; its own document
+records owner acceptance on 2026-09-20 and future stages. Navigation amendment, 2026-09-20:
+WS-003 2.0.1 / DIR-004 and MAP-001 2.2.1 only register this child under the owner's
+explicit L3/document-maintenance delegation. No broader sequence or L3 acceptance,
+executor pack, journal or implementation is implied.
 
 [WS-001](directions/DIR-006/workstreams/WS-001.md), accepted scope `1.0.0` /
 navigation `1.0.10`, retains completed MS-001/MS-002 and the remaining C04–C06
@@ -420,3 +425,16 @@ A conversation-only mockup used synthetic customer records to check report block
 - [Accepted bounded-context ownership](https://github.com/Dejetins/custometry/blob/94672bf97a402d9c90e96ac8b783b6a0e30adba0/docs/architecture/bounded-context-map.md)
 - [Accepted frontend platform](https://github.com/Dejetins/custometry/blob/94672bf97a402d9c90e96ac8b783b6a0e30adba0/docs/adr/0007-responsive-web-frontend-platform.md)
 - [Current Web implementation source contract](https://github.com/Dejetins/custometry/blob/94672bf97a402d9c90e96ac8b783b6a0e30adba0/docs/architecture/ui/custometry-web-implementation-source-contract-v1.md)
+
+Fiscal-calendar follow-up (2026-09-20): WS-003 3.0.0 records the owner requirement
+for company/workspace base financial-year settings; MS-004 0.2.0 adds their
+versioned contracts, fiscal aggregation and local proof. MAP-001/DIR-004 2.3.0
+remain in review. No implementation or broader plan acceptance is implied.
+
+Acceptance navigation (2026-09-20): MS-004 0.2.0 decisions and expectations
+accepted by the owner; see MS-004/DEC-01. Editorial registration only, no runtime
+change or execution authorization; broader MAP/L1 reviews remain open.
+
+MS-004 pack registration (2026-09-20): editorial L3 0.2.1 binds five prompts and
+[one draft journal](../../../.codex/delivery/ledgers/MS-004.md); accepted design
+0.2.0 is unchanged. Preparation/synchronization authority does not start S01.

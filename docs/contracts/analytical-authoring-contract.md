@@ -1,14 +1,14 @@
 ---
 doc_id: CONTRACT-ANALYTICAL-AUTHORING-001
 title: Governed population and analytical authoring contract
-doc_version: 8
+doc_version: 11
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [FILTER-013, FILTER-017, SEGMENT-029, SEGMENT-034, PIVOT-001, PARAM-001, COMPARE-011, ANALYTICAL-DOC-014, REPORT-015, REPORT-016, V1-AC-055, V1-AC-062]
+requirement_ids: [FILTER-013, FILTER-017, SEGMENT-029, SEGMENT-034, PIVOT-001, PARAM-001, COMPARE-011, ANALYTICAL-DOC-014, REPORT-015, REPORT-016, V1-AC-055, V1-AC-062, METRIC-030, METRIC-031, METRIC-032, METRIC-033, METRIC-034, METRIC-035, REPORT-018, REPORT-019]
 status: accepted
-acceptance_basis: owner-approved-product-requirements-2026-09-05
+acceptance_basis: owner-approved-product-requirements-2026-09-05-and-workspace-amendment-2026-09-20
 proof_boundary:
   label: target-contract-and-requirement-traceability
   exclusions: [implemented-api-schema, persistence-migration, runtime-compatibility, browser-proof, release-authority]
@@ -412,4 +412,93 @@ No new persistence schema or permission grant is introduced by this extension.
 
 The [Mindbox interaction atlas](../architecture/ui/references/mindbox-metrics-2026-09-17/README.md), revision 1, binds owner-selected target METRIC-025…029 and CHART-021 to observed screenshots. Existing MetricVersion, MetricGroupVersion, Saved View, TimeComparisonSpec and ComparisonArtifact remain the semantic anchors. A configured metric card and an ordered workset are conceptual presentation requirements, not a new service or an approved persistence schema. A monitoring goal is distinct from a target-action definition and forecast.
 
-This addition changes target requirements only: no endpoint, schema, migration, current capability or accepted milestone binding is introduced. The next selected implementation unit must resolve configured-card/workset versioning, shared-write permissions/CAS, target progress direction and aggregation, missing-data policy, and typed chart comparison projection. It must preserve server-owned calculations and the existing Apply/Save/immutable-preview boundary.
+This addition changes target requirements only: no endpoint, schema, migration,
+current capability or historical milestone binding is introduced. The owner
+resolved the product choices on 2026-09-20 in
+[WS-003 2.0.0](../architecture/planning/directions/DIR-004/workstreams/WS-003.md#owner-decisions-and-next-child).
+The next selected L3 fixes the exact schemas, versioning/CAS, calendar/comparison
+projection and goal-calculation methods before executable prompts. Preserve
+server-owned calculations and the Apply/Save/immutable-preview boundary.
+
+### Owner-selected behavior — 2026-09-20
+
+METRIC-030…035 and REPORT-018/019, requirements revision `2026-09-20.1`, add:
+
+- Six date grains: day, week, month, quarter, half-year and year, with one
+  calendar/timezone policy and matching chart/table identity.
+- Both minimum-achievement and maximum-limit goals; absolute values and relative
+  changes against an explicit baseline. The report creator selects the mode in
+  report configuration; report use cannot switch that definition.
+- One-off and recurring goals. Each occurrence has an exact period and rule
+  version; recurrence creates periods, not an implicit calculation schedule.
+- Goal context is pinned at creation. Only the report creator can change its
+  definition, with immutable change history. Reader filters never change it.
+- Manual recomputation, final assessment after period end with sufficient data,
+  and explicit revised calculations for corrected closed periods. Optional run
+  rate is a separate estimate, never the final actual or an automatic achievement.
+- Creator-only report authoring, including shared-set definition and settings.
+  Functional permissions remain necessary but do not substitute for creator
+  identity. Administrators still manage access separately; department ownership
+  and handover do not turn another principal into the report's creator.
+- Shared-set readers inherit report/data access. Personal display settings stay
+  pinned until an explicit update/reset; current permissions are still enforced.
+
+The report creator owns report composition and goal policy. A non-creator can
+use the exposed filters and permitted personal display controls without mutating
+that definition. Existing personal presentation choices under METRIC-021/022 do
+not authorize new shared cards, metric formulas, target changes or goal modes.
+An authorized independent report copy has its own creator and lineage; this is
+not a way to edit the original. If the original creator loses access, no silent
+administrator/content-editor fallback is selected by this decision.
+
+### Technical rules to settle in the selected L3
+
+The following are engineering recommendations, not additional owner approvals or
+implemented guarantees. Resolve and pin them before the affected child executes.
+
+| Boundary | Proposed rule and reason | Child / proof needed |
+|---|---|---|
+| Calendar and alignment | Reuse the current UTC basis for the receipt scenario; ISO Monday–Sunday weeks. The 2026-09-20 owner correction requires a versioned workspace financial calendar: quarter/half-year/year boundaries follow the pinned calendar or fiscal basis, not hard-coded January. Clip edge buckets to the requested interval and expose partial coverage. Preserve `previous_year_same_dates`: map baseline days to current-day buckets, including weeks, rather than silently selecting ISO-week alignment | C01; leap day, year crossing, partial buckets and six grains; daily v1 remains readable |
+| Aggregation | Sum valid additive components; recompute average receipt as period revenue / period receipt count. Missing data, zero and no eligible rows retain metric policy. Include grain/calendar policy and effective context in result identity | C01; reconciliation of chart, table and full-period totals |
+| Relative goal | Pin author-selected baseline policy and resolved value for each occurrence. For the initial positive-baseline subset, derive target `B * (1 + change_percent / 100)` and evaluate the selected lower/upper comparator on actuals. A zero, negative or missing baseline is unavailable under this proposed method, not a fabricated percentage | C02; baseline eligibility and target unit checks; future signed-base methods require explicit methodology |
+| Progress | Lower-bound progress may show actual / positive target, including overachievement. Upper-bound display shows used limit and remaining/exceeded amount; smaller usage is not labeled worse achievement. A valid nonpositive target can still be compared in its native units; the percentage display is unavailable unless a specific method is defined | C02; both directions, ratios, zero/missing inputs and temporary versus final status |
+| Recurrence | Prefer calendar-aligned periods from a creator-configured versioned rule, with deterministic occurrence identity. Materialize required occurrences idempotently through existing application/execution seams; do not add a new scheduling engine. Period creation must not refresh an old actual or rewrite a closed occurrence | C02; boundary crossings, duplicate requests, changed rules and manual calculation |
+| Run rate | For eligible additive totals, propose `actual for elapsed complete calendar days / elapsed days * total period days`. Require a nonempty, contiguous complete elapsed interval. Show coverage and the constant-pace assumption. Do not scale average-receipt ratios with that formula; an unsupported metric shows unavailable until its method is selected | C02; missing days, zero elapsed time, additive versus ratio metrics. No seasonality, model training or confidence interval is implied |
+| Manual calculation and access | Execution permission and result publication remain separate from changing definitions. A recomputation cannot change a goal rule, report policy or stored snapshot in place; preserve earlier results and creator attribution | C02/C03; request authorization, explicit correction and exact result lineage |
+
+### Compatibility impact and required follow-through
+
+Baseline: repository requirements and bounded report code at
+`7ef3c072a527627991036150d25e87adbbf8e60b`; candidate: this target amendment.
+
+| Surface / consumer | Before → after | Classification / evidence and next action |
+|---|---|---|
+| Report authoring policy | An edit-capable author could be admitted by the previous ANALYTICAL-DOC-015 target; another principal's `report.manage` now cannot authorize editing the creator's report | `breaking-change` to the earlier target guarantee. REPORT-018 narrows report authoring only; preserve access administration and other document profiles. C01/C03 must test creator plus permissions, and denied non-creators including administrators |
+| Time/result and goal contracts | Bounded daily sales results → selected grains and versioned goal/baseline/recurrence projections | `unknown` until C01/C02 select wire schemas, readers and migrations. Do not reinterpret stored daily artifacts or promise old binaries understand new documents |
+| Existing local report runtime | This amendment changes documents only; current ReportService remains owner-scoped with permission checks | `none` for deployed behavior in this authoring unit; no runtime authorization, migration or browser proof is claimed |
+| Historical execution | MS-001…003 plans/prompts/journals remain at their recorded source basis | `none` for execution state; MS-003 S05/S06 stay deferred, and this amendment creates no new pack |
+
+Acceptance must include all twelve selected decisions, creator/non-creator cases,
+saved-result continuity, and separate final actual/run-rate states. Local checks
+of these documents cannot certify the eventual mixed-version runtime transition.
+
+### Company financial calendar — owner correction, 2026-09-20
+
+METRIC-030, requirements revision `2026-09-20.2`, requires the financial calendar
+in base company/workspace settings. The accepted product correction supersedes
+the January-only recommendation above; it does not accept a wire schema or the
+whole L3. Semantic Model owns versioned calendar meaning/defaults, Identity checks
+settings permissions, Analytics resolves buckets, and Presentation pins the version.
+Imported Calendar coverage remains distinct. Existing reports/results never follow
+a changed default silently. New reports may select the current default; a creator
+explicitly adopts another policy version through Apply and a new Save revision.
+
+[MS-004 0.2.0](../architecture/planning/milestones/MS-004/plan.md)
+selects the initial month-based fiscal profile, endpoint/persistence contracts,
+labels, current-versus-pinned behavior, migration and proof. Its technical design was accepted by the owner on 2026-09-20
+(MS-004/DEC-01); this does not establish implemented wire contracts. C02 goal periods must pin the same calendar version; neither goal
+rules nor the separate fiscal-period comparison mode are implemented by this amendment.
+
+Acceptance navigation (2026-09-20): MS-004 0.2.0 decisions and expectations
+accepted by the owner; see MS-004/DEC-01. Editorial registration only, no runtime
+change or execution authorization; broader MAP/L1 reviews remain open.

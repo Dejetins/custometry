@@ -1,20 +1,28 @@
 ---
 doc_id: CONTRACT-REPORT-REFRESH-SERVING-RECOVERY-001
 title: Report refresh, prepared serving and recovery contract
-doc_version: 1
-product_spec_version: 0.10.0-draft
+doc_version: 2
+product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
 owner: architecture
-requirement_ids: [REPORT-REFRESH-001, REPORT-REFRESH-002, REPORT-REFRESH-003, REPORT-REFRESH-004, REPORT-REFRESH-005, REPORT-REFRESH-006, REPORT-REFRESH-007, ARTIFACT-COMMIT-001, ARTIFACT-COMMIT-002, ARTIFACT-COMMIT-003, REPORT-PERF-001, REPORT-PERF-002, OPS-009, OPS-010, TEST-INV-123, TEST-INV-124, TEST-INV-125, TEST-INV-126, V1-AC-068, V1-AC-069, V1-AC-070]
+requirement_ids: [REPORT-REFRESH-001, REPORT-REFRESH-002, REPORT-REFRESH-003, REPORT-REFRESH-004, REPORT-REFRESH-005, REPORT-REFRESH-006, REPORT-REFRESH-007, ARTIFACT-COMMIT-001, ARTIFACT-COMMIT-002, ARTIFACT-COMMIT-003, REPORT-PERF-001, REPORT-PERF-002, OPS-009, OPS-010, TEST-INV-123, TEST-INV-124, TEST-INV-125, TEST-INV-126, V1-AC-068, V1-AC-069, V1-AC-070, REPORT-018, METRIC-032, METRIC-034]
 status: accepted
-acceptance_basis: owner-approved-report-refresh-load-and-backup-requirements-2026-09-06
+acceptance_basis: owner-approved-refresh-2026-09-06-and-creator-only-amendment-2026-09-20
 proof_boundary:
   label: accepted-target-requirements-and-architecture-allocation
   exclusions: [implemented-api-schema, persistence-migration, runtime-proof, browser-proof, performance-proof, recovery-proof, release-authority]
 ---
 
 # Report refresh, prepared serving and recovery
+
+The 2026-09-20 owner amendment, REPORT-018, narrows report-definition and
+report-refresh-policy editing to the report creator with the required permissions.
+Administrative access management and execution of an already authorized refresh
+policy remain separate operations. Goal occurrence creation and manual goal
+actual recomputation follow METRIC-032/034; recurring goals do not implicitly
+select scheduled report refresh. See the
+[authoring amendment](analytical-authoring-contract.md#owner-selected-behavior-2026-09-20).
 
 ## Authority and decision scope
 

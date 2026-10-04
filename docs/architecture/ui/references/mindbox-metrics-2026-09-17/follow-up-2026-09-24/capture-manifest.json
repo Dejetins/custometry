@@ -1,0 +1,273 @@
+{
+  "captured_on": "2026-09-24",
+  "mechanic": "cua_repl native Brave Browser",
+  "transform": "lossless crop; no generated content",
+  "captures": [
+    {
+      "file": "images/01-workset-tabs.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        150,
+        680,
+        3550,
+        780
+      ],
+      "sha256": "053b6eac0321b366341f05bb149f4f2186956e648d6f5b99b9372d18669e297a"
+    },
+    {
+      "file": "images/02-create-empty.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2195,
+        790,
+        2960,
+        1270
+      ],
+      "sha256": "b294d438d46c4c6ab95776e006fdbc69de060390dccbace8d4f660320f3c682f"
+    },
+    {
+      "file": "images/03-create-filled.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2195,
+        790,
+        2960,
+        1270
+      ],
+      "sha256": "b5e617b907d14ceb12a33d52311142e460f1c5b3929508c7b5e3397577471a4b"
+    },
+    {
+      "file": "images/04-all-worksets.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2925,
+        790,
+        3530,
+        1740
+      ],
+      "sha256": "b3a0f41c4bfbaa1ed0d1ce893a8caa8c074500a55a6f8a7c3a94df63cd19d633"
+    },
+    {
+      "file": "images/05-search-empty.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2925,
+        790,
+        3530,
+        1045
+      ],
+      "sha256": "cd9a507e6513da34c0d31b98e97e28ec38f2fadca9956817ec80714060015afe"
+    },
+    {
+      "file": "images/06-search-crm.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2925,
+        790,
+        3530,
+        1100
+      ],
+      "sha256": "960fd74190965647eb04d8c2d3022146bf227e5ca8366353f08aee2b53eca193"
+    },
+    {
+      "file": "images/07-hide-tab.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        150,
+        680,
+        3550,
+        780
+      ],
+      "sha256": "524cc7fde7cc20bc9e6d1a8d132a92244025508caa88b508d74580e181dbe95a"
+    },
+    {
+      "file": "images/08-show-and-select-tab.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        150,
+        680,
+        3550,
+        780
+      ],
+      "sha256": "909e3e108bc5f1d12f28a6f994864fb4aedf68777ee2e8b7bf7377f7af4d2d30"
+    },
+    {
+      "file": "images/09-created-selected.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        150,
+        680,
+        3550,
+        780
+      ],
+      "sha256": "a047f93d49e7b9fa14572e06161f398cdd84bd619926b5d58d8e2f3c22751815"
+    },
+    {
+      "file": "images/10-saved-workset-actions.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2925,
+        790,
+        3530,
+        1740
+      ],
+      "sha256": "2edc5f9c443cd15b9ca11b28b743f2ef6b13f2baa285926595f02e80e1b97df0"
+    },
+    {
+      "file": "images/11-rename.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2695,
+        1070,
+        3410,
+        1445
+      ],
+      "sha256": "a65268b399717e3329dccdf32d9b93656dc3c28edafaedffc97f7edeb03438cd"
+    },
+    {
+      "file": "images/12-metric-catalogue.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2550,
+        165,
+        3570,
+        1930
+      ],
+      "sha256": "6294b25abc01c83800d045cca02a4595179a22d3a876be1f72ec5f195abfcc64"
+    },
+    {
+      "file": "images/13-add-card-empty.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        1965,
+        625,
+        3475,
+        1815
+      ],
+      "sha256": "5fbb92027a0ed645162569d136b80d8674b3cdce59f1552e4459c12bc4ae16ae"
+    },
+    {
+      "file": "images/14-metric-filters.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        1965,
+        625,
+        3475,
+        1815
+      ],
+      "sha256": "b38c98a52adeff8cd587cfae0668e7eb04a775e918dbd6a8d983186199273c9e"
+    },
+    {
+      "file": "images/15-seven-selected-metrics.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2550,
+        165,
+        3570,
+        1930
+      ],
+      "sha256": "88a9a3daae696f85be3302d7dfbce6b86be33c9d5ec0e01bfbf659851d52a750"
+    },
+    {
+      "file": "images/16-catalogue-search.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2550,
+        165,
+        3570,
+        1930
+      ],
+      "sha256": "12f1e7e2abc45178624002356a6a7e654bcc2e097834a92ad9b6dd60566a8f83"
+    },
+    {
+      "file": "images/17-save-current.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2280,
+        790,
+        3050,
+        1250
+      ],
+      "sha256": "e9e6a0276ca556826d797f0bd715502bb804a387526e9acc28e84ddb24a123fa"
+    },
+    {
+      "file": "images/18-save-as-new.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        2280,
+        790,
+        3050,
+        1425
+      ],
+      "sha256": "edff4c09359fc589a663ba755d0a473b4d3781a1c20f740e74b11ae5c71d3c04"
+    },
+    {
+      "file": "images/19-saved-and-reopened.png",
+      "source_size": [
+        3600,
+        2110
+      ],
+      "crop": [
+        150,
+        680,
+        3550,
+        780
+      ],
+      "sha256": "351f96ce1743fb33dac236040e499cf6e88660e9bd298359ad8529a7e93883d7"
+    }
+  ]
+}

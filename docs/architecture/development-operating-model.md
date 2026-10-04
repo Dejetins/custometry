@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-DEVELOPMENT-OPERATING-MODEL-001
 title: Custometry development operating model
-doc_version: 19
+doc_version: 20
 product_spec_version: 0.9.0-draft
 visibility: internal
 ship: false
@@ -127,7 +127,7 @@ and package later in a separately selected delivery task. Container rebuilds,
 clean installation and final-delivery qualification are not stage-end rituals.
 
 The owner accepted the [initial metric-workspace composition](ui/drafts/metric-workspace-v1/README.md),
-version 3 (navigation update; visual acceptance unchanged), on 2026-09-17. [WS-003 1.0.0](planning/directions/DIR-004/workstreams/WS-003.md)
+version 4 (navigation update; visual acceptance unchanged), on 2026-09-17. [WS-003 2.0.0](planning/directions/DIR-004/workstreams/WS-003.md)
 records the accepted continuation order and first-child scope before final polish. Concrete owner
 requests may add capabilities absent from current requirements. Synchronize only
 affected requirements, decisions and execution inputs; do not reject an authorized

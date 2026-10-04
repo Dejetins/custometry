@@ -1,9 +1,9 @@
 ---
 doc_id: UI-REFERENCE-METRIC-WORKSETS-001
 title: Metric worksets, configured cards, comparisons and goals — Mindbox reference atlas
-doc_version: 4
+doc_version: 6
 product_spec_version: 0.11.0-draft
-requirements_revision: 2026-09-17.1
+requirements_revision: 2026-09-20.1
 visibility: internal
 ship: false
 owner: product
@@ -43,7 +43,21 @@ preserved pilot; its current document version is 3. This changes neither the cap
 production implementation claims. Backend decisions remain in the subsequent
 bounded planning work.
 
+The subsequent owner answers on 2026-09-20 are recorded in
+[WS-003 2.0.0](../../../planning/directions/DIR-004/workstreams/WS-003.md).
+They select six grains, both goal directions/modes and recurrence, manual actuals,
+optional run rate and creator-only report edits. These Custometry rules govern
+implementation even where the captured vendor behavior differs. Original capture
+and prototype evidence remain unchanged and do not prove the expanded scope.
+
 ## Capture boundary and provenance
+
+The original capture boundary below applies to 2026-09-17 only. The owner-requested
+[2026-09-24 follow-up](follow-up-2026-09-24/README.md), version 1, adds 19 cropped
+captures of creation, tab management, the metric catalogue and explicit shared
+save. It includes one explicitly authorized test-set creation and update. The
+owner selected these interaction patterns for the subsequent Custometry change;
+implementation is a separate next unit. Original images and hashes are preserved.
 
 - Source: owner-opened `https://simplewine.mindbox.ru/home?brandId=1`, including
   its visible system-set tabs, on 2026-09-17.
@@ -128,6 +142,10 @@ invent values in the browser.
 
 **Observed:** the form says that it copies metrics from the selected set and makes
 the new set available to users of the brand. Inspection stopped before creation.
+
+**Later evidence:** the [2026-09-24 follow-up](follow-up-2026-09-24/README.md)
+confirms creation, automatic selection, saved-set controls and save/reopen of an
+updated test copy. Use its detailed flow for the newly selected interaction work.
 
 **Target:** copy-as-new with an explicit destination scope and name (METRIC-025).
 Custometry uses workspace/access policy; it does not introduce a Mindbox brand

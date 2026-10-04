@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-24",
+  "captures": {
+    "count": 19,
+    "hashes": "passed",
+    "visual_inspection": "passed",
+    "business_data_excluded": "passed"
+  },
+  "checks": {
+    "uv run python -m tools.check --scope local": "passed",
+    "uv run python -m tools.custometry_quality.generate_docs_index": "passed; generated docs/README.md",
+    "git diff --check (affected documentation paths)": "passed"
+  },
+  "proof_boundary": "vendor UI research; no Custometry implementation",
+  "intermediate_results": [
+    {
+      "check": "check:local",
+      "result": "failed",
+      "reason": "Russian UI labels in English-only contributor document",
+      "resolution": "Translated prose labels; retained exact source labels in screenshots"
+    },
+    {
+      "check": "check:local",
+      "result": "failed",
+      "reason": "Generated documentation index stale after adding reference",
+      "resolution": "Regenerated docs/README.md; final local profile passed"
+    }
+  ],
+  "vendor_test": {
+    "set_id": "66943b8e-0a4e-40fd-b88f-9b8d860219fc",
+    "name": "ТЕСТ Custometry — наборы 24.09",
+    "created": "observed",
+    "saved_card_count": 7,
+    "source_crm_card_count_after_reopen": 6,
+    "deleted": false,
+    "final_browser_surface": "test-set metric catalogue"
+  },
+  "documentation_sha256": {
+    "docs/architecture/ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/README.md": "679751ca6d4ad26560d718c56d98f44dfafbf8ad98c8c14c6f1c335e74aa8dcf",
+    "docs/architecture/ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/capture-manifest.json": "8ae97b79510b0bde7177f56f263ec4f9db3938e122eabfbd1a2b6585fd3b9121",
+    "docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md": "9ee5c9a27eaf7bf12c011d0a4f6ada2f81a22bfa2ae67f593209ebc1c792b9ff",
+    "custometry-ui-blueprint-ru.md": "4382a601d7d4dd187ea75899dde0f970161529edfff409501e7813cbbd3ea7da",
+    "docs/architecture/README.md": "23fdc715293f69c02967754d87a6aa51c0cfe781946d25c83a8a8f5df56af075",
+    "docs/README.md": "c4e0211949b5be10db8a21f050b5ee2d57573bf66c69e26c753b7906fca93702"
+  }
+}

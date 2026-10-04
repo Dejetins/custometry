@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 43
+doc_version: 45
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -31,10 +31,10 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 
 | Document | Purpose |
 |---|---|
-| [Mindbox metric worksets reference atlas](ui/references/mindbox-metrics-2026-09-17/README.md) | Owner-selected target addition, revision 1: ten cropped live-browser references, configured metric cards, worksets, per-period deltas, dual-metric views and monitoring goals; no implementation claim |
-| [Metric workspace composition baseline](ui/drafts/metric-workspace-v1/README.md) | Owner-accepted initial layout and interactions, version 3; evolvable requirements, synthetic prototype data, current product foundation preserved |
-| [Configured metric workspace — WS-003](planning/directions/DIR-004/workstreams/WS-003.md) | L2 accepted 1.0.0: confirmed order and C01 personal-workset scope; next is C01 L3, goal policies remain open |
-| [Development direction map — MAP-001](./planning/project-map.md) | Sequence draft 2.1.1: product-first checkpoints, local feature acceptance and separately selected packaging; MS-003 S05/S06 deferred in the canonical journal |
+| [Mindbox metric worksets reference atlas](ui/references/mindbox-metrics-2026-09-17/README.md) | Owner-selected interaction references; ten original captures plus the [2026-09-24 workset/catalogue follow-up](ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/README.md), version 1, with authorized test creation and explicit-save evidence; no implementation claim |
+| [Metric workspace composition baseline](ui/drafts/metric-workspace-v1/README.md) | Owner-accepted initial layout and interactions, version 4; evolvable requirements, synthetic prototype data, current product foundation preserved |
+| [Configured metric workspace — WS-003](planning/directions/DIR-004/workstreams/WS-003.md) | L2 accepted 2.0.0: all twelve product decisions; six grains, creator-only authoring and expanded goals; next is C01 L3 |
+| [Development direction map — MAP-001](./planning/project-map.md) | Sequence draft 2.2.0: product-first checkpoints, local feature acceptance and separately selected packaging; MS-003 S05/S06 deferred in the canonical journal |
 | [First workstream — WS-001](./planning/directions/DIR-006/workstreams/WS-001.md) | Accepted L2 scope 1.0.0, navigation patch 1.0.10: retained installation/bootstrap outcomes and closed C02/C03 evidence; full C04–C06 selected later |
 | [First milestone — MS-001](./planning/milestones/MS-001/plan.md) | C02 L3 2.2.0: exact internal bundle and native ARM64/AMD64 evidence; [S05 criterion map](../../.codex/delivery/evidence/MS-001/MS-001-S05/report.md) and [C03 handoff](runtime-network-installation.md#s05-installation-author-handoff); owner decision remains in the canonical journal |
 | [Installation milestone — MS-002](./planning/milestones/MS-002/plan.md) | C03 L3 accepted 1.0.0: guided installation, HTTPS, truthful readiness and a pilot-derived first-run entry; fixed implementation choices and owner decision packet; five prompts and one canonical journal; [S01 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S01/report.md), [S02 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S02/report.md), [S03 implementation evidence](../../.codex/delivery/evidence/MS-002/MS-002-S03/report.md), [S04 candidate and target evidence](../../.codex/delivery/evidence/MS-002/MS-002-S04/report.md), [S05 criterion map and C04 handoff](../../.codex/delivery/evidence/MS-002/MS-002-S05/report.md); final acceptance remains in the journal |

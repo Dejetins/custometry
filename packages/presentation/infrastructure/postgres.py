@@ -53,7 +53,7 @@ class PostgresReportRepository:
             row = c.execute(
                 """SELECT v.payload FROM presentation_documents d
                 JOIN presentation_versions v ON v.document_id=d.id
-                WHERE d.id=%s AND d.workspace_id=%s AND d.owner_principal_id=%s
+                WHERE d.id=%s AND d.workspace_id=%s AND d.creator_principal_id=%s
                   AND ((%s::uuid IS NULL AND v.id=d.latest_version_id) OR v.snapshot_id=%s)""",
                 (report_id, workspace_id, owner, snapshot_id, snapshot_id),
             ).fetchone()
@@ -91,7 +91,7 @@ class PostgresReportRepository:
                 )
             row = c.execute(
                 """SELECT revision FROM presentation_documents
-                WHERE id=%s AND workspace_id=%s AND owner_principal_id=%s FOR UPDATE""",
+                WHERE id=%s AND workspace_id=%s AND creator_principal_id=%s FOR UPDATE""",
                 (report_id, workspace_id, owner),
             ).fetchone()
             if row is None:

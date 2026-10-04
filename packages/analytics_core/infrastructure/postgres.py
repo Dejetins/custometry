@@ -160,8 +160,8 @@ class PostgresAnalyticsRepository:
     ) -> dict[str, Any]:
         with self._connect() as connection, connection.transaction(), connection.cursor() as cursor:
             cursor.execute(
-                """INSERT INTO analytics_sales_reports(id, workspace_id, owner_principal_id, semantic_dataset_version_id, request_hash, policy_hash, response_payload)
-                VALUES (%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(workspace_id,request_hash) DO NOTHING""",
+                """INSERT INTO analytics_sales_reports(id, workspace_id, owner_principal_id, semantic_dataset_version_id, request_hash, policy_hash, response_payload, contract_version)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(workspace_id,request_hash) DO NOTHING""",
                 (
                     payload["result_id"],
                     workspace_id,
@@ -170,6 +170,7 @@ class PostgresAnalyticsRepository:
                     payload["request_hash"],
                     payload["policy_hash"],
                     Jsonb(payload),
+                    payload["schema_version"],
                 ),
             )
             cursor.execute(

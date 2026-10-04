@@ -549,4 +549,4 @@ def test_z_real_postgresql_migration_repeat_downgrade_and_reupgrade(
     migrate_to("head")
     with notification_boundaries.connect() as connection, connection.cursor() as cursor:
         cursor.execute("SELECT version_num FROM alembic_version")
-        assert cursor.fetchone() == ("0011_presentation_drafts",)
+        assert cursor.fetchone() == ("0012_metric_workspace",)

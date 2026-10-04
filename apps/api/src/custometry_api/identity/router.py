@@ -326,6 +326,9 @@ def create_identity_app(
             workspace_key=payload.workspace_key,
             workspace_name=payload.workspace_name,
         )
+        from custometry_api.semantic.router import build_calendar_service
+
+        build_calendar_service(settings).provision(outcome.workspace_id)
         return BootstrapResponse(
             principal_id=outcome.principal_id,
             workspace_id=outcome.workspace_id,
@@ -424,6 +427,9 @@ def create_identity_app(
     ) -> WorkspaceResponse:
         protect_mutation(request, actor)
         outcome = service.create_workspace(actor, key=payload.key, name=payload.name)
+        from custometry_api.semantic.router import build_calendar_service
+
+        build_calendar_service(settings).provision(outcome.workspace_id)
         return WorkspaceResponse(
             workspace_id=outcome.workspace_id,
             workspace_key=outcome.workspace_key,

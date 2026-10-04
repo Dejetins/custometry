@@ -2810,6 +2810,14 @@ const realTable=()=>bridge.table(locale);
 let synchronizing=false;
 function refreshData(){
  const model=bridge.model();
+ if(model.workspace){if(locale!==model.locale)applyLocale(model.locale);const title=document.querySelector(".title-row h1");title.removeAttribute("data-ru");title.removeAttribute("data-en");title.textContent=model.title;document.querySelector(".status-pill").textContent=model.status;
+  const values={'period-summary':model.workspaceChrome.period,'comparison-summary':model.workspaceChrome.comparison,'stores-summary':model.workspaceChrome.stores,'groupby-summary':model.workspaceChrome.grain,'filters-summary':locale==='ru'?'Контекст':'Context'};
+  for(const [id,value] of Object.entries(values)){const n=document.getElementById(id);n.textContent=value;const b=n.closest('button');b.removeAttribute('data-ru-label');b.removeAttribute('data-en-label');b.setAttribute('aria-label',value);}
+  document.querySelectorAll('[data-chart-export],[data-table-export],#share-open,#comments-open,#trust-open').forEach(n=>{n.disabled=true;n.title=locale==='ru'?'Недоступно':'Unavailable';});
+  document.querySelectorAll('#comments-open [aria-hidden=true]:not(svg)').forEach(n=>n.textContent='0');
+  const save=document.getElementById('save-analysis-view');save.disabled=model.busy||model.unapplied||model.preview||model.conflict;
+  document.querySelectorAll('[data-page="dynamics"],[data-page="segments"],[data-page="findings"]').forEach(n=>{n.disabled=true;n.title=locale==='ru'?'Недоступно для этого отчёта':'Unavailable for this report';});
+  return;}
  const next=model.locale;
  if(locale!==next)applyLocale(next);
  const number=(value,digits=2)=>value==null?'—':new Intl.NumberFormat(locale,{maximumFractionDigits:digits,minimumFractionDigits:digits}).format(Number(value));
@@ -2843,6 +2851,9 @@ function enforceCapabilities(){
 const capabilityObserver=new MutationObserver(enforceCapabilities);capabilityObserver.observe(document.body,{childList:true,subtree:true});enforceCapabilities();
 const actions=(event)=>{
  const target=event.target.closest('button,a,summary');if(!target)return;
+ if(bridge.model().workspace&&target.matches('#period-menu-open,#stores-menu-open,#filters-menu-open,#groupby-menu-open,#comparison-menu-open,#context-open')){event.preventDefault();event.stopImmediatePropagation();bridge.inspector(target.id==='comparison-menu-open'?'chart':target.id==='context-open'?'set':'context',target);return;}
+ if(bridge.model().workspace&&target.matches('[data-nav-destination=administration]')){event.preventDefault();event.stopImmediatePropagation();const settings=document.getElementById('workspace-calendar-settings');if(settings)settings.open=true;settings?.scrollIntoView();document.getElementById('workspace-calendar-settings')?.focus();return;}
+ if(bridge.model().workspace&&target.matches('#save-analysis-view')){event.preventDefault();event.stopImmediatePropagation();bridge.save(bridge.model().title);return;}
  if(target.matches('[data-nav-destination=sales],[data-nav-destination=reports-export]')){event.preventDefault();event.stopImmediatePropagation();bridge.library();}
  if(target.matches('#context-apply')){event.preventDefault();event.stopImmediatePropagation();closeContext();bridge.apply({period:reportPeriod,store:[...selectedStores][0]||'',comparison:selectedComparisons.size?'previous_year_same_dates':'none'});}
  if(target.matches('#published-analysis-view-row')){event.preventDefault();event.stopImmediatePropagation();bridge.preview();}

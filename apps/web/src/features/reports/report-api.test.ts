@@ -12,5 +12,13 @@ describe('protected report state',()=>{
     expect(accessStore.get()).toBe(true);expect(reportQueries.getQueryData(['report','owned'])).toBeUndefined();
     resolve(new Response('{}',{status:200}));await expect(old).rejects.toThrow('ACCESS_DENIED');
   });
+  it('rejects a body decoded after logout and a new login generation',async()=>{
+    clearReportAccess(false);let release!:(value:unknown)=>void;
+    const response=new Response('{}');response.json=()=>new Promise(resolve=>{release=resolve;});
+    vi.stubGlobal('fetch',vi.fn().mockResolvedValue(response));
+    const received=await protectedFetch('/api/reports/old');const body=received.json();
+    clearReportAccess();clearReportAccess(false);release({title:'Previous principal'});
+    await expect(body).rejects.toThrow('ACCESS_DENIED');
+  });
   it('keeps RU and EN report copy keys identical',()=>{expect(Object.keys(reportCopy.ru).sort()).toEqual(Object.keys(reportCopy.en).sort());});
 });

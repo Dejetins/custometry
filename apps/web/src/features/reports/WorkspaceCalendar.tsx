@@ -1,0 +1,13 @@
+import {workspaceCopy} from './workspace-copy';
+import {useEffect,useState} from 'react';
+import type {workspaceCalendar as C} from '@custometry/contracts';
+import {useMutation} from '@tanstack/react-query';
+import {csrf,type Actor} from './report-api';
+import {workspaceCalendar} from './workspace-api';
+export function CalendarSettings({actor,locale,value,onSaved}:{actor:Actor;locale:'ru'|'en';value:C.WorkspaceCalendarDefault|undefined;onSaved:()=>void}){
+ const [month,setMonth]=useState(1);const [label,setLabel]=useState<'start_year'|'end_year'>('end_year');const [revision,setRevision]=useState(0);const c=workspaceCopy[locale];
+ useEffect(()=>{if(value){setMonth(value.calendar.profile.fiscal_year_start_month??1);setLabel(value.calendar.profile.year_label??'end_year');setRevision(value.revision);}},[value]);
+ const mutation=useMutation({mutationFn:()=>workspaceCalendar.update({expected_revision:revision,idempotency_key:crypto.randomUUID(),profile:{schema_version:'business-calendar/v1',kind:'month_based',fiscal_year_start_month:month,fiscal_year_start_day:1,year_label:label,timezone:'UTC',week_start:'monday'}},csrf()),onSuccess:onSaved});
+ const date=(offset:number)=>new Date(Date.UTC(2025,month-1+offset,1)).toISOString().slice(0,10);const end=(offset:number)=>new Date(Date.UTC(2025,month-1+offset,0)).toISOString().slice(0,10);
+ return <details id="workspace-calendar-settings" tabIndex={-1}><summary>{c.companySettingsFinancialYear}</summary><p>{c.startsOnTheFirstDayOf}</p><fieldset disabled={!actor.permissions.includes('workspace.manage')||mutation.isPending||!value}><legend>{c.fiscalCalendar}</legend><label>{c.startMonth}<select value={month} onChange={e=>setMonth(Number(e.target.value))}>{Array.from({length:12},(_,i)=><option key={i} value={i+1}>{new Intl.DateTimeFormat(locale,{month:'long',timeZone:'UTC'}).format(new Date(Date.UTC(2025,i,1)))}</option>)}</select></label><label>{c.yearNaming}<select value={label} onChange={e=>setLabel(e.target.value as typeof label)}><option value="start_year">{c.startYear}</option><option value="end_year">{c.endYear}</option></select></label><p>FY{label==='start_year'||month===1?2025:2026}: {date(0)} — {end(12)}; Q1: {date(0)} — {end(3)}; H1: {date(0)} — {end(6)}</p><p>{c.savedReportsKeepTheirPinnedCalendar}</p><button onClick={()=>mutation.mutate()}>{c.saveCompanyCalendar}</button></fieldset>{!actor.permissions.includes('workspace.manage')&&<p>{c.aWorkspaceAdministratorCanChangeThese}</p>}{mutation.error&&<p role="alert">{c.couldNotSaveReloadSettingsAfter} {mutation.error.message}<button onClick={onSaved}>{c.reloadSettings}</button></p>}{mutation.isSuccess&&<p role="status">{c.calendarSaved}</p>}</details>;
+}

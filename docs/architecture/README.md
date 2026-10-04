@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 45
+doc_version: 50
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -59,6 +59,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [UI program retirement](./ui/ui-program-retirement.md) | Removed materials, preserved requirements/code, historical recovery, and cleanup evidence |
 | [Web implementation source contract](./ui/custometry-web-implementation-source-contract-v1.md) | Selected ticket or milestone-stage execution from the target pilot and product requirements, source precedence, and browser proof boundary |
 | [Hierarchical planning framework](planning/framework-v1/README.md) | Required per-level templates, versions, owner checkpoints, mandatory document synchronization and milestone plan/pack/journal bindings |
+| [Personal report worksets L3](planning/milestones/MS-004/plan.md) | MS-004 0.2.1 (accepted design 0.2.0) under WS-003/C01; concrete configuration, calculation, access, persistence and accepted five-stage local proof plan (owner confirmation 2026-09-20); [canonical journal and five prompts](../../.codex/delivery/ledgers/MS-004.md); [S01 foundation](../../.codex/delivery/evidence/MS-004/MS-004-S01/report.md), [S02 calculations](../../.codex/delivery/evidence/MS-004/MS-004-S02/report.md), [S03 guarded APIs and persistence](../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md); [S04 native Web integration](../../.codex/delivery/evidence/MS-004/MS-004-S04/report.md) adds the real-API browser harness; S05 integrated proof and final owner acceptance remain subsequent work |
 | [Development operating model](./development-operating-model.md) | Observable outcomes, hierarchical planning, milestone packs, independent tickets, Git and CI/CD |
 | [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Hierarchical-planning amendment, independent ticket route and historical staged-system retirement |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |
@@ -72,3 +73,12 @@ The overall Foundation operating model is recorded in [ADR-0001](../adr/0001-fou
 ## Status
 
 These documents describe the target state and repository-preparation rules. A runtime or gate is not considered proven until it is implemented and observed at its real boundary. The existence of a document, empty directory, mock, unit test, or green static hook does not establish API, PostgreSQL, Compose, browser, recovery, performance, or release readiness.
+
+Fiscal-calendar follow-up (2026-09-20): WS-003 3.0.0 records the owner requirement
+for company/workspace base financial-year settings; MS-004 0.2.0 adds their
+versioned contracts, fiscal aggregation and local proof. MAP-001/DIR-004 2.3.0
+remain in review. No implementation or broader plan acceptance is implied.
+
+Acceptance navigation (2026-09-20): MS-004 0.2.0 decisions and expectations
+accepted by the owner; see MS-004/DEC-01. Editorial registration only, no runtime
+change or execution authorization; broader MAP/L1 reviews remain open.

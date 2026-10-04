@@ -1,0 +1,89 @@
+{
+  "baseline": "b4aaa1680cfff5885fe61ff98fe7e69cf4934df0",
+  "stage": "MS-004-S02",
+  "files": [
+    {
+      "path": "apps/api/src/custometry_api/analytics/workspace_router.py",
+      "sha256": "9406ca863bf75c22843dbdc4cd3b0b50aefd0ef98133ce47bff42fee5183957a"
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "sha256": "569013c5b222e27c603e9cef4edf3564a7d6e72f8deae9069358d941e795dd05"
+    },
+    {
+      "path": "docs/contracts/report-refresh-serving-recovery-contract.md",
+      "sha256": "3989cff128fa31f0635b3b2530d021c969c1212e803dd7bb206848873c380b14"
+    },
+    {
+      "path": "packages/analytics_core/application/workspace_calculation.py",
+      "sha256": "865cc082709d7420da62c4cc0522cf7e649d4e6fbede2bd6b9ae77bdf073fa5e"
+    },
+    {
+      "path": "packages/analytics_core/application/workspace_service.py",
+      "sha256": "2b21ffcbd44472bb29834073a21ec5682520cf8315ce318d07ddfc1909b44d6b"
+    },
+    {
+      "path": "packages/analytics_core/infrastructure/postgres.py",
+      "sha256": "aaef5f0ec6da41592cac46536bca177930013cb4e3210005c89cb0bc923f2e54"
+    },
+    {
+      "path": "packages/artifacts/infrastructure/workspace.py",
+      "sha256": "a7504e7a86dc1219a62a01e66d4f58f5241687132ca10b42ca734b2da3d21da3"
+    },
+    {
+      "path": "packages/contracts/analytics/workspace.py",
+      "sha256": "f0e1aaf40eb19674b0f1a9be984679a40f1565fa554f4b42016fa492ff617f35"
+    },
+    {
+      "path": "packages/contracts/generate_workspace_client.py",
+      "sha256": "1884079413608b770fc25de0849e36e93097d9b0cd5709fe9af15c3b6bf9d4d1"
+    },
+    {
+      "path": "packages/contracts/openapi/workspace.openapi.json",
+      "sha256": "d58ad483017c25cef246d7e20f82f17ed491aff525f2f5183d1f99b99386b017"
+    },
+    {
+      "path": "packages/contracts/schemas/analytics-workspace-apply-v2.schema.json",
+      "sha256": "3e3a9021a0a9fbd50c708af6ceb2f57260b509d706a02f3f064304e5305fce7e"
+    },
+    {
+      "path": "packages/contracts/schemas/analytics-workspace-run-v2.schema.json",
+      "sha256": "5d9f61c10fb35e3e5a15cf362b90a545e2147368edeafda9f97d00c57bfd5860"
+    },
+    {
+      "path": "packages/contracts/schemas/card-comparison-v1.schema.json",
+      "sha256": "110291ffce2007d2715169823ba5f282dfb75a43dda811ef422a28db9f31afdd"
+    },
+    {
+      "path": "packages/contracts/schemas/metric-workspace-v2.schema.json",
+      "sha256": "1fcd1b4e0ed5a84d502dee3e6865457fcf171ce30ad27706978ccb28f4ab53ab"
+    },
+    {
+      "path": "packages/contracts/schemas/workspace-apply-response-v2.schema.json",
+      "sha256": "79fe6345f7800b7616be274081bf8e27ed2fc4db1ccd7a6e489cfa21a7425d98"
+    },
+    {
+      "path": "packages/contracts/src/workspace-contracts.ts",
+      "sha256": "3d606b1abc0b3b57537d8f67581dcb64e051f234ca74bd3b2c66cc8a96f02cb0"
+    },
+    {
+      "path": "tests/integration/analytics/run_s02.py",
+      "sha256": "3f6f18f17ecc72a49ef0a5181c111ac9df04f9629a72ba7f4e093e93e1b5ae96"
+    },
+    {
+      "path": "tests/integration/analytics/test_workspace_s02.py",
+      "sha256": "a67a8c326095014e83d052d8695c291f636f339c2772974c648287db54daa654"
+    },
+    {
+      "path": "tests/unit/analytics/test_workspace_calculation.py",
+      "sha256": "bb6c8d08fabedea9433e52f0b73a3b00133ba6fbd06795a4b1b19a2d6783db30"
+    }
+  ],
+  "evidence_directory": ".codex/delivery/evidence/MS-004/MS-004-S02",
+  "journal_ownership": "coordinator advance preserved; own claim and acceptance only through stage_ledger",
+  "foreign_preserved": [
+    ".codex/delivery/evidence/MS-004/MS-004-S01/synchronization.md",
+    ".codex/delivery/ledgers/MS-004.md"
+  ],
+  "publication": "not performed; coordinator owns synchronization"
+}

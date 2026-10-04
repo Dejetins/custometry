@@ -1,0 +1,174 @@
+{
+  "schema_version": "ms004-s04-browser-summary/v1",
+  "cases": [
+    {
+      "test": "reader private view, EN, administrative separation and session revocation",
+      "project": "1920",
+      "path": "browser/reader-reader-private-view-548f5-tion-and-session-revocation-1920/browser-observations.json",
+      "sha256": "67f37f62201ec5e1514ae0f9861d625be29ab0296fa551068fff8087c1890086",
+      "http_status_counts": {
+        "200": 28,
+        "204": 1,
+        "401": 1
+      },
+      "page_errors": 0,
+      "console_entries": 1,
+      "unexpected_api_errors": 0
+    },
+    {
+      "test": "reader private view, EN, administrative separation and session revocation",
+      "project": "768",
+      "path": "browser/reader-reader-private-view-548f5-tion-and-session-revocation-768/browser-observations.json",
+      "sha256": "bb8e4e379562c2c8344804bf7af565f01f6a25dc6a6b19403832fe2a26e2da67",
+      "http_status_counts": {
+        "200": 28,
+        "204": 1,
+        "401": 1
+      },
+      "page_errors": 0,
+      "console_entries": 1,
+      "unexpected_api_errors": 0
+    },
+    {
+      "test": "real competing save retains the losing draft and empty scope is not zero",
+      "project": "1920",
+      "path": "browser/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/browser-observations.json",
+      "sha256": "f5055e76416515f819f90f1a7b43f013bbf6fd4d7db41c26ca859fea97fa9c40",
+      "http_status_counts": {
+        "200": 24,
+        "409": 1
+      },
+      "page_errors": 0,
+      "console_entries": 1,
+      "unexpected_api_errors": 0
+    },
+    {
+      "test": "real competing save retains the losing draft and empty scope is not zero",
+      "project": "768",
+      "path": "browser/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/browser-observations.json",
+      "sha256": "5e3814349f7c87aeaaa5795641b9e86007d8b044e969b3d32afc441517cc6a2e",
+      "http_status_counts": {
+        "200": 24,
+        "409": 1
+      },
+      "page_errors": 0,
+      "console_entries": 1,
+      "unexpected_api_errors": 0
+    },
+    {
+      "test": "real workspace Apply, immutable Save, fiscal adoption and keyboard",
+      "project": "1920",
+      "path": "browser/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/browser-observations.json",
+      "sha256": "7d1e917109de6ec9c96f8184d1de656ab5ab20d0e0733f644f5f19e3dc395c28",
+      "http_status_counts": {
+        "200": 23
+      },
+      "page_errors": 0,
+      "console_entries": 0,
+      "unexpected_api_errors": 0
+    },
+    {
+      "test": "real workspace Apply, immutable Save, fiscal adoption and keyboard",
+      "project": "768",
+      "path": "browser/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/browser-observations.json",
+      "sha256": "fd13d8336db757bde6374cc2ec1f0635bdec2319ea7729c0e1fd7a0dae45b2ac",
+      "http_status_counts": {
+        "200": 23
+      },
+      "page_errors": 0,
+      "console_entries": 0,
+      "unexpected_api_errors": 0
+    },
+    {
+      "test": "workset catalog, copy, six grains, comparison and fiscal default",
+      "project": "1920",
+      "path": "browser/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/browser-observations.json",
+      "sha256": "0ea0c0ef96157999d7e93a3b574766ef5b9dffd12f26640fc1436ea89763c762",
+      "http_status_counts": {
+        "200": 27
+      },
+      "page_errors": 0,
+      "console_entries": 0,
+      "unexpected_api_errors": 0
+    },
+    {
+      "test": "workset catalog, copy, six grains, comparison and fiscal default",
+      "project": "768",
+      "path": "browser/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/browser-observations.json",
+      "sha256": "90161df2bef397d963a14600cae8f4976cfebb75be4e0f6df4326e9d6ff036f6",
+      "http_status_counts": {
+        "200": 27
+      },
+      "page_errors": 0,
+      "console_entries": 0,
+      "unexpected_api_errors": 0
+    }
+  ],
+  "boundary": "Six unchanged final full-run cases plus final two focused catalog/copy/grain/fiscal cases; not one all-green invocation.",
+  "screenshots": [
+    {
+      "path": "browser/reader-reader-private-view-548f5-tion-and-session-revocation-1920/reader-en.png",
+      "sha256": "8e87fe84287a0cc8b266fe27724ccafeaa14cfbab93f5ffee994cb9fb55421fa"
+    },
+    {
+      "path": "browser/reader-reader-private-view-548f5-tion-and-session-revocation-768/reader-en.png",
+      "sha256": "be12f7a117be627cf9522234809d5fdc71b0086c0792e5672f3c2598cda14ba2"
+    },
+    {
+      "path": "browser/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/conflict.png",
+      "sha256": "4a38b5d0bfcfaf19612f44ead1aa5eba0fd9ade7952327764ea75a38f20759f2"
+    },
+    {
+      "path": "browser/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/empty-scope.png",
+      "sha256": "f8b4bab701180177223e8f6e1f4f9d3836451f7cf793fd8fd4334013cdadbfd3"
+    },
+    {
+      "path": "browser/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/conflict.png",
+      "sha256": "254bcb9a34970a7d615afcfa1014a313087a72f53183f94ab5c773ef0efc1d42"
+    },
+    {
+      "path": "browser/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/empty-scope.png",
+      "sha256": "0d95916f18a3ab38ad7a005c9b4965d59fb10000469d501a5497d4efc3b3afbf"
+    },
+    {
+      "path": "browser/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/final.png",
+      "sha256": "536ce7c589042960cf112427d3c104788d10bc577e630e0514726d3bb75d99c7"
+    },
+    {
+      "path": "browser/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/workspace.png",
+      "sha256": "08c093c594a15fed40cc72587599f9a902c60b9cced4c51839fb1c9eb1c367a8"
+    },
+    {
+      "path": "browser/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/final.png",
+      "sha256": "975ef2ff8df77ff56b233b4d74060b44d4b947930171b8fc3d0a6c9a99af9908"
+    },
+    {
+      "path": "browser/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/workspace.png",
+      "sha256": "69a6bea3ce649bbce0de0cebc831e4ca3bb8c8ab353d8c9042986f79890c84f2"
+    },
+    {
+      "path": "browser/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/final.png",
+      "sha256": "20024dff9111bc1d25e9769b7158aee09f1b74bfa03c854405eb73d6b3c4bdbc"
+    },
+    {
+      "path": "browser/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/inspector.png",
+      "sha256": "444085536c638442f86a0849697843ddc0859f004920f618fb15bde814966cf5"
+    },
+    {
+      "path": "browser/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/reflow-400.png",
+      "sha256": "20024dff9111bc1d25e9769b7158aee09f1b74bfa03c854405eb73d6b3c4bdbc"
+    },
+    {
+      "path": "browser/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/final.png",
+      "sha256": "1bffde463ab3c4f5aa92f4771731ab57f99c835b8b67ceac91f71555906301b2"
+    },
+    {
+      "path": "browser/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/inspector.png",
+      "sha256": "2e86b7b182550da597a3eba8c3715c00a3c05f2407a85f1ba340dca0fb19720a"
+    },
+    {
+      "path": "browser/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/reflow-400.png",
+      "sha256": "1bffde463ab3c4f5aa92f4771731ab57f99c835b8b67ceac91f71555906301b2"
+    }
+  ]
+}

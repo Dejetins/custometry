@@ -1,0 +1,114 @@
+{
+  "stage": "MS-004-S04",
+  "source_files": [
+    {
+      "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+      "sha256": "c1c6d9900b9433c27c0d7564f1129ce5375d54b6a9434cf1a9c279866ede12bc"
+    },
+    {
+      "path": "apps/web/src/features/reports/PilotDocument.tsx",
+      "sha256": "dc47b04ab56b41e2d6448ef73e988b02d0af0337068a35d54879f16c105ac970"
+    },
+    {
+      "path": "apps/web/src/features/reports/ReportWorkspace.tsx",
+      "sha256": "31a6f9cac80d98546a5a6460ac6982a6ce227157336d704d50a151b716e3d8c8"
+    },
+    {
+      "path": "apps/web/src/features/reports/WorkspaceCalendar.tsx",
+      "sha256": "d3d524682e25374c1312d71271f51d4bb1822229fc24f79aa8a99b58589e79e7"
+    },
+    {
+      "path": "apps/web/src/features/reports/WorkspaceProjection.tsx",
+      "sha256": "063e2cb987524b3767a7cd207422e282a27a0eeadb05991536ca3f908f70ecd8"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/port-epilogue.js",
+      "sha256": "2d1f26f87eb00a99a0e627185dea7c90e189a109eacf13e82d492b6442a46d5f"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/runtime.ts",
+      "sha256": "1708f20f77492907cec2a2aea9f97311f60f95d34ddc3ba6fbdc69dfd192aba8"
+    },
+    {
+      "path": "apps/web/src/features/reports/report-api.test.ts",
+      "sha256": "c1733f6ceeb87e33a37a62ab7031c164f2a1b6b4f696fa4a98ceb7d90158ce16"
+    },
+    {
+      "path": "apps/web/src/features/reports/report-api.ts",
+      "sha256": "d227d9b718bc16292561f56783e1dd702eeb0d7ac36525d6293b3564168f7e55"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace-api.test.ts",
+      "sha256": "23c67190765716ddf3206ea3071e2efbc8534493be81e0b6c0829cd52437a19d"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace-api.ts",
+      "sha256": "f741304ab17f1971739f9b291bbe2b3001fbab2fc0b28ee7820e2dcd48d00a54"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace-copy.ts",
+      "sha256": "0afcd13edfaeee6baf4bae277037b8462ef84461475575256630484011c63bf7"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace.css",
+      "sha256": "a84fbab2ec5ab7ca270dd9b2af7fefc3ebc6c759ceb6e44769fe0fb6d8d08219"
+    },
+    {
+      "path": "docs-site/docs/ru/user-guide/reports.md",
+      "sha256": "7b2ce59dae52e28c87827f487284abbc4fa85a07e2a4edfc9e7e964b44c9eff5"
+    },
+    {
+      "path": "docs-site/docs/user-guide/reports.md",
+      "sha256": "78635ae549d41c87b24d09e6bd84ce18415d6231efed0fd79bf3b8f70ab14c02"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "sha256": "8101140cd6b50addc39822775a862a779abe8ecf0d5ddf0f81dd5779c3af7ec5"
+    },
+    {
+      "path": "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md",
+      "sha256": "1fb3f4bc7cbbbcc38c99850b6ba1043840cac192947cf653947c15ede2daf228"
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "sha256": "9e698a9fa6663a30ddbc3035e503a27215fd7e68d691c55dea65ac74ae01273e"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/observed-test.ts",
+      "sha256": "53ec56e2312288a58494e07822e968a5ea2bf37ef849675d003f1cfdf32f002a"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/playwright.config.ts",
+      "sha256": "c7f85260b3bd72511802d0043cc1d4d08a68c78bcf916486037ee83460ad01c2"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/reader.spec.ts",
+      "sha256": "cd0f087249709bd927d0825ccefdd27fecbcfe673e02fe747a79c1c64e4db540"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/real_api_fixture.py",
+      "sha256": "df1cd618e4c8da869fb3f02c2503aa2fb3153ec40f509dea243907d4b9f0d6d6"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/recovery.spec.ts",
+      "sha256": "c8dde080aead116f9359f38a65c08a08c71bdb70939ee6c3bdcadfd4e6bdef1d"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/scenario.py",
+      "sha256": "8f3a65fb38e6e7a2f97b7dd0854654e6ef40f4c3104326b77f2960b37814f8b1"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/vite.config.ts",
+      "sha256": "66beaf85bd490ca4ba1d258ef933adda3cda946392eb26160949297957351236"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/workspace.spec.ts",
+      "sha256": "efb7b442900adb978a8d23d8f948a0d02e1d0bf6669c30d0b477e48f84507b08"
+    }
+  ],
+  "foreign_excluded": [
+    ".codex/delivery/evidence/MS-004/MS-004-S03/synchronization.md"
+  ],
+  "shared_journal": ".codex/delivery/ledgers/MS-004.md",
+  "journal_policy": "Only original executor claim and receipt-backed transition; coordinator advance preserved."
+}

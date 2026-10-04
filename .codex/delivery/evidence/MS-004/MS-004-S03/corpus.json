@@ -1,0 +1,76 @@
+{
+  "stage": "MS-004-S03",
+  "workspace_id": "021af7b1-24f9-4c92-94f8-a7bde8ebad62",
+  "semantic_dataset_version_id": "0cbfc0d1-8dd2-5d0c-8e2b-b38fb96e504b",
+  "legacy_result_id": "b96d814e-2f96-502d-b2bd-26b6634ae3dc",
+  "legacy_snapshot_id": "1798c46d-bd19-4ec6-9706-8170f8350f88",
+  "configured_snapshot_id": "0e6bee67-4abe-4707-a6b2-672780897a85",
+  "report_revision_after_denied_commit": 5,
+  "lineage": {
+    "source_artifacts": [
+      {
+        "artifact_id": "a85082b1-bed7-55e7-83f5-5a9df6c1a146",
+        "content_hash": "e55ab8cad1369f62ee6aa0e29afa8aaaca52ed7c5c82711c0057c94bd71119b1"
+      },
+      {
+        "artifact_id": "88435999-04ea-59de-8ed2-2f7e09beab2a",
+        "content_hash": "e1fb010b35ed8a76c8e15d595d3a5e34e37332acaca66ec10c48e9395c0f275f"
+      },
+      {
+        "artifact_id": "a3a2a347-ebe8-5c4e-b974-78ccecc1f5af",
+        "content_hash": "9e10ef180fb522475608e61910d8297a3c34462a9fe204efb635db824acd8c89"
+      },
+      {
+        "artifact_id": "a6266d70-9351-5b9e-91ae-9a843d82cc51",
+        "content_hash": "f7a8758ebf56baf79534c03c77c67b5805910dc34131061030a2c673548a1103"
+      },
+      {
+        "artifact_id": "74ca311b-47ba-5ec8-9943-20ec2ea5a358",
+        "content_hash": "3ad35c3cb51330cb47a41927f1737717ce93bc4e9046022813b0ea80590d84b9"
+      },
+      {
+        "artifact_id": "515d1718-cec0-5999-9d36-0ee8e0a7372d",
+        "content_hash": "c74cd84429ff6ae8351d39eb34b30e55f68807c142165e469d1bac9c9ebf8d73"
+      }
+    ],
+    "metric_components": [
+      {
+        "metric_id": "average_receipt",
+        "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+        "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+      },
+      {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      {
+        "metric_id": "receipt_count",
+        "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+        "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+      }
+    ],
+    "source_calendar_version_id": "a85082b1-bed7-55e7-83f5-5a9df6c1a146",
+    "data_as_of": "2025-12-31T19:55:00Z"
+  },
+  "result_manifest": {
+    "artifact_id": "cc37a58a-e8a0-5be9-8e18-bfe49bc48be8",
+    "content_hash": "0206317d820067cef88a1e5bde477868fd09ac7719a27805e5967cd0785da2ee"
+  },
+  "comparison_manifest": {
+    "artifact_id": "b3be2173-777c-57ba-83f2-40bb3112a143",
+    "content_hash": "50cf87a00ac0801d85c4eb2b75f84a8443c7976cc30b2295f64e7173de2ad924"
+  },
+  "http_status_counts": {
+    "200": 50,
+    "403": 41,
+    "409": 9,
+    "404": 11,
+    "503": 2,
+    "400": 2,
+    "413": 1,
+    "422": 1,
+    "401": 12
+  },
+  "boundary": "Disposable PostgreSQL, actual six-table intake, Identity sessions, ASGI API and immutable local artifacts; no browser or deployment proof."
+}

@@ -8,13 +8,13 @@
   "artifact_kind": "direction",
   "doc_id": "DIR-004",
   "title": "Analytical documents and result delivery",
-  "version": "2.2.0",
+  "version": "2.3.2",
   "planning_status": "in_review",
   "language": "en",
   "parent_ref": {
     "id": "MAP-001",
     "path": "docs/architecture/planning/project-map.md",
-    "version": "2.2.0"
+    "version": "2.3.2"
   },
   "direction_ref": "DIR-004",
   "baseline_ref": {
@@ -26,7 +26,7 @@
   "requirement_refs": [
     {
       "source": "custometry-technical-blueprint-ru.md",
-      "revision": "sha256:183d9d2f2070cb8e651eca46fa44244b0d0af2a914830bcee6e5716ae15fd163",
+      "revision": "sha256:b874b966471a2b3a4103b14dcca6fb2488305409e37d46ae262b94c454dfba86",
       "ids": [
         "GOAL-012",
         "GOAL-017",
@@ -47,7 +47,7 @@
     },
     {
       "source": "custometry-technical-blueprint-ru.md",
-      "revision": "sha256:28c52edab5c48b3f0a01aaf08c02792d2c4988beee3b27960562ef31c77c651f",
+      "revision": "sha256:b874b966471a2b3a4103b14dcca6fb2488305409e37d46ae262b94c454dfba86",
       "ids": [
         "METRIC-025",
         "METRIC-026",
@@ -59,7 +59,7 @@
     },
     {
       "source": "custometry-technical-blueprint-ru.md",
-      "revision": "sha256:ad09b596dcc7ff765c54ab205b24feb9fe5bdb39b769356c56882d94d772b968",
+      "revision": "sha256:b874b966471a2b3a4103b14dcca6fb2488305409e37d46ae262b94c454dfba86",
       "ids": [
         "METRIC-030",
         "METRIC-031",
@@ -105,7 +105,7 @@
 
 # DIR-004. Analytical documents and result delivery
 
-> L1 sequence draft `2.2.0`, 2026-09-17. Parent: [MAP-001](../../project-map.md) `2.2.0`.
+> L1 sequence draft `2.3.2`, 2026-09-17. Parent: [MAP-001](../../project-map.md) `2.3.2`.
 > Accepted capability boundaries remain; WS-002 is the first-report foundation. WS-003 2.0.0 is the accepted metric-workspace continuation under DIR-004.
 > The broader checkpoint sequence remains under review; WS-002/MS-003 0.2.0 was accepted on 2026-09-13.
 
@@ -215,15 +215,21 @@ This is the decomposition parent for WS-002. C01/C02/C04 contribute the bounded 
 
 ## Next product continuation — 2026-09-17
 
-[WS-003 — Configured metric workspace](workstreams/WS-003.md) `2.0.0` records
+[WS-003 — Configured metric workspace](workstreams/WS-003.md) `3.0.0` records
 the accepted next bounded workstream under C01/C02/C04, using the owner-accepted initial
 composition and existing report foundation. Its sequence is worksets/cards/context/
 comparisons, then monitoring goals, then explicit shared worksets. Analytics owns
 calculation contributions; Web owns the production interaction. The owner
 confirmed this order and C01 scope on 2026-09-17 and the twelve follow-up choices
-on 2026-09-20. Detail C01 L3 next: six grains and creator-only report writes;
+on 2026-09-20. C01 now has [MS-004](../../milestones/MS-004/plan.md) 0.2.0
+accepted on 2026-09-20: six grains and creator-only report writes;
 C02 adds both goal directions/modes, recurring periods and optional run rate.
 Product policy is selected; exact schemas/methods remain child L3 work. No new pack is initialized here.
+
+Historical navigation amendment 2.2.1 registered WS-003 navigation 2.0.1 and its C01 child
+MS-004. Accepted WS-003 scope remains 2.0.0. The owner's explicit L3/link-maintenance
+request delegates this editorial patch; the broader L1 sequence remains under
+review. Provider capabilities and historical milestone bindings are unchanged.
 
 ## Owner decisions and next decomposition
 
@@ -250,12 +256,37 @@ No agent, calendar, worktree topology or parallel execution is assigned by this 
 | 2.0.3 | 2026-09-17 | Apply local feature acceptance and separately selected packaging; synchronize parent/provider navigation | MAP-001/DEC-12; owner correction |
 | 2.1.0 | 2026-09-17 | Record accepted initial metric-workspace composition and register WS-003 0.1.0 continuation proposal; synchronize navigation without changing L1 scopes | MAP-001/DEC-13 |
 | 2.1.1 | 2026-09-17 | Record owner acceptance of WS-003 1.0.0 sequence and C01 scope; preserve deferred goal and shared-write policies | MAP-001/DEC-14; editorial navigation synchronization |
+| 2.2.1 | 2026-09-20 | Register MS-004 and WS-003 navigation 2.0.1; reciprocal MAP link only | Explicit delegated L3 documentation maintenance; no new scope acceptance |
 | 2.2.0 | 2026-09-20 | Register WS-003 2.0.0 owner decisions: six grains, goal modes/recurrence/run rate and creator-only report authoring; retain child order | MAP-001/DEC-15; owner numbered answers |
 
-MAP-001 2.2.0 registers this sequence draft at 2.2.0 with reciprocal draft
+MAP-001 2.3.2 registers this sequence draft at 2.3.2 with reciprocal draft
 parent/provider links. Capability boundaries remain accepted at their earlier
 basis; this draft does not change public/domain contracts or accept an unwritten
 child. WS-001 navigation 1.0.10 keeps scope 1.0.0 and its recorded DIR-006 1.2.0
 parent basis; its unimplemented C04–C06 remain allocated for later selection.
 Completed milestones preserve exact historical plan/pack/journal/evidence bytes.
 The map owns the proposed checkpoint order and records its validation.
+
+## Fiscal-calendar amendment — 2026-09-20
+
+Version 2.3.0 registers the owner correction in WS-003 3.0.0 / DEC-16 and
+MS-004 0.2.0: base workspace financial-year settings, pinned calendar policy and
+fiscal aggregation in C01. Semantic Model owns meaning, Identity permissions,
+Presentation bindings and Web the bounded settings form. This does not select a
+full administration programme or alter C01→C02→C03. Broader planning_status remains
+in_review; other direction providers retain their earlier capability basis.
+Historical parent/source pins remain evidence.
+
+### Acceptance navigation — 2.3.1
+
+The owner accepted MS-004 0.2.0 decisions and expectations on 2026-09-20;
+MS-004/DEC-01 owns that record. WS-003 navigation 3.0.1 and DIR-004/MAP 2.3.1
+record only that acceptance and reciprocal links. Broader planning_status remains
+in_review, historical milestone bindings are preserved and no execution is started.
+
+### Pack registration — 2.3.2
+
+Register WS-003 navigation 3.0.2 and MS-004 editorial 0.2.1: five stage prompts
+and one draft journal are authorized preparation outputs, not product execution.
+Accepted L3 design remains 0.2.0; broader planning_status remains in_review.
+This is delegated reciprocal documentation maintenance, with no changed outcomes.

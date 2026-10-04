@@ -1,0 +1,115 @@
+{
+  "schema_version": "ms004-s04-corpus/v1",
+  "workspace_id": "d3015040-839b-44f3-b731-4ee0d496fe1a",
+  "semantic_dataset_version_id": "bba303be-5398-5d3a-808c-2c050cb81ff6",
+  "receipt_coverage": [
+    "2024-01-01",
+    "2025-12-31",
+    5000
+  ],
+  "calendar_coverage": [
+    "2020-12-28",
+    "2025-12-31",
+    1830,
+    1799
+  ],
+  "source_bindings": [
+    {
+      "entity": "Customer",
+      "artifact_id": "889eab51-e385-59df-b68e-0e39a0017cc0",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "customer_version_id"
+      ],
+      "content_hash": "7d38b733ce428374b5a36a28b9abf1039f7a010c46614d2da3f717f573177950"
+    },
+    {
+      "entity": "Product",
+      "artifact_id": "04009aef-dad4-5101-9af1-0f336e9ed7f3",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "product_version_id"
+      ],
+      "content_hash": "0c80687103f1abf717592690b0706758170965d4d2d53ccb90d067b3772fc281"
+    },
+    {
+      "entity": "Store",
+      "artifact_id": "1b9dbf7f-898e-5eb6-b5dc-5a7bb7dd8910",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "store_version_id"
+      ],
+      "content_hash": "47ab7439878cb4e1a99ce550e7d21797fc83b08e5d50ec53ebf1ad700ce05866"
+    },
+    {
+      "entity": "Calendar",
+      "artifact_id": "0633c3a3-c5c3-5ed1-873e-038b69089c06",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "calendar_date"
+      ],
+      "content_hash": "e55ab8cad1369f62ee6aa0e29afa8aaaca52ed7c5c82711c0057c94bd71119b1"
+    },
+    {
+      "entity": "Receipt",
+      "artifact_id": "1f143068-ab48-5115-9328-43cc4d5e7d4e",
+      "field_roles": {
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "receipt_id"
+      ],
+      "content_hash": "f7a8758ebf56baf79534c03c77c67b5805910dc34131061030a2c673548a1103"
+    },
+    {
+      "entity": "ReceiptItem",
+      "artifact_id": "a6ee7c51-11bf-5ce1-ae20-5a830e6595a9",
+      "field_roles": {
+        "line_id": "line_identifier",
+        "receipt_item_id": "source_line_identifier",
+        "source_system_id": "source_namespace"
+      },
+      "primary_key": [
+        "source_system_id",
+        "receipt_id",
+        "line_id"
+      ],
+      "content_hash": "3ad35c3cb51330cb47a41927f1737717ce93bc4e9046022813b0ea80590d84b9"
+    }
+  ],
+  "source_hashes": {
+    "Store": "47ab7439878cb4e1a99ce550e7d21797fc83b08e5d50ec53ebf1ad700ce05866",
+    "Product": "0c80687103f1abf717592690b0706758170965d4d2d53ccb90d067b3772fc281",
+    "Receipt": "f7a8758ebf56baf79534c03c77c67b5805910dc34131061030a2c673548a1103",
+    "Calendar": "e55ab8cad1369f62ee6aa0e29afa8aaaca52ed7c5c82711c0057c94bd71119b1",
+    "Customer": "7d38b733ce428374b5a36a28b9abf1039f7a010c46614d2da3f717f573177950",
+    "ReceiptItem": "3ad35c3cb51330cb47a41927f1737717ce93bc4e9046022813b0ea80590d84b9"
+  },
+  "metric_refs": [
+    {
+      "metric_id": "net_revenue",
+      "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+      "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+    },
+    {
+      "metric_id": "receipt_count",
+      "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+      "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+    },
+    {
+      "metric_id": "average_receipt",
+      "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+      "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+    }
+  ]
+}

@@ -26,3 +26,6 @@ export * as salesReports from "./analytics-client";
 
 export * as draftReports from "./reports-client";
 export * as reportSales from "./sales-report-client";
+export * as metricWorkspace from "./workspace-contracts";
+export * as workspaceCalendar from "./workspace-calendar-client";
+export * as configuredReports from "./workspace-client";

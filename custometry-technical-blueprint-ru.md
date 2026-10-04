@@ -9,7 +9,7 @@ status: draft
 language: ru
 created_at: 2026-07-14
 updated_at: 2026-09-20
-requirements_revision: 2026-09-20.1
+requirements_revision: 2026-09-20.2
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -1012,6 +1012,8 @@ entity:
     fiscal_period: string|null
 ```
 
+Базовые настройки компании/workspace включают версионируемый финансовый календарь (METRIC-030). Business calendar принадлежит Semantic Model; права администратора на его настройку проверяет Identity. Это отдельная политика границ периодов, а не изменение полноты дат в импортированном Calendar. Сохранённые результаты фиксируют обе версии.
+
 ## 5.10. Optional analytical dimensions
 
 | Сущность | Назначение | V1 target |
@@ -1529,7 +1531,7 @@ metric_presentation_requirements:
   - id: METRIC-029
     requirement: Пользовательская monitoring goal MUST ссылаться на настроенную метрику и хранить typed target value, явный интервал, owner/scope и описание гипотезы достижения; фактическое значение и прогресс используют ту же server-resolved методику и permissions. Monitoring goal MUST отличаться от целевого действия фильтра и прогноза; missing actual не считается нулём или достижением цели. Направление, режим задания цели, повторение и lifecycle подчиняются METRIC-031…035; техническая методика фиксируется в L3 до реализации.
   - id: METRIC-030
-    requirement: График и таблица отчёта MUST поддерживать детализацию day, week, month, quarter, half_year и year по общей versioned calendar/timezone policy; изменение детализации проходит server-side aggregation с сохранением смысла MetricVersion, границ и полноты периода. Ratio-метрики пересчитываются из числителя и знаменателя, а не усреднением отображаемых ratios; temporal comparison сохраняет явно выбранный alignment и не подменяется ISO-week comparison при выборе недель.
+    requirement: График и таблица отчёта MUST поддерживать детализацию day, week, month, quarter, half_year и year по общей versioned calendar/timezone policy; изменение детализации проходит server-side aggregation с сохранением смысла MetricVersion, границ и полноты периода. Ratio-метрики пересчитываются из числителя и знаменателя, а не усреднением отображаемых ratios; temporal comparison сохраняет явно выбранный alignment и не подменяется ISO-week comparison при выборе недель. Настраиваемый финансовый год компании MUST задаваться в базовых настройках workspace через versioned business calendar, а не локальную настройку карточки; его начало определяет финансовые год, полугодия и кварталы. Календарная и финансовая основа MUST быть явно различимы; calendar version, resolved boundaries и basis входят в result/cache identity и snapshots. Смена общего календаря MUST NOT переинтерпретировать сохранённые отчёты: переход на новую версию выполняется явно с сохранением предыдущих результатов; язык интерфейса не меняет календарь.
   - id: METRIC-031
     requirement: Monitoring goal MUST поддерживать lower_bound (достичь не менее) и upper_bound (не превысить), absolute_value и relative_change к явно заданной базе. Создатель отчёта задаёт режим и baseline policy заранее в versioned report configuration; при использовании отчёта читатель не меняет их. Resolved baseline value, period, metric/filter/data versions и единицы входят в расчёт; отсутствующая или непригодная база даёт unavailable, а не вымышленный процент. Progress display MUST отличать достижение нижней границы от расходования верхнего лимита.
   - id: METRIC-032

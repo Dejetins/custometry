@@ -1,0 +1,388 @@
+{
+  "$defs": {
+    "ArtifactRef": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "format": "uuid",
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_id",
+        "content_hash"
+      ],
+      "title": "ArtifactRef",
+      "type": "object"
+    },
+    "ChartSeriesRef": {
+      "additionalProperties": false,
+      "properties": {
+        "card_id": {
+          "format": "uuid",
+          "title": "Card Id",
+          "type": "string"
+        },
+        "artifact": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "field": {
+          "enum": [
+            "net_revenue",
+            "receipt_count",
+            "average_receipt",
+            "left",
+            "right",
+            "absolute_delta",
+            "relative_delta_percent"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "axis": {
+          "enum": [
+            "left",
+            "right"
+          ],
+          "title": "Axis",
+          "type": "string"
+        },
+        "unit": {
+          "enum": [
+            "EUR",
+            "receipt",
+            "EUR/receipt",
+            "percent"
+          ],
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "card_id",
+        "artifact",
+        "field",
+        "axis",
+        "unit"
+      ],
+      "title": "ChartSeriesRef",
+      "type": "object"
+    },
+    "LineChartSpecV1": {
+      "additionalProperties": false,
+      "properties": {
+        "chart_spec_id": {
+          "format": "uuid",
+          "title": "Chart Spec Id",
+          "type": "string"
+        },
+        "workspace_id": {
+          "format": "uuid",
+          "title": "Workspace Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "chart_type": {
+          "const": "line",
+          "title": "Chart Type",
+          "type": "string"
+        },
+        "title_key": {
+          "title": "Title Key",
+          "type": "string"
+        },
+        "title_override": {
+          "title": "Title Override",
+          "type": "null"
+        },
+        "description_key": {
+          "title": "Description Key",
+          "type": "null"
+        },
+        "source_binding": {
+          "additionalProperties": true,
+          "title": "Source Binding",
+          "type": "object"
+        },
+        "chart_data": {
+          "additionalProperties": true,
+          "title": "Chart Data",
+          "type": "object"
+        },
+        "dimensions": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Dimensions",
+          "type": "array"
+        },
+        "measures": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Measures",
+          "type": "array"
+        },
+        "axes": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Axes",
+          "type": "array"
+        },
+        "series": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Series",
+          "type": "array"
+        },
+        "annotations": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Annotations",
+          "type": "array"
+        },
+        "range_timeline": {
+          "title": "Range Timeline",
+          "type": "null"
+        },
+        "interaction": {
+          "additionalProperties": true,
+          "title": "Interaction",
+          "type": "object"
+        },
+        "visual_semantics": {
+          "additionalProperties": true,
+          "title": "Visual Semantics",
+          "type": "object"
+        },
+        "accessibility": {
+          "additionalProperties": true,
+          "title": "Accessibility",
+          "type": "object"
+        },
+        "export_policy": {
+          "additionalProperties": true,
+          "title": "Export Policy",
+          "type": "object"
+        },
+        "access_policy": {
+          "additionalProperties": true,
+          "title": "Access Policy",
+          "type": "object"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chart_spec_id",
+        "workspace_id",
+        "schema_version",
+        "chart_type",
+        "title_key",
+        "title_override",
+        "description_key",
+        "source_binding",
+        "chart_data",
+        "dimensions",
+        "measures",
+        "axes",
+        "series",
+        "annotations",
+        "range_timeline",
+        "interaction",
+        "visual_semantics",
+        "accessibility",
+        "export_policy",
+        "access_policy",
+        "created_at"
+      ],
+      "title": "LineChartSpecV1",
+      "type": "object"
+    },
+    "PairSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "pair",
+          "title": "Mode",
+          "type": "string"
+        },
+        "left_card_id": {
+          "format": "uuid",
+          "title": "Left Card Id",
+          "type": "string"
+        },
+        "right_card_id": {
+          "format": "uuid",
+          "title": "Right Card Id",
+          "type": "string"
+        },
+        "display": {
+          "const": "series",
+          "title": "Display",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "left_card_id",
+        "right_card_id",
+        "display"
+      ],
+      "title": "PairSelection",
+      "type": "object"
+    },
+    "SingleSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "single",
+          "title": "Mode",
+          "type": "string"
+        },
+        "card_id": {
+          "format": "uuid",
+          "title": "Card Id",
+          "type": "string"
+        },
+        "temporal": {
+          "enum": [
+            "none",
+            "previous_year_same_dates"
+          ],
+          "title": "Temporal",
+          "type": "string"
+        },
+        "display": {
+          "enum": [
+            "series",
+            "delta_trend"
+          ],
+          "title": "Display",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "card_id",
+        "temporal",
+        "display"
+      ],
+      "title": "SingleSelection",
+      "type": "object"
+    },
+    "WorkspaceChartSpecV2": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "chart_spec_id": {
+          "format": "uuid",
+          "title": "Chart Spec Id",
+          "type": "string"
+        },
+        "workspace_id": {
+          "format": "uuid",
+          "title": "Workspace Id",
+          "type": "string"
+        },
+        "chart_type": {
+          "const": "line",
+          "title": "Chart Type",
+          "type": "string"
+        },
+        "selection": {
+          "discriminator": {
+            "mapping": {
+              "pair": "#/$defs/PairSelection",
+              "single": "#/$defs/SingleSelection"
+            },
+            "propertyName": "mode"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/SingleSelection"
+            },
+            {
+              "$ref": "#/$defs/PairSelection"
+            }
+          ],
+          "title": "Selection"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/$defs/ChartSeriesRef"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "title": "Series",
+          "type": "array"
+        },
+        "comparison": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArtifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "accessibility_table": {
+          "$ref": "#/$defs/ArtifactRef"
+        }
+      },
+      "required": [
+        "schema_version",
+        "chart_spec_id",
+        "workspace_id",
+        "chart_type",
+        "selection",
+        "series",
+        "comparison",
+        "accessibility_table"
+      ],
+      "title": "WorkspaceChartSpecV2",
+      "type": "object"
+    }
+  },
+  "discriminator": {
+    "mapping": {
+      "1.0.0": "#/$defs/LineChartSpecV1",
+      "2.0.0": "#/$defs/WorkspaceChartSpecV2"
+    },
+    "propertyName": "schema_version"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/LineChartSpecV1"
+    },
+    {
+      "$ref": "#/$defs/WorkspaceChartSpecV2"
+    }
+  ],
+  "title": "ChartSpec"
+}

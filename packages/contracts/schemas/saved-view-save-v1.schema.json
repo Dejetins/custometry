@@ -1,0 +1,274 @@
+{
+  "$defs": {
+    "PairSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "pair",
+          "title": "Mode",
+          "type": "string"
+        },
+        "left_card_id": {
+          "format": "uuid",
+          "title": "Left Card Id",
+          "type": "string"
+        },
+        "right_card_id": {
+          "format": "uuid",
+          "title": "Right Card Id",
+          "type": "string"
+        },
+        "display": {
+          "const": "series",
+          "title": "Display",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "left_card_id",
+        "right_card_id",
+        "display"
+      ],
+      "title": "PairSelection",
+      "type": "object"
+    },
+    "ReaderViewOverride": {
+      "additionalProperties": false,
+      "properties": {
+        "query_context": {
+          "$ref": "#/$defs/ViewQueryContext"
+        },
+        "display": {
+          "$ref": "#/$defs/ViewDisplay"
+        }
+      },
+      "required": [
+        "query_context",
+        "display"
+      ],
+      "title": "ReaderViewOverride",
+      "type": "object"
+    },
+    "SingleSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "single",
+          "title": "Mode",
+          "type": "string"
+        },
+        "card_id": {
+          "format": "uuid",
+          "title": "Card Id",
+          "type": "string"
+        },
+        "temporal": {
+          "enum": [
+            "none",
+            "previous_year_same_dates"
+          ],
+          "title": "Temporal",
+          "type": "string"
+        },
+        "display": {
+          "enum": [
+            "series",
+            "delta_trend"
+          ],
+          "title": "Display",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "card_id",
+        "temporal",
+        "display"
+      ],
+      "title": "SingleSelection",
+      "type": "object"
+    },
+    "ViewDisplay": {
+      "additionalProperties": false,
+      "properties": {
+        "active_workset_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Active Workset Id"
+        },
+        "selection": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "pair": "#/$defs/PairSelection",
+                  "single": "#/$defs/SingleSelection"
+                },
+                "propertyName": "mode"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/SingleSelection"
+                },
+                {
+                  "$ref": "#/$defs/PairSelection"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selection"
+        },
+        "card_order": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Card Order",
+          "type": "array"
+        },
+        "hidden_card_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Hidden Card Ids",
+          "type": "array"
+        },
+        "representation": {
+          "enum": [
+            "chart",
+            "table"
+          ],
+          "title": "Representation",
+          "type": "string"
+        },
+        "density": {
+          "enum": [
+            "comfortable",
+            "compact"
+          ],
+          "title": "Density",
+          "type": "string"
+        }
+      },
+      "required": [
+        "active_workset_id",
+        "selection",
+        "card_order",
+        "hidden_card_ids",
+        "representation",
+        "density"
+      ],
+      "title": "ViewDisplay",
+      "type": "object"
+    },
+    "ViewQueryContext": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        },
+        "store_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "\\S",
+                "type": "string"
+              },
+              "maxItems": 1000,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Store Ids"
+        },
+        "grain": {
+          "enum": [
+            "day",
+            "week",
+            "month",
+            "quarter",
+            "half_year",
+            "year"
+          ],
+          "title": "Grain",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on",
+        "store_ids",
+        "grain"
+      ],
+      "title": "ViewQueryContext",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "saved-view/v1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "document_version_id": {
+      "format": "uuid",
+      "title": "Document Version Id",
+      "type": "string"
+    },
+    "expected_revision": {
+      "minimum": 0,
+      "title": "Expected Revision",
+      "type": "integer"
+    },
+    "idempotency_key": {
+      "format": "uuid",
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "view_override": {
+      "$ref": "#/$defs/ReaderViewOverride"
+    },
+    "result_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Result Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "contract_version",
+    "document_version_id",
+    "expected_revision",
+    "idempotency_key",
+    "view_override",
+    "result_ids"
+  ],
+  "title": "SaveViewRequest",
+  "type": "object"
+}

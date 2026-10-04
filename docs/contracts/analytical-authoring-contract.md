@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-ANALYTICAL-AUTHORING-001
 title: Governed population and analytical authoring contract
-doc_version: 9
+doc_version: 15
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -10,8 +10,8 @@ requirement_ids: [FILTER-013, FILTER-017, SEGMENT-029, SEGMENT-034, PIVOT-001, P
 status: accepted
 acceptance_basis: owner-approved-product-requirements-2026-09-05-and-workspace-amendment-2026-09-20
 proof_boundary:
-  label: target-contract-and-requirement-traceability
-  exclusions: [implemented-api-schema, persistence-migration, runtime-compatibility, browser-proof, release-authority]
+  label: target-contract-with-bounded-ms004-s03-api-persistence
+  exclusions: [complete-workspace-runtime-acceptance, browser-proof, release-authority]
 ---
 
 # Governed population and analytical authoring contract
@@ -458,7 +458,7 @@ implemented guarantees. Resolve and pin them before the affected child executes.
 
 | Boundary | Proposed rule and reason | Child / proof needed |
 |---|---|---|
-| Calendar and alignment | Reuse the current UTC basis for the receipt scenario; ISO Monday–Sunday weeks, calendar quarters and January/July half-years. Clip edge buckets to the requested interval and expose partial coverage. Preserve `previous_year_same_dates`: map baseline days to current-day buckets, including weeks, rather than silently selecting ISO-week alignment | C01; leap day, year crossing, partial buckets and six grains; daily v1 remains readable |
+| Calendar and alignment | Reuse the current UTC basis for the receipt scenario; ISO Monday–Sunday weeks. The 2026-09-20 owner correction requires a versioned workspace financial calendar: quarter/half-year/year boundaries follow the pinned calendar or fiscal basis, not hard-coded January. Clip edge buckets to the requested interval and expose partial coverage. Preserve `previous_year_same_dates`: map baseline days to current-day buckets, including weeks, rather than silently selecting ISO-week alignment | C01; leap day, year crossing, partial buckets and six grains; daily v1 remains readable |
 | Aggregation | Sum valid additive components; recompute average receipt as period revenue / period receipt count. Missing data, zero and no eligible rows retain metric policy. Include grain/calendar policy and effective context in result identity | C01; reconciliation of chart, table and full-period totals |
 | Relative goal | Pin author-selected baseline policy and resolved value for each occurrence. For the initial positive-baseline subset, derive target `B * (1 + change_percent / 100)` and evaluate the selected lower/upper comparator on actuals. A zero, negative or missing baseline is unavailable under this proposed method, not a fabricated percentage | C02; baseline eligibility and target unit checks; future signed-base methods require explicit methodology |
 | Progress | Lower-bound progress may show actual / positive target, including overachievement. Upper-bound display shows used limit and remaining/exceeded amount; smaller usage is not labeled worse achievement. A valid nonpositive target can still be compared in its native units; the percentage display is unavailable unless a specific method is defined | C02; both directions, ratios, zero/missing inputs and temporary versus final status |
@@ -481,3 +481,223 @@ Baseline: repository requirements and bounded report code at
 Acceptance must include all twelve selected decisions, creator/non-creator cases,
 saved-result continuity, and separate final actual/run-rate states. Local checks
 of these documents cannot certify the eventual mixed-version runtime transition.
+
+### Company financial calendar — owner correction, 2026-09-20
+
+METRIC-030, requirements revision `2026-09-20.2`, requires the financial calendar
+in base company/workspace settings. The accepted product correction supersedes
+the January-only recommendation above; it does not accept a wire schema or the
+whole L3. Semantic Model owns versioned calendar meaning/defaults, Identity checks
+settings permissions, Analytics resolves buckets, and Presentation pins the version.
+Imported Calendar coverage remains distinct. Existing reports/results never follow
+a changed default silently. New reports may select the current default; a creator
+explicitly adopts another policy version through Apply and a new Save revision.
+
+[MS-004 0.2.0](../architecture/planning/milestones/MS-004/plan.md)
+selects the initial month-based fiscal profile, endpoint/persistence contracts,
+labels, current-versus-pinned behavior, migration and proof. Its technical design was accepted by the owner on 2026-09-20
+(MS-004/DEC-01); this does not establish implemented wire contracts. C02 goal periods must pin the same calendar version; neither goal
+rules nor the separate fiscal-period comparison mode are implemented by this amendment.
+
+Acceptance navigation (2026-09-20): MS-004 0.2.0 decisions and expectations
+accepted by the owner; see MS-004/DEC-01. Editorial registration only, no runtime
+change or execution authorization; broader MAP/L1 reviews remain open.
+
+
+## MS-004 S01 implemented foundation
+
+The accepted [MS-004 plan](../architecture/planning/milestones/MS-004/plan.md)
+remains the design authority. S01 implements the following bounded foundation;
+its [stage evidence](../../.codex/delivery/evidence/MS-004/MS-004-S01/report.md)
+records actual local checks. The journal alone records stage acceptance.
+
+- Strict `configured-report/v2`, composition schema 2, ChartSpec `2.0.0`,
+  `metric-workspace/v2`, `card-comparison/v1` and `saved-view/v1` types live in
+  `packages/contracts/presentation/workspace.py` and
+  `packages/contracts/analytics/workspace.py`. Existing v1 models/routes are
+  unchanged; union readers dispatch by the explicit discriminator. Stable legacy
+  IDs and copy helpers preserve MetricVersion references without formula cloning.
+- The common composition retains pages, sections, blocks, source/access and brand
+  bindings. Personal configuration and complete per-card bindings extend that
+  document. Saved View query context is separate from display; reader overrides
+  cannot carry definition or calendar-adoption fields. Runtime authorization,
+  registry lookup, complete Apply/Save and reader projection remain S02/S03 work.
+- Calendar contracts are in `packages/contracts/semantic`; application and
+  PostgreSQL adapters are Semantic-owned. `business-calendar/v1` supports a
+  month-based year beginning on day 1, start month 1–12, start/end year labels,
+  UTC and ISO Monday weeks. `end_year` and January are the initial defaults.
+  Unsupported profiles/unknown fields fail validation.
+- `GET /api/semantic/workspace-calendar/v1`, exact
+  `GET /api/semantic/workspace-calendar/v1/versions/{version_id}?content_hash=...`
+  and `POST /api/semantic/workspace-calendar/v1/versions` are mounted. Identity
+  resolves the current active principal, membership, workspace and permissions
+  on every call, including replay. GET requires `workspace.read`; POST requires
+  `workspace.manage` plus the existing browser Origin/CSRF checks. Report author
+  or `report.manage` alone is insufficient. Exact foreign-workspace versions
+  return 404. Stale revision/key-body mismatch returns 409; invalid profile 422.
+- A default update locks its workspace pointer, inserts an immutable version and
+  moves the pointer in one transaction. Same-key/body replay returns its original
+  version and revision even after later updates. Request identity includes actor;
+  another actor cannot reuse the key as their own response. Hashes cover canonical
+  profile bytes. Pinned versions remain readable and are never relabeled.
+- System initialization uses UUIDv5(workspace, `business-calendar/v1/initial-january`)
+  and revision 0 with `created_by:null` (explicit system attribution). Human-created
+  versions have a principal, previous version, request hash and idempotency key.
+  Migration backfills existing workspaces; Identity API bootstrap/workspace creation
+  invokes the same idempotent public Semantic provision operation. An authorized
+  first read also recovers interrupted initialization or an old writer's new
+  workspace. It cannot replace an existing default; no cross-context table access
+  or distributed transaction is introduced.
+
+`python -m packages.contracts.generate_workspace_client` uses the existing
+Pydantic/OpenAPI/TypeScript renderer to generate the versioned schemas and
+`workspace-contracts.ts` / `workspace-calendar-client.ts`. The workspace OpenAPI
+file is a **component catalogue with no paths**, not an advertised unimplemented
+API. `WorkspaceCalendarClient` uses base URL `/api/semantic`; report/Analytics v2
+routes remain unmounted pending S03's current-access proof. Contract tests check
+all generated bytes against providers. The legacy generator/output is unchanged.
+
+The 1 MiB raw configuration bound is exposed by `parse_configuration`; S03
+v2 HTTP adapters invoke the raw-body bound before parsing. Typed validation
+also checks the normalized definition, 20 worksets, 50 cards per workset, 200
+cards total, 1000 unique store IDs, at most 366 inclusive days, unique IDs and
+selection ownership. Server registry/access resolution, historical deleted-ID
+non-reuse, truthful limit error mapping and result verification are implemented by the S03 consumers described below. A valid DTO is not proof of those runtime checks.
+
+The S01 foundation alone did not establish calculation, report v2 save/read,
+settings UI, shared worksets, goals or full METRIC-022 conformance. The following
+section records the subsequent S02 calculation boundary.
+
+
+## MS-004 S02 calculation and immutable result boundary
+
+`WorkspaceAnalyticsService` implements D03–D05 of the unchanged accepted plan.
+It consumes public Semantic/calendar and Artifact ports and a required
+`WorkspaceAccessPort`. Its caller must provide a trusted current dataset projection,
+never an HTTP-supplied policy fingerprint or allowed-store set. S03 owns the actual
+Identity/report object adapter and public activation; no v2 route was mounted at S02 acceptance.
+The service checks the actor/dataset/permission projection before work and rechecks
+it before returning reused or newly persisted results.
+
+`WorkspaceRunRequest` resolves null inheritance, explicit empty sets and the
+common/local/allowed intersection. Unknown and explicitly denied stores fail.
+Identity partitions by workspace, actor, policy/scope, dataset publication, all six
+source bindings, registered component definitions, pinned business calendar, exact
+period, grain and alignment. Card IDs, labels, ordering and presentation settings
+are excluded. Batch Apply groups equivalent contexts and returns separate card
+bindings; concurrent work uses existing artifact admission and PostgreSQL winner
+uniqueness, with no single-flight service or cross-actor reuse claim.
+
+The v2 envelope now includes exclusive natural/effective ends, clipped flags,
+calendar pins, financial indices, daily registered components and separate expected,
+Calendar-present, declared-complete, observed-day and receipt counts. Inclusive
+input dates are projected onto UTC receipt-header grain. Weeks remain ISO Monday;
+month arithmetic determines fiscal quarters/halves/years. Clipping is independent
+of completeness. Empty values are null; eligible zero revenue remains zero. Ratios
+are recomputed from summed components, using a local Decimal precision of 38 and
+canonical non-exponent strings; display formatting never changes raw values.
+
+Temporal projection stores exact current-to-prior-date mapping and baseline date
+sets. A current Feb 29 without a predecessor blocks that bucket and total delta;
+unaffected buckets may compare. An unmapped prior leap day is excluded with an
+explicit disclosure. Both comparison sides carry their own coverage. Absolute and
+relative deltas are server values; zero baseline only blocks the relative delta.
+Pair comparisons retain separate unit/format/result references. Cross-unit deltas
+are unavailable; period, grain, calendar or definition-basis incompatibility blocks
+a combined chart. The comparison artifact references admitted result artifacts;
+chart/table/tooltip consumers use the same typed projections. Temporal right-side
+`context` is the aligned current axis; `baseline_dates` names the actual prior dates.
+
+`WorkspaceArtifactStore` admits deterministic immutable JSON using existing
+manifests/dependencies and verifies exact content on reuse/read. Analytics records
+`contract_version=metric-workspace/v2` in the S01 migration's discriminator; existing
+v1 calculation and artifact formats are unchanged. Missing/corrupt input or output
+fails explicitly. No output files are repaired silently or treated as zero data.
+
+The S02 `custometry_api.analytics.workspace_router` factory exposes bounded
+result/context/catalog/comparison adapters only when explicitly composed with read
+and run dependencies. At S02 acceptance it was absent from `create_app`. S03 now supplies current
+object/data access plus CSRF for mutations and advertises the composed paths
+in workspace OpenAPI. Regenerate the existing schema and
+TypeScript outputs after envelope changes with `generate_workspace_client`.
+
+Local intake/SQL/artifact evidence is recorded in
+[S02 report](../../.codex/delivery/evidence/MS-004/MS-004-S02/report.md).
+It does not establish saved-report transactions, real v2 public authorization,
+browser behavior, release readiness or owner acceptance of the milestone.
+
+
+## MS-004 S03 guarded API and configured report persistence
+
+S03 composes report routes under `/api/reports/v2` and direct Analytics routes
+under `/api/analytics/metric-workspace/v2` (the proxy adds `/api`). Request-scoped
+adapters reauthenticate through Identity and consume its public `ResourceAccessPort`;
+Presentation and Analytics do not query Identity's private tables. Functional
+permissions, object grants and current data ceilings intersect; creator identity
+is an additional immutable requirement for report definition writes. This also
+protects existing v1 mutations and lists. Authorized readers see the explicitly
+pinned v1 base, not the creator's personal v2 overlay; their own Saved Views have
+independent identity, CAS and access checks. Filtering precedes list pagination.
+
+The bounded data projection supports `store:<id>` row scopes and intersects
+applicable layers with admitted Store membership. Unknown row expressions and
+column restrictions fail closed. Unbound legacy reports retain their actual
+creator's existing exact-read/update access through a server-verified stored v1
+result binding; previous bindings prevent treating revoked resources as unbound.
+That internal projection has no arbitrary-owner HTTP endpoint. Direct Analytics
+consumers require ordinary current data authorization. A reader cannot silently
+narrow an exact snapshot, but may explicitly Apply an authorized narrower query.
+
+Apply returns verified bindings, chart references, chart payloads and immutable
+comparison projections without changing the saved document. Explicit
+`reuse_result_ids` selects verification-only creator Apply for display/selection
+changes with `analysis.read`; new calculation requires `analysis.run`. Equivalent
+contexts keep distinct card IDs. Reusing a richer temporal result for an already
+available non-temporal display does not trigger calculation. GET never computes.
+
+Save checks the complete definition, including inactive worksets, stable IDs and
+historically retired IDs, all result/query bindings, registry/calendar references,
+comparison bytes and chart payloads. A single transaction commits report and
+companion view revisions and latest pointers after artifact admission and a final
+current-access check. Report and view revisions both participate in CAS. The v2
+semantic idempotency hash excludes the key itself; same-key/same-body retry returns
+its stored revision only after current access and dependency verification.
+
+v1 exact snapshots retain their original payloads. Upgraded latest v1 reads and
+writes return `REPORT_VERSION_UPGRADE_REQUIRED`; clients must use v2. The outer
+editor envelope supplies current capabilities rather than treating stored snapshot
+capabilities as authorization. Workspace defaults never replace a report's pinned
+calendar; explicit creator adoption uses Apply and Save for a new revision.
+
+Generated `workspace-client.ts`, `workspace-contracts.ts` and OpenAPI include
+editor, exact snapshot, Apply/Save and own-view routes. Existing report/Analytics
+clients are regenerated from the mounted applications. See the
+[S03 report](../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md) for actual
+API/PostgreSQL/artifact proof and the [recovery boundary](report-refresh-serving-recovery-contract.md#ms-004-s03-atomic-report-and-view-recovery).
+S04 implements the bounded Web integration described below; S05 owns integrated acceptance.
+The pinned draft base is not a published default: full METRIC-022 published-default
+reset, shared-version adoption, publication and release are not claimed.
+
+
+## MS-004 S04 Web consumption
+
+The native report workspace consumes the S03 v2 contracts for personal worksets,
+exactly three registered metric definitions, repeated independent cards, ordering,
+copy and common/local store restrictions. `null` retains inheritance and `[]`
+remains explicitly empty. Display selection, order and labels do not change the
+business query; changed context/grain/calendar requires explicit Apply. Save is
+separate and uses verified result bindings in card order, including inactive sets.
+
+Reader presentation state belongs to its selected own Saved View, including its
+query, calendar pin, representation and immutable result scope. Existing verified
+bindings support display-only Save without `analysis.run`; a legacy base without
+workspace bindings first needs an authorized Apply to produce those bindings.
+Private author worksets are not exposed as a shared reader definition.
+
+Workspace fiscal settings remain administrative and versioned. Report creators
+can explicitly adopt the current default; readers cannot rebase report policy.
+The chart, table and Focus render server values, temporal deltas and exact bucket
+dates. Different units retain separate axes; no browser metric arithmetic is used.
+See [S04 evidence](../../.codex/delivery/evidence/MS-004/MS-004-S04/report.md) and
+[the Web source contract](../architecture/ui/custometry-web-implementation-source-contract-v1.md#ms-004-s04-native-workspace-integration).
+Final integrated and owner acceptance remain S05.

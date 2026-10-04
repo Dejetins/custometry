@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-REPORT-REFRESH-SERVING-RECOVERY-001
 title: Report refresh, prepared serving and recovery contract
-doc_version: 2
+doc_version: 5
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -10,8 +10,8 @@ requirement_ids: [REPORT-REFRESH-001, REPORT-REFRESH-002, REPORT-REFRESH-003, RE
 status: accepted
 acceptance_basis: owner-approved-refresh-2026-09-06-and-creator-only-amendment-2026-09-20
 proof_boundary:
-  label: accepted-target-requirements-and-architecture-allocation
-  exclusions: [implemented-api-schema, persistence-migration, runtime-proof, browser-proof, performance-proof, recovery-proof, release-authority]
+  label: accepted-target-with-bounded-ms004-api-transaction-evidence
+  exclusions: [complete-refresh-runtime, browser-proof, performance-proof, production-recovery, release-authority]
 ---
 
 # Report refresh, prepared serving and recovery
@@ -239,3 +239,102 @@ and documentation-index generators passed. The command
 uv run --locked python -m tools.check --scope local passed, and git diff --check
 reported no whitespace errors. This is local documentation/static evidence;
 no runtime, browser, load, power-loss or backup/restore drill was executed.
+
+
+## MS-004 S01 additive schema and recovery boundary
+
+Migration `0012_metric_workspace` follows `0011_presentation_drafts`. It backfills
+immutable `presentation_documents.creator_principal_id` from the existing owner,
+adds explicit report/result discriminators, same-workspace/report Saved View
+foreign keys and Semantic-owned calendar versions/default pointers. Old v1
+inserts retain their compatibility path through the creator initialization
+trigger. Owner changes cannot rewrite creator attribution. No historical JSON
+payload or artifact is rewritten. See the
+[implemented authoring foundation](analytical-authoring-contract.md#ms-004-s01-implemented-foundation)
+and [S01 proof](../../.codex/delivery/evidence/MS-004/MS-004-S01/report.md).
+
+The supported local downgrade to 0011 succeeds only before any configured-report
+v2, metric-workspace v2, Saved View or custom-calendar record exists. After any
+such write, it fails with
+`METRIC_WORKSPACE_FORWARD_REPAIR_OR_PREUPGRADE_BACKUP_REQUIRED`; retain a dual
+reader and forward-repair. A separately authorized coherent PostgreSQL/artifact
+restore would lose changes after the backup and is not normal edit undo.
+System-only January initialization is reversible. Calendar versions reject
+UPDATE/DELETE; the default and previous-version FKs enforce workspace identity.
+
+Local reproducible proof uses `tests/integration/semantic/run_s01.py --image
+<available-postgresql-image-id>` through the locked API Python environment.
+It owns one loopback-only disposable container, generates a private temporary
+password file, creates fresh databases, migrates from 0011, runs actual
+PostgreSQL/Identity/API tests and removes its container/volumes and secrets.
+It never connects to a shared development database. Run after the repository's
+locked dependency/toolchain setup. A plain test-suite run without this fixture
+skips the real boundary; it cannot substitute for the owned non-skipped run.
+
+These checks prove bounded local migration/API behavior, not backup restoration,
+installation, production deployment or the broader scheduled-refresh contract.
+
+
+## MS-004 S02 immutable calculation recovery boundary
+
+The [S02 calculation contract](analytical-authoring-contract.md#ms-004-s02-calculation-and-immutable-result-boundary)
+uses existing `analytics_sales_reports` uniqueness with the explicit
+`metric-workspace/v2` discriminator. The admitted JSON artifact is durable before
+the result row. Concurrent equal requests may duplicate CPU work but converge on
+one result ID, exact bytes and manifest; disagreement fails instead of overwriting.
+The existing S01 downgrade refusal therefore also applies to these actual v2 rows.
+
+Exact reads and reuse verify immutable output bytes and admitted source bindings;
+missing, corrupt or mismatched content produces an explicit failure. There is no
+compute-on-GET, fallback to a stale result, implicit new calendar adoption or
+in-place repair. Comparison artifacts retain dependencies on their result artifacts.
+Temporary staging files are cleaned by their producer; orphan final files after a
+failed database transaction do not become admitted results. Existing lifecycle
+policy owns retention; this stage introduces no cleanup worker.
+
+`tests/integration/analytics/run_s02.py --image <available-postgresql-image-id>`
+provisions a loopback-only disposable PostgreSQL container with separate fresh
+control/source databases and a private temporary secret. It seeds real PostgreSQL
+retail tables, runs production readonly intake and independent readonly source SQL,
+then deletes only its own container, volumes and secret. The optional
+`MS004_S02_EVIDENCE_PATH` records redacted synthetic corpus IDs/hashes/counts, never
+rows or credentials. A plain test run that skips prerequisites is not proof.
+
+These checks cover local input/output corruption, missing output, registry and
+context identities, concurrent result admission and policy recheck seams. S03
+still owns real Identity object/data authorization, full report-save transactions
+and their fault-injection proof. No production restore, deployment or release is
+claimed by calculation tests.
+
+
+## MS-004 S03 atomic report and view recovery
+
+Configured report Save verifies every result, comparison and chart dependency,
+then admits immutable page/root artifacts before one control-PostgreSQL transaction
+writes the report revision and deterministic companion Saved View revision. Both
+CAS values must match. Final access rechecks precede the latest-pointer switch;
+failed artifact admission, current-access denial, stale companion revision or
+injected database failure preserves the previous complete report/view pointers.
+Historical replay returns its original version, not the current latest version.
+Unreferenced admitted artifacts can remain after a failed Save; existing retention
+owns their lifecycle, with no new cleanup worker or automatic recomputation.
+
+Exact reads verify result/comparison and page/root bytes plus current data access.
+The safe v2 envelope distinguishes `ARTIFACT_MISSING` / `ARTIFACT_CORRUPT` (409),
+`ACCESS_CONTEXT_CHANGED` and CAS/idempotency conflicts (409), denied access (403),
+private/unknown locators (404), bounds (413), malformed DTOs (422), and retryable
+storage failures (503). A former allowed policy version cannot silently reuse old
+Apply bindings. No partial success, implicit calendar adoption or stale fallback
+is returned as a successful Save. Existing v1 HTTP writes also recheck current
+authorization and verified data before commit and on replay.
+
+`tests/integration/presentation/run_s03.py --image <available-postgresql-image-id>`
+creates only task-owned loopback PostgreSQL source/control databases and temporary
+secrets, performs real intake and API tests, then removes its own container/volumes.
+A second fresh control database starts at 0011 for the existing migration/legacy
+suite; its historical v1 row uses the actual old column shape before the current
+adapter is restored after migration. `MS004_S03_EVIDENCE_PATH` optionally records
+synthetic IDs, admitted lineage/manifest hashes and HTTP outcome counts, never
+credentials or provider rows. See [S03 evidence](../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md).
+These checks use actual Identity sessions, ASGI HTTP handlers, transactions and
+artifact bytes; they do not establish browser, production restore or deployment.

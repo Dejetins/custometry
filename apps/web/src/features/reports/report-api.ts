@@ -21,6 +21,8 @@ export const protectedFetch: typeof fetch = async (input, init) => {
   const response = await fetch(input, { ...init, credentials: 'same-origin', cache: 'no-store' });
   if (response.status === 401 || response.status === 403) clearReportAccess();
   if (epoch !== generation || denied) throw new ReportError(response.status, 'ACCESS_DENIED');
+  const json=response.json.bind(response);
+  response.json=async()=>{const payload:unknown=await json();if(epoch!==generation||denied)throw new ReportError(response.status,'ACCESS_DENIED');return payload;};
   return response;
 };
 async function request<T>(url: string, input?: unknown): Promise<T> {

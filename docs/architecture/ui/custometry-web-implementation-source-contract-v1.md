@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-UI-WEB-IMPLEMENTATION-SOURCE-001
 title: Custometry Web implementation source contract
-doc_version: 12
+doc_version: 14
 product_spec_version: 0.11.0-draft
 ui_spec_version: 0.9.0-draft
 visibility: internal
@@ -209,3 +209,56 @@ This source increment does not certify packaged HTTPS, full accessibility or
 complete design-system fidelity; S05 packages it and S06 retains owner review.
 User-facing [report help](../../../docs-site/docs/user-guide/reports.md) explains
 entry details, Apply/Save and recovery without backend implementation jargon.
+
+
+## MS-004 S03 API handoff to Web integration
+
+The [configured report contract](../../contracts/analytical-authoring-contract.md#ms-004-s03-guarded-api-and-configured-report-persistence)
+and [S03 evidence](../../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md)
+provide real guarded API and persistence inputs for S04. Use generated
+`packages/contracts/src/workspace-client.ts` and `workspace-contracts.ts`; external
+paths are `/api/reports/v2` and `/api/analytics/metric-workspace/v2`. The editor
+returns an exact version plus current capabilities and companion-view revision.
+Preserve the current native pilot and typed bridge; no S03 change implements Web UI.
+
+Apply is explicit and Save consumes its exact verified bindings and chart payloads.
+Display-only creator changes can pass `reuse_result_ids` to verify existing results
+without compute permission. Handle the typed error envelope, both CAS revisions,
+private reader base/own-view boundaries, pinned calendar versus current default,
+and explicit creator adoption. Server-projected numbers/comparisons remain the
+sole chart/table/tooltip values. A rejected Save must retain the user's draft.
+S04 supplies its own real-API browser harness; S05 consumes it. API tests are not
+browser/fidelity/accessibility proof or acceptance of the finished milestone.
+
+
+## MS-004 S04 native workspace integration
+
+`ConfiguredWorkspace` composes the existing `PilotDocument` through its typed
+bridge and a React portal in the preserved overview. The original document,
+SVG assets, shell and navigation remain the source; maintained `port-epilogue.js`
+and `workspace.css` implement new seams and the generator owns `runtime.ts`.
+Worksets and the card rail share the docked Set/Card/Chart/Context inspector.
+The narrow inspector has keyboard containment and Escape returns to its opener;
+Focus provides the same chart and accessible table with focus return.
+
+Generated v2 clients own transport contracts. TanStack Query holds editor,
+settings, view and verified result projections; local state holds unsaved inputs.
+The result reader verifies manifest and metric bindings before rendering.
+Server buckets, temporal projections and comparisons supply values and deltas;
+localization formats them without recomputing business metrics. Card order and
+labels preserve result identity; changes to query or calendar require Apply.
+Display-only creator Save uses verification-only preparation; reader Save uses
+existing verified bindings without requiring a calculation or creator capability.
+Selecting a Saved View restores its query, display, pinned calendar and results.
+
+The existing administration navigation opens base financial-year settings.
+Current workspace default and pinned report version are shown separately.
+Changing the default does not mutate the report; creator adoption is explicit.
+A failed Save retains the draft; authorization-generation checks also reject a
+late response body decoded after logout or session replacement.
+
+[S04 evidence](../../../.codex/delivery/evidence/MS-004/MS-004-S04/report.md)
+records the real local API/browser boundary and reproducible task-owned harness
+at `tests/e2e/ms-004-workspace/`. S05 consumes it for complete AC-01…11 coverage
+and owner acceptance. This increment does not establish packaged runtime,
+release readiness, shared-workset behavior or goal implementation.

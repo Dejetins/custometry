@@ -288,6 +288,8 @@ class ReportService:
     ) -> dict[str, Any]:
         self._require(permissions)
         saved = self._repository.latest(workspace_id, principal_id, report_id, snapshot_id)
+        if saved.get("contract_version") == "configured-report/v2":
+            raise PresentationFailure("REPORT_VERSION_UPGRADE_REQUIRED")
         return self._verify(workspace_id, principal_id, permissions, saved)
 
     def list(

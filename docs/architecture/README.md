@@ -31,7 +31,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 
 | Document | Purpose |
 |---|---|
-| [Mindbox metric worksets reference atlas](ui/references/mindbox-metrics-2026-09-17/README.md) | Owner-selected target addition, revision 1: ten cropped live-browser references, configured metric cards, worksets, per-period deltas, dual-metric views and monitoring goals; no implementation claim |
+| [Mindbox metric worksets reference atlas](ui/references/mindbox-metrics-2026-09-17/README.md) | Owner-selected interaction references; ten original captures plus the [2026-09-24 workset/catalogue follow-up](ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/README.md), version 1, with authorized test creation and explicit-save evidence; no implementation claim |
 | [Metric workspace composition baseline](ui/drafts/metric-workspace-v1/README.md) | Owner-accepted initial layout and interactions, version 4; evolvable requirements, synthetic prototype data, current product foundation preserved |
 | [Configured metric workspace — WS-003](planning/directions/DIR-004/workstreams/WS-003.md) | L2 accepted 2.0.0: all twelve product decisions; six grains, creator-only authoring and expanded goals; next is C01 L3 |
 | [Development direction map — MAP-001](./planning/project-map.md) | Sequence draft 2.2.0: product-first checkpoints, local feature acceptance and separately selected packaging; MS-003 S05/S06 deferred in the canonical journal |

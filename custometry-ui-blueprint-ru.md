@@ -12,7 +12,7 @@ status: accepted_ui_requirements
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-09-20
+updated_at: 2026-09-24
 requirements_revision: 2026-09-20.2
 artifact_role: product_ui_requirements_and_current_inventory
 program_route: ticket_first
@@ -461,6 +461,8 @@ Header всегда разделяет:
 - report/dashboard access находится в отдельной admin surface; Analyst видит effective access summary, но не grant/revoke controls.
 
 ### 8.5.2a. Рабочие наборы метрик и сравнения — дополнение 2026-09-17
+
+Уточнение взаимодействий от **2026-09-24**: владелец выбрал создание и управление наборами по образцу Mindbox вместо текущего решения Custometry и запросил повторное исследование каталога. [Дополнение к референсам, версия 1](docs/architecture/ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/README.md) фиксирует создание копии через «+» с именем, переключение вкладок, меню всех наборов с поиском и видимостью, команды сохранённых наборов, правую панель «Метрики» и отдельное сохранение изменений в текущий или новый набор. Это выбранный interaction reference для следующей реализации METRIC-025…027; права REPORT-018/019 и explicit Apply/Save сохраняются. Код продукта этой фиксацией не изменён.
 
 Нормативная база: METRIC-025…029, CHART-021 и COMPARE-013. [Атлас из десяти точечных снимков Mindbox с пояснениями](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md) — выбранный владельцем референс **новых взаимодействий**. Документ не заменяет preserved pilot, его оболочку, typography/density, rail, Focus или inspector и не разрешает самостоятельную перестройку существующего интерфейса. Production capability inventory не меняется от добавления target requirements.
 

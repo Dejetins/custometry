@@ -61,6 +61,7 @@
 - [Historical August 5 visual pilots](architecture/ui/pilots/README.md)
 - [Source checkout publication reconciliation, 2026-09-04](architecture/ui/publication-reconciliation-2026-09-04.md)
 - [Metric worksets and comparison interactions](architecture/ui/references/mindbox-metrics-2026-09-17/README.md)
+- [Workset and catalogue follow-up](architecture/ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/README.md)
 - [Target UI concept](architecture/ui/target-pilot/README.md)
 - [UI-program retirement and retained sources](architecture/ui/ui-program-retirement.md)
 

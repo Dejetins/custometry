@@ -1,0 +1,12 @@
+{
+  "cycles": 1000,
+  "reconnects": 201,
+  "forcedGc": true,
+  "samples": {
+    "redacted": "runtime samples",
+    "count": 201,
+    "sha256_canonical_json": "1c6f0eec624998d48a9c1aaee0cd418ea3ead6306ddec43568adb7d0d0a3955d"
+  },
+  "cards": 3,
+  "scope": "One fixture report repeatedly mounted in one tab; not total browser RSS"
+}

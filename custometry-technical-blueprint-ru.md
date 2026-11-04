@@ -8,8 +8,8 @@ normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-09-20
-requirements_revision: 2026-09-20.2
+updated_at: 2026-10-10
+requirements_revision: 2026-10-10.1
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -1012,7 +1012,7 @@ entity:
     fiscal_period: string|null
 ```
 
-Базовые настройки компании/workspace включают версионируемый финансовый календарь (METRIC-030). Business calendar принадлежит Semantic Model; права администратора на его настройку проверяет Identity. Это отдельная политика границ периодов, а не изменение полноты дат в импортированном Calendar. Сохранённые результаты фиксируют обе версии.
+Базовые настройки компании/workspace включают однократную настройку финансового календаря администратором (METRIC-030); после настройки календарь неизменен, а в отчёте нет его настройки или принятия версии. Business calendar принадлежит Semantic Model; права администратора на его настройку проверяет Identity. Это отдельная политика границ периодов, а не изменение полноты дат в импортированном Calendar. Сохранённые результаты фиксируют обе версии.
 
 ## 5.10. Optional analytical dimensions
 
@@ -1531,7 +1531,7 @@ metric_presentation_requirements:
   - id: METRIC-029
     requirement: Пользовательская monitoring goal MUST ссылаться на настроенную метрику и хранить typed target value, явный интервал, owner/scope и описание гипотезы достижения; фактическое значение и прогресс используют ту же server-resolved методику и permissions. Monitoring goal MUST отличаться от целевого действия фильтра и прогноза; missing actual не считается нулём или достижением цели. Направление, режим задания цели, повторение и lifecycle подчиняются METRIC-031…035; техническая методика фиксируется в L3 до реализации.
   - id: METRIC-030
-    requirement: График и таблица отчёта MUST поддерживать детализацию day, week, month, quarter, half_year и year по общей versioned calendar/timezone policy; изменение детализации проходит server-side aggregation с сохранением смысла MetricVersion, границ и полноты периода. Ratio-метрики пересчитываются из числителя и знаменателя, а не усреднением отображаемых ratios; temporal comparison сохраняет явно выбранный alignment и не подменяется ISO-week comparison при выборе недель. Настраиваемый финансовый год компании MUST задаваться в базовых настройках workspace через versioned business calendar, а не локальную настройку карточки; его начало определяет финансовые год, полугодия и кварталы. Календарная и финансовая основа MUST быть явно различимы; calendar version, resolved boundaries и basis входят в result/cache identity и snapshots. Смена общего календаря MUST NOT переинтерпретировать сохранённые отчёты: переход на новую версию выполняется явно с сохранением предыдущих результатов; язык интерфейса не меняет календарь.
+    requirement: График и таблица отчёта MUST поддерживать детализацию day, week, month, quarter, half_year и year по общей versioned calendar/timezone policy; изменение детализации проходит server-side aggregation с сохранением смысла MetricVersion, границ и полноты периода. Ratio-метрики пересчитываются из числителя и знаменателя, а не усреднением отображаемых ratios; temporal comparison сохраняет явно выбранный alignment и не подменяется ISO-week comparison при выборе недель. Финансовый календарь компании MUST однократно задаваться администратором в базовых настройках компании/workspace и после настройки оставаться неизменным; его начало определяет финансовые год, полугодия и кварталы и может различаться между компаниями. Календарный год един для всех компаний. Отчёты и карточки MUST NOT содержать настройку границ финансового календаря или команду принятия его версии. Календарная и финансовая основа MUST быть явно различимы; calendar version, resolved boundaries и basis входят в result/cache identity и snapshots. Сохранённые отчёты MUST сохранять закреплённые календарные привязки и результаты без автоматической переинтерпретации; язык интерфейса не меняет календарь.
   - id: METRIC-031
     requirement: Monitoring goal MUST поддерживать lower_bound (достичь не менее) и upper_bound (не превысить), absolute_value и relative_change к явно заданной базе. Создатель отчёта задаёт режим и baseline policy заранее в versioned report configuration; при использовании отчёта читатель не меняет их. Resolved baseline value, period, metric/filter/data versions и единицы входят в расчёт; отсутствующая или непригодная база даёт unavailable, а не вымышленный процент. Progress display MUST отличать достижение нижней границы от расходования верхнего лимита.
   - id: METRIC-032
@@ -5658,7 +5658,7 @@ progress_requirements:
 
 ### 15.4.1. Theme и presentation identity contracts
 
-Точный набор shipped themes, их identifiers, palette values и UI/report defaults требует принятия по THEME-001…008 до затронутой frontend implementation; отменённая product-wide UI design program не является prerequisite. Финальный hash-pinned пилот задаёт показанную UI-концепцию и её visual language; полный production theme registry уточняется в соответствующем contract. Компоненты и ChartSpec не содержат theme-specific hardcoded colors. Палитры отвергнутого UI target не являются input, shipped registry либо accepted visual authority; при необходимости их можно восстановить только как историческое evidence из Git, а не из нормативной спецификации.
+Точный набор shipped themes, их identifiers, palette values и UI/report defaults требует принятия по THEME-001…008 до затронутой frontend implementation; отменённая product-wide UI design program не является prerequisite. Визуальные изменения следуют UI change manifest и актуальным решениям владельца; исторический пилот не фиксирует будущую композицию или палитру. Полный production theme registry уточняется в соответствующем contract. Компоненты и ChartSpec не содержат theme-specific hardcoded colors. Палитры отвергнутого UI target не являются input, shipped registry либо accepted visual authority; при необходимости их можно восстановить только как историческое evidence из Git, а не из нормативной спецификации.
 
 ```yaml
 theme_requirements:
@@ -6569,7 +6569,7 @@ Polars является основным dataframe engine. Pandas MAY испол
 
 ## 18.6. Frontend
 
-Текущий browser stack в `apps/web` является implementation evidence, а целевую архитектуру определяет accepted ADR-0007. Framework, language/build tool, client-state и server-state libraries, component/styling system, table/form/canvas libraries, icon family, font pack и browser-test implementation MUST быть source-backed и version-pinned в принятом architecture/implementation contract. Продуктовые требования и целевой пилот задают входные ограничения; повторная UI-программа не требуется.
+Текущий browser stack в `apps/web` является implementation evidence, а целевую архитектуру определяет accepted ADR-0007. Framework, language/build tool, client-state и server-state libraries, component/styling system, table/form/canvas libraries, icon family, font pack и browser-test implementation MUST быть source-backed и version-pinned в принятом architecture/implementation contract. Продуктовые требования и актуальные scoped UI-решения задают входные ограничения; повторная UI-программа не требуется.
 
 Browser proof определяется действующим [implementation-source contract](./docs/architecture/ui/custometry-web-implementation-source-contract-v1.md): проверяются затронутые границы и применимые endpoints `768` и `1920 CSS px`; промежуточные ширины добавляются при layout risk или объявленном breakpoint. Принятый recoverable rollout и compatibility seams ADR-0007 сохраняются.
 
@@ -6593,7 +6593,7 @@ web_architecture_requirements:
   - id: WEB-ARCH-004
     requirement: Frontend rollout MUST быть recoverable, сохранять accepted deep links/history/Back/refresh и не удалять current fallback либо compatibility seam до browser, accessibility, real-API и performance evidence соответствующей wave.
   - id: WEB-ARCH-005
-    requirement: Одна accepted visual authority MUST быть hash-pinned в repository-owned source manifest с явно принятым scope; финальный пилот задаёт показанную UI-концепцию, а внешние references MAY задавать только объявленный screen либо visual-language scope и не переносят branding, entities, private assets, text, source code или undocumented authorization behavior.
+    requirement: Визуальная основа UI-изменения MUST иметь явный scope и проверяемый источник согласно docs/architecture/ui/ui-change-manifest.md; актуальное решение владельца заменяет прежнее в затронутой области. Исторические пилоты не являются обязательным шаблоном. Вне изменяемой области MUST сохраняться согласованный визуальный язык. Внешние references MAY использоваться в объявленном scope и не переносят branding, entities, private assets, text, source code или undocumented authorization behavior.
   - id: WEB-ARCH-006
     requirement: Shell, navigation, context/detail surfaces и responsive transformations MUST быть описаны source-backed platform baseline и screen contracts с keyboard/focus behavior, persistence semantics и content priorities; presentation mechanics не меняют permissions, routes или domain identity.
 ```

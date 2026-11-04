@@ -1,0 +1,47 @@
+{
+  "observed_at": "2026-10-07T20:36:45.244788+00:00",
+  "mutations": false,
+  "observations": [
+    {
+      "url": "http://localhost:41746/",
+      "status": 200,
+      "body_sha256": "138444f5a7b942867212828b02fa810d8f2943b31cde156bf84401da89c4a178",
+      "script_sources": [
+        "/assets/index-CsqAYuWy.js"
+      ]
+    },
+    {
+      "url": "http://localhost:58145/openapi.json",
+      "status": 200,
+      "body_sha256": "e30b1a587ed179c408e77148df6d7e65e1b565d9d67b3c3d4eb1cf7bce61cc82",
+      "paths": [
+        "/health/live",
+        "/health/ready",
+        "/installation/status",
+        "/version"
+      ]
+    },
+    {
+      "url": "http://localhost:58145/reports/openapi.json",
+      "status": 200,
+      "body_sha256": "207c46100e6ae33ab331e5651850064313ef9c560b90b3391058e320258aebfd",
+      "paths": [
+        "/",
+        "/prepare",
+        "/v2/new/apply",
+        "/v2/new/prepare",
+        "/v2/new/versions",
+        "/v2/{report_id}",
+        "/v2/{report_id}/apply",
+        "/v2/{report_id}/saved-views",
+        "/v2/{report_id}/saved-views/{saved_view_id}/versions",
+        "/v2/{report_id}/snapshots/{snapshot_id}",
+        "/v2/{report_id}/versions",
+        "/{report_id}",
+        "/{report_id}/snapshots/{snapshot_id}",
+        "/{report_id}/versions"
+      ]
+    }
+  ],
+  "boundary": "Public schemas/reachability only, no authenticated journey or account/data mutation. reports OpenAPI exposes14 legacy/v2 paths, no composer/filter-v4 route. Do not equate current source or disposable tests with retained delivery."
+}

@@ -1,9 +1,10 @@
 # Custometry Delivery Adapter
 
-This repository adopts Global Delivery Contract v1 at
+This is Custometry's portable Global Delivery Contract v1 adapter. For an unclear
+artifact, `delivery-orchestrator` uses the current delivery selector at
 `/Users/daniildegtyarev/.codex/skills/delivery-orchestrator/references/delivery-contract-v1.md`.
-The global contract chooses artifacts; global AGENTS.md owns authority. This adapter
-defines only Custometry sources of truth, representation, proof, and safety.
+Global AGENTS.md owns authority; this adapter owns local sources, representation,
+proof and safety. An installed personal reference is not required for settled work.
 
 ## Local sources of authority
 
@@ -28,15 +29,18 @@ work. Skip this check for tasks that do not depend on such an input.
    repair with settled scope does not require unrelated blueprint reading.
 3. Use `docs/architecture/README.md` for architecture navigation and
    `docs/architecture/tooling-gates.md` for local commands.
-4. After delivery classification, read the selected ticket or accepted milestone
-   plan/journal and its declared context. `delivery-orchestrator` supplies the global artifact-selection procedure.
+4. Read the selected ticket or accepted milestone plan/journal and its declared
+   context. Use `delivery-orchestrator` only if the delivery artifact is unclear;
+   a settled execution route needs no new classification or pack.
 
-For Web UI work, use `custometry-ui-blueprint-ru.md` for requirements and inventory,
-[the preserved target pilot](../docs/architecture/ui/target-pilot/README.md) for its
-accepted demonstrated composition, interactions and visual language, and ADR-0007
-for frontend architecture. Production code is current-state evidence; verify
-conformance at the changed boundary using the
-[Web implementation source contract](../docs/architecture/ui/custometry-web-implementation-source-contract-v1.md).
+Before Web UI work, read the short [UI change manifest](../docs/architecture/ui/ui-change-manifest.md).
+Continue with the existing frontend stack and shared components under
+`packages/ui-foundation`; follow ADR-0007, the relevant UI blueprint requirements
+and the [implementation source contract](../docs/architecture/ui/custometry-web-implementation-source-contract-v1.md).
+Reuse current compositions and preserve existing API/DTO behavior within the
+selected scope. Do not introduce a component-system migration without an
+explicit owner instruction. Historical pilots are optional references, not
+mandatory templates; the UI change manifest governs visual changes.
 
 The previous G0-G6 and W19-W23/W29/W30 execution routes remain retired. Their
 removal is recorded in [the retirement record](../docs/architecture/ui/ui-program-retirement.md).
@@ -50,7 +54,9 @@ on 2026-09-06. This is the required planning form across development directions:
 project map -> direction -> workstream -> milestone -> stage prompt. Use its
 per-level templates, stable IDs, exact-version links, current-state evidence,
 mandatory decisions and owner review before detailing each selected branch.
-Agent assignment and parallel execution remain the owner's decisions.
+Owner-selected assignments and parallelism restrictions remain binding. Within
+unreserved bounded work, the owner-adopted global adaptive routing applies; it
+does not reassign a selected stage or override its checkpoints.
 
 This owner-selected topology justifies milestone plans and packs under Global
 Delivery Contract v1. Route accepted milestone authoring through `prompt-manager`
@@ -119,7 +125,18 @@ Material decisions remain with the owner; routine link/index bookkeeping is dele
 
 ## Local routing and verification
 
-Use the global Skill Routing table. For a Custometry browser-depth unit,
+Select available skills from current session metadata at crossed boundaries.
+Apply the global adaptive delegation skill without a second model-tier table.
+Delegated backend/data/ML/DevOps, stateful frontend and substantive QA use the
+technical route: Terra 6.1 XHigh, including coupled context/isolation/outbox
+reasoning. Bounded settled text, navigation and simple isolated changes may use
+Luna Max. The shared skill owns the exact model/effort pairs.
+
+`handoff_to` is a recommendation returned to the primary, which assigns the next
+bounded role. Workers neither contact other executors nor spawn children. Role
+TOMLs retain expertise and result contracts; model choice adds no authority.
+
+For a Custometry browser-depth unit,
 use `browser-qa-evidence` through the selected ticket or stage proof contract;
 the selected browser mechanic follows the shared browser contract.
 
@@ -130,22 +147,12 @@ profile from `docs/architecture/tooling-gates.md`.
 
 ## Routine repository synchronization
 
-The owner selected fast development synchronization on 2026-09-17. For an
-explicit synchronization request, run `check --scope local` and focused local
-source tests, reuse still-current results, then publish through a short-lived
-technical branch and PR. Wait only for the required fast `Foundation gate`,
-squash merge, update local `main`, and delete the technical branch after confirming
-success. Preserve unrelated work and report any concrete merge blocker.
-
-Follow [the synchronization contract](../docs/architecture/tooling-gates.md#routine-development-synchronization)
-for the exact proof boundary. Do not run documentation/frontend/Docker builds,
-Compose/browser proof, candidate publication, or release checks merely to sync
-source. Publishing candidate images does not trigger CI revalidation, image checks,
-Compose/browser proof, or post-publication qualification. It only builds/pushes
-requested images and records their identities. Full validation is opt-in only,
-requires its own explicit request, and is not implied by image publication. Do not route Custometry publication through the Roehub-only
-`publish-ci-deploy` skill. A source sync does not accept a milestone or prove
-runtime/release readiness; its stronger acceptance checks remain separate.
+For an explicit synchronization or candidate-publication request, follow
+[the synchronization contract](../docs/architecture/tooling-gates.md#routine-development-synchronization).
+It owns fast local/Foundation proof, PR/merge cleanup and opt-in full validation.
+Read it before publication; ordinary local work does not invoke that lifecycle.
+Source sync or image publication does not accept a milestone or prove runtime
+readiness. Do not route publication through Roehub-only `publish-ci-deploy`.
 
 ## Durable output
 

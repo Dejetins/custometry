@@ -1,4 +1,16 @@
-# Target UI concept
+# Preserved UI pilot
+
+## Current status — 2026-10-10
+
+The owner replaced mandatory fidelity to this pilot with the
+[UI change manifest](../ui-change-manifest.md). This pilot is historical design
+and integration evidence, not the current platform-wide target. Later owner
+decisions may replace any named composition while preserving unaffected UI.
+The selection, carry-forward guidance and governance statements below record
+the earlier baseline; they do not require restoring it in new work. Preserved
+HTML/assets and hashes remain unchanged.
+
+## Historical selection
 
 The product owner selected this final interactive pilot as the target Custometry
 UI concept on 2026-09-04. It defines the composition, navigation, panels,

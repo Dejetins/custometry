@@ -1,0 +1,1409 @@
+{
+  "startedAt": "2026-09-23T00:47:59.123Z",
+  "finishedAt": "2026-09-23T00:48:05.573Z",
+  "workers": 8,
+  "threads": "40",
+  "gcThreshold": "1000000",
+  "resources": [
+    {
+      "at": "2026-09-23T00:48:01.107Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "fe6038c504a0d7b2d483a02386fbc04466327daf015eee25c71f1843c332d213"
+      }
+    },
+    {
+      "at": "2026-09-23T00:48:02.108Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "2580a4bdc52d627237a80e8c12a8646bb19d04fdadf1c0db72714f6b60d7cb8c"
+      }
+    },
+    {
+      "at": "2026-09-23T00:48:03.110Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "cbbfa67f4560eb5050789f48ee424a7387314930e3f2ebfd6973bfc9c7e13279"
+      }
+    },
+    {
+      "at": "2026-09-23T00:48:04.111Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ac2d66f8db1a0cd823900e2374b6f341f0fc5a4461bb590fa30b7e004eb3bc87"
+      }
+    },
+    {
+      "at": "2026-09-23T00:48:05.112Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "11fe5336e811e70362eb38938fe9b086435913ab19157cc5aa521543b0afed9c"
+      }
+    }
+  ],
+  "concurrency": 50,
+  "rounds": [
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 420.16779099999985,
+        "bodyMs": 421.00754099999995,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=415.453, thread_queue;dur=0.077, sync_cpu;dur=77.077, sql;dur=311.017;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=6.975"
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 771.8932500000001,
+        "bodyMs": 774.7299169999997,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=767.473, thread_queue;dur=1.119, sync_cpu;dur=68.998, sql;dur=328.153;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=198.605"
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 383.1160420000001,
+        "bodyMs": 384.36283300000014,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=378.735, thread_queue;dur=0.681, sync_cpu;dur=75.821, sql;dur=282.340;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=8.885"
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 556.919625,
+        "bodyMs": 557.8692500000002,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=552.766, thread_queue;dur=0.837, sync_cpu;dur=102.286, sql;dur=381.075;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=11.990"
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 1058.174333,
+        "bodyMs": 1060.322083,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1053.920, thread_queue;dur=1.462, sync_cpu;dur=98.790, sql;dur=374.727;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=369.678"
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 817.9757919999997,
+        "bodyMs": 821.6458749999997,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=813.747, thread_queue;dur=1.250, sync_cpu;dur=70.416, sql;dur=390.085;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=177.086"
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 1121.78525,
+        "bodyMs": 1124.833791,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1117.583, thread_queue;dur=1.360, sync_cpu;dur=64.004, sql;dur=352.536;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=458.814"
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 786.8886669999997,
+        "bodyMs": 791.8412080000003,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=782.243, thread_queue;dur=3.267, sync_cpu;dur=69.743, sql;dur=364.797;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=155.859"
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 771.2639170000002,
+        "bodyMs": 775.9006669999999,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=767.025, thread_queue;dur=3.310, sync_cpu;dur=67.667, sql;dur=416.202;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=144.642"
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 1033.8366660000002,
+        "bodyMs": 1037.215333,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1029.772, thread_queue;dur=3.547, sync_cpu;dur=67.755, sql;dur=299.717;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=413.226"
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 774.7424160000005,
+        "bodyMs": 777.6055410000004,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=769.226, thread_queue;dur=3.194, sync_cpu;dur=72.808, sql;dur=358.742;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=163.178"
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 1121.1914579999998,
+        "bodyMs": 1122.180041,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1116.922, thread_queue;dur=3.449, sync_cpu;dur=65.725, sql;dur=359.018;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=472.314"
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 658.869792,
+        "bodyMs": 661.8364590000001,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=654.950, thread_queue;dur=0.764, sync_cpu;dur=68.957, sql;dur=359.489;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=114.516"
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 495.1620420000004,
+        "bodyMs": 495.65575000000035,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=491.206, thread_queue;dur=0.469, sync_cpu;dur=106.160, sql;dur=359.224;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=3.057"
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 822.0129999999999,
+        "bodyMs": 837.4191660000006,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=816.792, thread_queue;dur=3.410, sync_cpu;dur=103.251, sql;dur=386.034;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=132.365"
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 963.5836249999998,
+        "bodyMs": 965.5537079999999,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=959.400, thread_queue;dur=3.461, sync_cpu;dur=66.546, sql;dur=301.918;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=460.001"
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 423.8352500000001,
+        "bodyMs": 424.58058299999993,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=416.101, thread_queue;dur=0.652, sync_cpu;dur=68.113, sql;dur=305.120;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=4.410"
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 407.98745800000006,
+        "bodyMs": 408.567,
+        "bytes": 1349552,
+        "worker": "37255",
+        "serverTiming": "api;dur=404.013, thread_queue;dur=0.567, sync_cpu;dur=96.901, sql;dur=277.178;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37255\", pool_wait;dur=0.449"
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 1092.068875,
+        "bodyMs": 1095.90575,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1087.142, thread_queue;dur=3.780, sync_cpu;dur=66.212, sql;dur=319.059;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=465.028"
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 725.2289580000001,
+        "bodyMs": 731.6845829999997,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=721.137, thread_queue;dur=0.666, sync_cpu;dur=65.012, sql;dur=428.810;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=78.159"
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 1038.995,
+        "bodyMs": 1048.7919160000001,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1034.885, thread_queue;dur=3.823, sync_cpu;dur=66.420, sql;dur=292.542;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=515.312"
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 736.2199999999998,
+        "bodyMs": 747.089125,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=732.283, thread_queue;dur=2.828, sync_cpu;dur=68.621, sql;dur=422.832;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=88.531"
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 1038.3981249999997,
+        "bodyMs": 1039.6342079999995,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1033.823, thread_queue;dur=1.601, sync_cpu;dur=61.861, sql;dur=284.818;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=527.534"
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 569.1246250000004,
+        "bodyMs": 588.4560000000001,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=565.013, thread_queue;dur=0.678, sync_cpu;dur=69.965, sql;dur=360.412;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=14.874"
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 1082.2112500000003,
+        "bodyMs": 1091.0193749999999,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1077.701, thread_queue;dur=1.719, sync_cpu;dur=65.641, sql;dur=363.196;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=436.630"
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 673.3385000000003,
+        "bodyMs": 677.4784589999999,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=669.158, thread_queue;dur=2.720, sync_cpu;dur=68.485, sql;dur=378.118;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=92.245"
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 839.9419170000001,
+        "bodyMs": 840.3384589999996,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=835.749, thread_queue;dur=3.057, sync_cpu;dur=67.599, sql;dur=402.894;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=175.589"
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 1030.4054169999995,
+        "bodyMs": 1034.4918329999996,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1025.306, thread_queue;dur=1.833, sync_cpu;dur=63.804, sql;dur=354.370;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=384.848"
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 758.5910410000001,
+        "bodyMs": 759.4561250000002,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=752.484, thread_queue;dur=2.857, sync_cpu;dur=67.874, sql;dur=412.204;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=100.878"
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 416.84458300000006,
+        "bodyMs": 417.69375000000036,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=413.019, thread_queue;dur=2.188, sync_cpu;dur=74.382, sql;dur=299.977;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=8.033"
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 1056.7292499999994,
+        "bodyMs": 1058.2815,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1052.402, thread_queue;dur=1.995, sync_cpu;dur=63.985, sql;dur=321.876;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=436.104"
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 777.7377080000001,
+        "bodyMs": 785.2088749999998,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=771.137, thread_queue;dur=3.146, sync_cpu;dur=67.569, sql;dur=370.651;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=207.921"
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 730.7182089999997,
+        "bodyMs": 734.3137499999993,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=726.828, thread_queue;dur=2.984, sync_cpu;dur=66.880, sql;dur=419.633;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=87.614"
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 557.574916,
+        "bodyMs": 563.9526249999999,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=552.653, thread_queue;dur=0.852, sync_cpu;dur=69.103, sql;dur=386.726;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=16.099"
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 1037.9944579999997,
+        "bodyMs": 1045.7004999999995,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1033.777, thread_queue;dur=2.027, sync_cpu;dur=64.280, sql;dur=339.068;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=435.578"
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 453.46833400000014,
+        "bodyMs": 454.42425000000003,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=449.445, thread_queue;dur=0.484, sync_cpu;dur=67.093, sql;dur=324.740;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=8.686"
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 442.8406249999998,
+        "bodyMs": 444.30266699999993,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=438.918, thread_queue;dur=0.484, sync_cpu;dur=97.544, sql;dur=298.335;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=8.970"
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 756.7928750000001,
+        "bodyMs": 757.5343329999996,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=752.258, thread_queue;dur=3.170, sync_cpu;dur=68.133, sql;dur=380.287;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=119.086"
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 821.2704999999996,
+        "bodyMs": 837.9663339999997,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=815.859, thread_queue;dur=0.761, sync_cpu;dur=67.070, sql;dur=424.465;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=176.379"
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 1120.50175,
+        "bodyMs": 1122.4785829999996,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1116.390, thread_queue;dur=2.221, sync_cpu;dur=65.043, sql;dur=340.685;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=487.967"
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 557.5914170000001,
+        "bodyMs": 567.6036250000002,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=552.415, thread_queue;dur=2.670, sync_cpu;dur=67.811, sql;dur=384.486;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=17.900"
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 747.1792909999999,
+        "bodyMs": 755.8741660000001,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=742.309, thread_queue;dur=1.296, sync_cpu;dur=65.760, sql;dur=406.209;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=118.136"
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 394.7873749999999,
+        "bodyMs": 395.6627920000001,
+        "bytes": 1349552,
+        "worker": "37255",
+        "serverTiming": "api;dur=390.981, thread_queue;dur=0.357, sync_cpu;dur=69.879, sql;dur=266.935;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37255\", pool_wait;dur=7.484"
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 990.4884999999995,
+        "bodyMs": 1029.0908749999999,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=986.466, thread_queue;dur=2.238, sync_cpu;dur=66.229, sql;dur=327.281;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=461.000"
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 418.1108330000002,
+        "bodyMs": 420.972792,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=413.489, thread_queue;dur=2.161, sync_cpu;dur=66.546, sql;dur=278.239;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=9.593"
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 840.4220829999999,
+        "bodyMs": 840.7692080000002,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=835.356, thread_queue;dur=0.815, sync_cpu;dur=66.549, sql;dur=441.956;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=132.634"
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 734.6535000000003,
+        "bodyMs": 737.3998330000004,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=730.029, thread_queue;dur=1.315, sync_cpu;dur=64.665, sql;dur=414.441;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=94.314"
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 476.70208300000013,
+        "bodyMs": 477.6796250000002,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=472.865, thread_queue;dur=2.331, sync_cpu;dur=66.429, sql;dur=341.936;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=9.395"
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 1089.8196249999996,
+        "bodyMs": 1093.5579579999999,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=1085.257, thread_queue;dur=1.369, sync_cpu;dur=65.282, sql;dur=341.541;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=441.204"
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 588.4089589999999,
+        "bodyMs": 590.9224999999997,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=581.507, thread_queue;dur=2.335, sync_cpu;dur=69.850, sql;dur=412.091;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=17.512"
+      }
+    ],
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 844.7541659999997,
+        "bodyMs": 845.3852910000005,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=837.192, thread_queue;dur=0.826, sync_cpu;dur=79.148, sql;dur=446.878;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=113.936"
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 469.42625000000044,
+        "bodyMs": 469.9002499999997,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=451.665, thread_queue;dur=0.448, sync_cpu;dur=64.693, sql;dur=365.705;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=0.479"
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 770.4384580000005,
+        "bodyMs": 770.9016660000007,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=766.382, thread_queue;dur=0.708, sync_cpu;dur=66.755, sql;dur=373.176;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=177.644"
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 417.54004199999963,
+        "bodyMs": 418.23404200000004,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=414.964, thread_queue;dur=0.470, sync_cpu;dur=64.752, sql;dur=320.467;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=0.422"
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 509.8838330000008,
+        "bodyMs": 511.801375,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=507.690, thread_queue;dur=0.411, sync_cpu;dur=62.617, sql;dur=410.021;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.456"
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 897.1551249999993,
+        "bodyMs": 897.548417,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=895.018, thread_queue;dur=1.041, sync_cpu;dur=62.780, sql;dur=346.832;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=273.546"
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 765.3796670000002,
+        "bodyMs": 768.4037079999998,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=762.983, thread_queue;dur=0.824, sync_cpu;dur=68.139, sql;dur=312.123;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=216.302"
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 780.7174169999998,
+        "bodyMs": 782.3710840000003,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=778.354, thread_queue;dur=1.201, sync_cpu;dur=67.539, sql;dur=372.762;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=161.662"
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 765.4094160000004,
+        "bodyMs": 769.5269159999998,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=763.106, thread_queue;dur=0.831, sync_cpu;dur=66.846, sql;dur=350.784;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=151.232"
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 870.6760839999997,
+        "bodyMs": 880.8781669999998,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=868.425, thread_queue;dur=0.854, sync_cpu;dur=63.979, sql;dur=329.497;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=314.921"
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 794.5177919999996,
+        "bodyMs": 796.5562919999993,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=792.225, thread_queue;dur=0.873, sync_cpu;dur=68.647, sql;dur=340.256;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=184.415"
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 870.680625,
+        "bodyMs": 881.736167,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=868.437, thread_queue;dur=0.992, sync_cpu;dur=65.639, sql;dur=326.262;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=289.641"
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 823.6591250000001,
+        "bodyMs": 827.4587500000007,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=821.376, thread_queue;dur=1.507, sync_cpu;dur=77.163, sql;dur=367.965;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=155.180"
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 422.08737500000007,
+        "bodyMs": 423.9412080000002,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=419.894, thread_queue;dur=0.384, sync_cpu;dur=63.562, sql;dur=326.724;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=0.478"
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 841.1720830000004,
+        "bodyMs": 841.520458,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=834.516, thread_queue;dur=1.281, sync_cpu;dur=67.996, sql;dur=376.169;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=178.978"
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 928.6867079999993,
+        "bodyMs": 929.2029999999995,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=926.476, thread_queue;dur=1.390, sync_cpu;dur=65.196, sql;dur=367.989;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=207.605"
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 410.3462499999996,
+        "bodyMs": 410.96399999999994,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=408.223, thread_queue;dur=0.454, sync_cpu;dur=64.232, sql;dur=310.457;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=0.523"
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 343.9100840000001,
+        "bodyMs": 344.4590840000001,
+        "bytes": 1349552,
+        "worker": "37255",
+        "serverTiming": "api;dur=341.716, thread_queue;dur=0.348, sync_cpu;dur=63.606, sql;dur=256.563;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37255\", pool_wait;dur=0.466"
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 866.4703339999996,
+        "bodyMs": 866.8642090000003,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=864.336, thread_queue;dur=0.834, sync_cpu;dur=62.959, sql;dur=354.800;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=260.058"
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 838.9209999999994,
+        "bodyMs": 839.3814169999996,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=834.499, thread_queue;dur=1.577, sync_cpu;dur=75.900, sql;dur=416.527;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=164.143"
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 897.9347090000001,
+        "bodyMs": 899.0048750000005,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=895.809, thread_queue;dur=0.865, sync_cpu;dur=64.647, sql;dur=334.418;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=286.759"
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 823.5377079999998,
+        "bodyMs": 838.0255829999996,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=821.222, thread_queue;dur=1.648, sync_cpu;dur=74.897, sql;dur=397.023;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=135.578"
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 899.7222920000004,
+        "bodyMs": 900.0766670000003,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=897.526, thread_queue;dur=1.275, sync_cpu;dur=63.622, sql;dur=268.374;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=360.278"
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 482.48791699999947,
+        "bodyMs": 484.8376669999998,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=480.481, thread_queue;dur=0.463, sync_cpu;dur=62.850, sql;dur=375.739;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.514"
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 929.7169999999996,
+        "bodyMs": 930.0467079999999,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=926.988, thread_queue;dur=1.064, sync_cpu;dur=65.101, sql;dur=364.741;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=334.394"
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 842.2809159999997,
+        "bodyMs": 842.7026249999999,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=836.735, thread_queue;dur=2.375, sync_cpu;dur=76.302, sql;dur=385.903;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=205.466"
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 842.0337499999996,
+        "bodyMs": 848.2681670000002,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=834.370, thread_queue;dur=1.142, sync_cpu;dur=65.411, sql;dur=294.420;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=264.083"
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 962.0666250000004,
+        "bodyMs": 962.7804999999998,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=959.797, thread_queue;dur=1.380, sync_cpu;dur=64.160, sql;dur=318.260;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=232.488"
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 823.4209580000006,
+        "bodyMs": 840.1375830000006,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=821.210, thread_queue;dur=1.686, sync_cpu;dur=74.501, sql;dur=414.558;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=125.842"
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 467.045333,
+        "bodyMs": 467.91949999999997,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=451.121, thread_queue;dur=0.347, sync_cpu;dur=65.546, sql;dur=355.835;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=0.422"
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 846.8710000000001,
+        "bodyMs": 847.226291,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=838.460, thread_queue;dur=1.292, sync_cpu;dur=60.535, sql;dur=333.518;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=295.050"
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 851.0457079999996,
+        "bodyMs": 851.3895419999999,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=848.830, thread_queue;dur=1.282, sync_cpu;dur=69.274, sql;dur=352.940;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=169.632"
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 752.7528339999999,
+        "bodyMs": 754.4040420000001,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=750.648, thread_queue;dur=1.948, sync_cpu;dur=74.621, sql;dur=374.150;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=209.472"
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 497.1053330000004,
+        "bodyMs": 497.9520419999999,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=495.130, thread_queue;dur=0.504, sync_cpu;dur=63.748, sql;dur=385.265;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.403"
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 962.4393330000003,
+        "bodyMs": 963.8511250000001,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=960.245, thread_queue;dur=1.431, sync_cpu;dur=63.695, sql;dur=413.441;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=231.556"
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 464.06633300000067,
+        "bodyMs": 464.84441700000025,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=449.615, thread_queue;dur=0.497, sync_cpu;dur=62.056, sql;dur=349.865;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=0.405"
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 358.7496250000004,
+        "bodyMs": 359.67683300000044,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=356.530, thread_queue;dur=0.451, sync_cpu;dur=63.867, sql;dur=262.888;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=0.452"
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 823.2092499999999,
+        "bodyMs": 833.1031249999996,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=821.156, thread_queue;dur=2.309, sync_cpu;dur=76.530, sql;dur=420.910;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=91.877"
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 823.920709,
+        "bodyMs": 835.2098750000005,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=821.906, thread_queue;dur=0.938, sync_cpu;dur=69.433, sql;dur=405.277;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=157.976"
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 483.06375000000025,
+        "bodyMs": 483.5230410000004,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=481.009, thread_queue;dur=0.721, sync_cpu;dur=61.908, sql;dur=371.474;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.448"
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 850.6272090000002,
+        "bodyMs": 852.2465419999999,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=848.541, thread_queue;dur=3.292, sync_cpu;dur=74.710, sql;dur=360.784;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=176.064"
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 371.5654170000007,
+        "bodyMs": 372.1455420000002,
+        "bytes": 1349552,
+        "worker": "37255",
+        "serverTiming": "api;dur=369.456, thread_queue;dur=0.182, sync_cpu;dur=63.779, sql;dur=290.971;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37255\", pool_wait;dur=0.714"
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 845.4689159999998,
+        "bodyMs": 845.911666,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=838.407, thread_queue;dur=1.079, sync_cpu;dur=63.789, sql;dur=328.535;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=299.774"
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 425.8936249999997,
+        "bodyMs": 426.5100830000001,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=424.026, thread_queue;dur=0.339, sync_cpu;dur=64.557, sql;dur=342.058;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=0.448"
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 783.637084,
+        "bodyMs": 784.1343340000003,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=781.674, thread_queue;dur=0.704, sync_cpu;dur=67.334, sql;dur=366.644;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=170.418"
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 859.6584159999993,
+        "bodyMs": 860.0386659999995,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=857.631, thread_queue;dur=3.605, sync_cpu;dur=73.621, sql;dur=401.457;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=156.221"
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 465.5421669999996,
+        "bodyMs": 465.9854999999998,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=450.006, thread_queue;dur=0.196, sync_cpu;dur=63.275, sql;dur=353.572;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=0.427"
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 961.872292,
+        "bodyMs": 964.4667499999996,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=959.588, thread_queue;dur=1.057, sync_cpu;dur=66.871, sql;dur=402.272;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=204.131"
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 520.604875,
+        "bodyMs": 521.1893749999999,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=518.782, thread_queue;dur=0.430, sync_cpu;dur=64.211, sql;dur=403.199;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.406"
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 823.664417,
+        "bodyMs": 835.9992080000002,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=821.613, thread_queue;dur=0.986, sync_cpu;dur=66.288, sql;dur=298.378;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=258.230"
+      }
+    ],
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 807.1581669999996,
+        "bodyMs": 809.1632079999999,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=804.126, thread_queue;dur=0.869, sync_cpu;dur=77.842, sql;dur=412.915;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=135.114"
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 415.50524999999925,
+        "bodyMs": 416.38916599999993,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=413.260, thread_queue;dur=0.431, sync_cpu;dur=65.560, sql;dur=321.322;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=0.438"
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 734.1042910000006,
+        "bodyMs": 737.037875,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=732.080, thread_queue;dur=0.885, sync_cpu;dur=64.031, sql;dur=330.510;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=251.322"
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 415.5489170000001,
+        "bodyMs": 417.60383400000046,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=413.115, thread_queue;dur=0.375, sync_cpu;dur=65.841, sql;dur=321.052;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=0.508"
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 524.4217920000001,
+        "bodyMs": 524.7508340000004,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=520.690, thread_queue;dur=0.394, sync_cpu;dur=64.258, sql;dur=410.061;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.394"
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 823.5395000000008,
+        "bodyMs": 826.9725830000007,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=821.673, thread_queue;dur=0.873, sync_cpu;dur=63.464, sql;dur=327.176;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=292.074"
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 781.442583,
+        "bodyMs": 782.6854160000003,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=778.409, thread_queue;dur=1.207, sync_cpu;dur=66.069, sql;dur=387.063;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=165.265"
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 871.2694169999995,
+        "bodyMs": 871.783375,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=869.162, thread_queue;dur=1.325, sync_cpu;dur=63.687, sql;dur=318.681;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=266.048"
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 822.4241659999998,
+        "bodyMs": 822.750583,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=819.531, thread_queue;dur=1.563, sync_cpu;dur=63.386, sql;dur=398.835;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=227.594"
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 772.1958329999998,
+        "bodyMs": 780.5837499999998,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=769.156, thread_queue;dur=0.948, sync_cpu;dur=67.411, sql;dur=369.029;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=171.387"
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 859.3733329999995,
+        "bodyMs": 867.7662920000002,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=857.276, thread_queue;dur=1.566, sync_cpu;dur=64.842, sql;dur=312.699;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=304.295"
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 821.2672089999996,
+        "bodyMs": 821.6627090000002,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=819.188, thread_queue;dur=1.007, sync_cpu;dur=64.983, sql;dur=369.752;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=195.240"
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 836.7026249999999,
+        "bodyMs": 838.3460000000005,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=834.694, thread_queue;dur=0.785, sync_cpu;dur=63.335, sql;dur=380.871;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=268.136"
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 759.6939590000002,
+        "bodyMs": 760.1851669999996,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=757.802, thread_queue;dur=1.448, sync_cpu;dur=75.059, sql;dur=410.082;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=144.306"
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 438.1432500000001,
+        "bodyMs": 438.72200000000066,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=436.263, thread_queue;dur=0.390, sync_cpu;dur=63.830, sql;dur=345.074;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=0.517"
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 745.091375,
+        "bodyMs": 755.1557080000002,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=743.114, thread_queue;dur=1.039, sync_cpu;dur=65.200, sql;dur=362.015;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=177.928"
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 836.424583,
+        "bodyMs": 837.0442919999996,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=834.458, thread_queue;dur=0.854, sync_cpu;dur=65.577, sql;dur=315.305;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=314.380"
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 362.3392080000003,
+        "bodyMs": 363.9255410000005,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=360.396, thread_queue;dur=0.444, sync_cpu;dur=64.859, sql;dur=276.820;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=0.423"
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 364.9763750000002,
+        "bodyMs": 365.6649159999997,
+        "bytes": 1349552,
+        "worker": "37255",
+        "serverTiming": "api;dur=361.457, thread_queue;dur=0.297, sync_cpu;dur=66.383, sql;dur=283.890;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37255\", pool_wait;dur=0.481"
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 834.6961670000001,
+        "bodyMs": 835.2168750000001,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=832.731, thread_queue;dur=1.557, sync_cpu;dur=60.308, sql;dur=256.020;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=381.939"
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 697.6557910000001,
+        "bodyMs": 698.2535829999997,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=695.850, thread_queue;dur=1.729, sync_cpu;dur=76.959, sql;dur=356.108;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=148.128"
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 888.5912920000001,
+        "bodyMs": 889.0451670000002,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=886.667, thread_queue;dur=0.949, sync_cpu;dur=62.815, sql;dur=378.844;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=243.366"
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 796.3450419999999,
+        "bodyMs": 805.796542,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=794.386, thread_queue;dur=2.332, sync_cpu;dur=72.432, sql;dur=396.604;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=134.075"
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 905.0464170000005,
+        "bodyMs": 905.5832920000003,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=903.154, thread_queue;dur=0.976, sync_cpu;dur=63.891, sql;dur=339.079;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=279.368"
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 535.1823750000003,
+        "bodyMs": 535.525208,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=533.545, thread_queue;dur=0.454, sync_cpu;dur=64.937, sql;dur=404.129;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.398"
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 888.5540839999994,
+        "bodyMs": 889.9951249999995,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=886.660, thread_queue;dur=0.595, sync_cpu;dur=61.170, sql;dur=368.338;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=283.501"
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 733.6549580000001,
+        "bodyMs": 734.479875,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=731.787, thread_queue;dur=1.799, sync_cpu;dur=76.699, sql;dur=387.030;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=144.528"
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 803.3844580000004,
+        "bodyMs": 812.3146670000006,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=801.670, thread_queue;dur=1.330, sync_cpu;dur=68.281, sql;dur=371.413;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=186.607"
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 929.7877920000001,
+        "bodyMs": 930.1687500000007,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=927.973, thread_queue;dur=1.889, sync_cpu;dur=63.658, sql;dur=356.076;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=251.611"
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 809.1874170000001,
+        "bodyMs": 809.5098330000001,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=806.670, thread_queue;dur=1.591, sync_cpu;dur=75.227, sql;dur=434.437;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=133.083"
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 366.6968340000003,
+        "bodyMs": 367.40479200000027,
+        "bytes": 1349552,
+        "worker": "37256",
+        "serverTiming": "api;dur=362.605, thread_queue;dur=0.515, sync_cpu;dur=65.670, sql;dur=283.096;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37256\", pool_wait;dur=0.476"
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 920.3327500000005,
+        "bodyMs": 920.8858330000003,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=918.526, thread_queue;dur=1.548, sync_cpu;dur=63.186, sql;dur=376.479;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=341.448"
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 797.1231670000006,
+        "bodyMs": 800.1895420000001,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=795.204, thread_queue;dur=0.788, sync_cpu;dur=67.441, sql;dur=353.498;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=196.558"
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 697.491583,
+        "bodyMs": 699.8773330000004,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=695.763, thread_queue;dur=1.654, sync_cpu;dur=74.423, sql;dur=392.431;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=150.061"
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 522.6993329999996,
+        "bodyMs": 523.0639999999994,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=519.934, thread_queue;dur=0.497, sync_cpu;dur=64.686, sql;dur=376.572;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.448"
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 422.17483300000004,
+        "bodyMs": 422.6810409999998,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=420.471, thread_queue;dur=0.361, sync_cpu;dur=63.400, sql;dur=344.938;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=0.444"
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 361.92754199999945,
+        "bodyMs": 362.4324999999999,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=360.111, thread_queue;dur=0.491, sync_cpu;dur=63.506, sql;dur=269.883;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=0.465"
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 810.0830409999999,
+        "bodyMs": 810.4225409999999,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=806.933, thread_queue;dur=2.129, sync_cpu;dur=71.789, sql;dur=415.973;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=141.105"
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 768.4890420000002,
+        "bodyMs": 770.8483749999996,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=766.569, thread_queue;dur=1.323, sync_cpu;dur=64.380, sql;dur=364.132;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=192.680"
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 952.8808330000002,
+        "bodyMs": 953.2953749999997,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=950.728, thread_queue;dur=1.766, sync_cpu;dur=63.229, sql;dur=321.259;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=198.971"
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 521.4105,
+        "bodyMs": 521.7905840000003,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=519.809, thread_queue;dur=0.664, sync_cpu;dur=65.607, sql;dur=399.270;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.432"
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 742.6512910000001,
+        "bodyMs": 743.2410829999999,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=740.791, thread_queue;dur=1.281, sync_cpu;dur=73.436, sql;dur=395.448;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=134.416"
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 331.47704200000044,
+        "bodyMs": 332.2765840000002,
+        "bytes": 1349552,
+        "worker": "37255",
+        "serverTiming": "api;dur=329.798, thread_queue;dur=0.250, sync_cpu;dur=63.467, sql;dur=252.363;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37255\", pool_wait;dur=0.451"
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 942.3446250000006,
+        "bodyMs": 942.7510000000002,
+        "bytes": 1349552,
+        "worker": "37257",
+        "serverTiming": "api;dur=940.308, thread_queue;dur=1.680, sync_cpu;dur=65.509, sql;dur=390.773;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37257\", pool_wait;dur=196.299"
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 388.51416699999936,
+        "bodyMs": 388.99083399999927,
+        "bytes": 1349552,
+        "worker": "37252",
+        "serverTiming": "api;dur=386.802, thread_queue;dur=0.459, sync_cpu;dur=65.560, sql;dur=300.730;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37252\", pool_wait;dur=0.519"
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 801.5312090000007,
+        "bodyMs": 803.4356670000006,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=799.792, thread_queue;dur=1.438, sync_cpu;dur=65.937, sql;dur=355.681;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=149.152"
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 746.9732090000007,
+        "bodyMs": 749.0790840000009,
+        "bytes": 1349552,
+        "worker": "37254",
+        "serverTiming": "api;dur=745.216, thread_queue;dur=0.967, sync_cpu;dur=76.869, sql;dur=414.743;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37254\", pool_wait;dur=116.924"
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 453.54370800000015,
+        "bodyMs": 454.2676249999995,
+        "bytes": 1349552,
+        "worker": "37253",
+        "serverTiming": "api;dur=451.760, thread_queue;dur=0.329, sync_cpu;dur=65.221, sql;dur=356.526;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37253\", pool_wait;dur=0.446"
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 478.9409169999999,
+        "bodyMs": 497.884,
+        "bytes": 1349552,
+        "worker": "37258",
+        "serverTiming": "api;dur=477.337, thread_queue;dur=0.452, sync_cpu;dur=63.075, sql;dur=353.557;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37258\", pool_wait;dur=0.456"
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 703.1250829999999,
+        "bodyMs": 706.8377499999997,
+        "bytes": 1349552,
+        "worker": "37259",
+        "serverTiming": "api;dur=701.371, thread_queue;dur=0.817, sync_cpu;dur=64.921, sql;dur=314.611;desc=\"58 statements\", overlapping_gc;dur=0.000;desc=\"0 process collections\", gc_gen0;dur=0.000, gc_gen1;dur=0.000, gc_gen2;dur=0.000, worker;desc=\"37259\", pool_wait;dur=217.742"
+      }
+    ]
+  ],
+  "scope": "HTTP report metadata only; no browser paint or result follow-up"
+}

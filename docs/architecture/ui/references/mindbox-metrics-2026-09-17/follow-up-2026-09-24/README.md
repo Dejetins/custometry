@@ -216,3 +216,7 @@ All 19 saved crops were visually inspected; business results and browser chrome
 are outside the crop bounds. Manifest hashes and repository validation results
 are recorded in [verification](verification.json). No Custometry product build,
 runtime acceptance, publication or milestone completion is claimed.
+
+## Custometry adoption
+
+Owner correction on 2026-09-24: ordinary creation must start empty. Only the explicit save-as-new action copies cards. Implementation is tracked by [W40](../../../../../../.codex/delivery/tickets/W40-WORKSET-CATALOGUE-INTERACTIONS.md). Existing Custometry Apply/Save and server authorization remain authoritative.

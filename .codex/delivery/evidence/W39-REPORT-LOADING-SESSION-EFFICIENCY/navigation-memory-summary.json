@@ -1,0 +1,17 @@
+{
+  "cycles": 1000,
+  "reconnects": 201,
+  "forced_gc": true,
+  "heap_first_mib": 7.568183898925781,
+  "heap_final_mib": 11.80047607421875,
+  "heap_last_400_min_mib": 11.596336364746094,
+  "heap_last_400_max_mib": 11.891387939453125,
+  "documents_final": 2,
+  "listeners_first": 563,
+  "listeners_final": 563,
+  "nodes_first": 3073,
+  "nodes_final": 3074,
+  "max_cache_bytes": 51270,
+  "max_cache_entries": 2,
+  "scope": "One fixture report repeatedly mounted in one tab; not total browser RSS"
+}

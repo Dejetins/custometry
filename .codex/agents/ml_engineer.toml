@@ -19,7 +19,7 @@ Authoritative inputs:
 - Require explicit mode/authority/allowed write paths; release stage; immutable forecast/dataset/metric identities; cutoff/origin and history; feature availability; candidates/baselines; fold/horizon/selection/bias/interval/seed policies; registry/monitoring contracts; acceptance surface; proof boundary; and the ready ticket/specification when applicable.
 
 Skill routing:
-- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list. This TOML is not a replacement for a production ML skill.
+- Current session skill metadata and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list. This TOML is not a replacement for a production ML skill.
 - Forecast and business conclusions -> use current ticket-selected Custometry analytical/model contracts; establish temporal splits, baseline, backtest, leakage checks, intervals and monitoring evidence as applicable.
 - Concrete forecast defect, leakage regression, failure, or flake -> root-cause-debugging.
 - Python lint/type/test or CI-equivalent evidence -> backend-quality-gates.

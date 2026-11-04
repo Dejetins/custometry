@@ -1,0 +1,1216 @@
+{
+  "startedAt": "2026-09-22T23:43:03.056Z",
+  "finishedAt": "2026-09-22T23:43:12.288Z",
+  "workers": 8,
+  "threads": "2",
+  "concurrency": 50,
+  "rounds": [
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 1369.0550409999996,
+        "bodyMs": 1369.2918330000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1365.623, thread_queue;dur=1058.465, sync_cpu;dur=84.974, sql;dur=179.892;desc=\"93 statements\""
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 1367.004,
+        "bodyMs": 1367.4534170000006,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1363.370, thread_queue;dur=1075.714, sync_cpu;dur=73.680, sql;dur=144.779;desc=\"93 statements\""
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 1279.0503749999998,
+        "bodyMs": 1281.3533340000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1275.400, thread_queue;dur=852.099, sync_cpu;dur=77.817, sql;dur=211.751;desc=\"93 statements\""
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 1567.526417,
+        "bodyMs": 1567.7794170000006,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1563.871, thread_queue;dur=1199.848, sync_cpu;dur=139.603, sql;dur=157.961;desc=\"93 statements\""
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 1370.7088749999994,
+        "bodyMs": 1371.0315,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1366.852, thread_queue;dur=1055.984, sync_cpu;dur=91.347, sql;dur=178.898;desc=\"93 statements\""
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 1372.6642090000005,
+        "bodyMs": 1372.9785000000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1368.280, thread_queue;dur=1037.800, sync_cpu;dur=77.051, sql;dur=208.732;desc=\"93 statements\""
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 1282.7079170000006,
+        "bodyMs": 1283.1630000000005,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1277.062, thread_queue;dur=850.120, sync_cpu;dur=151.789, sql;dur=224.055;desc=\"93 statements\""
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 1051.815917,
+        "bodyMs": 1052.2792499999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1046.032, thread_queue;dur=615.800, sync_cpu;dur=119.791, sql;dur=219.238;desc=\"93 statements\""
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 1374.3968340000001,
+        "bodyMs": 1374.6755840000005,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1370.222, thread_queue;dur=1095.078, sync_cpu;dur=69.727, sql;dur=147.132;desc=\"93 statements\""
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 1053.5869589999993,
+        "bodyMs": 1054.184792,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1047.609, thread_queue;dur=618.050, sync_cpu;dur=103.298, sql;dur=233.989;desc=\"93 statements\""
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 1376.3474159999996,
+        "bodyMs": 1376.7132499999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1371.763, thread_queue;dur=1083.008, sync_cpu;dur=106.611, sql;dur=143.212;desc=\"93 statements\""
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 1058.6505829999996,
+        "bodyMs": 1058.9040409999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1054.138, thread_queue;dur=734.792, sync_cpu;dur=74.072, sql;dur=180.849;desc=\"93 statements\""
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 1284.3367079999998,
+        "bodyMs": 1284.7824169999994,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1278.536, thread_queue;dur=962.436, sync_cpu;dur=75.368, sql;dur=197.786;desc=\"93 statements\""
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 1378.310125,
+        "bodyMs": 1380.6202080000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1372.116, thread_queue;dur=1129.474, sync_cpu;dur=81.497, sql;dur=129.073;desc=\"93 statements\""
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 1286.4564579999997,
+        "bodyMs": 1287.10275,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1280.503, thread_queue;dur=957.542, sync_cpu;dur=94.308, sql;dur=176.514;desc=\"93 statements\""
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 1382.1630830000004,
+        "bodyMs": 1382.4925830000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1377.750, thread_queue;dur=1132.569, sync_cpu;dur=68.146, sql;dur=138.477;desc=\"93 statements\""
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 1382.679166,
+        "bodyMs": 1382.8602499999997,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1378.005, thread_queue;dur=1110.724, sync_cpu;dur=110.314, sql;dur=119.740;desc=\"93 statements\""
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 764.8244999999997,
+        "bodyMs": 765.9622079999999,
+        "bytes": 239777,
+        "serverTiming": "api;dur=758.992, thread_queue;dur=319.349, sync_cpu;dur=133.690, sql;dur=221.052;desc=\"93 statements\""
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 1055.6702919999998,
+        "bodyMs": 1058.1383749999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1049.333, thread_queue;dur=738.360, sync_cpu;dur=92.764, sql;dur=177.917;desc=\"93 statements\""
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 1569.2523330000004,
+        "bodyMs": 1569.4893329999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1565.276, thread_queue;dur=1194.737, sync_cpu;dur=77.852, sql;dur=176.826;desc=\"93 statements\""
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 1059.1568340000003,
+        "bodyMs": 1059.2871249999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1054.144, thread_queue;dur=739.157, sync_cpu;dur=123.368, sql;dur=128.766;desc=\"93 statements\""
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 762.8444169999993,
+        "bodyMs": 765.2778749999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=758.568, thread_queue;dur=319.640, sync_cpu;dur=91.506, sql;dur=245.655;desc=\"93 statements\""
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 1407.6900409999998,
+        "bodyMs": 1407.933916,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1402.446, thread_queue;dur=1138.943, sync_cpu;dur=67.573, sql;dur=135.551;desc=\"93 statements\""
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 1571.1112919999996,
+        "bodyMs": 1571.3162919999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1566.841, thread_queue;dur=1270.887, sync_cpu;dur=72.898, sql;dur=188.735;desc=\"93 statements\""
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 766.0282499999994,
+        "bodyMs": 766.2132499999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=760.658, thread_queue;dur=437.229, sync_cpu;dur=89.438, sql;dur=193.741;desc=\"93 statements\""
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 1572.9039999999995,
+        "bodyMs": 1573.1452920000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1568.683, thread_queue;dur=1266.249, sync_cpu;dur=89.348, sql;dur=163.357;desc=\"93 statements\""
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 426.9178750000001,
+        "bodyMs": 427.25675000000047,
+        "bytes": 239777,
+        "serverTiming": "api;dur=422.793, thread_queue;dur=1.623, sync_cpu;dur=110.374, sql;dur=210.331;desc=\"93 statements\""
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 434.9022079999995,
+        "bodyMs": 435.17133300000023,
+        "bytes": 239777,
+        "serverTiming": "api;dur=430.845, thread_queue;dur=13.465, sync_cpu;dur=107.732, sql;dur=240.247;desc=\"93 statements\""
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 406.41312500000004,
+        "bodyMs": 406.72325,
+        "bytes": 239777,
+        "serverTiming": "api;dur=402.258, thread_queue;dur=1.271, sync_cpu;dur=105.283, sql;dur=245.169;desc=\"93 statements\""
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 1576.4418329999999,
+        "bodyMs": 1576.6977499999994,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1571.897, thread_queue;dur=1283.596, sync_cpu;dur=82.864, sql;dur=121.287;desc=\"93 statements\""
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 1574.6633339999998,
+        "bodyMs": 1574.8399170000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1570.066, thread_queue;dur=1294.607, sync_cpu;dur=106.995, sql;dur=107.778;desc=\"93 statements\""
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 1578.2652500000004,
+        "bodyMs": 1578.4605419999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1573.662, thread_queue;dur=1339.682, sync_cpu;dur=65.297, sql;dur=127.522;desc=\"93 statements\""
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 1290.8256249999995,
+        "bodyMs": 1290.9641249999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1285.755, thread_queue;dur=970.477, sync_cpu;dur=117.723, sql;dur=154.260;desc=\"93 statements\""
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 1579.776084,
+        "bodyMs": 1580.2131669999999,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1573.840, thread_queue;dur=1346.830, sync_cpu;dur=72.757, sql;dur=105.060;desc=\"93 statements\""
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 1583.6755409999996,
+        "bodyMs": 1583.8853749999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1579.128, thread_queue;dur=1368.393, sync_cpu;dur=70.772, sql;dur=107.870;desc=\"93 statements\""
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 1581.8084580000004,
+        "bodyMs": 1582.0639579999997,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1577.268, thread_queue;dur=1366.692, sync_cpu;dur=63.743, sql;dur=91.766;desc=\"93 statements\""
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 1288.2331669999994,
+        "bodyMs": 1290.4847919999993,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1281.800, thread_queue;dur=982.617, sync_cpu;dur=82.001, sql;dur=156.903;desc=\"93 statements\""
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 1585.903542,
+        "bodyMs": 1586.0637500000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1581.063, thread_queue;dur=1390.213, sync_cpu;dur=55.810, sql;dur=91.399;desc=\"93 statements\""
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 435.1680000000006,
+        "bodyMs": 435.5904580000006,
+        "bytes": 239777,
+        "serverTiming": "api;dur=430.476, thread_queue;dur=3.248, sync_cpu;dur=120.309, sql;dur=231.192;desc=\"93 statements\""
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 427.162875,
+        "bodyMs": 427.3235829999994,
+        "bytes": 239777,
+        "serverTiming": "api;dur=422.559, thread_queue;dur=3.714, sync_cpu;dur=111.160, sql;dur=236.488;desc=\"93 statements\""
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 406.77816600000006,
+        "bodyMs": 407.2226249999994,
+        "bytes": 239777,
+        "serverTiming": "api;dur=401.941, thread_queue;dur=3.285, sync_cpu;dur=111.238, sql;dur=208.024;desc=\"93 statements\""
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 1585.2623329999997,
+        "bodyMs": 1585.6074579999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1580.295, thread_queue;dur=1388.019, sync_cpu;dur=85.056, sql;dur=78.616;desc=\"93 statements\""
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 766.0340419999993,
+        "bodyMs": 766.2264999999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=760.601, thread_queue;dur=438.864, sync_cpu;dur=71.000, sql;dur=190.158;desc=\"93 statements\""
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 1291.3022089999995,
+        "bodyMs": 1291.8422089999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1285.891, thread_queue;dur=1039.240, sync_cpu;dur=64.009, sql;dur=117.168;desc=\"93 statements\""
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 1687.8649169999999,
+        "bodyMs": 1688.170959,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1682.836, thread_queue;dur=1556.104, sync_cpu;dur=52.077, sql;dur=63.785;desc=\"93 statements\""
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 1290.9119170000004,
+        "bodyMs": 1291.0730000000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1285.699, thread_queue;dur=1046.378, sync_cpu;dur=75.811, sql;dur=119.334;desc=\"93 statements\""
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 688.453375,
+        "bodyMs": 689.1989170000006,
+        "bytes": 239777,
+        "serverTiming": "api;dur=683.471, thread_queue;dur=416.134, sync_cpu;dur=81.902, sql;dur=159.894;desc=\"93 statements\""
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 665.7235000000001,
+        "bodyMs": 666.1652089999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=661.139, thread_queue;dur=395.630, sync_cpu;dur=78.079, sql;dur=160.238;desc=\"93 statements\""
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 1058.087375,
+        "bodyMs": 1058.233875,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1052.539, thread_queue;dur=742.808, sync_cpu;dur=79.837, sql;dur=130.448;desc=\"93 statements\""
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 687.1839169999994,
+        "bodyMs": 687.5835829999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=682.654, thread_queue;dur=412.004, sync_cpu;dur=79.415, sql;dur=165.129;desc=\"93 statements\""
+      }
+    ],
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 1343.8666250000006,
+        "bodyMs": 1344.0626250000005,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1342.634, thread_queue;dur=1007.459, sync_cpu;dur=71.495, sql;dur=222.048;desc=\"93 statements\""
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 1340.7506669999993,
+        "bodyMs": 1340.9712919999993,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1339.403, thread_queue;dur=1018.111, sync_cpu;dur=92.567, sql;dur=196.226;desc=\"93 statements\""
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 1347.730958,
+        "bodyMs": 1347.9628329999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1346.471, thread_queue;dur=1056.247, sync_cpu;dur=77.446, sql;dur=147.058;desc=\"93 statements\""
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 1219.963291,
+        "bodyMs": 1222.1954159999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1218.521, thread_queue;dur=823.844, sync_cpu;dur=129.483, sql;dur=209.476;desc=\"93 statements\""
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 1569.9830000000002,
+        "bodyMs": 1570.4668330000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1567.370, thread_queue;dur=1167.255, sync_cpu;dur=85.968, sql;dur=280.289;desc=\"93 statements\""
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 1345.5902079999996,
+        "bodyMs": 1345.8950830000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1344.379, thread_queue;dur=1072.154, sync_cpu;dur=87.594, sql;dur=132.981;desc=\"93 statements\""
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 1351.7172920000003,
+        "bodyMs": 1351.9617500000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1350.504, thread_queue;dur=1063.838, sync_cpu;dur=107.412, sql;dur=120.997;desc=\"93 statements\""
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 1216.6323329999996,
+        "bodyMs": 1219.6460829999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1213.642, thread_queue;dur=829.074, sync_cpu;dur=77.486, sql;dur=198.441;desc=\"93 statements\""
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 926.9379579999995,
+        "bodyMs": 927.6547499999997,
+        "bytes": 239777,
+        "serverTiming": "api;dur=923.719, thread_queue;dur=573.365, sync_cpu;dur=72.313, sql;dur=234.109;desc=\"93 statements\""
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 1349.8062499999996,
+        "bodyMs": 1349.971458,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1348.439, thread_queue;dur=1068.412, sync_cpu;dur=74.750, sql;dur=134.327;desc=\"93 statements\""
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 924.3294999999998,
+        "bodyMs": 924.8490830000001,
+        "bytes": 239777,
+        "serverTiming": "api;dur=920.796, thread_queue;dur=570.745, sync_cpu;dur=93.456, sql;dur=193.246;desc=\"93 statements\""
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 1355.773083,
+        "bodyMs": 1355.973,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1354.594, thread_queue;dur=1121.979, sync_cpu;dur=75.973, sql;dur=111.752;desc=\"93 statements\""
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 931.9358329999995,
+        "bodyMs": 932.4915409999994,
+        "bytes": 239777,
+        "serverTiming": "api;dur=928.859, thread_queue;dur=604.081, sync_cpu;dur=128.897, sql;dur=143.210;desc=\"93 statements\""
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 1223.8802079999996,
+        "bodyMs": 1225.0370830000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1220.922, thread_queue;dur=895.940, sync_cpu;dur=75.510, sql;dur=171.648;desc=\"93 statements\""
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 1353.368042,
+        "bodyMs": 1353.9073340000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1350.658, thread_queue;dur=1125.627, sync_cpu;dur=70.957, sql;dur=108.877;desc=\"93 statements\""
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 1222.2834589999993,
+        "bodyMs": 1224.514959,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1220.785, thread_queue;dur=903.198, sync_cpu;dur=87.469, sql;dur=163.388;desc=\"93 statements\""
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 1357.8730830000004,
+        "bodyMs": 1358.2292500000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1356.426, thread_queue;dur=1119.063, sync_cpu;dur=73.181, sql;dur=116.740;desc=\"93 statements\""
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 1358.4342079999997,
+        "bodyMs": 1358.5942079999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1356.650, thread_queue;dur=1126.064, sync_cpu;dur=95.351, sql;dur=84.297;desc=\"93 statements\""
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 692.2243330000001,
+        "bodyMs": 692.5860419999999,
+        "bytes": 239777,
+        "serverTiming": "api;dur=691.113, thread_queue;dur=296.407, sync_cpu;dur=118.998, sql;dur=229.459;desc=\"93 statements\""
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 929.3516250000002,
+        "bodyMs": 929.9987499999997,
+        "bytes": 239777,
+        "serverTiming": "api;dur=926.176, thread_queue;dur=649.996, sync_cpu;dur=74.525, sql;dur=149.728;desc=\"93 statements\""
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 1566.1543330000004,
+        "bodyMs": 1568.4239160000006,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1565.006, thread_queue;dur=1171.812, sync_cpu;dur=131.512, sql;dur=188.295;desc=\"93 statements\""
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 932.9930420000001,
+        "bodyMs": 933.2580830000006,
+        "bytes": 239777,
+        "serverTiming": "api;dur=931.410, thread_queue;dur=628.807, sync_cpu;dur=86.039, sql;dur=137.261;desc=\"93 statements\""
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 689.0515839999998,
+        "bodyMs": 689.454667,
+        "bytes": 239777,
+        "serverTiming": "api;dur=687.731, thread_queue;dur=294.453, sync_cpu;dur=83.836, sql;dur=197.864;desc=\"93 statements\""
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 1484.7447920000004,
+        "bodyMs": 1484.9708330000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1483.317, thread_queue;dur=1334.104, sync_cpu;dur=61.875, sql;dur=73.233;desc=\"93 statements\""
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 1571.7299999999996,
+        "bodyMs": 1572.130792,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1569.090, thread_queue;dur=1266.344, sync_cpu;dur=69.940, sql;dur=184.425;desc=\"93 statements\""
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 701.8611659999997,
+        "bodyMs": 702.1785,
+        "bytes": 239777,
+        "serverTiming": "api;dur=699.952, thread_queue;dur=389.012, sync_cpu;dur=83.503, sql;dur=192.490;desc=\"93 statements\""
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 1573.6792910000004,
+        "bodyMs": 1574.0828330000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1571.107, thread_queue;dur=1279.893, sync_cpu;dur=86.737, sql;dur=167.705;desc=\"93 statements\""
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 385.63091599999916,
+        "bodyMs": 386.02908299999945,
+        "bytes": 239777,
+        "serverTiming": "api;dur=384.224, thread_queue;dur=2.738, sync_cpu;dur=112.937, sql;dur=233.610;desc=\"93 statements\""
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 400.6521249999996,
+        "bodyMs": 400.93641600000046,
+        "bytes": 239777,
+        "serverTiming": "api;dur=399.275, thread_queue;dur=2.910, sync_cpu;dur=133.893, sql;dur=204.637;desc=\"93 statements\""
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 387.4945830000006,
+        "bodyMs": 387.95400000000063,
+        "bytes": 239777,
+        "serverTiming": "api;dur=385.043, thread_queue;dur=50.915, sync_cpu;dur=70.734, sql;dur=217.324;desc=\"93 statements\""
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 1577.4577080000008,
+        "bodyMs": 1577.8336660000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1573.641, thread_queue;dur=1315.108, sync_cpu;dur=89.304, sql;dur=126.597;desc=\"93 statements\""
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 1575.5278749999998,
+        "bodyMs": 1575.9564170000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1571.653, thread_queue;dur=1313.244, sync_cpu;dur=69.888, sql;dur=119.450;desc=\"93 statements\""
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 1581.9903750000003,
+        "bodyMs": 1599.7125420000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1579.051, thread_queue;dur=1302.594, sync_cpu;dur=75.152, sql;dur=99.676;desc=\"93 statements\""
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 1225.9968339999996,
+        "bodyMs": 1226.4998749999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1221.983, thread_queue;dur=968.215, sync_cpu;dur=78.846, sql;dur=110.004;desc=\"93 statements\""
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 1579.381542,
+        "bodyMs": 1581.761208,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1575.067, thread_queue;dur=1300.825, sync_cpu;dur=113.183, sql;dur=126.099;desc=\"93 statements\""
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 1599.9315000000006,
+        "bodyMs": 1602.6609170000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1596.824, thread_queue;dur=1388.379, sync_cpu;dur=61.298, sql;dur=88.069;desc=\"93 statements\""
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 1601.3382499999998,
+        "bodyMs": 1603.0041659999997,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1596.914, thread_queue;dur=1388.432, sync_cpu;dur=71.566, sql;dur=76.266;desc=\"93 statements\""
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 1227.9415830000007,
+        "bodyMs": 1228.3946660000001,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1223.697, thread_queue;dur=970.191, sync_cpu;dur=73.058, sql;dur=120.481;desc=\"93 statements\""
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 1603.5272080000004,
+        "bodyMs": 1603.6522920000007,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1598.654, thread_queue;dur=1423.573, sync_cpu;dur=64.267, sql;dur=73.135;desc=\"93 statements\""
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 399.7249589999992,
+        "bodyMs": 400.1144169999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=397.111, thread_queue;dur=0.865, sync_cpu;dur=73.369, sql;dur=218.226;desc=\"93 statements\""
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 384.67070799999965,
+        "bodyMs": 385.16008299999976,
+        "bytes": 239777,
+        "serverTiming": "api;dur=381.857, thread_queue;dur=47.270, sync_cpu;dur=95.303, sql;dur=198.051;desc=\"93 statements\""
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 388.0534170000001,
+        "bodyMs": 388.41562499999964,
+        "bytes": 239777,
+        "serverTiming": "api;dur=384.988, thread_queue;dur=2.699, sync_cpu;dur=132.285, sql;dur=184.852;desc=\"93 statements\""
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 1603.1244589999997,
+        "bodyMs": 1603.2943749999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1598.482, thread_queue;dur=1414.834, sync_cpu;dur=57.855, sql;dur=86.083;desc=\"93 statements\""
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 697.7349169999998,
+        "bodyMs": 698.5936249999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=695.106, thread_queue;dur=391.888, sync_cpu;dur=74.478, sql;dur=161.216;desc=\"93 statements\""
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 1228.8002909999996,
+        "bodyMs": 1228.985458,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1225.745, thread_queue;dur=959.867, sync_cpu;dur=119.247, sql;dur=109.493;desc=\"93 statements\""
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 1228.492083,
+        "bodyMs": 1228.6259579999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1225.270, thread_queue;dur=957.170, sync_cpu;dur=63.530, sql;dur=104.950;desc=\"93 statements\""
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 629.6196250000003,
+        "bodyMs": 629.9702909999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=626.855, thread_queue;dur=329.837, sync_cpu;dur=80.380, sql;dur=139.600;desc=\"93 statements\""
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 624.667375,
+        "bodyMs": 624.9835000000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=621.881, thread_queue;dur=329.524, sync_cpu;dur=78.717, sql;dur=136.651;desc=\"93 statements\""
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 932.1715839999997,
+        "bodyMs": 932.3477919999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=929.119, thread_queue;dur=672.013, sync_cpu;dur=72.141, sql;dur=124.192;desc=\"93 statements\""
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 649.7386669999996,
+        "bodyMs": 650.049,
+        "bytes": 239777,
+        "serverTiming": "api;dur=647.137, thread_queue;dur=391.341, sync_cpu;dur=77.860, sql;dur=158.267;desc=\"93 statements\""
+      }
+    ],
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 1368.280917,
+        "bodyMs": 1368.5787500000006,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1366.492, thread_queue;dur=1026.912, sync_cpu;dur=90.426, sql;dur=199.598;desc=\"93 statements\""
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 1370.3044579999996,
+        "bodyMs": 1370.5961670000006,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1368.601, thread_queue;dur=1028.933, sync_cpu;dur=76.738, sql;dur=193.381;desc=\"93 statements\""
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 1372.4334579999995,
+        "bodyMs": 1372.8601660000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1370.743, thread_queue;dur=1028.864, sync_cpu;dur=126.639, sql;dur=176.295;desc=\"93 statements\""
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 1164.9203339999995,
+        "bodyMs": 1165.1690420000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1163.265, thread_queue;dur=804.347, sync_cpu;dur=74.208, sql;dur=241.374;desc=\"93 statements\""
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 1354.7022499999994,
+        "bodyMs": 1354.9352499999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1353.229, thread_queue;dur=1012.130, sync_cpu;dur=84.570, sql;dur=218.515;desc=\"93 statements\""
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 1374.620417,
+        "bodyMs": 1374.8917500000007,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1372.921, thread_queue;dur=1020.802, sync_cpu;dur=89.394, sql;dur=212.373;desc=\"93 statements\""
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 1378.8366669999996,
+        "bodyMs": 1379.1723330000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1377.106, thread_queue;dur=1140.937, sync_cpu;dur=74.157, sql;dur=122.458;desc=\"93 statements\""
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 1167.2034159999994,
+        "bodyMs": 1167.4732909999993,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1165.486, thread_queue;dur=806.309, sync_cpu;dur=94.600, sql;dur=188.258;desc=\"93 statements\""
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 944.9983340000008,
+        "bodyMs": 945.5323340000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=941.818, thread_queue;dur=593.292, sync_cpu;dur=93.708, sql;dur=201.160;desc=\"93 statements\""
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 1377.2641669999994,
+        "bodyMs": 1377.4563340000004,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1374.598, thread_queue;dur=1148.412, sync_cpu;dur=69.495, sql;dur=105.798;desc=\"93 statements\""
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 949.4712079999999,
+        "bodyMs": 949.913916999999,
+        "bytes": 239777,
+        "serverTiming": "api;dur=946.021, thread_queue;dur=601.115, sync_cpu;dur=75.666, sql;dur=220.909;desc=\"93 statements\""
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 1382.551042000001,
+        "bodyMs": 1382.749417000001,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1380.728, thread_queue;dur=1154.920, sync_cpu;dur=76.271, sql;dur=104.276;desc=\"93 statements\""
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 954.5840419999995,
+        "bodyMs": 955.4717919999994,
+        "bytes": 239777,
+        "serverTiming": "api;dur=950.746, thread_queue;dur=599.326, sync_cpu;dur=129.009, sql;dur=140.591;desc=\"93 statements\""
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 1169.8732919999993,
+        "bodyMs": 1170.1891249999999,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1168.130, thread_queue;dur=853.690, sync_cpu;dur=72.993, sql;dur=183.972;desc=\"93 statements\""
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 1380.2988749999995,
+        "bodyMs": 1380.7315829999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1377.037, thread_queue;dur=1152.571, sync_cpu;dur=67.205, sql;dur=97.826;desc=\"93 statements\""
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 1172.1109999999999,
+        "bodyMs": 1172.4412500000008,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1170.434, thread_queue;dur=855.981, sync_cpu;dur=94.939, sql;dur=151.680;desc=\"93 statements\""
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 1384.814374999999,
+        "bodyMs": 1384.9274579999992,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1382.904, thread_queue;dur=1144.173, sync_cpu;dur=77.773, sql;dur=126.536;desc=\"93 statements\""
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 1384.443792000001,
+        "bodyMs": 1384.6134580000007,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1382.703, thread_queue;dur=1142.268, sync_cpu;dur=89.059, sql;dur=89.168;desc=\"93 statements\""
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 691.3689580000009,
+        "bodyMs": 692.5959160000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=689.888, thread_queue;dur=295.917, sync_cpu;dur=95.736, sql;dur=218.661;desc=\"93 statements\""
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 951.6910829999997,
+        "bodyMs": 952.2068330000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=948.313, thread_queue;dur=599.478, sync_cpu;dur=87.635, sql;dur=202.344;desc=\"93 statements\""
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 1352.2289999999994,
+        "bodyMs": 1352.4760829999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1350.791, thread_queue;dur=1020.612, sync_cpu;dur=80.529, sql;dur=195.902;desc=\"93 statements\""
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 955.6338339999993,
+        "bodyMs": 955.9046669999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=953.714, thread_queue;dur=701.890, sync_cpu;dur=67.715, sql;dur=126.755;desc=\"93 statements\""
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 694.5747920000003,
+        "bodyMs": 700.3423750000011,
+        "bytes": 239777,
+        "serverTiming": "api;dur=692.976, thread_queue;dur=298.121, sync_cpu;dur=109.283, sql;dur=199.465;desc=\"93 statements\""
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 1508.2491250000003,
+        "bodyMs": 1508.5000830000008,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1506.450, thread_queue;dur=1359.402, sync_cpu;dur=61.429, sql;dur=72.277;desc=\"93 statements\""
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 1358.7538329999998,
+        "bodyMs": 1359.0028329999996,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1357.335, thread_queue;dur=1049.987, sync_cpu;dur=92.046, sql;dur=163.462;desc=\"93 statements\""
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 703.3706670000001,
+        "bodyMs": 703.6953750000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=701.770, thread_queue;dur=389.402, sync_cpu;dur=88.316, sql;dur=163.765;desc=\"93 statements\""
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 1356.469165999999,
+        "bodyMs": 1356.6992499999997,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1355.001, thread_queue;dur=1057.798, sync_cpu;dur=72.137, sql;dur=157.479;desc=\"93 statements\""
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 368.27641700000004,
+        "bodyMs": 368.52487500000007,
+        "bytes": 239777,
+        "serverTiming": "api;dur=366.825, thread_queue;dur=10.006, sync_cpu;dur=76.559, sql;dur=216.612;desc=\"93 statements\""
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 370.3892079999996,
+        "bodyMs": 370.6612919999998,
+        "bytes": 239777,
+        "serverTiming": "api;dur=368.682, thread_queue;dur=3.017, sync_cpu;dur=77.408, sql;dur=250.781;desc=\"93 statements\""
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 362.03141700000015,
+        "bodyMs": 362.7079169999997,
+        "bytes": 239777,
+        "serverTiming": "api;dur=358.467, thread_queue;dur=0.693, sync_cpu;dur=88.040, sql;dur=204.912;desc=\"93 statements\""
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 1360.7679579999995,
+        "bodyMs": 1361.0826659999993,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1359.157, thread_queue;dur=1071.808, sync_cpu;dur=84.098, sql;dur=146.207;desc=\"93 statements\""
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 1363.0225830000009,
+        "bodyMs": 1363.2909580000005,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1361.374, thread_queue;dur=1073.917, sync_cpu;dur=111.636, sql;dur=120.602;desc=\"93 statements\""
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 1365.1161250000005,
+        "bodyMs": 1365.361500000001,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1363.487, thread_queue;dur=1135.876, sync_cpu;dur=75.593, sql;dur=121.791;desc=\"93 statements\""
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 1176.4660000000013,
+        "bodyMs": 1176.6591670000007,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1174.694, thread_queue;dur=898.714, sync_cpu;dur=80.976, sql;dur=155.949;desc=\"93 statements\""
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 1367.990291,
+        "bodyMs": 1368.2035410000008,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1366.277, thread_queue;dur=1130.804, sync_cpu;dur=68.341, sql;dur=128.110;desc=\"93 statements\""
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 1385.868458,
+        "bodyMs": 1386.1434170000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1384.265, thread_queue;dur=1157.684, sync_cpu;dur=77.027, sql;dur=100.824;desc=\"93 statements\""
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 1174.2797919999994,
+        "bodyMs": 1174.584084,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1172.489, thread_queue;dur=896.620, sync_cpu;dur=91.525, sql;dur=131.549;desc=\"93 statements\""
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 369.22308299999986,
+        "bodyMs": 369.91399999999976,
+        "bytes": 239777,
+        "serverTiming": "api;dur=365.926, thread_queue;dur=14.584, sync_cpu;dur=90.294, sql;dur=223.764;desc=\"93 statements\""
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 368.6140829999995,
+        "bodyMs": 368.76708299999973,
+        "bytes": 239777,
+        "serverTiming": "api;dur=366.934, thread_queue;dur=3.159, sync_cpu;dur=89.992, sql;dur=213.885;desc=\"93 statements\""
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 362.8811660000001,
+        "bodyMs": 363.18533300000036,
+        "bytes": 239777,
+        "serverTiming": "api;dur=360.983, thread_queue;dur=3.228, sync_cpu;dur=76.416, sql;dur=214.811;desc=\"93 statements\""
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 700.4800829999995,
+        "bodyMs": 700.8157079999992,
+        "bytes": 239777,
+        "serverTiming": "api;dur=698.364, thread_queue;dur=394.897, sync_cpu;dur=74.667, sql;dur=164.440;desc=\"93 statements\""
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 1178.9223329999995,
+        "bodyMs": 1179.1145420000003,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1177.165, thread_queue;dur=948.921, sync_cpu;dur=66.186, sql;dur=98.938;desc=\"93 statements\""
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 1386.293208,
+        "bodyMs": 1386.4210830000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1384.303, thread_queue;dur=1161.279, sync_cpu;dur=60.456, sql;dur=92.833;desc=\"93 statements\""
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 1179.2860409999994,
+        "bodyMs": 1179.4207909999986,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1177.492, thread_queue;dur=951.244, sync_cpu;dur=76.142, sql;dur=110.616;desc=\"93 statements\""
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 614.4404170000007,
+        "bodyMs": 614.5860000000002,
+        "bytes": 239777,
+        "serverTiming": "api;dur=612.767, thread_queue;dur=352.219, sync_cpu;dur=80.906, sql;dur=145.836;desc=\"93 statements\""
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 613.8609580000011,
+        "bodyMs": 614.1355830000011,
+        "bytes": 239777,
+        "serverTiming": "api;dur=612.081, thread_queue;dur=354.994, sync_cpu;dur=79.203, sql;dur=146.104;desc=\"93 statements\""
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 955.8202090000004,
+        "bodyMs": 955.9922090000009,
+        "bytes": 239777,
+        "serverTiming": "api;dur=953.483, thread_queue;dur=695.287, sync_cpu;dur=81.724, sql;dur=142.582;desc=\"93 statements\""
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 602.0826670000006,
+        "bodyMs": 602.4526249999999,
+        "bytes": 239777,
+        "serverTiming": "api;dur=600.409, thread_queue;dur=349.103, sync_cpu;dur=80.842, sql;dur=139.144;desc=\"93 statements\""
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 1347.1837499999992,
+        "bodyMs": 1347.4304999999995,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1345.217, thread_queue;dur=1157.362, sync_cpu;dur=66.734, sql;dur=88.852;desc=\"93 statements\""
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 1509.4122499999994,
+        "bodyMs": 1509.6208750000005,
+        "bytes": 239777,
+        "serverTiming": "api;dur=1507.797, thread_queue;dur=1344.420, sync_cpu;dur=62.233, sql;dur=88.866;desc=\"93 statements\""
+      }
+    ]
+  ],
+  "scope": "HTTP report metadata only; no browser paint or result follow-up"
+}

@@ -1,0 +1,4861 @@
+{
+  "$defs": {
+    "AggregateBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "aggregate_compare": "#/$defs/AggregateCompare",
+                "and": "#/$defs/AggregateBoolean",
+                "exists": "#/$defs/AggregateExists",
+                "not": "#/$defs/AggregateNot",
+                "not_exists": "#/$defs/AggregateExists",
+                "or": "#/$defs/AggregateBoolean",
+                "predicate": "#/$defs/ScopedPredicate"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ScopedPredicate"
+              },
+              {
+                "$ref": "#/$defs/AggregateCompare"
+              },
+              {
+                "$ref": "#/$defs/AggregateBoolean"
+              },
+              {
+                "$ref": "#/$defs/AggregateNot"
+              },
+              {
+                "$ref": "#/$defs/AggregateExists"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "children"
+      ],
+      "title": "AggregateBoolean",
+      "type": "object"
+    },
+    "AggregateCompare": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "aggregate_compare",
+          "default": "aggregate_compare",
+          "title": "Kind",
+          "type": "string"
+        },
+        "left": {
+          "discriminator": {
+            "mapping": {
+              "count_ratio": "#/$defs/CountRatio",
+              "scoped_count": "#/$defs/ScopedCount"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedCount"
+            },
+            {
+              "$ref": "#/$defs/CountRatio"
+            }
+          ],
+          "title": "Left"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "ne",
+            "lt",
+            "le",
+            "gt",
+            "ge"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "right": {
+          "discriminator": {
+            "mapping": {
+              "count_ratio": "#/$defs/CountRatio",
+              "scalar": "#/$defs/AggregateScalar",
+              "scoped_count": "#/$defs/ScopedCount"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedCount"
+            },
+            {
+              "$ref": "#/$defs/CountRatio"
+            },
+            {
+              "$ref": "#/$defs/AggregateScalar"
+            }
+          ],
+          "title": "Right"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "left",
+        "operator",
+        "right"
+      ],
+      "title": "AggregateCompare",
+      "type": "object"
+    },
+    "AggregateExists": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "exists",
+            "not_exists"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "AggregateExists",
+      "type": "object"
+    },
+    "AggregateFieldRef": {
+      "additionalProperties": false,
+      "properties": {
+        "field_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field_id",
+        "version_id"
+      ],
+      "title": "AggregateFieldRef",
+      "type": "object"
+    },
+    "AggregateNot": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "child"
+      ],
+      "title": "AggregateNot",
+      "type": "object"
+    },
+    "AggregateReceiptFilterInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "receipt-filter/v3",
+          "default": "receipt-filter/v3",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "root_scope_id": {
+          "format": "uuid",
+          "title": "Root Scope Id",
+          "type": "string"
+        },
+        "registry_versions": {
+          "additionalProperties": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Registry Versions",
+          "type": "object"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Expression"
+        },
+        "legacy_registry_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Legacy Registry Version Id"
+        }
+      },
+      "required": [
+        "root_scope_id",
+        "registry_versions",
+        "expression"
+      ],
+      "title": "AggregateReceiptFilterInput",
+      "type": "object"
+    },
+    "AggregateScalar": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "scalar",
+          "default": "scalar",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "pattern": "^(0|[1-9][0-9]{0,8})(\\.[0-9]{1,6})?$",
+          "title": "Value",
+          "type": "string"
+        },
+        "unit": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "title": "AggregateScalar",
+      "type": "object"
+    },
+    "AggregateWindow": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at": {
+          "format": "date-time",
+          "title": "Ends At",
+          "type": "string"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "observation_as_of": {
+          "format": "date-time",
+          "title": "Observation As Of",
+          "type": "string"
+        },
+        "knowledge_as_of": {
+          "format": "date-time",
+          "title": "Knowledge As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_at",
+        "ends_at",
+        "observation_as_of",
+        "knowledge_as_of"
+      ],
+      "title": "AggregateWindow",
+      "type": "object"
+    },
+    "BehavioralSequence": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "sequence",
+          "default": "sequence",
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "window": {
+          "discriminator": {
+            "mapping": {
+              "fixed": "#/$defs/FixedSequenceWindow",
+              "relative": "#/$defs/RelativeSequenceWindow"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FixedSequenceWindow"
+            },
+            {
+              "$ref": "#/$defs/RelativeSequenceWindow"
+            }
+          ],
+          "title": "Window"
+        },
+        "steps": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "negative": "#/$defs/NegativeStep",
+                "positive": "#/$defs/PositiveStep"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/PositiveStep"
+              },
+              {
+                "$ref": "#/$defs/NegativeStep"
+              }
+            ]
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Steps",
+          "type": "array"
+        },
+        "bindings": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/SequencePropertyBinding"
+          },
+          "maxItems": 16,
+          "title": "Bindings",
+          "type": "array"
+        },
+        "tie_policy": {
+          "const": "strict_event_time/v1",
+          "default": "strict_event_time/v1",
+          "title": "Tie Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "parent_scope_id",
+        "relationship_id",
+        "relationship_version_id",
+        "child_entity",
+        "window",
+        "steps"
+      ],
+      "title": "BehavioralSequence",
+      "type": "object"
+    },
+    "BlockPresentation": {
+      "additionalProperties": false,
+      "properties": {
+        "chart_type": {
+          "default": "line",
+          "enum": [
+            "line",
+            "bar",
+            "area",
+            "stacked_bar",
+            "combo",
+            "scatter",
+            "bubble",
+            "histogram",
+            "boxplot",
+            "heatmap",
+            "calendar_heatmap",
+            "pie",
+            "donut",
+            "treemap",
+            "sunburst",
+            "tree",
+            "waterfall",
+            "funnel",
+            "sankey",
+            "range_timeline",
+            "map",
+            "map_points",
+            "map_routes",
+            "radar",
+            "graph",
+            "chord",
+            "parallel",
+            "theme_river",
+            "candlestick",
+            "pictorial_bar",
+            "effect_scatter",
+            "gauge",
+            "progress"
+          ],
+          "title": "Chart Type",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 4000,
+          "title": "Description",
+          "type": "string"
+        },
+        "show_title": {
+          "default": true,
+          "title": "Show Title",
+          "type": "boolean"
+        },
+        "visual": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BlockVisual"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "density": {
+          "default": "comfortable",
+          "enum": [
+            "compact",
+            "comfortable",
+            "spacious"
+          ],
+          "title": "Density",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 200,
+          "title": "Title",
+          "type": "string"
+        },
+        "legend": {
+          "default": true,
+          "title": "Legend",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "title": "BlockPresentation",
+      "type": "object"
+    },
+    "BlockVisual": {
+      "additionalProperties": false,
+      "properties": {
+        "series": {
+          "items": {
+            "$ref": "#/$defs/VisualSeries"
+          },
+          "maxItems": 30,
+          "title": "Series",
+          "type": "array"
+        },
+        "columns": {
+          "items": {
+            "$ref": "#/$defs/VisualColumn"
+          },
+          "maxItems": 50,
+          "title": "Columns",
+          "type": "array"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/$defs/ConditionalColor"
+          },
+          "maxItems": 30,
+          "title": "Conditions",
+          "type": "array"
+        },
+        "decimals": {
+          "default": 2,
+          "maximum": 8,
+          "minimum": 0,
+          "title": "Decimals",
+          "type": "integer"
+        },
+        "compact": {
+          "default": false,
+          "title": "Compact",
+          "type": "boolean"
+        },
+        "labels": {
+          "default": false,
+          "title": "Labels",
+          "type": "boolean"
+        },
+        "label_position": {
+          "default": "top",
+          "enum": [
+            "top",
+            "bottom",
+            "left",
+            "right",
+            "inside",
+            "insideTop",
+            "insideBottom"
+          ],
+          "title": "Label Position",
+          "type": "string"
+        },
+        "label_rotate": {
+          "default": 0,
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Label Rotate",
+          "type": "integer"
+        },
+        "hide_overlap": {
+          "default": true,
+          "title": "Hide Overlap",
+          "type": "boolean"
+        },
+        "horizontal": {
+          "default": false,
+          "title": "Horizontal",
+          "type": "boolean"
+        },
+        "bar_width": {
+          "default": 32,
+          "maximum": 100,
+          "minimum": 4,
+          "title": "Bar Width",
+          "type": "integer"
+        },
+        "bar_gap": {
+          "default": 20,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Bar Gap",
+          "type": "integer"
+        },
+        "legend_position": {
+          "default": "bottom",
+          "enum": [
+            "top",
+            "bottom",
+            "left",
+            "right"
+          ],
+          "title": "Legend Position",
+          "type": "string"
+        },
+        "x_visible": {
+          "default": true,
+          "title": "X Visible",
+          "type": "boolean"
+        },
+        "y_visible": {
+          "default": true,
+          "title": "Y Visible",
+          "type": "boolean"
+        },
+        "x_title": {
+          "default": "",
+          "maxLength": 200,
+          "title": "X Title",
+          "type": "string"
+        },
+        "y_title": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Y Title",
+          "type": "string"
+        },
+        "y_right_title": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Y Right Title",
+          "type": "string"
+        },
+        "x_rotate": {
+          "default": 0,
+          "enum": [
+            0,
+            45,
+            90
+          ],
+          "title": "X Rotate",
+          "type": "integer"
+        },
+        "y_min": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Y Min"
+        },
+        "y_max": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Y Max"
+        },
+        "grid_lines": {
+          "default": true,
+          "title": "Grid Lines",
+          "type": "boolean"
+        },
+        "tooltip": {
+          "default": true,
+          "title": "Tooltip",
+          "type": "boolean"
+        },
+        "tooltip_previous": {
+          "default": true,
+          "title": "Tooltip Previous",
+          "type": "boolean"
+        },
+        "tooltip_comparison": {
+          "default": true,
+          "title": "Tooltip Comparison",
+          "type": "boolean"
+        },
+        "zoom": {
+          "default": false,
+          "title": "Zoom",
+          "type": "boolean"
+        },
+        "animation": {
+          "default": true,
+          "title": "Animation",
+          "type": "boolean"
+        },
+        "goal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Goal"
+        },
+        "goal_label": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Goal Label",
+          "type": "string"
+        },
+        "gauge_min": {
+          "default": 0,
+          "title": "Gauge Min",
+          "type": "number"
+        },
+        "gauge_max": {
+          "default": 100,
+          "title": "Gauge Max",
+          "type": "number"
+        },
+        "pie_radius": {
+          "default": 45,
+          "maximum": 80,
+          "minimum": 10,
+          "title": "Pie Radius",
+          "type": "integer"
+        },
+        "start_angle": {
+          "default": 90,
+          "maximum": 360,
+          "minimum": 0,
+          "title": "Start Angle",
+          "type": "integer"
+        },
+        "symbol_size": {
+          "default": 10,
+          "maximum": 60,
+          "minimum": 2,
+          "title": "Symbol Size",
+          "type": "integer"
+        },
+        "row_numbers": {
+          "default": false,
+          "title": "Row Numbers",
+          "type": "boolean"
+        },
+        "freeze_header": {
+          "default": true,
+          "title": "Freeze Header",
+          "type": "boolean"
+        },
+        "freeze_first": {
+          "default": false,
+          "title": "Freeze First",
+          "type": "boolean"
+        },
+        "paginate": {
+          "default": false,
+          "title": "Paginate",
+          "type": "boolean"
+        },
+        "page_size": {
+          "default": 25,
+          "enum": [
+            10,
+            25,
+            50,
+            100
+          ],
+          "title": "Page Size",
+          "type": "integer"
+        },
+        "text_align": {
+          "default": "left",
+          "enum": [
+            "left",
+            "center",
+            "right"
+          ],
+          "title": "Text Align",
+          "type": "string"
+        },
+        "text_size": {
+          "default": "normal",
+          "enum": [
+            "small",
+            "normal",
+            "large"
+          ],
+          "title": "Text Size",
+          "type": "string"
+        }
+      },
+      "title": "BlockVisual",
+      "type": "object"
+    },
+    "CalendarRef": {
+      "additionalProperties": false,
+      "properties": {
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version_id",
+        "content_hash"
+      ],
+      "title": "CalendarRef",
+      "type": "object"
+    },
+    "CohortBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "aggregate_compare": "#/$defs/AggregateCompare",
+                "and": "#/$defs/CohortBoolean",
+                "customer_event_membership": "#/$defs/CustomerEventMembership",
+                "exists": "#/$defs/CohortExists",
+                "not": "#/$defs/CohortNot",
+                "not_exists": "#/$defs/CohortExists",
+                "or": "#/$defs/CohortBoolean",
+                "predicate": "#/$defs/ScopedPredicate"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ScopedPredicate"
+              },
+              {
+                "$ref": "#/$defs/AggregateCompare"
+              },
+              {
+                "$ref": "#/$defs/CustomerEventMembership"
+              },
+              {
+                "$ref": "#/$defs/CohortBoolean"
+              },
+              {
+                "$ref": "#/$defs/CohortNot"
+              },
+              {
+                "$ref": "#/$defs/CohortExists"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "children"
+      ],
+      "title": "CohortBoolean",
+      "type": "object"
+    },
+    "CohortExists": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "exists",
+            "not_exists"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/CohortBoolean",
+              "customer_event_membership": "#/$defs/CustomerEventMembership",
+              "exists": "#/$defs/CohortExists",
+              "not": "#/$defs/CohortNot",
+              "not_exists": "#/$defs/CohortExists",
+              "or": "#/$defs/CohortBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/CustomerEventMembership"
+            },
+            {
+              "$ref": "#/$defs/CohortBoolean"
+            },
+            {
+              "$ref": "#/$defs/CohortNot"
+            },
+            {
+              "$ref": "#/$defs/CohortExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "CohortExists",
+      "type": "object"
+    },
+    "CohortNot": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/CohortBoolean",
+              "customer_event_membership": "#/$defs/CustomerEventMembership",
+              "exists": "#/$defs/CohortExists",
+              "not": "#/$defs/CohortNot",
+              "not_exists": "#/$defs/CohortExists",
+              "or": "#/$defs/CohortBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/CustomerEventMembership"
+            },
+            {
+              "$ref": "#/$defs/CohortBoolean"
+            },
+            {
+              "$ref": "#/$defs/CohortNot"
+            },
+            {
+              "$ref": "#/$defs/CohortExists"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "child"
+      ],
+      "title": "CohortNot",
+      "type": "object"
+    },
+    "CohortReceiptFilterInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "receipt-filter/v4",
+          "default": "receipt-filter/v4",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "root_scope_id": {
+          "format": "uuid",
+          "title": "Root Scope Id",
+          "type": "string"
+        },
+        "registry_versions": {
+          "additionalProperties": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Registry Versions",
+          "type": "object"
+        },
+        "receipt_registry_versions": {
+          "additionalProperties": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Receipt Registry Versions",
+          "type": "object"
+        },
+        "promoted_registry_sets": {
+          "default": [],
+          "items": {
+            "additionalProperties": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "maxItems": 32,
+          "title": "Promoted Registry Sets",
+          "type": "array"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/CohortBoolean",
+              "customer_event_membership": "#/$defs/CustomerEventMembership",
+              "exists": "#/$defs/CohortExists",
+              "not": "#/$defs/CohortNot",
+              "not_exists": "#/$defs/CohortExists",
+              "or": "#/$defs/CohortBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/CustomerEventMembership"
+            },
+            {
+              "$ref": "#/$defs/CohortBoolean"
+            },
+            {
+              "$ref": "#/$defs/CohortNot"
+            },
+            {
+              "$ref": "#/$defs/CohortExists"
+            }
+          ],
+          "title": "Expression"
+        },
+        "legacy_registry_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Legacy Registry Version Id"
+        }
+      },
+      "required": [
+        "root_scope_id",
+        "registry_versions",
+        "receipt_registry_versions",
+        "expression"
+      ],
+      "title": "CohortReceiptFilterInput",
+      "type": "object"
+    },
+    "ComparisonPeriod": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on"
+      ],
+      "title": "ComparisonPeriod",
+      "type": "object"
+    },
+    "ComposerBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "hidden": {
+          "default": false,
+          "title": "Hidden",
+          "type": "boolean"
+        },
+        "locked": {
+          "default": false,
+          "title": "Locked",
+          "type": "boolean"
+        },
+        "copied_from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComposerNodeOrigin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "block_id": {
+          "format": "uuid",
+          "title": "Block Id",
+          "type": "string"
+        },
+        "section_id": {
+          "format": "uuid",
+          "title": "Section Id",
+          "type": "string"
+        },
+        "order": {
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "block_type": {
+          "enum": [
+            "chart",
+            "table",
+            "metric",
+            "text",
+            "filter"
+          ],
+          "title": "Block Type",
+          "type": "string"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DataBinding"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "text": {
+          "default": "",
+          "maxLength": 20000,
+          "title": "Text",
+          "type": "string"
+        },
+        "text_style": {
+          "default": "plain",
+          "enum": [
+            "plain",
+            "callout"
+          ],
+          "title": "Text Style",
+          "type": "string"
+        },
+        "control": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StoreControl"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "presentation": {
+          "$ref": "#/$defs/BlockPresentation"
+        },
+        "placement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GridPlacement"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "block_id",
+        "section_id",
+        "order",
+        "block_type",
+        "presentation"
+      ],
+      "title": "ComposerBlock",
+      "type": "object"
+    },
+    "ComposerCapabilities": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "composer-capabilities/v1",
+          "default": "composer-capabilities/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "definition_edit": {
+          "default": false,
+          "title": "Definition Edit",
+          "type": "boolean"
+        },
+        "block_apply": {
+          "default": false,
+          "title": "Block Apply",
+          "type": "boolean"
+        },
+        "profiles": {
+          "default": [
+            "dashboard",
+            "workbook_report",
+            "narrative_research"
+          ],
+          "items": {
+            "enum": [
+              "dashboard",
+              "workbook_report",
+              "narrative_research"
+            ],
+            "type": "string"
+          },
+          "title": "Profiles",
+          "type": "array"
+        },
+        "providers": {
+          "default": [
+            "metric-workspace/v2"
+          ],
+          "items": {
+            "const": "metric-workspace/v2",
+            "type": "string"
+          },
+          "title": "Providers",
+          "type": "array"
+        },
+        "blocks": {
+          "default": [
+            "chart",
+            "table",
+            "metric",
+            "text",
+            "filter"
+          ],
+          "items": {
+            "enum": [
+              "chart",
+              "table",
+              "metric",
+              "text",
+              "filter"
+            ],
+            "type": "string"
+          },
+          "title": "Blocks",
+          "type": "array"
+        },
+        "channels": {
+          "default": [
+            "interactive"
+          ],
+          "items": {
+            "const": "interactive",
+            "type": "string"
+          },
+          "title": "Channels",
+          "type": "array"
+        }
+      },
+      "title": "ComposerCapabilities",
+      "type": "object"
+    },
+    "ComposerChapter": {
+      "additionalProperties": false,
+      "properties": {
+        "hidden": {
+          "default": false,
+          "title": "Hidden",
+          "type": "boolean"
+        },
+        "locked": {
+          "default": false,
+          "title": "Locked",
+          "type": "boolean"
+        },
+        "copied_from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComposerNodeOrigin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "chapter_id": {
+          "format": "uuid",
+          "title": "Chapter Id",
+          "type": "string"
+        },
+        "order": {
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chapter_id",
+        "order",
+        "title"
+      ],
+      "title": "ComposerChapter",
+      "type": "object"
+    },
+    "ComposerDefinitionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "grid_columns": {
+          "default": 12,
+          "enum": [
+            12,
+            24
+          ],
+          "title": "Grid Columns",
+          "type": "integer"
+        },
+        "pair": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComposerPairSelection"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "scopes": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "composer-scopes/v1": "#/$defs/ComposerScopesV1",
+                  "composer-scopes/v2": "#/$defs/ComposerScopesV2"
+                },
+                "propertyName": "schema_version"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/ComposerScopesV1"
+                },
+                {
+                  "$ref": "#/$defs/ComposerScopesV2"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scopes"
+        },
+        "schema_version": {
+          "const": "analytical-authoring/v1",
+          "default": "analytical-authoring/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "document_id": {
+          "format": "uuid",
+          "title": "Document Id",
+          "type": "string"
+        },
+        "creator_principal_id": {
+          "format": "uuid",
+          "title": "Creator Principal Id",
+          "type": "string"
+        },
+        "profile": {
+          "enum": [
+            "dashboard",
+            "workbook_report",
+            "narrative_research"
+          ],
+          "title": "Profile",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "origin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComposerOrigin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "brand_profile": {
+          "$ref": "#/$defs/Reference"
+        },
+        "company_pack": {
+          "$ref": "#/$defs/Reference"
+        },
+        "default_page_id": {
+          "format": "uuid",
+          "title": "Default Page Id",
+          "type": "string"
+        },
+        "chapters": {
+          "items": {
+            "$ref": "#/$defs/ComposerChapter"
+          },
+          "title": "Chapters",
+          "type": "array"
+        },
+        "pages": {
+          "items": {
+            "$ref": "#/$defs/ComposerPage"
+          },
+          "minItems": 1,
+          "title": "Pages",
+          "type": "array"
+        },
+        "sections": {
+          "items": {
+            "$ref": "#/$defs/ComposerSection"
+          },
+          "title": "Sections",
+          "type": "array"
+        },
+        "blocks": {
+          "items": {
+            "$ref": "#/$defs/ComposerBlock"
+          },
+          "title": "Blocks",
+          "type": "array"
+        },
+        "definitions": {
+          "items": {
+            "$ref": "#/$defs/RetailAnalysisInput"
+          },
+          "title": "Definitions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "document_id",
+        "creator_principal_id",
+        "profile",
+        "title",
+        "brand_profile",
+        "company_pack",
+        "default_page_id",
+        "pages",
+        "sections",
+        "blocks",
+        "definitions"
+      ],
+      "title": "ComposerDefinitionV1",
+      "type": "object"
+    },
+    "ComposerNodeOrigin": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "snapshot_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snapshot Id"
+        }
+      },
+      "required": [
+        "node_id"
+      ],
+      "title": "ComposerNodeOrigin",
+      "type": "object"
+    },
+    "ComposerOrigin": {
+      "additionalProperties": false,
+      "properties": {
+        "report_id": {
+          "format": "uuid",
+          "title": "Report Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "snapshot_id": {
+          "format": "uuid",
+          "title": "Snapshot Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "report_id",
+        "version_id",
+        "snapshot_id"
+      ],
+      "title": "ComposerOrigin",
+      "type": "object"
+    },
+    "ComposerPage": {
+      "additionalProperties": false,
+      "properties": {
+        "hidden": {
+          "default": false,
+          "title": "Hidden",
+          "type": "boolean"
+        },
+        "locked": {
+          "default": false,
+          "title": "Locked",
+          "type": "boolean"
+        },
+        "copied_from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComposerNodeOrigin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "page_id": {
+          "format": "uuid",
+          "title": "Page Id",
+          "type": "string"
+        },
+        "chapter_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chapter Id"
+        },
+        "order": {
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "layout": {
+          "default": "flow",
+          "enum": [
+            "flow",
+            "dashboard_grid",
+            "narrative"
+          ],
+          "title": "Layout",
+          "type": "string"
+        }
+      },
+      "required": [
+        "page_id",
+        "order",
+        "title"
+      ],
+      "title": "ComposerPage",
+      "type": "object"
+    },
+    "ComposerPairSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "left_block_id": {
+          "format": "uuid",
+          "title": "Left Block Id",
+          "type": "string"
+        },
+        "right_block_id": {
+          "format": "uuid",
+          "title": "Right Block Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left_block_id",
+        "right_block_id"
+      ],
+      "title": "ComposerPairSelection",
+      "type": "object"
+    },
+    "ComposerScopesV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "composer-scopes/v1",
+          "default": "composer-scopes/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/$defs/FilterScopeBinding"
+          },
+          "title": "Filters",
+          "type": "array"
+        },
+        "contexts": {
+          "items": {
+            "$ref": "#/$defs/ContextScopeBinding"
+          },
+          "title": "Contexts",
+          "type": "array"
+        }
+      },
+      "title": "ComposerScopesV1",
+      "type": "object"
+    },
+    "ComposerScopesV2": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "composer-scopes/v2",
+          "default": "composer-scopes/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/$defs/FilterScopeBinding"
+          },
+          "title": "Filters",
+          "type": "array"
+        },
+        "receipt_filters": {
+          "items": {
+            "$ref": "#/$defs/ReceiptScopeBinding"
+          },
+          "maxItems": 1000,
+          "title": "Receipt Filters",
+          "type": "array"
+        },
+        "contexts": {
+          "items": {
+            "$ref": "#/$defs/ContextScopeBinding"
+          },
+          "title": "Contexts",
+          "type": "array"
+        }
+      },
+      "title": "ComposerScopesV2",
+      "type": "object"
+    },
+    "ComposerSection": {
+      "additionalProperties": false,
+      "properties": {
+        "hidden": {
+          "default": false,
+          "title": "Hidden",
+          "type": "boolean"
+        },
+        "locked": {
+          "default": false,
+          "title": "Locked",
+          "type": "boolean"
+        },
+        "copied_from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComposerNodeOrigin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "section_id": {
+          "format": "uuid",
+          "title": "Section Id",
+          "type": "string"
+        },
+        "page_id": {
+          "format": "uuid",
+          "title": "Page Id",
+          "type": "string"
+        },
+        "parent_section_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Section Id"
+        },
+        "order": {
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "section_id",
+        "page_id",
+        "order",
+        "title"
+      ],
+      "title": "ComposerSection",
+      "type": "object"
+    },
+    "ConditionalColor": {
+      "additionalProperties": false,
+      "properties": {
+        "column": {
+          "default": "value",
+          "maxLength": 120,
+          "title": "Column",
+          "type": "string"
+        },
+        "operator": {
+          "default": "gt",
+          "enum": [
+            "gt",
+            "lt",
+            "eq"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "color": {
+          "default": "green",
+          "enum": [
+            "primary",
+            "secondary",
+            "violet",
+            "green",
+            "orange",
+            "red",
+            "muted"
+          ],
+          "title": "Color",
+          "type": "string"
+        },
+        "whole_row": {
+          "default": false,
+          "title": "Whole Row",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "ConditionalColor",
+      "type": "object"
+    },
+    "ContextOverride": {
+      "additionalProperties": false,
+      "properties": {
+        "time_comparison": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TemporalSettingsV2"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "period": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Period"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "grain": {
+          "anyOf": [
+            {
+              "enum": [
+                "day",
+                "week",
+                "month",
+                "quarter",
+                "half_year",
+                "year"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grain"
+        },
+        "calendar_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CalendarRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "calendar_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar",
+                "fiscal"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Calendar Basis"
+        },
+        "alignment": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "previous_year_same_dates"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alignment"
+        }
+      },
+      "title": "ContextOverride",
+      "type": "object"
+    },
+    "ContextScopeBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "binding_id": {
+          "format": "uuid",
+          "title": "Binding Id",
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/ScopeTarget"
+        },
+        "context": {
+          "$ref": "#/$defs/ContextOverride"
+        },
+        "locked_fields": {
+          "items": {
+            "enum": [
+              "period",
+              "grain",
+              "calendar_ref",
+              "calendar_basis",
+              "alignment",
+              "time_comparison"
+            ],
+            "type": "string"
+          },
+          "title": "Locked Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "binding_id",
+        "target",
+        "context"
+      ],
+      "title": "ContextScopeBinding",
+      "type": "object"
+    },
+    "CorrelatedExists": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "exists",
+            "not_exists"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/ScopedBoolean",
+              "exists": "#/$defs/CorrelatedExists",
+              "not": "#/$defs/ScopedNot",
+              "not_exists": "#/$defs/CorrelatedExists",
+              "or": "#/$defs/ScopedBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/ScopedBoolean"
+            },
+            {
+              "$ref": "#/$defs/ScopedNot"
+            },
+            {
+              "$ref": "#/$defs/CorrelatedExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "CorrelatedExists",
+      "type": "object"
+    },
+    "CountRatio": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "count_ratio",
+          "default": "count_ratio",
+          "title": "Kind",
+          "type": "string"
+        },
+        "numerator": {
+          "$ref": "#/$defs/ScopedCount"
+        },
+        "denominator": {
+          "$ref": "#/$defs/ScopedCount"
+        },
+        "unit": {
+          "const": "ratio",
+          "default": "ratio",
+          "title": "Unit",
+          "type": "string"
+        },
+        "zero_denominator_policy": {
+          "const": "unknown",
+          "default": "unknown",
+          "title": "Zero Denominator Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "title": "CountRatio",
+      "type": "object"
+    },
+    "CustomerEventMembership": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "customer_event_membership",
+          "default": "customer_event_membership",
+          "title": "Kind",
+          "type": "string"
+        },
+        "customer_scope_id": {
+          "format": "uuid",
+          "title": "Customer Scope Id",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/SequenceBoolean",
+              "exists": "#/$defs/SequenceExists",
+              "not": "#/$defs/SequenceNot",
+              "not_exists": "#/$defs/SequenceExists",
+              "or": "#/$defs/SequenceBoolean",
+              "predicate": "#/$defs/ScopedPredicate",
+              "sequence": "#/$defs/BehavioralSequence"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/BehavioralSequence"
+            },
+            {
+              "$ref": "#/$defs/SequenceBoolean"
+            },
+            {
+              "$ref": "#/$defs/SequenceNot"
+            },
+            {
+              "$ref": "#/$defs/SequenceExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "customer_scope_id",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "CustomerEventMembership",
+      "type": "object"
+    },
+    "DataBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "definition_id": {
+          "format": "uuid",
+          "title": "Definition Id",
+          "type": "string"
+        },
+        "metric_ref": {
+          "$ref": "#/$defs/MetricRef"
+        }
+      },
+      "required": [
+        "definition_id",
+        "metric_ref"
+      ],
+      "title": "DataBinding",
+      "type": "object"
+    },
+    "EventTimeFieldVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "field_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Entity",
+          "type": "string"
+        },
+        "column": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Column",
+          "type": "string"
+        },
+        "known_column": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Known Column"
+        },
+        "storage_type": {
+          "const": "timestamp_us_utc/v1",
+          "default": "timestamp_us_utc/v1",
+          "title": "Storage Type",
+          "type": "string"
+        },
+        "null_policy": {
+          "const": "unknown",
+          "default": "unknown",
+          "title": "Null Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field_id",
+        "version_id",
+        "entity",
+        "column"
+      ],
+      "title": "EventTimeFieldVersion",
+      "type": "object"
+    },
+    "FilterCountVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "filter-count/v1",
+          "default": "filter-count/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "count_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Count Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "count",
+            "count_distinct"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "grain_fields": {
+          "items": {
+            "$ref": "#/$defs/AggregateFieldRef"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Grain Fields",
+          "type": "array"
+        },
+        "unit": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        },
+        "null_policy": {
+          "enum": [
+            "unknown",
+            "exclude"
+          ],
+          "title": "Null Policy",
+          "type": "string"
+        },
+        "empty_policy": {
+          "const": "zero_if_complete",
+          "default": "zero_if_complete",
+          "title": "Empty Policy",
+          "type": "string"
+        },
+        "returns_policy": {
+          "const": "all_observed_rows/v1",
+          "default": "all_observed_rows/v1",
+          "title": "Returns Policy",
+          "type": "string"
+        },
+        "time_entity": {
+          "enum": [
+            "parent",
+            "child"
+          ],
+          "title": "Time Entity",
+          "type": "string"
+        },
+        "time_field": {
+          "$ref": "#/$defs/AggregateFieldRef"
+        },
+        "time_basis": {
+          "const": "utc_date/v1",
+          "default": "utc_date/v1",
+          "title": "Time Basis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "count_id",
+        "version_id",
+        "relationship_version_id",
+        "child_entity",
+        "kind",
+        "grain_fields",
+        "unit",
+        "null_policy",
+        "time_entity",
+        "time_field"
+      ],
+      "title": "FilterCountVersion",
+      "type": "object"
+    },
+    "FilterEventVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "filter-event/v1",
+          "default": "filter-event/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "event_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Entity",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "time_field": {
+          "$ref": "#/$defs/EventTimeFieldVersion"
+        },
+        "row_meaning": {
+          "const": "one_published_row_one_event/v1",
+          "default": "one_published_row_one_event/v1",
+          "title": "Row Meaning",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "version_id",
+        "entity",
+        "relationship_version_id",
+        "time_field"
+      ],
+      "title": "FilterEventVersion",
+      "type": "object"
+    },
+    "FilterScopeBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "binding_id": {
+          "format": "uuid",
+          "title": "Binding Id",
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/ScopeTarget"
+        },
+        "order": {
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "filter": {
+          "$ref": "#/$defs/StoreFilterV1"
+        },
+        "combine_mode": {
+          "default": "intersect",
+          "enum": [
+            "intersect",
+            "replace_allowed_parent_field"
+          ],
+          "title": "Combine Mode",
+          "type": "string"
+        },
+        "replaces": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Replaces",
+          "type": "array"
+        },
+        "replaceable": {
+          "default": false,
+          "title": "Replaceable",
+          "type": "boolean"
+        },
+        "locked": {
+          "default": false,
+          "title": "Locked",
+          "type": "boolean"
+        },
+        "linked_target_block_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Linked Target Block Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "binding_id",
+        "target",
+        "order",
+        "filter"
+      ],
+      "title": "FilterScopeBinding",
+      "type": "object"
+    },
+    "FilterValue": {
+      "additionalProperties": false,
+      "properties": {
+        "data_type": {
+          "enum": [
+            "string",
+            "integer",
+            "decimal",
+            "boolean",
+            "date"
+          ],
+          "title": "Data Type",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "data_type",
+        "value"
+      ],
+      "title": "FilterValue",
+      "type": "object"
+    },
+    "FixedSequenceWindow": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "fixed",
+          "default": "fixed",
+          "title": "Kind",
+          "type": "string"
+        },
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at": {
+          "format": "date-time",
+          "title": "Ends At",
+          "type": "string"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "observation_as_of": {
+          "format": "date-time",
+          "title": "Observation As Of",
+          "type": "string"
+        },
+        "knowledge_as_of": {
+          "format": "date-time",
+          "title": "Knowledge As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_at",
+        "ends_at",
+        "observation_as_of",
+        "knowledge_as_of"
+      ],
+      "title": "FixedSequenceWindow",
+      "type": "object"
+    },
+    "FlatBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "and": "#/$defs/FlatBoolean",
+                "not": "#/$defs/FlatNot",
+                "or": "#/$defs/FlatBoolean",
+                "predicate": "#/$defs/FlatPredicate"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/FlatPredicate"
+              },
+              {
+                "$ref": "#/$defs/FlatBoolean"
+              },
+              {
+                "$ref": "#/$defs/FlatNot"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "children"
+      ],
+      "title": "FlatBoolean",
+      "type": "object"
+    },
+    "FlatNot": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/FlatBoolean",
+              "not": "#/$defs/FlatNot",
+              "or": "#/$defs/FlatBoolean",
+              "predicate": "#/$defs/FlatPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FlatPredicate"
+            },
+            {
+              "$ref": "#/$defs/FlatBoolean"
+            },
+            {
+              "$ref": "#/$defs/FlatNot"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "child"
+      ],
+      "title": "FlatNot",
+      "type": "object"
+    },
+    "FlatPredicate": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "predicate",
+          "default": "predicate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "field_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "field_version_id": {
+          "format": "uuid",
+          "title": "Field Version Id",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "ne",
+            "lt",
+            "le",
+            "gt",
+            "ge",
+            "in",
+            "is_null",
+            "is_not_null"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "values": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/FilterValue"
+          },
+          "maxItems": 1000,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "field_id",
+        "field_version_id",
+        "operator"
+      ],
+      "title": "FlatPredicate",
+      "type": "object"
+    },
+    "GridPlacement": {
+      "additionalProperties": false,
+      "description": "Column coordinates are checked against the document grid version.",
+      "properties": {
+        "column": {
+          "default": 0,
+          "exclusiveMaximum": 24,
+          "minimum": 0,
+          "title": "Column",
+          "type": "integer"
+        },
+        "span": {
+          "default": 12,
+          "maximum": 24,
+          "minimum": 1,
+          "title": "Span",
+          "type": "integer"
+        },
+        "row": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Row",
+          "type": "integer"
+        },
+        "row_span": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Row Span",
+          "type": "integer"
+        }
+      },
+      "title": "GridPlacement",
+      "type": "object"
+    },
+    "MetricRef": {
+      "additionalProperties": false,
+      "properties": {
+        "metric_id": {
+          "enum": [
+            "net_revenue",
+            "receipt_count",
+            "average_receipt"
+          ],
+          "title": "Metric Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "metric_id",
+        "version_id",
+        "content_hash"
+      ],
+      "title": "MetricRef",
+      "type": "object"
+    },
+    "NegativeStep": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "negative",
+          "default": "negative",
+          "title": "Kind",
+          "type": "string"
+        },
+        "step_id": {
+          "format": "uuid",
+          "title": "Step Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "event": {
+          "$ref": "#/$defs/FilterEventVersion"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Predicate"
+        },
+        "after_step_id": {
+          "format": "uuid",
+          "title": "After Step Id",
+          "type": "string"
+        },
+        "starts_after_us": {
+          "default": 0,
+          "maximum": 315360000000000,
+          "minimum": 0,
+          "title": "Starts After Us",
+          "type": "integer"
+        },
+        "ends_after_us": {
+          "maximum": 315360000000000,
+          "minimum": 0,
+          "title": "Ends After Us",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "step_id",
+        "child_scope_id",
+        "event",
+        "predicate",
+        "after_step_id",
+        "ends_after_us"
+      ],
+      "title": "NegativeStep",
+      "type": "object"
+    },
+    "Period": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on"
+      ],
+      "title": "Period",
+      "type": "object"
+    },
+    "PositiveStep": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "positive",
+          "default": "positive",
+          "title": "Kind",
+          "type": "string"
+        },
+        "step_id": {
+          "format": "uuid",
+          "title": "Step Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "event": {
+          "$ref": "#/$defs/FilterEventVersion"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Predicate"
+        },
+        "gap": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SequenceGap"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "step_id",
+        "child_scope_id",
+        "event",
+        "predicate"
+      ],
+      "title": "PositiveStep",
+      "type": "object"
+    },
+    "QueryContext": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        },
+        "store_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "\\S",
+                "type": "string"
+              },
+              "maxItems": 1000,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Store Ids"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on",
+        "store_ids"
+      ],
+      "title": "QueryContext",
+      "type": "object"
+    },
+    "ReceiptFilterInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "receipt-filter/v1",
+          "default": "receipt-filter/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "registry_version_id": {
+          "format": "uuid",
+          "title": "Registry Version Id",
+          "type": "string"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/FlatBoolean",
+              "not": "#/$defs/FlatNot",
+              "or": "#/$defs/FlatBoolean",
+              "predicate": "#/$defs/FlatPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FlatPredicate"
+            },
+            {
+              "$ref": "#/$defs/FlatBoolean"
+            },
+            {
+              "$ref": "#/$defs/FlatNot"
+            }
+          ],
+          "title": "Expression"
+        }
+      },
+      "required": [
+        "registry_version_id",
+        "expression"
+      ],
+      "title": "ReceiptFilterInput",
+      "type": "object"
+    },
+    "ReceiptScopeBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "binding_id": {
+          "format": "uuid",
+          "title": "Binding Id",
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/ScopeTarget"
+        },
+        "order": {
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "semantic_dataset_version_id": {
+          "format": "uuid",
+          "title": "Semantic Dataset Version Id",
+          "type": "string"
+        },
+        "filter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReceiptFilterInput"
+            },
+            {
+              "$ref": "#/$defs/RelationalReceiptFilterInput"
+            },
+            {
+              "$ref": "#/$defs/AggregateReceiptFilterInput"
+            },
+            {
+              "$ref": "#/$defs/CohortReceiptFilterInput"
+            }
+          ],
+          "title": "Filter"
+        },
+        "combine_mode": {
+          "default": "intersect",
+          "enum": [
+            "intersect",
+            "replace_allowed_parent_field"
+          ],
+          "title": "Combine Mode",
+          "type": "string"
+        },
+        "replaces": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Replaces",
+          "type": "array"
+        },
+        "replaceable": {
+          "default": false,
+          "title": "Replaceable",
+          "type": "boolean"
+        },
+        "locked": {
+          "default": false,
+          "title": "Locked",
+          "type": "boolean"
+        },
+        "linked_target_block_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Linked Target Block Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "binding_id",
+        "target",
+        "order",
+        "semantic_dataset_version_id",
+        "filter"
+      ],
+      "title": "ReceiptScopeBinding",
+      "type": "object"
+    },
+    "Reference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "content_hash"
+      ],
+      "title": "Reference",
+      "type": "object"
+    },
+    "RelationalReceiptFilterInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "receipt-filter/v2",
+          "default": "receipt-filter/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "root_scope_id": {
+          "format": "uuid",
+          "title": "Root Scope Id",
+          "type": "string"
+        },
+        "registry_versions": {
+          "additionalProperties": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Registry Versions",
+          "type": "object"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/ScopedBoolean",
+              "exists": "#/$defs/CorrelatedExists",
+              "not": "#/$defs/ScopedNot",
+              "not_exists": "#/$defs/CorrelatedExists",
+              "or": "#/$defs/ScopedBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/ScopedBoolean"
+            },
+            {
+              "$ref": "#/$defs/ScopedNot"
+            },
+            {
+              "$ref": "#/$defs/CorrelatedExists"
+            }
+          ],
+          "title": "Expression"
+        },
+        "legacy_registry_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Legacy Registry Version Id"
+        }
+      },
+      "required": [
+        "root_scope_id",
+        "registry_versions",
+        "expression"
+      ],
+      "title": "RelationalReceiptFilterInput",
+      "type": "object"
+    },
+    "RelativeSequenceWindow": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "relative",
+          "default": "relative",
+          "title": "Kind",
+          "type": "string"
+        },
+        "policy": {
+          "const": "publication_observation_as_of_elapsed_utc/v1",
+          "default": "publication_observation_as_of_elapsed_utc/v1",
+          "title": "Policy",
+          "type": "string"
+        },
+        "anchor": {
+          "format": "date-time",
+          "title": "Anchor",
+          "type": "string"
+        },
+        "start_offset_us": {
+          "maximum": 0,
+          "minimum": -315360000000000,
+          "title": "Start Offset Us",
+          "type": "integer"
+        },
+        "end_offset_us": {
+          "maximum": 0,
+          "minimum": -315360000000000,
+          "title": "End Offset Us",
+          "type": "integer"
+        },
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at": {
+          "format": "date-time",
+          "title": "Ends At",
+          "type": "string"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "observation_as_of": {
+          "format": "date-time",
+          "title": "Observation As Of",
+          "type": "string"
+        },
+        "knowledge_as_of": {
+          "format": "date-time",
+          "title": "Knowledge As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "anchor",
+        "start_offset_us",
+        "end_offset_us",
+        "starts_at",
+        "ends_at",
+        "observation_as_of",
+        "knowledge_as_of"
+      ],
+      "title": "RelativeSequenceWindow",
+      "type": "object"
+    },
+    "ReportActor": {
+      "additionalProperties": false,
+      "properties": {
+        "workspace_id": {
+          "format": "uuid",
+          "title": "Workspace Id",
+          "type": "string"
+        },
+        "principal_id": {
+          "format": "uuid",
+          "title": "Principal Id",
+          "type": "string"
+        },
+        "permissions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Permissions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "workspace_id",
+        "principal_id",
+        "permissions"
+      ],
+      "title": "ReportActor",
+      "type": "object"
+    },
+    "RetailAnalysisInput": {
+      "additionalProperties": false,
+      "description": "Typed reference to the existing bounded Analytics provider, not a new evaluator.",
+      "properties": {
+        "definition_id": {
+          "format": "uuid",
+          "title": "Definition Id",
+          "type": "string"
+        },
+        "provider": {
+          "const": "metric-workspace/v2",
+          "default": "metric-workspace/v2",
+          "title": "Provider",
+          "type": "string"
+        },
+        "query": {
+          "$ref": "#/$defs/WorkspaceRunRequest"
+        }
+      },
+      "required": [
+        "definition_id",
+        "query"
+      ],
+      "title": "RetailAnalysisInput",
+      "type": "object"
+    },
+    "ScopeTarget": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "document",
+            "chapter",
+            "page",
+            "section",
+            "block"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ],
+      "title": "ScopeTarget",
+      "type": "object"
+    },
+    "ScopedBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "and": "#/$defs/ScopedBoolean",
+                "exists": "#/$defs/CorrelatedExists",
+                "not": "#/$defs/ScopedNot",
+                "not_exists": "#/$defs/CorrelatedExists",
+                "or": "#/$defs/ScopedBoolean",
+                "predicate": "#/$defs/ScopedPredicate"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ScopedPredicate"
+              },
+              {
+                "$ref": "#/$defs/ScopedBoolean"
+              },
+              {
+                "$ref": "#/$defs/ScopedNot"
+              },
+              {
+                "$ref": "#/$defs/CorrelatedExists"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "children"
+      ],
+      "title": "ScopedBoolean",
+      "type": "object"
+    },
+    "ScopedCount": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "scoped_count",
+          "default": "scoped_count",
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "definition": {
+          "$ref": "#/$defs/FilterCountVersion"
+        },
+        "window": {
+          "$ref": "#/$defs/AggregateWindow"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "definition",
+        "window",
+        "predicate"
+      ],
+      "title": "ScopedCount",
+      "type": "object"
+    },
+    "ScopedNot": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/ScopedBoolean",
+              "exists": "#/$defs/CorrelatedExists",
+              "not": "#/$defs/ScopedNot",
+              "not_exists": "#/$defs/CorrelatedExists",
+              "or": "#/$defs/ScopedBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/ScopedBoolean"
+            },
+            {
+              "$ref": "#/$defs/ScopedNot"
+            },
+            {
+              "$ref": "#/$defs/CorrelatedExists"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "child"
+      ],
+      "title": "ScopedNot",
+      "type": "object"
+    },
+    "ScopedPredicate": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "predicate",
+          "default": "predicate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "field_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "field_version_id": {
+          "format": "uuid",
+          "title": "Field Version Id",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "ne",
+            "lt",
+            "le",
+            "gt",
+            "ge",
+            "in",
+            "is_null",
+            "is_not_null"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "values": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/FilterValue"
+          },
+          "maxItems": 1000,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "field_id",
+        "field_version_id",
+        "operator"
+      ],
+      "title": "ScopedPredicate",
+      "type": "object"
+    },
+    "SequenceBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "aggregate_compare": "#/$defs/AggregateCompare",
+                "and": "#/$defs/SequenceBoolean",
+                "exists": "#/$defs/SequenceExists",
+                "not": "#/$defs/SequenceNot",
+                "not_exists": "#/$defs/SequenceExists",
+                "or": "#/$defs/SequenceBoolean",
+                "predicate": "#/$defs/ScopedPredicate",
+                "sequence": "#/$defs/BehavioralSequence"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ScopedPredicate"
+              },
+              {
+                "$ref": "#/$defs/AggregateCompare"
+              },
+              {
+                "$ref": "#/$defs/BehavioralSequence"
+              },
+              {
+                "$ref": "#/$defs/SequenceBoolean"
+              },
+              {
+                "$ref": "#/$defs/SequenceNot"
+              },
+              {
+                "$ref": "#/$defs/SequenceExists"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "children"
+      ],
+      "title": "SequenceBoolean",
+      "type": "object"
+    },
+    "SequenceExists": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "exists",
+            "not_exists"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/SequenceBoolean",
+              "exists": "#/$defs/SequenceExists",
+              "not": "#/$defs/SequenceNot",
+              "not_exists": "#/$defs/SequenceExists",
+              "or": "#/$defs/SequenceBoolean",
+              "predicate": "#/$defs/ScopedPredicate",
+              "sequence": "#/$defs/BehavioralSequence"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/BehavioralSequence"
+            },
+            {
+              "$ref": "#/$defs/SequenceBoolean"
+            },
+            {
+              "$ref": "#/$defs/SequenceNot"
+            },
+            {
+              "$ref": "#/$defs/SequenceExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "SequenceExists",
+      "type": "object"
+    },
+    "SequenceGap": {
+      "additionalProperties": false,
+      "properties": {
+        "minimum_us": {
+          "default": 0,
+          "maximum": 315360000000000,
+          "minimum": 0,
+          "title": "Minimum Us",
+          "type": "integer"
+        },
+        "maximum_us": {
+          "maximum": 315360000000000,
+          "minimum": 0,
+          "title": "Maximum Us",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "maximum_us"
+      ],
+      "title": "SequenceGap",
+      "type": "object"
+    },
+    "SequenceNot": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/SequenceBoolean",
+              "exists": "#/$defs/SequenceExists",
+              "not": "#/$defs/SequenceNot",
+              "not_exists": "#/$defs/SequenceExists",
+              "or": "#/$defs/SequenceBoolean",
+              "predicate": "#/$defs/ScopedPredicate",
+              "sequence": "#/$defs/BehavioralSequence"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/BehavioralSequence"
+            },
+            {
+              "$ref": "#/$defs/SequenceBoolean"
+            },
+            {
+              "$ref": "#/$defs/SequenceNot"
+            },
+            {
+              "$ref": "#/$defs/SequenceExists"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "child"
+      ],
+      "title": "SequenceNot",
+      "type": "object"
+    },
+    "SequencePropertyBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "left_step_id": {
+          "format": "uuid",
+          "title": "Left Step Id",
+          "type": "string"
+        },
+        "left_field": {
+          "$ref": "#/$defs/AggregateFieldRef"
+        },
+        "right_step_id": {
+          "format": "uuid",
+          "title": "Right Step Id",
+          "type": "string"
+        },
+        "right_field": {
+          "$ref": "#/$defs/AggregateFieldRef"
+        },
+        "null_policy": {
+          "const": "unknown",
+          "default": "unknown",
+          "title": "Null Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left_step_id",
+        "left_field",
+        "right_step_id",
+        "right_field"
+      ],
+      "title": "SequencePropertyBinding",
+      "type": "object"
+    },
+    "StoreBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "and": "#/$defs/StoreBoolean",
+                "not": "#/$defs/StoreNot",
+                "or": "#/$defs/StoreBoolean",
+                "store_in": "#/$defs/StoreSelection"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/StoreSelection"
+              },
+              {
+                "$ref": "#/$defs/StoreBoolean"
+              },
+              {
+                "$ref": "#/$defs/StoreNot"
+              }
+            ]
+          },
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "children"
+      ],
+      "title": "StoreBoolean",
+      "type": "object"
+    },
+    "StoreControl": {
+      "additionalProperties": false,
+      "properties": {
+        "semantic_dataset_version_id": {
+          "format": "uuid",
+          "title": "Semantic Dataset Version Id",
+          "type": "string"
+        },
+        "target_block_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Target Block Ids",
+          "type": "array"
+        },
+        "store_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Store Ids"
+        }
+      },
+      "required": [
+        "semantic_dataset_version_id",
+        "target_block_ids"
+      ],
+      "title": "StoreControl",
+      "type": "object"
+    },
+    "StoreFilterV1": {
+      "additionalProperties": false,
+      "properties": {
+        "semantic_dataset_version_id": {
+          "format": "uuid",
+          "title": "Semantic Dataset Version Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "store-filter/v1",
+          "default": "store-filter/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "semantic_rule": {
+          "const": "authorized-store-set/v1",
+          "default": "authorized-store-set/v1",
+          "title": "Semantic Rule",
+          "type": "string"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/StoreBoolean",
+              "not": "#/$defs/StoreNot",
+              "or": "#/$defs/StoreBoolean",
+              "store_in": "#/$defs/StoreSelection"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/StoreSelection"
+            },
+            {
+              "$ref": "#/$defs/StoreBoolean"
+            },
+            {
+              "$ref": "#/$defs/StoreNot"
+            }
+          ],
+          "title": "Expression"
+        }
+      },
+      "required": [
+        "semantic_dataset_version_id",
+        "expression"
+      ],
+      "title": "StoreFilterV1",
+      "type": "object"
+    },
+    "StoreNot": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/StoreBoolean",
+              "not": "#/$defs/StoreNot",
+              "or": "#/$defs/StoreBoolean",
+              "store_in": "#/$defs/StoreSelection"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/StoreSelection"
+            },
+            {
+              "$ref": "#/$defs/StoreBoolean"
+            },
+            {
+              "$ref": "#/$defs/StoreNot"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "child"
+      ],
+      "title": "StoreNot",
+      "type": "object"
+    },
+    "StoreSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "store_in",
+          "default": "store_in",
+          "title": "Kind",
+          "type": "string"
+        },
+        "field": {
+          "const": "Store.store_id",
+          "default": "Store.store_id",
+          "title": "Field",
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "values"
+      ],
+      "title": "StoreSelection",
+      "type": "object"
+    },
+    "TemporalSettingsV2": {
+      "additionalProperties": false,
+      "description": "Explicit comparison settings; legacy alignment keeps its separate meaning.",
+      "properties": {
+        "schema_version": {
+          "const": "time-comparison-settings/v2",
+          "default": "time-comparison-settings/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "none",
+            "previous_period",
+            "custom_period",
+            "previous_year_same_dates",
+            "previous_year_calendar_aligned",
+            "previous_year_iso_week_aligned",
+            "previous_year_fiscal_period",
+            "previous_year_comparable_elapsed_days"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "leap_day_policy": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_map",
+                "exclude",
+                "merge_with_feb_28"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Leap Day Policy"
+        },
+        "iso_week_53_policy": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_map",
+                "exclude",
+                "explicit_partial"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Iso Week 53 Policy"
+        },
+        "comparison_period": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComparisonPeriod"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "previous_period_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_bucket_count",
+                "local_date_duration"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Period Basis"
+        },
+        "incomplete_period_policy": {
+          "enum": [
+            "exclude",
+            "comparable_elapsed_days",
+            "explicit_partial"
+          ],
+          "title": "Incomplete Period Policy",
+          "type": "string"
+        },
+        "duration_normalization": {
+          "const": "none",
+          "default": "none",
+          "title": "Duration Normalization",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "incomplete_period_policy"
+      ],
+      "title": "TemporalSettingsV2",
+      "type": "object"
+    },
+    "VisualColumn": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Key",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Name",
+          "type": "string"
+        },
+        "visible": {
+          "default": true,
+          "title": "Visible",
+          "type": "boolean"
+        },
+        "width": {
+          "default": 160,
+          "maximum": 600,
+          "minimum": 60,
+          "title": "Width",
+          "type": "integer"
+        },
+        "align": {
+          "default": "right",
+          "enum": [
+            "left",
+            "center",
+            "right"
+          ],
+          "title": "Align",
+          "type": "string"
+        },
+        "wrap": {
+          "default": false,
+          "title": "Wrap",
+          "type": "boolean"
+        },
+        "decimals": {
+          "anyOf": [
+            {
+              "maximum": 8,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decimals"
+        },
+        "bars": {
+          "default": false,
+          "title": "Bars",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "key"
+      ],
+      "title": "VisualColumn",
+      "type": "object"
+    },
+    "VisualSeries": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Key",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Name",
+          "type": "string"
+        },
+        "visible": {
+          "default": true,
+          "title": "Visible",
+          "type": "boolean"
+        },
+        "kind": {
+          "default": "line",
+          "enum": [
+            "line",
+            "bar",
+            "area"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "color": {
+          "default": "primary",
+          "enum": [
+            "primary",
+            "secondary",
+            "violet",
+            "green",
+            "orange",
+            "red",
+            "muted"
+          ],
+          "title": "Color",
+          "type": "string"
+        },
+        "axis": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "left",
+            "right"
+          ],
+          "title": "Axis",
+          "type": "string"
+        },
+        "width": {
+          "default": 2,
+          "maximum": 6,
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        },
+        "stroke": {
+          "default": "solid",
+          "enum": [
+            "solid",
+            "dashed",
+            "dotted"
+          ],
+          "title": "Stroke",
+          "type": "string"
+        },
+        "shape": {
+          "default": "straight",
+          "enum": [
+            "straight",
+            "smooth",
+            "step"
+          ],
+          "title": "Shape",
+          "type": "string"
+        },
+        "points": {
+          "default": true,
+          "title": "Points",
+          "type": "boolean"
+        },
+        "labels": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Labels"
+        },
+        "label_position": {
+          "anyOf": [
+            {
+              "enum": [
+                "top",
+                "bottom",
+                "left",
+                "right",
+                "inside",
+                "insideTop",
+                "insideBottom"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label Position"
+        },
+        "fill_opacity": {
+          "default": 0.15,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Fill Opacity",
+          "type": "number"
+        }
+      },
+      "required": [
+        "key"
+      ],
+      "title": "VisualSeries",
+      "type": "object"
+    },
+    "WorkspaceRunRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "time_comparison": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TemporalSettingsV2"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "receipt_filter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReceiptFilterInput"
+            },
+            {
+              "$ref": "#/$defs/RelationalReceiptFilterInput"
+            },
+            {
+              "$ref": "#/$defs/AggregateReceiptFilterInput"
+            },
+            {
+              "$ref": "#/$defs/CohortReceiptFilterInput"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Receipt Filter"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/WorkspaceScopeInput"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "semantic_dataset_version_id": {
+          "format": "uuid",
+          "title": "Semantic Dataset Version Id",
+          "type": "string"
+        },
+        "common": {
+          "$ref": "#/$defs/QueryContext"
+        },
+        "local_store_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "\\S",
+                "type": "string"
+              },
+              "maxItems": 1000,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Local Store Ids"
+        },
+        "grain": {
+          "enum": [
+            "day",
+            "week",
+            "month",
+            "quarter",
+            "half_year",
+            "year"
+          ],
+          "title": "Grain",
+          "type": "string"
+        },
+        "calendar_ref": {
+          "$ref": "#/$defs/CalendarRef"
+        },
+        "calendar_basis": {
+          "enum": [
+            "calendar",
+            "fiscal"
+          ],
+          "title": "Calendar Basis",
+          "type": "string"
+        },
+        "alignment": {
+          "enum": [
+            "none",
+            "previous_year_same_dates"
+          ],
+          "title": "Alignment",
+          "type": "string"
+        },
+        "metric_refs": {
+          "items": {
+            "$ref": "#/$defs/MetricRef"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Metric Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "semantic_dataset_version_id",
+        "common",
+        "local_store_ids",
+        "grain",
+        "calendar_ref",
+        "calendar_basis",
+        "alignment",
+        "metric_refs"
+      ],
+      "title": "WorkspaceRunRequest",
+      "type": "object"
+    },
+    "WorkspaceScopeInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "workspace-scope/v1",
+          "default": "workspace-scope/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "dependency_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Dependency Hash",
+          "type": "string"
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/$defs/StoreFilterV1"
+          },
+          "title": "Filters",
+          "type": "array"
+        }
+      },
+      "required": [
+        "dependency_hash",
+        "filters"
+      ],
+      "title": "WorkspaceScopeInput",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "definition": {
+      "$ref": "#/$defs/ComposerDefinitionV1"
+    },
+    "actor": {
+      "$ref": "#/$defs/ReportActor"
+    },
+    "capabilities": {
+      "$ref": "#/$defs/ComposerCapabilities"
+    }
+  },
+  "required": [
+    "definition",
+    "actor"
+  ],
+  "title": "ComposerPrepareResponse",
+  "type": "object"
+}

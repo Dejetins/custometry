@@ -1,17 +1,27 @@
 """Current resource projection from Identity-owned tables and organization evaluator."""
 
 from datetime import UTC, datetime
-from typing import Any
+from typing import Any, cast
 from uuid import UUID
 from psycopg.rows import dict_row
 from packages.identity_access.domain.policy import Actor
 from packages.identity_access.domain.organization import required_functional_permission
 from packages.identity_access.infrastructure.organization_postgres import (
     PostgresOrganizationRepository,
+    Connect,
 )
 
 
 class PostgresResourceAccessRepository(PostgresOrganizationRepository):
+    def __init__(self, connect: Connect, *, request_snapshot: bool = False):
+        self._snapshot_at = datetime.now(UTC) if request_snapshot else None
+        if request_snapshot:
+            from packages.identity_access.infrastructure.request_projection import RequestProjection
+
+            projection = RequestProjection(connect)
+            connect = cast(Connect, projection.connect)
+        super().__init__(connect)
+
     def resource_context(
         self,
         actor: Actor,
@@ -20,7 +30,7 @@ class PostgresResourceAccessRepository(PostgresOrganizationRepository):
         action: str,
         legacy_creator: UUID | None,
     ) -> dict[str, Any]:
-        at = datetime.now(UTC)
+        at = self._snapshot_at or datetime.now(UTC)
         permission = required_functional_permission(resource_type, action)
         with self._connect() as c, c.cursor(row_factory=dict_row) as cur:
             cur.execute(

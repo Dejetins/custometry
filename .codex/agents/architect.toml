@@ -20,7 +20,7 @@ Authoritative inputs:
 - Require accepted product constraints, release stage, current entrypoints/contracts/topology, affected consumers, and scale/failure constraints. Read the selected hierarchical planning document, its relevant links and accepted decisions, or the independent ticket/specification.
 
 Skill routing:
-- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
+- Current session skill metadata and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
 - Target-state architecture -> architecture-design as the primary workflow.
 - Compatibility or rollout semantics -> contract-impact-analysis as a companion.
 - Terminal read-only assessment -> hand off to architecture-review.

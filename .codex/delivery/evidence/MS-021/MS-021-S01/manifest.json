@@ -1,0 +1,314 @@
+[
+  {
+    "path": ".codex/agents/generated/MS-021/MS-021-S01.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "f02146dad4b2eabbb93fd5e8abb2e4ddfd4cd03ceff52895c6a62509789b0880"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-021/preparation/baseline.json",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "1a7626a3e88b185226cb8a201e16605a160d2964bd3ca13b29e302fb5e812435"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-021/preparation/journal-capability.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "0c1e18e310dd7563e08a13ee743b41c71bc3eb6304e7e2c2177f3a6a16472798"
+  },
+  {
+    "path": ".codex/delivery/evidence/WS-004/WS-004-v0.2.16.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "b740b96cfd0ffb15e134cc49ada68a1728ab8479ec2da00bb5ebcfc68fd05ee0"
+  },
+  {
+    "path": "apps/api/src/custometry_api/analytics/aggregate_access.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "52fef7a4069c5eab158eafa4c9c95b125d462128312acd99052ca5f0bb8b3f2a"
+  },
+  {
+    "path": "apps/api/src/custometry_api/analytics/aggregate_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "61fa41d8a7006d87119a35122d9e6f5dd10a8e51fbc51feb52ca190a22f9bb55"
+  },
+  {
+    "path": "apps/api/src/custometry_api/reports/composer_router.py",
+    "operation": "modified",
+    "before_sha256": "6c8861fcbf1389de3752009b8e1751d70833ef3ad7b09cfe0c9cb8867607840d",
+    "sha256": "bf8a4b684170cd701ca77296ccaf7cfa97af247819ad150b732cabfe1f6facff"
+  },
+  {
+    "path": "apps/api/src/custometry_api/reports/workspace_composition.py",
+    "operation": "modified",
+    "before_sha256": "db1b90535f8313b496573029bfd62099094c13694bcb7bbdde069369cad0028b",
+    "sha256": "e8b8c270039185fd764a4d12df065e1d527f331dd1d4964b6907a46f856bc41d"
+  },
+  {
+    "path": "apps/web/src/features/reports/AggregateFilterEditor.tsx",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "1f6138d792bb3e91f142d4f8943a2585f9f4fe00be55f54d0193708e76fd028d"
+  },
+  {
+    "path": "apps/web/src/features/reports/ComposerBuilder.tsx",
+    "operation": "modified",
+    "before_sha256": "dce315d61eba713e5810752bcd43f564a0556f2c5186e95c4579cbfe5cc40b69",
+    "sha256": "cf8799cac11a3342f9b1bbe968d9734084a87428de334d9a59766c3d9395a602"
+  },
+  {
+    "path": "apps/web/src/features/reports/ComposerReceiptScopes.tsx",
+    "operation": "modified",
+    "before_sha256": "6b4593c1309c70531d9c3e515b443442f0d9e23b8309d62da31ceb5b1347eaec",
+    "sha256": "b440378887229ddc9f05f940235773ab6654c1937c3a51afbb611265c3114399"
+  },
+  {
+    "path": "apps/web/src/features/reports/ReceiptFilterEditor.tsx",
+    "operation": "modified",
+    "before_sha256": "45893c6c771aeb9b521ebbb083d8aa72143823997950cce0429d195acac2ccc9",
+    "sha256": "5f94863aebe2b5046a6c7bad08b484d4eadbf9d4e2b5891c7fa7c986bf4ae9ef"
+  },
+  {
+    "path": "apps/web/src/features/reports/aggregate-filter-editor.test.tsx",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "0e6d05add70e4ba83b3b8ede4f3953a7c59e0520fa73eed67d76450204bd8ca1"
+  },
+  {
+    "path": "apps/web/src/features/reports/composer.css",
+    "operation": "modified",
+    "before_sha256": "cc5445857baf81be09fcc73dec613893a74109f477b3c254f358f6a95ca34ad7",
+    "sha256": "7d35834b55ceb9137d04d06759636d21d67aaf322c5089bef44c81f1ff3b34e6"
+  },
+  {
+    "path": "apps/web/src/features/reports/receipt-filter-tree.ts",
+    "operation": "modified",
+    "before_sha256": "cd2e8ba24d1f9edfd7af361f70043a53b6aea5d69f5951c5e8b954a23637dbad",
+    "sha256": "8360dcb263b26836073469a651b340616da1dc4e733e5703e5a20eaf636ff77c"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-copy.ts",
+    "operation": "modified",
+    "before_sha256": "b58f666050fa3c1a616025cb7131ab697e76eee3b438af89e10209f90464db73",
+    "sha256": "9ec7c3cc973ef45d284410f2905944ecb21027811b13b41400e85334db4a1042"
+  },
+  {
+    "path": "custometry-ui-blueprint-ru.md",
+    "operation": "modified",
+    "before_sha256": "8d4a234aa9c6d4aba001560607f46816b70bfd330a9f1318d0b86265b4a8707d",
+    "sha256": "306e785136e6aabd0bda82de89c85dcde0672a8134b41176543215ccedf92b70"
+  },
+  {
+    "path": "docs/README.md",
+    "operation": "modified",
+    "before_sha256": "585fcdca415729f4cefae7ffdb76911f39e28df70beae5ac9713fe12f4cbcb9b",
+    "sha256": "c8f5833762e4569bf8e5fea7ca55cd3087cad3e69a0bc75ec13e7a5127bb8412"
+  },
+  {
+    "path": "docs/architecture/README.md",
+    "operation": "modified",
+    "before_sha256": "5a89fee46910f65b23eef681dd28e6e119856ce847a2b02d5720e65638e2bdfc",
+    "sha256": "203820545402be6870f7cf331ec3a01f61307d71d8e76da22686e5321187940b"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md",
+    "operation": "modified",
+    "before_sha256": "eecc112e04c11c4978afab118e7dd6c77d3a1153dabf2f027d500a2b37a6f638",
+    "sha256": "a5a9b9cba27dca2083a5f8ec1b794fd9f7facf31952800b3fd17742c17b5e0e8"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004.md",
+    "operation": "modified",
+    "before_sha256": "b740b96cfd0ffb15e134cc49ada68a1728ab8479ec2da00bb5ebcfc68fd05ee0",
+    "sha256": "35a60b33438f015dda5539a01948df611c9e20e52fd104c396a75a6912de39ad"
+  },
+  {
+    "path": "docs/architecture/planning/milestones/MS-021/plan.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "210c74f3db9af2b613015ba1cf45127e5346bb23a5c1fbe6406c4bf51d0a926b"
+  },
+  {
+    "path": "docs/contracts/analytical-authoring-contract.md",
+    "operation": "modified",
+    "before_sha256": "b96cd2c6b79b041bf5dd45f9a4a23f1c8a654107cd22d2e0ffd73c5895bcf8fa",
+    "sha256": "48a7d98934dd6346e70c9e14e2080cce3b0ea5c0155cf47e75f90dd8596ee70d"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/retail_filter.py",
+    "operation": "modified",
+    "before_sha256": "d530edefdadcfa89c38b1046e06e60f0789f2fe7498e68bb33845278c8d5d8ec",
+    "sha256": "b50a39cf0161a584253ebe7a23639d9c160541458f2ee4b31b90e41a18463d5e"
+  },
+  {
+    "path": "packages/contracts/analytics/receipt_selection.py",
+    "operation": "modified",
+    "before_sha256": "2c421a00c34b305f97cb86b5bc1664c5eafd118d7525ff887f4f945f5bcf616c",
+    "sha256": "212a83757ea57b67edca35d4a5744b48756bbfd0fd4a69971e0f9e9468b0c08d"
+  },
+  {
+    "path": "packages/contracts/analytics/retail_aggregate.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "cc3b0061e5cb7d68b98dbc09ada19b67c0ad5a71ebfec420b4d4d0f15d5a7ae2"
+  },
+  {
+    "path": "packages/contracts/generate_composer_client.py",
+    "operation": "modified",
+    "before_sha256": "7571cb3e22253ee464c6414268ab685aca0f9ab969318cacb7f62bea1c54d554",
+    "sha256": "393688ae6da24497f334ebebade3056030cb1b7632eaa01093c54abc38597eb4"
+  },
+  {
+    "path": "packages/contracts/openapi/analytics.openapi.json",
+    "operation": "modified",
+    "before_sha256": "81209866480f8d9aa1225ddc44d5df81f637a49615a2088a2b79f9bc58b3edf3",
+    "sha256": "bb7eb1f2aa54ccde96a54ffed8e5ffb27192cdfe5e1de6a0b24d7bc6973a50b0"
+  },
+  {
+    "path": "packages/contracts/openapi/composer.openapi.json",
+    "operation": "modified",
+    "before_sha256": "a35be6b218712aaaeb624d44f6ee839df0df4c146995df269885f0344770d364",
+    "sha256": "2a4b6fd83b69d0175d36b7c0d2bea0df977e387b3e25cc237064646c2f6b93e7"
+  },
+  {
+    "path": "packages/contracts/openapi/reports.openapi.json",
+    "operation": "modified",
+    "before_sha256": "1f7a0c0e8eab47b7e8570c9ce51444000d31826e4304444026acfe83c6ef7d5a",
+    "sha256": "5499a75f1a95f24eca71cccc50b0d2b391385b8958915fa2dc4663dafb967db1"
+  },
+  {
+    "path": "packages/contracts/openapi/workspace.openapi.json",
+    "operation": "modified",
+    "before_sha256": "2c3e20f8e5a6e643009b11996020488aabc4c474c8b11edf6059292dd442b774",
+    "sha256": "c81f1b219fc30ee687a3d13fe689d074c3d430b0a67a8951e536efc64361996e"
+  },
+  {
+    "path": "packages/contracts/schemas/analytical-authoring-v1.schema.json",
+    "operation": "modified",
+    "before_sha256": "7bf27d045544beda3b94864bbfa5084f9aaa53fb1931f0dd4c57e1267a1cc81a",
+    "sha256": "ad89b78974205c785f24ab687cdf063fd31f662de3cbf30a0470520571d27671"
+  },
+  {
+    "path": "packages/contracts/schemas/analytics-workspace-run-v2.schema.json",
+    "operation": "modified",
+    "before_sha256": "8914e04c2310ee6549c1d7d245610ae6ef561b360b069fbee399618c7ee2b324",
+    "sha256": "b47b18af4a0be83153dd6269d5dc99b771307868dc4dea5738ddc55235dba2bc"
+  },
+  {
+    "path": "packages/contracts/schemas/composed-report-v1.schema.json",
+    "operation": "modified",
+    "before_sha256": "f0529dc58e41d99baaab7b9a52bc80c2fb39d2709f9b3a489f6750483f3c220e",
+    "sha256": "9fe862d33851035b53511d8e4c2b1115ca26c874b1c2409e7bf84d7cef69808f"
+  },
+  {
+    "path": "packages/contracts/schemas/composer-apply-v1.schema.json",
+    "operation": "modified",
+    "before_sha256": "f45979111b8e2589376f01e4dcdb7628e1eae78376a43bf1141386cafbcb9678",
+    "sha256": "8fd41993d9d2e1d7371f630327e52a6c974c7002b461a110afde5f5c704ecf5a"
+  },
+  {
+    "path": "packages/contracts/schemas/composer-editor-v1.schema.json",
+    "operation": "modified",
+    "before_sha256": "ad9d9e4cd23e396e8e9621bb22dc0ce8094cdbaac8b6fc205cb965ccb8916afd",
+    "sha256": "ab61700aee70abeba53cf148c0d59d3c74c39d1f1e50491fd708729e44ea75e5"
+  },
+  {
+    "path": "packages/contracts/schemas/composer-preflight-v1.schema.json",
+    "operation": "modified",
+    "before_sha256": "336b4f1a09373fe58fc15f2fdb6e9bd98f76dbb347d65450c782adb622b38aa8",
+    "sha256": "e5807fb9515141d48cc57587783c784c7538c2b4c7060a348a32b723ad4c3dc5"
+  },
+  {
+    "path": "packages/contracts/schemas/composer-prepare-v1.schema.json",
+    "operation": "modified",
+    "before_sha256": "7139022fb90c5a360541efc175b890cfced8d1e579eee731a25a4e78324c1159",
+    "sha256": "feb6b77fd20d90151c7cc3fa34f6e6a9874a30e00a57bee5270331ec6ae2c549"
+  },
+  {
+    "path": "packages/contracts/schemas/composer-save-v1.schema.json",
+    "operation": "modified",
+    "before_sha256": "501aa70ee9365c84f0603ee9d7f8cedaa70c0618fbfea36a491135e4871e17a5",
+    "sha256": "38f3fc113b780286ee402b29603a415292b962d17742e389d0402e2be2fefd2d"
+  },
+  {
+    "path": "packages/contracts/src/composer-client.ts",
+    "operation": "modified",
+    "before_sha256": "d6133bb77c5a4962aa31c4e19886c11d77c7e7f3caabf465cd0c3cd9f958b0ab",
+    "sha256": "2eaa998f7e63047acf30c4e03102b7efb1ef93caf6e64f770a90f44138760db7"
+  },
+  {
+    "path": "packages/contracts/src/workspace-client.ts",
+    "operation": "modified",
+    "before_sha256": "9a5072c25ed06ddcb454613936247516001169b1f88af899c500e37f80a43131",
+    "sha256": "6f7e0c00ac1e27fb6e80d66b9f4b3798fd3b3f4453b8a1847c0bdecaafe6a432"
+  },
+  {
+    "path": "packages/contracts/src/workspace-contracts.ts",
+    "operation": "modified",
+    "before_sha256": "ad31e8d3c51b42f79d5cc835c6384607698138d201e60cfa02405ded4c410234",
+    "sha256": "dc78f8b7be667fa76c8f740c7505e18d67e63a1dc073bc90272d4ac2c43c87a1"
+  },
+  {
+    "path": "packages/presentation/domain/receipt_scopes.py",
+    "operation": "modified",
+    "before_sha256": "418c9657be5a663cd1688ca1a25677ddbd013089d6daea131b9ecec8bf372d83",
+    "sha256": "f8e14ddc36d7e0f1c8e0f62028e300cdf540ff203a77370182d4de020ade7f50"
+  },
+  {
+    "path": "packages/semantic_model/application/retail_aggregate.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "88352b3ef9d46565bc740f7341033c3a8c58765290459a9d2119e7a55c78ed7c"
+  },
+  {
+    "path": "packages/semantic_model/infrastructure/postgres.py",
+    "operation": "modified",
+    "before_sha256": "06327b6f864242ff5851b6391a70434a02c931aeed146ad78a177f4b4b974f16",
+    "sha256": "c055f2345d9c873cec71ee83f8ee0797dca21f1271d16e1e6d6c08a17b2a65ff"
+  },
+  {
+    "path": "tests/contract/presentation/test_aggregate_receipt_scopes.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "a18a5c036ebdfb208a4494a55f22b018c5e7353b2b8288956bbe9457c4a7cc8c"
+  },
+  {
+    "path": "tests/e2e/ms-006-composer/aggregate-filters.spec.ts",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "44d2d042d0a50c85b40572633a867f46e0c2d1f50a804d74c90948d089914266"
+  },
+  {
+    "path": "tests/e2e/ms-006-composer/filters.spec.ts",
+    "operation": "modified",
+    "before_sha256": "8cb145c8ac1b1717eaeb997d1cd16fcc8a6ce1d877030236b32a176ad45e484f",
+    "sha256": "97368a55df4680c3bbd2e005dd6dd6a7b983b0d3529932f74ce83d06789469a6"
+  },
+  {
+    "path": "tests/e2e/ms-006-composer/relational-filters.spec.ts",
+    "operation": "modified",
+    "before_sha256": "81ad744ff2c6c78181718e6aaa32d7bd422b52f62b1a40a2a1eb9efa7d3c2b50",
+    "sha256": "94495919662abe27689c725943974a0d43d5364d96ada3665d30ad38ebf13bc0"
+  },
+  {
+    "path": "tests/integration/analytics/run_retail_filters.py",
+    "operation": "modified",
+    "before_sha256": "e8640fe48675a57610f61fced6771563fbf8cf53f11f77b40c5f5fe7712edbfd",
+    "sha256": "b8fc377772fbd565d9e2a0ce4352f3033a4223a0bfd6b4b57f256f8fd206bc8d"
+  },
+  {
+    "path": "tests/integration/analytics/test_retail_aggregate_provider.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "cdb9689c6b1c5234d17ef7edcd53805ea00b73cffe1d684d51341b33494ccfb6"
+  },
+  {
+    "path": "tests/unit/semantic/test_retail_aggregate.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "d0f6384387bbc8d11ddcc3b9bc5f8afa5ebb74115271f3b16364b9aae1bea7d6"
+  }
+]

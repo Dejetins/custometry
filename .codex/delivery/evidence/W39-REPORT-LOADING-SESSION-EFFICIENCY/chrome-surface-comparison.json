@@ -1,0 +1,33 @@
+{
+  "browser": "136.0.7103.25",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "before": {
+    "backdrop": "blur(18px) saturate(1.2)",
+    "background": "rgba(17, 18, 20, 0.94)",
+    "bounds": {
+      "x": 63,
+      "y": 9,
+      "width": 1368,
+      "height": 97,
+      "top": 9,
+      "right": 1431,
+      "bottom": 106,
+      "left": 63
+    }
+  },
+  "mutation": "Temporary browser-only backdrop-filter:none on workspace chrome; no product source change.",
+  "image_difference": {
+    "changed_pixels": 2671,
+    "total_pixels": 1296000,
+    "bbox": [
+      63,
+      9,
+      1431,
+      98
+    ],
+    "maximum_channel_difference": 2
+  }
+}

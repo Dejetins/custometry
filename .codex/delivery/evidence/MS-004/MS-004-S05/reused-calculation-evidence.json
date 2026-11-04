@@ -1,0 +1,88 @@
+{
+  "schema": "ms004-s05-reuse/v1",
+  "sources": [
+    {
+      "path": "packages/analytics_core/application/workspace_calculation.py",
+      "source_commit": "750b28f145c3dcd7c833cac71814444f5f4a7fa7",
+      "source_sha256": "865cc082709d7420da62c4cc0522cf7e649d4e6fbede2bd6b9ae77bdf073fa5e",
+      "current_sha256": "865cc082709d7420da62c4cc0522cf7e649d4e6fbede2bd6b9ae77bdf073fa5e",
+      "identical_bytes": true
+    },
+    {
+      "path": "packages/artifacts/infrastructure/workspace.py",
+      "source_commit": "750b28f145c3dcd7c833cac71814444f5f4a7fa7",
+      "source_sha256": "a7504e7a86dc1219a62a01e66d4f58f5241687132ca10b42ca734b2da3d21da3",
+      "current_sha256": "a7504e7a86dc1219a62a01e66d4f58f5241687132ca10b42ca734b2da3d21da3",
+      "identical_bytes": true
+    },
+    {
+      "path": "tests/integration/analytics/run_s02.py",
+      "source_commit": "750b28f145c3dcd7c833cac71814444f5f4a7fa7",
+      "source_sha256": "3f6f18f17ecc72a49ef0a5181c111ac9df04f9629a72ba7f4e093e93e1b5ae96",
+      "current_sha256": "3f6f18f17ecc72a49ef0a5181c111ac9df04f9629a72ba7f4e093e93e1b5ae96",
+      "identical_bytes": true
+    },
+    {
+      "path": "tests/integration/analytics/test_workspace_s02.py",
+      "source_commit": "750b28f145c3dcd7c833cac71814444f5f4a7fa7",
+      "source_sha256": "a67a8c326095014e83d052d8695c291f636f339c2772974c648287db54daa654",
+      "current_sha256": "e06eabb933a9425b6d49293b9a1bdae08c8fe7e3757ff50bf1322107bd495087",
+      "identical_bytes": false,
+      "unchanged_function_asts": [
+        "source_connect",
+        "seed_edges",
+        "s02_runtime",
+        "test_s02_real_corpus_oracle_and_artifacts",
+        "__init__",
+        "resolve",
+        "request",
+        "run",
+        "concurrent_run",
+        "trusted_actor",
+        "oracle"
+      ],
+      "changed_or_removed_function_asts": [
+        "test_v2_routes_remain_unmounted"
+      ]
+    },
+    {
+      "path": "packages/analytics_core/application/workspace_service.py",
+      "source_commit": "750b28f145c3dcd7c833cac71814444f5f4a7fa7",
+      "source_sha256": "2b21ffcbd44472bb29834073a21ec5682520cf8315ce318d07ddfc1909b44d6b",
+      "current_sha256": "f064a259d31918927e953fe62bb64a48e5203da2c242e7d911770191e59590df",
+      "identical_bytes": false,
+      "unchanged_function_asts": [
+        "__init__",
+        "side"
+      ],
+      "changed_or_removed_function_asts": [
+        "_access",
+        "_recheck",
+        "_inputs",
+        "context",
+        "run",
+        "get",
+        "apply",
+        "compare"
+      ]
+    }
+  ],
+  "scope": "Reuse S02 arithmetic/calendar/source-SQL matrix only. S03 authentication/mounted routes and S05 Presentation/view repairs require their separate real proof. No claim that all S02 source bytes remain current.",
+  "service_reuse_analysis": {
+    "normalization": "Rename _access/_recheck/_inputs definitions and call attributes to resolve_access/recheck_access/verified_inputs; no other normalization.",
+    "retained_functions_identical": [
+      "__init__",
+      "resolve_access",
+      "recheck_access",
+      "verified_inputs",
+      "context",
+      "run",
+      "get",
+      "apply",
+      "compare",
+      "side"
+    ],
+    "new_function": "verify_query: separate S03/S05 exact binding proof",
+    "all_retained_function_asts_equal": true
+  }
+}

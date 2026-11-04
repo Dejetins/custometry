@@ -10,6 +10,7 @@ from packages.analytics_core.application.workspace_calculation import (
     delta,
 )
 from packages.contracts.analytics import AnalyticsFailure
+from packages.contracts.analytics.retail_filter import ReceiptFilterPort
 from packages.contracts.analytics.sales_report import SalesSemanticPort, SalesResultPort
 from packages.contracts.analytics.workspace import (
     WorkspaceAccess,
@@ -20,7 +21,7 @@ from packages.contracts.analytics.workspace import (
     WorkspaceCardRequest,
     WorkspaceApplyResult,
     CardResultBinding,
-    CardComparisonV1,
+    CardComparisonV1, WorkspaceScopePreflight,
 )
 from packages.contracts.semantic import WorkspaceCalendarPort
 
@@ -36,9 +37,45 @@ class WorkspaceAnalyticsService:
         artifacts: WorkspaceArtifactPort,
         calendars: WorkspaceCalendarPort,
         access: WorkspaceAccessPort,
+        receipt_filters: ReceiptFilterPort | None = None,
     ):
         self.semantics, self.results, self.artifacts = semantics, results, artifacts
         self.calendars, self.access = calendars, access
+        self.receipt_filters = receipt_filters
+
+    def query_inputs(self, access: WorkspaceAccess, request: WorkspaceRunRequest, *, metadata_only: bool = False
+                     ) -> tuple[dict[str, Any], dict[str, Any]]:
+        if request.receipt_filter is None:
+            return self.verified_inputs(access)
+        if self.receipt_filters is None:
+            raise AnalyticsFailure("FILTER_PROVIDER_UNAVAILABLE")
+        source = self.semantics.sales_projection(workspace_id=access.workspace_id,
+                                                version_id=access.semantic_dataset_version_id)
+        inputs = self.receipt_filters.inputs(access.workspace_id, access.principal_id,
+            access.semantic_dataset_version_id, request.receipt_filter, source, metadata_only=metadata_only)
+        return source, inputs
+
+    def filter_context(self, access: WorkspaceAccess, request: WorkspaceRunRequest,
+                       source: dict[str, Any], inputs: dict[str, Any], *, project: bool = False
+                       ) -> tuple[dict[str, Any], dict[str, Any]]:
+        if request.receipt_filter is None:
+            return source, inputs
+        if self.receipt_filters is None:
+            raise AnalyticsFailure("FILTER_PROVIDER_UNAVAILABLE")
+        args = (access.workspace_id, access.principal_id, access.semantic_dataset_version_id,
+                request.receipt_filter)
+        fingerprint = self.receipt_filters.fingerprint(*args)
+        if project:
+            projection = self.receipt_filters.project(*args, inputs)
+            inputs = projection.inputs
+            source = {**source, "receipt_data_as_of": projection.data_as_of}
+            if projection.selection is not None:
+                if projection.selection.request_hash != fingerprint:
+                    raise AnalyticsFailure("FILTER_POLICY_CHANGED")
+                source = {**source, "receipt_selection": projection.selection.model_dump(mode="json")}
+            if self.receipt_filters.fingerprint(*args) != fingerprint:
+                raise AnalyticsFailure("FILTER_POLICY_CHANGED")
+        return {**source, "receipt_filter_hash": fingerprint}, inputs
 
     def resolve_access(
         self,
@@ -104,19 +141,42 @@ class WorkspaceAnalyticsService:
             "policy_hash": access.policy_hash,
         }
 
+    def preflight(self, *, workspace_id: UUID, principal_id: UUID, request: WorkspaceRunRequest) -> WorkspaceScopePreflight:
+        access = self.resolve_access(workspace_id, principal_id, request.semantic_dataset_version_id, "read")
+        source, inputs = self.query_inputs(access, request, metadata_only=True)
+        source, inputs = self.filter_context(access, request, source, inputs)
+        calendar = self.calendars.get_version(request.calendar_ref, access)
+        context, request_hash = normalize(request, source, inputs, access, calendar)
+        existing = self.results.find_sales(workspace_id=workspace_id, principal_id=principal_id, request_hash=request_hash)
+        if existing is not None:
+            self.artifacts.verify_workspace(workspace_id=workspace_id, payload=existing)
+        selected = {m.metric_id for m in request.metric_refs}
+        rules = [{"metric_id": str(m["metric_id"]), "metric_version_id": str(m["version_id"]),
+                  "policy_version": str(m["eligibility"]["policy_version"]),
+                  "status": str(m["eligibility"]["status"]), "currency": str(m["eligibility"]["currency"]),
+                  "null_policy": str(m["null_policy"]), "return_policy": str(m["return_policy"])}
+                 for m in source["metrics"] if m["metric_id"] in selected]
+        self.recheck_access(access, "read")
+        return WorkspaceScopePreflight.model_validate(dict(request_hash=request_hash, effective_context=context,
+            reuse="reuse" if existing is not None else "new_compute", locked_metric_rules=rules))
+
     def run(
         self, *, workspace_id: UUID, principal_id: UUID, request: WorkspaceRunRequest
     ) -> WorkspaceResultV2:
         access = self.resolve_access(
             workspace_id, principal_id, request.semantic_dataset_version_id, "run"
         )
-        source, inputs = self.verified_inputs(access)
+        source, inputs = self.query_inputs(access, request)
+        source, inputs = self.filter_context(access, request, source, inputs)
         calendar = self.calendars.get_version(request.calendar_ref, access)
         _, request_hash = normalize(request, source, inputs, access, calendar)
         existing = self.results.find_sales(
             workspace_id=workspace_id, principal_id=principal_id, request_hash=request_hash
         )
         if existing is None:
+            source, inputs = self.filter_context(access, request, source, inputs, project=True)
+            if normalize(request, source, inputs, access, calendar)[1] != request_hash:
+                raise AnalyticsFailure("FILTER_POLICY_CHANGED")
             payload = build_workspace(request, source, inputs, access, calendar)
             self.recheck_access(access, "run")
             payload["manifest"] = self.artifacts.commit_workspace(
@@ -169,9 +229,12 @@ class WorkspaceAnalyticsService:
             dataset = request.semantic_dataset_version_id
             if dataset not in loaded:
                 a = self.resolve_access(workspace_id, principal_id, dataset, "run")
-                source, inputs = self.verified_inputs(a)
+                source, inputs = self.query_inputs(a, request)
                 loaded[dataset] = a, source, inputs
             a, source, inputs = loaded[dataset]
+            if request.receipt_filter is not None:
+                source, inputs = self.query_inputs(a, request, metadata_only=True)
+            source, inputs = self.filter_context(a, request, source, inputs)
             calendar = self.calendars.get_version(request.calendar_ref, a)
             _, key = normalize(request, source, inputs, a, calendar)
             if key not in results:
@@ -307,11 +370,18 @@ class WorkspaceAnalyticsService:
                             ),
                         }
                     )
+        selection_codes = sorted({code for result in (left_result, right_result)
+                                  if result.receipt_selection is not None
+                                  for code in [*result.receipt_selection.limitation_codes,
+                                      *( ["RECEIPT_MEMBERSHIP_UNKNOWN"] if result.receipt_selection.unknown_count else [])]})
+        if selection_codes:
+            for value in [total, *buckets]:
+                value["reason_codes"] = sorted(set(value["reason_codes"] + selection_codes))
         status = (
             "unavailable"
             if reasons
             else "descriptive"
-            if different_units
+            if different_units or (selection_codes and total["absolute_delta"] is not None)
             else "comparable"
             if total["absolute_delta"] is not None
             else "unavailable"
@@ -356,7 +426,8 @@ class WorkspaceAnalyticsService:
         access = self.resolve_access(
             workspace_id, principal_id, request.semantic_dataset_version_id, "read"
         )
-        source, inputs = self.verified_inputs(access)
+        source, inputs = self.query_inputs(access, request, metadata_only=True)
+        source, inputs = self.filter_context(access, request, source, inputs)
         calendar = self.calendars.get_version(request.calendar_ref, access)
         _, expected = normalize(request, source, inputs, access, calendar)
         stored = self.results.get_sales(
@@ -372,6 +443,7 @@ class WorkspaceAnalyticsService:
         )
         if (
             result.request_hash != expected
+            and request.time_comparison is None
             and request.alignment == "none"
             and result.effective_context.alignment == "previous_year_same_dates"
         ):

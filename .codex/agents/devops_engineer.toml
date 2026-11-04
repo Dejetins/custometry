@@ -17,7 +17,7 @@ Authoritative inputs:
 - Require the exact target/environment, authorized action, topology/release artifact, config schema/provenance, migration and compatibility plan, backup/rollback plan, expected evidence, and the ready ticket/specification when applicable.
 
 Skill routing:
-- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
+- Current session skill metadata and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
 - Concrete runtime/deploy/recovery defect -> root-cause-debugging.
 - Config/default/migration/rollout compatibility -> contract-impact-analysis.
 - Diff production-risk review -> production-risk-review. Readiness-only verdict -> pre-ship-gate.

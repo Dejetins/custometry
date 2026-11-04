@@ -1,0 +1,126 @@
+[
+  {
+    "path": "apps/web/src/features/reports/pilot-period.ts",
+    "sha256": "49f043387271b02c71a5f3fa0040f2723363a56de7a3ff39edd60edf5eb4e842"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-api.test.ts",
+    "sha256": "23694446a89e0b071401da19147f442a58a525ea28a0ad2b7ed3eac706796217"
+  },
+  {
+    "path": "apps/web/src/features/reports/PilotChrome.tsx",
+    "sha256": "03785e28029a1900a5942296e03d5ac59584d8498dc7f3b69feaf3575806ce7d"
+  },
+  {
+    "path": "apps/web/src/features/reports/session-channel.ts",
+    "sha256": "ec04ad45b26d0f0929e22ee663d85c41d43f739c6bcb81c736618a2fab75aa2d"
+  },
+  {
+    "path": "apps/web/src/features/reports/UI-AUTH-001.feature-route.tsx",
+    "sha256": "ce025f3e539981bb8cf96bb3b9fdc11d066907d455f6cc24cda52b2a3488afc8"
+  },
+  {
+    "path": "apps/web/src/features/reports/UI-RPT-001.feature-route.tsx",
+    "sha256": "6fb3b2efb742de9a6eb0da7e465e0bd75b22336fd8fc336881bfc81f525610d6"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot.css",
+    "sha256": "ce98d096214d17d86e0ba09693df6d9dbdb0130a5a52bbe1545b6c1aee9938a5"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot-source.test.ts",
+    "sha256": "17d5dbfb2bbdbee8fcbf8a9f1989b335a6e6ccf85d26e55fdaea14557705dcdf"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-api.ts",
+    "sha256": "2a50c2997eca886e3c6f41a713a009a66f446b5d8a10602f5fabf764aad7f5cd"
+  },
+  {
+    "path": "apps/web/src/features/reports/WorkspaceProjection.tsx",
+    "sha256": "6eb815ba763c44d2d5cf5b84ab18c4e23ca55dff7b715af2be702907e71b6177"
+  },
+  {
+    "path": "apps/web/src/features/reports/UI-RPT-002.feature-route.tsx",
+    "sha256": "393b3df7b814521f1a8a29a52834d15c72f24a9a97d08e31e19b93419368da0c"
+  },
+  {
+    "path": "apps/web/src/features/reports/UI-RPT-003.feature-route.tsx",
+    "sha256": "5c8bd10403389b89d0fd4517df537e8f6c63aae421b38c52786065012009791a"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot-native.test.ts",
+    "sha256": "0fb046e43b55644cefd4fb392de6ecd58748da625ec88c7af2762ac463a0ce27"
+  },
+  {
+    "path": "apps/web/src/features/reports/report-api.ts",
+    "sha256": "0218f865c9b9d7371ce7f10c243e0b5e66cf0beb15321e89a733c03e73517d48"
+  },
+  {
+    "path": "apps/web/src/features/reports/copy.ts",
+    "sha256": "bb2ac8797cdf8881c1845a96313dfbae2160d8ffecf4b5b4a3941538cf1e8995"
+  },
+  {
+    "path": "apps/web/src/features/reports/ReportChart.tsx",
+    "sha256": "3191ebdf6c272fa98a04f3510e1063a2a436d28682261c23477d18c28cf1f311"
+  },
+  {
+    "path": "apps/web/src/features/reports/PilotDocument.tsx",
+    "sha256": "d62828ce08dbc9b6b472d715c6ae2af10efa4081d7318886a7529387432db2db"
+  },
+  {
+    "path": "apps/web/src/features/reports/report-api.test.ts",
+    "sha256": "3272838b81a9d6ee86857d627764f00a0a3ee1300013925d6accd56f26e65045"
+  },
+  {
+    "path": "apps/web/src/features/reports/report.css",
+    "sha256": "093ceff592badd1879d22ea7dd4d360caff1660e4cbaee46140e4f89065adc1d"
+  },
+  {
+    "path": "apps/web/src/features/reports/WorkspaceCalendar.tsx",
+    "sha256": "d3d524682e25374c1312d71271f51d4bb1822229fc24f79aa8a99b58589e79e7"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot-symbols.ts",
+    "sha256": "890ea128d3d85d50be83c3f101864f8f1befc2982d1c8d5e2c48eca2bf2b6a04"
+  },
+  {
+    "path": "apps/web/src/features/reports/ReportWorkspace.tsx",
+    "sha256": "3a7b6a530c2ce26e09a311b3bd0067c0dbd079bee693537f2b521f7e4faac2cc"
+  },
+  {
+    "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+    "sha256": "8da8d9c686cf864c5da50d814c0c036e3fa21e9abf67fcd3e5f08dfbcc436539"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-copy.ts",
+    "sha256": "0afcd13edfaeee6baf4bae277037b8462ef84461475575256630484011c63bf7"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace.css",
+    "sha256": "824b68e017734250e9c06929eb16f728c8f5be037a1a9a542de9c2b17b39552b"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/seams.json",
+    "sha256": "0e4f89ca9f63f107fb8cc94898256108e00c68e6d7668aa02e1250d5270574db"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/port-prelude.js",
+    "sha256": "bdfe11d90260d064327a3c0059cc94943e92416b74f5ae2f07a1256ce2e5bb91"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/document.html",
+    "sha256": "bf4deb53f0606b423d385b81ea28580a91480de70094eb5b3dd0b725f1d16483"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/port-epilogue.js",
+    "sha256": "57104cd06bb8e168b44a7d634770e6be73808f107cb67799ddba632ae205dcfd"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/runtime.ts",
+    "sha256": "e89967880e9a18d493f2cd4d85a296f34651334a20c1f4952afa280e1ce2d0b5"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/source-map.json",
+    "sha256": "daf217930856b56f346c22723b09f0102b1e96ff57e7052cfba3efc0d84b1acc"
+  }
+]

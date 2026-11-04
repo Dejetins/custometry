@@ -1,6 +1,10 @@
 """S04 isolated real source intake, sessions and native workspace browser fixture."""
 
 from __future__ import annotations
+import asyncio
+from collections.abc import AsyncIterator, Awaitable, Callable
+from fastapi import Request
+from starlette.responses import Response, StreamingResponse
 import json
 import os
 from pathlib import Path
@@ -208,6 +212,81 @@ def create_scenario(tmp_path: Path):
         readers[role] = principal
     app = create_app(settings=settings)
 
+    # Transport-only timing fault: preserve exact production response bytes/headers.
+    delay_state = {"armed": False, "held": False, "timed_out": False}
+    release_body = asyncio.Event()
+    delay_kind = "result"
+
+    @app.post("/fixture/delay-result-body")
+    async def arm_body_delay() -> dict[str, bool]:
+        nonlocal delay_kind
+        delay_kind = "result"
+        release_body.clear()
+        delay_state.update(armed=True, held=False, timed_out=False)
+        return dict(delay_state)
+
+    @app.post("/fixture/delay-apply-body")
+    async def arm_apply_delay() -> dict[str, bool]:
+        nonlocal delay_kind
+        delay_kind = "apply"
+        release_body.clear()
+        delay_state.update(armed=True, held=False, timed_out=False)
+        return dict(delay_state)
+
+    @app.get("/fixture/result-body-state")
+    async def body_state() -> dict[str, bool]:
+        return dict(delay_state)
+
+    @app.post("/fixture/release-result-body")
+    async def release_result_body() -> dict[str, bool]:
+        release_body.set()
+        return dict(delay_state)
+
+    @app.middleware("http")
+    async def delay_production_body(
+        request: Request, call_next: Callable[[Request], Awaitable[Response]]
+    ) -> Response:
+        target = delay_state["armed"] and (
+            (
+                delay_kind == "result"
+                and request.method == "GET"
+                and (
+                    (request.url.path.startswith("/analytics/metric-workspace/v2/datasets/")
+                     and "/results/" in request.url.path)
+                    or request.url.path.startswith("/reports/v2/")
+                )
+            )
+            or (
+                delay_kind == "apply"
+                and request.method == "POST"
+                and request.url.path.startswith("/reports/v2/")
+                and request.url.path.endswith("/apply")
+            )
+        )
+        if target:
+            delay_state["armed"] = False
+        response = await call_next(request)
+        if not target or response.status_code != 200:
+            return response
+        # BaseHTTPMiddleware supplies an async stream; no substitute payload is generated.
+        chunks = [chunk async for chunk in cast(Any, response).body_iterator]
+        body = b"".join(chunk.encode() if isinstance(chunk, str) else chunk for chunk in chunks)
+
+        async def delayed() -> AsyncIterator[bytes]:
+            yield body[:1]
+            delay_state["held"] = True
+            try:
+                await asyncio.wait_for(release_body.wait(), timeout=60)
+            except TimeoutError:
+                delay_state["timed_out"] = True
+            finally:
+                delay_state["held"] = False
+            yield body[1:]
+
+        return StreamingResponse(
+            delayed(), status_code=response.status_code, headers=dict(response.headers)
+        )
+
     reader_grants: list[tuple[UUID, str, UUID]] = []
 
     @app.post("/fixture/reader-view-only/{report_id}")
@@ -255,5 +334,13 @@ def create_scenario(tmp_path: Path):
                     reader_grants.append((UUID(str(grant["grant_id"])), kind, resource))
         return {"workspace": str(actor.workspace_id), "report": str(saved["report_id"])}
 
-    _ = scenario, reader_view_only
+    _ = (
+        scenario,
+        reader_view_only,
+        arm_body_delay,
+        arm_apply_delay,
+        body_state,
+        release_result_body,
+        delay_production_body,
+    )
     return app

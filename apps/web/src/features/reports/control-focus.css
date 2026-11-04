@@ -1,0 +1,66 @@
+/* Shared by the application document and the report iframe. */
+:is(button,a,select,input,textarea,summary,[tabindex]):focus,
+:is(button,a,select,input,textarea,summary,[tabindex]):focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+:is(button,a,select,input,textarea,summary,[tabindex]):focus-visible {
+  background-color: var(--module-strong, #373c40) !important;
+  color: var(--text, #f5f6f7) !important;
+}
+:is(a,summary):focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+:is(.pilot-sidebar,.sidebar) .rail-button[aria-current="page"],
+:is(.pilot-sidebar,.sidebar) .rail-button[aria-current="page"][aria-expanded="true"] {
+  background: #373c40 !important;
+  color: #f5f6f7 !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  border-radius: 8px;
+}
+.mw-cards .kpi-card:has(.mw-card-select:focus-visible) { box-shadow:none; }
+@media (forced-colors: active) {
+  :is(button,a,select,input,textarea,summary,[tabindex]):focus-visible {
+    forced-color-adjust:none;
+    background:Highlight !important;
+    color:HighlightText !important;
+  }
+}
+
+/* Owner UI rule: controls and menus never use perimeter strokes. */
+:is(button,select,input:not([type="checkbox"]):not([type="radio"]),textarea,summary,[role="button"],[role="combobox"],[role="menu"],[role="listbox"],.menu-popover,.report-popover,.mw-set-popover,.mw-export-options,.rl-search) {
+  border-color: transparent !important;
+  outline: none !important;
+}
+:is(button,select,summary,[role="button"],[role="combobox"]):is(:hover,:active,:focus,:focus-visible,[aria-expanded="true"],[aria-pressed="true"]) {
+  border-color:transparent !important;
+  outline:none !important;
+  box-shadow:none !important;
+}
+@supports (appearance: base-select) {
+  select,select::picker(select) { appearance:base-select; }
+  /* Center the selected value and picker icon inside controls with a min-height. */
+  select { align-items:center; }
+  select::picker(select) {
+    border:0!important;outline:0!important;
+    background:var(--module,#222327);color:var(--text,#f5f6f7);
+    border-radius:8px;padding:5px;box-shadow:0 8px 24px #0004;
+  }
+  select option { border:0;outline:0;padding:8px 10px;border-radius:5px; }
+  select option:hover,select option:focus { background:var(--module-strong,#373c40); }
+}
+/* Active context navigation uses its background, never an accent edge. */
+.nav-context-link[aria-current="page"] {
+  box-shadow:none !important;
+  outline:none !important;
+  border:0 !important;
+}
+/* The title is the card's stretched action, not a separate painted control. */
+.mw-cards .kpi-card .mw-card-select {
+  background:transparent !important;
+  min-height:0;
+  height:100%;
+}
+.mw-cards .kpi-card:has(.mw-card-select:focus-visible) {
+  background:var(--module-strong,#373c40);
+  box-shadow:none;
+}

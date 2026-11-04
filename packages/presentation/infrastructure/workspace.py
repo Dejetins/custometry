@@ -5,6 +5,7 @@ from typing import Any, Callable
 from uuid import UUID
 from psycopg.types.json import Jsonb
 from packages.contracts.presentation import PresentationFailure
+from packages.contracts.presentation.composer import ComposerSaveRequest
 from packages.contracts.presentation.workspace import (
     SavedViewV1,
     WorkspaceSaveRequest,
@@ -97,6 +98,18 @@ class PostgresWorkspaceRepository(PostgresReportRepository):
             raise PresentationFailure("IDEMPOTENCY_CONFLICT")
         return r[1]
 
+    def latest_view_version(self, workspace: UUID, owner: UUID, view_id: UUID) -> UUID:
+        """Resolve the current pointer without decoding its immutable payload."""
+        with self._connect() as c:
+            row = c.execute(
+                """SELECT latest_version_id FROM presentation_saved_views
+                WHERE workspace_id=%s AND owner_principal_id=%s AND id=%s""",
+                (workspace, owner, view_id),
+            ).fetchone()
+        if row is None or row[0] is None:
+            raise PresentationFailure("NOT_FOUND")
+        return row[0]
+
     def view(
         self, workspace: UUID, owner: UUID, view_id: UUID, version: UUID | None = None
     ) -> SavedViewV1:
@@ -172,6 +185,12 @@ class PostgresWorkspaceRepository(PostgresReportRepository):
         recheck: Callable[[], None],
     ) -> dict[str, Any]:
         with self._connect() as c, c.transaction():
+            if request.expected_revision == 0:
+                c.execute(
+                    """INSERT INTO presentation_documents(id,workspace_id,owner_principal_id,creator_principal_id)
+                    VALUES (%s,%s,%s,%s) ON CONFLICT DO NOTHING""",
+                    (report, workspace, owner, owner),
+                )
             row = c.execute(
                 """SELECT revision,creator_principal_id FROM presentation_documents
                 WHERE workspace_id=%s AND id=%s FOR UPDATE""",
@@ -244,3 +263,51 @@ class PostgresWorkspaceRepository(PostgresReportRepository):
             self._checkpoint()
             recheck()
         return value
+
+
+    def save_composer(
+        self, workspace: UUID, owner: UUID, request: ComposerSaveRequest,
+        request_hash: str, payload: dict[str, Any], recheck: Callable[[], None],
+    ) -> dict[str, Any]:
+        """Reuse the report lock/CAS/replay transaction; never rewrite an old format."""
+        report = request.definition.document_id
+        with self._connect() as c, c.transaction():
+            if request.expected_revision == 0:
+                c.execute(
+                    """INSERT INTO presentation_documents(id,workspace_id,owner_principal_id,creator_principal_id)
+                    VALUES (%s,%s,%s,%s) ON CONFLICT DO NOTHING""",
+                    (report, workspace, owner, owner),
+                )
+            row = c.execute(
+                """SELECT revision,creator_principal_id,latest_version_id FROM presentation_documents
+                WHERE workspace_id=%s AND id=%s FOR UPDATE""", (workspace, report),
+            ).fetchone()
+            if row is None or row[1] != owner:
+                raise PresentationFailure("FORBIDDEN")
+            replay = c.execute(
+                "SELECT request_hash,payload FROM presentation_versions WHERE document_id=%s AND idempotency_key=%s",
+                (report, request.idempotency_key),
+            ).fetchone()
+            if replay:
+                if replay[0] != request_hash:
+                    raise PresentationFailure("IDEMPOTENCY_CONFLICT")
+                recheck()
+                return replay[1]
+            if row[0] != request.expected_revision:
+                raise PresentationFailure("REVISION_CONFLICT")
+            if row[2] is not None:
+                previous = c.execute("SELECT contract_version FROM presentation_versions WHERE id=%s", (row[2],)).fetchone()
+                if previous is None or previous[0] != "composed-report/v1":
+                    raise PresentationFailure("REPORT_VERSION_UPGRADE_REQUIRED")
+            c.execute(
+                """INSERT INTO presentation_versions
+                (id,document_id,revision,snapshot_id,idempotency_key,request_hash,payload,contract_version)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,'composed-report/v1')""",
+                (payload["version_id"], report, payload["revision"], payload["snapshot_id"],
+                 request.idempotency_key, request_hash, Jsonb(payload)),
+            )
+            self._checkpoint()
+            recheck()
+            c.execute("UPDATE presentation_documents SET revision=%s,latest_version_id=%s WHERE id=%s",
+                      (payload["revision"], payload["version_id"], report))
+        return payload

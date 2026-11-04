@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-REPORT-REFRESH-SERVING-RECOVERY-001
 title: Report refresh, prepared serving and recovery contract
-doc_version: 5
+doc_version: 7
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -338,3 +338,189 @@ synthetic IDs, admitted lineage/manifest hashes and HTTP outcome counts, never
 credentials or provider rows. See [S03 evidence](../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md).
 These checks use actual Identity sessions, ASGI HTTP handlers, transactions and
 artifact bytes; they do not establish browser, production restore or deployment.
+
+
+## MS-004 S05 Saved View comparison integrity
+
+Personal-view comparison projections are immutable dependencies of new view
+versions. Current reads verify both their selected result bindings and their
+manifest bytes. Missing or corrupt comparison artifacts fail closed; GET does
+not recalculate, repair or silently drop them. Existing view payloads without
+the optional projection retain their original serialization. A later explicit
+Save can admit a comparison from already verified results, under current access,
+without running the source query or editing the report definition.
+
+Old strict view readers cannot consume new projection-bearing payloads; keep
+updated readers and use forward repair after these writes. No migration rewrites
+historical views or snapshots. [S05 evidence](../../.codex/delivery/evidence/MS-004/MS-004-S05/report.md)
+records the real API/database integrity, fresh-application reopening and browser
+checks. Production recovery, installation and deployment remain outside this proof.
+
+S05 browser completion checks capture the selected-context generation at Apply
+dispatch and reject obsolete success/error publication after reload, edits or own
+view selection. Reload responses also check generation. Auth-generation checks
+remain independent and are exercised while an exact production result body is
+held by the task-owned transport fixture; releasing it after logout must not
+restore protected state.
+
+## W39 local serving and identity lifecycle
+
+The owner-selected [W39 ticket](../../.codex/delivery/tickets/W39-REPORT-LOADING-SESSION-EFFICIENCY.md)
+adds bounded prepared serving and session lifecycle work. Its
+[evidence](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/execution-notes.md)
+separates inherited S05 inputs, source checks and still-pending runtime acceptance.
+
+The report editor response adds optional actor metadata (workspace, principal,
+permissions) alongside the existing authorized report/capabilities. New browser
+code uses it to avoid an earlier `/identity/me` waterfall. Install the new API
+and migration before the new browser: old clients can ignore the additive field;
+the new client requires the authorization event channel. Rolling back browser/API
+leaves existing result identities intact; retaining schema 0013 is safe for old
+writers. Downgrade removes the event trigger and maintenance metadata, never
+restores already expired/deleted sessions or security events.
+
+Prepared reads verify current authorization, publication identity, saved query,
+calendar/metric pins and immutable output hashes. They read the bounded Store
+identity projection used for scope normalization; they do not reread Receipt,
+ReceiptItem or quarantine/raw history merely to show an already admitted result.
+Compute/Apply retain full input validation. There is no cross-request server result cache. Each GET also bounds immutable
+repository memoization to one shared 64-entry / 16-MiB budget across the
+Presentation, Analytics, Semantic, Calendar and artifact-metadata adapters; parsed prepared results have a
+separate 32-entry / 16 MiB request lifetime budget. These are not per-user caches.
+Identity projection rows may be reused inside that GET at one effective time,
+with at most 128 statement keys, 2,048 rows per admitted statement and 1 MiB
+of accounted row payload. Evaluators receive independent row copies. A new
+request constructs a new projection and reads current committed access state.
+Request-scoped authentication/access reuse ends with the HTTP read; mutations
+retain their transaction-boundary checks and do not use this projection. API connections share a bounded pool
+(default maximum 8 per worker, 64 waiters, 5-second queue timeout); this is not
+permission/result reuse. Total deployment connection budgets multiply by the
+explicit worker count and must be recorded in performance evidence.
+`CUSTOMETRY_API_SYNC_THREAD_LIMIT` (1–40) and
+`CUSTOMETRY_API_GC_ALLOCATION_THRESHOLD` (700–1,000,000) are optional internal
+process settings; unset values preserve the Python/AnyIO defaults. They neither
+disable GC nor create a result cache, and their prior values are restored at
+application shutdown. Use a single application lifespan per serving process.
+Any selected worker/thread/GC profile requires matched latency and RSS evidence;
+it is not automatically qualified for unrelated API workloads.
+Report GET adapters use statement autocommit on a checked-out connection to avoid
+an implicit transaction around every short read. This keeps read-committed
+statement visibility; explicit transactions remain atomic, including initial
+calendar provisioning. The connection returns to its prior mode before pool
+reuse. Mutation adapters retain their ordinary transaction mode. Resolving a
+saved-view head may reuse the same request's validated immutable version, while
+the current head pointer is still read from PostgreSQL.
+
+The editor composer reuses its already validated report model and encodes the
+validated response directly. Pooled JSONB decoding uses the existing Pydantic
+parser without a cross-request string cache. These representation optimizations
+do not remove saved binding, artifact hash or current authorization checks.
+The editor response negotiates gzip for payloads of at least 4 KiB when it
+reduces transfer size. Responses remain `Cache-Control: no-store` and vary by
+`Accept-Encoding`; all payload limits apply to decoded bytes.
+
+The editor response may carry `ready_results` already verified while reading the
+saved document. It contains only the default active workset, deduplicated, with
+at most 32 results and 2 MiB combined result payload. If the whole active set
+does not fit, the list is empty and the existing bounded result-read path applies.
+The browser verifies every embedded result against its saved binding and uses
+those same objects in the editor query; it does not store a second query copy.
+Changing to an unrepresented workset releases the embedded data before retaining
+the newly fetched working set. Older responses without this additive field use
+the existing result endpoint. Old strict external decoders are not proven by
+the local Web compatibility tests.
+
+The browser admits at most 16 MiB of accounted query payload and 32 query entries
+per tab, with inactive entries removed immediately. Immutable response objects
+reuse their measured decoded wire size for accounting; locally composed objects
+are encoded for accounting. Active result reads have
+four concurrent requests, at most 32 distinct results, 2 MiB per response and
+16 MiB combined. Oversized payloads produce a local error without cache admission.
+No result data goes into localStorage, IndexedDB, service workers or another disk
+cache. Payload accounting is not a JavaScript heap/RSS limit; decoded/rendered
+working sets and in-flight buffers are measured separately. Navigation cancels
+owned reads; session/channel generation changes reject late decoded responses.
+
+`GET /identity/events` provides same-origin credentialed SSE hints, delivered by
+transactional PostgreSQL NOTIFY. Each API worker has one listener and at most 256
+subscribers with one pending hint each. Events contain no resource or principal
+payload. Access/organization/session-revoke changes invalidate protected state;
+notifications are not authorization. Listener loss, network loss, expiry and
+reconnect hide protected content until fresh report authorization completes.
+Keepalives perform no database activity write. At most ten minutes (or sooner at
+access expiry), the channel requests token renewal; browser Web Locks serialize
+rotation across tabs sharing cookies. Reconnect uses bounded exponential backoff.
+Missed events need no replay log because reconnect always reconciles current state.
+One unsaved definition can survive channel reconciliation in memory, bound to
+its principal and report. It remains hidden until fresh authorized metadata
+arrives for that principal. Login, logout and denied access discard it; snapshot
+views do not restore editing drafts. This does not retain result payloads.
+
+Session fields serve authentication (hashed access/refresh/CSRF tokens and expiry),
+refresh-family replay defense, and existing own/admin list-and-revoke device
+recognition (device label, creation time and approximate `last_seen_at`). The latter
+is not an expiry clock or an attendance record. Only foreground interaction-marked
+protected work may advance it, with an atomic five-minute coalescing predicate.
+Passive queries, keepalives and refresh never advance it. No heartbeat audit rows
+are created. Existing API-token `last_used_at` belongs to the separate API-token
+inventory/revoke process and is not browser session activity.
+
+Migration 0013 adds cleanup indexes, a single operational maintenance-state row,
+and transactional notification triggers. Existing API process lifecycle schedules
+Identity-owned maintenance once daily, using a database advisory lock and durable
+last-completed time across workers. Default session retention is seven days after
+absolute expiry (configuration `identity_session_retention_days`, minimum seven).
+Refresh history remains through the whole usable family lifetime and retention
+window, including early revocation. Cleanup deletes eligible history, then empty
+expired sessions in bounded batches. Default security-event retention is 90 days
+(`identity_security_event_retention_days`), restricted to `session.*` and
+`password.*` in the Identity event category; unrelated audit categories are retained.
+Those transitions support session/access incident investigation and device-revoke
+processes. Privileged maintenance is the only deletion path; normal application
+audit writes remain append-only. Existing audit metadata is not rewritten.
+
+Maintenance bounds each category to 500 rows per batch, 32 batches per invocation,
+with a two-second work budget and bounded statements/locks; interrupted transactions
+roll back and are restart-safe. Errors are observable using a fixed redacted log
+message. The single state row records completion and deletion counters for operating
+the retention job, not user activity. Logical expiry, logical deletion and backup
+retention are distinct: database pages, WAL and independently retained backups can
+outlive logical deletion. This policy promises neither immediate physical shrink
+nor routine `VACUUM FULL`.
+
+Contract impact: additive editor DTO and SSE API are compatible for old clients on
+the new server; new-client/old-server rollout is unsupported and requires API-first
+ordering. Activity semantics and retention are compatible owner-selected lifecycle
+changes for the named session/investigation consumers; immutable result identity,
+Apply/Save atomicity and analytical arithmetic are unchanged. No runtime or
+performance acceptance follows from this description alone.
+
+### W39 local qualification profile
+
+The local saved-open profile uses production Web assets and Chromium
+136.0.7103.25 headless shell on the reference 18-core / 36-GiB host. Fifty
+isolated contexts represent fifty distinct authenticated users. The task-owned
+API container has eight processes, two synchronous threads per process, a
+1,000,000-allocation GC threshold, an aggregate 8-CPU / 4-GiB container limit
+and default eight-connection pools (64 maximum across processes). The real
+PostgreSQL container has 4 CPUs / 2 GiB. The existing local reverse-proxy test
+seam distributes ordinary requests by least outstanding work; event channels
+are distributed independently. These exact settings are part of the evidence,
+not an unqualified performance claim for a single shared-listener API process.
+
+The API image used for this profile is
+`sha256:81b4f1eb405c43f53c88c0d79bfd00bd6d366973f6abcb09358ac9eb7f02625e`.
+Application source is mounted read-only; its hashes and Web bundle hashes are
+recorded in every benchmark result. Baseline and candidate use the same fixture
+identities, resource limits, process/thread/GC settings and browser mechanic.
+Cold batches restart the API and browser; OS filesystem caches are not flushed.
+Heap/CDP observations occur only after all timed opens finish.
+
+On the candidate's completed 200-open series per mode, graph p95 is 794.6 ms
+warm and 1,495.9 ms cold, with zero failed opens. Warm frame acknowledgement
+is 62.0 ms p95, dispatch 5.4 ms, and last completed response to stable graph
+88.7 ms. Representative foreground two-toggle Event Timing has p75 48 ms;
+simultaneous fifty-tab interaction stress is reported separately. These are
+local observations, not production deployment or MS-004 acceptance. See the
+[W39 observations](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/execution-notes.md)
+for the final comparison, resource checks, prior failures and source bindings.

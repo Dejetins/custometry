@@ -1,0 +1,1180 @@
+{
+  "schema": "w39-inherited-baseline/v1",
+  "captured_at": "2026-09-22T21:55:35.628986+00:00",
+  "baseline_commit": "86055ce732640ebe68fd5415a55f7bbde3499181",
+  "source_path": "/Users/daniildegtyarev/.codex/worktrees/575c/Custometry",
+  "destination_path": "/Users/daniildegtyarev/.codex/worktrees/c67c/Custometry",
+  "source_head_verified": true,
+  "destination_initially_clean": true,
+  "tracked_patch": {
+    "path": ".codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/inherited-tracked.patch",
+    "sha256": "5e317b56bf047904c9430649c084207be16890cbf85f555fb1d8d9e9c273d335",
+    "availability": "Original patch excluded from publication; see publication-sanitization.json for its hash and local archive notice."
+  },
+  "ownership": {
+    "inherited_changes": "Inherited S05 correction-002 and W39 preparation inputs; not W39 implementation results and not S05 acceptance.",
+    "milestone_inputs": "Copied milestone ledgers and receipts are read-only historical inputs.",
+    "active_ms004_journal": "/Users/daniildegtyarev/.codex/worktrees/575c/Custometry/.codex/delivery/ledgers/MS-004.md",
+    "publication": "Separate new W39 changes from inherited baseline before any authorized publication or integration."
+  },
+  "files": [
+    {
+      "path": ".codex/delivery/ledgers/MS-004.md",
+      "transfer": "tracked",
+      "sha256": "d043a76e995e5ef75c7e0679fd4850cda8f36eb36aff16af5a9dec96fb8073db",
+      "bytes": 32788
+    },
+    {
+      "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+      "transfer": "tracked",
+      "sha256": "aae228285e6e06ad7ebd4eebb552e091dc34523e4ff2df15e9a659afd1310560",
+      "bytes": 29193
+    },
+    {
+      "path": "apps/web/src/features/reports/WorkspaceProjection.tsx",
+      "transfer": "tracked",
+      "sha256": "cc313f24a3167433dd66a8fb19db5a1ad52d48a62ffd141475b5f16d37864c32",
+      "bytes": 8845
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/port-epilogue.js",
+      "transfer": "tracked",
+      "sha256": "6b016bcfd63c30b142c489962aa9ff02ab8bdde98c8a9925d8ce96e0b9e0d637",
+      "bytes": 11850
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/runtime.ts",
+      "transfer": "tracked",
+      "sha256": "0752b269981e792e1d22555824eb1cb1b58503d7f58f8d28d412f2dd9fd3f9c6",
+      "bytes": 217353
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace.css",
+      "transfer": "tracked",
+      "sha256": "b89ee8c5fab8e777c47686c4057990cb10ffee2b064289bff05f3e90f08c1c69",
+      "bytes": 4463
+    },
+    {
+      "path": "custometry-technical-blueprint-human-ru.md",
+      "transfer": "tracked",
+      "sha256": "920e4128f4c244a99fdcfe790ecb73a20de265109fc748fffabcaa123e2e1c55",
+      "bytes": 385130
+    },
+    {
+      "path": "custometry-technical-blueprint-ru.md",
+      "transfer": "tracked",
+      "sha256": "5b7232aaae21d226ac4ba0a05a5f24efcea9ae31d616e3606180c554ff21ecd5",
+      "bytes": 646545
+    },
+    {
+      "path": "custometry-ui-blueprint-ru.md",
+      "transfer": "tracked",
+      "sha256": "7e40f5de07ab47fb3ba0065f728419716155848903ab3d44c09b4a65dc4b7ff3",
+      "bytes": 152083
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "transfer": "tracked",
+      "sha256": "d0ee5ebd88540f70dd43bf4bdd1709d80bcad66deff91d2a97e32f00087cd0e7",
+      "bytes": 13658
+    },
+    {
+      "path": "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md",
+      "transfer": "tracked",
+      "sha256": "ba081a5ee9fa5ce34718402bf959ba6f670b0a28f241f864790016ad50534bbb",
+      "bytes": 18998
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "transfer": "tracked",
+      "sha256": "cdcfceca8ac27b0da4b2ed99d938049ac79e89a7e4882c47b07fe9f9129f533e",
+      "bytes": 55696
+    },
+    {
+      "path": "docs/contracts/report-refresh-serving-recovery-contract.md",
+      "transfer": "tracked",
+      "sha256": "e127d19bc82677c83e59a68486792f085c54ef300c1b2b7edcc8e5bf200be74c",
+      "bytes": 24437
+    },
+    {
+      "path": "packages/contracts/openapi/reports.openapi.json",
+      "transfer": "tracked",
+      "sha256": "29fb2c37af57e05d234e00bc6c24c0ec6a699cdf5b57729b68c6ca981a01b3ad",
+      "bytes": 99287
+    },
+    {
+      "path": "packages/contracts/openapi/workspace.openapi.json",
+      "transfer": "tracked",
+      "sha256": "f5e1e5c994039edc4cdd3e76e68de248e2f3c1864fd40445823e0bec6b040272",
+      "bytes": 143468
+    },
+    {
+      "path": "packages/contracts/presentation/workspace.py",
+      "transfer": "tracked",
+      "sha256": "cdc29c6578904b8bb7393135a124d2f5721123aab512517fba688b4736488704",
+      "bytes": 17311
+    },
+    {
+      "path": "packages/contracts/schemas/saved-view-v1.schema.json",
+      "transfer": "tracked",
+      "sha256": "9da6929202bdc9fbb39fcb16be866f4723d7767e9bb718ad04a2237f70001d4d",
+      "bytes": 20919
+    },
+    {
+      "path": "packages/contracts/src/reports-client.ts",
+      "transfer": "tracked",
+      "sha256": "e4c38e57f041c06ff5915cecf07c736e11902f194244156904fda1a069dbf972",
+      "bytes": 19394
+    },
+    {
+      "path": "packages/contracts/src/workspace-client.ts",
+      "transfer": "tracked",
+      "sha256": "4d2441ffc9add34cb7884a17811e12a91b1f8bf99b162ae595416d9a59c8f896",
+      "bytes": 30392
+    },
+    {
+      "path": "packages/contracts/src/workspace-contracts.ts",
+      "transfer": "tracked",
+      "sha256": "7b167ab8d753a16b06f6c2673ba037a34b8a51c923be20fcbe246fbfd6acaf6d",
+      "bytes": 28281
+    },
+    {
+      "path": "packages/presentation/application/workspace.py",
+      "transfer": "tracked",
+      "sha256": "53ad4762490f13865e0ac5313027c4ea822441ee1e3d24b245195e62895f8d4b",
+      "bytes": 40271
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/reader.spec.ts",
+      "transfer": "tracked",
+      "sha256": "164ffdedcdc9c41621c099d26260158bd792636bd64574a9e2a37bc1bd944f67",
+      "bytes": 4016
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/scenario.py",
+      "transfer": "tracked",
+      "sha256": "a227ef306d1a9dc3a275eb26877dc359a0acafea829feb5544045d4e01b34011",
+      "bytes": 13721
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/workspace.spec.ts",
+      "transfer": "tracked",
+      "sha256": "18c590a86795af37bae3037d9501ae8b699adf251a0d103c28740c8277e6665c",
+      "bytes": 8890
+    },
+    {
+      "path": "tests/integration/presentation/test_workspace_s03.py",
+      "transfer": "tracked",
+      "sha256": "3575cd92b49b038f89c237091bdfe1dd8b47afed272f0a6c384662bab7ac432d",
+      "bytes": 44341
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S04/synchronization.md",
+      "transfer": "untracked",
+      "sha256": "e0c6fef0dacfbd9c2a0f6f4ab9bf2bad57aa0e7bd7dfd73d9864a45a5e33cd85",
+      "bytes": 2342
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/api-corpus.json",
+      "transfer": "untracked",
+      "sha256": "6f25b96ae1296503597846a51e74799a6f159e58bf46c6a26412fa820fb4886d",
+      "bytes": 2916
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/before-reader-pair/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "bf19572c16f262c5de73e90123b8d6bc13b914d975664b014230798ab96dc9f8",
+      "bytes": 3573
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/before-reader-pair/parity.json",
+      "transfer": "untracked",
+      "sha256": "a69149f5ab338829808fd8e162b71282cccdd78b947184616374beddad8b22ce",
+      "bytes": 34673
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/before-reader-pair/reader-pair.png",
+      "transfer": "untracked",
+      "sha256": "67b86de7d39599cbebc9de0b5f3033e5139a5267710c9a39627f2d4eee2cea20",
+      "bytes": 150437
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser-manifest.json",
+      "transfer": "untracked",
+      "sha256": "0802c66f47b710070ee9c4bab17473dcdcabb3b75835cd2eba155729f55eb0d1",
+      "bytes": 28850
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "130d657bac63907370d47b7b0aa3a4fad2eaf257f33fae3723fab2705028f180",
+      "bytes": 1889
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/error-context.md",
+      "transfer": "untracked",
+      "sha256": "fa92e136af66c30b54d04ed5d200c44008c69823d6b0c706d4f4cd0ff7245bfe",
+      "bytes": 29770
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "a9a123d25b27e390612ccc342de9ad62190cdb034f0c53da09f153e2b548f14d",
+      "bytes": 3092
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/late-body.json",
+      "transfer": "untracked",
+      "sha256": "2d014e121a2b60f4b265545ac10c1f3d373fef87037704eea612169173405153",
+      "bytes": 188
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/revoked-late-body.png",
+      "transfer": "untracked",
+      "sha256": "96006ef59f89e18b4b1291ccc356f555b416991c78ecab0662e9087f83e542a0",
+      "bytes": 19764
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final-corpus.json",
+      "transfer": "untracked",
+      "sha256": "729dda1131c7b332ad91db8fdff4f525e76b40d5654c1303ee45f1a869a668a9",
+      "bytes": 3662
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "f42052ed8331113dff4159333083fb09bb0746aa509b5a63fc800a85b6876ea9",
+      "bytes": 1280
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/reload-late-body.json",
+      "transfer": "untracked",
+      "sha256": "2f0a083b129776413f310915f059d8a5f1109a8d2843dd0cb86cd0a4fbe1a245",
+      "bytes": 160
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/reload-late-body.png",
+      "transfer": "untracked",
+      "sha256": "e23a926e00211d22d0789ad02f977d2e32226c0abc2c4ccea9694d9fd29b81d4",
+      "bytes": 163817
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "a3f2911595f43e8dbedd9e82e50829a7c6f127dbdea6f34854756d951d9bed00",
+      "bytes": 1279
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-768/reload-late-body.json",
+      "transfer": "untracked",
+      "sha256": "2f0a083b129776413f310915f059d8a5f1109a8d2843dd0cb86cd0a4fbe1a245",
+      "bytes": 160
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-768/reload-late-body.png",
+      "transfer": "untracked",
+      "sha256": "7571a084f775dbcd2b69e872554413bd1c109dee943feaab45fbe1497b65e49d",
+      "bytes": 137589
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "ebf50c494bb6f0fde6f8ee00332c3f379434a152ba3e1279e3fb09bb2c9fe96e",
+      "bytes": 3092
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/late-body.json",
+      "transfer": "untracked",
+      "sha256": "2d014e121a2b60f4b265545ac10c1f3d373fef87037704eea612169173405153",
+      "bytes": 188
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/revoked-late-body.png",
+      "transfer": "untracked",
+      "sha256": "96006ef59f89e18b4b1291ccc356f555b416991c78ecab0662e9087f83e542a0",
+      "bytes": 19764
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "b43efbb7ece45b1a837115bf81af397c1a36a40ec0ea76daff7fb700f09e99e9",
+      "bytes": 3091
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-768/late-body.json",
+      "transfer": "untracked",
+      "sha256": "2d014e121a2b60f4b265545ac10c1f3d373fef87037704eea612169173405153",
+      "bytes": 188
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-768/revoked-late-body.png",
+      "transfer": "untracked",
+      "sha256": "8af4dc6d0cb82f1019a7602feab964181994f214443415e03654ab4d590f1eb0",
+      "bytes": 15610
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "c381808980aa6ce1663a6a85f8aaeaae53d1281e11de2a0a0696ce598ef06096",
+      "bytes": 3198
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/parity.json",
+      "transfer": "untracked",
+      "sha256": "09ca1583cc13bbc777761abdf6de479418a7f7ac7f56b32098587160cdae7df5",
+      "bytes": 68490
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/reader-pair.png",
+      "transfer": "untracked",
+      "sha256": "379472db51a95d96b3948d601967e581a9ea40449b6da6a347b18fc996a270fa",
+      "bytes": 179544
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "73ba1f482ca7fd6172e9f81dbbc93a77e9f525bd3ee1babdfd4f3af471fcbfae",
+      "bytes": 3197
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/parity.json",
+      "transfer": "untracked",
+      "sha256": "7492335b360537d23117392460de2f61b97bcf53c35eefff0e3afbff6bd89ccd",
+      "bytes": 68490
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/reader-pair.png",
+      "transfer": "untracked",
+      "sha256": "9a44f2b37826ec7410ad5c8a6870b951f7da0a9da41b8c29c5732770952c73db",
+      "bytes": 123079
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "5d223b79f4c3f65db5c74859b903276c0076f62a8c2fcd03eabbbe3d35a1ee85",
+      "bytes": 3881
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "transfer": "untracked",
+      "sha256": "e390928f9404ae3b65fb150141ef4a790bd1947569e27ebb591e715fa313ec96",
+      "bytes": 147605
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "transfer": "untracked",
+      "sha256": "539092ee8f31a7c439de3e8bc3534969e61d6849e312e63c53296bf5b5d4052f",
+      "bytes": 37133
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "transfer": "untracked",
+      "sha256": "f3607e928bd51bfb108312f40a8d397554e76e50ae7608e2301ebcb28035997f",
+      "bytes": 145394
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "3cdf55d09e9b4d7ffa6e641862b4f91120b9cd9b64d0cfc9b5ef1afde52c1b8c",
+      "bytes": 3880
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/focus.png",
+      "transfer": "untracked",
+      "sha256": "05ae8e14cd7054ae9eec75520ffc789dab27baca1d0b35a392b3a3df455c9465",
+      "bytes": 104722
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-parity.json",
+      "transfer": "untracked",
+      "sha256": "241dbbc698d272b9e4c22fec411061dbd83f6aff4bd5575e1147b477a0b3c2d1",
+      "bytes": 37133
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-tooltip.png",
+      "transfer": "untracked",
+      "sha256": "3a5b555ac4c7c2122d54fb97723f5a9a08b0d76ba281e254969e54bfac6e2ecc",
+      "bytes": 113060
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "e79dc8d4358b4aca3841040ae403983b12a158051e5e3cadd78fa49143e65c85",
+      "bytes": 4901
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/final.png",
+      "transfer": "untracked",
+      "sha256": "20024dff9111bc1d25e9769b7158aee09f1b74bfa03c854405eb73d6b3c4bdbc",
+      "bytes": 65593
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/inspector.png",
+      "transfer": "untracked",
+      "sha256": "4ad6c90724e08c3db29f6c641a857311b14377e8967656f752cec80a49e9cfc8",
+      "bytes": 157006
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/localized-chart.png",
+      "transfer": "untracked",
+      "sha256": "689a91d54efd548fc1cd6a336cf33120d0ad483cef2de3b10d094fc80144e83a",
+      "bytes": 135172
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/localized-table.png",
+      "transfer": "untracked",
+      "sha256": "3a6b352166a576fc90f55f4386b9c5cb48a9c3a346e826bfaefc81cd77f4f445",
+      "bytes": 180056
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/reflow-400.png",
+      "transfer": "untracked",
+      "sha256": "07b594d62467c2f1d210c1da554d5d0de6cac47970528b0cf44c2fc42c7cfd5d",
+      "bytes": 65593
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "960fdb769946c97e2adf4da7adb9d0b0d066bd7f500beb80decdf6cebde36d0a",
+      "bytes": 4775
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/final.png",
+      "transfer": "untracked",
+      "sha256": "1bffde463ab3c4f5aa92f4771731ab57f99c835b8b67ceac91f71555906301b2",
+      "bytes": 65595
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/inspector.png",
+      "transfer": "untracked",
+      "sha256": "7eb0756f80737876cab184d95e76245da1b027135a82b90af3b68b2f1910e00b",
+      "bytes": 100005
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/localized-chart.png",
+      "transfer": "untracked",
+      "sha256": "b874ca8dc92dd5506488242837333012249d5d281660f08d990906d743889f3e",
+      "bytes": 98435
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/localized-table.png",
+      "transfer": "untracked",
+      "sha256": "1760644eecf1541602cc4501c0b55ab4dbdd555946e9731068cb0bd5ae8c928c",
+      "bytes": 119384
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/reflow-400.png",
+      "transfer": "untracked",
+      "sha256": "1bffde463ab3c4f5aa92f4771731ab57f99c835b8b67ceac91f71555906301b2",
+      "bytes": 65595
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full-corpus.json",
+      "transfer": "untracked",
+      "sha256": "5f6490451339c277734ef04e814bbfd24670886128bdc4ddc01347d601b097e0",
+      "bytes": 3662
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full-source-state.json",
+      "transfer": "untracked",
+      "sha256": "51089587341ba1307b2511acf01b30a603ad8bec6a54bd870998e4a57696bb1e",
+      "bytes": 510
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "00400b802383d0e0d239fa025834d8c2dd1c1f1a92ddcedd588ce99953622cd4",
+      "bytes": 7936
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "transfer": "untracked",
+      "sha256": "e4779c5e8b3ddb7ef3106baf07c74a608f6de6847a1ecc2ac4f1f7d46e1b5810",
+      "bytes": 67261
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "transfer": "untracked",
+      "sha256": "dde09dbaa90358a49bf6d09722a7414d3134fefe9d2ec284421f055962dbfef4",
+      "bytes": 138634
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "transfer": "untracked",
+      "sha256": "113c72b205e6909ec04f69984fe84eb621f0cb514f06726b54af9690aeb8e729",
+      "bytes": 13938
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "transfer": "untracked",
+      "sha256": "6e37cc96202907112ed63d21f99002ec769ed3109d06157ed6a6685c76e0e4ed",
+      "bytes": 140484
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "393b15172cfa9f03b5fb3ec3d3aa7ee90f891f2ed09eaad17cbe6e3a16b27daf",
+      "bytes": 8060
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-400.png",
+      "transfer": "untracked",
+      "sha256": "e4779c5e8b3ddb7ef3106baf07c74a608f6de6847a1ecc2ac4f1f7d46e1b5810",
+      "bytes": 67261
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-chart.png",
+      "transfer": "untracked",
+      "sha256": "80f8b46a37cc20a5d3d5df25cf08613382fb5feb60a5e836782aee02c168500d",
+      "bytes": 112484
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-parity.json",
+      "transfer": "untracked",
+      "sha256": "4f6a631dad04c32e97b2b7111f5fe1ffec39bb352fd152763b76302ba33688d7",
+      "bytes": 13938
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-table.png",
+      "transfer": "untracked",
+      "sha256": "908435c3f4bffb717b31891f3720eadd85d28121eb95c55b17c14bef553fd7ac",
+      "bytes": 120090
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "fafd2686a3774632f0169ed47a60720008fd62fa8c9d0516aaeca61d4db6ee9e",
+      "bytes": 3198
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/parity.json",
+      "transfer": "untracked",
+      "sha256": "189b4f088fbe255c012f6579a8cee06236ee7ee5197436c09dd919487cac1566",
+      "bytes": 68490
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/reader-pair.png",
+      "transfer": "untracked",
+      "sha256": "39823c33e9c4fd2681efeb3f67c9be7b269ecb6769d76d1c2310983b0cb754af",
+      "bytes": 178307
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "067b9ce4ae6d8d1677a94c9a8e2e2140b016a77c28290ea38a76f763cefdc08b",
+      "bytes": 3322
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/parity.json",
+      "transfer": "untracked",
+      "sha256": "3c65e1892eb4da6598a3ad0e6f5d746549dbdbe160c484074fabcdf76bca268e",
+      "bytes": 68490
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/reader-pair.png",
+      "transfer": "untracked",
+      "sha256": "2a350bf3465a7aeab6dbd934974757be2f145b49a5c9b8d8a7e508aa9dcc13d4",
+      "bytes": 122809
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "4cb71c9bcfee843a0a26f3cd23de71a51a7269519dc01ef84776414e87272e50",
+      "bytes": 4006
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "transfer": "untracked",
+      "sha256": "2ee33cadc589e11209a57954339241dfe0466df1c9f93dafb7aec7cfbb9f44f7",
+      "bytes": 146568
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "transfer": "untracked",
+      "sha256": "4b367f34e410cb8a0c3ce60ebc699941f68cc8cef939879bd6c487b4dbd4d608",
+      "bytes": 37139
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "transfer": "untracked",
+      "sha256": "4b1dae65b0b18dad14ea67a23b8dd6b45e400682d15f62d68f4b25e630a662a6",
+      "bytes": 145863
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "b8cfb22d10581fba24f240ba2ae88456a78c614f5a1772b60da832f684b99493",
+      "bytes": 4005
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/focus.png",
+      "transfer": "untracked",
+      "sha256": "4357f829c1dbcd257d4126017c9a94d1a9955e9a935a051cf56453c54036533f",
+      "bytes": 104360
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-parity.json",
+      "transfer": "untracked",
+      "sha256": "08d856b6d701b988caaa8bbc703a66d7c7a8f32b76f873659bd30dc83defe890",
+      "bytes": 37139
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-tooltip.png",
+      "transfer": "untracked",
+      "sha256": "3a5b555ac4c7c2122d54fb97723f5a9a08b0d76ba281e254969e54bfac6e2ecc",
+      "bytes": 113060
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/reader-reader-private-view-548f5-tion-and-session-revocation-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "96ad2d8349244be1128f8511a9e75a2b53a69c79b000af931f25f3a10b6b90b3",
+      "bytes": 5332
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/reader-reader-private-view-548f5-tion-and-session-revocation-1920/reader-en.png",
+      "transfer": "untracked",
+      "sha256": "3477fd6c9698a3e725283f0673e53bcadc2c77c88b80740c9d358aed39933c83",
+      "bytes": 172476
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/reader-reader-private-view-548f5-tion-and-session-revocation-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "d544f2382e8c15b29fd78265f4d37f3a7949d8217ce75045e6d76c12ea12ee78",
+      "bytes": 5331
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/reader-reader-private-view-548f5-tion-and-session-revocation-768/reader-en.png",
+      "transfer": "untracked",
+      "sha256": "0f0c7a65ac314aadf0882754aad0b0c2e03987ee49426f2f18da0f1ed3da45fa",
+      "bytes": 149056
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "a4ef039da2b87733c912acc9a1ae6a3c5c86e4e5702cad6302664065921e7347",
+      "bytes": 4298
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/conflict.png",
+      "transfer": "untracked",
+      "sha256": "76d3b6f1183db1f30a828ed94d3e61de03d753981466618cc645cfc62a6cc433",
+      "bytes": 143791
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/empty-scope.png",
+      "transfer": "untracked",
+      "sha256": "f8b4bab701180177223e8f6e1f4f9d3836451f7cf793fd8fd4334013cdadbfd3",
+      "bytes": 91934
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "bfab6f8ea7636ac6a199dbf0b54331e86f0347f8890d719af92566bd044f10d0",
+      "bytes": 4297
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/conflict.png",
+      "transfer": "untracked",
+      "sha256": "eceaaecc05fdba3381f4b7f713074a2b63ada35adf00a28e74920366f7624fab",
+      "bytes": 115904
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/empty-scope.png",
+      "transfer": "untracked",
+      "sha256": "0d95916f18a3ab38ad7a005c9b4965d59fb10000469d501a5497d4efc3b3afbf",
+      "bytes": 81439
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "36fa23a88fb8fb4ccd1b6f530a695f6a565983b6f21f1181d74666bc28d8ace8",
+      "bytes": 3906
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/final.png",
+      "transfer": "untracked",
+      "sha256": "12464cca0b0e61fef6c197282fd84455d1a52f58b36a2018ed155a742342f5bd",
+      "bytes": 151912
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/workspace.png",
+      "transfer": "untracked",
+      "sha256": "d5de7aa10f79d97c21fdd5371714511197364b9f06c56eb0a8ecdb607cbbd340",
+      "bytes": 141560
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "c58c80b51bfc46315873bb7e890a0a59122a74ca45e39e3fc2e959a2ce702fa5",
+      "bytes": 3905
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/final.png",
+      "transfer": "untracked",
+      "sha256": "d2f4f7d559116d69a3e78232e6b692eb42d3429636b952b6782d4b09e621bd96",
+      "bytes": 92884
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/workspace.png",
+      "transfer": "untracked",
+      "sha256": "29530832069c0b3596e2bc5d2f26a200dbb1deb0a3b3f1303b87f951625ed50e",
+      "bytes": 107849
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "e06d50a6ef6d87afeae9ff46f72787a2967dcbe16d3e72ff6e4edc5a509ebadc",
+      "bytes": 4901
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/final.png",
+      "transfer": "untracked",
+      "sha256": "8faf427fa24800e99ee3799e14ad6a1d7236e8d45d676e4d461de01e4ed29b69",
+      "bytes": 65594
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/inspector.png",
+      "transfer": "untracked",
+      "sha256": "402d92a491e389b7d6c146f927cb10fe67625c2a3e0b19ec1f51e434d25cd4ed",
+      "bytes": 157340
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/reflow-400.png",
+      "transfer": "untracked",
+      "sha256": "8faf427fa24800e99ee3799e14ad6a1d7236e8d45d676e4d461de01e4ed29b69",
+      "bytes": 65594
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "060546143813d1303afff6fa7249a8d3acf8d98672011b1c00d069196764c4e4",
+      "bytes": 4900
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/final.png",
+      "transfer": "untracked",
+      "sha256": "1bffde463ab3c4f5aa92f4771731ab57f99c835b8b67ceac91f71555906301b2",
+      "bytes": 65595
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/inspector.png",
+      "transfer": "untracked",
+      "sha256": "fe3c6582fde2dd5d07dda8cf81ef72601b8ce65b64cf4568a9b1b8206d97af94",
+      "bytes": 100079
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/reflow-400.png",
+      "transfer": "untracked",
+      "sha256": "1bffde463ab3c4f5aa92f4771731ab57f99c835b8b67ceac91f71555906301b2",
+      "bytes": 65595
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final-corpus.json",
+      "transfer": "untracked",
+      "sha256": "6a315c4a18593e54cf40e0bc6015aab66d0618a0f9b61845b1e944a0bfeeaacf",
+      "bytes": 3662
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "dc4dce6bff55e0b4e8afdaba417b75d5f6e113e226526af3e3da6042147089b3",
+      "bytes": 7936
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "transfer": "untracked",
+      "sha256": "739b8e0e5a4b3f7c47bdeba0fae05c1af1d201cc784db16bf7d317e9fa4240a6",
+      "bytes": 67389
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "transfer": "untracked",
+      "sha256": "90e51394602465567bca953ac9d5304d4d28ade3a19d0fe129c40b2946899fe3",
+      "bytes": 138597
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "transfer": "untracked",
+      "sha256": "f3520da1f81b5e30849a60eb0fc45ac10e5c08aa76075a577bc6d45efb2aa889",
+      "bytes": 13938
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "transfer": "untracked",
+      "sha256": "5665fba5af3a71f0ec730b47fc29bf8d5643c614d8f7fb1d5ed0e775ebcd496a",
+      "bytes": 140732
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "90696d4b4b45158026ee59b0d31c2155650b4e998d56ec0117d4a010e8e7fc05",
+      "bytes": 7935
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-400.png",
+      "transfer": "untracked",
+      "sha256": "739b8e0e5a4b3f7c47bdeba0fae05c1af1d201cc784db16bf7d317e9fa4240a6",
+      "bytes": 67389
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-chart.png",
+      "transfer": "untracked",
+      "sha256": "80f8b46a37cc20a5d3d5df25cf08613382fb5feb60a5e836782aee02c168500d",
+      "bytes": 112484
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-parity.json",
+      "transfer": "untracked",
+      "sha256": "615ea237a9cdb1330cd4aec39f15a9567682a41aa26064eb0c2fe249c324c710",
+      "bytes": 13938
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-table.png",
+      "transfer": "untracked",
+      "sha256": "c7d63ff770780a9634352eb9a533aa83df53f6b2e4776450f7e44465c5047606",
+      "bytes": 123902
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "2d3865ecd887c7ca24675c96107b2390cedb962a01a8c20f8054dc4e03ed8ad5",
+      "bytes": 3881
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "transfer": "untracked",
+      "sha256": "018aac228881c7e1bb1c9df44aeb71814fa39db7eeb8ff14fbcc4926a62c576a",
+      "bytes": 147444
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "transfer": "untracked",
+      "sha256": "748d19896685ead4e094e82079184a27613b7f12fca5bddd3741349b7c418e10",
+      "bytes": 37133
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "transfer": "untracked",
+      "sha256": "1fd981f0d54c1ed5dfcd03242f29ffb6d4b66057a7d7bcae3a6538ddcc563190",
+      "bytes": 145843
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "a3cb3978e67a9f7608b2a33b63297ca8857060cb0682fa99d662770d7a94486b",
+      "bytes": 3880
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/focus.png",
+      "transfer": "untracked",
+      "sha256": "2ee7f82543cb7eaf014939991f60a8fe6c5370eff843910e36493c93b1bc7307",
+      "bytes": 103435
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-parity.json",
+      "transfer": "untracked",
+      "sha256": "ce097a0b754e25f9634a18459459dbc3f9de37de051a861a65078fb6a6ebb4b8",
+      "bytes": 37133
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-tooltip.png",
+      "transfer": "untracked",
+      "sha256": "3a5b555ac4c7c2122d54fb97723f5a9a08b0d76ba281e254969e54bfac6e2ecc",
+      "bytes": 113060
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "c1908e468adf9bc2fa0f375bcc75bb74bccd1b55a1596cd709ed5ef702e2f834",
+      "bytes": 7936
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "transfer": "untracked",
+      "sha256": "b38850ec8350128abf5f7373f463063238dc7bdf5ed4a9b5b347c9ea88577773",
+      "bytes": 67292
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "transfer": "untracked",
+      "sha256": "d6a985764b3d9c318f947a59f93e931383404edc9a4f88f6bb9a1be513f9e01a",
+      "bytes": 138177
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "transfer": "untracked",
+      "sha256": "63eac82f51194d4d6431d8b3a67e2643dd03bed15c02739d5ba8e793136782b1",
+      "bytes": 13938
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "transfer": "untracked",
+      "sha256": "f3324ae3bdd8f3481b9f40b41c4adb8fe4ca6ff3845aeee5ecdc34baa0e59360",
+      "bytes": 140659
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/coordinator-review.md",
+      "transfer": "untracked",
+      "sha256": "547e039aa44dedf7e08f94850a96d416a79c78dbfe8505c421945efcbaf21270",
+      "bytes": 3669
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/auth-analysis.md",
+      "transfer": "untracked",
+      "sha256": "a661395e612d8002b29a396a59f398360cac4abdb27bd69c2ac9155dd397bb93",
+      "bytes": 2160
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/before.json",
+      "transfer": "untracked",
+      "sha256": "3ad526c0fa7274d082285d99ccc3a18d444eaccd3dde5879ba3798be0dab7946",
+      "bytes": 1431
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser-manifest.json",
+      "transfer": "untracked",
+      "sha256": "5b311f789aa8d74d2d19788e7b0e3d3c4050caf9eb212d1cf40aa5c45d9c1dd2",
+      "bytes": 6630
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/.last-run.json",
+      "transfer": "untracked",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "f629da802943fa8bb9bdc088122f5da5cb540e248f2e9b62b3cd28473cb7103a",
+      "bytes": 5766
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "transfer": "untracked",
+      "sha256": "739b8e0e5a4b3f7c47bdeba0fae05c1af1d201cc784db16bf7d317e9fa4240a6",
+      "bytes": 67389
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "transfer": "untracked",
+      "sha256": "abc2212cad503e1589e9c0306c28351532f4f0394c47a7141ff64b7442944940",
+      "bytes": 122974
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "transfer": "untracked",
+      "sha256": "37c089c2050c5cd68360804272f1f5678938e691a277a6f390a5eeec99e4ced4",
+      "bytes": 13938
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "transfer": "untracked",
+      "sha256": "6d1513de5ace468dbe75c12513094434d5bd14df7a9db70b698caf22c7d86615",
+      "bytes": 122731
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "8ee2640c5452b5b71ba0b085ef12c4b588f46dd333d0240d3a48180a50bbb19a",
+      "bytes": 2910
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/parity.json",
+      "transfer": "untracked",
+      "sha256": "7907ab6211f0dc47fd39a46c8f528721fbc5fa2705dc61800906b45ead2f9ac1",
+      "bytes": 68490
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/reader-pair.png",
+      "transfer": "untracked",
+      "sha256": "08c06cf281f8ad0278542dcad215fc899b63bdac63a488bbaee5aea9678c5aac",
+      "bytes": 179769
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "84aa8daa51e909957a41846052b12a7ac9597b3c76021361e107f3802f838525",
+      "bytes": 3593
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "transfer": "untracked",
+      "sha256": "018aac228881c7e1bb1c9df44aeb71814fa39db7eeb8ff14fbcc4926a62c576a",
+      "bytes": 147444
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "transfer": "untracked",
+      "sha256": "6c8f6ee418af6b62db517935158282e5fa28046376a968277f7b64a3da3d97b6",
+      "bytes": 37133
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "transfer": "untracked",
+      "sha256": "cf7345a281b06e04fead63c71f0dc339e4620767ab39e17fb6d4fb5846d8066e",
+      "bytes": 145827
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/reader-reader-private-view-548f5-tion-and-session-revocation-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "0ad290ba3d898be1cb759960fa7487afe4d85096e6449eec8c6f7a2840ba7d10",
+      "bytes": 4900
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/reader-reader-private-view-548f5-tion-and-session-revocation-1920/reader-en.png",
+      "transfer": "untracked",
+      "sha256": "1c763e624f4920c303c14bbc01a8ea72ab7e1323a0573773b4ab4f835beb85f2",
+      "bytes": 173419
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/browser-observations.json",
+      "transfer": "untracked",
+      "sha256": "bbdd02ca920179ca081a9a1d2d798d699056b9837283bbab04e3fa491cefab78",
+      "bytes": 4463
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/final.png",
+      "transfer": "untracked",
+      "sha256": "8faf427fa24800e99ee3799e14ad6a1d7236e8d45d676e4d461de01e4ed29b69",
+      "bytes": 65594
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/inspector.png",
+      "transfer": "untracked",
+      "sha256": "8c4573174983bda74937672ed46f7de18f4be6eadc020059fc7967faa18b86c3",
+      "bytes": 143321
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/localized-chart.png",
+      "transfer": "untracked",
+      "sha256": "e6396501c6b65796c4e1349c64e0d975fca04ef62309969ba392d1059c686ee4",
+      "bytes": 119700
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/localized-table.png",
+      "transfer": "untracked",
+      "sha256": "b446bfc98cc75e0f12ebff8e91aa0af3787aef3b257cf134e0d65ddad159b7a8",
+      "bytes": 179806
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/reflow-400.png",
+      "transfer": "untracked",
+      "sha256": "8faf427fa24800e99ee3799e14ad6a1d7236e8d45d676e4d461de01e4ed29b69",
+      "bytes": 65594
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/coordinator-review.md",
+      "transfer": "untracked",
+      "sha256": "51584aede171778bff7dc45bf45093d3ccd12840b7d3a17393d2a4d203631ee0",
+      "bytes": 2518
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/criterion-amendment.md",
+      "transfer": "untracked",
+      "sha256": "9a9c401e2c7659ff346d602d39ddb42cf09c91be7d9544aa0942d02450aabc49",
+      "bytes": 2125
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/demonstration.md",
+      "transfer": "untracked",
+      "sha256": "0f6fa506710f2d60abdcbcd2ab8829d2be1a069ab3234c2c48e978b047d58ad6",
+      "bytes": 1107
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/report.md",
+      "transfer": "untracked",
+      "sha256": "c4a8799e14ceb21fd9b312cd20f17a0ebb0954aa1b3c0d03141a912ea7e3d7ce",
+      "bytes": 2751
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/source-manifest.json",
+      "transfer": "untracked",
+      "sha256": "f328b732b8de64ece81286853c6a46407b535249a59d69b7b17484869eedbaf1",
+      "bytes": 6574
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/validation.md",
+      "transfer": "untracked",
+      "sha256": "98c2a372d3cec0d0408d28e67d3eac89a67acaa75c761eecae4112891ec5052f",
+      "bytes": 2412
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/criterion-matrix.md",
+      "transfer": "untracked",
+      "sha256": "17e9c4079dad0097a8d1d02fcb15aa655c4ab51da4762bb3ab0166108c23cdba",
+      "bytes": 5751
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/demonstration.md",
+      "transfer": "untracked",
+      "sha256": "19ef1f2c1b4b6324d5ed87e7ebc96cf47f4c1a177904a24734b20027639e669c",
+      "bytes": 4426
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/owned-files.json",
+      "transfer": "untracked",
+      "sha256": "51d45f5cfa9bb36bf740457e58acf517980db5938c2d411071d1620995824b43",
+      "bytes": 3942
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/owner-correction-2026-09-22.md",
+      "transfer": "untracked",
+      "sha256": "5205194ab9a8aa693f9d19222853c54776993bc5615cddb0f580d87ddb8269fa",
+      "bytes": 3538
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/receipts/001-review-ready.md",
+      "transfer": "untracked",
+      "sha256": "a5ead99236af0fbf65265341e5af6d0ae952ae0230923d1ad78098f814579ea9",
+      "bytes": 2951
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/receipts/002-correction-review-ready.md",
+      "transfer": "untracked",
+      "sha256": "0bc1d91671753e4c18cbafda55fab54f6cea70ccf0f5e0a38cb2de034cfafafd",
+      "bytes": 3281
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/repair-review.md",
+      "transfer": "untracked",
+      "sha256": "34a6f7037ac484fe02f030889820cbc71cf7e766399475959fed4091dd2200cf",
+      "bytes": 6961
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/report.md",
+      "transfer": "untracked",
+      "sha256": "0a222d34356e3f32e5aa1eba40bdbb9d89f5529d3f1d642ccbaf52dd07725c20",
+      "bytes": 5955
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/reused-calculation-evidence.json",
+      "transfer": "untracked",
+      "sha256": "e1beb4bee3c880f893e860a1d0b6f6e6059da7152b6b611b9600e3ac766f1436",
+      "bytes": 3302
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/validation.md",
+      "transfer": "untracked",
+      "sha256": "27e0ed58fd4ea733093c476f6b565d663c9bb57079ff4acaf48a892c8ed87346",
+      "bytes": 9689
+    },
+    {
+      "path": ".codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/preparation.md",
+      "transfer": "untracked",
+      "sha256": "9a1ca03d7070023d75af8299c12977f2e7eaa61fbf721be5f6fba34f739ee719",
+      "bytes": 1816
+    },
+    {
+      "path": ".codex/delivery/tickets/W39-REPORT-LOADING-SESSION-EFFICIENCY.md",
+      "transfer": "untracked",
+      "sha256": "5ead381b66e224fde7cd52c3819bebb3922a5a7eb65911d791d79447754e1662",
+      "bytes": 16325
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/parity.spec.ts",
+      "transfer": "untracked",
+      "sha256": "eb419170a00bba1752764871838898b344b43b82625f9a1e634b4821d97fde3a",
+      "bytes": 21019
+    }
+  ]
+}

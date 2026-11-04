@@ -58,7 +58,7 @@ def create_reports_app(
         request: Request, call_next: Callable[[Request], Awaitable[Response]]
     ) -> Response:
         if (
-            "/v2/" in request.url.path
+            ("/v2/" in request.url.path or "/composer/v1/" in request.url.path)
             and request.method == "POST"
             and len(await request.body()) > 1024 * 1024
         ):
@@ -75,7 +75,7 @@ def create_reports_app(
         request: Request,
         exc: PresentationFailure | AnalyticsFailure | IdentityFailure | CalendarFailure,
     ) -> JSONResponse:
-        if "/v2/" in request.url.path:
+        if ("/v2/" in request.url.path or "/composer/v1/" in request.url.path):
             return workspace_error(exc.code, exc.__cause__)
         code = exc.code
         status = 400
@@ -93,13 +93,13 @@ def create_reports_app(
 
     @app.exception_handler(psycopg.Error)
     async def database_failure(request: Request, exc: psycopg.Error) -> JSONResponse:
-        if "/v2/" in request.url.path:
+        if ("/v2/" in request.url.path or "/composer/v1/" in request.url.path):
             return workspace_error("STORAGE_UNAVAILABLE")
         return JSONResponse(status_code=503, content={"code": "STORAGE_UNAVAILABLE"})
 
     @app.exception_handler(RequestValidationError)
     async def validation_failure(request: Request, exc: RequestValidationError) -> Response:
-        if "/v2/" in request.url.path:
+        if ("/v2/" in request.url.path or "/composer/v1/" in request.url.path):
             exceeded = any(
                 "WORKSPACE_LIMIT_EXCEEDED" in str(e.get("msg", ""))
                 or e.get("type") == "too_long"
@@ -122,7 +122,10 @@ def create_reports_app(
 
     from custometry_api.reports.workspace_router import workspace_reports_router
 
-    app.include_router(workspace_reports_router(settings, auth))
+    from custometry_api.reports.composer_router import composer_router
+
+    app.include_router(composer_router(settings, auth, brand))
+    app.include_router(workspace_reports_router(settings, auth, brand))
 
     def current_service(request: Request) -> ReportService:
         if report_service is not None:

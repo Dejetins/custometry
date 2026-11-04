@@ -1,0 +1,166 @@
+{
+  "open": {
+    "chrome": {
+      "x": 63,
+      "y": 9,
+      "width": 2454.28125,
+      "height": 97,
+      "radius": "0px",
+      "font": "14px"
+    },
+    "inspector": {
+      "x": 2518.28125,
+      "y": 9,
+      "width": 350,
+      "height": 1557,
+      "radius": "0px",
+      "font": "12px"
+    },
+    "cards": {
+      "x": 83,
+      "y": 302,
+      "width": 2414.28125,
+      "height": 160,
+      "radius": "8px",
+      "font": "12px"
+    },
+    "plot": {
+      "x": 83,
+      "y": 522,
+      "width": 2414.28125,
+      "height": 1020,
+      "radius": "0px",
+      "font": "12px"
+    },
+    "sample": {
+      "x": 1832.8125,
+      "y": 67.5,
+      "width": 168.625,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "action": {
+      "x": 302.9375,
+      "y": 122,
+      "width": 45.5,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "gear": {
+      "x": 453.203125,
+      "y": 313,
+      "width": 28,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "scroll": 0
+  },
+  "before": {
+    "chrome": {
+      "x": 63,
+      "y": 9,
+      "width": 2616,
+      "height": 97,
+      "radius": "0px",
+      "font": "14px"
+    },
+    "inspector": null,
+    "cards": {
+      "x": 83,
+      "y": 302,
+      "width": 2576,
+      "height": 160,
+      "radius": "8px",
+      "font": "12px"
+    },
+    "plot": {
+      "x": 83,
+      "y": 522,
+      "width": 2576,
+      "height": 1020,
+      "radius": "0px",
+      "font": "12px"
+    },
+    "sample": {
+      "x": 1994.53125,
+      "y": 67.5,
+      "width": 168.625,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "action": {
+      "x": 302.9375,
+      "y": 122,
+      "width": 45.5,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "gear": {
+      "x": 480.15625,
+      "y": 313,
+      "width": 28,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "scroll": 0
+  },
+  "after": {
+    "chrome": {
+      "x": 63,
+      "y": 9,
+      "width": 2616,
+      "height": 97,
+      "radius": "0px",
+      "font": "14px"
+    },
+    "inspector": null,
+    "cards": {
+      "x": 83,
+      "y": 302,
+      "width": 2576,
+      "height": 160,
+      "radius": "8px",
+      "font": "12px"
+    },
+    "plot": {
+      "x": 83,
+      "y": 522,
+      "width": 2576,
+      "height": 1020,
+      "radius": "0px",
+      "font": "12px"
+    },
+    "sample": {
+      "x": 1994.53125,
+      "y": 67.5,
+      "width": 168.625,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "action": {
+      "x": 302.9375,
+      "y": 122,
+      "width": 45.5,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "gear": {
+      "x": 480.15625,
+      "y": 313,
+      "width": 28,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "scroll": 0
+  },
+  "sameSvg": true
+}

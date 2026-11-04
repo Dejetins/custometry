@@ -1,0 +1,261 @@
+{
+  "captured_at": "2026-09-23T14:08:58.656235+00:00",
+  "report_source_delta": [
+    {
+      "path": "apps/web/src/features/reports/WorkspaceProjection.tsx",
+      "before": "6eb815ba763c44d2d5cf5b84ab18c4e23ca55dff7b715af2be702907e71b6177",
+      "after": "7192612e0b1ca7ba2bdf952a259d2199880dfc81375964c7dd8d44c9da5b4cc7"
+    },
+    {
+      "path": "apps/web/src/features/reports/ReportChart.tsx",
+      "before": "3191ebdf6c272fa98a04f3510e1063a2a436d28682261c23477d18c28cf1f311",
+      "after": "a4fe4aa6cdf638ec47f3cf00b65dad020a188d4dc78f1c2e37eb7089b714a2d6"
+    },
+    {
+      "path": "apps/web/src/features/reports/PilotDocument.tsx",
+      "before": "d62828ce08dbc9b6b472d715c6ae2af10efa4081d7318886a7529387432db2db",
+      "after": "7a127bfac95cba477767b5fd47d7c5d31e5fbf8889e4d0cd600ea468f4cdb764"
+    },
+    {
+      "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+      "before": "8da8d9c686cf864c5da50d814c0c036e3fa21e9abf67fcd3e5f08dfbcc436539",
+      "after": "b50052755560144acc4648fb3bdc1bdbde58a5fb6ea4640806b5cf2a0848f12b"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace-copy.ts",
+      "before": "0afcd13edfaeee6baf4bae277037b8462ef84461475575256630484011c63bf7",
+      "after": "3d1fc5607b425c4089997ded51b67b2a1df92d399e181f0d58676a00cdf79cd6"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace.css",
+      "before": "824b68e017734250e9c06929eb16f728c8f5be037a1a9a542de9c2b17b39552b",
+      "after": "59d689cccacfd94a9c64a085611c11ead6adcf6b5b52cf63f2c46bce03f5333b"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/seams.json",
+      "before": "0e4f89ca9f63f107fb8cc94898256108e00c68e6d7668aa02e1250d5270574db",
+      "after": "4cf484652aba76ceb5f7cc4c6f89406d3039e0c57ca8196f85e349cc2066e8ea"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/port-epilogue.js",
+      "before": "57104cd06bb8e168b44a7d634770e6be73808f107cb67799ddba632ae205dcfd",
+      "after": "9fea6a73644cc702b978a7f72bf705c71f6df8bffa7eb0532f4e62a1e54a1684"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/runtime.ts",
+      "before": "e89967880e9a18d493f2cd4d85a296f34651334a20c1f4952afa280e1ce2d0b5",
+      "after": "c46c117423f1cdb45791813197384615dc5bf43d39777c1b2eff0efda25685d1"
+    }
+  ],
+  "additional_source_files": [
+    {
+      "path": "packages/localization/src/report-copy.ts",
+      "sha256": "08f033d7f5ec50bec48bd9831bedbca789078d4e628618e9cfe99fd1e87360e1"
+    },
+    {
+      "path": "packages/localization/src/report-pilot-copy.ts",
+      "sha256": "82393cc843144cbf57239767ec18c144b8cc4d5271cd05810f4aa5eb98b3e154"
+    },
+    {
+      "path": "tests/e2e/report-loading/owner-correction.spec.ts",
+      "sha256": "5a467f177609591b0e081f660908bad1f8fe27d26beb3bb67220b557cb1ea60f"
+    },
+    {
+      "path": "tests/e2e/report-loading/correction.config.ts",
+      "sha256": "34c19427a2c885ec36880f378961260300d9d870934057fa4ebdd25f6cfb7242"
+    },
+    {
+      "path": "tests/e2e/report-loading/candidate.spec.ts",
+      "sha256": "d1612cc710ab50c835558aca5e80a97cff970570eb558e4f85e79665e64f645c"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/parity.spec.ts",
+      "sha256": "9dc36f4781ac1d86ae19dbd178e57ab4c454922111251bd9e55e9677cf49110b"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/workspace.spec.ts",
+      "sha256": "0ef7268181cf79316fe6d10b9c77a47049bed9882d0d3fc57cf37c2939be45fc"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/reader.spec.ts",
+      "sha256": "17e71ac3e25cadd83b25f96478fd43e5f8d9680e776a7775403b842e0a8f47f4"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/observed-test.ts",
+      "sha256": "17e418da7c79c70de00794c4194098561451056e31184afe9d8fc5923a49526b"
+    }
+  ],
+  "production_build": [
+    {
+      "path": "apps/web/dist/assets/ReportWorkspace-Be0DroXz.js",
+      "sha256": "78b047e748be3a7766b4fa5e1f715e688dc026b8ece781c228762cec5c73d09f",
+      "bytes": 1004329
+    },
+    {
+      "path": "apps/web/dist/assets/ReportWorkspace-hVfEJ00i.css",
+      "sha256": "ebd07003321a34ecf0b8688d497edc02661018cd5e454ecc406cefb97478d6ed",
+      "bytes": 93722
+    },
+    {
+      "path": "apps/web/dist/assets/UI-AN-003-D0lrLbgJ.css",
+      "sha256": "6e4e62b923c1b9c84d42c2f859ee5e7eb73ae1b020640c502d1b88251e255204",
+      "bytes": 10057
+    },
+    {
+      "path": "apps/web/dist/assets/UI-AN-003.feature-route-B-kDHiYO.js",
+      "sha256": "8dc7ddaa978db92744882c86aa5abc63b21fe9aba7c5b27768b8a8ff7369f72d",
+      "bytes": 24246
+    },
+    {
+      "path": "apps/web/dist/assets/UI-AUTH-001.feature-route-D1zP8Cvf.js",
+      "sha256": "37037208d80cfb78e154a6758d0fbaa43f37184c711b71387ec1c332713cae36",
+      "bytes": 135
+    },
+    {
+      "path": "apps/web/dist/assets/UI-DATA-001.feature-route-HQalcR8f.js",
+      "sha256": "cee26d22b5d028ec88929e52a2743e1397a15cb284b5d5181552f19ae6a15c26",
+      "bytes": 224
+    },
+    {
+      "path": "apps/web/dist/assets/UI-DATA-002.feature-route-DNH64Rve.js",
+      "sha256": "a4f39cdc7ffa12fd7e87864c5124002ae27ea5f96242da404daf12de22b5dcac",
+      "bytes": 224
+    },
+    {
+      "path": "apps/web/dist/assets/UI-NOTIFY-001-CSgNnenf.css",
+      "sha256": "02772b255efe2896eabd5e3d25e8e5b71afa5af34336455cd48a580dd885b13e",
+      "bytes": 7665
+    },
+    {
+      "path": "apps/web/dist/assets/UI-NOTIFY-001.feature-route-BVQJidZq.js",
+      "sha256": "2835a8965a174d61d1939097a206219d849b11a0329b9e1f7f612ab76e072942",
+      "bytes": 20835
+    },
+    {
+      "path": "apps/web/dist/assets/UI-OPS-001-BwfXSV72.css",
+      "sha256": "cf4052e57d22e67013323d73b86c776cd58b8d640d1b6669aa55b4c450681640",
+      "bytes": 9764
+    },
+    {
+      "path": "apps/web/dist/assets/UI-OPS-001.feature-route-dDy1u4YP.js",
+      "sha256": "8f9fb82294e38224734b3a9feeb68ded8c6af60a5b9b2c18eb17c28d27c22817",
+      "bytes": 26891
+    },
+    {
+      "path": "apps/web/dist/assets/UI-RPT-001.feature-route-C93fNrn7.js",
+      "sha256": "dd24ec3fa268c15f4fb2c09b6dc82d3fd0f0f818510cc44f17486a7c622fd48b",
+      "bytes": 134
+    },
+    {
+      "path": "apps/web/dist/assets/UI-RPT-002.feature-route-CPmPLIH-.js",
+      "sha256": "04a68820da01af2290917f763548025a0c9d0e95794d5ec03ac940de09995923",
+      "bytes": 134
+    },
+    {
+      "path": "apps/web/dist/assets/UI-RPT-003.feature-route-FdRJW6Mw.js",
+      "sha256": "034b4a783fd4e6119218703daaba4cf22c6bbbb1e2f77e4bbbd29eb8059a7780",
+      "bytes": 134
+    },
+    {
+      "path": "apps/web/dist/assets/clock-3-DWShBhcF.js",
+      "sha256": "5e9cecb606db0f1a272cb01622f820216080ec515d24f900b2fc8fa508ebfabd",
+      "bytes": 355
+    },
+    {
+      "path": "apps/web/dist/assets/connections-C0SmM0Zz.js",
+      "sha256": "e9157c453f82bb786fc7f52e4b4feb5a23acbe166c01b1bf914c062121348fde",
+      "bytes": 27390
+    },
+    {
+      "path": "apps/web/dist/assets/connections-CPB9PFmf.css",
+      "sha256": "d4bf14540be53675c52ab3ea8bcee0d9fca84d149fd2647ba096ec1491c29c74",
+      "bytes": 8706
+    },
+    {
+      "path": "apps/web/dist/assets/inbox-8xBJNBxd.js",
+      "sha256": "69c4ec7548ec4e1231524e993a60dedda85a5a9dd9154ac93a4e66d6373313dc",
+      "bytes": 459
+    },
+    {
+      "path": "apps/web/dist/assets/index-BXnJC0O6.css",
+      "sha256": "94cbc7251761c57251ece844e14cfa174b9e3defc1713d478d7ea7762e5dc536",
+      "bytes": 34950
+    },
+    {
+      "path": "apps/web/dist/assets/index-hA7_DrSr.js",
+      "sha256": "de9cce63acf2799c55dccf2538ce12141a426494c236fafaed0b42f76fe3cf28",
+      "bytes": 605376
+    },
+    {
+      "path": "apps/web/dist/assets/shield-alert-B-Mq30ak.js",
+      "sha256": "8e0d0c83c5e90a9082f0ee4dd7102fd8f09346ac807fd76bb946e932bb476785",
+      "bytes": 526
+    },
+    {
+      "path": "apps/web/dist/help-index.json",
+      "sha256": "d711f677923e970e230264c8ef12c4504f193a2bd142b0f71fbb0150c7bba24f",
+      "bytes": 1865
+    },
+    {
+      "path": "apps/web/dist/index.html",
+      "sha256": "103577fa60e172d28b98d8cc6f61dd6bd053cecb7a280d7d9cdd0d25b877beac",
+      "bytes": 532
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/bookmark.svg",
+      "sha256": "77fca79f83c43089181368fa50ce2a043e9381ffa0af017ccbef9ccee070caf7",
+      "bytes": 511
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/context-actions.svg",
+      "sha256": "d44bf91a87a269939d9fedc148bd7a27d720527e03a2b699cd29732bdab2018e",
+      "bytes": 793
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/download.svg",
+      "sha256": "39095eaadc38ec1c4cdf25df7741f5ae4b1908aa2ebce39fc15eeaa2a3a07f1c",
+      "bytes": 587
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/expand.svg",
+      "sha256": "2088f71233cf0485ba28738a2245cf2530d3a384b72ddbfc8a9618d1b6b905bd",
+      "bytes": 388
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/filter.svg",
+      "sha256": "9438f9699a8babe4ae2257e9c76c4c7209043f34d0b7f0642846859beb65651f",
+      "bytes": 360
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/link.svg",
+      "sha256": "f3c9f0ab0215e19a4f7748e781747e20942e8ee2efe32a74c2334cece5ef48e3",
+      "bytes": 694
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/mail.svg",
+      "sha256": "75890716facc902891187dc307af7e8b1206f469e6012d2152edacf443b6f680",
+      "bytes": 545
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/revenue-ly.svg",
+      "sha256": "d9e8f9d2a412d72368a652cf8c596be58b1cdb7a7ee1e0c8919556bd537ab856",
+      "bytes": 391
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/revenue.svg",
+      "sha256": "75d23bd4d371599f6c3105c28a068f428e99feaed99ce2869ccb41bd065dee4b",
+      "bytes": 348
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/trust-status.svg",
+      "sha256": "766f43e926341669f3cc0ee331ec55bee6f43b4acb9725e82b2ff488fcabe223",
+      "bytes": 226
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/unread-indicator.svg",
+      "sha256": "e140c6fbb946d4d820bfb67363d7bfe4410eb81eaa2ddd440933f8d637881a0b",
+      "bytes": 242
+    }
+  ],
+  "build_manifest_sha256": "d2f00ae80be25a2db45dd8a43ad33174348c5e1aa44d992645aa88582a8870cc"
+}

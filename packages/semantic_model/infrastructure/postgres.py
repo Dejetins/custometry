@@ -81,6 +81,42 @@ class PostgresSalesSemanticRepository:
             )
             return [{"id": str(row[0]), "version": row[1]} for row in cursor.fetchall()]
 
+    def retail_filter_projection(self, *, workspace_id: UUID, dataset_version_id: UUID):
+        from packages.semantic_model.application.retail_filters import retail_filter_projection
+
+        return retail_filter_projection(dataset_version_id, self.sales_projection(
+            workspace_id=workspace_id, version_id=dataset_version_id))
+
+    def retail_aggregate_projection(self, *, workspace_id: UUID, dataset_version_id: UUID):
+        from packages.contracts.analytics import AnalyticsFailure
+        from packages.semantic_model.application.retail_aggregate import retail_aggregate_projection
+
+        source = self.sales_projection(workspace_id=workspace_id, version_id=dataset_version_id)
+        with self._connect() as connection, connection.transaction(), connection.cursor() as cursor:
+            cursor.execute("SELECT created_at FROM semantic_dataset_versions WHERE workspace_id=%s AND id=%s AND status='published'", (workspace_id, dataset_version_id))
+            row = cursor.fetchone()
+            if row is None:
+                raise AnalyticsFailure("SEMANTIC_DATASET_NOT_FOUND")
+        return retail_aggregate_projection(dataset_version_id, source, row[0])
+
+    def customer_events_projection(self, *, workspace_id: UUID, dataset_version_id: UUID):
+        from packages.contracts.analytics import AnalyticsFailure
+        from packages.semantic_model.application.customer_events import customer_events_projection
+
+        source = self.sales_projection(workspace_id=workspace_id, version_id=dataset_version_id)
+        with self._connect() as connection, connection.transaction(), connection.cursor() as cursor:
+            cursor.execute("SELECT created_at FROM semantic_dataset_versions WHERE workspace_id=%s AND id=%s AND status='published'", (workspace_id, dataset_version_id))
+            row = cursor.fetchone()
+            if row is None:
+                raise AnalyticsFailure("SEMANTIC_DATASET_NOT_FOUND")
+        return customer_events_projection(dataset_version_id, source, row[0])
+
+    def retail_relational_projection(self, *, workspace_id: UUID, dataset_version_id: UUID):
+        from packages.semantic_model.application.retail_relational import retail_relational_projection
+
+        return retail_relational_projection(dataset_version_id, self.sales_projection(
+            workspace_id=workspace_id, version_id=dataset_version_id))
+
     def sales_projection(self, *, workspace_id: UUID, version_id: UUID) -> dict[str, Any]:
         from packages.contracts.analytics import AnalyticsFailure
         from packages.semantic_model.application.sales_metrics import definitions

@@ -1,0 +1,176 @@
+[
+  {
+    "path": ".codex/agents/generated/MS-018/MS-018-S01.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "f84f8894ce80897f6f34f6426138519777516e74c032d7545745ece042e08e7b"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-018/preparation/baseline.json",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "3b9809fd3786b2953fdac1e3655d376016ff330eb6a612b4d8a959f6252acf8f"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-018/preparation/journal-capability.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "4efb3cf719b2da19486a61f55185fd7f10bf4e5ea67ad02f6ae82bf4b54e2b61"
+  },
+  {
+    "path": ".codex/delivery/evidence/WS-004/WS-004-v0.2.13.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "a18f328ee2d2983b68440c2c08da4daa05c438b6d2e09284b209bed2e7512790"
+  },
+  {
+    "path": "apps/api/src/custometry_api/analytics/relational_access.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "2d25fcc7dcc934b6de607cfef85fedc59cceb85b7745f3636aa1980ce327aabe"
+  },
+  {
+    "path": "apps/api/src/custometry_api/analytics/relational_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "836eaabda9da03ca3918927ee4e3e82b61cdbb26703e234e04d52e8cd4b6a872"
+  },
+  {
+    "path": "apps/api/src/custometry_api/reports/composer_router.py",
+    "operation": "modified",
+    "before_sha256": "144057082f55e661141c69aef5e1f4bf7ceae69714269665d979e2d572c7412d",
+    "sha256": "53e0fdfc9495c0f25b6bb9b94defd97ec0322d1529e5c07c877d7378c88702c3"
+  },
+  {
+    "path": "docs/README.md",
+    "operation": "modified",
+    "before_sha256": "47946ad7034d150a39487d3ea8cadde139f2405927356a5d798c555758043b61",
+    "sha256": "92f3308e1ac877a67e33c6bb279b7d135614ea02f89f6ca2bf1043a925b7851a"
+  },
+  {
+    "path": "docs/architecture/README.md",
+    "operation": "modified",
+    "before_sha256": "41db3017fd0ce244d241b60135f80f835a1c8d81da7a17959cdb68a5ca5a026f",
+    "sha256": "c400d63b314bfe2365d7afbfb9fc87c34a97c6e50ba25a5ec50605b7a00ea12b"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md",
+    "operation": "modified",
+    "before_sha256": "d7546d7da68dddf4fb002d27e99a4471fd41962582b92fd8e00f8707c0b88869",
+    "sha256": "dc5e17a658e6a4af33764ef1db54132673afe548ef276bf9e65d7f4e01040deb"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004.md",
+    "operation": "modified",
+    "before_sha256": "a18f328ee2d2983b68440c2c08da4daa05c438b6d2e09284b209bed2e7512790",
+    "sha256": "94d5ca22a3e560a8c529d9a6cbb6e5404874bd4e7bfbc1fc1b619373e0e2103a"
+  },
+  {
+    "path": "docs/architecture/planning/milestones/MS-018/plan.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "bd9f03099e056ee0fc583769d2d572839322adc3715ebef749d2822b0dedc96e"
+  },
+  {
+    "path": "docs/contracts/analytical-authoring-contract.md",
+    "operation": "modified",
+    "before_sha256": "51044b334339911f5bb30d01f01238c2b5c641627068f107f880d4b662102f61",
+    "sha256": "7a3b6b89c3e6267d1718117e0fc5ce5eff44e50eb6dc935ee3bc2ca90aa14e42"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/columnar_filters.py",
+    "operation": "modified",
+    "before_sha256": "3bf4c8e1fa16c0bc2ed4a562e1d419528064fecd53f081666ccf7f547ff3a4f3",
+    "sha256": "766e5ec52c7b4c0bc74504293935934f5e59538cabc613f66d51be3f22fa5b86"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/relational_filters.py",
+    "operation": "modified",
+    "before_sha256": "fa3fe30a1f1177377dd3a7d6014b8758028b474bf89648c94490c6a1099e91c0",
+    "sha256": "2bc729d2abcff9587603468ab6145f84b8a3d2c04065cfb946e25f4a23715f07"
+  },
+  {
+    "path": "packages/contracts/analytics/retail_relational.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "0a5d68e2aeb4e0b66b48c6811eabf9665fc6a4830550d5fd8242bd4fd32895e4"
+  },
+  {
+    "path": "packages/contracts/generate_composer_client.py",
+    "operation": "modified",
+    "before_sha256": "657a9e001f7288d9bfc290282685ff1365e94d56594e85f06c5047ea97d7447a",
+    "sha256": "9e75c6a7182dff2c3267aa39a64ace781262b4ab3d02f48a3f98e71402658e9e"
+  },
+  {
+    "path": "packages/contracts/openapi/composer.openapi.json",
+    "operation": "modified",
+    "before_sha256": "e0315da58dee991b15afb6c89553bb4ee6900d1c5d77a1033d55e265716dd5a6",
+    "sha256": "56bd85d7a7f2ae7687740bd51c416e09f8757e62dc1fc2bf0fa131e1455ae645"
+  },
+  {
+    "path": "packages/contracts/openapi/reports.openapi.json",
+    "operation": "modified",
+    "before_sha256": "939c04ad72436ea3410ddb83d1cfc2030eb4aaa0331aa6bcf867d8514827d054",
+    "sha256": "e32d72f11e88d6187ee1cff8d3197aeae61c548b38ac81e3a5f63e9f1b14dcc4"
+  },
+  {
+    "path": "packages/contracts/openapi/workspace.openapi.json",
+    "operation": "modified",
+    "before_sha256": "0fa0ffdbbc1b100fc424e6290482f2e8393dfb092d422ed34c5fe1790da548aa",
+    "sha256": "26f6513a9733669d4f4a96f00c8458b82e44a7667057a50db8e7343e4080461e"
+  },
+  {
+    "path": "packages/contracts/src/composer-client.ts",
+    "operation": "modified",
+    "before_sha256": "fb3128e3636aebbcfc98ac94e22252c31dcb285765729e697ae33362059ede35",
+    "sha256": "7a764e9760e2881ef10fcd37d8a6d9825e2daa4b3649bdcacba5f7b13cbec280"
+  },
+  {
+    "path": "packages/contracts/src/workspace-client.ts",
+    "operation": "modified",
+    "before_sha256": "dd3c64396892a73b3486c87604938435deccaa87be2151c8e95d0752e0b45114",
+    "sha256": "ec9be6f62caec05cfc9162371f059f01adf758765781f596b33cb9d44ab173fb"
+  },
+  {
+    "path": "packages/contracts/src/workspace-contracts.ts",
+    "operation": "modified",
+    "before_sha256": "458021ae79c07a9abc4bf0fbcb837877a1227ef1fa674eba3a9b2e40abc927c1",
+    "sha256": "8b7d3bd882819bd5db6bed616b44fc936b529ad268524018c5ff1388aad80777"
+  },
+  {
+    "path": "packages/semantic_model/application/retail_relational.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "5ed683a551c087ad8113345fd403c002ed8cf68f8f9041a92d4fded5be65c9ae"
+  },
+  {
+    "path": "packages/semantic_model/infrastructure/postgres.py",
+    "operation": "modified",
+    "before_sha256": "1b80e7b01fb928b4323fa893cfa43ba20e2f7c3955de1182d00913172975f58b",
+    "sha256": "06327b6f864242ff5851b6391a70434a02c931aeed146ad78a177f4b4b974f16"
+  },
+  {
+    "path": "tests/integration/analytics/run_retail_filters.py",
+    "operation": "modified",
+    "before_sha256": "6f0c4bd8903938b3e211af017f540928155e582c62633fe13c4f2a0b63bdc425",
+    "sha256": "e8640fe48675a57610f61fced6771563fbf8cf53f11f77b40c5f5fe7712edbfd"
+  },
+  {
+    "path": "tests/integration/analytics/test_relational_decimal_storage.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "b5d7491130b2e20d0711ed49a6a74992654121a34d68af5735a3203a8d26db47"
+  },
+  {
+    "path": "tests/integration/analytics/test_retail_relational_provider.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "b6a34d92217d214c3af5fb824e8ce83ae52961a3366318acbf7bee0190c8ac47"
+  },
+  {
+    "path": "tests/unit/semantic/test_retail_relational.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "e7e9dc3466d99c062b5a37e2fb5ab1218e215ad3002a247bd91d4b621008df6c"
+  }
+]

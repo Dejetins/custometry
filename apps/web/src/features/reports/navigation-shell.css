@@ -1,0 +1,19 @@
+/* Shared legacy/configured shell: rail, optional navigation dock, workspace. */
+:is(.app-shell,.report-pilot .pilot-app-shell)[data-sidebar]{grid-template-columns:var(--sidebar) 0 minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr);transition:grid-template-columns 180ms cubic-bezier(.2,0,0,1)}
+:is(.app-shell,.report-pilot .pilot-app-shell)[data-sidebar][data-nav-context=open]{grid-template-columns:var(--sidebar) 300px minmax(0,1fr)!important}
+:is(.app-shell,.report-pilot .pilot-app-shell)>:is(.sidebar,.pilot-sidebar){grid-column:1;grid-row:1 / -1}
+:is(.app-shell,.report-pilot .pilot-app-shell)>.workspace{grid-column:3;grid-row:1}
+:is(.app-shell,.report-pilot .pilot-app-shell)>.nav-context-panel{position:relative;inset:auto;grid-column:2;grid-row:1;align-self:stretch;justify-self:stretch;margin:8px 8px 0 0;width:auto;min-width:0;height:auto;max-height:calc(100dvh - 16px);grid-template-rows:auto minmax(0,1fr) auto;transform:none;box-shadow:inset 0 0 0 1px var(--border,#303137);overflow:hidden;border-radius:var(--radius-shell,18px)}
+:is(.app-shell,.report-pilot .pilot-app-shell)[data-nav-context=closed]>.nav-context-panel{visibility:hidden;pointer-events:none}
+:is(.app-shell,.report-pilot .pilot-app-shell)>.nav-context-backdrop{display:none!important}
+@media(max-width:1100px){:is(.app-shell,.report-pilot .pilot-app-shell)[data-sidebar][data-nav-context=open]{grid-template-columns:var(--sidebar) 248px minmax(0,1fr)!important}}
+@media(max-width:820px){:is(.app-shell,.report-pilot .pilot-app-shell)>.nav-context-panel{margin-block-start:5px;max-height:calc(100dvh - 10px)}}
+@media(max-width:640px){
+ :is(.app-shell,.report-pilot .pilot-app-shell)[data-sidebar],:is(.app-shell,.report-pilot .pilot-app-shell)[data-sidebar][data-nav-context=open]{grid-template-columns:var(--sidebar) minmax(0,1fr)!important}
+ :is(.app-shell,.report-pilot .pilot-app-shell)>.workspace{grid-column:2;grid-row:1}
+ :is(.app-shell,.report-pilot .pilot-app-shell)[data-nav-context=open]{grid-template-rows:auto minmax(0,1fr)}
+ :is(.app-shell,.report-pilot .pilot-app-shell)[data-nav-context=open]>.workspace{grid-row:2}
+ :is(.app-shell,.report-pilot .pilot-app-shell)>.nav-context-panel{grid-column:2;grid-row:1;margin-inline-end:0;max-height:45dvh;align-self:start}
+ :is(.app-shell,.report-pilot .pilot-app-shell)[data-nav-context=closed]>.nav-context-panel{display:none}
+}
+@media(prefers-reduced-motion:reduce){:is(.app-shell,.report-pilot .pilot-app-shell)[data-sidebar]{transition:none}}

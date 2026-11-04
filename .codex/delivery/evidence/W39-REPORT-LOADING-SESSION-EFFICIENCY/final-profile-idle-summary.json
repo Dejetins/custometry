@@ -1,0 +1,156 @@
+{
+  "completed": true,
+  "elapsed_ms": 1800268.1462090001,
+  "sample_span_seconds": 1800.183844,
+  "samples": 62,
+  "users": 50,
+  "ready_graphs_final": 50,
+  "ready_graphs_min_sampled": 50,
+  "activity_changed": 0,
+  "cohort_sessions": 50,
+  "cohort_principals": 50,
+  "rotation_history": 100,
+  "cohort_security_events": {
+    "session.created": 50,
+    "session.rotated": 100
+  },
+  "global_counts_before": {
+    "sessions": 4271,
+    "history": 3750,
+    "audit": 8293
+  },
+  "global_counts_after": {
+    "sessions": 4272,
+    "history": 3850,
+    "audit": 8395
+  },
+  "tables_before": {
+    "identity_audit_events": {
+      "insert": 8293,
+      "update": 0,
+      "delete": 0,
+      "dead_tuples": 0,
+      "relation_bytes": 1564672,
+      "index_bytes": 1089536
+    },
+    "identity_refresh_history": {
+      "insert": 3750,
+      "update": 0,
+      "delete": 0,
+      "dead_tuples": 0,
+      "relation_bytes": 737280,
+      "index_bytes": 835584
+    },
+    "identity_sessions": {
+      "insert": 4271,
+      "update": 3750,
+      "delete": 0,
+      "dead_tuples": 600,
+      "relation_bytes": 1769472,
+      "index_bytes": 1867776
+    }
+  },
+  "tables_after": {
+    "identity_audit_events": {
+      "insert": 8395,
+      "update": 0,
+      "delete": 0,
+      "dead_tuples": 0,
+      "relation_bytes": 1564672,
+      "index_bytes": 1097728
+    },
+    "identity_refresh_history": {
+      "insert": 3850,
+      "update": 0,
+      "delete": 0,
+      "dead_tuples": 0,
+      "relation_bytes": 737280,
+      "index_bytes": 851968
+    },
+    "identity_sessions": {
+      "insert": 4272,
+      "update": 3851,
+      "delete": 0,
+      "dead_tuples": 700,
+      "relation_bytes": 1769472,
+      "index_bytes": 1908736
+    }
+  },
+  "table_deltas": {
+    "identity_audit_events": {
+      "insert": 102,
+      "update": 0,
+      "delete": 0,
+      "dead_tuples": 0,
+      "relation_bytes": 0,
+      "index_bytes": 8192
+    },
+    "identity_refresh_history": {
+      "insert": 100,
+      "update": 0,
+      "delete": 0,
+      "dead_tuples": 0,
+      "relation_bytes": 0,
+      "index_bytes": 16384
+    },
+    "identity_sessions": {
+      "insert": 1,
+      "update": 101,
+      "delete": 0,
+      "dead_tuples": 100,
+      "relation_bytes": 0,
+      "index_bytes": 40960
+    }
+  },
+  "wal_bytes_delta": 3103275,
+  "artifact_bytes_before": 100299903,
+  "artifact_bytes_after": 100299903,
+  "api_rss_mib": {
+    "first": 1335.046875,
+    "last": 2019.859375,
+    "minimum": 1335.046875,
+    "maximum": 2019.859375
+  },
+  "browser_heap_bytes": {
+    "before_sum": 601486316,
+    "after_sum": 583153788,
+    "before_max": 13017340,
+    "after_max": 11699268
+  },
+  "cache_payload_bytes_max": 1353193,
+  "cache_entries_max": 2,
+  "forced_gc": false,
+  "requests": {
+    "GET /api/identity/events": 150,
+    "GET /api/reports/v2/[id]": 150,
+    "GET /api/analytics/metric-workspace/v2/datasets/[id]/context": 150,
+    "POST /api/identity/refresh": 100
+  },
+  "page_errors": [],
+  "source_hashes_still_match": false,
+  "comment_only_source_drift": [
+    "apps/api/src/custometry_api/identity/router.py"
+  ],
+  "runtime_source_equivalent": true,
+  "limitations": [
+    "Owned local selected profile; not release/production evidence.",
+    "An early wrong-target QA login/logout caused one global invalidation/reconciliation on this fixture database; no idle-cohort activity updates. Subsequent QA used separate databases.",
+    "RSS/SQL sampled about every 30 seconds; transient peaks may occur between samples.",
+    "Global table/WAL deltas include the disclosed early diagnostic login/logout and database maintenance; cohort security events attribute token renewals separately.",
+    "No forced browser/API collection in this idle observation."
+  ],
+  "harness_files": [
+    {
+      "path": "tests/performance/report-loading/idle-final.mjs",
+      "sha256": "73b162349c7b2ca4955561df9f2e7d850d958eebf76e9a252dbb2f471a89e476"
+    },
+    {
+      "path": "tests/performance/report-loading/idle_snapshot.py",
+      "sha256": "8c5bc199a9c63597a8d5278eec864ca64a666baa975a8352e6da6b8bb42d8968"
+    },
+    {
+      "path": "tests/performance/report-loading/summarize_final_idle.py",
+      "sha256": "a297685c2a5851c54e4ae4e90f31b6c719e004dc1f5a18098ed7980cba9ac5dc"
+    }
+  ]
+}

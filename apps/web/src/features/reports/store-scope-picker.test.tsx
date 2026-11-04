@@ -1,0 +1,6 @@
+import {render,screen,fireEvent,cleanup} from '@testing-library/react';
+import {afterEach,it,expect,vi} from 'vitest';
+import {StoreScopePicker} from './StoreScopePicker';
+afterEach(cleanup);
+it('shows the actual inherited subset and makes an edit explicit without broadening it',()=>{const change=vi.fn();render(<StoreScopePicker label="Stores" value={null} stores={[{id:'a',label:'Alpha'},{id:'b',label:'Beta'},{id:'c',label:'Gamma'}]} inheritedIds={['a','b']} inherit alwaysOpen disabled={false} onChange={change} locale="en"/>);expect((screen.getByRole('checkbox',{name:'Alpha'}) as HTMLInputElement).checked).toBe(true);expect((screen.getByRole('checkbox',{name:'Gamma'}) as HTMLInputElement).disabled).toBe(true);fireEvent.click(screen.getByRole('checkbox',{name:'Alpha'}));expect(change).toHaveBeenCalledWith(['b']);});
+it('restores inheritance with null rather than an explicit all-stores list',()=>{const change=vi.fn();render(<StoreScopePicker label="Stores" value={[]} stores={[{id:'a',label:'Alpha'}]} inheritedIds={['a']} inherit alwaysOpen disabled={false} onChange={change} locale="en"/>);fireEvent.click(screen.getByRole('checkbox',{name:'Use report filters'}));expect(change).toHaveBeenCalledWith(null);});

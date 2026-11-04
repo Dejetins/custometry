@@ -1,0 +1,129 @@
+{
+  "viewport": {
+    "width": 2688,
+    "height": 1575
+  },
+  "before": {
+    "header": {
+      "x": 63,
+      "y": 9,
+      "height": 56,
+      "width": 2616,
+      "bottom": 65
+    },
+    "tabs": {
+      "x": 83,
+      "y": 75.5,
+      "height": 31,
+      "width": 376.703125,
+      "bottom": 106.5
+    },
+    "nav": {
+      "x": 63,
+      "y": 65,
+      "height": 52,
+      "width": 2616,
+      "bottom": 117
+    },
+    "title": {
+      "x": 83,
+      "y": 35.21875,
+      "height": 20.390625,
+      "width": 2448.578125,
+      "bottom": 55.609375
+    },
+    "main": {
+      "x": 83,
+      "y": 134,
+      "height": 28,
+      "width": 2576,
+      "bottom": 162
+    },
+    "cards": {
+      "x": 83,
+      "y": 314,
+      "height": 124,
+      "width": 2576,
+      "bottom": 438
+    },
+    "plot": {
+      "x": 83,
+      "y": 498,
+      "height": 520,
+      "width": 2576,
+      "bottom": 1018
+    },
+    "scroll": 0,
+    "cardHeight": 124,
+    "gap": "10px",
+    "radius": "10px",
+    "navPadding": [
+      "10px",
+      "20px",
+      "10px",
+      "20px"
+    ]
+  },
+  "after": {
+    "header": {
+      "x": 63,
+      "y": 9,
+      "height": 56,
+      "width": 2616,
+      "bottom": 65
+    },
+    "tabs": {
+      "x": 83,
+      "y": 75.5,
+      "height": 31,
+      "width": 376.703125,
+      "bottom": 106.5
+    },
+    "nav": {
+      "x": 63,
+      "y": 65,
+      "height": 52,
+      "width": 2616,
+      "bottom": 117
+    },
+    "title": {
+      "x": 83,
+      "y": 35.21875,
+      "height": 20.390625,
+      "width": 2448.578125,
+      "bottom": 55.609375
+    },
+    "main": {
+      "x": 83,
+      "y": 134,
+      "height": 28,
+      "width": 2576,
+      "bottom": 162
+    },
+    "cards": {
+      "x": 83,
+      "y": 314,
+      "height": 124,
+      "width": 2576,
+      "bottom": 438
+    },
+    "plot": {
+      "x": 83,
+      "y": 498,
+      "height": 520,
+      "width": 2576,
+      "bottom": 1018
+    },
+    "scroll": 0,
+    "cardHeight": 124,
+    "gap": "10px",
+    "radius": "10px",
+    "navPadding": [
+      "10px",
+      "20px",
+      "10px",
+      "20px"
+    ]
+  },
+  "errors": []
+}

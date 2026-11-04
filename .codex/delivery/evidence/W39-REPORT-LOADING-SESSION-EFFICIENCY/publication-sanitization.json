@@ -1,0 +1,360 @@
+{
+  "schema": "w39-publication-sanitization/v1",
+  "scope": "Remove temporary runtime samples and captured patches while retaining measured results and historical source hashes. Original bytes were archived locally; availability is local only. Historical baseline hashes describe prior snapshots.",
+  "files": [
+    {
+      "path": "api-spans-40threads.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "449f6c071dc47ac645c5fa82d09119225cf6f882993469075448d9baf5c37745",
+      "original_bytes": 73391
+    },
+    {
+      "path": "api-spans-gc-100000.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "1f78da680b809fe5368031cdb598de9515346a17725d514ad8b36dda00d631de",
+      "original_bytes": 67068
+    },
+    {
+      "path": "api-sustained-memory.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "cf1c801a260869a52cbc722efdb0f46010c127077252b8e503a54620ec60120d",
+      "original_bytes": 894119
+    },
+    {
+      "path": "baseline-cold-8w-controlled.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "44c665d9f3bb83fc3e33a4555aaa50b9f052cf0df226abc9716770d92fcfdaee",
+      "original_bytes": 659116
+    },
+    {
+      "path": "baseline-cold-8w-native-original.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "8e508f60f060af2f22530a1df8910886d1642483b3b76c0718ad95b7900e1d3e",
+      "original_bytes": 372288
+    },
+    {
+      "path": "baseline-cold-before-bounded-shutdown-partial.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "4d02ef1d50b5cc9879282eef7ed7f8041bf5628f65dccec0b6379e28b78a1223",
+      "original_bytes": 96541
+    },
+    {
+      "path": "baseline-resources.json",
+      "action": "removed from publication",
+      "original_sha256": "99d90151548cef95c7bd4f4fec7a6de723592b10c2a24a349a57f5fad6c83699",
+      "original_bytes": 2098106
+    },
+    {
+      "path": "baseline-warm-8w-concurrent-prime-partial.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "e8e8e4f3cdb92974795ab7569a7f09cc56c62b8a64e73f51ca0fbf4120c08195",
+      "original_bytes": 148279
+    },
+    {
+      "path": "baseline-warm-8w-controlled.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "bd2812e21a1ad6905ecd2e287fe330638d73a0703913c08fdb5fa9fbba01db83",
+      "original_bytes": 575358
+    },
+    {
+      "path": "baseline-warm-8w-native-original.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "bc623930857bfec6d6bfac32de37af18f105e6f896a396dbf5fedd862b8c82f2",
+      "original_bytes": 338803
+    },
+    {
+      "path": "candidate-cold-8w-after-embedded-results.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "afe2bbae58cb9f09035881c8e7a0623cf249f7ffae7e76656739e9d0463300f0",
+      "original_bytes": 414342
+    },
+    {
+      "path": "candidate-cold-8w-after-model-parser.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "929714e65b0eaa63169ef269dc16c236b072c45762bfd23f1e8c896ac7648018",
+      "original_bytes": 460237
+    },
+    {
+      "path": "candidate-cold-8w-controlled.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "0f1148dd7cf80c98cdef71b78f83b0ae437f3176af8278adcea264701119de61",
+      "original_bytes": 978806
+    },
+    {
+      "path": "candidate-resources.json",
+      "action": "removed from publication",
+      "original_sha256": "1e42edb8386d151e2227823a4617678511ab8196433ce5b9e01d3d5db6360e1b",
+      "original_bytes": 6185767
+    },
+    {
+      "path": "candidate-warm-16w-balanced-one-thread-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "1d588b135045f15165bb74ffdbd6d01e4930396304fd293f73bb35330b3842c1",
+      "original_bytes": 237233
+    },
+    {
+      "path": "candidate-warm-16w-balanced-two-threads-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "e8242ec3e12a77a3f81d15050db6732606afce79336c1872165d25af426cb5f8",
+      "original_bytes": 241041
+    },
+    {
+      "path": "candidate-warm-16w-shared-socket-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "1c72bd157ad214d617f3a12242c6a8bd8b43540c75e5e94de465752bfebff1f0",
+      "original_bytes": 228744
+    },
+    {
+      "path": "candidate-warm-8w-after-embedded-results.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "7b14057158bc26b91df46fa70d2c2e8d797513cd172f81fff9184ac474845e76",
+      "original_bytes": 364383
+    },
+    {
+      "path": "candidate-warm-8w-after-model-parser.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "c32f85dec5ac904cf1fee74146eaa8ac15061565416e8ad71a14414d71960dac",
+      "original_bytes": 398240
+    },
+    {
+      "path": "candidate-warm-8w-autocommit-defaultgc-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "d6dfdeb202b39ba464721be8019e28b85d026de4156dfeb66952defaae66e27d",
+      "original_bytes": 228969
+    },
+    {
+      "path": "candidate-warm-8w-balanced-db-observation.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "00ae3d7245eda0dbf3feb0040303eeb030cc8781bfa6fb6ceed70b116c469062",
+      "original_bytes": 242485
+    },
+    {
+      "path": "candidate-warm-8w-balanced-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "36bc77c5fd8df6e8d654644e789cd85fd78a0809f8ac565621a3f816fad0ae63",
+      "original_bytes": 241419
+    },
+    {
+      "path": "candidate-warm-8w-balanced-four-threads-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "138ec5ee17c9d0b3563d9a1cc876294375da6cd2abf92ac64e94152af86432da",
+      "original_bytes": 239471
+    },
+    {
+      "path": "candidate-warm-8w-balanced-one-thread-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "713c91cd7ecf29175377c71da9130148652f117492ead1dc8c727a04d7e41c29",
+      "original_bytes": 242464
+    },
+    {
+      "path": "candidate-warm-8w-balanced-two-threads-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "ae3d1b0a295199c52e07ac227576531aa8c030232d10dc0fbdbe4b0dad51b3fe",
+      "original_bytes": 242107
+    },
+    {
+      "path": "candidate-warm-8w-browser-trace-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "f1cba1e8feff513a75d6c371868511c91c5cf4ea8d6e34fd418f6f346abf98af",
+      "original_bytes": 258719
+    },
+    {
+      "path": "candidate-warm-8w-compressed-one-thread-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "e9745498f93b681ffe3c28ebed49c903aaecc18abbe5b36e06c237aeb2409db6",
+      "original_bytes": 256214
+    },
+    {
+      "path": "candidate-warm-8w-container-balanced-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "a5a42bc6c9afc15408d518bf26fae6035a7d8f224067b0d24c14251182a4c84b",
+      "original_bytes": 249984
+    },
+    {
+      "path": "candidate-warm-8w-container-compressed-four-threads-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "5d062264b97aab74eb6ad00ada7efab83f2000675c16d5a50bf49b7d8c658565",
+      "original_bytes": 256888
+    },
+    {
+      "path": "candidate-warm-8w-container-compressed-two-threads-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "547a016af96adf0a2e5453d6975a53699f0617986fa798f265bcfeb4d4ba351b",
+      "original_bytes": 243952
+    },
+    {
+      "path": "candidate-warm-8w-controlled.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "7b592dfc950d6517c42287e475e3131d03e8cfd9a3b9411593259504e0f48b72",
+      "original_bytes": 911469
+    },
+    {
+      "path": "candidate-warm-8w-decoded-budget-layout-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "fd9f268bb3cc01f4e7f147aeb1ec5a235002d53bbfdc6ab7296ac041d36644be",
+      "original_bytes": 249601
+    },
+    {
+      "path": "candidate-warm-8w-deferred-observation-200.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "2a78b62e623d47b07d82d2a5edcaefb3a210a09c2bcd97107f33439c78dc22ca",
+      "original_bytes": 901274
+    },
+    {
+      "path": "candidate-warm-8w-deferred-observation-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "2700d71cd3f36b98c9729dcd4abf776930c095175773254331e34b6559930ace",
+      "original_bytes": 262545
+    },
+    {
+      "path": "candidate-warm-8w-fifty-browser-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "9dc07ae57e5d31bfcfd539326745c412ba1535a353fc5e3e5573c2c96da92866",
+      "original_bytes": 298173
+    },
+    {
+      "path": "candidate-warm-8w-four-threads-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "24fc6c86c9a1a0492fb34e8693ed3c4a744193b88bf148cdc253be9068029624",
+      "original_bytes": 235976
+    },
+    {
+      "path": "candidate-warm-8w-full-chromium-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "844df6480ba391e1fcd9acfcdc751289e6c62546b5e25ff2f8fcc232b25802bc",
+      "original_bytes": 325001
+    },
+    {
+      "path": "candidate-warm-8w-gc100000-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "a44d0dda511bf01dea6f156a128fd7cb157592bab1347d6b90404b5ad6abcef1",
+      "original_bytes": 225792
+    },
+    {
+      "path": "candidate-warm-8w-gc1m-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "828164697355588864fc24c7e5481d6be6180b67a02476c1d964cbd43080794d",
+      "original_bytes": 239629
+    },
+    {
+      "path": "candidate-warm-8w-header-no-blur-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "26882df2b607137d345d9437266ad6d17d3a03828a6aee5d0756692507741dd3",
+      "original_bytes": 259687
+    },
+    {
+      "path": "candidate-warm-8w-motion-budget-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "2ff3f4ab2d918c564595005a9a532b1450dad796d94b487be19ab9cdd3b0af5e",
+      "original_bytes": 272027
+    },
+    {
+      "path": "candidate-warm-8w-plot-flush-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "176e99113bfbf33d94389e9b70e1a8b975b390bc4bfd779f1c21a6b85940fa3d",
+      "original_bytes": 257903
+    },
+    {
+      "path": "candidate-warm-8w-short-plot-idle-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "0a3e08f952571aab9efb2f2e45156e3425038804ba622faaebf00a88af4b1516",
+      "original_bytes": 264324
+    },
+    {
+      "path": "candidate-warm-8w-skip-hidden-pilot-200.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "f48323ea27730886bfa25a7553d24a15f4dd35f2d8234e6c21b34661b47d10be",
+      "original_bytes": 896930
+    },
+    {
+      "path": "candidate-warm-8w-skip-hidden-pilot-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "62ac4e229484e0771cfa5896a6d8f0020c538576dda56c2944a4d3af02cf1a22",
+      "original_bytes": 260734
+    },
+    {
+      "path": "candidate-warm-8w-stable-placeholder-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "3734b581961fcba8fd16e72ed26d876978a8abcfdaa60a19632e3d489f1351c7",
+      "original_bytes": 263481
+    },
+    {
+      "path": "candidate-warm-8w-static-access-default-gc-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "a68fd6bd98989638704bdddeb99057ad0481e9037cdb6442e79cd83343f32989",
+      "original_bytes": 255076
+    },
+    {
+      "path": "candidate-warm-8w-static-access-gc7000-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "e2dee74044d272006f8d9a77f6b56f7c6b8bdca56c84f302f5db632422e5f371",
+      "original_bytes": 263892
+    },
+    {
+      "path": "candidate-warm-8w-stepped-animation-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "2d138472ef46247df92c3ce583e9382a2696b35c53c58177c2f1445b3e84e70c",
+      "original_bytes": 258341
+    },
+    {
+      "path": "candidate-warm-8w-switch-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "106d55464734a583dbc7358dd8fa6ddc7e89eb9fba4e59c5a55e3f74f8f53847",
+      "original_bytes": 230447
+    },
+    {
+      "path": "candidate-warm8-resources.json",
+      "action": "removed from publication",
+      "original_sha256": "b7506e7ed83d73b8fb98335591fabf5136aabf6e479d25f981708ea976be8ca5",
+      "original_bytes": 1712402
+    },
+    {
+      "path": "cwd-mismatch-diagnostic/navigation-memory.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "d1aa8965a2aa42caa7072260c81a727084a0c2d15a25f458ff418ae2c8e700d4",
+      "original_bytes": 3673
+    },
+    {
+      "path": "database-cpu-diagnostic.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "a2daf64c4ecdccedc16fc6f1b01a67bb4a7b153758df1ede688712756901aba0",
+      "original_bytes": 25440
+    },
+    {
+      "path": "final-profile-idle.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "bf578328f7b56b2f257b4cf44a7383c9d07967767d6350d75b36a9806635d841",
+      "original_bytes": 202630
+    },
+    {
+      "path": "inherited-tracked.patch",
+      "action": "removed from publication",
+      "original_sha256": "5e317b56bf047904c9430649c084207be16890cbf85f555fb1d8d9e9c273d335",
+      "original_bytes": 131396
+    },
+    {
+      "path": "navigation-memory-150-cycles.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "a04abaedc60b0c1114cfb3444f7f7611d1bcf66bf6322ea90f6bd3848bfdb993",
+      "original_bytes": 15686
+    },
+    {
+      "path": "navigation-memory-30-cycles.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "b508839ae3fdfa312239e50d38bea7306ef7416462d10bfaa6d9fbb1682a1aab",
+      "original_bytes": 3673
+    },
+    {
+      "path": "navigation-memory.json",
+      "action": "runtime fields redacted",
+      "original_sha256": "6cbd05913436d83bb44503468745e9176d5d71465d58510c108d7d1ac4bdfc54",
+      "original_bytes": 100859
+    },
+    {
+      "path": "owner-context-repair.patch",
+      "action": "removed from publication",
+      "original_sha256": "f90b0287521e180d9d9b10fb570ceb787e60019ea401e6c569407ff8c9381ae0",
+      "original_bytes": 25152
+    }
+  ]
+}

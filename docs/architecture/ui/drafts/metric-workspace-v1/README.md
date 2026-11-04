@@ -16,6 +16,11 @@ proof_boundary:
 
 # Metric workspace composition
 
+Current routing (2026-10-10): the [UI change manifest](../../ui-change-manifest.md)
+supersedes mandatory fidelity to this earlier accepted baseline. The decisions
+below retain their history and product meaning; their visual compositions may
+evolve through owner requests and are not universal templates.
+
 The owner accepted this composition as the starting baseline on 2026-09-17 and
 requested that it be recorded and developed further. This is acceptance of the
 overall layout and interaction direction, not a frozen final design. The separate

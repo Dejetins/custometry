@@ -1,0 +1,278 @@
+{
+  "viewport": {
+    "width": 768,
+    "height": 1024
+  },
+  "closed": {
+    "tokens": [],
+    "chrome": {
+      "x": 63,
+      "y": 6,
+      "width": 699,
+      "height": 97,
+      "right": 762,
+      "bottom": 103
+    },
+    "rail": {
+      "x": 0,
+      "y": 0,
+      "width": 62,
+      "height": 1019,
+      "right": 62,
+      "bottom": 1019
+    },
+    "plot": {
+      "x": 75,
+      "y": 516,
+      "width": 675,
+      "height": 478,
+      "right": 750,
+      "bottom": 994
+    },
+    "scroll": 0,
+    "reference": {
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "controls": [
+      {
+        "label": "Apply",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Save report",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Reload saved",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Exact snapshot",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "2025-01-01 — 2025-12-31 · Report context",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Configure workset",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Workset 1",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Move workset up",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Move workset down",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Workset 2",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Move workset up",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Move workset down",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Workset 3",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Move workset up",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Move workset down",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Add workset",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Chart / comparison settings",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Chart",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Table",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Focus",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Goals · unavailable",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Shared workset · unavailable",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      }
+    ],
+    "inspector": null
+  },
+  "open": {
+    "tokens": [],
+    "chrome": {
+      "x": 63,
+      "y": 6,
+      "width": 699,
+      "height": 97,
+      "right": 762,
+      "bottom": 103
+    },
+    "rail": {
+      "x": 0,
+      "y": 0,
+      "width": 62,
+      "height": 1019,
+      "right": 62,
+      "bottom": 1019
+    },
+    "plot": {
+      "x": 75,
+      "y": 516,
+      "width": 675,
+      "height": 478,
+      "right": 750,
+      "bottom": 994
+    },
+    "scroll": 0,
+    "reference": {
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "controls": [
+      {
+        "label": "Close inspector",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Set",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Card",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Chart",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Context",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Move card up",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Move card down",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Copy",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Remove",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      },
+      {
+        "label": "Apply",
+        "height": 28,
+        "radius": "16px",
+        "font": "10px"
+      }
+    ],
+    "inspector": {
+      "x": 63,
+      "y": 103,
+      "width": 699,
+      "height": 915,
+      "right": 762,
+      "bottom": 1018
+    }
+  },
+  "errors": []
+}

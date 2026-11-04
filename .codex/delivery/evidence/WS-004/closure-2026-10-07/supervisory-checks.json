@@ -1,0 +1,40 @@
+{
+  "exact_169_ids": true,
+  "counts": {
+    "partial": 105,
+    "fully_verified": 1,
+    "not_verified": 45,
+    "not_implemented": 18
+  },
+  "counts_match": true,
+  "missing_audit_paths": [],
+  "source_hashes_checked": 80,
+  "source_hash_mismatches": [],
+  "owned_hashes_checked": 406,
+  "owned_hash_mismatches": [],
+  "stage_snapshot_mismatches": [],
+  "executor_stop": {
+    "thread": "01a11657-9ad8-73a2-915c-08b50763ae58",
+    "status": "idle",
+    "latest_turn": "completed",
+    "observed_via": "wait_threads revision77"
+  },
+  "independent_backend": {
+    "outcome": "passed",
+    "tests": 221,
+    "duration_seconds": 2.36,
+    "exit_code": 0,
+    "command_source": ".codex/delivery/evidence/MS-024/MS-024-S02/verification.md"
+  },
+  "post_edit_local_gate": {
+    "command": "source scripts/activate-toolchain.sh; uv run --locked python -m tools.check --scope local",
+    "outcome": "passed",
+    "observed": true,
+    "exit_code": 0
+  },
+  "diff_check": {
+    "command": "git diff --check",
+    "outcome": "passed",
+    "exit_code": 0
+  }
+}

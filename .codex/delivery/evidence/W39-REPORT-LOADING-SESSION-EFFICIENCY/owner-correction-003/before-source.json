@@ -1,0 +1,18 @@
+[
+  {
+    "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+    "sha256": "4d69e2056761083aa3e8c8c37ae60880253f8e60bada50d604e281cb95a4e6a1"
+  },
+  {
+    "path": "apps/web/src/features/reports/WorkspaceProjection.tsx",
+    "sha256": "7192612e0b1ca7ba2bdf952a259d2199880dfc81375964c7dd8d44c9da5b4cc7"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace.css",
+    "sha256": "7bf75314a29b64f77dc7cb9d8162c845aa57c3a205addcb2ef88a87c4587f0a1"
+  },
+  {
+    "path": "apps/web/src/features/reports/navigation-dock.css",
+    "sha256": "11b6c6c386ce5745415261dae822a853e955c7d3308c0c7c93e555e08e31c83c"
+  }
+]

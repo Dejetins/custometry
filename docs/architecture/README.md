@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-INDEX
 title: Custometry Architecture
-doc_version: 50
+doc_version: 76
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -44,7 +44,7 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [Bounded context map](./bounded-context-map.md) | Context ownership, public ports, dependency direction, consistency, and cross-context integration policy |
 | [Governed population and analytical authoring](../contracts/analytical-authoring-contract.md) | Accepted segmentation/reporting requirements, target ownership, implemented bounded sales results and draft composition, compatibility and evidence |
 | [Source data adaptation and imperfect snapshot refresh](../contracts/source-data-adaptation-contract.md) | Accepted source readiness, daily rebuilds, degraded-input handling, typed mapping and derived-channel requirements |
-| [Report refresh, prepared serving and recovery](../contracts/report-refresh-serving-recovery-contract.md) | Accepted version 1: document schedules/status, immutable current snapshots, artifact commit, mixed 50-author/100-viewer workload and coherent off-primary backup; numeric latency/recovery objectives remain unproven |
+| [Report refresh, prepared serving and recovery](../contracts/report-refresh-serving-recovery-contract.md) | Version 7: schedules/status, immutable snapshots, bounded saved-result serving, session lifecycle and recovery; W39 records local 50-user saved-open proof, while mixed refresh/recovery objectives remain unproven |
 | [Artifact format registry](../contracts/artifact-format-contract.md) | Required output vocabulary, manifest meaning, reader compatibility and rollback |
 | [Audit contract proposals](./planning/audit-contract-decisions-2026-09-06.md) | Proposed PVM, shared cancellation and endpoint revocation; TLS-only Edge exception accepted through WS-001; runtime proof remains separate |
 | [Documentation audit reconciliation](./planning/documentation-audit-reconciliation-2026-09-06.md) | Accepted correction scope, finding disposition, compatibility and observed documentation evidence |
@@ -55,11 +55,13 @@ If sources conflict, the higher-precedence source applies. An architecture docum
 | [Analytical documents, segments, and product analytics ADR](../adr/0006-analytical-document-retail-product-and-time-aware-segmentation.md) | Accepts one analytical-document composition/snapshot path, time-aware segment identity, retail product/category/inventory boundaries, compatibility, and migration direction |
 | [Responsive Web frontend platform ADR](../adr/0007-responsive-web-frontend-platform.md) | Selects the version-pinned browser platform and fixes dependency direction, state/adapter/design-system ownership, responsive anchors, rollout, rollback, and later proof boundaries |
 | [Comparable analytics platform capability audit](./ui/comparable-analytics-platform-capability-audit-v1.md) | Official-documentation audit of established multi-page authoring, collaboration, segments, digital/product analysis, adoption, and compute-reuse patterns plus Custometry's accepted response and deliberate non-copy boundary |
-| [Target UI concept](./ui/target-pilot/README.md) | Preserved interactive pilot, byte-pinned resources, demonstrated composition and interactions, and proof limits |
+| [UI change manifest](./ui/ui-change-manifest.md) | Required short routing for UI reuse, exploration, scoped redesign and verification |
+| [Preserved UI pilot](./ui/target-pilot/README.md) | Historical interactive reference and byte-pinned integration evidence; no mandatory fidelity |
 | [UI program retirement](./ui/ui-program-retirement.md) | Removed materials, preserved requirements/code, historical recovery, and cleanup evidence |
-| [Web implementation source contract](./ui/custometry-web-implementation-source-contract-v1.md) | Selected ticket or milestone-stage execution from the target pilot and product requirements, source precedence, and browser proof boundary |
+| [Web implementation source contract](./ui/custometry-web-implementation-source-contract-v1.md) | Selected ticket or milestone-stage execution, evolving scoped visual references, product requirements and browser proof boundary |
 | [Hierarchical planning framework](planning/framework-v1/README.md) | Required per-level templates, versions, owner checkpoints, mandatory document synchronization and milestone plan/pack/journal bindings |
-| [Personal report worksets L3](planning/milestones/MS-004/plan.md) | MS-004 0.2.1 (accepted design 0.2.0) under WS-003/C01; concrete configuration, calculation, access, persistence and accepted five-stage local proof plan (owner confirmation 2026-09-20); [canonical journal and five prompts](../../.codex/delivery/ledgers/MS-004.md); [S01 foundation](../../.codex/delivery/evidence/MS-004/MS-004-S01/report.md), [S02 calculations](../../.codex/delivery/evidence/MS-004/MS-004-S02/report.md), [S03 guarded APIs and persistence](../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md); [S04 native Web integration](../../.codex/delivery/evidence/MS-004/MS-004-S04/report.md) adds the real-API browser harness; S05 integrated proof and final owner acceptance remain subsequent work |
+| [Personal report worksets L3](planning/milestones/MS-004/plan.md) | MS-004 0.2.1 (accepted design 0.2.0) under WS-003/C01; concrete configuration, calculation, access, persistence and accepted five-stage local proof plan (owner confirmation 2026-09-20); [canonical journal and five prompts](../../.codex/delivery/ledgers/MS-004.md); [S01 foundation](../../.codex/delivery/evidence/MS-004/MS-004-S01/report.md), [S02 calculations](../../.codex/delivery/evidence/MS-004/MS-004-S02/report.md), [S03 guarded APIs and persistence](../../.codex/delivery/evidence/MS-004/MS-004-S03/report.md); [S04 native Web integration](../../.codex/delivery/evidence/MS-004/MS-004-S04/report.md) adds the real-API browser harness; [S05 integrated evidence and demonstration](../../.codex/delivery/evidence/MS-004/MS-004-S05/report.md) extend projection, integrity and keyboard proof; [2026-09-22 owner correction](../../.codex/delivery/evidence/MS-004/MS-004-S05/owner-correction-2026-09-22.md) supersedes report calendar setup/adoption; the journal alone records final owner acceptance |
+| [Report loading and session efficiency](../../.codex/delivery/tickets/W39-REPORT-LOADING-SESSION-EFFICIENCY.md) | Independent W39 follow-up: direct report entry, bounded reads/cache, useful session activity and retention, and 50-user performance proof; [local implementation checkpoint](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/handoff.md); [owner presentation correction](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-001/report.md); [independent docks and Add correction](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-002/README.md); [compact KPI/YoY correction](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-003/README.md); [cached selection and precision correction](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-004/README.md); [Focus and controls correction](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-005/README.md); [report header correction](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-006/README.md); [result expansion correction](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-007/README.md); [caption removal](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-008/README.md); [title focus repair](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-009/README.md); [context shortcut removal](../../.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/owner-correction-010/README.md); ticket frontmatter owns status; no MS-004 acceptance implied |
 | [Development operating model](./development-operating-model.md) | Observable outcomes, hierarchical planning, milestone packs, independent tickets, Git and CI/CD |
 | [Agent delivery ADR](../adr/0003-agent-delivery-model.md) | Hierarchical-planning amendment, independent ticket route and historical staged-system retirement |
 | [Development runtime contract](./development-runtime-contract.md) | Fast Loop, Hybrid, Full Stack, and Release modes, escalation rules, ownership, and proof boundaries |
@@ -82,3 +84,49 @@ remain in review. No implementation or broader plan acceptance is implied.
 Acceptance navigation (2026-09-20): MS-004 0.2.0 decisions and expectations
 accepted by the owner; see MS-004/DEC-01. Editorial registration only, no runtime
 change or execution authorization; broader MAP/L1 reviews remain open.
+
+
+### Analytical composer expansion planning
+
+[WS-004 v0.1.0](planning/directions/DIR-004/workstreams/WS-004.md) is the
+2026-10-07 owner-requested draft implementation roadmap from the single-result
+pilot to common multi-block authoring. Its [169-clause allocation](planning/directions/DIR-004/workstreams/WS-004-requirements.md)
+links proposed implementation slices and scenario proof; it is not an execution ledger.
+
+The [C01 entry audit](../../.codex/delivery/evidence/WS-004/C01-entry-audit.md)
+records the refreshed serving-checkout baseline, initial contract and requirement
+findings, a repaired route-inventory test and remaining preparation. It does not
+accept the draft workstream or close C01.
+
+[WS-004 continuation authority](../../.codex/delivery/evidence/WS-004/owner-continuation-2026-10-07.md)
+subsequently accepts C01–C11 and delegates technical milestone continuation.
+[MS-005](planning/milestones/MS-005/plan.md) implements C01; its own journal owns
+execution state. Earlier entry-audit pending-authority observations are historical.
+
+- [MS-006 v0.1.0: persistent multi-block composer](planning/milestones/MS-006/plan.md) — C02 under WS-004 v0.2.1; [canonical journal](../../.codex/delivery/ledgers/MS-006.md).
+
+- [MS-007 v0.1.0: hierarchy and layouts](planning/milestones/MS-007/plan.md) — C03 under WS-004 v0.2.2; [canonical journal](../../.codex/delivery/ledgers/MS-007.md).
+
+- [MS-008 v0.1.0: supported scope/comparison foundation](planning/milestones/MS-008/plan.md) — supported scope/pair foundation with [S02 evidence](../../.codex/delivery/evidence/MS-008/MS-008-S02/report.md); full C04 provider work remains open; [canonical journal](../../.codex/delivery/ledgers/MS-008.md).
+
+- [MS-009 v0.1.0: isolated columnar execution](planning/milestones/MS-009/plan.md) — C04 substrate under WS-004 v0.2.5; [canonical journal](../../.codex/delivery/ledgers/MS-009.md). Necessary dependencies are authorized by the [current addendum](../../.codex/delivery/evidence/WS-004/owner-continuation-addendum-2026-10-07.md).
+  Bounded provider semantics and limitations: [flat columnar execution contract](../contracts/columnar-filter-execution-contract.md).
+
+- [MS-010 v0.1.0: published retail provider](planning/milestones/MS-010/plan.md) — current Identity/Semantic/Artifact integration; [canonical journal](../../.codex/delivery/ledgers/MS-010.md).
+
+- [MS-011 v0.1.0: mounted retail filters](planning/milestones/MS-011/plan.md) — composer catalog, preview and persisted analytical inputs; [canonical journal](../../.codex/delivery/ledgers/MS-011.md).
+
+- [MS-012 Receipt filter hierarchy](planning/milestones/MS-012/plan.md).
+
+- [MS-013 explicit period comparison](planning/milestones/MS-013/plan.md).
+- [MS-014 explicit previous-year policies](planning/milestones/MS-014/plan.md).
+- [MS-015 immutable time-zone calendars](planning/milestones/MS-015/plan.md).
+- [MS-016 once-only calendar correction](planning/milestones/MS-016/plan.md).
+- [MS-017 correlated filter foundation](planning/milestones/MS-017/plan.md).
+- [MS-018 published correlated provider](planning/milestones/MS-018/plan.md).
+- [MS-019 correlated report authoring](planning/milestones/MS-019/plan.md).
+- [MS-020 scoped count and ratio execution](planning/milestones/MS-020/plan.md).
+- [MS-021 published aggregate report filters](planning/milestones/MS-021/plan.md).
+- [MS-022 behavioral sequence execution](planning/milestones/MS-022/plan.md).
+- [MS-023 published customer event provider](planning/milestones/MS-023/plan.md).
+- [MS-024 receipt customer event membership](planning/milestones/MS-024/plan.md).

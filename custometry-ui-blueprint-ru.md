@@ -12,22 +12,33 @@ status: accepted_ui_requirements
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-09-24
-requirements_revision: 2026-09-20.2
+updated_at: 2026-10-10
+requirements_revision: 2026-10-10.1
 artifact_role: product_ui_requirements_and_current_inventory
 program_route: ticket_first
 active_program: null
 current_execution_route: docs/architecture/ui/custometry-web-implementation-source-contract-v1.md
 visual_authority:
-  status: accepted_target_ui_concept
-  source_evidence_mode: renderable_html
-  scope: demonstrated_composition_behavior_and_visual_language
-  manifest: ./docs/architecture/ui/target-pilot/manifest.json
+  status: evolving_scoped_owner_decisions
+  source_evidence_mode: current_rendered_and_code_references
+  scope: selected_per_change
+  routing: ./docs/architecture/ui/ui-change-manifest.md
+  historical_manifest: ./docs/architecture/ui/target-pilot/manifest.json
 target: adaptive_responsive_web_application
 mobile_scope: unauthorized
 ---
 
 # Custometry — требования к Web UI и целевая концепция
+
+## Актуальное правило UI-изменений — 2026-10-10
+
+Перед UI-правками агент читает краткий [UI change manifest](docs/architecture/ui/ui-change-manifest.md).
+По решению владельца обязательное соответствие старому пилоту отменено.
+Ниже ссылки на пилот как target и требования его воспроизведения описывают
+прежнюю визуальную основу и не ограничивают новые решения владельца.
+Сохраняются продуктовые требования и общий тон незатронутого интерфейса;
+эксперимент не становится стандартом автоматически. Полный новый дизайн
+платформы и повторное согласование уже разрешённых изменений не требуются.
 
 ## 0. Статус и назначение
 
@@ -43,9 +54,9 @@ mobile_scope: unauthorized
 - сквозные требования к аналитике, исследованиям, прогнозам, отчётам, операциям, администрированию, accessibility и localization;
 - историческое evidence W03-W10 как свидетельство прежнего покрытия, но не как текущая визуальная власть;
 - принятая capability expansion: общий multi-page Analytical Document, universal block builder, точные notes/annotations/discussions, time-aware segmentation, Products/Categories/Assortment/Inventory, digital acquisition/retail journeys, unit economics, adoption и analytical-performance administration;
-- финальный интерактивный RU/EN пилот как целевая UI-концепция, включая показанную композицию, навигацию, аналитические взаимодействия и визуальный язык.
+- актуальные scoped решения владельца и UI change manifest; сохранённый RU/EN пилот — исторический reference.
 
-Frontend architecture определяется ADR-0007. Финальный пилот сохранён в `docs/architecture/ui/target-pilot/` и является целевой концепцией, а не только визуальным ориентиром. Он не показывает все экраны и не доказывает готовность production-кода. G0–G6 программа и её материалы удалены по решению владельца 2026-09-04; восстановление из Git описано в `docs/architecture/ui/ui-program-retirement.md`. Продуктовые требования и рабочий код сохранены, дальнейшее приведение UI к концепции выполняется обычными implementation tickets.
+Frontend architecture определяется ADR-0007. Исторический пилот сохранён в `docs/architecture/ui/target-pilot/` и используется как необязательный визуальный reference. Он не показывает все экраны и не доказывает готовность production-кода. G0–G6 программа и её материалы удалены по решению владельца 2026-09-04; восстановление из Git описано в `docs/architecture/ui/ui-program-retirement.md`. Продуктовые требования и рабочий код сохранены, дальнейшее развитие UI следует UI change manifest и выбранным implementation units.
 
 ## 1. Design brief
 
@@ -119,7 +130,7 @@ Custometry — self-hosted операционная система B2C retail-а
 | Route identity и execution policy | `packages/contracts/routes/ui-routes.json`, `ui-route-contracts.json` | Текущий исполняемый inventory, не доказательство полного target coverage |
 | Surface coverage | `packages/contracts/routes/ui-surface-contracts.json` | Current-state evidence, не permanent ceiling |
 | Исторический дизайн W03-W10 | `.codex/delivery/evidence/` | Historical-only, не visual authority |
-| Принятый RU/EN HTML-пилот | `docs/architecture/ui/target-pilot/manifest.json` | Целевая композиция, поведение и визуальный язык показанного UI; не backend/architecture proof |
+| Принятый RU/EN HTML-пилот | `docs/architecture/ui/target-pilot/manifest.json` | Исторический reference; не обязательный шаблон и не backend/architecture proof |
 | Frontend platform, dependency/state ownership, responsive range и rollout | `docs/adr/0007-responsive-web-frontend-platform.md` | Accepted architecture; не implementation/browser proof |
 | Текущий Web-код | `apps/web/**` | Implementation evidence, не target baseline |
 
@@ -129,7 +140,7 @@ Custometry — self-hosted операционная система B2C retail-а
 
 Приоритетные продуктовые journeys: `data-to-trusted-result`, `compose-large-workbook`, `publish-review-collaborate`, `refresh-with-stable-anchors`, `define-recalculate-reuse-segment`, `digital-to-offline-unit-economics`, `product-category-assortment-inventory`, `open-100x30-document-without-duplicate-compute`, `adoption-and-performance-operations`. Это требования, а не утверждение об их реализации.
 
-Повторный intake и новая G-программа не требуются. Агент использует принятые требования, ADR-0007, целевой пилот и конкретный ready ticket. Нельзя требовать от владельца повторного описания уже принятого scope.
+Повторный intake и новая G-программа не требуются. Агент использует UI change manifest, релевантные требования, ADR-0007 и выбранную единицу работы. Нельзя требовать от владельца повторного описания уже принятого scope.
 
 ## 3. Основные UX-принципы
 
@@ -148,7 +159,7 @@ Custometry — self-hosted операционная система B2C retail-а
 
 Внешний продукт, design system или platform guideline может стать только source-backed visual-language reference либо craft-check после явного выбора. Он не переносит в Custometry чужие сущности, тексты, assets, branding, source code, скрытые permission rules или platform-specific interaction без Web semantics. Один референсный экран не заменяет platform baseline и полное продуктовое покрытие.
 
-Принятый финальный пилот задаёт показанные композицию, сетку, навигацию, панели, controls, Focus/Explore, charts/tables и визуальный язык. Для соответствующих поверхностей это целевая концепция, а не набор необязательных stylistic hints. Для отсутствующих экранов сохраняются продуктовые требования и применяются согласованные паттерны пилота; одинаковая композиция для всех экранов не навязывается. Fixture-данные и прототипные действия не заменяют production-контракты и browser evidence реализации.
+Композиция, сетка, навигация, панели, controls, Focus/Explore и charts/tables развиваются по UI change manifest. Исторический пилот помогает исследовать прежние решения, но не требует их воспроизведения. Для отсутствующих экранов сохраняются продуктовые требования; одинаковая композиция для всех экранов не навязывается. Fixture-данные не заменяют production-контракты и browser evidence.
 
 ## 4. Информационная архитектура
 
@@ -216,13 +227,13 @@ Administration
   Analytical Performance
 ```
 
-Навигация показывает только разрешённые группы, но не используется как источник authorization. Показанные в пилоте композиция, navigation/context panels и collapse behavior являются целевыми. Для полного набора destinations, effective permissions, focus behavior, workspace switching и safe recovery действуют продуктовые контракты. Icon-only состояние обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Отсутствующие в пилоте состояния уточняются в соответствующем implementation ticket. ADR-0007 выбирает Lucide React как general icon adapter; semantic mapping, accessible names и непоказанные состояния проверяются в соответствующем контракте.
+Навигация показывает только разрешённые группы, но не используется как источник authorization. Композиция navigation/context panels и collapse behavior развивается по UI change manifest; пилот не является обязательным шаблоном. Для полного набора destinations, effective permissions, focus behavior, workspace switching и safe recovery действуют продуктовые контракты. Icon-only состояние обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Отсутствующие в пилоте состояния уточняются в соответствующем implementation ticket. ADR-0007 выбирает Lucide React как general icon adapter; semantic mapping, accessible names и непоказанные состояния проверяются в соответствующем контракте.
 
 ### 4.2. Глобальный application shell
 
 | Область | Содержимое |
 |---|---|
-| Product/global controls | Product identity, workspace switch, global search/command access, help, notifications и user menu; показанная композиция определяется целевым пилотом |
+| Product/global controls | Product identity, workspace switch, global search/command access, help, notifications и user menu; композиция развивается по UI change manifest и актуальным решениям владельца |
 | Primary navigation | Permission-aware destinations, current location и доступный способ перехода/возврата |
 | Page header | Breadcrumb, title, description/status, primary action и secondary actions |
 | Context bar | Dataset/version, date range, comparison, filters, timezone/currency, saved view |
@@ -290,11 +301,11 @@ Responsive Web обязателен. ADR-0007 задаёт диапазон `768
 
 ## 6. Platform UI — концепция и требования к реализации
 
-Целевая концепция — сохранённый финальный пилот; архитектура — ADR-0007. Показанные shell, navigation, layout, controls и interactions приняты как target. Production tokens/components, отсутствующие состояния, responsive transformations, accessibility и copy policies реализуются и проверяются в bounded tickets без G0–G6.
+Визуальные решения развиваются по UI change manifest; архитектура — ADR-0007. Сохраняется общий тон текущего интерфейса, выбранные области допускают эксперименты, явно выбранные владельцем результаты закрепляются для похожих задач. Production tokens/components, отсутствующие состояния, responsive transformations, accessibility и copy policies реализуются и проверяются в bounded tickets без G0–G6.
 
 ### 6.1. Themes и semantic tokens
 
-- показанная палитра пилота является целевой; runtime theme identifiers/defaults не меняются этой редакцией и приводятся к концепции отдельной реализацией;
+- палитра сохраняет общий тон текущего интерфейса вне области явно выбранного изменения; runtime theme identifiers/defaults не меняются одной правкой документации;
 - компоненты и ChartSpec используют semantic roles, а не hardcoded product colors;
 - каждый принятый theme покрывает canvas/surface/text/border/accent/focus/status/positive-negative/chart roles и проверяется на contrast и color-blind-safe alternatives;
 - theme preference не меняет domain values, run/artifact identity или cache identity;
@@ -303,7 +314,7 @@ Responsive Web обязателен. ADR-0007 задаёт диапазон `768
 
 ### 6.2. Typography, icons и assets
 
-- typography наследует показанный пилотом характер; production font files, лицензии, fallback и en/ru metrics фиксируются при реализации;
+- typography сохраняет согласованную иерархию текущего интерфейса вне области выбранного изменения; production font files, лицензии, fallback и en/ru metrics фиксируются при реализации;
 - en/ru coverage, 200% zoom/reflow, dense-table readability и deterministic report rendering обязательны;
 - ADR-0007 выбирает Lucide React `0.515.0` как general icon adapter; semantic mapping, product-owned assets, sizes, optical rules и license provenance фиксируются в соответствующем source-backed контракте;
 - незнакомое действие не обозначается только icon, а status не кодируется только цветом или движением;
@@ -311,11 +322,11 @@ Responsive Web обязателен. ADR-0007 задаёт диапазон `768
 
 ### 6.3. Layout, components и interaction patterns
 
-- пилот определяет показанные shell regions, grid, spacing и layering; непоказанные variants и responsive transformations реализуются согласно продуктовым constraints;
+- shell regions, grid, spacing и layering следуют актуальному образцу выбранной композиции; новые варианты проверяются в рамках задачи с сохранением продуктовых constraints;
 - каждый reusable component определяет variants, size classes, internal elements, required interaction states, content rules и accessibility behavior;
 - overlays, menus, dialogs, drawers, tooltips, tables, forms, charts, tabs и splitters получают placement, dismissal, focus, keyboard и state contracts;
-- exact geometry и visual properties наблюдаются из принятого source evidence, а не изобретаются вручную;
-- показанные palette, radius и shadow сверяются с пилотом; motion tokens, durations и easing определены §15.10 machine blueprint и MOTION-001…012. Непоказанные motion states уточняются в implementation ticket.
+- для переиспользования geometry и visual properties берутся из выбранного актуального образца; новая геометрия может исследоваться в выбранной области и закрепляется после решения владельца;
+- palette, radius и shadow сверяются с выбранным актуальным образцом и заявленным изменением; motion tokens, durations и easing определены §15.10 machine blueprint и MOTION-001…012. Непоказанные motion states уточняются в implementation ticket.
 
 ### 6.4. Motion и perceived performance
 
@@ -444,7 +455,7 @@ Header всегда разделяет:
 - label, typed value, period/comparison и trust state читаются как одна compact group; full value остаётся доступным;
 - Context Bar, KPI group и primary content используют согласованные alignment lines, но exact geometry определяется screen contract;
 - primary analytical content — table, pivot, chart либо narrative/evidence по document profile — получает приоритет в первом рабочем viewport и не вытесняется декоративным whitespace;
-- sample table показывает data rows и range/pagination status в pilot-compatible view; production placement зависит от document profile/page composition;
+- sample table показывает data rows и range/pagination status в согласованном представлении; production placement зависит от document profile/page composition;
 - Result Trust имеет compact trigger на каждом result view; полный drawer/panel открывается по запросу и не резервирует постоянную широкую колонку;
 - calm density является общим visual-language anchor, но fixed `KPI → chart → table` не является универсальным layout contract.
 
@@ -462,9 +473,9 @@ Header всегда разделяет:
 
 ### 8.5.2a. Рабочие наборы метрик и сравнения — дополнение 2026-09-17
 
-Уточнение взаимодействий от **2026-09-24**: владелец выбрал создание и управление наборами по образцу Mindbox вместо текущего решения Custometry и запросил повторное исследование каталога. [Дополнение к референсам, версия 1](docs/architecture/ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/README.md) фиксирует создание копии через «+» с именем, переключение вкладок, меню всех наборов с поиском и видимостью, команды сохранённых наборов, правую панель «Метрики» и отдельное сохранение изменений в текущий или новый набор. Это выбранный interaction reference для следующей реализации METRIC-025…027; права REPORT-018/019 и explicit Apply/Save сохраняются. Код продукта этой фиксацией не изменён.
+Уточнение владельца 2026-09-24: создание через «+» запрашивает имя и создаёт **пустой** набор без метрик. Меню «Все» предоставляет поиск, показ/скрытие вкладок, переименование и удаление; «Метрики» открывает каталог выбранных и доступных метрик с настройками и порядком. Копирование выполняется явным действием «Создать копию набора» и добавляет набор в черновик. Единственная кнопка «Сохранить отчёт» сохраняет весь отчёт. Сообщения о необходимости применения размещаются в инспекторе, не сдвигая рабочую область. Разметка разниц периодов включается отдельной кнопкой. [Исследование взаимодействий](docs/architecture/ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/README.md).
 
-Нормативная база: METRIC-025…029, CHART-021 и COMPARE-013. [Атлас из десяти точечных снимков Mindbox с пояснениями](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md) — выбранный владельцем референс **новых взаимодействий**. Документ не заменяет preserved pilot, его оболочку, typography/density, rail, Focus или inspector и не разрешает самостоятельную перестройку существующего интерфейса. Production capability inventory не меняется от добавления target requirements.
+Нормативная база: METRIC-025…029, CHART-021 и COMPARE-013. [Атлас из десяти точечных снимков Mindbox с пояснениями](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md) — выбранный владельцем референс **новых взаимодействий**. Атлас не является универсальным визуальным шаблоном; изменения оболочки, typography/density, rail, Focus и inspector следуют актуальному запросу и UI change manifest. Production capability inventory не меняется от добавления target requirements.
 
 | Поверхность | Целевое поведение | Снимки в атласе |
 |---|---|---|
@@ -475,20 +486,55 @@ Header всегда разделяет:
 | Цели | Metric binding, фильтры, target, период и гипотеза; сохранение не подразумевается открытием формы | 08 |
 | Связанные исследования | Метрика по сегментам и доступный путь к подробностям; кампании доступны только при действующей source/attribution capability | 10 |
 
-Для Custometry сохраняются explicit Apply/Save, версии Saved View, server-side calculations, Result Trust, access-denied clearing, RU/EN, keyboard operation и source-aware availability. Автосохранение личных настроек в Mindbox не переносится автоматически на calculation/save contracts Custometry. Реальные данные reference не становятся fixtures. Дополнительный сценарий целей требует явного определения направления прогресса и aggregation basis до реализации; target-action definition и monitoring goal различны. Размещение новых элементов в пилоте проверяется отдельным implementation scope по атласу, без переинтерпретации существующих элементов.
+Для Custometry сохраняются explicit Apply/Save, версии Saved View, server-side calculations, Result Trust, access-denied clearing, RU/EN, keyboard operation и source-aware availability. Автосохранение личных настроек в Mindbox не переносится автоматически на calculation/save contracts Custometry. Реальные данные reference не становятся fixtures. Дополнительный сценарий целей требует явного определения направления прогресса и aggregation basis до реализации; target-action definition и monitoring goal различны. Размещение новых элементов проверяется в затронутой композиции по актуальному запросу с сохранением незатронутых решений.
 
-Уточнение владельца от **2026-09-20**, редакция `2026-09-20.1` (METRIC-030…035, REPORT-018/019):
+Уточнение владельца от **2026-09-22**, редакция `2026-09-22.1` (METRIC-030): финансовый календарь однократно задаётся администратором в базовых настройках компании/workspace и затем не меняется. Начало финансового года может различаться между компаниями; календарный год един для всех. В отчётах нет формы настройки финансового календаря, технических номеров его текущей/закреплённой версии и команды «Принять календарь компании». Выбор периода отчёта, детализации и календарной/финансовой основы анализа не изменяет календарь компании.
 
-- График и таблица поддерживают день / неделю / месяц / квартал / полугодие / год; неполные интервалы видимы, расчёт и сравнение выполняются сервером.
-- Настройки отчёта и его целей меняет **только создатель отчёта**. Роль администратора или право редактирования другого объекта этого не меняет. Читатель использует разрешённые фильтры и личное отображение, но не меняет состав, формулы, target и goal policy.
-- В режиме настройки создатель выбирает достижение минимума или соблюдение максимума, конкретное значение или относительное изменение к заданной базе, разовую или повторяющуюся цель. Во время использования отчёта эти решения не переключаются.
-- Цель сохраняет собственные условия при смене фильтров просмотра; изменения создателем оставляют историю. Для upper bound интерфейс отличает расход лимита от выполнения lower-bound цели.
-- Пересчёт факта — явная команда. Итог фиксируется после окончания периода при достаточной полноте данных; исправление закрытого итога создаёт новый расчёт с историей. Run rate включается отдельно, показывает допущения и не заменяет факт или итог.
-- Общие наборы доступны текущим читателям отчёта и данных. Личные параметры сохраняются до явного применения новой общей версии или сброса; текущая проверка доступа обязательна.
+Это исправляет ранее показанную интеграцию формы и принятия календаря из S04/S05. [Решение и соответствие прежним критериям](.codex/delivery/evidence/MS-004/MS-004-S05/owner-correction-2026-09-22.md) сохраняет исходный план и доказательства как историю. Реализация страницы административных настроек и однократной записи отложена: существующий versioned API пока не обеспечивает новый lifecycle. В текущем исправлении удаляется ошибочная точка настройки в отчёте и её отдельный запрос календаря. Сохранённые результаты и внутренние календарные привязки не меняются. [Web source contract](docs/architecture/ui/custometry-web-implementation-source-contract-v1.md) описывает текущую границу; приёмка готового результата владельцем остаётся отдельным шагом.
 
-Подробные решения и границы этапов: [WS-003 2.0.0](docs/architecture/planning/directions/DIR-004/workstreams/WS-003.md). Принятая композиция сохраняется; демонстрационный прототип не доказывает реализацию этих правил.
+<a id="editor-structural-regrouping-2026-10-06"></a>
+#### Структура общего редактора — уточнение владельца 2026-10-06
 
-Уточнение владельца от **2026-09-20**, редакция `2026-09-20.2` (METRIC-030): в базовых настройках компании/workspace должен настраиваться финансовый календарь. Минимальная форма показывает начало финансового года, правило подписи FY, примеры дат кварталов/полугодий/года и версию; запись требует административного права, а не creator-права на отчёт. В отчёте видны календарная/финансовая основа и точные даты. Изменение общего календаря не меняет сохранённый результат; создатель явно принимает новую версию через Apply/Save. Конкретный месячный профиль, API и проверки описаны в [MS-004 0.2.0](docs/architecture/planning/milestones/MS-004/plan.md); это план, не реализованная форма.
+UI-RPT-002 использует одинаковую оболочку создания и редактирования: заголовок
+(название, статус, сохранение, отчётные меню и инспектор), отдельные вкладки страниц,
+компактная строка периода/сравнения/фильтров, панель наборов, неизменённые карточки,
+панель визуализации и результат. График/таблица, меню «Вид», экспорт и разворачивание
+располагаются непосредственно над результатом. Детализация, календарная основа и
+представление серий/дельты находятся в «Вид»; разницы периодов доступны для графика
+при временном сравнении. Для пустого набора детализация остаётся в контексте инспектора.
+
+Текущий temporal control относится к выбранной карточке (METRIC-028), а прежний
+верхний shortcut был его алиасом. Сравнение двух отмеченных карточек остаётся
+отдельным действием рядом с результатом. Выключение temporal comparison возвращает
+series, поскольку delta_trend без comparison отвергается действующим контрактом.
+Общая точка входа «Фильтры» открывает одноимённую вкладку инспектора; повторное нажатие закрывает его, а из другого раздела переключает на контекст. Она открывает реальное измерение «Магазин» и существующий
+явно помеченный прототип; фильтрация каналов не реализована. Палитра, аналитический
+размер текста, легенда и сетка не имеют рабочих настроек в configured renderer:
+пустые/неработающие настройки не подменяются вымышленными возможностями.
+Визуальные tokens, карточки, рендереры и данные сохраняются.
+Уточнение владельца от **2026-10-07**: карточки метрик общего редактора компактнее —
+220×106 px вместо 260×124 px, за счёт ширины и вертикальных отступов. Размеры текста,
+значения, сравнение, checkbox, настройки, цвета и состояния сохраняются; на узкой
+области остаётся горизонтальная прокрутка полосы карточек.
+Следующее уточнение 2026-10-07 объединяет управление набором и карточки в один
+компактный блок с существующим фоном поверхности. Инструменты визуализации образуют
+шапку результата с тонким нижним разделителем. Строка контекста отделяется фоном;
+пустой статус не резервирует место. Между блоками остаётся 12 px, без дополнительных
+рамок вокруг каждого уровня. Внутреннее оформление карточек и рендереры не меняются.
+Последующее уточнение владельца **2026-10-07** заменяет вертикальную раскладку:
+управление расположено на одной горизонтальной оси в трёх соседних блоках
+«Данные» → «Набор и метрики» → «Вид результата» над карточками. Отдельной
+панели управления под карточками нет. На узкой ширине переносятся целые блоки,
+с сохранением порядка и доступа к контролам. При модальном инспекторе полоса
+управления, как и содержимое отчёта, не принимает фокус.
+Финальное уточнение этого же обсуждения: это плотная полоса инструментов с группами
+по ширине содержимого и тонкими вертикальными разделителями, без растянутых
+подложек и видимых заголовков групп. Названия групп доступны вспомогательным
+технологиям; контролы выровнены по общей горизонтальной оси.
+
+[Единица W40](.codex/delivery/tickets/W40-WORKSET-CATALOGUE-INTERACTIONS.md) и
+[карта переноса/проверки](.codex/delivery/evidence/W40-WORKSET-CATALOGUE-INTERACTIONS/report.md#structural-editor-regrouping-2026-10-06)
+фиксируют локальную границу доказательств; это не production delivery.
 
 ### 8.5.3. Analytical document profiles, pages и collaboration
 
@@ -839,7 +885,7 @@ Implementation tickets должны определить route/embedded/overlay 
 
 ## 11. Страница аналитического результата
 
-Все специализированные analytics pages используют общий data/trust vocabulary, но не один фиксированный layout. Pilot-compatible compact result MAY использовать следующую композицию:
+Все специализированные analytics pages используют общий data/trust vocabulary, но не один фиксированный layout. Компактное представление результата MAY использовать следующую композицию:
 
 ```text
 Page header
@@ -1282,7 +1328,7 @@ INGEST-008–INGEST-020, DQ-INPUT-001–DQ-INPUT-008 и
 
 Активной G-программы нет. Она удалена по текущему решению владельца.
 `active_program: null` не означает отсутствие принятого дизайна: финальный
-пилот — целевая UI-концепция. Текущий execution route определён в
+пилот — исторический reference; актуальный маршрут задаёт UI change manifest. Текущий execution route определён в
 `docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`;
 статус исполнения берётся только из frontmatter конкретного тикета.
 
@@ -1291,7 +1337,7 @@ INGEST-008–INGEST-020, DQ-INPUT-001–DQ-INPUT-008 и
 - purpose, user outcomes, domain entities и included/excluded scope;
 - затронутые routes/screens, роли, permissions, data reads/writes/computed values;
 - entry/exit, transitions, states, actions, outcomes, failures и recovery;
-- показанные в пилоте regions, controls и interactions;
+- выбранные для задачи regions, controls и interactions согласно актуальным решениям;
 - accessibility, locales, responsive priorities и performance constraints;
 - материальные unresolved inputs, которые нельзя вывести из принятых источников.
 
@@ -1348,13 +1394,13 @@ every-state-by-every-viewport screenshots.
 - широкий функциональный baseline аналитики, data foundation, quality, forecasting, research, reporting, operations и administration;
 - принятые базовые contracts для collaboration/adoption/watches, compute reuse/materialization и digital-to-offline attribution/unit economics;
 - историческое route/domain coverage W03-W10;
-- принятый product path и hash-pinned финальный интерактивный RU/EN пилот как целевая концепция;
+- принятый product path и scoped UI-решения по UI change manifest;
 - responsive Web как единственная сейчас авторизованная UI-платформа.
 
 ### 18.2. Что ещё предстоит реализовать и проверить
 
 Пилот уже сохранён в репозитории, frontend architecture и диапазон Web
-определены ADR-0007. Нужны проверка расхождений рабочего UI с концепцией и
+определены ADR-0007. Нужны проверка рабочего UI относительно актуальной задачи и
 bounded implementation tickets. Реальные состояния, permissions, API,
 responsive, accessibility и performance проверяются на работающем продукте.
 
@@ -1371,16 +1417,16 @@ responsive, accessibility и performance проверяются на работ�
 
 ### 18.3. Решения, которые не переносятся автоматически
 
-Показанные в финальном пилоте композиция, панели, controls и visual choices имеют текущий target status. ADR-0007 сохраняет frontend technology decisions. G-boards, старые themes и historical design receipts не являются дополнительной authority. Рабочий код не откатывается; его соответствие концепции и полнота покрытия проверяются последующими tickets.
+Прежние пилоты, текущий код и внешние references не становятся стандартами автоматически. Актуальное решение владельца заменяет прежнее в затронутой области; незатронутый визуальный язык сохраняется. ADR-0007 сохраняет frontend technology decisions. Рабочий код не откатывается.
 
 ## 19. Contract impact текущей редакции
 
 | Поверхность | Классификация | Пояснение |
 |---|---|---|
 | Product/API/ports/persistence | `additive plus planned schema-v2 breaking targets` | Новые product/category/digital/collaboration поля additive; common composition и SegmentSnapshot identity требуют future versioned migration, legacy read adapters и отдельного implementation evidence |
-| Documentation/design authority | `breaking-change` | G-программа и её материалы удалены; финальный пилот принят как target concept, продуктовые требования и рабочий код сохранены |
+| Documentation/design authority | `breaking-change` | Обязательная привязка к пилоту заменена scoped решениями по UI change manifest; продуктовые требования и рабочий код сохранены |
 | Current route/surface identity | `compatible current-state evidence` | 117/25/5/22 сохраняются для traceability, но не являются target ceiling или доказательством реализации |
-| Browser-visible target | `accepted_target_ui_concept` | Финальный пилот принят как концепция; conformance production-кода пока не доказан |
+| Browser-visible target | `evolving_scoped_owner_decisions` | Визуальная основа выбирается для задачи; изменение документов не меняет runtime |
 | Frontend architecture | `accepted for current Web implementation` | ADR-0007 фиксирует текущий responsive-Web stack и ownership; изменение этих решений требует отдельного source-backed architecture decision |
 | Request hash/cache identity | `new compatible namespace required` | Document/page/filter/segment/materialization versions входят в future normalized identity; zoom/legend/tab chrome остаются presentation-only |
 | Mobile scope | `unauthorized` | Адаптивный Web обязателен; mobile-specific IA/composition не добавлены |
@@ -1394,12 +1440,377 @@ Implementation tickets проверяют TEST-INV-102…112 и V1-AC-055…062 
 
 ## 20. Следующий шаг
 
-Принятые product/UI requirements и целевая концепция не требуют повторного
-проектирования через G0–G6. Следующий шаг — узкая оценка расхождений
-рабочего frontend с пилотом и обычные implementation tickets для приведения
-к концепции и полного продуктового покрытия. Эта редакция не создаёт W39,
-prompt pack, ledger или новую UI-программу.
+Развитие интерфейса следует UI change manifest: определить затронутую композицию,
+переиспользовать подходящее решение либо проверить новый вариант в рамках
+задачи, затем проверить поведение и общий тон. Возврат к пилоту и полная
+UI-программа не требуются. Эта редакция не создаёт prompt pack или ledger.
 
 Observed proof этой редакции ограничен согласованностью источников,
 сохранением требований и переносом пилота. Он не подтверждает полную готовность
 UI, production conformance, accessibility, performance или deployment.
+
+
+Уточнение интерфейса наборов 2026-10-03 (заменяет вариант от 2026-09-24): в инспекторе сразу показываются доступные метрики по категориям с галочками и названием источника. Поиск работает по всему доступному каталогу; выбор сразу добавляет метрику и запускает автоматический расчёт. Центральное действие «Добавить метрики» открывает этот инспектор без второго модального каталога. Порядок и настройки выбранных метрик доступны в раскрываемом разделе; настройки отдельной метрики остаются в диалоге. Загрузка (с задержкой показа текста), ошибка с повтором, пустой каталог и отсутствие выбранных метрик различаются явно. Меню наборов закрывается по Escape или клику вне меню без кнопки «Отмена». Множественный выбор магазинов в верхней панели отображается счётчиком; список с поиском остаётся в настройках.
+
+Каталог метрик: компактные строки сгруппированы по категориям. Фильтры видны до выбора метрики; режим «Как в отчёте» показывает фактическую унаследованную выборку. Изменение списка задаёт собственный фильтр метрики в пределах контекста отчёта.
+
+Уточнение шкалы графика 2026-09-24: обычный и полноэкранный режим включают ноль в диапазон оси Y. Положительные ряды начинаются от нуля; отрицательные значения не обрезаются. Верхняя граница и шаг делений подбираются по данным; сами значения и пропуски не изменяются.
+
+В рабочем экране и Focus восстановлено меню скачивания рядом с разворачиванием: PNG 2× / SVG для графика, Excel / CSV для таблицы. Выгружаются текущие применённые данные; видимость действия учитывает permission `report.export_xlsx`.
+
+### Уточнение владельца: панель наборов, 2026-09-25
+
+Панель наборов остаётся одной строкой: слева «Наборы» с поиском и управлением видимостью, вкладки наборов без рамок с подчёркиванием активной и «+» для пустого набора. Справа — «Метрики · N» и меню «⋯» текущего набора с переименованием, копированием и удалением. При нехватке ширины прокручиваются вкладки, действия остаются видимыми. Реализация и локальные проверки: [W40 evidence](.codex/delivery/evidence/W40-WORKSET-CATALOGUE-INTERACTIONS/report.md).
+
+### Дизайн-прототип расширенных фильтров, 2026-09-25
+
+Владелец выбрал сначала проверку интерфейса конструктора, затем подключение к расчёту и сохранению. В контексте отчёта и каталоге метрик доступны демонстрационные категории полей, типизированные значения, операторы, группы «И/ИЛИ», наследование и применение к выбранным метрикам. Состояние существует только в памяти текущей страницы; интерфейс явно помечен «Прототип». Backend capability inventory не расширяется. [Реализация и границы проверки](.codex/delivery/evidence/W40-WORKSET-CATALOGUE-INTERACTIONS/report.md).
+
+### Быстрый выбор периода отчёта, 2026-09-26
+
+Кнопка периода в верхней панели открывает выбор без перехода в инспектор: текущая/предыдущая календарная неделя, месяц, квартал, год и произвольные даты начала/окончания. Неделя начинается в понедельник. Выбор меняет период и автоматически обновляет расчёт; сохранение отчёта остаётся отдельным действием. Применяется к новому и существующему отчёту. [Локальные проверки](.codex/delivery/evidence/W40-WORKSET-CATALOGUE-INTERACTIONS/report.md).
+
+
+### Библиотека отчётов, 2026-09-30
+
+Для UI-RPT-001 согласованы табличная библиотека и отдельный раздел создания отчёта. Первая реализация показывает название, дату изменения и состояние; доступны поиск, фильтр по дате, сортировка и избранное в текущем браузере отдельно для пользователя и рабочего пространства. Работает шаблон «Продажи по чекам». Пустое создание подключено 2026-10-03 к единому редактору, см. уточнение ниже. Автор, тип, «Мои» и действия переименования/копирования/удаления остаются частью концепции, но пока не реализованы. [Область реализации и проверки](.codex/delivery/evidence/W40-WORKSET-CATALOGUE-INTERACTIONS/report.md#owner-follow-up-report-library).
+
+### Автоматическое обновление результата, 2026-09-30
+
+Глобальная кнопка «Применить» убрана: изменение периода, сравнения и состава метрик автоматически обновляет результат. Несколько быстрых изменений объединяются с задержкой 150 мс. Во время запроса остаётся предыдущий результат; индикатор обновления появляется только после 400 мс ожидания и не сдвигает рабочую область. Устаревший ответ не подменяет результат нового контекста. При ошибке доступен повтор расчёта. Множественный выбор магазинов подтверждается локальной кнопкой «Показать результат». «Сохранить отчёт» остаётся отдельным действием. Расширенные фильтры по-прежнему являются дизайн-прототипом без влияния на расчёт и сохранение. [Реализация и локальные проверки](.codex/delivery/evidence/W40-WORKSET-CATALOGUE-INTERACTIONS/report.md).
+
+В библиотеке действие «+ Создать отчёт» расположено рядом с «Библиотекой» в строке разделов. Дублирующая кнопка справа в заголовке удалена по уточнению владельца.
+
+Уточнение владельца: фокус элементов управления отображается фоновой подсветкой без внешней обводки; для ссылок доступно подчёркивание. Выбранный раздел бокового меню выделяется нейтральной заливкой и светлой иконкой. Правило применяется к оболочке приложения и редактору отчёта.
+
+### Обязательное правило владельца: элементы управления без рамок
+
+На всех страницах Custometry запрещены декоративные обводки элементов управления и раскрывающихся меню, включая обычное состояние, hover, focus, active и раскрытое состояние. Кнопки, поля и списки используют фон, цвет текста/иконки и подсветку пунктов; клавиатурный фокус сохраняется без рамки. Правило распространяется на новые компоненты и последующие итерации: возвращать рамки без нового явного решения владельца нельзя. Общая реализация находится в `apps/web/src/features/reports/control-focus.css` и подключается в оболочку приложения и iframe отчёта. Границы таблиц и содержательных панелей не являются рамками элементов управления.
+
+Сортировка библиотеки открывается из одной кнопки-иконки: текущий порядок отмечен внутри контекстного меню. Постоянно видимый текст выбранного порядка рядом с иконкой не используется.
+
+### Единая навигационная панель
+
+Во всех оболочках контекстная панель бокового меню занимает место в сетке и сдвигает рабочую область; наложение поверх неё не используется. Верхний отступ, высота и радиусы панели согласованы с рабочей областью. На узком экране панель занимает отдельную строку над содержимым без перекрытия. Библиотека, новый и сохранённый отчёты используют общий `navigation-shell.css`; возвращать отдельный overlay-вариант в последующих итерациях нельзя без нового решения владельца.
+
+Меню экспорта графика/таблицы подстраивается по ширине содержимого с компактными строками. Если название метрики уже указано в заголовке графического блока, оно не дублируется отдельной подписью внутри графика; числовые деления и необходимые единицы измерения сохраняются.
+
+### Единый редактор создания и редактирования, 2026-10-03
+
+По решению владельца UI-RPT-002 использует `ConfiguredWorkspace` и для `/reports/new/edit`, и для сохранённого отчёта. Карточки KPI, наборы, каталог метрик, инспектор, период, сравнение, график и таблица имеют одну реализацию. По уточнению владельца от 2026-10-06 в библиотеке остаётся карточка «Новый отчёт» с действием «Создать отчёт», открывающим набор без выбранных метрик. Карточка шаблона «Продажи по чекам» временно убрана из интерфейса создания. Источник и период берутся из доступного серверного контекста; при нескольких источниках пользователь выбирает источник.
+
+Подготовка и автоматический расчёт не создают запись отчёта. Первое явное сохранение создаёт личный черновик с первой версией и личным представлением в одной транзакции; после сохранения URL заменяется адресом документа, редактор остаётся общим. Повтор запроса с тем же ключом не создаёт дубль. Прежние отчёты и их закреплённые снимки сохраняют текущий путь чтения. Публикация/общие наборы и расширенные условия фильтрации не получают новых возможностей в этой итерации. [Контракт](docs/contracts/analytical-authoring-contract.md#native-configured-report-creation-w40) · [Проверки](.codex/delivery/evidence/W40-WORKSET-CATALOGUE-INTERACTIONS/report.md#unified-creation-and-editing-2026-10-03).
+
+
+### Текущий bounded composer — MS-006 / C02, 2026-10-07
+
+В существующих UI-RPT-002/003 добавлен редактор документа с независимыми графиками
+и таблицами (`view=composer`), доступный из библиотеки отчётов. Используется
+принятая оболочка; исходные отчёты и их worksets остаются в прежнем редакторе.
+Реализованы выбор продукта данных/метрики/детализации/периода/магазинов,
+добавление, копирование и удаление блоков, локальные загрузка/ошибка/повтор,
+сохранение определений и раскладки через версионный API и повторное открытие.
+Проверка standalone table не требует графика. Это ограниченный workbook/retail
+срез, а не полное покрытие universal builder, остальных профилей и providers.
+[Наблюдаемая проверка](.codex/delivery/evidence/MS-006/MS-006-S01/verification.md)
+и [канонический журнал](.codex/delivery/ledgers/MS-006.md) отделяют реализацию
+от технической приёмки. Target requirements и Forecasting hold не меняются.
+
+
+### Инвентарь C03: структура и страницы — 2026-10-07
+
+Общий редактор композиции поддерживает главы, страницы, вложенные секции, перенос,
+копирование с новыми ID и происхождением, скрытие, блокировки, раскладки сетки/потока/
+повествования и плотность. История Undo/Redo ограничена последними 50 изменениями до
+сохранения и не переписывает сохранённые версии. Страницы доступны через вкладки,
+поиск и полный список; монтируется только активная страница. Для переноса доступны
+drag-and-drop и команды, а изменения раскладки не запускают аналитический расчёт.
+
+Это общий слой представления трёх профилей с текущими chart/table blocks;
+жизненный цикл Research, публикация, другие providers и масштаб 100×30 остаются
+в следующих принятых этапах. Проверки RU/EN с увеличением документа не подменяют
+полную квалификацию native browser zoom и assistive technology.
+[MS-007](docs/architecture/planning/milestones/MS-007/plan.md),
+[канонический журнал](.codex/delivery/ledgers/MS-007.md) и
+[доказательства](.codex/delivery/evidence/MS-007/MS-007-S01/verification.md) задают
+фактическую границу принятия.
+
+
+### Инвентарь C04: поддерживаемые области и сравнение — 2026-10-07
+
+В composer добавлены общие настройки и переопределения аналитического контекста
+на уровнях документа, главы, страницы, секции и блока. Доступны магазин/дата,
+пересечение ограничений, NOT для магазинов, разрешённая замена родительского
+условия, блокировка и прямая связь условия с блоками. Инспектор показывает
+итоговый контекст, происхождение ограничений, обязательные правила метрики,
+возможность повторного использования результата и отсутствие оценки объёма.
+Редактирование области само по себе не запускает расчёт.
+
+Для выбранной пары блоков отдельная команда получает серверное сравнение.
+Сохраняется проверенный артефакт; точный просмотр показывает его и контекст
+без пересчёта. Изменённые параметры блоков делают прежнее сравнение неактуальным.
+Несовместимость отображается с серверными причинами. Поддерживаются RU/EN,
+нативные элементы управления, Undo/Redo и независимые копии областей.
+
+Это ограниченная основа [MS-008](docs/architecture/planning/milestones/MS-008/plan.md).
+[Канонический журнал](.codex/delivery/ledgers/MS-008.md) определяет фактическую приёмку.
+Полный C04 остаётся открытым: общего каталога полей/фасетов, отношений,
+последовательностей, агрегатных фильтров, популяций, относительных окон и
+расширенных режимов сравнения текущий провайдер не предоставляет.
+
+
+### Однократная настройка календаря компании — MS-016
+
+В UI-ADMIN-004 `/w/:workspaceKey/settings/policies` реализован раздел финансового
+календаря и часового пояса. Он доступен администратору текущей компании. Первое
+сохранение фиксирует настройки; после него форма доступна только для чтения, а API
+отклоняет новые изменения. Остальные политики этой страницы здесь не реализованы.
+В Report Composer отсутствуют настройка календаря и команда принятия версии.
+Редактирование блока сохраняет его закреплённый календарь; результаты показывают
+фактический часовой пояс и длительность периодов. Это исправляет ошибочно добавленные
+в MS-015 элементы отчёта согласно METRIC-030 и решению владельца от 2026-09-22.
+Источник реализации: [MS-016](docs/architecture/planning/milestones/MS-016/plan.md);
+приёмку определяет [журнал](.codex/delivery/ledgers/MS-016.md).
+
+### Условия по позициям чека и полнота отбора — MS-019
+
+Редактор чеков поддерживает явное добавление условий по опубликованной связи
+«чек → позиции». Условия внутри группы проверяются на одной позиции; отдельные
+группы могут совпасть на разных позициях. Для отрицательного условия показывается
+ограничение неполной истории. Черновик, применённые настройки и обязательные
+ограничения различаются; сохраняются сброс, отмена и отмена устаревшего запроса.
+
+Подсказки значений подписывают объект подсчёта: подходящие чеки либо наблюдаемые
+позиции внутри подходящих чеков. Результат и сохранённый отчёт показывают число
+подтверждённых и неизвестных чеков во всём доступном наборе отдельно от показателей
+за выбранный период. Неизвестность не превращается в доказанное отсутствие.
+Иерархия, связи и сохранённые блокировки действуют и для этих условий.
+
+Источник: [MS-019](docs/architecture/planning/milestones/MS-019/plan.md);
+приёмку и фактическую границу доказательств определяет
+[журнал](.codex/delivery/ledgers/MS-019.md). Агрегатные, последовательностные и
+популяционные узлы здесь не объявляются завершёнными. Однократная настройка
+календаря компании из MS-016 остаётся обязательной; настройки в отчёт не возвращены.
+
+
+### Условия по количеству и отношениям счётчиков — MS-021
+
+Редактор фильтров чека явно добавляет условие по количеству: число наблюдаемых позиций
+или разных наблюдаемых товаров, условия по строкам, окно по UTC-дате родительского
+чека с невключённой правой границей, порог или второй счётчик/окно. Отношение имеет
+отдельные числитель и знаменатель; нулевой либо неизвестный знаменатель сохраняет
+неизвестный результат. Отображаются единицы, правила пустого набора, неизвестных
+свойств и временная отсечка опубликованного снимка.
+
+Неполная история Retail не превращается в точное количество или ноль. Preview и
+сохранённый результат явно различают подтверждённое соответствие и неизвестную
+часть доступного набора. Черновик, Apply, Reset и Undo сохраняют прежние границы;
+новая форма использует receipt-filter/v3, старые v1/v2 остаются читаемыми. Настройка
+календаря компании не переносится в отчёт.
+
+Источник: [MS-021](docs/architecture/planning/milestones/MS-021/plan.md),
+[журнал](.codex/delivery/ledgers/MS-021.md). Фактическую проверку провайдера, браузера
+и сохранения подтверждает evidence этапа; полный язык FILTER этим не объявляется.
+
+
+### История событий клиента в фильтре чеков — MS-024
+
+Редактор добавляет последовательность наблюдаемых чеков клиента: положительные и
+отрицательные шаги, порядок, минимальные/максимальные интервалы, фиксированное либо
+относительное окно UTC от точной отсечки публикации и связи по опубликованному
+свойству. Микросекунды сохраняются. Поддержки сессий и доказанной полноты истории
+этот провайдер не заявляет. Подходящая история выбирает доступные чеки клиента,
+включая чеки вне окна событий; период расчёта метрики задаётся отдельно.
+
+Новая форма receipt-filter/v4 сохраняет смешанные условия, происхождение реестров,
+связи и блокировки. Apply, Reset, Undo и повторное открытие сохраняют смысл фильтра;
+ошибочный видимый интервал не отправляет прежнее корректное значение. Идентификаторы
+клиентов не предлагаются в подсказках значений. Сохранённый результат различает
+подтверждённые и неизвестные чеки; неизвестность не подменяется отсутствием.
+
+Источник: [MS-024](docs/architecture/planning/milestones/MS-024/plan.md),
+[журнал](.codex/delivery/ledgers/MS-024.md). Проверки выполнены на отдельном runtime;
+полнота C04, доступность всего продукта и производительность не объявляются.
+
+
+### Прямое управление раскладкой блоков — 2026-10-08
+
+В composer ручка в заголовке переносит график или таблицу внутри текущей секции;
+маркер показывает место вставки, соседние незаблокированные блоки перераскладываются.
+Меню «Раскладка» даёт эквивалентные команды «Раньше»/«Позже», ширину в 12-колоночной
+сетке (включая ¼, ½, ¾ и всю ширину) и высоту. Угол блока меняет обе размерности.
+История отмены и сохранение используют существующий definition contract; snapshot
+не изменяется. Перенос между секциями остаётся в структуре документа, поскольку
+меняет наследуемый контекст. Пустой статус и постоянная подпись UTC не занимают
+место; загрузка, ошибки и существенные ограничения расчёта сохраняются.
+Реализация и граница доказательств: [W41](.codex/delivery/tickets/W41-COMPOSER-CANVAS-LAYOUT.md).
+
+
+Уточнение W41 от 2026-10-08: в готовом блоке повторный расчёт находится в меню
+действий, без постоянной нижней кнопки. Если результат отсутствует или расчёт
+завершился ошибкой, соответствующее действие появляется в заголовке. В composer
+уменьшены внутренние отступы chart grid с сохранением осей, легенды и data semantics;
+остальные consumers общего renderer сохраняют прежнюю геометрию.
+
+
+Уточнение выбора размеров W41: вместо 12 числовых значений используются четыре
+визуальных пресета ширины ¼, ½, ¾ и вся строка; pointer resize привязывается к ним.
+Высота меняется кнопками −/+. Сохранённая нестандартная ширина не нормализуется
+без действия пользователя. Меню размещается в пределах viewport, Escape закрывает
+его с возвратом focus на trigger.
+
+Уточнение W41 (2026-10-08): контекстные меню «Раскладка» и «Действия блока»
+взаимоисключающие в пределах редактора. Повторное нажатие, Escape, переход фокуса
+или нажатие снаружи закрывают меню. Прокрутка отчёта и изменение окна сохраняют
+меню открытым и обновляют его положение относительно кнопки, в пределах окна. Escape
+возвращает фокус на вызвавший элемент. Выбор ширины/порядка закрывает меню;
+пошаговое изменение высоты допускает повторные нажатия без закрытия.
+Проверки и границы доказательства: [W41 evidence](.codex/delivery/evidence/W41-COMPOSER-CANVAS-LAYOUT/report.md).
+
+Варианты ширины W41 подписаны «Узкий», «Средний», «Широкий», «Во всю строку»
+и дополнены миниатюрами. Технические доли и множители высоты скрыты; высоту
+изменяют команды «Ниже» и «Выше». Название меню — «Размер и положение».
+
+
+### Единый холст отчёта — 2026-10-10 (W42)
+
+Текущий выбор владельца заменяет рецепты меню и размеров W41: единая панель
+настроек выбранного блока, общая палитра добавления графика, таблицы, текста и
+локального фильтра магазина. Сетка — 24 колонки, промежуток 6 px; шаг высоты
+адаптируется к ширине холста. При переносе/изменении размера ячейки показываются
+на фоне под блоками, место назначения — отдельным маркером. Числовые поля
+позиции/высоты и пресеты ширины дают альтернативу жестам.
+
+Фильтр связан только с явно выбранными аналитическими блоками; текст не
+требует расчёта. Настройки, раскладка и связи входят в серверный снимок,
+используют историю отмены и существующие ограничения доступа/блокировки.
+В узком окне настройки временно занимают рабочую область; закрытие возвращает
+холст. Исторический пилот не отменяет этот выбранный владельцем вариант.
+
+Реализация: [W42](.codex/delivery/tickets/W42-COMPOSER-INTEGRATED-CANVAS.md).
+Проверки и ограничения: [W42 evidence](.codex/delivery/evidence/W42-COMPOSER-INTEGRATED-CANVAS/report.md).
+
+Уточнение W42 по замечаниям владельца (2026-10-10): над холстом остаётся
+одна компактная панель добавления/отмены/повтора. Структура документа, сравнение
+блоков и аналитический контекст убраны с этой поверхности. Одиночная страница
+и одиночная секция не дублируют заголовок; навигация остаётся для нескольких
+страниц. Кнопка инспектора открывает/закрывает настройки даже без выбранного
+блока. Сохранение обозначено дискеткой.
+
+Уточнение W42: новый текстовый блок занимает один ряд; минимальная высота
+также один ряд. Существующая высота сохраняется до изменения пользователем.
+В однорядном виде заголовок и текст размещаются компактно по горизонтали.
+
+Уточнение W42: оформление и управление прототипа перенесены в платформенный редактор. Плашки метрик — самостоятельные блоки общей сетки; текст, фильтры, графики и таблицы используют единую панель. Новые отчёты создаются в этом редакторе. Линия прорисовывается слева направо вместе с точками, столбцы появляются последовательно; смена фильтра автоматически пересчитывает связанные блоки. Старые форматы сохранённых отчётов остаются читаемыми.
+
+Уточнение W42 (2026-10-11): кнопки данных/фильтров и визуализации рядом на каждом
+блоке открывают соответствующую вкладку правого инспектора: «Данные»,
+«Визуализация». Разделы оформления зависят от типа блока; у combo каждый
+ряд имеет свои тип, цвет, ось и подписи. Заголовок и описание доступны всем блокам,
+описание показывается под ⓘ. Оформление применяется к холсту сразу, сохраняется
+с отчётом и не запускает аналитический расчёт. Каталог показывает полный набор
+типов, но несовместимые с текущим источником формы недоступны с объяснением
+нужных данных. Поставщики таких форм и сводных таблиц остаются отдельной работой.
+
+Уточнение W42 (2026-10-11, по результатам UI-аудита): поля мастера добавления и
+инспектора имеют общие различимые границы, фон и состояние фокуса; основное
+действие выделено. Данные готового блока редактируются единой формой во вкладке
+«Данные», без вложенного мастера. Добавление или выбор блока показывает его на
+полотне, не перемещая остальные блоки и не забирая фокус из поля. Новый текстовый
+блок открывается на вкладке ввода содержимого.
+
+Уточнение W42 (2026-10-11): сравнение на полотне не вставляет техническую сводку и вторую таблицу. Компактные таблицы скрывают календаризацию сравниваемых дат, сохраняя значения и дельты. Подсказка графика показывает значение, компактное изменение к предыдущей точке и отдельную секцию сравнения периода; положительные дельты зелёные, отрицательные красные, нулевые нейтральные.
+
+Уточнение W42 (2026-10-12): боковая легенда занимает отдельную область и не
+перекрывает график. Название категориальной оси размещается по центру с запасом
+места. Внутренние подписи значений используют светлый текст на тёмной подложке.
+Максимальная толщина столбцов и интервал групп настраиваются ползунком и числом;
+толщина ограничена доступным местом, интервал действует и при накоплении.
+
+
+### Уточнение владельца: текст и метрики (2026-10-12)
+
+В настройках текстового блока нет переключателя размера. «Без фона» означает
+прозрачную поверхность на полотне; выделенный фон остаётся отдельным вариантом.
+Число метрики не должно сжиматься по высоте и обрезаться снизу.
+
+
+### Формат чисел метрик — решение владельца, 2026-10-13
+
+Карточки метрик и итоговые числа графиков используют единый автоматический формат:
+до 1 000 — целое число без копеек; далее суффиксы k (тысяча), m (миллион),
+b (миллиард), без пробела, максимум один десятичный знак без конечного нуля.
+Примеры: 183,7 → 184; 2 144 → 2,1k; 393 858,68 → 393,9k;
+2 144 000 → 2,1m; 12 480 000 000 → 12,5b; 100 000 000 000 → 100b.
+Разделитель дробной части зависит от локали; суффиксы во всех локалях одинаковы.
+Округление на границе повышает масштаб (999 950 → 1m).
+Отрицательные числа сохраняют знак, ноль остаётся 0, отсутствующие данные
+не превращаются в ноль. При наведении на число карточки доступно полное
+округлённое значение без копеек. Абсолютные изменения карточек используют
+те же сокращения. Проценты во всех представлениях — не более одного знака
+после запятой, без конечного нуля. Исходные значения и вычисления не округляются.
+Старые настройки decimals/compact не переопределяют формат карточек метрик.
+
+
+### Адаптация полотна на широких мониторах (2026-10-13)
+
+Полотно редактора ограничено шириной 1800 CSS px и выравнивается по центру
+доступной области. На меньших экранах занимает доступную ширину.
+Высота ряда — 40 CSS px, межблочный промежуток — 6 px, независимо от монитора.
+Координаты и размеры блоков в единицах сетки сохраняются.
+
+
+### Удаление заголовка блока (2026-10-13)
+
+Название блока допускает пустое значение. Очистка и ввод отражаются на полотне
+сразу, без потери фокуса; пустое название сохраняется и не заменяется старым.
+Пустой заголовок текстового блока не занимает отдельную строку.
+
+Уточнение владельца: предел 1200 px заменён на 1800 px для больших мониторов;
+базовая высота рядов — 40 px; минимальная читаемость метрик уточнена ниже.
+
+
+### Навигация страниц отчёта (2026-10-13)
+
+Активная вкладка подчёркнута акцентной линией по всей ширине кнопки.
+Наведение выделяет поверхность и линию, клавиатурный фокус видим.
+Overview отделён ровной линией без имитации активной вкладки.
+Автоматической нумерации нет; название показывается как задано пользователем,
+включая цифры, если он сам их написал.
+
+
+### Шапка настроек блока (2026-10-13)
+
+Шапка панели имеет постоянную высоту 58 px на вкладках «Данные»,
+«Визуализация» и «Блок» и не сжимается при длинном содержимом.
+
+Уточнение W42 (2026-10-13): вкладка «Блок» и поля геометрии удалены из инспектора. Позиция и размер меняются на сетке. На каждом блоке справа от данных/фильтров и визуализации расположены кнопки дублирования и удаления. Удаление требует явного подтверждения с названием блока; отмена и Escape сохраняют блок. В режиме просмотра кнопки скрыты, для заблокированных блоков действия недоступны.
+
+Уточнение W42 (2026-10-13): на desktop контейнер правого инспектора и сама панель имеют одинаковую ширину 280 px; резервировать пустую полосу справа нельзя. На узком экране сохраняется существующая адаптация панели.
+
+Уточнение W42 (2026-10-13): вспомогательная сетка появляется только при движении во время перетаскивания или изменения размера. Нажатие и обычный клик по блоку выбирают его без сетки и без фиксации раскладки.
+
+Уточнение W42 (2026-10-13): метрика имеет минимальный видимый размер 140 × 92 px (ширина уменьшена после выноса кнопок).
+Минимальная ширина ресайза переводится из пикселей в колонки текущего полотна.
+Для сохранённых узких блоков увеличивается ширина общего полотна, а не позиции
+или размеры в сохранённой сетке; появляется общая горизонтальная прокрутка.
+Высота ряда секции при необходимости увеличивается до достижения минимума метрик,
+сохраняя их координаты и отсутствие пересечений. Кнопки вынесены в плавающую панель над блоком (уточнение ниже). Заголовок — до двух строк, полный текст доступен при наведении. Число не
+обрезается; внутренней прокрутки метрики нет. Сравнение выводится только при его
+наличии; штатные Ready и YoY off не отображаются. Загрузка и ошибки сохраняются.
+
+Уточнение W42 (2026-10-13): управляющие кнопки всех блоков расположены снаружи над правым верхним краем. Панель появляется при наведении на блок или фокусе внутри него, остаётся доступной при переходе указателя к кнопкам и не резервирует строку в содержимом. Над первым рядом полотна предусмотрено место для панели; удаление по-прежнему требует подтверждения.
+
+Уточнение владельца W42 (2026-10-13): уменьшить только минимальную ширину метрики на две колонки для MacBook — с шести до четырёх. Нижний предел ширины 140 px; высота и сохранённые позиции не меняются.
+
+Уточнение W42 (2026-10-13): минимальная высота метрики уменьшена с трёх до двух рядов (92 px). При двух рядах используются компактные отступы и шрифт; сравнение помещается в одну строку, полный текст доступен при наведении. Существующая высота меняется только по действию пользователя.
+
+Уточнение W42 (2026-10-13): во время перемещения и изменения размера блока выделение текста в документе подавляется с нажатия до отпускания/отмены жеста. При потере фокуса окна блокировка снимается. Вне жеста обычное выделение текста сохраняется.
+
+Уточнение W42 (2026-10-13): при перемещении и растягивании активный блок целиком
+находится выше соседей, с непрозрачным фоном и единственной рамкой. Дополнительный
+полупрозрачный placeholder не рисуется. Панели кнопок скрыты до конца жеста;
+hover соседей не меняет порядок слоёв. После отпускания занятые ячейки остаются
+за соседями, раскладка ограничивается допустимой позицией без их перемещения.
+
+Линия цели (уточнение владельца, 2026-10-13): автоматические границы числовой оси включают целевое значение с небольшим запасом, в том числе для горизонтальных столбцов. Явно заданные границы сохраняются. Поле «Подпись линии цели» задаёт видимый текст рядом с линией (например, «План продаж»); пустое поле использует «Цель». Подпись размещается внутри области графика.

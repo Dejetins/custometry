@@ -1,0 +1,3778 @@
+{
+  "version": "baseline",
+  "browser": "136.0.7103.25",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "concurrency": 50,
+  "records": [
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 9,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 132184.5,
+          "end": 132400.40000000596,
+          "duration": 215.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 142402.10000002384,
+          "end": 283451,
+          "duration": 141048.89999997616,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 7,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 138628.09999999404,
+          "end": 138813.59999999404,
+          "duration": 185.5,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 148814.5,
+          "end": 289892.6999999881,
+          "duration": 141078.19999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 10,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 128955.5,
+          "end": 129139.69999998808,
+          "duration": 184.19999998807907,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 139140.59999999404,
+          "end": 280193.1999999881,
+          "duration": 141052.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 4,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 148312.80000001192,
+          "end": 148497.80000001192,
+          "duration": 185,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 158499.40000000596,
+          "end": 299577.3000000119,
+          "duration": 141077.90000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 3,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 151556.09999999404,
+          "end": 151806.5,
+          "duration": 250.40000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 161808.29999998212,
+          "end": 302825.5,
+          "duration": 141017.20000001788,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 8,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 135409.90000000596,
+          "end": 135573.59999999404,
+          "duration": 163.69999998807907,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 145575.09999999404,
+          "end": 286611.6999999881,
+          "duration": 141036.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 12,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 122492.80000001192,
+          "end": 122699.40000000596,
+          "duration": 206.59999999403954,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 132701.19999998808,
+          "end": 273759.5,
+          "duration": 141058.30000001192,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 13,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 119264.09999999404,
+          "end": 119428.80000001192,
+          "duration": 164.7000000178814,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 129431.09999999404,
+          "end": 270502.59999999404,
+          "duration": 141071.5,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 18,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 103218.90000000596,
+          "end": 103424.80000001192,
+          "duration": 205.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 113427.09999999404,
+          "end": 254484.40000000596,
+          "duration": 141057.30000001192,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 5,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 145087.59999999404,
+          "end": 145294,
+          "duration": 206.40000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 155295.89999997616,
+          "end": 296354.5,
+          "duration": 141058.60000002384,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 6,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 141874.90000000596,
+          "end": 142063.80000001192,
+          "duration": 188.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 152065.80000001192,
+          "end": 293123.60000002384,
+          "duration": 141057.80000001192,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 17,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 106435.89999997616,
+          "end": 106667.69999998808,
+          "duration": 231.80000001192093,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 116670.09999999404,
+          "end": 257689.09999999404,
+          "duration": 141019,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 14,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 116079.30000001192,
+          "end": 116269.20000001788,
+          "duration": 189.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 126270.90000000596,
+          "end": 267329.90000000596,
+          "duration": 141059,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 21,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 93563.20000001788,
+          "end": 93771,
+          "duration": 207.7999999821186,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 103772.70000001788,
+          "end": 244814.70000001788,
+          "duration": 141042,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 29,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 67806.69999998808,
+          "end": 68041.90000000596,
+          "duration": 235.2000000178814,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 78043.59999999404,
+          "end": 219060.5,
+          "duration": 141016.90000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 23,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 87125.09999999404,
+          "end": 87398,
+          "duration": 272.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 97399,
+          "end": 238372.40000000596,
+          "duration": 140973.40000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 35,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 48462.5,
+          "end": 48737.90000000596,
+          "duration": 275.40000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 58739,
+          "end": 199711.69999998808,
+          "duration": 140972.69999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 25,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 80667.69999998808,
+          "end": 80901.09999999404,
+          "duration": 233.40000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 90902.09999999404,
+          "end": 231919.29999998212,
+          "duration": 141017.19999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 20,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 96789.40000000596,
+          "end": 97024,
+          "duration": 234.59999999403954,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 107026.09999999404,
+          "end": 248043,
+          "duration": 141016.90000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 34,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 51682.69999998808,
+          "end": 51883.19999998808,
+          "duration": 200.5,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 61884.29999998212,
+          "end": 202933.29999998212,
+          "duration": 141049,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 32,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 58130.90000000596,
+          "end": 58441.80000001192,
+          "duration": 310.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 68443.20000001788,
+          "end": 209385.40000000596,
+          "duration": 140942.19999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 22,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 90349.90000000596,
+          "end": 90690.20000001788,
+          "duration": 340.30000001192093,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 100691.80000001192,
+          "end": 241605.90000000596,
+          "duration": 140914.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 28,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 71032.60000002384,
+          "end": 71265.90000000596,
+          "duration": 233.2999999821186,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 81266.80000001192,
+          "end": 222284.5,
+          "duration": 141017.69999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 30,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 64590.29999998212,
+          "end": 64814.59999999404,
+          "duration": 224.30000001192093,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 74817,
+          "end": 215835.69999998808,
+          "duration": 141018.69999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 27,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 74248.19999998808,
+          "end": 74525.5,
+          "duration": 277.30000001192093,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 84527,
+          "end": 225499.09999999404,
+          "duration": 140972.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 31,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 61360,
+          "end": 61611.90000000596,
+          "duration": 251.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 71613.90000000596,
+          "end": 212606.10000002384,
+          "duration": 140992.20000001788,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 26,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 77458.19999998808,
+          "end": 77732.19999998808,
+          "duration": 274,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 87733.5,
+          "end": 228706.59999999404,
+          "duration": 140973.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 37,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 42007.40000000596,
+          "end": 42271,
+          "duration": 263.59999999403954,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 52272.40000000596,
+          "end": 193253.5,
+          "duration": 140981.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 36,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 45235.5,
+          "end": 45572.5,
+          "duration": 337,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 55573.70000001788,
+          "end": 196488.90000000596,
+          "duration": 140915.19999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 48,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 6516.5999999940395,
+          "end": 6797.199999988079,
+          "duration": 280.59999999403954,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 16798.79999998212,
+          "end": 157768.89999997616,
+          "duration": 140970.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 40,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 32318.90000000596,
+          "end": 32593.40000000596,
+          "duration": 274.5,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 42595.70000001788,
+          "end": 183569,
+          "duration": 140973.29999998212,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 42,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 25865.09999999404,
+          "end": 26163.29999998212,
+          "duration": 298.19999998807907,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 36165.69999998808,
+          "end": 177118.29999998212,
+          "duration": 140952.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 39,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 35547.10000002384,
+          "end": 35823.40000000596,
+          "duration": 276.2999999821186,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 45824.70000001788,
+          "end": 186797.30000001192,
+          "duration": 140972.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 44,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 19433.40000000596,
+          "end": 19708.29999998212,
+          "duration": 274.89999997615814,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 29709.09999999404,
+          "end": 170679.29999998212,
+          "duration": 140970.19999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 45,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 16196.40000000596,
+          "end": 16469.70000001788,
+          "duration": 273.30000001192093,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 26471.80000001192,
+          "end": 167444.5,
+          "duration": 140972.69999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 41,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 29098.80000001192,
+          "end": 29433.09999999404,
+          "duration": 334.2999999821186,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 39434,
+          "end": 180348.09999999404,
+          "duration": 140914.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 43,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 22659,
+          "end": 22945.20000001788,
+          "duration": 286.2000000178814,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 32946.80000001192,
+          "end": 173911.20000001788,
+          "duration": 140964.40000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 49,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 3295.7999999821186,
+          "end": 3498,
+          "duration": 202.2000000178814,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 13499.799999982119,
+          "end": 154549,
+          "duration": 141049.20000001788,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 47,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 9751.199999988079,
+          "end": 10028.09999999404,
+          "duration": 276.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 20029.5,
+          "end": 160999.30000001192,
+          "duration": 140969.80000001192,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 33,
+      "status": "passed",
+      "frameMs": 150927.611917,
+      "firstGraphMs": 151040.76754200002,
+      "allCardsMs": 202332.76958300002,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 54885.09999999404,
+          "end": 55120.70000001788,
+          "duration": 235.60000002384186,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/a4296915-b5e6-5bc6-a71b-54f4de0298b2",
+          "start": 55124.59999999404,
+          "end": 205663.80000001192,
+          "duration": 150539.20000001788,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 65122.90000000596,
+          "end": 206139.80000001192,
+          "duration": 141016.90000000596,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/53d3fc56-245e-53f3-9f2d-4d04c0849b9f",
+          "start": 205671.30000001192,
+          "end": 257064.09999999404,
+          "duration": 51392.79999998212,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 0,
+      "status": "passed",
+      "frameMs": 151113.76208299998,
+      "firstGraphMs": 151148.00983299996,
+      "allCardsMs": 202424.990458,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 161209.19999998808,
+          "end": 161385.90000000596,
+          "duration": 176.7000000178814,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/a6f777d5-18ca-519b-9427-e6e7654da30a",
+          "start": 161388.40000000596,
+          "end": 312020.5,
+          "duration": 150632.09999999404,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 171388.19999998808,
+          "end": 312447,
+          "duration": 141058.80000001192,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 312029.40000000596,
+          "end": 363555.2999999821,
+          "duration": 51525.89999997616,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/114d6564-cb08-55c0-ae66-91c28276f577",
+          "start": 312029.7999999821,
+          "end": 363536.6999999881,
+          "duration": 51506.90000000596,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 2,
+      "status": "passed",
+      "frameMs": 151289.240875,
+      "firstGraphMs": 151314.72104200002,
+      "allCardsMs": 202761.54483300002,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 154768.59999999404,
+          "end": 154932.5,
+          "duration": 163.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/c085f392-6ed3-5653-8d90-ac6c0b123213",
+          "start": 154934.79999998212,
+          "end": 305570.5,
+          "duration": 150635.70000001788,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 164933.69999998808,
+          "end": 305887.2999999821,
+          "duration": 140953.59999999404,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/065d804a-db0b-5673-9339-6bbf6f730f92",
+          "start": 305578.2999999821,
+          "end": 357116.5,
+          "duration": 51538.20000001788,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 315889.59999999404,
+          "end": 357433.7999999821,
+          "duration": 41544.19999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 46,
+      "status": "passed",
+      "frameMs": 150926.918542,
+      "firstGraphMs": 150997.1985,
+      "allCardsMs": 254910.03895800002,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 12984.59999999404,
+          "end": 13244.5,
+          "duration": 259.90000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/0fc7fbe5-754c-530e-9e87-32109de34a65",
+          "start": 13246.59999999404,
+          "end": 163769.20000001788,
+          "duration": 150522.60000002384,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 23246.80000001192,
+          "end": 164227.90000000596,
+          "duration": 140981.09999999404,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/5973a229-3fe4-5905-8f05-cf4eb68f9a51",
+          "start": 163778,
+          "end": 267603.09999999404,
+          "duration": 103825.09999999404,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 174228.70000001788,
+          "end": 215628.59999999404,
+          "duration": 41399.89999997616,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 24,
+      "status": "passed",
+      "frameMs": 150845.008042,
+      "firstGraphMs": 151014.539584,
+      "allCardsMs": 257951.86737500003,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 83891.09999999404,
+          "end": 84104.69999998808,
+          "duration": 213.59999999403954,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/0bbf1ca5-68f2-5345-a69f-69aebce215a2",
+          "start": 84107.09999999404,
+          "end": 234667.80000001192,
+          "duration": 150560.70000001788,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 94106.59999999404,
+          "end": 235143.40000000596,
+          "duration": 141036.80000001192,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 234677.59999999404,
+          "end": 285438.59999999404,
+          "duration": 50761,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/7415ce47-3cf8-571d-9ee9-95a8e43c2e64",
+          "start": 234677.80000001192,
+          "end": 341519.59999999404,
+          "duration": 106841.79999998212,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 245144.5,
+          "end": 286546.09999999404,
+          "duration": 41401.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 15,
+      "status": "passed",
+      "frameMs": 151289.374625,
+      "firstGraphMs": 151331.29858400003,
+      "allCardsMs": 260956.00012500002,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 112837.80000001192,
+          "end": 113020.90000000596,
+          "duration": 183.09999999403954,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/67cd9076-dfde-5f0e-a922-e86f85607d02",
+          "start": 113023.59999999404,
+          "end": 263734.90000000596,
+          "duration": 150711.30000001192,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 123023.59999999404,
+          "end": 264077.59999999404,
+          "duration": 141054,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 263743.6999999881,
+          "end": 373720.40000000596,
+          "duration": 109976.70000001788,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/ace12bfd-ff52-5ca2-a20c-fb90fc93efa5",
+          "start": 263743.8000000119,
+          "end": 373668.90000000596,
+          "duration": 109925.09999999404,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 274079.8000000119,
+          "end": 315505.1999999881,
+          "duration": 41425.39999997616,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 1,
+      "status": "passed",
+      "frameMs": 151289.21325,
+      "firstGraphMs": 151314.60695800002,
+      "allCardsMs": 261203.87712499997,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 157980.29999998212,
+          "end": 158156.90000000596,
+          "duration": 176.60000002384186,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/3e11db0e-78e8-50e5-bbc8-c71103fc2e36",
+          "start": 158159.40000000596,
+          "end": 308790.59999999404,
+          "duration": 150631.19999998808,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 168159.5,
+          "end": 309218.40000000596,
+          "duration": 141058.90000000596,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/c753ae19-fc3e-500d-b8f3-5d5afbba5708",
+          "start": 308798.5,
+          "end": 418844.1999999881,
+          "duration": 110045.69999998808,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 319220.1999999881,
+          "end": 360647,
+          "duration": 41426.80000001192,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 370648.90000000596,
+          "end": 419147.7999999821,
+          "duration": 48498.89999997616,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 19,
+      "status": "passed",
+      "frameMs": 151288.067042,
+      "firstGraphMs": 151312.523375,
+      "allCardsMs": 261459.023459,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 100012.89999997616,
+          "end": 100286.09999999404,
+          "duration": 273.2000000178814,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/6178ff87-50e3-588c-a55d-4ddfd9770e14",
+          "start": 100288.39999997616,
+          "end": 250801.79999998212,
+          "duration": 150513.40000000596,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 110287.59999999404,
+          "end": 251269.19999998808,
+          "duration": 140981.59999999404,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 250810,
+          "end": 302207.59999999404,
+          "duration": 51397.59999999404,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/3e0e08c3-5587-56ac-8cfb-fc3d95f9f4fb",
+          "start": 250810.39999997616,
+          "end": 360955,
+          "duration": 110144.60000002384,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 261270.79999998212,
+          "end": 302671.09999999404,
+          "duration": 41400.30000001192,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 312672,
+          "end": 361172.5,
+          "duration": 48500.5,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 11,
+      "status": "passed",
+      "frameMs": 151165.35695900003,
+      "firstGraphMs": 151198.033417,
+      "allCardsMs": 279770.219542,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 125720.80000001192,
+          "end": 125928.09999999404,
+          "duration": 207.2999999821186,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/bf4d7ebe-4cf2-5365-838c-895663aa8b1c",
+          "start": 125930.90000000596,
+          "end": 276550.59999999404,
+          "duration": 150619.69999998808,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 135929.5,
+          "end": 276987.5,
+          "duration": 141058,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 276561.2000000179,
+          "end": 386548.5,
+          "duration": 109987.29999998212,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/71c225ba-78b6-56b9-9f64-d6ad4a861bcd",
+          "start": 276561.40000000596,
+          "end": 405428.8000000119,
+          "duration": 128867.40000000596,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 286988.5,
+          "end": 328389.90000000596,
+          "duration": 41401.40000000596,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 338391.5,
+          "end": 386890.5,
+          "duration": 48499,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 16,
+      "status": "passed",
+      "frameMs": 151289.27574999997,
+      "firstGraphMs": 151331.58425,
+      "allCardsMs": 281152.187375,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 109638.79999998212,
+          "end": 109843.19999998808,
+          "duration": 204.40000000596046,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/3a51633c-3ff4-5d49-b7b0-dbaa20aac591",
+          "start": 109845.29999998212,
+          "end": 260481.40000000596,
+          "duration": 150636.10000002384,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 119845.09999999404,
+          "end": 260903.69999998808,
+          "duration": 141058.59999999404,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 260490.59999999404,
+          "end": 370596.7999999821,
+          "duration": 110106.19999998808,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/d7f6e4ce-cb25-5e9e-9bda-085355c1baae",
+          "start": 260490.79999998212,
+          "end": 390626.09999999404,
+          "duration": 130135.30000001192,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 270905.09999999404,
+          "end": 312306.7999999821,
+          "duration": 41401.69999998808,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 322308.59999999404,
+          "end": 370806.09999999404,
+          "duration": 48497.5,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 0,
+      "user": 38,
+      "status": "passed",
+      "frameMs": 150926.592083,
+      "firstGraphMs": 151038.07125000004,
+      "allCardsMs": 286234.39754100004,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 38770.39999997616,
+          "end": 39030.89999997616,
+          "duration": 260.5,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/4ca76cb6-a8e8-5f34-80b5-9a9ad9d22592",
+          "start": 39033.19999998808,
+          "end": 189550.69999998808,
+          "duration": 150517.5,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 49032.69999998808,
+          "end": 190025.39999997616,
+          "duration": 140992.69999998808,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 189558.19999998808,
+          "end": 299569.89999997616,
+          "duration": 110011.69999998808,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/fb9587b0-9062-5b9d-993b-ca4ac30bf352",
+          "start": 189558.29999998212,
+          "end": 324635,
+          "duration": 135076.70000001788,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 200026.69999998808,
+          "end": 241427,
+          "duration": 41400.30000001192,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 251428.39999997616,
+          "end": 299926.59999999404,
+          "duration": 48498.20000001788,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 309928.09999999404,
+          "end": 324729.6999999881,
+          "duration": 14801.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 26,
+      "status": "passed",
+      "frameMs": 330.9225420000148,
+      "firstGraphMs": 462.5831670000334,
+      "allCardsMs": 468.9490420000511,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 30,
+      "status": "passed",
+      "frameMs": 336.742957999988,
+      "firstGraphMs": 479.3207499999553,
+      "allCardsMs": 499.9769999999553,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 15,
+      "status": "passed",
+      "frameMs": 330.92291699995985,
+      "firstGraphMs": 479.60966700001154,
+      "allCardsMs": 500.21791700000176,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 35,
+      "status": "passed",
+      "frameMs": 335.975792000012,
+      "firstGraphMs": 479.8548750000191,
+      "allCardsMs": 499.0215839999728,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 23,
+      "status": "passed",
+      "frameMs": 330.6663750000298,
+      "firstGraphMs": 480.7789580000099,
+      "allCardsMs": 499.9207499999902,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 38,
+      "status": "passed",
+      "frameMs": 335.73662500001956,
+      "firstGraphMs": 479.8611249999958,
+      "allCardsMs": 498.95450000005076,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 17,
+      "status": "passed",
+      "frameMs": 336.7943749999977,
+      "firstGraphMs": 481.14529199997196,
+      "allCardsMs": 502.72320799995214,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 46,
+      "status": "passed",
+      "frameMs": 322.000457999995,
+      "firstGraphMs": 484.87704099999974,
+      "allCardsMs": 496.8534579999978,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 28,
+      "status": "passed",
+      "frameMs": 336.8087919999962,
+      "firstGraphMs": 499.6220420000027,
+      "allCardsMs": 512.7344169999706,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 16,
+      "status": "passed",
+      "frameMs": 336.8071249999921,
+      "firstGraphMs": 528.6118750000023,
+      "allCardsMs": 539.4805420000339,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 1,
+      "status": "passed",
+      "frameMs": 330.98924999998417,
+      "firstGraphMs": 529.1269169999869,
+      "allCardsMs": 542.3723340000142,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 40,
+      "status": "passed",
+      "frameMs": 335.68754199997056,
+      "firstGraphMs": 527.4360419999575,
+      "allCardsMs": 540.319749999966,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 49,
+      "status": "passed",
+      "frameMs": 321.8647500000079,
+      "firstGraphMs": 530.9356670000125,
+      "allCardsMs": 537.0483339999919,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 13,
+      "status": "passed",
+      "frameMs": 330.82070799998473,
+      "firstGraphMs": 562.7125000000233,
+      "allCardsMs": 568.3953329999931,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 11,
+      "status": "passed",
+      "frameMs": 331.2310409999918,
+      "firstGraphMs": 574.8997910000035,
+      "allCardsMs": 580.8023749999702,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 0,
+      "status": "passed",
+      "frameMs": 337.25741600000765,
+      "firstGraphMs": 629.1840830000001,
+      "allCardsMs": 635.1004160000011,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 2,
+      "status": "passed",
+      "frameMs": 337.16300000000047,
+      "firstGraphMs": 637.6805000000168,
+      "allCardsMs": 644.0585830000346,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 19,
+      "status": "passed",
+      "frameMs": 336.5587919999962,
+      "firstGraphMs": 661.0350839999737,
+      "allCardsMs": 668.303750000021,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 24,
+      "status": "passed",
+      "frameMs": 335.825708999997,
+      "firstGraphMs": 666.4230840000091,
+      "allCardsMs": 671.8516669999808,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 33,
+      "status": "passed",
+      "frameMs": 329.9237500000163,
+      "firstGraphMs": 694.1290840000147,
+      "allCardsMs": 700.7853340000147,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 5,
+      "status": "passed",
+      "frameMs": 337.1010419999948,
+      "firstGraphMs": 717.123666999978,
+      "allCardsMs": 722.9164999999921,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 27,
+      "status": "passed",
+      "frameMs": 337.04966600000625,
+      "firstGraphMs": 745.995791000023,
+      "allCardsMs": 751.0947080000187,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 34,
+      "status": "passed",
+      "frameMs": 335.67170800000895,
+      "firstGraphMs": 694.3203750000102,
+      "allCardsMs": 136210.421042,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/1c8efe93-7d79-5b30-88f0-1717d521ebc8",
+          "start": 306321.6999999881,
+          "end": 474010.7999999821,
+          "duration": 167689.09999999404,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 14,
+      "status": "passed",
+      "frameMs": 331.0375420000055,
+      "firstGraphMs": 479.74445800000103,
+      "allCardsMs": 136211.76949999994,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 318392.5,
+          "end": 538387.5,
+          "duration": 219995,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/33767cc7-7228-5a50-81cc-83dc18b595d0",
+          "start": 318392.7000000179,
+          "end": 538437.900000006,
+          "duration": 220045.19999998808,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 21,
+      "status": "passed",
+      "frameMs": 336.61570900003426,
+      "firstGraphMs": 481.0254999999888,
+      "allCardsMs": 136211.44791699998,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/45402121-f5ef-570f-be48-2dd2b2f7363a",
+          "start": 295739.40000000596,
+          "end": 515933,
+          "duration": 220193.59999999404,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 7,
+      "status": "passed",
+      "frameMs": 331.2701670000097,
+      "firstGraphMs": 499.77020900003845,
+      "allCardsMs": 136211.99645900005,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/f4ca176c-cb9f-54ae-b604-63aa76050d30",
+          "start": 398697.5,
+          "end": 560976.3999999762,
+          "duration": 162278.89999997616,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 25,
+      "status": "passed",
+      "frameMs": 336.84149999998044,
+      "firstGraphMs": 562.8361249999725,
+      "allCardsMs": 136212.47833299998,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/c5fa1353-b24b-57ae-acd3-6b0688d2453e",
+          "start": 341518.90000000596,
+          "end": 503049.5,
+          "duration": 161530.59999999404,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 4,
+      "status": "passed",
+      "frameMs": 331.39991600002395,
+      "firstGraphMs": 572.9477499999921,
+      "allCardsMs": 136584.21170800005,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/b64373e6-0e36-5003-bf06-8afebbdb67ed",
+          "start": 408377.2000000179,
+          "end": 571125.3000000119,
+          "duration": 162748.09999999404,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 18,
+      "status": "passed",
+      "frameMs": 330.85612499999115,
+      "firstGraphMs": 752.6184580000117,
+      "allCardsMs": 136782.586833,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/785711ff-a21d-54af-ab91-acae89be3227",
+          "start": 305435.09999999404,
+          "end": 525997.1999999881,
+          "duration": 220562.09999999404,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 45,
+      "status": "passed",
+      "frameMs": 321.90816699998686,
+      "firstGraphMs": 640.3025829999824,
+      "allCardsMs": 136767.646542,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 218371.30000001192,
+          "end": 439145.90000000596,
+          "duration": 220774.59999999404,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/48abb406-b174-50b2-8127-754e8143cf17",
+          "start": 218371.5,
+          "end": 438988.40000000596,
+          "duration": 220616.90000000596,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 10,
+      "status": "passed",
+      "frameMs": 336.809666999965,
+      "firstGraphMs": 726.2572919999948,
+      "allCardsMs": 136782.99862499995,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/4eb1c558-6b4c-5546-bf72-b2e5b39822d1",
+          "start": 331214.1999999881,
+          "end": 551886.1999999881,
+          "duration": 220672,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 6,
+      "status": "passed",
+      "frameMs": 331.1991669999552,
+      "firstGraphMs": 481.4010000000126,
+      "allCardsMs": 136783.20075000002,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 402821.7000000179,
+          "end": 564710,
+          "duration": 161888.29999998212,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/99ae05c2-a90b-5275-bf55-f64a6cd38667",
+          "start": 402822,
+          "end": 564791.2000000179,
+          "duration": 161969.20000001788,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 12,
+      "status": "passed",
+      "frameMs": 330.41775000002235,
+      "firstGraphMs": 579.7696669999859,
+      "allCardsMs": 136783.05024999997,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/a782ea66-e9ef-58e4-bbcf-2a1b5df5a86b",
+          "start": 383575,
+          "end": 545390.900000006,
+          "duration": 161815.90000000596,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 9,
+      "status": "passed",
+      "frameMs": 330.6771660000086,
+      "firstGraphMs": 628.8073330000043,
+      "allCardsMs": 136783.219125,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/ac138f18-61a4-57a4-82dc-fc3a7f528ce6",
+          "start": 392250.60000002384,
+          "end": 554966.900000006,
+          "duration": 162716.29999998212,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 8,
+      "status": "passed",
+      "frameMs": 331.13033299997915,
+      "firstGraphMs": 611.8436670000083,
+      "allCardsMs": 136793.28345800005,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/03229899-7179-5353-8bb6-20810b87d539",
+          "start": 396254.1999999881,
+          "end": 558379,
+          "duration": 162124.80000001192,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 39,
+      "status": "passed",
+      "frameMs": 335.6386249999632,
+      "firstGraphMs": 480.0157499999623,
+      "allCardsMs": 136958.22304099996,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 296437.7000000179,
+          "end": 457920.60000002384,
+          "duration": 161482.90000000596,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/404516d8-e7db-5fee-aaaa-2097c7c54d04",
+          "start": 296438,
+          "end": 458448.7000000179,
+          "duration": 162010.70000001788,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 29,
+      "status": "passed",
+      "frameMs": 330.66720800002804,
+      "firstGraphMs": 513.8147500000196,
+      "allCardsMs": 137286.96087500005,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 270208.1999999881,
+          "end": 490123.40000000596,
+          "duration": 219915.20000001788,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/bda807af-3b1d-5a9b-892c-4af9fde6343e",
+          "start": 270208.40000000596,
+          "end": 490813,
+          "duration": 220604.59999999404,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 354085.40000000596,
+          "end": 491041.6999999881,
+          "duration": 136956.29999998212,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 3,
+      "status": "passed",
+      "frameMs": 331.4485829999903,
+      "firstGraphMs": 480.0021660000202,
+      "allCardsMs": 137293.02612500003,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/2da686ee-6de6-5e5d-8b98-1194656bbae4",
+          "start": 353797.59999999404,
+          "end": 574640.6999999881,
+          "duration": 220843.09999999404,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/reports/v2/c79eb512-3af5-5ff5-84fd-9e71d0c6cf6c",
+          "start": 437845,
+          "end": 574677.099999994,
+          "duration": 136832.09999999404,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 437845.1999999881,
+          "end": 574804.2999999821,
+          "duration": 136959.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 42,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 20,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 336.2764169999864,
+      "firstGraphMs": 731.2541670000064,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 376485.59999999404,
+          "end": 519853.09999999404,
+          "duration": 143367.5,
+          "bytes": 3941
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 47,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 136558.46833300003,
+      "firstGraphMs": 136762.18754100002,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/18d9fe43-76b5-52c6-85b0-65903a8f0a33",
+          "start": 10030.59999999404,
+          "end": 432515.90000000596,
+          "duration": 422485.3000000119,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 296066.8000000119,
+          "end": 525806.099999994,
+          "duration": 229739.29999998212,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 22,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 136847.59470899997,
+      "firstGraphMs": 136890.55149999994,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/79b7ba6f-88aa-56a7-a96a-d3abdac3ce1e",
+          "start": 90693,
+          "end": 513089.8000000119,
+          "duration": 422396.8000000119,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 376619.90000000596,
+          "end": 513577.10000002384,
+          "duration": 136957.20000001788,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 41,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 137051.38266600005,
+      "firstGraphMs": 137105.83825000003,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/ee634438-03c2-5d06-89cf-6e2781f77d42",
+          "start": 29435.59999999404,
+          "end": 451988.59999999404,
+          "duration": 422553,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 315411.1999999881,
+          "end": 545151.3000000119,
+          "duration": 229740.10000002384,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 48,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 137038.17370800005,
+      "firstGraphMs": 137091.82645800005,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/01e99f62-88e4-5471-94fe-7f7e290912d3",
+          "start": 6799.799999982119,
+          "end": 429452,
+          "duration": 422652.2000000179,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 292836,
+          "end": 522575.89999997616,
+          "duration": 229739.89999997616,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 37,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 137047.87024999998,
+      "firstGraphMs": 137105.94208300003,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/c57bf54f-db44-5eca-84a1-680fb81f49c6",
+          "start": 42273.09999999404,
+          "end": 464920.3000000119,
+          "duration": 422647.2000000179,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 328332.40000000596,
+          "end": 558068,
+          "duration": 229735.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 44,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 137052.480417,
+      "firstGraphMs": 137105.83012499998,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/46189a2e-8cbc-5ba9-81f4-1372a4ca90c9",
+          "start": 19711.19999998808,
+          "end": 442375.5,
+          "duration": 422664.3000000119,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 305745.59999999404,
+          "end": 535486.2999999821,
+          "duration": 229740.69999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 32,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 137047.66325000004,
+      "firstGraphMs": 137107.32170899998,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/882fe2d0-87a7-5f62-9793-cc68f455c620",
+          "start": 58444.20000001788,
+          "end": 481104.60000002384,
+          "duration": 422660.40000000596,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 344455,
+          "end": 574193,
+          "duration": 229738,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 31,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 137055.48933399998,
+      "firstGraphMs": 137107.72008399997,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/2d9747a5-c162-5085-8039-92b3715c0c78",
+          "start": 61614.30000001192,
+          "end": 484308.60000002384,
+          "duration": 422694.3000000119,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 347688.2000000179,
+          "end": 577423.3000000119,
+          "duration": 229735.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 36,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 137054.77383300004,
+      "firstGraphMs": 137107.13579100004,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/921ff304-40e0-514d-ba67-b838692fb3ae",
+          "start": 45574.80000001192,
+          "end": 468238.7000000179,
+          "duration": 422663.90000000596,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 331551.60000002384,
+          "end": 561292.400000006,
+          "duration": 229740.79999998212,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 1,
+      "user": 43,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 137047.68283299997,
+      "firstGraphMs": 137107.00249999994,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/reports/v2/6107360a-5f00-53ea-8c85-14f34c7ac887",
+          "start": 22947.70000001788,
+          "end": 445754.7000000179,
+          "duration": 422807,
+          "bytes": 239416
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 308967.59999999404,
+          "end": 538720.3000000119,
+          "duration": 229752.70000001788,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 16,
+      "status": "passed",
+      "frameMs": 623.063833000022,
+      "firstGraphMs": 847.1656669999938,
+      "allCardsMs": 853.8768330001039,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 10,
+      "status": "passed",
+      "frameMs": 623.518708000076,
+      "firstGraphMs": 846.4691660000244,
+      "allCardsMs": 853.6918330000481,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 8,
+      "status": "passed",
+      "frameMs": 623.498208999983,
+      "firstGraphMs": 846.5297919999575,
+      "allCardsMs": 854.450041999924,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 2,
+      "status": "passed",
+      "frameMs": 622.8337090000277,
+      "firstGraphMs": 863.9409169999417,
+      "allCardsMs": 875.6979999999749,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 24,
+      "status": "passed",
+      "frameMs": 633.8488750000251,
+      "firstGraphMs": 838.6514169999864,
+      "allCardsMs": 850.4340830000583,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 20,
+      "status": "passed",
+      "frameMs": 623.2510839999886,
+      "firstGraphMs": 881.1873749999795,
+      "allCardsMs": 887.1359589999774,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 19,
+      "status": "passed",
+      "frameMs": 622.7534160000505,
+      "firstGraphMs": 896.3909579999745,
+      "allCardsMs": 903.0203749999637,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 12,
+      "status": "passed",
+      "frameMs": 618.4585829999996,
+      "firstGraphMs": 897.1911669999827,
+      "allCardsMs": 904.2219170000171,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 6,
+      "status": "passed",
+      "frameMs": 623.0455000000075,
+      "firstGraphMs": 914.0024170000106,
+      "allCardsMs": 919.4613339999923,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 5,
+      "status": "passed",
+      "frameMs": 622.8493330000201,
+      "firstGraphMs": 931.2505830000155,
+      "allCardsMs": 937.4220409999834,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 14,
+      "status": "passed",
+      "frameMs": 622.6768329999177,
+      "firstGraphMs": 947.4485829999903,
+      "allCardsMs": 954.2398749999702,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 11,
+      "status": "passed",
+      "frameMs": 622.952874999959,
+      "firstGraphMs": 947.9642909999238,
+      "allCardsMs": 955.653624999919,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 17,
+      "status": "passed",
+      "frameMs": 623.5202089999802,
+      "firstGraphMs": 964.2504590000026,
+      "allCardsMs": 970.1819169999799,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 13,
+      "status": "passed",
+      "frameMs": 622.7945410000393,
+      "firstGraphMs": 980.2607500000158,
+      "allCardsMs": 986.9624160000822,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 0,
+      "status": "passed",
+      "frameMs": 622.7728750000242,
+      "firstGraphMs": 1014.8174160000635,
+      "allCardsMs": 1021.8819580000127,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 15,
+      "status": "passed",
+      "frameMs": 622.9132090000203,
+      "firstGraphMs": 1014.8119590000715,
+      "allCardsMs": 1022.2542090000352,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 9,
+      "status": "passed",
+      "frameMs": 366.33729199995287,
+      "firstGraphMs": 748.0571249999339,
+      "allCardsMs": 760.6648749999003,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 1,
+      "status": "passed",
+      "frameMs": 618.7263329999987,
+      "firstGraphMs": 1048.328332999954,
+      "allCardsMs": 1062.703082999913,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 3,
+      "status": "passed",
+      "frameMs": 622.718499999959,
+      "firstGraphMs": 1066.577249999973,
+      "allCardsMs": 1079.1026250000577,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 18,
+      "status": "passed",
+      "frameMs": 623.157332999981,
+      "firstGraphMs": 1081.095791000058,
+      "allCardsMs": 1098.577249999973,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 26,
+      "status": "passed",
+      "frameMs": 622.7124580000527,
+      "firstGraphMs": 1080.5002920000115,
+      "allCardsMs": 1099.2976670000935,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 34,
+      "status": "passed",
+      "frameMs": 341.5268749999814,
+      "firstGraphMs": 799.284791000071,
+      "allCardsMs": 806.9808750000084,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 4,
+      "status": "passed",
+      "frameMs": 634.1489999999758,
+      "firstGraphMs": 1121.547208999982,
+      "allCardsMs": 1130.2448749999749,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 40,
+      "status": "passed",
+      "frameMs": 341.37933399993926,
+      "firstGraphMs": 825.4536669999361,
+      "allCardsMs": 833.9905840000138,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 39,
+      "status": "passed",
+      "frameMs": 182.71066700003576,
+      "firstGraphMs": 636.6411670000525,
+      "allCardsMs": 645.9462500000373,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 7,
+      "status": "passed",
+      "frameMs": 634.1180409999797,
+      "firstGraphMs": 1154.2911249999888,
+      "allCardsMs": 1165.7942500000354,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 38,
+      "status": "passed",
+      "frameMs": 366.939458000008,
+      "firstGraphMs": 901.9644160000607,
+      "allCardsMs": 909.2337080000434,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 28,
+      "status": "passed",
+      "frameMs": 367.0295829999959,
+      "firstGraphMs": 913.1359999999404,
+      "allCardsMs": 922.9583749999292,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 46,
+      "status": "passed",
+      "frameMs": 367.1345829999773,
+      "firstGraphMs": 915.8055829999503,
+      "allCardsMs": 923.981792000006,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 21,
+      "status": "passed",
+      "frameMs": 181.46554200001992,
+      "firstGraphMs": 715.1917499999981,
+      "allCardsMs": 729.6539999999804,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 33,
+      "status": "passed",
+      "frameMs": 366.97616700001527,
+      "firstGraphMs": 933.8663340000203,
+      "allCardsMs": 948.5967089999467,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 23,
+      "status": "passed",
+      "frameMs": 366.98845799989067,
+      "firstGraphMs": 940.4328329999698,
+      "allCardsMs": 952.5549999999348,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 27,
+      "status": "passed",
+      "frameMs": 367.0319169999566,
+      "firstGraphMs": 958.374124999973,
+      "allCardsMs": 969.8902920000255,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 45,
+      "status": "passed",
+      "frameMs": 183.8416670000879,
+      "firstGraphMs": 775.8410419999855,
+      "allCardsMs": 785.82729200006,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 35,
+      "status": "passed",
+      "frameMs": 367.00841600005515,
+      "firstGraphMs": 998.2127080000937,
+      "allCardsMs": 1005.9197910000803,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 25,
+      "status": "passed",
+      "frameMs": 183.61820799997076,
+      "firstGraphMs": 789.2707500000251,
+      "allCardsMs": 795.0930830000434,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 29,
+      "status": "passed",
+      "frameMs": 183.6942079999717,
+      "firstGraphMs": 795.5725000000093,
+      "allCardsMs": 801.9905830000062,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 49,
+      "status": "passed",
+      "frameMs": 366.6744170000311,
+      "firstGraphMs": 1014.0911250000354,
+      "allCardsMs": 1020.7008749999804,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 30,
+      "status": "passed",
+      "frameMs": 366.5679999999702,
+      "firstGraphMs": 1064.156874999986,
+      "allCardsMs": 1070.8856249999953,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 44,
+      "status": "passed",
+      "frameMs": 623.4323749999749,
+      "firstGraphMs": 1045.691125000012,
+      "allCardsMs": 74261.70983299997,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/139c45c0-37d5-5e88-84d5-ea87aad133a8",
+          "start": 442405.59999999404,
+          "end": 697061.400000006,
+          "duration": 254655.80000001192,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 545488.5,
+          "end": 697080.6999999881,
+          "duration": 151592.19999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 31,
+      "status": "passed",
+      "frameMs": 623.7578750000102,
+      "firstGraphMs": 1129.448166999966,
+      "allCardsMs": 76802.68929200002,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/73b454f8-71a3-54d1-aa76-5691a8df52c9",
+          "start": 484340.5,
+          "end": 741737,
+          "duration": 257396.5,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 587424.6000000238,
+          "end": 739016.8000000119,
+          "duration": 151592.19999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 47,
+      "status": "passed",
+      "frameMs": 366.66500000003725,
+      "firstGraphMs": 881.8676660000347,
+      "allCardsMs": 76564.31420799997,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 432532.6999999881,
+          "end": 627866.3000000119,
+          "duration": 195333.60000002384,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/f48f7cff-9694-58c1-b3c2-ca941aea071c",
+          "start": 432532.90000000596,
+          "end": 690153,
+          "duration": 257620.09999999404,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 535807.900000006,
+          "end": 687400.8000000119,
+          "duration": 151592.90000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 22,
+      "status": "passed",
+      "frameMs": 622.5324170000385,
+      "firstGraphMs": 863.8969590000343,
+      "allCardsMs": 77308.61916700006,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 513103.2000000179,
+          "end": 771173.2000000179,
+          "duration": 258070,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/99f0490a-f184-508d-9e84-fea118d6d538",
+          "start": 513103.3000000119,
+          "end": 771134.400000006,
+          "duration": 258031.09999999404,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 523578.40000000596,
+          "end": 708436.3000000119,
+          "duration": 184857.90000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 32,
+      "status": "passed",
+      "frameMs": 623.5047909999266,
+      "firstGraphMs": 863.6180409999797,
+      "allCardsMs": 77308.42404099996,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 481128.5,
+          "end": 738879.8000000119,
+          "duration": 257751.30000001192,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/1a2bd154-cfcc-5100-916e-ea318a878b57",
+          "start": 481128.8000000119,
+          "end": 739047.5,
+          "duration": 257918.69999998808,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 584194.2000000179,
+          "end": 735786.7000000179,
+          "duration": 151592.5,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 36,
+      "status": "passed",
+      "frameMs": 623.812292000046,
+      "firstGraphMs": 864.1999170000199,
+      "allCardsMs": 77309.70120799995,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 468260.60000002384,
+          "end": 725986.5,
+          "duration": 257725.89999997616,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/091a8bfa-5465-5970-b55f-8e24a360749b",
+          "start": 468261,
+          "end": 726012.900000006,
+          "duration": 257751.90000000596,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 571295.1000000238,
+          "end": 722886.8000000119,
+          "duration": 151591.69999998808,
+          "bytes": 1032
+        },
+        {
+          "path": "/api/reports/v2/921ff304-40e0-514d-ba67-b838692fb3ae",
+          "start": 648911.7000000179,
+          "end": 726159.5,
+          "duration": 77247.79999998212,
+          "bytes": 239416
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 43,
+      "status": "passed",
+      "frameMs": 366.69162500009406,
+      "firstGraphMs": 865.9125000000931,
+      "allCardsMs": 77020.80316600006,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 445767.7000000179,
+          "end": 700338.599999994,
+          "duration": 254570.89999997616,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/2dc44037-e1a9-5b55-a1c5-5e3f6d1a087d",
+          "start": 445768,
+          "end": 703512.900000006,
+          "duration": 257744.90000000596,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 548722.3000000119,
+          "end": 700314.7000000179,
+          "duration": 151592.40000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 48,
+      "status": "passed",
+      "frameMs": 366.96154199994635,
+      "firstGraphMs": 897.905582999927,
+      "allCardsMs": 77069.57779200003,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 429478.7999999821,
+          "end": 687341.1999999881,
+          "duration": 257862.40000000596,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/151cf162-c186-5450-893b-4b18a2f03abd",
+          "start": 429479,
+          "end": 687373.099999994,
+          "duration": 257894.09999999404,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 532578.3999999762,
+          "end": 684171.099999994,
+          "duration": 151592.70000001788,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 41,
+      "status": "passed",
+      "frameMs": 366.92016699991655,
+      "firstGraphMs": 928.4320420000004,
+      "allCardsMs": 77117.66454199993,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 452003.40000000596,
+          "end": 706729.599999994,
+          "duration": 254726.19999998808,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/af569958-d6f8-5d9b-bb29-d02aea3b1817",
+          "start": 452003.59999999404,
+          "end": 709975.900000006,
+          "duration": 257972.30000001192,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 555153.599999994,
+          "end": 706745.3000000119,
+          "duration": 151591.70000001788,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 37,
+      "status": "passed",
+      "frameMs": 366.77016600000206,
+      "firstGraphMs": 921.8076659999788,
+      "allCardsMs": 77118.24562499998,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/c885b683-0751-5655-ae77-9a2f98edb404",
+          "start": 464937.40000000596,
+          "end": 722814.3000000119,
+          "duration": 257876.90000000596,
+          "bytes": 1110056
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 568069.099999994,
+          "end": 719661.5,
+          "duration": 151592.40000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 2,
+      "user": 42,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": 623.8295419999631,
+      "firstGraphMs": 930.6258749999106,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 551928.1999999881,
+          "end": 703520.599999994,
+          "duration": 151592.40000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 36,
+      "status": "passed",
+      "frameMs": 327.43316699995194,
+      "firstGraphMs": 444.3022920000367,
+      "allCardsMs": 449.94470799993724,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 12,
+      "status": "passed",
+      "frameMs": 334.5513750000391,
+      "firstGraphMs": 458.3361670000013,
+      "allCardsMs": 464.12637499999255,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 21,
+      "status": "passed",
+      "frameMs": 334.4297919999808,
+      "firstGraphMs": 458.9293749999488,
+      "allCardsMs": 464.37174999993294,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 35,
+      "status": "passed",
+      "frameMs": 327.35745800007135,
+      "firstGraphMs": 460.84158300003037,
+      "allCardsMs": 474.9537910000654,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 38,
+      "status": "passed",
+      "frameMs": 326.76795799995307,
+      "firstGraphMs": 461.4672919999575,
+      "allCardsMs": 475.0722079999978,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 29,
+      "status": "passed",
+      "frameMs": 334.34095899993554,
+      "firstGraphMs": 475.2408750000177,
+      "allCardsMs": 488.7612499999814,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 31,
+      "status": "passed",
+      "frameMs": 327.4055000001099,
+      "firstGraphMs": 462.1350000000093,
+      "allCardsMs": 475.7178750000894,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 44,
+      "status": "passed",
+      "frameMs": 321.05066599999554,
+      "firstGraphMs": 461.7956659999909,
+      "allCardsMs": 476.0262080000248,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 46,
+      "status": "passed",
+      "frameMs": 321.0625829999335,
+      "firstGraphMs": 461.81287499994505,
+      "allCardsMs": 476.08566699991934,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 45,
+      "status": "passed",
+      "frameMs": 327.45462500001304,
+      "firstGraphMs": 461.9358329999959,
+      "allCardsMs": 476.27987500000745,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 43,
+      "status": "passed",
+      "frameMs": 326.90387499995995,
+      "firstGraphMs": 461.9216669999296,
+      "allCardsMs": 476.25412499997765,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 24,
+      "status": "passed",
+      "frameMs": 334.38395899999887,
+      "firstGraphMs": 492.3186670000432,
+      "allCardsMs": 497.19570899999235,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 49,
+      "status": "passed",
+      "frameMs": 321.09920799999963,
+      "firstGraphMs": 478.8255829999689,
+      "allCardsMs": 483.94437499996275,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 27,
+      "status": "passed",
+      "frameMs": 327.5204580000136,
+      "firstGraphMs": 494.8023749999702,
+      "allCardsMs": 499.2512080000015,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 23,
+      "status": "passed",
+      "frameMs": 334.1594589999877,
+      "firstGraphMs": 524.5177090000361,
+      "allCardsMs": 528.8832920000423,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 26,
+      "status": "passed",
+      "frameMs": 334.38408300001174,
+      "firstGraphMs": 533.2271669999463,
+      "allCardsMs": 537.6519579999149,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 14,
+      "status": "passed",
+      "frameMs": 334.4767499999143,
+      "firstGraphMs": 552.6049169999314,
+      "allCardsMs": 556.7654999999795,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 47,
+      "status": "passed",
+      "frameMs": 321.05408300005365,
+      "firstGraphMs": 544.2654160000384,
+      "allCardsMs": 548.5474580000155,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 41,
+      "status": "passed",
+      "frameMs": 327.311166999978,
+      "firstGraphMs": 544.5857920000562,
+      "allCardsMs": 549.3201670000562,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 48,
+      "status": "passed",
+      "frameMs": 327.3794159999816,
+      "firstGraphMs": 560.9307910000207,
+      "allCardsMs": 565.0775409999769,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 39,
+      "status": "passed",
+      "frameMs": 327.28154200001154,
+      "firstGraphMs": 561.3221249999478,
+      "allCardsMs": 566.1157919999678,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 37,
+      "status": "passed",
+      "frameMs": 327.2725419999333,
+      "firstGraphMs": 578.2388329999521,
+      "allCardsMs": 582.8348749999423,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 19,
+      "status": "passed",
+      "frameMs": 334.64079199999105,
+      "firstGraphMs": 591.3505419999128,
+      "allCardsMs": 596.8783330000006,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 17,
+      "status": "passed",
+      "frameMs": 334.622583999997,
+      "firstGraphMs": 621.4998749999795,
+      "allCardsMs": 626.9428749999497,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 40,
+      "status": "passed",
+      "frameMs": 327.30154100002255,
+      "firstGraphMs": 610.6928750000661,
+      "allCardsMs": 615.3649160000496,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 20,
+      "status": "passed",
+      "frameMs": 334.5155000000959,
+      "firstGraphMs": 631.3529580000322,
+      "allCardsMs": 636.7799580000574,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 16,
+      "status": "passed",
+      "frameMs": 334.66333300003316,
+      "firstGraphMs": 636.3624169999966,
+      "allCardsMs": 640.8425000000279,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 34,
+      "status": "passed",
+      "frameMs": 327.5078330000397,
+      "firstGraphMs": 644.4584579999791,
+      "allCardsMs": 649.7505830000155,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 15,
+      "status": "passed",
+      "frameMs": 334.79041599994525,
+      "firstGraphMs": 672.6824580000248,
+      "allCardsMs": 677.938582999981,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 30,
+      "status": "passed",
+      "frameMs": 334.50774999998976,
+      "firstGraphMs": 674.5519590000622,
+      "allCardsMs": 680.1277919999557,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 18,
+      "status": "passed",
+      "frameMs": 340.6920000000391,
+      "firstGraphMs": 677.15541700006,
+      "allCardsMs": 681.2207920000656,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 25,
+      "status": "passed",
+      "frameMs": 327.80470799992327,
+      "firstGraphMs": 673.357166999951,
+      "allCardsMs": 679.529666999937,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 32,
+      "status": "passed",
+      "frameMs": 327.2661660000449,
+      "firstGraphMs": 678.3367080000462,
+      "allCardsMs": 682.4340409999713,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 33,
+      "status": "passed",
+      "frameMs": 327.3065829999978,
+      "firstGraphMs": 677.6852080000099,
+      "allCardsMs": 683.0359999999637,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 22,
+      "status": "passed",
+      "frameMs": 334.4686249999795,
+      "firstGraphMs": 725.5989580000751,
+      "allCardsMs": 729.5806660000235,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 13,
+      "status": "passed",
+      "frameMs": 327.39354199997615,
+      "firstGraphMs": 745.315958000021,
+      "allCardsMs": 749.8937920000171,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 28,
+      "status": "passed",
+      "frameMs": 334.50841700006276,
+      "firstGraphMs": 770.7203340000706,
+      "allCardsMs": 774.8462920000311,
+      "resources": []
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 42,
+      "status": "passed",
+      "frameMs": 327.24212499998976,
+      "firstGraphMs": 461.91525000007823,
+      "allCardsMs": 19998.02583300008,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/cf328810-d275-5e5a-b200-1bb807c18776",
+          "start": 612636,
+          "end": 830395.7999999821,
+          "duration": 217759.79999998212,
+          "bytes": 1110056
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 1,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 761682.599999994,
+          "end": 963023,
+          "duration": 201340.40000000596,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 786086.599999994,
+          "end": 963027.5,
+          "duration": 176940.90000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 0,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 764909.7999999821,
+          "end": 966245.1999999881,
+          "duration": 201335.40000000596,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 789318,
+          "end": 966257.599999994,
+          "duration": 176939.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 2,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 782873.5,
+          "end": 959815.5,
+          "duration": 176942,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 10,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 732680.1999999881,
+          "end": 930913.3000000119,
+          "duration": 198233.10000002384,
+          "bytes": 350
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/4eb1c558-6b4c-5546-bf72-b2e5b39822d1",
+          "start": 732680.400000006,
+          "end": 928062.400000006,
+          "duration": 195382,
+          "bytes": 350
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 757063.400000006,
+          "end": 934003.1999999881,
+          "duration": 176939.79999998212,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 5,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 748792.599999994,
+          "end": 950124.7999999821,
+          "duration": 201332.19999998808,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 773194.6999999881,
+          "end": 950135.3999999762,
+          "duration": 176940.69999998808,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 3,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 779663.2999999821,
+          "end": 956602.8999999762,
+          "duration": 176939.59999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 6,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 745566.2000000179,
+          "end": 949978.5,
+          "duration": 204412.29999998212,
+          "bytes": 350
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 769961.3000000119,
+          "end": 946903.8000000119,
+          "duration": 176942.5,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 8,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 763524.599999994,
+          "end": 940461.5,
+          "duration": 176936.90000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 7,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 766730,
+          "end": 943673.3999999762,
+          "duration": 176943.39999997616,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 9,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 760286.2000000179,
+          "end": 937228.1000000238,
+          "duration": 176941.90000000596,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 4,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 776412,
+          "end": 953357.099999994,
+          "duration": 176945.09999999404,
+          "bytes": 1032
+        }
+      ]
+    },
+    {
+      "mode": "warm-internal",
+      "round": 3,
+      "user": 11,
+      "status": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.",
+      "frameMs": null,
+      "firstGraphMs": null,
+      "allCardsMs": null,
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": 729421.599999994,
+          "end": 930760.099999994,
+          "duration": 201338.5,
+          "bytes": 3941
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 753839.099999994,
+          "end": 930773.2000000179,
+          "duration": 176934.10000002384,
+          "bytes": 1032
+        }
+      ]
+    }
+  ]
+}

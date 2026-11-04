@@ -1,0 +1,9 @@
+{
+  "path": "apps/api/src/custometry_api/identity/router.py",
+  "before_sha256": "0d0fe39f7fbd982861fa4561abd6ccdeaed3e8d79d20f0e3c789fb2ff401fac5",
+  "after_sha256": "85704ad67806dfab24eb62abb2c591e4f3e04d3341c6ab96073cc3d9b525d364",
+  "python": "3.12.12",
+  "compiled_code_equal": true,
+  "compiled_sha256": "96edffa3bf97aae38aeaf0e7aa1af7d7073207bc323c6e1ffaf7cae660b83bc8",
+  "reason": "Comment-only precise Pyright suppression for FastAPI decorator registration; identical compiled code, constants and line metadata"
+}

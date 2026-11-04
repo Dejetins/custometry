@@ -1,0 +1,201 @@
+{
+  "schema": "ms004-browser-observation/v1",
+  "test": "S05 fiscal multi-workset same/different stores, exact snapshots and owner demonstration",
+  "project": "1920",
+  "network": [
+    {
+      "method": "POST",
+      "path": "/api/identity/login",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/5de73364-4144-5cc5-b67e-1d303417b807/snapshots/22fd6657-b7e6-48dc-a109-c6e6bcdd3c7f",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/semantic/workspace-calendar/v1/versions",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807/versions",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/5500c3b7-b10a-571a-8dec-e9b645f9f17f",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/a02f63cc-205d-5d8e-9e0b-8f447cb72a52",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/48f83334-2bb0-5e0b-afce-a6a9e6704b74",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/5de73364-4144-5cc5-b67e-1d303417b807/snapshots/22fd6657-b7e6-48dc-a109-c6e6bcdd3c7f",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807/snapshots/f6a24267-a612-465c-a25e-6d5e93124751",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/48f83334-2bb0-5e0b-afce-a6a9e6704b74",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/a02f63cc-205d-5d8e-9e0b-8f447cb72a52",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/5500c3b7-b10a-571a-8dec-e9b645f9f17f",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/5de73364-4144-5cc5-b67e-1d303417b807",
+      "status": 200,
+      "classification": "success"
+    }
+  ],
+  "console": [],
+  "pageErrors": []
+}

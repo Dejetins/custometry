@@ -1,0 +1,2144 @@
+{
+  "source": {
+    "metrics": [
+      {
+        "metric_id": "net_revenue",
+        "schema_version": "sales-metric/v1",
+        "metric_kind": "additive_measure",
+        "expression": "sum(net_amount)",
+        "source_grain": [
+          "source_system_id",
+          "receipt_id"
+        ],
+        "fact_scope": "receipt_header",
+        "allowed_dimensions": [
+          "date",
+          "store_id"
+        ],
+        "aggregation": "sum",
+        "time_aggregation": "sum",
+        "unit": "EUR",
+        "format": {
+          "decimal_places": 2
+        },
+        "labels": {
+          "en": "Net revenue",
+          "ru": "\u0412\u044b\u0440\u0443\u0447\u043a\u0430 \u043d\u0435\u0442\u0442\u043e"
+        },
+        "timezone": "UTC",
+        "eligibility": {
+          "status": "completed",
+          "currency": "EUR",
+          "locked": true,
+          "policy_version": "completed-eur-receipt/v1"
+        },
+        "return_policy": "exclude_non_completed_not_refund_adjusted",
+        "null_policy": "reject_null_amount;empty_is_unavailable",
+        "numerator_version_id": null,
+        "denominator_version_id": null,
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      {
+        "metric_id": "receipt_count",
+        "schema_version": "sales-metric/v1",
+        "metric_kind": "event_count",
+        "expression": "count_distinct(source_system_id,receipt_id)",
+        "source_grain": [
+          "source_system_id",
+          "receipt_id"
+        ],
+        "fact_scope": "receipt_header",
+        "allowed_dimensions": [
+          "date",
+          "store_id"
+        ],
+        "aggregation": "sum",
+        "time_aggregation": "sum",
+        "unit": "receipt",
+        "format": {
+          "decimal_places": 0
+        },
+        "labels": {
+          "en": "Receipts",
+          "ru": "\u0427\u0435\u043a\u0438"
+        },
+        "timezone": "UTC",
+        "eligibility": {
+          "status": "completed",
+          "currency": "EUR",
+          "locked": true,
+          "policy_version": "completed-eur-receipt/v1"
+        },
+        "return_policy": "exclude_non_completed_not_refund_adjusted",
+        "null_policy": "reject_null_amount;empty_is_unavailable",
+        "numerator_version_id": null,
+        "denominator_version_id": null,
+        "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+        "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+      },
+      {
+        "metric_id": "average_receipt",
+        "schema_version": "sales-metric/v1",
+        "metric_kind": "derived_ratio",
+        "expression": "net_revenue/receipt_count",
+        "source_grain": [
+          "source_system_id",
+          "receipt_id"
+        ],
+        "fact_scope": "receipt_header",
+        "allowed_dimensions": [
+          "date",
+          "store_id"
+        ],
+        "aggregation": "recompute_ratio",
+        "time_aggregation": "recompute_ratio",
+        "unit": "EUR/receipt",
+        "format": {
+          "decimal_places": 2
+        },
+        "labels": {
+          "en": "Average receipt",
+          "ru": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439 \u0447\u0435\u043a"
+        },
+        "timezone": "UTC",
+        "eligibility": {
+          "status": "completed",
+          "currency": "EUR",
+          "locked": true,
+          "policy_version": "completed-eur-receipt/v1"
+        },
+        "return_policy": "exclude_non_completed_not_refund_adjusted",
+        "null_policy": "reject_null_amount;empty_is_unavailable",
+        "numerator_version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "denominator_version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+        "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+        "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+      }
+    ],
+    "publication_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "bindings": [
+      {
+        "entity": "Customer",
+        "artifact_id": "e00e451f-9e91-4703-bf48-3fe51ad46814",
+        "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      {
+        "entity": "Product",
+        "artifact_id": "c6362af6-4657-4a97-8aa0-be5ce058c322",
+        "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      {
+        "entity": "Receipt",
+        "artifact_id": "3e4c07fb-91eb-42a8-b75b-128a48c942e9",
+        "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      {
+        "entity": "ReceiptItem",
+        "artifact_id": "8eb4e60f-38f9-4369-bc45-b223ef44a62a",
+        "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      {
+        "entity": "Store",
+        "artifact_id": "ae38f14b-aaf9-4216-85b0-84d8fb13e67e",
+        "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      {
+        "entity": "Calendar",
+        "artifact_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+        "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    ]
+  },
+  "inputs": {
+    "Customer": [],
+    "Product": [],
+    "Receipt": [
+      {
+        "source_system_id": "test",
+        "receipt_id": "0",
+        "receipt_datetime": "2024-01-01 00:00:00+00:00",
+        "store_id": "1",
+        "status": "completed",
+        "currency": "EUR",
+        "net_amount": "0"
+      },
+      {
+        "source_system_id": "test",
+        "receipt_id": "1",
+        "receipt_datetime": "2025-01-01 00:00:00+00:00",
+        "store_id": "1",
+        "status": "completed",
+        "currency": "EUR",
+        "net_amount": "100"
+      },
+      {
+        "source_system_id": "test",
+        "receipt_id": "2",
+        "receipt_datetime": "2025-01-02 00:00:00+00:00",
+        "store_id": "1",
+        "status": "completed",
+        "currency": "EUR",
+        "net_amount": "10"
+      },
+      {
+        "source_system_id": "test",
+        "receipt_id": "3",
+        "receipt_datetime": "2025-01-02 00:00:00+00:00",
+        "store_id": "1",
+        "status": "completed",
+        "currency": "EUR",
+        "net_amount": "10"
+      }
+    ],
+    "ReceiptItem": [],
+    "Store": [
+      {
+        "store_id": "1"
+      },
+      {
+        "store_id": "2"
+      }
+    ],
+    "Calendar": [
+      {
+        "calendar_date": "2024-01-01",
+        "is_period_complete": true
+      },
+      {
+        "calendar_date": "2024-01-02",
+        "is_period_complete": true
+      },
+      {
+        "calendar_date": "2024-01-03",
+        "is_period_complete": true
+      },
+      {
+        "calendar_date": "2025-01-01",
+        "is_period_complete": true
+      },
+      {
+        "calendar_date": "2025-01-02",
+        "is_period_complete": true
+      },
+      {
+        "calendar_date": "2025-01-03",
+        "is_period_complete": true
+      }
+    ]
+  },
+  "access": {
+    "workspace_id": "ebedf437-32bc-43cf-8976-483109b11f6f",
+    "principal_id": "3ad1102d-9ea4-4d81-aa75-fa4866eda23b",
+    "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+    "policy_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "allowed_store_ids": [
+      "1",
+      "2"
+    ],
+    "permissions": [
+      "workspace.read",
+      "analysis.read",
+      "analysis.run"
+    ]
+  },
+  "calendar": {
+    "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+    "workspace_id": "ebedf437-32bc-43cf-8976-483109b11f6f",
+    "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c",
+    "profile": {
+      "schema_version": "business-calendar/v1",
+      "kind": "month_based",
+      "fiscal_year_start_month": 4,
+      "fiscal_year_start_day": 1,
+      "year_label": "end_year",
+      "timezone": "UTC",
+      "week_start": "monday"
+    },
+    "created_by": "3ad1102d-9ea4-4d81-aa75-fa4866eda23b",
+    "created_at": "2026-01-01T00:00:00Z",
+    "previous_version_id": null
+  },
+  "cases": [
+    {
+      "query": {
+        "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+        "common": {
+          "starts_on": "2025-01-01",
+          "ends_on": "2025-01-03",
+          "store_ids": null
+        },
+        "local_store_ids": null,
+        "grain": "month",
+        "calendar_ref": {
+          "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+          "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+        },
+        "calendar_basis": "fiscal",
+        "alignment": "previous_year_same_dates",
+        "metric_refs": [
+          {
+            "metric_id": "net_revenue",
+            "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+            "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+          },
+          {
+            "metric_id": "receipt_count",
+            "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+            "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+          },
+          {
+            "metric_id": "average_receipt",
+            "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+            "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+          }
+        ]
+      },
+      "result": {
+        "schema_version": "metric-workspace/v2",
+        "result_id": "88bde0bf-f86a-50d8-a87d-1de48ef8a0be",
+        "request_hash": "a8dcca1f89c3518b0424b13acfbb222fb501191f6d60f12cc9092b510ffcc136",
+        "policy_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+        "publication_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "effective_context": {
+          "starts_on": "2025-01-01",
+          "ends_on": "2025-01-03",
+          "store_ids": [
+            "1",
+            "2"
+          ],
+          "grain": "month",
+          "calendar_ref": {
+            "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+            "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+          },
+          "calendar_basis": "fiscal",
+          "timezone": "UTC",
+          "week_start": "monday",
+          "alignment": "previous_year_same_dates"
+        },
+        "metric_refs": [
+          {
+            "metric_id": "average_receipt",
+            "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+            "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+          },
+          {
+            "metric_id": "net_revenue",
+            "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+            "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+          },
+          {
+            "metric_id": "receipt_count",
+            "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+            "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+          }
+        ],
+        "buckets": [
+          {
+            "bucket_id": "month:2025-01-01",
+            "bucket_start": "2025-01-01",
+            "bucket_end_exclusive": "2025-02-01",
+            "natural_starts_on": "2025-01-01",
+            "natural_ends_on": "2025-01-31",
+            "label": "2025-01",
+            "fiscal_year": 2025,
+            "fiscal_quarter": 4,
+            "fiscal_half": 2,
+            "effective_starts_on": "2025-01-01",
+            "effective_ends_on": "2025-01-03",
+            "effective_start": "2025-01-01",
+            "effective_end_exclusive": "2025-01-04",
+            "clipped": true,
+            "is_partial_bucket": true,
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "values": {
+              "net_revenue": "120",
+              "receipt_count": "3",
+              "average_receipt": "40"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 3,
+              "calendar_days": 3,
+              "declared_complete_days": 3,
+              "observed_days": 2,
+              "eligible_receipts": 3,
+              "reason_codes": []
+            },
+            "state": "ready"
+          }
+        ],
+        "totals": {
+          "net_revenue": "120",
+          "receipt_count": "3",
+          "average_receipt": "40"
+        },
+        "coverage": {
+          "state": "complete",
+          "expected_days": 3,
+          "calendar_days": 3,
+          "declared_complete_days": 3,
+          "observed_days": 2,
+          "eligible_receipts": 3,
+          "reason_codes": []
+        },
+        "comparison": null,
+        "temporal": {
+          "alignment": "previous_year_same_dates",
+          "mapping": [
+            {
+              "current_date": "2025-01-01",
+              "baseline_date": "2024-01-01"
+            },
+            {
+              "current_date": "2025-01-02",
+              "baseline_date": "2024-01-02"
+            },
+            {
+              "current_date": "2025-01-03",
+              "baseline_date": "2024-01-03"
+            }
+          ],
+          "baseline_dates": [
+            "2024-01-01",
+            "2024-01-02",
+            "2024-01-03"
+          ],
+          "excluded_baseline_dates": [],
+          "buckets": [
+            {
+              "bucket_id": "month:2025-01-01",
+              "baseline_dates": [
+                "2024-01-01",
+                "2024-01-02",
+                "2024-01-03"
+              ],
+              "values": {
+                "net_revenue": "0",
+                "receipt_count": "1",
+                "average_receipt": "0"
+              },
+              "coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 1,
+                "eligible_receipts": 1,
+                "reason_codes": []
+              },
+              "changes": {
+                "net_revenue": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 1,
+                    "eligible_receipts": 1,
+                    "reason_codes": []
+                  },
+                  "left": "120",
+                  "right": "0",
+                  "absolute_delta": "120",
+                  "relative_delta_percent": null,
+                  "reason_codes": [
+                    "ZERO_BASELINE"
+                  ]
+                },
+                "receipt_count": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 1,
+                    "eligible_receipts": 1,
+                    "reason_codes": []
+                  },
+                  "left": "3",
+                  "right": "1",
+                  "absolute_delta": "2",
+                  "relative_delta_percent": "200",
+                  "reason_codes": []
+                },
+                "average_receipt": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 1,
+                    "eligible_receipts": 1,
+                    "reason_codes": []
+                  },
+                  "left": "40",
+                  "right": "0",
+                  "absolute_delta": "40",
+                  "relative_delta_percent": null,
+                  "reason_codes": [
+                    "ZERO_BASELINE"
+                  ]
+                }
+              }
+            }
+          ],
+          "totals": {
+            "net_revenue": "0",
+            "receipt_count": "1",
+            "average_receipt": "0"
+          },
+          "coverage": {
+            "state": "complete",
+            "expected_days": 3,
+            "calendar_days": 3,
+            "declared_complete_days": 3,
+            "observed_days": 1,
+            "eligible_receipts": 1,
+            "reason_codes": []
+          },
+          "changes": {
+            "net_revenue": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 1,
+                "eligible_receipts": 1,
+                "reason_codes": []
+              },
+              "left": "120",
+              "right": "0",
+              "absolute_delta": "120",
+              "relative_delta_percent": null,
+              "reason_codes": [
+                "ZERO_BASELINE"
+              ]
+            },
+            "receipt_count": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 1,
+                "eligible_receipts": 1,
+                "reason_codes": []
+              },
+              "left": "3",
+              "right": "1",
+              "absolute_delta": "2",
+              "relative_delta_percent": "200",
+              "reason_codes": []
+            },
+            "average_receipt": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 1,
+                "eligible_receipts": 1,
+                "reason_codes": []
+              },
+              "left": "40",
+              "right": "0",
+              "absolute_delta": "40",
+              "relative_delta_percent": null,
+              "reason_codes": [
+                "ZERO_BASELINE"
+              ]
+            }
+          },
+          "reason_codes": []
+        },
+        "daily": [
+          {
+            "date": "2025-01-01",
+            "values": {
+              "net_revenue": "100",
+              "receipt_count": "1",
+              "average_receipt": "100"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 1,
+              "eligible_receipts": 1,
+              "reason_codes": []
+            }
+          },
+          {
+            "date": "2025-01-02",
+            "values": {
+              "net_revenue": "20",
+              "receipt_count": "2",
+              "average_receipt": "10"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 1,
+              "eligible_receipts": 2,
+              "reason_codes": []
+            }
+          },
+          {
+            "date": "2025-01-03",
+            "values": {
+              "net_revenue": null,
+              "receipt_count": null,
+              "average_receipt": null
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 0,
+              "eligible_receipts": 0,
+              "reason_codes": [
+                "NO_ELIGIBLE_RECEIPTS"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_artifacts": [
+            {
+              "artifact_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "e00e451f-9e91-4703-bf48-3fe51ad46814",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "c6362af6-4657-4a97-8aa0-be5ce058c322",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "3e4c07fb-91eb-42a8-b75b-128a48c942e9",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "8eb4e60f-38f9-4369-bc45-b223ef44a62a",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "ae38f14b-aaf9-4216-85b0-84d8fb13e67e",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            }
+          ],
+          "metric_components": [
+            {
+              "metric_id": "average_receipt",
+              "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+              "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+            },
+            {
+              "metric_id": "net_revenue",
+              "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+              "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+            },
+            {
+              "metric_id": "receipt_count",
+              "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+              "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+            }
+          ],
+          "source_calendar_version_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+          "data_as_of": "2025-01-02T00:00:00+00:00"
+        },
+        "trust": {
+          "status": "ready",
+          "reason_codes": [
+            "COMPLETED_EUR_ONLY",
+            "CURRENT_ONLY_DIMENSIONS",
+            "EMPTY_VALUES_UNAVAILABLE",
+            "NOT_REFUND_ADJUSTED",
+            "PRODUCT_BASKET_COVERAGE_DEGRADED",
+            "ZERO_BASELINE"
+          ]
+        }
+      }
+    },
+    {
+      "query": {
+        "time_comparison": {
+          "schema_version": "time-comparison-settings/v2",
+          "mode": "none",
+          "comparison_period": null,
+          "previous_period_basis": null,
+          "incomplete_period_policy": "exclude",
+          "duration_normalization": "none"
+        },
+        "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+        "common": {
+          "starts_on": "2025-01-01",
+          "ends_on": "2025-01-03",
+          "store_ids": null
+        },
+        "local_store_ids": null,
+        "grain": "month",
+        "calendar_ref": {
+          "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+          "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+        },
+        "calendar_basis": "fiscal",
+        "alignment": "none",
+        "metric_refs": [
+          {
+            "metric_id": "net_revenue",
+            "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+            "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+          },
+          {
+            "metric_id": "receipt_count",
+            "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+            "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+          },
+          {
+            "metric_id": "average_receipt",
+            "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+            "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+          }
+        ]
+      },
+      "result": {
+        "temporal_v2": null,
+        "schema_version": "metric-workspace/v2",
+        "result_id": "c6fd3d47-a521-5ac8-a97f-9aec2f506a3c",
+        "request_hash": "060a35b6e1bbb806647ce8c5fd8b52fef87045b0759d04a35ca86e26f14a8ce9",
+        "policy_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+        "publication_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "effective_context": {
+          "starts_on": "2025-01-01",
+          "ends_on": "2025-01-03",
+          "store_ids": [
+            "1",
+            "2"
+          ],
+          "grain": "month",
+          "calendar_ref": {
+            "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+            "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+          },
+          "calendar_basis": "fiscal",
+          "timezone": "UTC",
+          "week_start": "monday",
+          "alignment": "none",
+          "time_comparison": {
+            "schema_version": "resolved-time-comparison/v2",
+            "settings": {
+              "schema_version": "time-comparison-settings/v2",
+              "mode": "none",
+              "comparison_period": null,
+              "previous_period_basis": null,
+              "incomplete_period_policy": "exclude",
+              "duration_normalization": "none"
+            },
+            "current_period": {
+              "starts_on": "2025-01-01",
+              "ends_on": "2025-01-03",
+              "starts_at": "2025-01-01T00:00:00Z",
+              "ends_at_exclusive": "2025-01-04T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "comparison_period": null,
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "grain": "month",
+            "timezone": "UTC",
+            "overlap_local_dates": 0,
+            "duration_difference_local_dates": 0,
+            "limitation_codes": []
+          }
+        },
+        "metric_refs": [
+          {
+            "metric_id": "average_receipt",
+            "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+            "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+          },
+          {
+            "metric_id": "net_revenue",
+            "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+            "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+          },
+          {
+            "metric_id": "receipt_count",
+            "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+            "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+          }
+        ],
+        "buckets": [
+          {
+            "bucket_id": "month:2025-01-01",
+            "bucket_start": "2025-01-01",
+            "bucket_end_exclusive": "2025-02-01",
+            "natural_starts_on": "2025-01-01",
+            "natural_ends_on": "2025-01-31",
+            "label": "2025-01",
+            "fiscal_year": 2025,
+            "fiscal_quarter": 4,
+            "fiscal_half": 2,
+            "effective_starts_on": "2025-01-01",
+            "effective_ends_on": "2025-01-03",
+            "effective_start": "2025-01-01",
+            "effective_end_exclusive": "2025-01-04",
+            "clipped": true,
+            "is_partial_bucket": true,
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "values": {
+              "net_revenue": "120",
+              "receipt_count": "3",
+              "average_receipt": "40"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 3,
+              "calendar_days": 3,
+              "declared_complete_days": 3,
+              "observed_days": 2,
+              "eligible_receipts": 3,
+              "reason_codes": []
+            },
+            "state": "ready"
+          }
+        ],
+        "totals": {
+          "net_revenue": "120",
+          "receipt_count": "3",
+          "average_receipt": "40"
+        },
+        "coverage": {
+          "state": "complete",
+          "expected_days": 3,
+          "calendar_days": 3,
+          "declared_complete_days": 3,
+          "observed_days": 2,
+          "eligible_receipts": 3,
+          "reason_codes": []
+        },
+        "comparison": null,
+        "temporal": null,
+        "daily": [
+          {
+            "date": "2025-01-01",
+            "values": {
+              "net_revenue": "100",
+              "receipt_count": "1",
+              "average_receipt": "100"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 1,
+              "eligible_receipts": 1,
+              "reason_codes": []
+            }
+          },
+          {
+            "date": "2025-01-02",
+            "values": {
+              "net_revenue": "20",
+              "receipt_count": "2",
+              "average_receipt": "10"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 1,
+              "eligible_receipts": 2,
+              "reason_codes": []
+            }
+          },
+          {
+            "date": "2025-01-03",
+            "values": {
+              "net_revenue": null,
+              "receipt_count": null,
+              "average_receipt": null
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 0,
+              "eligible_receipts": 0,
+              "reason_codes": [
+                "NO_ELIGIBLE_RECEIPTS"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_artifacts": [
+            {
+              "artifact_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "e00e451f-9e91-4703-bf48-3fe51ad46814",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "c6362af6-4657-4a97-8aa0-be5ce058c322",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "3e4c07fb-91eb-42a8-b75b-128a48c942e9",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "8eb4e60f-38f9-4369-bc45-b223ef44a62a",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "ae38f14b-aaf9-4216-85b0-84d8fb13e67e",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            }
+          ],
+          "metric_components": [
+            {
+              "metric_id": "average_receipt",
+              "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+              "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+            },
+            {
+              "metric_id": "net_revenue",
+              "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+              "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+            },
+            {
+              "metric_id": "receipt_count",
+              "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+              "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+            }
+          ],
+          "source_calendar_version_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+          "data_as_of": "2025-01-02T00:00:00+00:00"
+        },
+        "trust": {
+          "status": "ready",
+          "reason_codes": [
+            "COMPLETED_EUR_ONLY",
+            "CURRENT_ONLY_DIMENSIONS",
+            "EMPTY_VALUES_UNAVAILABLE",
+            "NOT_REFUND_ADJUSTED",
+            "PRODUCT_BASKET_COVERAGE_DEGRADED"
+          ]
+        }
+      }
+    },
+    {
+      "query": {
+        "time_comparison": {
+          "schema_version": "time-comparison-settings/v2",
+          "mode": "previous_period",
+          "comparison_period": null,
+          "previous_period_basis": "local_date_duration",
+          "incomplete_period_policy": "exclude",
+          "duration_normalization": "none"
+        },
+        "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+        "common": {
+          "starts_on": "2025-01-01",
+          "ends_on": "2025-01-03",
+          "store_ids": null
+        },
+        "local_store_ids": null,
+        "grain": "month",
+        "calendar_ref": {
+          "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+          "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+        },
+        "calendar_basis": "fiscal",
+        "alignment": "none",
+        "metric_refs": [
+          {
+            "metric_id": "net_revenue",
+            "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+            "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+          },
+          {
+            "metric_id": "receipt_count",
+            "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+            "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+          },
+          {
+            "metric_id": "average_receipt",
+            "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+            "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+          }
+        ]
+      },
+      "result": {
+        "temporal_v2": {
+          "schema_version": "time-comparison-artifact/v2",
+          "artifact_id": "89859871-1780-573d-a97a-f3d14f47d49f",
+          "request_hash": "b0c13dbbbd42b753855eaa5d2879d83e02c8456284ec9b290b89fb38bce48aca",
+          "policy_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "spec": {
+            "schema_version": "resolved-time-comparison/v2",
+            "settings": {
+              "schema_version": "time-comparison-settings/v2",
+              "mode": "previous_period",
+              "comparison_period": null,
+              "previous_period_basis": "local_date_duration",
+              "incomplete_period_policy": "exclude",
+              "duration_normalization": "none"
+            },
+            "current_period": {
+              "starts_on": "2025-01-01",
+              "ends_on": "2025-01-03",
+              "starts_at": "2025-01-01T00:00:00Z",
+              "ends_at_exclusive": "2025-01-04T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "comparison_period": {
+              "starts_on": "2024-12-29",
+              "ends_on": "2024-12-31",
+              "starts_at": "2024-12-29T00:00:00Z",
+              "ends_at_exclusive": "2025-01-01T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "grain": "month",
+            "timezone": "UTC",
+            "overlap_local_dates": 0,
+            "duration_difference_local_dates": 0,
+            "limitation_codes": []
+          },
+          "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+          "metric_refs": [
+            {
+              "metric_id": "average_receipt",
+              "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+              "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+            },
+            {
+              "metric_id": "net_revenue",
+              "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+              "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+            },
+            {
+              "metric_id": "receipt_count",
+              "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+              "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+            }
+          ],
+          "normalized_filter_hash": "25185398eafb66bfac81e42d92ac3937bd34f73754ad55c56aa4c225a3ee6037",
+          "evaluated_current_dates": [
+            "2025-01-01",
+            "2025-01-02",
+            "2025-01-03"
+          ],
+          "evaluated_comparison_dates": [
+            "2024-12-29",
+            "2024-12-30",
+            "2024-12-31"
+          ],
+          "buckets": [
+            {
+              "current_bucket_id": "month:2025-01-01",
+              "comparison_bucket_id": "month:2024-12-01",
+              "current_dates": [
+                "2025-01-01",
+                "2025-01-02",
+                "2025-01-03"
+              ],
+              "comparison_dates": [
+                "2024-12-29",
+                "2024-12-30",
+                "2024-12-31"
+              ],
+              "changes": {
+                "net_revenue": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "unavailable",
+                    "expected_days": 3,
+                    "calendar_days": 0,
+                    "declared_complete_days": 0,
+                    "observed_days": 0,
+                    "eligible_receipts": 0,
+                    "reason_codes": [
+                      "NO_ELIGIBLE_RECEIPTS",
+                      "CALENDAR_MISSING"
+                    ]
+                  },
+                  "left": "120",
+                  "right": null,
+                  "absolute_delta": null,
+                  "relative_delta_percent": null,
+                  "reason_codes": [
+                    "BASELINE_UNAVAILABLE",
+                    "COVERAGE_INCOMPLETE"
+                  ]
+                },
+                "receipt_count": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "unavailable",
+                    "expected_days": 3,
+                    "calendar_days": 0,
+                    "declared_complete_days": 0,
+                    "observed_days": 0,
+                    "eligible_receipts": 0,
+                    "reason_codes": [
+                      "NO_ELIGIBLE_RECEIPTS",
+                      "CALENDAR_MISSING"
+                    ]
+                  },
+                  "left": "3",
+                  "right": null,
+                  "absolute_delta": null,
+                  "relative_delta_percent": null,
+                  "reason_codes": [
+                    "BASELINE_UNAVAILABLE",
+                    "COVERAGE_INCOMPLETE"
+                  ]
+                },
+                "average_receipt": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "unavailable",
+                    "expected_days": 3,
+                    "calendar_days": 0,
+                    "declared_complete_days": 0,
+                    "observed_days": 0,
+                    "eligible_receipts": 0,
+                    "reason_codes": [
+                      "NO_ELIGIBLE_RECEIPTS",
+                      "CALENDAR_MISSING"
+                    ]
+                  },
+                  "left": "40",
+                  "right": null,
+                  "absolute_delta": null,
+                  "relative_delta_percent": null,
+                  "reason_codes": [
+                    "BASELINE_UNAVAILABLE",
+                    "COVERAGE_INCOMPLETE"
+                  ]
+                }
+              }
+            }
+          ],
+          "changes": {
+            "net_revenue": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "unavailable",
+                "expected_days": 3,
+                "calendar_days": 0,
+                "declared_complete_days": 0,
+                "observed_days": 0,
+                "eligible_receipts": 0,
+                "reason_codes": [
+                  "NO_ELIGIBLE_RECEIPTS",
+                  "CALENDAR_MISSING"
+                ]
+              },
+              "left": "120",
+              "right": null,
+              "absolute_delta": null,
+              "relative_delta_percent": null,
+              "reason_codes": [
+                "BASELINE_UNAVAILABLE",
+                "COVERAGE_INCOMPLETE"
+              ]
+            },
+            "receipt_count": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "unavailable",
+                "expected_days": 3,
+                "calendar_days": 0,
+                "declared_complete_days": 0,
+                "observed_days": 0,
+                "eligible_receipts": 0,
+                "reason_codes": [
+                  "NO_ELIGIBLE_RECEIPTS",
+                  "CALENDAR_MISSING"
+                ]
+              },
+              "left": "3",
+              "right": null,
+              "absolute_delta": null,
+              "relative_delta_percent": null,
+              "reason_codes": [
+                "BASELINE_UNAVAILABLE",
+                "COVERAGE_INCOMPLETE"
+              ]
+            },
+            "average_receipt": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "unavailable",
+                "expected_days": 3,
+                "calendar_days": 0,
+                "declared_complete_days": 0,
+                "observed_days": 0,
+                "eligible_receipts": 0,
+                "reason_codes": [
+                  "NO_ELIGIBLE_RECEIPTS",
+                  "CALENDAR_MISSING"
+                ]
+              },
+              "left": "40",
+              "right": null,
+              "absolute_delta": null,
+              "relative_delta_percent": null,
+              "reason_codes": [
+                "BASELINE_UNAVAILABLE",
+                "COVERAGE_INCOMPLETE"
+              ]
+            }
+          },
+          "comparability_status": "unavailable",
+          "limitation_codes": [
+            "BASELINE_UNAVAILABLE",
+            "COVERAGE_INCOMPLETE"
+          ],
+          "content_hash": "cb91e9904643057480738d1e565d3b03849fc84ee680560e65ef30a3ee4442c6"
+        },
+        "schema_version": "metric-workspace/v2",
+        "result_id": "e9f91211-a074-55a2-9bc4-5c004646a430",
+        "request_hash": "b0c13dbbbd42b753855eaa5d2879d83e02c8456284ec9b290b89fb38bce48aca",
+        "policy_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+        "publication_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "effective_context": {
+          "starts_on": "2025-01-01",
+          "ends_on": "2025-01-03",
+          "store_ids": [
+            "1",
+            "2"
+          ],
+          "grain": "month",
+          "calendar_ref": {
+            "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+            "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+          },
+          "calendar_basis": "fiscal",
+          "timezone": "UTC",
+          "week_start": "monday",
+          "alignment": "none",
+          "time_comparison": {
+            "schema_version": "resolved-time-comparison/v2",
+            "settings": {
+              "schema_version": "time-comparison-settings/v2",
+              "mode": "previous_period",
+              "comparison_period": null,
+              "previous_period_basis": "local_date_duration",
+              "incomplete_period_policy": "exclude",
+              "duration_normalization": "none"
+            },
+            "current_period": {
+              "starts_on": "2025-01-01",
+              "ends_on": "2025-01-03",
+              "starts_at": "2025-01-01T00:00:00Z",
+              "ends_at_exclusive": "2025-01-04T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "comparison_period": {
+              "starts_on": "2024-12-29",
+              "ends_on": "2024-12-31",
+              "starts_at": "2024-12-29T00:00:00Z",
+              "ends_at_exclusive": "2025-01-01T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "grain": "month",
+            "timezone": "UTC",
+            "overlap_local_dates": 0,
+            "duration_difference_local_dates": 0,
+            "limitation_codes": []
+          }
+        },
+        "metric_refs": [
+          {
+            "metric_id": "average_receipt",
+            "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+            "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+          },
+          {
+            "metric_id": "net_revenue",
+            "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+            "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+          },
+          {
+            "metric_id": "receipt_count",
+            "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+            "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+          }
+        ],
+        "buckets": [
+          {
+            "bucket_id": "month:2025-01-01",
+            "bucket_start": "2025-01-01",
+            "bucket_end_exclusive": "2025-02-01",
+            "natural_starts_on": "2025-01-01",
+            "natural_ends_on": "2025-01-31",
+            "label": "2025-01",
+            "fiscal_year": 2025,
+            "fiscal_quarter": 4,
+            "fiscal_half": 2,
+            "effective_starts_on": "2025-01-01",
+            "effective_ends_on": "2025-01-03",
+            "effective_start": "2025-01-01",
+            "effective_end_exclusive": "2025-01-04",
+            "clipped": true,
+            "is_partial_bucket": true,
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "values": {
+              "net_revenue": "120",
+              "receipt_count": "3",
+              "average_receipt": "40"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 3,
+              "calendar_days": 3,
+              "declared_complete_days": 3,
+              "observed_days": 2,
+              "eligible_receipts": 3,
+              "reason_codes": []
+            },
+            "state": "ready"
+          }
+        ],
+        "totals": {
+          "net_revenue": "120",
+          "receipt_count": "3",
+          "average_receipt": "40"
+        },
+        "coverage": {
+          "state": "complete",
+          "expected_days": 3,
+          "calendar_days": 3,
+          "declared_complete_days": 3,
+          "observed_days": 2,
+          "eligible_receipts": 3,
+          "reason_codes": []
+        },
+        "comparison": null,
+        "temporal": null,
+        "daily": [
+          {
+            "date": "2025-01-01",
+            "values": {
+              "net_revenue": "100",
+              "receipt_count": "1",
+              "average_receipt": "100"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 1,
+              "eligible_receipts": 1,
+              "reason_codes": []
+            }
+          },
+          {
+            "date": "2025-01-02",
+            "values": {
+              "net_revenue": "20",
+              "receipt_count": "2",
+              "average_receipt": "10"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 1,
+              "eligible_receipts": 2,
+              "reason_codes": []
+            }
+          },
+          {
+            "date": "2025-01-03",
+            "values": {
+              "net_revenue": null,
+              "receipt_count": null,
+              "average_receipt": null
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 0,
+              "eligible_receipts": 0,
+              "reason_codes": [
+                "NO_ELIGIBLE_RECEIPTS"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_artifacts": [
+            {
+              "artifact_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "e00e451f-9e91-4703-bf48-3fe51ad46814",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "c6362af6-4657-4a97-8aa0-be5ce058c322",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "3e4c07fb-91eb-42a8-b75b-128a48c942e9",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "8eb4e60f-38f9-4369-bc45-b223ef44a62a",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "ae38f14b-aaf9-4216-85b0-84d8fb13e67e",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            }
+          ],
+          "metric_components": [
+            {
+              "metric_id": "average_receipt",
+              "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+              "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+            },
+            {
+              "metric_id": "net_revenue",
+              "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+              "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+            },
+            {
+              "metric_id": "receipt_count",
+              "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+              "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+            }
+          ],
+          "source_calendar_version_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+          "data_as_of": "2025-01-02T00:00:00+00:00"
+        },
+        "trust": {
+          "status": "comparison_unavailable",
+          "reason_codes": [
+            "BASELINE_UNAVAILABLE",
+            "COMPLETED_EUR_ONLY",
+            "COVERAGE_INCOMPLETE",
+            "CURRENT_ONLY_DIMENSIONS",
+            "EMPTY_VALUES_UNAVAILABLE",
+            "NOT_REFUND_ADJUSTED",
+            "PRODUCT_BASKET_COVERAGE_DEGRADED"
+          ]
+        }
+      }
+    },
+    {
+      "query": {
+        "time_comparison": {
+          "schema_version": "time-comparison-settings/v2",
+          "mode": "custom_period",
+          "comparison_period": {
+            "starts_on": "2024-01-01",
+            "ends_on": "2024-01-03"
+          },
+          "previous_period_basis": null,
+          "incomplete_period_policy": "exclude",
+          "duration_normalization": "none"
+        },
+        "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+        "common": {
+          "starts_on": "2025-01-01",
+          "ends_on": "2025-01-03",
+          "store_ids": null
+        },
+        "local_store_ids": null,
+        "grain": "month",
+        "calendar_ref": {
+          "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+          "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+        },
+        "calendar_basis": "fiscal",
+        "alignment": "none",
+        "metric_refs": [
+          {
+            "metric_id": "net_revenue",
+            "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+            "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+          },
+          {
+            "metric_id": "receipt_count",
+            "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+            "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+          },
+          {
+            "metric_id": "average_receipt",
+            "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+            "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+          }
+        ]
+      },
+      "result": {
+        "temporal_v2": {
+          "schema_version": "time-comparison-artifact/v2",
+          "artifact_id": "a712a2aa-3090-5ff3-9c6f-02d18d6bfae7",
+          "request_hash": "aa412f6265f5893066e3fbdd51f16029295e5f841a1e16cfef603fed37150ccd",
+          "policy_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "spec": {
+            "schema_version": "resolved-time-comparison/v2",
+            "settings": {
+              "schema_version": "time-comparison-settings/v2",
+              "mode": "custom_period",
+              "comparison_period": {
+                "starts_on": "2024-01-01",
+                "ends_on": "2024-01-03"
+              },
+              "previous_period_basis": null,
+              "incomplete_period_policy": "exclude",
+              "duration_normalization": "none"
+            },
+            "current_period": {
+              "starts_on": "2025-01-01",
+              "ends_on": "2025-01-03",
+              "starts_at": "2025-01-01T00:00:00Z",
+              "ends_at_exclusive": "2025-01-04T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "comparison_period": {
+              "starts_on": "2024-01-01",
+              "ends_on": "2024-01-03",
+              "starts_at": "2024-01-01T00:00:00Z",
+              "ends_at_exclusive": "2024-01-04T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "grain": "month",
+            "timezone": "UTC",
+            "overlap_local_dates": 0,
+            "duration_difference_local_dates": 0,
+            "limitation_codes": []
+          },
+          "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+          "metric_refs": [
+            {
+              "metric_id": "average_receipt",
+              "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+              "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+            },
+            {
+              "metric_id": "net_revenue",
+              "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+              "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+            },
+            {
+              "metric_id": "receipt_count",
+              "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+              "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+            }
+          ],
+          "normalized_filter_hash": "25185398eafb66bfac81e42d92ac3937bd34f73754ad55c56aa4c225a3ee6037",
+          "evaluated_current_dates": [
+            "2025-01-01",
+            "2025-01-02",
+            "2025-01-03"
+          ],
+          "evaluated_comparison_dates": [
+            "2024-01-01",
+            "2024-01-02",
+            "2024-01-03"
+          ],
+          "buckets": [
+            {
+              "current_bucket_id": "month:2025-01-01",
+              "comparison_bucket_id": "month:2024-01-01",
+              "current_dates": [
+                "2025-01-01",
+                "2025-01-02",
+                "2025-01-03"
+              ],
+              "comparison_dates": [
+                "2024-01-01",
+                "2024-01-02",
+                "2024-01-03"
+              ],
+              "changes": {
+                "net_revenue": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 1,
+                    "eligible_receipts": 1,
+                    "reason_codes": []
+                  },
+                  "left": "120",
+                  "right": "0",
+                  "absolute_delta": "120",
+                  "relative_delta_percent": null,
+                  "reason_codes": [
+                    "ZERO_BASELINE"
+                  ]
+                },
+                "receipt_count": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 1,
+                    "eligible_receipts": 1,
+                    "reason_codes": []
+                  },
+                  "left": "3",
+                  "right": "1",
+                  "absolute_delta": "2",
+                  "relative_delta_percent": "200",
+                  "reason_codes": []
+                },
+                "average_receipt": {
+                  "left_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 2,
+                    "eligible_receipts": 3,
+                    "reason_codes": []
+                  },
+                  "right_coverage": {
+                    "state": "complete",
+                    "expected_days": 3,
+                    "calendar_days": 3,
+                    "declared_complete_days": 3,
+                    "observed_days": 1,
+                    "eligible_receipts": 1,
+                    "reason_codes": []
+                  },
+                  "left": "40",
+                  "right": "0",
+                  "absolute_delta": "40",
+                  "relative_delta_percent": null,
+                  "reason_codes": [
+                    "ZERO_BASELINE"
+                  ]
+                }
+              }
+            }
+          ],
+          "changes": {
+            "net_revenue": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 1,
+                "eligible_receipts": 1,
+                "reason_codes": []
+              },
+              "left": "120",
+              "right": "0",
+              "absolute_delta": "120",
+              "relative_delta_percent": null,
+              "reason_codes": [
+                "ZERO_BASELINE"
+              ]
+            },
+            "receipt_count": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 1,
+                "eligible_receipts": 1,
+                "reason_codes": []
+              },
+              "left": "3",
+              "right": "1",
+              "absolute_delta": "2",
+              "relative_delta_percent": "200",
+              "reason_codes": []
+            },
+            "average_receipt": {
+              "left_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 2,
+                "eligible_receipts": 3,
+                "reason_codes": []
+              },
+              "right_coverage": {
+                "state": "complete",
+                "expected_days": 3,
+                "calendar_days": 3,
+                "declared_complete_days": 3,
+                "observed_days": 1,
+                "eligible_receipts": 1,
+                "reason_codes": []
+              },
+              "left": "40",
+              "right": "0",
+              "absolute_delta": "40",
+              "relative_delta_percent": null,
+              "reason_codes": [
+                "ZERO_BASELINE"
+              ]
+            }
+          },
+          "comparability_status": "descriptive",
+          "limitation_codes": [
+            "ZERO_BASELINE"
+          ],
+          "content_hash": "00e374f30cd820e31bed2461cf2547b0fb77c96fc8128fd9ceb794167b1c4171"
+        },
+        "schema_version": "metric-workspace/v2",
+        "result_id": "36eb5146-e004-5e07-96b0-0e1f7bede1d4",
+        "request_hash": "aa412f6265f5893066e3fbdd51f16029295e5f841a1e16cfef603fed37150ccd",
+        "policy_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "semantic_dataset_version_id": "3a078449-5e42-4e78-af65-7b5261a63adf",
+        "publication_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "effective_context": {
+          "starts_on": "2025-01-01",
+          "ends_on": "2025-01-03",
+          "store_ids": [
+            "1",
+            "2"
+          ],
+          "grain": "month",
+          "calendar_ref": {
+            "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+            "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+          },
+          "calendar_basis": "fiscal",
+          "timezone": "UTC",
+          "week_start": "monday",
+          "alignment": "none",
+          "time_comparison": {
+            "schema_version": "resolved-time-comparison/v2",
+            "settings": {
+              "schema_version": "time-comparison-settings/v2",
+              "mode": "custom_period",
+              "comparison_period": {
+                "starts_on": "2024-01-01",
+                "ends_on": "2024-01-03"
+              },
+              "previous_period_basis": null,
+              "incomplete_period_policy": "exclude",
+              "duration_normalization": "none"
+            },
+            "current_period": {
+              "starts_on": "2025-01-01",
+              "ends_on": "2025-01-03",
+              "starts_at": "2025-01-01T00:00:00Z",
+              "ends_at_exclusive": "2025-01-04T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "comparison_period": {
+              "starts_on": "2024-01-01",
+              "ends_on": "2024-01-03",
+              "starts_at": "2024-01-01T00:00:00Z",
+              "ends_at_exclusive": "2024-01-04T00:00:00Z",
+              "local_date_count": 3,
+              "elapsed_seconds": 259200
+            },
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "grain": "month",
+            "timezone": "UTC",
+            "overlap_local_dates": 0,
+            "duration_difference_local_dates": 0,
+            "limitation_codes": []
+          }
+        },
+        "metric_refs": [
+          {
+            "metric_id": "average_receipt",
+            "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+            "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+          },
+          {
+            "metric_id": "net_revenue",
+            "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+            "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+          },
+          {
+            "metric_id": "receipt_count",
+            "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+            "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+          }
+        ],
+        "buckets": [
+          {
+            "bucket_id": "month:2025-01-01",
+            "bucket_start": "2025-01-01",
+            "bucket_end_exclusive": "2025-02-01",
+            "natural_starts_on": "2025-01-01",
+            "natural_ends_on": "2025-01-31",
+            "label": "2025-01",
+            "fiscal_year": 2025,
+            "fiscal_quarter": 4,
+            "fiscal_half": 2,
+            "effective_starts_on": "2025-01-01",
+            "effective_ends_on": "2025-01-03",
+            "effective_start": "2025-01-01",
+            "effective_end_exclusive": "2025-01-04",
+            "clipped": true,
+            "is_partial_bucket": true,
+            "calendar_ref": {
+              "version_id": "dc8ad8ad-b2a4-4284-a723-1197c30ac3ba",
+              "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+            },
+            "calendar_basis": "fiscal",
+            "values": {
+              "net_revenue": "120",
+              "receipt_count": "3",
+              "average_receipt": "40"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 3,
+              "calendar_days": 3,
+              "declared_complete_days": 3,
+              "observed_days": 2,
+              "eligible_receipts": 3,
+              "reason_codes": []
+            },
+            "state": "ready"
+          }
+        ],
+        "totals": {
+          "net_revenue": "120",
+          "receipt_count": "3",
+          "average_receipt": "40"
+        },
+        "coverage": {
+          "state": "complete",
+          "expected_days": 3,
+          "calendar_days": 3,
+          "declared_complete_days": 3,
+          "observed_days": 2,
+          "eligible_receipts": 3,
+          "reason_codes": []
+        },
+        "comparison": null,
+        "temporal": null,
+        "daily": [
+          {
+            "date": "2025-01-01",
+            "values": {
+              "net_revenue": "100",
+              "receipt_count": "1",
+              "average_receipt": "100"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 1,
+              "eligible_receipts": 1,
+              "reason_codes": []
+            }
+          },
+          {
+            "date": "2025-01-02",
+            "values": {
+              "net_revenue": "20",
+              "receipt_count": "2",
+              "average_receipt": "10"
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 1,
+              "eligible_receipts": 2,
+              "reason_codes": []
+            }
+          },
+          {
+            "date": "2025-01-03",
+            "values": {
+              "net_revenue": null,
+              "receipt_count": null,
+              "average_receipt": null
+            },
+            "coverage": {
+              "state": "complete",
+              "expected_days": 1,
+              "calendar_days": 1,
+              "declared_complete_days": 1,
+              "observed_days": 0,
+              "eligible_receipts": 0,
+              "reason_codes": [
+                "NO_ELIGIBLE_RECEIPTS"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_artifacts": [
+            {
+              "artifact_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "e00e451f-9e91-4703-bf48-3fe51ad46814",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "c6362af6-4657-4a97-8aa0-be5ce058c322",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "3e4c07fb-91eb-42a8-b75b-128a48c942e9",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "8eb4e60f-38f9-4369-bc45-b223ef44a62a",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            },
+            {
+              "artifact_id": "ae38f14b-aaf9-4216-85b0-84d8fb13e67e",
+              "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            }
+          ],
+          "metric_components": [
+            {
+              "metric_id": "average_receipt",
+              "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+              "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+            },
+            {
+              "metric_id": "net_revenue",
+              "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+              "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+            },
+            {
+              "metric_id": "receipt_count",
+              "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+              "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+            }
+          ],
+          "source_calendar_version_id": "ca2a5937-6a40-4c53-85d7-faa2af5d694d",
+          "data_as_of": "2025-01-02T00:00:00+00:00"
+        },
+        "trust": {
+          "status": "ready",
+          "reason_codes": [
+            "COMPLETED_EUR_ONLY",
+            "CURRENT_ONLY_DIMENSIONS",
+            "EMPTY_VALUES_UNAVAILABLE",
+            "NOT_REFUND_ADJUSTED",
+            "PRODUCT_BASKET_COVERAGE_DEGRADED",
+            "ZERO_BASELINE"
+          ]
+        }
+      }
+    }
+  ]
+}

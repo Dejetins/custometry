@@ -1,0 +1,240 @@
+{
+  "baseline": {
+    "idle": {
+      "minutes": 30,
+      "users": 50,
+      "visibleReportFrames": 0,
+      "finishedAt": "2026-09-22T23:09:07.448Z"
+    },
+    "sampled_from": "2026-09-22T22:39:10.883375+00:00",
+    "sampled_until": "2026-09-22T23:08:51.546582+00:00",
+    "sample_count": 58,
+    "counts_before": {
+      "sessions": 109,
+      "history": 0,
+      "audit": 381
+    },
+    "counts_after": {
+      "sessions": 109,
+      "history": 0,
+      "audit": 381
+    },
+    "tables_before": {
+      "identity_audit_events": {
+        "insert": 381,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 81920,
+        "index_bytes": 73728
+      },
+      "identity_refresh_history": {
+        "insert": 0,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 0,
+        "index_bytes": 16384
+      },
+      "identity_sessions": {
+        "insert": 109,
+        "update": 9781,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 303104,
+        "index_bytes": 131072
+      }
+    },
+    "tables_after": {
+      "identity_audit_events": {
+        "insert": 381,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 81920,
+        "index_bytes": 73728
+      },
+      "identity_refresh_history": {
+        "insert": 0,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 0,
+        "index_bytes": 16384
+      },
+      "identity_sessions": {
+        "insert": 109,
+        "update": 9781,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 303104,
+        "index_bytes": 131072
+      }
+    },
+    "table_deltas": {
+      "identity_sessions": {
+        "insert": 0,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 0,
+        "index_bytes": 0
+      },
+      "identity_refresh_history": {
+        "insert": 0,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 0,
+        "index_bytes": 0
+      },
+      "identity_audit_events": {
+        "insert": 0,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 0,
+        "index_bytes": 0
+      }
+    },
+    "wal_bytes_delta": 230509,
+    "artifact_bytes_before": 100299903,
+    "artifact_bytes_after": 100299903,
+    "cohort_sessions": 50,
+    "cohort_last_seen_differs_from_created": 50,
+    "api_rss_bytes": {
+      "first": 856522752,
+      "last": 44335104,
+      "min": 44269568,
+      "max": 856522752
+    },
+    "limitations": [
+      "Reports had expired before the idle interval; zero writes is not successful session maintenance."
+    ]
+  },
+  "candidate": {
+    "idle": {
+      "minutes": 30,
+      "users": 50,
+      "visibleReportFrames": 50,
+      "finishedAt": "2026-09-22T23:16:40.013Z"
+    },
+    "sampled_from": "2026-09-22T22:46:46.109813+00:00",
+    "sampled_until": "2026-09-22T23:16:14.594508+00:00",
+    "sample_count": 58,
+    "counts_before": {
+      "sessions": 161,
+      "history": 0,
+      "audit": 433
+    },
+    "counts_after": {
+      "sessions": 163,
+      "history": 100,
+      "audit": 535
+    },
+    "tables_before": {
+      "identity_audit_events": {
+        "insert": 433,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 114688,
+        "index_bytes": 98304
+      },
+      "identity_refresh_history": {
+        "insert": 0,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 0,
+        "index_bytes": 24576
+      },
+      "identity_sessions": {
+        "insert": 161,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 65536,
+        "index_bytes": 147456
+      }
+    },
+    "tables_after": {
+      "identity_audit_events": {
+        "insert": 535,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 114688,
+        "index_bytes": 114688
+      },
+      "identity_refresh_history": {
+        "insert": 100,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 49152,
+        "index_bytes": 65536
+      },
+      "identity_sessions": {
+        "insert": 163,
+        "update": 100,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 73728,
+        "index_bytes": 172032
+      }
+    },
+    "table_deltas": {
+      "identity_sessions": {
+        "insert": 2,
+        "update": 100,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 8192,
+        "index_bytes": 24576
+      },
+      "identity_refresh_history": {
+        "insert": 100,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 49152,
+        "index_bytes": 40960
+      },
+      "identity_audit_events": {
+        "insert": 102,
+        "update": 0,
+        "delete": 0,
+        "dead_tuples": 0,
+        "relation_bytes": 0,
+        "index_bytes": 16384
+      }
+    },
+    "wal_bytes_delta": 678574,
+    "artifact_bytes_before": 100299903,
+    "artifact_bytes_after": 100299903,
+    "cohort_sessions": 50,
+    "cohort_last_seen_differs_from_created": 0,
+    "api_rss_bytes": {
+      "first": 529645568,
+      "last": 665419776,
+      "min": 77365248,
+      "max": 705265664
+    },
+    "limitations": [
+      "Samples bracket less than the full 30 minutes; no interpolation.",
+      "Visible iframe count is not a final graph assertion.",
+      "Other QA activity used the host, but separate databases.",
+      "Candidate used the initial one-worker pool limit of 16."
+    ],
+    "write_attribution": {
+      "refresh_history_inserts": 100,
+      "rotation_session_updates": 100,
+      "refresh_audit_inserts": 100,
+      "diagnostic_login_sessions_and_audit_inserts": 2,
+      "activity_updates": 0,
+      "heartbeat_audit_inserts": 0,
+      "basis": "All 50 candidate last_seen_at values equal created_at; two labelled profile logins; actual rotation counts."
+    }
+  }
+}

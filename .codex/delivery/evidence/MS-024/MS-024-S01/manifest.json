@@ -1,0 +1,176 @@
+[
+  {
+    "path": ".codex/agents/generated/MS-024/MS-024-S01.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "d3c58872ffdf7289ce4d7edd7ceafc906c1d07fe28f5c2f2035c2175dcb74682"
+  },
+  {
+    "path": ".codex/agents/generated/MS-024/MS-024-S02.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "92704789e74fe5ccba6e156174cdc43908a5092e097492b1fe921776c2752cf1"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-024/preparation/baseline.json",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "dbe3109d1b2e0cc5f87dc817c8fe84c4bfac30f01ec489c03c0394fc93c66e36"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-024/preparation/journal-capability.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "4ad1d7ee0ca598293f64468ccabfbc012f55d2e94a39efe3b2ebd620449542bf"
+  },
+  {
+    "path": ".codex/delivery/evidence/WS-004/WS-004-v0.2.20.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "e26b8a9d6bf4f63700a62435ea7e70cd09b4b462764f46ee9d3040f029d4c7a2"
+  },
+  {
+    "path": "apps/api/src/custometry_api/analytics/cohort_access.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "70f0219fc7de737521d7f26d64eb2b14be918c1301afe8cb1a2e343c27bdaf38"
+  },
+  {
+    "path": "apps/api/src/custometry_api/analytics/cohort_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "d93b3898d4be00a15feea9ea853f05b4da530e384c189b418c82aa5308f93b24"
+  },
+  {
+    "path": "apps/api/src/custometry_api/analytics/customer_event_access.py",
+    "operation": "modified",
+    "before_sha256": "490f91201b8a014a4f2560a12ab3c0060816c18d31a7f93e71d01af97399c174",
+    "sha256": "c598def9b7a111910381b68587931a275831237f57a81da691007f2dd5de0242"
+  },
+  {
+    "path": "apps/api/src/custometry_api/reports/composer_router.py",
+    "operation": "modified",
+    "before_sha256": "6142b2aa49ab1d85b692c84a2022fab4cdc44a8bb58022023d12228b3523fc8b",
+    "sha256": "2936b7ae4b1875d2f304351a356057f002db0abb16f5ab1959aff5763c874171"
+  },
+  {
+    "path": "docs/README.md",
+    "operation": "modified",
+    "before_sha256": "ee7089509301808683694402f5de68f97129d3a0e357fb7017c5f806f447d983",
+    "sha256": "950205fdb000893874b3764f6c16c2a574c541162769b9f666ce267b60e99b45"
+  },
+  {
+    "path": "docs/architecture/README.md",
+    "operation": "modified",
+    "before_sha256": "b8f45ce592c8a8c0b8b630785318fe640e90f0c90b07f981ff32d169cb857f5a",
+    "sha256": "459c761848ac34df1371e9c6c51c8166ae05b2bff883d338b4be8efab43dd17e"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md",
+    "operation": "modified",
+    "before_sha256": "c52d95d68510b53a531cb1b341a028655edb555ef75248183172eb1a2dfc3986",
+    "sha256": "d5063ea53e639e8c1b88b3a6a64b0c4f05d65813a03e9873029f88e30cc4ad52"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004.md",
+    "operation": "modified",
+    "before_sha256": "e26b8a9d6bf4f63700a62435ea7e70cd09b4b462764f46ee9d3040f029d4c7a2",
+    "sha256": "ebc6c74cf0cfb85b6ef6534ff46b344407d419b036cb04ecd9436a06cf6d1bf0"
+  },
+  {
+    "path": "docs/architecture/planning/milestones/MS-024/plan.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "67c725c202629c1195bd132fb3a2fb7fde00d3c02b1eb4bd114353f8bc1fbfa9"
+  },
+  {
+    "path": "docs/contracts/analytical-authoring-contract.md",
+    "operation": "modified",
+    "before_sha256": "5c10850dd2c402bcfb8416f0301ac615d9ac70af61d2f6ab02e9006d70f39bf0",
+    "sha256": "2da4e424859193200a3485d45f90909f15fe9c799f6e8889971db846aacd55fe"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/receipt_cohorts.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "4f076f66e38287ec7797fabe2c7d776e6b09a17dc482764da672999f46857b7c"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/relational_filters.py",
+    "operation": "modified",
+    "before_sha256": "4a0d6d1e69c796ffd711623ba9261c6e89cb49e4a79b6fed5636c38099dc3290",
+    "sha256": "5c30b68b3354e7b40b18c564b0fe727abb038498935c4811caa0cbb945f2a023"
+  },
+  {
+    "path": "packages/contracts/analytics/receipt_cohorts.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "e59a8794c6784eb1639f2f353923906aebb725b8b4a639bc355aded25c50ee8e"
+  },
+  {
+    "path": "packages/contracts/analytics/sequence_filters.py",
+    "operation": "modified",
+    "before_sha256": "73cf47786c7cdd35442e15ed4cbc72a243a120fd2e82f9436b52d3fed2bb52c6",
+    "sha256": "36df11b055475cbfcecdafff6b057106ba5f1c8d02e904e91c0180ea63542c41"
+  },
+  {
+    "path": "packages/contracts/generate_composer_client.py",
+    "operation": "modified",
+    "before_sha256": "d98a5b7530bb314c51288008036606d4c6c87b21139e3a37e3921856549bb247",
+    "sha256": "0bb2b0f9a009a28378e0e422c9d35e8d5297972f32e8d31f34bb0d432dca9c21"
+  },
+  {
+    "path": "packages/contracts/openapi/composer.openapi.json",
+    "operation": "modified",
+    "before_sha256": "d94c4bf96ee76ed840d17bc7619a03c8549404600aa4b92bcbb14e7ff8bd6883",
+    "sha256": "7ab0a86f772ff8a801597cec6894d44b1458e1a04c4f7ff759b55c3f6dc6d669"
+  },
+  {
+    "path": "packages/contracts/openapi/reports.openapi.json",
+    "operation": "modified",
+    "before_sha256": "f1be936430e59ae3267acabd2183ee39bd28fd1be85ac8c28cf0d2e4cdf8ddc1",
+    "sha256": "feb1d59ba8d59f978bda302555a995914e6ea2ad7d96af723b78360233a39774"
+  },
+  {
+    "path": "packages/contracts/openapi/workspace.openapi.json",
+    "operation": "modified",
+    "before_sha256": "fd5b9b83c1ec3a4644f5d4dc76bffde09f7aa002a3f78885b579935f8324948e",
+    "sha256": "534c9548a64722d3d22b423b184f784de71891ac8b715133037dc310a960add5"
+  },
+  {
+    "path": "packages/contracts/src/composer-client.ts",
+    "operation": "modified",
+    "before_sha256": "977445120f810ee9f1252dcb6c7936625ecb1274bf429724a231a370a77a1fe9",
+    "sha256": "cc541e727ac1715594839ca14b7286c76f8c7f0ece852021368e3f086fd8786f"
+  },
+  {
+    "path": "packages/contracts/src/workspace-client.ts",
+    "operation": "modified",
+    "before_sha256": "6e983e7dab7ecb4c809eb6c29172410d14eb5fc442d4ac6aee39a3b650e679db",
+    "sha256": "b9ed4756b50a9a77ebc484176d97ab2b3e7ec170ef5176dc3eace898661ce98f"
+  },
+  {
+    "path": "packages/contracts/src/workspace-contracts.ts",
+    "operation": "modified",
+    "before_sha256": "8cb67fd3168cac2f2f0f0ad2d75b7c46096bbd37202ee771716726513ea56555",
+    "sha256": "67acca3c1a03ec761719a53d94fd536534766b3e44c9f9f11b6f5f77bef81fc8"
+  },
+  {
+    "path": "tests/integration/analytics/run_retail_filters.py",
+    "operation": "modified",
+    "before_sha256": "4bb3822b1dcd2da9a87c70ad056e7c36f550f2cb2f69d5eb0593bdc1a01eb418",
+    "sha256": "b9f8ca3f76f88ee7ac59cc11ad1fce6e627967d2d5f2036981936118e9916918"
+  },
+  {
+    "path": "tests/integration/analytics/test_receipt_cohorts.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "7161c56bac1d80553e35e782a260680242fd3c360221703224b86d98e6d7257f"
+  },
+  {
+    "path": "tests/integration/analytics/test_retail_cohort_provider.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "d7f5ad00703ce3374fa1940b6dcb90966ff69cae49705bb190d4e9622f65e3a8"
+  }
+]

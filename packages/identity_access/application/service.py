@@ -149,6 +149,10 @@ class IdentityRepository(Protocol):
         at: datetime,
     ) -> None: ...
 
+    def session_deadline(self, actor: Actor) -> datetime: ...
+
+    def record_activity(self, actor: Actor, at: datetime) -> bool: ...
+
     def actor_for_access(self, token_hash: str, at: datetime) -> Actor | None: ...
 
     def actor_for_api_token(self, token_hash: str, at: datetime) -> Actor | None: ...
@@ -374,6 +378,12 @@ class IdentityService:
             access_expires_at=access_expires_at,
             absolute_expires_at=absolute_expires_at,
         )
+
+    def session_deadline(self, actor: Actor) -> datetime:
+        return self._repository.session_deadline(actor)
+
+    def record_activity(self, actor: Actor) -> bool:
+        return self._repository.record_activity(actor, self._now())
 
     def authenticate(self, raw_token: str) -> Actor:
         digest = token_hash(raw_token)

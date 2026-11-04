@@ -1,0 +1,98 @@
+{
+  "checked": 23,
+  "all_unchanged": true,
+  "files": [
+    {
+      "path": "apps/api/pyproject.toml",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/router.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/workspace_access.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/config.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/database.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/health.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/events.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/http_auth.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/router.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/main.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/encoding.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/prepared.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/workspace_composition.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/workspace_router.py",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/src/custometry_api/runtime_policy.py",
+      "unchanged": true
+    },
+    {
+      "path": "migrations/versions/0013_identity_lifecycle.py",
+      "unchanged": true
+    },
+    {
+      "path": "packages/identity_access/application/service.py",
+      "unchanged": true
+    },
+    {
+      "path": "packages/identity_access/infrastructure/maintenance.py",
+      "unchanged": true
+    },
+    {
+      "path": "packages/identity_access/infrastructure/postgres.py",
+      "unchanged": true
+    },
+    {
+      "path": "packages/identity_access/infrastructure/request_projection.py",
+      "unchanged": true
+    },
+    {
+      "path": "packages/identity_access/infrastructure/resource_access.py",
+      "unchanged": true
+    },
+    {
+      "path": "packages/presentation/application/workspace.py",
+      "unchanged": true
+    },
+    {
+      "path": "packages/presentation/infrastructure/workspace.py",
+      "unchanged": true
+    }
+  ]
+}

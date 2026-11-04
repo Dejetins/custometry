@@ -1,5 +1,586 @@
 {
   "$defs": {
+    "AggregateBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "aggregate_compare": "#/$defs/AggregateCompare",
+                "and": "#/$defs/AggregateBoolean",
+                "exists": "#/$defs/AggregateExists",
+                "not": "#/$defs/AggregateNot",
+                "not_exists": "#/$defs/AggregateExists",
+                "or": "#/$defs/AggregateBoolean",
+                "predicate": "#/$defs/ScopedPredicate"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ScopedPredicate"
+              },
+              {
+                "$ref": "#/$defs/AggregateCompare"
+              },
+              {
+                "$ref": "#/$defs/AggregateBoolean"
+              },
+              {
+                "$ref": "#/$defs/AggregateNot"
+              },
+              {
+                "$ref": "#/$defs/AggregateExists"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "children"
+      ],
+      "title": "AggregateBoolean",
+      "type": "object"
+    },
+    "AggregateCompare": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "aggregate_compare",
+          "default": "aggregate_compare",
+          "title": "Kind",
+          "type": "string"
+        },
+        "left": {
+          "discriminator": {
+            "mapping": {
+              "count_ratio": "#/$defs/CountRatio",
+              "scoped_count": "#/$defs/ScopedCount"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedCount"
+            },
+            {
+              "$ref": "#/$defs/CountRatio"
+            }
+          ],
+          "title": "Left"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "ne",
+            "lt",
+            "le",
+            "gt",
+            "ge"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "right": {
+          "discriminator": {
+            "mapping": {
+              "count_ratio": "#/$defs/CountRatio",
+              "scalar": "#/$defs/AggregateScalar",
+              "scoped_count": "#/$defs/ScopedCount"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedCount"
+            },
+            {
+              "$ref": "#/$defs/CountRatio"
+            },
+            {
+              "$ref": "#/$defs/AggregateScalar"
+            }
+          ],
+          "title": "Right"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "left",
+        "operator",
+        "right"
+      ],
+      "title": "AggregateCompare",
+      "type": "object"
+    },
+    "AggregateExists": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "exists",
+            "not_exists"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "AggregateExists",
+      "type": "object"
+    },
+    "AggregateFieldRef": {
+      "additionalProperties": false,
+      "properties": {
+        "field_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field_id",
+        "version_id"
+      ],
+      "title": "AggregateFieldRef",
+      "type": "object"
+    },
+    "AggregateNot": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "child"
+      ],
+      "title": "AggregateNot",
+      "type": "object"
+    },
+    "AggregateReceiptFilterInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "receipt-filter/v3",
+          "default": "receipt-filter/v3",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "root_scope_id": {
+          "format": "uuid",
+          "title": "Root Scope Id",
+          "type": "string"
+        },
+        "registry_versions": {
+          "additionalProperties": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Registry Versions",
+          "type": "object"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Expression"
+        },
+        "legacy_registry_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Legacy Registry Version Id"
+        }
+      },
+      "required": [
+        "root_scope_id",
+        "registry_versions",
+        "expression"
+      ],
+      "title": "AggregateReceiptFilterInput",
+      "type": "object"
+    },
+    "AggregateScalar": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "scalar",
+          "default": "scalar",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "pattern": "^(0|[1-9][0-9]{0,8})(\\.[0-9]{1,6})?$",
+          "title": "Value",
+          "type": "string"
+        },
+        "unit": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "title": "AggregateScalar",
+      "type": "object"
+    },
+    "AggregateWindow": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at": {
+          "format": "date-time",
+          "title": "Ends At",
+          "type": "string"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "observation_as_of": {
+          "format": "date-time",
+          "title": "Observation As Of",
+          "type": "string"
+        },
+        "knowledge_as_of": {
+          "format": "date-time",
+          "title": "Knowledge As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_at",
+        "ends_at",
+        "observation_as_of",
+        "knowledge_as_of"
+      ],
+      "title": "AggregateWindow",
+      "type": "object"
+    },
+    "BehavioralSequence": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "sequence",
+          "default": "sequence",
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "window": {
+          "discriminator": {
+            "mapping": {
+              "fixed": "#/$defs/FixedSequenceWindow",
+              "relative": "#/$defs/RelativeSequenceWindow"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FixedSequenceWindow"
+            },
+            {
+              "$ref": "#/$defs/RelativeSequenceWindow"
+            }
+          ],
+          "title": "Window"
+        },
+        "steps": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "negative": "#/$defs/NegativeStep",
+                "positive": "#/$defs/PositiveStep"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/PositiveStep"
+              },
+              {
+                "$ref": "#/$defs/NegativeStep"
+              }
+            ]
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Steps",
+          "type": "array"
+        },
+        "bindings": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/SequencePropertyBinding"
+          },
+          "maxItems": 16,
+          "title": "Bindings",
+          "type": "array"
+        },
+        "tie_policy": {
+          "const": "strict_event_time/v1",
+          "default": "strict_event_time/v1",
+          "title": "Tie Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "parent_scope_id",
+        "relationship_id",
+        "relationship_version_id",
+        "child_entity",
+        "window",
+        "steps"
+      ],
+      "title": "BehavioralSequence",
+      "type": "object"
+    },
     "CalendarRef": {
       "additionalProperties": false,
       "properties": {
@@ -19,6 +600,1014 @@
         "content_hash"
       ],
       "title": "CalendarRef",
+      "type": "object"
+    },
+    "CohortBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "aggregate_compare": "#/$defs/AggregateCompare",
+                "and": "#/$defs/CohortBoolean",
+                "customer_event_membership": "#/$defs/CustomerEventMembership",
+                "exists": "#/$defs/CohortExists",
+                "not": "#/$defs/CohortNot",
+                "not_exists": "#/$defs/CohortExists",
+                "or": "#/$defs/CohortBoolean",
+                "predicate": "#/$defs/ScopedPredicate"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ScopedPredicate"
+              },
+              {
+                "$ref": "#/$defs/AggregateCompare"
+              },
+              {
+                "$ref": "#/$defs/CustomerEventMembership"
+              },
+              {
+                "$ref": "#/$defs/CohortBoolean"
+              },
+              {
+                "$ref": "#/$defs/CohortNot"
+              },
+              {
+                "$ref": "#/$defs/CohortExists"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "children"
+      ],
+      "title": "CohortBoolean",
+      "type": "object"
+    },
+    "CohortExists": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "exists",
+            "not_exists"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/CohortBoolean",
+              "customer_event_membership": "#/$defs/CustomerEventMembership",
+              "exists": "#/$defs/CohortExists",
+              "not": "#/$defs/CohortNot",
+              "not_exists": "#/$defs/CohortExists",
+              "or": "#/$defs/CohortBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/CustomerEventMembership"
+            },
+            {
+              "$ref": "#/$defs/CohortBoolean"
+            },
+            {
+              "$ref": "#/$defs/CohortNot"
+            },
+            {
+              "$ref": "#/$defs/CohortExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "CohortExists",
+      "type": "object"
+    },
+    "CohortNot": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/CohortBoolean",
+              "customer_event_membership": "#/$defs/CustomerEventMembership",
+              "exists": "#/$defs/CohortExists",
+              "not": "#/$defs/CohortNot",
+              "not_exists": "#/$defs/CohortExists",
+              "or": "#/$defs/CohortBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/CustomerEventMembership"
+            },
+            {
+              "$ref": "#/$defs/CohortBoolean"
+            },
+            {
+              "$ref": "#/$defs/CohortNot"
+            },
+            {
+              "$ref": "#/$defs/CohortExists"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "child"
+      ],
+      "title": "CohortNot",
+      "type": "object"
+    },
+    "CohortReceiptFilterInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "receipt-filter/v4",
+          "default": "receipt-filter/v4",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "root_scope_id": {
+          "format": "uuid",
+          "title": "Root Scope Id",
+          "type": "string"
+        },
+        "registry_versions": {
+          "additionalProperties": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Registry Versions",
+          "type": "object"
+        },
+        "receipt_registry_versions": {
+          "additionalProperties": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Receipt Registry Versions",
+          "type": "object"
+        },
+        "promoted_registry_sets": {
+          "default": [],
+          "items": {
+            "additionalProperties": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "maxItems": 32,
+          "title": "Promoted Registry Sets",
+          "type": "array"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/CohortBoolean",
+              "customer_event_membership": "#/$defs/CustomerEventMembership",
+              "exists": "#/$defs/CohortExists",
+              "not": "#/$defs/CohortNot",
+              "not_exists": "#/$defs/CohortExists",
+              "or": "#/$defs/CohortBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/CustomerEventMembership"
+            },
+            {
+              "$ref": "#/$defs/CohortBoolean"
+            },
+            {
+              "$ref": "#/$defs/CohortNot"
+            },
+            {
+              "$ref": "#/$defs/CohortExists"
+            }
+          ],
+          "title": "Expression"
+        },
+        "legacy_registry_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Legacy Registry Version Id"
+        }
+      },
+      "required": [
+        "root_scope_id",
+        "registry_versions",
+        "receipt_registry_versions",
+        "expression"
+      ],
+      "title": "CohortReceiptFilterInput",
+      "type": "object"
+    },
+    "ComparisonPeriod": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on"
+      ],
+      "title": "ComparisonPeriod",
+      "type": "object"
+    },
+    "CorrelatedExists": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "exists",
+            "not_exists"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/ScopedBoolean",
+              "exists": "#/$defs/CorrelatedExists",
+              "not": "#/$defs/ScopedNot",
+              "not_exists": "#/$defs/CorrelatedExists",
+              "or": "#/$defs/ScopedBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/ScopedBoolean"
+            },
+            {
+              "$ref": "#/$defs/ScopedNot"
+            },
+            {
+              "$ref": "#/$defs/CorrelatedExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "CorrelatedExists",
+      "type": "object"
+    },
+    "CountRatio": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "count_ratio",
+          "default": "count_ratio",
+          "title": "Kind",
+          "type": "string"
+        },
+        "numerator": {
+          "$ref": "#/$defs/ScopedCount"
+        },
+        "denominator": {
+          "$ref": "#/$defs/ScopedCount"
+        },
+        "unit": {
+          "const": "ratio",
+          "default": "ratio",
+          "title": "Unit",
+          "type": "string"
+        },
+        "zero_denominator_policy": {
+          "const": "unknown",
+          "default": "unknown",
+          "title": "Zero Denominator Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "title": "CountRatio",
+      "type": "object"
+    },
+    "CustomerEventMembership": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "customer_event_membership",
+          "default": "customer_event_membership",
+          "title": "Kind",
+          "type": "string"
+        },
+        "customer_scope_id": {
+          "format": "uuid",
+          "title": "Customer Scope Id",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/SequenceBoolean",
+              "exists": "#/$defs/SequenceExists",
+              "not": "#/$defs/SequenceNot",
+              "not_exists": "#/$defs/SequenceExists",
+              "or": "#/$defs/SequenceBoolean",
+              "predicate": "#/$defs/ScopedPredicate",
+              "sequence": "#/$defs/BehavioralSequence"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/BehavioralSequence"
+            },
+            {
+              "$ref": "#/$defs/SequenceBoolean"
+            },
+            {
+              "$ref": "#/$defs/SequenceNot"
+            },
+            {
+              "$ref": "#/$defs/SequenceExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "customer_scope_id",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "CustomerEventMembership",
+      "type": "object"
+    },
+    "EventTimeFieldVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "field_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Entity",
+          "type": "string"
+        },
+        "column": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Column",
+          "type": "string"
+        },
+        "known_column": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Known Column"
+        },
+        "storage_type": {
+          "const": "timestamp_us_utc/v1",
+          "default": "timestamp_us_utc/v1",
+          "title": "Storage Type",
+          "type": "string"
+        },
+        "null_policy": {
+          "const": "unknown",
+          "default": "unknown",
+          "title": "Null Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field_id",
+        "version_id",
+        "entity",
+        "column"
+      ],
+      "title": "EventTimeFieldVersion",
+      "type": "object"
+    },
+    "FilterCountVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "filter-count/v1",
+          "default": "filter-count/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "count_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Count Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "count",
+            "count_distinct"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "grain_fields": {
+          "items": {
+            "$ref": "#/$defs/AggregateFieldRef"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Grain Fields",
+          "type": "array"
+        },
+        "unit": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        },
+        "null_policy": {
+          "enum": [
+            "unknown",
+            "exclude"
+          ],
+          "title": "Null Policy",
+          "type": "string"
+        },
+        "empty_policy": {
+          "const": "zero_if_complete",
+          "default": "zero_if_complete",
+          "title": "Empty Policy",
+          "type": "string"
+        },
+        "returns_policy": {
+          "const": "all_observed_rows/v1",
+          "default": "all_observed_rows/v1",
+          "title": "Returns Policy",
+          "type": "string"
+        },
+        "time_entity": {
+          "enum": [
+            "parent",
+            "child"
+          ],
+          "title": "Time Entity",
+          "type": "string"
+        },
+        "time_field": {
+          "$ref": "#/$defs/AggregateFieldRef"
+        },
+        "time_basis": {
+          "const": "utc_date/v1",
+          "default": "utc_date/v1",
+          "title": "Time Basis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "count_id",
+        "version_id",
+        "relationship_version_id",
+        "child_entity",
+        "kind",
+        "grain_fields",
+        "unit",
+        "null_policy",
+        "time_entity",
+        "time_field"
+      ],
+      "title": "FilterCountVersion",
+      "type": "object"
+    },
+    "FilterEventVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "filter-event/v1",
+          "default": "filter-event/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "event_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Entity",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "time_field": {
+          "$ref": "#/$defs/EventTimeFieldVersion"
+        },
+        "row_meaning": {
+          "const": "one_published_row_one_event/v1",
+          "default": "one_published_row_one_event/v1",
+          "title": "Row Meaning",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "version_id",
+        "entity",
+        "relationship_version_id",
+        "time_field"
+      ],
+      "title": "FilterEventVersion",
+      "type": "object"
+    },
+    "FilterValue": {
+      "additionalProperties": false,
+      "properties": {
+        "data_type": {
+          "enum": [
+            "string",
+            "integer",
+            "decimal",
+            "boolean",
+            "date"
+          ],
+          "title": "Data Type",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "data_type",
+        "value"
+      ],
+      "title": "FilterValue",
+      "type": "object"
+    },
+    "FixedSequenceWindow": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "fixed",
+          "default": "fixed",
+          "title": "Kind",
+          "type": "string"
+        },
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at": {
+          "format": "date-time",
+          "title": "Ends At",
+          "type": "string"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "observation_as_of": {
+          "format": "date-time",
+          "title": "Observation As Of",
+          "type": "string"
+        },
+        "knowledge_as_of": {
+          "format": "date-time",
+          "title": "Knowledge As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_at",
+        "ends_at",
+        "observation_as_of",
+        "knowledge_as_of"
+      ],
+      "title": "FixedSequenceWindow",
+      "type": "object"
+    },
+    "FlatBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "and": "#/$defs/FlatBoolean",
+                "not": "#/$defs/FlatNot",
+                "or": "#/$defs/FlatBoolean",
+                "predicate": "#/$defs/FlatPredicate"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/FlatPredicate"
+              },
+              {
+                "$ref": "#/$defs/FlatBoolean"
+              },
+              {
+                "$ref": "#/$defs/FlatNot"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "children"
+      ],
+      "title": "FlatBoolean",
+      "type": "object"
+    },
+    "FlatNot": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/FlatBoolean",
+              "not": "#/$defs/FlatNot",
+              "or": "#/$defs/FlatBoolean",
+              "predicate": "#/$defs/FlatPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FlatPredicate"
+            },
+            {
+              "$ref": "#/$defs/FlatBoolean"
+            },
+            {
+              "$ref": "#/$defs/FlatNot"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "child"
+      ],
+      "title": "FlatNot",
+      "type": "object"
+    },
+    "FlatPredicate": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "predicate",
+          "default": "predicate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "field_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "field_version_id": {
+          "format": "uuid",
+          "title": "Field Version Id",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "ne",
+            "lt",
+            "le",
+            "gt",
+            "ge",
+            "in",
+            "is_null",
+            "is_not_null"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "values": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/FilterValue"
+          },
+          "maxItems": 1000,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "field_id",
+        "field_version_id",
+        "operator"
+      ],
+      "title": "FlatPredicate",
       "type": "object"
     },
     "MetricRef": {
@@ -50,6 +1639,165 @@
         "content_hash"
       ],
       "title": "MetricRef",
+      "type": "object"
+    },
+    "NegativeStep": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "negative",
+          "default": "negative",
+          "title": "Kind",
+          "type": "string"
+        },
+        "step_id": {
+          "format": "uuid",
+          "title": "Step Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "event": {
+          "$ref": "#/$defs/FilterEventVersion"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Predicate"
+        },
+        "after_step_id": {
+          "format": "uuid",
+          "title": "After Step Id",
+          "type": "string"
+        },
+        "starts_after_us": {
+          "default": 0,
+          "maximum": 315360000000000,
+          "minimum": 0,
+          "title": "Starts After Us",
+          "type": "integer"
+        },
+        "ends_after_us": {
+          "maximum": 315360000000000,
+          "minimum": 0,
+          "title": "Ends After Us",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "step_id",
+        "child_scope_id",
+        "event",
+        "predicate",
+        "after_step_id",
+        "ends_after_us"
+      ],
+      "title": "NegativeStep",
+      "type": "object"
+    },
+    "PositiveStep": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "positive",
+          "default": "positive",
+          "title": "Kind",
+          "type": "string"
+        },
+        "step_id": {
+          "format": "uuid",
+          "title": "Step Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "event": {
+          "$ref": "#/$defs/FilterEventVersion"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Predicate"
+        },
+        "gap": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SequenceGap"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "step_id",
+        "child_scope_id",
+        "event",
+        "predicate"
+      ],
+      "title": "PositiveStep",
       "type": "object"
     },
     "QueryContext": {
@@ -91,10 +1839,1113 @@
       ],
       "title": "QueryContext",
       "type": "object"
+    },
+    "ReceiptFilterInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "receipt-filter/v1",
+          "default": "receipt-filter/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "registry_version_id": {
+          "format": "uuid",
+          "title": "Registry Version Id",
+          "type": "string"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/FlatBoolean",
+              "not": "#/$defs/FlatNot",
+              "or": "#/$defs/FlatBoolean",
+              "predicate": "#/$defs/FlatPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FlatPredicate"
+            },
+            {
+              "$ref": "#/$defs/FlatBoolean"
+            },
+            {
+              "$ref": "#/$defs/FlatNot"
+            }
+          ],
+          "title": "Expression"
+        }
+      },
+      "required": [
+        "registry_version_id",
+        "expression"
+      ],
+      "title": "ReceiptFilterInput",
+      "type": "object"
+    },
+    "RelationalReceiptFilterInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "receipt-filter/v2",
+          "default": "receipt-filter/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "root_scope_id": {
+          "format": "uuid",
+          "title": "Root Scope Id",
+          "type": "string"
+        },
+        "registry_versions": {
+          "additionalProperties": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Registry Versions",
+          "type": "object"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/ScopedBoolean",
+              "exists": "#/$defs/CorrelatedExists",
+              "not": "#/$defs/ScopedNot",
+              "not_exists": "#/$defs/CorrelatedExists",
+              "or": "#/$defs/ScopedBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/ScopedBoolean"
+            },
+            {
+              "$ref": "#/$defs/ScopedNot"
+            },
+            {
+              "$ref": "#/$defs/CorrelatedExists"
+            }
+          ],
+          "title": "Expression"
+        },
+        "legacy_registry_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Legacy Registry Version Id"
+        }
+      },
+      "required": [
+        "root_scope_id",
+        "registry_versions",
+        "expression"
+      ],
+      "title": "RelationalReceiptFilterInput",
+      "type": "object"
+    },
+    "RelativeSequenceWindow": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "relative",
+          "default": "relative",
+          "title": "Kind",
+          "type": "string"
+        },
+        "policy": {
+          "const": "publication_observation_as_of_elapsed_utc/v1",
+          "default": "publication_observation_as_of_elapsed_utc/v1",
+          "title": "Policy",
+          "type": "string"
+        },
+        "anchor": {
+          "format": "date-time",
+          "title": "Anchor",
+          "type": "string"
+        },
+        "start_offset_us": {
+          "maximum": 0,
+          "minimum": -315360000000000,
+          "title": "Start Offset Us",
+          "type": "integer"
+        },
+        "end_offset_us": {
+          "maximum": 0,
+          "minimum": -315360000000000,
+          "title": "End Offset Us",
+          "type": "integer"
+        },
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at": {
+          "format": "date-time",
+          "title": "Ends At",
+          "type": "string"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "observation_as_of": {
+          "format": "date-time",
+          "title": "Observation As Of",
+          "type": "string"
+        },
+        "knowledge_as_of": {
+          "format": "date-time",
+          "title": "Knowledge As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "anchor",
+        "start_offset_us",
+        "end_offset_us",
+        "starts_at",
+        "ends_at",
+        "observation_as_of",
+        "knowledge_as_of"
+      ],
+      "title": "RelativeSequenceWindow",
+      "type": "object"
+    },
+    "ScopedBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "and": "#/$defs/ScopedBoolean",
+                "exists": "#/$defs/CorrelatedExists",
+                "not": "#/$defs/ScopedNot",
+                "not_exists": "#/$defs/CorrelatedExists",
+                "or": "#/$defs/ScopedBoolean",
+                "predicate": "#/$defs/ScopedPredicate"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ScopedPredicate"
+              },
+              {
+                "$ref": "#/$defs/ScopedBoolean"
+              },
+              {
+                "$ref": "#/$defs/ScopedNot"
+              },
+              {
+                "$ref": "#/$defs/CorrelatedExists"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "children"
+      ],
+      "title": "ScopedBoolean",
+      "type": "object"
+    },
+    "ScopedCount": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "scoped_count",
+          "default": "scoped_count",
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "definition": {
+          "$ref": "#/$defs/FilterCountVersion"
+        },
+        "window": {
+          "$ref": "#/$defs/AggregateWindow"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/AggregateBoolean",
+              "exists": "#/$defs/AggregateExists",
+              "not": "#/$defs/AggregateNot",
+              "not_exists": "#/$defs/AggregateExists",
+              "or": "#/$defs/AggregateBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/AggregateBoolean"
+            },
+            {
+              "$ref": "#/$defs/AggregateNot"
+            },
+            {
+              "$ref": "#/$defs/AggregateExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "definition",
+        "window",
+        "predicate"
+      ],
+      "title": "ScopedCount",
+      "type": "object"
+    },
+    "ScopedNot": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/ScopedBoolean",
+              "exists": "#/$defs/CorrelatedExists",
+              "not": "#/$defs/ScopedNot",
+              "not_exists": "#/$defs/CorrelatedExists",
+              "or": "#/$defs/ScopedBoolean",
+              "predicate": "#/$defs/ScopedPredicate"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/ScopedBoolean"
+            },
+            {
+              "$ref": "#/$defs/ScopedNot"
+            },
+            {
+              "$ref": "#/$defs/CorrelatedExists"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "child"
+      ],
+      "title": "ScopedNot",
+      "type": "object"
+    },
+    "ScopedPredicate": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "predicate",
+          "default": "predicate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "field_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "field_version_id": {
+          "format": "uuid",
+          "title": "Field Version Id",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "ne",
+            "lt",
+            "le",
+            "gt",
+            "ge",
+            "in",
+            "is_null",
+            "is_not_null"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "values": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/FilterValue"
+          },
+          "maxItems": 1000,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "field_id",
+        "field_version_id",
+        "operator"
+      ],
+      "title": "ScopedPredicate",
+      "type": "object"
+    },
+    "SequenceBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "aggregate_compare": "#/$defs/AggregateCompare",
+                "and": "#/$defs/SequenceBoolean",
+                "exists": "#/$defs/SequenceExists",
+                "not": "#/$defs/SequenceNot",
+                "not_exists": "#/$defs/SequenceExists",
+                "or": "#/$defs/SequenceBoolean",
+                "predicate": "#/$defs/ScopedPredicate",
+                "sequence": "#/$defs/BehavioralSequence"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ScopedPredicate"
+              },
+              {
+                "$ref": "#/$defs/AggregateCompare"
+              },
+              {
+                "$ref": "#/$defs/BehavioralSequence"
+              },
+              {
+                "$ref": "#/$defs/SequenceBoolean"
+              },
+              {
+                "$ref": "#/$defs/SequenceNot"
+              },
+              {
+                "$ref": "#/$defs/SequenceExists"
+              }
+            ]
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "children"
+      ],
+      "title": "SequenceBoolean",
+      "type": "object"
+    },
+    "SequenceExists": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "exists",
+            "not_exists"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent_scope_id": {
+          "format": "uuid",
+          "title": "Parent Scope Id",
+          "type": "string"
+        },
+        "child_scope_id": {
+          "format": "uuid",
+          "title": "Child Scope Id",
+          "type": "string"
+        },
+        "child_entity": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Child Entity",
+          "type": "string"
+        },
+        "relationship_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "relationship_version_id": {
+          "format": "uuid",
+          "title": "Relationship Version Id",
+          "type": "string"
+        },
+        "predicate": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/SequenceBoolean",
+              "exists": "#/$defs/SequenceExists",
+              "not": "#/$defs/SequenceNot",
+              "not_exists": "#/$defs/SequenceExists",
+              "or": "#/$defs/SequenceBoolean",
+              "predicate": "#/$defs/ScopedPredicate",
+              "sequence": "#/$defs/BehavioralSequence"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/BehavioralSequence"
+            },
+            {
+              "$ref": "#/$defs/SequenceBoolean"
+            },
+            {
+              "$ref": "#/$defs/SequenceNot"
+            },
+            {
+              "$ref": "#/$defs/SequenceExists"
+            }
+          ],
+          "title": "Predicate"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "kind",
+        "parent_scope_id",
+        "child_scope_id",
+        "child_entity",
+        "relationship_id",
+        "relationship_version_id",
+        "predicate"
+      ],
+      "title": "SequenceExists",
+      "type": "object"
+    },
+    "SequenceGap": {
+      "additionalProperties": false,
+      "properties": {
+        "minimum_us": {
+          "default": 0,
+          "maximum": 315360000000000,
+          "minimum": 0,
+          "title": "Minimum Us",
+          "type": "integer"
+        },
+        "maximum_us": {
+          "maximum": 315360000000000,
+          "minimum": 0,
+          "title": "Maximum Us",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "maximum_us"
+      ],
+      "title": "SequenceGap",
+      "type": "object"
+    },
+    "SequenceNot": {
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "format": "uuid",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "format": "uuid",
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "aggregate_compare": "#/$defs/AggregateCompare",
+              "and": "#/$defs/SequenceBoolean",
+              "exists": "#/$defs/SequenceExists",
+              "not": "#/$defs/SequenceNot",
+              "not_exists": "#/$defs/SequenceExists",
+              "or": "#/$defs/SequenceBoolean",
+              "predicate": "#/$defs/ScopedPredicate",
+              "sequence": "#/$defs/BehavioralSequence"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopedPredicate"
+            },
+            {
+              "$ref": "#/$defs/AggregateCompare"
+            },
+            {
+              "$ref": "#/$defs/BehavioralSequence"
+            },
+            {
+              "$ref": "#/$defs/SequenceBoolean"
+            },
+            {
+              "$ref": "#/$defs/SequenceNot"
+            },
+            {
+              "$ref": "#/$defs/SequenceExists"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "node_id",
+        "scope_id",
+        "child"
+      ],
+      "title": "SequenceNot",
+      "type": "object"
+    },
+    "SequencePropertyBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "left_step_id": {
+          "format": "uuid",
+          "title": "Left Step Id",
+          "type": "string"
+        },
+        "left_field": {
+          "$ref": "#/$defs/AggregateFieldRef"
+        },
+        "right_step_id": {
+          "format": "uuid",
+          "title": "Right Step Id",
+          "type": "string"
+        },
+        "right_field": {
+          "$ref": "#/$defs/AggregateFieldRef"
+        },
+        "null_policy": {
+          "const": "unknown",
+          "default": "unknown",
+          "title": "Null Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left_step_id",
+        "left_field",
+        "right_step_id",
+        "right_field"
+      ],
+      "title": "SequencePropertyBinding",
+      "type": "object"
+    },
+    "StoreBoolean": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "and",
+            "or"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "and": "#/$defs/StoreBoolean",
+                "not": "#/$defs/StoreNot",
+                "or": "#/$defs/StoreBoolean",
+                "store_in": "#/$defs/StoreSelection"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/StoreSelection"
+              },
+              {
+                "$ref": "#/$defs/StoreBoolean"
+              },
+              {
+                "$ref": "#/$defs/StoreNot"
+              }
+            ]
+          },
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "children"
+      ],
+      "title": "StoreBoolean",
+      "type": "object"
+    },
+    "StoreFilterV1": {
+      "additionalProperties": false,
+      "properties": {
+        "semantic_dataset_version_id": {
+          "format": "uuid",
+          "title": "Semantic Dataset Version Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "store-filter/v1",
+          "default": "store-filter/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "semantic_rule": {
+          "const": "authorized-store-set/v1",
+          "default": "authorized-store-set/v1",
+          "title": "Semantic Rule",
+          "type": "string"
+        },
+        "expression": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/StoreBoolean",
+              "not": "#/$defs/StoreNot",
+              "or": "#/$defs/StoreBoolean",
+              "store_in": "#/$defs/StoreSelection"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/StoreSelection"
+            },
+            {
+              "$ref": "#/$defs/StoreBoolean"
+            },
+            {
+              "$ref": "#/$defs/StoreNot"
+            }
+          ],
+          "title": "Expression"
+        }
+      },
+      "required": [
+        "semantic_dataset_version_id",
+        "expression"
+      ],
+      "title": "StoreFilterV1",
+      "type": "object"
+    },
+    "StoreNot": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "not",
+          "default": "not",
+          "title": "Kind",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "and": "#/$defs/StoreBoolean",
+              "not": "#/$defs/StoreNot",
+              "or": "#/$defs/StoreBoolean",
+              "store_in": "#/$defs/StoreSelection"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/StoreSelection"
+            },
+            {
+              "$ref": "#/$defs/StoreBoolean"
+            },
+            {
+              "$ref": "#/$defs/StoreNot"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "child"
+      ],
+      "title": "StoreNot",
+      "type": "object"
+    },
+    "StoreSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "store_in",
+          "default": "store_in",
+          "title": "Kind",
+          "type": "string"
+        },
+        "field": {
+          "const": "Store.store_id",
+          "default": "Store.store_id",
+          "title": "Field",
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "values"
+      ],
+      "title": "StoreSelection",
+      "type": "object"
+    },
+    "TemporalSettingsV2": {
+      "additionalProperties": false,
+      "description": "Explicit comparison settings; legacy alignment keeps its separate meaning.",
+      "properties": {
+        "schema_version": {
+          "const": "time-comparison-settings/v2",
+          "default": "time-comparison-settings/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "none",
+            "previous_period",
+            "custom_period",
+            "previous_year_same_dates",
+            "previous_year_calendar_aligned",
+            "previous_year_iso_week_aligned",
+            "previous_year_fiscal_period",
+            "previous_year_comparable_elapsed_days"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "leap_day_policy": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_map",
+                "exclude",
+                "merge_with_feb_28"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Leap Day Policy"
+        },
+        "iso_week_53_policy": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_map",
+                "exclude",
+                "explicit_partial"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Iso Week 53 Policy"
+        },
+        "comparison_period": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComparisonPeriod"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "previous_period_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_bucket_count",
+                "local_date_duration"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Period Basis"
+        },
+        "incomplete_period_policy": {
+          "enum": [
+            "exclude",
+            "comparable_elapsed_days",
+            "explicit_partial"
+          ],
+          "title": "Incomplete Period Policy",
+          "type": "string"
+        },
+        "duration_normalization": {
+          "const": "none",
+          "default": "none",
+          "title": "Duration Normalization",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "incomplete_period_policy"
+      ],
+      "title": "TemporalSettingsV2",
+      "type": "object"
+    },
+    "WorkspaceScopeInput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "workspace-scope/v1",
+          "default": "workspace-scope/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "dependency_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Dependency Hash",
+          "type": "string"
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/$defs/StoreFilterV1"
+          },
+          "title": "Filters",
+          "type": "array"
+        }
+      },
+      "required": [
+        "dependency_hash",
+        "filters"
+      ],
+      "title": "WorkspaceScopeInput",
+      "type": "object"
     }
   },
   "additionalProperties": false,
   "properties": {
+    "time_comparison": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TemporalSettingsV2"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "receipt_filter": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReceiptFilterInput"
+        },
+        {
+          "$ref": "#/$defs/RelationalReceiptFilterInput"
+        },
+        {
+          "$ref": "#/$defs/AggregateReceiptFilterInput"
+        },
+        {
+          "$ref": "#/$defs/CohortReceiptFilterInput"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Receipt Filter"
+    },
+    "scope": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WorkspaceScopeInput"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
     "semantic_dataset_version_id": {
       "format": "uuid",
       "title": "Semantic Dataset Version Id",

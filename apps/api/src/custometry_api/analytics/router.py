@@ -183,15 +183,9 @@ class AnalyticsResultListResponse(StrictModel):
 
 
 def build_analytics_services(settings: Settings) -> tuple[IdentityService, AnalyticsService]:
-    def connect() -> psycopg.Connection[object]:
-        return psycopg.connect(
-            host=settings.database_host,
-            port=settings.database_port,
-            dbname=settings.database_name,
-            user=settings.database_user,
-            password=settings.read_database_password(),
-            connect_timeout=settings.database_connect_timeout_seconds,
-        )
+    from custometry_api.database import connection_factory
+
+    connect = connection_factory(settings)
 
     identity = IdentityService(PostgresIdentityRepository(connect), bootstrap_secret=None)
     repository = PostgresAnalyticsRepository(connect)

@@ -1,0 +1,1366 @@
+{
+  "startedAt": "2026-09-23T00:15:39.476Z",
+  "finishedAt": "2026-09-23T00:15:48.032Z",
+  "workers": 8,
+  "threads": "40",
+  "concurrency": 50,
+  "rounds": [
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 1063.301875,
+        "bodyMs": 1077.8780830000005,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1051.743, thread_queue;dur=4.827, sync_cpu;dur=81.964, sql;dur=492.815;desc=\"59 statements\""
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 783.6396670000004,
+        "bodyMs": 784.051042,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=778.256, thread_queue;dur=2.014, sync_cpu;dur=83.625, sql;dur=364.968;desc=\"59 statements\""
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 1122.9419999999996,
+        "bodyMs": 1132.568084,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1118.718, thread_queue;dur=1.194, sync_cpu;dur=83.779, sql;dur=543.073;desc=\"59 statements\""
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 1541.7765000000004,
+        "bodyMs": 1561.0079579999997,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1537.673, thread_queue;dur=18.032, sync_cpu;dur=82.512, sql;dur=341.590;desc=\"59 statements\""
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 1130.834625,
+        "bodyMs": 1134.5515410000003,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1118.700, thread_queue;dur=2.705, sync_cpu;dur=106.913, sql;dur=612.979;desc=\"59 statements\""
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 1062.956667,
+        "bodyMs": 1083.48925,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1050.616, thread_queue;dur=4.362, sync_cpu;dur=120.531, sql;dur=420.386;desc=\"59 statements\""
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 1151.8830830000002,
+        "bodyMs": 1152.3622920000003,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1147.626, thread_queue;dur=3.015, sync_cpu;dur=83.497, sql;dur=481.992;desc=\"59 statements\""
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 820.3644169999998,
+        "bodyMs": 822.1942500000005,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=816.268, thread_queue;dur=8.899, sync_cpu;dur=81.482, sql;dur=545.705;desc=\"59 statements\""
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 1122.6538330000003,
+        "bodyMs": 1133.2115830000002,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1118.389, thread_queue;dur=3.479, sync_cpu;dur=84.413, sql;dur=449.134;desc=\"59 statements\""
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 1482.5207089999994,
+        "bodyMs": 1496.508667,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1478.358, thread_queue;dur=14.057, sync_cpu;dur=115.194, sql;dur=333.845;desc=\"59 statements\""
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 1134.9907090000002,
+        "bodyMs": 1135.4045419999998,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1128.236, thread_queue;dur=6.202, sync_cpu;dur=208.019, sql;dur=467.543;desc=\"59 statements\""
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 1628.9716249999997,
+        "bodyMs": 1664.9022499999996,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1624.733, thread_queue;dur=14.196, sync_cpu;dur=112.143, sql;dur=351.668;desc=\"59 statements\""
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 644.6488750000003,
+        "bodyMs": 645.916084,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=640.575, thread_queue;dur=1.607, sync_cpu;dur=105.251, sql;dur=375.103;desc=\"59 statements\""
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 1680.2431669999996,
+        "bodyMs": 1692.0687079999998,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1675.049, thread_queue;dur=3.618, sync_cpu;dur=82.538, sql;dur=463.496;desc=\"59 statements\""
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 993.7449169999995,
+        "bodyMs": 1005.674375,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=989.536, thread_queue;dur=1.324, sync_cpu;dur=87.748, sql;dur=646.039;desc=\"59 statements\""
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 1679.962,
+        "bodyMs": 1688.5952499999999,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1674.946, thread_queue;dur=19.346, sync_cpu;dur=82.534, sql;dur=424.313;desc=\"59 statements\""
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 822.614208,
+        "bodyMs": 823.4549580000003,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=816.456, thread_queue;dur=10.845, sync_cpu;dur=101.343, sql;dur=494.166;desc=\"59 statements\""
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 1577.478208,
+        "bodyMs": 1622.0832500000001,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1573.198, thread_queue;dur=14.154, sync_cpu;dur=84.480, sql;dur=449.575;desc=\"59 statements\""
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 546.7921249999999,
+        "bodyMs": 547.2737909999996,
+        "bytes": 1349552,
+        "worker": "26059",
+        "serverTiming": "api;dur=540.967, thread_queue;dur=9.905, sync_cpu;dur=94.293, sql;dur=324.768;desc=\"59 statements\""
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 677.396041,
+        "bodyMs": 678.161333,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=672.111, thread_queue;dur=1.209, sync_cpu;dur=111.314, sql;dur=340.655;desc=\"59 statements\""
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 779.837,
+        "bodyMs": 781.8900829999998,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=767.267, thread_queue;dur=9.872, sync_cpu;dur=94.581, sql;dur=413.034;desc=\"59 statements\""
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 1542.572667,
+        "bodyMs": 1565.8249579999997,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1538.155, thread_queue;dur=22.541, sync_cpu;dur=78.778, sql;dur=459.047;desc=\"59 statements\""
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 552.8898749999998,
+        "bodyMs": 553.7669169999999,
+        "bytes": 1349552,
+        "worker": "26055",
+        "serverTiming": "api;dur=545.800, thread_queue;dur=11.082, sync_cpu;dur=107.990, sql;dur=334.283;desc=\"59 statements\""
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 1540.9392910000001,
+        "bodyMs": 1548.3671660000005,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1536.696, thread_queue;dur=10.799, sync_cpu;dur=94.233, sql;dur=413.982;desc=\"59 statements\""
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 1083.580708,
+        "bodyMs": 1090.4270419999998,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1078.572, thread_queue;dur=1.079, sync_cpu;dur=109.594, sql;dur=616.680;desc=\"59 statements\""
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 940.2562910000006,
+        "bodyMs": 942.8995000000004,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=936.223, thread_queue;dur=1.268, sync_cpu;dur=167.448, sql;dur=561.587;desc=\"59 statements\""
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 1680.1513749999995,
+        "bodyMs": 1692.8638329999994,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1674.761, thread_queue;dur=4.201, sync_cpu;dur=124.627, sql;dur=398.285;desc=\"59 statements\""
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 1693.4875419999998,
+        "bodyMs": 1694.256875,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1684.296, thread_queue;dur=4.373, sync_cpu;dur=81.579, sql;dur=390.364;desc=\"59 statements\""
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 1637.536458,
+        "bodyMs": 1678.8269999999998,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1624.623, thread_queue;dur=22.637, sync_cpu;dur=80.601, sql;dur=455.975;desc=\"59 statements\""
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 905.2453329999998,
+        "bodyMs": 905.9034160000001,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=900.872, thread_queue;dur=2.700, sync_cpu;dur=78.630, sql;dur=623.834;desc=\"59 statements\""
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 843.1083750000003,
+        "bodyMs": 843.914792,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=837.977, thread_queue;dur=8.777, sync_cpu;dur=183.595, sql;dur=417.200;desc=\"59 statements\""
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 1679.8561660000005,
+        "bodyMs": 1689.136458,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1674.711, thread_queue;dur=4.412, sync_cpu;dur=82.414, sql;dur=585.332;desc=\"59 statements\""
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 844.6995410000004,
+        "bodyMs": 845.1349580000001,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=840.223, thread_queue;dur=2.259, sync_cpu;dur=121.324, sql;dur=458.574;desc=\"59 statements\""
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 661.2533330000001,
+        "bodyMs": 664.3104159999998,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=640.903, thread_queue;dur=10.705, sync_cpu;dur=114.470, sql;dur=325.826;desc=\"59 statements\""
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 992.8597500000005,
+        "bodyMs": 1002.700167,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=988.616, thread_queue;dur=2.692, sync_cpu;dur=88.361, sql;dur=444.967;desc=\"59 statements\""
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 1576.7624580000006,
+        "bodyMs": 1599.9352910000002,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1572.813, thread_queue;dur=36.133, sync_cpu;dur=129.235, sql;dur=402.655;desc=\"59 statements\""
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 824.0340420000002,
+        "bodyMs": 825.1733750000003,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=817.371, thread_queue;dur=0.910, sync_cpu;dur=79.594, sql;dur=504.991;desc=\"59 statements\""
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 1011.2658749999996,
+        "bodyMs": 1012.8836660000002,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=998.502, thread_queue;dur=8.664, sync_cpu;dur=80.674, sql;dur=548.507;desc=\"59 statements\""
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 544.2665420000003,
+        "bodyMs": 545.306208,
+        "bytes": 1349552,
+        "worker": "26059",
+        "serverTiming": "api;dur=540.418, thread_queue;dur=1.644, sync_cpu;dur=128.016, sql;dur=309.792;desc=\"59 statements\""
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 782.1251249999996,
+        "bodyMs": 788.2712080000001,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=776.922, thread_queue;dur=2.616, sync_cpu;dur=173.020, sql;dur=398.370;desc=\"59 statements\""
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 665.1625840000006,
+        "bodyMs": 675.6792089999999,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=659.772, thread_queue;dur=13.329, sync_cpu;dur=79.911, sql;dur=395.726;desc=\"59 statements\""
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 1166.0664170000005,
+        "bodyMs": 1166.5940420000002,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1160.098, thread_queue;dur=0.802, sync_cpu;dur=80.060, sql;dur=584.319;desc=\"59 statements\""
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 548.9894169999998,
+        "bodyMs": 550.2865830000001,
+        "bytes": 1349552,
+        "worker": "26055",
+        "serverTiming": "api;dur=545.106, thread_queue;dur=1.522, sync_cpu;dur=114.958, sql;dur=300.872;desc=\"59 statements\""
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 1488.6844579999997,
+        "bodyMs": 1497.1091669999996,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1484.258, thread_queue;dur=11.522, sync_cpu;dur=208.346, sql;dur=333.701;desc=\"59 statements\""
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 1013.4367090000001,
+        "bodyMs": 1014.298542,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=1008.415, thread_queue;dur=12.009, sync_cpu;dur=198.724, sql;dur=553.370;desc=\"59 statements\""
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 841.2520420000001,
+        "bodyMs": 841.7919170000005,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=837.455, thread_queue;dur=2.250, sync_cpu;dur=86.559, sql;dur=415.961;desc=\"59 statements\""
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 817.9202499999997,
+        "bodyMs": 819.6438750000002,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=805.905, thread_queue;dur=15.522, sync_cpu;dur=118.194, sql;dur=493.021;desc=\"59 statements\""
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 632.0857919999994,
+        "bodyMs": 633.9298750000003,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=628.136, thread_queue;dur=3.210, sync_cpu;dur=99.362, sql;dur=399.733;desc=\"59 statements\""
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 1679.5715420000001,
+        "bodyMs": 1689.8079999999995,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1674.024, thread_queue;dur=25.819, sync_cpu;dur=80.096, sql;dur=404.096;desc=\"59 statements\""
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 915.7494999999994,
+        "bodyMs": 923.8628329999997,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=911.703, thread_queue;dur=3.004, sync_cpu;dur=101.186, sql;dur=489.606;desc=\"59 statements\""
+      }
+    ],
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 876.7014170000002,
+        "bodyMs": 877.2189170000001,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=873.955, thread_queue;dur=1.022, sync_cpu;dur=108.206, sql;dur=398.376;desc=\"59 statements\""
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 1129.5186249999997,
+        "bodyMs": 1130.8653750000003,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1127.929, thread_queue;dur=14.267, sync_cpu;dur=164.587, sql;dur=603.482;desc=\"59 statements\""
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 895.1474170000001,
+        "bodyMs": 895.5601669999996,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=893.420, thread_queue;dur=2.044, sync_cpu;dur=110.711, sql;dur=461.251;desc=\"59 statements\""
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 1178.2817079999995,
+        "bodyMs": 1178.665333,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1173.020, thread_queue;dur=10.302, sync_cpu;dur=113.385, sql;dur=612.247;desc=\"59 statements\""
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 1302.5815830000001,
+        "bodyMs": 1303.036083,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1301.012, thread_queue;dur=3.360, sync_cpu;dur=103.823, sql;dur=498.689;desc=\"59 statements\""
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 1131.5867080000007,
+        "bodyMs": 1137.2240420000007,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1128.684, thread_queue;dur=9.202, sync_cpu;dur=82.455, sql;dur=621.493;desc=\"59 statements\""
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 1053.2168339999998,
+        "bodyMs": 1053.962375,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1051.391, thread_queue;dur=3.542, sync_cpu;dur=82.788, sql;dur=570.885;desc=\"59 statements\""
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 1018.5325830000002,
+        "bodyMs": 1021.8665000000001,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1016.717, thread_queue;dur=2.776, sync_cpu;dur=80.146, sql;dur=588.635;desc=\"59 statements\""
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 803.3152090000003,
+        "bodyMs": 803.9587920000004,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=801.576, thread_queue;dur=1.522, sync_cpu;dur=82.055, sql;dur=466.395;desc=\"59 statements\""
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 1131.475625,
+        "bodyMs": 1138.0744169999998,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1128.591, thread_queue;dur=8.762, sync_cpu;dur=83.083, sql;dur=566.476;desc=\"59 statements\""
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 1289.3577920000007,
+        "bodyMs": 1289.6838340000004,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1284.845, thread_queue;dur=30.263, sync_cpu;dur=88.469, sql;dur=367.916;desc=\"59 statements\""
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 1172.9039999999995,
+        "bodyMs": 1175.7599999999993,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1163.124, thread_queue;dur=7.048, sync_cpu;dur=85.016, sql;dur=386.927;desc=\"59 statements\""
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 1391.168667,
+        "bodyMs": 1391.5783329999995,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1389.587, thread_queue;dur=18.287, sync_cpu;dur=78.714, sql;dur=369.015;desc=\"59 statements\""
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 949.5193749999999,
+        "bodyMs": 949.9651249999997,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=947.979, thread_queue;dur=0.680, sync_cpu;dur=204.953, sql;dur=468.855;desc=\"59 statements\""
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 697.3386250000003,
+        "bodyMs": 698.1423750000004,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=695.699, thread_queue;dur=1.563, sync_cpu;dur=134.213, sql;dur=380.118;desc=\"59 statements\""
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 1284.5224580000004,
+        "bodyMs": 1286.529708,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1282.824, thread_queue;dur=1.998, sync_cpu;dur=229.969, sql;dur=359.141;desc=\"59 statements\""
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 874.5350829999998,
+        "bodyMs": 875.0989579999996,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=872.962, thread_queue;dur=0.303, sync_cpu;dur=91.509, sql;dur=550.953;desc=\"59 statements\""
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 1268.4355000000005,
+        "bodyMs": 1269.688959,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1242.021, thread_queue;dur=19.415, sync_cpu;dur=88.641, sql;dur=407.375;desc=\"59 statements\""
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 521.9229999999998,
+        "bodyMs": 523.7021670000004,
+        "bytes": 1349552,
+        "worker": "26059",
+        "serverTiming": "api;dur=520.462, thread_queue;dur=1.286, sync_cpu;dur=73.627, sql;dur=336.158;desc=\"59 statements\""
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 817.2627080000002,
+        "bodyMs": 819.3109160000004,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=815.912, thread_queue;dur=1.114, sync_cpu;dur=195.338, sql;dur=402.360;desc=\"59 statements\""
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 864.0105839999997,
+        "bodyMs": 864.4539589999995,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=862.467, thread_queue;dur=1.857, sync_cpu;dur=80.808, sql;dur=641.626;desc=\"59 statements\""
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 1284.42825,
+        "bodyMs": 1288.4302909999997,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1282.808, thread_queue;dur=2.157, sync_cpu;dur=82.394, sql;dur=464.872;desc=\"59 statements\""
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 510.9360830000005,
+        "bodyMs": 511.6725000000006,
+        "bytes": 1349552,
+        "worker": "26055",
+        "serverTiming": "api;dur=509.460, thread_queue;dur=0.380, sync_cpu;dur=94.031, sql;dur=311.689;desc=\"59 statements\""
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 1393.2010419999997,
+        "bodyMs": 1393.6951250000002,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1389.761, thread_queue;dur=9.757, sync_cpu;dur=80.881, sql;dur=512.110;desc=\"59 statements\""
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 1173.804416,
+        "bodyMs": 1176.6077079999995,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1171.937, thread_queue;dur=15.086, sync_cpu;dur=219.472, sql;dur=613.868;desc=\"59 statements\""
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 801.0443749999995,
+        "bodyMs": 813.7486669999998,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=799.575, thread_queue;dur=9.384, sync_cpu;dur=114.584, sql;dur=430.162;desc=\"59 statements\""
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 1392.0117499999997,
+        "bodyMs": 1392.4259579999998,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1387.835, thread_queue;dur=11.820, sync_cpu;dur=117.712, sql;dur=538.110;desc=\"59 statements\""
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 754.8006660000001,
+        "bodyMs": 755.2626249999994,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=751.440, thread_queue;dur=1.197, sync_cpu;dur=93.810, sql;dur=380.741;desc=\"59 statements\""
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 932.4178330000004,
+        "bodyMs": 932.8222080000005,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=929.181, thread_queue;dur=4.158, sync_cpu;dur=77.380, sql;dur=413.375;desc=\"59 statements\""
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 1394.2585829999998,
+        "bodyMs": 1394.7606670000005,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1387.790, thread_queue;dur=11.891, sync_cpu;dur=79.379, sql;dur=533.365;desc=\"59 statements\""
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 816.6508329999997,
+        "bodyMs": 817.63825,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=813.751, thread_queue;dur=4.140, sync_cpu;dur=76.808, sql;dur=449.647;desc=\"59 statements\""
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 804.5219580000003,
+        "bodyMs": 805.0898749999997,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=800.766, thread_queue;dur=8.542, sync_cpu;dur=102.705, sql;dur=437.910;desc=\"59 statements\""
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 832.976917,
+        "bodyMs": 833.4842499999995,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=828.597, thread_queue;dur=10.993, sync_cpu;dur=84.544, sql;dur=441.971;desc=\"59 statements\""
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 1284.2339590000001,
+        "bodyMs": 1287.212042,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1280.756, thread_queue;dur=24.837, sync_cpu;dur=121.848, sql;dur=385.135;desc=\"59 statements\""
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 809.4866659999998,
+        "bodyMs": 810.0703749999993,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=802.906, thread_queue;dur=2.493, sync_cpu;dur=80.093, sql;dur=538.071;desc=\"59 statements\""
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 831.0285839999997,
+        "bodyMs": 832.0335839999998,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=828.361, thread_queue;dur=4.738, sync_cpu;dur=81.181, sql;dur=459.416;desc=\"59 statements\""
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 524.1278750000001,
+        "bodyMs": 524.7729580000005,
+        "bytes": 1349552,
+        "worker": "26059",
+        "serverTiming": "api;dur=519.202, thread_queue;dur=9.996, sync_cpu;dur=95.306, sql;dur=316.061;desc=\"59 statements\""
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 837.3945830000002,
+        "bodyMs": 837.9554580000004,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=834.716, thread_queue;dur=2.507, sync_cpu;dur=193.139, sql;dur=409.490;desc=\"59 statements\""
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 807.8212080000003,
+        "bodyMs": 808.5607909999999,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=801.136, thread_queue;dur=21.037, sync_cpu;dur=78.773, sql;dur=478.120;desc=\"59 statements\""
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 1164.2531660000004,
+        "bodyMs": 1173.9115410000004,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1161.430, thread_queue;dur=8.651, sync_cpu;dur=79.083, sql;dur=577.552;desc=\"59 statements\""
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 521.8921249999994,
+        "bodyMs": 522.3532909999994,
+        "bytes": 1349552,
+        "worker": "26055",
+        "serverTiming": "api;dur=518.938, thread_queue;dur=0.493, sync_cpu;dur=74.618, sql;dur=338.152;desc=\"59 statements\""
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 1401.1632920000002,
+        "bodyMs": 1401.6768330000004,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1397.018, thread_queue;dur=2.868, sync_cpu;dur=80.536, sql;dur=665.865;desc=\"59 statements\""
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 751.9898750000002,
+        "bodyMs": 753.686291,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=740.532, thread_queue;dur=9.556, sync_cpu;dur=78.106, sql;dur=454.847;desc=\"59 statements\""
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 921.9808749999993,
+        "bodyMs": 931.3946249999999,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=919.217, thread_queue;dur=3.041, sync_cpu;dur=81.578, sql;dur=489.961;desc=\"59 statements\""
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 857.7417920000007,
+        "bodyMs": 858.1934170000004,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=854.706, thread_queue;dur=4.376, sync_cpu;dur=112.474, sql;dur=405.576;desc=\"59 statements\""
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 840.4126249999999,
+        "bodyMs": 840.8562499999998,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=837.644, thread_queue;dur=3.843, sync_cpu;dur=79.040, sql;dur=443.140;desc=\"59 statements\""
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 842.5686249999999,
+        "bodyMs": 842.9974170000005,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=839.949, thread_queue;dur=2.283, sync_cpu;dur=97.670, sql;dur=488.229;desc=\"59 statements\""
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 805.6160409999993,
+        "bodyMs": 806.5086249999995,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=801.185, thread_queue;dur=17.333, sync_cpu;dur=78.218, sql;dur=479.990;desc=\"59 statements\""
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 1314.3167920000005,
+        "bodyMs": 1316.1441250000007,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1311.447, thread_queue;dur=3.803, sync_cpu;dur=80.176, sql;dur=597.296;desc=\"59 statements\""
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 770.8004579999997,
+        "bodyMs": 779.9147499999999,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=768.595, thread_queue;dur=1.475, sync_cpu;dur=77.305, sql;dur=393.703;desc=\"59 statements\""
+      }
+    ],
+    [
+      {
+        "user": 0,
+        "status": 200,
+        "headersMs": 898.2477500000005,
+        "bodyMs": 901.2634170000001,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=897.212, thread_queue;dur=0.649, sync_cpu;dur=86.735, sql;dur=485.505;desc=\"59 statements\""
+      },
+      {
+        "user": 1,
+        "status": 200,
+        "headersMs": 1100.9953340000002,
+        "bodyMs": 1101.4313750000001,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1100.033, thread_queue;dur=14.217, sync_cpu;dur=162.764, sql;dur=510.972;desc=\"59 statements\""
+      },
+      {
+        "user": 2,
+        "status": 200,
+        "headersMs": 757.8759579999996,
+        "bodyMs": 758.4929160000002,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=756.804, thread_queue;dur=1.041, sync_cpu;dur=86.572, sql;dur=455.330;desc=\"59 statements\""
+      },
+      {
+        "user": 3,
+        "status": 200,
+        "headersMs": 1112.4401660000003,
+        "bodyMs": 1112.7745409999998,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1110.580, thread_queue;dur=1.239, sync_cpu;dur=121.493, sql;dur=459.043;desc=\"59 statements\""
+      },
+      {
+        "user": 4,
+        "status": 200,
+        "headersMs": 1487.1852079999999,
+        "bodyMs": 1488.4416250000004,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1486.231, thread_queue;dur=34.698, sync_cpu;dur=82.184, sql;dur=413.782;desc=\"59 statements\""
+      },
+      {
+        "user": 5,
+        "status": 200,
+        "headersMs": 1100.9760830000005,
+        "bodyMs": 1102.4157500000001,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1099.701, thread_queue;dur=14.932, sync_cpu;dur=176.309, sql;dur=539.946;desc=\"59 statements\""
+      },
+      {
+        "user": 6,
+        "status": 200,
+        "headersMs": 903.8601250000002,
+        "bodyMs": 905.1761669999996,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=894.214, thread_queue;dur=11.123, sync_cpu;dur=84.011, sql;dur=425.610;desc=\"59 statements\""
+      },
+      {
+        "user": 7,
+        "status": 200,
+        "headersMs": 931.2711659999995,
+        "bodyMs": 931.8339580000002,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=930.052, thread_queue;dur=2.212, sync_cpu;dur=86.498, sql;dur=570.812;desc=\"59 statements\""
+      },
+      {
+        "user": 8,
+        "status": 200,
+        "headersMs": 732.2255830000004,
+        "bodyMs": 733.106417,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=731.206, thread_queue;dur=6.062, sync_cpu;dur=169.196, sql;dur=345.505;desc=\"59 statements\""
+      },
+      {
+        "user": 9,
+        "status": 200,
+        "headersMs": 1029.7164589999993,
+        "bodyMs": 1044.50475,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1028.449, thread_queue;dur=1.405, sync_cpu;dur=83.391, sql;dur=432.080;desc=\"59 statements\""
+      },
+      {
+        "user": 10,
+        "status": 200,
+        "headersMs": 1468.0232920000008,
+        "bodyMs": 1476.3312090000009,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1466.030, thread_queue;dur=12.269, sync_cpu;dur=89.404, sql;dur=562.659;desc=\"59 statements\""
+      },
+      {
+        "user": 11,
+        "status": 200,
+        "headersMs": 906.9910419999997,
+        "bodyMs": 907.3089170000003,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=904.847, thread_queue;dur=11.809, sync_cpu;dur=110.166, sql;dur=473.251;desc=\"59 statements\""
+      },
+      {
+        "user": 12,
+        "status": 200,
+        "headersMs": 1466.8007079999998,
+        "bodyMs": 1467.289749999999,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1465.841, thread_queue;dur=4.144, sync_cpu;dur=79.363, sql;dur=409.509;desc=\"59 statements\""
+      },
+      {
+        "user": 13,
+        "status": 200,
+        "headersMs": 878.2017080000005,
+        "bodyMs": 887.8668750000006,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=868.142, thread_queue;dur=15.808, sync_cpu;dur=217.272, sql;dur=410.491;desc=\"59 statements\""
+      },
+      {
+        "user": 14,
+        "status": 200,
+        "headersMs": 1484.948625,
+        "bodyMs": 1487.2718749999995,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1484.067, thread_queue;dur=26.105, sync_cpu;dur=79.280, sql;dur=588.351;desc=\"59 statements\""
+      },
+      {
+        "user": 15,
+        "status": 200,
+        "headersMs": 933.5200000000004,
+        "bodyMs": 934.0434580000001,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=932.603, thread_queue;dur=17.006, sync_cpu;dur=87.584, sql;dur=432.151;desc=\"59 statements\""
+      },
+      {
+        "user": 16,
+        "status": 200,
+        "headersMs": 1374.5640420000009,
+        "bodyMs": 1384.8367499999995,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1350.080, thread_queue;dur=3.646, sync_cpu;dur=76.042, sql;dur=499.109;desc=\"59 statements\""
+      },
+      {
+        "user": 17,
+        "status": 200,
+        "headersMs": 734.1891249999999,
+        "bodyMs": 750.9858329999997,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=731.396, thread_queue;dur=8.677, sync_cpu;dur=124.716, sql;dur=350.857;desc=\"59 statements\""
+      },
+      {
+        "user": 18,
+        "status": 200,
+        "headersMs": 1467.9644999999991,
+        "bodyMs": 1477.2315829999998,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1442.394, thread_queue;dur=17.164, sync_cpu;dur=134.834, sql;dur=363.075;desc=\"59 statements\""
+      },
+      {
+        "user": 19,
+        "status": 200,
+        "headersMs": 496.55375000000004,
+        "bodyMs": 497.14450000000033,
+        "bytes": 1349552,
+        "worker": "26059",
+        "serverTiming": "api;dur=495.613, thread_queue;dur=0.285, sync_cpu;dur=89.171, sql;dur=334.606;desc=\"59 statements\""
+      },
+      {
+        "user": 20,
+        "status": 200,
+        "headersMs": 586.420959,
+        "bodyMs": 588.3280420000001,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=575.051, thread_queue;dur=20.907, sync_cpu;dur=98.624, sql;dur=319.881;desc=\"59 statements\""
+      },
+      {
+        "user": 21,
+        "status": 200,
+        "headersMs": 725.7237079999995,
+        "bodyMs": 744.4963749999997,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=724.674, thread_queue;dur=2.862, sync_cpu;dur=98.686, sql;dur=446.761;desc=\"59 statements\""
+      },
+      {
+        "user": 22,
+        "status": 200,
+        "headersMs": 1416.6457500000006,
+        "bodyMs": 1417.9725829999998,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1391.208, thread_queue;dur=2.698, sync_cpu;dur=84.307, sql;dur=466.950;desc=\"59 statements\""
+      },
+      {
+        "user": 23,
+        "status": 200,
+        "headersMs": 521.9697500000002,
+        "bodyMs": 522.3964999999998,
+        "bytes": 1349552,
+        "worker": "26055",
+        "serverTiming": "api;dur=518.643, thread_queue;dur=9.028, sync_cpu;dur=105.446, sql;dur=306.656;desc=\"59 statements\""
+      },
+      {
+        "user": 24,
+        "status": 200,
+        "headersMs": 1467.861750000001,
+        "bodyMs": 1478.1329159999996,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1441.358, thread_queue;dur=16.074, sync_cpu;dur=84.861, sql;dur=371.302;desc=\"59 statements\""
+      },
+      {
+        "user": 25,
+        "status": 200,
+        "headersMs": 1103.1617500000002,
+        "bodyMs": 1103.511375,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1098.561, thread_queue;dur=19.049, sync_cpu;dur=89.358, sql;dur=576.537;desc=\"59 statements\""
+      },
+      {
+        "user": 26,
+        "status": 200,
+        "headersMs": 934.8279160000002,
+        "bodyMs": 935.1592909999999,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=931.519, thread_queue;dur=34.992, sync_cpu;dur=82.591, sql;dur=619.113;desc=\"59 statements\""
+      },
+      {
+        "user": 27,
+        "status": 200,
+        "headersMs": 1319.4779169999993,
+        "bodyMs": 1321.2373749999997,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1293.965, thread_queue;dur=1.228, sync_cpu;dur=78.659, sql;dur=410.911;desc=\"59 statements\""
+      },
+      {
+        "user": 28,
+        "status": 200,
+        "headersMs": 1558.9298750000007,
+        "bodyMs": 1559.6887080000006,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1533.516, thread_queue;dur=7.739, sync_cpu;dur=208.301, sql;dur=554.008;desc=\"59 statements\""
+      },
+      {
+        "user": 29,
+        "status": 200,
+        "headersMs": 1510.2901249999995,
+        "bodyMs": 1511.0637499999993,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1484.847, thread_queue;dur=1.990, sync_cpu;dur=92.932, sql;dur=523.986;desc=\"59 statements\""
+      },
+      {
+        "user": 30,
+        "status": 200,
+        "headersMs": 913.6875,
+        "bodyMs": 915.4529169999996,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=903.707, thread_queue;dur=42.097, sync_cpu;dur=84.212, sql;dur=382.000;desc=\"59 statements\""
+      },
+      {
+        "user": 31,
+        "status": 200,
+        "headersMs": 898.8102500000005,
+        "bodyMs": 899.2126250000001,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=895.700, thread_queue;dur=8.491, sync_cpu;dur=84.432, sql;dur=496.570;desc=\"59 statements\""
+      },
+      {
+        "user": 32,
+        "status": 200,
+        "headersMs": 1541.518833000001,
+        "bodyMs": 1541.876083,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1516.095, thread_queue;dur=1.378, sync_cpu;dur=77.747, sql;dur=433.612;desc=\"59 statements\""
+      },
+      {
+        "user": 33,
+        "status": 200,
+        "headersMs": 751.5664590000006,
+        "bodyMs": 751.9749170000005,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=747.299, thread_queue;dur=1.309, sync_cpu;dur=80.363, sql;dur=396.277;desc=\"59 statements\""
+      },
+      {
+        "user": 34,
+        "status": 200,
+        "headersMs": 575.4700830000002,
+        "bodyMs": 575.9637080000002,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=573.171, thread_queue;dur=1.793, sync_cpu;dur=83.877, sql;dur=306.709;desc=\"59 statements\""
+      },
+      {
+        "user": 35,
+        "status": 200,
+        "headersMs": 947.2141250000004,
+        "bodyMs": 953.511958,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=945.017, thread_queue;dur=1.907, sync_cpu;dur=205.904, sql;dur=536.700;desc=\"59 statements\""
+      },
+      {
+        "user": 36,
+        "status": 200,
+        "headersMs": 1417.591625,
+        "bodyMs": 1418.994291,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1392.026, thread_queue;dur=11.757, sync_cpu;dur=78.964, sql;dur=380.447;desc=\"59 statements\""
+      },
+      {
+        "user": 37,
+        "status": 200,
+        "headersMs": 897.5677919999998,
+        "bodyMs": 898.0018330000003,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=895.418, thread_queue;dur=0.604, sync_cpu;dur=79.803, sql;dur=521.959;desc=\"59 statements\""
+      },
+      {
+        "user": 38,
+        "status": 200,
+        "headersMs": 969.39275,
+        "bodyMs": 969.80375,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=967.169, thread_queue;dur=2.382, sync_cpu;dur=81.643, sql;dur=523.485;desc=\"59 statements\""
+      },
+      {
+        "user": 39,
+        "status": 200,
+        "headersMs": 516.5981670000001,
+        "bodyMs": 517.0263750000004,
+        "bytes": 1349552,
+        "worker": "26059",
+        "serverTiming": "api;dur=514.413, thread_queue;dur=0.258, sync_cpu;dur=105.836, sql;dur=326.410;desc=\"59 statements\""
+      },
+      {
+        "user": 40,
+        "status": 200,
+        "headersMs": 733.8813750000008,
+        "bodyMs": 749.4623340000007,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=729.525, thread_queue;dur=13.981, sync_cpu;dur=79.478, sql;dur=480.178;desc=\"59 statements\""
+      },
+      {
+        "user": 41,
+        "status": 200,
+        "headersMs": 601.0737079999999,
+        "bodyMs": 601.4927909999997,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=597.368, thread_queue;dur=10.230, sync_cpu;dur=82.074, sql;dur=319.620;desc=\"59 statements\""
+      },
+      {
+        "user": 42,
+        "status": 200,
+        "headersMs": 1102.7165420000001,
+        "bodyMs": 1111.216625,
+        "bytes": 1349552,
+        "worker": "26062",
+        "serverTiming": "api;dur=1097.823, thread_queue;dur=8.523, sync_cpu;dur=83.172, sql;dur=543.828;desc=\"59 statements\""
+      },
+      {
+        "user": 43,
+        "status": 200,
+        "headersMs": 520.4101250000003,
+        "bodyMs": 520.925416,
+        "bytes": 1349552,
+        "worker": "26055",
+        "serverTiming": "api;dur=518.002, thread_queue;dur=1.433, sync_cpu;dur=91.778, sql;dur=319.552;desc=\"59 statements\""
+      },
+      {
+        "user": 44,
+        "status": 200,
+        "headersMs": 978.9795830000003,
+        "bodyMs": 979.4807499999997,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=976.653, thread_queue;dur=1.233, sync_cpu;dur=131.475, sql;dur=418.387;desc=\"59 statements\""
+      },
+      {
+        "user": 45,
+        "status": 200,
+        "headersMs": 745.1310409999996,
+        "bodyMs": 745.5964999999997,
+        "bytes": 1349552,
+        "worker": "26058",
+        "serverTiming": "api;dur=742.222, thread_queue;dur=1.064, sync_cpu;dur=80.240, sql;dur=403.060;desc=\"59 statements\""
+      },
+      {
+        "user": 46,
+        "status": 200,
+        "headersMs": 760.0250839999999,
+        "bodyMs": 760.5161669999998,
+        "bytes": 1349552,
+        "worker": "26057",
+        "serverTiming": "api;dur=757.604, thread_queue;dur=0.627, sync_cpu;dur=74.397, sql;dur=489.335;desc=\"59 statements\""
+      },
+      {
+        "user": 47,
+        "status": 200,
+        "headersMs": 599.3625830000001,
+        "bodyMs": 600.049583,
+        "bytes": 1349552,
+        "worker": "26060",
+        "serverTiming": "api;dur=597.108, thread_queue;dur=19.037, sync_cpu;dur=83.342, sql;dur=349.363;desc=\"59 statements\""
+      },
+      {
+        "user": 48,
+        "status": 200,
+        "headersMs": 1559.000583,
+        "bodyMs": 1560.432749999999,
+        "bytes": 1349552,
+        "worker": "26056",
+        "serverTiming": "api;dur=1533.618, thread_queue;dur=9.925, sync_cpu;dur=125.797, sql;dur=455.603;desc=\"59 statements\""
+      },
+      {
+        "user": 49,
+        "status": 200,
+        "headersMs": 903.3918750000003,
+        "bodyMs": 905.750959,
+        "bytes": 1349552,
+        "worker": "26061",
+        "serverTiming": "api;dur=886.368, thread_queue;dur=8.749, sync_cpu;dur=86.711, sql;dur=436.485;desc=\"59 statements\""
+      }
+    ]
+  ],
+  "scope": "HTTP report metadata only; no browser paint or result follow-up"
+}

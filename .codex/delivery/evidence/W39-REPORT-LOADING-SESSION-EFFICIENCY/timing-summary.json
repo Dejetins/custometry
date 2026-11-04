@@ -1,0 +1,3829 @@
+{
+  "baseline-cold-8w-controlled.json": {
+    "attempts": 200,
+    "passed": 0,
+    "failures": 200,
+    "failure_statuses": [
+      "timeout"
+    ],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 0
+      },
+      "firstGraphMs": {
+        "n": 0
+      },
+      "allCardsMs": {
+        "n": 0
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 0
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 0
+    },
+    "heap_used_bytes": {
+      "n": 0
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 0
+      },
+      "last_complete_response_to_graph": {
+        "n": 0
+      }
+    }
+  },
+  "baseline-cold-8w-native-original.json": {
+    "attempts": 200,
+    "passed": 0,
+    "failures": 200,
+    "failure_statuses": [
+      "timeout"
+    ],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 0
+      },
+      "firstGraphMs": {
+        "n": 0
+      },
+      "allCardsMs": {
+        "n": 0
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 0
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 0
+    },
+    "heap_used_bytes": {
+      "n": 0
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 0
+      },
+      "last_complete_response_to_graph": {
+        "n": 0
+      }
+    }
+  },
+  "baseline-warm-8w-concurrent-prime-partial.json": {
+    "attempts": 100,
+    "passed": 97,
+    "failures": 3,
+    "failure_statuses": [
+      "Error: page.evaluate: Target page, context or browser has been closed",
+      "timeout"
+    ],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 50,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 97,
+        "p50": 98.30000001192093,
+        "p75": 133.40000000596046,
+        "p95": 213.89999997615814,
+        "p99": 299.19999998807907
+      },
+      "firstGraphMs": {
+        "n": 97,
+        "p50": 220.30000001192093,
+        "p75": 300.5,
+        "p95": 354.5,
+        "p99": 628.3000000119209
+      },
+      "allCardsMs": {
+        "n": 97,
+        "p50": 98.59999999403954,
+        "p75": 133.5,
+        "p95": 214,
+        "p99": 299.19999998807907
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 162,
+      "p50": 240,
+      "p75": 496,
+      "p95": 624,
+      "p99": 648
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 0
+    },
+    "heap_used_bytes": {
+      "n": 97,
+      "p50": 9663136,
+      "p75": 10388976,
+      "p95": 11422924,
+      "p99": 11605000
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 1,
+        "p50": 2.5,
+        "p75": 2.5,
+        "p95": 2.5,
+        "p99": 2.5
+      },
+      "last_complete_response_to_graph": {
+        "n": 1,
+        "p50": 115.2999999821186,
+        "p75": 115.2999999821186,
+        "p95": 115.2999999821186,
+        "p99": 115.2999999821186
+      }
+    }
+  },
+  "baseline-warm-8w-controlled.json": {
+    "attempts": 200,
+    "passed": 195,
+    "failures": 5,
+    "failure_statuses": [
+      "timeout"
+    ],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 195,
+        "p50": 90,
+        "p75": 134.80000001192093,
+        "p95": 196.09999999403954,
+        "p99": 227.5
+      },
+      "firstGraphMs": {
+        "n": 195,
+        "p50": 211.59999999403954,
+        "p75": 274.90000000596046,
+        "p95": 321.39999997615814,
+        "p99": 347.19999998807907
+      },
+      "allCardsMs": {
+        "n": 195,
+        "p50": 91.09999999403954,
+        "p75": 134.90000000596046,
+        "p95": 196.2000000178814,
+        "p99": 227.59999999403954
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 960,
+      "p50": 352,
+      "p75": 696,
+      "p95": 824,
+      "p99": 920
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 195,
+      "p50": 56,
+      "p75": 56,
+      "p95": 56,
+      "p99": 144
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 0
+    },
+    "heap_used_bytes": {
+      "n": 195,
+      "p50": 8800424,
+      "p75": 9488000,
+      "p95": 9689196,
+      "p99": 10653488
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 0
+      },
+      "last_complete_response_to_graph": {
+        "n": 0
+      }
+    }
+  },
+  "baseline-warm-8w-native-original.json": {
+    "attempts": 200,
+    "passed": 194,
+    "failures": 6,
+    "failure_statuses": [
+      "timeout"
+    ],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 194,
+        "p50": 68.5,
+        "p75": 101.90000000596046,
+        "p95": 162.69999998807907,
+        "p99": 180.7999999821186
+      },
+      "firstGraphMs": {
+        "n": 194,
+        "p50": 166.69999998807907,
+        "p75": 251.7999999821186,
+        "p95": 337.30000001192093,
+        "p99": 644.5
+      },
+      "allCardsMs": {
+        "n": 194,
+        "p50": 68.5,
+        "p75": 102,
+        "p95": 162.69999998807907,
+        "p99": 180.90000000596046
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 705,
+      "p50": 400,
+      "p75": 464,
+      "p95": 648,
+      "p99": 752
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 0
+    },
+    "heap_used_bytes": {
+      "n": 194,
+      "p50": 9241024,
+      "p75": 9632440,
+      "p95": 10384728,
+      "p99": 11088604
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 2,
+        "p50": 2.699999988079071,
+        "p75": 4.5,
+        "p95": 4.5,
+        "p99": 4.5
+      },
+      "last_complete_response_to_graph": {
+        "n": 2,
+        "p50": 23.30000001192093,
+        "p75": 53.80000001192093,
+        "p95": 53.80000001192093,
+        "p99": 53.80000001192093
+      }
+    }
+  },
+  "candidate-cold-8w-after-embedded-results.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 545.5999999940395,
+        "p75": 617.6000000238419,
+        "p95": 661.6000000238419,
+        "p99": 683.0999999940395
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 2240.9000000059605,
+        "p75": 2654.2000000178814,
+        "p95": 3227.7000000178814,
+        "p99": 3463.2000000178814
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 2196.2000000178814,
+        "p75": 2632.7000000178814,
+        "p95": 3204.5999999940395,
+        "p99": 3432.2000000178814
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 747,
+      "p50": 456,
+      "p75": 648,
+      "p95": 776,
+      "p99": 904
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 600,
+      "p50": 0.10000002384185791,
+      "p75": 2.300000011920929,
+      "p95": 2.800000011920929,
+      "p99": 3.0999999940395355
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 9189376,
+      "p75": 9204332,
+      "p95": 9230120,
+      "p99": 9806228
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 694.7999999821186,
+        "p75": 720.9000000059605,
+        "p95": 769.8000000119209,
+        "p99": 809.8999999761581
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 65.80000001192093,
+        "p75": 73.5,
+        "p95": 103.5,
+        "p99": 117.5
+      }
+    }
+  },
+  "candidate-cold-8w-after-model-parser.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 555.9000000059605,
+        "p75": 614.1999999880791,
+        "p95": 685.0999999940395,
+        "p99": 711.8000000119209
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 2260.5,
+        "p75": 2523.5,
+        "p95": 2994.4000000059605,
+        "p99": 3160.0999999940395
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 2218.0999999940395,
+        "p75": 2479.9000000059605,
+        "p95": 2959.600000023842,
+        "p99": 3120.2999999821186
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 804,
+      "p50": 432,
+      "p75": 600,
+      "p95": 728,
+      "p99": 760
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 600,
+      "p50": 0.10000002384185791,
+      "p75": 2.4000000059604645,
+      "p95": 2.800000011920929,
+      "p99": 3
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 9188812,
+      "p75": 9200740,
+      "p95": 9229676,
+      "p99": 12336344
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 519.2999999821186,
+        "p75": 577.3000000119209,
+        "p95": 644.6999999880791,
+        "p99": 675.4000000059605
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 68.5,
+        "p75": 84.40000000596046,
+        "p95": 118.40000000596046,
+        "p99": 129.30000001192093
+      }
+    }
+  },
+  "candidate-cold-8w-before-frame-adjustment.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 50,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 692.2000000178814,
+        "p75": 789.5,
+        "p95": 895.3999999761581,
+        "p99": 915.5
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 5267.5,
+        "p75": 6057.199999988079,
+        "p95": 6652.699999988079,
+        "p99": 6973.5
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 5260.799999982119,
+        "p75": 6050.300000011921,
+        "p95": 6646.5999999940395,
+        "p99": 6967.5999999940395
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 1122,
+      "p50": 432,
+      "p75": 728,
+      "p95": 912,
+      "p99": 1016
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 0
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 9477812,
+      "p75": 9746228,
+      "p95": 9857572,
+      "p99": 9898168
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 802.0999999940395,
+        "p75": 946.5999999940395,
+        "p95": 1035.7000000178814,
+        "p99": 1061
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 51.5,
+        "p75": 55.60000002384186,
+        "p95": 71.39999997615814,
+        "p99": 86.69999998807907
+      }
+    }
+  },
+  "candidate-cold-8w-controlled.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 577.5,
+        "p75": 643.9000000059605,
+        "p95": 704.8000000119209,
+        "p99": 727.1999999880791
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 1166.0999999940395,
+        "p75": 1367.6000000238419,
+        "p95": 1495.9000000059605,
+        "p99": 1620.9000000059605
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 1162.9000000059605,
+        "p75": 1365,
+        "p95": 1482.4000000059605,
+        "p99": 1571.300000011921
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 1023,
+      "p50": 424,
+      "p75": 560,
+      "p95": 640,
+      "p99": 688
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 200,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 136
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 600,
+      "p50": 0.10000002384185791,
+      "p75": 1.5,
+      "p95": 2,
+      "p99": 2.0999999940395355
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 10522060,
+      "p75": 10546616,
+      "p95": 10598108,
+      "p99": 10641296
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 552,
+        "p75": 616.7000000178814,
+        "p95": 676.1999999880791,
+        "p99": 701.4000000059605
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 50.599999994039536,
+        "p75": 55.29999998211861,
+        "p95": 80.2999999821186,
+        "p99": 90.10000002384186
+      }
+    }
+  },
+  "candidate-warm-16w-balanced-one-thread-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 16,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 53.599999994039536,
+        "p75": 75.90000000596046,
+        "p95": 86.89999997615814,
+        "p99": 92.10000002384186
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 773.3000000119209,
+        "p75": 1000.5,
+        "p95": 1119.9000000059605,
+        "p99": 1201.6000000238419
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 715,
+        "p75": 984.2999999821186,
+        "p95": 1100.4000000059605,
+        "p99": 1185.7000000178814
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 177,
+      "p50": 368,
+      "p75": 568,
+      "p95": 736,
+      "p99": 752
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 592
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.699999988079071,
+      "p95": 1.9000000059604645,
+      "p99": 1.9000000059604645
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10906144,
+      "p75": 11958144,
+      "p95": 11967464,
+      "p99": 12215368
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.200000017881393,
+        "p75": 4.4000000059604645,
+        "p95": 4.799999982118607,
+        "p99": 9.099999994039536
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 47.69999998807907,
+        "p75": 82.7999999821186,
+        "p95": 121.39999997615814,
+        "p99": 141.7000000178814
+      }
+    }
+  },
+  "candidate-warm-16w-balanced-two-threads-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 16,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 55.80000001192093,
+        "p75": 65,
+        "p95": 71.5,
+        "p99": 77.90000000596046
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 863,
+        "p75": 1206.8999999761581,
+        "p95": 1251.9000000059605,
+        "p99": 1258
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 788.4000000059605,
+        "p75": 1175.3999999761581,
+        "p95": 1228.7000000178814,
+        "p99": 1245.5999999940395
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 216,
+      "p50": 240,
+      "p75": 648,
+      "p95": 728,
+      "p99": 744
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 288
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.699999988079071,
+      "p75": 1.800000011920929,
+      "p95": 2,
+      "p99": 2.100000023841858
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10896436,
+      "p75": 11957820,
+      "p95": 11971812,
+      "p99": 12785148
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.4000000059604645,
+        "p75": 4.5999999940395355,
+        "p95": 5.300000011920929,
+        "p99": 10.400000005960464
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 61.89999997615814,
+        "p75": 77.5,
+        "p95": 108.2999999821186,
+        "p99": 121.5
+      }
+    }
+  },
+  "candidate-warm-16w-shared-socket-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 16,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 59.599999994039536,
+        "p75": 65.40000000596046,
+        "p95": 73.30000001192093,
+        "p99": 73.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 1032.5,
+        "p75": 1450,
+        "p95": 1745.199999988079,
+        "p99": 1763.800000011921
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 1017.6999999880791,
+        "p75": 1421.0999999940395,
+        "p95": 1732.5999999940395,
+        "p99": 1754.5999999940395
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 204,
+      "p50": 432,
+      "p75": 568,
+      "p95": 632,
+      "p99": 648
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 480
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.600000023841858,
+      "p75": 1.7999999821186066,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10881512,
+      "p75": 10896856,
+      "p95": 12190616,
+      "p99": 12201148
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.199999988079071,
+        "p75": 4.300000011920929,
+        "p95": 4.699999988079071,
+        "p99": 4.800000011920929
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 46.099999994039536,
+        "p75": 60.69999998807907,
+        "p95": 78.0,
+        "p99": 111.90000000596046
+      }
+    }
+  },
+  "candidate-warm-8w-after-embedded-results.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 52.900000005960464,
+        "p75": 65.40000000596046,
+        "p95": 81.39999997615814,
+        "p99": 104.5
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 1599.7999999821186,
+        "p75": 1927,
+        "p95": 2289.2000000178814,
+        "p99": 2495.2000000178814
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 1577.0999999940395,
+        "p75": 1903,
+        "p95": 2263.9000000059605,
+        "p99": 2464.9000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 795,
+      "p50": 424,
+      "p75": 640,
+      "p95": 704,
+      "p99": 800
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 200,
+      "p50": 1.5999999940395355,
+      "p75": 1.800000011920929,
+      "p95": 2.600000023841858,
+      "p99": 3.2999999821186066
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 10764960,
+      "p75": 10865556,
+      "p95": 12085404,
+      "p99": 12261564
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 144.40000000596046,
+        "p75": 156.2000000178814,
+        "p95": 181.2999999821186,
+        "p99": 188.19999998807907
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 46.69999998807907,
+        "p75": 55.70000001788139,
+        "p95": 69.5,
+        "p99": 86.10000002384186
+      }
+    }
+  },
+  "candidate-warm-8w-after-model-parser.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 50,
+        "p75": 61.30000001192093,
+        "p95": 70.7999999821186,
+        "p99": 76.2000000178814
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 2004.5,
+        "p75": 2261.899999976158,
+        "p95": 2890.100000023842,
+        "p99": 3011.0999999940395
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 1981,
+        "p75": 2232.2999999821186,
+        "p95": 2874.300000011921,
+        "p99": 2980.100000023842
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 750,
+      "p50": 408,
+      "p75": 592,
+      "p95": 720,
+      "p99": 768
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 200,
+      "p50": 1.5999999940395355,
+      "p75": 1.7999999821186066,
+      "p95": 2,
+      "p99": 2.5
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 10743972,
+      "p75": 10865220,
+      "p95": 11951052,
+      "p99": 12174172
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 4.199999988079071,
+        "p75": 4.5,
+        "p95": 4.9000000059604645,
+        "p99": 6
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 42.599999994039536,
+        "p75": 55.60000002384186,
+        "p95": 84.40000000596046,
+        "p99": 110.2999999821186
+      }
+    }
+  },
+  "candidate-warm-8w-autocommit-defaultgc-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 63.20000001788139,
+        "p75": 74.39999997615814,
+        "p95": 83.2999999821186,
+        "p99": 85.39999997615814
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 1950.6000000238419,
+        "p75": 2933.9000000059605,
+        "p95": 3100.9000000059605,
+        "p99": 3131.4000000059605
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 1919.1000000238419,
+        "p75": 2921.4000000059605,
+        "p95": 3088.4000000059605,
+        "p99": 3103
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 219,
+      "p50": 400,
+      "p75": 584,
+      "p95": 672,
+      "p99": 696
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 232
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.600000023841858,
+      "p95": 1.800000011920929,
+      "p99": 1.9000000059604645
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10059096,
+      "p75": 10894484,
+      "p95": 12187660,
+      "p99": 12223524
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.100000023841858,
+        "p75": 4.5,
+        "p95": 4.9000000059604645,
+        "p99": 5.5
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 36.900000005960464,
+        "p75": 42.099999994039536,
+        "p95": 71.09999999403954,
+        "p99": 74.30000001192093
+      }
+    }
+  },
+  "candidate-warm-8w-balanced-db-observation.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 54,
+        "p75": 60.79999998211861,
+        "p95": 71,
+        "p99": 73
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 775.4000000059605,
+        "p75": 1050,
+        "p95": 1126.9000000059605,
+        "p99": 1295.7999999821186
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 718.5,
+        "p75": 1034.300000011921,
+        "p95": 1115.199999988079,
+        "p99": 1281.7999999821186
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 240,
+      "p50": 392,
+      "p75": 552,
+      "p95": 640,
+      "p99": 656
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 256
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.800000011920929,
+      "p95": 1.9000000059604645,
+      "p99": 1.9000000059604645
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10140460,
+      "p75": 11957500,
+      "p95": 11967704,
+      "p99": 12195016
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.199999988079071,
+        "p75": 4.4000000059604645,
+        "p95": 4.700000017881393,
+        "p99": 4.799999982118607
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 51.900000005960464,
+        "p75": 96.5,
+        "p95": 132.80000001192093,
+        "p99": 138.59999999403954
+      }
+    }
+  },
+  "candidate-warm-8w-balanced-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 42.5,
+        "p75": 53.400000005960464,
+        "p95": 71.60000002384186,
+        "p99": 77.7000000178814
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 1234.699999988079,
+        "p75": 1346.2000000178814,
+        "p95": 1466.5,
+        "p99": 1474.2000000178814
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 1187.5999999940395,
+        "p75": 1290.5999999940395,
+        "p95": 1396.9000000059605,
+        "p99": 1400.4000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 222,
+      "p50": 296,
+      "p75": 616,
+      "p95": 800,
+      "p99": 824
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 328
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.7999999821186066,
+      "p75": 1.899999976158142,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10888820,
+      "p75": 10898608,
+      "p95": 12190336,
+      "p99": 12223700
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4,
+        "p75": 4.4000000059604645,
+        "p95": 4.9000000059604645,
+        "p99": 6.0999999940395355
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 79.0,
+        "p75": 96.69999998807907,
+        "p95": 120.90000000596046,
+        "p99": 132.40000000596046
+      }
+    }
+  },
+  "candidate-warm-8w-balanced-four-threads-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 48.39999997615814,
+        "p75": 70.09999999403954,
+        "p95": 83.7999999821186,
+        "p99": 90.59999999403954
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 813.7999999821186,
+        "p75": 1128.7999999821186,
+        "p95": 1303.4000000059605,
+        "p99": 1320.5
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 794.9000000059605,
+        "p75": 1101.5999999940395,
+        "p95": 1272.0999999940395,
+        "p99": 1280.3999999761581
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 174,
+      "p50": 336,
+      "p75": 592,
+      "p95": 696,
+      "p99": 704
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 640
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.800000011920929,
+      "p95": 2,
+      "p99": 2.100000023841858
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10898620,
+      "p75": 11958152,
+      "p95": 12200948,
+      "p99": 12211900
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.0999999940395355,
+        "p75": 4.4000000059604645,
+        "p95": 5.399999976158142,
+        "p99": 6.100000023841858
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 56.900000005960464,
+        "p75": 76.59999999403954,
+        "p95": 103.09999999403954,
+        "p99": 131.19999998807907
+      }
+    }
+  },
+  "candidate-warm-8w-balanced-one-thread-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 57.30000001192093,
+        "p75": 65.30000001192093,
+        "p95": 80.40000000596046,
+        "p99": 81.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 866.2000000178814,
+        "p75": 1087.699999988079,
+        "p95": 1261.6000000238419,
+        "p99": 1385
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 845.5,
+        "p75": 1066.5,
+        "p95": 1245.800000011921,
+        "p99": 1368.5999999940395
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 237,
+      "p50": 392,
+      "p75": 552,
+      "p95": 640,
+      "p99": 648
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 376
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.7999999821186066,
+      "p95": 2,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10890660,
+      "p75": 11957784,
+      "p95": 11967652,
+      "p99": 12195060
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.199999988079071,
+        "p75": 4.4000000059604645,
+        "p95": 4.800000011920929,
+        "p99": 24
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 45.5,
+        "p75": 74.90000000596046,
+        "p95": 106.90000000596046,
+        "p99": 124.90000000596046
+      }
+    }
+  },
+  "candidate-warm-8w-balanced-two-threads-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 53.20000001788139,
+        "p75": 59.599999994039536,
+        "p95": 79,
+        "p99": 87.30000001192093
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 791.7000000178814,
+        "p75": 1064,
+        "p95": 1161.5999999940395,
+        "p99": 1361.4000000059605
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 777.1000000238419,
+        "p75": 1034,
+        "p95": 1148.199999988079,
+        "p99": 1347.300000011921
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 210,
+      "p50": 384,
+      "p75": 496,
+      "p95": 640,
+      "p99": 672
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 464
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.7999999821186066,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 11233160,
+      "p75": 11962084,
+      "p95": 12194160,
+      "p99": 12196860
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.200000017881393,
+        "p75": 4.4000000059604645,
+        "p95": 4.600000023841858,
+        "p99": 6.600000023841858
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 59.400000005960464,
+        "p75": 87.80000001192093,
+        "p95": 138.30000001192093,
+        "p99": 151.5
+      }
+    }
+  },
+  "candidate-warm-8w-before-frame-adjustment.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 50,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 67.2000000178814,
+        "p75": 94.7999999821186,
+        "p95": 138,
+        "p99": 157.59999999403954
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 2975.2000000178814,
+        "p75": 3484.800000011921,
+        "p95": 5228.5,
+        "p99": 5494.5
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 2967.300000011921,
+        "p75": 3463.2000000178814,
+        "p95": 5221.699999988079,
+        "p99": 5480.0999999940395
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 864,
+      "p50": 456,
+      "p75": 688,
+      "p95": 864,
+      "p99": 944
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 0
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 0
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 10871216,
+      "p75": 12010276,
+      "p95": 12381720,
+      "p99": 12749676
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 223.59999999403954,
+        "p75": 251.2000000178814,
+        "p95": 266.09999999403954,
+        "p99": 272.59999999403954
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 33.0,
+        "p75": 41.900000005960464,
+        "p95": 59.900000005960464,
+        "p99": 72.5
+      }
+    }
+  },
+  "candidate-warm-8w-browser-trace-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 64.69999998807907,
+        "p75": 78.7000000178814,
+        "p95": 137.69999998807907,
+        "p99": 162.40000000596046
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 721.2000000178814,
+        "p75": 852.1999999880791,
+        "p95": 933.4000000059605,
+        "p99": 1137.199999988079
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 696,
+        "p75": 842,
+        "p95": 921.9000000059605,
+        "p99": 1085.7999999821186
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 174,
+      "p50": 408,
+      "p75": 640,
+      "p95": 712,
+      "p99": 720
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 576
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 2.199999988079071,
+      "p95": 2.300000011920929,
+      "p99": 2.699999988079071
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9268724,
+      "p75": 9451536,
+      "p95": 11423580,
+      "p99": 11659044
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.199999988079071,
+        "p75": 4.600000023841858,
+        "p95": 5.9000000059604645,
+        "p99": 10
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 55.5,
+        "p75": 95.40000000596046,
+        "p95": 132.19999998807907,
+        "p99": 138.09999999403954
+      }
+    }
+  },
+  "candidate-warm-8w-compressed-one-thread-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 41.89999997615814,
+        "p75": 49.89999997615814,
+        "p95": 63.20000001788139,
+        "p99": 63.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 717.0999999940395,
+        "p75": 856.6999999880791,
+        "p95": 1011.5,
+        "p99": 1063.9000000059605
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 699.2999999821186,
+        "p75": 851.6999999880791,
+        "p95": 1003.6999999880791,
+        "p99": 1048.2999999821186
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 186,
+      "p50": 376,
+      "p75": 616,
+      "p95": 680,
+      "p99": 696
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 528
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 2,
+      "p99": 2.199999988079071
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9213004,
+      "p75": 9245248,
+      "p95": 11059388,
+      "p99": 11613804
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.300000011920929,
+        "p75": 4.5,
+        "p95": 5.700000017881393,
+        "p99": 6.9000000059604645
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 51.0,
+        "p75": 88.2000000178814,
+        "p95": 154.69999998807907,
+        "p99": 173.90000000596046
+      }
+    }
+  },
+  "candidate-warm-8w-container-balanced-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 52.89999997615814,
+        "p75": 57.70000001788139,
+        "p95": 60.89999997615814,
+        "p99": 74.80000001192093
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 802.0999999940395,
+        "p75": 1089.7999999821186,
+        "p95": 1190.7000000178814,
+        "p99": 1219.300000011921
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 784.4000000059605,
+        "p75": 1059,
+        "p95": 1160.9000000059605,
+        "p99": 1170.300000011921
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 219,
+      "p50": 336,
+      "p75": 640,
+      "p95": 712,
+      "p99": 720
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 160
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 1.800000011920929,
+      "p99": 1.9000000059604645
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10229604,
+      "p75": 11934100,
+      "p95": 11964940,
+      "p99": 11987660
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.199999988079071,
+        "p75": 4.5,
+        "p95": 5,
+        "p99": 6.299999982118607
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 65.40000000596046,
+        "p75": 80.7999999821186,
+        "p95": 106.2000000178814,
+        "p99": 113.69999998807907
+      }
+    }
+  },
+  "candidate-warm-8w-container-compressed-four-threads-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 54.599999994039536,
+        "p75": 57.099999994039536,
+        "p95": 67.90000000596046,
+        "p99": 72.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 741.7999999821186,
+        "p75": 988.5999999940395,
+        "p95": 1148.0999999940395,
+        "p99": 1161
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 707.5999999940395,
+        "p75": 956.8999999761581,
+        "p95": 1111.8999999761581,
+        "p99": 1123.4000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 216,
+      "p50": 248,
+      "p75": 640,
+      "p95": 768,
+      "p99": 784
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 608
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.600000023841858,
+      "p95": 2,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10036900,
+      "p75": 10860316,
+      "p95": 11933132,
+      "p99": 11934656
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.4000000059604645,
+        "p75": 4.600000023841858,
+        "p95": 5,
+        "p99": 6.0999999940395355
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 59.20000001788139,
+        "p75": 71.59999999403954,
+        "p95": 107.40000000596046,
+        "p99": 117.80000001192093
+      }
+    }
+  },
+  "candidate-warm-8w-container-compressed-two-threads-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 46.400000005960464,
+        "p75": 64.30000001192093,
+        "p95": 76.69999998807907,
+        "p99": 79.09999999403954
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 682,
+        "p75": 868.8000000119209,
+        "p95": 1003.5999999940395,
+        "p99": 1125.9000000059605
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 618.7999999821186,
+        "p75": 844.5,
+        "p95": 945.4000000059605,
+        "p99": 1057.199999988079
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 165,
+      "p50": 472,
+      "p75": 616,
+      "p95": 680,
+      "p99": 696
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 680
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.800000011920929,
+      "p95": 2,
+      "p99": 2.100000023841858
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10042752,
+      "p75": 11902564,
+      "p95": 11936008,
+      "p99": 12783492
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.299999982118607,
+        "p75": 4.5,
+        "p95": 4.700000017881393,
+        "p99": 5.0999999940395355
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 86.09999999403954,
+        "p75": 105.19999998807907,
+        "p95": 129.40000000596046,
+        "p99": 163.5
+      }
+    }
+  },
+  "candidate-warm-8w-container-default-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 65.89999997615814,
+        "p75": 85.80000001192093,
+        "p95": 100.40000000596046,
+        "p99": 103.60000002384186
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 1335.300000011921,
+        "p75": 2107.2000000178814,
+        "p95": 2321.9000000059605,
+        "p99": 2385.4000000059605
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 1323.199999988079,
+        "p75": 2098.4000000059605,
+        "p95": 2296.300000011921,
+        "p99": 2368.5999999940395
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 195,
+      "p50": 416,
+      "p75": 592,
+      "p95": 680,
+      "p99": 696
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 520
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10071532,
+      "p75": 10905608,
+      "p95": 12194560,
+      "p99": 12228972
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 3.9000000059604645,
+        "p75": 4.100000023841858,
+        "p95": 4.5999999940395355,
+        "p99": 5.200000017881393
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 38.599999994039536,
+        "p75": 42.099999994039536,
+        "p95": 53.70000001788139,
+        "p99": 80.09999999403954
+      }
+    }
+  },
+  "candidate-warm-8w-controlled.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 45.099999994039536,
+        "p75": 51.69999998807907,
+        "p95": 62,
+        "p99": 64.59999999403954
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 564.8000000119209,
+        "p75": 744.9000000059605,
+        "p95": 794.5999999940395,
+        "p99": 951.0999999940395
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 555.7999999821186,
+        "p75": 733.2000000178814,
+        "p95": 778.9000000059605,
+        "p99": 908
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 945,
+      "p50": 384,
+      "p75": 592,
+      "p95": 696,
+      "p99": 760
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 200,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 112
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 200,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 2,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 9723924,
+      "p75": 12496452,
+      "p95": 12561296,
+      "p99": 12682808
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 4.100000023841858,
+        "p75": 4.5,
+        "p95": 5.4000000059604645,
+        "p99": 6.799999982118607
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 32.400000005960464,
+        "p75": 44.30000001192093,
+        "p95": 88.7000000178814,
+        "p99": 102.80000001192093
+      }
+    }
+  },
+  "candidate-warm-8w-decoded-budget-layout-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 51,
+        "p75": 58,
+        "p95": 67.09999999403954,
+        "p99": 73.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 717.2000000178814,
+        "p75": 877.3000000119209,
+        "p95": 906.3999999761581,
+        "p99": 1124.5999999940395
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 679.1000000238419,
+        "p75": 835.9000000059605,
+        "p95": 891.5,
+        "p99": 1042.699999988079
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 216,
+      "p50": 248,
+      "p75": 656,
+      "p95": 704,
+      "p99": 712
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 168
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.9000000059604645,
+      "p95": 2,
+      "p99": 2.2000000178813934
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10001936,
+      "p75": 10025136,
+      "p95": 10089184,
+      "p99": 10192032
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.299999982118607,
+        "p75": 4.5,
+        "p95": 6.300000011920929,
+        "p99": 15.099999994039536
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 90.19999998807907,
+        "p75": 110.7999999821186,
+        "p95": 151.40000000596046,
+        "p99": 156.59999999403954
+      }
+    }
+  },
+  "candidate-warm-8w-deferred-observation-200.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 45.89999997615814,
+        "p75": 55.80000001192093,
+        "p95": 72.30000001192093,
+        "p99": 75.40000000596046
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 633.5,
+        "p75": 759.9000000059605,
+        "p95": 840.4000000059605,
+        "p99": 979.4000000059605
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 583.1999999880791,
+        "p75": 749.3000000119209,
+        "p95": 813.2000000178814,
+        "p99": 955.5
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 897,
+      "p50": 408,
+      "p75": 520,
+      "p95": 672,
+      "p99": 752
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 200,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 400
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 200,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 9272952,
+      "p75": 9746184,
+      "p95": 12533740,
+      "p99": 12563284
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 4.199999988079071,
+        "p75": 4.4000000059604645,
+        "p95": 5.0999999940395355,
+        "p99": 7.5
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 56.19999998807907,
+        "p75": 90.5,
+        "p95": 120.0,
+        "p99": 127.69999998807907
+      }
+    }
+  },
+  "candidate-warm-8w-deferred-observation-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 48.60000002384186,
+        "p75": 56,
+        "p95": 62.19999998807907,
+        "p99": 65.40000000596046
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 615.8000000119209,
+        "p75": 773.0999999940395,
+        "p95": 862.6999999880791,
+        "p99": 965.6999999880791
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 572,
+        "p75": 758.2000000178814,
+        "p95": 832.7999999821186,
+        "p99": 953.9000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 216,
+      "p50": 376,
+      "p75": 576,
+      "p95": 640,
+      "p99": 728
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 376
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.5,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9731100,
+      "p75": 11238280,
+      "p95": 12545392,
+      "p99": 12591884
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.299999982118607,
+        "p75": 4.5,
+        "p95": 8.400000005960464,
+        "p99": 10.299999982118607
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 43.70000001788139,
+        "p75": 64.2999999821186,
+        "p95": 95.7000000178814,
+        "p99": 111.0
+      }
+    }
+  },
+  "candidate-warm-8w-fifty-browser-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 280.30000001192093,
+        "p75": 393,
+        "p95": 1199.699999988079,
+        "p99": 1679.300000011921
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 3914.5999999940395,
+        "p75": 4401.799999982119,
+        "p95": 4782.800000011921,
+        "p99": 5380.5999999940395
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 3901.4000000059605,
+        "p75": 4391.299999982119,
+        "p95": 4777.5,
+        "p99": 5363.9000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 450,
+      "p50": 104,
+      "p75": 688,
+      "p95": 1048,
+      "p99": 1152
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 48
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 2.9000000059604645,
+      "p75": 4.5,
+      "p95": 11.900000005960464,
+      "p99": 22.799999982118607
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 11523356,
+      "p75": 12422840,
+      "p95": 12503156,
+      "p99": 12543616
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 15.5,
+        "p75": 28.80000001192093,
+        "p95": 76.2999999821186,
+        "p99": 146.19999998807907
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 49.60000002384186,
+        "p75": 62.30000001192093,
+        "p95": 122.59999999403954,
+        "p99": 128.19999998807907
+      }
+    }
+  },
+  "candidate-warm-8w-four-threads-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 54.400000005960464,
+        "p75": 60,
+        "p95": 76.30000001192093,
+        "p99": 97.7999999821186
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 1023,
+        "p75": 1420.3999999761581,
+        "p95": 1941.800000011921,
+        "p99": 2052.699999988079
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 1008.0999999940395,
+        "p75": 1409,
+        "p95": 1913,
+        "p99": 2036.3999999761581
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 174,
+      "p50": 432,
+      "p75": 600,
+      "p95": 672,
+      "p99": 688
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 536
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.699999988079071,
+      "p95": 1.9000000059604645,
+      "p99": 1.9000000059604645
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10078024,
+      "p75": 11079296,
+      "p95": 11970728,
+      "p99": 12809628
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.300000011920929,
+        "p75": 4.5999999940395355,
+        "p95": 5.199999988079071,
+        "p99": 9.299999982118607
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 41.099999994039536,
+        "p75": 68.40000000596046,
+        "p95": 90.5,
+        "p99": 115.2000000178814
+      }
+    }
+  },
+  "candidate-warm-8w-full-chromium-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 1401.5999999940395,
+        "p75": 2592.2999999821186,
+        "p95": 2960.4000000059605,
+        "p99": 3032.0999999940395
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 3173.600000023842,
+        "p75": 3193.800000011921,
+        "p95": 3263.300000011921,
+        "p99": 3274.2000000178814
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 3133.0999999940395,
+        "p75": 3167.399999976158,
+        "p95": 3226.5,
+        "p99": 3249.300000011921
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 450,
+      "p50": 128,
+      "p75": 248,
+      "p95": 672,
+      "p99": 696
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 56,
+      "p95": 56,
+      "p99": 56
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.699999988079071,
+      "p75": 1.899999976158142,
+      "p95": 2,
+      "p99": 2.0999999940395355
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 11804132,
+      "p75": 12699832,
+      "p95": 12766928,
+      "p99": 12788836
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.0999999940395355,
+        "p75": 4.5,
+        "p95": 5.0999999940395355,
+        "p99": 5.299999982118607
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 2559.0999999940395,
+        "p75": 2872.5999999940395,
+        "p95": 3114.5999999940395,
+        "p99": 3131.199999988079
+      }
+    }
+  },
+  "candidate-warm-8w-gc100000-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 50.19999998807907,
+        "p75": 62,
+        "p95": 72,
+        "p99": 84.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 1495.5999999940395,
+        "p75": 1670.699999988079,
+        "p95": 1989.0999999940395,
+        "p99": 2006.0999999940395
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 1487.5,
+        "p75": 1649.2999999821186,
+        "p95": 1974.800000011921,
+        "p99": 1989.4000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 189,
+      "p50": 416,
+      "p75": 584,
+      "p95": 688,
+      "p99": 712
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 520
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.699999988079071,
+      "p95": 1.9000000059604645,
+      "p99": 2.0999999940395355
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10069700,
+      "p75": 10896096,
+      "p95": 12056936,
+      "p99": 12200912
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.0999999940395355,
+        "p75": 4.699999988079071,
+        "p95": 5.4000000059604645,
+        "p99": 6.9000000059604645
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 40.79999998211861,
+        "p75": 54.39999997615814,
+        "p95": 75.5,
+        "p99": 78.69999998807907
+      }
+    }
+  },
+  "candidate-warm-8w-gc1m-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 50.900000005960464,
+        "p75": 67.09999999403954,
+        "p95": 79.69999998807907,
+        "p99": 80.7000000178814
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 1155,
+        "p75": 1391.4000000059605,
+        "p95": 1570.2000000178814,
+        "p99": 1591.3999999761581
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 1119.5,
+        "p75": 1322.9000000059605,
+        "p95": 1535.699999988079,
+        "p99": 1567.3999999761581
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 192,
+      "p50": 328,
+      "p75": 568,
+      "p95": 672,
+      "p99": 728
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 520
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.7999999821186066,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10888872,
+      "p75": 10916944,
+      "p95": 11095380,
+      "p99": 12212356
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.200000017881393,
+        "p75": 4.5,
+        "p95": 5.0999999940395355,
+        "p99": 9.199999988079071
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 61.599999994039536,
+        "p75": 76.89999997615814,
+        "p95": 93.5,
+        "p99": 100.90000000596046
+      }
+    }
+  },
+  "candidate-warm-8w-header-no-blur-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 49.19999998807907,
+        "p75": 57.80000001192093,
+        "p95": 64,
+        "p99": 66
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 631.4000000059605,
+        "p75": 807.0999999940395,
+        "p95": 862.5999999940395,
+        "p99": 1035.7000000178814
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 610.3999999761581,
+        "p75": 798.1000000238419,
+        "p95": 849.5999999940395,
+        "p99": 991.4000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 213,
+      "p50": 416,
+      "p75": 472,
+      "p95": 680,
+      "p99": 696
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 376
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.600000023841858,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9591812,
+      "p75": 12364184,
+      "p95": 12402700,
+      "p99": 12407264
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.199999988079071,
+        "p75": 4.5,
+        "p95": 5,
+        "p99": 8.300000011920929
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 39.900000005960464,
+        "p75": 63.69999998807907,
+        "p95": 101.09999999403954,
+        "p99": 108.40000000596046
+      }
+    }
+  },
+  "candidate-warm-8w-motion-budget-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 45.900000005960464,
+        "p75": 64.89999997615814,
+        "p95": 76.5,
+        "p99": 89.19999998807907
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 548.9000000059605,
+        "p75": 748.3000000119209,
+        "p95": 798.5,
+        "p99": 970.3000000119209
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 532.8000000119209,
+        "p75": 736.2999999821186,
+        "p95": 781.7000000178814,
+        "p99": 920.9000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 288,
+      "p50": 408,
+      "p75": 512,
+      "p95": 616,
+      "p99": 768
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 88
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 2,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9727020,
+      "p75": 12516760,
+      "p95": 12675496,
+      "p99": 12686404
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.200000017881393,
+        "p75": 4.4000000059604645,
+        "p95": 6.5999999940395355,
+        "p99": 10.300000011920929
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 30.799999982118607,
+        "p75": 51.60000002384186,
+        "p95": 82.80000001192093,
+        "p99": 88.0
+      }
+    }
+  },
+  "candidate-warm-8w-plot-flush-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 56.69999998807907,
+        "p75": 62.5,
+        "p95": 72.59999999403954,
+        "p99": 76.59999999403954
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 718.9000000059605,
+        "p75": 872.3999999761581,
+        "p95": 924.3999999761581,
+        "p99": 1112.7999999821186
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 640.9000000059605,
+        "p75": 838.9000000059605,
+        "p95": 919.5,
+        "p99": 1030.5
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 237,
+      "p50": 312,
+      "p75": 664,
+      "p95": 712,
+      "p99": 720
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 184
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 2,
+      "p99": 2.0999999940395355
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10015184,
+      "p75": 10037792,
+      "p95": 10199756,
+      "p99": 11921924
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.199999988079071,
+        "p75": 4.5,
+        "p95": 6.300000011920929,
+        "p99": 8.299999982118607
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 83.5,
+        "p75": 114.5,
+        "p95": 136.40000000596046,
+        "p99": 148.59999999403954
+      }
+    }
+  },
+  "candidate-warm-8w-short-plot-idle-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 43,
+        "p75": 51.900000005960464,
+        "p95": 60.80000001192093,
+        "p99": 60.89999997615814
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 632.7999999821186,
+        "p75": 764.1000000238419,
+        "p95": 815.9000000059605,
+        "p99": 974.9000000059605
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 594.6000000238419,
+        "p75": 759.2000000178814,
+        "p95": 804.9000000059605,
+        "p99": 933.4000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 213,
+      "p50": 248,
+      "p75": 624,
+      "p95": 728,
+      "p99": 744
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 512
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.600000023841858,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9724572,
+      "p75": 9753832,
+      "p95": 12549788,
+      "p99": 12616560
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.200000017881393,
+        "p75": 4.5,
+        "p95": 4.9000000059604645,
+        "p99": 5.699999988079071
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 47.099999994039536,
+        "p75": 73.2000000178814,
+        "p95": 101.89999997615814,
+        "p99": 134.7999999821186
+      }
+    }
+  },
+  "candidate-warm-8w-skip-hidden-pilot-200.json": {
+    "attempts": 200,
+    "passed": 200,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 200,
+        "p50": 46.900000005960464,
+        "p75": 54.099999994039536,
+        "p95": 68.5,
+        "p99": 73.80000001192093
+      },
+      "firstGraphMs": {
+        "n": 200,
+        "p50": 640.4000000059605,
+        "p75": 792.6000000238419,
+        "p95": 858,
+        "p99": 1022.9000000059605
+      },
+      "allCardsMs": {
+        "n": 200,
+        "p50": 600.6999999880791,
+        "p75": 781,
+        "p95": 840.5,
+        "p99": 1010.1000000238419
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 864,
+      "p50": 360,
+      "p75": 624,
+      "p95": 712,
+      "p99": 736
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 200,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 168
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 200,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 2,
+      "p99": 2.0999999940395355
+    },
+    "heap_used_bytes": {
+      "n": 200,
+      "p50": 9581740,
+      "p75": 10977124,
+      "p95": 12415448,
+      "p99": 12567732
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 200,
+        "p50": 4.199999988079071,
+        "p75": 4.4000000059604645,
+        "p95": 5.300000011920929,
+        "p99": 7.9000000059604645
+      },
+      "last_complete_response_to_graph": {
+        "n": 200,
+        "p50": 73.40000000596046,
+        "p75": 104.0,
+        "p95": 133.40000000596046,
+        "p99": 145.80000001192093
+      }
+    }
+  },
+  "candidate-warm-8w-skip-hidden-pilot-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 42.60000002384186,
+        "p75": 48.70000001788139,
+        "p95": 51.5,
+        "p99": 66.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 647.2000000178814,
+        "p75": 802.2000000178814,
+        "p95": 822.0999999940395,
+        "p99": 1026.699999988079
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 579.8000000119209,
+        "p75": 780.8000000119209,
+        "p95": 807.5,
+        "p99": 985.5
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 210,
+      "p50": 408,
+      "p75": 480,
+      "p95": 648,
+      "p99": 720
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 352
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 2,
+      "p99": 2.0999999940395355
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9577272,
+      "p75": 12342784,
+      "p95": 12421340,
+      "p99": 12572584
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.300000011920929,
+        "p75": 4.5999999940395355,
+        "p95": 5.5,
+        "p99": 6.800000011920929
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 90.09999999403954,
+        "p75": 116.30000001192093,
+        "p95": 131.7000000178814,
+        "p99": 143.2999999821186
+      }
+    }
+  },
+  "candidate-warm-8w-stable-placeholder-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 55.400000005960464,
+        "p75": 79.09999999403954,
+        "p95": 84,
+        "p99": 97.80000001192093
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 650.6999999880791,
+        "p75": 802.5,
+        "p95": 816,
+        "p99": 979.4000000059605
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 628.6999999880791,
+        "p75": 783.9000000059605,
+        "p95": 809.4000000059605,
+        "p99": 950.7999999821186
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 216,
+      "p50": 376,
+      "p75": 504,
+      "p95": 680,
+      "p99": 688
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 120
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.7000000178813934,
+      "p95": 2,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9734840,
+      "p75": 12527580,
+      "p95": 12564936,
+      "p99": 12702432
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.200000017881393,
+        "p75": 4.5,
+        "p95": 6,
+        "p99": 19.19999998807907
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 80.09999999403954,
+        "p75": 99.7999999821186,
+        "p95": 131.80000001192093,
+        "p99": 143.2000000178814
+      }
+    }
+  },
+  "candidate-warm-8w-static-access-default-gc-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 65.5,
+        "p75": 78.7999999821186,
+        "p95": 95.90000000596046,
+        "p99": 107.90000000596046
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 799.5999999940395,
+        "p75": 1051.199999988079,
+        "p95": 1123.7000000178814,
+        "p99": 1278.699999988079
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 783.5,
+        "p75": 1035.800000011921,
+        "p95": 1108.4000000059605,
+        "p99": 1262.4000000059605
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 219,
+      "p50": 288,
+      "p75": 656,
+      "p95": 784,
+      "p99": 824
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 568
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 2,
+      "p95": 2.2999999821186066,
+      "p99": 2.5
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9258096,
+      "p75": 9776440,
+      "p95": 11551536,
+      "p99": 11565264
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.300000011920929,
+        "p75": 4.5,
+        "p95": 5,
+        "p99": 5.5999999940395355
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 35.69999998807907,
+        "p75": 65.69999998807907,
+        "p95": 119.7999999821186,
+        "p99": 125.5
+      }
+    }
+  },
+  "candidate-warm-8w-static-access-gc7000-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 62.400000005960464,
+        "p75": 74.5,
+        "p95": 91.10000002384186,
+        "p99": 99
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 723.5999999940395,
+        "p75": 954.1000000238419,
+        "p95": 1087.1000000238419,
+        "p99": 1211.7000000178814
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 694.2000000178814,
+        "p75": 938.8000000119209,
+        "p95": 1077.800000011921,
+        "p99": 1208.300000011921
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 231,
+      "p50": 288,
+      "p75": 664,
+      "p95": 736,
+      "p99": 744
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 144
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.7999999821186066,
+      "p95": 2.199999988079071,
+      "p99": 2.2000000178813934
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9238348,
+      "p75": 9789608,
+      "p95": 11548376,
+      "p99": 11680260
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.0999999940395355,
+        "p75": 4.4000000059604645,
+        "p95": 5.800000011920929,
+        "p99": 6.300000011920929
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 48.099999994039536,
+        "p75": 77.09999999403954,
+        "p95": 106.59999999403954,
+        "p99": 111.90000000596046
+      }
+    }
+  },
+  "candidate-warm-8w-stepped-animation-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 50,
+        "p75": 57.80000001192093,
+        "p95": 70.5,
+        "p99": 74.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 587,
+        "p75": 774.5999999940395,
+        "p95": 833.4000000059605,
+        "p99": 956.9000000059605
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 573.0999999940395,
+        "p75": 767.0999999940395,
+        "p95": 821.0999999940395,
+        "p99": 948.8000000119209
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 219,
+      "p50": 264,
+      "p75": 616,
+      "p95": 760,
+      "p99": 768
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 152
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5,
+      "p75": 1.5999999940395355,
+      "p95": 2,
+      "p99": 2.0999999940395355
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 9584516,
+      "p75": 12350136,
+      "p95": 12375828,
+      "p99": 12409804
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.200000017881393,
+        "p75": 4.5,
+        "p95": 4.799999982118607,
+        "p99": 6.5
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 34.69999998807907,
+        "p75": 59.69999998807907,
+        "p95": 115.59999999403954,
+        "p99": 160.5
+      }
+    }
+  },
+  "candidate-warm-8w-switch-diagnostic.json": {
+    "attempts": 50,
+    "passed": 50,
+    "failures": 0,
+    "failure_statuses": [],
+    "concurrency": 50,
+    "workers": 8,
+    "preconditionConcurrency": 4,
+    "units": "milliseconds except heap/cache byte sizes",
+    "successful_open_timings": {
+      "frameMs": {
+        "n": 50,
+        "p50": 54.19999998807907,
+        "p75": 57.80000001192093,
+        "p95": 71.39999997615814,
+        "p99": 75.5
+      },
+      "firstGraphMs": {
+        "n": 50,
+        "p50": 1406.199999988079,
+        "p75": 1615.2000000178814,
+        "p95": 1984.4000000059605,
+        "p99": 2001.5999999940395
+      },
+      "allCardsMs": {
+        "n": 50,
+        "p50": 1345.5,
+        "p75": 1569.699999988079,
+        "p95": 1966.800000011921,
+        "p99": 1973.300000011921
+      }
+    },
+    "concurrent_interaction_events": {
+      "n": 189,
+      "p50": 368,
+      "p75": 584,
+      "p95": 696,
+      "p99": 720
+    },
+    "foreground_two_toggle_latency_upper_bound": {
+      "n": 50,
+      "p50": 48,
+      "p75": 48,
+      "p95": 48,
+      "p99": 608
+    },
+    "foreground_censored_below_16ms_pages": 0,
+    "foreground_interaction_failures": 0,
+    "large_json_parse": {
+      "n": 50,
+      "p50": 1.5999999940395355,
+      "p75": 1.7999999821186066,
+      "p95": 1.9000000059604645,
+      "p99": 2
+    },
+    "heap_used_bytes": {
+      "n": 50,
+      "p50": 10888224,
+      "p75": 10901164,
+      "p95": 11968684,
+      "p99": 12224496
+    },
+    "notes": [
+      "Quantiles cover successful openings only; failure counts remain explicit.",
+      "Event Timing values below 16ms are censored, not recorded as zero.",
+      "Concurrent interaction stress is not a typical single foreground interaction."
+    ],
+    "browser_spans": {
+      "dispatch": {
+        "n": 50,
+        "p50": 4.299999982118607,
+        "p75": 4.5999999940395355,
+        "p95": 4.800000011920929,
+        "p99": 5.299999982118607
+      },
+      "last_complete_response_to_graph": {
+        "n": 50,
+        "p50": 66.0,
+        "p75": 77.30000001192093,
+        "p95": 104.2000000178814,
+        "p99": 111.19999998807907
+      }
+    }
+  }
+}

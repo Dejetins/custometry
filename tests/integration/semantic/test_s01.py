@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import os
 from pathlib import Path
 import subprocess
+from typing import Any, Never
 from uuid import UUID, uuid4
 import psycopg
 from psycopg import sql
@@ -351,7 +352,7 @@ def test_real_calendar_api_csrf_roles_cas_replay_scope_revocation(database: Data
             ).status_code
             == 409
         )
-        # Two independent sessions/connections compete on revision 1.
+        # Once configured, independent writes cannot replace the policy.
         cookies = dict(client.cookies)
 
         def write(month: int) -> int:
@@ -364,7 +365,7 @@ def test_real_calendar_api_csrf_roles_cas_replay_scope_revocation(database: Data
                 ).status_code
 
         with ThreadPoolExecutor(max_workers=2) as pool:
-            assert sorted(pool.map(write, [7, 10])) == [200, 409]
+            assert sorted(pool.map(write, [7, 10])) == [409, 409]
         assert (
             client.post(
                 "/semantic/workspace-calendar/v1/versions", headers=headers, json=body
@@ -372,7 +373,7 @@ def test_real_calendar_api_csrf_roles_cas_replay_scope_revocation(database: Data
             == first
         )
         current = client.get("/semantic/workspace-calendar/v1").json()
-        assert current["revision"] == 2
+        assert current["revision"] == 1
         pin = initial["calendar"]
         assert (
             client.get(
@@ -402,11 +403,10 @@ def test_real_calendar_api_csrf_roles_cas_replay_scope_revocation(database: Data
                 (UUID(identity["principal_id"]), UUID(identity["workspace_id"])),
             )
         october = client.post(
-            "/semantic/workspace-calendar/v1/versions", headers=headers, json=update(10, 2)
+            "/semantic/workspace-calendar/v1/versions", headers=headers, json=update(10, 1)
         )
         assert (
-            october.status_code == 200
-            and october.json()["calendar"]["profile"]["fiscal_year_start_month"] == 10
+            october.status_code == 409 and october.json()["code"] == "CALENDAR_ALREADY_CONFIGURED"
         )
         with db.connect() as c:
             c.execute(
@@ -585,3 +585,115 @@ def test_custom_calendar_cannot_use_null_request_hash(database: Database) -> Non
             ).fetchall()[0][0]
             == 0
         )
+
+
+def test_pinned_timezone_calendar_api_replay_without_rules_and_immutable_versions(
+    database: Database, monkeypatch: pytest.MonkeyPatch
+):
+    from packages.contracts.semantic import CalendarFailure
+    from packages.semantic_model.infrastructure.timezone_rules import PackagedCalendarRules
+
+    assert database.migrate("head").returncode == 0
+    with app_client(database) as client:
+        _, headers = bootstrap_login(client)
+        initial = client.get("/semantic/workspace-calendar/v1").json()
+        requested_profile = {
+            "schema_version": "business-calendar/v2",
+            "timezone": "America/New_York",
+        }
+        body = {
+            "profile": requested_profile,
+            "expected_revision": initial["revision"],
+            "idempotency_key": str(uuid4()),
+        }
+        assert client.post("/semantic/workspace-calendar/v1/versions", json=body).status_code == 403
+        invalid = client.post(
+            "/semantic/workspace-calendar/v1/versions",
+            headers=headers,
+            json={**body, "profile": {**requested_profile, "timezone": "Unknown/Nowhere"}},
+        )
+        assert (
+            invalid.status_code == 400 and invalid.json()["code"] == "CALENDAR_TIMEZONE_UNAVAILABLE"
+        )
+        first = client.post("/semantic/workspace-calendar/v1/versions", headers=headers, json=body)
+        assert first.status_code == 200
+        first = first.json()
+        profile = first["calendar"]["profile"]
+        assert profile["tzdata_version"] == "2026.3" and len(profile["tzif_sha256"]) == 64
+        assert (
+            client.post(
+                "/semantic/workspace-calendar/v1/versions",
+                headers=headers,
+                json={**body, "profile": profile},
+            ).status_code
+            == 422
+        )
+
+        def unavailable(*_: object) -> Never:
+            raise CalendarFailure("CALENDAR_TIMEZONE_UNAVAILABLE")
+
+        monkeypatch.setattr(PackagedCalendarRules, "resolve", unavailable)
+        # Replay precedes rule resolution, even when that provider is unavailable.
+        assert (
+            client.post(
+                "/semantic/workspace-calendar/v1/versions", headers=headers, json=body
+            ).json()
+            == first
+        )
+        assert (
+            client.post(
+                "/semantic/workspace-calendar/v1/versions",
+                headers=headers,
+                json={**body, "profile": {**requested_profile, "timezone": "UTC"}},
+            ).status_code
+            == 409
+        )
+        assert (
+            client.post(
+                "/semantic/workspace-calendar/v1/versions",
+                headers=headers,
+                json={**body, "idempotency_key": str(uuid4())},
+            ).status_code
+            == 409
+        )
+        for version in (initial["calendar"], first["calendar"]):
+            response = client.get(
+                "/semantic/workspace-calendar/v1/versions/" + version["version_id"],
+                params={"content_hash": version["content_hash"]},
+            )
+            assert response.status_code == 200 and response.json() == version
+
+
+def test_calendar_once_only_concurrent_first_configuration(database: Database):
+    assert database.migrate("head").returncode == 0
+    with app_client(database) as client:
+        _, headers = bootstrap_login(client)
+        cookies = dict(client.cookies)
+        requests = [update(4, 0), update(7, 0)]
+
+        def write(body: dict[str, Any]) -> tuple[int, Any, dict[str, Any]]:
+            with app_client(database) as other:
+                other.cookies.update(cookies)
+                response = other.post(
+                    "/semantic/workspace-calendar/v1/versions", headers=headers, json=body
+                )
+                return response.status_code, response.json(), body
+
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(write, requests))
+        assert sorted(r[0] for r in results) == [200, 409]
+        winner = next(r for r in results if r[0] == 200)
+        assert client.get("/semantic/workspace-calendar/v1").json() == winner[1]
+        assert (
+            client.post(
+                "/semantic/workspace-calendar/v1/versions", headers=headers, json=winner[2]
+            ).json()
+            == winner[1]
+        )
+        blocked = client.post(
+            "/semantic/workspace-calendar/v1/versions", headers=headers, json=update(10, 1)
+        )
+        assert (
+            blocked.status_code == 409 and blocked.json()["code"] == "CALENDAR_ALREADY_CONFIGURED"
+        )
+        assert client.get("/semantic/workspace-calendar/v1").json() == winner[1]

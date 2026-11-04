@@ -1,0 +1,35 @@
+import {FilterPrototype} from './FilterPrototype';
+import {MetricPickerDialog} from './MetricPickerDialog';
+import {StoreScopePicker} from './StoreScopePicker';
+import {useState} from 'react';
+import {Pencil,ArrowUp,ArrowDown,GripVertical} from 'lucide-react';
+import type {configuredReports as W} from '@custometry/contracts';
+import {metricNames} from './workspace-copy';
+import {move,type WorkspaceContext} from './workspace-api';
+import {useDelayedBusy} from './useAutomaticRefresh';
+
+type Props={prototypeKey?:string;set:W.Workset;context?:WorkspaceContext;locale:'ru'|'en';disabled:boolean;remaining:number;onChange:(cards:readonly W.Card[])=>void;commonStoreIds?:readonly string[]|null;loading?:boolean;failed?:boolean;onRetry?:()=>void;sourceLabel?:string;sourceFailed?:boolean;onRetrySource?:()=>void};
+export function MetricCatalogue({set,context,locale,disabled,remaining,onChange,commonStoreIds=null,prototypeKey=set.workset_id,loading=false,failed=false,onRetry,sourceLabel,sourceFailed=false,onRetrySource}:Props){
+ const ru=locale==='ru';const [search,setSearch]=useState('');const [editing,setEditing]=useState<W.Card|null>(null);const [drag,setDrag]=useState<number|null>(null);
+ const names=metricNames[locale];const available=context?.metrics??[];const showLoading=useDelayedBusy(loading);const term=search.trim().toLocaleLowerCase(locale);
+ const visible=available.filter(m=>names[m.metric_id].toLocaleLowerCase(locale).includes(term));
+ const missing=visible.filter(m=>!set.cards.some(c=>c.metric_ref.metric_id===m.metric_id));
+ const capacity=Math.max(0,Math.min(50-set.cards.length,remaining));
+ const card=(metric:W.MetricRef):W.Card=>({card_id:crypto.randomUUID(),metric_ref:{metric_id:metric.metric_id,version_id:metric.version_id,content_hash:metric.content_hash},local_store_ids:null});
+ const toggle=(metric:W.MetricRef,checked:boolean)=>onChange(checked?[...set.cards,card(metric)]:set.cards.filter(c=>c.metric_ref.metric_id!==metric.metric_id));
+ return <div className="mw-catalogue mw-inline-catalogue">
+  <div className="mw-catalogue-source"><span>{ru?'Данные':'Data'}</span>{sourceLabel?<strong>{sourceLabel}</strong>:sourceFailed?<><span>{ru?'Не удалось загрузить название источника':'Could not load the source name'}</span><button onClick={onRetrySource}>{ru?'Повторить':'Retry'}</button></>:<span aria-label={ru?'Загрузка названия источника':'Loading source name'}>—</span>}</div>
+  <label>{ru?'Поиск по каталогу':'Search catalogue'}<input type="search" value={search} disabled={loading||failed} onChange={e=>setSearch(e.target.value)}/></label>
+  {loading?<div className="mw-catalogue-pending" role="status" aria-busy="true">{showLoading?(ru?'Загружаем доступные метрики…':'Loading available metrics…'):null}</div>:failed?<div className="mw-catalogue-message" role="alert"><p>{ru?'Не удалось загрузить каталог метрик.':'Could not load the metric catalogue.'}</p><button onClick={onRetry}>{ru?'Повторить':'Retry'}</button></div>:!available.length?<p className="mw-catalogue-message">{ru?'Нет доступных метрик для этого источника.':'No metrics are available for this source.'}</p>:<>
+   <div className="mw-toolbar"><button disabled={disabled||!missing.length||capacity===0} onClick={()=>onChange([...set.cards,...missing.slice(0,capacity).map(card)])}>{term?(ru?'Выбрать найденные':'Select matches'):(ru?'Выбрать все':'Select all')}</button><button disabled={disabled||!set.cards.length} onClick={()=>onChange([])}>{ru?'Снять все':'Deselect all'}</button></div>
+   <div className="mw-metric-checklist" aria-label={ru?'Доступные метрики':'Available metrics'}>
+    {[{title:ru?'Продажи':'Sales',ids:['net_revenue','receipt_count']},{title:ru?'Средние показатели':'Averages',ids:['average_receipt']}].map(group=>{const metrics=visible.filter(m=>group.ids.includes(m.metric_id));return metrics.length>0&&<section key={group.title}><h3>{group.title}</h3>{metrics.map(metric=>{const count=set.cards.filter(c=>c.metric_ref.metric_id===metric.metric_id).length;return <label key={metric.metric_id}><input type="checkbox" checked={count>0} disabled={disabled||(!count&&capacity===0)} onChange={e=>toggle(metric,e.target.checked)}/><span>{names[metric.metric_id]}</span>{count>1&&<small>× {count}</small>}</label>;})}</section>;})}
+   </div>
+   {!visible.length&&<p className="mw-catalogue-message">{ru?'По запросу ничего не найдено.':'No metrics match your search.'}</p>}
+   {set.cards.length===0?<p className="mw-catalogue-hint">{ru?'Метрики ещё не выбраны. Отметьте нужные — они появятся в отчёте.':'No metrics selected yet. Check the ones you need to add them to the report.'}</p>:<p className="mw-catalogue-hint">{ru?'В отчёте':'In this report'}: {set.cards.length}. {ru?'Новые метрики используют фильтры отчёта.':'New metrics use report filters.'}</p>}
+   {capacity===0&&<p className="mw-catalogue-hint">{ru?'Достигнут лимит метрик. Уберите ненужные, чтобы добавить другие.':'Metric limit reached. Remove metrics before adding others.'}</p>}
+  </>}
+  {set.cards.length>0&&<details className="mw-selected-metrics"><summary>{ru?'Порядок и настройки':'Order and settings'} · {set.cards.length}</summary><ol className="mw-catalogue-list">{set.cards.map((item,index)=><li key={item.card_id} draggable={!disabled} onDragStart={()=>setDrag(index)} onDragOver={e=>e.preventDefault()} onDrop={e=>{e.preventDefault();if(drag!==null&&!disabled)onChange(move(set.cards,drag,index-drag));setDrag(null);}}><GripVertical size={14} aria-hidden="true"/><span className="mw-selected-name">{names[item.metric_ref.metric_id]}</span><button disabled={disabled} aria-label={(ru?'Настроить ':'Configure ')+names[item.metric_ref.metric_id]} onClick={()=>setEditing(item)}><Pencil size={14}/></button><button disabled={disabled||index===0} aria-label={ru?'Метрика выше':'Move metric up'} onClick={()=>onChange(move(set.cards,index,-1))}><ArrowUp size={14}/></button><button disabled={disabled||index===set.cards.length-1} aria-label={ru?'Метрика ниже':'Move metric down'} onClick={()=>onChange(move(set.cards,index,1))}><ArrowDown size={14}/></button></li>)}</ol></details>}
+  {editing&&<MetricPickerDialog title={ru?'Настройки метрики':'Metric settings'} onClose={()=>setEditing(null)}><h3>{names[editing.metric_ref.metric_id]}</h3><FilterPrototype key={editing.card_id} scopeKey={prototypeKey+':'+editing.card_id} reportKey={prototypeKey+':report'} metric locale={locale}/><details><summary>{ru?'Магазины для текущего расчёта':'Stores for current calculation'}</summary><StoreScopePicker inherit alwaysOpen inheritedIds={commonStoreIds} label={ru?'Магазины':'Stores'} value={editing.local_store_ids} stores={context?.stores??[]} disabled={disabled} locale={locale} onChange={value=>setEditing({...editing,local_store_ids:value})}/></details><div className="mw-toolbar"><button disabled={disabled} onClick={()=>{onChange(set.cards.map(c=>c.card_id===editing.card_id?editing:c));setEditing(null);}}>{ru?'Применить':'Apply'}</button><button onClick={()=>setEditing(null)}>{ru?'Отмена':'Cancel'}</button></div></MetricPickerDialog>}
+ </div>;
+}

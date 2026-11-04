@@ -301,3 +301,7 @@ semantics or every capability in the third-party product.
 Validation results and the changed-document hashes are recorded in
 [verification](verification.json). Capture hashes are recorded separately so
 later text maintenance need not rewrite the screenshots.
+
+## Follow-up interaction evidence
+
+The [2026-09-24 follow-up](follow-up-2026-09-24/README.md) records named creation, set management, catalogue filters and explicit save modes. Custometry ordinary creation starts empty under the owner correction.

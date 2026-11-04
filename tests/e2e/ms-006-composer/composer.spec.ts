@@ -1,0 +1,96 @@
+import {test,expect} from '@playwright/test';
+
+test('independent blocks, compatible results and durable layout',async({page,request},testInfo)=>{
+ const scenario=await (await request.get('/fixture/scenario')).json() as {workspace:string};
+ const errors:string[]=[];page.on('pageerror',error=>{errors.push(error.message);console.error('BROWSER_ERROR',error.message);});
+ const applies:string[]=[];page.on('request',request=>{if(request.url().endsWith('/composer/v1/apply'))applies.push(request.url());});
+ await page.addInitScript(()=>localStorage.setItem('custometry-language','en'));
+ await page.goto('/auth/sign-in');await page.getByLabel(/Workspace/).fill(scenario.workspace);await page.getByLabel('Email',{exact:true}).fill('author@example.test');await page.getByLabel('Password',{exact:true}).fill('synthetic-author-password');await page.getByRole('button',{name:'Sign in',exact:true}).click();await page.waitForURL(/\/reports$/);
+ await page.getByRole('button',{name:'Create report',exact:true}).click();await page.getByRole('link',{name:'Create document',exact:true}).click();
+ const frame=page.frameLocator('iframe');await expect(frame.getByText('Add a chart or table to begin.')).toBeVisible();
+ const add=async(name:string,grain:string,kind:'chart'|'table')=>{
+  await frame.getByRole('button',{name:'Add block',exact:true}).last().click();
+  await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByLabel('Grain',{exact:true}).selectOption(grain);
+  await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByLabel('Block type',{exact:true}).selectOption(kind);await frame.getByLabel('Block title',{exact:true}).fill(name);
+  await frame.getByRole('button',{name:'Add to document',exact:true}).click();
+  const block=frame.getByRole('article',{name,exact:true});await expect(block).toBeVisible();await block.getByRole('button',{name:'Apply',exact:true}).click();await expect(block.getByText('Loading…',{exact:true})).toHaveCount(0,{timeout:60000});await expect(block.getByText('Could not load this block.')).toHaveCount(0);
+  await expect(kind==='chart'?block.locator('.mw-plot'):block.getByRole('table')).toBeVisible();
+ };
+ await add('Daily','day','chart');await add('Daily table','day','table');
+ await add('Weekly','week','chart');await add('Weekly table','week','table');
+ await add('Monthly','month','chart');await add('Yearly','year','chart');
+ const chartBox=await frame.getByRole('article',{name:'Daily',exact:true}).boundingBox();const tableBox=await frame.getByRole('article',{name:'Daily table',exact:true}).boundingBox();
+ expect(Math.abs(chartBox!.y-tableBox!.y)).toBeLessThan(2);expect(tableBox!.x).toBeGreaterThan(chartBox!.x+chartBox!.width);
+ await expect(frame.getByRole('article')).toHaveCount(6);
+ const before=applies.length;await frame.getByRole('article',{name:'Daily',exact:true}).getByRole('button',{name:'Daily',exact:true}).click();expect(applies.length).toBe(before);
+ const savedResponse=page.waitForResponse(r=>r.url().endsWith('/composer/v1/versions')&&r.request().method()==='POST');
+ await frame.getByRole('button',{name:'Save report',exact:true}).click();const response=await savedResponse;expect(response.status()).toBe(200);const saved=await response.json() as {definition:{blocks:{block_id:string}[]};results:{block_id:string;result_id:string}[]};
+ expect(saved.definition.blocks).toHaveLength(6);expect(new Set(saved.results.map(r=>r.result_id)).size).toBe(4);
+ await page.waitForURL(/reports\/[0-9a-f-]+\/edit\?view=composer/);await page.reload();await expect(frame.getByRole('article')).toHaveCount(6);await expect(frame.getByRole('article',{name:'Daily',exact:true}).locator('.mw-plot')).toBeVisible();
+ await expect(frame.getByText('Loading…',{exact:true})).toHaveCount(0,{timeout:60000});
+ expect(applies.length).toBe(before);
+ await page.screenshot({path:testInfo.outputPath('six-blocks-desktop.png'),fullPage:true});
+ await page.setViewportSize({width:768,height:1024});await expect(frame.getByRole('article',{name:'Daily table',exact:true})).toBeVisible();await page.screenshot({path:testInfo.outputPath('six-blocks-768.png'),fullPage:true});
+ expect(errors).toEqual([]);
+});
+
+test('standalone table, duplication, local recovery and keyboard settings',async({page,request},testInfo)=>{
+ const scenario=await(await request.get('/fixture/scenario')).json() as {workspace:string};
+ await page.addInitScript(()=>localStorage.setItem('custometry-language','en'));
+ await page.goto('/auth/sign-in');await page.getByLabel(/Workspace/).fill(scenario.workspace);await page.getByLabel('Email',{exact:true}).fill('author@example.test');await page.getByLabel('Password',{exact:true}).fill('synthetic-author-password');await page.getByRole('button',{name:'Sign in',exact:true}).click();await page.waitForURL(/\/reports$/);
+ await page.goto(`/w/${scenario.workspace}/reports/new/edit?view=composer`);
+ const frame=page.frameLocator('iframe');await frame.getByRole('button',{name:'Add block',exact:true}).last().click();
+ await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByLabel('Block type',{exact:true}).selectOption('table');await frame.getByLabel('Block title',{exact:true}).fill('Independent table');await frame.getByRole('button',{name:'Add to document',exact:true}).click();
+ const first=frame.getByRole('article',{name:'Independent table',exact:true}).first();await first.getByRole('button',{name:'Apply',exact:true}).click();await expect(first.getByRole('table')).toBeVisible({timeout:60000});await expect(frame.locator('.mw-plot')).toHaveCount(0);
+ await first.getByRole('button',{name:'Edit block',exact:true}).focus();await page.keyboard.press('Enter');await expect(frame.getByRole('heading',{name:'Block settings · 1/3'})).toBeFocused();await page.keyboard.press('Escape');await expect(first.getByRole('button',{name:'Edit block',exact:true})).toBeFocused();
+ await first.getByRole('button',{name:'Duplicate',exact:true}).click();await expect(frame.getByRole('article')).toHaveCount(2);
+ const copy=frame.getByRole('article',{name:'Independent table',exact:true}).last();
+ await page.route('**/composer/v1/apply',route=>route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({code:'STORAGE_UNAVAILABLE',retryable:true})}));
+ await copy.getByRole('button',{name:'Apply',exact:true}).click();await expect(copy.getByRole('alert')).toHaveText('Could not load this block.');await expect(first.getByRole('table')).toBeVisible();
+ await page.unroute('**/composer/v1/apply');await copy.getByRole('button',{name:'Retry',exact:true}).click();await expect(copy.getByRole('table')).toBeVisible({timeout:60000});
+ await copy.getByRole('button',{name:'Edit block',exact:true}).click();await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByLabel('Grain',{exact:true}).selectOption('month');await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByLabel('Block title',{exact:true}).fill('Independent monthly');await frame.getByRole('button',{name:'Update block',exact:true}).click();
+ await expect(first.getByRole('table')).toBeVisible();const monthly=frame.getByRole('article',{name:'Independent monthly',exact:true});await expect(monthly.getByRole('table')).toHaveCount(0);await monthly.getByRole('button',{name:'Apply',exact:true}).click();await expect(monthly.getByRole('table')).toBeVisible({timeout:60000});
+ await monthly.getByRole('button',{name:'Delete',exact:true}).click();await expect(frame.getByRole('article')).toHaveCount(1);await expect(frame.getByLabel('Document title')).toBeFocused();
+ const responsePromise=page.waitForResponse(r=>r.url().endsWith('/composer/v1/versions'));await frame.getByRole('button',{name:'Save report',exact:true}).click();const response=await responsePromise;expect(response.status()).toBe(200);const saved=await response.json();expect(saved.definition.blocks.map((b:{block_type:string})=>b.block_type)).toEqual(['table']);
+ await page.waitForURL(/reports\/[0-9a-f-]+\/edit\?view=composer/);await page.reload();await expect(frame.getByRole('table')).toBeVisible();await expect(frame.locator('.mw-plot')).toHaveCount(0);
+ await page.setViewportSize({width:390,height:844});await expect(frame.getByLabel('Document title')).toBeVisible();expect((await frame.getByLabel('Document title').boundingBox())!.width).toBeGreaterThan(120);await expect(frame.getByRole('button',{name:'Save report',exact:true})).toBeVisible();await expect(frame.getByRole('table')).toBeVisible();await page.screenshot({path:testInfo.outputPath('standalone-table-390.png'),fullPage:true});
+});
+
+test('reconnect preserves draft, save waits for apply and saved input reloads its result',async({page,request})=>{
+ page.on('pageerror',error=>console.error('BROWSER_ERROR',error.message));
+ const scenario=await(await request.get('/fixture/scenario')).json() as {workspace:string};
+ await page.addInitScript(()=>localStorage.setItem('custometry-language','en'));
+ await page.goto('/auth/sign-in');await page.getByLabel(/Workspace/).fill(scenario.workspace);await page.getByLabel('Email',{exact:true}).fill('author@example.test');await page.getByLabel('Password',{exact:true}).fill('synthetic-author-password');await page.getByRole('button',{name:'Sign in',exact:true}).click();await page.waitForURL(/\/reports$/);
+ await page.goto(`/w/${scenario.workspace}/reports/new/edit?view=composer`);
+ const frame=page.frameLocator('iframe');await frame.getByRole('button',{name:'Add block',exact:true}).last().click();
+ await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByLabel('Block type',{exact:true}).selectOption('table');await frame.getByLabel('Block title',{exact:true}).fill('Race table');await frame.getByRole('button',{name:'Add to document',exact:true}).click();
+ const block=frame.getByRole('article',{name:'Race table',exact:true});
+ let release!:()=>void;const gate=new Promise<void>(resolve=>{release=resolve;});
+ await page.route('**/composer/v1/apply',async route=>{const response=await route.fetch();await gate;await route.fulfill({response});});
+ await block.getByRole('button',{name:'Apply',exact:true}).click();await expect(frame.getByRole('button',{name:'Save report',exact:true})).toBeDisabled();
+ release();await expect(block.getByRole('table')).toBeVisible({timeout:60000});await page.unroute('**/composer/v1/apply');
+ await expect(frame.getByRole('button',{name:'Save report',exact:true})).toBeEnabled();
+ await frame.getByRole('button',{name:'Save report',exact:true}).click();await page.waitForURL(/reports\/[0-9a-f-]+\/edit\?view=composer/);
+ const changeGrain=async(grain:string)=>{await block.getByRole('button',{name:'Edit block',exact:true}).click();await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByLabel('Grain',{exact:true}).selectOption(grain);await frame.getByRole('button',{name:'Continue',exact:true}).click();await frame.getByRole('button',{name:'Update block',exact:true}).click();await expect(frame.getByRole('button',{name:'Close settings',exact:true})).toHaveCount(0);};
+ await changeGrain('week');await block.getByRole('button',{name:'Apply',exact:true}).click();await expect(block.getByRole('table')).toBeVisible({timeout:60000});
+ const restored=page.waitForResponse(r=>r.url().includes('/blocks/')&&r.url().endsWith('/result'));
+ await changeGrain('day');expect((await restored).status()).toBe(200);await expect(block.getByRole('table')).toBeVisible();
+ let releaseStale!:()=>void,computed!:()=>void;
+ const staleGate=new Promise<void>(resolve=>{releaseStale=resolve;});const computedGate=new Promise<void>(resolve=>{computed=resolve;});
+ await page.route('**/composer/v1/apply',async route=>{const response=await route.fetch();computed();await staleGate;await route.fulfill({response}).catch(()=>{/* Editing aborts this already computed response. */});});
+ await block.getByRole('button',{name:'Apply',exact:true}).click();await computedGate;await changeGrain('month');releaseStale();
+ await expect(block.getByRole('table')).toHaveCount(0);await expect(block.getByText('Apply this block to load data.',{exact:true})).toBeVisible();
+ await page.unroute('**/composer/v1/apply');await changeGrain('day');await expect(block.getByRole('table')).toBeVisible();
+ await frame.getByLabel('Document title').fill('Preserved through reconnect');
+ for(let reconnect=0;reconnect<2;reconnect++){await page.evaluate(()=>window.dispatchEvent(new Event('offline')));await expect(frame.getByText('Loading report',{exact:true})).toBeVisible();await page.evaluate(()=>window.dispatchEvent(new Event('online')));
+ await expect(frame.getByLabel('Document title')).toHaveValue('Preserved through reconnect',{timeout:15000});await expect(block).toBeVisible();await expect(frame.getByRole('status').filter({hasText:/^Unsaved changes$/})).toBeVisible();}
+ await changeGrain('month');await block.getByRole('button',{name:'Apply',exact:true}).click();await expect(block.getByRole('table')).toBeVisible();
+ const attempts:unknown[]=[];let loseResponse=true;
+ await page.route('**/composer/v1/versions',async route=>{attempts.push(route.request().postDataJSON());const response=await route.fetch();if(loseResponse){loseResponse=false;await route.abort('failed');}else await route.fulfill({response});});
+ await frame.getByRole('button',{name:'Save report',exact:true}).click();await expect(frame.getByRole('alert')).toHaveText('Could not save. Check the saved version before retrying.');
+ await expect(frame.getByLabel('Document title')).toBeDisabled();
+ await page.evaluate(()=>window.dispatchEvent(new Event('offline')));await expect(frame.getByText('Loading report',{exact:true})).toBeVisible();await page.evaluate(()=>window.dispatchEvent(new Event('online')));await expect(frame.getByLabel('Document title')).toHaveValue('Preserved through reconnect');await expect(frame.getByLabel('Document title')).toBeDisabled();
+ await frame.getByRole('button',{name:'Save report',exact:true}).click();await expect(frame.getByRole('status').filter({hasText:/^Saved$/})).toBeVisible();
+ expect(attempts).toHaveLength(2);expect(attempts[1]).toEqual(attempts[0]);await page.unroute('**/composer/v1/versions');
+ await page.reload();await expect(frame.getByLabel('Document title')).toHaveValue('Preserved through reconnect');await expect(block.getByRole('table')).toBeVisible({timeout:60000});
+});

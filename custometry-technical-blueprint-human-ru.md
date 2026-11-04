@@ -7,8 +7,8 @@ normative: false
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-09-20
-requirements_revision: 2026-09-20.2
+updated_at: 2026-10-10
+requirements_revision: 2026-10-10.1
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
@@ -298,7 +298,7 @@ Channel имеет ключ `[source_system_id, channel_id]`, optional name, att
 
 ### 5.9. Календарь — ENTITY-CALENDAR
 
-Calendar генерируется платформой с grain `one_row_per_date`. В нём есть year, quarter, month, ISO week, weekday, days in period, weekend/holiday flags, holiday name и optional fiscal period. Базовые настройки компании/workspace задают финансовый календарь: начало финансового года определяет кварталы и полугодия. Календарь версионируется в Semantic Model; права настройки проверяет Identity. Исторический результат сохраняет свою версию, а переход отчёта на новый календарь требует явного действия. Полнота исходного Calendar и политика финансовых границ — разные привязки.
+Calendar генерируется платформой с grain `one_row_per_date`. В нём есть year, quarter, month, ISO week, weekday, days in period, weekend/holiday flags, holiday name и optional fiscal period. Администратор однократно задаёт финансовый календарь в базовых настройках компании/workspace: начало финансового года определяет кварталы и полугодия и после настройки не меняется. Календарный год един для всех компаний. Semantic Model хранит календарную привязку; права настройки проверяет Identity. Исторический результат сохраняет свою привязку. В отчёте нет настройки финансового календаря и команды принятия его версии. Полнота исходного Calendar и политика финансовых границ — разные привязки.
 
 ### 5.10. Дополнительные измерения
 
@@ -440,7 +440,7 @@ versioned personal Saved View. Личный вид не меняет опубл�
 | METRIC-027 | Настройка набора обязан предоставлять searchable catalog разрешённых метрик, выбор, порядок с keyboard alternative, редактирование карточки и copy-as-new; локальные filters и inheritance видимы. Bulk apply обязан показывать применимые карточки и несовместимости; personal preferences не меняют shared publication, а изменения запроса сохраняют explicit Apply/Save semantics. |
 | METRIC-028 | Панель метрик обязан различать выбор одной карточки для temporal comparison и выбор двух карточек для descriptive metric-to-metric comparison; обе серии сохраняют metric/version/filter/unit/period identity. Разные units имеют явно подписанные отдельные шкалы, несовместимые periods/grain дают blocker, совместное движение линий не является causal evidence. |
 | METRIC-029 | Пользовательская monitoring goal обязан ссылаться на настроенную метрику и хранить typed target value, явный интервал, owner/scope и описание гипотезы достижения; фактическое значение и прогресс используют ту же server-resolved методику и permissions. Monitoring goal обязан отличаться от целевого действия фильтра и прогноза; missing actual не считается нулём или достижением цели. Направление, режим задания цели, повторение и lifecycle определены METRIC-031…035; техническая методика фиксируется в L3 до реализации. |
-| METRIC-030 | График и таблица отчёта должны поддерживать детализацию day, week, month, quarter, half_year и year по общей versioned calendar/timezone policy; изменение детализации проходит server-side aggregation с сохранением смысла MetricVersion, границ и полноты периода. Ratio-метрики пересчитываются из числителя и знаменателя, а не усреднением отображаемых ratios; temporal comparison сохраняет явно выбранный alignment и не подменяется ISO-week comparison при выборе недель. Настраиваемый финансовый год компании MUST задаваться в базовых настройках workspace через versioned business calendar, а не локальную настройку карточки; его начало определяет финансовые год, полугодия и кварталы. Календарная и финансовая основа MUST быть явно различимы; calendar version, resolved boundaries и basis входят в result/cache identity и snapshots. Смена общего календаря MUST NOT переинтерпретировать сохранённые отчёты: переход на новую версию выполняется явно с сохранением предыдущих результатов; язык интерфейса не меняет календарь. |
+| METRIC-030 | График и таблица отчёта должны поддерживать детализацию day, week, month, quarter, half_year и year по общей versioned calendar/timezone policy; изменение детализации проходит server-side aggregation с сохранением смысла MetricVersion, границ и полноты периода. Ratio-метрики пересчитываются из числителя и знаменателя, а не усреднением отображаемых ratios; temporal comparison сохраняет явно выбранный alignment и не подменяется ISO-week comparison при выборе недель. Финансовый календарь компании MUST однократно задаваться администратором в базовых настройках компании/workspace и после настройки оставаться неизменным; его начало определяет финансовые год, полугодия и кварталы и может различаться между компаниями. Календарный год един для всех компаний. Отчёты и карточки MUST NOT содержать настройку границ финансового календаря или команду принятия его версии. Календарная и финансовая основа MUST быть явно различимы; calendar version, resolved boundaries и basis входят в result/cache identity и snapshots. Сохранённые отчёты MUST сохранять закреплённые календарные привязки и результаты без автоматической переинтерпретации; язык интерфейса не меняет календарь. |
 | METRIC-031 | Monitoring goal должен поддерживать lower_bound (достичь не менее) и upper_bound (не превысить), absolute_value и relative_change к явно заданной базе. Создатель отчёта задаёт режим и baseline policy заранее в versioned report configuration; при использовании отчёта читатель не меняет их. Resolved baseline value, period, metric/filter/data versions и единицы входят в расчёт; отсутствующая или непригодная база даёт unavailable, а не вымышленный процент. Progress display должен отличать достижение нижней границы от расходования верхнего лимита. |
 | METRIC-032 | Monitoring goal должен поддерживать разовый явный интервал и повторяющееся календарное правило, заданное создателем отчёта. Каждое повторение имеет собственный period ID, точные границы, привязку к версии правила, расчёты и итог; создание следующего периода не изменяет прошлые цели. Повторение периодов не подразумевает автоматический пересчёт факта. |
 | METRIC-033 | Monitoring goal должен фиксировать metric version и effective filter context при создании; изменения фильтров просмотра или карточки не меняют условия существующей цели. Изменять определение цели может только создатель отчёта при наличии остальных необходимых permissions; изменение сохраняет автора, время, предыдущую и новую версии условий. Reader filters и personal display state не меняют target, direction, baseline, recurrence или контекст цели. |
@@ -1432,7 +1432,7 @@ Compute UX действует для всех пользовательски н�
 
 ### Theme и presentation identity
 
-Точный shipped theme set, identifiers, palette values и UI/report defaults принимаются по THEME-001…008 до затронутой implementation, без восстановления отменённой UI-программы. Финальный hash-pinned пилот задаёт показанную UI-концепцию и её visual language; полный production theme registry уточняется в соответствующем contract. Палитры отвергнутого target не являются входом в новый baseline; историческое evidence при необходимости остаётся доступно в Git. Компоненты используют semantic tokens, а `ChartSpec` остаётся theme-neutral.
+Точный shipped theme set, identifiers, palette values и UI/report defaults принимаются по THEME-001…008 до затронутой implementation, без восстановления отменённой UI-программы. Визуальные изменения следуют UI change manifest и актуальным решениям владельца; исторический пилот не фиксирует будущую композицию или палитру. Полный production theme registry уточняется в соответствующем contract. Палитры отвергнутого target не являются входом в новый baseline; историческое evidence при необходимости остаётся доступно в Git. Компоненты используют semantic tokens, а `ChartSpec` остаётся theme-neutral.
 
 | ID | Theme invariant |
 |---|---|
@@ -1696,7 +1696,7 @@ Browser proof определяется действующим [implementation-so
 | WEB-ARCH-002 | Presentation/client state отделён от authoritative server snapshots; frontend не принимает authorization/persistence/delivery/terminal decisions |
 | WEB-ARCH-003 | Themes/white-label используют versioned semantic tokens и validated assets; arbitrary CSS/HTML/JS, remote fonts и untrusted styles запрещены |
 | WEB-ARCH-004 | Frontend rollout recoverable, сохраняет accepted deep links/history/Back/refresh и compatibility seam до полного evidence соответствующей wave |
-| WEB-ARCH-005 | Одна accepted visual authority hash-pinned в repository-owned manifest с принятым scope; финальный пилот задаёт показанную UI-концепцию, внешняя reference не переносит чужие product/assets/policy |
+| WEB-ARCH-005 | Визуальный источник и scope выбираются по UI change manifest; актуальное решение владельца заменяет прежнее в затронутой области, исторический пилот не обязателен. Сохраняется общий тон вне изменений; внешняя reference не переносит чужие product/assets/policy |
 | WEB-ARCH-006 | Shell/navigation/detail/responsive transformations source-backed baseline и screen contracts; presentation не меняет permissions/routes/domain identity |
 
 | ID | Perceived-performance invariant |

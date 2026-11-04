@@ -1,0 +1,21 @@
+{
+  "fixtureReport": "2a0b5383-2100-5047-b5c7-9062a74c15c6",
+  "original": [
+    "Workset 1",
+    "Workset 2",
+    "Workset 3"
+  ],
+  "labels": [
+    "Workset 1",
+    "Workset 2",
+    "Workset 3",
+    "Correction002 configured",
+    "New workset 2",
+    "New workset 3",
+    "New workset 3 — copy 1"
+  ],
+  "repeatedAndRapidAdds": 15,
+  "duplicatesCreated": 0,
+  "persistence": "save/reload passed",
+  "existingCardsPreserved": true
+}

@@ -1,0 +1,14 @@
+{
+  "cards": 50,
+  "resultReads": 0,
+  "delivery": "verified active results in editor response",
+  "computeRequests": 0,
+  "cache": [
+    {
+      "bytes": 1426034,
+      "entries": 1,
+      "attemptedBytes": 1426034,
+      "admitted": true
+    }
+  ]
+}

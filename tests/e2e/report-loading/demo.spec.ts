@@ -1,0 +1,25 @@
+import {test,expect} from '@playwright/test';
+import {writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+test('baseline real login and saved native report',async({page,request})=>{
+ const scenario=await(await request.get('/fixture/scenario')).json() as {workspace:string;report:string};
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.addInitScript(()=>localStorage.setItem('custometry-language','ru'));
+ await page.goto('/auth/sign-in');
+ await page.getByLabel('Идентификатор рабочего пространства').fill(scenario.workspace);
+ await page.getByLabel('Электронная почта').fill('author@example.test');
+ await page.getByLabel('Пароль',{exact:true}).fill('synthetic-author-password');
+ await page.getByRole('button',{name:'Войти',exact:true}).click();await page.waitForURL(/\/reports$/);
+ await page.goto(`/w/${scenario.workspace}/reports/${scenario.report}/edit`);
+ const f=page.frameLocator('iframe');
+ await expect(f.getByRole('heading',{name:'Инспектор отчёта'})).toBeVisible();
+ await f.getByRole('button',{name:'Закрыть инспектор'}).click();
+ await f.getByRole('button',{name:'Применить',exact:true}).click();
+ await expect(f.getByRole('button',{name:'Сохранить отчёт'})).toBeEnabled();
+ await f.getByRole('button',{name:'Сохранить отчёт'}).click();
+ await expect(f.getByRole('status').filter({hasText:'Сохранено'})).toBeVisible();
+ await page.reload();await expect(f.locator('.mw-cards .kpi-value').first()).not.toHaveText('—');
+ expect(errors).toEqual([]);
+ await page.screenshot({path:resolve('.codex/delivery/evidence/W39-REPORT-LOADING-SESSION-EFFICIENCY/baseline-demo.png')});
+ writeFileSync(resolve('.runtime/w39/demo.json'),JSON.stringify({...scenario,url:page.url(),version:'inherited-baseline',errors},null,2));
+});

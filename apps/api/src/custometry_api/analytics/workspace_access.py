@@ -4,6 +4,8 @@ from typing import Literal
 from uuid import UUID
 from packages.contracts.identity.access import ResourceAccessPort
 from packages.contracts.analytics import AnalyticsFailure
+from packages.contracts.analytics.columnar_filters import FilterResourcePolicy
+from packages.contracts.analytics.retail_filter import BoundedSalesInputPort
 from packages.contracts.analytics.workspace import WorkspaceAccess
 from packages.contracts.analytics.sales_report import SalesSemanticPort, SalesArtifactPort
 
@@ -14,8 +16,11 @@ class IdentityWorkspaceAccess:
         identity: ResourceAccessPort,
         semantics: SalesSemanticPort,
         artifacts: SalesArtifactPort,
+        *, store_reader: BoundedSalesInputPort | None = None,
+        store_policy: FilterResourcePolicy | None = None,
     ):
         self.identity, self.semantics, self.artifacts = identity, semantics, artifacts
+        self.store_reader, self.store_policy = store_reader, store_policy
         self._stores: dict[tuple[UUID, UUID], set[str]] = {}
         self.legacy_scopes: dict[tuple[UUID, UUID, UUID], tuple[UUID, str | None]] = {}
 
@@ -82,13 +87,13 @@ class IdentityWorkspaceAccess:
         key = (workspace, dataset)
         if key not in self._stores:
             source = self.semantics.sales_projection(workspace_id=workspace, version_id=dataset)
-            inputs = self.artifacts.read_sales_inputs(
-                workspace_id=workspace,
-                bindings=source["bindings"],
-                supporting_artifacts=[
-                    *source["summary"]["raw_artifacts"].values(),
-                    source["summary"]["quarantine_artifact"],
-                ],
-            )
+            bindings = [b for b in source["bindings"] if b["entity"] == "Store"]
+            if self.store_reader is not None and self.store_policy is not None:
+                inputs = self.store_reader.read_bounded_sales_inputs(workspace_id=workspace,
+                    bindings=bindings, supporting_artifacts=[], policy=self.store_policy,
+                    metadata_only=True)
+            else:
+                inputs = self.artifacts.read_sales_inputs(workspace_id=workspace,
+                    bindings=bindings, supporting_artifacts=[])
             self._stores[key] = {str(s["store_id"]) for s in inputs["Store"]}
         return self._stores[key]

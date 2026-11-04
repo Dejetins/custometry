@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import "./i18n";
 import "./styles.css";
+import "./features/reports/control-focus.css";
 import { App } from "./App";
 
 const root = document.getElementById("root");

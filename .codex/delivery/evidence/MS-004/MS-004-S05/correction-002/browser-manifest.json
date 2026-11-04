@@ -1,0 +1,128 @@
+{
+  "run": "5 passed (3.4m)",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "additional_capture_width": 400,
+  "live_api": "127.0.0.1:58144",
+  "live_web": "127.0.0.1:41744",
+  "observations": [
+    {
+      "test": "S05 fiscal multi-workset same/different stores, exact snapshots and owner demonstration",
+      "api_responses": 32,
+      "unexpected_api_errors": 0,
+      "page_errors": 0
+    },
+    {
+      "test": "S05 reader pair persists server comparison reasons after reopen",
+      "api_responses": 16,
+      "unexpected_api_errors": 0,
+      "page_errors": 0
+    },
+    {
+      "test": "S05 reader temporal artifact parity, delta trend and modal keyboard",
+      "api_responses": 20,
+      "unexpected_api_errors": 0,
+      "page_errors": 0
+    },
+    {
+      "test": "reader private view, EN, administrative separation and session revocation",
+      "api_responses": 27,
+      "unexpected_api_errors": 0,
+      "page_errors": 0
+    },
+    {
+      "test": "workset catalog, copy, six grains, comparison and calendar isolation",
+      "api_responses": 24,
+      "unexpected_api_errors": 0,
+      "page_errors": 0
+    }
+  ],
+  "files": [
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "sha256": "f629da802943fa8bb9bdc088122f5da5cb540e248f2e9b62b3cd28473cb7103a"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "sha256": "739b8e0e5a4b3f7c47bdeba0fae05c1af1d201cc784db16bf7d317e9fa4240a6"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "sha256": "abc2212cad503e1589e9c0306c28351532f4f0394c47a7141ff64b7442944940"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "sha256": "37c089c2050c5cd68360804272f1f5678938e691a277a6f390a5eeec99e4ced4"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "sha256": "6d1513de5ace468dbe75c12513094434d5bd14df7a9db70b698caf22c7d86615"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/browser-observations.json",
+      "sha256": "8ee2640c5452b5b71ba0b085ef12c4b588f46dd333d0240d3a48180a50bbb19a"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/parity.json",
+      "sha256": "7907ab6211f0dc47fd39a46c8f528721fbc5fa2705dc61800906b45ead2f9ac1"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/reader-pair.png",
+      "sha256": "08c06cf281f8ad0278542dcad215fc899b63bdac63a488bbaee5aea9678c5aac"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "sha256": "84aa8daa51e909957a41846052b12a7ac9597b3c76021361e107f3802f838525"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "sha256": "018aac228881c7e1bb1c9df44aeb71814fa39db7eeb8ff14fbcc4926a62c576a"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "sha256": "6c8f6ee418af6b62db517935158282e5fa28046376a968277f7b64a3da3d97b6"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "sha256": "cf7345a281b06e04fead63c71f0dc339e4620767ab39e17fb6d4fb5846d8066e"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/reader-reader-private-view-548f5-tion-and-session-revocation-1920/browser-observations.json",
+      "sha256": "0ad290ba3d898be1cb759960fa7487afe4d85096e6449eec8c6f7a2840ba7d10"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/reader-reader-private-view-548f5-tion-and-session-revocation-1920/reader-en.png",
+      "sha256": "1c763e624f4920c303c14bbc01a8ea72ab7e1323a0573773b4ab4f835beb85f2"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/browser-observations.json",
+      "sha256": "bbdd02ca920179ca081a9a1d2d798d699056b9837283bbab04e3fa491cefab78"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/final.png",
+      "sha256": "8faf427fa24800e99ee3799e14ad6a1d7236e8d45d676e4d461de01e4ed29b69"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/inspector.png",
+      "sha256": "8c4573174983bda74937672ed46f7de18f4be6eadc020059fc7967faa18b86c3"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/localized-chart.png",
+      "sha256": "e6396501c6b65796c4e1349c64e0d975fca04ef62309969ba392d1059c686ee4"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/localized-table.png",
+      "sha256": "b446bfc98cc75e0f12ebff8e91aa0af3787aef3b257cf134e0d65ddad159b7a8"
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/reflow-400.png",
+      "sha256": "8faf427fa24800e99ee3799e14ad6a1d7236e8d45d676e4d461de01e4ed29b69"
+    }
+  ]
+}

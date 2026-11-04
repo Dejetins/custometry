@@ -42,6 +42,68 @@
       "title": "CalendarRef",
       "type": "object"
     },
+    "CardComparisonV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "card-comparison/v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "temporal",
+            "pair"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "left": {
+          "$ref": "#/$defs/ComparisonSide"
+        },
+        "right": {
+          "$ref": "#/$defs/ComparisonSide"
+        },
+        "comparability_status": {
+          "enum": [
+            "comparable",
+            "descriptive",
+            "unavailable"
+          ],
+          "title": "Comparability Status",
+          "type": "string"
+        },
+        "buckets": {
+          "items": {
+            "$ref": "#/$defs/ComparisonBucket"
+          },
+          "title": "Buckets",
+          "type": "array"
+        },
+        "totals": {
+          "$ref": "#/$defs/ComparisonValues"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "manifest": {
+          "$ref": "#/$defs/ArtifactRef"
+        }
+      },
+      "required": [
+        "schema_version",
+        "mode",
+        "left",
+        "right",
+        "comparability_status",
+        "buckets",
+        "totals",
+        "coverage",
+        "manifest"
+      ],
+      "title": "CardComparisonV1",
+      "type": "object"
+    },
     "CardResultBinding": {
       "additionalProperties": false,
       "properties": {
@@ -109,6 +171,405 @@
         "readiness"
       ],
       "title": "CardResultBinding",
+      "type": "object"
+    },
+    "ComparisonBucket": {
+      "additionalProperties": false,
+      "properties": {
+        "left_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "right_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "left": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Left"
+        },
+        "right": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Right"
+        },
+        "absolute_delta": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Absolute Delta"
+        },
+        "relative_delta_percent": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Relative Delta Percent"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "bucket_id": {
+          "title": "Bucket Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left_coverage",
+        "right_coverage",
+        "left",
+        "right",
+        "absolute_delta",
+        "relative_delta_percent",
+        "reason_codes",
+        "bucket_id"
+      ],
+      "title": "ComparisonBucket",
+      "type": "object"
+    },
+    "ComparisonPeriod": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on"
+      ],
+      "title": "ComparisonPeriod",
+      "type": "object"
+    },
+    "ComparisonSide": {
+      "additionalProperties": false,
+      "properties": {
+        "card_id": {
+          "format": "uuid",
+          "title": "Card Id",
+          "type": "string"
+        },
+        "metric_ref": {
+          "$ref": "#/$defs/MetricRef"
+        },
+        "result": {
+          "$ref": "#/$defs/ResultRef"
+        },
+        "unit": {
+          "enum": [
+            "EUR",
+            "receipt",
+            "EUR/receipt"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "format": {
+          "$ref": "#/$defs/NumberFormat"
+        },
+        "context": {
+          "$ref": "#/$defs/EffectiveContext"
+        },
+        "baseline_dates": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "date",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Baseline Dates"
+        }
+      },
+      "required": [
+        "card_id",
+        "metric_ref",
+        "result",
+        "unit",
+        "format",
+        "context",
+        "baseline_dates"
+      ],
+      "title": "ComparisonSide",
+      "type": "object"
+    },
+    "ComparisonValues": {
+      "additionalProperties": false,
+      "properties": {
+        "left_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "right_coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "left": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Left"
+        },
+        "right": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Right"
+        },
+        "absolute_delta": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Absolute Delta"
+        },
+        "relative_delta_percent": {
+          "anyOf": [
+            {
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*[1-9])?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Relative Delta Percent"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "left_coverage",
+        "right_coverage",
+        "left",
+        "right",
+        "absolute_delta",
+        "relative_delta_percent",
+        "reason_codes"
+      ],
+      "title": "ComparisonValues",
+      "type": "object"
+    },
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "complete",
+            "partial",
+            "unavailable"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "expected_days": {
+          "minimum": 0,
+          "title": "Expected Days",
+          "type": "integer"
+        },
+        "calendar_days": {
+          "minimum": 0,
+          "title": "Calendar Days",
+          "type": "integer"
+        },
+        "declared_complete_days": {
+          "minimum": 0,
+          "title": "Declared Complete Days",
+          "type": "integer"
+        },
+        "observed_days": {
+          "minimum": 0,
+          "title": "Observed Days",
+          "type": "integer"
+        },
+        "eligible_receipts": {
+          "minimum": 0,
+          "title": "Eligible Receipts",
+          "type": "integer"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "expected_days",
+        "calendar_days",
+        "declared_complete_days",
+        "observed_days",
+        "eligible_receipts",
+        "reason_codes"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "EffectiveContext": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        },
+        "time_comparison": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResolvedTemporalSpecV2"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "scope_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope Hash"
+        },
+        "store_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Store Ids",
+          "type": "array"
+        },
+        "grain": {
+          "enum": [
+            "day",
+            "week",
+            "month",
+            "quarter",
+            "half_year",
+            "year"
+          ],
+          "title": "Grain",
+          "type": "string"
+        },
+        "calendar_ref": {
+          "$ref": "#/$defs/CalendarRef"
+        },
+        "calendar_basis": {
+          "enum": [
+            "calendar",
+            "fiscal"
+          ],
+          "title": "Calendar Basis",
+          "type": "string"
+        },
+        "timezone": {
+          "default": "UTC",
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Timezone",
+          "type": "string"
+        },
+        "week_start": {
+          "const": "monday",
+          "default": "monday",
+          "title": "Week Start",
+          "type": "string"
+        },
+        "alignment": {
+          "enum": [
+            "none",
+            "previous_year_same_dates"
+          ],
+          "title": "Alignment",
+          "type": "string"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on",
+        "store_ids",
+        "grain",
+        "calendar_ref",
+        "calendar_basis",
+        "alignment"
+      ],
+      "title": "EffectiveContext",
       "type": "object"
     },
     "MetricRef": {
@@ -191,6 +652,153 @@
       "title": "PairSelection",
       "type": "object"
     },
+    "ResolvedComparisonPeriod": {
+      "additionalProperties": false,
+      "properties": {
+        "starts_on": {
+          "format": "date",
+          "title": "Starts On",
+          "type": "string"
+        },
+        "ends_on": {
+          "format": "date",
+          "title": "Ends On",
+          "type": "string"
+        },
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at_exclusive": {
+          "format": "date-time",
+          "title": "Ends At Exclusive",
+          "type": "string"
+        },
+        "local_date_count": {
+          "maximum": 366,
+          "minimum": 1,
+          "title": "Local Date Count",
+          "type": "integer"
+        },
+        "elapsed_seconds": {
+          "minimum": 1,
+          "title": "Elapsed Seconds",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "starts_on",
+        "ends_on",
+        "starts_at",
+        "ends_at_exclusive",
+        "local_date_count",
+        "elapsed_seconds"
+      ],
+      "title": "ResolvedComparisonPeriod",
+      "type": "object"
+    },
+    "ResolvedTemporalSpecV2": {
+      "additionalProperties": false,
+      "properties": {
+        "date_mapping": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/TemporalDatePairV2"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date Mapping"
+        },
+        "schema_version": {
+          "const": "resolved-time-comparison/v2",
+          "default": "resolved-time-comparison/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "settings": {
+          "$ref": "#/$defs/TemporalSettingsV2"
+        },
+        "current_period": {
+          "$ref": "#/$defs/ResolvedComparisonPeriod"
+        },
+        "comparison_period": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResolvedComparisonPeriod"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "calendar_ref": {
+          "$ref": "#/$defs/CalendarRef"
+        },
+        "calendar_basis": {
+          "enum": [
+            "calendar",
+            "fiscal"
+          ],
+          "title": "Calendar Basis",
+          "type": "string"
+        },
+        "grain": {
+          "enum": [
+            "day",
+            "week",
+            "month",
+            "quarter",
+            "half_year",
+            "year"
+          ],
+          "title": "Grain",
+          "type": "string"
+        },
+        "timezone": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Timezone",
+          "type": "string"
+        },
+        "overlap_local_dates": {
+          "minimum": 0,
+          "title": "Overlap Local Dates",
+          "type": "integer"
+        },
+        "duration_difference_local_dates": {
+          "title": "Duration Difference Local Dates",
+          "type": "integer"
+        },
+        "limitation_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitation Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "settings",
+        "current_period",
+        "comparison_period",
+        "calendar_ref",
+        "calendar_basis",
+        "grain",
+        "timezone",
+        "overlap_local_dates",
+        "duration_difference_local_dates",
+        "limitation_codes"
+      ],
+      "title": "ResolvedTemporalSpecV2",
+      "type": "object"
+    },
     "ResultRef": {
       "additionalProperties": false,
       "properties": {
@@ -253,6 +861,159 @@
         "display"
       ],
       "title": "SingleSelection",
+      "type": "object"
+    },
+    "TemporalDatePairV2": {
+      "additionalProperties": false,
+      "properties": {
+        "current_date": {
+          "format": "date",
+          "title": "Current Date",
+          "type": "string"
+        },
+        "comparison_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Comparison Date"
+        },
+        "excluded": {
+          "title": "Excluded",
+          "type": "boolean"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "current_date",
+        "comparison_date",
+        "excluded",
+        "reason"
+      ],
+      "title": "TemporalDatePairV2",
+      "type": "object"
+    },
+    "TemporalSettingsV2": {
+      "additionalProperties": false,
+      "description": "Explicit comparison settings; legacy alignment keeps its separate meaning.",
+      "properties": {
+        "schema_version": {
+          "const": "time-comparison-settings/v2",
+          "default": "time-comparison-settings/v2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "none",
+            "previous_period",
+            "custom_period",
+            "previous_year_same_dates",
+            "previous_year_calendar_aligned",
+            "previous_year_iso_week_aligned",
+            "previous_year_fiscal_period",
+            "previous_year_comparable_elapsed_days"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "leap_day_policy": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_map",
+                "exclude",
+                "merge_with_feb_28"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Leap Day Policy"
+        },
+        "iso_week_53_policy": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_map",
+                "exclude",
+                "explicit_partial"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Iso Week 53 Policy"
+        },
+        "comparison_period": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComparisonPeriod"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "previous_period_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "calendar_bucket_count",
+                "local_date_duration"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Period Basis"
+        },
+        "incomplete_period_policy": {
+          "enum": [
+            "exclude",
+            "comparable_elapsed_days",
+            "explicit_partial"
+          ],
+          "title": "Incomplete Period Policy",
+          "type": "string"
+        },
+        "duration_normalization": {
+          "const": "none",
+          "default": "none",
+          "title": "Duration Normalization",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "incomplete_period_policy"
+      ],
+      "title": "TemporalSettingsV2",
       "type": "object"
     },
     "ViewDisplay": {
@@ -465,6 +1226,17 @@
       },
       "title": "Result Scope",
       "type": "array"
+    },
+    "comparison": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CardComparisonV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "query_context": {
       "$ref": "#/$defs/ViewQueryContext"

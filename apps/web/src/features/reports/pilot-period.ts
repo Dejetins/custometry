@@ -1,4 +1,5 @@
 export function pilotPeriod(period:{grain:string;value:string}):{start:string;end:string}{
+ if(period.grain==='custom'){const [start,end]=period.value.split('/');return {start,end};}
  const year=Number(period.value.slice(0,4));const iso=(date:Date)=>date.toISOString().slice(0,10);
  if(period.grain==='day')return {start:period.value,end:period.value};
  if(period.grain==='week'){

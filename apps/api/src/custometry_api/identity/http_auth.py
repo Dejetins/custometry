@@ -43,7 +43,21 @@ class IdentityHTTPAdapter:
             token = access_cookie or ""
         if not token:
             raise IdentityFailure("AUTHENTICATION_FAILED")
-        actor = self.service.authenticate(token)
+        # Only a single HTTP read may reuse authentication. Mutations retain their
+        # explicit transaction-boundary rechecks; no permission cache spans requests.
+        actor = getattr(request.state, "identity_actor", None) if request.method == "GET" else None
+        if actor is None:
+            actor = self.service.authenticate(token)
+            if request.method == "GET":
+                request.state.identity_actor = actor
+        if request.headers.get("x-custometry-activity") == "interactive":
+            if not getattr(request.state, "identity_activity_recorded", False):
+                if not authorization:
+                    self.service.verify_csrf(actor, request.headers.get("x-csrf-token"))
+                    if request.headers.get("origin") is not None:
+                        self.browser_origin(request)
+                self.service.record_activity(actor)
+                request.state.identity_activity_recorded = True
         if request.method not in {"GET", "HEAD", "OPTIONS"}:
             self.protect_mutation(request, actor)
         return actor

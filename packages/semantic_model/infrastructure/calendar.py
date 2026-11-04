@@ -10,6 +10,7 @@ from packages.contracts.semantic import (
     BusinessCalendarProfile,
     BusinessCalendarVersion,
     CalendarFailure,
+    CalendarProfileFactory,
     UpdateCalendarRequest,
     WorkspaceCalendarDefault,
 )
@@ -84,6 +85,7 @@ class PostgresCalendarRepository:
         request: UpdateCalendarRequest,
         content_hash: str,
         request_hash: str,
+        profile_factory: CalendarProfileFactory | None = None,
     ) -> WorkspaceCalendarDefault:
         with self.connect() as c, c.transaction(), c.cursor(row_factory=dict_row) as cur:
             cur.execute(
@@ -108,6 +110,11 @@ class PostgresCalendarRepository:
                 )
             if default["revision"] != request.expected_revision:
                 raise CalendarFailure("CALENDAR_REVISION_CONFLICT")
+            if default["revision"] > 0:
+                raise CalendarFailure("CALENDAR_ALREADY_CONFIGURED")
+            profile = request.profile
+            if profile_factory is not None:
+                profile, content_hash = profile_factory()
             revision = default["revision"] + 1
             cur.execute(
                 """INSERT INTO semantic_business_calendar_versions
@@ -117,7 +124,7 @@ class PostgresCalendarRepository:
                     uuid4(),
                     workspace_id,
                     content_hash,
-                    Jsonb(request.profile.model_dump(mode="json")),
+                    Jsonb(profile.model_dump(mode="json")),
                     principal_id,
                     default["version_id"],
                     request.idempotency_key,

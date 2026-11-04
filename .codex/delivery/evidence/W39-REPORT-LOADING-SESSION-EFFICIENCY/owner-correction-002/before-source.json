@@ -1,0 +1,38 @@
+[
+  {
+    "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+    "sha256": "b50052755560144acc4648fb3bdc1bdbde58a5fb6ea4640806b5cf2a0848f12b"
+  },
+  {
+    "path": "apps/web/src/features/reports/PilotDocument.tsx",
+    "sha256": "7a127bfac95cba477767b5fd47d7c5d31e5fbf8889e4d0cd600ea468f4cdb764"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace.css",
+    "sha256": "59d689cccacfd94a9c64a085611c11ead6adcf6b5b52cf63f2c46bce03f5333b"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-api.ts",
+    "sha256": "2a50c2997eca886e3c6f41a713a009a66f446b5d8a10602f5fabf764aad7f5cd"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-api.test.ts",
+    "sha256": "23694446a89e0b071401da19147f442a58a525ea28a0ad2b7ed3eac706796217"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/seams.json",
+    "sha256": "4cf484652aba76ceb5f7cc4c6f89406d3039e0c57ca8196f85e349cc2066e8ea"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/port-epilogue.js",
+    "sha256": "9fea6a73644cc702b978a7f72bf705c71f6df8bffa7eb0532f4e62a1e54a1684"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/runtime.ts",
+    "sha256": "c46c117423f1cdb45791813197384615dc5bf43d39777c1b2eff0efda25685d1"
+  },
+  {
+    "path": "apps/web/src/features/reports/pilot/source-map.json",
+    "sha256": "daf217930856b56f346c22723b09f0102b1e96ff57e7052cfba3efc0d84b1acc"
+  }
+]

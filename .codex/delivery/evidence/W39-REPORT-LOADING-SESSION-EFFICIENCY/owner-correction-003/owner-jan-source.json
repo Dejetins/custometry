@@ -1,0 +1,176 @@
+{
+  "status": 200,
+  "context": {
+    "starts_on": "2025-01-01",
+    "ends_on": "2025-01-31",
+    "store_ids": null
+  },
+  "selection": {
+    "mode": "single",
+    "card_id": "88cc6dc4-b66f-589a-9876-43158136f3b7",
+    "temporal": "previous_year_same_dates",
+    "display": "series"
+  },
+  "bindings": [
+    {
+      "card_id": "88cc6dc4-b66f-589a-9876-43158136f3b7",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "7b3c9803-65fe-57d2-bb05-7fbfbed3f14e",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "7b3c9803-65fe-57d2-bb05-7fbfbed3f14e",
+          "content_hash": "d658eb59cb4740b5d8a23672762a7ad2867111e437e516a781206c06c398da1c"
+        }
+      },
+      "effective_context_hash": "8f299253a88dfc9ffbcf4162eb410862b90620224abfa72a244f1ff59c3a034e",
+      "configuration_hash": "11426dc334b9c2bebba74b550ce0a6aae0ef004fb15e7489a53c5cf2cd20ae8d",
+      "bucket_projection": "net_revenue",
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "readiness": "ready"
+    },
+    {
+      "card_id": "79c20c15-5183-5dc4-8de0-97208a8ec2ef",
+      "metric_ref": {
+        "metric_id": "receipt_count",
+        "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+        "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+      },
+      "result": {
+        "result_id": "7b3c9803-65fe-57d2-bb05-7fbfbed3f14e",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "7b3c9803-65fe-57d2-bb05-7fbfbed3f14e",
+          "content_hash": "d658eb59cb4740b5d8a23672762a7ad2867111e437e516a781206c06c398da1c"
+        }
+      },
+      "effective_context_hash": "8f299253a88dfc9ffbcf4162eb410862b90620224abfa72a244f1ff59c3a034e",
+      "configuration_hash": "11426dc334b9c2bebba74b550ce0a6aae0ef004fb15e7489a53c5cf2cd20ae8d",
+      "bucket_projection": "receipt_count",
+      "unit": "receipt",
+      "format": {
+        "decimal_places": 0
+      },
+      "readiness": "ready"
+    },
+    {
+      "card_id": "eebdd394-2e9b-5991-b787-ce13a134a348",
+      "metric_ref": {
+        "metric_id": "average_receipt",
+        "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+        "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+      },
+      "result": {
+        "result_id": "7b3c9803-65fe-57d2-bb05-7fbfbed3f14e",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "7b3c9803-65fe-57d2-bb05-7fbfbed3f14e",
+          "content_hash": "d658eb59cb4740b5d8a23672762a7ad2867111e437e516a781206c06c398da1c"
+        }
+      },
+      "effective_context_hash": "8f299253a88dfc9ffbcf4162eb410862b90620224abfa72a244f1ff59c3a034e",
+      "configuration_hash": "11426dc334b9c2bebba74b550ce0a6aae0ef004fb15e7489a53c5cf2cd20ae8d",
+      "bucket_projection": "average_receipt",
+      "unit": "EUR/receipt",
+      "format": {
+        "decimal_places": 2
+      },
+      "readiness": "ready"
+    }
+  ],
+  "results": [
+    {
+      "id": "7b3c9803-65fe-57d2-bb05-7fbfbed3f14e",
+      "totals": {
+        "net_revenue": "43908.52",
+        "receipt_count": "210",
+        "average_receipt": "209.08819047619047619047619047619047619"
+      },
+      "temporal": true,
+      "changes": {
+        "net_revenue": {
+          "left_coverage": {
+            "state": "complete",
+            "expected_days": 31,
+            "calendar_days": 31,
+            "declared_complete_days": 31,
+            "observed_days": 31,
+            "eligible_receipts": 210,
+            "reason_codes": []
+          },
+          "right_coverage": {
+            "state": "complete",
+            "expected_days": 31,
+            "calendar_days": 31,
+            "declared_complete_days": 31,
+            "observed_days": 31,
+            "eligible_receipts": 205,
+            "reason_codes": []
+          },
+          "left": "43908.52",
+          "right": "32916.84",
+          "absolute_delta": "10991.68",
+          "relative_delta_percent": "33.39226973184546268718382444973454317",
+          "reason_codes": []
+        },
+        "receipt_count": {
+          "left_coverage": {
+            "state": "complete",
+            "expected_days": 31,
+            "calendar_days": 31,
+            "declared_complete_days": 31,
+            "observed_days": 31,
+            "eligible_receipts": 210,
+            "reason_codes": []
+          },
+          "right_coverage": {
+            "state": "complete",
+            "expected_days": 31,
+            "calendar_days": 31,
+            "declared_complete_days": 31,
+            "observed_days": 31,
+            "eligible_receipts": 205,
+            "reason_codes": []
+          },
+          "left": "210",
+          "right": "205",
+          "absolute_delta": "5",
+          "relative_delta_percent": "2.4390243902439024390243902439024390244",
+          "reason_codes": []
+        },
+        "average_receipt": {
+          "left_coverage": {
+            "state": "complete",
+            "expected_days": 31,
+            "calendar_days": 31,
+            "declared_complete_days": 31,
+            "observed_days": 31,
+            "eligible_receipts": 210,
+            "reason_codes": []
+          },
+          "right_coverage": {
+            "state": "complete",
+            "expected_days": 31,
+            "calendar_days": 31,
+            "declared_complete_days": 31,
+            "observed_days": 31,
+            "eligible_receipts": 205,
+            "reason_codes": []
+          },
+          "left": "209.08819047619047619047619047619047619",
+          "right": "160.56995121951219512195121951219512195",
+          "absolute_delta": "48.51823925667828106852497096399535424",
+          "relative_delta_percent": "30.216263309658665956536590534264673095",
+          "reason_codes": []
+        }
+      }
+    }
+  ]
+}

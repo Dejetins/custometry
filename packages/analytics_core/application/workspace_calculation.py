@@ -12,7 +12,20 @@ from uuid import UUID, uuid5
 
 from packages.contracts.analytics import AnalyticsFailure
 from packages.contracts.analytics.workspace import WorkspaceAccess, WorkspaceRunRequest
-from packages.contracts.semantic import BusinessCalendarVersion
+from packages.contracts.semantic import BusinessCalendarVersion, ZonedCalendarProfileV2
+from packages.contracts.semantic.store_filters import semantic_expression
+from packages.analytics_core.application.store_scopes import resolve_store_filters
+from packages.analytics_core.domain.calendar_buckets import boundary, month as month
+from packages.analytics_core.domain.decimal_numbers import number
+from packages.analytics_core.application.temporal_resolution import resolve_temporal
+from packages.contracts.analytics.temporal import ComparisonPeriod, ResolvedTemporalSpecV2
+from packages.analytics_core.application.temporal_projection import project_temporal
+from packages.analytics_core.domain.calendar_time import (
+    calendar_zone,
+    period_bounds,
+    day_bounds,
+    utc_source_dates,
+)
 
 VERSION = "metric-workspace/v2"
 CALCULATION = "receipt-fiscal/v2"
@@ -28,70 +41,8 @@ def digest(value: Any) -> str:
     ).hexdigest()
 
 
-def number(value: Decimal | None) -> str | None:
-    if value is None:
-        return None
-    if not value.is_finite():
-        raise AnalyticsFailure("NON_FINITE_VALUE")
-    if value == 0:
-        return "0"
-    return (
-        format(value, "f").rstrip("0").rstrip(".")
-        if "." in format(value, "f")
-        else format(value, "f")
-    )
-
-
 def dates(start: date, end: date) -> list[date]:
     return [start + timedelta(days=i) for i in range((end - start).days + 1)]
-
-
-def month(start: date, offset: int) -> date:
-    n = start.year * 12 + start.month - 1 + offset
-    return date(n // 12, n % 12 + 1, 1)
-
-
-def boundary(
-    day: date, grain: str, calendar: BusinessCalendarVersion, basis: str
-) -> dict[str, Any]:
-    start_month = calendar.profile.fiscal_year_start_month if basis == "fiscal" else 1
-    origin = date(day.year - (day.month < start_month), start_month, 1)
-    offset = (day.year - origin.year) * 12 + day.month - origin.month
-    quarter, half = offset // 3 + 1, offset // 6 + 1
-    year = (
-        origin.year
-        if calendar.profile.year_label == "start_year"
-        else (month(origin, 12) - timedelta(days=1)).year
-    )
-    if grain == "day":
-        start, end, label = day, day + timedelta(days=1), str(day)
-    elif grain == "week":
-        start = day - timedelta(days=day.weekday())
-        end = start + timedelta(days=7)
-        iso = start.isocalendar()
-        label = f"{iso.year}-W{iso.week:02d}"
-    elif grain == "month":
-        start = day.replace(day=1)
-        end, label = month(start, 1), day.strftime("%Y-%m")
-    else:
-        width = {"quarter": 3, "half_year": 6, "year": 12}[grain]
-        start = month(origin, offset // width * width)
-        end = month(start, width)
-        prefix = "FY" if basis == "fiscal" else ""
-        label = f"{prefix}{year}" + (
-            f" Q{quarter}" if grain == "quarter" else f" H{half}" if grain == "half_year" else ""
-        )
-    return {
-        "bucket_id": f"{grain}:{start}",
-        "bucket_start": str(start),
-        "bucket_end_exclusive": str(end),
-        "natural_starts_on": str(start),
-        "natural_ends_on": str(end - timedelta(days=1)),
-        "label": label,
-        "fiscal_year": year if basis == "fiscal" else None,
-        "fiscal_quarter": quarter if basis == "fiscal" else None,
-        "fiscal_half": half if basis == "fiscal" else None,
-    }
 
 
 def normalize(
@@ -128,6 +79,15 @@ def normalize(
         request.common.store_ids if request.common.store_ids is not None else allowed,
         request.local_store_ids if request.local_store_ids is not None else allowed,
     )
+    if request.scope is not None:
+        effective = set(
+            resolve_store_filters(
+                request.scope.filters,
+                allowed=frozenset(allowed),
+                dataset_id=request.semantic_dataset_version_id,
+                mandatory=[request.common.store_ids, request.local_store_ids],
+            )
+        )
     registry = {m["metric_id"]: m for m in source["metrics"]}
     if set(registry) != set(METRICS):
         raise AnalyticsFailure("METRIC_BASIS_MISMATCH")
@@ -145,10 +105,55 @@ def normalize(
         "grain": request.grain,
         "calendar_ref": request.calendar_ref.model_dump(mode="json"),
         "calendar_basis": request.calendar_basis,
-        "timezone": "UTC",
+        "timezone": calendar.profile.timezone,
         "week_start": "monday",
         "alignment": request.alignment,
     }
+    if isinstance(calendar.profile, ZonedCalendarProfileV2):
+        zone = calendar_zone(calendar.profile)
+        period_bounds(request.common.starts_on, request.common.ends_on, zone)
+        if request.alignment != "none":
+            for day in dates(request.common.starts_on, request.common.ends_on):
+                try:
+                    prior = day.replace(year=day.year - 1)
+                except ValueError:
+                    continue
+                day_bounds(prior, zone)
+    if request.time_comparison is not None:
+        if request.alignment != "none":
+            raise AnalyticsFailure("COMPARISON_CONTRACT_CONFLICT")
+        context["time_comparison"] = resolve_temporal(
+            request.time_comparison,
+            ComparisonPeriod(starts_on=request.common.starts_on, ends_on=request.common.ends_on),
+            grain=request.grain,
+            calendar=calendar,
+            basis=request.calendar_basis,
+        ).model_dump(mode="json")
+    if request.scope is not None:
+        context["scope_hash"] = digest(
+            {
+                "schema_version": request.scope.schema_version,
+                "dependency_hash": request.scope.dependency_hash,
+                "filters": sorted(
+                    [
+                        {
+                            **f.model_dump(mode="json"),
+                            "expression": semantic_expression(f.expression),
+                        }
+                        for f in request.scope.filters
+                    ],
+                    key=lambda f: json.dumps(f, sort_keys=True),
+                ),
+                "effective_store_ids": sorted(effective),
+            }
+        )
+    if request.receipt_filter is not None:
+        fingerprint = source.get("receipt_filter_hash")
+        if not isinstance(fingerprint, str) or len(fingerprint) != 64:
+            raise AnalyticsFailure("FILTER_PROVIDER_UNAVAILABLE")
+        context["scope_hash"] = digest(
+            {"store_scope": context.get("scope_hash"), "receipt_filter_hash": fingerprint}
+        )
     identity = {
         "schema_version": VERSION,
         "calculation_version": CALCULATION,
@@ -226,6 +231,27 @@ def build_workspace(
         if day in calendar_days or type(row["is_period_complete"]) is not bool:
             raise AnalyticsFailure("CALENDAR_INVALID")
         calendar_days[day] = row["is_period_complete"]
+    zone = calendar_zone(calendar.profile)
+    if isinstance(calendar.profile, ZonedCalendarProfileV2):
+        needed = set(dates(request.common.starts_on, request.common.ends_on))
+        if request.time_comparison is not None:
+            spec = ResolvedTemporalSpecV2.model_validate(context["time_comparison"])
+            if spec.comparison_period is not None:
+                needed.update(
+                    dates(spec.comparison_period.starts_on, spec.comparison_period.ends_on)
+                )
+        elif request.alignment != "none":
+            for day in tuple(needed):
+                try:
+                    needed.add(day.replace(year=day.year - 1))
+                except ValueError:
+                    pass
+        source_days = calendar_days
+        calendar_days = {}
+        for day in needed:
+            intersecting = utc_source_dates(day, zone)
+            if all(d in source_days for d in intersecting):
+                calendar_days[day] = all(source_days[d] for d in intersecting)
     by_day: dict[date, list[dict[str, Any]]] = defaultdict(list)
     seen: set[tuple[str, str]] = set()
     as_of: datetime | None = None
@@ -248,7 +274,7 @@ def build_workspace(
         except (InvalidOperation, ValueError, KeyError) as exc:
             raise AnalyticsFailure("RECEIPT_AMOUNT_INVALID") from exc
         if str(row["store_id"]) in context["store_ids"]:
-            by_day[occurred.date()].append({"amount": amount})
+            by_day[occurred.astimezone(zone).date()].append({"amount": amount})
 
     def project(
         selected: list[date], expected: int | None = None
@@ -311,6 +337,15 @@ def build_workspace(
     totals, coverage = project(selected)
     temporal: dict[str, Any] | None = None
     reasons = list(coverage["reason_codes"])
+    selection = source.get("receipt_selection")
+    selection_codes = list(selection["limitation_codes"]) if selection else []
+    if selection and selection["unknown_count"]:
+        selection_codes.append("RECEIPT_MEMBERSHIP_UNKNOWN")
+    reasons += selection_codes
+    if isinstance(calendar.profile, ZonedCalendarProfileV2):
+        reasons.append("COVERAGE_INTERSECTING_UTC_SOURCE_DAYS")
+        if request.receipt_filter is not None:
+            reasons.append("REGISTERED_RECEIPT_DATE_FILTER_UTC")
     if request.alignment != "none":
         mapping: dict[date, date | None] = {}
         for d in selected:
@@ -346,7 +381,7 @@ def build_workspace(
             )
         bt, bc = project(baseline_dates, len(selected))
         codes = ["LEAP_DAY_SAME_DATE_UNAVAILABLE"] if None in mapping.values() else []
-        disclosures = codes + (["BASELINE_UNMAPPED_LEAP_DAY_EXCLUDED"] if excluded else [])
+        disclosures = codes + (["BASELINE_UNMAPPED_LEAP_DAY_EXCLUDED"] if excluded else []) + selection_codes
         temporal = {
             "alignment": request.alignment,
             "mapping": [
@@ -369,7 +404,31 @@ def build_workspace(
         {k: m[k] for k in ("metric_id", "version_id", "content_hash")}
         for m in sorted(source["metrics"], key=lambda item: item["metric_id"])
     ]
+    temporal_v2 = None
+    if request.time_comparison is not None:
+        temporal_v2 = project_temporal(
+            ResolvedTemporalSpecV2.model_validate(context["time_comparison"]),
+            project=project,
+            calendar=calendar,
+            request_hash=request_hash,
+            policy_hash=access.policy_hash,
+            dataset_id=request.semantic_dataset_version_id,
+            metric_refs=refs,
+            filter_hash=digest(
+                {
+                    "store_ids": context["store_ids"],
+                    "scope_hash": context.get("scope_hash"),
+                    "receipt_filter_hash": source.get("receipt_filter_hash"),
+                }
+            ),
+            complete_days=calendar_days,
+            selection_limitations=tuple(selection_codes),
+        )
+        if temporal_v2 is not None:
+            reasons += temporal_v2["limitation_codes"]
     return {
+        **({"receipt_selection": selection} if selection is not None else {}),
+        **({"temporal_v2": temporal_v2} if request.time_comparison is not None else {}),
         "schema_version": VERSION,
         "result_id": str(uuid5(NAMESPACE, request_hash)),
         "request_hash": request_hash,
@@ -396,13 +455,16 @@ def build_workspace(
             "source_calendar_version_id": next(
                 b["artifact_id"] for b in source["bindings"] if b["entity"] == "Calendar"
             ),
-            "data_as_of": (as_of or datetime(1970, 1, 1, tzinfo=UTC)).isoformat(),
+            "data_as_of": (
+                source.get("receipt_data_as_of") or as_of or datetime(1970, 1, 1, tzinfo=UTC)
+            ).isoformat(),
         },
         "trust": {
             "status": "no_data"
             if totals["receipt_count"] is None
             else "comparison_unavailable"
-            if temporal and any(v["absolute_delta"] is None for v in temporal["changes"].values())
+            if (temporal and any(v["absolute_delta"] is None for v in temporal["changes"].values()))
+            or (temporal_v2 and temporal_v2["comparability_status"] == "unavailable")
             else "ready",
             "reason_codes": sorted(
                 set(

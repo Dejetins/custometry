@@ -104,8 +104,9 @@ export class WorkspaceRequestError extends Error {
 }
 export class WorkspaceReportClient {
   public constructor(private readonly baseUrl: string, private readonly fetcher: typeof fetch = globalThis.fetch.bind(globalThis)) {}
-  private async request<T>(path: string, body?: unknown, csrf?: string): Promise<T> {
+  private async request<T>(path: string, body?: unknown, csrf?: string, signal?: AbortSignal): Promise<T> {
     const response = await this.fetcher(`${this.baseUrl}/v2${path}`, {
+      signal,
       method: body === undefined ? "GET" : "POST", credentials: "same-origin", cache: "no-store",
       headers: body === undefined ? {} : {"Content-Type":"application/json","X-CSRF-Token":csrf ?? ""},
       ...(body === undefined ? {} : {body:JSON.stringify(body)}),
@@ -113,8 +114,9 @@ export class WorkspaceReportClient {
     if (!response.ok) { const failure = await response.json() as {code?: string; retryable?: boolean}; throw new WorkspaceRequestError(failure.code ?? `WORKSPACE_HTTP_${response.status}`, response.status, failure.retryable === true); }
     return response.json() as Promise<T>;
   }
-  public get(id: string): Promise<WorkspaceEditorResponse> { return this.request(`/${encodeURIComponent(id)}`); }
-  public preview(id: string, snapshot: string): Promise<WorkspaceEditorResponse> { return this.request(`/${encodeURIComponent(id)}/snapshots/${encodeURIComponent(snapshot)}`); }
+  public prepareNew(body: NewWorkspaceRequest, csrf: string): Promise<NewWorkspaceResponse> { return this.request("/new/prepare",body,csrf); }
+  public get(id: string, signal?: AbortSignal): Promise<WorkspaceEditorResponse> { return this.request(`/${encodeURIComponent(id)}`, undefined, undefined, signal); }
+  public preview(id: string, snapshot: string, signal?: AbortSignal): Promise<WorkspaceEditorResponse> { return this.request(`/${encodeURIComponent(id)}/snapshots/${encodeURIComponent(snapshot)}`, undefined, undefined, signal); }
   public apply(id: string, body: WorkspaceApplyRequest, csrf: string): Promise<WorkspaceApplyResponse> { return this.request(`/${encodeURIComponent(id)}/apply`,body,csrf); }
   public save(id: string, body: WorkspaceSaveRequest, csrf: string): Promise<WorkspaceReportResponse> { return this.request(`/${encodeURIComponent(id)}/versions`,body,csrf); }
   public views(id: string): Promise<SavedViewV1[]> { return this.request(`/${encodeURIComponent(id)}/saved-views`); }
@@ -144,6 +146,9 @@ export class WorkspaceReportClient {
 """
     )
     result["packages/contracts/src/workspace-calendar-client.ts"] = client.encode()
+    from packages.contracts.generate_composer_client import outputs as composer_outputs
+
+    result.update(composer_outputs())
     return result
 
 

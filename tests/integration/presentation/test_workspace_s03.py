@@ -21,6 +21,7 @@ from packages.identity_access.infrastructure.organization_postgres import (
 )
 from packages.contracts.analytics.sales_report import SalesReportRequest
 from packages.contracts.presentation import SaveRequest
+from packages.contracts.presentation.workspace import SavedViewV1
 from packages.presentation.application.reports import ReportService
 from packages.presentation.infrastructure.postgres import PostgresReportRepository
 from packages.artifacts.infrastructure.document_snapshots import DocumentSnapshotArtifacts
@@ -453,6 +454,43 @@ def test_real_workspace(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
     )
     view = req("POST", base + "/saved-views", view_request, using=reader_headers)
     assert req("POST", base + "/saved-views", view_request, using=reader_headers) == view
+    assert req("GET", base + "/saved-views", using=reader_headers) == [view]
+    assert view["comparison"] == reader_apply["comparison"]
+    # Old missing-field payloads retain their exact canonical representation/digest.
+    old_view = {k: v for k, v in view.items() if k != "comparison"}
+    assert SavedViewV1.model_validate(old_view).model_dump(mode="json") == old_view
+    from packages.analytics_core.application.workspace_service import WorkspaceAnalyticsService
+
+    def forbidden_comparison(*args: Any, **kwargs: Any) -> NoReturn:
+        raise AssertionError("GET must not compute or admit a comparison")
+
+    with monkeypatch.context() as no_compare_guard:
+        no_compare_guard.setattr(WorkspaceAnalyticsService, "compare", forbidden_comparison)
+        assert req("GET", base + "/saved-views", using=reader_headers) == [view]
+        with TestClient(create_app(settings=settings)) as restarted:
+            reopened = restarted.get(base + "/saved-views", headers=reader_headers)
+            assert reopened.status_code == 200 and reopened.json() == [view]
+    with connect() as c:
+        view_uri = cast(
+            tuple[Any, ...],
+            c.execute(
+                "SELECT relative_uri FROM artifact_manifests WHERE id=%s",
+                (view["comparison"]["manifest"]["artifact_id"],),
+            ).fetchone(),
+        )[0]
+    view_path = tmp_path / view_uri
+    view_bytes = view_path.read_bytes()
+    view_path.unlink()
+    assert (
+        req("GET", base + "/saved-views", using=reader_headers, expected=409)["code"]
+        == "ARTIFACT_MISSING"
+    )
+    view_path.write_bytes(b"corrupt")
+    assert (
+        req("GET", base + "/saved-views", using=reader_headers, expected=409)["code"]
+        == "ARTIFACT_CORRUPT"
+    )
+    view_path.write_bytes(view_bytes)
     assert req("GET", base + "/saved-views", using=reader_headers) == [view]
     assert req("GET", base)["report"]["revision"] == 3
     req(

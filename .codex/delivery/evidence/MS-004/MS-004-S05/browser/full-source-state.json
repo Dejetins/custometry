@@ -1,0 +1,7 @@
+{
+  "note": "Product source bytes at full 14-case pass, before final unit-label/context-generation corrections. parity.spec.ts has subsequently gained the two delayed cases; its hash is not the full-run test source and is excluded.",
+  "files": {
+    "apps/web/src/features/reports/ConfiguredWorkspace.tsx": "f501e2d768f5d6ad0d5e4f222d1a1ac2b930d83ca5005bdb935741bcac9f9acd",
+    "apps/web/src/features/reports/WorkspaceProjection.tsx": "98d044fae30b6dd5702f702d39d0c2b24d95de3fd240077a0c48b66315a74377"
+  }
+}

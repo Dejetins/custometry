@@ -1,0 +1,34 @@
+{
+  "url": "http://localhost:41746/w/70568e58-2a23-4de1-9cf7-17bb44e8ae8d/reports/9285c38c-574d-5ce3-a8d1-028e809cc1ff/edit",
+  "browser": "136.0.7103.25",
+  "snapshot": {
+    "title": "Original",
+    "cards": 3,
+    "values": [
+      "43\u00a0908,52",
+      "210",
+      "209,09"
+    ],
+    "contextCount": 1,
+    "pending": false
+  },
+  "errors": [],
+  "computeRequests": [],
+  "originIsolation": "localhost, separate from owner demonstration on 127.0.0.1",
+  "instrumentation": false,
+  "runtime": {
+    "name": "custometry-w39-api-candidate-93333",
+    "image": "sha256:6b292d71016423306e46639d80b16d04f44c7199e2615c787f2de9612d5f803c",
+    "version": "candidate",
+    "workers": 8,
+    "apiCpuLimit": 8,
+    "apiMemoryGiB": 4,
+    "databaseCpuLimit": 4,
+    "databaseMemoryGiB": 2,
+    "network": "custometry-w39-serving-c67c",
+    "sourceReadOnly": true,
+    "balanced": true,
+    "database": "custometry-w39-candidate-c67c",
+    "at": 1790133021.88379
+  }
+}

@@ -1,0 +1,414 @@
+{
+  "comparison": {
+    "schema_version": "card-comparison/v1",
+    "mode": "pair",
+    "left": {
+      "card_id": "134cf3c7-4120-55a4-8980-0cf0ea0de347",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "4736aa0d-b972-5749-90c6-19e38879b8d9",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "4736aa0d-b972-5749-90c6-19e38879b8d9",
+          "content_hash": "7f1c9b688276585d55112a0eefea2ed0bd84dbc67dec01235d2f8087d223aa60"
+        }
+      },
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "context": {
+        "starts_on": "2025-01-01",
+        "ends_on": "2025-11-30",
+        "store_ids": [
+          "1"
+        ],
+        "grain": "quarter",
+        "calendar_ref": {
+          "version_id": "9131dcd4-0613-4ead-bea3-17611a4f955d",
+          "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+        },
+        "calendar_basis": "fiscal",
+        "timezone": "UTC",
+        "week_start": "monday",
+        "alignment": "none"
+      },
+      "baseline_dates": null
+    },
+    "right": {
+      "card_id": "3d943a91-524a-4542-a43d-fd100324d4b9",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "d5dcaed4-8f32-50ee-9415-d8a03077b628",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "d5dcaed4-8f32-50ee-9415-d8a03077b628",
+          "content_hash": "af5d0a5be0c90b9da0066dd9d0ed188eb032a087242340c883a61318b8ea2f59"
+        }
+      },
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "context": {
+        "starts_on": "2025-01-01",
+        "ends_on": "2025-11-30",
+        "store_ids": [
+          "10"
+        ],
+        "grain": "quarter",
+        "calendar_ref": {
+          "version_id": "9131dcd4-0613-4ead-bea3-17611a4f955d",
+          "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+        },
+        "calendar_basis": "fiscal",
+        "timezone": "UTC",
+        "week_start": "monday",
+        "alignment": "none"
+      },
+      "baseline_dates": null
+    },
+    "comparability_status": "comparable",
+    "buckets": [
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 90,
+          "calendar_days": 90,
+          "declared_complete_days": 90,
+          "observed_days": 30,
+          "eligible_receipts": 30,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 90,
+          "calendar_days": 90,
+          "declared_complete_days": 90,
+          "observed_days": 32,
+          "eligible_receipts": 32,
+          "reason_codes": []
+        },
+        "left": "6517.6",
+        "right": "6210.48",
+        "absolute_delta": "307.12",
+        "relative_delta_percent": "4.9451894217516198425886565933712048022",
+        "reason_codes": [],
+        "bucket_id": "quarter:2025-01-01"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 91,
+          "calendar_days": 91,
+          "declared_complete_days": 91,
+          "observed_days": 32,
+          "eligible_receipts": 32,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 91,
+          "calendar_days": 91,
+          "declared_complete_days": 91,
+          "observed_days": 30,
+          "eligible_receipts": 30,
+          "reason_codes": []
+        },
+        "left": "5756",
+        "right": "5760.2",
+        "absolute_delta": "-4.2",
+        "relative_delta_percent": "-0.072914134925870629492031526683101281206",
+        "reason_codes": [],
+        "bucket_id": "quarter:2025-04-01"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 92,
+          "calendar_days": 92,
+          "declared_complete_days": 92,
+          "observed_days": 28,
+          "eligible_receipts": 28,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 92,
+          "calendar_days": 92,
+          "declared_complete_days": 92,
+          "observed_days": 30,
+          "eligible_receipts": 30,
+          "reason_codes": []
+        },
+        "left": "5236.4",
+        "right": "5165.8",
+        "absolute_delta": "70.6",
+        "relative_delta_percent": "1.3666808625963064772155329281040690697",
+        "reason_codes": [],
+        "bucket_id": "quarter:2025-07-01"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 61,
+          "calendar_days": 61,
+          "declared_complete_days": 61,
+          "observed_days": 19,
+          "eligible_receipts": 19,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 61,
+          "calendar_days": 61,
+          "declared_complete_days": 61,
+          "observed_days": 14,
+          "eligible_receipts": 14,
+          "reason_codes": []
+        },
+        "left": "3100.8",
+        "right": "1865.16",
+        "absolute_delta": "1235.64",
+        "relative_delta_percent": "66.248471980956057389178408286688541466",
+        "reason_codes": [],
+        "bucket_id": "quarter:2025-10-01"
+      }
+    ],
+    "totals": {
+      "left_coverage": {
+        "state": "complete",
+        "expected_days": 334,
+        "calendar_days": 334,
+        "declared_complete_days": 334,
+        "observed_days": 109,
+        "eligible_receipts": 109,
+        "reason_codes": []
+      },
+      "right_coverage": {
+        "state": "complete",
+        "expected_days": 334,
+        "calendar_days": 334,
+        "declared_complete_days": 334,
+        "observed_days": 106,
+        "eligible_receipts": 106,
+        "reason_codes": []
+      },
+      "left": "20610.8",
+      "right": "19001.64",
+      "absolute_delta": "1609.16",
+      "relative_delta_percent": "8.468532189853086365176900520165627809",
+      "reason_codes": []
+    },
+    "coverage": {
+      "state": "complete",
+      "expected_days": 334,
+      "calendar_days": 334,
+      "declared_complete_days": 334,
+      "observed_days": 106,
+      "eligible_receipts": 106,
+      "reason_codes": []
+    },
+    "manifest": {
+      "artifact_id": "01e1b5e2-8160-5eae-a20a-4293e5e5b0d3",
+      "content_hash": "069d07ecdac3eef951955b2487d69b4a11311c4cba42357d67f004b4f45eb8d7"
+    }
+  },
+  "chart": {
+    "series": [
+      {
+        "name": "Net revenue · 1 · EUR",
+        "data": [
+          "6517.6",
+          "5756",
+          "5236.4",
+          "3100.8"
+        ],
+        "axis": 0
+      },
+      {
+        "name": "Net revenue · 2 · EUR",
+        "data": [
+          "6210.48",
+          "5760.2",
+          "5165.8",
+          "1865.16"
+        ],
+        "axis": 0
+      }
+    ],
+    "axes": [
+      "EUR"
+    ],
+    "dates": [
+      "FY2025 Q4",
+      "FY2026 Q1",
+      "FY2026 Q2",
+      "FY2026 Q3"
+    ]
+  },
+  "card_bindings": [
+    {
+      "card_id": "134cf3c7-4120-55a4-8980-0cf0ea0de347",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "ae3ac9c1-434f-5573-a97e-09849f764e85",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "ae3ac9c1-434f-5573-a97e-09849f764e85",
+          "content_hash": "a975421345b863034b6cd637fa72a10d4dfa06bff37d39b05a01317aa72d39fc"
+        }
+      },
+      "effective_context_hash": "3cca4ee005d0ed1a0c2bb006b38c96d87bda5150fa038f3b39e00dfb907f1647",
+      "configuration_hash": "b8748e7e2d5f2599e161ba359b408f3b4fbf26a7b6ff7ed90b275cd0ca53e8f1",
+      "bucket_projection": "net_revenue",
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "readiness": "ready"
+    },
+    {
+      "card_id": "90b3aded-a1bc-4367-9208-0d78dd84d52c",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "ae3ac9c1-434f-5573-a97e-09849f764e85",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "ae3ac9c1-434f-5573-a97e-09849f764e85",
+          "content_hash": "a975421345b863034b6cd637fa72a10d4dfa06bff37d39b05a01317aa72d39fc"
+        }
+      },
+      "effective_context_hash": "3cca4ee005d0ed1a0c2bb006b38c96d87bda5150fa038f3b39e00dfb907f1647",
+      "configuration_hash": "b8748e7e2d5f2599e161ba359b408f3b4fbf26a7b6ff7ed90b275cd0ca53e8f1",
+      "bucket_projection": "net_revenue",
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "readiness": "ready"
+    },
+    {
+      "card_id": "3d943a91-524a-4542-a43d-fd100324d4b9",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "abe3b7f6-aeb1-523a-bd2b-a075a15b4fad",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "abe3b7f6-aeb1-523a-bd2b-a075a15b4fad",
+          "content_hash": "412b36391a2c6660bfbbcb2284273c002a4a5ca8d799d2c005aae839bfc4d9fe"
+        }
+      },
+      "effective_context_hash": "3398e8f62beebceb671bc92dac9be7dbcb56a519a0d6ae6fb6e80ae9d774422a",
+      "configuration_hash": "b8748e7e2d5f2599e161ba359b408f3b4fbf26a7b6ff7ed90b275cd0ca53e8f1",
+      "bucket_projection": "net_revenue",
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "readiness": "ready"
+    },
+    {
+      "card_id": "937d45a1-ddf7-44d8-8cd6-d6e320f99d02",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "eaec549f-ce18-5d5f-9c8f-1e271f08d881",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "eaec549f-ce18-5d5f-9c8f-1e271f08d881",
+          "content_hash": "f37c57a0c61386b29761d0f3c3347aca7da5378ff99c2bce591e4ac13fa38451"
+        }
+      },
+      "effective_context_hash": "2867197c5a727aa6dce7a2a60f4c90745fd677cdee6bf1d4531f7d5136213cfe",
+      "configuration_hash": "b8748e7e2d5f2599e161ba359b408f3b4fbf26a7b6ff7ed90b275cd0ca53e8f1",
+      "bucket_projection": "net_revenue",
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "readiness": "ready"
+    },
+    {
+      "card_id": "e0fc353a-c681-46df-b6cf-ae721ad455ef",
+      "metric_ref": {
+        "metric_id": "receipt_count",
+        "version_id": "5ff7b232-faa0-5535-96f0-e626fc113433",
+        "content_hash": "989a5932438697a786556e60d79f814096014c13836355988c0a9590553581f0"
+      },
+      "result": {
+        "result_id": "eaec549f-ce18-5d5f-9c8f-1e271f08d881",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "eaec549f-ce18-5d5f-9c8f-1e271f08d881",
+          "content_hash": "f37c57a0c61386b29761d0f3c3347aca7da5378ff99c2bce591e4ac13fa38451"
+        }
+      },
+      "effective_context_hash": "2867197c5a727aa6dce7a2a60f4c90745fd677cdee6bf1d4531f7d5136213cfe",
+      "configuration_hash": "b8748e7e2d5f2599e161ba359b408f3b4fbf26a7b6ff7ed90b275cd0ca53e8f1",
+      "bucket_projection": "receipt_count",
+      "unit": "receipt",
+      "format": {
+        "decimal_places": 0
+      },
+      "readiness": "ready"
+    },
+    {
+      "card_id": "7c7a4c64-81c8-4085-a351-2b2d0ecc3c98",
+      "metric_ref": {
+        "metric_id": "average_receipt",
+        "version_id": "4634a16a-f1f7-5396-82ea-3e25885c7144",
+        "content_hash": "6533806a98986654becef1bf467167c29a78994c3113bec1ce1773b82b75eb5a"
+      },
+      "result": {
+        "result_id": "eaec549f-ce18-5d5f-9c8f-1e271f08d881",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "eaec549f-ce18-5d5f-9c8f-1e271f08d881",
+          "content_hash": "f37c57a0c61386b29761d0f3c3347aca7da5378ff99c2bce591e4ac13fa38451"
+        }
+      },
+      "effective_context_hash": "2867197c5a727aa6dce7a2a60f4c90745fd677cdee6bf1d4531f7d5136213cfe",
+      "configuration_hash": "b8748e7e2d5f2599e161ba359b408f3b4fbf26a7b6ff7ed90b275cd0ca53e8f1",
+      "bucket_projection": "average_receipt",
+      "unit": "EUR/receipt",
+      "format": {
+        "decimal_places": 2
+      },
+      "readiness": "ready"
+    }
+  ],
+  "old_snapshot_id": "d40a95db-8809-4c31-87e6-3efd64d769d4",
+  "calendar_before": {
+    "version_id": "b6aa3737-8fca-5dca-a7c3-32747d444675",
+    "content_hash": "1952292cc1e8ce331ca31ec59594dc3d4582668818f1a8d770c1c433e1957321"
+  },
+  "calendar_after": {
+    "version_id": "9131dcd4-0613-4ead-bea3-17611a4f955d",
+    "content_hash": "d6dfbcefbd3b236c50266a7d195817d2589989f730d3a8329afcbba0d82e905c"
+  },
+  "table": "FY2025 Q4\t2025-01-01 — 2025-03-31\t6,517.6\t6,210.48\t307.12\t4.95\tReady\nFY2026 Q1\t2025-04-01 — 2025-06-30\t5,756\t5,760.2\t-4.2\t-0.07\tReady\nFY2026 Q2\t2025-07-01 — 2025-09-30\t5,236.4\t5,165.8\t70.6\t1.37\tReady\nFY2026 Q3\t2025-10-01 — 2025-11-30\t3,100.8\t1,865.16\t1,235.64\t66.25\tReady Partial bucket"
+}

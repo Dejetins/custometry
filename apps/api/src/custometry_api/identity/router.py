@@ -9,7 +9,6 @@ from time import monotonic
 from typing import Annotated, cast
 from uuid import UUID
 
-import psycopg
 from fastapi import Cookie, Depends, FastAPI, Header, Request, Response, status
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
@@ -191,15 +190,9 @@ class SlidingWindowRateLimiter:
 
 
 def create_identity_service(settings: Settings) -> IdentityService:
-    def connect() -> psycopg.Connection[object]:
-        return psycopg.connect(
-            host=settings.database_host,
-            port=settings.database_port,
-            dbname=settings.database_name,
-            user=settings.database_user,
-            password=settings.read_database_password(),
-            connect_timeout=settings.database_connect_timeout_seconds,
-        )
+    from custometry_api.database import connection_factory
+
+    connect = connection_factory(settings)
 
     try:
         bootstrap_secret = settings.read_bootstrap_token()
@@ -304,6 +297,14 @@ def create_identity_app(
 
     http_auth = IdentityHTTPAdapter(service, settings)
     authenticated = http_auth.authenticate
+    from custometry_api.identity.events import IdentityEvents
+    events = IdentityEvents(settings)
+    app.state.identity_events = events
+
+    @app.get("/events")
+    async def identity_events(request: Request):  # pyright: ignore[reportUnusedFunction] -- registered by FastAPI
+        return await events.response(request, http_auth)
+
     browser_origin = http_auth.browser_origin
     protect_mutation = http_auth.protect_mutation
 

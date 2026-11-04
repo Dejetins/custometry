@@ -1,0 +1,31 @@
+/* Both report generations share an external header and non-overlapping docks. */
+.workspace{grid-template-rows:auto auto minmax(0,1fr)}
+.mw-global-header{grid-column:1 / -1;grid-row:1;min-width:0;border-bottom:1px solid var(--border,#303137)}
+.workspace-chrome{grid-row:2}.report-scroll{grid-row:3}
+body:not([data-workspace-v2]) .workspace{transition:grid-template-columns 180ms cubic-bezier(.2,0,0,1)}
+body:not([data-workspace-v2]) .workspace .context-drawer{position:relative;inset:auto;grid-column:2;grid-row:2 / 4;align-self:stretch;width:100%;height:auto;margin:0;border-radius:0;box-shadow:inset 1px 0 var(--border,#303137);transform:none}
+@media(max-width:1100px){
+ body:not([data-workspace-v2]) .workspace,body:not([data-workspace-v2]) .workspace[data-context=open]{grid-template-columns:minmax(0,1fr) 0}
+ body:not([data-workspace-v2]) .workspace .context-drawer{grid-column:1;grid-row:3;width:100%;max-width:none}
+ body:not([data-workspace-v2]) .workspace[data-context=open] .report-scroll{visibility:hidden;pointer-events:none}
+}
+@media(prefers-reduced-motion:reduce){body:not([data-workspace-v2]) .workspace{transition:none}}
+/* A narrow navigation row contains stacked tabs and context controls, not 40px. */
+.report-navigation-row{height:auto;min-height:40px}
+
+/* The report title, navigation and body share the platform content inset. */
+.mw-global-header{padding-inline:20px}
+.report-navigation-row{padding:10px 20px;column-gap:20px;row-gap:8px}
+@media(max-width:820px){.mw-global-header{padding-inline:12px}.report-navigation-row{padding:8px 12px;gap:8px}}
+
+/* Owner reference: filled active rail tile with no selection stroke. */
+.sidebar .rail-button[aria-current="page"],
+.sidebar .rail-button[aria-current="page"][aria-expanded="true"]{color:#f5f6f7;background:#373c40;box-shadow:none;border-radius:8px}
+.mw-period-picker{position:fixed;z-index:150;background:var(--surface);color:var(--text);padding:16px;border:1px solid var(--border);border-radius:10px;box-shadow:0 12px 36px #0005;max-height:calc(100dvh - 130px);overflow:auto;box-sizing:border-box}.mw-period-picker header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.mw-period-picker button{font:inherit;font-size:12px;color:var(--text);border:0;background:transparent;border-radius:5px;padding:7px 9px;cursor:pointer}.mw-period-picker button:hover:not(:disabled){background:var(--module)}.mw-period-presets{display:grid;gap:4px;margin-bottom:16px}.mw-period-presets>div{display:grid;grid-template-columns:1fr 1fr;gap:6px}.mw-period-presets button{text-align:left}.mw-period-picker form{display:grid;gap:12px;border-top:1px solid var(--border);padding-top:12px}.mw-period-picker form>div{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mw-period-picker label{display:grid;gap:6px;font-size:12px}.mw-period-picker input{box-sizing:border-box;width:100%;min-width:0;font:inherit;color:var(--text);background:var(--module);border:1px solid var(--border);border-radius:5px;padding:6px}.mw-period-picker form>button{justify-self:end;background:var(--module-strong)}.mw-period-picker button:disabled{opacity:.45;cursor:default}
+
+/* Export choices fit their labels instead of a fixed-width panel. */
+.chart-export .chart-export-menu,
+.adaptive-export .chart-export-menu,
+.table-export .chart-export-menu{width:max-content;min-width:0;display:grid;gap:0;padding:4px;border:0;border-radius:7px}
+.chart-export-menu button{justify-content:flex-start;min-height:28px;padding:4px 8px;gap:8px}
+.chart-export-menu button .export-format{min-width:0}

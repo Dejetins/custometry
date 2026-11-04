@@ -1,0 +1,432 @@
+[
+  {
+    "start": "2025-01-01",
+    "end": "2025-01-31",
+    "totals": {
+      "net_revenue": "43908.52",
+      "receipt_count": "210",
+      "average_receipt": "209.08819047619047619047619047619047619"
+    },
+    "changes": {
+      "net_revenue": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 210,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 205,
+          "reason_codes": []
+        },
+        "left": "43908.52",
+        "right": "32916.84",
+        "absolute_delta": "10991.68",
+        "relative_delta_percent": "33.39226973184546268718382444973454317",
+        "reason_codes": []
+      },
+      "receipt_count": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 210,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 205,
+          "reason_codes": []
+        },
+        "left": "210",
+        "right": "205",
+        "absolute_delta": "5",
+        "relative_delta_percent": "2.4390243902439024390243902439024390244",
+        "reason_codes": []
+      },
+      "average_receipt": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 210,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 205,
+          "reason_codes": []
+        },
+        "left": "209.08819047619047619047619047619047619",
+        "right": "160.56995121951219512195121951219512195",
+        "absolute_delta": "48.51823925667828106852497096399535424",
+        "relative_delta_percent": "30.216263309658665956536590534264673095",
+        "reason_codes": []
+      }
+    }
+  },
+  {
+    "start": "2025-02-01",
+    "end": "2025-02-28",
+    "totals": {
+      "net_revenue": "40191.22",
+      "receipt_count": "185",
+      "average_receipt": "217.24983783783783783783783783783783784"
+    },
+    "changes": {
+      "net_revenue": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 28,
+          "calendar_days": 28,
+          "declared_complete_days": 28,
+          "observed_days": 28,
+          "eligible_receipts": 185,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 28,
+          "calendar_days": 28,
+          "declared_complete_days": 28,
+          "observed_days": 28,
+          "eligible_receipts": 188,
+          "reason_codes": []
+        },
+        "left": "40191.22",
+        "right": "31087.72",
+        "absolute_delta": "9103.5",
+        "relative_delta_percent": "29.283266833334834461967619368676763687",
+        "reason_codes": []
+      },
+      "receipt_count": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 28,
+          "calendar_days": 28,
+          "declared_complete_days": 28,
+          "observed_days": 28,
+          "eligible_receipts": 185,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 28,
+          "calendar_days": 28,
+          "declared_complete_days": 28,
+          "observed_days": 28,
+          "eligible_receipts": 188,
+          "reason_codes": []
+        },
+        "left": "185",
+        "right": "188",
+        "absolute_delta": "-3",
+        "relative_delta_percent": "-1.5957446808510638297872340425531914894",
+        "reason_codes": []
+      },
+      "average_receipt": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 28,
+          "calendar_days": 28,
+          "declared_complete_days": 28,
+          "observed_days": 28,
+          "eligible_receipts": 185,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 28,
+          "calendar_days": 28,
+          "declared_complete_days": 28,
+          "observed_days": 28,
+          "eligible_receipts": 188,
+          "reason_codes": []
+        },
+        "left": "217.24983783783783783783783783783783784",
+        "right": "165.36021276595744680851063829787234043",
+        "absolute_delta": "51.88962507188039102932719953996549741",
+        "relative_delta_percent": "31.379752241442966912702229412493143636",
+        "reason_codes": []
+      }
+    }
+  },
+  {
+    "start": "2025-01-01",
+    "end": "2025-01-01",
+    "totals": {
+      "net_revenue": "1422.4",
+      "receipt_count": "7",
+      "average_receipt": "203.2"
+    },
+    "changes": {
+      "net_revenue": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1422.4",
+        "right": "1088.76",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.64403541643704765053822697380506264",
+        "reason_codes": []
+      },
+      "receipt_count": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "7",
+        "right": "7",
+        "absolute_delta": "0",
+        "relative_delta_percent": "0",
+        "reason_codes": []
+      },
+      "average_receipt": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "203.2",
+        "right": "155.53714285714285714285714285714285714",
+        "absolute_delta": "47.66285714285714285714285714285714286",
+        "relative_delta_percent": "30.644035416437047650538226973805062642",
+        "reason_codes": []
+      }
+    }
+  },
+  {
+    "start": "2025-01-02",
+    "end": "2025-01-02",
+    "totals": {
+      "net_revenue": "1423.94",
+      "receipt_count": "7",
+      "average_receipt": "203.42"
+    },
+    "changes": {
+      "net_revenue": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1423.94",
+        "right": "1090.3",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.600752086581674768412363569659726681",
+        "reason_codes": []
+      },
+      "receipt_count": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "7",
+        "right": "7",
+        "absolute_delta": "0",
+        "relative_delta_percent": "0",
+        "reason_codes": []
+      },
+      "average_receipt": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "203.42",
+        "right": "155.75714285714285714285714285714285714",
+        "absolute_delta": "47.66285714285714285714285714285714286",
+        "relative_delta_percent": "30.600752086581674768412363569659726683",
+        "reason_codes": []
+      }
+    }
+  },
+  {
+    "start": "2025-03-01",
+    "end": "2025-03-31",
+    "totals": {
+      "net_revenue": "36625.92",
+      "receipt_count": "207",
+      "average_receipt": "176.93681159420289855072463768115942029"
+    },
+    "changes": {
+      "net_revenue": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 207,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 208,
+          "reason_codes": []
+        },
+        "left": "36625.92",
+        "right": "35998.24",
+        "absolute_delta": "627.68",
+        "relative_delta_percent": "1.7436408002168994928640955780060358506",
+        "reason_codes": []
+      },
+      "receipt_count": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 207,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 208,
+          "reason_codes": []
+        },
+        "left": "207",
+        "right": "208",
+        "absolute_delta": "-1",
+        "relative_delta_percent": "-0.48076923076923076923076923076923076923",
+        "reason_codes": []
+      },
+      "average_receipt": {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 207,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 31,
+          "calendar_days": 31,
+          "declared_complete_days": 31,
+          "observed_days": 31,
+          "eligible_receipts": 208,
+          "reason_codes": []
+        },
+        "left": "176.93681159420289855072463768115942029",
+        "right": "173.06846153846153846153846153846153846",
+        "absolute_delta": "3.86835005574136008918617614269788183",
+        "relative_delta_percent": "2.235155973164807219882762706402200276",
+        "reason_codes": []
+      }
+    }
+  }
+]

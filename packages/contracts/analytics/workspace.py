@@ -4,8 +4,18 @@ from __future__ import annotations
 from datetime import date, datetime
 from typing import Annotated, Literal, Protocol, Any, cast
 from uuid import UUID
-from pydantic import Field, model_validator, BeforeValidator
+from pydantic import (
+    Field,
+    model_validator,
+    BeforeValidator,
+    model_serializer,
+    SerializerFunctionWrapHandler,
+)
 from packages.contracts.semantic import CalendarRef, Hash, Strict
+from packages.contracts.semantic.store_filters import StoreFilterV1
+from packages.contracts.analytics.receipt_selection import ReceiptSelection
+from packages.contracts.analytics.retail_filter import ReceiptSelectionEvidence
+from packages.contracts.analytics.temporal import TemporalSettingsV2, ResolvedTemporalSpecV2
 
 MetricId = Literal["net_revenue", "receipt_count", "average_receipt"]
 Grain = Literal["day", "week", "month", "quarter", "half_year", "year"]
@@ -52,11 +62,23 @@ class QueryContext(Period):
 
 
 class EffectiveContext(Period):
+    time_comparison: ResolvedTemporalSpecV2 | None = None
+    scope_hash: Hash | None = None
+
+    @model_serializer(mode="wrap")
+    def preserve_old_context(self, handler: SerializerFunctionWrapHandler):
+        value: dict[str, Any] = handler(self)
+        if "time_comparison" not in self.model_fields_set:
+            value.pop("time_comparison", None)
+        if "scope_hash" not in self.model_fields_set:
+            value.pop("scope_hash", None)
+        return value
+
     store_ids: Stores
     grain: Grain
     calendar_ref: CalendarRef
     calendar_basis: CalendarBasis
-    timezone: Literal["UTC"] = "UTC"
+    timezone: Annotated[str, Field(min_length=1, max_length=128)] = "UTC"
     week_start: Literal["monday"] = "monday"
     alignment: Literal["none", "previous_year_same_dates"]
 
@@ -202,7 +224,51 @@ class WorkspaceDay(Strict):
     coverage: Coverage
 
 
+class TemporalMetricChangesV2(Strict):
+    net_revenue: ComparisonValues
+    receipt_count: ComparisonValues
+    average_receipt: ComparisonValues
+
+
+class TemporalPairBucketV2(Strict):
+    current_bucket_id: str | None
+    comparison_bucket_id: str | None
+    current_dates: list[date]
+    comparison_dates: list[date]
+    changes: TemporalMetricChangesV2
+
+
+class TemporalArtifactV2(Strict):
+    schema_version: Literal["time-comparison-artifact/v2"] = "time-comparison-artifact/v2"
+    artifact_id: UUID
+    content_hash: Hash
+    request_hash: Hash
+    policy_hash: Hash
+    spec: ResolvedTemporalSpecV2
+    semantic_dataset_version_id: UUID
+    metric_refs: list[MetricRef]
+    normalized_filter_hash: Hash
+    evaluated_current_dates: list[date]
+    evaluated_comparison_dates: list[date]
+    buckets: list[TemporalPairBucketV2]
+    changes: TemporalMetricChangesV2
+    comparability_status: Literal["comparable", "partial", "descriptive", "unavailable"]
+    limitation_codes: list[str]
+
+
 class WorkspaceResultV2(Strict):
+    temporal_v2: TemporalArtifactV2 | None = None
+    receipt_selection: ReceiptSelectionEvidence | None = None
+
+    @model_serializer(mode="wrap")
+    def preserve_old_result(self, handler: SerializerFunctionWrapHandler):
+        value: dict[str, Any] = handler(self)
+        if "temporal_v2" not in self.model_fields_set:
+            value.pop("temporal_v2", None)
+        if "receipt_selection" not in self.model_fields_set:
+            value.pop("receipt_selection", None)
+        return value
+
     schema_version: Literal["metric-workspace/v2"]
     result_id: UUID
     request_hash: Hash
@@ -244,7 +310,28 @@ class CardResultBinding(Strict):
         return self
 
 
+class WorkspaceScopeInput(Strict):
+    schema_version: Literal["workspace-scope/v1"] = "workspace-scope/v1"
+    dependency_hash: Hash
+    filters: list[StoreFilterV1]
+
+
 class WorkspaceRunRequest(Strict):
+    time_comparison: TemporalSettingsV2 | None = None
+    receipt_filter: ReceiptSelection | None = None
+    scope: WorkspaceScopeInput | None = None
+
+    @model_serializer(mode="wrap")
+    def preserve_old_request(self, handler: SerializerFunctionWrapHandler):
+        value: dict[str, Any] = handler(self)
+        if "time_comparison" not in self.model_fields_set:
+            value.pop("time_comparison", None)
+        if "scope" not in self.model_fields_set:
+            value.pop("scope", None)
+        if "receipt_filter" not in self.model_fields_set:
+            value.pop("receipt_filter", None)
+        return value
+
     semantic_dataset_version_id: UUID
     common: QueryContext
     local_store_ids: Stores | None
@@ -253,6 +340,59 @@ class WorkspaceRunRequest(Strict):
     calendar_basis: CalendarBasis
     alignment: Literal["none", "previous_year_same_dates"]
     metric_refs: Annotated[list[MetricRef], Field(min_length=1, max_length=3)]
+
+    @model_validator(mode="after")
+    def one_comparison_contract(self) -> WorkspaceRunRequest:
+        if self.time_comparison is not None and self.alignment != "none":
+            raise ValueError("COMPARISON_CONTRACT_CONFLICT")
+        return self
+
+
+class WorkspaceScopePreflight(Strict):
+    schema_version: Literal["workspace-scope-preflight/v1"] = "workspace-scope-preflight/v1"
+    request_hash: Hash
+    effective_context: EffectiveContext
+    provider: Literal["metric-workspace/v2"] = "metric-workspace/v2"
+    dimensions: list[Literal["date", "store_id"]] = ["date", "store_id"]
+    filter_operators: list[Literal["store_in", "and", "or", "not"]] = [
+        "store_in",
+        "and",
+        "or",
+        "not",
+    ]
+    comparison_modes: list[
+        Literal[
+            "none",
+            "previous_year_same_dates",
+            "previous_period",
+            "custom_period",
+            "previous_year_calendar_aligned",
+            "previous_year_iso_week_aligned",
+            "previous_year_fiscal_period",
+            "previous_year_comparable_elapsed_days",
+            "pair",
+        ]
+    ] = [
+        "none",
+        "previous_year_same_dates",
+        "previous_period",
+        "custom_period",
+        "previous_year_calendar_aligned",
+        "previous_year_iso_week_aligned",
+        "previous_year_fiscal_period",
+        "previous_year_comparable_elapsed_days",
+        "pair",
+    ]
+    estimate_state: Literal["unavailable"] = "unavailable"
+    reuse: Literal["reuse", "new_compute"]
+    locked_metric_rules: list[dict[str, str]]
+    unsupported: list[str] = [
+        "general_filter_registry",
+        "channels",
+        "relationships",
+        "populations",
+        "relative_windows",
+    ]
 
 
 class WorkspaceAccess(Strict):

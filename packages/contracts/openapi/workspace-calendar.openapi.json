@@ -315,7 +315,15 @@
             "title": "Content Hash"
           },
           "profile": {
-            "$ref": "#/components/schemas/BusinessCalendarProfile"
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BusinessCalendarProfile"
+              },
+              {
+                "$ref": "#/components/schemas/ZonedCalendarProfileV2"
+              }
+            ],
+            "title": "Profile"
           },
           "created_by": {
             "anyOf": [
@@ -371,7 +379,9 @@
               "NOT_FOUND",
               "CALENDAR_REVISION_CONFLICT",
               "CALENDAR_IDEMPOTENCY_CONFLICT",
-              "STORAGE_UNAVAILABLE"
+              "STORAGE_UNAVAILABLE",
+              "CALENDAR_TIMEZONE_UNAVAILABLE",
+              "CALENDAR_ALREADY_CONFIGURED"
             ],
             "title": "Code"
           }
@@ -399,7 +409,15 @@
       "UpdateCalendarRequest": {
         "properties": {
           "profile": {
-            "$ref": "#/components/schemas/BusinessCalendarProfile"
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BusinessCalendarProfile"
+              },
+              {
+                "$ref": "#/components/schemas/ZonedCalendarInputV2"
+              }
+            ],
+            "title": "Profile"
           },
           "expected_revision": {
             "type": "integer",
@@ -478,6 +496,164 @@
           "calendar"
         ],
         "title": "WorkspaceCalendarDefault"
+      },
+      "ZonedCalendarInputV2": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "business-calendar/v2",
+            "title": "Schema Version",
+            "default": "business-calendar/v2"
+          },
+          "kind": {
+            "type": "string",
+            "const": "month_based",
+            "title": "Kind",
+            "default": "month_based"
+          },
+          "fiscal_year_start_month": {
+            "type": "integer",
+            "maximum": 12.0,
+            "minimum": 1.0,
+            "title": "Fiscal Year Start Month",
+            "default": 1
+          },
+          "fiscal_year_start_day": {
+            "type": "integer",
+            "const": 1,
+            "title": "Fiscal Year Start Day",
+            "default": 1
+          },
+          "year_label": {
+            "type": "string",
+            "enum": [
+              "start_year",
+              "end_year"
+            ],
+            "title": "Year Label",
+            "default": "end_year"
+          },
+          "timezone": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_+/-]+$",
+            "title": "Timezone"
+          },
+          "week_start": {
+            "type": "string",
+            "const": "monday",
+            "title": "Week Start",
+            "default": "monday"
+          },
+          "boundary_policy": {
+            "type": "string",
+            "const": "earliest_midnight_or_reject",
+            "title": "Boundary Policy",
+            "default": "earliest_midnight_or_reject"
+          },
+          "coverage_basis": {
+            "type": "string",
+            "const": "intersecting_utc_source_days",
+            "title": "Coverage Basis",
+            "default": "intersecting_utc_source_days"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "timezone"
+        ],
+        "title": "ZonedCalendarInputV2"
+      },
+      "ZonedCalendarProfileV2": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "business-calendar/v2",
+            "title": "Schema Version",
+            "default": "business-calendar/v2"
+          },
+          "kind": {
+            "type": "string",
+            "const": "month_based",
+            "title": "Kind",
+            "default": "month_based"
+          },
+          "fiscal_year_start_month": {
+            "type": "integer",
+            "maximum": 12.0,
+            "minimum": 1.0,
+            "title": "Fiscal Year Start Month",
+            "default": 1
+          },
+          "fiscal_year_start_day": {
+            "type": "integer",
+            "const": 1,
+            "title": "Fiscal Year Start Day",
+            "default": 1
+          },
+          "year_label": {
+            "type": "string",
+            "enum": [
+              "start_year",
+              "end_year"
+            ],
+            "title": "Year Label",
+            "default": "end_year"
+          },
+          "timezone": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_+/-]+$",
+            "title": "Timezone"
+          },
+          "week_start": {
+            "type": "string",
+            "const": "monday",
+            "title": "Week Start",
+            "default": "monday"
+          },
+          "boundary_policy": {
+            "type": "string",
+            "const": "earliest_midnight_or_reject",
+            "title": "Boundary Policy",
+            "default": "earliest_midnight_or_reject"
+          },
+          "coverage_basis": {
+            "type": "string",
+            "const": "intersecting_utc_source_days",
+            "title": "Coverage Basis",
+            "default": "intersecting_utc_source_days"
+          },
+          "tzdata_version": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1,
+            "title": "Tzdata Version"
+          },
+          "tzif_base64": {
+            "type": "string",
+            "maxLength": 87384,
+            "minLength": 1,
+            "title": "Tzif Base64"
+          },
+          "tzif_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Tzif Sha256"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "timezone",
+          "tzdata_version",
+          "tzif_base64",
+          "tzif_sha256"
+        ],
+        "title": "ZonedCalendarProfileV2"
       }
     }
   }

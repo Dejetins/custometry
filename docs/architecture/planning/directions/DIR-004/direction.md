@@ -8,7 +8,7 @@
   "artifact_kind": "direction",
   "doc_id": "DIR-004",
   "title": "Analytical documents and result delivery",
-  "version": "2.3.2",
+  "version": "2.3.4",
   "planning_status": "in_review",
   "language": "en",
   "parent_ref": {
@@ -290,3 +290,26 @@ Register WS-003 navigation 3.0.2 and MS-004 editorial 0.2.1: five stage prompts
 and one draft journal are authorized preparation outputs, not product execution.
 Accepted L3 design remains 0.2.0; broader planning_status remains in_review.
 This is delegated reciprocal documentation maintenance, with no changed outcomes.
+
+
+## Composer expansion proposal — 2026-10-07
+
+[WS-004 v0.1.0](workstreams/WS-004.md) is the owner-requested complete proposed
+implementation plan for the common analytical document composer under C01/C02,
+with [clause coverage](workstreams/WS-004-requirements.md). It records eleven
+proposed child outcomes, compatibility safeguards and user-scenario proof.
+The plan is draft; this navigation registration does not accept its decomposition
+or reopen WS-002, WS-003 or their journals. DIR-005 contributes Web implementation;
+other provider ownership remains unchanged.
+
+Version 2.3.3 is an editorial registration of that explicit planning request;
+2.3.2 scope/decisions and existing children remain bound to their recorded versions.
+
+### Composer continuation registration — 2.3.4
+
+[WS-004 v0.2.0](workstreams/WS-004.md) records the owner's acceptance of v0.1.0
+and C01–C11 plus delegated sequential technical decomposition and continuation.
+This supersedes the pending-acceptance navigation note above, not older child
+scope or proof. Its C01 result is assigned to MS-005. DIR-004 remains in_review
+for unrelated broader direction decisions. Existing children keep their prior
+version basis: this registration changes no provider outputs or their acceptance.

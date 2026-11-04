@@ -1,0 +1,3 @@
+import type {composerReports as C} from '@custometry/contracts';
+export const visualColors={primary:'#66b9d3',secondary:'#d2ac72',violet:'#a195d5',green:'#85baa6',orange:'#dc9a64',red:'#d88c95',muted:'#95a0ab'};
+export function seriesFor(block:C.ComposerBlock,keys:readonly string[]):C.VisualSeries[]{return keys.map((key,i)=>({key,kind:block.presentation.chart_type==='bar'||block.presentation.chart_type==='stacked_bar'?'bar':block.presentation.chart_type==='area'?'area':'line',color:(Object.keys(visualColors) as (keyof typeof visualColors)[])[i%7],...block.presentation.visual?.series?.find(s=>s.key===key)}));}

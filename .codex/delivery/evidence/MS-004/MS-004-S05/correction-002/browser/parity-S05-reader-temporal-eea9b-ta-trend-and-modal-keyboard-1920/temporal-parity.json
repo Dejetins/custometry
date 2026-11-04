@@ -1,0 +1,1377 @@
+{
+  "comparison": {
+    "schema_version": "card-comparison/v1",
+    "mode": "temporal",
+    "left": {
+      "card_id": "a85fab96-9305-5a55-a41f-e04fef165f6e",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "6ec675ee-039f-5f85-a63f-a8f5511d653a",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "6ec675ee-039f-5f85-a63f-a8f5511d653a",
+          "content_hash": "c461d4db53fda5bdd90a02e4ebe9dc2637832ffa4774488f33145dc3b549f75a"
+        }
+      },
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "context": {
+        "starts_on": "2025-01-01",
+        "ends_on": "2025-01-31",
+        "store_ids": [
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "2",
+          "20",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "grain": "day",
+        "calendar_ref": {
+          "version_id": "1ab0ab3b-864f-5438-aea8-121a55037351",
+          "content_hash": "1952292cc1e8ce331ca31ec59594dc3d4582668818f1a8d770c1c433e1957321"
+        },
+        "calendar_basis": "calendar",
+        "timezone": "UTC",
+        "week_start": "monday",
+        "alignment": "previous_year_same_dates"
+      },
+      "baseline_dates": null
+    },
+    "right": {
+      "card_id": "a85fab96-9305-5a55-a41f-e04fef165f6e",
+      "metric_ref": {
+        "metric_id": "net_revenue",
+        "version_id": "cf193fa9-1c5e-59c3-95cc-75ad6f994bfc",
+        "content_hash": "cd5f9663ed6f967fb869c0819903fee7bab234d9e88c9e5bd0f560d70ad4786d"
+      },
+      "result": {
+        "result_id": "6ec675ee-039f-5f85-a63f-a8f5511d653a",
+        "schema_version": "metric-workspace/v2",
+        "manifest": {
+          "artifact_id": "6ec675ee-039f-5f85-a63f-a8f5511d653a",
+          "content_hash": "c461d4db53fda5bdd90a02e4ebe9dc2637832ffa4774488f33145dc3b549f75a"
+        }
+      },
+      "unit": "EUR",
+      "format": {
+        "decimal_places": 2
+      },
+      "context": {
+        "starts_on": "2025-01-01",
+        "ends_on": "2025-01-31",
+        "store_ids": [
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "2",
+          "20",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "grain": "day",
+        "calendar_ref": {
+          "version_id": "1ab0ab3b-864f-5438-aea8-121a55037351",
+          "content_hash": "1952292cc1e8ce331ca31ec59594dc3d4582668818f1a8d770c1c433e1957321"
+        },
+        "calendar_basis": "calendar",
+        "timezone": "UTC",
+        "week_start": "monday",
+        "alignment": "previous_year_same_dates"
+      },
+      "baseline_dates": [
+        "2024-01-01",
+        "2024-01-02",
+        "2024-01-03",
+        "2024-01-04",
+        "2024-01-05",
+        "2024-01-06",
+        "2024-01-07",
+        "2024-01-08",
+        "2024-01-09",
+        "2024-01-10",
+        "2024-01-11",
+        "2024-01-12",
+        "2024-01-13",
+        "2024-01-14",
+        "2024-01-15",
+        "2024-01-16",
+        "2024-01-17",
+        "2024-01-18",
+        "2024-01-19",
+        "2024-01-20",
+        "2024-01-21",
+        "2024-01-22",
+        "2024-01-23",
+        "2024-01-24",
+        "2024-01-25",
+        "2024-01-26",
+        "2024-01-27",
+        "2024-01-28",
+        "2024-01-29",
+        "2024-01-30",
+        "2024-01-31"
+      ]
+    },
+    "comparability_status": "comparable",
+    "buckets": [
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1422.4",
+        "right": "1088.76",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.64403541643704765053822697380506264",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-01"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1423.94",
+        "right": "1090.3",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.600752086581674768412363569659726681",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-02"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1425.48",
+        "right": "1091.84",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.557590855803048065650644783118405627",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-03"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1170.7",
+        "right": "1093.38",
+        "absolute_delta": "77.32",
+        "relative_delta_percent": "7.0716493808191113793923430097495838592",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-04"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1106.12",
+        "right": "1010.54",
+        "absolute_delta": "95.58",
+        "relative_delta_percent": "9.4583094187266214103350683792823638847",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-05"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1430.1",
+        "right": "1096.46",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.428834613209784214654433358262043303",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-06"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1431.64",
+        "right": "1044.82",
+        "absolute_delta": "386.82",
+        "relative_delta_percent": "37.02264504890794586627361650810665952",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-07"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1433.18",
+        "right": "1099.54",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.343598231987922222020117503683358495",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-08"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1434.72",
+        "right": "1101.08",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.301158862208013949940058851309623279",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-09"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1399.44",
+        "right": "1102.62",
+        "absolute_delta": "296.82",
+        "relative_delta_percent": "26.919518963922294172062904717853839038",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-10"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1334.86",
+        "right": "829.28",
+        "absolute_delta": "505.58",
+        "relative_delta_percent": "60.966139301562801466332240015435076211",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-11"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1439.34",
+        "right": "1105.7",
+        "absolute_delta": "333.64",
+        "relative_delta_percent": "30.174550058786289228543004431581803382",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-12"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1470.88",
+        "right": "1107.24",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.842021603265777970449044470936743615",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-13"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1472.42",
+        "right": "1022.42",
+        "absolute_delta": "450",
+        "relative_delta_percent": "44.013223528491226697443320748811642965",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-14"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1473.96",
+        "right": "1055.38",
+        "absolute_delta": "418.58",
+        "relative_delta_percent": "39.661543709374822338873202069396804942",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-15"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1278.18",
+        "right": "1111.86",
+        "absolute_delta": "166.32",
+        "relative_delta_percent": "14.958717824186498300145701796988829529",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-16"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1477.04",
+        "right": "1058.02",
+        "absolute_delta": "419.02",
+        "relative_delta_percent": "39.604166272849284512580102455530141207",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-17"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1478.58",
+        "right": "1114.94",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.615207993255242434570470159829228479",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-18"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1480.12",
+        "right": "1116.48",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.57022069360848380624820865577529378",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-19"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1481.66",
+        "right": "1118.02",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.525357328133664871826979839358866568",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-20"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1483.2",
+        "right": "970.02",
+        "absolute_delta": "513.18",
+        "relative_delta_percent": "52.904063833735386899239190944516607905",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-21"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1096.92",
+        "right": "971.34",
+        "absolute_delta": "125.58",
+        "relative_delta_percent": "12.928531719068503304713076780529989499",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-22"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1486.28",
+        "right": "906.76",
+        "absolute_delta": "579.52",
+        "relative_delta_percent": "63.911067978296351846133486258767479818",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-23"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1487.82",
+        "right": "1124.18",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.347133021402266540945400202814495899",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-24"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1489.36",
+        "right": "1125.72",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.302881711260348932238922645062715418",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-25"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1490.9",
+        "right": "1127.26",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.258751308482515125170768057058708727",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-26"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1492.44",
+        "right": "1128.8",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.214741318214032600992204110559886605",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-27"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1325.66",
+        "right": "820.08",
+        "absolute_delta": "505.58",
+        "relative_delta_percent": "61.65008291873963515754560530679933665",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-28"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1495.52",
+        "right": "1105.5",
+        "absolute_delta": "390.02",
+        "relative_delta_percent": "35.279963817277250113071008593396653098",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-29"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 6,
+          "reason_codes": []
+        },
+        "left": "1497.06",
+        "right": "1043.54",
+        "absolute_delta": "453.52",
+        "relative_delta_percent": "43.45976196408379170899055139237595109",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-30"
+      },
+      {
+        "left_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "right_coverage": {
+          "state": "complete",
+          "expected_days": 1,
+          "calendar_days": 1,
+          "declared_complete_days": 1,
+          "observed_days": 1,
+          "eligible_receipts": 7,
+          "reason_codes": []
+        },
+        "left": "1498.6",
+        "right": "1134.96",
+        "absolute_delta": "363.64",
+        "relative_delta_percent": "32.039895679142877282018749559455839853",
+        "reason_codes": [],
+        "bucket_id": "day:2025-01-31"
+      }
+    ],
+    "totals": {
+      "left_coverage": {
+        "state": "complete",
+        "expected_days": 31,
+        "calendar_days": 31,
+        "declared_complete_days": 31,
+        "observed_days": 31,
+        "eligible_receipts": 210,
+        "reason_codes": []
+      },
+      "right_coverage": {
+        "state": "complete",
+        "expected_days": 31,
+        "calendar_days": 31,
+        "declared_complete_days": 31,
+        "observed_days": 31,
+        "eligible_receipts": 205,
+        "reason_codes": []
+      },
+      "left": "43908.52",
+      "right": "32916.84",
+      "absolute_delta": "10991.68",
+      "relative_delta_percent": "33.39226973184546268718382444973454317",
+      "reason_codes": []
+    },
+    "coverage": {
+      "state": "complete",
+      "expected_days": 31,
+      "calendar_days": 31,
+      "declared_complete_days": 31,
+      "observed_days": 31,
+      "eligible_receipts": 205,
+      "reason_codes": []
+    },
+    "manifest": {
+      "artifact_id": "6d827130-8216-5e1a-b7ed-31ea128a6491",
+      "content_hash": "efe0593c55457fcaf14d9746f453e3a3c3e29cbc52fe4102049972ef014a6045"
+    }
+  },
+  "expected": [
+    [
+      "1422.4",
+      "1088.76",
+      "333.64",
+      "30.64403541643704765053822697380506264"
+    ],
+    [
+      "1423.94",
+      "1090.3",
+      "333.64",
+      "30.600752086581674768412363569659726681"
+    ],
+    [
+      "1425.48",
+      "1091.84",
+      "333.64",
+      "30.557590855803048065650644783118405627"
+    ],
+    [
+      "1170.7",
+      "1093.38",
+      "77.32",
+      "7.0716493808191113793923430097495838592"
+    ],
+    [
+      "1106.12",
+      "1010.54",
+      "95.58",
+      "9.4583094187266214103350683792823638847"
+    ],
+    [
+      "1430.1",
+      "1096.46",
+      "333.64",
+      "30.428834613209784214654433358262043303"
+    ],
+    [
+      "1431.64",
+      "1044.82",
+      "386.82",
+      "37.02264504890794586627361650810665952"
+    ],
+    [
+      "1433.18",
+      "1099.54",
+      "333.64",
+      "30.343598231987922222020117503683358495"
+    ],
+    [
+      "1434.72",
+      "1101.08",
+      "333.64",
+      "30.301158862208013949940058851309623279"
+    ],
+    [
+      "1399.44",
+      "1102.62",
+      "296.82",
+      "26.919518963922294172062904717853839038"
+    ],
+    [
+      "1334.86",
+      "829.28",
+      "505.58",
+      "60.966139301562801466332240015435076211"
+    ],
+    [
+      "1439.34",
+      "1105.7",
+      "333.64",
+      "30.174550058786289228543004431581803382"
+    ],
+    [
+      "1470.88",
+      "1107.24",
+      "363.64",
+      "32.842021603265777970449044470936743615"
+    ],
+    [
+      "1472.42",
+      "1022.42",
+      "450",
+      "44.013223528491226697443320748811642965"
+    ],
+    [
+      "1473.96",
+      "1055.38",
+      "418.58",
+      "39.661543709374822338873202069396804942"
+    ],
+    [
+      "1278.18",
+      "1111.86",
+      "166.32",
+      "14.958717824186498300145701796988829529"
+    ],
+    [
+      "1477.04",
+      "1058.02",
+      "419.02",
+      "39.604166272849284512580102455530141207"
+    ],
+    [
+      "1478.58",
+      "1114.94",
+      "363.64",
+      "32.615207993255242434570470159829228479"
+    ],
+    [
+      "1480.12",
+      "1116.48",
+      "363.64",
+      "32.57022069360848380624820865577529378"
+    ],
+    [
+      "1481.66",
+      "1118.02",
+      "363.64",
+      "32.525357328133664871826979839358866568"
+    ],
+    [
+      "1483.2",
+      "970.02",
+      "513.18",
+      "52.904063833735386899239190944516607905"
+    ],
+    [
+      "1096.92",
+      "971.34",
+      "125.58",
+      "12.928531719068503304713076780529989499"
+    ],
+    [
+      "1486.28",
+      "906.76",
+      "579.52",
+      "63.911067978296351846133486258767479818"
+    ],
+    [
+      "1487.82",
+      "1124.18",
+      "363.64",
+      "32.347133021402266540945400202814495899"
+    ],
+    [
+      "1489.36",
+      "1125.72",
+      "363.64",
+      "32.302881711260348932238922645062715418"
+    ],
+    [
+      "1490.9",
+      "1127.26",
+      "363.64",
+      "32.258751308482515125170768057058708727"
+    ],
+    [
+      "1492.44",
+      "1128.8",
+      "363.64",
+      "32.214741318214032600992204110559886605"
+    ],
+    [
+      "1325.66",
+      "820.08",
+      "505.58",
+      "61.65008291873963515754560530679933665"
+    ],
+    [
+      "1495.52",
+      "1105.5",
+      "390.02",
+      "35.279963817277250113071008593396653098"
+    ],
+    [
+      "1497.06",
+      "1043.54",
+      "453.52",
+      "43.45976196408379170899055139237595109"
+    ],
+    [
+      "1498.6",
+      "1134.96",
+      "363.64",
+      "32.039895679142877282018749559455839853"
+    ]
+  ],
+  "chart": {
+    "series": [
+      {
+        "name": "Net revenue · 1 · EUR",
+        "data": [
+          "1422.4",
+          "1423.94",
+          "1425.48",
+          "1170.7",
+          "1106.12",
+          "1430.1",
+          "1431.64",
+          "1433.18",
+          "1434.72",
+          "1399.44",
+          "1334.86",
+          "1439.34",
+          "1470.88",
+          "1472.42",
+          "1473.96",
+          "1278.18",
+          "1477.04",
+          "1478.58",
+          "1480.12",
+          "1481.66",
+          "1483.2",
+          "1096.92",
+          "1486.28",
+          "1487.82",
+          "1489.36",
+          "1490.9",
+          "1492.44",
+          "1325.66",
+          "1495.52",
+          "1497.06",
+          "1498.6"
+        ],
+        "axis": 0
+      },
+      {
+        "name": "Net revenue · Prior year · EUR",
+        "data": [
+          "1088.76",
+          "1090.3",
+          "1091.84",
+          "1093.38",
+          "1010.54",
+          "1096.46",
+          "1044.82",
+          "1099.54",
+          "1101.08",
+          "1102.62",
+          "829.28",
+          "1105.7",
+          "1107.24",
+          "1022.42",
+          "1055.38",
+          "1111.86",
+          "1058.02",
+          "1114.94",
+          "1116.48",
+          "1118.02",
+          "970.02",
+          "971.34",
+          "906.76",
+          "1124.18",
+          "1125.72",
+          "1127.26",
+          "1128.8",
+          "820.08",
+          "1105.5",
+          "1043.54",
+          "1134.96"
+        ],
+        "axis": 0
+      }
+    ],
+    "axes": [
+      "EUR"
+    ],
+    "dates": [
+      "2025-01-01",
+      "2025-01-02",
+      "2025-01-03",
+      "2025-01-04",
+      "2025-01-05",
+      "2025-01-06",
+      "2025-01-07",
+      "2025-01-08",
+      "2025-01-09",
+      "2025-01-10",
+      "2025-01-11",
+      "2025-01-12",
+      "2025-01-13",
+      "2025-01-14",
+      "2025-01-15",
+      "2025-01-16",
+      "2025-01-17",
+      "2025-01-18",
+      "2025-01-19",
+      "2025-01-20",
+      "2025-01-21",
+      "2025-01-22",
+      "2025-01-23",
+      "2025-01-24",
+      "2025-01-25",
+      "2025-01-26",
+      "2025-01-27",
+      "2025-01-28",
+      "2025-01-29",
+      "2025-01-30",
+      "2025-01-31"
+    ]
+  },
+  "delta": {
+    "series": [
+      {
+        "name": "Net revenue · 1 · %",
+        "data": [
+          "30.64403541643704765053822697380506264",
+          "30.600752086581674768412363569659726681",
+          "30.557590855803048065650644783118405627",
+          "7.0716493808191113793923430097495838592",
+          "9.4583094187266214103350683792823638847",
+          "30.428834613209784214654433358262043303",
+          "37.02264504890794586627361650810665952",
+          "30.343598231987922222020117503683358495",
+          "30.301158862208013949940058851309623279",
+          "26.919518963922294172062904717853839038",
+          "60.966139301562801466332240015435076211",
+          "30.174550058786289228543004431581803382",
+          "32.842021603265777970449044470936743615",
+          "44.013223528491226697443320748811642965",
+          "39.661543709374822338873202069396804942",
+          "14.958717824186498300145701796988829529",
+          "39.604166272849284512580102455530141207",
+          "32.615207993255242434570470159829228479",
+          "32.57022069360848380624820865577529378",
+          "32.525357328133664871826979839358866568",
+          "52.904063833735386899239190944516607905",
+          "12.928531719068503304713076780529989499",
+          "63.911067978296351846133486258767479818",
+          "32.347133021402266540945400202814495899",
+          "32.302881711260348932238922645062715418",
+          "32.258751308482515125170768057058708727",
+          "32.214741318214032600992204110559886605",
+          "61.65008291873963515754560530679933665",
+          "35.279963817277250113071008593396653098",
+          "43.45976196408379170899055139237595109",
+          "32.039895679142877282018749559455839853"
+        ],
+        "axis": 0
+      }
+    ],
+    "axes": [
+      "%"
+    ],
+    "dates": [
+      "2025-01-01",
+      "2025-01-02",
+      "2025-01-03",
+      "2025-01-04",
+      "2025-01-05",
+      "2025-01-06",
+      "2025-01-07",
+      "2025-01-08",
+      "2025-01-09",
+      "2025-01-10",
+      "2025-01-11",
+      "2025-01-12",
+      "2025-01-13",
+      "2025-01-14",
+      "2025-01-15",
+      "2025-01-16",
+      "2025-01-17",
+      "2025-01-18",
+      "2025-01-19",
+      "2025-01-20",
+      "2025-01-21",
+      "2025-01-22",
+      "2025-01-23",
+      "2025-01-24",
+      "2025-01-25",
+      "2025-01-26",
+      "2025-01-27",
+      "2025-01-28",
+      "2025-01-29",
+      "2025-01-30",
+      "2025-01-31"
+    ]
+  },
+  "no_calculation_requests": []
+}

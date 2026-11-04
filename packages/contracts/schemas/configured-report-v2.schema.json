@@ -452,7 +452,14 @@
       "$ref": "#/$defs/Reference"
     },
     "base_snapshot_ref": {
-      "$ref": "#/$defs/BaseSnapshotRef"
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BaseSnapshotRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
   "required": [

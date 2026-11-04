@@ -1,0 +1,564 @@
+{
+  "baseline_commit": "86055ce732640ebe68fd5415a55f7bbde3499181",
+  "basis": "Git HEAD plus inherited-baseline.json; equal inherited hashes excluded",
+  "files": [
+    {
+      "path": ".codex/delivery/tickets/W39-REPORT-LOADING-SESSION-EFFICIENCY.md",
+      "baseline_sha256": "5ead381b66e224fde7cd52c3819bebb3922a5a7eb65911d791d79447754e1662",
+      "current_sha256": "6961a40f7191644414d051dfc3ee335aceb168826acd316b2959b9e4bf077f96",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "apps/api/pyproject.toml",
+      "baseline_sha256": "3c62245acbec675bd1df76147780e3c9d499c6c3d107f3f38d04d478fa1bb4f1",
+      "current_sha256": "ba437545890668d545064b1552910e4fb463c7f96d563a9d42ebe872437a68b8",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/router.py",
+      "baseline_sha256": "352bc73e4f3acef695883941d047a3b4a6bb51352ffb588c5e09e0a473086d59",
+      "current_sha256": "7aec3c6e0c40686029e687c434ae019824a9fd7f8ed61b37596d97461b6fcf07",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/analytics/workspace_access.py",
+      "baseline_sha256": "ca77a0cbaa367dc66a7e6c4c9f1b3423d3c9d0421aa59d713cecc79276d87e05",
+      "current_sha256": "31bd3887d921bf6f1efbb6c02867ffb4d025be99b1a49b6898ee1a89e9dc5691",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/config.py",
+      "baseline_sha256": "7f18aa329f4a1fc60cbe85f98bc4f81519d64da8a31385b277d37ea9c7720b5f",
+      "current_sha256": "29abf58d2f93f19c607e6916535bfdbae7928ab1a3499d6a3550523f4ae9aee7",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/database.py",
+      "baseline_sha256": null,
+      "current_sha256": "79340ae04d64b2e6c8ac81afae2340bcdfc4ed7a02a17becc4c478dd86cbda23",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/health.py",
+      "baseline_sha256": "9afc3e66f91c37b53b90b1c31297e1629b9dd4f5a9e4e73ffd1c34ae88510765",
+      "current_sha256": "4f46ff3b7a5fcd0bd149b16f9170b4f326c5622f752efeb192d0a4565b2fd359",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/events.py",
+      "baseline_sha256": null,
+      "current_sha256": "8e4ac48bfca5faf4c2c2270c93aa0da89d0def2a6d130dae0cd628fc965a2217",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/http_auth.py",
+      "baseline_sha256": "8f3511549539975864166be82953526a0e58e140f133376c2c30ff9010b6a423",
+      "current_sha256": "68906cde53d1971d7e73d74377f1203b43ce847055a68e27e61acd2ab883d9d6",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/identity/router.py",
+      "baseline_sha256": "c45e71e6b937ce0106a7fdc7f2d156aa0616c41005f499fdb51312caf8580801",
+      "current_sha256": "85704ad67806dfab24eb62abb2c591e4f3e04d3341c6ab96073cc3d9b525d364",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/main.py",
+      "baseline_sha256": "c833b4b007d2fac1c4642b68c49ba3e3dd4049f42ec5046f9f9b2308c229d310",
+      "current_sha256": "ecdd4d38c9311fb1700d9e19b51ffd3fc38b53c53345352c5abad0c69ef5bd29",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/encoding.py",
+      "baseline_sha256": null,
+      "current_sha256": "878d7d3700756175974cf02109d0e792f0e1484a3d3870f44c0e87743355358a",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/prepared.py",
+      "baseline_sha256": null,
+      "current_sha256": "8f78e46cfe4957e427deb2b2b6cd4972755af1c8f71b97ab8241b48121e3dd37",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/workspace_composition.py",
+      "baseline_sha256": "72cabf7a1482942f3a52d1a84f56153f80ca1611a84381285a2c153199429ecc",
+      "current_sha256": "cd2457b0eacddf14093a882f156988f69b08adad4e19eb87988b4762d2b70ce5",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/reports/workspace_router.py",
+      "baseline_sha256": "b21309d8d3ee39a5f06c73fd883139de9da6e8bf4ee59e4b3cb907ed183e7fff",
+      "current_sha256": "e75ca05207d352159e1a8395e794a40c24137f0fda33328baf547c0f664f6d7d",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/api/src/custometry_api/runtime_policy.py",
+      "baseline_sha256": null,
+      "current_sha256": "462bf2749ecb9f15ebe512d2ac7257badb9ed4fb3df9fda44f584b4861b66d4e",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+      "baseline_sha256": "aae228285e6e06ad7ebd4eebb552e091dc34523e4ff2df15e9a659afd1310560",
+      "current_sha256": "8da8d9c686cf864c5da50d814c0c036e3fa21e9abf67fcd3e5f08dfbcc436539",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "apps/web/src/features/reports/PilotDocument.tsx",
+      "baseline_sha256": "dc47b04ab56b41e2d6448ef73e988b02d0af0337068a35d54879f16c105ac970",
+      "current_sha256": "d62828ce08dbc9b6b472d715c6ae2af10efa4081d7318886a7529387432db2db",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/ReportWorkspace.tsx",
+      "baseline_sha256": "31a6f9cac80d98546a5a6460ac6982a6ce227157336d704d50a151b716e3d8c8",
+      "current_sha256": "3a7b6a530c2ce26e09a311b3bd0067c0dbd079bee693537f2b521f7e4faac2cc",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/WorkspaceProjection.tsx",
+      "baseline_sha256": "cc313f24a3167433dd66a8fb19db5a1ad52d48a62ffd141475b5f16d37864c32",
+      "current_sha256": "6eb815ba763c44d2d5cf5b84ab18c4e23ca55dff7b715af2be702907e71b6177",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/port-epilogue.js",
+      "baseline_sha256": "6b016bcfd63c30b142c489962aa9ff02ab8bdde98c8a9925d8ce96e0b9e0d637",
+      "current_sha256": "57104cd06bb8e168b44a7d634770e6be73808f107cb67799ddba632ae205dcfd",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/runtime.ts",
+      "baseline_sha256": "0752b269981e792e1d22555824eb1cb1b58503d7f58f8d28d412f2dd9fd3f9c6",
+      "current_sha256": "e89967880e9a18d493f2cd4d85a296f34651334a20c1f4952afa280e1ce2d0b5",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/seams.json",
+      "baseline_sha256": "102c2921de2c77f58543d5bafe9ff9c7f3f464611be32414b9d919039803fc1e",
+      "current_sha256": "0e4f89ca9f63f107fb8cc94898256108e00c68e6d7668aa02e1250d5270574db",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/source-map.json",
+      "baseline_sha256": "8d22800e589fb1c0d90b9159da827e0f7e213d02f7434eab206271f67b5bece0",
+      "current_sha256": "daf217930856b56f346c22723b09f0102b1e96ff57e7052cfba3efc0d84b1acc",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/report-api.test.ts",
+      "baseline_sha256": "c1733f6ceeb87e33a37a62ab7031c164f2a1b6b4f696fa4a98ceb7d90158ce16",
+      "current_sha256": "3272838b81a9d6ee86857d627764f00a0a3ee1300013925d6accd56f26e65045",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/report-api.ts",
+      "baseline_sha256": "d227d9b718bc16292561f56783e1dd702eeb0d7ac36525d6293b3564168f7e55",
+      "current_sha256": "0218f865c9b9d7371ce7f10c243e0b5e66cf0beb15321e89a733c03e73517d48",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/session-channel.ts",
+      "baseline_sha256": null,
+      "current_sha256": "ec04ad45b26d0f0929e22ee663d85c41d43f739c6bcb81c736618a2fab75aa2d",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace-api.test.ts",
+      "baseline_sha256": "23c67190765716ddf3206ea3071e2efbc8534493be81e0b6c0829cd52437a19d",
+      "current_sha256": "23694446a89e0b071401da19147f442a58a525ea28a0ad2b7ed3eac706796217",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace-api.ts",
+      "baseline_sha256": "f741304ab17f1971739f9b291bbe2b3001fbab2fc0b28ee7820e2dcd48d00a54",
+      "current_sha256": "2a50c2997eca886e3c6f41a713a009a66f446b5d8a10602f5fabf764aad7f5cd",
+      "origin": "W39 change"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace.css",
+      "baseline_sha256": "b89ee8c5fab8e777c47686c4057990cb10ffee2b064289bff05f3e90f08c1c69",
+      "current_sha256": "824b68e017734250e9c06929eb16f728c8f5be037a1a9a542de9c2b17b39552b",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "baseline_sha256": "d0ee5ebd88540f70dd43bf4bdd1709d80bcad66deff91d2a97e32f00087cd0e7",
+      "current_sha256": "5f9917d1108d0ba432beb48f30b472e3251b16b442cb727b7266e143f0ffee6b",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md",
+      "baseline_sha256": "ba081a5ee9fa5ce34718402bf959ba6f670b0a28f241f864790016ad50534bbb",
+      "current_sha256": "95c1089d299ce390b9ac64d7e136794f65d048e89009dc7b637fa994721059ca",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "docs/contracts/report-refresh-serving-recovery-contract.md",
+      "baseline_sha256": "e127d19bc82677c83e59a68486792f085c54ef300c1b2b7edcc8e5bf200be74c",
+      "current_sha256": "9a2d261e93091ee580424555bb0cedc85245037c10b6cc8b552d57a7bafee973",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "migrations/versions/0013_identity_lifecycle.py",
+      "baseline_sha256": null,
+      "current_sha256": "3304a384314ad8b75116ecf3e61b3ee12fe54a0bdc2f5eb9011823b8a9bc8ff6",
+      "origin": "W39 change"
+    },
+    {
+      "path": "packages/contracts/generate_workspace_client.py",
+      "baseline_sha256": "f0181c54338b0d3395208e3577a147351ab03bd53a9302ca1e5dee07296bb752",
+      "current_sha256": "07c20b1b2a19863b8f50121841f9b759246bc7c01c8e78f8d7b52c9dc162ce0b",
+      "origin": "W39 change"
+    },
+    {
+      "path": "packages/contracts/openapi/reports.openapi.json",
+      "baseline_sha256": "29fb2c37af57e05d234e00bc6c24c0ec6a699cdf5b57729b68c6ca981a01b3ad",
+      "current_sha256": "7186839edb261ad60f7d181648133884273159eb51cc104c432d88f020e825fb",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "packages/contracts/openapi/workspace.openapi.json",
+      "baseline_sha256": "f5e1e5c994039edc4cdd3e76e68de248e2f3c1864fd40445823e0bec6b040272",
+      "current_sha256": "c3a7a69fc0ba52021f99efc26f52915b462710b30aadf45cea8943c89553cbc6",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "packages/contracts/presentation/workspace.py",
+      "baseline_sha256": "cdc29c6578904b8bb7393135a124d2f5721123aab512517fba688b4736488704",
+      "current_sha256": "2bcd991caf4058722c41f2fb873190da1d3c488553d7d1b0c540f3c535667025",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "packages/contracts/schemas/workspace-editor-v2.schema.json",
+      "baseline_sha256": "bfd1d0c98cdf655bf94b53f0e7aeb1a8f42f2b968708f72c942cd258b2f3c618",
+      "current_sha256": "ad783280ac5c006fede4c107454b0f199c328033bd269d363e49669234a045f2",
+      "origin": "W39 change"
+    },
+    {
+      "path": "packages/contracts/src/reports-client.ts",
+      "baseline_sha256": "e4c38e57f041c06ff5915cecf07c736e11902f194244156904fda1a069dbf972",
+      "current_sha256": "0b160897cebdf304c65f6705dfa909e34e92a048ed5a3a5195808ad92caa4a25",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "packages/contracts/src/workspace-client.ts",
+      "baseline_sha256": "4d2441ffc9add34cb7884a17811e12a91b1f8bf99b162ae595416d9a59c8f896",
+      "current_sha256": "8412e6411f0779802a3f7d6b5483683ea084ead47719a7b61851f450de0aacc0",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "packages/contracts/src/workspace-contracts.ts",
+      "baseline_sha256": "7b167ab8d753a16b06f6c2673ba037a34b8a51c923be20fcbe246fbfd6acaf6d",
+      "current_sha256": "e9c1ad45fae5ef3b4f30d595e87c4526eca8bbc230d4cde1e166803b8f11aca8",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "packages/identity_access/application/service.py",
+      "baseline_sha256": "9768a17741b0f6945abe4082df1b6f7bf0056a6a912a25ab70b20fda42eb0179",
+      "current_sha256": "7fead9f32132a90ff9aac3d28b2b870b0af8686896dc2ec888fd00906889a8b3",
+      "origin": "W39 change"
+    },
+    {
+      "path": "packages/identity_access/infrastructure/maintenance.py",
+      "baseline_sha256": null,
+      "current_sha256": "3017b30f45969f69ed929b81561e0c24a7535c6bc683a03aeb999f6d30d20a19",
+      "origin": "W39 change"
+    },
+    {
+      "path": "packages/identity_access/infrastructure/postgres.py",
+      "baseline_sha256": "7e85969a6b4998269c21f903572b223a6588515eef1400d42f76cc21e986b442",
+      "current_sha256": "b5f63e849cc9ee0a0984d752527a4d5dc84578fb4a3afa129ba71360ea341203",
+      "origin": "W39 change"
+    },
+    {
+      "path": "packages/identity_access/infrastructure/request_projection.py",
+      "baseline_sha256": null,
+      "current_sha256": "e41531eaa5da68deadeb2136fba9199b8d6528388ca8345a3f46e3ac669b9376",
+      "origin": "W39 change"
+    },
+    {
+      "path": "packages/identity_access/infrastructure/resource_access.py",
+      "baseline_sha256": "95d0e777ef4435e9bc4cbff4a4c48d5d512f653cac46d41d33d00d1fc0be53f6",
+      "current_sha256": "63e2827e2eed66eba9cb6a275fb9ac957fffe853fcb590d1a677c6cee7785801",
+      "origin": "W39 change"
+    },
+    {
+      "path": "packages/presentation/application/workspace.py",
+      "baseline_sha256": "53ad4762490f13865e0ac5313027c4ea822441ee1e3d24b245195e62895f8d4b",
+      "current_sha256": "f61985dc44cfde6b32cdedbbaf8f6b597923563b049a838ece29fd6369f44e5e",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "packages/presentation/infrastructure/workspace.py",
+      "baseline_sha256": "49fa8534ffe327f62d1480b9aa208d54db32975251a46ea57b4f5749db026bd1",
+      "current_sha256": "39a574d590edd5601dcbb408405d7283d2dab2bacafea6e6d661163a01775961",
+      "origin": "W39 change"
+    },
+    {
+      "path": "scripts/w39-api.Dockerfile",
+      "baseline_sha256": null,
+      "current_sha256": "10fb67485eaab722eda8dd7d10d082b46a42832c171bbf79b354ef0f0dc876d3",
+      "origin": "W39 change"
+    },
+    {
+      "path": "scripts/w39-balanced.py",
+      "baseline_sha256": null,
+      "current_sha256": "3a6624b772ab258cab8f721ceb18372e4c171df761765a3aad24b14e475a5ac4",
+      "origin": "W39 change"
+    },
+    {
+      "path": "scripts/w39-candidate.py",
+      "baseline_sha256": null,
+      "current_sha256": "e27ec5cc6ab0664b73be91b67685d65560780309b2128ece44e3a5343b6cc648",
+      "origin": "W39 change"
+    },
+    {
+      "path": "scripts/w39-container-workers.py",
+      "baseline_sha256": null,
+      "current_sha256": "02ecf42c11dc2199050c823f2de8c3093107f448909404d4bb6b88df86c512e0",
+      "origin": "W39 change"
+    },
+    {
+      "path": "scripts/w39-container.py",
+      "baseline_sha256": null,
+      "current_sha256": "0f0e046549a2c3becb2e08ba3b4cc068a032beec8f6e1de00351fb701e189f7d",
+      "origin": "W39 change"
+    },
+    {
+      "path": "scripts/w39-integration.py",
+      "baseline_sha256": null,
+      "current_sha256": "4b0b9229e648714d38a673f537b3bfa1788a942afd248aa7badec021071c650f",
+      "origin": "W39 change"
+    },
+    {
+      "path": "scripts/w39-serve.py",
+      "baseline_sha256": null,
+      "current_sha256": "c1045cf524ca5793a1a3e51dde7d2c05a60262ff37e67a54bc0c955caed1a6b3",
+      "origin": "W39 change"
+    },
+    {
+      "path": "scripts/w39_instrumented.py",
+      "baseline_sha256": null,
+      "current_sha256": "562f25cf7b33cab6d824dc2841528e360ff84205e5e4fe6a95380a3b8460f8f7",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/observed-test.ts",
+      "baseline_sha256": "53ec56e2312288a58494e07822e968a5ea2bf37ef849675d003f1cfdf32f002a",
+      "current_sha256": "ebef20ff7c35e54542ab054661073be4e72a9d69ba21ab52eaef0e360bcc041b",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/parity.spec.ts",
+      "baseline_sha256": "eb419170a00bba1752764871838898b344b43b82625f9a1e634b4821d97fde3a",
+      "current_sha256": "1ecb740008f007e12d5f81b0af323d9501fa36420c94476229b15ede03b2f4dd",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/reader.spec.ts",
+      "baseline_sha256": "164ffdedcdc9c41621c099d26260158bd792636bd64574a9e2a37bc1bd944f67",
+      "current_sha256": "977a2a762ad4450feb790e432ec62edfd32231501cc4e99d3734b3a478fbb40a",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/scenario.py",
+      "baseline_sha256": "a227ef306d1a9dc3a275eb26877dc359a0acafea829feb5544045d4e01b34011",
+      "current_sha256": "3c52dcffe55a4c4a551c9ac8b466344d3828c564b4c06ace8d1898ca15d8f262",
+      "origin": "modified inherited input"
+    },
+    {
+      "path": "tests/e2e/report-loading/balanced-proxy.ts",
+      "baseline_sha256": null,
+      "current_sha256": "8a625470354ac275b5411c83f931c56cb86d0a8bb0e899461faee4166e8e4890",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/report-loading/candidate.spec.ts",
+      "baseline_sha256": null,
+      "current_sha256": "8a0d54dcc75cfd04e37cdfd21dbe3df3ad569ef9a4f16410a175e92732bc18bb",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/report-loading/demo.spec.ts",
+      "baseline_sha256": null,
+      "current_sha256": "15c2ce88dd28004d53e44297d15182cbbd88d908fb6c2c09b1e1b8c7c2a877b2",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/report-loading/lifecycle.config.ts",
+      "baseline_sha256": null,
+      "current_sha256": "46eac32fed55c2cd816db05b371210c95df2d893eddf86249b8c33a5d5aa2642",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/report-loading/playwright.config.ts",
+      "baseline_sha256": null,
+      "current_sha256": "2ac093646e23482d10fc7dc577d2d49b576d13347b9b9ae1bc792fe18af5e5bf",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/report-loading/regression.config.ts",
+      "baseline_sha256": null,
+      "current_sha256": "183c0fefc07705d0eae13e8a470b170f74ecd833d18aa416e4b361a9c2d6ce0a",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/report-loading/seed.py",
+      "baseline_sha256": null,
+      "current_sha256": "39ac33f772f7acbbbc17990bd546d0f7a8a5cb3ae529f648d1c4f045744e2f18",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/report-loading/stand.py",
+      "baseline_sha256": null,
+      "current_sha256": "e765f593a4951dfafc14735bea8f2527365ed5d7ca1a812f7553f52790ac523b",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/e2e/report-loading/vite.config.ts",
+      "baseline_sha256": null,
+      "current_sha256": "6f12da2d65d4f5314edfc13e71973b22f661f7a0bba56f621c5f360d54b3a90c",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/integration/identity_access/test_w39_lifecycle.py",
+      "baseline_sha256": null,
+      "current_sha256": "3ad628dd0ccde0ab9ef959334e404846c1e9998bcb4fdac922d2abb7b4277a79",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/api-memory.mjs",
+      "baseline_sha256": null,
+      "current_sha256": "c268b4e265bf4d4e3d19aec6521813861c5a22efa2e12eafec7b37438ba740fd",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/api-spans.mjs",
+      "baseline_sha256": null,
+      "current_sha256": "adb9c0581249929c90bcc5735a121a3fc690f5533912f7c2c61fff09b5a7d943",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/browser.mjs",
+      "baseline_sha256": null,
+      "current_sha256": "fc95b96289e43c323885205433df5524545cf3ef2869c5123240e7b625d238c8",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/chrome-surface.mjs",
+      "baseline_sha256": null,
+      "current_sha256": "dfc074e09f96b8a0d11daacc1b7f1df9ac4ca1f3f5db52b44e9468982cfa6bb6",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/controlled.mjs",
+      "baseline_sha256": null,
+      "current_sha256": "bbccb57687fc1894aafdc72244f3f74c4c88f03ab5725e802c20178c23cca6e9",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/cpu_profile.py",
+      "baseline_sha256": null,
+      "current_sha256": "32049fdcbc1a7445c5f44f0586fad802f8968caccf750115e79c41f69280b493",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/final-demo.mjs",
+      "baseline_sha256": null,
+      "current_sha256": "e05c1392750ebd971cd13e529759c3079fe62ee3a33dd04a74c63d711347cd5c",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/fixture_equality.py",
+      "baseline_sha256": null,
+      "current_sha256": "4512a14c6b05cec87a95b4837a785db8033ffb714a2d66bed9d15d88adfe97d7",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/frame-floor.mjs",
+      "baseline_sha256": null,
+      "current_sha256": "eb4f7207d571b665cfcfbff21c20ee9cabd89cc7c606a0533d8aed3827c11756",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/idle-final.mjs",
+      "baseline_sha256": null,
+      "current_sha256": "73b162349c7b2ca4955561df9f2e7d850d958eebf76e9a252dbb2f471a89e476",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/idle_snapshot.py",
+      "baseline_sha256": null,
+      "current_sha256": "8c5bc199a9c63597a8d5278eec864ca64a666baa975a8352e6da6b8bb42d8968",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/ownership_manifest.py",
+      "baseline_sha256": null,
+      "current_sha256": "9189987eb86e9cf86cf849cfa913d2c6d141211d9f5ecb7cc51bd2c4ac3c7628",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/resources.py",
+      "baseline_sha256": null,
+      "current_sha256": "2fec4c8c4e2f7de93903795e22d9c416ba692e9fba3f6274e8af93d0df3e7b7f",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/sessions.py",
+      "baseline_sha256": null,
+      "current_sha256": "23ce16e2003193603469dae65b1d247685268389b6a4a43868365aa2a1a9eaa3",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/summarize.py",
+      "baseline_sha256": null,
+      "current_sha256": "d16334c9650b270385568bd387249557a453ef0d15565ba7e267921443b7fa90",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/summarize_final_idle.py",
+      "baseline_sha256": null,
+      "current_sha256": "a297685c2a5851c54e4ae4e90f31b6c719e004dc1f5a18098ed7980cba9ac5dc",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/performance/report-loading/summarize_idle.py",
+      "baseline_sha256": null,
+      "current_sha256": "ba735c43a3535c9ba69ae3c9985ac85dd404ef6345c9c0abb7b6e00f9131248a",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/unit/identity_access/test_request_projection.py",
+      "baseline_sha256": null,
+      "current_sha256": "0a7d3b77a1ba691406b9ecf96ad5ee4298606755883ebcfc2a6a81dc79e0b9ec",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/unit/presentation/test_report_encoding.py",
+      "baseline_sha256": null,
+      "current_sha256": "99faae875d218c691a412b8efb26970cabcb409eafc4917890e4f8ff9cd0bbd0",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/unit/presentation/test_request_reads.py",
+      "baseline_sha256": null,
+      "current_sha256": "29dab760b7762fa4ee82c93647df67f8b007ac3133f885e56812f6b07c00c529",
+      "origin": "W39 change"
+    },
+    {
+      "path": "tests/unit/presentation/test_serving_policy.py",
+      "baseline_sha256": null,
+      "current_sha256": "4bfbf6ca495c06401c83eacbe7f93318dd185b481ad6b60356fd92b5ca6815dd",
+      "origin": "W39 change"
+    },
+    {
+      "path": "uv.lock",
+      "baseline_sha256": "44b09fbcc5f711c47d7d89f9607760f4da3cd8f85640486403798fd92635970f",
+      "current_sha256": "2e156174244a8632751ad7c8c3034010e13b7772966cdf6d405f4a28cfa6876b",
+      "origin": "W39 change"
+    }
+  ]
+}

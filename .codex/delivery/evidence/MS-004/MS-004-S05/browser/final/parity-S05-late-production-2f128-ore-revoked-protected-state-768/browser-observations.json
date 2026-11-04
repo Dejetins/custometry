@@ -1,0 +1,116 @@
+{
+  "schema": "ms004-browser-observation/v1",
+  "test": "S05 late production JSON body cannot restore revoked protected state",
+  "project": "768",
+  "network": [
+    {
+      "method": "POST",
+      "path": "/api/identity/login",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/067f2909-41d9-5df1-acdd-43bd949bc75a",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/2e8d3adb-031a-502e-8d6b-8cd4262bf16d/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/067f2909-41d9-5df1-acdd-43bd949bc75a/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/2e8d3adb-031a-502e-8d6b-8cd4262bf16d/results/fc32c89e-87e6-5675-9aa1-9f8869c21876",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/067f2909-41d9-5df1-acdd-43bd949bc75a/versions",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/067f2909-41d9-5df1-acdd-43bd949bc75a",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/067f2909-41d9-5df1-acdd-43bd949bc75a",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/2e8d3adb-031a-502e-8d6b-8cd4262bf16d/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/2e8d3adb-031a-502e-8d6b-8cd4262bf16d/results/fc32c89e-87e6-5675-9aa1-9f8869c21876",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/identity/logout",
+      "status": 204,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 401,
+      "classification": "expected-denial-or-conflict"
+    }
+  ],
+  "console": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    }
+  ],
+  "pageErrors": []
+}

@@ -10,7 +10,7 @@ import psycopg
 from custometry_api.config import Settings
 from custometry_api.installation import InstallationComponents, InstallationStatus
 
-SUPPORTED_HEAD = "0011_presentation_drafts"
+SUPPORTED_HEAD = "0013_identity_lifecycle"
 
 
 class ReadinessProbe(Protocol):

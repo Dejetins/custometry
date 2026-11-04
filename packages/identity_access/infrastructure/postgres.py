@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from datetime import datetime
+from datetime import datetime, timedelta
 import hmac
 from typing import Any
 from uuid import UUID, uuid4
@@ -394,10 +394,6 @@ class PostgresIdentityRepository:
                 roles = self._roles(cursor, principal_id, workspace_id)
                 if not roles:
                     return None
-                cursor.execute(
-                    "UPDATE identity_sessions SET last_seen_at = %s, updated_at = %s WHERE id = %s",
-                    (at, at, row["session_id"]),
-                )
                 return actor_from_roles(
                     principal_id=principal_id,
                     workspace_id=workspace_id,
@@ -407,6 +403,32 @@ class PostgresIdentityRepository:
                     session_id=UUID(str(row["session_id"])),
                     csrf_token_hash=str(row["csrf_token_hash"]),
                 )
+
+    def session_deadline(self, actor: Actor) -> datetime:
+        with self._connect() as c:
+            row = c.execute("""SELECT LEAST(access_expires_at, absolute_expires_at)
+                FROM identity_sessions WHERE id=%s AND principal_id=%s
+                AND workspace_id=%s AND revoked_at IS NULL""",
+                (actor.session_id, actor.principal_id, actor.workspace_id)).fetchone()
+            if row is None:
+                from packages.identity_access.application.service import IdentityFailure
+                raise IdentityFailure("AUTHENTICATION_FAILED")
+            return row[0]
+
+    def record_activity(self, actor: Actor, at: datetime) -> bool:
+        """Approximate device recognition, coalesced atomically across workers."""
+        if actor.session_id is None:
+            return False
+        with self._connect() as connection, connection.cursor() as cursor:
+            cursor.execute(
+                """UPDATE identity_sessions SET last_seen_at = %s, updated_at = %s
+                WHERE id = %s AND principal_id = %s AND workspace_id = %s
+                  AND revoked_at IS NULL AND absolute_expires_at > %s
+                  AND last_seen_at <= %s""",
+                (at, at, actor.session_id, actor.principal_id, actor.workspace_id,
+                 at, at - timedelta(minutes=5)),
+            )
+            return cursor.rowcount == 1
 
     def actor_for_api_token(self, token_hash: str, at: datetime) -> Actor | None:
         with self._connect() as connection, connection.transaction():
@@ -526,7 +548,7 @@ class PostgresIdentityRepository:
                         UPDATE identity_sessions
                         SET access_token_hash = %s, refresh_token_hash = %s,
                             csrf_token_hash = %s, access_expires_at = %s,
-                            last_seen_at = %s, updated_at = %s
+                            updated_at = %s
                         WHERE id = %s
                         """,
                         (
@@ -534,7 +556,6 @@ class PostgresIdentityRepository:
                             refresh_hash,
                             csrf_hash,
                             access_expires_at,
-                            at,
                             at,
                             row["id"],
                         ),

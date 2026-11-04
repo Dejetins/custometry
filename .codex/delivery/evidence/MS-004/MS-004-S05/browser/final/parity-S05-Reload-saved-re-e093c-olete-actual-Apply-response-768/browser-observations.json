@@ -1,0 +1,51 @@
+{
+  "schema": "ms004-browser-observation/v1",
+  "test": "S05 Reload saved rejects an obsolete actual Apply response",
+  "project": "768",
+  "network": [
+    {
+      "method": "POST",
+      "path": "/api/identity/login",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/7e2ac6ac-3d35-5b35-b200-26e4331c885f",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/2e8d3adb-031a-502e-8d6b-8cd4262bf16d/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/7e2ac6ac-3d35-5b35-b200-26e4331c885f/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/7e2ac6ac-3d35-5b35-b200-26e4331c885f",
+      "status": 200,
+      "classification": "success"
+    }
+  ],
+  "console": [],
+  "pageErrors": []
+}

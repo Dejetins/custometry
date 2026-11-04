@@ -1,0 +1,176 @@
+[
+  {
+    "path": ".codex/agents/generated/MS-016/MS-016-S01.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "764cc661d69521bdd417fe730d94ea403d0f7630e5ce60a6df92c70a8c6daf59"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-016/preparation/baseline.json",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "bc639cf4ff56e088d83ef7d7c68d56090c2b04d2e10d5397b27acab1a61898a7"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-016/preparation/journal-capability.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "40052f99c9fc7e6596f7357c8404c7f7fd8b3b71c5b23de040b482e98cc1facd"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-016/preparation/temporal-before.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "fbddaf54b9f85f84fb670fd0b6e1e1867458a198fca2714a90df7435c14a701d"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-016/preparation/workspace-before.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "ba80bd07567cb7d2c153f6a9d21633a7a2336db58a945db814c169efe29eccb8"
+  },
+  {
+    "path": ".codex/delivery/evidence/WS-004/WS-004-v0.2.11.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "e546be54c8f4126f7806d778ab42c23d86ef7c95053a68163009cf8f321e930a"
+  },
+  {
+    "path": "apps/api/src/custometry_api/semantic/router.py",
+    "operation": "modified",
+    "before_sha256": "4bd397635237f3613ab23a9474b3ee2aacf3d09761551dc0e971fdf6c8449aff",
+    "sha256": "7dc2898a43ef481e4e403c110d4e3aff18c2e012fb335d833253fc6235ae6fd1"
+  },
+  {
+    "path": "apps/web/src/app/shell/ApplicationShell.tsx",
+    "operation": "modified",
+    "before_sha256": "7425a56cf0b9ebdae1d9349a4b41f29b3d1d62cf166e8105a5f6a1c792c3e302",
+    "sha256": "09fcae9521bb6e63a235dcf1f210d9ff0b9c9d7905a8d47c134d8f375789aa44"
+  },
+  {
+    "path": "apps/web/src/features/reports/ComposerBuilder.tsx",
+    "operation": "modified",
+    "before_sha256": "61d2e00c16bb5d59b0b6cbb809b1a5cae20f0b8fadd21c1c4f257134fb38e95e",
+    "sha256": "ebe80a2a650b803e77b762a963806cd1f0c0c790d1b7d89376df91421544f585"
+  },
+  {
+    "path": "apps/web/src/features/reports/ComposerWorkspace.tsx",
+    "operation": "modified",
+    "before_sha256": "6dbf92dde656cd2587d35838b908c0d54c7c6a671ed7fbe4931125a916c3ee49",
+    "sha256": "7f994b83becf97ca7030fd965c7cad6311b01d33aa6dd593ee72ec8c2be6e491"
+  },
+  {
+    "path": "apps/web/src/features/reports/WorkspaceCalendar.tsx",
+    "operation": "modified",
+    "before_sha256": "89b54ac16cbc0c2022a85668e85fc2cea562ae314380555bd60d6a11facd086e",
+    "sha256": "a6ec6eaf71d726a9820511e7388e0d8d02de6d3f0126811e8de990419067c7d0"
+  },
+  {
+    "path": "apps/web/src/features/reports/composer-temporal-editor.test.tsx",
+    "operation": "modified",
+    "before_sha256": "ba3aa912093f131757b582f8fdd460758552ceb199bfded8d7ea03e5e4715e5b",
+    "sha256": "11de9d8d3e2a13ff1319df2b9873a5989a58c41720790dd876136e5ad3c39029"
+  },
+  {
+    "path": "apps/web/src/features/reports/composer-temporal.ts",
+    "operation": "modified",
+    "before_sha256": "e75cb24fffef6e0133366e3ab68f1a62ef1df2fed6bccc2558efdcab00b553fb",
+    "sha256": "5b4ea9976f87562d8a38f116f1c23c03f351e3350a502d54fe16f035dc0f234e"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-copy.ts",
+    "operation": "modified",
+    "before_sha256": "bda352c1ce3926f8d28ba6c74507bbd7d1559876d31fea986d08db3e26636456",
+    "sha256": "731e9111c135044e6ba3195fa181ef6695c0bcd570bd61821bd460450b4a88c4"
+  },
+  {
+    "path": "apps/web/src/features/settings/UI-ADMIN-004.feature-route.tsx",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "06241846af897c9b14682e87501bef285641826b374546da2fb6c279332b56ae"
+  },
+  {
+    "path": "apps/web/src/features/settings/company-settings.css",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "78aeadaca0a99c1e5b08a611a035a04b5741852b617afaaccc6b7e38aec2dcf9"
+  },
+  {
+    "path": "custometry-ui-blueprint-ru.md",
+    "operation": "modified",
+    "before_sha256": "bdcdf7ac3872da891cb14bd24132dc0e22f2cf8787610fea22845741adb8b16e",
+    "sha256": "747f83a937e27a2016e8cc09b5e893798a61e3a6b8c4ea7ab5d08d0eda005a39"
+  },
+  {
+    "path": "docs/README.md",
+    "operation": "modified",
+    "before_sha256": "4fa6eb956048aef330885ec4d4743b552c6ff60bc2ef11d7beb4b64d6f0eda58",
+    "sha256": "100082faddebe610f3ab898521853b1b081de1a6496db0194569ff7b11935ac8"
+  },
+  {
+    "path": "docs/architecture/README.md",
+    "operation": "modified",
+    "before_sha256": "356df7813a03a49fa791e632a24abb53e47a965e13891b0c198d8b2f63c849c8",
+    "sha256": "fcdf625754e41707f05400655284bc949194ca4388cc202ea9add93c09d82e53"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md",
+    "operation": "modified",
+    "before_sha256": "a3912b919fc06660e43e7cfebbef676682ffa351347ce792a10226691d4b23b3",
+    "sha256": "20842b787adc7af7b66cf4c4523b37f3aa5d026121b616affa281d7e162e398c"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004.md",
+    "operation": "modified",
+    "before_sha256": "e546be54c8f4126f7806d778ab42c23d86ef7c95053a68163009cf8f321e930a",
+    "sha256": "f2f46a89fef54e39d057514de3b9f9ea65d82fbab78d75861c05bd8e3a08f307"
+  },
+  {
+    "path": "docs/architecture/planning/milestones/MS-016/plan.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "30f7196d600305517fc695fb34e374aa7cb5d14742aa4f5625c8309392d7e895"
+  },
+  {
+    "path": "docs/contracts/analytical-authoring-contract.md",
+    "operation": "modified",
+    "before_sha256": "4730e891bfdbfb083f62714c16b4f9a666fc027632e31fa55b2e0a18f8fae798",
+    "sha256": "60a7c666a10ffa190da7d62a2f7f9c851106d1c53ee52ba6b941d8d3946d1c5b"
+  },
+  {
+    "path": "packages/contracts/openapi/workspace-calendar.openapi.json",
+    "operation": "modified",
+    "before_sha256": "d44c62f8a07044db33c2563b270a78f25d2e80c14bfecf3ad1db5a89280a98f9",
+    "sha256": "9d37d6f3937e8b4fc2e6317b5d48e34d9e0b81a84da566d83949fb916e83e58b"
+  },
+  {
+    "path": "packages/contracts/semantic/__init__.py",
+    "operation": "modified",
+    "before_sha256": "1acaa33cee2bbc5abe2ff7722e46649b8655a1388a54d88755173f0f78d85eb1",
+    "sha256": "4a2ebc3a4ba925973293c94704a3c60681858629ef2df810849d84a333a58138"
+  },
+  {
+    "path": "packages/contracts/src/workspace-calendar-client.ts",
+    "operation": "modified",
+    "before_sha256": "2578eac06245b3d9df611a26e4f5d37b806b8b43162566da59d6b6907879b8ee",
+    "sha256": "b916d0704c96f1cfa08bee06eac21c54cbfcdef192b5ddf5fab3738e74503c24"
+  },
+  {
+    "path": "packages/semantic_model/infrastructure/calendar.py",
+    "operation": "modified",
+    "before_sha256": "fd2f1169a8db6220be76deeb3e3372f16f0cd4ad66a4289379b26ec6d3955e62",
+    "sha256": "dbc495039b9e250bddc1b628c6d91d7b4ce6a7c4ceadad1f6a178e2dda92b1b5"
+  },
+  {
+    "path": "tests/e2e/ms-006-composer/timezone.spec.ts",
+    "operation": "modified",
+    "before_sha256": "fcba2c9deb52a4c20aa922b86fb6199f2f7ee4c5c018a1dbfa4d568302c0fb1e",
+    "sha256": "a28f2e7fc31ad51cbe307656cdc105aef1fe5f64698c914a72906c3cdb7473d2"
+  },
+  {
+    "path": "tests/integration/semantic/test_s01.py",
+    "operation": "modified",
+    "before_sha256": "2ba9aaffb8f99c113bda839fda9301fcc2f444b7f1baf7f339d80bd5424735d6",
+    "sha256": "3681326336314e9fead2396b6ad8c78905a5cda92779faf6c6aca920d212a6db"
+  }
+]

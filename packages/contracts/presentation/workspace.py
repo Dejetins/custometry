@@ -14,6 +14,7 @@ from packages.contracts.analytics.workspace import (
     MetricRef,
     QueryContext,
     Stores,
+    WorkspaceResultV2,
 )
 from packages.contracts.presentation import (
     AnalyticalDocumentCompositionV1,
@@ -106,7 +107,7 @@ class ConfiguredReportV2(Strict):
     selection: AnalysisSelection | None
     brand_profile: Reference
     company_pack: Reference
-    base_snapshot_ref: BaseSnapshotRef
+    base_snapshot_ref: BaseSnapshotRef | None
 
     @model_validator(mode="after")
     def coherence(self) -> ConfiguredReportV2:
@@ -219,6 +220,8 @@ class SavedViewV1(Strict):
     calendar_basis: CalendarBasis
     page_ids: list[UUID]
     result_scope: list[CardResultBinding]
+    # Omit absent legacy projection to preserve existing companion-view digests.
+    comparison: CardComparisonV1 | None = Field(default=None, exclude_if=lambda v: v is None)
     query_context: ViewQueryContext
     display: ViewDisplay
 
@@ -327,7 +330,7 @@ class AnalyticalDocumentComposition(
 class CreatorApplyRequest(Strict):
     contract_version: Literal["configured-report/v2"]
     mode: Literal["creator"]
-    base_revision: Annotated[int, Field(strict=True, ge=1)]
+    base_revision: Annotated[int, Field(strict=True, ge=0)]
     definition: ConfiguredReportV2
     reuse_result_ids: list[UUID] | None = None
 
@@ -353,7 +356,7 @@ class WorkspaceApplyResponse(Strict):
     bindings_by_card: list[CardResultBinding]
     comparison: CardComparisonV1 | None
     chart_specs: list[Reference]
-    base_revision: Annotated[int, Field(strict=True, ge=1)]
+    base_revision: Annotated[int, Field(strict=True, ge=0)]
     access_fingerprint: Hash
     chart_payloads: list[WorkspaceChartSpecV2] = Field(default_factory=list[WorkspaceChartSpecV2])
     status: Literal["ready", "no_data", "comparison_unavailable"]
@@ -362,7 +365,7 @@ class WorkspaceApplyResponse(Strict):
 class WorkspaceSaveRequest(Strict):
     contract_version: Literal["configured-report/v2"]
     definition: ConfiguredReportV2
-    expected_revision: Annotated[int, Field(strict=True, ge=1)]
+    expected_revision: Annotated[int, Field(strict=True, ge=0)]
     expected_saved_view_revision: Annotated[int, Field(strict=True, ge=0)]
     idempotency_key: UUID
     configuration_hash: Hash
@@ -501,7 +504,15 @@ def adapt_legacy_definition(
     )
 
 
+class ReportActor(Strict):
+    workspace_id: UUID
+    principal_id: UUID
+    permissions: list[str]
+
+
 class WorkspaceEditorResponse(Strict):
+    ready_results: list[WorkspaceResultV2] = Field(default_factory=list[WorkspaceResultV2], max_length=32)
+    actor: ReportActor | None = None
     """Editor projection keeps original snapshot bytes separate from its v2 configuration."""
 
     contract_version: Literal["workspace-editor/v2"] = "workspace-editor/v2"
@@ -521,3 +532,16 @@ class WorkspaceReportRepository(Protocol):
         snapshot: UUID | None = None,
         version: UUID | None = None,
     ) -> dict[str, object]: ...
+
+
+class NewWorkspaceRequest(Strict):
+    report_id: UUID
+    semantic_dataset_version_id: UUID
+    common_context: QueryContext
+    template: Literal["blank", "sales"]
+    locale: Literal["ru", "en"]
+
+
+class NewWorkspaceResponse(Strict):
+    definition: ConfiguredReportV2
+    actor: ReportActor

@@ -1,0 +1,5534 @@
+{
+  "version": "baseline",
+  "mode": "warm",
+  "workers": 8,
+  "concurrency": 50,
+  "browser": "136.0.7103.25",
+  "osFilesystemCache": "not flushed",
+  "resources": [
+    {
+      "at": "2026-09-22T23:20:00.486Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "8ab62dc30053ec98447befd59f22ef0d6aa1eccde1f59bfdafbecd4129c3226b"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:05.485Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "44cd363c458ccb09f98726dff0bbcd017bc63db2b2c682442d4ac6d40cafd8cb"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:10.487Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "3ed41d128c6bd11d923550be6635045d7befdf4af5cdbbd68106508d76a7c2ac"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:15.484Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "37012241299e4449cd719a7ab9afdff8b9cdb78b983a964d20cc02c31dae201e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:20.486Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "fe0c2235f8e6ac96596f9567d67fe651fde25e2ce215b4189bd5473d618c04cf"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:25.487Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "df63ec95701bf6c53e7058a436052ad338ee3da3000a756b96854bdc93cc922e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:30.491Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "16a0c0707f8b3f04c4f8034efe49f71ad3a8c86e6ddd2b2876d03305456de192"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:35.487Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "f72d380762250c0a652964c46be81b3e70a4a6521b4fbbea6193401dd955e3b1"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:40.487Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "bb4b096ff368a0362b4f17ff1398436847cb2540718baac82c1273de4b646385"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:45.493Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c078059cc7fdd937481596a93d16efb45ed72b95206329b3bfa037453a109d87"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:50.490Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "1ba423767d5117964687f820d2af2ad1d39cca56b5b30f45c0aebbf2f4205e52"
+      }
+    },
+    {
+      "at": "2026-09-22T23:20:55.494Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "d8a0ac3dd8cd7447f82b9ea123caef702b690dfec3acced2423199bad26b42b5"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:00.493Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "cb16d153777819852eae65b7e348da2f2949855e161176efbff44291121ca56a"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:05.493Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "01a68db7ebc30cef215191e2c54efb61620b6d05928988946456a93257137da8"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:10.512Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "00c2586faaa5f1dbf984c86c49f55001fe05487a8860e8f2f7128b4cc72e91b0"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:15.493Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "740812e0ad140a4f8ba7429bed4d39e9e2f3a14460f81401824c59d66381b587"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:20.495Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "76a1b34324b18fcc8718dd7ad1eb5a5068e25f63647e6dcb67ca16e1874ab072"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:25.496Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "2f27527ee4f31cef3da1a9638596d0e2ca87552523d80229c4c0b31f15b598f0"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:30.498Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "9def9348d8c7da018192233114c7af823a0f9a466bd1bdd5a50c90795a0cc566"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:35.501Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "de1d4e6a4c8745d3b3b24b7591559d603d019d21d57eeeb325b5a99fdf41c06a"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:40.500Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "64dd28e40f6958a3c8a551a4ef18a6ae3cfd1f77716590876bd945f7478d0a21"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:45.503Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "2ba541ca1f93ad28d5c14bb831dc9084690e5598d728add91f084590f6b699a9"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:50.509Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "2e968dce6a382f6fd9c55ad0b43ecbb43cf9a7df9aa458a12850fbd2c24be065"
+      }
+    },
+    {
+      "at": "2026-09-22T23:21:55.506Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "a58e567e5f8abdb80d8740c71f49c4cbd25f18588754f13615637d90a06ba485"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:00.507Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "22cdc05baabac1e0cd4de109880726746c10ff336bbdef6a75a4107941f756d9"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:05.506Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "d1f08eb42de44d35cbdc0bf88bd10fc584f497e23c59a4f48ac6a72ea0983669"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:10.518Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "eea5aba5fe21deb0c2d60d91866385ee73ade2cdd44ab7a932e3aa2952900728"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:15.512Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "36b43ed10abeae80c92c35ad76528239fd3d411668fbe47350aae5400385b592"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:20.513Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "cf6d11236cb5ba430a0b0ea1b1e587497de60d42bbb1d156f0b88d0abdaedc3e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:25.509Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "67afc3540c55123ca43337e217e562e18e23a676f6f1e52c1a5d2814e411ce6c"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:30.515Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "36ca1aceeb86552e2a8fd25c125620300bfac2b8a6cefa4866fa8008305ab11c"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:35.514Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "5ec34ce338a8166f592867db84dd62d9bb5356285da231a0f9657ec68a387aa9"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:40.514Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "709f35717529eff3153ecf679f53b138c766affb498094c3b2e21b127db61488"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:45.518Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "6fb79760c23b4a650f9518f0c6052ad7c7b8769ca2625978deb9f5e446391e2b"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:50.514Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "1eeba8537a7a85ce0e8b8a3fb94fad35e9b07e5b70b040f764674884b7584aa6"
+      }
+    },
+    {
+      "at": "2026-09-22T23:22:55.516Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "b752bebdf30b6f10784f5b1ff6bab29461e107e4c2dc3f83201ada9227ca71d1"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:00.532Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "68846bf244daef1db0948cb2b3bb27229e5c76f33c10bf63e68228e814a8f5db"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:05.542Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "5327e87dbef22796d5a0be8b9b902f9db6213a10f61d775dcd70048db44efd88"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:10.546Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "23bcf09820eba6d603979041f9c55481f78a92d935f6c2fb5e289e5ad65c3325"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:15.555Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "44eb463f8d453ffe35c545b298f0a5ffb65e37509cf8e9cd6b0024d2a9e2fd69"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:20.558Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c25b14c71ceb3172148aec963ced0f6fd24a104bc176e34765d6a56447f48a85"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:25.564Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ec68ab55e09045727c1676b426dddad9db580b78cb7071314e1bc1a1113fa0ee"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:30.568Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "41369117550c7097a727a3af2ebc61144e5d74dfa3eabf51dd1ce85b0451af7e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:35.574Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "8724fe7dc44dc1c9bdf9b3594961566b256368203b139e9b295bcc5d5aa7bfc2"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:40.579Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c5260462b160db6325f122e0d20b7094a0f4dc548edab5e77f402148f45faed3"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:45.582Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "4a0ce7b63a385555dfb007c6849cfdd32d6bd61381c2c45664a0499ab7ff3a53"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:50.583Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "484d1002f7662641bc15c15880470e6f2c78cb5c97a5e2b8e255f3cb2141b333"
+      }
+    },
+    {
+      "at": "2026-09-22T23:23:55.583Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "3b89ab7f03ce4c2fb1072849f0b1f65ec7de2a6cc6b7dc4ed96c6b3d8930dd86"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:00.608Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "df121aefd84c0424d7193fd48e935900fee54632443659c1eddf1113ddb70d3c"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:05.588Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "77386f95d703dd4bb8397c1d9b8ba05a3665b564f36338da6b299fea9a8353a2"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:10.587Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "0f3b4db4d4cfc713b5b0aaf18f11631bc0488a5a657e3cce576bd0c59babb894"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:15.586Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ca5deabc6825dc9bdbe468d2561766a3d449555c4bc4637d6ded16650f8edd85"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:20.592Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c74b0420aa463c2d03db69392ad89511f86e76c3e4fdd9fe378efb2f9837ee39"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:25.631Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "4ac1b5088e161c44b8629c3a4ca51b4ea453fa3273af9c624ae1b5da0a5f5b61"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:30.596Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "3df03f4529807cad24407ee3e6677e5d92f09854be8ad36053a0e7a207fc8125"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:35.593Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "a67234ff69b6bc4abc56b8a7bdff01df212fa014cb5e9525c204b4635831fa9e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:40.598Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "12a913093123e910e7273188f3dc2b8f9ac4860709a4f8592f894e5d49375be0"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:45.604Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "4199c65f6a9d107bc78eb6e9c2cb1c589f2242e31a05c90c132c26c3c0764daa"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:50.610Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "93ad8e04e8da270913c075ce2f2b3ef5a64a7cd050e01c06ec1710cc13e6a5ef"
+      }
+    },
+    {
+      "at": "2026-09-22T23:24:55.598Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ad3b0ac84d147276ca474283f4348ff028fbbc8b3ecf5f7258c030db31a00344"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:00.598Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "911158a6bcbab77596f7e8a6a1de546de32c13caebc29147fb38f30987cdc93c"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:05.601Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "37a784515583917851d6807484936625704484028feaec6ba0130fb8d07f1e5f"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:10.604Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "b3eb472ebddd3e888fc9394a1fcfb5b2347ffc63a02c56443ccde877eb12bd0d"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:15.605Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "3dd4e140b55836543d0333b828dbf7161fbc39da3a942e2d359f05602d304571"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:20.606Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ad7c486112c4deeb5bc71bbb83e8c7dd02094357111500bf543ee0c032e32d4a"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:25.608Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "0ddf4164713be14065a469d0f57c0d922b502f1af41e4904098a68f21211c2dc"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:30.608Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c49c00d3446b287455079bc4e12594c7c6d1c7c46e9488b2077e5e80343c459b"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:35.611Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "021c23d2887e61fb4bb16b5f1a06d0fafcfa9c986f4a86c83701961116b9b1dc"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:40.601Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "fb7ae268738bc28d712ace14f972e97a6d8861480353949f7288a780b9bbe5d4"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:45.603Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "957768d6fbcf7d6d4de4c12ce5c0c8068f83634f2c4a186f7e38ba880e6fe99f"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:50.604Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c98f7990c22149de60bf4436e136a1a3b84bd62d81889042e3359b9e2944a2c5"
+      }
+    },
+    {
+      "at": "2026-09-22T23:25:55.605Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "cc730be8671355aed2e0442d79b03cb0c34a51544075dea0b63546f6512b7c9c"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:00.622Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "a9ee9d2402e4fc1cf1cce2d2e27bcdeacd761d1170f1c18cbf01762135196d4c"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:05.623Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "53690b1ae7b19cf884f5819a9d5bc85901e67b7d9852c12714c1ef7b34859dbe"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:10.626Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "4ff0908416681f6594b1266ddf8f6d102ace80c08fd169f1aaa085792f8d7386"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:15.627Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "d832058acfebe3c2de826a313665efc19c05f03837c1a491494f740cd1a69e99"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:20.628Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "915fe83687a4116905ca48f4a6f36f7ac17f3b7a8b033cc92029efed45ede8f2"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:25.630Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ff2705db658ff6e551d2ed0a45c94e40fdc1c418141150f43d37e37ccd8d568b"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:30.630Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "81f3f93d0b06e2b51f4a200b3e716a7873cc47df40adddf624ed934566141cf1"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:35.631Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "18882e7c8443d5de0ab9b90b573868e53a1e049d48ff397cdd41d7319d967b29"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:40.632Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "f0cd896e480cef5a34b5cd79fc993b6d83ab19ca60dcc651b34030f01b602ee9"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:45.634Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "e5547398112da8836ef2559ac4168c2a45fbaee4aa21a861d31aac281b26623d"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:50.618Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "46b375cc1021a9bc097f01fbddc47c6d048a20946e027ad4b3d408f8e7fe5adf"
+      }
+    },
+    {
+      "at": "2026-09-22T23:26:55.634Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "bd666fb9ed9b3969a610fc50ebd4919f43b5f8db5d609b93106e2915658d655f"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:00.634Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "b6ad8f5db653e95e0d104c7375106c28a1fdcafe5e82762f91232bbfa22382d9"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:05.633Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "bf91e2aea3bf4c03682111a35d3de27a14dd2352ebb9c8d0819f68981fc2d6eb"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:10.633Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "a69f01e44010863b6f3640794005fa1094c27781f0a63d68ea12231ccbfd451b"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:15.636Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "bf3fbc0e6b91e3775d87f9def497bd2672e51716f5e89d524ad54d97c8788a1e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:20.637Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "d9712dfbe0cf9905b012696e066d4953958ab1f7791cb807854d6b14b3e4016d"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:25.637Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "bd6f058c35c30898fe07b8116214ed6c68eefb88895876fada8ed14999e515fb"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:30.640Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "cc320172882333e97f893aa2bba8ed3ab6b8eeeb4b4788305c77fd91a690f732"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:35.658Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "1888fbe67b326e96f02ef7d2d977ba05efec14e0f6f6d14f7b9875b4e6a6a52a"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:40.625Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "564c298fece1578ac77f3a0e28b2b8dccb3285b1ac774bae8fe53e24963a19b5"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:45.629Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "b88faf9527c94c6b4846d1288f01b94093d1b4b4e8703071be6d19877c84502f"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:50.629Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c461d615bc63e10c4ffd21275082e7c2bad0203d99fded78ad2b52c6be42dfe4"
+      }
+    },
+    {
+      "at": "2026-09-22T23:27:55.631Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "4f2bdbbad6c96a5de9d20030227c6a7925d234a5f87af63d08b5b6727c4b0db5"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:00.632Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "bbc2018b09d5b87b3b1c914943f51e887bc98038c313f4433e62df01f374e2d1"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:05.632Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "36b11605c9e9476746dd5db91f5bdeaf594c69f167c8ebb8b0fdc7dd9418421e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:10.633Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c79df53f665fd229ec41cacb6067fd12bd6b6d5ceea7c9f8d4cdf853912ba847"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:15.633Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "b40d86193fea3b129ce26cd70d39087fe87784ee39aab48b67cd1065d6b88a34"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:20.632Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "093cd543f56191686a1954a20cec9721e75ad2bcfe2b7c226f6a368380b52661"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:25.633Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c1f7e8896cf309c0aa3f3c5b03712bf5db7ed0d47ea55d865f70f96d0223680c"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:30.634Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "d8beb46ceacc1b57dd9230dc7b48da2a3b18e61e9865afc2ad59bc889c14a174"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:35.632Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "e242bca34c82dbbeb39cbdd28572e42d0d7f9ab5ae62d8d09a5872c4feac527f"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:40.634Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "382226cfc1cf88c9da44950959e1cb68ac826040ff27fde673c922ae682e61e0"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:45.635Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "cd8d31fc4e8725366d3271ae221281798982dc339f07719d7e04f614fb3c6543"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:50.635Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ebc1c760eb243228d9c0f40f5c2f2044ad659492685bfd005e5157b7dbe08a9e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:28:55.636Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "1d60a2f41b08c12c3f603724d4ce55526c040ced513bab3df96f34c64b69a770"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:00.638Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "56718ae8e0949c8e8fe7145d4485efcf6c5601999c51ad1992496bf732d98c12"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:05.638Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "eebe540f0e6bb68cb95f03636b405b02f18e91e898a1f2a8b0e0aa8072dfe836"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:10.637Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "5e289b69bf3af8449b08ed262daead37ecc7f9313144080b487f56ccdef17eed"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:15.637Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "598b5fded2e459dd2e8c108938f3c8971a04fa1a9378562c2650349c8ce8ecf9"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:20.639Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "332b623e4097f76633a2b8c99e797216a33bb9c677ee19bc1582ab054423cf63"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:25.640Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ce4c1b34d9fb838d14f4f477376cb18e491b046e1a6fb8b3b0bb4ba632091cf8"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:30.644Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "f4b1325b4dc044e777b740bc9ea72f14a05b21a623641162da50af5547dab38d"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:35.640Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "8e3b348d2a4391ddbc583e5c783cbf5b476c5bfddc6a7d7d71e69019ab740398"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:40.642Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "be6d42c10b4aece40cbe56cee759720b3d5b03109ffa353795fca85ce31f510e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:45.640Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "6ef9d07a979c114d5243c4d821e41d867964ec391e1d92c87c981b8fe5c129f8"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:50.640Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c5f057a16c5b64e9a6d3435713cc8ef555ddefd3429095c096ace4a3c5a2bd36"
+      }
+    },
+    {
+      "at": "2026-09-22T23:29:55.642Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "6d17512ae87dd6181a0ae94a3cc5cc6763aefd1af4767e30fcbfbd07302bbc56"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:00.641Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "0eb11842c186dde817738805930b3ddfb45c690122e6c285b2f4fd879e3545b5"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:05.650Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "8e883aef9893ee699e6e740af5b3eb93f3b2da9bfef3af15cd1c72027e37b684"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:10.647Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "103418331a6b2f012b7a4bb4a363afa3acf533d1a463be8372359bbab0272f05"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:15.652Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "53ad295d1ef0f2c6c7b65d3ff0bacffc30eb0ef22132656244e75ea33e3a60b0"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:20.651Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "d9dafa245282f1c9764a3e97736c09ed8eb32eabf00f1808ceb180a07cc7db43"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:25.655Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "02d1f5b588c6dfc3eb5736eb86b89f040fa9cff4dd721af96c06d1642f2e5523"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:30.652Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ccd73db4cfeaebefa6e596d7eecc5050e885e9ab39a0137f1228dacf165782ad"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:35.652Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "8442e791beca0c111cd1b399804e26edf472743f2cfa617dbca6dfc0def36960"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:40.653Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "81382d4c0664bf8d0f61a8e974774668ee2bb68b0c01ca6863ab41e3bdadf805"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:45.656Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "cf57f12d92dcd79e9ef63ae77cc17f48ccde2752b975be987ccc77087dff8d88"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:50.657Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c5addf0001de8f374101b5ae0f099a5fdee68058a608449b2aab0dfc1f98f5c7"
+      }
+    },
+    {
+      "at": "2026-09-22T23:30:55.657Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "55c98f320dabf1911f336b4e8f42b18ac2ddf1fe99dc4c5148bfb09c8b7e04fe"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:00.658Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "8dda31ae7711b7b1d5163c1543c8d8493676b4569702fee22024b00091a322d9"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:05.657Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "3ea274d1deef9445922e6ea30e1b6d45dc612c92dfdfb7d92cce661ae8eaf9a0"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:10.660Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "87c80af56e1b1e28868ccd04cd42657ae9e572b5690f48277210e2ad26ce9c6d"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:15.659Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "a74ba1078b7fd52c66d80710357407835cb9d513567e7813803bae24b275d01e"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:20.659Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "c26d6334343d2e40fbdacc736f97eb1b349d18bd33ada6007191bfbdcd91eb3a"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:25.658Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "f13698b7072a033d68c94ce043270dbe511a7ecee340762937c01e3374c02e4d"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:30.663Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "834c91fc9d87798d710e07ba63da2d4b8b7d877b46455ad231177437d2031a8a"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:35.659Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "f0789c1676e211515d2d3e97c40f56a5eba397a8b4e855231afda038951dee85"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:40.664Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "f3ae434791313652b27aab4c76a5dcff8849cf56b099dc3353346977ce1f6ba2"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:45.662Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "8bbb2333d972470402f73816565cc533aae04de67802ebee428445e816f0604d"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:50.662Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ce60d756fdaed4e0ddcde73427743b3d17e6061924aaa2a84dfb2089f04a76dc"
+      }
+    },
+    {
+      "at": "2026-09-22T23:31:55.673Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "130427cd4129a6a074841a99aa03a24bc4448fc8cd2187fdf813ea35f545d83a"
+      }
+    },
+    {
+      "at": "2026-09-22T23:32:00.665Z",
+      "processes": {
+        "redacted": "runtime samples",
+        "count": null,
+        "sha256_canonical_json": "ef85c0536afc1652d748ec791d5d8d348dcdc8e643f8501ce64416f4ecbb9011"
+      }
+    }
+  ],
+  "records": [
+    {
+      "frameMs": 57.79999998211861,
+      "firstGraphMs": 67.69999998807907,
+      "allCardsMs": 59,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 1,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10327340
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 264,
+          "interactionId": 10005
+        },
+        {
+          "name": "pointerup",
+          "duration": 264,
+          "interactionId": 10005
+        },
+        {
+          "name": "click",
+          "duration": 264,
+          "interactionId": 10005
+        },
+        {
+          "name": "pointerdown",
+          "duration": 224,
+          "interactionId": 10012
+        },
+        {
+          "name": "pointerup",
+          "duration": 224,
+          "interactionId": 10012
+        },
+        {
+          "name": "click",
+          "duration": 224,
+          "interactionId": 10012
+        }
+      ]
+    },
+    {
+      "frameMs": 85.2000000178814,
+      "firstGraphMs": 104.30000001192093,
+      "allCardsMs": 85.30000001192093,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 0,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10296016
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20004864
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 224,
+          "interactionId": 6317
+        },
+        {
+          "name": "pointerup",
+          "duration": 224,
+          "interactionId": 6317
+        },
+        {
+          "name": "click",
+          "duration": 224,
+          "interactionId": 6317
+        },
+        {
+          "name": "pointerdown",
+          "duration": 192,
+          "interactionId": 6324
+        },
+        {
+          "name": "pointerup",
+          "duration": 192,
+          "interactionId": 6324
+        },
+        {
+          "name": "click",
+          "duration": 192,
+          "interactionId": 6324
+        }
+      ]
+    },
+    {
+      "frameMs": 44.69999998807907,
+      "firstGraphMs": 177.19999998807907,
+      "allCardsMs": 44.900000005960464,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 13,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 4
+        },
+        {
+          "name": "Nodes",
+          "value": 8496
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11368260
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 17645568
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 168,
+          "interactionId": 2411
+        },
+        {
+          "name": "pointerup",
+          "duration": 168,
+          "interactionId": 2411
+        },
+        {
+          "name": "click",
+          "duration": 168,
+          "interactionId": 2411
+        },
+        {
+          "name": "pointerdown",
+          "duration": 352,
+          "interactionId": 2418
+        },
+        {
+          "name": "pointerup",
+          "duration": 352,
+          "interactionId": 2418
+        },
+        {
+          "name": "click",
+          "duration": 352,
+          "interactionId": 2418
+        }
+      ]
+    },
+    {
+      "frameMs": 42.5,
+      "firstGraphMs": 193.30000001192093,
+      "allCardsMs": 42.69999998807907,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 9,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9618936
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20267008
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 232,
+          "interactionId": 3127
+        },
+        {
+          "name": "pointerup",
+          "duration": 232,
+          "interactionId": 3127
+        },
+        {
+          "name": "click",
+          "duration": 232,
+          "interactionId": 3127
+        },
+        {
+          "name": "pointerdown",
+          "duration": 192,
+          "interactionId": 3134
+        },
+        {
+          "name": "pointerup",
+          "duration": 192,
+          "interactionId": 3134
+        },
+        {
+          "name": "click",
+          "duration": 192,
+          "interactionId": 3134
+        }
+      ]
+    },
+    {
+      "frameMs": 181.60000002384186,
+      "firstGraphMs": 191.10000002384186,
+      "allCardsMs": 181.80000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213640.79999998212,
+          "duration": 141
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 5,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8260
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10239088
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20004864
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 52.599999994039536,
+      "firstGraphMs": 61.400000005960464,
+      "allCardsMs": 52.69999998807907,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213642.20000001788,
+          "duration": 108
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 6,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9659880
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21577728
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 200,
+          "interactionId": 4577
+        },
+        {
+          "name": "pointerup",
+          "duration": 200,
+          "interactionId": 4577
+        },
+        {
+          "name": "click",
+          "duration": 200,
+          "interactionId": 4577
+        },
+        {
+          "name": "pointerdown",
+          "duration": 312,
+          "interactionId": 4584
+        },
+        {
+          "name": "pointerup",
+          "duration": 312,
+          "interactionId": 4584
+        },
+        {
+          "name": "click",
+          "duration": 312,
+          "interactionId": 4584
+        }
+      ]
+    },
+    {
+      "frameMs": 57.19999998807907,
+      "firstGraphMs": 65.09999999403954,
+      "allCardsMs": 57.400000005960464,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 10,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9648948
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 216,
+          "interactionId": 6673
+        },
+        {
+          "name": "pointerup",
+          "duration": 216,
+          "interactionId": 6673
+        },
+        {
+          "name": "click",
+          "duration": 216,
+          "interactionId": 6673
+        },
+        {
+          "name": "pointerdown",
+          "duration": 232,
+          "interactionId": 6680
+        },
+        {
+          "name": "pointerup",
+          "duration": 232,
+          "interactionId": 6680
+        },
+        {
+          "name": "click",
+          "duration": 232,
+          "interactionId": 6680
+        }
+      ]
+    },
+    {
+      "frameMs": 79.90000000596046,
+      "firstGraphMs": 97.80000001192093,
+      "allCardsMs": 80.09999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213685.19999998808,
+          "duration": 76
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 4,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10381552
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20267008
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 232,
+          "interactionId": 9637
+        },
+        {
+          "name": "pointerup",
+          "duration": 232,
+          "interactionId": 9637
+        },
+        {
+          "name": "click",
+          "duration": 232,
+          "interactionId": 9637
+        },
+        {
+          "name": "pointerdown",
+          "duration": 224,
+          "interactionId": 9644
+        },
+        {
+          "name": "pointerup",
+          "duration": 224,
+          "interactionId": 9644
+        },
+        {
+          "name": "click",
+          "duration": 224,
+          "interactionId": 9644
+        }
+      ]
+    },
+    {
+      "frameMs": 52.900000005960464,
+      "firstGraphMs": 60.30000001192093,
+      "allCardsMs": 52.900000005960464,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 3,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9663136
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 192,
+          "interactionId": 7493
+        },
+        {
+          "name": "pointerup",
+          "duration": 192,
+          "interactionId": 7493
+        },
+        {
+          "name": "click",
+          "duration": 192,
+          "interactionId": 7493
+        },
+        {
+          "name": "pointerdown",
+          "duration": 208,
+          "interactionId": 7500
+        },
+        {
+          "name": "pointerup",
+          "duration": 208,
+          "interactionId": 7500
+        },
+        {
+          "name": "click",
+          "duration": 208,
+          "interactionId": 7500
+        }
+      ]
+    },
+    {
+      "frameMs": 58.099999994039536,
+      "firstGraphMs": 67.2999999821186,
+      "allCardsMs": 58.19999998807907,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 8,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10548564
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 17645568
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 248,
+          "interactionId": 2200
+        },
+        {
+          "name": "pointerup",
+          "duration": 248,
+          "interactionId": 2200
+        },
+        {
+          "name": "click",
+          "duration": 248,
+          "interactionId": 2200
+        },
+        {
+          "name": "pointerdown",
+          "duration": 168,
+          "interactionId": 2207
+        },
+        {
+          "name": "pointerup",
+          "duration": 168,
+          "interactionId": 2207
+        },
+        {
+          "name": "click",
+          "duration": 168,
+          "interactionId": 2207
+        }
+      ]
+    },
+    {
+      "frameMs": 79.19999998807907,
+      "firstGraphMs": 88.40000000596046,
+      "allCardsMs": 79.2999999821186,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 2,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9645420
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 53.29999998211861,
+      "firstGraphMs": 60.599999994039536,
+      "allCardsMs": 53.29999998211861,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 12,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8814188
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 216,
+          "interactionId": 783
+        },
+        {
+          "name": "pointerup",
+          "duration": 216,
+          "interactionId": 783
+        },
+        {
+          "name": "click",
+          "duration": 216,
+          "interactionId": 783
+        },
+        {
+          "name": "pointerdown",
+          "duration": 192,
+          "interactionId": 790
+        },
+        {
+          "name": "pointerup",
+          "duration": 192,
+          "interactionId": 790
+        },
+        {
+          "name": "click",
+          "duration": 192,
+          "interactionId": 790
+        }
+      ]
+    },
+    {
+      "frameMs": 78.2000000178814,
+      "firstGraphMs": 208.40000000596046,
+      "allCardsMs": 78.30000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213689.59999999404,
+          "duration": 122
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 20,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8809948
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14237696
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 200,
+          "interactionId": 3965
+        },
+        {
+          "name": "pointerup",
+          "duration": 200,
+          "interactionId": 3965
+        },
+        {
+          "name": "click",
+          "duration": 200,
+          "interactionId": 3965
+        },
+        {
+          "name": "pointerdown",
+          "duration": 240,
+          "interactionId": 3972
+        },
+        {
+          "name": "pointerup",
+          "duration": 240,
+          "interactionId": 3972
+        },
+        {
+          "name": "click",
+          "duration": 240,
+          "interactionId": 3972
+        }
+      ]
+    },
+    {
+      "frameMs": 41.5,
+      "firstGraphMs": 284.59999999403954,
+      "allCardsMs": 41.599999994039536,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213726.29999998212,
+          "duration": 52
+        },
+        {
+          "start": 213779,
+          "duration": 120
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 7,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9754164
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15024128
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 256,
+          "interactionId": 9920
+        },
+        {
+          "name": "pointerup",
+          "duration": 256,
+          "interactionId": 9920
+        },
+        {
+          "name": "click",
+          "duration": 256,
+          "interactionId": 9920
+        },
+        {
+          "name": "pointerdown",
+          "duration": 240,
+          "interactionId": 9927
+        },
+        {
+          "name": "pointerup",
+          "duration": 240,
+          "interactionId": 9927
+        },
+        {
+          "name": "click",
+          "duration": 240,
+          "interactionId": 9927
+        }
+      ]
+    },
+    {
+      "frameMs": 83.59999999403954,
+      "firstGraphMs": 109.90000000596046,
+      "allCardsMs": 83.69999998807907,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213713.59999999404,
+          "duration": 155
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 17,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8801660
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14237696
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 113.59999999403954,
+      "firstGraphMs": 180.30000001192093,
+      "allCardsMs": 113.7000000178814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213707.40000000596,
+          "duration": 50
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 25,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11605000
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15810560
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 576,
+          "interactionId": 352
+        },
+        {
+          "name": "pointerup",
+          "duration": 576,
+          "interactionId": 352
+        },
+        {
+          "name": "click",
+          "duration": 576,
+          "interactionId": 352
+        }
+      ]
+    },
+    {
+      "frameMs": 62.900000005960464,
+      "firstGraphMs": 89,
+      "allCardsMs": 63,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213714.80000001192,
+          "duration": 96
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 26,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9461372
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21315584
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 648,
+          "interactionId": 5594
+        },
+        {
+          "name": "pointerup",
+          "duration": 648,
+          "interactionId": 5594
+        },
+        {
+          "name": "click",
+          "duration": 648,
+          "interactionId": 5594
+        },
+        {
+          "name": "pointerdown",
+          "duration": 304,
+          "interactionId": 5601
+        },
+        {
+          "name": "pointerup",
+          "duration": 304,
+          "interactionId": 5601
+        },
+        {
+          "name": "click",
+          "duration": 304,
+          "interactionId": 5601
+        }
+      ]
+    },
+    {
+      "frameMs": 65.2999999821186,
+      "firstGraphMs": 212.40000000596046,
+      "allCardsMs": 65.5,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213709.69999998808,
+          "duration": 119
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 27,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11151636
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20791296
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 520,
+          "interactionId": 1405
+        },
+        {
+          "name": "pointerup",
+          "duration": 520,
+          "interactionId": 1405
+        },
+        {
+          "name": "click",
+          "duration": 520,
+          "interactionId": 1405
+        }
+      ]
+    },
+    {
+      "frameMs": 183.10000002384186,
+      "firstGraphMs": 192.90000000596046,
+      "allCardsMs": 183.10000002384186,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213675.09999999404,
+          "duration": 101
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 28,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9013708
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 608,
+          "interactionId": 2693
+        },
+        {
+          "name": "pointerup",
+          "duration": 608,
+          "interactionId": 2693
+        },
+        {
+          "name": "click",
+          "duration": 608,
+          "interactionId": 2693
+        }
+      ]
+    },
+    {
+      "frameMs": 133,
+      "firstGraphMs": 293.59999999403954,
+      "allCardsMs": 133.2000000178814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213678.30000001192,
+          "duration": 58
+        },
+        {
+          "start": 213755.5,
+          "duration": 140
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 15,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 4
+        },
+        {
+          "name": "Nodes",
+          "value": 8799
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11453704
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16334848
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 232,
+          "interactionId": 7052
+        },
+        {
+          "name": "pointerup",
+          "duration": 232,
+          "interactionId": 7052
+        },
+        {
+          "name": "click",
+          "duration": 232,
+          "interactionId": 7052
+        },
+        {
+          "name": "pointerdown",
+          "duration": 216,
+          "interactionId": 7059
+        },
+        {
+          "name": "pointerup",
+          "duration": 216,
+          "interactionId": 7059
+        },
+        {
+          "name": "click",
+          "duration": 216,
+          "interactionId": 7059
+        }
+      ]
+    },
+    {
+      "frameMs": 69.5,
+      "firstGraphMs": 252.09999999403954,
+      "allCardsMs": 69.59999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213711.60000002384,
+          "duration": 164
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 24,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9740656
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20267008
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 568,
+          "interactionId": 2137
+        },
+        {
+          "name": "pointerup",
+          "duration": 568,
+          "interactionId": 2137
+        },
+        {
+          "name": "click",
+          "duration": 568,
+          "interactionId": 2137
+        }
+      ]
+    },
+    {
+      "frameMs": 299.19999998807907,
+      "firstGraphMs": 308.2999999821186,
+      "allCardsMs": 299.19999998807907,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213665.70000001788,
+          "duration": 246
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 14,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8374
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10729372
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16596992
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 117.40000000596046,
+      "firstGraphMs": 124.40000000596046,
+      "allCardsMs": 117.5,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213693.30000001192,
+          "duration": 55
+        },
+        {
+          "start": 213755.40000000596,
+          "duration": 117
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 29,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8808932
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15024128
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 191.30000001192093,
+      "firstGraphMs": 216,
+      "allCardsMs": 191.40000000596046,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213692.39999997616,
+          "duration": 119
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 30,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9525612
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 18169856
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 624,
+          "interactionId": 431
+        },
+        {
+          "name": "pointerup",
+          "duration": 624,
+          "interactionId": 431
+        },
+        {
+          "name": "click",
+          "duration": 624,
+          "interactionId": 431
+        }
+      ]
+    },
+    {
+      "frameMs": 91.5,
+      "firstGraphMs": 100.59999999403954,
+      "allCardsMs": 91.5,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213740.90000000596,
+          "duration": 53
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 37,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9041652
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15810560
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 73.59999999403954,
+      "firstGraphMs": 256.90000000596046,
+      "allCardsMs": 73.59999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213705.19999998808,
+          "duration": 69
+        },
+        {
+          "start": 213774.5,
+          "duration": 112
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 33,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10164700
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20267008
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 496,
+          "interactionId": 999
+        },
+        {
+          "name": "pointerup",
+          "duration": 496,
+          "interactionId": 999
+        },
+        {
+          "name": "click",
+          "duration": 496,
+          "interactionId": 999
+        }
+      ]
+    },
+    {
+      "frameMs": 174.90000000596046,
+      "firstGraphMs": 207.40000000596046,
+      "allCardsMs": 175.09999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213768.19999998808,
+          "duration": 75
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 32,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 4
+        },
+        {
+          "name": "Nodes",
+          "value": 8419
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11052744
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 456,
+          "interactionId": 2225
+        },
+        {
+          "name": "pointerup",
+          "duration": 456,
+          "interactionId": 2225
+        },
+        {
+          "name": "click",
+          "duration": 456,
+          "interactionId": 2225
+        },
+        {
+          "name": "pointerdown",
+          "duration": 224,
+          "interactionId": 2232
+        },
+        {
+          "name": "pointerup",
+          "duration": 224,
+          "interactionId": 2232
+        },
+        {
+          "name": "click",
+          "duration": 224,
+          "interactionId": 2232
+        }
+      ]
+    },
+    {
+      "frameMs": 121.19999998807907,
+      "firstGraphMs": 251.39999997615814,
+      "allCardsMs": 121.39999997615814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213739.5,
+          "duration": 54
+        },
+        {
+          "start": 213799.40000000596,
+          "duration": 82
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 49,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 4
+        },
+        {
+          "name": "Nodes",
+          "value": 8419
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10588256
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 600,
+          "interactionId": 6764
+        },
+        {
+          "name": "pointerup",
+          "duration": 600,
+          "interactionId": 6764
+        },
+        {
+          "name": "click",
+          "duration": 600,
+          "interactionId": 6764
+        }
+      ]
+    },
+    {
+      "frameMs": 122.90000000596046,
+      "firstGraphMs": 286.10000002384186,
+      "allCardsMs": 123,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213723.09999999404,
+          "duration": 55
+        },
+        {
+          "start": 213779,
+          "duration": 159
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 40,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9588948
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15810560
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 600,
+          "interactionId": 8413
+        },
+        {
+          "name": "pointerup",
+          "duration": 600,
+          "interactionId": 8413
+        },
+        {
+          "name": "click",
+          "duration": 600,
+          "interactionId": 8413
+        }
+      ]
+    },
+    {
+      "frameMs": 83.90000000596046,
+      "firstGraphMs": 179.80000001192093,
+      "allCardsMs": 84,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213730.59999999404,
+          "duration": 93
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 47,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9968144
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 536,
+          "interactionId": 6783
+        },
+        {
+          "name": "pointerup",
+          "duration": 536,
+          "interactionId": 6783
+        },
+        {
+          "name": "click",
+          "duration": 536,
+          "interactionId": 6783
+        }
+      ]
+    },
+    {
+      "frameMs": 125.5,
+      "firstGraphMs": 294.5,
+      "allCardsMs": 125.59999999403954,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 34,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9634280
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15286272
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 71.09999999403954,
+      "firstGraphMs": 319.80000001192093,
+      "allCardsMs": 71.2000000178814,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 23,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9756460
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 73.80000001192093,
+      "firstGraphMs": 310.69999998807907,
+      "allCardsMs": 73.80000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213705.29999998212,
+          "duration": 208
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 22,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9473988
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15024128
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 464,
+          "interactionId": 3736
+        },
+        {
+          "name": "pointerup",
+          "duration": 464,
+          "interactionId": 3736
+        },
+        {
+          "name": "click",
+          "duration": 464,
+          "interactionId": 3736
+        }
+      ]
+    },
+    {
+      "frameMs": 227.19999998807907,
+      "firstGraphMs": 326.5,
+      "allCardsMs": 227.2999999821186,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213669.30000001192,
+          "duration": 163
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 21,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10749684
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16334848
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 640,
+          "interactionId": 8517
+        },
+        {
+          "name": "pointerup",
+          "duration": 640,
+          "interactionId": 8517
+        },
+        {
+          "name": "click",
+          "duration": 640,
+          "interactionId": 8517
+        }
+      ]
+    },
+    {
+      "frameMs": 98.09999999403954,
+      "firstGraphMs": 337,
+      "allCardsMs": 98.2000000178814,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 18,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 4
+        },
+        {
+          "name": "Nodes",
+          "value": 8466
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11507360
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16334848
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 240,
+          "interactionId": 1487
+        },
+        {
+          "name": "pointerup",
+          "duration": 240,
+          "interactionId": 1487
+        },
+        {
+          "name": "click",
+          "duration": 240,
+          "interactionId": 1487
+        },
+        {
+          "name": "pointerdown",
+          "duration": 328,
+          "interactionId": 1494
+        },
+        {
+          "name": "pointerup",
+          "duration": 328,
+          "interactionId": 1494
+        },
+        {
+          "name": "click",
+          "duration": 328,
+          "interactionId": 1494
+        }
+      ]
+    },
+    {
+      "frameMs": 82.5,
+      "firstGraphMs": 341,
+      "allCardsMs": 119.5,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213737.40000000596,
+          "duration": 66
+        },
+        {
+          "start": 213803.59999999404,
+          "duration": 150
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 16,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9191532
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 17121280
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 184,
+          "interactionId": 5706
+        },
+        {
+          "name": "pointerup",
+          "duration": 184,
+          "interactionId": 5706
+        },
+        {
+          "name": "click",
+          "duration": 184,
+          "interactionId": 5706
+        },
+        {
+          "name": "pointerdown",
+          "duration": 144,
+          "interactionId": 5713
+        },
+        {
+          "name": "pointerup",
+          "duration": 144,
+          "interactionId": 5713
+        },
+        {
+          "name": "click",
+          "duration": 144,
+          "interactionId": 5713
+        }
+      ]
+    },
+    {
+      "frameMs": 79.40000000596046,
+      "firstGraphMs": 300.5,
+      "allCardsMs": 79.5,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213722.70000001788,
+          "duration": 195
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 44,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8384
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11422924
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21315584
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 488,
+          "interactionId": 6964
+        },
+        {
+          "name": "pointerup",
+          "duration": 488,
+          "interactionId": 6964
+        },
+        {
+          "name": "click",
+          "duration": 488,
+          "interactionId": 6964
+        }
+      ]
+    },
+    {
+      "frameMs": 98.30000001192093,
+      "firstGraphMs": 307.7000000178814,
+      "allCardsMs": 98.5,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213754.19999998808,
+          "duration": 179
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 36,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9579576
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16072704
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 87,
+      "firstGraphMs": 272.59999999403954,
+      "allCardsMs": 87.09999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213727,
+          "duration": 91
+        },
+        {
+          "start": 213818.09999999404,
+          "duration": 93
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 41,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9344360
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16334848
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 552,
+          "interactionId": 2473
+        },
+        {
+          "name": "pointerup",
+          "duration": 552,
+          "interactionId": 2473
+        },
+        {
+          "name": "click",
+          "duration": 552,
+          "interactionId": 2473
+        }
+      ]
+    },
+    {
+      "frameMs": 169.59999999403954,
+      "firstGraphMs": 267.59999999403954,
+      "allCardsMs": 169.69999998807907,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213733.09999999404,
+          "duration": 74
+        },
+        {
+          "start": 213807.40000000596,
+          "duration": 83
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 38,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10627756
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20529152
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 109.10000002384186,
+      "firstGraphMs": 289.60000002384186,
+      "allCardsMs": 109.2000000178814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213784.10000002384,
+          "duration": 142
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 43,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9160312
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 480,
+          "interactionId": 9886
+        },
+        {
+          "name": "pointerup",
+          "duration": 480,
+          "interactionId": 9886
+        },
+        {
+          "name": "click",
+          "duration": 480,
+          "interactionId": 9886
+        }
+      ]
+    },
+    {
+      "frameMs": 73.5,
+      "firstGraphMs": 323.5,
+      "allCardsMs": 73.59999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213712,
+          "duration": 197
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 31,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9607248
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20267008
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 114.59999999403954,
+      "firstGraphMs": 126.5,
+      "allCardsMs": 114.69999998807907,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 39,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10167528
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20529152
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 472,
+          "interactionId": 8862
+        },
+        {
+          "name": "pointerup",
+          "duration": 472,
+          "interactionId": 8862
+        },
+        {
+          "name": "click",
+          "duration": 472,
+          "interactionId": 8862
+        }
+      ]
+    },
+    {
+      "frameMs": 200.90000000596046,
+      "firstGraphMs": 220.30000001192093,
+      "allCardsMs": 201,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213753.60000002384,
+          "duration": 103
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 45,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9270352
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16334848
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 496,
+          "interactionId": 4487
+        },
+        {
+          "name": "pointerup",
+          "duration": 496,
+          "interactionId": 4487
+        },
+        {
+          "name": "click",
+          "duration": 496,
+          "interactionId": 4487
+        }
+      ]
+    },
+    {
+      "frameMs": 115.80000001192093,
+      "firstGraphMs": 122.59999999403954,
+      "allCardsMs": 115.90000000596046,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 35,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9949660
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20529152
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 113.80000001192093,
+      "firstGraphMs": 121.90000000596046,
+      "allCardsMs": 113.90000000596046,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213760,
+          "duration": 102
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 46,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8757400
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14761984
+        }
+      ],
+      "interactionError": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'contentWindow')"
+    },
+    {
+      "frameMs": 74.5,
+      "firstGraphMs": 329.40000000596046,
+      "allCardsMs": 74.59999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213718,
+          "duration": 225
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 48,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11528948
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20791296
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 560,
+          "interactionId": 8950
+        },
+        {
+          "name": "pointerup",
+          "duration": 560,
+          "interactionId": 8950
+        },
+        {
+          "name": "click",
+          "duration": 560,
+          "interactionId": 8950
+        }
+      ]
+    },
+    {
+      "frameMs": 167.69999998807907,
+      "firstGraphMs": 542.2999999821186,
+      "allCardsMs": 167.7999999821186,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213735.20000001788,
+          "duration": 76
+        },
+        {
+          "start": 213811.40000000596,
+          "duration": 98
+        }
+      ],
+      "resources": [
+        {
+          "path": "/api/identity/me",
+          "start": 2.5,
+          "end": 427,
+          "duration": 424.5,
+          "bytes": 1032
+        }
+      ],
+      "status": "passed",
+      "round": 0,
+      "user": 42,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10573492
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15810560
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 608,
+          "interactionId": 4129
+        },
+        {
+          "name": "pointerup",
+          "duration": 608,
+          "interactionId": 4129
+        },
+        {
+          "name": "click",
+          "duration": 608,
+          "interactionId": 4129
+        }
+      ]
+    },
+    {
+      "frameMs": 138.5,
+      "firstGraphMs": 628.3000000119209,
+      "allCardsMs": 138.7000000178814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213705.10000002384,
+          "duration": 57
+        },
+        {
+          "start": 213762.5,
+          "duration": 173
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 0,
+      "user": 19,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10388976
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15810560
+        }
+      ],
+      "interactions": [
+        {
+          "name": "pointerdown",
+          "duration": 160,
+          "interactionId": 5416
+        },
+        {
+          "name": "pointerup",
+          "duration": 160,
+          "interactionId": 5416
+        },
+        {
+          "name": "click",
+          "duration": 160,
+          "interactionId": 5416
+        },
+        {
+          "name": "pointerdown",
+          "duration": 128,
+          "interactionId": 5423
+        },
+        {
+          "name": "pointerup",
+          "duration": 128,
+          "interactionId": 5423
+        },
+        {
+          "name": "click",
+          "duration": 128,
+          "interactionId": 5423
+        }
+      ]
+    },
+    {
+      "frameMs": 41,
+      "firstGraphMs": 57.5,
+      "allCardsMs": null,
+      "events": [],
+      "tasks": [
+        {
+          "start": 213669.40000000596,
+          "duration": 82
+        }
+      ],
+      "resources": [
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/context",
+          "start": -557.5,
+          "end": 4954.0999999940395,
+          "duration": 5511.5999999940395,
+          "bytes": 350
+        },
+        {
+          "path": "/api/analytics/metric-workspace/v2/datasets/224ffe86-71ab-510e-9ae7-1f2ab10d39ff/results/71c225ba-78b6-56b9-9f64-d6ad4a861bcd",
+          "start": -557.4000000059605,
+          "end": 6528.9000000059605,
+          "duration": 7086.300000011921,
+          "bytes": 350
+        },
+        {
+          "path": "/api/identity/me",
+          "start": 2.5999999940395355,
+          "end": 812.7999999821186,
+          "duration": 810.1999999880791,
+          "bytes": 1032
+        }
+      ],
+      "status": "timeout",
+      "round": 0,
+      "user": 11,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 1
+        },
+        {
+          "name": "Nodes",
+          "value": 349
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 6720040
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 10829824
+        }
+      ]
+    },
+    {
+      "frameMs": 62.80000001192093,
+      "firstGraphMs": 96.7000000178814,
+      "allCardsMs": 62.900000005960464,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 13,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9078140
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 74.7000000178814,
+      "firstGraphMs": 113.2000000178814,
+      "allCardsMs": 74.80000001192093,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 15,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10555552
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16859136
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 65.5,
+      "firstGraphMs": 244.09999999403954,
+      "allCardsMs": 65.59999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148385.10000002384,
+          "duration": 159
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 14,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9922908
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21577728
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 59.400000005960464,
+      "firstGraphMs": 65.30000001192093,
+      "allCardsMs": 59.5,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 3,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9643012
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20529152
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 61.20000001788139,
+      "firstGraphMs": 86.30000001192093,
+      "allCardsMs": 61.30000001192093,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 12,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9047224
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16072704
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 75.69999998807907,
+      "firstGraphMs": 83.19999998807907,
+      "allCardsMs": 75.69999998807907,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 5,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8828400
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 19480576
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 167.90000000596046,
+      "firstGraphMs": 176.40000000596046,
+      "allCardsMs": 168.09999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148400.59999999404,
+          "duration": 83
+        },
+        {
+          "start": 148492.80000001192,
+          "duration": 80
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 16,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9808008
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21315584
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 70.5,
+      "firstGraphMs": 77.80000001192093,
+      "allCardsMs": 70.59999999403954,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 8,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9065652
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14237696
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target crashed "
+    },
+    {
+      "frameMs": 67.5,
+      "firstGraphMs": 279.30000001192093,
+      "allCardsMs": 67.5,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 9,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9921452
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target crashed "
+    },
+    {
+      "frameMs": 70.80000001192093,
+      "firstGraphMs": 294,
+      "allCardsMs": 70.80000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148411.69999998808,
+          "duration": 192
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 4,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10216356
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20004864
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 64.80000001192093,
+      "firstGraphMs": 199.40000000596046,
+      "allCardsMs": 64.90000000596046,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148311.60000002384,
+          "duration": 112
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 25,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9118732
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15286272
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 105.10000002384186,
+      "firstGraphMs": 253.7000000178814,
+      "allCardsMs": 105.2000000178814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148363.79999998212,
+          "duration": 77
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 20,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9451556
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14499840
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 71.30000001192093,
+      "firstGraphMs": 78.80000001192093,
+      "allCardsMs": 71.40000000596046,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 10,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9047244
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15024128
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 202.5,
+      "firstGraphMs": 282.5,
+      "allCardsMs": 202.60000002384186,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148347.40000000596,
+          "duration": 130
+        },
+        {
+          "start": 148519.40000000596,
+          "duration": 61
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 19,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10830720
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 92.59999999403954,
+      "firstGraphMs": 116.40000000596046,
+      "allCardsMs": 92.7000000178814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148413.09999999404,
+          "duration": 173
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 18,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8824628
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14761984
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 55.900000005960464,
+      "firstGraphMs": 178.40000000596046,
+      "allCardsMs": 55.900000005960464,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148311.09999999404,
+          "duration": 86
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 31,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9096052
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 66.69999998807907,
+      "firstGraphMs": 75.40000000596046,
+      "allCardsMs": 66.69999998807907,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 11,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9038816
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16072704
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target crashed "
+    },
+    {
+      "frameMs": 59.89999997615814,
+      "firstGraphMs": 232.89999997615814,
+      "allCardsMs": 60,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148372.40000000596,
+          "duration": 155
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 21,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9021084
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15286272
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 144.19999998807907,
+      "firstGraphMs": 295.5,
+      "allCardsMs": 144.30000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148272.30000001192,
+          "duration": 93
+        },
+        {
+          "start": 148416.40000000596,
+          "duration": 63
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 35,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9635708
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16072704
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 62.30000001192093,
+      "firstGraphMs": 176.90000000596046,
+      "allCardsMs": 62.5,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148289.5,
+          "duration": 57
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 37,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9644932
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 19480576
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 65.69999998807907,
+      "firstGraphMs": 326.90000000596046,
+      "allCardsMs": 65.80000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148388.09999999404,
+          "duration": 237
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 7,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9407504
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15810560
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 102.90000000596046,
+      "firstGraphMs": 310.40000000596046,
+      "allCardsMs": 103,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 38,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8596
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10174440
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20791296
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 144.09999999403954,
+      "firstGraphMs": 152.80000001192093,
+      "allCardsMs": 144.2000000178814,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 26,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9865028
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20004864
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target crashed "
+    },
+    {
+      "frameMs": 162.80000001192093,
+      "firstGraphMs": 310.2000000178814,
+      "allCardsMs": 162.90000000596046,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148274.29999998212,
+          "duration": 102
+        },
+        {
+          "start": 148446.90000000596,
+          "duration": 93
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 36,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9106604
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16072704
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 113.7999999821186,
+      "firstGraphMs": 123.59999999403954,
+      "allCardsMs": 113.89999997615814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148421.70000001788,
+          "duration": 135
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 29,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8811932
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14761984
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 103.40000000596046,
+      "firstGraphMs": 266.5,
+      "allCardsMs": 103.5,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148416.40000000596,
+          "duration": 148
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 23,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9119144
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16334848
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 105,
+      "firstGraphMs": 210.40000000596046,
+      "allCardsMs": 105,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148356.90000000596,
+          "duration": 82
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 24,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10655048
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 98.5,
+      "firstGraphMs": 228.40000000596046,
+      "allCardsMs": 98.59999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148349.79999998212,
+          "duration": 108
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 32,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10694296
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20267008
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 160,
+      "firstGraphMs": 168.80000001192093,
+      "allCardsMs": 160.10000002384186,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148272.5,
+          "duration": 65
+        },
+        {
+          "start": 148394.5,
+          "duration": 129
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 34,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8812788
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14761984
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 106.5,
+      "firstGraphMs": 222,
+      "allCardsMs": 106.59999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148357.79999998212,
+          "duration": 93
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 22,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11023088
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21315584
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 143.09999999403954,
+      "firstGraphMs": 149.40000000596046,
+      "allCardsMs": 143.2000000178814,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 30,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9657072
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 19742720
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 192.7999999821186,
+      "firstGraphMs": 226.2999999821186,
+      "allCardsMs": 192.89999997615814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148272.40000000596,
+          "duration": 98
+        },
+        {
+          "start": 148457.90000000596,
+          "duration": 64
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 39,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9225436
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 18956288
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 191.90000000596046,
+      "firstGraphMs": 273.5,
+      "allCardsMs": 191.90000000596046,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148272.79999998212,
+          "duration": 124
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 43,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9981408
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21577728
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 152,
+      "firstGraphMs": 166,
+      "allCardsMs": 152.09999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148270.5,
+          "duration": 66
+        },
+        {
+          "start": 148395.70000001788,
+          "duration": 80
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 41,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9920940
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20791296
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 132.59999999403954,
+      "firstGraphMs": 191.7999999821186,
+      "allCardsMs": 132.69999998807907,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148364.5,
+          "duration": 59
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 48,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4262
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 8831764
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16072704
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 72.09999999403954,
+      "firstGraphMs": 78.19999998807907,
+      "allCardsMs": 72.19999998807907,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 2,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9659780
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21839872
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 59.80000001192093,
+      "firstGraphMs": 343.59999999403954,
+      "allCardsMs": 59.900000005960464,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148396,
+          "duration": 266
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 6,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10207216
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target crashed "
+    },
+    {
+      "frameMs": 109.09999999403954,
+      "firstGraphMs": 320,
+      "allCardsMs": 109.2000000178814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148340.70000001788,
+          "duration": 68
+        },
+        {
+          "start": 148408.80000001192,
+          "duration": 135
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 45,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10238152
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20529152
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 133.40000000596046,
+      "firstGraphMs": 322.80000001192093,
+      "allCardsMs": 133.5,
+      "events": [],
+      "tasks": [],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 49,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9633744
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15548416
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 210.2999999821186,
+      "firstGraphMs": 275.59999999403954,
+      "allCardsMs": 210.39999997615814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148268.69999998808,
+          "duration": 143
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 40,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9981324
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21053440
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 106.7000000178814,
+      "firstGraphMs": 333.10000002384186,
+      "allCardsMs": 106.80000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148419.69999998808,
+          "duration": 206
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 27,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9563784
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16072704
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 61.79999998211861,
+      "firstGraphMs": 361.19999998807907,
+      "allCardsMs": 62,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148396.40000000596,
+          "duration": 292
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 0,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8260
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10861160
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 21577728
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 247.90000000596046,
+      "firstGraphMs": 343.7000000178814,
+      "allCardsMs": 248.09999999403954,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148280.69999998808,
+          "duration": 171
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 33,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10419788
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15286272
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 108.10000002384186,
+      "firstGraphMs": 335.30000001192093,
+      "allCardsMs": 108.2000000178814,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148341.09999999404,
+          "duration": 60
+        },
+        {
+          "start": 148401.59999999404,
+          "duration": 162
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 46,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4328
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10720088
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15024128
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 108.80000001192093,
+      "firstGraphMs": 214,
+      "allCardsMs": 108.80000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148372.39999997616,
+          "duration": 71
+        },
+        {
+          "start": 148443.69999998808,
+          "duration": 125
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 47,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 2
+        },
+        {
+          "name": "Nodes",
+          "value": 4319
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9132272
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16859136
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 107.80000001192093,
+      "firstGraphMs": 348.60000002384186,
+      "allCardsMs": 107.80000001192093,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148352.79999998212,
+          "duration": 216
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 28,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10164540
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20791296
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 213.89999997615814,
+      "firstGraphMs": 354.5,
+      "allCardsMs": 214,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148277.59999999404,
+          "duration": 94
+        },
+        {
+          "start": 148451,
+          "duration": 127
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 42,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10862700
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 19742720
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "frameMs": 274.30000001192093,
+      "firstGraphMs": 383.5,
+      "allCardsMs": 274.40000000596046,
+      "events": [],
+      "tasks": [
+        {
+          "start": 148362.39999997616,
+          "duration": 193
+        }
+      ],
+      "resources": [],
+      "status": "passed",
+      "round": 1,
+      "user": 17,
+      "cache": [],
+      "heap": [
+        {
+          "name": "Documents",
+          "value": 3
+        },
+        {
+          "name": "Nodes",
+          "value": 8346
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11307596
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 20791296
+        }
+      ],
+      "interactionError": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "round": 1,
+      "user": 44,
+      "status": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "round": 1,
+      "user": 1,
+      "status": "Error: page.evaluate: Target page, context or browser has been closed"
+    }
+  ],
+  "interrupted": "Stopped after concurrent preconditioning saturation; a final second batch was persisted during termination. Four-user preconditioning comparison follows."
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "path": ".codex/agents/generated/MS-020/MS-020-S01.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "876490c1098d8b1affb31e3c446333e04f6f2f84b928620f6ed88131ef33ba26"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-020/preparation/baseline.json",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "4c2b25a76f9b45e822a9d7fd435386631f38857a52c32cdc7285d4461012d43f"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-020/preparation/journal-capability.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "f6b36106b2482e85b3211acca84cb9c123ebc93f985061a624b6355e61bf1475"
+  },
+  {
+    "path": ".codex/delivery/evidence/WS-004/WS-004-v0.2.15.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "9e2fbf432591c6b36e0498724c5fe7dba09d54128cdbabecf35d5d5975f8ddf3"
+  },
+  {
+    "path": "docs/README.md",
+    "operation": "modified",
+    "before_sha256": "deee80dc862ae5ee85a252979c21bcd3e159a92d0f18bc6d94bfcc563e197c8e",
+    "sha256": "585fcdca415729f4cefae7ffdb76911f39e28df70beae5ac9713fe12f4cbcb9b"
+  },
+  {
+    "path": "docs/architecture/README.md",
+    "operation": "modified",
+    "before_sha256": "47d633c786f2aec958f8cb15b950b4f95bff77c50022ba39322f8b9000ada4fb",
+    "sha256": "5a89fee46910f65b23eef681dd28e6e119856ce847a2b02d5720e65638e2bdfc"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md",
+    "operation": "modified",
+    "before_sha256": "4febb0f4c9416f97fc68f207f26422e5e2ff35f81b88891d42d900caf196bcfc",
+    "sha256": "eecc112e04c11c4978afab118e7dd6c77d3a1153dabf2f027d500a2b37a6f638"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004.md",
+    "operation": "modified",
+    "before_sha256": "9e2fbf432591c6b36e0498724c5fe7dba09d54128cdbabecf35d5d5975f8ddf3",
+    "sha256": "b740b96cfd0ffb15e134cc49ada68a1728ab8479ec2da00bb5ebcfc68fd05ee0"
+  },
+  {
+    "path": "docs/architecture/planning/milestones/MS-020/plan.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "32a0b1771003c922f9bcc1f474e620501cf2b23ac95b5f5f61c798a6eaaad528"
+  },
+  {
+    "path": "docs/contracts/analytical-authoring-contract.md",
+    "operation": "modified",
+    "before_sha256": "434b63ccff6339fccafed0d730c9038943e245986ed49a2995c95754854f31b3",
+    "sha256": "b96cd2c6b79b041bf5dd45f9a4a23f1c8a654107cd22d2e0ffd73c5895bcf8fa"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/relational_filters.py",
+    "operation": "modified",
+    "before_sha256": "2061570e120488774fe3bd060f1b221519a9cb161104d97df7e0a5f6a0d5022e",
+    "sha256": "d5af298056f8992f76e72f8e3e2c683eb9cac87fb7d4a8d7dd84b4a46810c0c9"
+  },
+  {
+    "path": "packages/contracts/analytics/aggregate_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "2f2468e67c3ffd6ff422048ffe3df008261836de43a476312d4416a2f7505573"
+  },
+  {
+    "path": "packages/contracts/semantic/filter_aggregates.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "e615fbab1cab8275dbbfc9eed5d55e0cacd69c95ff05e4d13772033279c0abc2"
+  },
+  {
+    "path": "tests/integration/analytics/test_aggregate_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "17d5a190c9cbc5e620f0d08732b709fcddb7718e3365daa12af0bd3990d00ae7"
+  }
+]

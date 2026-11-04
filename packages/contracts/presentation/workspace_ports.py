@@ -6,7 +6,7 @@ from packages.contracts.analytics.workspace import (
     WorkspaceAccess,
     WorkspaceCardRequest,
     WorkspaceApplyResult,
-    WorkspaceRunRequest,
+    WorkspaceRunRequest, WorkspaceScopePreflight,
     WorkspaceResultV2,
     CardResultBinding,
     CardComparisonV1,
@@ -14,6 +14,9 @@ from packages.contracts.analytics.workspace import (
 
 
 class WorkspaceResults(Protocol):
+    def preflight(self, workspace: UUID, actor: UUID, query: WorkspaceRunRequest) -> WorkspaceScopePreflight: ...
+
+    def context(self, workspace: UUID, actor: UUID, dataset: UUID) -> dict[str, Any]: ...
     def authorize_base(
         self, workspace: UUID, actor: UUID, owner: UUID, result: dict[str, Any]
     ) -> None: ...

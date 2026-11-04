@@ -24,6 +24,20 @@
     "downloadBlob",
     "updateSharePreview",
     "storeSummary",
-    "syncSharedTableGeometry"
+    "syncSharedTableGeometry",
+    "ensureChartsForPage",
+    "renderKpis",
+    "renderPicker",
+    "renderQuickFilterValues",
+    "renderPeriodControls",
+    "renderStyleControls",
+    "renderReportReadabilityControls",
+    "renderBlockCommandBars",
+    "renderLifecycleControlState",
+    "renderAdvancedConditions",
+    "renderGroupingControls",
+    "updateContextSummary",
+    "setNarrowNavigationModal",
+    "closeNavigationContext"
   ]
 }

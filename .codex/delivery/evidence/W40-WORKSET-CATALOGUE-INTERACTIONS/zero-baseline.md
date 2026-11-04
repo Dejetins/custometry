@@ -1,0 +1,5 @@
+# Zero-inclusive chart domain
+
+Owner correction on 2026-09-24 supersedes the previous tightly padded line-domain preference. `workspace-presentation.ts` now includes zero when computing each unit axis. Nonnegative series start at zero; negative and mixed-sign observations remain visible with outward padding and rounded ticks. Count ticks remain integral, and empty/all-zero series retain a nondegenerate range. Server values, null gaps and deltas are unchanged.
+
+Verification: frontend build including TypeScript passed. All 114 tests across 23 files passed, including positive, negative, mixed, constant, zero, fractional and unknown domains and the reported 1099.3–1498.6 revenue case. Browser at 1480x969 verified a visible zero tick in both normal and focus modes. [Normal](zero-baseline-normal.png) and [focus](zero-baseline-focus.png) screenshots were visually inspected. Local grouped gate and whitespace check passed. No API/schema/report-version mutation or publication. This bounded presentation correction belongs to [W40](../../tickets/W40-WORKSET-CATALOGUE-INTERACTIONS.md).

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { pilotSymbols } from './pilot-symbols';
 import { reportApi } from './report-api';
 import './pilot.css';
+import './navigation-shell.css';
 
 export function PilotIcon({name, small = false}: {name: string; small?: boolean}) {
   return <svg className={`icon${small ? ' icon--small' : ''}`} aria-hidden="true"><use href={`#i-${name}`}/></svg>;

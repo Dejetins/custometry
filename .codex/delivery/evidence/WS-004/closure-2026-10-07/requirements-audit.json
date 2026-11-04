@@ -1,0 +1,2629 @@
+{
+  "kind": "read-only-requirement-evidence-snapshot",
+  "created_at": "2026-10-07T20:34:30.831163+00:00",
+  "execution_authority": false,
+  "allocation_sha256": "d5063ea53e639e8c1b88b3a6a64b0c4f05d65813a03e9873029f88e30cc4ad52",
+  "blueprint_sha256": "5b7232aaae21d226ac4ba0a05a5f24efcea9ae31d616e3606180c554ff21ecd5",
+  "counts": {
+    "partial": 105,
+    "fully_verified": 1,
+    "not_verified": 45,
+    "not_implemented": 18
+  },
+  "total": 169,
+  "requirements": [
+    {
+      "id": "ANALYTICAL-DOC-001",
+      "line": 4617,
+      "clause": "requirement: Dashboard, Report и ResearchDocument MUST реализовывать общий versioned AnalyticalDocument composition/snapshot contract и различаться presentation profile, а не несовместимыми block, filter и snapshot semantics.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Shared graph/profiles exist; full Dashboard/Research publication and common cross-channel snapshot semantics remain unproved.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-002",
+      "line": 4619,
+      "clause": "requirement: Document MUST иметь stable hierarchy `optional chapter -> ordered page -> ordered section -> ordered block`; каждый node имеет stable ID, deterministic order и reading order, а duplicate создаёт новые IDs.",
+      "status": "fully_verified",
+      "observed": "Entire structural clause supported by MS-007 contract and mounted browser evidence; unchanged foundation evidence reused.",
+      "remaining_obligations": "None within this structural clause: strict graph IDs/order/reading order, optional chapters and duplicate fresh IDs have contract and real browser evidence (MS-007).",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-003",
+      "line": 4621,
+      "clause": "requirement: Profiles MUST быть dashboard для compact live monitoring, workbook_report для multi-page/tab analysis и narrative_research для outline/long-form evidence; story/presentation остаётся future capability без active enum.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "All three profile enums/layouts exist; compact live monitoring and Research lifecycle/evidence workflows remain incomplete.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-004",
+      "line": 4623,
+      "clause": "requirement: Общий block union MUST включать heading, narrative, analyst_note, metric, metric_group, chart, table, pivot, finding, conclusion, methodology, result_trust, forecast, scenario, quality, metadata и Data Guide reference; raw SQL, executable HTML и library options в composition запрещены.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Strict composer permits chart/table only; heading/narrative/notes/metric-group/pivot/findings/forecast/scenario/quality/metadata/Data Guide union remains missing.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-005",
+      "line": 4625,
+      "clause": "requirement: Page operations reorder, duplicate, hide, lock и group MUST создавать новую draft revision, сохранять origin lineage и не обходить permission, filter, export или publication semantics.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Draft hierarchy commands, lineage and locks verified; publication/export consequences of every page command remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-006",
+      "line": 4627,
+      "clause": "requirement: Filter scopes MUST быть document, chapter, page, section и block; precedence, inheritance, locks, linked-target DAG, normalized identity и effective filter set MUST быть явными, воспроизводимыми и authorization-safe.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "All scope levels, locks, direct linked DAG and stable identities verified for supported providers; full population/provider context remains open.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-007",
+      "line": 4629,
+      "clause": "requirement: Canonical deep link MUST pin-ить authorized document version/snapshot, page и optional block; open/return повторно проверяет access и восстанавливает origin, scroll и keyboard focus без PII в URL.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Exact saved snapshot/page links verified; optional block, origin/scroll/focus restoration and all authorization return paths lack complete proof.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-008",
+      "line": 4631,
+      "clause": "requirement: Personal Explore/Custom View MUST не менять published document; persisted view MUST быть versioned, pin-ить document version и normalized filters и иметь explicit personal/shared visibility.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Versioned personal/shared Explore view semantics were not audited; existing saved-view routes alone do not prove this clause.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "ANALYTICAL-DOC-009",
+      "line": 4633,
+      "clause": "requirement: Product MUST не задавать малый hard cap числа pages/blocks; acceptance benchmark MUST доказывать design envelope минимум 100 pages x 30 blocks/page, а production limits задаются versioned installation/workspace resource policy после измерений.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "100x30 schema fixture and active-page mounting exist; actual envelope benchmark and measured versioned resource policies remain absent from proof.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-010",
+      "line": 4635,
+      "clause": "requirement: Viewer MUST получать authorized page index и mount-ить только active page; adjacent prefetch MAY выполняться bounded policy, не считается view и не раскрывает denied page/block metadata.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Active-page mounting/page navigation verified; denied page/block index non-disclosure across the full viewer remains unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-011",
+      "line": 4637,
+      "clause": "requirement: Publication MUST resolve hierarchy, effective filters, segment bindings и все included blocks в один immutable root snapshot; Web, email, XLSX и full export используют его page manifests без duplicate compute.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer saves immutable verified results without calculation; publication root/page manifests across Web/email/XLSX/full export remain incomplete.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-012",
+      "line": 4639,
+      "clause": "requirement: Responsive Web MUST сохранять hierarchy, reading order, data meaning и primary outcomes для RU/EN, tab overflow, keyboard и 200% zoom; mobile-specific IA остаётся unauthorized.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "RU/EN narrow layout, overflow and CSS zoom checks exist; native200% zoom and full reader outcomes across all content are unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-013",
+      "line": 4641,
+      "clause": "requirement: Published document и immutable snapshot MUST показывать permission-safe author identity, updated_at и publication/version metadata; author binding MUST быть pin-нут в snapshot manifest и одинаково отображаться в Web и exports.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Snapshot creator/author metadata exists; permission-safe author rendering and identical export manifests across channels remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-014",
+      "line": 4643,
+      "clause": "requirement: Common composer MUST поддерживать compact table-first page в existing flow layout наряду с dashboard_grid и narrative; page composition, density и reader/explorer/author modes независимы от analytical semantics. Drag-and-drop размещает/reorders blocks и matrix shelves с эквивалентными keyboard/menu commands, undo и valid drop feedback; просмотр скрывает palette/handles/inspector, а таблица не требует предшествующего chart или фиксированного числа KPI.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Flow/grid/narrative, density and command alternatives verified; matrix shelves, complete mode separation and all valid-drop feedback remain missing/unproved.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "ANALYTICAL-DOC-015",
+      "line": 4645,
+      "clause": "requirement: Reader MUST читать authorized published snapshot, Explorer — менять разрешённый personal draft/view, Author — сохранять draft document по edit permission; переключение режима само по себе не публикует, не запускает compute и не меняет filters/metrics/result identity. Unsaved changes, personal overrides, Save view, Apply to draft и Publish имеют разные observable outcomes; narrow-screen/zoom layout сохраняет reading order и table access. Для профиля workbook_report сохранение определения дополнительно требует creator check из REPORT-018; разрешённое использование фильтров и личного представления не даёт права изменять определение.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Creator-only authoring, saved preview and explicit Apply exist; full Reader/Explorer/Author, Save view/Apply to draft/Publish distinctions remain incomplete.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-005/MS-005-S01/report.md",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BLOCK-BUILDER-001",
+      "line": 4007,
+      "clause": "requirement: Любой metric, metric-group, chart, table или pivot block MUST создаваться через один normalized builder contract независимо от dashboard, workbook или research profile.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Normalized chart/table builder verified; standalone metric/metric-group/pivot creation is outside the admitted block union.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BLOCK-BUILDER-002",
+      "line": 4009,
+      "clause": "requirement: \"Первые три stages MUST быть обязательны и идти в одном порядке: subject/data product; metric(s) и grain; dimensions и period. Preview и Run до их валидного завершения запрещены.\"",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Three-step chart/table builder and validation exist; complete subject/metric/grain/dimension capability matrix still needs proof.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BLOCK-BUILDER-003",
+      "line": 4011,
+      "clause": "requirement: Population/Segment stage MUST становиться required только когда выбранная method, metric или grain требует population binding; UI и preflight объясняют причину, definition version, snapshot и binding policy.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Conditional population/segment stage was not implemented/audited in current builder; method-specific binding and explanations remain unverified.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "BLOCK-BUILDER-004",
+      "line": 4013,
+      "clause": "requirement: Optional stages MUST включать filters, comparison и presentation; defaults видимы и входят в normalized definition там, где меняют смысл или результат.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Filter, comparison and presentation inputs have normalization evidence; full population/parameter provider defaults remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BLOCK-BUILDER-005",
+      "line": 4015,
+      "clause": "requirement: До Add или Run MUST выполняться capability, permission, Result Trust и performance/reuse preflight с grain, rows/bytes/time class, freshness и reused/new-compute outcome.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Access/capability/filter resource preflight exists; complete Result Trust, rows/bytes/time/freshness/reuse UI and all providers remain open.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BLOCK-BUILDER-006",
+      "line": 4017,
+      "clause": "requirement: Guided и Advanced modes MUST компилироваться в один schema-versioned normalized BlockDefinition; Advanced mode не создаёт скрытый второй runtime или несовместимую result identity.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "One normalized source contract exists; complete Guided/Advanced modes and equivalence across all block types remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BLOCK-BUILDER-007",
+      "line": 4019,
+      "clause": "requirement: Draft builder state MUST быть resumable и не входить в result/cache identity до validated commit; autosave не публикует и не запускает compute.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Draft survives session reconciliation and commits explicitly; durable resumable/autosave across builder lifecycle remains unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BLOCK-BUILDER-008",
+      "line": 4021,
+      "clause": "requirement: Add MUST вставлять block в явно выбранные page/section, сохранять stable block ID и не запускать duplicate compute при fresh compatible artifact.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Target page/section, stable IDs and compatible-result reuse verified for chart/table; other required block kinds remain unsupported.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BLOCK-BUILDER-009",
+      "line": 4023,
+      "clause": "requirement: Guided metric authoring MUST позволять draft filtered measure и ratio через существующий MetricRegistry lifecycle; editor показывает typed operands, unit, aggregation/grain, denominator/null policy, allowed dimensions и backend validation/test result. Report-local trial не переписывает canonical metric, publication reusable metric проходит существующую certification/review policy.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current strict composer source chooses existing metric references; guided registry-lifecycle filtered-measure/ratio authoring is absent. Count-filter ratios do not implement metric publication.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-001",
+      "line": 5280,
+      "clause": "requirement: Published ReportDefinitionVersion MUST быть immutable; block, binding, layout или default-theme change создаёт новую version.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Immutable composed save/revisions and CAS verified; full published definition/theme lifecycle remains unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-002",
+      "line": 5282,
+      "clause": "requirement: ReportSnapshot MUST разрешать каждый block_id в typed resolved binding со source artifact, projection, filters, metric/comparison versions, canonical ChartSpec ID/hash, schema/grain, row/column counts, units/formats, lineage и PII class, а также фиксировать locale, timezone, currency policy, theme и renderer contract до render.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer snapshots pin verified results/source definitions; full ChartSpec/schema/grain/PII/render-context binding for every required block/channel remains open.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-003",
+      "line": 5284,
+      "clause": "requirement: UI, email и XLSX MUST использовать один ReportSnapshot, canonical ChartSpec и одни result/chart-data artifacts; DOM scraping, raw library options, повторный скрытый расчёт и channel-specific metric logic запрещены.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Existing Web chart/table share results; email/XLSX reuse of the same composed snapshot and prohibition checks remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-004",
+      "line": 5286,
+      "clause": "requirement: Каждый data block MUST объявлять schema, grain, row/column count, unit/format metadata, lineage и PII class.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Supported typed data/results carry metadata; full row/column/unit/lineage/PII declarations for all reportable blocks remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-005",
+      "line": 5288,
+      "clause": "requirement: Effective report permission MUST быть пересечением report, source artifact, row/object policy и PII/export permissions и повторно проверяться перед render/download/send.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Current creator/object/data/Artifact checks and revocation verified; download/send and full PII/export-policy intersection remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-006",
+      "line": 5290,
+      "clause": "requirement: Rendered artifact MUST иметь manifest, content hash, renderer/version, size, retention policy и ссылку на immutable ReportSnapshot.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Rendered-artifact retention/size/renderer manifests were not inspected; complete clause unverified, no absence inferred.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-007",
+      "line": 5292,
+      "clause": "requirement: Reportable scope v1_target MUST включать analytics, forecasts, dashboards и QualityReport; Operator/Admin telemetry не является reportable result.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Analytics chart/table reports supported; Forecasting hold and reportable Dashboard/QualityReport providers remain incomplete.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-008",
+      "line": 5294,
+      "clause": "requirement: Generated report MUST показывать as_of_date, freshness, quality, filters, comparison mode, limitations и lineage в Result Trust section.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Coverage, filters, comparison limitations and period are visible; complete unified Result Trust/as-of/quality/lineage for all generated channels remains unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-009",
+      "line": 5296,
+      "clause": "requirement: Report render MUST выполняться asynchronous run с preflight, cancellation, progress/ETA, resource profile, idempotency и stable error codes.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Asynchronous report-render execution/ETA/cancellation/idempotency was not audited; Apply is not report-render proof.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-010",
+      "line": 5298,
+      "clause": "requirement: Retention/quota cleanup MUST удалять только rendered artifacts по policy и не удалять ReportDefinitionVersion, ReportSnapshot metadata или redacted audit history.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Retention/quota cleanup and preservation of immutable metadata/audit were not exercised.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-011",
+      "line": 5300,
+      "clause": "requirement: ReportDefinitionVersion MUST поддерживать ordered sections, metric groups, analyst findings/conclusions, methodology и narrative blocks наравне с charts/tables.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Ordered sections and chart/table supported; metric groups/findings/conclusions/methodology/narrative blocks remain absent from composer union.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-012",
+      "line": 5302,
+      "clause": "requirement: ReportSnapshot MUST pin BrandProfileVersion и CompanyPackVersion; Web preview, email, XLSX и generated documentation используют одну resolved corporate identity без remote assets.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Brand reference exists in composer definition; CompanyPack and all-channel corporate identity pinning are unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-013",
+      "line": 5304,
+      "clause": "requirement: Comment threads являются collaboration metadata и не входят в immutable rendered report по умолчанию; включение approved discussion summary требует отдельного versioned report block.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Collaboration threads and approved discussion-summary publication were not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-014",
+      "line": 5306,
+      "clause": "requirement: Access grant, report authoring, report sending и PII visibility MUST быть независимыми permissions; наличие одного не подразумевает остальные.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Creator/edit/read/run separation verified; full access-grant/send/PII independence remains unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-015",
+      "line": 5308,
+      "clause": "requirement: Cell-to-evidence drill-through MUST pin-ить source snapshot/result и semantic cell key, сохранять applied filters, period, metric definition, population basis и independently authorized record grain; он показывает metric explanation и reconciliation, включая distinct/ratio numerator-denominator semantics. Separate row/PII grants проверяются до query/count/export; при недоступной детализации aggregate explanation остаётся разрешённым fallback без утечки. Return восстанавливает исходный context/scroll/focus.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current chart/table composer has no complete cell-to-evidence action/contract; independently authorized record grain, reconciliation and return context remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-016",
+      "line": 5310,
+      "clause": "requirement: Semantic revision diff MUST сравнивать exact authorized document/result versions, отдельно показывая изменения data artifacts/late corrections, metric/filter/parameter/segment definitions, population-time basis и policy, а также presentation-only edits. Где причины неразделимы без отдельного controlled recomputation, показывается mixed/unknown explanation, а не выдуманная причинная декомпозиция; недоступная версия не раскрывает metadata/counts.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current composer API/contract has no semantic revision diff; exact-version authorization, cause separation and mixed/unknown explanations remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-017",
+      "line": 5312,
+      "clause": "requirement: Draft-to-published comparison MUST показывать affected blocks, normalized semantic changes, comparable values и stale/unavailable dependencies до publication; одинаковые входы не дают выдуманной business delta. Diff с новыми расчётами проходит обычный preflight/Execution/authorization, immutable publications не переписываются, comments/findings не re-anchor-ятся автоматически.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current composer API/contract has no draft-to-published semantic comparison; affected blocks/dependencies and controlled recomputation remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-018",
+      "line": 5314,
+      "clause": "requirement: Изменять определение отчёта, его состав, общие наборы, настройки и связанные цели MUST иметь право только immutable creator_principal_id отчёта при наличии необходимых functional/object/data permissions. report.manage, административная роль, department ownership, transfer или grant другому пользователю не заменяют creator check. Читатели могут менять разрешённые параметры просмотра и личное представление без изменения report definition; UI и backend одинаково разграничивают authoring и использование. Копия, когда она разрешена существующими правами, является отдельным отчётом со своим создателем и не изменяет оригинал.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Immutable creator enforcement and copy identity verified; full shared sets/goals and reader personal-view behavior remain unverified. Saved composer reads currently also require creator.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-019",
+      "line": 5316,
+      "clause": "requirement: Общий набор отчёта MUST быть виден всем пользователям с действующим доступом к этому отчёту и соответствующим данным, без отдельного списка доступа к набору; редактирование подчиняется REPORT-018. Личные параметры просмотра MUST сохраняться при обновлении общего набора; новая общая версия применяется или становится основой сброса только по явному действию пользователя. Старое личное представление повторно проверяет текущие permissions и доступность привязок; потеря доступа не сохраняется как исключение из policy.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current composer _verify rejects non-creator even with report access; shared-set viewer/personal-version behavior is not implemented for this route. Legacy reader capabilities not inferred absent.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-001",
+      "line": 4976,
+      "clause": "requirement: Published dashboard version MUST быть immutable; layout или widget change создаёт новую version.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Dashboard profile uses immutable composer versions; full published dashboard lifecycle remains unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-002",
+      "line": 4978,
+      "clause": "requirement: Каждый widget MUST объявлять pinned_result либо latest_successful_by_spec; UI показывает выбранную binding policy и resolved artifact.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Saved blocks pin exact results; latest_successful_by_spec and policy/resolution UI remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-003",
+      "line": 4980,
+      "clause": "requirement: Global/local filters MUST валидироваться по source schema и сохраняться как воспроизводимая specification.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Typed global/local scope validation verified in shared composer; complete dashboard provider coverage remains unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-004",
+      "line": 4982,
+      "clause": "requirement: Dashboard access не может расширять доступ к underlying artifact или PII; effective permission является пересечением policies.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Shared composer current source checks exist; full dashboard viewer/PII intersection remains unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-005",
+      "line": 4984,
+      "clause": "requirement: Stale, degraded, failed refresh или отсутствующий artifact MUST показываться на уровне widget и dashboard без подмены старых данных новыми.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Apply failures/unknown/empty states exist; automatic widget/dashboard refresh and last-good state semantics remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-006",
+      "line": 4986,
+      "clause": "requirement: Template layout MUST иметь keyboard-accessible альтернативу любому drag-and-drop действию.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer reorder/move/resize has command alternatives; every dashboard/template dragging action lacks full keyboard audit.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-007",
+      "line": 4988,
+      "clause": "requirement: Dashboard MUST поддерживать sections и heterogeneous blocks, включая metric groups, charts, tables, analyst findings/conclusions и narrative text, с deterministic reading order от общего к частному.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Sections, chart/table and deterministic order implemented; metric groups/findings/narrative block kinds remain absent.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-008",
+      "line": 4990,
+      "clause": "requirement: Metric-group block MUST использовать published MetricGroupVersion либо versioned presentation override и сохранять group/metric order одинаково в Web, email и XLSX.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Metric-group block is not admitted by current composer union; pinned MetricGroupVersion and cross-channel order remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-009",
+      "line": 4992,
+      "clause": "requirement: Finding/conclusion на dashboard MUST быть evidence-linked versioned content; viewer comment отображается отдельным discussion layer и не становится частью published dashboard version.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Finding/conclusion blocks are not admitted by current composer union; evidence versioning and separate discussion layer remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "DASHBOARD-010",
+      "line": 4994,
+      "clause": "requirement: Только actor с report_access.manage для report либо dashboard_access.manage для dashboard MAY grant/revoke доступ пользователей и групп к соответствующему published объекту; authoring или publish permission само по себе не расширяет ACL.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Report/dashboard grant-revoke permission matrix was not audited in this closure.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "DASHBOARD-011",
+      "line": 4996,
+      "clause": "requirement: Effective viewer rendering MUST удалять или заменять permission-state blocks, недоступные по row/object/PII policy, не раскрывая их existence, values или labels через layout gaps, comments, counts или export.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Full denied block existence/labels/layout/comments/export non-disclosure was not audited; creator-only authoring checks are insufficient.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "DASHBOARD-012",
+      "line": 4998,
+      "clause": "requirement: Dashboard viewer MUST предоставлять comments по разрешённым snapshot/block и сохранять deep link на конкретную immutable version.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Authorized dashboard comments and exact-version discussion links were not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "FILTER-001",
+      "line": 1801,
+      "clause": "requirement: Reportable analysis MUST получать filters только как versioned typed expression tree; произвольный SQL/string expression из basic UI запрещён.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Strict v1/v2/v3/v4 expression trees and fail-closed nodes verified; every reportable provider/UI path has not been exhaustively inspected.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-002",
+      "line": 1803,
+      "clause": "requirement: Search MUST находить разрешённые filter fields по stable ID, entity, локализованным label/description и типу без раскрытия запрещённых полей.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Published field search and authorized catalogs exist; all ID/entity/type/localized-description search combinations and forbidden-field existence need complete tests.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-003",
+      "line": 1805,
+      "clause": "requirement: Operator и value MUST валидироваться по data type, versioned null policy, hierarchy binding и relative-date policy FilterFieldVersion на backend независимо от UI.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Typed operators/nulls and UTC/relative event windows validated; generic hierarchy and relative-date field policies remain incomplete.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-004",
+      "line": 1807,
+      "clause": "requirement: Filter expression, registry/hierarchy/calendar versions, relative-date anchor, timezone и visible default filters MUST входить в normalized analysis/report specification, manifest, request hash и cache key.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Filter/registry/calendar/timezone/event/origin identities verified in supported paths; generic hierarchy and complete report/export manifests remain open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-005",
+      "line": 1809,
+      "clause": "requirement: Facet values/counts/search MUST применять workspace, object, row и PII authorization до aggregation и pagination.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Genuine receipt/item facets enforce current access before counts and bounded paging; general field/PII policy coverage remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-006",
+      "line": 1811,
+      "clause": "requirement: Planner MUST выполнять безопасный pushdown, когда adapter объявляет поддержку, иначе использовать typed Polars/DuckDB execution с volume preflight.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Real typed DuckDB compiler with preflight verified; every adapter safe-pushdown declaration and alternate provider path remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-007",
+      "line": 1813,
+      "clause": "requirement: High-cardinality field MUST использовать search-only или bounded server-side lookup; загрузка полного distinct list в browser запрещена.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Bounded receipt/item facet lookup verified; all high-cardinality fields/providers and UI paths are not exhaustively audited.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-008",
+      "line": 1815,
+      "clause": "requirement: UI MUST показывать все applied/default/locked filters, resulting grain и estimated row count; hidden business filter допускается только как явная versioned metric rule.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Applied/draft/mandatory scopes, receipt grain and counts visible; full default/estimated-count/metric-rule disclosure across providers remains open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-009",
+      "line": 1817,
+      "clause": "requirement: Focus / Explore mode MUST позволять создавать draft local filters без изменения родительского report до явного Apply to report; Reset возвращает inherited filter state, а Undo отменяет последнее draft-действие.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer draft Reset/Undo/explicit Apply verified; full Focus/Explore inheritance and parent-report semantics remain unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-010",
+      "line": 1819,
+      "clause": "requirement: Apply to report MUST повторно валидировать draft filters и authorization на backend, после чего включать их в normalized analysis/report specification и request/cache identity; system и locked filters всегда видимы и не могут быть удалены, переопределены либо ослаблены пользователем.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Backend revalidation/current authorization/locks and replacement pins verified; all Focus/report and provider routes still require complete proof.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-011",
+      "line": 1821,
+      "clause": "requirement: Filter builder MUST предоставлять searchable catalog, сгруппированный по business entity, явные AND/OR groups и nested refinements, сохраняющие область одного события, заказа либо другого versioned container; UI MUST показывать читаемое итоговое выражение до Apply.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Entity-scoped AND/OR/nested item/event conditions and expression summary exist; general business-entity catalog and owner usability acceptance remain open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-012",
+      "line": 1823,
+      "clause": "requirement: Draft expression, applied expression и permission-filtered preview estimate MUST быть различимы; estimate является необязательной оценкой, не заменяет backend validation, а Apply MUST материализовать только повторно авторизованное normalized expression tree.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Draft/applied/exact preview and explicit backend commit verified; complete all-provider estimate modes/materialization policy remain unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-013",
+      "line": 1825,
+      "clause": "requirement: Expression schema v2 MUST поддерживать correlated exists/not_exists по опубликованным versioned semantic relationships с explicit parent scope, child entity и nested predicate; условия внутри одного Receipt/ReceiptItem/event проверяются на одном объекте, независимые exists могут совпасть на разных объектах. Arbitrary joins и размножение root members запрещены.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Generic correlated exists/not_exists and genuine ReceiptItem provider verify same-object scope/no multiplication; all published relationship providers are not qualified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-014",
+      "line": 1827,
+      "clause": "requirement: Scoped aggregate condition MUST pin-ить relationship/scope, row predicate, observation window, registered metric либо typed count/count_distinct expression, distinct grain, unit, null/empty/returns policy и comparison operator; ratios и window-to-window comparisons фиксируют оба operands и denominator. COUNT пустого полного набора равен нулю; неизвестные значения и неполные входы не становятся нулём.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Typed count/count_distinct/ratio/windows with unknown semantics verified; registered financial metric operands, returns semantics and broader providers remain missing.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-015",
+      "line": 1829,
+      "clause": "requirement: Behavioral sequence MUST задавать ordered positive/negative steps, event-definition versions, event-time field, relative/fixed windows, minimum/maximum gaps, same-property/session bindings и deterministic tie policy; default strict event-time order не выводит последовательность из одинаковых timestamps. Отсутствие события после шага подтверждается только по полному observation interval.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Generic sequence engine and genuine observed-receipt editor verify gaps/windows/property bindings/strict ties/unknown absence; session provider, historical properties and complete-history evidence remain missing.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-016",
+      "line": 1831,
+      "clause": "requirement: Evaluator MUST различать matched, not_matched и unknown для неполной истории, unavailable relationship, property-history gaps и late data; NOT unknown остаётся unknown, AND/OR используют трёхзначную логику. Certified absence требует completeness evidence в разрешённом scope. Unknown не входит в confirmed membership и раскрывается как limitation/coverage либо blocker по explicit policy.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Actual three-valued logic, anonymous unknown and incomplete-event coverage verified; historical-property/late-data evidence and full provider completeness policies remain open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-017",
+      "line": 1833,
+      "clause": "requirement: Backend MUST валидировать schema, typed operands, correlation scopes, relationship cardinality и capabilities, затем компилировать один normalized versioned plan через safe pushdown/Polars/DuckDB; flat-feature evaluation остаётся supported subset. Schema-v1 reads сохраняют прежний смысл; v2 nodes не отбрасываются при downgrade, versions и resolved dependencies входят в request/result/cache identity.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Normalized DuckDB plans, strict cardinality/scopes, old readers and identities verified; complete provider capability integration and remaining language operands are open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FILTER-018",
+      "line": 1835,
+      "clause": "requirement: Query preflight MUST ограничивать depth, step count, fan-out, cardinality, estimated work и preview resource use через versioned workspace policy; unsupported/too-costly expressions получают actionable blocker до Run. Exact и sampled/estimated previews различаются, cancellation/stale-preview protection обязательны, а browser и row-wise Python не становятся обходным вычислительным движком.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Global depth/steps/fanout/work/parameters and cancellation/stale UI protection verified; measured workspace-specific policy/resource qualification and all preview modes remain open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-009/MS-009-S01/report.md",
+        ".codex/delivery/evidence/MS-010/MS-010-S01/report.md",
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-017/MS-017-S01/report.md",
+        ".codex/delivery/evidence/MS-018/MS-018-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-020/MS-020-S01/report.md",
+        ".codex/delivery/evidence/MS-021/MS-021-S01/report.md",
+        ".codex/delivery/evidence/MS-023/MS-023-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S01/report.md",
+        ".codex/delivery/evidence/MS-022/MS-022-S01-R1/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PARAM-001",
+      "line": 4100,
+      "clause": "requirement: AnalyticalTemplateVersion MUST задавать stable typed ParameterDefinition IDs, label, type, required/default policy, allowed values/ranges, source capability и explicit targets. Поддерживаются period, dimension/filter value, compatible metric и population refs; только опубликованные registry refs разрешены, access проверяется при каждом resolution без раскрытия denied choices.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "No ParameterDefinition/AnalyticalTemplate parameter surface in current strict composer contract; typed choices, published registry refs and per-resolution access remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PARAM-002",
+      "line": 4102,
+      "clause": "requirement: ParameterBinding MUST отображать parameter на конкретный document/page/section/block input с type-compatible mapping, inheritance и visible override; security/system/locked constraints не ослабляются. Resolution выполняется в одном deterministic pass, missing/invalid/unused targets блокируют affected run/publication; hidden ignored parameters и циклы binding запрещены.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current scope inheritance is not ParameterBinding; deterministic typed target resolution and invalid/unused/cyclic bindings remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PARAM-003",
+      "line": 4104,
+      "clause": "requirement: ResolvedParameterSet MUST pin-ить template/parameter-definition versions, explicit/default origins, exact typed values либо protected refs, resolved relative windows, targets и policy в request/result/snapshot identity. Presentation-only preferences хранятся отдельно; один template питает несколько страниц без копирования metric formulas или independent compute при compatible reuse.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current normalized query is not ResolvedParameterSet; parameter versions/default origins/target policy identity remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PARAM-004",
+      "line": 4106,
+      "clause": "requirement: Template lifecycle MUST поддерживать draft, validated immutable publication и linked instance, pinned к template version; новая версия не меняет существующие publications, explicit upgrade показывает diff/impact и создаёт draft revision. Copy creates independent definition с origin lineage и новыми object IDs; сохранение personal values не меняет shared defaults.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current copy/save is not template publication/linked-instance upgrade; explicit diff/impact and personal/shared defaults remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PARAM-005",
+      "line": 4108,
+      "clause": "requirement: Block interaction MUST декларировать action highlight, filter_targets, drill_through либо navigate с allowlisted source semantic keys, target IDs и typed parameter mappings; UI показывает affected/unaffected targets и effective filters. Highlight не запускает аналитический compute, filter/navigation сохраняют history/return context, не создают feedback loops и не обходят locks или destination authorization.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current composer contract has no declared typed interaction-action/parameter mapping; highlight/filter_targets/drill/navigation cycle and return semantics remain missing in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PIVOT-001",
+      "line": 4084,
+      "clause": "requirement: \"PivotSpec MUST быть versioned частью Analytics BlockDefinition: ordered row/column dimension levels, metric versions, per-level subtotal/grand-total policy, sorting/top-N policy, calendar/cohort-age basis и allowed cell-state semantics; PivotResult хранит stable semantic row/column/cell keys, grain, totals provenance и coverage. Renderer не получает произвольные formulas или SQL.\"",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "Current composer admits chart/table only; versioned PivotSpec/PivotResult, stable cell keys and total policies are absent in this route.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PIVOT-002",
+      "line": 4086,
+      "clause": "requirement: Totals MUST вычисляться backend по полному authorized population на target grain через MetricRegistry aggregation rules; distinct counts пересчитываются, ratios используют numerator/denominator totals, semi-additive metrics соблюдают time policy. Sum rendered rows, average percentages и повторное суммирование receipt headers после item join запрещены; top-N раскрывает all-population total и displayed subset basis.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "No pivot aggregation path in selected composer; metric-aware full-population totals/top-N and double-count prevention remain missing, not substituted by filter counters.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PIVOT-003",
+      "line": 4088,
+      "clause": "requirement: Cohort/matrix cells MUST различать observed_value, observed_zero, not_yet_observable, missing_source, suppressed, not_applicable и unknown; state, observation age, denominator, completeness и limitation codes сохраняются в result и поддерживаемых exports. Suppressed cell не раскрывается через totals/differences, missing/immature не форматируется как zero.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "No PivotResult cell-state contract in selected composer; maturity/suppression/denominator/export leakage rules remain missing.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PIVOT-004",
+      "line": 4090,
+      "clause": "requirement: Matrix authoring MUST поддерживать hierarchy expand/collapse, несколько measures, row/column shelves, transpose, pinned headers/columns и metric-aware conditional formatting; formatting rules типизированы, не меняют значения и используют общую accessible scale/legend. Display-only reorder/width/density не меняют business identity; новые groupings/aggregations проходят backend validation и новый result.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "No matrix authoring surface in selected composer; shelves/hierarchies/measures/transpose/pinning and typed conditional formatting remain missing.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PIVOT-005",
+      "line": 4092,
+      "clause": "requirement: Matrix MUST применять bounded server-side projection/pagination или virtualization и preflight на cardinality/cells/bytes/compute; видимый viewport не ограничивает canonical result или totals. Loading/empty/partial/failed/last-good состояния, отмена и large-result fallback явны; Web/email/XLSX используют один snapshot, channel-specific overflow не обрезает данные молча.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "No pivot projection/virtualization/preflight/channel overflow path in selected composer; full canonical result and last-good behavior remain missing.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "PIVOT-006",
+      "line": 4094,
+      "clause": "requirement: PivotResult MUST сохранять абсолютные measures и registry-defined rate/cumulative views с exact denominator и cohort origin/age; переключение на comparable-age view требует explicit observation basis. Source rows, total/subtotal cells и hidden/collapsed levels имеют разные semantic keys, пригодные для drill-through, annotations и воспроизводимой selection.",
+      "status": "not_implemented",
+      "observed": "Required capability is excluded/absent in the inspected strict current composer route. This is not a repository-wide absence claim about uninspected legacy code.",
+      "remaining_obligations": "No pivot cumulative/rate/comparable-age view contract in selected composer; denominators/origin/hidden semantic keys remain missing.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py",
+        "packages/presentation/application/composer.py",
+        "apps/web/src/features/reports/ComposerBuilder.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-001",
+      "line": 3325,
+      "clause": "requirement: Каждый reportable result MUST принимать TimeComparisonSpec либо явное mode none; скрытое смещение периода запрещено.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Supported metric queries use explicit temporal/pair modes; every reportable result/provider remains unqualified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-002",
+      "line": 3327,
+      "clause": "requirement: Calendar mapping MUST явно обрабатывать leap day, ISO week 53, fiscal periods, timezone и business-calendar version.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Gregorian leap days/month/quarter/year, fiscal calendar and IANA/DST tests exist; full ISO week53/calendar-provider matrix remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-003",
+      "line": 3329,
+      "clause": "requirement: Неполный текущий период MUST сравниваться только по explicit incomplete_period_policy; полный прошлогодний период не подставляется молча.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Supported calendar comparisons preserve incomplete-period policy/coverage; all result providers remain unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-004",
+      "line": 3331,
+      "clause": "requirement: Output MUST содержать current/comparison values, absolute/percent change, coverage и comparability status; missing value не заменяется нулём без metric domain rule.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Server values/deltas/unavailable reasons and coverage verified for supported metrics; full registered metric family remains open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-005",
+      "line": 3333,
+      "clause": "requirement: Immutable ComparisonArtifact MUST фиксировать normalized/resolved spec, оба периода, timezone, calendar и policy hash, metric/activity/segment/semantic-dataset/filter versions и limitation codes; несовместимые определения блокируют comparison либо требуют explicit auditable rebase.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Immutable comparison artifacts pin periods/calendar/filter/policy; segment/activity/population versions and auditable rebase remain open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-006",
+      "line": 3335,
+      "clause": "requirement: Capability Engine MUST проверять history coverage, data quality, permissions и definition compatibility отдельно для обоих периодов.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Current authorization and compatibility checks exist for supported pair/period paths; full both-period history/quality capability matrix remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-007",
+      "line": 3337,
+      "clause": "requirement: UI, email и XLSX MUST показывать применённый comparison mode и limitation codes одинаково и использовать один comparison artifact.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Web consumes comparison artifacts and reasons; email/XLSX parity remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-008",
+      "line": 3339,
+      "clause": "requirement: Reportable document MUST иметь единый shared default для grain/current period/comparison, а каждый visual или table block MAY явно наследовать его либо задавать local override; effective resolved spec каждого блока MUST входить в request, cache и snapshot identity.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Shared defaults and explicit block overrides enter identity; complete all-profile/provider snapshot behavior remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-009",
+      "line": 3341,
+      "clause": "requirement: Month, quarter и year comparisons MUST использовать calendar-aligned resolved periods на всех поддерживаемых report tabs, включая segment size и migration; current/comparison snapshot pair, coverage и definition compatibility MUST разрешаться для каждого effective block period.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Month/quarter/year retail buckets verified; segment-size/migration tabs and population snapshot pairing remain incomplete.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-010",
+      "line": 3343,
+      "clause": "requirement: Переключение effective grain между month, quarter и year MUST менять resolved bucket boundaries, aggregation/reduction и число точек данных; chart, accessible table и export MUST использовать один и тот же bucketed artifact, а production-size reduction MUST выполняться backend CPU, не браузером.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Backend retail bucket changes and chart/table parity verified; complete export and every reportable tab remain unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-011",
+      "line": 3345,
+      "clause": "requirement: TimeComparisonSpec v2 MUST добавлять previous_period и custom_period к существующим previous-year modes; previous_period разрешается как непосредственно предшествующее число выбранных calendar buckets либо равная local-date duration для custom range, custom_period хранит оба явных интервала. Timezone, границы, DST, длина, overlap и incomplete-period policy видимы; старые v1 modes не переинтерпретируются.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "previous_period/custom_period/fixed IANA calendar behavior verified; complete range/DST/overlap disclosure and all provider integration remain unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "COMPARE-012",
+      "line": 3347,
+      "clause": "requirement: PopulationComparisonSpec MUST различать same_population и explicit_population_pair, pin-ить обе population bindings и membership-time policies; time-only, population-only и combined comparisons показывают, какие оси изменены. Overlap и eligible universe раскрываются, суммы overlapping populations не выдаются за disjoint total, а сравнение не является causal effect.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Population pair/same_population membership-time semantics were not audited as complete implementation; time-only or receipt cohorts do not establish this clause.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "COMPARE-013",
+      "line": 3349,
+      "clause": "requirement: ComparisonArtifact MUST хранить comparable typed values, absolute delta и applicable relative delta; rate difference выражается в percentage points отдельно от relative percent change. Нулевой/unknown denominator даёт explicit unavailable reason вместо infinity или выдуманного процента; разные maturity/coverage/definition basis не скрываются нормализацией.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Typed retail delta/zero-base reasons verified; registered rate percentage-point and maturity/population basis across all metrics remain open.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-012/MS-012-S01/report.md",
+        ".codex/delivery/evidence/MS-013/MS-013-S01/report.md",
+        ".codex/delivery/evidence/MS-014/MS-014-S01/report.md",
+        ".codex/delivery/evidence/MS-015/MS-015-S01/report.md",
+        ".codex/delivery/evidence/MS-016/MS-016-S01/report.md",
+        ".codex/delivery/evidence/MS-008/MS-008-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-001",
+      "line": 4808,
+      "clause": "requirement: Product-owned versioned ChartSpec MUST быть единственным каноническим visual contract; raw ECharts option, SVG, PNG и native workbook chart являются derived artifacts и не могут быть source of truth.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Product-owned strict ChartSpec and shared line compiler exist; every chart type/consumer canonical-source path remains unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-002",
+      "line": 4810,
+      "clause": "requirement: Published ChartSpec и связанный chart-data artifact MUST быть immutable и content-addressed; schema/data, compiler contract/implementation/build, renderer version/build, bundled-font hash, theme/locale/timezone и render-profile входят в manifest и identity.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Existing immutable result/chart bindings have tests; complete compiler/render/font/theme/locale manifests across all renderers remain unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-003",
+      "line": 4812,
+      "clause": "requirement: ChartSpec MUST фиксировать source binding, schema, grain, row/column count, dimensions, measures, units/formats, reduction policy, comparison и access policy без скрытой client-side metric logic.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Line/metric chart source metadata and backend values exist; all types/reduction/comparison/access declarations remain unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-004",
+      "line": 4814,
+      "clause": "requirement: Apache ECharts MUST быть единственным Web chart engine до и включая v1 target; Web adapter компилирует ChartSpec в allowlisted ECharts option.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Web manifest uses pinned echarts6.1.0 and shared compiler; exhaustive production engine inventory was not performed.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-005",
+      "line": 4816,
+      "clause": "requirement: Dash MUST быть исключён из production dependency/runtime, routing, state и callback architecture; исследовательский notebook prototype не становится production surface.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Entire production dependency/runtime/routing/callback inventory was not audited for Dash exclusion.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-006",
+      "line": 4818,
+      "clause": "requirement: Plotly MUST NOT быть core dependency до и включая v1 target; после v1 он MAY подключаться только как trusted renderer plugin через тот же ChartSpec/renderer compatibility contract.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Entire core dependency and trusted renderer-plugin inventory was not audited for Plotly exclusion.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-007",
+      "line": 4820,
+      "clause": "requirement: range_timeline MUST быть отдельным versioned chart_type; произвольная подмена его ECharts timeline-frame component запрещена.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "range_timeline contract/runtime behavior was not inspected.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-008",
+      "line": 4822,
+      "clause": "requirement: Promotion range timeline MUST поддерживать planned/actual windows, multi-channel lanes, immutable audience references, overlap stack/density, visible-window fetch и detail action; overlay на analytics остаётся descriptive и не создаёт causal claim.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Promotion timeline windows/lanes/audience/overlap/visible-fetch/detail provider was not inspected.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-009",
+      "line": 4824,
+      "clause": "requirement: Один presentation-owned versioned compiler package MUST использоваться Web и embedded SSR consumer; compiler не вычисляет business metrics, а identical normalized input и immutable compiler build дают одинаковый compiled-option hash. Независимые Web/SSR compiler implementations запрещены.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Shared product compiler package and Web use exist; embedded SSR same-build/hash parity was not verified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-010",
+      "line": 4826,
+      "clause": "requirement: ChartSpec MUST запрещать raw library option, executable callback/renderItem, raw HTML/CSS, arbitrary URL/asset, unbounded regex и другие исполняемые либо network-capable fields; special charts используют только registered trusted renderer IDs.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Closed supported line spec rejects executable/options/URL fields; all special chart/trusted renderer paths remain unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-011",
+      "line": 4828,
+      "clause": "requirement: Web MUST использовать только SVG или Canvas по versioned renderer-selection policy и measured threshold; выбор renderer не меняет ChartSpec, данные, metric values или request/cache identity.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Existing Web SVG rendering supported; measured SVG/Canvas selection thresholds and full semantic/identity parity remain unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-012",
+      "line": 4830,
+      "clause": "requirement: Static rendering MUST выполняться bounded ECharts SSR adapter внутри SVC-REPORT-WORKER без отдельного network service и без browser/Chrome dependency по умолчанию.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "SVC-REPORT-WORKER embedded bounded SSR deployment and browser-free runtime were not inspected.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-013",
+      "line": 4832,
+      "clause": "requirement: Email MUST получать PNG из deterministic SSR SVG; XLSX MUST использовать native chart только при lossless mapping, иначе тот же PNG pipeline и обязательный underlying typed data sheet.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Deterministic SVG-to-PNG and lossless XLSX/native fallback pipeline were not inspected.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-014",
+      "line": 4834,
+      "clause": "requirement: ChartSpec MUST использовать semantic color/style roles; raw theme colors не входят в business spec, а выбранные theme/render profile фиксируются только в render artifact manifest.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Shared line compiler uses semantic color roles; all chart types/render profile manifests remain unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-015",
+      "line": 4836,
+      "clause": "requirement: Каждый chart MUST иметь meaningful localized textual summary, units, limitation codes и доступную table alternative; цвет, tooltip, hover или pointer interaction не могут быть единственным способом получить смысл.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Supported chart table alternative/localized labels verified; complete localized summary/units/limitations and non-hover accessibility remain unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-016",
+      "line": 4838,
+      "clause": "requirement: Browser MUST получать bounded chart-data artifact; production-size aggregation, sampling и level-of-detail selection выполняются детерминированно на backend CPU, а visible-window fetch повторно применяет permissions и filters.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Supported retail aggregation runs on backend; all bounded artifact/LOD/visible-window permission paths remain unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "CHART-017",
+      "line": 4840,
+      "clause": "requirement: ECharts-GL, WebGL renderer и GPU analytical compute MUST быть выключены до и включая v1 target; browser Canvas/SVG composition не является разрешением переносить analytics или reduction с backend CPU.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "All WebGL/GPU/ECharts-GL dependencies and runtime renderer choices were not exhaustively audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-018",
+      "line": 4842,
+      "clause": "requirement: Static adapter MUST запрещать outbound network и remote assets, иметь batch/width/height/output/temp/memory/CPU/time limits, cancellation, stable error codes и cleanup incomplete artifacts после crash.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Static render sandbox/network/limits/cancel/crash cleanup was not inspected or exercised.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-019",
+      "line": 4844,
+      "clause": "requirement: Release gate MUST проверять ChartSpec validation/security, identical compiled-option hash одного shared compiler build в Web/SSR, Web SVG/Canvas semantic parity, SSR-SVG-to-PNG fidelity, font/render-build identity invalidation, range_timeline behavior, XLSX native/raster mapping, all-shipped-theme accessibility и golden data parity.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Release profile was not run; full build-hash/SVG-Canvas/PNG/font/timeline/XLSX/theme/golden parity unverified.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-020",
+      "line": 4846,
+      "clause": "requirement: Versioned visual style template MUST задавать semantic palette, contrast policy, typography scale и table density; report MUST иметь default template, block MAY задать explicit override, effective template/version MUST входить в snapshot/export/render/cache identity, а отдельный template builder MUST жить в Settings и проверять shipped-theme contrast.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Visual-template Settings lifecycle, contrast validation and export/cache identity were not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "CHART-021",
+      "line": 4848,
+      "clause": "requirement: Temporal comparison chart MUST поддерживать дельту для каждого сопоставимого bucket как соединение current/baseline с подписью либо отдельную delta-series; видимость серий и подписей является presentation state. Дельта, absolute/relative/percentage-point units и unavailable reasons берутся из ComparisonArtifact; нулевая база не создаёт infinity, пропуски не соединяются как ноль. Table/tooltip MUST раскрывать current, baseline и обе допустимые дельты; плотные подписи скрываются по presentation policy без потери доступной таблицы. Renderer использует только product-owned typed ChartSpec и trusted adapter, без пользовательского кода.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Supported comparison uses server values/reasons; full bucket delta-series/connectors, applicable units and presentation visibility policy remain unverified.",
+      "evidence": [
+        "packages/chart_compiler_ts/README.md",
+        "packages/chart_compiler_ts/src/line.ts",
+        "apps/web/package.json",
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FOCUS-001",
+      "line": 4895,
+      "clause": "requirement: Каждый разрешённый reportable chart, table и range_timeline MUST иметь действие открытия Focus / Explore mode во всём application viewport; режим MUST сохранять source binding, comparison, permissions и исходный block context.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Full viewport Focus for every chart/table/timeline and source context was not audited; composer editor is not this proof.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "FOCUS-002",
+      "line": 4897,
+      "clause": "requirement: Header режима MUST показывать title, current period и компактную локализованную подпись применённого comparison mode и изменённых time/population axes (`vs LY` только для previous-year; без подписи при отключённом сравнении), все applied, system и locked filters, Result Trust, export action и close action.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Complete Focus header axes/filters/Result Trust/export/close presentation was not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "FOCUS-003",
+      "line": 4899,
+      "clause": "requirement: Filter search MUST находить любое разрешённое effective policy поле из FilterFieldRegistry; forbidden fields, facets, counts и их существование не раскрываются.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Shared receipt filter catalog is authorization-bound; every Focus effective registry field and non-disclosure path remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FOCUS-004",
+      "line": 4901,
+      "clause": "requirement: Пользователь MUST иметь draft local filters и явные Apply to report, Reset и Undo; до Apply родительский report и его persisted/saved state не меняются.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Shared receipt editor draft/Apply/Reset/Undo verified; mounted Focus parent-state lifecycle remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FOCUS-005",
+      "line": 4903,
+      "clause": "requirement: Apply to report MUST повторно выполнить backend validation и authorization и обновить normalized specification/request identity; если требуется вычисление, оно выполняется на backend CPU и использует общий ProgressEvent/ETA contract.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer backend validation/identity/CPU execution verified; Focus-specific ProgressEvent/ETA integration remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FOCUS-006",
+      "line": 4905,
+      "clause": "requirement: Chart mode MUST предоставлять legend, zoom, pan, brush и drill-down только согласно allowlisted ChartSpec interaction capability; reset interaction возвращает declared initial view, а browser не вычисляет business metrics, aggregation, sampling или level of detail.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Focus legend/zoom/pan/brush/drill/reset capability allowlist and no client reduction were not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "FOCUS-007",
+      "line": 4907,
+      "clause": "requirement: Table mode MUST предоставлять column visibility, sorting, density, column pinning и pagination; data fetch, sorting/filtering и aggregation сохраняют server-side authorization, bounded-query и PII policies.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Focus table visibility/sorting/density/pinning/pagination and bounded authorized fetch were not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "FOCUS-008",
+      "line": 4909,
+      "clause": "requirement: Chart ↔ Data table switch MUST сохранять один source binding, comparison, filters, grain, units, permissions, freshness и Result Trust; table alternative не может показывать другой набор данных без явного disclosure.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Existing chart/table source reuse verified; full Focus switch preserves units/permissions/freshness/Result Trust only after additional proof.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "FOCUS-009",
+      "line": 4911,
+      "clause": "requirement: Close, Escape и browser Back MUST предсказуемо возвращать пользователя к исходному route, block anchor, scroll position и keyboard focus без потери незафиксированного parent-page state; наличие draft local filters требует подтверждения выхода либо явного discard policy.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Close/Escape/Back/scroll/focus and unsaved-draft discard policy were not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "FOCUS-010",
+      "line": 4913,
+      "clause": "requirement: Focus / Explore MUST иметь keyboard-operable controls, visible focus, accessible names, non-hover access to values, chart textual summary/table alternative и корректное поведение при 200% zoom; focus trap применяется только если surface реализована как modal dialog.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Full Focus keyboard/summary/table/non-hover/native200% behavior was not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "FOCUS-011",
+      "line": 4915,
+      "clause": "requirement: Режим MUST иметь применимые loading, empty, filtered-empty, warning, degraded, blocked, failed, forbidden, stale и partial-data states без перекрытия controls либо content.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Complete Focus operational-state matrix was not exercised.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "FOCUS-012",
+      "line": 4917,
+      "clause": "requirement: Presentation state MUST быть ephemeral по умолчанию и не входить в request/cache identity; persist разрешён только через versioned Saved View, а result-affecting filter state всегда следует FILTER-004 и FILTER-010.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer presentation-only edits preserve query identity; Focus ephemeral state/versioned Saved View path remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-011/MS-011-S01/report.md",
+        ".codex/delivery/evidence/MS-019/MS-019-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BRAND-001",
+      "line": 5743,
+      "clause": "requirement: BrandProfileVersion MUST быть immutable, валидировать semantic tokens, contrast, required asset variants, file types/dimensions и безопасное rendering во всех supported channels.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "BrandProfile immutable validation/contrast/assets/channel safety not audited in this closure.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "BRAND-002",
+      "line": 5745,
+      "clause": "requirement: Brand assets MUST быть content-addressed bundled PNG либо sanitized allowlisted SVG без script, external URL, font fetch, filter abuse или executable content.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Brand asset hashing/SVG sanitizer/network/font/filter restrictions not audited in this closure.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "BRAND-003",
+      "line": 5747,
+      "clause": "requirement: Product name, logo/mark, favicon, icon pack, palette, typography, login/onboarding, email, report, XLSX, local docs, support/legal links и footer MUST разрешаться из одного pinned BrandProfileVersion.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "One pinned identity across all listed application/export/docs channels not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "BRAND-004",
+      "line": 5749,
+      "clause": "requirement: Brand token override MUST использовать semantic token schema; raw component CSS, arbitrary HTML/JS и per-customer frontend fork запрещены.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Semantic token overrides and absence of raw per-customer CSS/HTML/JS forks not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "BRAND-005",
+      "line": 5751,
+      "clause": "requirement: Admin UI MUST предоставлять preview Web/login/email/XLSX/docs, validation evidence, diff, impact, publish, rollback-to-previous-binding и reset-to-base-theme.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Admin brand previews/diff/impact/publish/rollback/reset lifecycle not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "BRAND-006",
+      "line": 5753,
+      "clause": "requirement: Published report/dashboard/email/XLSX MUST фиксировать brand_profile_version_id и asset manifest hash, чтобы последующая смена бренда не переписывала исторический artifact.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer brand reference pin is present; complete asset-manifest and historical artifacts across dashboard/email/XLSX remain unverified.",
+      "evidence": [
+        "packages/contracts/presentation/composer.py"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "BRAND-007",
+      "line": 5755,
+      "clause": "requirement: CompanyPack import/export MUST иметь schema/version, manifest hash, compatibility preflight, diff/impact и MUST исключать secrets, source data, PII и private keys.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "CompanyPack import/export compatibility/hash/diff and secret/PII exclusion not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "BRAND-008",
+      "line": 5757,
+      "clause": "requirement: Custom icon pack MUST иметь stable semantic icon IDs, accessible labels where required и fallback к bundled default icon system; неизвестный icon ID не ломает navigation или report render.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Custom semantic icon pack accessibility and unknown-ID fallback not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "BRAND-009",
+      "line": 5759,
+      "clause": "requirement: White-label configuration MUST не изменять authorization, domain logic, metric values, run/cache identity или legal license/NOTICE obligations.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Branding independence from authorization/business identity/licenses not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-REFRESH-001",
+      "line": 5326,
+      "clause": "requirement: \"Каждый поддерживаемый analytical document (dashboard, workbook-report, narrative research) MUST предоставлять уполномоченному автору настройку versioned refresh policy с режимом after_ingestion, scheduled или manual, периодом/cron, IANA timezone, состоянием enabled/paused/disabled, next due, last evaluation и last successful refresh. Для новых опубликованных рабочих отчётов и dashboards default — after_ingestion; для research и зафиксированных публикаций — manual/pinned. Настройка не меняет immutable definition или существующий snapshot; несовместимые либо ещё не опубликованные inputs дают explicit preflight blocker.\"",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "All-profile versioned refresh-policy author UI/defaults/preflight not audited; existing automatic-refresh test file alone is not proof.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-REFRESH-002",
+      "line": 5328,
+      "clause": "requirement: \"After-ingestion refresh MUST запускаться после публикации новой проверенной версии необходимых inputs. Scheduled refresh MUST создавать durable намерение наступившего occurrence; если новые согласованные inputs не готовы, оно остаётся waiting_for_data и переоценивается после их публикации. Данные, поступившие до due time, ожидают выбранного срока. Повторная проверка неизменных inputs не выдаётся за новое обновление; periodic/as-of parameters входят в resolved identity. Используются существующие Scheduler, outbox, Execution Control и их timezone/misfire/cancellation semantics.\"",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Durable occurrence/waiting_for_data/after-publication Scheduler integration and as-of identity not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-REFRESH-003",
+      "line": 5330,
+      "clause": "requirement: \"Refresh MUST использовать fixed published definition version и разрешать все logical data bindings в exact immutable input versions. Изменение формул, структуры, authored findings или pinning policy требует отдельной versioned публикации; explicitly pinned input не начинает следовать latest автоматически. Новое обновление создаёт новый root/page snapshot и ReportSnapshot projection, а исходные snapshots, exports, annotations и comments сохраняют прежние ссылки.\"",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Fixed definition/exact logical input resolution/new root snapshot preserving old links not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-REFRESH-004",
+      "line": 5332,
+      "clause": "requirement: \"Refresh MUST объединять pending requests для одного document/policy в bounded durable demand на последнее согласованное поколение inputs; пропуск промежуточной сборки отчёта не теряет изменения в итоговых inputs. Equal computation identities используют существующий single-flight. Непрерывный поток не должен бесконечно отменять текущий полезный расчёт: bounded freshness/fairness policy обеспечивает прогресс и раскрывает lag.\"",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Bounded coalesced durable demand/single-flight/freshness fairness under continuous inputs not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-REFRESH-005",
+      "line": 5334,
+      "clause": "requirement: \"Новый current snapshot MUST публиковаться только после readiness обязательных blocks, проверки manifests, quality/authorization и explicit partial policy; переключение root/current reference атомарно в PostgreSQL. Publish проверяет актуальные policy/definition revision, fencing и монотонный publication generation, разрешённый из input version set; поздний старый run не откатывает current. Ошибка refresh не заменяет valid current snapshot незавершённым результатом.\"",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Atomic readiness/authorization/fencing/generation publication and stale-run rejection not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "REPORT-REFRESH-006",
+      "line": 5336,
+      "clause": "requirement: \"Открытый viewer MUST оставаться на exact выбранном snapshot до явного применения доступного обновления пользователем; UI показывает data-as-of, freshness, progress и new-version availability. Применение обновления сохраняет совместимые page/filter/scroll context и объясняет несовместимости. Новый обычный open разрешает latest successfully published current snapshot, deep link на exact snapshot сохраняет его identity. Last-good доступен только по serving policy и текущим permissions; revoke запрещает показ независимо от кэша.\"",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Exact saved composer snapshot reads and revoke protection verified; refresh availability/apply context/last-good policy remain unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/automatic-refresh.test.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-REFRESH-007",
+      "line": 5338,
+      "clause": "requirement: \"UI MUST раздельно показывать availability/integrity текущего результата, freshness и refresh execution state, включая ready, scheduled, waiting_for_data, queued/running, failed/blocked и confirmed corruption. Updated является событием/временем успешной публикации, а не доказательством свежести без input coverage. Failed refresh либо временная недоступность storage не маркируют valid last-good result как corrupted. Читатель видит безопасную причину и разрешённое действие; technical paths и закрытые metadata не раскрываются.\"",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer displays unknown/error/ready result states; full separate refresh/freshness/integrity state machine remains unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-006/MS-006-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/automatic-refresh.test.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-PERF-001",
+      "line": 7776,
+      "clause": "requirement: \"Целевой пользовательский результат MUST быть субъективно моментальным открытием предрассчитанного готового отчёта. Workload envelope MUST включать 1–50 одновременно активных аналитиков и 1–100 одновременно читающих пользователей, включая совместную нагрузку 50+100 с background refresh. Это профиль активных пользователей, не обещание 50 одновременных CPU jobs или производительности на произвольном hardware; admission и fairness применяют единый budget CPU/memory/IO.\"",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Existing active-page mounting/reuse is only foundation; agreed hardware/budgets and mixed50+100/background-refresh benchmark not performed. No subjective-instant acceptance.",
+      "evidence": [
+        "packages/presentation/application/composer.py",
+        "packages/analytics_core/infrastructure/retail_filter.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "REPORT-PERF-002",
+      "line": 7778,
+      "clause": "requirement: \"Prepared-report serving MUST читать authorized snapshot metadata и bounded готовые block/page results, переиспользовать materializations и не сканировать исходную историю для эквивалентного ready open. New filters/drill-through могут требовать отдельного explicit computation; произвольные фильтры не обещаются полностью предрассчитанными. Benchmark MUST отдельно измерять ready open после restart/cold cache и warm/hot, time-to-usable active page, page/filter latency, ingestion-to-publication lag, p50/p95/p99, throughput, memory/CPU/IO, bytes и duplicate compute под mixed load. Численные latency/freshness budgets, hardware, data volume/distribution и document profile MUST быть согласованы до performance acceptance; фраза instant и локальное ускорение PyArrow не заменяют этот proof.\"",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Saved result identity/reuse exists but current verification path may reread/decode admitted inputs; no proof of scan-free ready open, cold/warm p50/p95/p99, throughput/CPU/IO/bytes/lag under mixed load.",
+      "evidence": [
+        "packages/presentation/application/composer.py",
+        "packages/analytics_core/infrastructure/retail_filter.py",
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-001",
+      "line": 5861,
+      "clause": "requirement: Все функции MUST быть доступны с клавиатуры с видимым focus и логичным focus order.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Focused composer keyboard/Tab/command checks pass; all functions/focus order/visibility across application unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-002",
+      "line": 5863,
+      "clause": "requirement: Drag-and-drop на canvas/dashboard MUST иметь эквивалентные команды add, connect, move, reorder и delete без dragging movement.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Composer drag alternatives verified; canvas connect and every dashboard action unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-003",
+      "line": 5865,
+      "clause": "requirement: Цвет не может быть единственным носителем status; текст, icon label или pattern обязательны, а contrast MUST соответствовать WCAG 2.2 AA.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Textual unknown/status/reason labels exist; all-theme WCAG2.2AA contrast and non-color encoding unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-004",
+      "line": 5867,
+      "clause": "requirement: Формы MUST иметь программно связанные labels, instructions и field-level errors; после submit focus переходит к error summary.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "New sequence labels fixed and tested; all forms/instructions/field errors and submit-to-error-summary focus remain unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-005",
+      "line": 5869,
+      "clause": "requirement: Async progress, completion и operational notifications MUST объявляться screen reader через уместный live region без избыточного шума.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Receipt preview uses role=status; actual screen-reader announcements/noise and all operational notifications unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-006",
+      "line": 5871,
+      "clause": "requirement: Chart MUST иметь meaningful localized textual summary, units/limitations и доступную table alternative для отображаемых данных; hover, tooltip, pointer или цвет не могут быть единственным источником информации.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Supported chart/table alternative exists; meaningful summaries, units/limitations and all chart non-hover access remain unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-007",
+      "line": 5873,
+      "clause": "requirement: Data grid MUST поддерживать header associations, keyboard navigation, sort/filter announcements и virtualized-row accessibility.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Native tables exist; complete header associations/keyboard sort announcements/virtualized rows unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-008",
+      "line": 5875,
+      "clause": "requirement: UI MUST оставаться работоспособным при 200% zoom/reflow и учитывать prefers-reduced-motion.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Narrow and CSS200% composer checks exist; native200% application reflow and reduced-motion behavior unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-009",
+      "line": 5877,
+      "clause": "requirement: Локализованные aria-label и accessible names MUST проходить parity checks для en/ru.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "RU/EN new labels and browser coverage checked; exhaustive accessible-name parity unverified.",
+      "evidence": [
+        ".codex/delivery/evidence/MS-007/MS-007-S01/report.md",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md",
+        "apps/web/src/features/reports/ReceiptFilterEditor.tsx"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "A11Y-010",
+      "line": 5879,
+      "clause": "requirement: CI MUST включать automated accessibility checks, а release journey — ручную keyboard и screen-reader smoke verification.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "CI automated accessibility and manual release screen-reader journey were not executed/audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "I18N-001",
+      "line": 5831,
+      "clause": "requirement: Английский MUST быть default и fallback language; русский MUST иметь полное покрытие всех shipped UI и backend-generated texts.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "New UI has EN/RU copy; every shipped UI/backend text and default/fallback coverage unverified.",
+      "evidence": [
+        "packages/localization/tests/parity.test.ts",
+        "apps/web/package.json",
+        "apps/web/src/features/reports/SequenceFilterEditor.tsx",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "I18N-002",
+      "line": 5833,
+      "clause": "requirement: Frontend MUST использовать version-pinned localization adapter с namespaced catalogs, interpolation, pluralization, fallback и pseudo-locale testing; product code не может ветвиться по конкретному locale.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Pinned i18next/localization package exists, but current composer explicitly branches on locale; namespace/plural/pseudo-locale/no-branch requirement is not met by that code.",
+      "evidence": [
+        "packages/localization/tests/parity.test.ts",
+        "apps/web/package.json",
+        "apps/web/src/features/reports/SequenceFilterEditor.tsx",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "I18N-003",
+      "line": 5835,
+      "clause": "requirement: Backend-generated email, HTML, PDF и другие текстовые документы MUST использовать gettext catalogs и Babel formatting.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Backend gettext/Babel for every generated email/HTML/PDF/document not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "I18N-004",
+      "line": 5837,
+      "clause": "requirement: API, logs, audit, manifests и domain events MUST сохранять stable codes/params; перевод выполняется на presentation boundary.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "New contracts use stable codes and typed fields; all logs/audits/manifests/events presentation boundaries unverified.",
+      "evidence": [
+        "packages/localization/tests/parity.test.ts",
+        "apps/web/package.json",
+        "apps/web/src/features/reports/SequenceFilterEditor.tsx",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "I18N-005",
+      "line": 5839,
+      "clause": "requirement: Смена языка MUST применяться без повторного входа и не менять analytics values, business calendar, run hash, artifact hash или cache key.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "RU/EN saved-result browser display preserves values; all language-switch/login/cache/hash/calendar paths unverified.",
+      "evidence": [
+        "packages/localization/tests/parity.test.ts",
+        "apps/web/package.json",
+        "apps/web/src/features/reports/SequenceFilterEditor.tsx",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "I18N-006",
+      "line": 5841,
+      "clause": "requirement: Language, format_locale, timezone и currency MUST храниться и применяться независимо.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "IANA calculation timezone is explicit and independent of display language; complete persisted language/format-locale/timezone/currency independence unverified.",
+      "evidence": [
+        "packages/localization/tests/parity.test.ts",
+        "apps/web/package.json",
+        "apps/web/src/features/reports/SequenceFilterEditor.tsx",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "I18N-007",
+      "line": 5843,
+      "clause": "requirement: CSV export MUST поддерживать canonical headers по умолчанию и optional localized headers с явными locale и metadata; Parquet/JSON schemas остаются canonical.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "CSV canonical/localized headers and canonical Parquet/JSON export schemas not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "I18N-008",
+      "line": 5845,
+      "clause": "requirement: Добавление языка MUST состоять из записи BCP-47 locale registry, каталогов namespaces, gettext catalogs, переводов built-ins и прохождения parity/pseudo-locale/E2E checks без изменения domain code.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "New-language registry/catalog/built-in/pseudo-locale/E2E workflow without domain edits not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    },
+    {
+      "id": "I18N-009",
+      "line": 5847,
+      "clause": "requirement: CI MUST проверять parity placeholders, plural branches и 100% coverage для en/ru; missing key в release build является ошибкой.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "Foundation/route-title parity tests exist; entire shipped placeholders/plurals/100% coverage and release missing-key gate unverified.",
+      "evidence": [
+        "packages/localization/tests/parity.test.ts",
+        "apps/web/package.json",
+        "apps/web/src/features/reports/SequenceFilterEditor.tsx",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "I18N-010",
+      "line": 5849,
+      "clause": "requirement: Layout MUST использовать CSS logical properties и поддерживать locale direction из registry, даже если RTL language ещё не поставляется.",
+      "status": "partial",
+      "observed": "Bounded implemented behavior is recorded in the cited source/stage evidence; the remaining obligations below prevent whole-clause acceptance.",
+      "remaining_obligations": "New responsive styles include logical properties; entire layout and registry-driven direction/RTL behavior unverified.",
+      "evidence": [
+        "packages/localization/tests/parity.test.ts",
+        "apps/web/package.json",
+        "apps/web/src/features/reports/SequenceFilterEditor.tsx",
+        ".codex/delivery/evidence/MS-024/MS-024-S02/report.md"
+      ],
+      "audit_depth": "clause-and-selected-source/evidence"
+    },
+    {
+      "id": "I18N-011",
+      "line": 5851,
+      "clause": "requirement: Plugin translation keys MUST быть изолированы namespace `plugin.<plugin_id>`; English catalog обязателен для любого plugin, Russian catalog обязателен для bundled/official plugins.",
+      "status": "not_verified",
+      "observed": "Clause read and allocated; implementation/runtime verification not performed for this whole clause. No absence or completion inferred.",
+      "remaining_obligations": "Plugin namespaces and mandatory EN/RU catalogs for bundled/official plugins not audited.",
+      "evidence": [
+        "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md"
+      ],
+      "audit_depth": "clause-only; implementation unverified"
+    }
+  ],
+  "count_interpretation": "The105 partial entries describe current implementation, including inherited work; they are not105 requirements fully delivered by this chat. The45 not_verified entries do not imply missing implementation. The earlier number55 counted IDs mentioned in completed implementation plans only; it is not a comparable completion counter and is not used as audit evidence. "
+}

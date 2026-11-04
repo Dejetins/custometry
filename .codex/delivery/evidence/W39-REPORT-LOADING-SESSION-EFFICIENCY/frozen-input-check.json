@@ -1,0 +1,683 @@
+{
+  "checked_at": "2026-09-23T03:14:00.382720+00:00",
+  "checked": 169,
+  "all_unchanged": true,
+  "files": [
+    {
+      "path": ".codex/delivery/ledgers/MS-004.md",
+      "unchanged": true
+    },
+    {
+      "path": "custometry-technical-blueprint-human-ru.md",
+      "unchanged": true
+    },
+    {
+      "path": "custometry-technical-blueprint-ru.md",
+      "unchanged": true
+    },
+    {
+      "path": "custometry-ui-blueprint-ru.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S04/synchronization.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/api-corpus.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/before-reader-pair/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/before-reader-pair/parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/before-reader-pair/reader-pair.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser-manifest.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/error-context.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/late-body.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/delayed-before/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/revoked-late-body.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final-corpus.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/reload-late-body.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-1920/reload-late-body.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-768/reload-late-body.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-Reload-saved-re-e093c-olete-actual-Apply-response-768/reload-late-body.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/late-body.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-1920/revoked-late-body.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-768/late-body.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-late-production-2f128-ore-revoked-protected-state-768/revoked-late-body.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/reader-pair.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/reader-pair.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/focus.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-tooltip.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/final.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/inspector.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/localized-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/localized-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/reflow-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/final.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/inspector.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/localized-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/localized-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/final/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/reflow-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full-corpus.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full-source-state.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/reader-pair.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-768/reader-pair.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/focus.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-tooltip.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/reader-reader-private-view-548f5-tion-and-session-revocation-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/reader-reader-private-view-548f5-tion-and-session-revocation-1920/reader-en.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/reader-reader-private-view-548f5-tion-and-session-revocation-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/reader-reader-private-view-548f5-tion-and-session-revocation-768/reader-en.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/conflict.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-1920/empty-scope.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/conflict.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/recovery-real-competing-sa-26b26-and-empty-scope-is-not-zero-768/empty-scope.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/final.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-1920/workspace.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/final.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-real-workspace-A-3d8f7-iscal-adoption-and-keyboard-768/workspace.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/final.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/inspector.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-1920/reflow-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/final.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/inspector.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/full/workspace-workset-catalog--55a79-mparison-and-fiscal-default-768/reflow-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final-corpus.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-768/fiscal-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/focus.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/layout-final/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-768/temporal-tooltip.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/browser/pre-layout-demo/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/coordinator-review.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/auth-analysis.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/before.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser-manifest.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/.last-run.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-fiscal-multi-wo-0512d-ots-and-owner-demonstration-1920/fiscal-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-pair-per-9eaaf-arison-reasons-after-reopen-1920/reader-pair.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/focus.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-parity.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/parity-S05-reader-temporal-eea9b-ta-trend-and-modal-keyboard-1920/temporal-tooltip.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/reader-reader-private-view-548f5-tion-and-session-revocation-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/reader-reader-private-view-548f5-tion-and-session-revocation-1920/reader-en.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/browser-observations.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/final.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/inspector.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/localized-chart.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/localized-table.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/browser/workspace-workset-catalog--f0ae4-ison-and-calendar-isolation-1920/reflow-400.png",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/coordinator-review.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/criterion-amendment.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/demonstration.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/report.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/source-manifest.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/correction-002/validation.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/criterion-matrix.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/demonstration.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/owned-files.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/owner-correction-2026-09-22.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/receipts/001-review-ready.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/receipts/002-correction-review-ready.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/repair-review.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/report.md",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/reused-calculation-evidence.json",
+      "unchanged": true
+    },
+    {
+      "path": ".codex/delivery/evidence/MS-004/MS-004-S05/validation.md",
+      "unchanged": true
+    }
+  ]
+}

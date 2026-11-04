@@ -1,7 +1,7 @@
 ---
 doc_id: CONTRACT-ANALYTICAL-AUTHORING-001
 title: Governed population and analytical authoring contract
-doc_version: 15
+doc_version: 36
 product_spec_version: 0.11.0-draft
 visibility: internal
 ship: false
@@ -490,8 +490,8 @@ the January-only recommendation above; it does not accept a wire schema or the
 whole L3. Semantic Model owns versioned calendar meaning/defaults, Identity checks
 settings permissions, Analytics resolves buckets, and Presentation pins the version.
 Imported Calendar coverage remains distinct. Existing reports/results never follow
-a changed default silently. New reports may select the current default; a creator
-explicitly adopts another policy version through Apply and a new Save revision.
+a changed default silently. The original report-adoption UX described here was
+superseded by the 2026-09-22 owner correction below.
 
 [MS-004 0.2.0](../architecture/planning/milestones/MS-004/plan.md)
 selects the initial month-based fiscal profile, endpoint/persistence contracts,
@@ -667,7 +667,8 @@ v1 exact snapshots retain their original payloads. Upgraded latest v1 reads and
 writes return `REPORT_VERSION_UPGRADE_REQUIRED`; clients must use v2. The outer
 editor envelope supplies current capabilities rather than treating stored snapshot
 capabilities as authorization. Workspace defaults never replace a report's pinned
-calendar; explicit creator adoption uses Apply and Save for a new revision.
+calendar. The existing versioned API can express an explicit revision; the report
+UI no longer offers calendar adoption under the 2026-09-22 correction.
 
 Generated `workspace-client.ts`, `workspace-contracts.ts` and OpenAPI include
 editor, exact snapshot, Apply/Save and own-view routes. Existing report/Analytics
@@ -701,3 +702,858 @@ dates. Different units retain separate axes; no browser metric arithmetic is use
 See [S04 evidence](../../.codex/delivery/evidence/MS-004/MS-004-S04/report.md) and
 [the Web source contract](../architecture/ui/custometry-web-implementation-source-contract-v1.md#ms-004-s04-native-workspace-integration).
 Final integrated and owner acceptance remain S05.
+
+
+## MS-004 S05 comparison-preserving personal views
+
+A newly saved personal view includes its immutable `CardComparisonV1` when its
+selection needs one. It is admitted from verified existing results before the
+view transaction. GET verifies the selected card/result/metric/unit/format
+identities, current dependency access and comparison manifest; it never performs
+source aggregation or creates a replacement comparison. Display-only view Save
+remains possible without report-run authorization under unchanged data policy.
+
+The optional `comparison` field is omitted when absent, preserving older payload
+serialization and companion-view hashes without a migration rewrite. Old strict
+extra-forbid readers reject new comparison-bearing payloads: upgrade readers and
+generated clients before these writes; forward repair remains the supported
+recovery direction. Older views retain exact values; no browser arithmetic fills
+a missing pair comparison. An explicit Apply/Save obtains the verified projection.
+
+Chart, table, tooltip and Focus consume identical server values/deltas/reasons.
+Temporal labels include prior-year identity and exact mapped date ranges; fiscal
+labels retain their actual current date range. Initial inspector focus is set
+when the native iframe portal mounts, with keyboard traversal and return checks.
+See [S05 integrated evidence](../../.codex/delivery/evidence/MS-004/MS-004-S05/report.md)
+and its compatibility assessment. The canonical journal records execution and
+finished-result owner acceptance; source synchronization alone is not acceptance.
+
+## Company calendar correction — 2026-09-22
+
+METRIC-030 revision `2026-09-22.1` requires once-only administrator configuration
+in company settings, stable afterwards; calendar years remain universal. Reports
+must not expose financial-year setup, current/pinned version controls or adoption.
+Date filters, six grains and calendar/fiscal analytical basis remain available.
+The [owner amendment](../../.codex/delivery/evidence/MS-004/MS-004-S05/owner-correction-2026-09-22.md)
+supersedes only affected MS-004 D04/D08/AC-11 report UI clauses, preserving immutable
+plan, prompt and historical proof. The settings page and API enforcement of
+once-only setup are deferred; existing version-update endpoints retain compatibility
+and are not claimed to satisfy that lifecycle. Internal result/calendar identity,
+exact snapshots and authorization remain unchanged. No automatic report rebasing.
+
+## Native configured report creation (W40)
+
+Owner-authorized on 2026-10-03: the new and saved report paths share the configured
+editor. [W40 ticket](../../.codex/delivery/tickets/W40-WORKSET-CATALOGUE-INTERACTIONS.md)
+and [evidence](../../.codex/delivery/evidence/W40-WORKSET-CATALOGUE-INTERACTIONS/report.md#unified-creation-and-editing-2026-10-03)
+own this bounded follow-up; no milestone state is changed.
+
+- `POST /api/reports/v2/new/prepare` resolves an authorized dataset, pinned default
+  calendar, presentation references and a blank/sales definition. References may
+  be registered, but no document, document version or Saved View is created.
+- `POST /api/reports/v2/new/apply` accepts creator mode at revision zero and uses
+  the same calculation/binding verification as saved documents. It cannot target
+  an existing report or change creator attribution.
+- `POST /api/reports/v2/new/versions` accepts expected report/view revisions zero.
+  One transaction creates the document, first configured version and companion
+  Saved View. Document identity is stable through retry; creator is checked
+  against the authenticated actor, never inferred from client attribution alone.
+  The locked repository replay check handles overlapping requests. Changed
+  payload under the same key is `IDEMPOTENCY_CONFLICT`; other stale creates are
+  revision conflicts. Dataset/object/functional rights and CSRF are rechecked.
+
+Native personal drafts have `base_snapshot_ref: null`. Migrated v1 reports retain
+their exact non-null legacy base reference and original reader behavior. Native
+personal worksets are not a published/shared document: non-creators cannot read
+the personal overlay merely by receiving an object grant. A published native
+reader projection and shared worksets remain outside this bounded follow-up, as
+for the existing configured personal-overlay flow. This does not claim REPORT-019
+completion. The UI still marks shared-workset capability unavailable.
+
+Compatibility: old stored v1/v2 documents remain readable by the new server. New
+endpoints are additive for existing clients; all repository generated TypeScript
+clients are regenerated for the nullable base reference. An older server/client
+that requires a non-null legacy base cannot read newly created native documents.
+Thus rollback after native writes requires retaining the new reader or restoring
+a pre-write backup; this local change does not establish mixed-version rollout
+or production rollback readiness. No SQL schema migration or backfill is required.
+
+## Composer foundation (MS-005 / C01)
+
+The owner accepted WS-004 C01–C11 and delegated sequential technical continuation
+on 2026-10-07. [Authority](../../.codex/delivery/evidence/WS-004/owner-continuation-2026-10-07.md)
+changes the approval workflow for this scope, not product holds or publication rights.
+
+[ComposerDefinitionV1](../../packages/contracts/presentation/composer.py) is an
+unmounted `analytical-authoring/v1` contract foundation: stable ordered hierarchy,
+closed chart/table bindings to the existing retail Analytics provider, typed grid
+placement and presentation. Its input fingerprint is a grouping hint, never an
+authorization or final result-cache identity. Legacy v1/v2 DTOs remain unchanged.
+This does not implement a general writer, arbitrary providers or browser authoring.
+
+The [complete clause inventory](../../.codex/delivery/evidence/MS-005/MS-005-S01/requirement-audit.md)
+separates implemented subsets from missing proof/providers. The [transition design](../../.codex/delivery/evidence/MS-005/MS-005-S01/composer-design.md)
+selects versioned reader/write/view dispatch, existing repository ownership,
+creator/CAS/replay invariants and disposable migration/rollback proof for C02.
+Existing migration 0012 restricts persisted contract_version values: new-format
+writes need schema expansion and real migration evidence before activation.
+Forecasting hold, shared-set ownership and later XLSX sequence are preserved.
+
+
+## Composer vertical slice (MS-006 / C02)
+
+[MS-006 v0.1.0](../architecture/planning/milestones/MS-006/plan.md) mounts the
+C01 foundation through `/api/reports/composer/v1`. Definitions use
+`analytical-authoring/v1`; immutable persisted draft responses use
+`composed-report/v1`. The additive 0014 migration follows current 0013 and admits
+that discriminator in the existing Presentation tables. It never rewrites old
+payloads; downgrade refuses while new rows exist. Retain a compatible reader
+after new writes. Only owned disposable migrations have been exercised.
+
+Prepare, selected-block Apply, definition Save, editor/latest, exact snapshot and
+block-result reads use request-scoped public Identity/Analytics/Artifacts ports.
+Save validates references and persists graph/layout without calculation. Optional
+result references are verified against exact block queries. Pending blocks remain
+pending; reopening fetches saved results without Apply. Normalized result identity
+and reuse remain Analytics-owned. Creator checks, current object/data permission,
+CAS, identical-key replay and atomic latest-pointer updates remain mandatory.
+Capabilities expose implemented workbook/chart/table/interactive support and
+current edit/run permission. New documents never pass through old DTO readers or
+writers unnoticed. Existing reports keep their original editor and stored bytes.
+
+The browser entry is the report library's charts/tables document option on existing
+report routes with `view=composer`. The common builder chooses subject/product,
+metric/grain and supported store/period inputs. Per-block settings, result loading,
+error/retry and selection are independent; duplicate inputs have fresh IDs.
+Rendering reuses the established WorkspacePlot/WorkspaceTable path through typed
+per-block projection. It adds no second arithmetic engine or ECharts option builder.
+Full compiler convergence and other providers remain later WS-004 outcomes.
+
+[Observed verification](../../.codex/delivery/evidence/MS-006/MS-006-S01/verification.md)
+records real owned PostgreSQL/API/browser proof and failures/repairs. The
+[canonical journal](../../.codex/delivery/ledgers/MS-006.md) alone determines
+technical acceptance; this contract appendix does not preaccept the stage.
+No full multi-profile, shared publication/view, forecasting, pivot, performance or
+release claim follows from this bounded implementation.
+
+## C03 hierarchy and presentation authoring — 2026-10-07
+
+[MS-007](../architecture/planning/milestones/MS-007/plan.md) extends the same personal
+composition path with chapter/page/section/block hide/lock and copy-origin metadata.
+Absent added metadata remains absent on serialization, preserving older snapshot
+payloads and idempotency hashes; explicit false/null is retained. Existing closed
+schema validation, creator/current-source checks, immutable snapshots and CAS/replay
+remain in force. Presentation locks are authoring safety, never ACL grants.
+
+All three presentation profiles use the same graph and chart/table renderer. This
+is profile composition support, not Research lifecycle, live Dashboard refresh,
+publication or full content-provider acceptance. Workbook creator-only semantics
+remain enforced for all current personal compositions. New fields evolve the
+unpublished composer v1 in lockstep with generated clients; an old C02-only writer
+is not claimed to support new node metadata. Existing released legacy v1/v2 routes
+retain explicit format dispatch and their original payloads.
+
+Pure graph transactions implement chapters, page groups, nested sections, stable
+move/reorder/resize, independent copies with source-node and optional snapshot
+lineage, hide/lock/unlock and delete. Grid uses twelve bounded columns with rejected
+overlap; flow/narrative preserve logical order. Density and profile/layout changes
+never enter Analytics identity. Compatible copied blocks reuse verified results.
+
+Undo/Redo retains at most 50 transient authoring steps until acknowledged Save;
+this history bound does not cap document pages or blocks. Local draft revision
+increments for edits/history, while Save records the immutable durable revision.
+Undo does not rewrite saved history. Reconciliation preserves draft/history under
+fresh actor checks; actual access reset clears them. Removing the active page by
+Undo moves navigation to a surviving page and preserves Redo.
+
+The viewer mounts only the active authorized page. Search, grouped tabs and an
+all-pages selector handle overflow, keyboard navigation and exact snapshot/page
+links. Hidden nodes are omitted from the reader surface but remain author-manageable;
+hiding is not a security or metadata-concealment boundary. Pointer drop and menu
+commands share the same validation. See the [canonical journal](../../.codex/delivery/ledgers/MS-007.md)
+for actual acceptance, and [verification](../../.codex/delivery/evidence/MS-007/MS-007-S01/verification.md)
+for bounded proof; C10 retains full scale and accessibility qualification.
+
+## C04 foundation: pure supported-provider scopes — MS-008-S01
+
+[MS-008](../architecture/planning/milestones/MS-008/plan.md) introduces standalone
+`composer-scopes/v1` and `store-filter/v1` contracts. S01 does not mount them in
+an API or change existing stored composer payloads. S02 owns reader-before-writer
+admission, current authorization, normalized Analytics identity and UI integration.
+The full C04 outcome remains open for missing general provider capabilities.
+
+The Store expression belongs to the Semantic public contract. It pins the semantic
+dataset version and `authorized-store-set/v1` rule, and supports typed `store_in`,
+AND, OR and NOT only. This is a lossless adapter to existing Store selections, not
+the general FilterExpression v2 registry/evaluator. Unknown fields, channels, SQL,
+relationships and other unsupported nodes are rejected, never dropped. Existing
+Store provider value/cardinality constraints apply. Empty IN means empty set;
+nonempty AND intersects, OR unions, and NOT complements only the provider-resolved
+authorized Store universe. Every branch validates its values even if another branch
+already determines the result. Mandatory source/system selections intersect outside
+the expression and cannot be weakened by NOT/OR/replacement. The adapter operates
+on dimension-ID sets, never business rows, and is not a substitute for the missing
+safe-pushdown/Polars/DuckDB general provider.
+
+Structural resolution follows document, chapter, page, outer-to-inner sections,
+then block. Within a target, unique explicit filter order is used. Each replacement
+names exact active ancestor bindings that explicitly allow replacement and are not
+locked. Other ancestry, source and trusted constraints remain intersected. Replacing
+an already overridden binding is invalid. Context fields (period, grain, calendar
+reference/basis, temporal alignment) inherit independently; explicit child override
+records the prior origin as overridden. Locked context fields reject overrides.
+No implicit default introduces a new comparison mode.
+
+Linked targets broadcast the binding's own expression directly; they do not copy a
+source block's entire context or propagate implicitly through other links. Applicable
+ancestry filters run first, then additional directly linked bindings in binding-ID
+order; each binding is applied once. Linked bindings only intersect. Hierarchy plus
+link edges must form a DAG, with valid scope kinds and block destinations. This
+explicit non-transitive binding contract is not the C05 interaction dispatcher.
+
+The resolver returns effective query inputs, active typed filters, applied/overridden/
+locked/linked provenance and a dependency hash. Canonical Boolean child order and
+Store values preserve meaning; active dependency IDs/schema/rule/dataset are pinned,
+while title, density and grid placement are excluded. No-scope resolution leaves the
+old query exact with no new digest. A filter cannot silently cross dataset versions.
+S02 must derive and carry this digest through real normalized result/cache/snapshot
+identity; the standalone field alone is not proof of that integration.
+
+Pure S01 tests do not establish live access, API behavior, estimated rows, general
+catalog/facets, windows/populations or unsupported comparison modes. Those remain
+provider dependencies and separate acceptance obligations in the parent plan.
+
+
+## C04 foundation: mounted scope and pair boundaries — MS-008-S02
+
+The optional `scopes` envelope is admitted in composer definitions. Omitted fields
+remain omitted; old unscoped input fingerprints and immutable snapshots retain
+meaning. Authorable retail inputs reject a client-supplied provider `scope` field.
+Presentation derives each selected block's effective query and dependencies;
+Analytics independently applies current authorized Store universe and mandatory
+source restrictions before normalizing `workspace-scope/v1` identity. The new
+`scope_hash` is present only for scoped queries. Preflight, Apply, Save verification
+and exact snapshot result reads use that same effective query.
+
+`POST /composer/v1/preflight` resolves one selected block without calculating;
+`POST /composer/v1/validate` validates the entire authoring draft. Current provider
+capabilities explicitly cover Store/date, Boolean Store sets, existing calendar
+and temporal modes, pair comparison, locked metric eligibility and reuse state.
+Resource estimate is explicitly unavailable. Saved-snapshot block preflight uses
+read authorization and cannot grant editing. Unrelated block semantic failures do
+not prevent selected-block Apply/preflight, including with persisted locks. Global
+graph validity and immutable persisted constraints still apply to every command.
+Persisted locked filter bindings cannot change; context locked fields cannot change
+or unlock, and surviving blocks cannot escape inherited locks by moving.
+
+The optional `pair` selects two distinct existing block IDs. Explicit
+`POST /composer/v1/compare` verifies current effective inputs, result artifacts,
+report Store ceiling and dataset compatibility before calling the existing public
+Analytics comparison port. The optional saved `comparison` is an immutable
+`card-comparison/v1` artifact bound to exact selected blocks, metrics and results.
+Save and read verify it without recalculating comparison values. Changed inputs or
+results invalidate browser pair state; incompatible periods/grains/calendars/units
+retain server reason codes and unavailable/descriptive status. The browser formats
+server values without computing deltas, totals or alignment.
+
+Editor scope drafts support inherited period/grain/calendar basis/temporal mode,
+Store selection/NOT, explicit allowed ancestor replacement and direct linked targets.
+General nested Boolean expressions received from a compatible author are preserved
+but not flattened by this bounded editor. Scope changes validate without Apply;
+Undo/Redo, copy and deletion preserve scope graph semantics. Copies receive fresh
+local binding IDs, retain incoming direct constraints locally and do not copy
+outgoing external side effects. Removing a pair member removes its pair selection.
+Read-only snapshots expose the saved pair and effective-context inspector.
+
+This is the supported-provider foundation, not full C04 acceptance. General field
+registry/facets, relationships/sequences/aggregates, windows/populations, general
+safe-pushdown provider and expanded comparison modes remain unresolved dependencies.
+See [MS-008 plan](../architecture/planning/milestones/MS-008/plan.md) and
+[canonical journal](../../.codex/delivery/ledgers/MS-008.md) for acceptance authority.
+
+## Persisted Receipt filters — MS-011
+
+The [mounted flat-filter contract](columnar-filter-execution-contract.md)
+adds optional `receipt-filter/v1` inputs to composer queries. The immutable
+composer definition carries the full typed expression and registry version; the
+result identity pins its current provider/policy dependencies. Old absent-filter
+queries retain their wire shape and normalized values. This is a Receipt provider
+subset; it does not close the remaining C04 or later workstream outcomes.
+
+## Receipt hierarchy — MS-012
+
+`composer-scopes/v2` adds `receipt_filters` alongside unchanged Store and context
+bindings. Every Receipt binding names a dataset, pinned registry/expression, target,
+order and explicit link/replacement/lock rules. V1 reads retain their serializer and
+resolver behavior; omitted legacy version defaults to v1. Older readers reject v2.
+No downgrade drops Receipt expressions. Rollback requires preserving the v2 bytes
+until a compatible reader is available; no data migration rewrites stored snapshots.
+
+Receipt scopes follow the existing document/chapter/page/outer-to-inner section/block
+ancestry and direct-link DAG. An explicit replacement must name an active ancestor
+which allows replacement, uses the same dataset and registry, and constrains only
+the same single field. Compound conditions on that one field may be replaced as a
+unit; conditions spanning different fields cannot be represented as field replacement.
+Store and Receipt bindings cannot replace each other. Locked inputs remain identical
+and surviving blocks cannot escape them through structural moves. Current provider
+permissions and mandatory source ceilings intersect outside all authorable conditions.
+
+Presentation combines active Receipt conditions and the block-local input using AND,
+then sends the effective query through the existing current-authorized provider. It
+cannot silently skip an incompatible dataset/registry. Active Receipt dependencies
+participate in normalized identity; upgrading the envelope alone leaves a block with
+no applicable Receipt condition unchanged. Layout changes remain outside identity.
+Copying a block preserves local and incoming direct constraints under fresh binding
+IDs; outgoing links do not start targeting original peers from the copy. Pruning
+and lock protection apply to both collections.
+
+The shared field editor keeps draft conditions separate from scope settings. Updating
+an entire scope validates the candidate on the server before committing the authoring
+state; calculating affected blocks remains explicit. The effective inspector shows
+the resolved Receipt expression and applied/overridden/locked/linked origins. Existing
+Store controls preserve v2 fields when editing their own bindings.
+
+See [MS-012 plan](../architecture/planning/milestones/MS-012/plan.md) and its
+[canonical journal](../../.codex/delivery/ledgers/MS-012.md) for acceptance. This bounded
+integration does not establish relational/aggregate/sequence/population semantics,
+full Focus behavior, expanded temporal comparison, scale budgets or production delivery.
+
+
+## Explicit previous/custom period comparison — MS-013
+
+Optional `time_comparison` in workspace input and inherited context carries
+`time-comparison-settings/v2`. It is mutually exclusive with a non-none legacy
+alignment; an inherited legacy override clears new settings, and an inherited new
+setting clears legacy alignment. Both controls share the same persisted lock boundary.
+An explicit v2 `none` masks ancestors; absent context inherits. Existing absent-field
+queries/results retain serialization and hashes, and older readers reject new fields.
+
+Analytics resolves `previous_period` by explicit complete-calendar-bucket count or
+local-date duration, and `custom_period` by its explicit inclusive range. Full-bucket
+mode rejects unaligned ranges before Run. The current pinned UTC/Monday/month-based
+calendar provider resolves actual dates (including leap and fiscal boundaries), with
+half-open instants, duration and overlap disclosed. It does not claim other calendar
+profiles or DST behavior. No automatic per-day normalization changes registered metrics.
+
+`time-comparison-artifact/v2` is embedded in the existing immutable result manifest;
+it binds both periods, exact evaluated dates, ordinal bucket pairs, coverage/reasons,
+metric/dataset/calendar/filter/policy/request identity and a content hash. Both sides
+use the same current-authorized input projection. Exclude suppresses incomplete deltas;
+explicit-partial exposes observed deltas with reasons; comparable-elapsed-days uses
+the shared leading complete prefix. Missing observations remain unavailable, zero
+baseline suppresses only relative change, and unmatched buckets retain a missing side.
+
+The block editor distinguishes inheritance from an explicit local choice. Explicit
+changes write block-level context overrides; unrelated edits preserve existing base
+query/context precedence, including legacy inputs and persisted locks.
+The composer edits these settings per block or inherited context and displays actual
+ranges, values and server deltas in tables/charts. It never labels these modes as
+previous-year comparison. Save/reopen uses existing verification and immutable result
+references. No new database or migration is introduced. Reader-before-writer rollout
+must preserve new payloads until compatible readers are available after rollback.
+
+See [MS-013 plan](../architecture/planning/milestones/MS-013/plan.md) and its
+[canonical journal](../../.codex/delivery/ledgers/MS-013.md). This contributes only the
+current provider boundary; full C04/C05–C11 and production delivery remain unclaimed.
+
+
+## Explicit previous-year policies — MS-014
+
+The mounted v2 temporal settings also accept previous-year same-date, complete
+calendar-aligned, ISO-week-aligned, fiscal-period and comparable-elapsed-date modes.
+Applicable leap/ISO53 policy is explicit; irrelevant policies are rejected. New
+fields remain omitted for MS-013 previous/custom/none inputs and resolved artifacts,
+so their prior bytes/values/hashes remain unchanged. The old `alignment` path retains
+its exact prior behavior and is never silently upgraded to a new policy.
+
+Date-mapped modes store every current date, its prior date or null, exclusion flag
+and reason. Exclude removes unmatched leap/ISO53 dates from the compared current set;
+merge-with-Feb28 groups both current dates, including across weekly boundaries, and
+counts baseline Feb28 once. ISO mode uses ISO year/week/weekday, with no fallback
+from week53 to week52. Explicit partial preserves unmapped current dates with missing
+baseline coverage. A missing provider calendar map fails preflight. Full calendar/
+fiscal modes use complete month/quarter/half/year buckets shifted twelve months;
+they preserve actual leap bucket size and require the matching calendar basis.
+
+Comparable elapsed-year mode requires the elapsed policy and evaluates the leading
+complete mapped prefix on both sides. Empty mapping is an unavailable artifact;
+no fake baseline envelope or zero is invented. Current totals remain distinct from
+the explicitly disclosed evaluated comparison dates. UI tables/charts consume the
+same backend paired buckets, date mapping and reason codes; expanded details expose
+exclusions. Comparison policy/identity and both-period access rules remain pinned.
+
+The builder distinguishes inherit and explicit local calendar basis as well as
+comparison. Changed basis is a block-context override; unchanged base/context and
+locked ancestor semantics survive ordinary edits. Scope validation enforces locks.
+
+[MS-014 plan](../architecture/planning/milestones/MS-014/plan.md) and
+[canonical journal](../../.codex/delivery/ledgers/MS-014.md) bind proof. The mounted
+provider remains UTC/month-based; other profiles/DST, population comparisons,
+export-channel parity and all remaining workstream assertions retain required proof.
+
+
+## MS-015 pinned month-based time-zone calendars
+
+[MS-015 v0.1.0](../architecture/planning/milestones/MS-015/plan.md) adds opt-in
+`business-calendar/v2` without rewriting v1 UTC profiles or saved references.
+Semantic accepts IANA-name settings and resolves package `tzdata==2026.3` TZif bytes
+through its infrastructure port. Stored profiles contain bounded base64 rules,
+SHA256 and package version. Calendar content identity includes those bytes. Public
+update input rejects supplied TZif fields. Replay checks actor-bound original request
+identity before loading rules, so a committed response remains replayable without
+the rule provider. Existing row lock, expected revision and immutable JSON storage
+remain; no migration is needed. Invalid zones return CALENDAR_TIMEZONE_UNAVAILABLE.
+
+Analytics parses the stored bytes in memory, assigns receipt instants to local dates,
+and resolves half-open midnight boundaries with earliest-instant repeated-midnight
+policy. Nonexistent midnight/skipped dates return LOCAL_DATE_BOUNDARY_UNAVAILABLE;
+interior dates are checked too. UTC instant subtraction records actual 23/25-hour
+elapsed durations separately from local date count, with LOCAL_DAY_DURATION_VARIES.
+Raw metrics are not normalized. Data-as-of stays UTC; registered Receipt date filters
+retain UTC meaning. Source Calendar declares UTC dates: a local date has coverage only
+if every intersecting UTC source day exists, and completeness only if all are complete.
+COVERAGE_INTERSECTING_UTC_SOURCE_DAYS discloses this conservative basis.
+
+The initial MS-015 report-mounted settings and explicit version-adoption controls
+violated METRIC-030 and the already accepted 2026-09-22 correction. MS-016 supersedes
+that UI/lifecycle, preserving the valid pinned-rule math and historical evidence.
+New blocks use the configured default internally; existing blocks retain their pins.
+Rendered results show zone and comparison UTC boundaries/elapsed hours.
+
+The proof boundary is local published retail/month-based calendars. Other calendar
+families, explicit provider calendar maps and population providers remain subsequent
+C04 obligations; no complete COMPARE capability or production claim follows here.
+
+
+## MS-016 once-only company setup and MS-015 correction
+
+[MS-016](../architecture/planning/milestones/MS-016/plan.md) restores METRIC-030.
+Its current evidence supersedes MS-015's setup/adoption conformance claims; consumed
+MS-015 artifacts remain historical functional observations. The calendar section
+is mounted only in UI-ADMIN-004 `/w/:workspaceKey/settings/policies`, gated by current
+matching workspace and workspace.manage. Other workspace policy sections are not
+claimed implemented. Reports expose no financial-year setup, version selector or
+adoption command. Existing-block editing retains source pins without fetching the
+current calendar. Internal new-block default resolution remains an authoring input.
+
+The Semantic update endpoint intentionally rejects new writes after first setup.
+Revision0 denotes system initialization; any positive revision denotes configured,
+including older multi-version workspaces. Under the pointer row lock it checks
+actor-bound idempotent replay, expected revision, then once-only state. A new request
+after setup returns409 CALENDAR_ALREADY_CONFIGURED, even for the same profile. Exact
+replay returns the original response; version reads and retained results are unchanged.
+Concurrent first writes produce one success and one conflict. No migration/backfill,
+reset endpoint or automatic rebasing. This is an explicit breaking write-policy change
+required by the existing owner decision, not a new interpretation of old payloads.
+The former 2026-09-22 API/settings deferral is resolved only for this calendar section.
+
+
+## MS-017 correlated execution foundation (unmounted)
+
+[MS-017](../architecture/planning/milestones/MS-017/plan.md) adds Semantic
+FilterRelationshipVersion and Analytics relational-filter-execution/v2. Scoped
+Boolean/predicate/exists/not_exists nodes pin node/scope IDs, parent and child scope,
+entity, relationship version and field/registry versions. A child conjunction tests
+one row; independent exists may match different rows. Root membership never expands.
+V1 flat readers/meaning remain unchanged and reject correlated payloads explicitly.
+
+Trusted grants carry current entity ceilings/immutable artifacts and authorized-scope
+completeness hashes. The compiler emits only fixed identifiers and typed parameters.
+Observed true match is sufficient for exists; otherwise incomplete history or an
+unknown observed predicate yields unknown. Complete known absence yields false.
+NOT/AND/OR use three-valued logic. Unknown is excluded from confirmed IDs and counted.
+The real retail publication's business_history_completeness=unknown and quarantined
+items are not certified absence; mounting a provider must honor that evidence.
+
+The real DuckDB adapter shares the bounded hash-verified Parquet reader and restricted
+connection with v1. It equally partitions total byte/row admission across entities
+(conservative for skew), retaining any stricter per-input row/byte cap. Compound
+execution obeys the minimum global/per-input node, depth, value, memory, thread and
+timeout allowances; every input resource policy is also fingerprinted. It validates
+scopes/versions/depth/node/correlation limits before
+decode, and checks unique row IDs, parent-key cardinality, child references, fan-out
+and estimated work before membership. Identity keys may not depend on unknown
+property-history flags. Estimate version is sum-input-rows-times-correlations/v1;
+this is a resource estimate, not a latency guarantee. Runtime deadline/cancellation
+interrupt native work and cleanup closes the connection. Current grants are checked
+again before delivery. Identity pins canonical Boolean tree, all entity/relationship/
+artifact/coverage/policy/resource versions and actor/workspace/dataset.
+
+This foundation has no new mounted endpoint, UI, result persistence or complete
+FILTER capability claim. Genuine provider/catalog/preview/authoring integration is
+required next; aggregates, sequences and population nodes remain subsequent work.
+
+
+## MS-018 published receipt/item catalog and preview
+
+[MS-018](../architecture/planning/milestones/MS-018/plan.md) mounts the genuine
+published retail Receipt→ReceiptItem edge through current Identity, Semantic and
+Artifact public ports. Semantic validates exact published keys/relationship policy
+and exposes a bounded field allowlist, including decimal quantity (scale3) and item
+amount/price (scale2). Root registry extends v1 receipt fields without changing them.
+Child identity is the current retail profile's globally unique receipt_item_id/line_id.
+No current product/customer attributes are backdated into event-time history.
+
+The v2 reader accepts decimal128 storage with equal scale and narrower/equal precision,
+widening safely to the logical18-digit type. This addresses Arrow's value-inferred
+storage precision; it never narrows, rounds or changes scale. The mode enters v2
+identity. V1 still requires exact physical schema and retains its existing hashes.
+
+Only `/composer/v1/filters/v2/{dataset_id}/catalog` and `/filters/v2/preview` are
+mounted. Workspace/actor/root Receipt are server-bound; strict receipt-filter/v2
+cannot be passed to a v1 reader. Preview returns exact confirmed/false/unknown/
+authorized counts and limitation codes, never membership IDs or artifact paths.
+Catalog supports localized field/ID/type search and declares policy/relationship
+versions. A child scope inherits its correlated parent's mandatory store ceiling;
+namespace ceilings remain independent of author Boolean logic. No child-root query
+or unscoped item facet is exposed. Catalog GET bypasses request authentication memo
+at each authorization boundary so a revoked session cannot receive the catalog.
+
+The publisher's transport-complete, quarantined, business-history-unknown evidence
+is hashed and always remains uncertified absence under this provider contract.
+Observed matches are confirmed; unresolved absence stays unknown and is disclosed
+as RELATIONSHIP_HISTORY_INCOMPLETE. Even a future accounting flag cannot silently
+upgrade this current provider's completeness meaning.
+
+Proof uses owned disposable source/control PostgreSQL, genuine intake/publication/
+manifest admission, real Parquet/DuckDB and authenticated HTTP, compared with
+independent source SQL. This does not prove report persistence, editor/facets, browser
+flows or deployment. Those follow next; remaining C04/C05–C11 are still required.
+
+
+## MS-019 correlated report authoring and stored selection evidence
+
+[MS-019](../architecture/planning/milestones/MS-019/plan.md) extends receipt_filter
+with an explicit receipt-filter/v2 branch. Unchanged v1 input/result bytes omit new
+optional fields. Old readers reject the new branch/evidence instead of dropping nodes.
+Preview, facets and calculation share the same bounded normalized scoped executor.
+
+Published compatibility_registry_versions pin the legacy Receipt field registry.
+A mixed hierarchy may lift v1 root predicates only with that explicit validated
+reference; field versions/null semantics remain unchanged. All-v1 composition keeps
+its previous canonical payload. Each binding gets deterministic node/child-scope
+rebasing, so repeated source trees remain independent and same-item conjunction
+stays correlated. Request-local composition IDs exclude presentation block/source IDs;
+a title change or duplicate with the same inherited bindings reuses the exact query.
+The base predicate uses a reserved namespace distinct from UUID scope bindings.
+Child-field coincidence never authorizes replacing an entire
+correlated constraint; replacement remains one compatible root field. Current
+provider checks reject invented/stale compatibility refs. Existing links, ancestor
+checks and persisted locks remain enforced.
+
+V2 facets return only bounded counts/search over confirmed matching roots. Root
+fields count matching receipts; item fields count observed authorized positions
+inside those receipts. Child namespaces and correlated parent store ceilings apply
+before aggregation and pagination. Extra facet work is included in admission's work
+estimate. Facets do not certify completeness or expose a child-root query surface.
+
+The editor retains v1 drafts and explicitly adds receipt-item conditions to enter v2.
+Same-item groups, independent exists, not_exists, AND/OR/NOT, stable IDs, readable
+expression, preview, reset/undo and cancellation are distinct from applied settings.
+The mounted catalog/facets remain server-authorized. During server validation,
+opening another new block is disabled; the prior response cannot close that editor.
+
+A v2 result stores optional receipt-selection-evidence/v2: confirmed/false/unknown/
+authorized counts across the authorized dataset, filter identity and limitation codes.
+Metric values use confirmed members in the requested period. The count scope is
+explicitly distinct from that period. Unknown membership is disclosed in result
+trust and temporal/pair comparison; valid observed-subset comparisons are descriptive.
+Save/reopen preserves evidence and immutable identity; current authorization still
+applies. Calendar coverage is not mislabeled as membership completeness.
+
+The stage journal and final evidence own acceptance. This does not waive aggregate,
+sequence, population nodes, remaining C04/C05–C11, or the once-only company calendar
+policy established by MS-016. No production delivery follows from local browser proof.
+
+
+## MS-020 scoped count and ratio execution foundation
+
+[MS-020](../architecture/planning/milestones/MS-020/plan.md) adds an explicit
+aggregate-filter-execution/v1 capability to the existing isolated DuckDB executor.
+Existing receipt-filter/v2 and relational-filter-execution/v2 readers/schema remain
+unchanged and reject aggregate nodes. No API/editor silently advertises new support.
+
+Semantic FilterCountVersion pins relationship, child grain/field versions, unit,
+null/empty/returns policy and versioned window field. CountInput binds that exact
+published definition to trusted authorized observation coverage, observation-as-of,
+knowledge-as-of and evidence hash. All enter identity. Count uses the child's unique
+row ID grain; count_distinct supports up to four typed fields. Known nulls are either
+excluded or propagate unknown by explicit definition; unavailable properties always
+remain unknown. Current row ceilings apply before any count or distinct operation.
+
+This first window capability is utc_date/v1: published date fields with explicit
+half-open midnight UTC timestamp boundaries, no host-clock or timezone inference.
+Parent- or child-date windows are supported. Observation/knowledge cutoffs preserve
+exact aware UTC publication instants, including microseconds, without rounding.
+Coverage must include the full requested
+window and the relationship must certify completeness for the authorized child set.
+A complete empty count is zero; incomplete observations or unknown eligible rows
+produce unknown. No retail transport or quarantined history is upgraded to complete.
+
+Scoped operands compare compatible units across separately pinned windows; count
+ratios pin numerator, denominator and zero-denominator unknown policy. Comparisons
+use exact bounded DECIMAL cross-products, never floating division. Every count adds
+correlation/work cost and validated child scope; existing byte/row/node/depth/value,
+fanout, timeout, cancellation and final authorization checks remain. Numeric policy
+bounds cap admitted rows at one billion for this capability; scalar decimal values
+are bounded before SQL. SQL identifiers are generated and values parameterized.
+
+This is an unmounted foundation verified with actual synthetic admitted Parquet and
+DuckDB. Genuine published provider/HTTP/editor/Save integration follows. Registered
+financial metric operands, intraday/relative/calendar windows, sequences/populations
+and remaining C04/C05–C11 remain required; there is no full FILTER-014 claim.
+
+
+## MS-021 published aggregate report authoring
+
+[MS-021](../architecture/planning/milestones/MS-021/plan.md) mounts explicit
+receipt-filter/v3 and /composer/v1/filters/v3 catalog/preview/facets. Existing v1/v2
+readers keep their schemas and refuse aggregate nodes. Current generated consumers
+understand all three; no saved-payload migration occurs.
+
+Semantic's public retail aggregate projection reads its own immutable publication
+created_at and observed receipt-date bounds. It pins exact UTC snapshot cutoffs and
+registered observed-item-row/distinct-product count policies to the genuine published
+Receipt→ReceiptItem edge. These are all-observed-row counts under explicit predicates,
+not certified financial measures. Invalid/missing/future metadata blocks the capability.
+If a publication includes its current UTC day, count coverage stops at that day's
+start while preserving exact as-of. Earlier closed days remain available; a snapshot
+containing only its publication day has no count definitions and a localized
+no-closed-day capability explanation. No empty or future coverage is invented.
+Current retail history stays incomplete; transport/accounting flags cannot certify
+absence or exact counts. Aggregate-only membership therefore remains unknown, while
+Boolean alternatives can independently confirm members through published root fields.
+
+The aggregate access composition first reuses current Identity/Artifact admission,
+then validates the public count projection against those same entity bindings,
+registries, relationships and compatibility reference. Final access revalidation
+includes aggregate definitions, observations and evidence. HTTP root/workspace/actor
+are server-bound; no arbitrary completeness, joins, IDs or storage paths are exposed.
+Catalog delivery reauthenticates even for GET; cookie mutations require current CSRF.
+
+Hierarchy combines v1/v2/v3 using the published legacy bridge and exact matching
+registries. Rebase only request-local node/correlation scope IDs inside count and
+ratio operands; leave policy/field versions and window cutoffs unchanged. Base uses
+a reserved namespace independent of presentation IDs. Aggregate constraints never
+qualify for single-root-field replacement. Existing links/locks/result reuse remain.
+
+The existing editor explicitly adds count conditions, chooses registered count or
+distinct-product definitions, row predicates, fixed half-open UTC-date windows,
+scalar/scoped/right-window comparisons and ratios with independently scoped operands.
+Readable policy, units, snapshot cutoffs and incomplete-history disclosure accompany
+draft/applied/preview states in RU/EN. No client calculation or inferred calendar
+basis is introduced. Current backend validates Preview and Apply; reset/undo and
+cancellation preserve the parent definition until explicit apply.
+
+Apply/Save/reopen use the existing immutable report and receipt-selection evidence;
+unknown counts never become zero metric totals. This mounted increment does not
+complete financial operands, relative/intraday windows, sequences/populations or all
+remaining C04/C05–C11. The stage journal and final evidence own actual acceptance.
+
+
+## MS-022 behavioral sequence execution foundation
+
+[MS-022 plan0.1.1](../architecture/planning/milestones/MS-022/plan.md) adds explicit
+sequence-filter-execution/v1 on the existing relational executor. The repaired
+S01-R1 journal instance preserves the erroneous pre-implementation S01 as blocked
+history; neither the historical plan nor its claim is retroactively accepted.
+
+Semantic event definitions pin relationship, entity, row meaning, native UTC time
+field version and null/observation policy. Trusted grants carry exact observation/
+knowledge cutoffs, coverage and completeness evidence. Native timestamp(us,UTC)
+columns are admitted from the same hash-verified Parquet bytes under existing size,
+row and schema ceilings. They use a separate provider-owned projection; old flat
+registry/value DTOs stay unchanged. No string parsing, timezone guessing, float
+conversion or row-wise Python event evaluation occurs.
+
+Each sequence has up to8 ordered steps on one declared parent→event edge. Positive
+steps require strict increasing event time and inclusive min/max elapsed gaps from
+the preceding positive step; identical times never gain order from IDs. Negative
+steps name that preceding anchor and a half-open offset interval strictly after
+it. A later positive occurs at or beyond the preceding negative interval end.
+All events remain within the overall half-open window. Explicit same-property/
+session bindings compare compatible versioned fields across named positive steps;
+NULL or unavailable properties remain unknown.
+
+Fixed windows preserve exact UTC instants. Relative windows pin publication
+observation-as-of, elapsed microsecond offsets and exact resolved bounds under
+publication_observation_as_of_elapsed_utc/v1. Both kinds validate cutoffs against
+current trusted evidence. This does not claim local-calendar-relative semantics.
+
+SQL uses generated identifiers and bound values, applies authorized child ceilings
+before event candidates, and correlates each path/absence test to its declared
+parent. Known positive witnesses may confirm a sequence with incomplete history.
+Absence requires the full interval, relationship and event coverage; unavailable
+time/properties or incomplete observations cannot certify it. Missing observations
+that could hide a path conservatively yield unknown. Boolean NOT retains unknown.
+Only root membership and coverage are returned, never event payloads.
+
+In addition to existing node/depth/value/correlation, byte/row/memory/deadline,
+fanout/cancellation and final authorization recheck, a pre-join estimate sums
+parent_rows × max(1, child_fanout)^(positive_steps + has_negative_step) × total_steps.
+The additional power accounts for negative probes per positive candidate; both fields
+in a property binding must explicitly allow equality. The estimator version is
+pinned in sequence-grant identity. The current evidence/hash/meaning, event-time
+version, resolved window, anchor policy and effective rights also participate.
+Old schemas reject sequence nodes; identities without sequence grants retain their
+old payload. This foundation changes no HTTP, saved report or browser capability.
+Actual synthetic trusted Parquet/DuckDB proof is distinct from the following genuine
+published event provider and editor work. Full FILTER-015/C04 and C05–C11 remain open.
+
+
+## MS-023 published customer event preview
+
+[MS-023](../architecture/planning/milestones/MS-023/plan.md) adds the genuine published
+Customer→Receipt event provider and separately versioned customer-event-filter/v1,
+customer-event-catalog/v1 and customer-event-preview/v1. Composer HTTP exposes
+`/filters/customer-events/v1/{dataset}/catalog` and `/filters/customer-events/v1/preview`;
+old receipt filter endpoints/payloads keep their roots and schemas. Generated clients
+include the new methods, but no report editor/persistence integration is implied.
+
+Semantic owns the immutable projection: current Customer identity (no PII attributes),
+Receipt and ReceiptItem, exact artifact hashes and namespace, nullable Customer→Receipt
+and nonnullable Receipt→ReceiptItem meanings. Observed receipts use their native recorded
+UTC receipt_datetime; these are published rows, not inferred lifecycle or status-change
+events. Exact publication created_at pins observation/knowledge cutoffs; partial current
+UTC days support native events even when date-based count windows have no closed day.
+Current-only dimensions and unavailable historical event classification remain explicit.
+Neither accounting nor successful intake certifies business history or absence.
+
+The additive nullable relationship DTO admits a receipt with null customer_id as
+unlinked while still requiring its namespace key. Unknown nonnull references and
+partial/missing required keys fail. The old relationship DTO remains strict. Unlinked
+rows have no parent fanout; their bytes/rows still count toward input/work ceilings.
+
+Current Identity and immutable Artifact admission produce a separate trusted root
+restriction: published customers having at least one authorized observed receipt.
+SQL enforces that mandatory semijoin independently of the user expression, with receipt
+store ceilings before root counting and sequence evaluation. It does not enumerate
+customer IDs in Python or expose memberships in HTTP. Customer records with no authorized
+observed receipt are outside this explicitly named universe, not claimed absent from
+the complete customer population. Child item predicates inherit the correlated receipt
+scope. Nullable policy, root restriction, registry/event versions, exact evidence and
+current rights enter identity; final grant changes prevent delivery.
+
+Catalog GET requires current analysis.read and reauthenticates before delivery; preview
+also requires analysis.run and the resource run action. Cookie POST requires CSRF.
+Workspace, actor and root Customer come from the server; typed requests cannot provide
+access grants, history completeness or storage paths. Preview returns counts/coverage
+and the explicit universe policy only. Genuine PostgreSQL/source/publication/Artifact/
+Identity/DuckDB/HTTP proof is separate from forthcoming saved receipt-cohort projection
+and mounted sequence authoring. Full Customer universe/population policies, FILTER-015,
+remaining C04 and C05–C11 stay required.
+
+
+## MS-024 receipt customer-history membership
+
+[MS-024](../architecture/planning/milestones/MS-024/plan.md) introduces explicit
+receipt-filter/v4 and cohort-filter-execution/v1. S01 provides genuine published
+catalog, count-only preview and receipt/item facets at `/filters/v4`; saved report
+ReceiptSelection and mounted sequence authoring are S02 obligations, not S01 claims.
+
+A CustomerEventMembership leaf follows the pinned unique Customer→Receipt parent
+and evaluates the nested sequence in the authorized observed-customer universe.
+Its truth selects all authorized receipts of that customer, including receipts outside
+the history window. Metric period is independent. Valid anonymous nullable references
+remain unknown, also under NOT; nonnull orphans and missing required namespace keys
+fail preflight. HTTP returns receipt counts and explicit universe/history limitations,
+never raw Customer IDs. Customer facets and Receipt customer-reference facets are
+rejected. A trusted facet allowlist derives from the verified old receipt/item
+projection; catalog exposes its field IDs and identity pins the allowlist.
+
+Each leaf has its own uncorrelated AS MATERIALIZED Customer CTE over the same admitted
+immutable tables. Scalar unique-parent lookup preserves receipt grain. Global node,
+scope/step identity, depth, correlation and parameter limits include all nested plans.
+Prelude parameters precede main expression/ceiling and facet values. Cohort admission
+charges both general/materialization work and the sum of sequence fanout estimates;
+no repeated-customer optimization or wider resource allowance is assumed. Actual
+DuckDB EXPLAIN and Parquet/provider tests establish the stated boundary.
+
+The trusted provider verifies old receipt/item public registry fields, artifacts,
+relationships and counts against the enriched customer-event projection. v4 preserves
+receipt_registry_versions and promoted_registry_sets; every offered source map must
+match that exact bridge, while v1 compatibility keeps its explicit legacy registry UUID.
+Bridge/universe/event/source pins and current policy enter identity. Old schemas keep
+their meaning and reject new nodes. Current Identity/store ceilings, Artifact admission,
+CSRF, cancellation and final authorization recheck still apply. After the registry
+bridge read, the provider resolves current Identity again without additional metadata
+IO and compares the policy revision before delivering its grant. No historical event
+classification, certified absence or full Customer population is inferred.
+
+
+### MS-024 saved scopes and mounted sequence authoring
+
+S02 admits v4 in saved ReceiptSelection and report projection. Mixed v1/v2/v3/v4
+scopes preserve locks, exact registry origins and event/window/field bindings; only
+local node/scope/step references are rebased. Absent optional v2/v3 legacy UUIDs do
+not invalidate an exact registry bridge; conflicting supplied pins still fail.
+Membership leaves cannot replace ancestor field constraints. Copy/title changes
+preserve query identity, and old readers reject v4 without semantic downgrade.
+
+The RU/EN editor provides positive/negative event ordering, fixed or publication-
+relative UTC windows with exact microseconds, gap bounds and published property
+bindings. Explicit Apply, Reset and Undo preserve draft boundaries; invalid visible
+durations prevent submitting a stale valid value. Receipt/item facets omit customer
+identifiers. Saved coverage separates confirmed, unknown and nonmatching receipts
+from the independent metric period. No session provider or certified absence is
+invented. A read-only actor may verify saved results with current analysis.read;
+Apply and filter execution still require analysis.run. Genuine disposable API and
+browser checks establish persistence/read/run behavior, not production delivery.
+
+The owner boundary now stops after this stage: see the
+[stop record](../../.codex/delivery/evidence/WS-004/owner-stop-after-current-stage-2026-10-07.md).
+Remaining C04 and C05–C11 are not waived or started by this closure.
+
+
+### Integrated report canvas (W42, 2026-10-10)
+
+The owner-selected [W42 canvas](../../.codex/delivery/tickets/W42-COMPOSER-INTEGRATED-CANVAS.md)
+uses `grid_columns: 24`; omitted values retain legacy 12-column semantics and
+serialization. The editor converts legacy geometry in its draft, without rewriting
+immutable snapshots. New snapshots may contain source-free `text` and `filter`
+blocks alongside analytical chart/table blocks. Content blocks require no result.
+All blocks share identity, ordering, placement, history and scoped locks.
+
+A store control explicitly names analytical targets on the same semantic dataset.
+Its selected stores intersect existing local/inherited restrictions; null adds no
+restriction and an empty list matches no stores. Current authorization validates
+the control dataset and selected stores, and effective queries remain subject to
+Identity ceilings. Targeted result identity includes the control selection.
+
+Compatibility: new readers accept old snapshots. Old readers cannot consume the
+new block variants or 24-column geometry; deploy matching API/client versions
+together. This is a local integration, not production rollout evidence.
+See [verification and limitations](../../.codex/delivery/evidence/W42-COMPOSER-INTEGRATED-CANVAS/report.md).
+
+W42 continuation: `metric` is a source-bound block using analytical totals and the same result/access contracts as charts and tables. `presentation.chart_type` selects line/bar; omission preserves legacy snapshot serialization. Local filter changes automatically calculate missing effective results. Metric and chart-style additions require coordinated API/client rollout; no immutable historical snapshots are rewritten.
+
+Prepared reads (W42 reload correction, 2026-10-11): metadata-only scope preflight
+uses the existing verified Store identity projection for queries without receipt
+filters. Full calculation and receipt-filter provider paths are unchanged. Current
+access, calendar, normalization and saved-result verification remain authoritative;
+no raw-history decode is needed to normalize an unfiltered saved block's scope.
+
+W42 visual inspector (2026-10-11): `presentation` additionally accepts optional
+`description`, `show_title`, and typed `visual` settings. New fields are omitted
+when absent in historical documents, preserving legacy serialization. Formatting
+is excluded from analytical query identity; results are reused when only visual
+settings change. The shared TypeScript chart compiler maps typed settings, never
+stored JavaScript or raw ECharts options. Explicit combo blocks may display several
+registered metrics from one source, retaining current/comparison pairs. Other
+blocks continue to display only their bound metric. Server totals remain the
+source of metric/gauge values; tables retain coverage evidence.
+
+Compatibility is directional: new readers accept old data (`compatible-change`);
+old strict readers reject new fields/types (`breaking-change` for rollback after
+new writes). API and Web must be updated together; no historical snapshot rewrite
+or new database migration is required. The chart catalog declares unsupported data
+shapes explicitly; this continuation does not add hierarchy, graph, geographic,
+distribution, pivot, or event-range providers or prove export-renderer parity.
+
+
+### Empty block titles (2026-10-13)
+
+BlockPresentation.title may be empty, with the existing 200-character maximum.
+This permits title removal without deleting the block or its content. Document
+and page title requirements are unchanged. Deploy updated validators/readers
+before sending empty block titles; old validators reject those values.

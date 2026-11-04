@@ -1,0 +1,38 @@
+[
+  {
+    "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+    "sha256": "7db53a5210f74428920f7e6b0e9a85a8be460269a498f31842ef7dcab80796e5"
+  },
+  {
+    "path": "apps/web/src/features/reports/WorkspaceProjection.tsx",
+    "sha256": "6e5a5e21be24b000b7cf70d2a7b6f407731a4b2eeb378e71ed210ecc267e5f33"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace.css",
+    "sha256": "de2eae2234316c3575001af6ba0c53a88c6f95c78dc8b6996ff609992a720a91"
+  },
+  {
+    "path": "apps/web/src/features/reports/navigation-dock.css",
+    "sha256": "7cd8d0ecbbb76e3a483aac33208bca81fbb2e39ee2f70dc6ae03914157f52261"
+  },
+  {
+    "path": "apps/web/src/features/reports/CardYearChange.tsx",
+    "sha256": "563cbd5b7550a3e231542c9aaffdff2d60a646a5986b1b6ce52136c4887e5adc"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-presentation.ts",
+    "sha256": "7ab6ce57c3aa1027fe35c1629525c0c5f4be4268916f6919bf84fedb0a0f8ff3"
+  },
+  {
+    "path": "apps/web/src/features/reports/workspace-presentation.test.tsx",
+    "sha256": "071fb1aec92b61bff122847a91281b8b41e3f0296678c6055f588b0c954259a7"
+  },
+  {
+    "path": "tests/e2e/report-loading/correction003.config.ts",
+    "sha256": "815ee893ff6158d399dd802cb3b553cbf5a73d9b352cb8fd8cc19886af1c64cb"
+  },
+  {
+    "path": "tests/e2e/report-loading/owner-correction003.spec.ts",
+    "sha256": "dc124db5b64b94e5eb7e200a2850466378320c2d92761e43783f09a084b86ebb"
+  }
+]

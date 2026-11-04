@@ -1,0 +1,95 @@
+{
+  "stage": "MS-004-S05",
+  "baseline": "86055ce732640ebe68fd5415a55f7bbde3499181",
+  "source_files": [
+    {
+      "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+      "sha256": "a129317ae938dc50f1269c94e03efd199b4362f6319e80bcb3f56764ba18e94a"
+    },
+    {
+      "path": "apps/web/src/features/reports/WorkspaceProjection.tsx",
+      "sha256": "cc313f24a3167433dd66a8fb19db5a1ad52d48a62ffd141475b5f16d37864c32"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace.css",
+      "sha256": "b89ee8c5fab8e777c47686c4057990cb10ffee2b064289bff05f3e90f08c1c69"
+    },
+    {
+      "path": "custometry-ui-blueprint-ru.md",
+      "sha256": "fdd786083b3300e7a131b15254edcbc4d18a3ba7c89237b9f25a6eee9fd7d398"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "sha256": "243681b2cdc638e5b06c8a6a7867e94db357c0c52f35c47121f8e1f0471c4865"
+    },
+    {
+      "path": "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md",
+      "sha256": "d936790064ee3bb930650865826f204d516fcdfea51aeece72216373a121d445"
+    },
+    {
+      "path": "docs/contracts/analytical-authoring-contract.md",
+      "sha256": "1d273cd661857458fb16da1eac9c15ed9696a61c60689d84ef75e2fc683a6584"
+    },
+    {
+      "path": "docs/contracts/report-refresh-serving-recovery-contract.md",
+      "sha256": "e127d19bc82677c83e59a68486792f085c54ef300c1b2b7edcc8e5bf200be74c"
+    },
+    {
+      "path": "packages/contracts/openapi/reports.openapi.json",
+      "sha256": "29fb2c37af57e05d234e00bc6c24c0ec6a699cdf5b57729b68c6ca981a01b3ad"
+    },
+    {
+      "path": "packages/contracts/openapi/workspace.openapi.json",
+      "sha256": "f5e1e5c994039edc4cdd3e76e68de248e2f3c1864fd40445823e0bec6b040272"
+    },
+    {
+      "path": "packages/contracts/presentation/workspace.py",
+      "sha256": "cdc29c6578904b8bb7393135a124d2f5721123aab512517fba688b4736488704"
+    },
+    {
+      "path": "packages/contracts/schemas/saved-view-v1.schema.json",
+      "sha256": "9da6929202bdc9fbb39fcb16be866f4723d7767e9bb718ad04a2237f70001d4d"
+    },
+    {
+      "path": "packages/contracts/src/reports-client.ts",
+      "sha256": "e4c38e57f041c06ff5915cecf07c736e11902f194244156904fda1a069dbf972"
+    },
+    {
+      "path": "packages/contracts/src/workspace-client.ts",
+      "sha256": "4d2441ffc9add34cb7884a17811e12a91b1f8bf99b162ae595416d9a59c8f896"
+    },
+    {
+      "path": "packages/contracts/src/workspace-contracts.ts",
+      "sha256": "7b167ab8d753a16b06f6c2673ba037a34b8a51c923be20fcbe246fbfd6acaf6d"
+    },
+    {
+      "path": "packages/presentation/application/workspace.py",
+      "sha256": "53ad4762490f13865e0ac5313027c4ea822441ee1e3d24b245195e62895f8d4b"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/parity.spec.ts",
+      "sha256": "d7150edd2e67a5b9ca39c6b631cb9a58621acdfd7384b02d148a53a6e7a2431a"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/scenario.py",
+      "sha256": "a227ef306d1a9dc3a275eb26877dc359a0acafea829feb5544045d4e01b34011"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/workspace.spec.ts",
+      "sha256": "0cb98f525e11b3c5b42be895dd2d6f219e708eb5874f9f280fa190cc688c57ec"
+    },
+    {
+      "path": "tests/integration/presentation/test_workspace_s03.py",
+      "sha256": "3575cd92b49b038f89c237091bdfe1dd8b47afed272f0a6c384662bab7ac432d"
+    }
+  ],
+  "coordinator_owned_preserved": [
+    ".codex/delivery/evidence/MS-004/MS-004-S04/synchronization.md",
+    "S04 synchronization/S05 advance portion of .codex/delivery/ledgers/MS-004.md"
+  ],
+  "journal_rule": "Only current S05 lifecycle changes through the exclusive updater; no journal self-hash.",
+  "stage_evidence_root": ".codex/delivery/evidence/MS-004/MS-004-S05",
+  "evidence_hashes": "browser-manifest.json binds captures; receipt binds report/validation/matrix/manifest/corpus/reuse/demo/repair evidence.",
+  "unexpected_paths": [],
+  "original_checkout": "/Users/daniildegtyarev/Projects/Custometry remains read-only"
+}

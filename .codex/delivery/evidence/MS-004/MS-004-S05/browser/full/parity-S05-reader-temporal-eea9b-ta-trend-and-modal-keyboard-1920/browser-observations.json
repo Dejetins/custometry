@@ -1,0 +1,147 @@
+{
+  "schema": "ms004-browser-observation/v1",
+  "test": "S05 reader temporal artifact parity, delta trend and modal keyboard",
+  "project": "1920",
+  "network": [
+    {
+      "method": "POST",
+      "path": "/api/identity/login",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/results/eec68f26-ce0f-5927-9f92-712e127ce49e",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/results/eec68f26-ce0f-5927-9f92-712e127ce49e",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb/saved-views/5fd2c30d-86cc-56f7-91b2-1d898cf36d64/versions",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/8c48cb6c-19cb-5fc2-a7e2-9087438323eb/saved-views",
+      "status": 200,
+      "classification": "success"
+    }
+  ],
+  "console": [],
+  "pageErrors": []
+}

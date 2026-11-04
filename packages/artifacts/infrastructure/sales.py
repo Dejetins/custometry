@@ -15,6 +15,7 @@ from psycopg.types.json import Jsonb
 from packages.artifacts.infrastructure.local import LocalArtifactStore
 from packages.artifacts.infrastructure.postgres import PostgresArtifactRepository
 from packages.contracts.analytics import AnalyticsFailure
+from packages.contracts.analytics.columnar_filters import FilterResourcePolicy
 from packages.contracts.data_pipeline import DataPipelineFailure
 
 
@@ -59,6 +60,21 @@ class SalesArtifactStore:
         except OSError as exc:
             raise AnalyticsFailure("ARTIFACT_UNAVAILABLE") from exc
 
+    def admit_filter_input(
+        self, *, workspace_id: UUID, artifact_id: UUID, entity: str, content_hash: str
+    ):
+        from packages.contracts.analytics.columnar_filters import MaterializedFilterBinding
+
+        with self._connect() as connection, connection.cursor() as cursor:
+            manifest = self._manifest(cursor, workspace_id, str(artifact_id))
+            if manifest["entity"] != entity or manifest["content_hash"] != content_hash:
+                raise AnalyticsFailure("ARTIFACT_BINDING_MISMATCH")
+            # Return only owner-admitted metadata. The columnar engine hashes the
+            # exact bounded bytes it decodes; do not materialize Python row objects.
+            return MaterializedFilterBinding(
+                workspace_id=workspace_id, entity=entity, artifact_id=artifact_id,
+                relative_uri=manifest["relative_uri"], content_hash=content_hash)
+
     def read_sales_inputs(
         self, *, workspace_id: UUID, bindings: list[dict[str, Any]], supporting_artifacts: list[str]
     ) -> dict[str, tuple[dict[str, Any], ...]]:
@@ -83,6 +99,43 @@ class SalesArtifactStore:
                 except (ValueError, OSError) as exc:
                     raise AnalyticsFailure("ARTIFACT_FORMAT_INVALID") from exc
         return result
+
+    def read_bounded_sales_inputs(self, *, workspace_id: UUID, bindings: list[dict[str, Any]],
+                                 supporting_artifacts: list[str], policy: FilterResourcePolicy,
+                                 metadata_only: bool) -> dict[str, Any]:
+        from time import monotonic
+        from packages.artifacts.infrastructure.bounded_sales import bounded_tables
+
+        deadline = monotonic() + policy.timeout_ms / 1000
+        with self._connect() as connection, connection.cursor() as cursor:
+            manifests: dict[str, dict[str, Any]] = {}
+            for identifier in [*supporting_artifacts, *(b["artifact_id"] for b in bindings)]:
+                manifests[str(identifier)] = self._manifest(cursor, workspace_id, identifier)
+            if sum(m["byte_size"] for m in manifests.values()) > policy.max_input_bytes:
+                raise AnalyticsFailure("FILTER_INPUT_LIMIT")
+            for binding in bindings:
+                manifest = manifests[str(binding["artifact_id"])]
+                if manifest["entity"] != binding["entity"] or manifest["content_hash"] != binding["content_hash"]:
+                    raise AnalyticsFailure("ARTIFACT_BINDING_MISMATCH")
+            raw_by_id: dict[str, bytes] = {}
+            for identifier, manifest in manifests.items():
+                if monotonic() >= deadline:
+                    raise AnalyticsFailure("FILTER_TIMEOUT")
+                try:
+                    path = self._local.resolve(manifest["relative_uri"])
+                    if path.stat().st_size != manifest["byte_size"]:
+                        raise AnalyticsFailure("ARTIFACT_INTEGRITY_FAILED")
+                    with path.open("rb") as handle:
+                        raw = handle.read(manifest["byte_size"] + 1)
+                    if len(raw) != manifest["byte_size"] or hashlib.sha256(raw).hexdigest() != manifest["content_hash"]:
+                        raise AnalyticsFailure("ARTIFACT_INTEGRITY_FAILED")
+                except DataPipelineFailure as exc:
+                    raise AnalyticsFailure(exc.code) from exc
+                except OSError:
+                    raise AnalyticsFailure("ARTIFACT_UNAVAILABLE") from None
+                raw_by_id[identifier] = raw
+        return bounded_tables({b["entity"]: raw_by_id[str(b["artifact_id"])] for b in bindings},
+                              policy, metadata_only=metadata_only, deadline=deadline)
 
     def commit_sales(self, *, workspace_id: UUID, payload: dict[str, Any]) -> dict[str, Any]:
         raw = json.dumps(

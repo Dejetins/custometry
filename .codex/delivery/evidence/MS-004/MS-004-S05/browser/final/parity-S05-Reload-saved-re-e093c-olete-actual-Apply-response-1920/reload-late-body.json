@@ -1,0 +1,9 @@
+{
+  "actual_apply_body_held": true,
+  "reloaded_saved_context_preserved": true,
+  "state": {
+    "armed": false,
+    "held": false,
+    "timed_out": false
+  }
+}

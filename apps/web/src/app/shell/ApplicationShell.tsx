@@ -161,6 +161,7 @@ export function ApplicationShell({
                   </NavLink>
                 );
               })}
+              <NavLink to={`/w/${workspaceKey}/settings/policies`} className={({isActive})=>isActive?'nav-item active':'nav-item'} title={i18n.resolvedLanguage==='ru'?'Настройки компании':'Company settings'} data-focus-key="nav-company-settings"><Settings aria-hidden="true" size={18}/><span className={sidebarOpen?undefined:'sr-only'}>{i18n.resolvedLanguage==='ru'?'Настройки компании':'Company settings'}</span></NavLink>
               <NavLink to="/admin" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"} title={t("navAdministration")} aria-label={!sidebarOpen ? t("navAdministration") : undefined} data-focus-key="nav-administration">
                 <Settings aria-hidden="true" size={18} /><span className={sidebarOpen ? undefined : "sr-only"}>{t("navAdministration")}</span>
               </NavLink>

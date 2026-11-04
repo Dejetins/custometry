@@ -17,6 +17,8 @@ class Settings(BaseSettings):
 
     version: str = "0.1.0-dev.0"
     environment: str = "development"
+    api_sync_thread_limit: int | None = Field(default=None, ge=1, le=40)
+    api_gc_allocation_threshold: int | None = Field(default=None, ge=700, le=1_000_000)
     database_host: str = "control-db"
     database_port: int = Field(default=5432, ge=1, le=65535)
     database_name: str = "custometry"
@@ -26,6 +28,8 @@ class Settings(BaseSettings):
     bootstrap_token_file: Path | None = None
     cors_allowed_origins: list[str] = ["http://127.0.0.1:5173"]
     identity_cookie_secure: bool = True
+    identity_session_retention_days: int = Field(default=7, ge=7, le=365)
+    identity_security_event_retention_days: int = Field(default=90, ge=1, le=3650)
     identity_access_ttl_seconds: int = Field(default=900, ge=60, le=3600)
     identity_refresh_ttl_seconds: int = Field(default=2_592_000, ge=3600, le=7_776_000)
     identity_rate_limit_requests: int = Field(default=20, ge=1, le=1000)
@@ -39,6 +43,10 @@ class Settings(BaseSettings):
     source_postgresql_password_file: Path = Path("/run/secrets/demo_source_reader_password")
     source_postgresql_connect_timeout_seconds: int = Field(default=3, ge=1, le=10)
     source_postgresql_statement_timeout_ms: int = Field(default=5_000, ge=100, le=60_000)
+    filter_max_rows: int = Field(default=1_000_000, ge=1, le=10_000_000)
+    filter_max_input_bytes: int = Field(default=67_108_864, ge=1024, le=1_073_741_824)
+    filter_memory_mb: int = Field(default=128, ge=16, le=1024)
+    filter_timeout_ms: int = Field(default=10_000, ge=100, le=60_000)
     analytics_artifact_root: Path = Path("/var/lib/custometry/artifacts")
     valkey_host: str = "valkey"
     valkey_port: int = Field(default=6379, ge=1, le=65535)

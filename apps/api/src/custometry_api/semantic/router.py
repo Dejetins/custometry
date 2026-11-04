@@ -21,6 +21,7 @@ from packages.identity_access.application.service import IdentityFailure
 from packages.identity_access.domain.policy import Actor
 from packages.semantic_model.application.calendar import WorkspaceCalendarService
 from packages.semantic_model.infrastructure.calendar import PostgresCalendarRepository
+from packages.semantic_model.infrastructure.timezone_rules import PackagedCalendarRules
 
 
 def build_calendar_service(settings: Settings) -> WorkspaceCalendarService:
@@ -34,7 +35,7 @@ def build_calendar_service(settings: Settings) -> WorkspaceCalendarService:
             connect_timeout=settings.database_connect_timeout_seconds,
         )
 
-    return WorkspaceCalendarService(PostgresCalendarRepository(connect))
+    return WorkspaceCalendarService(PostgresCalendarRepository(connect), PackagedCalendarRules())
 
 
 def create_semantic_app(settings: Settings) -> FastAPI:
@@ -64,6 +65,7 @@ def create_semantic_app(settings: Settings) -> FastAPI:
                 "FORBIDDEN": 403,
                 "CSRF_FAILED": 403,
                 "NOT_FOUND": 404,
+                "CALENDAR_ALREADY_CONFIGURED": 409,
             }.get(code, 400)
         )
         return JSONResponse(status_code=status, content={"code": code})

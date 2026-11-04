@@ -1,0 +1,194 @@
+{
+  "schema": "ms004-browser-observation/v1",
+  "test": "reader private view, EN, administrative separation and session revocation",
+  "project": "768",
+  "network": [
+    {
+      "method": "POST",
+      "path": "/api/identity/login",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/results/97b79091-8154-56b4-ab70-b5baedb04003",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/results/97b79091-8154-56b4-ab70-b5baedb04003",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e/saved-views/7238ba54-c3da-5c97-b5cb-1a1a9cd7bf19/versions",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/semantic/workspace-calendar/v1",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/0d41eb0f-dc69-5f8c-a9ef-bf0acc74050e/saved-views",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/e558170d-fd2e-5e68-903e-af4076975dde/results/97b79091-8154-56b4-ab70-b5baedb04003",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/identity/logout",
+      "status": 204,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 401,
+      "classification": "expected-denial-or-conflict"
+    }
+  ],
+  "console": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    }
+  ],
+  "pageErrors": []
+}

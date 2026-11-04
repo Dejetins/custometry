@@ -223,7 +223,14 @@
           "$ref": "#/$defs/Reference"
         },
         "base_snapshot_ref": {
-          "$ref": "#/$defs/BaseSnapshotRef"
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BaseSnapshotRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -260,7 +267,7 @@
           "type": "string"
         },
         "base_revision": {
-          "minimum": 1,
+          "minimum": 0,
           "title": "Base Revision",
           "type": "integer"
         },

@@ -1,0 +1,117 @@
+[
+  {
+    "command": "source scripts/activate-toolchain.sh && uv run --locked python -m tools.check --scope local",
+    "status": "passed",
+    "observation": "local source/static profile; not ci or release"
+  },
+  {
+    "command": "node apps/web/scripts/generate-pilot.mjs --check",
+    "status": "passed",
+    "observation": "generated runtime and source map current"
+  },
+  {
+    "command": "git diff --check",
+    "status": "passed",
+    "observation": "whitespace check"
+  },
+  {
+    "command": "pnpm --filter @custometry/web build",
+    "status": "passed",
+    "observation": "production assets and TypeScript; reused final current-build result"
+  },
+  {
+    "command": "pnpm --filter @custometry/web test",
+    "status": "passed",
+    "observation": "87 tests; reused final current-source result"
+  },
+  {
+    "command": "uv run --locked pytest tests/unit/presentation/test_report_encoding.py tests/unit/presentation/test_request_reads.py tests/unit/presentation/test_serving_policy.py tests/unit/identity_access",
+    "status": "passed",
+    "observation": "27 passed in 0.49s"
+  },
+  {
+    "command": "uv run --locked python scripts/w39-integration.py tests/integration/identity_access/test_w39_lifecycle.py",
+    "status": "passed",
+    "observation": "9 passed in 9.48s; isolated real PostgreSQL"
+  },
+  {
+    "command": "uv run --locked python scripts/w39-integration.py tests/integration/presentation/test_workspace_s03.py",
+    "status": "passed",
+    "observation": "1 passed in 17.84s; isolated real PostgreSQL"
+  },
+  {
+    "command": "pnpm exec playwright test --config tests/e2e/report-loading/regression.config.ts",
+    "status": "passed",
+    "observation": "16 passed in 1.3m; 1920 and 768 widths"
+  },
+  {
+    "command": "pnpm exec playwright test --config tests/e2e/report-loading/lifecycle.config.ts",
+    "status": "failed",
+    "observation": "Incorrect missing W39_URL/W39_USE_SCENARIO: old default stand; 1 passed, 2 skipped, login fixture 422. No product fix was made."
+  },
+  {
+    "command": "W39_USE_SCENARIO=1 W39_URL=http://127.0.0.1:41741 pnpm exec playwright test --config tests/e2e/report-loading/lifecycle.config.ts",
+    "status": "passed",
+    "observation": "4 passed in 23.1s against the owned disposable stand"
+  },
+  {
+    "command": "uv run --locked ruff check apps/api/src/custometry_api packages/identity_access packages/presentation tests/unit/identity_access tests/unit/presentation tests/integration/identity_access/test_w39_lifecycle.py migrations/versions/0013_identity_lifecycle.py",
+    "status": "passed",
+    "observation": "All checks passed"
+  },
+  {
+    "command": "uv run --locked pyright apps/api/src/custometry_api/database.py apps/api/src/custometry_api/identity/events.py apps/api/src/custometry_api/reports/encoding.py apps/api/src/custometry_api/reports/prepared.py apps/api/src/custometry_api/runtime_policy.py packages/identity_access/infrastructure/maintenance.py packages/identity_access/infrastructure/request_projection.py",
+    "status": "passed",
+    "observation": "0 errors, warnings, informations"
+  },
+  {
+    "command": "uv run --locked python tests/performance/report-loading/fixture_equality.py",
+    "status": "passed",
+    "observation": "50 documents equal by public repository reads"
+  },
+  {
+    "command": "python3 tests/performance/report-loading/ownership_manifest.py",
+    "status": "passed",
+    "observation": "169 frozen inputs unchanged; W39 delta distinguished from inherited files"
+  },
+  {
+    "command": "W39_USE_SCENARIO=1 W39_URL=http://127.0.0.1:41741 W39_NAV_CYCLES=150 pnpm exec playwright test --config tests/e2e/report-loading/lifecycle.config.ts --grep \"navigation and reconnect\"",
+    "status": "passed",
+    "observation": "1 passed in 39.7s; slow heap growth warranted longer observation"
+  },
+  {
+    "command": "W39_USE_SCENARIO=1 W39_URL=http://127.0.0.1:41741 W39_NAV_CYCLES=1000 pnpm exec playwright test --config tests/e2e/report-loading/lifecycle.config.ts --grep \"navigation and reconnect\"",
+    "status": "passed",
+    "observation": "1 passed in 3.7m; 201 reconnects, stable DOM/listener count and late heap plateau"
+  },
+  {
+    "command": "uv run --locked ruff check tests/performance/report-loading tests/e2e/report-loading",
+    "status": "failed_then_passed",
+    "observation": "16 import/layout findings; imports/formatting fixed; no measured product behavior changed"
+  },
+  {
+    "command": "uv run --locked pyright apps/api/src tests/integration/identity_access tests/integration/presentation",
+    "status": "failed_then_passed",
+    "observation": "114 initial strict-typing findings in new lifecycle tests and decorator-use diagnostic; typed helpers/fixtures and explicit session ID assertion added. Exact comment-only FastAPI diagnostic suppression has bytecode equality proof. Final: zero errors/warnings/informations."
+  },
+  {
+    "command": "uv run --locked python scripts/w39-integration.py tests/integration/identity_access/test_w39_lifecycle.py",
+    "status": "passed",
+    "observation": "9 passed in 8.86s after annotations/helper changes"
+  },
+  {
+    "command": "node tests/performance/report-loading/idle-final.mjs",
+    "status": "passed",
+    "observation": "1800268 ms, 50 graphs at every sampled point, 100 rotations, zero activity updates, zero page errors, zero artifact growth"
+  },
+  {
+    "command": "python tests/performance/report-loading/summarize_final_idle.py",
+    "status": "passed",
+    "observation": "Completed interval and exact source or documented comment-only equivalence verified"
+  },
+  {
+    "command": "node tests/performance/report-loading/final-demo.mjs",
+    "status": "passed",
+    "observation": "UI login on localhost:41746 and real saved graph; zero compute requests and page errors"
+  }
+]

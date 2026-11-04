@@ -1,0 +1,129 @@
+{
+  "viewport": {
+    "width": 400,
+    "height": 900
+  },
+  "before": {
+    "header": {
+      "x": 63,
+      "y": 6,
+      "height": 56,
+      "width": 331,
+      "bottom": 62
+    },
+    "tabs": {
+      "x": 75,
+      "y": 70,
+      "height": 31,
+      "width": 307,
+      "bottom": 101
+    },
+    "nav": {
+      "x": 63,
+      "y": 62,
+      "height": 87,
+      "width": 331,
+      "bottom": 149
+    },
+    "title": {
+      "x": 75,
+      "y": 32.21875,
+      "height": 20.390625,
+      "width": 179.578125,
+      "bottom": 52.609375
+    },
+    "main": {
+      "x": 75,
+      "y": 163,
+      "height": 100,
+      "width": 307,
+      "bottom": 263
+    },
+    "cards": {
+      "x": 75,
+      "y": 515.796875,
+      "height": 124,
+      "width": 307,
+      "bottom": 639.796875
+    },
+    "plot": {
+      "x": 75,
+      "y": 771.796875,
+      "height": 396,
+      "width": 307,
+      "bottom": 1167.796875
+    },
+    "scroll": 0,
+    "cardHeight": 124,
+    "gap": "10px",
+    "radius": "10px",
+    "navPadding": [
+      "8px",
+      "12px",
+      "8px",
+      "12px"
+    ]
+  },
+  "after": {
+    "header": {
+      "x": 63,
+      "y": 6,
+      "height": 56,
+      "width": 331,
+      "bottom": 62
+    },
+    "tabs": {
+      "x": 75,
+      "y": 70,
+      "height": 31,
+      "width": 307,
+      "bottom": 101
+    },
+    "nav": {
+      "x": 63,
+      "y": 62,
+      "height": 87,
+      "width": 331,
+      "bottom": 149
+    },
+    "title": {
+      "x": 75,
+      "y": 32.21875,
+      "height": 20.390625,
+      "width": 179.578125,
+      "bottom": 52.609375
+    },
+    "main": {
+      "x": 75,
+      "y": 163,
+      "height": 100,
+      "width": 307,
+      "bottom": 263
+    },
+    "cards": {
+      "x": 75,
+      "y": 515.796875,
+      "height": 124,
+      "width": 307,
+      "bottom": 639.796875
+    },
+    "plot": {
+      "x": 75,
+      "y": 771.796875,
+      "height": 396,
+      "width": 307,
+      "bottom": 1167.796875
+    },
+    "scroll": 0,
+    "cardHeight": 124,
+    "gap": "10px",
+    "radius": "10px",
+    "navPadding": [
+      "8px",
+      "12px",
+      "8px",
+      "12px"
+    ]
+  },
+  "errors": []
+}

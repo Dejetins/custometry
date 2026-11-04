@@ -29,3 +29,5 @@ export * as reportSales from "./sales-report-client";
 export * as metricWorkspace from "./workspace-contracts";
 export * as workspaceCalendar from "./workspace-calendar-client";
 export * as configuredReports from "./workspace-client";
+
+export * as composerReports from "./composer-client";

@@ -1,0 +1,11 @@
+{
+  "container": "custometry-w39-candidate-c67c",
+  "cpuLimit": 4,
+  "memoryGiB": 2,
+  "scope": "Concurrent diagnostic Docker stats stream; samples lack aligned timestamps, not a per-request attribution",
+  "samples": {
+    "redacted": "runtime samples",
+    "count": 80,
+    "sha256_canonical_json": "ef9c2a636198f483a680f8f208ea4637678dd18edfe611215f6a349ba1289c53"
+  }
+}

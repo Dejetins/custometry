@@ -1,0 +1,230 @@
+{
+  "captured_at": "2026-09-23T14:34:59.541683+00:00",
+  "source": [
+    {
+      "path": "apps/web/src/features/reports/ConfiguredWorkspace.tsx",
+      "sha256": "4d69e2056761083aa3e8c8c37ae60880253f8e60bada50d604e281cb95a4e6a1"
+    },
+    {
+      "path": "apps/web/src/features/reports/PilotDocument.tsx",
+      "sha256": "a963d8debf5982eb7bf754cb108b5f0890b580b7beae820410074edab6586dc0"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace.css",
+      "sha256": "7bf75314a29b64f77dc7cb9d8162c845aa57c3a205addcb2ef88a87c4587f0a1"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace-api.ts",
+      "sha256": "5499c76eacd669a60fdb74a573e9c91add90f7802d3f78d5803e06b685691342"
+    },
+    {
+      "path": "apps/web/src/features/reports/workspace-api.test.ts",
+      "sha256": "a88ae652499dd559bb8679bb4139a499eb8aafbfdf9b448ed7f204a6ba943d68"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/seams.json",
+      "sha256": "e9de4c8a6654f267d10decf476717a1dbf3f4a4094dabbe34071fbb5d4b979e8"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/port-epilogue.js",
+      "sha256": "c1e9380d97727979083e20bc6e71c910cd2b084bd2bf267d341eb6e68b8e8ddb"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/runtime.ts",
+      "sha256": "8b90e99a183b40cd0cdb8078aaf51204e73b56a1189324ef8e1963016f23884a"
+    },
+    {
+      "path": "apps/web/src/features/reports/pilot/source-map.json",
+      "sha256": "91d351b9ea537a42eaec9648f83d66fe0f806b39c90b487e7ac3fb523327e34c"
+    },
+    {
+      "path": "apps/web/src/features/reports/navigation-dock.css",
+      "sha256": "11b6c6c386ce5745415261dae822a853e955c7d3308c0c7c93e555e08e31c83c"
+    },
+    {
+      "path": "tests/e2e/report-loading/correction002.config.ts",
+      "sha256": "b147d47f82c37b1f95e722dad4fafceeebf728754bad3b5ec965d230a65b2f42"
+    },
+    {
+      "path": "tests/e2e/report-loading/owner-correction002.spec.ts",
+      "sha256": "9f92ed192efcb81b6b52d024e8ac4369fa580dfdb21df7bf2f792449099cc626"
+    },
+    {
+      "path": "tests/e2e/ms-004-workspace/workspace.spec.ts",
+      "sha256": "9906b7ebc44861a4adb6bce4039fd03a625d3af79f466038a37098663798a604"
+    }
+  ],
+  "production_build": [
+    {
+      "path": "apps/web/dist/assets/ReportWorkspace-SBTVC-h1.js",
+      "sha256": "f4cbef69ef5ce46d2c354540809071b95ab25f1eb5cf0205a2c068cc7d6a02ec",
+      "bytes": 1009634
+    },
+    {
+      "path": "apps/web/dist/assets/ReportWorkspace-hVfEJ00i.css",
+      "sha256": "ebd07003321a34ecf0b8688d497edc02661018cd5e454ecc406cefb97478d6ed",
+      "bytes": 93722
+    },
+    {
+      "path": "apps/web/dist/assets/UI-AN-003-D0lrLbgJ.css",
+      "sha256": "6e4e62b923c1b9c84d42c2f859ee5e7eb73ae1b020640c502d1b88251e255204",
+      "bytes": 10057
+    },
+    {
+      "path": "apps/web/dist/assets/UI-AN-003.feature-route-BC5MkPwP.js",
+      "sha256": "254f26f471e6bd2aa87b9bf8d9dfeb2ebbfd0f23de74effdbcdffa5da43c620a",
+      "bytes": 24246
+    },
+    {
+      "path": "apps/web/dist/assets/UI-AUTH-001.feature-route-BkQHT95r.js",
+      "sha256": "d5050c2ce76dc471ffa1d9ff92721e8cfb3ef8c8e0507ead5533feca38846cb1",
+      "bytes": 135
+    },
+    {
+      "path": "apps/web/dist/assets/UI-DATA-001.feature-route-BAFJLC0M.js",
+      "sha256": "2d1c7daee848f3af564bb82e7af8f423d2227cebc551111b04102f01f3c17553",
+      "bytes": 224
+    },
+    {
+      "path": "apps/web/dist/assets/UI-DATA-002.feature-route-ctsrX_xH.js",
+      "sha256": "a16544e94722b224853ee16ea1af815256772b1037877d5a6af257eb90da5c26",
+      "bytes": 224
+    },
+    {
+      "path": "apps/web/dist/assets/UI-NOTIFY-001-CSgNnenf.css",
+      "sha256": "02772b255efe2896eabd5e3d25e8e5b71afa5af34336455cd48a580dd885b13e",
+      "bytes": 7665
+    },
+    {
+      "path": "apps/web/dist/assets/UI-NOTIFY-001.feature-route-MzWRwAB8.js",
+      "sha256": "12c0a5ea6a8200615ac2b99f384f8f0b6dd8398efe2d0b41599e688c731da580",
+      "bytes": 20835
+    },
+    {
+      "path": "apps/web/dist/assets/UI-OPS-001-BwfXSV72.css",
+      "sha256": "cf4052e57d22e67013323d73b86c776cd58b8d640d1b6669aa55b4c450681640",
+      "bytes": 9764
+    },
+    {
+      "path": "apps/web/dist/assets/UI-OPS-001.feature-route-CT-TSV_6.js",
+      "sha256": "e4cfd891613634aed1c3f05c013dd2c03d5695bf3ee5c979470804bc198f5699",
+      "bytes": 26891
+    },
+    {
+      "path": "apps/web/dist/assets/UI-RPT-001.feature-route-C8eMDY7F.js",
+      "sha256": "859a440dde340b8fa01e7e466ebd150b0b65ba30622961dfefba2b47ded862ba",
+      "bytes": 134
+    },
+    {
+      "path": "apps/web/dist/assets/UI-RPT-002.feature-route-refuVAOo.js",
+      "sha256": "d9687f6cd692fd69fed3efcef5c6c43728d1222d7423d4fa8fedaf6b901af9c2",
+      "bytes": 134
+    },
+    {
+      "path": "apps/web/dist/assets/UI-RPT-003.feature-route-D5Yy4UZr.js",
+      "sha256": "168955b1b2db8925fc5849d771faa059758bca7ce62636874777558b2e757f76",
+      "bytes": 134
+    },
+    {
+      "path": "apps/web/dist/assets/clock-3-BYbXZSsS.js",
+      "sha256": "64d02b134f7f32d903a1972a1e3273c7822e324f125d85a8f835820646949751",
+      "bytes": 355
+    },
+    {
+      "path": "apps/web/dist/assets/connections-CPB9PFmf.css",
+      "sha256": "d4bf14540be53675c52ab3ea8bcee0d9fca84d149fd2647ba096ec1491c29c74",
+      "bytes": 8706
+    },
+    {
+      "path": "apps/web/dist/assets/connections-JfPoPI5R.js",
+      "sha256": "97eecd4b2b11e53e47aad938de1a9760cf22c72a1cfa9a6e741d275f9fb32e8d",
+      "bytes": 27390
+    },
+    {
+      "path": "apps/web/dist/assets/inbox-BbuYUL6S.js",
+      "sha256": "160c9a428776882c467ebdf7fb207b8fd24f35b5496c056f6e87acfee13291e2",
+      "bytes": 459
+    },
+    {
+      "path": "apps/web/dist/assets/index-BXnJC0O6.css",
+      "sha256": "94cbc7251761c57251ece844e14cfa174b9e3defc1713d478d7ea7762e5dc536",
+      "bytes": 34950
+    },
+    {
+      "path": "apps/web/dist/assets/index-CB8HDEBU.js",
+      "sha256": "97582f47a6294dee2bee45c5c517f6734cc386116469a751ff2548a4fd227547",
+      "bytes": 605376
+    },
+    {
+      "path": "apps/web/dist/assets/shield-alert-D1Xg2mrZ.js",
+      "sha256": "90432208ae67798a2a2530b4b10c81490e0daeca4ff4f43f355a767178b66100",
+      "bytes": 526
+    },
+    {
+      "path": "apps/web/dist/help-index.json",
+      "sha256": "d711f677923e970e230264c8ef12c4504f193a2bd142b0f71fbb0150c7bba24f",
+      "bytes": 1865
+    },
+    {
+      "path": "apps/web/dist/index.html",
+      "sha256": "3fa0d33155762de42d67f9fce4e2c07888765902b258b075341fbe5918963046",
+      "bytes": 532
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/bookmark.svg",
+      "sha256": "77fca79f83c43089181368fa50ce2a043e9381ffa0af017ccbef9ccee070caf7",
+      "bytes": 511
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/context-actions.svg",
+      "sha256": "d44bf91a87a269939d9fedc148bd7a27d720527e03a2b699cd29732bdab2018e",
+      "bytes": 793
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/download.svg",
+      "sha256": "39095eaadc38ec1c4cdf25df7741f5ae4b1908aa2ebce39fc15eeaa2a3a07f1c",
+      "bytes": 587
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/expand.svg",
+      "sha256": "2088f71233cf0485ba28738a2245cf2530d3a384b72ddbfc8a9618d1b6b905bd",
+      "bytes": 388
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/filter.svg",
+      "sha256": "9438f9699a8babe4ae2257e9c76c4c7209043f34d0b7f0642846859beb65651f",
+      "bytes": 360
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/link.svg",
+      "sha256": "f3c9f0ab0215e19a4f7748e781747e20942e8ee2efe32a74c2334cece5ef48e3",
+      "bytes": 694
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/mail.svg",
+      "sha256": "75890716facc902891187dc307af7e8b1206f469e6012d2152edacf443b6f680",
+      "bytes": 545
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/revenue-ly.svg",
+      "sha256": "d9e8f9d2a412d72368a652cf8c596be58b1cdb7a7ee1e0c8919556bd537ab856",
+      "bytes": 391
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/revenue.svg",
+      "sha256": "75d23bd4d371599f6c3105c28a068f428e99feaed99ce2869ccb41bd065dee4b",
+      "bytes": 348
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/trust-status.svg",
+      "sha256": "766f43e926341669f3cc0ee331ec55bee6f43b4acb9725e82b2ff488fcabe223",
+      "bytes": 226
+    },
+    {
+      "path": "apps/web/dist/ui-an-003-prototype/unread-indicator.svg",
+      "sha256": "e140c6fbb946d4d820bfb67363d7bfe4410eb81eaa2ddd440933f8d637881a0b",
+      "bytes": 242
+    }
+  ],
+  "build_manifest_sha256": "593196527ab810f6ca5d28b96b9a01d38ff65eee830ca33545a24bbe14efecff"
+}

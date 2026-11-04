@@ -11,6 +11,7 @@ from packages.contracts.analytics.workspace import (
     WorkspaceResultV2,
     QueryContext,
     CardResultBinding,
+    CardComparisonV1,
     ResultRef,
     NumberFormat,
 )
@@ -23,6 +24,7 @@ from packages.contracts.presentation import (
 )
 from packages.contracts.presentation.workspace import (
     ConfiguredReportV2,
+    NewWorkspaceRequest,
     CreatorApplyRequest,
     WorkspaceApplyRequest,
     WorkspaceApplyResponse,
@@ -99,21 +101,21 @@ class WorkspaceReportService:
             raise PresentationFailure("FORBIDDEN")
         return metadata, digest([d.policy_hash for d in decisions])
 
-    def _scope(self, workspace: UUID, actor: UUID, report: UUID, stores: set[str]) -> None:
+    def _scope(self, workspace: UUID, actor: UUID, report: UUID, stores: set[str], *, creator: UUID | None = None) -> None:
         decision = self.access.resolve_resource(
             workspace_id=workspace,
             principal_id=actor,
             resource_type="report",
             resource_id=report,
             action="view_snapshot",
-            legacy_creator=self.repository.metadata(workspace, report)["creator"],
+            legacy_creator=creator if creator is not None else self.repository.metadata(workspace, report)["creator"],
         )
         if not decision.allowed or (
             decision.store_ids is not None and not stores <= set(decision.store_ids)
         ):
             raise PresentationFailure("FORBIDDEN")
 
-    def _legacy(self, workspace: UUID, actor: UUID, saved: dict[str, Any]) -> dict[str, Any]:
+    def _legacy(self, workspace: UUID, actor: UUID, saved: dict[str, Any]) -> DraftResponse:
         parsed = DraftResponse.model_validate(saved)
         access = self.results.legacy(workspace, actor, parsed.author_principal_id, saved["result"])
         store = saved["result"]["parameters"]["store_id"]
@@ -142,13 +144,19 @@ class WorkspaceReportService:
             reference=saved["snapshot"]["page_snapshot_refs"][0]["manifest"],
             payload=saved["page_snapshot"],
         )
-        return saved
+        return parsed
 
     def _definition(
-        self, workspace: UUID, actor: UUID, saved: dict[str, Any]
+        self, workspace: UUID, actor: UUID, saved: dict[str, Any],
+        parsed_definition: ConfiguredReportV2 | None = None,
     ) -> ConfiguredReportV2:
+        if saved["contract_version"] not in {"draft-report/v1", "configured-report/v2"}:
+            raise PresentationFailure("REPORT_VERSION_UPGRADE_REQUIRED")
         if saved["contract_version"] == "configured-report/v2":
-            definition = ConfiguredReportV2.model_validate(saved["composition"]["definition"])
+            definition = parsed_definition or ConfiguredReportV2.model_validate(saved["composition"]["definition"])
+            if definition.base_snapshot_ref is None:
+                self.results.resolve(workspace, actor, definition.semantic_dataset_version_id)
+                return definition
             base = self.repository.read(
                 workspace, definition.report_id, definition.base_snapshot_ref.snapshot_id
             )
@@ -181,29 +189,43 @@ class WorkspaceReportService:
         snapshot: UUID | None = None,
         version: UUID | None = None,
     ) -> dict[str, Any]:
+        return self._read_visible(workspace, actor, report, snapshot, version)[0]
+
+    def _read_visible(
+        self,
+        workspace: UUID,
+        actor: UUID,
+        report: UUID,
+        snapshot: UUID | None = None,
+        version: UUID | None = None,
+    ) -> tuple[dict[str, Any], VersionedReport]:
         meta, _ = self.guard(workspace, actor, report)
         saved = self.repository.read(workspace, report, snapshot, version)
         if saved["contract_version"] == "configured-report/v2" and meta["creator"] != actor:
             if snapshot is not None or version is not None:
                 raise PresentationFailure("NOT_FOUND")
             base = saved["composition"]["definition"]["base_snapshot_ref"]
+            if base is None:
+                raise PresentationFailure("NOT_FOUND")
             saved = self.repository.read(workspace, report, UUID(base["snapshot_id"]))
             if (
                 saved["version_id"] != base["version_id"]
                 or artifact(saved["manifest"]) != base["manifest"]
             ):
                 raise PresentationFailure("ARTIFACT_CORRUPT")
-        self._verify(workspace, actor, saved)
-        return saved
+        return saved, self._verify(workspace, actor, saved)
 
-    def _verify(self, workspace: UUID, actor: UUID, saved: dict[str, Any]) -> None:
+    def _verify(self, workspace: UUID, actor: UUID, saved: dict[str, Any]) -> VersionedReport:
         report = UUID(saved["report_id"])
         self.guard(workspace, actor, report)
+        value: DraftResponse | WorkspaceReportResponse
+        if saved["contract_version"] not in {"draft-report/v1", "configured-report/v2"}:
+            raise PresentationFailure("REPORT_VERSION_UPGRADE_REQUIRED")
         if saved["contract_version"] == "draft-report/v1":
-            self._legacy(workspace, actor, saved)
+            value = self._legacy(workspace, actor, saved)
         else:
             value = WorkspaceReportResponse.model_validate(saved)
-            definition = self._definition(workspace, actor, saved)
+            definition = self._definition(workspace, actor, saved, value.composition.definition)
             if definition.creator_principal_id != actor:
                 raise PresentationFailure("NOT_FOUND")
             self._materialize(
@@ -241,12 +263,13 @@ class WorkspaceReportService:
                 or companion.result_scope != value.composition.bindings_by_card
             ):
                 raise PresentationFailure("ARTIFACT_CORRUPT")
-            base = self.repository.read(workspace, report, definition.base_snapshot_ref.snapshot_id)
-            if base["version_id"] != str(definition.base_snapshot_ref.version_id) or artifact(
-                base["manifest"]
-            ) != definition.base_snapshot_ref.manifest.model_dump(mode="json"):
-                raise PresentationFailure("ARTIFACT_CORRUPT")
-            self._legacy(workspace, actor, base)
+            if definition.base_snapshot_ref is not None:
+                base = self.repository.read(workspace, report, definition.base_snapshot_ref.snapshot_id)
+                if base["version_id"] != str(definition.base_snapshot_ref.version_id) or artifact(
+                    base["manifest"]
+                ) != definition.base_snapshot_ref.manifest.model_dump(mode="json"):
+                    raise PresentationFailure("ARTIFACT_CORRUPT")
+                self._legacy(workspace, actor, base)
             self.artifacts.verify(
                 workspace_id=workspace,
                 reference=saved["manifest"],
@@ -260,12 +283,14 @@ class WorkspaceReportService:
                 payload=page_payload(saved["composition"]),
             )
         self.guard(workspace, actor, report)
+        return VersionedReport(root=value)
 
     def get(
         self, workspace: UUID, actor: UUID, report: UUID, snapshot: UUID | None = None
     ) -> WorkspaceEditorResponse:
-        saved = self.visible(workspace, actor, report, snapshot)
-        definition = self._definition(workspace, actor, saved)
+        saved, verified = self._read_visible(workspace, actor, report, snapshot)
+        definition = (verified.root.composition.definition if isinstance(verified.root, WorkspaceReportResponse)
+                      else self._definition(workspace, actor, saved))
         creator = self.repository.metadata(workspace, report)["creator"] == actor
         caps = self.capabilities(workspace, actor, report)
         try:
@@ -277,7 +302,7 @@ class WorkspaceReportService:
                 raise
             revision = 0
         return WorkspaceEditorResponse(
-            report=VersionedReport.model_validate(saved),
+            report=verified,
             definition=definition if creator else None,
             base_definition=None if creator else definition,
             capabilities=caps,
@@ -298,6 +323,79 @@ class WorkspaceReportService:
             saved_view_save=permitted(),
             exact_preview=permitted(),
         )
+
+    def _new_access(self, workspace: UUID, actor: UUID, report: UUID, *, run: bool = False) -> None:
+        required = {"report.read", "report.manage", "analysis.read"}
+        if run:
+            required.add("analysis.run")
+        for action in ["view_snapshot", "edit"] + (["run"] if run else []):
+            access = self.access.resolve_resource(
+                workspace_id=workspace, principal_id=actor, resource_type="report",
+                resource_id=report, action=action, legacy_creator=actor,
+            )
+            if not access.allowed or not required <= access.permissions:
+                raise PresentationFailure("FORBIDDEN")
+
+    def new_definition(
+        self, workspace: UUID, actor: UUID, request: NewWorkspaceRequest, brand: dict[str, Any]
+    ) -> ConfiguredReportV2:
+        self._new_access(workspace, actor, request.report_id)
+        access = self.results.resolve(workspace, actor, request.semantic_dataset_version_id)
+        context = self.results.context(workspace, actor, request.semantic_dataset_version_id)
+        calendar = self.calendars.get_default(workspace, access).calendar
+        brand_value = self.repository.put_reference(workspace, actor, versioned("brand_profile", brand))
+        company = self.repository.put_reference(workspace, actor, versioned("company_pack", {
+            "schema_version": "system-company-pack/v1", "name": "Custometry system",
+            "brand_profile": brand_value["reference"], "metric_versions": context["metrics"],
+            "methodology_packs": [], "localization_catalogs": ["en", "ru"],
+        }))
+        workset = uuid4()
+        cards = [dict(card_id=uuid4(), metric_ref={k: m[k] for k in ("metric_id", "version_id", "content_hash")},
+                      local_store_ids=None) for m in context["metrics"]] if request.template == "sales" else []
+        definition = ConfiguredReportV2.model_validate(dict(
+            schema_version="configured-report/v2", report_id=request.report_id,
+            creator_principal_id=actor, semantic_dataset_version_id=request.semantic_dataset_version_id,
+            title=("Продажи по чекам" if request.locale == "ru" else "Receipt sales") if request.template == "sales"
+                  else ("Новый отчёт" if request.locale == "ru" else "New report"),
+            common_context=request.common_context, grain="day", calendar_basis="calendar",
+            calendar_ref=dict(version_id=calendar.version_id, content_hash=calendar.content_hash),
+            worksets=[dict(workset_id=workset, name=dict(ru="Показатели", en="Metrics"),
+                          owner_principal_id=actor, visibility="personal", cards=cards)],
+            default_workset_id=workset,
+            selection=dict(mode="single", card_id=cards[0]["card_id"], temporal="none", display="series") if cards else None,
+            brand_profile=brand_value["reference"], company_pack=company["reference"], base_snapshot_ref=None,
+        ))
+        self._new_candidate(workspace, actor, definition)
+        return definition
+
+    def _new_candidate(
+        self, workspace: UUID, actor: UUID, definition: ConfiguredReportV2, *, allow_existing: bool = False,
+        run: bool = False,
+    ) -> None:
+        if definition.creator_principal_id != actor or definition.base_snapshot_ref is not None:
+            raise PresentationFailure("INVALID_DEFINITION_BINDING")
+        try:
+            metadata = self.repository.metadata(workspace, definition.report_id)
+        except PresentationFailure as exc:
+            if exc.code != "NOT_FOUND":
+                raise
+        else:
+            if metadata["creator"] != actor:
+                raise PresentationFailure("FORBIDDEN")
+            if not allow_existing:
+                raise PresentationFailure("REVISION_CONFLICT")
+        self._new_access(workspace, actor, definition.report_id, run=run)
+        self.results.resolve(workspace, actor, definition.semantic_dataset_version_id, run)
+        for name in ("brand_profile", "company_pack"):
+            self.repository.get_reference(workspace, actor, getattr(definition, name).model_dump(mode="json"), name)
+
+    def apply_new(self, workspace: UUID, actor: UUID, request: CreatorApplyRequest) -> WorkspaceApplyResponse:
+        if request.base_revision != 0:
+            raise PresentationFailure("REVISION_CONFLICT")
+        self._new_candidate(workspace, actor, request.definition, run=request.reuse_result_ids is None)
+        result = self._materialize(workspace, actor, request.definition, request.reuse_result_ids)
+        self._new_candidate(workspace, actor, request.definition, run=request.reuse_result_ids is None)
+        return result.model_copy(update={"base_revision": 0})
 
     def _candidate(
         self,
@@ -468,7 +566,8 @@ class WorkspaceReportService:
                 )
         for result in results.values():
             self._scope(
-                workspace, actor, definition.report_id, set(result.effective_context.store_ids)
+                workspace, actor, definition.report_id, set(result.effective_context.store_ids),
+                creator=definition.creator_principal_id,
             )
         if expected_bindings is not None and bindings != expected_bindings:
             raise PresentationFailure("RESULT_BINDING_MISMATCH")
@@ -636,6 +735,7 @@ class WorkspaceReportService:
         override: ReaderViewOverride,
         bindings: list[CardResultBinding],
         page_id: UUID,
+        comparison: CardComparisonV1 | None = None,
     ) -> SavedViewV1:
         return SavedViewV1(
             schema_version="saved-view/v1",
@@ -651,6 +751,7 @@ class WorkspaceReportService:
             calendar_basis=definition.calendar_basis,
             page_ids=[page_id],
             result_scope=bindings,
+            comparison=comparison,
             query_context=override.query_context,
             display=override.display,
         )
@@ -658,13 +759,24 @@ class WorkspaceReportService:
     def save(
         self, workspace: UUID, actor: UUID, report: UUID, request: WorkspaceSaveRequest
     ) -> WorkspaceReportResponse:
-        self._candidate(workspace, actor, report, request.definition, check_instances=False)
+        creating = request.expected_revision == 0
+        if creating:
+            if request.definition.report_id != report or request.expected_saved_view_revision != 0:
+                raise PresentationFailure("INVALID_DEFINITION_BINDING")
+            self._new_candidate(workspace, actor, request.definition, allow_existing=True)
+        else:
+            self._candidate(workspace, actor, report, request.definition, check_instances=False)
         h = digest(request.model_dump(mode="json", exclude={"idempotency_key"}))
         replay = self.repository.replay(workspace, report, request.idempotency_key, h)
         if replay is not None:
             self._verify(workspace, actor, replay)
             return WorkspaceReportResponse.model_validate(replay)
-        self._candidate(workspace, actor, report, request.definition)
+        if creating:
+            # A concurrent identical first Save may have committed after replay().
+            # Let the repository's locked replay/CAS decide, without a TOCTOU rejection.
+            self._new_candidate(workspace, actor, request.definition, allow_existing=True)
+        else:
+            self._candidate(workspace, actor, report, request.definition)
         definition = request.definition
         verified = self._materialize(workspace, actor, definition, request.result_ids)
         if (
@@ -750,9 +862,11 @@ class WorkspaceReportService:
             self._default_view(definition),
             verified.bindings_by_card,
             page,
+            verified.comparison,
         )
         parents = [b.result.manifest.model_dump(mode="json") for b in verified.bindings_by_card]
-        parents.append(definition.base_snapshot_ref.manifest.model_dump(mode="json"))
+        if definition.base_snapshot_ref is not None:
+            parents.append(definition.base_snapshot_ref.manifest.model_dump(mode="json"))
         if verified.comparison:
             parents.append(verified.comparison.manifest.model_dump(mode="json"))
         page_ref = artifact(
@@ -777,7 +891,8 @@ class WorkspaceReportService:
                 "content_hash": digest(view.model_dump(mode="json")),
             },
             page_manifests=[page_ref],
-            capabilities=self.capabilities(workspace, actor, report).model_dump(mode="json"),
+            capabilities=(ReportCapabilities(definition_edit=True, view_apply=True, saved_view_save=True, exact_preview=True)
+                          if creating else self.capabilities(workspace, actor, report)).model_dump(mode="json"),
         )
         payload["manifest"] = artifact(
             self.artifacts.commit(
@@ -790,7 +905,10 @@ class WorkspaceReportService:
         WorkspaceReportResponse.model_validate(payload)
 
         def recheck() -> None:
-            self.guard(workspace, actor, report, write=True)
+            if creating:
+                self._new_candidate(workspace, actor, definition, allow_existing=True)
+            else:
+                self.guard(workspace, actor, report, write=True)
             self._materialize(
                 workspace,
                 actor,
@@ -799,11 +917,11 @@ class WorkspaceReportService:
                 expected_bindings=verified.bindings_by_card,
                 make_charts=False,
             )
-            self._legacy(
-                workspace,
-                actor,
-                self.repository.read(workspace, report, definition.base_snapshot_ref.snapshot_id),
-            )
+            if definition.base_snapshot_ref is not None:
+                self._legacy(
+                    workspace, actor,
+                    self.repository.read(workspace, report, definition.base_snapshot_ref.snapshot_id),
+                )
 
         saved = self.repository.save_workspace(
             workspace, actor, report, request, h, payload, view, recheck
@@ -820,11 +938,10 @@ class WorkspaceReportService:
         if saved["contract_version"] == "configured-report/v2" and meta["creator"] != actor:
             if version is not None:
                 raise PresentationFailure("NOT_FOUND")
-            saved = self.repository.read(
-                workspace,
-                report,
-                UUID(saved["composition"]["definition"]["base_snapshot_ref"]["snapshot_id"]),
-            )
+            base = saved["composition"]["definition"]["base_snapshot_ref"]
+            if base is None:
+                raise PresentationFailure("NOT_FOUND")
+            saved = self.repository.read(workspace, report, UUID(base["snapshot_id"]))
         self.artifacts.verify(
             workspace_id=workspace,
             reference=saved["manifest"],
@@ -858,6 +975,31 @@ class WorkspaceReportService:
             make_charts=False,
         )
 
+        if value.comparison is not None:
+            selection = definition.selection
+            if selection is None:
+                raise PresentationFailure("RESULT_BINDING_MISMATCH")
+            pair = isinstance(selection, PairSelection)
+            left_id = selection.left_card_id if pair else selection.card_id
+            right_id = selection.right_card_id if pair else left_id
+            if value.comparison.mode != ("pair" if pair else "temporal") or (
+                not pair and selection.temporal == "none"
+            ):
+                raise PresentationFailure("RESULT_BINDING_MISMATCH")
+            for side, card_id in (
+                (value.comparison.left, left_id),
+                (value.comparison.right, right_id),
+            ):
+                binding = next((b for b in value.result_scope if b.card_id == card_id), None)
+                if binding is None or any(
+                    getattr(side, field) != getattr(binding, field)
+                    for field in ("card_id", "metric_ref", "result", "unit", "format")
+                ):
+                    raise PresentationFailure("RESULT_BINDING_MISMATCH")
+            self.results.verify_comparison(
+                workspace, actor, definition.semantic_dataset_version_id, value.comparison
+            )
+
     def views(self, workspace: UUID, actor: UUID, report: UUID) -> list[SavedViewV1]:
         self.guard(workspace, actor, report)
         values = self.repository.views(workspace, actor, report)
@@ -881,9 +1023,7 @@ class WorkspaceReportService:
             self._definition(workspace, actor, saved), request.view_override
         )
         # No new calculation: a query-changing Save view needs results from explicit Apply.
-        verified = self._materialize(
-            workspace, actor, definition, request.result_ids, make_charts=False
-        )
+        verified = self._materialize(workspace, actor, definition, request.result_ids)
         view_id = view_id or uuid5(report, f"view/{actor}/{request.idempotency_key}")
         if request.expected_revision > 0:
             existing = self.repository.view(workspace, actor, view_id)
@@ -906,6 +1046,7 @@ class WorkspaceReportService:
             request.view_override,
             verified.bindings_by_card,
             UUID(saved["composition"]["default_page_id"]),
+            verified.comparison,
         )
 
         def recheck() -> None:

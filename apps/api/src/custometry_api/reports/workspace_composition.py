@@ -1,8 +1,7 @@
 """Request-scoped public-port adapters; each access decision reauthenticates."""
 
-from typing import Any
+from typing import Any, cast
 from uuid import UUID
-import psycopg
 from fastapi import Request
 from custometry_api.config import Settings
 from custometry_api.identity.http_auth import IdentityHTTPAdapter
@@ -11,6 +10,14 @@ from packages.identity_access.application.resource_access import ResourceAccessS
 from packages.identity_access.infrastructure.resource_access import PostgresResourceAccessRepository
 from packages.analytics_core.application.workspace_service import WorkspaceAnalyticsService
 from packages.analytics_core.application.snapshot_verification import SnapshotResultVerifier
+from custometry_api.reports.prepared import (
+    PreparedAnalyticsService,
+    PreparedSnapshotVerifier,
+    RequestReadMemo,
+    RequestWorkspaceReadMemo,
+    RequestArtifactStore,
+    RequestReadBudget,
+)
 from packages.analytics_core.infrastructure.postgres import PostgresAnalyticsRepository
 from packages.artifacts.infrastructure.workspace import WorkspaceArtifactStore
 from packages.artifacts.infrastructure.document_snapshots import DocumentSnapshotArtifacts
@@ -23,7 +30,7 @@ from packages.contracts.analytics.workspace import (
     WorkspaceAccess,
     WorkspaceCardRequest,
     WorkspaceApplyResult,
-    WorkspaceRunRequest,
+    WorkspaceRunRequest, WorkspaceScopePreflight,
     WorkspaceResultV2,
     CardResultBinding,
     CardComparisonV1,
@@ -39,6 +46,12 @@ class WorkspaceResultsAdapter:
     ):
         self.service, self.verifier = service, verifier
         self.dataset_access = dataset_access
+
+    def preflight(self, workspace: UUID, actor: UUID, query: WorkspaceRunRequest) -> WorkspaceScopePreflight:
+        return self.service.preflight(workspace_id=workspace, principal_id=actor, request=query)
+
+    def context(self, workspace: UUID, actor: UUID, dataset: UUID) -> dict[str, Any]:
+        return self.service.context(workspace_id=workspace, principal_id=actor, dataset_id=dataset)
 
     def authorize_base(
         self, workspace: UUID, actor: UUID, owner: UUID, result: dict[str, Any]
@@ -107,39 +120,79 @@ class WorkspaceResultsAdapter:
         )
 
 
+class RequestAccess(ResourceAccessService):
+    def __init__(self, connect: Any, auth: IdentityHTTPAdapter, request: Request):
+        super().__init__(
+            PostgresResourceAccessRepository(connect, request_snapshot=request.method == "GET"), lambda: auth.authenticate(request)
+        )
+        self.read_only = request.method == "GET"
+        self.decisions: dict[tuple[Any, ...], Any] = {}
+
+    def resolve_resource(self, **kwargs: Any):
+        if not self.read_only:
+            return super().resolve_resource(**kwargs)
+        key = tuple(sorted(kwargs.items()))
+        if key not in self.decisions:
+            if len(self.decisions) >= 256:
+                from packages.contracts.presentation import PresentationFailure
+
+                raise PresentationFailure("WORKSPACE_LIMIT_EXCEEDED")
+            self.decisions[key] = super().resolve_resource(**kwargs)
+        return self.decisions[key]
+
+
 def build_workspace(
     settings: Settings, auth: IdentityHTTPAdapter, request: Request
 ) -> tuple[WorkspaceReportService, WorkspaceAnalyticsService]:
-    def connect() -> psycopg.Connection[Any]:
-        return psycopg.connect(
-            host=settings.database_host,
-            port=settings.database_port,
-            dbname=settings.database_name,
-            user=settings.database_user,
-            password=settings.read_database_password(),
-            connect_timeout=settings.database_connect_timeout_seconds,
-        )
+    from custometry_api.database import connection_factory
 
-    access = ResourceAccessService(
-        PostgresResourceAccessRepository(connect), lambda: auth.authenticate(request)
-    )
+    connect = connection_factory(settings, autocommit_reads=request.method == "GET")
+
+    access = RequestAccess(connect, auth, request)
     semantics = PostgresSalesSemanticRepository(connect)
+    calendar_repository = PostgresCalendarRepository(connect)
     results = PostgresAnalyticsRepository(connect)
-    artifacts = WorkspaceArtifactStore(connect, settings.analytics_artifact_root)
-    calendars = WorkspaceCalendarService(PostgresCalendarRepository(connect))
-    dataset_access = IdentityWorkspaceAccess(access, semantics, artifacts)
-    analytics = WorkspaceAnalyticsService(
+    repository = PostgresWorkspaceRepository(connect)
+    read_budget = RequestReadBudget()
+    if request.method == "GET":
+        semantics = cast(PostgresSalesSemanticRepository, RequestReadMemo(semantics, frozenset({"sales_projection"}), read_budget))
+        calendar_repository = cast(PostgresCalendarRepository, RequestReadMemo(calendar_repository, frozenset({"get_version"}), read_budget))
+        results = cast(
+            PostgresAnalyticsRepository, RequestReadMemo(results, frozenset({"get_sales"}), read_budget)
+        )
+        repository = cast(
+            PostgresWorkspaceRepository,
+            RequestWorkspaceReadMemo(repository, frozenset({"read", "metadata", "get_reference", "view"}), read_budget),
+        )
+    artifacts = (RequestArtifactStore(connect, settings.analytics_artifact_root, budget=read_budget)
+                 if request.method == "GET" else WorkspaceArtifactStore(connect, settings.analytics_artifact_root))
+    calendars = WorkspaceCalendarService(calendar_repository)
+    from custometry_api.analytics.retail_filters import filter_resource_policy
+
+    dataset_access = IdentityWorkspaceAccess(access, semantics, artifacts,
+        store_reader=artifacts, store_policy=filter_resource_policy(settings))
+    from custometry_api.analytics.retail_filters import build_filters
+    from custometry_api.analytics.relational_filters import build_relational_filters
+    from custometry_api.analytics.aggregate_filters import build_aggregate_filters
+    from custometry_api.analytics.cohort_filters import build_cohort_filters
+    from packages.analytics_core.infrastructure.retail_filter import PublishedReceiptFilter
+
+    analytics = PreparedAnalyticsService(
         semantics=semantics,
         results=results,
         artifacts=artifacts,
         calendars=calendars,
         access=dataset_access,
+        receipt_filters=PublishedReceiptFilter(build_filters(settings, auth, request), artifacts,
+                                              build_relational_filters(settings, auth, request),
+                                              build_aggregate_filters(settings, auth, request),
+                                              build_cohort_filters(settings, auth, request, require_run=False)),
     )
     presentation = WorkspaceReportService(
-        PostgresWorkspaceRepository(connect),
+        repository,
         WorkspaceResultsAdapter(
             analytics,
-            SnapshotResultVerifier(analytics, results, artifacts, dataset_access.resolve_legacy),
+            PreparedSnapshotVerifier(analytics, results, artifacts, dataset_access.resolve_legacy),
             dataset_access,
         ),
         access,
@@ -207,6 +260,8 @@ def guarded_legacy(
                     raise PresentationFailure("FORBIDDEN")
                 if report_id is not None:
                     workspace.guard(workspace_id, principal_id, report_id, write=True)
+                    if workspace.repository.read(workspace_id, report_id)["contract_version"] == "composed-report/v1":
+                        raise PresentationFailure("REPORT_VERSION_UPGRADE_REQUIRED")
                 self._result(workspace_id, principal_id, current.permissions, request.result_id)
 
             check()
@@ -239,7 +294,13 @@ def guarded_legacy(
             values: list[dict[str, Any]] = []
             for report_id in workspace.repository.all_candidates(workspace_id):
                 try:
-                    saved = workspace.visible(workspace_id, principal_id, report_id)
+                    workspace.guard(workspace_id, principal_id, report_id)
+                    candidate = workspace.repository.read(workspace_id, report_id)
+                    if candidate["contract_version"] == "composed-report/v1":
+                        from packages.presentation.application.composer import ComposerService
+                        saved = ComposerService(workspace).get(workspace_id, principal_id, report_id).model_dump(mode="json")
+                    else:
+                        saved = workspace.visible(workspace_id, principal_id, report_id)
                 except (PresentationFailure, AnalyticsFailure) as exc:
                     if exc.code in {"FORBIDDEN", "NOT_FOUND", "ARTIFACT_NOT_VISIBLE"}:
                         continue
@@ -256,9 +317,9 @@ def guarded_legacy(
                                 "saved_at",
                             )
                         },
-                        "title": saved["title"]
-                        if saved["contract_version"] == "draft-report/v1"
-                        else saved["composition"]["definition"]["title"],
+                        "title": (saved["definition"]["title"] if saved["contract_version"] == "composed-report/v1"
+                                  else saved["title"] if saved["contract_version"] == "draft-report/v1"
+                                  else saved["composition"]["definition"]["title"]),
                         "lifecycle": "owned_draft_preview",
                     }
                 )

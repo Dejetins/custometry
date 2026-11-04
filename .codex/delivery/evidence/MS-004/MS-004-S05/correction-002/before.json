@@ -1,0 +1,14 @@
+{
+  "apps/web/src/features/reports/ConfiguredWorkspace.tsx": "a129317ae938dc50f1269c94e03efd199b4362f6319e80bcb3f56764ba18e94a",
+  "apps/web/src/features/reports/pilot/port-epilogue.js": "2d1f26f87eb00a99a0e627185dea7c90e189a109eacf13e82d492b6442a46d5f",
+  "apps/web/src/features/reports/pilot/runtime.ts": "1708f20f77492907cec2a2aea9f97311f60f95d34ddc3ba6fbdc69dfd192aba8",
+  "tests/e2e/ms-004-workspace/workspace.spec.ts": "0cb98f525e11b3c5b42be895dd2d6f219e708eb5874f9f280fa190cc688c57ec",
+  "tests/e2e/ms-004-workspace/reader.spec.ts": "cd0f087249709bd927d0825ccefdd27fecbcfe673e02fe747a79c1c64e4db540",
+  "tests/e2e/ms-004-workspace/parity.spec.ts": "d7150edd2e67a5b9ca39c6b631cb9a58621acdfd7384b02d148a53a6e7a2431a",
+  "custometry-technical-blueprint-ru.md": "b874b966471a2b3a4103b14dcca6fb2488305409e37d46ae262b94c454dfba86",
+  "custometry-technical-blueprint-human-ru.md": "69720042e07e924a74e16c51f20aabe43830a3e97f3c867b3bedab0424a4045f",
+  "custometry-ui-blueprint-ru.md": "fdd786083b3300e7a131b15254edcbc4d18a3ba7c89237b9f25a6eee9fd7d398",
+  "docs/contracts/analytical-authoring-contract.md": "1d273cd661857458fb16da1eac9c15ed9696a61c60689d84ef75e2fc683a6584",
+  "docs/architecture/ui/custometry-web-implementation-source-contract-v1.md": "d936790064ee3bb930650865826f204d516fcdfea51aeece72216373a121d445",
+  "docs/generated/requirement-index.json": "b5210fb8b4371d87d66ff48e178c1076f038f2244a97d71492131e03489aab4f"
+}

@@ -10,6 +10,9 @@ from packages.contracts.semantic import (
     CalendarFailure,
     CalendarRef,
     CalendarRepository,
+    CalendarRulesPort,
+    ZonedCalendarInputV2,
+    CalendarProfile,
     UpdateCalendarRequest,
     WorkspaceCalendarDefault,
 )
@@ -28,8 +31,11 @@ def initial_calendar_id(workspace_id: UUID) -> UUID:
 
 
 class WorkspaceCalendarService:
-    def __init__(self, repository: CalendarRepository) -> None:
+    def __init__(
+        self, repository: CalendarRepository, rules: CalendarRulesPort | None = None
+    ) -> None:
         self.repository = repository
+        self.rules = rules
 
     @staticmethod
     def _authorize(workspace_id: UUID, actor: CalendarActor, permission: str) -> None:
@@ -70,6 +76,23 @@ class WorkspaceCalendarService:
         self._authorize(actor.workspace_id, actor, "workspace.manage")
         # Actor-bound replay: a key cannot reveal another administrator's response.
         request_hash = digest({"actor": str(actor.principal_id), **request.model_dump(mode="json")})
+        if isinstance(request.profile, ZonedCalendarInputV2):
+            profile = request.profile
+
+            def resolve() -> tuple[CalendarProfile, str]:
+                if self.rules is None:
+                    raise CalendarFailure("CALENDAR_TIMEZONE_UNAVAILABLE")
+                resolved = self.rules.resolve(profile)
+                return resolved, digest(resolved.model_dump(mode="json"))
+
+            return self.repository.update_default(
+                actor.workspace_id,
+                actor.principal_id,
+                request,
+                "",
+                request_hash,
+                profile_factory=resolve,
+            )
         return self.repository.update_default(
             actor.workspace_id,
             actor.principal_id,

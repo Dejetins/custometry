@@ -1,0 +1,20 @@
+{
+  "identity_sessions": 1,
+  "identity_role_assignments": 1,
+  "presentation_documents": 3,
+  "identity_memberships": 2,
+  "organization_resource_ownership_bindings": 6,
+  "organization_primary_assignments": 5,
+  "organization_units": 1,
+  "lineage": 2,
+  "organization_leadership_assignments": 1,
+  "organization_cross_department_grants": 1,
+  "semantic_dataset_versions": 1,
+  "other": 3,
+  "semantic_sales_metric_versions": 3,
+  "artifact_manifests": 8,
+  "analytics_sales_reports": 2,
+  "semantic_business_calendar_versions": 1,
+  "presentation_references": 4,
+  "presentation_saved_views": 2
+}

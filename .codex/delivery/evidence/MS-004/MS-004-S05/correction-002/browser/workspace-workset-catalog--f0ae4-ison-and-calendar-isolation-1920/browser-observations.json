@@ -1,0 +1,153 @@
+{
+  "schema": "ms004-browser-observation/v1",
+  "test": "workset catalog, copy, six grains, comparison and calendar isolation",
+  "project": "1920",
+  "network": [
+    {
+      "method": "POST",
+      "path": "/api/identity/login",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/context",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/c25a91ce-5d53-5870-b73e-e1b88fda543d",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/8894c0e4-5ec7-50f3-9919-61532c086134",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/106e612a-6334-50b6-b8f8-12bd2a15e11e",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/41ad666a-ef9d-5e68-9912-57f2434687ff",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/6ab9f457-41ab-56b3-ba2a-e00a53dee891",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/d98e9312-de5d-5603-8150-6e9905756267",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087/apply",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics/metric-workspace/v2/datasets/60c5b1fd-e522-5081-9f1a-7a4792c1e79a/results/c3ea4923-4b0b-5dd7-bf6b-4369cd99bf31",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087/versions",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/me",
+      "status": 200,
+      "classification": "success"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/v2/9082f743-cff5-506d-b40c-001e5d9b9087",
+      "status": 200,
+      "classification": "success"
+    }
+  ],
+  "console": [],
+  "pageErrors": []
+}

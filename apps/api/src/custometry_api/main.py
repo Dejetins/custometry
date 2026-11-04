@@ -1,6 +1,9 @@
 """FastAPI composition root for the runnable Foundation slice."""
 
 from collections.abc import Awaitable, Callable
+from contextlib import asynccontextmanager, suppress
+import asyncio
+import logging
 from typing import Literal
 
 from fastapi import FastAPI, Request, Response, status
@@ -9,6 +12,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from custometry_api.config import Settings
+from custometry_api.runtime_policy import serving_policy
 from custometry_api.analytics.router import create_analytics_app
 from custometry_api.connections.router import create_connection_app
 from custometry_api.health import PostgreSQLReadinessProbe, ReadinessProbe
@@ -52,7 +56,38 @@ def create_app(
 
     runtime_settings = settings or Settings()
     probe = readiness_probe or PostgreSQLReadinessProbe(runtime_settings)
+    @asynccontextmanager
+    async def lifespan(instance: FastAPI):
+        async def maintain():
+            from custometry_api.database import connection_factory
+            from packages.identity_access.infrastructure.maintenance import IdentityMaintenance
+            while True:
+                try:
+                    result = await asyncio.to_thread(
+                        IdentityMaintenance(connection_factory(runtime_settings)).run,
+                        session_days=runtime_settings.identity_session_retention_days,
+                        audit_days=runtime_settings.identity_security_event_retention_days)
+                    logging.getLogger("custometry.identity.maintenance").info("identity retention %s", result)
+                except Exception:
+                    logging.getLogger("custometry.identity.maintenance").error("identity retention unavailable")
+                await asyncio.sleep(86400)
+        maintenance = asyncio.create_task(maintain())
+        try:
+            with serving_policy(runtime_settings):
+                yield
+        finally:
+            maintenance.cancel()
+            with suppress(asyncio.CancelledError):
+                await maintenance
+            for route in instance.routes:
+                events = getattr(getattr(getattr(route, "app", None), "state", None), "identity_events", None)
+                if events is not None:
+                    await events.close()
+            from custometry_api.database import close_pools
+            close_pools()
+
     app = FastAPI(
+        lifespan=lifespan,
         title="Custometry Foundation API",
         version=runtime_settings.version,
         docs_url=None,
@@ -72,6 +107,7 @@ def create_app(
             "X-Contract-Version",
             "X-CSRF-Token",
             "X-Request-ID",
+            "X-Custometry-Activity",
         ],
     )
 

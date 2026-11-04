@@ -249,6 +249,7 @@ const realTable=()=>bridge.table(locale);
     }
     function sourceForYear(year) { return Number(year) === 2025 ? 'current' : String(year); }
     function periodValueOptions(grain) {
+      if(grain==='custom')return [reportPeriod.value];
       if (grain === 'day') return ['2025-12-31', '2025-12-30', '2025-12-29', '2025-12-28', '2025-12-27', '2025-12-26', '2025-12-25'];
       if (grain === 'week') return ['2025-W52', '2025-W51', '2025-W50', '2025-W49', '2025-W48', '2025-W47'];
       if (grain === 'month') return ['2025-12', '2025-11', '2025-10', '2025-09', '2025-08', '2025-07'];
@@ -256,6 +257,7 @@ const realTable=()=>bridge.table(locale);
       return ['2025', '2024', '2023', '2022'];
     }
     function periodValueLabel(value = reportPeriod.value, yearOffset = 0) {
+      if(value.includes('/'))return value.replace('/', ' — ');
       if (/^\d{4}$/.test(value)) return String(Number(value) - yearOffset);
       if (/^\d{4}-W\d{2}$/.test(value)) { const [year, week] = value.split('-W'); return `${locale === 'ru' ? 'Неделя' : 'Week'} ${Number(week)} · ${Number(year) - yearOffset}`; }
       if (/^\d{4}-Q[1-4]$/.test(value)) { const [year, quarter] = value.split('-'); return `${quarter} ${Number(year) - yearOffset}`; }
@@ -415,6 +417,7 @@ const realTable=()=>bridge.table(locale);
 
     function grainLabel(grain, short = false) {
       const labels = {
+        custom: {ru:'Свой период',en:'Custom range'},
         day: { ru: short ? 'День' : 'По дням', en: short ? 'Day' : 'Daily' },
         week: { ru: short ? 'Неделя' : 'По неделям', en: short ? 'Week' : 'Weekly' },
         month: { ru: short ? 'Месяц' : 'По месяцам', en: short ? 'Month' : 'Monthly' },
@@ -650,7 +653,8 @@ const realTable=()=>bridge.table(locale);
       showToast.timer = setTimeout(() => { toast.hidden = true; }, 2500);
     }
 
-    function renderKpis() {
+    function renderKpis() { if(bridge.model().workspace)return;
+
       kpiStrip.innerHTML = '';
       document.getElementById('kpi-context').textContent = primaryComparison ? `${periodValueLabel()} · vs ${comparisonLabel(primaryComparison)}` : `${periodValueLabel()} · ${uiText[locale].onlyActual}`;
       selectedMetricIds.forEach(id => {
@@ -666,9 +670,10 @@ const realTable=()=>bridge.table(locale);
       });
       personalPill.hidden = !isPersonalView();
       personalPill.textContent = uiText[locale].personal;
-    }
+     }
 
-    function renderPicker() {
+    function renderPicker() { if(bridge.model().workspace)return;
+
       metricPicker.innerHTML = '';
       const orderedIds = [...draftMetricIds, ...metrics.map(metric => metric.id).filter(id => !draftMetricIds.includes(id))];
       orderedIds.forEach(id => {
@@ -705,7 +710,7 @@ const realTable=()=>bridge.table(locale);
         [draftMetricIds[index], draftMetricIds[target]] = [draftMetricIds[target], draftMetricIds[index]];
         renderPicker();
       }));
-    }
+     }
 
     function getSelectedComparisonIds() { return [...selectedComparisons].filter(id => comparisonMeta[id]); }
     function comparisonSummary() {
@@ -715,7 +720,8 @@ const realTable=()=>bridge.table(locale);
       return `${comparisonLabel(ids[0])} · ${comparisonLabel(ids[1])} · +${ids.length - 2}`;
     }
 
-    function renderQuickFilterValues(key = activeQuickFilter) {
+    function renderQuickFilterValues(key = activeQuickFilter) { if(bridge.model().workspace)return;
+
       activeQuickFilter = quickFilterSpecs[key] ? key : 'segments';
       document.querySelectorAll('[data-filter-category]').forEach(button => button.classList.toggle('is-hovered', button.dataset.filterCategory === activeQuickFilter));
       const spec = quickFilterSpecs[activeQuickFilter];
@@ -728,9 +734,10 @@ const realTable=()=>bridge.table(locale);
         updateReportStateUi();
         renderQuickFilterValues(activeQuickFilter);
       }));
-    }
+     }
 
-    function renderPeriodControls() {
+    function renderPeriodControls() { if(bridge.model().workspace)return;
+
       document.querySelectorAll('[data-period-grain]').forEach(button => button.setAttribute('aria-pressed', button.dataset.periodGrain === reportPeriod.grain ? 'true' : 'false'));
       const values = document.getElementById('period-value-list');
       values.innerHTML = periodValueOptions(reportPeriod.grain).map(value => `<button class="menu-row${value === reportPeriod.value ? ' is-selected' : ''}" type="button" data-period-value="${value}" aria-pressed="${value === reportPeriod.value}"><svg class="icon icon--small menu-selection" aria-hidden="true"><use href="#i-check"/></svg><span>${periodValueLabel(value)}</span>${value === defaultPeriodValue(reportPeriod.grain) ? `<kbd>${locale === 'ru' ? 'Текущий' : 'Current'}</kbd>` : ''}</button>`).join('');
@@ -740,7 +747,7 @@ const realTable=()=>bridge.table(locale);
         updateContextSummary();
         dismissPopover(document.getElementById('period-popover'), true);
       }));
-      document.getElementById('period-grain-select').value = reportPeriod.grain;
+      const grainSelect=document.getElementById('period-grain-select');if(!grainSelect.querySelector('[value=custom]'))grainSelect.add(new window.Option(locale==='ru'?'Свой период':'Custom range','custom'));grainSelect.value = reportPeriod.grain;
       const inspectorPeriod = document.getElementById('period-select');
       inspectorPeriod.innerHTML = periodValueOptions(reportPeriod.grain).map(value => `<option value="${value}" ${value === reportPeriod.value ? 'selected' : ''}>${periodValueLabel(value)}</option>`).join('');
       document.getElementById('period-summary').textContent = periodValueLabel();
@@ -769,9 +776,10 @@ const realTable=()=>bridge.table(locale);
       [...document.getElementById('primary-comparison').options].forEach(option => { option.textContent = comparisonLabel(option.value); });
       renderStyleControls();
       renderBlockCommandBars();
-    }
+     }
 
-    function renderStyleControls() {
+    function renderStyleControls() { if(bridge.model().workspace)return;
+
       document.querySelectorAll('.chart-period-controls').forEach(container => {
         const scope = container.querySelector('[data-chart-period]')?.dataset.chartPeriod;
         if (!scope || container.querySelector('[data-chart-style]')) return;
@@ -797,9 +805,10 @@ const realTable=()=>bridge.table(locale);
           select.addEventListener('change', event => { chartStyleOverrides[scope] = event.target.value; renderStyleControls(); updateAllCharts(); updateReportStateUi(); });
         }
       });
-    }
+     }
 
-    function renderReportReadabilityControls() {
+    function renderReportReadabilityControls() { if(bridge.model().workspace)return;
+
       const size = syncReadabilitySize(reportReadability.size || reportReadability.values);
       ['values', 'labels', 'axes', 'table'].forEach(kind => {
         const datasetKey = `readability${kind[0].toUpperCase()}${kind.slice(1)}`;
@@ -841,7 +850,7 @@ const realTable=()=>bridge.table(locale);
       trigger.dataset.active = active ? 'true' : 'false';
       trigger.setAttribute('aria-label', summary);
       trigger.title = summary;
-    }
+     }
 
     function blockChoice(value, current, label, extra = '') {
       return `<button class="block-choice" type="button" data-value="${value}" aria-pressed="${value === current}">${extra}${label}</button>`;
@@ -858,7 +867,8 @@ const realTable=()=>bridge.table(locale);
       updateReportStateUi();
     }
 
-    function renderBlockCommandBars() {
+    function renderBlockCommandBars() { if(bridge.model().workspace)return;
+
       document.querySelectorAll('.chart-period-controls').forEach(container => {
         const periodSelect = container.querySelector('[data-chart-period]');
         const comparisonSelect = container.querySelector('[data-chart-comparison]');
@@ -899,9 +909,10 @@ const realTable=()=>bridge.table(locale);
         comparisonCommand.querySelectorAll('[data-value]').forEach(button => button.addEventListener('click', () => { comparisonSelect.value = button.dataset.value; comparisonSelect.dispatchEvent(new Event('change', { bubbles: true })); comparisonCommand.removeAttribute('open'); }));
         groupCommand.querySelectorAll('[data-value]').forEach(button => button.addEventListener('click', () => { chartGroupOverrides[scope] = button.dataset.value; groupCommand.removeAttribute('open'); refreshAnalyticalSurfaces(); renderBlockCommandBars(); }));
       });
-    }
+     }
 
-    function renderLifecycleControlState() {
+    function renderLifecycleControlState() { if(bridge.model().workspace)return;
+
       document.querySelectorAll('#lifecycle-panel .block-command').forEach(command => {
         if (command.dataset.toggleBound) return;
         command.dataset.toggleBound = 'true';
@@ -934,7 +945,7 @@ const realTable=()=>bridge.table(locale);
       document.getElementById('lifecycle-format-choices').querySelectorAll('[data-value]').forEach(button => button.addEventListener('click', () => { lifecycleValueFormat = button.dataset.value; renderLifecycleTable(); }));
       document.getElementById('lifecycle-percent-basis-choices').querySelectorAll('[data-value]').forEach(button => button.addEventListener('click', () => { lifecyclePercentBasis = button.dataset.value; renderLifecycleTable(); }));
       document.getElementById('lifecycle-delta-display-choices').querySelectorAll('[data-value]').forEach(button => button.addEventListener('click', () => { lifecycleDeltaDisplay = button.dataset.value; renderLifecycleTable(); }));
-    }
+     }
 
     function createAdvancedCondition(field = 'customer_segment') {
       const spec = advancedFilterCatalog[field];
@@ -958,7 +969,8 @@ const realTable=()=>bridge.table(locale);
       return `<select data-condition-value aria-label="${locale === 'ru' ? 'Значение условия' : 'Condition value'}">${options}</select>`;
     }
 
-    function renderAdvancedConditions() {
+    function renderAdvancedConditions() { if(bridge.model().workspace)return;
+
       const list = document.getElementById('advanced-condition-list');
       if (!advancedGroups.length) {
         list.innerHTML = `<div class="applied-state">${locale === 'ru' ? 'Добавьте фильтр или независимую группу ИЛИ. Поля сгруппированы по сущностям, а уточнения сохраняют область одного события или заказа.' : 'Add a filter or an independent OR group. Fields are grouped by entity, and refinements preserve one event or order scope.'}</div>`;
@@ -983,9 +995,10 @@ const realTable=()=>bridge.table(locale);
       const estimate = conditionCount ? Math.round(254210 / (1 + conditionCount * .62)) : 254210;
       document.getElementById('advanced-filter-summary').innerHTML = `<strong>${locale === 'ru' ? 'Черновик выражения' : 'Expression draft'}</strong><span>${expressionSummary()}</span><span class="filter-preview-count">${locale === 'ru' ? 'Предварительная оценка' : 'Preview estimate'}: ${formatInteger(estimate)} ${locale === 'ru' ? 'клиентов' : 'customers'}</span>`;
       document.getElementById('applied-filter-state').textContent = `${locale === 'ru' ? 'Применено' : 'Applied'}: ${appliedFilterSummary()}`;
-    }
+     }
 
-    function renderGroupingControls() {
+    function renderGroupingControls() { if(bridge.model().workspace)return;
+
       syncLegacyGroupBy();
       const selected = document.getElementById('grouping-selected-list');
       selected.innerHTML = groupDimensions.length ? groupDimensions.map((id, index) => {
@@ -1010,7 +1023,7 @@ const realTable=()=>bridge.table(locale);
         if (!groupDimensions.includes(button.dataset.groupAdd)) groupDimensions.push(button.dataset.groupAdd);
         refreshAnalyticalSurfaces();
       }));
-    }
+     }
 
     function updateReportStateUi() {
       const stores = storeSummary();
@@ -1032,7 +1045,8 @@ const realTable=()=>bridge.table(locale);
       renderReportReadabilityControls();
     }
 
-    function updateContextSummary() {
+    function updateContextSummary() { if(bridge.model().workspace)return;
+
       document.querySelectorAll('[data-quick-comparison]').forEach(input => { input.checked = selectedComparisons.has(input.value); });
       document.getElementById('comparison-summary').textContent = comparisonSummary();
       document.getElementById('comparison-menu-open').setAttribute('aria-label', `${locale === 'ru' ? 'Сравнение' : 'Comparison'}: ${comparisonSummary()}`);
@@ -1055,7 +1069,7 @@ const realTable=()=>bridge.table(locale);
       renderSegmentTables();
       updateReportStateUi();
       updateAllCharts();
-    }
+     }
 
     function commonTooltipFormatter(params, unit = '') {
       const title = params[0]?.axisValueLabel || '';
@@ -1490,7 +1504,7 @@ const realTable=()=>bridge.table(locale);
       });
     }
 
-    function overviewOption(focus=false) { const data=bridge.chart(locale,focus);if(!data)return emptyOption();const base=chartBase(focus,'overview');const palette=dataPalette('overview');base.xAxis={...base.xAxis,...data.xAxis,axisLabel:base.xAxis.axisLabel,axisLine:base.xAxis.axisLine,axisTick:base.xAxis.axisTick};base.yAxis={...base.yAxis,name:'EUR'};base.legend={...base.legend,data:data.legend.data};base.tooltip=data.tooltip;base.series=data.series.map((s,index)=>({...s,lineStyle:{...s.lineStyle,width:focus?3:2.4,color:palette[index%palette.length]},itemStyle:{color:palette[index%palette.length]},symbol:'none'}));return base; }
+    function overviewOption(focus=false) { const data=bridge.chart(locale,focus);if(!data)return emptyOption();const base=chartBase(focus,'overview');const palette=dataPalette('overview');base.xAxis={...base.xAxis,...data.xAxis,axisLabel:base.xAxis.axisLabel,axisLine:base.xAxis.axisLine,axisTick:base.xAxis.axisTick};base.yAxis={...base.yAxis,name:''};base.legend={...base.legend,data:data.legend.data};base.tooltip=data.tooltip;base.series=data.series.map((s,index)=>({...s,lineStyle:{...s.lineStyle,width:focus?3:2.4,color:palette[index%palette.length]},itemStyle:{color:palette[index%palette.length]},symbol:'none'}));return base; }
 
     function dynamicsOption() { return emptyOption(); }
 
@@ -1607,16 +1621,7 @@ const realTable=()=>bridge.table(locale);
       return chartInstances[id];
     }
 
-    function ensureChartsForPage(page) {
-      requestAnimationFrame(() => {
-        if (page === 'overview') ensureChart('overview-chart', () => overviewOption(false));
-        if (page === 'dynamics') {
-          ensureChart('dynamics-chart', () => dynamicsOption(false));
-          ensureChart('quarter-chart', quarterOption);
-        }
-        if (page === 'segments') ensureChart('segments-chart', segmentsOption);
-      });
-    }
+    function ensureChartsForPage(page) { if(bridge.model().workspace)return;requestAnimationFrame(()=>{if(page==='overview')ensureChart('overview-chart',()=>overviewOption(false));if(page==='dynamics'){ensureChart('dynamics-chart',()=>dynamicsOption(false));ensureChart('quarter-chart',quarterOption);}if(page==='segments')ensureChart('segments-chart',segmentsOption);}); }
 
     function updateAllCharts() {
       if (chartInstances['overview-chart']) ensureChart('overview-chart', () => overviewOption(false));
@@ -1829,7 +1834,7 @@ const realTable=()=>bridge.table(locale);
 
     function renderOverviewFocusTable() { setFocusTableMarkup(realTable()); }
 
-    function renderLifecycleTable() { document.getElementById('lifecycle-table').innerHTML=bridge.tableRows(locale);document.getElementById('lifecycle-range').textContent=bridge.range();document.getElementById('lifecycle-footnote').textContent='EUR · UTC';scheduleSharedTableGeometry(); }
+    function renderLifecycleTable() { document.getElementById('lifecycle-table').innerHTML=bridge.tableRows(locale);document.getElementById('lifecycle-range').textContent=bridge.range();document.getElementById('lifecycle-footnote').textContent='';document.getElementById('lifecycle-footnote').hidden=true;scheduleSharedTableGeometry(); }
 
     function setFocusTableMarkup(markup) {
       const groups = groupingItems(focusSource);
@@ -2391,11 +2396,7 @@ const realTable=()=>bridge.table(locale);
       if (switching) requestAnimationFrame(() => panel.classList.remove('is-switching'));
     }
 
-    function setNarrowNavigationModal(active) {
-      const narrow = matchMedia('(max-width: 820px)').matches;
-      workspace.inert = Boolean(active && narrow);
-      document.getElementById('nav-context-backdrop').hidden = !(active && narrow);
-    }
+    function setNarrowNavigationModal(active) { workspace.inert=false;document.getElementById('nav-context-backdrop').hidden=true; }
 
     function openNavigationContext(section, trigger) {
       if (openNavigationSection === section && shell.dataset.navContext === 'open') {
@@ -2413,16 +2414,8 @@ const realTable=()=>bridge.table(locale);
       setNarrowNavigationModal(true);
     }
 
-    function closeNavigationContext(returnFocus = false) {
-      shell.dataset.navContext = 'closed';
-      document.querySelectorAll('[data-nav-root]').forEach(button => button.setAttribute('aria-expanded', 'false'));
-      document.getElementById('nav-context-panel').setAttribute('aria-hidden', 'true');
-      document.getElementById('nav-context-panel').inert = true;
-      setNarrowNavigationModal(false);
-      const trigger = navigationTrigger;
-      openNavigationSection = null;
-      if (returnFocus) trigger?.focus();
-    }
+    function closeNavigationContext(returnFocus = false) { if(!returnFocus)return; // A dock stays open while its sibling workspace is used.
+shell.dataset.navContext='closed';document.querySelectorAll('[data-nav-root]').forEach(button=>button.setAttribute('aria-expanded','false'));const panel=document.getElementById('nav-context-panel');panel.setAttribute('aria-hidden','true');panel.inert=true;setNarrowNavigationModal(false);const trigger=navigationTrigger;openNavigationSection=null;trigger?.focus({preventScroll:true}); }
 
     function updateSidebarLabel() {
       document.querySelectorAll('.sidebar button[aria-label]').forEach(button => { button.title = button.getAttribute('aria-label'); });
@@ -2810,7 +2803,7 @@ const realTable=()=>bridge.table(locale);
 let synchronizing=false;
 function refreshData(){
  const model=bridge.model();
- if(model.workspace){if(locale!==model.locale)applyLocale(model.locale);const title=document.querySelector(".title-row h1");title.removeAttribute("data-ru");title.removeAttribute("data-en");title.textContent=model.title;document.querySelector(".status-pill").textContent=model.status;
+ if(model.workspace){document.querySelectorAll('#period-menu-open,#stores-menu-open,#filters-menu-open,#groupby-menu-open,#comparison-menu-open,#context-open,#locale-toggle').forEach(n=>n.disabled=!model.actor.principal_id);if(locale!==model.locale)applyLocale(model.locale);const title=document.querySelector(".title-row h1");title.removeAttribute("data-ru");title.removeAttribute("data-en");title.textContent=model.title;document.querySelector(".status-pill").textContent=model.status;
   const values={'period-summary':model.workspaceChrome.period,'comparison-summary':model.workspaceChrome.comparison,'stores-summary':model.workspaceChrome.stores,'groupby-summary':model.workspaceChrome.grain,'filters-summary':locale==='ru'?'Контекст':'Context'};
   for(const [id,value] of Object.entries(values)){const n=document.getElementById(id);n.textContent=value;const b=n.closest('button');b.removeAttribute('data-ru-label');b.removeAttribute('data-en-label');b.setAttribute('aria-label',value);}
   document.querySelectorAll('[data-chart-export],[data-table-export],#share-open,#comments-open,#trust-open').forEach(n=>{n.disabled=true;n.title=locale==='ru'?'Недоступно':'Unavailable';});
@@ -2823,21 +2816,21 @@ function refreshData(){
  const number=(value,digits=2)=>value==null?'—':new Intl.NumberFormat(locale,{maximumFractionDigits:digits,minimumFractionDigits:digits}).format(Number(value));
  metrics.forEach(metric=>{metric.value={ru:'—',en:'—'};metric.deltas={};metric.meta={ru:'Данные недоступны',en:'Data unavailable'};});
  const bindings=[['active','net_revenue','Выручка нетто','Net revenue'],['total','receipt_count','Чеки','Receipts'],['avg_receipt','average_receipt','Средний чек','Average receipt']];
- for(const [id,key,ru,en] of bindings){const metric=metrics.find(m=>m.id===id);metric.label={ru,en};const value=number(model.result?.totals[key],key==='receipt_count'?0:2);metric.value={ru:value,en:value};metric.meta={ru:key==='receipt_count'?'Чеки':'EUR',en:key==='receipt_count'?'Receipts':'EUR'};}
- renderKpis();if(model.result)document.getElementById('kpi-context').textContent=String(model.result.parameters.period.starts_on).slice(0,4)+' · EUR';renderOverviewTable();renderLifecycleTable();
+ for(const [id,key,ru,en] of bindings){const metric=metrics.find(m=>m.id===id);metric.label={ru,en};const value=number(model.result?.totals[key],0);metric.value={ru:value,en:value};metric.meta={ru:'Значения сервера',en:'Server values'};}
+ renderKpis();if(model.result)document.getElementById('kpi-context').textContent=String(model.result.parameters.period.starts_on).slice(0,4);renderOverviewTable();renderLifecycleTable();
  const title=document.querySelector('.title-row h1');title.removeAttribute('data-ru');title.removeAttribute('data-en');if(document.activeElement!==title)title.textContent=model.title;
  title.contentEditable=String(!model.preview&&!model.busy);title.setAttribute('role','textbox');title.setAttribute('aria-label',locale==='ru'?'Название отчёта':'Report title');
  const status=document.querySelector('.status-pill');status.removeAttribute('data-ru');status.removeAttribute('data-en');status.textContent=model.status;
- const texts=[['#page-overview .page-intro h2',locale==='ru'?'Продажи по чекам':'Receipt sales'],['#page-overview .page-intro p',bridge.range()+' · EUR · UTC'],['#overview-visual-panel h3',locale==='ru'?'Выручка по дням':'Daily net revenue'],['#overview-subtitle','EUR · UTC'],['#lifecycle-subtitle','EUR · UTC'],['#lifecycle-panel h3',locale==='ru'?'Данные по дням':'Daily data']];
- for(const [selector,value] of texts){const n=document.querySelector(selector);n.removeAttribute('data-ru');n.removeAttribute('data-en');n.textContent=value;}
+ const texts=[['#page-overview .page-intro h2',locale==='ru'?'Продажи по чекам':'Receipt sales'],['#page-overview .page-intro p',bridge.range()],['#overview-visual-panel h3',locale==='ru'?'Выручка по дням':'Daily net revenue'],['#overview-subtitle',''],['#lifecycle-subtitle',''],['#lifecycle-panel h3',locale==='ru'?'Данные по дням':'Daily data']];
+ for(const [selector,value] of texts){const n=document.querySelector(selector);n.removeAttribute('data-ru');n.removeAttribute('data-en');n.textContent=value;n.hidden=value==='';}
  document.querySelectorAll('#trust-dialog .dialog-body,#inspector-panel-trust .drawer-section').forEach(n=>{n.innerHTML=bridge.trust(locale);});
  document.querySelector('#trust-dialog .dialog-header p').textContent=model.title;document.getElementById('dataset-select').innerHTML=`<option>${escapeText(model.source)}</option>`;document.getElementById('dataset-select').disabled=true;
  document.querySelectorAll('#page-findings .narrative p,#page-findings .narrative li,#page-findings .narrative h3,#context-source,#context-author').forEach(n=>{n.textContent=unavailable();});
  document.querySelectorAll('[data-chart-export],[data-table-export],#share-open,#copy-link,#advanced-condition-add,#advanced-group-add,#advanced-filter-search,#advanced-filter-logic,[data-filter-category],[data-group-add],[data-group-remove],#lifecycle-metric').forEach(n=>{n.disabled=true;n.title=unavailable();});
  document.querySelectorAll('[data-quick-comparison],input[name=comparison]').forEach(n=>{n.disabled=!['2024','prior-year'].includes(n.value);n.title=n.disabled?unavailable():'';});
  const save=document.getElementById('save-analysis-view');save.disabled=model.busy||model.unapplied||model.preview||model.conflict;save.querySelector('span').textContent=locale==='ru'?'Сохранить':'Save';
- document.getElementById('context-apply').disabled=model.busy||model.preview;document.getElementById('kpi-save').disabled=true;document.getElementById('kpi-save').title=unavailable();const viewLabel=document.querySelector('#view-popover > .menu-row.is-selected span');if(viewLabel)viewLabel.textContent=locale==='ru'?'Предпросмотр черновика':'Draft preview';focusRegistry.overview.title[locale]=locale==='ru'?'Focus · Выручка по дням':'Focus · Daily net revenue';document.getElementById('focus-context').textContent=model.title+' · '+bridge.range()+' · EUR';
- document.getElementById('saved-view-status').textContent=model.error||'';document.getElementById('saved-view-status').setAttribute('role',model.error?'alert':'status');document.querySelector('#overview-visual-panel .chart-summary').textContent=model.result?.totals.receipt_count===null?(locale==='ru'?'В этом периоде нет подходящих чеков.':'No eligible receipts in this period.'):(locale==='ru'?'Данные рассчитаны сервером · EUR · UTC':'Server-calculated data · EUR · UTC');
+ const retryCalculation=document.getElementById('context-apply');retryCalculation.hidden=!(model.error&&model.unapplied&&!model.conflict);retryCalculation.disabled=model.busy;retryCalculation.textContent=locale==='ru'?'Повторить':'Retry';document.getElementById('kpi-save').disabled=true;document.getElementById('kpi-save').title=unavailable();const viewLabel=document.querySelector('#view-popover > .menu-row.is-selected span');if(viewLabel)viewLabel.textContent=locale==='ru'?'Предпросмотр черновика':'Draft preview';focusRegistry.overview.title[locale]=locale==='ru'?'Focus · Выручка по дням':'Focus · Daily net revenue';document.getElementById('focus-context').textContent=model.title+' · '+bridge.range();
+ document.getElementById('saved-view-status').textContent=model.error||'';document.getElementById('saved-view-status').setAttribute('role',model.error?'alert':'status');document.querySelector('#overview-visual-panel .chart-summary').textContent=model.result?.totals.receipt_count===null?(locale==='ru'?'В этом периоде нет подходящих чеков.':'No eligible receipts in this period.'):(locale==='ru'?'Данные рассчитаны сервером':'Server-calculated data');
  document.getElementById('applied-filter-state').textContent=model.error||model.hint;
  document.getElementById('context-reset').textContent=model.conflict?(locale==='ru'?'Загрузить сохранённый':'Reload saved draft'):(locale==='ru'?'Сбросить':'Reset');
  document.querySelectorAll('.avatar').forEach(n=>{n.textContent='AN';});
@@ -2852,7 +2845,7 @@ const capabilityObserver=new MutationObserver(enforceCapabilities);capabilityObs
 const actions=(event)=>{
  const target=event.target.closest('button,a,summary');if(!target)return;
  if(bridge.model().workspace&&target.matches('#period-menu-open,#stores-menu-open,#filters-menu-open,#groupby-menu-open,#comparison-menu-open,#context-open')){event.preventDefault();event.stopImmediatePropagation();bridge.inspector(target.id==='comparison-menu-open'?'chart':target.id==='context-open'?'set':'context',target);return;}
- if(bridge.model().workspace&&target.matches('[data-nav-destination=administration]')){event.preventDefault();event.stopImmediatePropagation();const settings=document.getElementById('workspace-calendar-settings');if(settings)settings.open=true;settings?.scrollIntoView();document.getElementById('workspace-calendar-settings')?.focus();return;}
+ if(bridge.model().workspace&&target.matches('[data-nav-destination=administration]')){event.preventDefault();event.stopImmediatePropagation();showToast(unavailable());return;}
  if(bridge.model().workspace&&target.matches('#save-analysis-view')){event.preventDefault();event.stopImmediatePropagation();bridge.save(bridge.model().title);return;}
  if(target.matches('[data-nav-destination=sales],[data-nav-destination=reports-export]')){event.preventDefault();event.stopImmediatePropagation();bridge.library();}
  if(target.matches('#context-apply')){event.preventDefault();event.stopImmediatePropagation();closeContext();bridge.apply({period:reportPeriod,store:[...selectedStores][0]||'',comparison:selectedComparisons.size?'previous_year_same_dates':'none'});}
@@ -2875,6 +2868,13 @@ updateContextSummary();refreshData();
 let inputIdentity=JSON.stringify([reportPeriod,[...selectedStores],[...selectedComparisons]]);
 const onDraft=()=>queueMicrotask(()=>{const key=JSON.stringify([reportPeriod,[...selectedStores],[...selectedComparisons]]);if(key===inputIdentity)return;inputIdentity=key;bridge.draft({period:reportPeriod,store:[...selectedStores][0]||'',comparison:selectedComparisons.size?'previous_year_same_dates':'none'});});
 document.addEventListener('change',onDraft);document.addEventListener('click',onDraft);
-return {update(){if(synchronizing)return;synchronizing=true;try{refreshData();const wants=bridge.model().focus;if(wants!==Boolean(focusSourceFromUrl(location.searchParams.get('focus')))){if(wants)location.searchParams.set('focus',focusConfig().urlId);else {location.searchParams.delete('focus');pendingFocusRestore=true;}showFocusSurface();}}finally{synchronizing=false;}},dispose(){document.removeEventListener('click',actions,true);document.removeEventListener('change',onDraft);document.removeEventListener('click',onDraft);capabilityObserver.disconnect();chartResizeObserver?.disconnect();Object.values(chartInstances).forEach(c=>c.dispose());}};
+// The source narrow navigation trap belongs to the former modal overlay.
+// The dock permits native Tab order through rail, menu and workspace.
+const dockKeyboard=event=>{if(event.key==='Tab'&&shell.dataset.navContext==='open'&&matchMedia('(max-width: 820px)').matches&&document.getElementById('focus-surface').hidden&&!document.querySelector('.mw-focus'))event.stopImmediatePropagation();};
+document.addEventListener('keydown',dockKeyboard,true);
+const syncLegacyDock=()=>{if(!bridge.model().workspace)document.getElementById('report-scroll').inert=workspace.dataset.context==='open'&&matchMedia('(max-width:1100px)').matches;};
+const legacyDockObserver=new MutationObserver(syncLegacyDock);legacyDockObserver.observe(workspace,{attributes:true,attributeFilter:['data-context']});window.addEventListener('resize',syncLegacyDock);syncLegacyDock();
+
+return {setRange(start,end){reportPeriod={grain:'custom',value:start+'/'+end};inputIdentity=JSON.stringify([reportPeriod,[...selectedStores],[...selectedComparisons]]);bridge.draft({period:reportPeriod,store:[...selectedStores][0]||'',comparison:selectedComparisons.size?'previous_year_same_dates':'none'});renderPeriodControls();updateReportStateUi();},update(){if(synchronizing)return;synchronizing=true;try{const model=bridge.model();if(!model.workspace&&model.start&&model.end){reportPeriod={grain:'custom',value:model.start+'/'+model.end};inputIdentity=JSON.stringify([reportPeriod,[...selectedStores],[...selectedComparisons]]);renderPeriodControls();}refreshData();const wants=bridge.model().focus;if(wants!==Boolean(focusSourceFromUrl(location.searchParams.get('focus')))){if(wants)location.searchParams.set('focus',focusConfig().urlId);else {location.searchParams.delete('focus');pendingFocusRestore=true;}showFocusSurface();}}finally{synchronizing=false;}},dispose(){legacyDockObserver.disconnect();window.removeEventListener('resize',syncLegacyDock);document.removeEventListener('keydown',dockKeyboard,true);document.removeEventListener('click',actions,true);document.removeEventListener('change',onDraft);document.removeEventListener('click',onDraft);capabilityObserver.disconnect();chartResizeObserver?.disconnect();Object.values(chartInstances).forEach(c=>c.dispose());}};
 
 }

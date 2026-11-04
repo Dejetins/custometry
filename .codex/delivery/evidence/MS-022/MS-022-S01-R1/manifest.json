@@ -1,0 +1,128 @@
+[
+  {
+    "path": ".codex/agents/generated/MS-022/MS-022-S01-R1.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "3b63981edad2bf9c27f3ed157d3f36467c0f3cc52cb35c09a0b2be9b5eecf394"
+  },
+  {
+    "path": ".codex/agents/generated/MS-022/MS-022-S01.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "111a69f00a5ebf76d4647b581b95d657f3061f54ea571f6d4392176c18748c5f"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-022/preparation/baseline.json",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "53b77ceb6421dbf434f673b73149069ee4d59e0d8cf8400e8cad8ee4a57b0ec3"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-022/preparation/journal-capability.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "8cfeeb154cdc5a7e92fe54a672e5687ce1cc8dcd49901e3782bd5cda6cf66660"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-022/reconciliation/authoring-error.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "92f49b20b4e3adaaf5cd52102cd813fd35975e8386f1fb3dd1a725668b963d83"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-022/reconciliation/plan-v0.1.0.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "9e40cbb40ef7bca2ab3eaa2fd8aaf416c3f0c87ace6957a1c2da384813ae83bb"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-022/reconciliation/review.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "2ba6e82e4d03837b7640c5d97e4f9904f5bb3c8d845068089cc379e2c82f594d"
+  },
+  {
+    "path": ".codex/delivery/evidence/WS-004/WS-004-v0.2.17.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "35a60b33438f015dda5539a01948df611c9e20e52fd104c396a75a6912de39ad"
+  },
+  {
+    "path": ".codex/delivery/evidence/WS-004/WS-004-v0.2.18.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "5fd109293fb616940538c8566ec76bd0fec1b1fc881dfa208992d610c3c23b15"
+  },
+  {
+    "path": "docs/README.md",
+    "operation": "modified",
+    "before_sha256": "c8f5833762e4569bf8e5fea7ca55cd3087cad3e69a0bc75ec13e7a5127bb8412",
+    "sha256": "e4c570e640f3507754bedf40d2dabc6f7e8bbc7c4b3091ee21639f9fd2d9e461"
+  },
+  {
+    "path": "docs/architecture/README.md",
+    "operation": "modified",
+    "before_sha256": "203820545402be6870f7cf331ec3a01f61307d71d8e76da22686e5321187940b",
+    "sha256": "d6de18ce0c57a622fc3199ebc881efdacdc83956ca5bf291cba175c0e50e1d8d"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md",
+    "operation": "modified",
+    "before_sha256": "a5a9b9cba27dca2083a5f8ec1b794fd9f7facf31952800b3fd17742c17b5e0e8",
+    "sha256": "861171485495de58331011bfd93e56fabf339d6a825c3af02b88ed7c705b6ebf"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004.md",
+    "operation": "modified",
+    "before_sha256": "35a60b33438f015dda5539a01948df611c9e20e52fd104c396a75a6912de39ad",
+    "sha256": "6042bfe6c289852f963ded49cc431ac01ff9a33a1c9ff7689adb43eabe66085b"
+  },
+  {
+    "path": "docs/architecture/planning/milestones/MS-022/plan.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "58f5f01668e61af83d69d44a57f08baffe9a9839e3a53d9f3643b9dac352d6f6"
+  },
+  {
+    "path": "docs/contracts/analytical-authoring-contract.md",
+    "operation": "modified",
+    "before_sha256": "48a7d98934dd6346e70c9e14e2080cce3b0ea5c0155cf47e75f90dd8596ee70d",
+    "sha256": "8af84a0af7639765ccf550a08c4d4187f29325a68aabde58c2221877e449d9ce"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/columnar_filters.py",
+    "operation": "modified",
+    "before_sha256": "766e5ec52c7b4c0bc74504293935934f5e59538cabc613f66d51be3f22fa5b86",
+    "sha256": "8b20f4a7b4551e0e6348f95330cf50a7443399d6a597832c3fe4c45a3c61dff3"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/relational_filters.py",
+    "operation": "modified",
+    "before_sha256": "d5af298056f8992f76e72f8e3e2c683eb9cac87fb7d4a8d7dd84b4a46810c0c9",
+    "sha256": "f58bf04266b9c636b44a3bf99f79f2da2e00314023a6e62a2f62325c2c496dd0"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/sequence_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "5ae3164198c5cff852152f8eab30608463b80056273b377f8e2a4a86e52a921b"
+  },
+  {
+    "path": "packages/contracts/analytics/sequence_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "73cf47786c7cdd35442e15ed4cbc72a243a120fd2e82f9436b52d3fed2bb52c6"
+  },
+  {
+    "path": "packages/contracts/semantic/filter_events.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "c7812093876000bb9504c4e815f7348fa6f3dcf34c2bb5b3cc93220fa1bcd060"
+  },
+  {
+    "path": "tests/integration/analytics/test_sequence_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "bb6990658be784a5c757e83dc4f849ffff7f8abcb4fcacb9819d23f26f0f93f6"
+  }
+]

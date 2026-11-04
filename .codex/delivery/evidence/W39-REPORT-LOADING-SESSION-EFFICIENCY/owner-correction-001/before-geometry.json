@@ -1,0 +1,166 @@
+{
+  "open": {
+    "chrome": {
+      "x": 63,
+      "y": 9,
+      "width": 2616,
+      "height": 97,
+      "radius": "0px",
+      "font": "14px"
+    },
+    "inspector": {
+      "x": 2326,
+      "y": 12,
+      "width": 350,
+      "height": 1551,
+      "radius": "12px",
+      "font": "12px"
+    },
+    "cards": {
+      "x": 83,
+      "y": 332.171875,
+      "width": 2211,
+      "height": 167.046875,
+      "radius": "8px",
+      "font": "12px"
+    },
+    "plot": {
+      "x": 83,
+      "y": 565.21875,
+      "width": 2211,
+      "height": 360,
+      "radius": "0px",
+      "font": "12px"
+    },
+    "sample": {
+      "x": 1994.53125,
+      "y": 67.5,
+      "width": 168.625,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "action": {
+      "x": 311.9375,
+      "y": 122,
+      "width": 52.296875,
+      "height": 34,
+      "radius": "6px",
+      "font": "12px"
+    },
+    "gear": {
+      "x": 422.09375,
+      "y": 339.171875,
+      "width": 25.234375,
+      "height": 34,
+      "radius": "6px",
+      "font": "12px"
+    },
+    "scroll": 0
+  },
+  "before": {
+    "chrome": {
+      "x": 63,
+      "y": 9,
+      "width": 2616,
+      "height": 97,
+      "radius": "0px",
+      "font": "14px"
+    },
+    "inspector": null,
+    "cards": {
+      "x": 83,
+      "y": 332.171875,
+      "width": 2576,
+      "height": 167.046875,
+      "radius": "8px",
+      "font": "12px"
+    },
+    "plot": {
+      "x": 83,
+      "y": 565.21875,
+      "width": 2576,
+      "height": 360,
+      "radius": "0px",
+      "font": "12px"
+    },
+    "sample": {
+      "x": 1994.53125,
+      "y": 67.5,
+      "width": 168.625,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "action": {
+      "x": 311.9375,
+      "y": 122,
+      "width": 52.296875,
+      "height": 34,
+      "radius": "6px",
+      "font": "12px"
+    },
+    "gear": {
+      "x": 482.921875,
+      "y": 339.171875,
+      "width": 25.234375,
+      "height": 34,
+      "radius": "6px",
+      "font": "12px"
+    },
+    "scroll": 0
+  },
+  "after": {
+    "chrome": {
+      "x": 63,
+      "y": 9,
+      "width": 2616,
+      "height": 97,
+      "radius": "0px",
+      "font": "14px"
+    },
+    "inspector": null,
+    "cards": {
+      "x": 83,
+      "y": 404.546875,
+      "width": 2576,
+      "height": 167.046875,
+      "radius": "8px",
+      "font": "12px"
+    },
+    "plot": {
+      "x": 83,
+      "y": 637.59375,
+      "width": 2576,
+      "height": 360,
+      "radius": "0px",
+      "font": "12px"
+    },
+    "sample": {
+      "x": 1994.53125,
+      "y": 67.5,
+      "width": 168.625,
+      "height": 28,
+      "radius": "16px",
+      "font": "10px"
+    },
+    "action": {
+      "x": 311.9375,
+      "y": 122,
+      "width": 52.296875,
+      "height": 34,
+      "radius": "6px",
+      "font": "12px"
+    },
+    "gear": {
+      "x": 482.921875,
+      "y": 411.546875,
+      "width": 25.234375,
+      "height": 34,
+      "radius": "6px",
+      "font": "12px"
+    },
+    "scroll": 0
+  },
+  "sameSvg": false
+}

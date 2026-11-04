@@ -1,0 +1,236 @@
+{
+  "check": "check:local",
+  "details": {
+    "check_contract_drift": {
+      "generated_client": "/Users/daniildegtyarev/.codex/worktrees/c67c/Custometry/packages/contracts/src/foundation-client.ts",
+      "generator": "custometry-foundation-openapi-ts@1",
+      "mode": "check",
+      "schema_bindings": 1,
+      "source_digest": "5f1d2b3d9e513f2f464bc729bbd5ede7c65a93f41e8e49e43992288c16c1035b",
+      "sources": 3
+    },
+    "check_ddd_boundaries": {
+      "contexts": 22,
+      "python_files": 122,
+      "typescript_files": 26
+    },
+    "check_docs_links": {
+      "documents": 91,
+      "local_links": 912
+    },
+    "check_i18n_parity": {
+      "english_keys": 226,
+      "russian_keys": 226
+    },
+    "development_runtime": {
+      "database_services": [
+        "control-db",
+        "demo-source-db"
+      ],
+      "host_processes": [
+        "api",
+        "web"
+      ],
+      "project_prefix": "custometry-hybrid-",
+      "release_entrypoints_checked": 3
+    },
+    "doctor": {
+      "cpu_count": 18,
+      "free_disk_gib": 1476.81,
+      "mode": "static",
+      "owned_disk_gib": 0.633,
+      "platform": "macOS-26.7-arm64-arm-64bit",
+      "project_name": "custometry-46437a548f",
+      "python": "3.12.12",
+      "tools": {
+        "docker-compose": {
+          "command": "docker compose version",
+          "ok": true,
+          "version": "Docker Compose version v5.5.1"
+        },
+        "git": {
+          "command": "git --version",
+          "ok": true,
+          "version": "git version 2.55.0"
+        },
+        "node": {
+          "command": "node --version",
+          "ok": true,
+          "version": "v24.18.0"
+        },
+        "pnpm": {
+          "attempts": "pnpm --version=0",
+          "command": "pnpm --version",
+          "ok": true,
+          "version": "11.13.0"
+        },
+        "uv": {
+          "command": "uv --version",
+          "ok": true,
+          "version": "uv 0.9.26 (ee4f00362 2026-01-15)"
+        }
+      },
+      "version_pins": {
+        "node": "24.18.0",
+        "node_nvm": "24.18.0",
+        "pnpm": "11.13.0",
+        "uv": "0.9.26"
+      }
+    },
+    "generate_docs_indexes": {
+      "contributor": {
+        "artifact": "/Users/daniildegtyarev/.codex/worktrees/c67c/Custometry/docs/README.md",
+        "audience": "contributor",
+        "documents": 73,
+        "mode": "check"
+      },
+      "shipped": {
+        "artifact": "/Users/daniildegtyarev/.codex/worktrees/c67c/Custometry/apps/web/public/help-index.json",
+        "audience": "shipped",
+        "documents": 10,
+        "mode": "check",
+        "product_spec_version": "0.11.0-draft"
+      }
+    },
+    "generate_requirement_index": {
+      "artifact": "/Users/daniildegtyarev/.codex/worktrees/c67c/Custometry/docs/generated/requirement-index.json",
+      "mode": "check",
+      "requirements": 1282
+    },
+    "outcomes": {
+      "agent-profiles": "executed_passed",
+      "blueprints": "executed_passed",
+      "browser-runtime": "not_observed",
+      "browser-static": "not_applicable",
+      "compose-runtime": "not_observed",
+      "compose-static": "not_applicable",
+      "contract-drift": "executed_passed",
+      "ddd": "executed_passed",
+      "delivery-contract": "executed_passed",
+      "delivery-tickets": "executed_passed",
+      "development-runtime": "executed_passed",
+      "docs-index": "executed_passed",
+      "docs-links": "executed_passed",
+      "doctor-runtime": "not_observed",
+      "doctor-static": "executed_passed",
+      "fixtures": "executed_passed",
+      "i18n": "executed_passed",
+      "layout": "executed_passed",
+      "licenses": "not_observed",
+      "migrations-runtime": "not_observed",
+      "migrations-static": "executed_passed",
+      "performance": "not_observed",
+      "prompt-packs": "executed_passed",
+      "recovery": "not_observed",
+      "requirements": "executed_passed",
+      "routes": "executed_passed",
+      "sbom": "not_observed"
+    },
+    "scope_contract": {
+      "runtime_observed": false,
+      "runtime_required": [
+        "doctor-runtime",
+        "migrations-runtime",
+        "compose-runtime",
+        "browser-runtime",
+        "sbom",
+        "licenses",
+        "recovery",
+        "performance"
+      ],
+      "selected_checks": [
+        "blueprints",
+        "requirements",
+        "docs-index",
+        "docs-links",
+        "layout",
+        "delivery-contract",
+        "delivery-tickets",
+        "prompt-packs",
+        "development-runtime",
+        "agent-profiles",
+        "ddd",
+        "contract-drift",
+        "routes",
+        "i18n",
+        "fixtures",
+        "migrations-static",
+        "doctor-static"
+      ]
+    },
+    "validate_agent_profiles": {
+      "profiles": 9
+    },
+    "validate_blueprints": {
+      "requirement_ids": 1282,
+      "spec_version": "0.11.0-draft"
+    },
+    "validate_delivery_contract": {
+      "adapter": "/Users/daniildegtyarev/.codex/worktrees/c67c/Custometry/.codex/AGENTS.md",
+      "installed_contract_observed": false
+    },
+    "validate_delivery_tickets": {
+      "active": [
+        "W39-REPORT-LOADING-SESSION-EFFICIENCY"
+      ],
+      "ready": [],
+      "tickets": 40
+    },
+    "validate_fixture_manifest": {
+      "expected_counts": {
+        "calendar": 1830,
+        "channels": 4,
+        "customer_history": 40,
+        "customers": 1000,
+        "external_customer_records": 50,
+        "products": 120,
+        "promotion_channels": 15,
+        "promotion_customers": 400,
+        "promotions": 12,
+        "receipt_items": 15000,
+        "receipts": 5000,
+        "return_items": 172,
+        "returns": 172,
+        "stores": 20
+      },
+      "manifest_kind": "deterministic-profile",
+      "profile": "demo",
+      "scenarios": 15,
+      "seed": 20260716
+    },
+    "validate_migration_lifecycle": {
+      "mode": "static",
+      "revisions": 13
+    },
+    "validate_prompt_packs": {
+      "journals": 4,
+      "proof_boundary": "artifact-structure-and-file-binding; no claims or stage execution"
+    },
+    "validate_repository_layout": {
+      "required_directories": 54,
+      "required_files": 18,
+      "tracked_files": 1470
+    },
+    "validate_route_registry": {
+      "foundation": 1,
+      "implemented": 9,
+      "penpot_backlog": 1,
+      "penpot_baseline": 116,
+      "planned": 107,
+      "route_contract_profiles": 20,
+      "route_contract_schema": "1.0.0",
+      "route_contracts": 117,
+      "routes": 117,
+      "title_keys": 122,
+      "ui_cross_surface_capabilities": 22,
+      "ui_overlays": 25,
+      "ui_surface_schema": "1.0.0",
+      "ui_system_surfaces": 5,
+      "ui_use_case_bindings": 29,
+      "utility_routes": 5
+    }
+  },
+  "findings": [],
+  "observed": true,
+  "status": "passed"
+}

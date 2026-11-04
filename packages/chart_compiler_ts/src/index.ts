@@ -8,3 +8,6 @@ export interface ChartSpecEnvelope {
   readonly chartType: string;
   readonly payload: Readonly<Record<string, unknown>>;
 }
+
+export {applyChartVisual} from './composer';
+export {seriesFor,visualColors} from './visual';

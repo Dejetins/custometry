@@ -1,0 +1,98 @@
+[
+  {
+    "path": ".codex/agents/generated/MS-017/MS-017-S01.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "d1dcc5f9e76ec32b68de8f91e92082049cd91e13d5aadb543fb51515420f52e4"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-017/preparation/baseline.json",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "c4d0c8e71a989dcdeae05363fcf4e7a089cad2a806371cbb8a5d57aa7ece6358"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-017/preparation/flat-before.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "2353d35fe5e3ca29ec6520f9b090be392f979bb6174003f8928bf7dec5f3d1c4"
+  },
+  {
+    "path": ".codex/delivery/evidence/MS-017/preparation/journal-capability.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "1fc1451d55b3318508031282dbb61bc7a18e880806e7536d5bb63c3bfb15eec0"
+  },
+  {
+    "path": ".codex/delivery/evidence/WS-004/WS-004-v0.2.12.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "f2f46a89fef54e39d057514de3b9f9ea65d82fbab78d75861c05bd8e3a08f307"
+  },
+  {
+    "path": "docs/README.md",
+    "operation": "modified",
+    "before_sha256": "100082faddebe610f3ab898521853b1b081de1a6496db0194569ff7b11935ac8",
+    "sha256": "47946ad7034d150a39487d3ea8cadde139f2405927356a5d798c555758043b61"
+  },
+  {
+    "path": "docs/architecture/README.md",
+    "operation": "modified",
+    "before_sha256": "fcdf625754e41707f05400655284bc949194ca4388cc202ea9add93c09d82e53",
+    "sha256": "41db3017fd0ce244d241b60135f80f835a1c8d81da7a17959cdb68a5ca5a026f"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004-requirements.md",
+    "operation": "modified",
+    "before_sha256": "20842b787adc7af7b66cf4c4523b37f3aa5d026121b616affa281d7e162e398c",
+    "sha256": "d7546d7da68dddf4fb002d27e99a4471fd41962582b92fd8e00f8707c0b88869"
+  },
+  {
+    "path": "docs/architecture/planning/directions/DIR-004/workstreams/WS-004.md",
+    "operation": "modified",
+    "before_sha256": "f2f46a89fef54e39d057514de3b9f9ea65d82fbab78d75861c05bd8e3a08f307",
+    "sha256": "a18f328ee2d2983b68440c2c08da4daa05c438b6d2e09284b209bed2e7512790"
+  },
+  {
+    "path": "docs/architecture/planning/milestones/MS-017/plan.md",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "d7c3dc5aa671d7992c88a9a6989d4af1a129c10abb34fa72e45e0b1eb3ce8dcf"
+  },
+  {
+    "path": "docs/contracts/analytical-authoring-contract.md",
+    "operation": "modified",
+    "before_sha256": "60a7c666a10ffa190da7d62a2f7f9c851106d1c53ee52ba6b941d8d3946d1c5b",
+    "sha256": "51044b334339911f5bb30d01f01238c2b5c641627068f107f880d4b662102f61"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/columnar_filters.py",
+    "operation": "modified",
+    "before_sha256": "da81b52c7d46b919fb08e6c77f5f9e680fea38ac039c415793743b55685bda1c",
+    "sha256": "3bf4c8e1fa16c0bc2ed4a562e1d419528064fecd53f081666ccf7f547ff3a4f3"
+  },
+  {
+    "path": "packages/analytics_core/infrastructure/relational_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "fa3fe30a1f1177377dd3a7d6014b8758028b474bf89648c94490c6a1099e91c0"
+  },
+  {
+    "path": "packages/contracts/analytics/relational_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "c434a80e3ffab329f4c063bebb77900d4cc2946278b4f29e29b2eaf275964262"
+  },
+  {
+    "path": "packages/contracts/semantic/relationships.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "97b03baa5c8f5179d070c94608945e24b9aacccca8001236ccc4ad9fc9ae1312"
+  },
+  {
+    "path": "tests/integration/analytics/test_relational_filters.py",
+    "operation": "created",
+    "before_sha256": null,
+    "sha256": "ac54fa84e8386884e1fc0e43169ce7c2112dc848a38a4a107618f0cc55b09a89"
+  }
+]

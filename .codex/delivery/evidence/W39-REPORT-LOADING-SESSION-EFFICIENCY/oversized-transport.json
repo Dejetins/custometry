@@ -1,0 +1,7 @@
+{
+  "expandedBytes": 3206908,
+  "limit": 2097152,
+  "rejected": true,
+  "retryRecovered": true,
+  "method": "real editor response without optional ready_results; real result plus injected JSON whitespace"
+}

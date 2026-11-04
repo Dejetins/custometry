@@ -1,0 +1,10 @@
+{
+  "body_was_held": true,
+  "logout_cleared_iframe": true,
+  "finished_body_did_not_restore_iframe": true,
+  "state": {
+    "armed": false,
+    "held": false,
+    "timed_out": false
+  }
+}

@@ -1,0 +1,23 @@
+import {render,screen,fireEvent,waitFor,cleanup} from '@testing-library/react';
+import {QueryClient,QueryClientProvider} from '@tanstack/react-query';
+import {afterEach,expect,it,vi} from 'vitest';
+import type {composerReports as C} from '@custometry/contracts';
+import {ComposerReceiptScopes} from './ComposerReceiptScopes';
+const api=vi.hoisted(()=>({filterCatalog:vi.fn(),filterPreview:vi.fn(),validate:vi.fn()}));
+vi.mock('./composer-api',()=>({composerApi:api}));vi.mock('./report-api',()=>({csrf:()=>''}));
+afterEach(cleanup);
+it('switches draft, Reset, preview and commit atomically between bindings and new condition',async()=>{
+ const predicate=(value:string):C.FlatPredicate=>({kind:'predicate',field_id:'Receipt.status',field_version_id:'field',operator:'eq',values:[{data_type:'string',value}]});
+ const bindings=['A','B'].map((value,i):C.ReceiptScopeBinding=>({binding_id:value,target:{kind:'document',id:'document'},semantic_dataset_version_id:'dataset',order:i,filter:{registry_version_id:'registry',expression:predicate(value)}}));
+ const d={document_id:'document',blocks:[],scopes:{schema_version:'composer-scopes/v2',receipt_filters:bindings}} as unknown as C.ComposerDefinitionV1;
+ api.filterCatalog.mockResolvedValue({registry_version_id:'registry',mandatory_expression:predicate('mandatory'),fields:[{field:{field_id:'Receipt.status',version_id:'field',data_type:'string',operators:['eq'],entity:'Receipt'},label:{en:'Status',ru:'Статус'},description:{en:'Status',ru:'Статус'}}]});
+ api.filterPreview.mockResolvedValue({matched_count:1,authorized_count:1,unknown_count:0});api.validate.mockResolvedValue({valid:true});
+ const commit=vi.fn();render(<QueryClientProvider client={new QueryClient({defaultOptions:{queries:{retry:false}}})}><ComposerReceiptScopes definition={d} target={{kind:'document',id:'document'}} dataset="dataset" locale="en" busy={false} onValidating={vi.fn()} commit={commit} label={()=>'Document'}/></QueryClientProvider>);
+ await screen.findByText(/Mandatory access restrictions/);
+ fireEvent.change(screen.getByLabelText('Receipt constraint'),{target:{value:'B'}});
+ const input=screen.getAllByLabelText('Value')[0] as HTMLInputElement;expect(input.value).toBe('B');
+ fireEvent.change(input,{target:{value:'draft'}});fireEvent.click(screen.getByText('Reset to initial'));expect((screen.getAllByLabelText('Value')[0] as HTMLInputElement).value).toBe('B');
+ fireEvent.click(screen.getByText('Apply to scope settings'));await waitFor(()=>expect(api.filterPreview).toHaveBeenCalled());expect(api.filterPreview.mock.calls[0][0].filter.expression.values[0].value).toBe('B');
+ await waitFor(()=>expect(screen.getByText('Update Receipt scope')).not.toBeDisabled());fireEvent.click(screen.getByText('Update Receipt scope'));await waitFor(()=>expect(commit).toHaveBeenCalled());expect(api.validate.mock.calls[0][0].scopes.receipt_filters.find((f:C.ReceiptScopeBinding)=>f.binding_id==='B').filter.expression.values[0].value).toBe('B');
+ fireEvent.change(screen.getByLabelText('Receipt constraint'),{target:{value:''}});expect(screen.queryAllByLabelText('Value')).toHaveLength(0);fireEvent.click(screen.getByText('Reset to initial'));expect(screen.queryAllByLabelText('Value')).toHaveLength(0);
+});

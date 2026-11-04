@@ -1,7 +1,7 @@
 ---
 doc_id: ARCH-UI-WEB-IMPLEMENTATION-SOURCE-001
 title: Custometry Web implementation source contract
-doc_version: 14
+doc_version: 15
 product_spec_version: 0.11.0-draft
 ui_spec_version: 0.9.0-draft
 visibility: internal
@@ -16,13 +16,22 @@ proof_boundary:
 
 # Custometry Web implementation source contract
 
+## Current visual routing — 2026-10-10
+
+Read the short [UI change manifest](ui-change-manifest.md) before UI edits.
+It supersedes earlier mandatory pilot/composition fidelity statements in this
+contract and linked historical stage guidance. Preserve unaffected visual tone
+and working behavior; implement the latest scoped owner decisions. The native
+pilot remains an implementation seam, not a requirement to retain its design.
+Product semantics, architecture boundaries and required proof remain in force.
+
 ## Accepted initial composition — 2026-09-17
 
 The owner accepted the [metric-workspace composition](drafts/metric-workspace-v1/README.md),
 version 4 (editorial navigation update), as the starting baseline for worksets, configured cards, comparisons
-and goal placement. Preserve the current native-pilot implementation as the
-foundation. This addition governs the demonstrated new report surfaces; the
-original pilot governs the shell and unaffected surfaces. The prototype does
+and goal placement. The native-pilot implementation was retained as the
+foundation at that stage; later UI changes follow the current visual routing. This addition governs the demonstrated new report surfaces; the
+original pilot records the earlier shell; current visual routing above governs changes. The prototype does
 not establish backend contracts. [WS-003](../planning/directions/DIR-004/workstreams/WS-003.md)
 records the accepted order and all twelve product choices. C01 must implement
 all six grains and creator-only report editing; C02/C03 own the added goal/shared
@@ -36,7 +45,7 @@ container packaging and delivery qualification require a separate selected task.
 
 ## Decision and execution authority
 
-The owner-selected [2026-09-17 metric interaction atlas](references/mindbox-metrics-2026-09-17/README.md), version 1, adds future workset/card/comparison/goal requirements (blueprint requirements revision `2026-09-17.1`). It supplies ten source screenshots for those added behaviors. The preserved pilot still governs its demonstrated elements; this addition neither replaces its shell nor changes the current route capability inventory or accepted milestone execution authority.
+The owner-selected [2026-09-17 metric interaction atlas](references/mindbox-metrics-2026-09-17/README.md), version 1, adds future workset/card/comparison/goal requirements (blueprint requirements revision `2026-09-17.1`). It supplies ten source screenshots for those added behaviors. This atlas records the earlier additive scope; current visual routing above governs changes without changing route capability inventory or milestone execution authority.
 
 On 2026-09-04 the owner selected the final interactive pilot as the target UI
 concept and authorized removal of the G0-G6 program and generated materials.
@@ -60,28 +69,19 @@ Read only the smallest applicable set:
    for normative business semantics, contracts, and requirement IDs;
 2. `custometry-ui-blueprint-ru.md` and executable route/surface contracts for
    surface identity, roles, states, permissions, and responsive intent;
-3. the [target pilot](target-pilot/README.md), its byte-pinned entrypoint and
-   decision notes for the demonstrated composition, navigation, analytical
-   controls, interactions, density, and visual language, plus the accepted
-   [metric-workspace composition, version 4](drafts/metric-workspace-v1/README.md)
-   for its explicitly added report surfaces;
+3. the [UI change manifest](ui-change-manifest.md), latest scoped owner design
+   decisions and relevant current rendered/code references; historical pilots
+   are optional evidence and do not veto requested changes;
 4. accepted architecture, especially ADR-0007, for production technology and
    dependency boundaries;
 5. production code, focused tests, and observed browser evidence for the
    current implementation and its gaps.
 
-The pilot is a target concept, not merely a visual-language anchor. Its
-demonstrated structures and interactions should be implemented faithfully.
-It is also a fixture-backed prototype: it neither changes backend contracts
-nor proves production API, persistence, permissions, accessibility, or responsive
-readiness. Screens not shown in the pilot retain their product requirements;
-derive coherent patterns from the pilot without forcing every screen into the
-same composition. Resolve a material conflict or a non-derivable product/design
-decision with the owner before implementation.
-
-The existing frontend remains working implementation evidence. Removing
-the design program does not roll it back or certify its conformity. Alignment
-to the target concept is subsequent, bounded implementation work.
+Visual references apply only within their selected scope. Current code may
+contain inconsistencies; do not promote it wholesale to a design standard.
+Resolve missing material design choices through a bounded experiment or owner
+input. Do not request approval again for an already authorized redesign.
+Prototypes and current implementation do not prove backend behavior or readiness.
 
 ## Execution unit and proof contract
 
@@ -219,7 +219,8 @@ provide real guarded API and persistence inputs for S04. Use generated
 `packages/contracts/src/workspace-client.ts` and `workspace-contracts.ts`; external
 paths are `/api/reports/v2` and `/api/analytics/metric-workspace/v2`. The editor
 returns an exact version plus current capabilities and companion-view revision.
-Preserve the current native pilot and typed bridge; no S03 change implements Web UI.
+S03 retained the native pilot and typed bridge and did not implement Web UI;
+this historical handoff does not require future pilot fidelity.
 
 Apply is explicit and Save consumes its exact verified bindings and chart payloads.
 Display-only creator changes can pass `reuse_result_ids` to verify existing results

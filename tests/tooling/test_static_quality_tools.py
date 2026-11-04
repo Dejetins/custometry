@@ -1058,6 +1058,33 @@ def test_delivery_contract_accepts_linked_global_skill(tmp_path: Path) -> None:
     assert validate_delivery_contract.check(tmp_path, contract).ok
 
 
+def test_delivery_contract_resolves_current_selector_through_skill(tmp_path: Path) -> None:
+    contract = delivery_contract_fixture(tmp_path)
+    write(contract, "# Delivery selector v1\n")
+    write(
+        contract.parent.parent / "SKILL.md",
+        "---\nname: delivery-orchestrator\n---\n"
+        "Use [the selector](references/delivery-contract-v1.md).\n",
+    )
+    write(
+        contract.parents[3] / "AGENTS.md",
+        "Use delivery-orchestrator and its relative delivery contract only\n"
+        "when the required artifact is unclear. One selected\n"
+        "ticket or ledger-allowed stage is one unit unless authorized continuation applies.\n",
+    )
+    assert validate_delivery_contract.check(tmp_path, contract).ok
+    # A stale relative link must not pass just because its filename is familiar.
+    write(
+        contract.parent.parent / "SKILL.md",
+        "---\nname: delivery-orchestrator\n---\n"
+        "Use [the selector](wrong/delivery-contract-v1.md).\n",
+    )
+    failed = validate_delivery_contract.check(tmp_path, contract)
+    assert "delivery-contract-global-agent-link-invalid" in {
+        item.code for item in failed.findings
+    }
+
+
 def test_delivery_contract_rejects_rule_missing_from_global_owner(tmp_path: Path) -> None:
     contract = delivery_contract_fixture(tmp_path)
     global_agent = contract.parents[3] / "AGENTS.md"

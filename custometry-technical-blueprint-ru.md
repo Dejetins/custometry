@@ -8,8 +8,8 @@ normative: true
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-09-20
-requirements_revision: 2026-09-20.2
+updated_at: 2026-10-10
+requirements_revision: 2026-10-10.1
 alternate_document:
   representation: human
   path: ./custometry-technical-blueprint-human-ru.md
@@ -5658,7 +5658,7 @@ progress_requirements:
 
 ### 15.4.1. Theme и presentation identity contracts
 
-Точный набор shipped themes, их identifiers, palette values и UI/report defaults требует принятия по THEME-001…008 до затронутой frontend implementation; отменённая product-wide UI design program не является prerequisite. Финальный hash-pinned пилот задаёт показанную UI-концепцию и её visual language; полный production theme registry уточняется в соответствующем contract. Компоненты и ChartSpec не содержат theme-specific hardcoded colors. Палитры отвергнутого UI target не являются input, shipped registry либо accepted visual authority; при необходимости их можно восстановить только как историческое evidence из Git, а не из нормативной спецификации.
+Точный набор shipped themes, их identifiers, palette values и UI/report defaults требует принятия по THEME-001…008 до затронутой frontend implementation; отменённая product-wide UI design program не является prerequisite. Визуальные изменения следуют UI change manifest и актуальным решениям владельца; исторический пилот не фиксирует будущую композицию или палитру. Полный production theme registry уточняется в соответствующем contract. Компоненты и ChartSpec не содержат theme-specific hardcoded colors. Палитры отвергнутого UI target не являются input, shipped registry либо accepted visual authority; при необходимости их можно восстановить только как историческое evidence из Git, а не из нормативной спецификации.
 
 ```yaml
 theme_requirements:
@@ -6569,7 +6569,7 @@ Polars является основным dataframe engine. Pandas MAY испол
 
 ## 18.6. Frontend
 
-Текущий browser stack в `apps/web` является implementation evidence, а целевую архитектуру определяет accepted ADR-0007. Framework, language/build tool, client-state и server-state libraries, component/styling system, table/form/canvas libraries, icon family, font pack и browser-test implementation MUST быть source-backed и version-pinned в принятом architecture/implementation contract. Продуктовые требования и целевой пилот задают входные ограничения; повторная UI-программа не требуется.
+Текущий browser stack в `apps/web` является implementation evidence, а целевую архитектуру определяет accepted ADR-0007. Framework, language/build tool, client-state и server-state libraries, component/styling system, table/form/canvas libraries, icon family, font pack и browser-test implementation MUST быть source-backed и version-pinned в принятом architecture/implementation contract. Продуктовые требования и актуальные scoped UI-решения задают входные ограничения; повторная UI-программа не требуется.
 
 Browser proof определяется действующим [implementation-source contract](./docs/architecture/ui/custometry-web-implementation-source-contract-v1.md): проверяются затронутые границы и применимые endpoints `768` и `1920 CSS px`; промежуточные ширины добавляются при layout risk или объявленном breakpoint. Принятый recoverable rollout и compatibility seams ADR-0007 сохраняются.
 
@@ -6593,7 +6593,7 @@ web_architecture_requirements:
   - id: WEB-ARCH-004
     requirement: Frontend rollout MUST быть recoverable, сохранять accepted deep links/history/Back/refresh и не удалять current fallback либо compatibility seam до browser, accessibility, real-API и performance evidence соответствующей wave.
   - id: WEB-ARCH-005
-    requirement: Одна accepted visual authority MUST быть hash-pinned в repository-owned source manifest с явно принятым scope; финальный пилот задаёт показанную UI-концепцию, а внешние references MAY задавать только объявленный screen либо visual-language scope и не переносят branding, entities, private assets, text, source code или undocumented authorization behavior.
+    requirement: Визуальная основа UI-изменения MUST иметь явный scope и проверяемый источник согласно docs/architecture/ui/ui-change-manifest.md; актуальное решение владельца заменяет прежнее в затронутой области. Исторические пилоты не являются обязательным шаблоном. Вне изменяемой области MUST сохраняться согласованный визуальный язык. Внешние references MAY использоваться в объявленном scope и не переносят branding, entities, private assets, text, source code или undocumented authorization behavior.
   - id: WEB-ARCH-006
     requirement: Shell, navigation, context/detail surfaces и responsive transformations MUST быть описаны source-backed platform baseline и screen contracts с keyboard/focus behavior, persistence semantics и content priorities; presentation mechanics не меняют permissions, routes или domain identity.
 ```

@@ -1,7 +1,7 @@
 ---
 doc_id: ADR-0007
 title: Responsive Web frontend platform and ownership boundaries
-doc_version: 2
+doc_version: 3
 product_spec_version: 0.10.0-draft
 visibility: internal
 ship: false
@@ -19,6 +19,12 @@ proof_boundary:
 - date: `2026-08-06`;
 - decision owner: product-owner delegation in the retired UI workflow (historical provenance);
 - supersedes/superseded by: resolves the target-stack decision deferred by ADR-0004; no successor.
+
+## Visual-policy amendment — 2026-10-10
+
+The owner replaced mandatory pilot fidelity with the [UI change manifest](../architecture/ui/ui-change-manifest.md).
+Earlier pilot bindings below record the prior baseline, not a veto on requested
+UI changes. Technology and ownership decisions remain in force.
 
 ## Context
 
@@ -144,13 +150,11 @@ accessibility primitives, and responsive component behavior. `apps/web` may
 compose these primitives and define screen-local layouts but may not fork token
 semantics or introduce unversioned customer CSS/HTML/JavaScript.
 
-The preserved target pilot owns its demonstrated composition, navigation,
-analytical controls, Focus/Explore behavior, RU/EN presentation, and visual
-language. Existing runtime theme defaults and tokens remain unchanged by the
-2026-09-04 cleanup; subsequent implementation tickets align them with the
-concept. Prototype source is a design reference, not a replacement production
-architecture or proof of backend behavior. Missing screens follow product
-requirements and consistent pilot patterns, not historical G-family boards.
+Use the UI change manifest to select task-scoped visual references and preserve
+shared visual tone. Historical pilots do not prescribe future compositions.
+Owner-selected changes supersede earlier visual choices within their scope;
+existing code and prototypes are evidence, not automatic approval or proof of
+backend behavior. Reuse suitable components without copying existing drift.
 
 ### Route, localization, permission, state, and data ownership
 
@@ -202,7 +206,7 @@ assessment; it does not restart a G-stage program.
   because code already exists.
 - `@custometry/ui-foundation` must evolve from a small current implementation
   into the versioned baseline adapter without treating its four historical
-  theme IDs as accepted target themes. The target pilot defines demonstrated
+  theme IDs as accepted target themes. The UI change manifest governs evolving scoped
   visual choices; runtime theme changes require source-backed implementation
   and browser evidence.
 - Any current code that mixes query/server state with MobX presentation state,
@@ -218,7 +222,7 @@ assessment; it does not restart a G-stage program.
 | Route identity and URLs | no change | preserve existing IDs and canonical URLs; later additions are versioned |
 | API, DTO, event, domain, and persistence | none for this architecture decision | implementation tickets classify each later change independently |
 | Client state ownership | breaking for any code that duplicates server truth | migrate per wave; keep compatibility adapters until proof closes |
-| Design tokens/components/themes | breaking target authority reset | bind to the target pilot; historical theme IDs are not accepted automatically |
+| Design tokens/components/themes | breaking target authority reset | use current scoped visual decisions; historical theme IDs are not accepted automatically |
 | Permission behavior | compatible with stricter boundary | browser hints remain non-authoritative; server denial wins |
 | Responsive range | new compatible target contract | prove all anchors later; no mobile-specific IA |
 | Rollback | additive recovery contract | preserve previous browser composition and typed server seams per wave |
@@ -245,8 +249,8 @@ hardening, release, or production readiness.
 
 ## Re-evaluation triggers
 
-- target-pilot conformance or product implementation demonstrates that the
-  selected component/styling or state boundary cannot satisfy the concept;
+- an authorized UI direction or product implementation demonstrates that the
+  selected component/styling or state boundary cannot satisfy the requirements;
 - measured large-document or chart behavior requires a new renderer boundary;
 - a stable API/generated-client contract makes the current adapter shape
   incompatible;

@@ -12,22 +12,33 @@ status: accepted_ui_requirements
 normative: false
 language: ru
 created_at: 2026-07-15
-updated_at: 2026-09-24
-requirements_revision: 2026-09-20.2
+updated_at: 2026-10-10
+requirements_revision: 2026-10-10.1
 artifact_role: product_ui_requirements_and_current_inventory
 program_route: ticket_first
 active_program: null
 current_execution_route: docs/architecture/ui/custometry-web-implementation-source-contract-v1.md
 visual_authority:
-  status: accepted_target_ui_concept
-  source_evidence_mode: renderable_html
-  scope: demonstrated_composition_behavior_and_visual_language
-  manifest: ./docs/architecture/ui/target-pilot/manifest.json
+  status: evolving_scoped_owner_decisions
+  source_evidence_mode: current_rendered_and_code_references
+  scope: selected_per_change
+  routing: ./docs/architecture/ui/ui-change-manifest.md
+  historical_manifest: ./docs/architecture/ui/target-pilot/manifest.json
 target: adaptive_responsive_web_application
 mobile_scope: unauthorized
 ---
 
 # Custometry — требования к Web UI и целевая концепция
+
+## Актуальное правило UI-изменений — 2026-10-10
+
+Перед UI-правками агент читает краткий [UI change manifest](docs/architecture/ui/ui-change-manifest.md).
+По решению владельца обязательное соответствие старому пилоту отменено.
+Ниже ссылки на пилот как target и требования его воспроизведения описывают
+прежнюю визуальную основу и не ограничивают новые решения владельца.
+Сохраняются продуктовые требования и общий тон незатронутого интерфейса;
+эксперимент не становится стандартом автоматически. Полный новый дизайн
+платформы и повторное согласование уже разрешённых изменений не требуются.
 
 ## 0. Статус и назначение
 
@@ -43,9 +54,9 @@ mobile_scope: unauthorized
 - сквозные требования к аналитике, исследованиям, прогнозам, отчётам, операциям, администрированию, accessibility и localization;
 - историческое evidence W03-W10 как свидетельство прежнего покрытия, но не как текущая визуальная власть;
 - принятая capability expansion: общий multi-page Analytical Document, universal block builder, точные notes/annotations/discussions, time-aware segmentation, Products/Categories/Assortment/Inventory, digital acquisition/retail journeys, unit economics, adoption и analytical-performance administration;
-- финальный интерактивный RU/EN пилот как целевая UI-концепция, включая показанную композицию, навигацию, аналитические взаимодействия и визуальный язык.
+- актуальные scoped решения владельца и UI change manifest; сохранённый RU/EN пилот — исторический reference.
 
-Frontend architecture определяется ADR-0007. Финальный пилот сохранён в `docs/architecture/ui/target-pilot/` и является целевой концепцией, а не только визуальным ориентиром. Он не показывает все экраны и не доказывает готовность production-кода. G0–G6 программа и её материалы удалены по решению владельца 2026-09-04; восстановление из Git описано в `docs/architecture/ui/ui-program-retirement.md`. Продуктовые требования и рабочий код сохранены, дальнейшее приведение UI к концепции выполняется обычными implementation tickets.
+Frontend architecture определяется ADR-0007. Исторический пилот сохранён в `docs/architecture/ui/target-pilot/` и используется как необязательный визуальный reference. Он не показывает все экраны и не доказывает готовность production-кода. G0–G6 программа и её материалы удалены по решению владельца 2026-09-04; восстановление из Git описано в `docs/architecture/ui/ui-program-retirement.md`. Продуктовые требования и рабочий код сохранены, дальнейшее развитие UI следует UI change manifest и выбранным implementation units.
 
 ## 1. Design brief
 
@@ -119,7 +130,7 @@ Custometry — self-hosted операционная система B2C retail-а
 | Route identity и execution policy | `packages/contracts/routes/ui-routes.json`, `ui-route-contracts.json` | Текущий исполняемый inventory, не доказательство полного target coverage |
 | Surface coverage | `packages/contracts/routes/ui-surface-contracts.json` | Current-state evidence, не permanent ceiling |
 | Исторический дизайн W03-W10 | `.codex/delivery/evidence/` | Historical-only, не visual authority |
-| Принятый RU/EN HTML-пилот | `docs/architecture/ui/target-pilot/manifest.json` | Целевая композиция, поведение и визуальный язык показанного UI; не backend/architecture proof |
+| Принятый RU/EN HTML-пилот | `docs/architecture/ui/target-pilot/manifest.json` | Исторический reference; не обязательный шаблон и не backend/architecture proof |
 | Frontend platform, dependency/state ownership, responsive range и rollout | `docs/adr/0007-responsive-web-frontend-platform.md` | Accepted architecture; не implementation/browser proof |
 | Текущий Web-код | `apps/web/**` | Implementation evidence, не target baseline |
 
@@ -129,7 +140,7 @@ Custometry — self-hosted операционная система B2C retail-а
 
 Приоритетные продуктовые journeys: `data-to-trusted-result`, `compose-large-workbook`, `publish-review-collaborate`, `refresh-with-stable-anchors`, `define-recalculate-reuse-segment`, `digital-to-offline-unit-economics`, `product-category-assortment-inventory`, `open-100x30-document-without-duplicate-compute`, `adoption-and-performance-operations`. Это требования, а не утверждение об их реализации.
 
-Повторный intake и новая G-программа не требуются. Агент использует принятые требования, ADR-0007, целевой пилот и конкретный ready ticket. Нельзя требовать от владельца повторного описания уже принятого scope.
+Повторный intake и новая G-программа не требуются. Агент использует UI change manifest, релевантные требования, ADR-0007 и выбранную единицу работы. Нельзя требовать от владельца повторного описания уже принятого scope.
 
 ## 3. Основные UX-принципы
 
@@ -148,7 +159,7 @@ Custometry — self-hosted операционная система B2C retail-а
 
 Внешний продукт, design system или platform guideline может стать только source-backed visual-language reference либо craft-check после явного выбора. Он не переносит в Custometry чужие сущности, тексты, assets, branding, source code, скрытые permission rules или platform-specific interaction без Web semantics. Один референсный экран не заменяет platform baseline и полное продуктовое покрытие.
 
-Принятый финальный пилот задаёт показанные композицию, сетку, навигацию, панели, controls, Focus/Explore, charts/tables и визуальный язык. Для соответствующих поверхностей это целевая концепция, а не набор необязательных stylistic hints. Для отсутствующих экранов сохраняются продуктовые требования и применяются согласованные паттерны пилота; одинаковая композиция для всех экранов не навязывается. Fixture-данные и прототипные действия не заменяют production-контракты и browser evidence реализации.
+Композиция, сетка, навигация, панели, controls, Focus/Explore и charts/tables развиваются по UI change manifest. Исторический пилот помогает исследовать прежние решения, но не требует их воспроизведения. Для отсутствующих экранов сохраняются продуктовые требования; одинаковая композиция для всех экранов не навязывается. Fixture-данные не заменяют production-контракты и browser evidence.
 
 ## 4. Информационная архитектура
 
@@ -216,13 +227,13 @@ Administration
   Analytical Performance
 ```
 
-Навигация показывает только разрешённые группы, но не используется как источник authorization. Показанные в пилоте композиция, navigation/context panels и collapse behavior являются целевыми. Для полного набора destinations, effective permissions, focus behavior, workspace switching и safe recovery действуют продуктовые контракты. Icon-only состояние обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Отсутствующие в пилоте состояния уточняются в соответствующем implementation ticket. ADR-0007 выбирает Lucide React как general icon adapter; semantic mapping, accessible names и непоказанные состояния проверяются в соответствующем контракте.
+Навигация показывает только разрешённые группы, но не используется как источник authorization. Композиция navigation/context panels и collapse behavior развивается по UI change manifest; пилот не является обязательным шаблоном. Для полного набора destinations, effective permissions, focus behavior, workspace switching и safe recovery действуют продуктовые контракты. Icon-only состояние обязано иметь локализованное accessible name, tooltip по hover/focus, visible focus и достаточную hit area. Отсутствующие в пилоте состояния уточняются в соответствующем implementation ticket. ADR-0007 выбирает Lucide React как general icon adapter; semantic mapping, accessible names и непоказанные состояния проверяются в соответствующем контракте.
 
 ### 4.2. Глобальный application shell
 
 | Область | Содержимое |
 |---|---|
-| Product/global controls | Product identity, workspace switch, global search/command access, help, notifications и user menu; показанная композиция определяется целевым пилотом |
+| Product/global controls | Product identity, workspace switch, global search/command access, help, notifications и user menu; композиция развивается по UI change manifest и актуальным решениям владельца |
 | Primary navigation | Permission-aware destinations, current location и доступный способ перехода/возврата |
 | Page header | Breadcrumb, title, description/status, primary action и secondary actions |
 | Context bar | Dataset/version, date range, comparison, filters, timezone/currency, saved view |
@@ -290,11 +301,11 @@ Responsive Web обязателен. ADR-0007 задаёт диапазон `768
 
 ## 6. Platform UI — концепция и требования к реализации
 
-Целевая концепция — сохранённый финальный пилот; архитектура — ADR-0007. Показанные shell, navigation, layout, controls и interactions приняты как target. Production tokens/components, отсутствующие состояния, responsive transformations, accessibility и copy policies реализуются и проверяются в bounded tickets без G0–G6.
+Визуальные решения развиваются по UI change manifest; архитектура — ADR-0007. Сохраняется общий тон текущего интерфейса, выбранные области допускают эксперименты, явно выбранные владельцем результаты закрепляются для похожих задач. Production tokens/components, отсутствующие состояния, responsive transformations, accessibility и copy policies реализуются и проверяются в bounded tickets без G0–G6.
 
 ### 6.1. Themes и semantic tokens
 
-- показанная палитра пилота является целевой; runtime theme identifiers/defaults не меняются этой редакцией и приводятся к концепции отдельной реализацией;
+- палитра сохраняет общий тон текущего интерфейса вне области явно выбранного изменения; runtime theme identifiers/defaults не меняются одной правкой документации;
 - компоненты и ChartSpec используют semantic roles, а не hardcoded product colors;
 - каждый принятый theme покрывает canvas/surface/text/border/accent/focus/status/positive-negative/chart roles и проверяется на contrast и color-blind-safe alternatives;
 - theme preference не меняет domain values, run/artifact identity или cache identity;
@@ -303,7 +314,7 @@ Responsive Web обязателен. ADR-0007 задаёт диапазон `768
 
 ### 6.2. Typography, icons и assets
 
-- typography наследует показанный пилотом характер; production font files, лицензии, fallback и en/ru metrics фиксируются при реализации;
+- typography сохраняет согласованную иерархию текущего интерфейса вне области выбранного изменения; production font files, лицензии, fallback и en/ru metrics фиксируются при реализации;
 - en/ru coverage, 200% zoom/reflow, dense-table readability и deterministic report rendering обязательны;
 - ADR-0007 выбирает Lucide React `0.515.0` как general icon adapter; semantic mapping, product-owned assets, sizes, optical rules и license provenance фиксируются в соответствующем source-backed контракте;
 - незнакомое действие не обозначается только icon, а status не кодируется только цветом или движением;
@@ -311,11 +322,11 @@ Responsive Web обязателен. ADR-0007 задаёт диапазон `768
 
 ### 6.3. Layout, components и interaction patterns
 
-- пилот определяет показанные shell regions, grid, spacing и layering; непоказанные variants и responsive transformations реализуются согласно продуктовым constraints;
+- shell regions, grid, spacing и layering следуют актуальному образцу выбранной композиции; новые варианты проверяются в рамках задачи с сохранением продуктовых constraints;
 - каждый reusable component определяет variants, size classes, internal elements, required interaction states, content rules и accessibility behavior;
 - overlays, menus, dialogs, drawers, tooltips, tables, forms, charts, tabs и splitters получают placement, dismissal, focus, keyboard и state contracts;
-- exact geometry и visual properties наблюдаются из принятого source evidence, а не изобретаются вручную;
-- показанные palette, radius и shadow сверяются с пилотом; motion tokens, durations и easing определены §15.10 machine blueprint и MOTION-001…012. Непоказанные motion states уточняются в implementation ticket.
+- для переиспользования geometry и visual properties берутся из выбранного актуального образца; новая геометрия может исследоваться в выбранной области и закрепляется после решения владельца;
+- palette, radius и shadow сверяются с выбранным актуальным образцом и заявленным изменением; motion tokens, durations и easing определены §15.10 machine blueprint и MOTION-001…012. Непоказанные motion states уточняются в implementation ticket.
 
 ### 6.4. Motion и perceived performance
 
@@ -444,7 +455,7 @@ Header всегда разделяет:
 - label, typed value, period/comparison и trust state читаются как одна compact group; full value остаётся доступным;
 - Context Bar, KPI group и primary content используют согласованные alignment lines, но exact geometry определяется screen contract;
 - primary analytical content — table, pivot, chart либо narrative/evidence по document profile — получает приоритет в первом рабочем viewport и не вытесняется декоративным whitespace;
-- sample table показывает data rows и range/pagination status в pilot-compatible view; production placement зависит от document profile/page composition;
+- sample table показывает data rows и range/pagination status в согласованном представлении; production placement зависит от document profile/page composition;
 - Result Trust имеет compact trigger на каждом result view; полный drawer/panel открывается по запросу и не резервирует постоянную широкую колонку;
 - calm density является общим visual-language anchor, но fixed `KPI → chart → table` не является универсальным layout contract.
 
@@ -464,7 +475,7 @@ Header всегда разделяет:
 
 Уточнение взаимодействий от **2026-09-24**: владелец выбрал создание и управление наборами по образцу Mindbox вместо текущего решения Custometry и запросил повторное исследование каталога. [Дополнение к референсам, версия 1](docs/architecture/ui/references/mindbox-metrics-2026-09-17/follow-up-2026-09-24/README.md) фиксирует создание копии через «+» с именем, переключение вкладок, меню всех наборов с поиском и видимостью, команды сохранённых наборов, правую панель «Метрики» и отдельное сохранение изменений в текущий или новый набор. Это выбранный interaction reference для следующей реализации METRIC-025…027; права REPORT-018/019 и explicit Apply/Save сохраняются. Код продукта этой фиксацией не изменён.
 
-Нормативная база: METRIC-025…029, CHART-021 и COMPARE-013. [Атлас из десяти точечных снимков Mindbox с пояснениями](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md) — выбранный владельцем референс **новых взаимодействий**. Документ не заменяет preserved pilot, его оболочку, typography/density, rail, Focus или inspector и не разрешает самостоятельную перестройку существующего интерфейса. Production capability inventory не меняется от добавления target requirements.
+Нормативная база: METRIC-025…029, CHART-021 и COMPARE-013. [Атлас из десяти точечных снимков Mindbox с пояснениями](docs/architecture/ui/references/mindbox-metrics-2026-09-17/README.md) — выбранный владельцем референс **новых взаимодействий**. Атлас не является универсальным визуальным шаблоном; изменения оболочки, typography/density, rail, Focus и inspector следуют актуальному запросу и UI change manifest. Production capability inventory не меняется от добавления target requirements.
 
 | Поверхность | Целевое поведение | Снимки в атласе |
 |---|---|---|
@@ -475,7 +486,7 @@ Header всегда разделяет:
 | Цели | Metric binding, фильтры, target, период и гипотеза; сохранение не подразумевается открытием формы | 08 |
 | Связанные исследования | Метрика по сегментам и доступный путь к подробностям; кампании доступны только при действующей source/attribution capability | 10 |
 
-Для Custometry сохраняются explicit Apply/Save, версии Saved View, server-side calculations, Result Trust, access-denied clearing, RU/EN, keyboard operation и source-aware availability. Автосохранение личных настроек в Mindbox не переносится автоматически на calculation/save contracts Custometry. Реальные данные reference не становятся fixtures. Дополнительный сценарий целей требует явного определения направления прогресса и aggregation basis до реализации; target-action definition и monitoring goal различны. Размещение новых элементов в пилоте проверяется отдельным implementation scope по атласу, без переинтерпретации существующих элементов.
+Для Custometry сохраняются explicit Apply/Save, версии Saved View, server-side calculations, Result Trust, access-denied clearing, RU/EN, keyboard operation и source-aware availability. Автосохранение личных настроек в Mindbox не переносится автоматически на calculation/save contracts Custometry. Реальные данные reference не становятся fixtures. Дополнительный сценарий целей требует явного определения направления прогресса и aggregation basis до реализации; target-action definition и monitoring goal различны. Размещение новых элементов проверяется в затронутой композиции по актуальному запросу с сохранением незатронутых решений.
 
 Уточнение владельца от **2026-09-20**, редакция `2026-09-20.1` (METRIC-030…035, REPORT-018/019):
 
@@ -839,7 +850,7 @@ Implementation tickets должны определить route/embedded/overlay 
 
 ## 11. Страница аналитического результата
 
-Все специализированные analytics pages используют общий data/trust vocabulary, но не один фиксированный layout. Pilot-compatible compact result MAY использовать следующую композицию:
+Все специализированные analytics pages используют общий data/trust vocabulary, но не один фиксированный layout. Компактное представление результата MAY использовать следующую композицию:
 
 ```text
 Page header
@@ -1282,7 +1293,7 @@ INGEST-008–INGEST-020, DQ-INPUT-001–DQ-INPUT-008 и
 
 Активной G-программы нет. Она удалена по текущему решению владельца.
 `active_program: null` не означает отсутствие принятого дизайна: финальный
-пилот — целевая UI-концепция. Текущий execution route определён в
+пилот — исторический reference; актуальный маршрут задаёт UI change manifest. Текущий execution route определён в
 `docs/architecture/ui/custometry-web-implementation-source-contract-v1.md`;
 статус исполнения берётся только из frontmatter конкретного тикета.
 
@@ -1291,7 +1302,7 @@ INGEST-008–INGEST-020, DQ-INPUT-001–DQ-INPUT-008 и
 - purpose, user outcomes, domain entities и included/excluded scope;
 - затронутые routes/screens, роли, permissions, data reads/writes/computed values;
 - entry/exit, transitions, states, actions, outcomes, failures и recovery;
-- показанные в пилоте regions, controls и interactions;
+- выбранные для задачи regions, controls и interactions согласно актуальным решениям;
 - accessibility, locales, responsive priorities и performance constraints;
 - материальные unresolved inputs, которые нельзя вывести из принятых источников.
 
@@ -1348,13 +1359,13 @@ every-state-by-every-viewport screenshots.
 - широкий функциональный baseline аналитики, data foundation, quality, forecasting, research, reporting, operations и administration;
 - принятые базовые contracts для collaboration/adoption/watches, compute reuse/materialization и digital-to-offline attribution/unit economics;
 - историческое route/domain coverage W03-W10;
-- принятый product path и hash-pinned финальный интерактивный RU/EN пилот как целевая концепция;
+- принятый product path и scoped UI-решения по UI change manifest;
 - responsive Web как единственная сейчас авторизованная UI-платформа.
 
 ### 18.2. Что ещё предстоит реализовать и проверить
 
 Пилот уже сохранён в репозитории, frontend architecture и диапазон Web
-определены ADR-0007. Нужны проверка расхождений рабочего UI с концепцией и
+определены ADR-0007. Нужны проверка рабочего UI относительно актуальной задачи и
 bounded implementation tickets. Реальные состояния, permissions, API,
 responsive, accessibility и performance проверяются на работающем продукте.
 
@@ -1371,16 +1382,16 @@ responsive, accessibility и performance проверяются на работ�
 
 ### 18.3. Решения, которые не переносятся автоматически
 
-Показанные в финальном пилоте композиция, панели, controls и visual choices имеют текущий target status. ADR-0007 сохраняет frontend technology decisions. G-boards, старые themes и historical design receipts не являются дополнительной authority. Рабочий код не откатывается; его соответствие концепции и полнота покрытия проверяются последующими tickets.
+Прежние пилоты, текущий код и внешние references не становятся стандартами автоматически. Актуальное решение владельца заменяет прежнее в затронутой области; незатронутый визуальный язык сохраняется. ADR-0007 сохраняет frontend technology decisions. Рабочий код не откатывается.
 
 ## 19. Contract impact текущей редакции
 
 | Поверхность | Классификация | Пояснение |
 |---|---|---|
 | Product/API/ports/persistence | `additive plus planned schema-v2 breaking targets` | Новые product/category/digital/collaboration поля additive; common composition и SegmentSnapshot identity требуют future versioned migration, legacy read adapters и отдельного implementation evidence |
-| Documentation/design authority | `breaking-change` | G-программа и её материалы удалены; финальный пилот принят как target concept, продуктовые требования и рабочий код сохранены |
+| Documentation/design authority | `breaking-change` | Обязательная привязка к пилоту заменена scoped решениями по UI change manifest; продуктовые требования и рабочий код сохранены |
 | Current route/surface identity | `compatible current-state evidence` | 117/25/5/22 сохраняются для traceability, но не являются target ceiling или доказательством реализации |
-| Browser-visible target | `accepted_target_ui_concept` | Финальный пилот принят как концепция; conformance production-кода пока не доказан |
+| Browser-visible target | `evolving_scoped_owner_decisions` | Визуальная основа выбирается для задачи; изменение документов не меняет runtime |
 | Frontend architecture | `accepted for current Web implementation` | ADR-0007 фиксирует текущий responsive-Web stack и ownership; изменение этих решений требует отдельного source-backed architecture decision |
 | Request hash/cache identity | `new compatible namespace required` | Document/page/filter/segment/materialization versions входят в future normalized identity; zoom/legend/tab chrome остаются presentation-only |
 | Mobile scope | `unauthorized` | Адаптивный Web обязателен; mobile-specific IA/composition не добавлены |
@@ -1394,11 +1405,10 @@ Implementation tickets проверяют TEST-INV-102…112 и V1-AC-055…062 
 
 ## 20. Следующий шаг
 
-Принятые product/UI requirements и целевая концепция не требуют повторного
-проектирования через G0–G6. Следующий шаг — узкая оценка расхождений
-рабочего frontend с пилотом и обычные implementation tickets для приведения
-к концепции и полного продуктового покрытия. Эта редакция не создаёт W39,
-prompt pack, ledger или новую UI-программу.
+Развитие интерфейса следует UI change manifest: определить затронутую композицию,
+переиспользовать подходящее решение либо проверить новый вариант в рамках
+задачи, затем проверить поведение и общий тон. Возврат к пилоту и полная
+UI-программа не требуются. Эта редакция не создаёт prompt pack или ledger.
 
 Observed proof этой редакции ограничен согласованностью источников,
 сохранением требований и переносом пилота. Он не подтверждает полную готовность

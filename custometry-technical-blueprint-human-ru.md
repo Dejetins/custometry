@@ -7,8 +7,8 @@ normative: false
 status: draft
 language: ru
 created_at: 2026-07-14
-updated_at: 2026-09-20
-requirements_revision: 2026-09-20.2
+updated_at: 2026-10-10
+requirements_revision: 2026-10-10.1
 source_of_truth:
   document_id: CUSTOMETRY-TECH-BLUEPRINT-MACHINE-RU
   path: ./custometry-technical-blueprint-ru.md
@@ -1432,7 +1432,7 @@ Compute UX действует для всех пользовательски н�
 
 ### Theme и presentation identity
 
-Точный shipped theme set, identifiers, palette values и UI/report defaults принимаются по THEME-001…008 до затронутой implementation, без восстановления отменённой UI-программы. Финальный hash-pinned пилот задаёт показанную UI-концепцию и её visual language; полный production theme registry уточняется в соответствующем contract. Палитры отвергнутого target не являются входом в новый baseline; историческое evidence при необходимости остаётся доступно в Git. Компоненты используют semantic tokens, а `ChartSpec` остаётся theme-neutral.
+Точный shipped theme set, identifiers, palette values и UI/report defaults принимаются по THEME-001…008 до затронутой implementation, без восстановления отменённой UI-программы. Визуальные изменения следуют UI change manifest и актуальным решениям владельца; исторический пилот не фиксирует будущую композицию или палитру. Полный production theme registry уточняется в соответствующем contract. Палитры отвергнутого target не являются входом в новый baseline; историческое evidence при необходимости остаётся доступно в Git. Компоненты используют semantic tokens, а `ChartSpec` остаётся theme-neutral.
 
 | ID | Theme invariant |
 |---|---|
@@ -1696,7 +1696,7 @@ Browser proof определяется действующим [implementation-so
 | WEB-ARCH-002 | Presentation/client state отделён от authoritative server snapshots; frontend не принимает authorization/persistence/delivery/terminal decisions |
 | WEB-ARCH-003 | Themes/white-label используют versioned semantic tokens и validated assets; arbitrary CSS/HTML/JS, remote fonts и untrusted styles запрещены |
 | WEB-ARCH-004 | Frontend rollout recoverable, сохраняет accepted deep links/history/Back/refresh и compatibility seam до полного evidence соответствующей wave |
-| WEB-ARCH-005 | Одна accepted visual authority hash-pinned в repository-owned manifest с принятым scope; финальный пилот задаёт показанную UI-концепцию, внешняя reference не переносит чужие product/assets/policy |
+| WEB-ARCH-005 | Визуальный источник и scope выбираются по UI change manifest; актуальное решение владельца заменяет прежнее в затронутой области, исторический пилот не обязателен. Сохраняется общий тон вне изменений; внешняя reference не переносит чужие product/assets/policy |
 | WEB-ARCH-006 | Shell/navigation/detail/responsive transformations source-backed baseline и screen contracts; presentation не меняет permissions/routes/domain identity |
 
 | ID | Perceived-performance invariant |

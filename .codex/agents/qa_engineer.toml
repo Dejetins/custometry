@@ -17,7 +17,7 @@ Authoritative inputs:
 - Require acceptance IDs, changed scope/diff or target artifact, environment and prerequisites, fixtures/data, expected proof boundary, allowed test write paths if implementing, and the ready ticket/specification when applicable.
 
 Skill routing:
-- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; select the gate matching the observed boundary rather than preloading all QA skills.
+- Current session skill metadata and .codex/AGENTS.md section "Local routing and verification" select the current routes; select the gate matching the observed boundary rather than preloading all QA skills.
 - Python quality gates -> backend-quality-gates.
 - Real browser/a11y/user-flow evidence -> browser-qa-evidence; playwright-cli only for terminal mechanics.
 - Diff/branch production-risk review -> production-risk-review.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 from pathlib import Path
 from typing import Sequence
 
@@ -81,13 +82,16 @@ def check(root: Path, contract_path: Path | None = None) -> CheckResult:
         "Custometry adapter must link the selected installed Global Delivery Contract",
         result,
     )
-    _require_text(
-        contract_path,
-        "# Global Delivery Contract v1",
-        "delivery-contract-global-identity-invalid",
-        "global contract must declare Global Delivery Contract v1",
-        result,
-    )
+    contract_text = contract_path.read_text(encoding="utf-8")
+    if not any(
+        title in contract_text.splitlines()
+        for title in ("# Global Delivery Contract v1", "# Delivery selector v1")
+    ):
+        result.add(
+            "delivery-contract-global-identity-invalid",
+            "installed source must identify the v1 delivery contract or selector",
+            contract_path,
+        )
 
     skill_path = contract_path.parent.parent / "SKILL.md"
     if not require_file(skill_path, result, "delivery-contract-skill-missing"):
@@ -107,20 +111,36 @@ def check(root: Path, contract_path: Path | None = None) -> CheckResult:
     global_agent = contract_path.parents[3] / "AGENTS.md"
     if not require_file(global_agent, result, "delivery-contract-global-agent-missing"):
         return result
-    _require_text(
-        global_agent,
+    global_text = global_agent.read_text(encoding="utf-8")
+    normalized_global = " ".join(global_text.split())
+    unit_rules = (
         "One ready ticket is one execution unit.",
-        "delivery-contract-execution-unit-rule-missing",
-        "global AGENTS.md must preserve the one ready ticket / one execution unit rule",
-        result,
+        "One selected ticket or ledger-allowed stage is one unit unless authorized continuation applies.",
     )
-    _require_text(
-        global_agent,
-        contract_reference,
-        "delivery-contract-global-agent-link-invalid",
-        "global AGENTS.md must link the canonical delivery contract path",
-        result,
+    if not any(rule in normalized_global for rule in unit_rules):
+        result.add(
+            "delivery-contract-execution-unit-rule-missing",
+            "global AGENTS.md must preserve the selected execution-unit boundary",
+            global_agent,
+        )
+    # Current global guidance delegates the relative reference to the supplying
+    # skill. Resolve the actual link; a filename mention is not sufficient.
+    skill_text = skill_path.read_text(encoding="utf-8")
+    relative_targets = re.findall(r"\[[^\]]+\]\(([^\s)]+)\)", skill_text)
+    relative_link = (
+        "its relative delivery contract" in normalized_global
+        and any(
+            not Path(target).is_absolute()
+            and (skill_path.parent / target).resolve() == contract_path.resolve()
+            for target in relative_targets
+        )
     )
+    if contract_reference not in global_text and not relative_link:
+        result.add(
+            "delivery-contract-global-agent-link-invalid",
+            "global guidance must resolve the canonical source directly or through the skill",
+            global_agent,
+        )
     _require_text(
         global_agent,
         "delivery-orchestrator",

@@ -17,7 +17,7 @@ Authoritative inputs:
 - Require accepted journey/acceptance/copy, current design system, API DTO/code/permission contract, localization/a11y contract, allowed write paths, expected proof boundary, runnable target when browser proof is required, and the ready ticket/specification when applicable.
 
 Skill routing:
-- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
+- Current session skill metadata and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
 - Concrete browser/frontend defect -> root-cause-debugging.
 - Browser-visible default/API compatibility -> contract-impact-analysis.
 - Real-browser verification -> browser-qa-evidence; add playwright-cli only for terminal-driven browser mechanics.

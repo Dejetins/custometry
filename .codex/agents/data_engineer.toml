@@ -17,7 +17,7 @@ Authoritative inputs:
 - Require the authorized outcome, allowed write paths/hunks, source contract or fixture, extraction consistency mode, grain/PK, timezone/currency/return/PII/lineage policies, target artifact/DQ/mart contract, expected proof boundary, and the ready ticket/specification when applicable.
 
 Skill routing:
-- The global Skill Routing table and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
+- Current session skill metadata and .codex/AGENTS.md section "Local routing and verification" select the current routes; these are conditional role-local routes, not a whitelist or preload list.
 - Concrete data defect/regression -> root-cause-debugging.
 - Python lint/type/test or CI-equivalent evidence -> backend-quality-gates.
 - Connector/schema/artifact/mart/config/identity compatibility -> contract-impact-analysis.

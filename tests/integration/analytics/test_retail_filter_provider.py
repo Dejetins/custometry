@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
+
 import importlib.util
 import json
 import os
 from pathlib import Path
+from typing import Any, cast
 from uuid import UUID, uuid4
 
 import psycopg
@@ -35,7 +38,7 @@ from packages.semantic_model.infrastructure.postgres import PostgresSalesSemanti
 ROOT = Path(__file__).resolve().parents[3]
 
 
-def test_published_retail_provider_current_policy_and_manifest(tmp_path, monkeypatch):
+def test_published_retail_provider_current_policy_and_manifest(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     if os.environ.get("MS010_OWNED_DATABASE") != "1":
         pytest.skip("requires run_retail_filters owned disposable database")
     # Reuse real intake/identity setup; no production row or permission fixture stub.
@@ -44,6 +47,7 @@ def test_published_retail_provider_current_policy_and_manifest(tmp_path, monkeyp
     spec = importlib.util.spec_from_file_location(
         "retail_filter_scenario", ROOT / "tests/e2e/ms-004-workspace/scenario.py"
     )
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     artifact_root = tmp_path / "artifacts"
@@ -52,7 +56,7 @@ def test_published_retail_provider_current_policy_and_manifest(tmp_path, monkeyp
     workspace, dataset = UUID(corpus["workspace_id"]), UUID(corpus["semantic_dataset_version_id"])
     settings = Settings(analytics_artifact_root=artifact_root)
 
-    def connect():
+    def connect() -> psycopg.Connection[Any]:
         return psycopg.connect(
             host=settings.database_host,
             port=settings.database_port,
@@ -138,14 +142,16 @@ def test_published_retail_provider_current_policy_and_manifest(tmp_path, monkeyp
     assert result.unknown_count == 0
     organization = OrganizationService(PostgresOrganizationRepository(connect))
 
-    def bind(stores):
+    def bind(stores: tuple[str, ...]) -> None:
         # Required object scopes must be explicitly covered by department policy.
         # Read fixture identity; perform all policy changes through the public service.
         with connect() as connection:
-            policy_id, department, version = connection.execute(
+            row = connection.execute(
                 "SELECT id,org_unit_id,current_version FROM organization_department_policies WHERE workspace_id=%s",
                 (workspace,),
             ).fetchone()
+        assert row is not None
+        policy_id, department, version = cast(tuple[UUID, UUID, int], row)
         draft = organization.create_policy_draft(
             actor,
             policy_id=policy_id,
@@ -159,7 +165,7 @@ def test_published_retail_provider_current_policy_and_manifest(tmp_path, monkeyp
             effective_from=None,
         )
         organization.publish_policy(
-            actor, policy_id=policy_id, expected_version=int(draft["version"]), effective_from=None
+            actor, policy_id=policy_id, expected_version=int(cast(int, draft["version"])), effective_from=None
         )
         organization.bind_resource(
             actor,
@@ -224,9 +230,9 @@ def test_published_retail_provider_current_policy_and_manifest(tmp_path, monkeyp
                 content_hash=grant.binding.content_hash,
             )
         pending.rollback()
-    original_read = engine._read
+    original_read = cast(Callable[..., Any], getattr(engine, "_read"))
 
-    def change_after_admission(*args, **kwargs):
+    def change_after_admission(*args: Any, **kwargs: Any) -> Any:
         table = original_read(*args, **kwargs)
         bind(("store:1",))
         return table
@@ -236,7 +242,7 @@ def test_published_retail_provider_current_policy_and_manifest(tmp_path, monkeyp
         engine.execute(request, actor_id=actor.principal_id)
     monkeypatch.setattr(engine, "_read", original_read)
 
-    def revoke_after_admission(*args, **kwargs):
+    def revoke_after_admission(*args: Any, **kwargs: Any) -> Any:
         table = original_read(*args, **kwargs)
         identity.revoke_session(actor, token.session_id)
         return table

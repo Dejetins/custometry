@@ -8,10 +8,10 @@ from packages.analytics_core.infrastructure.retail_filter import PublishedReceip
 from packages.contracts.analytics import AnalyticsFailure
 from packages.contracts.analytics.columnar_filters import FlatBoolean
 from packages.contracts.analytics.retail_filter import FilterFacetQuery, ReceiptFilterInput
-from tests.integration.analytics.test_columnar_filters import setup as setup
+from tests.integration.analytics.test_columnar_filters import FlatSetup, setup as setup
 
 
-def test_facets_apply_ceiling_before_counts_search_and_pagination(setup):
+def test_facets_apply_ceiling_before_counts_search_and_pagination(setup: FlatSetup) -> None:
     engine, access, request, _ = setup
     request = request.model_copy(update={"expression": access.grant.row_ceiling})
     first = engine.facets(request, FilterFacetQuery(field_id="label", limit=2), actor_id=access.grant.actor_id)
@@ -26,7 +26,7 @@ def test_facets_apply_ceiling_before_counts_search_and_pagination(setup):
     assert engine.facets(request, FilterFacetQuery(field_id="label", search="IRST"), actor_id=access.grant.actor_id).values[0].value == "first"
 
 
-def test_facets_and_fingerprint_reject_versions_fields_and_revoke(setup):
+def test_facets_and_fingerprint_reject_versions_fields_and_revoke(setup: FlatSetup) -> None:
     engine, access, request, _ = setup
     with pytest.raises(AnalyticsFailure, match="FILTER_INPUT_BINDING"):
         engine.fingerprint(request.model_copy(update={"registry_version_id": uuid4()}), actor_id=access.grant.actor_id)
@@ -38,7 +38,7 @@ def test_facets_and_fingerprint_reject_versions_fields_and_revoke(setup):
         engine.facets(request, FilterFacetQuery(field_id="label"), actor_id=access.grant.actor_id)
 
 
-def test_receipt_projection_uses_real_engine_and_does_not_mutate_input(setup):
+def test_receipt_projection_uses_real_engine_and_does_not_mutate_input(setup: FlatSetup) -> None:
     engine, access, request, _ = setup
     provider = PublishedReceiptFilter(engine)
     value = ReceiptFilterInput(registry_version_id=request.registry_version_id, expression=request.expression)
@@ -49,7 +49,7 @@ def test_receipt_projection_uses_real_engine_and_does_not_mutate_input(setup):
     assert projected.inputs["Store"] is inputs["Store"]
 
 
-def test_filter_identity_pins_policy_and_canonical_boolean_order(setup):
+def test_filter_identity_pins_policy_and_canonical_boolean_order(setup: FlatSetup) -> None:
     engine, access, request, _ = setup
     children = (request.expression, access.grant.row_ceiling)
     left = request.model_copy(update={"expression": FlatBoolean(kind="and", children=children)})

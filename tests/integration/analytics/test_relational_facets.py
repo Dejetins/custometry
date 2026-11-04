@@ -5,10 +5,15 @@ from uuid import uuid4
 import pytest
 from packages.contracts.analytics import AnalyticsFailure
 from packages.contracts.analytics.retail_relational import RelationalFacetQuery
-from tests.integration.analytics.test_relational_filters import setup as setup, request, predicate
+from tests.integration.analytics.test_relational_filters import (
+    RelationalSetup,
+    setup as setup,
+    request,
+    predicate,
+)
 
 
-def test_facets_root_membership_child_ceiling_search_and_pagination(setup):
+def test_facets_root_membership_child_ceiling_search_and_pagination(setup: RelationalSetup):
     engine, access, _, actor, _, _ = setup
     q = request(setup)
     root = engine.facets(
@@ -38,7 +43,7 @@ def test_facets_root_membership_child_ceiling_search_and_pagination(setup):
     )
 
 
-def test_facets_current_grant_and_binding_limits(setup):
+def test_facets_current_grant_and_binding_limits(setup: RelationalSetup):
     engine, access, _, actor, _, _ = setup
     q = request(setup)
     facet = RelationalFacetQuery(entity="ReceiptItem", field_id="ReceiptItem.color")

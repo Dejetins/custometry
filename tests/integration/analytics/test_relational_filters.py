@@ -2,11 +2,13 @@
 
 from dataclasses import replace
 import hashlib
+from pathlib import Path
 from threading import Event
-from uuid import uuid4
+from typing import Any, Generic, Generator, Literal, TypeVar, cast
+from uuid import UUID, uuid4
 import pytest
-import pyarrow as pa
-import pyarrow.parquet as pq
+import pyarrow as _pa  # pyright: ignore[reportMissingTypeStubs]
+import pyarrow.parquet as _pq  # pyright: ignore[reportMissingTypeStubs]
 from pydantic import ValidationError
 from packages.contracts.analytics import AnalyticsFailure
 from packages.contracts.analytics.columnar_filters import (
@@ -20,24 +22,37 @@ from packages.contracts.analytics.relational_filters import (
     RelationalFilterRequest,
     RelationalInputGrant,
     RelationalResourcePolicy,
+    RelationalFilterResult,
     RelationshipInput,
     ScopedPredicate,
     ScopedBoolean,
     ScopedNot,
     CorrelatedExists,
 )
-from packages.contracts.semantic.filter_fields import FlatFilterRegistry, FilterFieldVersion
+from packages.contracts.analytics.aggregate_filters import AggregateFilterRequest
+from packages.contracts.analytics.sequence_filters import SequenceFilterRequest
+from packages.contracts.analytics.receipt_cohorts import CohortFilterRequest
+from packages.contracts.semantic.filter_fields import (
+    FlatFilterRegistry,
+    FilterFieldVersion,
+    Operator,
+)
 from packages.contracts.semantic.relationships import FilterRelationshipVersion
 from packages.analytics_core.infrastructure.relational_filters import DuckDBRelationalFilter
 
 
-class Access:
-    def __init__(self, grant):
+pa: Any = _pa
+pq: Any = _pq
+GrantT = TypeVar("GrantT", bound=RelationalInputGrant)
+
+
+class Access(Generic[GrantT]):
+    def __init__(self, grant: GrantT):
         self.grant = grant
         self.calls = 0
         self.changed = False
 
-    def authorize(self, **kwargs):
+    def authorize(self, *, workspace_id: UUID, actor_id: UUID, dataset_version_id: UUID) -> GrantT:
         self.calls += 1
         if self.changed and self.calls > 1:
             return replace(
@@ -50,8 +65,12 @@ class Access:
         return self.grant
 
 
+FilterSetup = tuple[DuckDBRelationalFilter, Access[GrantT], UUID, UUID, UUID, Path]
+RelationalSetup = FilterSetup[RelationalInputGrant]
+
+
 @pytest.fixture
-def setup(tmp_path):
+def setup(tmp_path: Path) -> RelationalSetup:
     workspace, actor, dataset = uuid4(), uuid4(), uuid4()
     policy = RelationalResourcePolicy(
         version_id=uuid4(),
@@ -82,9 +101,9 @@ def setup(tmp_path):
             }
         ),
     }
-    entities = []
+    entities: list[FlatInputGrant] = []
     for entity, table in tables.items():
-        fields = []
+        fields: list[FilterFieldVersion] = []
         for column in table.column_names:
             dtype = (
                 "integer"
@@ -152,7 +171,13 @@ def setup(tmp_path):
     return engine, access, workspace, actor, dataset, tmp_path
 
 
-def predicate(grant, scope, field, value, operator="eq"):
+def predicate(
+    grant: RelationalInputGrant,
+    scope: UUID,
+    field: str,
+    value: str | int | bool,
+    operator: Operator = "eq",
+) -> ScopedPredicate:
     f = next(f for e in grant.entities for f in e.registry.fields if f.field_id == field)
     return ScopedPredicate(
         node_id=uuid4(),
@@ -164,10 +189,18 @@ def predicate(grant, scope, field, value, operator="eq"):
     )
 
 
-def exists(grant, scope, *, both=True, kind="exists", field="ReceiptItem.color", value="red"):
+def exists(
+    grant: RelationalInputGrant,
+    scope: UUID,
+    *,
+    both: bool = True,
+    kind: Literal["exists", "not_exists"] = "exists",
+    field: str = "ReceiptItem.color",
+    value: str | int | bool = "red",
+) -> CorrelatedExists:
     child = uuid4()
     r = grant.relationships[0].relationship
-    pred = predicate(grant, child, field, value)
+    pred: ScopedPredicate | ScopedBoolean = predicate(grant, child, field, value)
     if both:
         pred = ScopedBoolean(
             node_id=uuid4(),
@@ -188,8 +221,10 @@ def exists(grant, scope, *, both=True, kind="exists", field="ReceiptItem.color",
     )
 
 
-def request(setup, kind="exists", complete=True):
-    engine, access, w, a, d, _ = setup
+def request(
+    setup: RelationalSetup, kind: Literal["exists", "not_exists"] = "exists", complete: bool = True
+) -> RelationalFilterRequest:
+    _, access, w, _, d, _ = setup
     if not complete:
         access.grant = replace(
             access.grant, relationships=(replace(access.grant.relationships[0], complete=False),)
@@ -205,18 +240,26 @@ def request(setup, kind="exists", complete=True):
     )
 
 
-def run(setup, query):
+def run(
+    setup: FilterSetup[GrantT],
+    query: RelationalFilterRequest
+    | AggregateFilterRequest
+    | SequenceFilterRequest
+    | CohortFilterRequest,
+) -> RelationalFilterResult:
     return setup[0].execute(query, actor_id=setup[3])
 
 
-def test_empty_grant_fails_with_binding_error(setup):
+def test_empty_grant_fails_with_binding_error(setup: RelationalSetup):
     query = request(setup)
     setup[1].grant = replace(setup[1].grant, entities=())
     with pytest.raises(AnalyticsFailure, match="FILTER_INPUT_BINDING"):
         run(setup, query)
 
 
-def test_same_row_conjunction_differs_from_independent_exists_and_keeps_root_grain(setup):
+def test_same_row_conjunction_differs_from_independent_exists_and_keeps_root_grain(
+    setup: RelationalSetup,
+):
     query = request(setup)
     same = run(setup, query)
     assert (
@@ -250,7 +293,12 @@ def test_same_row_conjunction_differs_from_independent_exists_and_keeps_root_gra
     ],
 )
 def test_complete_incomplete_and_not_unknown_truth_table(
-    setup, kind, complete, matched, false, unknown
+    setup: RelationalSetup,
+    kind: Literal["exists", "not_exists"],
+    complete: bool,
+    matched: tuple[str, ...],
+    false: int,
+    unknown: int,
 ):
     result = run(setup, request(setup, kind, complete))
     assert (result.matched_ids, result.not_matched_count, result.unknown_count) == (
@@ -261,11 +309,11 @@ def test_complete_incomplete_and_not_unknown_truth_table(
     assert bool(result.limitation_codes) == (not complete)
 
 
-def test_reordering_boolean_preserves_identity_scope_changes_do_not(setup):
+def test_reordering_boolean_preserves_identity_scope_changes_do_not(setup: RelationalSetup):
     query = request(setup)
     engine = setup[0]
     actor = setup[3]
-    inner = query.expression.predicate
+    inner = cast(ScopedBoolean, cast(CorrelatedExists, query.expression).predicate)
     reordered = query.model_copy(
         update={
             "expression": query.expression.model_copy(
@@ -305,10 +353,12 @@ def test_reordering_boolean_preserves_identity_scope_changes_do_not(setup):
         ("duplicate", "SCOPE_INVALID"),
     ],
 )
-def test_typed_scope_and_dependency_rejections_before_input_read(setup, change, code):
+def test_typed_scope_and_dependency_rejections_before_input_read(
+    setup: RelationalSetup, change: str, code: str
+):
     query = request(setup)
-    node = query.expression
-    inner = node.predicate
+    node = cast(CorrelatedExists, query.expression)
+    inner = cast(ScopedBoolean, node.predicate)
     pred = inner.children[0]
     if change == "scope":
         node = node.model_copy(update={"parent_scope_id": uuid4()})
@@ -351,7 +401,7 @@ def test_typed_scope_and_dependency_rejections_before_input_read(setup, change, 
         ("max_input_bytes", 10, "INPUT_LIMIT"),
     ],
 )
-def test_bounded_resource_admission(setup, setting, value, code):
+def test_bounded_resource_admission(setup: RelationalSetup, setting: str, value: int, code: str):
     query = request(setup)
     access = setup[1]
     access.grant = replace(
@@ -362,7 +412,7 @@ def test_bounded_resource_admission(setup, setting, value, code):
         run(setup, query)
 
 
-def test_policy_revalidation_and_precancel(setup):
+def test_policy_revalidation_and_precancel(setup: RelationalSetup):
     query = request(setup)
     setup[1].changed = True
     with pytest.raises(AnalyticsFailure, match="POLICY_CHANGED"):
@@ -374,7 +424,7 @@ def test_policy_revalidation_and_precancel(setup):
         setup[0].execute(query, actor_id=setup[3], cancel=cancel)
 
 
-def test_corrupt_child_bytes_fail_integrity(setup):
+def test_corrupt_child_bytes_fail_integrity(setup: RelationalSetup):
     query = request(setup)
     (setup[-1] / "ReceiptItem.parquet").write_bytes(b"corrupt")
     with pytest.raises(AnalyticsFailure, match="ARTIFACT_INTEGRITY"):
@@ -382,7 +432,9 @@ def test_corrupt_child_bytes_fail_integrity(setup):
 
 
 @pytest.mark.parametrize("mode", ["cancel", "timeout"])
-def test_interrupt_native_operation_and_recover(setup, monkeypatch, mode):
+def test_interrupt_native_operation_and_recover(
+    setup: RelationalSetup, monkeypatch: pytest.MonkeyPatch, mode: str
+):
     """Controlled native workload exercises the monitor, not a mocked interruption."""
     import duckdb
     from contextlib import contextmanager
@@ -392,20 +444,20 @@ def test_interrupt_native_operation_and_recover(setup, monkeypatch, mode):
     started = Event()
     cancelled = Event()
     original = implementation.isolated_connection
-    connections = []
+    connections: list[Any] = []
 
     class Probe:
-        def __init__(self, connection):
+        def __init__(self, connection: Any):
             self.connection = connection
             self.first = True
 
-        def register(self, *args):
+        def register(self, *args: Any) -> Any:
             return self.connection.register(*args)
 
-        def interrupt(self):
+        def interrupt(self) -> Any:
             return self.connection.interrupt()
 
-        def execute(self, *args):
+        def execute(self, *args: Any) -> Any:
             if self.first:
                 self.first = False
                 started.set()
@@ -416,7 +468,7 @@ def test_interrupt_native_operation_and_recover(setup, monkeypatch, mode):
             return self.connection.execute(*args)
 
     @contextmanager
-    def instrumented(policy):
+    def instrumented(policy: RelationalResourcePolicy) -> Generator[Probe, None, None]:
         with original(policy) as connection:
             connections.append(connection)
             yield Probe(connection)
@@ -456,7 +508,7 @@ def test_interrupt_native_operation_and_recover(setup, monkeypatch, mode):
     assert run(setup, query).matched_ids == ("b",)
 
 
-def test_not_and_or_preserve_unknown_membership(setup):
+def test_not_and_or_preserve_unknown_membership(setup: RelationalSetup):
     query = request(setup, complete=False)
     scope = query.root_scope_id
     negated = query.model_copy(
@@ -493,7 +545,9 @@ def test_not_and_or_preserve_unknown_membership(setup):
         ("parent_cardinality", "RELATIONSHIP_CARDINALITY"),
     ],
 )
-def test_actual_input_grain_and_relationship_key_preflight(setup, corruption, code):
+def test_actual_input_grain_and_relationship_key_preflight(
+    setup: RelationalSetup, corruption: str, code: str
+):
     query = request(setup)
     access = setup[1]
     entity = "Receipt" if corruption == "parent_cardinality" else "ReceiptItem"
@@ -556,7 +610,7 @@ def test_actual_input_grain_and_relationship_key_preflight(setup, corruption, co
         run(setup, query)
 
 
-def test_relationship_keys_cannot_depend_on_unknown_property_history(setup):
+def test_relationship_keys_cannot_depend_on_unknown_property_history(setup: RelationalSetup):
     query = request(setup)
     access = setup[1]
     parent = access.grant.entities[0]
@@ -575,7 +629,7 @@ def test_relationship_keys_cannot_depend_on_unknown_property_history(setup):
         run(setup, query)
 
 
-def test_policy_and_completeness_participate_in_identity(setup):
+def test_policy_and_completeness_participate_in_identity(setup: RelationalSetup):
     query = request(setup)
     engine, access = setup[:2]
     before = engine.fingerprint(query, actor_id=setup[3])
@@ -589,9 +643,9 @@ def test_policy_and_completeness_participate_in_identity(setup):
 
 
 @pytest.mark.parametrize("field", ["workspace_id", "actor_id", "dataset_version_id"])
-def test_grant_cannot_be_reused_for_foreign_request(setup, field):
+def test_grant_cannot_be_reused_for_foreign_request(setup: RelationalSetup, field: str):
     query = request(setup)
-    kwargs = {"actor_id": setup[3]}
+    kwargs: dict[str, Any] = {"actor_id": setup[3]}
     if field == "actor_id":
         kwargs[field] = uuid4()
     else:
@@ -600,7 +654,7 @@ def test_grant_cannot_be_reused_for_foreign_request(setup, field):
         setup[0].execute(query, **kwargs)
 
 
-def test_actual_preserved_flat_reader_rejects_correlated_nodes(setup):
+def test_actual_preserved_flat_reader_rejects_correlated_nodes(setup: RelationalSetup):
     import importlib.util
     import sys
     from pathlib import Path
@@ -608,6 +662,7 @@ def test_actual_preserved_flat_reader_rejects_correlated_nodes(setup):
     spec = importlib.util.spec_from_file_location(
         "ms017_old_flat", Path(".codex/delivery/evidence/MS-017/preparation/flat-before.py")
     )
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
@@ -616,8 +671,8 @@ def test_actual_preserved_flat_reader_rejects_correlated_nodes(setup):
         module.FlatFilterRequest.model_validate(query.model_dump(mode="json"))
 
 
-def test_nested_related_scope_uses_correct_parent_alias(setup):
-    engine, access, w, a, d, root = setup
+def test_nested_related_scope_uses_correct_parent_alias(setup: RelationalSetup):
+    _, access, w, a, d, root = setup
     grant = access.grant
     policy = grant.resource_policy.model_copy(update={"max_entities": 3})
     table = pa.table(
@@ -677,7 +732,7 @@ def test_nested_related_scope_uses_correct_parent_alias(setup):
         resource_policy=policy,
     )
     query = request(setup)
-    outer = query.expression
+    outer = cast(CorrelatedExists, query.expression)
     child = outer.child_scope_id
     leaf = uuid4()
     nested = CorrelatedExists(
@@ -706,7 +761,9 @@ def test_nested_related_scope_uses_correct_parent_alias(setup):
 
 
 @pytest.mark.parametrize("field,value", [("max_rows", 1), ("max_input_bytes", 1), ("max_nodes", 1)])
-def test_per_input_policy_cannot_be_relaxed_by_global_budget(setup, field, value):
+def test_per_input_policy_cannot_be_relaxed_by_global_budget(
+    setup: RelationalSetup, field: str, value: int
+):
     query = request(setup)
     access = setup[1]
     entity = access.grant.entities[0]
@@ -718,7 +775,7 @@ def test_per_input_policy_cannot_be_relaxed_by_global_budget(setup, field, value
         run(setup, query)
 
 
-def test_per_input_resource_revision_changes_fingerprint(setup):
+def test_per_input_resource_revision_changes_fingerprint(setup: RelationalSetup):
     query = request(setup)
     engine, access = setup[:2]
     before = engine.fingerprint(query, actor_id=setup[3])

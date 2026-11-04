@@ -5,6 +5,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+from typing import Any, cast
 from uuid import UUID, uuid4
 import psycopg
 import pytest
@@ -16,6 +17,7 @@ from custometry_api.reports.router import create_reports_app
 from packages.analytics_core.infrastructure.relational_filters import DuckDBRelationalFilter
 from packages.artifacts.infrastructure.sales import SalesArtifactStore
 from packages.contracts.analytics import AnalyticsFailure
+from packages.contracts.semantic.nullable_relationships import NullableFilterRelationshipVersion
 from packages.contracts.analytics.relational_filters import (
     ScopedPredicate,
 )
@@ -29,10 +31,15 @@ from packages.identity_access.infrastructure.postgres import PostgresIdentityRep
 from packages.identity_access.infrastructure.resource_access import PostgresResourceAccessRepository
 from packages.semantic_model.infrastructure.postgres import PostgresSalesSemanticRepository
 
+def _count(row: tuple[Any, ...] | None) -> int:
+    assert row is not None
+    return cast(int, row[0])
+
+
 ROOT = Path(__file__).resolve().parents[3]
 
 
-def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch):
+def test_published_customer_events_http_and_current_policy(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     if os.environ.get("MS010_OWNED_DATABASE") != "1":
         pytest.skip("requires owned run_retail_filters disposable database")
     corpus_path = tmp_path / "corpus.json"
@@ -40,6 +47,7 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
     spec = importlib.util.spec_from_file_location(
         "correlated_scenario", ROOT / "tests/e2e/ms-004-workspace/scenario.py"
     )
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     artifact_root = tmp_path / "artifacts"
@@ -48,7 +56,7 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
     workspace, dataset = UUID(corpus["workspace_id"]), UUID(corpus["semantic_dataset_version_id"])
     settings = Settings(analytics_artifact_root=artifact_root)
 
-    def connect():
+    def connect() -> psycopg.Connection[Any]:
         return psycopg.connect(
             host=settings.database_host,
             port=settings.database_port,
@@ -103,7 +111,7 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
         f for e in grant.entities for f in e.registry.fields if f.field_id == "Receipt.status"
     )
 
-    def step(gap=None, value="completed"):
+    def step(gap: SequenceGap | None = None, value: str = "completed") -> PositiveStep:
         child = uuid4()
         return PositiveStep(
             step_id=uuid4(),
@@ -141,7 +149,7 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
         expression=node,
     )
 
-    def execute(q=query):
+    def execute(q: SequenceFilterRequest = query):
         return engine.execute(q, actor_id=actor.principal_id)
 
     with psycopg.connect(
@@ -152,22 +160,23 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
         password=Path(os.environ["CUSTOMETRY_TEST_SOURCE_PASSWORD_FILE"]).read_text().strip(),
     ) as source:
         source.execute("SET TRANSACTION READ ONLY")
-        universe = source.execute(
+        universe = _count(source.execute(
             "SELECT count(DISTINCT customer_id) FROM retail.receipts"
-        ).fetchone()[0]
-        scoped_universe = source.execute(
+        ).fetchone())
+        scoped_universe = _count(source.execute(
             "SELECT count(DISTINCT customer_id) FROM retail.receipts WHERE store_id=1"
-        ).fetchone()[0]
-        matched = source.execute(
+        ).fetchone())
+        matched = _count(source.execute(
             "SELECT count(DISTINCT a.customer_id) FROM retail.receipts a JOIN retail.receipts b ON a.customer_id=b.customer_id AND b.receipt_datetime>a.receipt_datetime AND b.receipt_datetime-a.receipt_datetime<=interval '365 days' WHERE a.status='completed' AND b.status='completed'"
-        ).fetchone()[0]
-        scoped_matched = source.execute(
+        ).fetchone())
+        scoped_matched = _count(source.execute(
             "SELECT count(DISTINCT a.customer_id) FROM retail.receipts a JOIN retail.receipts b ON a.customer_id=b.customer_id AND b.receipt_datetime>a.receipt_datetime AND b.receipt_datetime-a.receipt_datetime<=interval '365 days' WHERE a.status='completed' AND b.status='completed' AND a.store_id=1 AND b.store_id=1"
-        ).fetchone()[0]
+        ).fetchone())
     actual = execute()
     assert actual.authorized_count == universe and len(actual.matched_ids) == matched > 0
     assert actual.unknown_count == universe - matched and actual.not_matched_count == 0
     assert event.complete is False and all(not r.complete for r in grant.relationships)
+    assert isinstance(edge, NullableFilterRelationshipVersion)
     assert edge.nullable_child_fields == ("Receipt.customer_id",)
     missing = step(value="not-an-observed-status")
     negative = NegativeStep(
@@ -249,12 +258,14 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
         )
     organization = OrganizationService(PostgresOrganizationRepository(connect))
 
-    def bind(stores, actions=("view_snapshot", "run", "edit")):
+    def bind(stores: tuple[str, ...], actions: tuple[str, ...] = ("view_snapshot", "run", "edit")) -> None:
         with connect() as connection:
-            policy_id, department, version = connection.execute(
+            row = connection.execute(
                 "SELECT id,org_unit_id,current_version FROM organization_department_policies WHERE workspace_id=%s",
                 (workspace,),
             ).fetchone()
+        assert row is not None
+        policy_id, department, version = cast(tuple[UUID, UUID, int], row)
         draft = organization.create_policy_draft(
             actor,
             policy_id=policy_id,
@@ -268,7 +279,7 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
             effective_from=None,
         )
         organization.publish_policy(
-            actor, policy_id=policy_id, expected_version=int(draft["version"]), effective_from=None
+            actor, policy_id=policy_id, expected_version=int(cast(int, draft["version"])), effective_from=None
         )
         organization.bind_resource(
             actor,
@@ -297,7 +308,7 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
     original_read = adapter.read_admitted_input
     changed = False
 
-    def change_after_read(*args, **kwargs):
+    def change_after_read(*args: Any, **kwargs: Any) -> Any:
         nonlocal changed
         result = original_read(*args, **kwargs)
         if not changed:
@@ -317,7 +328,7 @@ def test_published_customer_events_http_and_current_policy(tmp_path, monkeypatch
     original_projection = PostgresSalesSemanticRepository.customer_events_projection
     revoked = False
 
-    def revoke_after_projection(self, **kwargs):
+    def revoke_after_projection(self: PostgresSalesSemanticRepository, **kwargs: Any) -> Any:
         nonlocal revoked
         result = original_projection(self, **kwargs)
         if not revoked:

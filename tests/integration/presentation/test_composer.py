@@ -4,6 +4,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+from typing import Any
 from uuid import uuid4
 
 import pytest
@@ -14,12 +15,13 @@ import psycopg
 ROOT = Path(__file__).resolve().parents[3]
 
 
-def test_composer_vertical_persistence(tmp_path, monkeypatch):
+def test_composer_vertical_persistence(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     if os.environ.get("MS006_OWNED_DATABASE") != "1":
         pytest.skip("requires run_composer owned disposable database")
     corpus_path = tmp_path / "corpus.json"
     monkeypatch.setenv("MS004_S04_CORPUS_OUT", str(corpus_path))
     spec = importlib.util.spec_from_file_location("composer_synthetic_scenario", ROOT / "tests/e2e/ms-004-workspace/scenario.py")
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     app = module.create_scenario(tmp_path / "artifacts")
@@ -66,7 +68,7 @@ def test_composer_vertical_persistence(tmp_path, monkeypatch):
         block = deepcopy(definition["blocks"][i])
         block.update(block_id=str(uuid4()), order=4 + i, block_type="table", placement={"column": i * 6, "span": 6, "row": 2})
         definition["blocks"].append(block)
-    result_refs = []
+    result_refs: list[dict[str, str]] = []
     for block in definition["blocks"]:
         response = client.post("/reports/composer/v1/apply", headers=headers, json={
             "contract_version": "analytical-authoring/v1", "definition": definition, "block_id": block["block_id"],
@@ -76,7 +78,7 @@ def test_composer_vertical_persistence(tmp_path, monkeypatch):
     assert result_refs[0]["result_id"] == result_refs[4]["result_id"]
     assert result_refs[1]["result_id"] == result_refs[5]["result_id"]
     assert len({r["result_id"] for r in result_refs}) == 4
-    body = {"contract_version": "analytical-authoring/v1", "definition": definition,
+    body: dict[str, Any] = {"contract_version": "analytical-authoring/v1", "definition": definition,
             "expected_revision": 0, "idempotency_key": str(uuid4()), "results": result_refs}
     response = client.post("/reports/composer/v1/versions", headers=headers, json=body)
     assert response.status_code == 200, response.text
@@ -110,16 +112,17 @@ def test_composer_vertical_persistence(tmp_path, monkeypatch):
     settings = Settings()
     with psycopg.connect(host=settings.database_host, port=settings.database_port, dbname=settings.database_name,
                          user=settings.database_user, password=settings.read_database_password()) as connection:
-        assert connection.execute("SELECT count(*) FROM presentation_versions WHERE document_id=%s", (report,)).fetchone()[0] == 1
+        row = connection.execute("SELECT count(*) FROM presentation_versions WHERE document_id=%s", (report,)).fetchone()
+        assert row is not None and row[0] == 1
     # A crash after artifact admission and version insert cannot move the current pointer.
     from packages.presentation.infrastructure.workspace import PostgresWorkspaceRepository
     from packages.contracts.presentation import PresentationFailure
     original_save = PostgresWorkspaceRepository.save_composer
 
-    def crash_save(self, *args):
-        def crash():
+    def crash_save(self: PostgresWorkspaceRepository, *args: Any) -> dict[str, Any]:
+        def crash() -> None:
             raise PresentationFailure("STORAGE_UNAVAILABLE")
-        self._checkpoint = crash
+        setattr(self, "_checkpoint", crash)
         return original_save(self, *args)
 
     revision_two = deepcopy(body)
@@ -136,8 +139,13 @@ def test_composer_vertical_persistence(tmp_path, monkeypatch):
         assert crashed.status_code == 503
     assert client.get("/reports/composer/v1/" + report).json()["report"] == saved
     from concurrent.futures import ThreadPoolExecutor
+    from httpx import Response
+
+    def save_revision(_: int) -> Response:
+        return client.post("/reports/composer/v1/versions", headers=headers, json=revision_two)
+
     with ThreadPoolExecutor(max_workers=2) as pool:
-        responses = list(pool.map(lambda _: client.post("/reports/composer/v1/versions", headers=headers, json=revision_two), range(2)))
+        responses = list(pool.map(save_revision, range(2)))
     assert [r.status_code for r in responses] == [200, 200]
     assert responses[0].json() == responses[1].json()
     assert responses[0].json()["revision"] == 2
@@ -182,7 +190,7 @@ def test_composer_vertical_persistence(tmp_path, monkeypatch):
     assert client.post("/reports/composer/v1/versions", headers=headers, json={"contract_version": "analytical-authoring/v1", "definition": isolated, "expected_revision": 0, "idempotency_key": str(uuid4())}).status_code == 400
     scoped_definition["scopes"] = {"filters": [scope_binding], "contexts": [{"binding_id": str(uuid4()),
         "target": {"kind": "document", "id": scoped_report}, "context": {"grain": "month"}}]}
-    scoped_command = {"contract_version": "analytical-authoring/v1", "definition": scoped_definition, "block_id": target_block}
+    scoped_command: dict[str, Any] = {"contract_version": "analytical-authoring/v1", "definition": scoped_definition, "block_id": target_block}
     scoped_preflight = client.post("/reports/composer/v1/preflight", headers=headers, json=scoped_command)
     assert scoped_preflight.status_code == 200, scoped_preflight.text
     assert scoped_preflight.json()["provider"]["effective_context"]["store_ids"] == [allowed[0]]
@@ -195,7 +203,7 @@ def test_composer_vertical_persistence(tmp_path, monkeypatch):
     assert applied_scope.status_code == 200, applied_scope.text
     scoped_result = applied_scope.json()["result"]
     assert scoped_result["request_hash"] == scoped_preflight.json()["provider"]["request_hash"]
-    scoped_body = {"contract_version": "analytical-authoring/v1", "definition": scoped_definition,
+    scoped_body: dict[str, Any] = {"contract_version": "analytical-authoring/v1", "definition": scoped_definition,
         "expected_revision": 0, "idempotency_key": str(uuid4()),
         "results": [{"block_id": target_block, "result_id": scoped_result["result_id"]}]}
     scoped_save = client.post("/reports/composer/v1/versions", headers=headers, json=scoped_body)
@@ -224,7 +232,7 @@ def test_composer_vertical_persistence(tmp_path, monkeypatch):
     assert pair_response.status_code == 200, pair_response.text
     comparison = pair_response.json()
     assert comparison["mode"] == "pair" and comparison["comparability_status"] == "comparable"
-    pair_body = {"contract_version": "analytical-authoring/v1", "definition": pair_definition,
+    pair_body: dict[str, Any] = {"contract_version": "analytical-authoring/v1", "definition": pair_definition,
                  "expected_revision": 1, "idempotency_key": str(uuid4()), "results": pair_refs, "comparison": comparison}
     pair_save = client.post("/reports/composer/v1/versions", headers=headers, json=pair_body)
     assert pair_save.status_code == 200, pair_save.text

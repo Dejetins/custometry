@@ -2,8 +2,10 @@
 
 from dataclasses import replace, fields
 from uuid import uuid4
+from typing import Any, cast
 import pytest
 from packages.contracts.analytics import AnalyticsFailure
+from packages.contracts.analytics.columnar_filters import FlatInputGrant
 from packages.contracts.analytics.customer_events import (
     RootRestrictedSequenceGrant,
     ObservedChildRootRestriction,
@@ -11,17 +13,21 @@ from packages.contracts.analytics.customer_events import (
 from packages.contracts.semantic.nullable_relationships import NullableFilterRelationshipVersion
 from packages.contracts.analytics.sequence_filters import SequenceNot
 from tests.integration.analytics.test_sequence_filters import (
-    setup as sequence_setup,  # noqa: F401 -- fixture registration
+    setup as sequence_setup,  # pyright: ignore[reportUnusedImport]  # noqa: F401 -- fixture registration
     run,
     sequence,
     change_column,
 )  # noqa: F401
-from tests.integration.analytics.test_relational_filters import setup as relational_setup, predicate  # noqa: F401
+from tests.integration.analytics.test_relational_filters import FilterSetup, predicate
+from tests.integration.analytics.test_relational_filters import setup as relational_setup  # pyright: ignore[reportUnusedImport]  # noqa: F401
+
+
+CustomerSetup = FilterSetup[RootRestrictedSequenceGrant]
 
 
 @pytest.fixture
-def setup(request):
-    result = request.getfixturevalue("sequence_setup")
+def setup(request: pytest.FixtureRequest) -> CustomerSetup:
+    result = cast(CustomerSetup, request.getfixturevalue("sequence_setup"))
     access = result[1]
     old = access.grant
     edge = old.relationships[0].relationship
@@ -34,19 +40,16 @@ def setup(request):
         relationship_id=edge.relationship_id,
         relationship_version_id=edge.version_id,
     )
-    access.grant = RootRestrictedSequenceGrant(
-        **(
-            {f.name: getattr(old, f.name) for f in fields(old)}
-            | {
-                "relationships": (replace(old.relationships[0], relationship=edge),),
-                "root_restrictions": (restriction,),
-            }
-        )
+    attributes: dict[str, Any] = {f.name: getattr(old, f.name) for f in fields(old)}
+    attributes.update(
+        relationships=(replace(old.relationships[0], relationship=edge),),
+        root_restrictions=(restriction,),
     )
+    access.grant = RootRestrictedSequenceGrant(**attributes)
     return result
 
 
-def everything(setup):
+def everything(setup: CustomerSetup) -> SequenceNot:
     scope = uuid4()
     return SequenceNot(
         node_id=uuid4(),
@@ -55,7 +58,7 @@ def everything(setup):
     )
 
 
-def test_root_requires_observed_authorized_child_independently_of_filter(setup):
+def test_root_requires_observed_authorized_child_independently_of_filter(setup: CustomerSetup):
     result = run(setup, everything(setup))
     assert result.matched_ids == ("a", "b", "n")
     assert result.authorized_count == 3
@@ -63,7 +66,7 @@ def test_root_requires_observed_authorized_child_independently_of_filter(setup):
     assert run(setup, everything(setup)).authorized_count == 0
 
 
-def test_null_child_reference_is_unlinked_not_invented_root(setup):
+def test_null_child_reference_is_unlinked_not_invented_root(setup: CustomerSetup):
     change_column(setup, "parent", ["a", "a", "b", None, "secret", "c"])
     result = run(setup, everything(setup))
     assert result.matched_ids == ("a", "b")
@@ -71,13 +74,13 @@ def test_null_child_reference_is_unlinked_not_invented_root(setup):
     assert run(setup, sequence(setup)).matched_ids == ("a",)
 
 
-def test_nonnull_orphan_still_rejected(setup):
+def test_nonnull_orphan_still_rejected(setup: CustomerSetup):
     change_column(setup, "parent", ["a", "a", "b", "missing", "secret", "c"])
     with pytest.raises(AnalyticsFailure, match="FILTER_RELATIONSHIP_KEYS"):
         run(setup, everything(setup))
 
 
-def test_wrong_root_or_relation_policy_denied(setup):
+def test_wrong_root_or_relation_policy_denied(setup: CustomerSetup):
     access = setup[1]
     restriction = access.grant.root_restrictions[0]
     access.grant = replace(
@@ -91,7 +94,7 @@ def test_wrong_root_or_relation_policy_denied(setup):
         run(setup, everything(setup))
 
 
-def test_root_policy_is_part_of_identity(setup):
+def test_root_policy_is_part_of_identity(setup: CustomerSetup):
     node = everything(setup)
     before = run(setup, node)
     access = setup[1]
@@ -102,10 +105,13 @@ def test_root_policy_is_part_of_identity(setup):
     assert run(setup, node).request_hash != before.request_hash
 
 
-def test_unlinked_rows_do_not_form_a_customer_fanout(setup):
+def test_unlinked_rows_do_not_form_a_customer_fanout(setup: CustomerSetup):
     import hashlib
-    import pyarrow as pa
-    import pyarrow.parquet as pq
+    import pyarrow as _pa  # pyright: ignore[reportMissingTypeStubs]
+    import pyarrow.parquet as _pq  # pyright: ignore[reportMissingTypeStubs]
+
+    pa: Any = _pa
+    pq: Any = _pq
 
     access = setup[1]
     child = access.grant.entities[1]
@@ -140,18 +146,23 @@ def test_unlinked_rows_do_not_form_a_customer_fanout(setup):
 
 
 @pytest.mark.parametrize("missing_namespace", [False, True])
-def test_nullable_foreign_key_does_not_null_required_namespace(setup, missing_namespace):
+def test_nullable_foreign_key_does_not_null_required_namespace(
+    setup: CustomerSetup, missing_namespace: bool
+):
     import hashlib
-    import pyarrow as pa
-    import pyarrow.parquet as pq
+    import pyarrow as _pa  # pyright: ignore[reportMissingTypeStubs]
+    import pyarrow.parquet as _pq  # pyright: ignore[reportMissingTypeStubs]
+
+    pa: Any = _pa
+    pq: Any = _pq
     from packages.contracts.semantic.filter_fields import FilterFieldVersion
 
     access = setup[1]
-    entities = []
+    entities: list[FlatInputGrant] = []
     for entity in access.grant.entities:
         path = setup[-1] / entity.binding.relative_uri
         table = pq.read_table(path)
-        values = ["source"] * table.num_rows
+        values: list[str | None] = ["source"] * table.num_rows
         if entity.registry.entity == "ReceiptItem" and missing_namespace:
             values[3] = None
         table = table.append_column("namespace", pa.array(values, pa.string()))
@@ -196,7 +207,7 @@ def test_nullable_foreign_key_does_not_null_required_namespace(setup, missing_na
         assert run(setup, everything(setup)).matched_ids == ("a", "b")
 
 
-def test_old_relationship_reader_rejects_new_nullable_capability(setup):
+def test_old_relationship_reader_rejects_new_nullable_capability(setup: CustomerSetup):
     from packages.contracts.semantic.relationships import FilterRelationshipVersion
     from pydantic import ValidationError
 

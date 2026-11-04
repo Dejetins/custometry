@@ -3,12 +3,14 @@
 from dataclasses import replace
 from decimal import Decimal
 import hashlib
+from pathlib import Path
 from threading import Event
-from uuid import uuid4
+from typing import Any, Generator, Iterator, Literal, cast
+from uuid import UUID, uuid4
 
 import duckdb
-import pyarrow as pa
-import pyarrow.parquet as pq
+import pyarrow as _pa  # pyright: ignore[reportMissingTypeStubs]
+import pyarrow.parquet as _pq  # pyright: ignore[reportMissingTypeStubs]
 import pytest
 from pydantic import ValidationError
 
@@ -22,6 +24,8 @@ from packages.contracts.analytics.columnar_filters import (
     FilterValue,
     FlatBoolean,
     FlatFilterRequest,
+    FlatFilterResult,
+    FlatExpression,
     FlatInputGrant,
     FlatNot,
     FlatPredicate,
@@ -29,26 +33,33 @@ from packages.contracts.analytics.columnar_filters import (
 from packages.contracts.semantic.filter_fields import FilterFieldVersion, FlatFilterRegistry
 
 
+pa: Any = _pa
+pq: Any = _pq
+
+
 class Access:
-    def __init__(self, grant):
+    def __init__(self, grant: FlatInputGrant):
         self.grant = grant
         self.calls = 0
         self.revoke = False
 
-    def authorize(self, **kwargs):
+    def authorize(
+        self, *, workspace_id: UUID, actor_id: UUID, dataset_version_id: UUID
+    ) -> FlatInputGrant:
         self.calls += 1
         if self.revoke and self.calls > 1:
             raise AnalyticsFailure("FORBIDDEN")
-        assert kwargs == {
-            "workspace_id": self.grant.workspace_id,
-            "actor_id": self.grant.actor_id,
-            "dataset_version_id": self.grant.registry.dataset_version_id,
-        }
+        assert workspace_id == self.grant.workspace_id
+        assert actor_id == self.grant.actor_id
+        assert dataset_version_id == self.grant.registry.dataset_version_id
         return self.grant
 
 
+FlatSetup = tuple[DuckDBFlatFilter, Access, FlatFilterRequest, Path]
+
+
 @pytest.fixture
-def setup(tmp_path):
+def setup(tmp_path: Path) -> FlatSetup:
     fields = (
         FilterFieldVersion(
             field_id="allowed",
@@ -146,14 +157,16 @@ def setup(tmp_path):
     return engine, access, request, artifact
 
 
-def run(setup, expression=None, **kwargs):
+def run(
+    setup: FlatSetup, expression: FlatExpression | None = None, **kwargs: Any
+) -> FlatFilterResult:
     engine, access, request, _ = setup
     if expression is not None:
         request = request.model_copy(update={"expression": expression})
     return engine.execute(request, actor_id=access.grant.actor_id, **kwargs)
 
 
-def test_exact_decimal_unknown_and_authorized_coverage(setup):
+def test_exact_decimal_unknown_and_authorized_coverage(setup: FlatSetup):
     result = run(setup)
     assert result.matched_ids == ("a",)
     assert (result.not_matched_count, result.unknown_count, result.authorized_count) == (2, 1, 4)
@@ -161,7 +174,7 @@ def test_exact_decimal_unknown_and_authorized_coverage(setup):
     assert result.preview_kind == "exact"
 
 
-def test_not_unknown_and_null_policy_are_distinct(setup):
+def test_not_unknown_and_null_policy_are_distinct(setup: FlatSetup):
     expr = setup[2].expression
     result = run(setup, FlatNot(child=expr))
     assert result.matched_ids == ("b", "c")  # known NULL is not_matched under this field policy
@@ -181,7 +194,13 @@ def test_not_unknown_and_null_policy_are_distinct(setup):
         ("or", True, ("a", "b", "c"), 1),
     ],
 )
-def test_boolean_three_valued_logic(setup, kind, negate, expected, unknown):
+def test_boolean_three_valued_logic(
+    setup: FlatSetup,
+    kind: Literal["and", "or"],
+    negate: bool,
+    expected: tuple[str, ...],
+    unknown: int,
+):
     expr = setup[2].expression
     result = run(
         setup, FlatBoolean(kind=kind, children=(expr, FlatNot(child=expr) if negate else expr))
@@ -190,14 +209,14 @@ def test_boolean_three_valued_logic(setup, kind, negate, expected, unknown):
     assert result.unknown_count == unknown
 
 
-def test_user_or_cannot_escape_mandatory_ceiling(setup):
+def test_user_or_cannot_escape_mandatory_ceiling(setup: FlatSetup):
     expr = setup[2].expression
     result = run(setup, FlatBoolean(kind="or", children=(expr, FlatNot(child=expr))))
     assert "secret" not in result.matched_ids
     assert result.authorized_count == 4
 
 
-def test_identity_commutative_and_policy_sensitive(setup):
+def test_identity_commutative_and_policy_sensitive(setup: FlatSetup):
     expr = setup[2].expression
     a = run(setup, FlatBoolean(kind="or", children=(expr, FlatNot(child=expr))))
     b = run(setup, FlatBoolean(kind="or", children=(FlatNot(child=expr), expr)))
@@ -209,7 +228,7 @@ def test_identity_commutative_and_policy_sensitive(setup):
     )
 
 
-def test_revoke_before_delivery(setup):
+def test_revoke_before_delivery(setup: FlatSetup):
     setup[1].revoke = True
     with pytest.raises(AnalyticsFailure, match="^FORBIDDEN$"):
         run(setup)
@@ -228,13 +247,15 @@ def test_revoke_before_delivery(setup):
         ({"values": (FilterValue(data_type="integer", value=1),)}, "FILTER_OPERAND_TYPE"),
     ],
 )
-def test_invalid_predicate_rejected_before_read(setup, change, code):
+def test_invalid_predicate_rejected_before_read(
+    setup: FlatSetup, change: dict[str, Any], code: str
+):
     setup[3].unlink()
     with pytest.raises(AnalyticsFailure, match=f"^{code}$"):
         run(setup, setup[2].expression.model_copy(update=change))
 
 
-def test_bound_sql_value_and_untrusted_column_names(setup):
+def test_bound_sql_value_and_untrusted_column_names(setup: FlatSetup):
     field = setup[1].grant.registry.fields[2]
     expr = FlatPredicate(
         field_id=field.field_id,
@@ -273,14 +294,14 @@ def test_bound_sql_value_and_untrusted_column_names(setup):
         ({"max_values": 1}, "FILTER_PLAN_LIMIT"),
     ],
 )
-def test_resource_preflight(setup, limits, code):
+def test_resource_preflight(setup: FlatSetup, limits: dict[str, int], code: str):
     grant = setup[1].grant
     setup[1].grant = replace(grant, resource_policy=grant.resource_policy.model_copy(update=limits))
     with pytest.raises(AnalyticsFailure, match=f"^{code}$"):
         run(setup)
 
 
-def test_depth_limit(setup):
+def test_depth_limit(setup: FlatSetup):
     grant = setup[1].grant
     setup[1].grant = replace(
         grant, resource_policy=grant.resource_policy.model_copy(update={"max_depth": 1})
@@ -289,14 +310,14 @@ def test_depth_limit(setup):
         run(setup, FlatNot(child=setup[2].expression))
 
 
-def test_integrity_failure_is_sanitized(setup):
+def test_integrity_failure_is_sanitized(setup: FlatSetup):
     setup[3].write_bytes(b"sensitive provider data")
     with pytest.raises(AnalyticsFailure, match="^FILTER_ARTIFACT_INTEGRITY$"):
         run(setup)
 
 
 @pytest.mark.parametrize("relative", ["../input.parquet", "/tmp/input.parquet"])
-def test_path_escape_rejected(setup, relative):
+def test_path_escape_rejected(setup: FlatSetup, relative: str):
     access = setup[1]
     access.grant = replace(
         access.grant, binding=replace(access.grant.binding, relative_uri=relative)
@@ -305,7 +326,7 @@ def test_path_escape_rejected(setup, relative):
         run(setup)
 
 
-def test_symlink_rejected(setup):
+def test_symlink_rejected(setup: FlatSetup):
     target = setup[3].with_name("link.parquet")
     target.symlink_to(setup[3])
     access = setup[1]
@@ -316,7 +337,7 @@ def test_symlink_rejected(setup):
         run(setup)
 
 
-def test_precancel_no_admission(setup):
+def test_precancel_no_admission(setup: FlatSetup):
     event = Event()
     event.set()
     with pytest.raises(AnalyticsFailure, match="^FILTER_CANCELLED$"):
@@ -335,13 +356,13 @@ def test_precancel_no_admission(setup):
         "SET threads=8",
     ],
 )
-def test_engine_restrictions(setup, statement):
+def test_engine_restrictions(setup: FlatSetup, statement: str):
     with isolated_connection(setup[1].grant.resource_policy) as connection:
         with pytest.raises(duckdb.Error):
             connection.execute(statement)
 
 
-def test_connections_are_isolated(setup):
+def test_connections_are_isolated(setup: FlatSetup):
     policy = setup[1].grant.resource_policy
     with isolated_connection(policy) as one, isolated_connection(policy) as two:
         one.execute("CREATE TABLE private_input AS SELECT 1")
@@ -360,10 +381,10 @@ def test_unknown_nodes_and_coerced_values_rejected():
             }
         )
     with pytest.raises(ValidationError):
-        FilterValue(data_type="decimal", value=1.01)
+        FilterValue(data_type="decimal", value=cast(Any, 1.01))
 
 
-def rewrite_artifact(setup, table):
+def rewrite_artifact(setup: FlatSetup, table: Any) -> None:
     pq.write_table(table, setup[3])
     access = setup[1]
     access.grant = replace(
@@ -377,27 +398,27 @@ def rewrite_artifact(setup, table):
 @pytest.mark.parametrize(
     "bad_ids", [["a", "a", "c", "d", "secret"], ["a", None, "c", "d", "secret"]]
 )
-def test_unique_nonnull_root_grain(setup, bad_ids):
+def test_unique_nonnull_root_grain(setup: FlatSetup, bad_ids: list[str | None]):
     table = pq.read_table(setup[3])
     rewrite_artifact(setup, table.set_column(0, "id", pa.array(bad_ids, pa.string())))
     with pytest.raises(AnalyticsFailure, match="^FILTER_INPUT_ROW_ID$"):
         run(setup)
 
 
-def test_no_implicit_numeric_coercion(setup):
+def test_no_implicit_numeric_coercion(setup: FlatSetup):
     table = pq.read_table(setup[3])
     rewrite_artifact(setup, table.set_column(1, "amount", pa.array([1.01] * 5, pa.float64())))
     with pytest.raises(AnalyticsFailure, match="^FILTER_INPUT_SCHEMA$"):
         run(setup)
 
 
-def test_missing_column_rejected(setup):
+def test_missing_column_rejected(setup: FlatSetup):
     rewrite_artifact(setup, pq.read_table(setup[3]).drop_columns(["known"]))
     with pytest.raises(AnalyticsFailure, match="^FILTER_INPUT_SCHEMA$"):
         run(setup)
 
 
-def test_registry_mismatch_before_artifact_read(setup):
+def test_registry_mismatch_before_artifact_read(setup: FlatSetup):
     engine, access, request, artifact = setup
     artifact.unlink()
     with pytest.raises(AnalyticsFailure, match="^FILTER_INPUT_BINDING$"):
@@ -408,7 +429,9 @@ def test_registry_mismatch_before_artifact_read(setup):
 
 
 @pytest.mark.parametrize("mode", ["cancel", "timeout"])
-def test_interrupt_native_operation_and_recover(setup, monkeypatch, mode):
+def test_interrupt_native_operation_and_recover(
+    setup: FlatSetup, monkeypatch: pytest.MonkeyPatch, mode: str
+):
     """Controlled native workload exercises the monitor, not a mocked interruption."""
     from contextlib import contextmanager
     from threading import Thread
@@ -417,20 +440,20 @@ def test_interrupt_native_operation_and_recover(setup, monkeypatch, mode):
     started = Event()
     cancelled = Event()
     original = implementation.isolated_connection
-    connections = []
+    connections: list[Any] = []
 
     class Probe:
-        def __init__(self, connection):
+        def __init__(self, connection: Any):
             self.connection = connection
             self.first = True
 
-        def register(self, *args):
+        def register(self, *args: Any) -> Any:
             return self.connection.register(*args)
 
-        def interrupt(self):
+        def interrupt(self) -> Any:
             return self.connection.interrupt()
 
-        def execute(self, *args):
+        def execute(self, *args: Any) -> Any:
             if self.first:
                 self.first = False
                 started.set()
@@ -441,7 +464,7 @@ def test_interrupt_native_operation_and_recover(setup, monkeypatch, mode):
             return self.connection.execute(*args)
 
     @contextmanager
-    def instrumented(policy):
+    def instrumented(policy: FilterResourcePolicy) -> Generator[Probe, None, None]:
         with original(policy) as connection:
             connections.append(connection)
             yield Probe(connection)
@@ -480,7 +503,9 @@ def test_interrupt_native_operation_and_recover(setup, monkeypatch, mode):
     assert run(setup).matched_ids == ("a",)
 
 
-def test_dictionary_expansion_rejected_before_cast(setup, monkeypatch):
+def test_dictionary_expansion_rejected_before_cast(
+    setup: FlatSetup, monkeypatch: pytest.MonkeyPatch
+):
     import packages.analytics_core.infrastructure.columnar_filters as implementation
 
     rows = 10000
@@ -500,10 +525,10 @@ def test_dictionary_expansion_rejected_before_cast(setup, monkeypatch):
         resource_policy=access.grant.resource_policy.model_copy(update={"max_rows": rows}),
     )
     assert setup[3].stat().st_size < 1024 * 1024
-    casts = []
+    casts: list[bool] = []
     original_cast = implementation.pc.cast
 
-    def observed_cast(*args, **kwargs):
+    def observed_cast(*args: Any, **kwargs: Any) -> Any:
         casts.append(True)
         return original_cast(*args, **kwargs)
 
@@ -513,20 +538,20 @@ def test_dictionary_expansion_rejected_before_cast(setup, monkeypatch):
     assert not casts  # first 512-row dictionary expansion denied before materialization
 
 
-def test_cancel_at_arrow_decode_boundary(setup, monkeypatch):
+def test_cancel_at_arrow_decode_boundary(setup: FlatSetup, monkeypatch: pytest.MonkeyPatch):
     import packages.analytics_core.infrastructure.columnar_filters as implementation
 
     cancelled = Event()
     original = implementation.pq.ParquetFile
-    decoded = []
+    decoded: list[int] = []
 
     class FileProbe:
-        def __init__(self, *args, **kwargs):
+        def __init__(self, *args: Any, **kwargs: Any):
             self.file = original(*args, **kwargs)
             self.metadata = self.file.metadata
             self.schema_arrow = self.file.schema_arrow
 
-        def iter_batches(self, **kwargs):
+        def iter_batches(self, **kwargs: Any) -> Iterator[Any]:
             for batch in self.file.iter_batches(**kwargs):
                 decoded.append(batch.num_rows)
                 cancelled.set()

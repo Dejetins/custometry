@@ -5,18 +5,25 @@ from decimal import Decimal
 import hashlib
 from threading import Event
 from time import monotonic
+from typing import Any
 import pytest
-import pyarrow as pa
-import pyarrow.parquet as pq
+import pyarrow as _pa  # pyright: ignore[reportMissingTypeStubs]
+import pyarrow.parquet as _pq  # pyright: ignore[reportMissingTypeStubs]
 from packages.contracts.analytics import AnalyticsFailure
 from packages.analytics_core.infrastructure.columnar_filters import read_admitted_input
-from tests.integration.analytics.test_relational_filters import setup as setup
+from tests.integration.analytics.test_relational_filters import RelationalSetup, setup as setup
+
+
+pa: Any = _pa
+pq: Any = _pq
 
 
 @pytest.mark.parametrize(
     "precision,scale,allowed", [(8, 3, True), (18, 3, True), (19, 3, False), (8, 2, False)]
 )
-def test_only_same_scale_lossless_precision_widening(setup, precision, scale, allowed):
+def test_only_same_scale_lossless_precision_widening(
+    setup: RelationalSetup, precision: int, scale: int, allowed: bool
+):
     _, access, _, _, _, root = setup
     grant = access.grant.entities[1]
     path = root / grant.binding.relative_uri
@@ -45,7 +52,7 @@ def test_only_same_scale_lossless_precision_widening(setup, precision, scale, al
         ),
     )
 
-    def read(widen=False):
+    def read(widen: bool = False) -> Any:
         return read_admitted_input(
             root, grant, Event(), monotonic() + 10, widen_decimal_precision=widen
         )

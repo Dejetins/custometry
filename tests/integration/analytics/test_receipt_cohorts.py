@@ -4,14 +4,16 @@ from contextlib import contextmanager
 from dataclasses import replace
 import hashlib
 import json
-from uuid import uuid4
-import pyarrow as pa
-import pyarrow.parquet as pq
+from uuid import UUID, uuid4
+from typing import Any, Generator, TypeVar, cast
+import pyarrow as _pa  # pyright: ignore[reportMissingTypeStubs]
+import pyarrow.parquet as _pq  # pyright: ignore[reportMissingTypeStubs]
 import pytest
-from pydantic import ValidationError
+from pydantic import BaseModel, ValidationError
 from packages.contracts.analytics import AnalyticsFailure
 from packages.contracts.analytics.receipt_cohorts import (
     ReceiptCohortGrant,
+    CohortExpression,
     CohortFilterRequest,
     CustomerEventMembership,
     CohortBoolean,
@@ -25,20 +27,32 @@ from packages.contracts.analytics.sequence_filters import (
     FixedSequenceWindow,
     SequenceGap,
 )
-from packages.contracts.analytics.relational_filters import RelationalFilterRequest
+from packages.contracts.analytics.relational_filters import (
+    RelationalFilterRequest,
+    RelationalFilterResult,
+    RelationalResourcePolicy,
+)
+from packages.contracts.analytics.columnar_filters import MaterializedFilterBinding
 from packages.contracts.analytics.aggregate_filters import AggregateFilterRequest
 from packages.contracts.analytics.retail_relational import RelationalFacetQuery
 from packages.contracts.semantic.nullable_relationships import NullableFilterRelationshipVersion
 from packages.analytics_core.infrastructure import relational_filters as runtime
 from tests.integration.analytics.test_sequence_filters import (
-    setup as sequence_setup,  # noqa: F401 -- fixture registration
+    setup as sequence_setup,  # pyright: ignore[reportUnusedImport]  # noqa: F401 -- fixture registration
     at,
     change_column,
 )  # noqa: F401
-from tests.integration.analytics.test_relational_filters import setup as relational_setup, predicate  # noqa: F401
+from tests.integration.analytics.test_relational_filters import FilterSetup, predicate
+from tests.integration.analytics.test_relational_filters import setup as relational_setup  # pyright: ignore[reportUnusedImport]  # noqa: F401
 
 
-def renamed(model):
+pa: Any = _pa
+pq: Any = _pq
+CohortSetup = FilterSetup[ReceiptCohortGrant]
+ModelT = TypeVar("ModelT", bound=BaseModel)
+
+
+def renamed(model: ModelT) -> ModelT:
     raw = (
         model.model_dump_json()
         .replace("ReceiptItem", "TEMP")
@@ -49,8 +63,8 @@ def renamed(model):
 
 
 @pytest.fixture
-def setup(request):
-    base = request.getfixturevalue("sequence_setup")
+def setup(request: pytest.FixtureRequest) -> CohortSetup:
+    base = cast(CohortSetup, request.getfixturevalue("sequence_setup"))
     access = base[1]
     old = access.grant
     entities = tuple(
@@ -58,7 +72,10 @@ def setup(request):
             e,
             registry=renamed(e.registry),
             row_ceiling=renamed(e.row_ceiling),
-            binding=replace(e.binding, entity="Customer" if i == 0 else "Receipt"),
+            binding=replace(
+                cast(MaterializedFilterBinding, e.binding),
+                entity="Customer" if i == 0 else "Receipt",
+            ),
         )
         for i, e in enumerate(old.entities)
     )
@@ -87,12 +104,14 @@ def setup(request):
     return base
 
 
-def member(setup, scope=None, negative=False):
+def member(
+    setup: CohortSetup, scope: UUID | None = None, negative: bool = False
+) -> CustomerEventMembership:
     grant = setup[1].grant
     scope, customer = scope or uuid4(), uuid4()
     edge = grant.relationships[0].relationship
 
-    def step(color, gap=None):
+    def step(color: str, gap: SequenceGap | None = None) -> PositiveStep:
         child = uuid4()
         return PositiveStep(
             step_id=uuid4(),
@@ -103,7 +122,7 @@ def member(setup, scope=None, negative=False):
         )
 
     first = step("red")
-    second = step("blue", SequenceGap(maximum_us=2000000))
+    second: PositiveStep | NegativeStep = step("blue", SequenceGap(maximum_us=2000000))
     if negative:
         second = NegativeStep(
             step_id=second.step_id,
@@ -135,7 +154,7 @@ def member(setup, scope=None, negative=False):
     )
 
 
-def query(setup, node):
+def query(setup: CohortSetup, node: CohortExpression) -> CohortFilterRequest:
     _, access, workspace, _, dataset, _ = setup
     return CohortFilterRequest(
         workspace_id=workspace,
@@ -147,11 +166,11 @@ def query(setup, node):
     )
 
 
-def run(setup, node):
+def run(setup: CohortSetup, node: CohortExpression) -> RelationalFilterResult:
     return setup[0].execute(query(setup, node), actor_id=setup[3])
 
 
-def test_receipts_share_customer_membership_without_multiplication(setup):
+def test_receipts_share_customer_membership_without_multiplication(setup: CohortSetup):
     result = run(setup, member(setup))
     assert result.matched_ids == ("a1", "a2")
     assert result.authorized_count == 5
@@ -159,7 +178,7 @@ def test_receipts_share_customer_membership_without_multiplication(setup):
     assert result.unknown_count == 1  # forbidden customer; a lone event cannot form two steps
 
 
-def test_receipt_outside_history_window_is_still_selected(setup):
+def test_receipt_outside_history_window_is_still_selected(setup: CohortSetup):
     child = setup[1].grant.entities[1]
     path = setup[-1] / child.binding.relative_uri
     table = pq.read_table(path)
@@ -182,7 +201,7 @@ def test_receipt_outside_history_window_is_still_selected(setup):
     assert run(setup, member(setup)).matched_ids == ("a1", "a2", "a3")
 
 
-def test_anonymous_not_is_unknown_and_orphan_is_failure(setup):
+def test_anonymous_not_is_unknown_and_orphan_is_failure(setup: CohortSetup):
     change_column(setup, "parent", ["a", "a", "b", None, "secret", "c"])
     node = member(setup)
     result = run(setup, CohortNot(node_id=uuid4(), scope_id=node.scope_id, child=node))
@@ -193,12 +212,12 @@ def test_anonymous_not_is_unknown_and_orphan_is_failure(setup):
         run(setup, node)
 
 
-def test_forbidden_events_do_not_confirm_customer(setup):
+def test_forbidden_events_do_not_confirm_customer(setup: CohortSetup):
     change_column(setup, "allowed", [True, False, True, True, True, False])
     assert run(setup, member(setup)).matched_ids == ()
 
 
-def test_negative_and_multiple_materialized_cohorts(setup):
+def test_negative_and_multiple_materialized_cohorts(setup: CohortSetup):
     node = member(setup, negative=True)
     assert run(setup, node).matched_ids == ("b1",)
     other = member(setup, node.scope_id)
@@ -208,7 +227,7 @@ def test_negative_and_multiple_materialized_cohorts(setup):
     assert run(setup, combined).matched_ids == ("a1", "a2", "b1")
 
 
-def test_main_parameters_before_cohort_in_tree_and_facets(setup):
+def test_main_parameters_before_cohort_in_tree_and_facets(setup: CohortSetup):
     node = member(setup)
     pred = predicate(setup[1].grant, node.scope_id, "Receipt.color", "red")
     combined = CohortBoolean(
@@ -225,27 +244,27 @@ def test_main_parameters_before_cohort_in_tree_and_facets(setup):
     assert [(v.value, v.count) for v in result.values] == [("red", 1)]
 
 
-def test_actual_duckdb_plan_materializes_each_customer_leaf(setup, monkeypatch):
+def test_actual_duckdb_plan_materializes_each_customer_leaf(
+    setup: CohortSetup, monkeypatch: pytest.MonkeyPatch
+):
     original = runtime.isolated_connection
-    plans = []
+    plans: list[Any] = []
 
     @contextmanager
-    def capture(policy):
+    def capture(policy: RelationalResourcePolicy) -> Generator[Any, None, None]:
         with original(policy) as connection:
 
             class Connection:
-                def __getattr__(self, name):
+                def __getattr__(self, name: str) -> Any:
                     return getattr(connection, name)
 
-                def execute(self, sql, parameters=None):
+                def execute(self, sql: str, parameters: Any = None) -> Any:
                     if sql.startswith("WITH cohort_"):
-                        plans.append(
-                            json.loads(
-                                connection.execute(
-                                    "EXPLAIN (FORMAT JSON) " + sql, parameters
-                                ).fetchone()[1]
-                            )
-                        )
+                        row = connection.execute(
+                            "EXPLAIN (FORMAT JSON) " + sql, parameters
+                        ).fetchone()
+                        assert row is not None
+                        plans.append(json.loads(row[1]))
                     return (
                         connection.execute(sql, parameters)
                         if parameters is not None
@@ -262,7 +281,7 @@ def test_actual_duckdb_plan_materializes_each_customer_leaf(setup, monkeypatch):
         CohortBoolean(kind="or", node_id=uuid4(), scope_id=node.scope_id, children=(node, second)),
     )
 
-    def walk(nodes):
+    def walk(nodes: Any) -> Generator[Any, None, None]:
         for n in nodes:
             yield n
             yield from walk(n.get("children", []))
@@ -277,7 +296,7 @@ def test_actual_duckdb_plan_materializes_each_customer_leaf(setup, monkeypatch):
 
 
 @pytest.mark.parametrize("collision", ["node", "scope", "step"])
-def test_cross_leaf_identifiers_cannot_collide(setup, collision):
+def test_cross_leaf_identifiers_cannot_collide(setup: CohortSetup, collision: str):
     node = member(setup)
     other = member(setup, node.scope_id)
     if collision == "node":
@@ -290,10 +309,12 @@ def test_cross_leaf_identifiers_cannot_collide(setup, collision):
         other = other.model_copy(update={"customer_scope_id": node.customer_scope_id})
     else:
         steps = (
-            other.predicate.steps[0].model_copy(
-                update={"step_id": node.predicate.steps[0].step_id}
+            cast(BehavioralSequence, other.predicate)
+            .steps[0]
+            .model_copy(
+                update={"step_id": cast(BehavioralSequence, node.predicate).steps[0].step_id}
             ),
-            other.predicate.steps[1],
+            cast(BehavioralSequence, other.predicate).steps[1],
         )
         other = other.model_copy(
             update={"predicate": other.predicate.model_copy(update={"steps": steps})}
@@ -317,7 +338,7 @@ def test_cross_leaf_identifiers_cannot_collide(setup, collision):
         ("max_estimated_work", 50),
     ],
 )
-def test_multiple_leaves_obey_global_limits(setup, key, value):
+def test_multiple_leaves_obey_global_limits(setup: CohortSetup, key: str, value: int):
     node = member(setup)
     other = member(setup, node.scope_id)
     setup[1].grant = replace(
@@ -333,7 +354,7 @@ def test_multiple_leaves_obey_global_limits(setup, key, value):
         )
 
 
-def test_promoted_registry_pins_validated_and_in_identity(setup):
+def test_promoted_registry_pins_validated_and_in_identity(setup: CohortSetup):
     node = member(setup)
     q = query(setup, node)
     before = setup[0].fingerprint(q, actor_id=setup[3])
@@ -347,14 +368,16 @@ def test_promoted_registry_pins_validated_and_in_identity(setup):
             setup[0].fingerprint(q.model_copy(update=update), actor_id=setup[3])
 
 
-def test_current_authorization_rechecked(setup):
+def test_current_authorization_rechecked(setup: CohortSetup):
     setup[1].changed = True
     with pytest.raises(AnalyticsFailure, match="FILTER_POLICY_CHANGED"):
         run(setup, member(setup))
 
 
 @pytest.mark.parametrize("reader", [RelationalFilterRequest, AggregateFilterRequest])
-def test_old_execution_readers_reject_cohort_node(setup, reader):
+def test_old_execution_readers_reject_cohort_node(
+    setup: CohortSetup, reader: type[RelationalFilterRequest] | type[AggregateFilterRequest]
+):
     q = query(setup, member(setup)).model_dump(
         exclude={"receipt_registry_versions", "promoted_registry_sets", "schema_version"}
     )
@@ -362,7 +385,7 @@ def test_old_execution_readers_reject_cohort_node(setup, reader):
         reader.model_validate(q)
 
 
-def test_sequence_and_materialization_work_are_charged_together(setup):
+def test_sequence_and_materialization_work_are_charged_together(setup: CohortSetup):
     node = member(setup)
     other = member(setup, node.scope_id)
     setup[1].grant = replace(
@@ -380,7 +403,7 @@ def test_sequence_and_materialization_work_are_charged_together(setup):
         )
 
 
-def test_facet_parameters_share_the_query_budget(setup):
+def test_facet_parameters_share_the_query_budget(setup: CohortSetup):
     node = member(setup)
     q = query(setup, node)
     compiled = runtime.Compiler(q, setup[3], setup[1].grant)
@@ -399,7 +422,7 @@ def test_facet_parameters_share_the_query_budget(setup):
         )
 
 
-def test_customer_reference_is_not_a_receipt_facet(setup):
+def test_customer_reference_is_not_a_receipt_facet(setup: CohortSetup):
     with pytest.raises(AnalyticsFailure, match="FILTER_FIELD_FORBIDDEN"):
         setup[0].facets(
             query(setup, member(setup)),

@@ -2,13 +2,15 @@
 
 from dataclasses import replace
 from datetime import date, datetime, UTC
-from uuid import uuid4
+from uuid import UUID, uuid4
+from typing import Any, Literal, cast
 import hashlib
 import pytest
-import pyarrow as pa
-import pyarrow.parquet as pq
+import pyarrow as _pa  # pyright: ignore[reportMissingTypeStubs]
+import pyarrow.parquet as _pq  # pyright: ignore[reportMissingTypeStubs]
 from pydantic import ValidationError
 from packages.contracts.analytics import AnalyticsFailure
+from packages.contracts.analytics.columnar_filters import FlatInputGrant
 from packages.contracts.analytics.aggregate_filters import (
     AggregateFilterRequest,
     AggregateInputGrant,
@@ -32,21 +34,28 @@ from packages.contracts.semantic.filter_aggregates import (
 )
 from packages.contracts.semantic.filter_fields import FilterFieldVersion
 from tests.integration.analytics.test_relational_filters import (
-    setup as relational_setup,  # noqa: F401 -- pytest fixture registration
+    setup as relational_setup,  # pyright: ignore[reportUnusedImport]  # noqa: F401 -- pytest fixture registration
+    Access,
+    FilterSetup,
     predicate,
     run,
 )
 
 
-def at(day):
+pa: Any = _pa
+pq: Any = _pq
+AggregateSetup = FilterSetup[AggregateInputGrant]
+
+
+def at(day: int) -> datetime:
     return datetime(2025, 1, day, tzinfo=UTC)
 
 
 @pytest.fixture
-def setup(request):
-    relational = request.getfixturevalue("relational_setup")
-    engine, access, w, a, d, root = relational
-    entities = []
+def setup(request: pytest.FixtureRequest) -> AggregateSetup:
+    relational = cast(AggregateSetup, request.getfixturevalue("relational_setup"))
+    _, access, _, _, _, root = relational
+    entities: list[FlatInputGrant] = []
     for e in access.grant.entities:
         path = root / e.binding.relative_uri
         table = pq.read_table(path)
@@ -85,21 +94,21 @@ def setup(request):
 
 
 def count(
-    setup,
-    scope,
+    setup: AggregateSetup,
+    scope: UUID,
     *,
-    distinct=False,
-    start=1,
-    end=3,
-    parent_time=False,
-    null_policy="unknown",
-    red=False,
-):
+    distinct: bool = False,
+    start: int = 1,
+    end: int = 3,
+    parent_time: bool = False,
+    null_policy: Literal["unknown", "exclude"] = "unknown",
+    red: bool = False,
+) -> ScopedCount:
     access = setup[1]
     r = access.grant.relationships[0].relationship
     fields = {f.field_id: f for e in access.grant.entities for f in e.registry.fields}
 
-    def ref(name):
+    def ref(name: str) -> AggregateFieldRef:
         return AggregateFieldRef(field_id=name, version_id=fields[name].version_id)
 
     definition = FilterCountVersion(
@@ -141,7 +150,12 @@ def count(
     )
 
 
-def query(setup, left, right="1", operator="ge"):
+def query(
+    setup: AggregateSetup,
+    left: ScopedCount | CountRatio,
+    right: str | ScopedCount | CountRatio | AggregateScalar = "1",
+    operator: Literal["eq", "ne", "lt", "le", "gt", "ge"] = "ge",
+) -> AggregateFilterRequest:
     scope = left.numerator.parent_scope_id if isinstance(left, CountRatio) else left.parent_scope_id
     if isinstance(right, str):
         unit = "ratio" if isinstance(left, CountRatio) else left.definition.unit
@@ -160,9 +174,9 @@ def query(setup, left, right="1", operator="ge"):
     )
 
 
-def rewrite(setup, entity, column, values, dtype):
+def rewrite(setup: AggregateSetup, entity: str, column: str, values: list[Any], dtype: Any) -> None:
     access = setup[1]
-    entities = []
+    entities: list[FlatInputGrant] = []
     for e in access.grant.entities:
         if e.registry.entity == entity:
             path = setup[5] / e.binding.relative_uri
@@ -181,7 +195,7 @@ def rewrite(setup, entity, column, values, dtype):
     access.grant = replace(access.grant, entities=tuple(entities))
 
 
-def test_count_empty_complete_and_half_open_windows(setup):
+def test_count_empty_complete_and_half_open_windows(setup: AggregateSetup):
     c = count(setup, uuid4())
     assert run(setup, query(setup, c, "2")).matched_ids == ("a",)
     result = run(setup, query(setup, c, "0", "eq"))
@@ -194,7 +208,7 @@ def test_count_empty_complete_and_half_open_windows(setup):
     assert run(setup, query(setup, parent, "0", "eq")).matched_ids == ("a", "b", "c", "n")
 
 
-def test_distinct_null_exclusion_and_unknown_property(setup):
+def test_distinct_null_exclusion_and_unknown_property(setup: AggregateSetup):
     c = count(setup, uuid4(), distinct=True)
     result = run(setup, query(setup, c, "1"))
     assert result.matched_ids == ("a", "b") and result.unknown_count == 1
@@ -203,7 +217,7 @@ def test_distinct_null_exclusion_and_unknown_property(setup):
     assert result.matched_ids == ("c", "n") and result.unknown_count == 0
 
 
-def test_unknown_window_and_predicate_never_zero_or_negated_true(setup):
+def test_unknown_window_and_predicate_never_zero_or_negated_true(setup: AggregateSetup):
     rewrite(setup, "ReceiptItem", "day_known", [True, True, False, True, True, True], pa.bool_())
     c = count(setup, uuid4(), red=True)
     q = query(setup, c, "0", "eq")
@@ -220,7 +234,7 @@ def test_unknown_window_and_predicate_never_zero_or_negated_true(setup):
     assert result.matched_ids == ("a",) and result.unknown_count == 2
 
 
-def test_incomplete_relationship_or_coverage_is_unknown(setup):
+def test_incomplete_relationship_or_coverage_is_unknown(setup: AggregateSetup):
     c = count(setup, uuid4())
     access = setup[1]
     access.grant = replace(
@@ -241,7 +255,7 @@ def test_incomplete_relationship_or_coverage_is_unknown(setup):
     assert run(setup, query(setup, c)).unknown_count == 4
 
 
-def test_scoped_operands_ratio_exact_comparison_and_zero_denominator(setup):
+def test_scoped_operands_ratio_exact_comparison_and_zero_denominator(setup: AggregateSetup):
     scope = uuid4()
     left = count(setup, scope, end=2)
     right = count(setup, scope, start=2, end=3)
@@ -257,7 +271,7 @@ def test_scoped_operands_ratio_exact_comparison_and_zero_denominator(setup):
     assert run(setup, query(setup, ratio, other, "eq")).matched_ids == ("a", "b")
 
 
-def test_current_authorization_and_pre_aggregation_child_ceiling(setup):
+def test_current_authorization_and_pre_aggregation_child_ceiling(setup: AggregateSetup):
     c = count(setup, uuid4())
     q = query(setup, c, "0", "eq")
     # c has one hidden child: it stays empty within the current authorized scope.
@@ -268,7 +282,7 @@ def test_current_authorization_and_pre_aggregation_child_ceiling(setup):
         run(setup, q)
 
 
-def test_old_readers_reject_aggregate_and_unchanged_canonical_boolean_order(setup):
+def test_old_readers_reject_aggregate_and_unchanged_canonical_boolean_order(setup: AggregateSetup):
     scope = uuid4()
     q = query(setup, count(setup, scope))
     old = {**q.model_dump(mode="json"), "schema_version": "relational-filter-execution/v2"}
@@ -309,7 +323,7 @@ def test_old_readers_reject_aggregate_and_unchanged_canonical_boolean_order(setu
         ("capability", "CAPABILITY"),
     ],
 )
-def test_invalid_bindings_fail_closed(setup, change, code):
+def test_invalid_bindings_fail_closed(setup: AggregateSetup, change: str, code: str):
     c = count(setup, uuid4())
     q = query(setup, c)
     if change == "definition":
@@ -347,7 +361,7 @@ def test_invalid_bindings_fail_closed(setup, change, code):
         from packages.contracts.analytics.relational_filters import RelationalInputGrant
 
         old = setup[1].grant
-        setup[1].grant = RelationalInputGrant(
+        cast(Access[RelationalInputGrant], setup[1]).grant = RelationalInputGrant(
             entities=old.entities,
             relationships=old.relationships,
             resource_policy=old.resource_policy,
@@ -357,7 +371,7 @@ def test_invalid_bindings_fail_closed(setup, change, code):
         run(setup, q)
 
 
-def test_identity_pins_coverage_definition_and_evidence(setup):
+def test_identity_pins_coverage_definition_and_evidence(setup: AggregateSetup):
     c = count(setup, uuid4())
     q = query(setup, c)
     access = setup[1]
@@ -371,7 +385,7 @@ def test_identity_pins_coverage_definition_and_evidence(setup):
         assert setup[0].fingerprint(q, actor_id=setup[3]) != baseline
 
 
-def test_limits_and_cancellation(setup):
+def test_limits_and_cancellation(setup: AggregateSetup):
     from threading import Event
 
     scope = uuid4()
@@ -396,13 +410,15 @@ def test_limits_and_cancellation(setup):
 
 
 @pytest.mark.parametrize("value", ["NaN", "1e2", "-1", "1000000000", "0.1234567", "01"])
-def test_scalar_numeric_bound(value):
+def test_scalar_numeric_bound(value: str):
     with pytest.raises(ValidationError):
         AggregateScalar(value=value, unit="ratio")
 
 
 def test_window_rejects_unresolved_non_utc_intraday_or_reversed():
-    valid = dict(starts_at=at(1), ends_at=at(2), observation_as_of=at(4), knowledge_as_of=at(5))
+    valid: dict[str, Any] = dict(
+        starts_at=at(1), ends_at=at(2), observation_as_of=at(4), knowledge_as_of=at(5)
+    )
     for patch in [
         dict(starts_at=at(3)),
         dict(starts_at=at(1).replace(hour=1)),
@@ -411,10 +427,10 @@ def test_window_rejects_unresolved_non_utc_intraday_or_reversed():
         dict(starts_at=at(1).replace(tzinfo=None)),
     ]:
         with pytest.raises(ValidationError):
-            AggregateWindow(**{**valid, **patch})
+            AggregateWindow.model_validate({**valid, **patch})
 
 
-def test_boolean_mixed_exists_aggregate_and_distinct_composite_grain(setup):
+def test_boolean_mixed_exists_aggregate_and_distinct_composite_grain(setup: AggregateSetup):
     scope = uuid4()
     c = count(setup, scope, distinct=True)
     f = next(
@@ -457,7 +473,7 @@ def test_boolean_mixed_exists_aggregate_and_distinct_composite_grain(setup):
     assert run(setup, q).matched_ids == ("a",)
 
 
-def test_unknown_grain_observation_not_excluded_as_known_null(setup):
+def test_unknown_grain_observation_not_excluded_as_known_null(setup: AggregateSetup):
     access = setup[1]
     child = access.grant.entities[1]
     fields = tuple(
@@ -474,7 +490,7 @@ def test_unknown_grain_observation_not_excluded_as_known_null(setup):
     assert result.matched_ids == ("c", "n") and result.unknown_count == 1
 
 
-def test_ratio_incompatible_units_and_reused_child_scope_reject(setup):
+def test_ratio_incompatible_units_and_reused_child_scope_reject(setup: AggregateSetup):
     scope = uuid4()
     numerator = count(setup, scope)
     denominator = count(setup, scope, distinct=True)
@@ -485,7 +501,7 @@ def test_ratio_incompatible_units_and_reused_child_scope_reject(setup):
         run(setup, query(setup, CountRatio(numerator=numerator, denominator=numerator)))
 
 
-def test_aggregate_unknown_obeys_boolean_three_valued_logic(setup):
+def test_aggregate_unknown_obeys_boolean_three_valued_logic(setup: AggregateSetup):
     scope = uuid4()
     q = query(setup, count(setup, scope))
     access = setup[1]
@@ -501,13 +517,18 @@ def test_aggregate_unknown_obeys_boolean_three_valued_logic(setup):
         ("or", false, (), 4),
     ]:
         expression = AggregateBoolean(
-            kind=kind, node_id=uuid4(), scope_id=scope, children=(q.expression, node)
+            kind=cast(Literal["and", "or"], kind),
+            node_id=uuid4(),
+            scope_id=scope,
+            children=(q.expression, node),
         )
         result = run(setup, q.model_copy(update={"expression": expression}))
         assert result.matched_ids == matched and result.unknown_count == unknown
 
 
-def test_count_distinct_counts_values_not_rows_and_observation_change_rejects(setup):
+def test_count_distinct_counts_values_not_rows_and_observation_change_rejects(
+    setup: AggregateSetup,
+):
     rewrite(setup, "ReceiptItem", "color", ["red", "red", "red", None, "red", "red"], pa.string())
     c = count(setup, uuid4(), distinct=True, null_policy="exclude")
     q = query(setup, c, "1", "eq")
@@ -516,7 +537,7 @@ def test_count_distinct_counts_values_not_rows_and_observation_change_rejects(se
     original = access.authorize
     calls = 0
 
-    def changing(**kwargs):
+    def changing(**kwargs: UUID) -> AggregateInputGrant:
         nonlocal calls
         calls += 1
         grant = original(**kwargs)
@@ -531,7 +552,7 @@ def test_count_distinct_counts_values_not_rows_and_observation_change_rejects(se
         run(setup, q)
 
 
-def test_as_of_keeps_exact_publication_time_without_rounding(setup):
+def test_as_of_keeps_exact_publication_time_without_rounding(setup: AggregateSetup):
     c = count(setup, uuid4())
     observation_as_of = at(4).replace(hour=13, minute=2, second=3, microsecond=456)
     knowledge_as_of = at(5).replace(hour=14, minute=10)

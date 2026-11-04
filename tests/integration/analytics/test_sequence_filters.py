@@ -2,15 +2,17 @@
 
 from dataclasses import replace
 from datetime import datetime, UTC, timedelta
-from uuid import uuid4
+from uuid import UUID, uuid4
+from typing import Any, TypeVar, cast
 import hashlib
 import pytest
-import pyarrow as pa
-import pyarrow.parquet as pq
+import pyarrow as _pa  # pyright: ignore[reportMissingTypeStubs]
+import pyarrow.parquet as _pq  # pyright: ignore[reportMissingTypeStubs]
 from pydantic import ValidationError
 from packages.contracts.analytics import AnalyticsFailure
 from packages.contracts.analytics.sequence_filters import (
     SequenceFilterRequest,
+    SequenceExpression,
     SequenceInputGrant,
     EventInput,
     BehavioralSequence,
@@ -25,26 +27,35 @@ from packages.contracts.analytics.sequence_filters import (
     canonical_sequence_expression,
 )
 from packages.contracts.analytics.aggregate_filters import AggregateFilterRequest
-from packages.contracts.analytics.relational_filters import RelationalFilterRequest
+from packages.contracts.analytics.relational_filters import (
+    RelationalFilterRequest,
+    RelationalFilterResult,
+)
 from packages.contracts.semantic.filter_events import (
     EventTimeFieldVersion,
     FilterEventVersion,
     EventObservation,
 )
 from packages.contracts.semantic.filter_aggregates import AggregateFieldRef
-from tests.integration.analytics.test_relational_filters import setup as relational_setup, predicate  # noqa: F401
+from tests.integration.analytics.test_relational_filters import FilterSetup, predicate
+from tests.integration.analytics.test_relational_filters import setup as relational_setup  # pyright: ignore[reportUnusedImport]  # noqa: F401
+
+pa: Any = _pa
+pq: Any = _pq
+SequenceSetup = FilterSetup[SequenceInputGrant]
+SequenceGrantT = TypeVar("SequenceGrantT", bound=SequenceInputGrant)
 
 T = datetime(2025, 1, 1, tzinfo=UTC)
 
 
-def at(seconds):
+def at(seconds: int) -> datetime:
     return T + timedelta(seconds=seconds)
 
 
 @pytest.fixture
-def setup(request):
-    base = request.getfixturevalue("relational_setup")
-    engine, access, w, a, d, root = base
+def setup(request: pytest.FixtureRequest) -> SequenceSetup:
+    base = cast(SequenceSetup, request.getfixturevalue("relational_setup"))
+    _, access, _, _, _, root = base
     child = access.grant.entities[1]
     path = root / child.binding.relative_uri
     table = pq.read_table(path)
@@ -88,7 +99,12 @@ def setup(request):
     return base
 
 
-def step(setup, scope, color="red", gap=None):
+def step(
+    setup: FilterSetup[SequenceGrantT],
+    scope: UUID,
+    color: str = "red",
+    gap: SequenceGap | None = None,
+) -> PositiveStep:
     grant = setup[1].grant
     child = uuid4()
     return PositiveStep(
@@ -100,7 +116,7 @@ def step(setup, scope, color="red", gap=None):
     )
 
 
-def sequence(setup, *, single=False):
+def sequence(setup: FilterSetup[SequenceGrantT], *, single: bool = False) -> BehavioralSequence:
     grant = setup[1].grant
     scope = uuid4()
     first = step(setup, scope)
@@ -122,7 +138,7 @@ def sequence(setup, *, single=False):
     )
 
 
-def run(setup, node):
+def run(setup: FilterSetup[SequenceGrantT], node: SequenceExpression) -> RelationalFilterResult:
     engine, access, w, a, d, _ = setup
     return engine.execute(
         SequenceFilterRequest(
@@ -139,7 +155,9 @@ def run(setup, node):
     )
 
 
-def change_column(setup, column, values, dtype=None):
+def change_column(
+    setup: FilterSetup[SequenceGrantT], column: str, values: list[Any], dtype: Any = None
+) -> None:
     access = setup[1]
     e = access.grant.entities[1]
     p = setup[-1] / e.binding.relative_uri
@@ -159,7 +177,12 @@ def change_column(setup, column, values, dtype=None):
     )
 
 
-def negative(setup, node, color="blue", end=2000000):
+def negative(
+    setup: FilterSetup[SequenceGrantT],
+    node: BehavioralSequence,
+    color: str = "blue",
+    end: int = 2000000,
+) -> NegativeStep:
     p = step(setup, node.scope_id, color)
     return NegativeStep(
         step_id=p.step_id,
@@ -171,7 +194,7 @@ def negative(setup, node, color="blue", end=2000000):
     )
 
 
-def test_positive_order_and_hidden_roots(setup):
+def test_positive_order_and_hidden_roots(setup: SequenceSetup):
     result = run(setup, sequence(setup))
     assert result.matched_ids == ("a",)
     assert result.authorized_count == 4
@@ -179,12 +202,12 @@ def test_positive_order_and_hidden_roots(setup):
 
 
 @pytest.mark.parametrize("second", [at(1), at(0), at(4)])
-def test_equal_reverse_or_beyond_gap_never_order(setup, second):
+def test_equal_reverse_or_beyond_gap_never_order(setup: SequenceSetup, second: datetime):
     change_column(setup, "time", [at(1), second, at(1), at(1), at(1), at(1)])
     assert run(setup, sequence(setup)).matched_ids == ()
 
 
-def test_exact_microsecond_gap(setup):
+def test_exact_microsecond_gap(setup: SequenceSetup):
     change_column(
         setup, "time", [at(1), at(1) + timedelta(microseconds=1), at(1), at(1), at(1), at(1)]
     )
@@ -195,7 +218,7 @@ def test_exact_microsecond_gap(setup):
     )
 
 
-def test_negative_complete_and_incomplete(setup):
+def test_negative_complete_and_incomplete(setup: SequenceSetup):
     node = sequence(setup, single=True)
     node = node.model_copy(update={"steps": (*node.steps, negative(setup, node))})
     result = run(setup, node)
@@ -208,7 +231,7 @@ def test_negative_complete_and_incomplete(setup):
     assert result.unknown_count >= 2
 
 
-def test_negative_interval_boundary_and_next_step(setup):
+def test_negative_interval_boundary_and_next_step(setup: SequenceSetup):
     node = sequence(setup)
     neg = negative(setup, node, end=1000000)
     result = run(setup, node.model_copy(update={"steps": (node.steps[0], neg, node.steps[1])}))
@@ -222,7 +245,7 @@ def test_negative_interval_boundary_and_next_step(setup):
     )
 
 
-def test_negative_extending_past_observation_unknown(setup):
+def test_negative_extending_past_observation_unknown(setup: SequenceSetup):
     node = sequence(setup, single=True)
     neg = negative(setup, node, "missing", end=10000000)
     result = run(setup, node.model_copy(update={"steps": (*node.steps, neg)}))
@@ -230,7 +253,7 @@ def test_negative_extending_past_observation_unknown(setup):
     assert result.unknown_count == 3
 
 
-def test_unknown_native_time_and_property_not_false_absence(setup):
+def test_unknown_native_time_and_property_not_false_absence(setup: SequenceSetup):
     change_column(setup, "time_known", [True, False, True, True, True, True])
     result = run(setup, sequence(setup))
     assert result.matched_ids == ()
@@ -240,7 +263,7 @@ def test_unknown_native_time_and_property_not_false_absence(setup):
     assert result.unknown_count == 1  # unknown color for n
 
 
-def test_relative_exact_resolution_identity_and_half_open(setup):
+def test_relative_exact_resolution_identity_and_half_open(setup: SequenceSetup):
     node = sequence(setup)
     window = RelativeSequenceWindow(
         anchor=at(10),
@@ -258,7 +281,7 @@ def test_relative_exact_resolution_identity_and_half_open(setup):
         RelativeSequenceWindow.model_validate(window.model_dump() | {"starts_at": at(0)})
 
 
-def test_property_binding_and_unknown(setup):
+def test_property_binding_and_unknown(setup: SequenceSetup):
     node = sequence(setup)
     f = next(
         f
@@ -280,7 +303,7 @@ def test_property_binding_and_unknown(setup):
     assert run(setup, node).unknown_count == 1
 
 
-def test_unknown_boolean_and_canonical_order(setup):
+def test_unknown_boolean_and_canonical_order(setup: SequenceSetup):
     node = sequence(setup, single=True)
     result = run(setup, SequenceNot(node_id=uuid4(), scope_id=node.scope_id, child=node))
     assert result.matched_ids == ("c",)
@@ -293,13 +316,13 @@ def test_unknown_boolean_and_canonical_order(setup):
 
 
 @pytest.mark.parametrize("dtype", [pa.timestamp("ms", tz="UTC"), pa.timestamp("us"), pa.int64()])
-def test_native_time_wrong_schema_rejected(setup, dtype):
+def test_native_time_wrong_schema_rejected(setup: SequenceSetup, dtype: Any):
     change_column(setup, "time", [1] * 6, dtype)
     with pytest.raises(AnalyticsFailure, match="FILTER_INPUT_SCHEMA"):
         run(setup, sequence(setup))
 
 
-def test_forged_event_asof_and_policy_recheck(setup):
+def test_forged_event_asof_and_policy_recheck(setup: SequenceSetup):
     node = sequence(setup)
     with pytest.raises(AnalyticsFailure, match="FILTER_EVENT_AS_OF"):
         run(
@@ -319,7 +342,7 @@ def test_forged_event_asof_and_policy_recheck(setup):
         run(setup, node)
 
 
-def test_sequence_work_preflight(setup):
+def test_sequence_work_preflight(setup: SequenceSetup):
     access = setup[1]
     access.grant = replace(
         access.grant,
@@ -329,7 +352,7 @@ def test_sequence_work_preflight(setup):
         run(setup, sequence(setup))
 
 
-def test_old_request_readers_reject_sequence(setup):
+def test_old_request_readers_reject_sequence(setup: SequenceSetup):
     node = sequence(setup)
     _, access, w, _, d, _ = setup
     data = dict(
@@ -345,7 +368,7 @@ def test_old_request_readers_reject_sequence(setup):
             cls.model_validate(data)
 
 
-def test_hidden_event_cannot_disprove_absence(setup):
+def test_hidden_event_cannot_disprove_absence(setup: SequenceSetup):
     change_column(setup, "parent", ["a", "a", "b", "n", "secret", "a"])
     change_column(setup, "color", ["red", "green", "red", None, "red", "blue"])
     change_column(setup, "time", [at(1), at(2), at(1), at(1), at(1), at(2)])
@@ -355,7 +378,7 @@ def test_hidden_event_cannot_disprove_absence(setup):
     assert run(setup, sequence(setup)).matched_ids == ()
 
 
-def test_observed_positive_survives_incomplete_history(setup):
+def test_observed_positive_survives_incomplete_history(setup: SequenceSetup):
     access = setup[1]
     access.grant = replace(
         access.grant, relationships=(replace(access.grant.relationships[0], complete=False),)
@@ -365,7 +388,7 @@ def test_observed_positive_survives_incomplete_history(setup):
     assert result.unknown_count == 3
 
 
-def test_observed_negative_beyond_global_window_not_used(setup):
+def test_observed_negative_beyond_global_window_not_used(setup: SequenceSetup):
     node = sequence(setup, single=True)
     node = node.model_copy(update={"window": node.window.model_copy(update={"ends_at": at(2)})})
     neg = negative(setup, node, end=3000000)
@@ -374,13 +397,13 @@ def test_observed_negative_beyond_global_window_not_used(setup):
     assert result.unknown_count == 3  # blue at global exclusive end is not an admitted step
 
 
-def test_known_time_column_wrong_type_rejected(setup):
+def test_known_time_column_wrong_type_rejected(setup: SequenceSetup):
     change_column(setup, "time_known", [1] * 6, pa.int64())
     with pytest.raises(AnalyticsFailure, match="FILTER_INPUT_SCHEMA"):
         run(setup, sequence(setup))
 
 
-def test_duplicate_scope_and_event_time_forgery_rejected(setup):
+def test_duplicate_scope_and_event_time_forgery_rejected(setup: SequenceSetup):
     node = sequence(setup)
     second = node.steps[1].model_copy(update={"child_scope_id": node.steps[0].child_scope_id})
     with pytest.raises(AnalyticsFailure, match="FILTER_SCOPE_INVALID"):
@@ -398,7 +421,7 @@ def test_duplicate_scope_and_event_time_forgery_rejected(setup):
         )
 
 
-def test_negative_first_wrong_anchor_and_limits_rejected(setup):
+def test_negative_first_wrong_anchor_and_limits_rejected(setup: SequenceSetup):
     node = sequence(setup)
     neg = negative(setup, node)
     for steps in [
@@ -422,7 +445,7 @@ def test_negative_first_wrong_anchor_and_limits_rejected(setup):
         SequenceGap(minimum_us=2, maximum_us=1)
 
 
-def test_current_event_evidence_changes_identity(setup):
+def test_current_event_evidence_changes_identity(setup: SequenceSetup):
     node = sequence(setup)
     before = run(setup, node)
     access = setup[1]
@@ -434,7 +457,7 @@ def test_current_event_evidence_changes_identity(setup):
     assert before.request_hash != after.request_hash
 
 
-def test_compound_predicate_parameters_and_multiple_sequences(setup):
+def test_compound_predicate_parameters_and_multiple_sequences(setup: SequenceSetup):
     node = sequence(setup)
     other = sequence(setup, single=True)
     other = other.model_copy(update={"scope_id": node.scope_id, "parent_scope_id": node.scope_id})
@@ -447,7 +470,7 @@ def test_compound_predicate_parameters_and_multiple_sequences(setup):
     assert run(setup, reversed).request_hash == result.request_hash
 
 
-def test_cancelled_execution_and_artifact_integrity(setup):
+def test_cancelled_execution_and_artifact_integrity(setup: SequenceSetup):
     from threading import Event
 
     node = sequence(setup)
@@ -470,7 +493,7 @@ def test_cancelled_execution_and_artifact_integrity(setup):
         engine.execute(request, actor_id=a)
 
 
-def test_foreign_root_scope_and_oversized_step_work(setup):
+def test_foreign_root_scope_and_oversized_step_work(setup: SequenceSetup):
     node = sequence(setup)
     with pytest.raises(AnalyticsFailure, match="FILTER_SCOPE_INVALID"):
         run(setup, node.model_copy(update={"parent_scope_id": uuid4()}))
@@ -483,7 +506,7 @@ def test_foreign_root_scope_and_oversized_step_work(setup):
         run(setup, node)
 
 
-def test_negative_probe_fanout_is_part_of_work_budget(setup):
+def test_negative_probe_fanout_is_part_of_work_budget(setup: SequenceSetup):
     access = setup[1]
     child = access.grant.entities[1]
     p = setup[-1] / child.binding.relative_uri
@@ -520,7 +543,7 @@ def test_negative_probe_fanout_is_part_of_work_budget(setup):
         run(setup, node)
 
 
-def test_property_binding_requires_equality_capability(setup):
+def test_property_binding_requires_equality_capability(setup: SequenceSetup):
     access = setup[1]
     child = access.grant.entities[1]
     field = next(f for f in child.registry.fields if f.field_id == "ReceiptItem.quantity")

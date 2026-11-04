@@ -5,6 +5,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+from typing import Any
 from uuid import UUID, uuid4
 import psycopg
 import pytest
@@ -16,7 +17,7 @@ from packages.identity_access.infrastructure.postgres import PostgresIdentityRep
 ROOT = Path(__file__).resolve().parents[3]
 
 
-def test_saved_cohort_read_does_not_require_or_enable_run(tmp_path, monkeypatch):
+def test_saved_cohort_read_does_not_require_or_enable_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     if os.environ.get("MS010_OWNED_DATABASE") != "1":
         pytest.skip("requires owned disposable run_retail_filters")
     corpus_path = tmp_path / "corpus.json"
@@ -24,6 +25,7 @@ def test_saved_cohort_read_does_not_require_or_enable_run(tmp_path, monkeypatch)
     spec = importlib.util.spec_from_file_location(
         "cohort_saved_fixture", ROOT / "tests/e2e/ms-004-workspace/scenario.py"
     )
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     app = module.create_scenario(tmp_path / "artifacts")
@@ -86,7 +88,7 @@ def test_saved_cohort_read_does_not_require_or_enable_run(tmp_path, monkeypatch)
     field = next(
         f["field"] for f in catalog["fields"] if f["field"]["field_id"] == "Receipt.receipt_id"
     )
-    sequence = {
+    sequence: dict[str, Any] = {
         "kind": "sequence",
         "node_id": str(uuid4()),
         "scope_id": customer,
@@ -113,7 +115,7 @@ def test_saved_cohort_read_does_not_require_or_enable_run(tmp_path, monkeypatch)
             }
         ],
     }
-    value = {
+    value: dict[str, Any] = {
         "schema_version": "receipt-filter/v4",
         "root_scope_id": root,
         "registry_versions": catalog["registry_versions"],
@@ -180,7 +182,7 @@ def test_saved_cohort_read_does_not_require_or_enable_run(tmp_path, monkeypatch)
     )
     assert saved.status_code == 200, saved.json().get("code")
 
-    def connect():
+    def connect() -> psycopg.Connection[Any]:
         return psycopg.connect(
             host=settings.database_host,
             port=settings.database_port,

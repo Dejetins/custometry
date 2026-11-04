@@ -5,6 +5,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+from typing import Any, Literal, cast
 from uuid import UUID, uuid4
 import psycopg
 import pytest
@@ -37,7 +38,7 @@ from packages.semantic_model.infrastructure.postgres import PostgresSalesSemanti
 ROOT = Path(__file__).resolve().parents[3]
 
 
-def test_published_correlated_membership_http_and_current_policy(tmp_path, monkeypatch):
+def test_published_correlated_membership_http_and_current_policy(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     if os.environ.get("MS010_OWNED_DATABASE") != "1":
         pytest.skip("requires owned run_retail_filters disposable database")
     corpus_path = tmp_path / "corpus.json"
@@ -45,6 +46,7 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
     spec = importlib.util.spec_from_file_location(
         "correlated_scenario", ROOT / "tests/e2e/ms-004-workspace/scenario.py"
     )
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     artifact_root = tmp_path / "artifacts"
@@ -53,7 +55,7 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
     workspace, dataset = UUID(corpus["workspace_id"]), UUID(corpus["semantic_dataset_version_id"])
     settings = Settings(analytics_artifact_root=artifact_root)
 
-    def connect():
+    def connect() -> psycopg.Connection[Any]:
         return psycopg.connect(
             host=settings.database_host,
             port=settings.database_port,
@@ -95,7 +97,7 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
     scope, child = uuid4(), uuid4()
     fields = {f.field_id: f for e in grant.entities for f in e.registry.fields}
 
-    def predicate(name, value, op):
+    def predicate(name: str, value: str, op: Literal["ge", "gt"]) -> ScopedPredicate:
         f = fields[f"ReceiptItem.{name}"]
         return ScopedPredicate(
             node_id=uuid4(),
@@ -132,7 +134,7 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
         expression=node,
     )
 
-    def execute(q=query):
+    def execute(q: RelationalFilterRequest = query):
         return engine.execute(q, actor_id=actor.principal_id)
 
     with psycopg.connect(
@@ -180,7 +182,7 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
     assert negative.unknown_count == actual.unknown_count
 
     app = create_reports_app(settings, identity_service=identity)
-    body = dict(
+    body: dict[str, Any] = dict(
         dataset_version_id=str(dataset),
         filter=dict(
             schema_version="receipt-filter/v2",
@@ -255,12 +257,14 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
 
     organization = OrganizationService(PostgresOrganizationRepository(connect))
 
-    def bind(stores):
+    def bind(stores: tuple[str, ...]) -> None:
         with connect() as connection:
-            policy_id, department, version = connection.execute(
+            row = connection.execute(
                 "SELECT id,org_unit_id,current_version FROM organization_department_policies WHERE workspace_id=%s",
                 (workspace,),
             ).fetchone()
+        assert row is not None
+        policy_id, department, version = cast(tuple[UUID, UUID, int], row)
         draft = organization.create_policy_draft(
             actor,
             policy_id=policy_id,
@@ -274,7 +278,7 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
             effective_from=None,
         )
         organization.publish_policy(
-            actor, policy_id=policy_id, expected_version=int(draft["version"]), effective_from=None
+            actor, policy_id=policy_id, expected_version=int(cast(int, draft["version"])), effective_from=None
         )
         organization.bind_resource(
             actor,
@@ -308,7 +312,7 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
     original_read = adapter.read_admitted_input
     changed = False
 
-    def change_after_read(*args, **kwargs):
+    def change_after_read(*args: Any, **kwargs: Any) -> Any:
         nonlocal changed
         result = original_read(*args, **kwargs)
         if not changed:
@@ -326,7 +330,7 @@ def test_published_correlated_membership_http_and_current_policy(tmp_path, monke
     original_projection = PostgresSalesSemanticRepository.retail_relational_projection
     revoked = False
 
-    def revoke_after_projection(self, **kwargs):
+    def revoke_after_projection(self: PostgresSalesSemanticRepository, **kwargs: Any) -> Any:
         nonlocal revoked
         result = original_projection(self, **kwargs)
         if not revoked:

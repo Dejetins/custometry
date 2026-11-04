@@ -575,3 +575,8 @@ whitespace checks passed. This is local UI evidence, not production release proo
 Owner repair, ANALYTICAL-DOC-004 / DASHBOARD-006. Confirmed source cause: markLine was excluded from automatic value-axis extents; its default end label fell outside the plot. Compiler now expands automatic bounds around the goal, keeps explicit bounds, maps horizontal goals to xAxis and places labels inside the plot. Inspector names the goal-line label and explains its purpose with an example and localized fallback. Browser contract: compatible-change; persisted/API shapes and analytical data unchanged.
 
 Verification: chart compiler and web typecheck passed; `pnpm --filter @custometry/chart-compiler exec vitest run tests/composer-goal.test.ts` passed 5 tests using real ECharts SSR coordinates/SVG (above maximum, negative, zero, explicit limits/removal, horizontal bars). No pre-fix red test captured. `uv run python -m tools.check --scope local` and `git diff --check` passed. In existing in-app tab, changed 35000 to 60000 and label to Sales target; observed visible line and label with scale extended to 63000. Screenshot: goal-visible.png. Restored original 35000 / ваи draft fields; did not save or reload user's draft. Browser error log empty; network not inspected. Local runtime only.
+
+## Source recovery — 2026-11-04
+
+The [recovery and synchronization record](source-recovery-2026-11-04.md) documents
+preservation of this work in GitHub, sanitation and the publication proof boundary.

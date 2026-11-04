@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import os
 from pathlib import Path
 import subprocess
+from typing import Any, Never
 from uuid import UUID, uuid4
 import psycopg
 from psycopg import sql
@@ -587,7 +588,7 @@ def test_custom_calendar_cannot_use_null_request_hash(database: Database) -> Non
 
 
 def test_pinned_timezone_calendar_api_replay_without_rules_and_immutable_versions(
-    database: Database, monkeypatch
+    database: Database, monkeypatch: pytest.MonkeyPatch
 ):
     from packages.contracts.semantic import CalendarFailure
     from packages.semantic_model.infrastructure.timezone_rules import PackagedCalendarRules
@@ -596,8 +597,12 @@ def test_pinned_timezone_calendar_api_replay_without_rules_and_immutable_version
     with app_client(database) as client:
         _, headers = bootstrap_login(client)
         initial = client.get("/semantic/workspace-calendar/v1").json()
+        requested_profile = {
+            "schema_version": "business-calendar/v2",
+            "timezone": "America/New_York",
+        }
         body = {
-            "profile": {"schema_version": "business-calendar/v2", "timezone": "America/New_York"},
+            "profile": requested_profile,
             "expected_revision": initial["revision"],
             "idempotency_key": str(uuid4()),
         }
@@ -605,7 +610,7 @@ def test_pinned_timezone_calendar_api_replay_without_rules_and_immutable_version
         invalid = client.post(
             "/semantic/workspace-calendar/v1/versions",
             headers=headers,
-            json={**body, "profile": {**body["profile"], "timezone": "Unknown/Nowhere"}},
+            json={**body, "profile": {**requested_profile, "timezone": "Unknown/Nowhere"}},
         )
         assert (
             invalid.status_code == 400 and invalid.json()["code"] == "CALENDAR_TIMEZONE_UNAVAILABLE"
@@ -623,11 +628,11 @@ def test_pinned_timezone_calendar_api_replay_without_rules_and_immutable_version
             ).status_code
             == 422
         )
-        monkeypatch.setattr(
-            PackagedCalendarRules,
-            "resolve",
-            lambda *_: (_ for _ in ()).throw(CalendarFailure("CALENDAR_TIMEZONE_UNAVAILABLE")),
-        )
+
+        def unavailable(*_: object) -> Never:
+            raise CalendarFailure("CALENDAR_TIMEZONE_UNAVAILABLE")
+
+        monkeypatch.setattr(PackagedCalendarRules, "resolve", unavailable)
         # Replay precedes rule resolution, even when that provider is unavailable.
         assert (
             client.post(
@@ -639,7 +644,7 @@ def test_pinned_timezone_calendar_api_replay_without_rules_and_immutable_version
             client.post(
                 "/semantic/workspace-calendar/v1/versions",
                 headers=headers,
-                json={**body, "profile": {**body["profile"], "timezone": "UTC"}},
+                json={**body, "profile": {**requested_profile, "timezone": "UTC"}},
             ).status_code
             == 409
         )
@@ -666,7 +671,7 @@ def test_calendar_once_only_concurrent_first_configuration(database: Database):
         cookies = dict(client.cookies)
         requests = [update(4, 0), update(7, 0)]
 
-        def write(body):
+        def write(body: dict[str, Any]) -> tuple[int, Any, dict[str, Any]]:
             with app_client(database) as other:
                 other.cookies.update(cookies)
                 response = other.post(

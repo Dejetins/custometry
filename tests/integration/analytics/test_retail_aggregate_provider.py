@@ -5,6 +5,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+from typing import Any, cast
 from uuid import UUID, uuid4
 import psycopg
 import pytest
@@ -33,7 +34,7 @@ from packages.semantic_model.infrastructure.postgres import PostgresSalesSemanti
 ROOT = Path(__file__).resolve().parents[3]
 
 
-def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypatch):
+def test_published_aggregate_provider_http_and_current_policy(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     if os.environ.get("MS010_OWNED_DATABASE") != "1":
         pytest.skip("requires owned run_retail_filters disposable database")
     corpus_path = tmp_path / "corpus.json"
@@ -41,6 +42,7 @@ def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypa
     spec = importlib.util.spec_from_file_location(
         "correlated_scenario", ROOT / "tests/e2e/ms-004-workspace/scenario.py"
     )
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     artifact_root = tmp_path / "artifacts"
@@ -49,7 +51,7 @@ def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypa
     workspace, dataset = UUID(corpus["workspace_id"]), UUID(corpus["semantic_dataset_version_id"])
     settings = Settings(analytics_artifact_root=artifact_root)
 
-    def connect():
+    def connect() -> psycopg.Connection[Any]:
         return psycopg.connect(
             host=settings.database_host,
             port=settings.database_port,
@@ -135,7 +137,7 @@ def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypa
         compatibility_registry_version_id=grant.compatibility_registry_versions[0],
     )
 
-    def execute(q=query):
+    def execute(q: AggregateFilterRequest = query):
         return engine.execute(q, actor_id=actor.principal_id)
 
     with psycopg.connect(
@@ -154,6 +156,7 @@ def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypa
         observed = source.execute(
             "SELECT count(*),count(DISTINCT i.product_id) FROM retail.receipt_items i JOIN retail.products p ON p.product_id=i.product_id"
         ).fetchone()
+    assert observed is not None
     assert observed[0] > 0 and observed[1] > 0
     actual = execute()
     assert (
@@ -249,12 +252,14 @@ def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypa
         )
     organization = OrganizationService(PostgresOrganizationRepository(connect))
 
-    def bind(stores):
+    def bind(stores: tuple[str, ...]) -> None:
         with connect() as connection:
-            policy_id, department, version = connection.execute(
+            row = connection.execute(
                 "SELECT id,org_unit_id,current_version FROM organization_department_policies WHERE workspace_id=%s",
                 (workspace,),
             ).fetchone()
+        assert row is not None
+        policy_id, department, version = cast(tuple[UUID, UUID, int], row)
         draft = organization.create_policy_draft(
             actor,
             policy_id=policy_id,
@@ -268,7 +273,7 @@ def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypa
             effective_from=None,
         )
         organization.publish_policy(
-            actor, policy_id=policy_id, expected_version=int(draft["version"]), effective_from=None
+            actor, policy_id=policy_id, expected_version=int(cast(int, draft["version"])), effective_from=None
         )
         organization.bind_resource(
             actor,
@@ -297,7 +302,7 @@ def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypa
     original_read = adapter.read_admitted_input
     changed = False
 
-    def change_after_read(*args, **kwargs):
+    def change_after_read(*args: Any, **kwargs: Any) -> Any:
         nonlocal changed
         result = original_read(*args, **kwargs)
         if not changed:
@@ -312,7 +317,7 @@ def test_published_aggregate_provider_http_and_current_policy(tmp_path, monkeypa
     original_projection = PostgresSalesSemanticRepository.retail_aggregate_projection
     revoked = False
 
-    def revoke_after_projection(self, **kwargs):
+    def revoke_after_projection(self: PostgresSalesSemanticRepository, **kwargs: Any) -> Any:
         nonlocal revoked
         result = original_projection(self, **kwargs)
         if not revoked:
